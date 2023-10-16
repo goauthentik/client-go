@@ -11,15 +11,15 @@ Name | Type | Description | Notes
 **PendingUser** | **string** |  | 
 **PendingUserAvatar** | **string** |  | 
 **HeaderText** | Pointer to **string** |  | [optional] 
-**Permissions** | [**[]Permission**](Permission.md) |  | 
-**AdditionalPermissions** | [**[]Permission**](Permission.md) |  | 
+**Permissions** | [**[]ConsentPermission**](ConsentPermission.md) |  | 
+**AdditionalPermissions** | [**[]ConsentPermission**](ConsentPermission.md) |  | 
 **Token** | **string** |  | 
 
 ## Methods
 
 ### NewConsentChallenge
 
-`func NewConsentChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, permissions []Permission, additionalPermissions []Permission, token string, ) *ConsentChallenge`
+`func NewConsentChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, ) *ConsentChallenge`
 
 NewConsentChallenge instantiates a new ConsentChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -196,40 +196,40 @@ HasHeaderText returns a boolean if a field has been set.
 
 ### GetPermissions
 
-`func (o *ConsentChallenge) GetPermissions() []Permission`
+`func (o *ConsentChallenge) GetPermissions() []ConsentPermission`
 
 GetPermissions returns the Permissions field if non-nil, zero value otherwise.
 
 ### GetPermissionsOk
 
-`func (o *ConsentChallenge) GetPermissionsOk() (*[]Permission, bool)`
+`func (o *ConsentChallenge) GetPermissionsOk() (*[]ConsentPermission, bool)`
 
 GetPermissionsOk returns a tuple with the Permissions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPermissions
 
-`func (o *ConsentChallenge) SetPermissions(v []Permission)`
+`func (o *ConsentChallenge) SetPermissions(v []ConsentPermission)`
 
 SetPermissions sets Permissions field to given value.
 
 
 ### GetAdditionalPermissions
 
-`func (o *ConsentChallenge) GetAdditionalPermissions() []Permission`
+`func (o *ConsentChallenge) GetAdditionalPermissions() []ConsentPermission`
 
 GetAdditionalPermissions returns the AdditionalPermissions field if non-nil, zero value otherwise.
 
 ### GetAdditionalPermissionsOk
 
-`func (o *ConsentChallenge) GetAdditionalPermissionsOk() (*[]Permission, bool)`
+`func (o *ConsentChallenge) GetAdditionalPermissionsOk() (*[]ConsentPermission, bool)`
 
 GetAdditionalPermissionsOk returns a tuple with the AdditionalPermissions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAdditionalPermissions
 
-`func (o *ConsentChallenge) SetAdditionalPermissions(v []Permission)`
+`func (o *ConsentChallenge) SetAdditionalPermissions(v []ConsentPermission)`
 
 SetAdditionalPermissions sets AdditionalPermissions field to given value.
 

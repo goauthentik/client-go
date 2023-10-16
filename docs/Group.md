@@ -11,14 +11,16 @@ Name | Type | Description | Notes
 **Parent** | Pointer to **NullableString** |  | [optional] 
 **ParentName** | **NullableString** |  | [readonly] 
 **Users** | Pointer to **[]int32** |  | [optional] 
-**Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 **UsersObj** | [**[]GroupMember**](GroupMember.md) |  | [readonly] 
+**Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
+**Roles** | Pointer to **[]string** |  | [optional] 
+**RolesObj** | [**[]Role**](Role.md) |  | [readonly] 
 
 ## Methods
 
 ### NewGroup
 
-`func NewGroup(pk string, numPk int32, name string, parentName NullableString, usersObj []GroupMember, ) *Group`
+`func NewGroup(pk string, numPk int32, name string, parentName NullableString, usersObj []GroupMember, rolesObj []Role, ) *Group`
 
 NewGroup instantiates a new Group object
 This constructor will assign default values to properties that have it defined,
@@ -208,6 +210,26 @@ SetUsers sets Users field to given value.
 
 HasUsers returns a boolean if a field has been set.
 
+### GetUsersObj
+
+`func (o *Group) GetUsersObj() []GroupMember`
+
+GetUsersObj returns the UsersObj field if non-nil, zero value otherwise.
+
+### GetUsersObjOk
+
+`func (o *Group) GetUsersObjOk() (*[]GroupMember, bool)`
+
+GetUsersObjOk returns a tuple with the UsersObj field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsersObj
+
+`func (o *Group) SetUsersObj(v []GroupMember)`
+
+SetUsersObj sets UsersObj field to given value.
+
+
 ### GetAttributes
 
 `func (o *Group) GetAttributes() map[string]interface{}`
@@ -233,24 +255,49 @@ SetAttributes sets Attributes field to given value.
 
 HasAttributes returns a boolean if a field has been set.
 
-### GetUsersObj
+### GetRoles
 
-`func (o *Group) GetUsersObj() []GroupMember`
+`func (o *Group) GetRoles() []string`
 
-GetUsersObj returns the UsersObj field if non-nil, zero value otherwise.
+GetRoles returns the Roles field if non-nil, zero value otherwise.
 
-### GetUsersObjOk
+### GetRolesOk
 
-`func (o *Group) GetUsersObjOk() (*[]GroupMember, bool)`
+`func (o *Group) GetRolesOk() (*[]string, bool)`
 
-GetUsersObjOk returns a tuple with the UsersObj field if it's non-nil, zero value otherwise
+GetRolesOk returns a tuple with the Roles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUsersObj
+### SetRoles
 
-`func (o *Group) SetUsersObj(v []GroupMember)`
+`func (o *Group) SetRoles(v []string)`
 
-SetUsersObj sets UsersObj field to given value.
+SetRoles sets Roles field to given value.
+
+### HasRoles
+
+`func (o *Group) HasRoles() bool`
+
+HasRoles returns a boolean if a field has been set.
+
+### GetRolesObj
+
+`func (o *Group) GetRolesObj() []Role`
+
+GetRolesObj returns the RolesObj field if non-nil, zero value otherwise.
+
+### GetRolesObjOk
+
+`func (o *Group) GetRolesObjOk() (*[]Role, bool)`
+
+GetRolesObjOk returns a tuple with the RolesObj field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRolesObj
+
+`func (o *Group) SetRolesObj(v []Role)`
+
+SetRolesObj sets RolesObj field to given value.
 
 
 

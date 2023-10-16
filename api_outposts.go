@@ -317,7 +317,7 @@ OutpostsInstancesDestroy Method for OutpostsInstancesDestroy
 Outpost Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param uuid A UUID string identifying this outpost.
+	@param uuid A UUID string identifying this Outpost.
 	@return ApiOutpostsInstancesDestroyRequest
 */
 func (a *OutpostsApiService) OutpostsInstancesDestroy(ctx context.Context, uuid string) ApiOutpostsInstancesDestroyRequest {
@@ -504,7 +504,7 @@ OutpostsInstancesHealthList Method for OutpostsInstancesHealthList
 Get outposts current health
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param uuid A UUID string identifying this outpost.
+	@param uuid A UUID string identifying this Outpost.
 	@return ApiOutpostsInstancesHealthListRequest
 */
 func (a *OutpostsApiService) OutpostsInstancesHealthList(ctx context.Context, uuid string) ApiOutpostsInstancesHealthListRequest {
@@ -938,7 +938,7 @@ OutpostsInstancesPartialUpdate Method for OutpostsInstancesPartialUpdate
 Outpost Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param uuid A UUID string identifying this outpost.
+	@param uuid A UUID string identifying this Outpost.
 	@return ApiOutpostsInstancesPartialUpdateRequest
 */
 func (a *OutpostsApiService) OutpostsInstancesPartialUpdate(ctx context.Context, uuid string) ApiOutpostsInstancesPartialUpdateRequest {
@@ -1077,7 +1077,7 @@ OutpostsInstancesRetrieve Method for OutpostsInstancesRetrieve
 Outpost Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param uuid A UUID string identifying this outpost.
+	@param uuid A UUID string identifying this Outpost.
 	@return ApiOutpostsInstancesRetrieveRequest
 */
 func (a *OutpostsApiService) OutpostsInstancesRetrieve(ctx context.Context, uuid string) ApiOutpostsInstancesRetrieveRequest {
@@ -1220,7 +1220,7 @@ OutpostsInstancesUpdate Method for OutpostsInstancesUpdate
 Outpost Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param uuid A UUID string identifying this outpost.
+	@param uuid A UUID string identifying this Outpost.
 	@return ApiOutpostsInstancesUpdateRequest
 */
 func (a *OutpostsApiService) OutpostsInstancesUpdate(ctx context.Context, uuid string) ApiOutpostsInstancesUpdateRequest {
@@ -1362,7 +1362,7 @@ OutpostsInstancesUsedByList Method for OutpostsInstancesUsedByList
 Get a list of all objects that use this object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param uuid A UUID string identifying this outpost.
+	@param uuid A UUID string identifying this Outpost.
 	@return ApiOutpostsInstancesUsedByListRequest
 */
 func (a *OutpostsApiService) OutpostsInstancesUsedByList(ctx context.Context, uuid string) ApiOutpostsInstancesUsedByListRequest {

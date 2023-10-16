@@ -25,21 +25,24 @@ type Group struct {
 	Parent      NullableString         `json:"parent,omitempty"`
 	ParentName  NullableString         `json:"parent_name"`
 	Users       []int32                `json:"users,omitempty"`
-	Attributes  map[string]interface{} `json:"attributes,omitempty"`
 	UsersObj    []GroupMember          `json:"users_obj"`
+	Attributes  map[string]interface{} `json:"attributes,omitempty"`
+	Roles       []string               `json:"roles,omitempty"`
+	RolesObj    []Role                 `json:"roles_obj"`
 }
 
 // NewGroup instantiates a new Group object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroup(pk string, numPk int32, name string, parentName NullableString, usersObj []GroupMember) *Group {
+func NewGroup(pk string, numPk int32, name string, parentName NullableString, usersObj []GroupMember, rolesObj []Role) *Group {
 	this := Group{}
 	this.Pk = pk
 	this.NumPk = numPk
 	this.Name = name
 	this.ParentName = parentName
 	this.UsersObj = usersObj
+	this.RolesObj = rolesObj
 	return &this
 }
 
@@ -256,6 +259,30 @@ func (o *Group) SetUsers(v []int32) {
 	o.Users = v
 }
 
+// GetUsersObj returns the UsersObj field value
+func (o *Group) GetUsersObj() []GroupMember {
+	if o == nil {
+		var ret []GroupMember
+		return ret
+	}
+
+	return o.UsersObj
+}
+
+// GetUsersObjOk returns a tuple with the UsersObj field value
+// and a boolean to check if the value has been set.
+func (o *Group) GetUsersObjOk() ([]GroupMember, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.UsersObj, true
+}
+
+// SetUsersObj sets field value
+func (o *Group) SetUsersObj(v []GroupMember) {
+	o.UsersObj = v
+}
+
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *Group) GetAttributes() map[string]interface{} {
 	if o == nil || o.Attributes == nil {
@@ -288,28 +315,60 @@ func (o *Group) SetAttributes(v map[string]interface{}) {
 	o.Attributes = v
 }
 
-// GetUsersObj returns the UsersObj field value
-func (o *Group) GetUsersObj() []GroupMember {
+// GetRoles returns the Roles field value if set, zero value otherwise.
+func (o *Group) GetRoles() []string {
+	if o == nil || o.Roles == nil {
+		var ret []string
+		return ret
+	}
+	return o.Roles
+}
+
+// GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Group) GetRolesOk() ([]string, bool) {
+	if o == nil || o.Roles == nil {
+		return nil, false
+	}
+	return o.Roles, true
+}
+
+// HasRoles returns a boolean if a field has been set.
+func (o *Group) HasRoles() bool {
+	if o != nil && o.Roles != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRoles gets a reference to the given []string and assigns it to the Roles field.
+func (o *Group) SetRoles(v []string) {
+	o.Roles = v
+}
+
+// GetRolesObj returns the RolesObj field value
+func (o *Group) GetRolesObj() []Role {
 	if o == nil {
-		var ret []GroupMember
+		var ret []Role
 		return ret
 	}
 
-	return o.UsersObj
+	return o.RolesObj
 }
 
-// GetUsersObjOk returns a tuple with the UsersObj field value
+// GetRolesObjOk returns a tuple with the RolesObj field value
 // and a boolean to check if the value has been set.
-func (o *Group) GetUsersObjOk() ([]GroupMember, bool) {
+func (o *Group) GetRolesObjOk() ([]Role, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.UsersObj, true
+	return o.RolesObj, true
 }
 
-// SetUsersObj sets field value
-func (o *Group) SetUsersObj(v []GroupMember) {
-	o.UsersObj = v
+// SetRolesObj sets field value
+func (o *Group) SetRolesObj(v []Role) {
+	o.RolesObj = v
 }
 
 func (o Group) MarshalJSON() ([]byte, error) {
@@ -335,11 +394,17 @@ func (o Group) MarshalJSON() ([]byte, error) {
 	if o.Users != nil {
 		toSerialize["users"] = o.Users
 	}
+	if true {
+		toSerialize["users_obj"] = o.UsersObj
+	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
+	if o.Roles != nil {
+		toSerialize["roles"] = o.Roles
+	}
 	if true {
-		toSerialize["users_obj"] = o.UsersObj
+		toSerialize["roles_obj"] = o.RolesObj
 	}
 	return json.Marshal(toSerialize)
 }

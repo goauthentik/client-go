@@ -23,6 +23,7 @@ type GroupRequest struct {
 	Parent      NullableString         `json:"parent,omitempty"`
 	Users       []int32                `json:"users,omitempty"`
 	Attributes  map[string]interface{} `json:"attributes,omitempty"`
+	Roles       []string               `json:"roles,omitempty"`
 }
 
 // NewGroupRequest instantiates a new GroupRequest object
@@ -206,6 +207,38 @@ func (o *GroupRequest) SetAttributes(v map[string]interface{}) {
 	o.Attributes = v
 }
 
+// GetRoles returns the Roles field value if set, zero value otherwise.
+func (o *GroupRequest) GetRoles() []string {
+	if o == nil || o.Roles == nil {
+		var ret []string
+		return ret
+	}
+	return o.Roles
+}
+
+// GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupRequest) GetRolesOk() ([]string, bool) {
+	if o == nil || o.Roles == nil {
+		return nil, false
+	}
+	return o.Roles, true
+}
+
+// HasRoles returns a boolean if a field has been set.
+func (o *GroupRequest) HasRoles() bool {
+	if o != nil && o.Roles != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRoles gets a reference to the given []string and assigns it to the Roles field.
+func (o *GroupRequest) SetRoles(v []string) {
+	o.Roles = v
+}
+
 func (o GroupRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -222,6 +255,9 @@ func (o GroupRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
+	}
+	if o.Roles != nil {
+		toSerialize["roles"] = o.Roles
 	}
 	return json.Marshal(toSerialize)
 }

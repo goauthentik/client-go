@@ -1164,7 +1164,7 @@ import (
 )
 
 func main() {
-    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this group.
+    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Group.
     userAccountRequest := *openapiclient.NewUserAccountRequest(int32(123)) // UserAccountRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -1183,7 +1183,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupUuid** | **string** | A UUID string identifying this group. | 
+**groupUuid** | **string** | A UUID string identifying this Group. | 
 
 ### Other Parameters
 
@@ -1300,7 +1300,7 @@ import (
 )
 
 func main() {
-    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this group.
+    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Group.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1318,7 +1318,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupUuid** | **string** | A UUID string identifying this group. | 
+**groupUuid** | **string** | A UUID string identifying this Group. | 
 
 ### Other Parameters
 
@@ -1450,7 +1450,7 @@ import (
 )
 
 func main() {
-    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this group.
+    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Group.
     patchedGroupRequest := *openapiclient.NewPatchedGroupRequest() // PatchedGroupRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -1471,7 +1471,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupUuid** | **string** | A UUID string identifying this group. | 
+**groupUuid** | **string** | A UUID string identifying this Group. | 
 
 ### Other Parameters
 
@@ -1522,7 +1522,7 @@ import (
 )
 
 func main() {
-    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this group.
+    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Group.
     userAccountRequest := *openapiclient.NewUserAccountRequest(int32(123)) // UserAccountRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -1541,7 +1541,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupUuid** | **string** | A UUID string identifying this group. | 
+**groupUuid** | **string** | A UUID string identifying this Group. | 
 
 ### Other Parameters
 
@@ -1592,7 +1592,7 @@ import (
 )
 
 func main() {
-    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this group.
+    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Group.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1612,7 +1612,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupUuid** | **string** | A UUID string identifying this group. | 
+**groupUuid** | **string** | A UUID string identifying this Group. | 
 
 ### Other Parameters
 
@@ -1662,7 +1662,7 @@ import (
 )
 
 func main() {
-    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this group.
+    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Group.
     groupRequest := *openapiclient.NewGroupRequest("Name_example") // GroupRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -1683,7 +1683,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupUuid** | **string** | A UUID string identifying this group. | 
+**groupUuid** | **string** | A UUID string identifying this Group. | 
 
 ### Other Parameters
 
@@ -1734,7 +1734,7 @@ import (
 )
 
 func main() {
-    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this group.
+    groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Group.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1754,7 +1754,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupUuid** | **string** | A UUID string identifying this group. | 
+**groupUuid** | **string** | A UUID string identifying this Group. | 
 
 ### Other Parameters
 

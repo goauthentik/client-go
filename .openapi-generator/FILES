@@ -15,6 +15,7 @@ api_outposts.go
 api_policies.go
 api_propertymappings.go
 api_providers.go
+api_rbac.go
 api_root.go
 api_schema.go
 api_sources.go
@@ -89,6 +90,7 @@ docs/ClientTypeEnum.md
 docs/Config.md
 docs/ConsentChallenge.md
 docs/ConsentChallengeResponseRequest.md
+docs/ConsentPermission.md
 docs/ConsentStage.md
 docs/ConsentStageModeEnum.md
 docs/ConsentStageRequest.md
@@ -135,6 +137,8 @@ docs/EventsApi.md
 docs/ExpiringBaseGrantModel.md
 docs/ExpressionPolicy.md
 docs/ExpressionPolicyRequest.md
+docs/ExtraRoleObjectPermission.md
+docs/ExtraUserObjectPermission.md
 docs/FilePathRequest.md
 docs/Flow.md
 docs/FlowChallengeResponseRequest.md
@@ -243,6 +247,8 @@ docs/PaginatedEventList.md
 docs/PaginatedEventMatcherPolicyList.md
 docs/PaginatedExpiringBaseGrantModelList.md
 docs/PaginatedExpressionPolicyList.md
+docs/PaginatedExtraRoleObjectPermissionList.md
+docs/PaginatedExtraUserObjectPermissionList.md
 docs/PaginatedFlowList.md
 docs/PaginatedFlowStageBindingList.md
 docs/PaginatedGroupList.md
@@ -265,6 +271,7 @@ docs/PaginatedOutpostList.md
 docs/PaginatedPasswordExpiryPolicyList.md
 docs/PaginatedPasswordPolicyList.md
 docs/PaginatedPasswordStageList.md
+docs/PaginatedPermissionList.md
 docs/PaginatedPlexSourceConnectionList.md
 docs/PaginatedPlexSourceList.md
 docs/PaginatedPolicyBindingList.md
@@ -279,6 +286,8 @@ docs/PaginatedRadiusOutpostConfigList.md
 docs/PaginatedRadiusProviderList.md
 docs/PaginatedReputationList.md
 docs/PaginatedReputationPolicyList.md
+docs/PaginatedRoleAssignedObjectPermissionList.md
+docs/PaginatedRoleList.md
 docs/PaginatedSAMLPropertyMappingList.md
 docs/PaginatedSAMLProviderList.md
 docs/PaginatedSAMLSourceList.md
@@ -294,6 +303,7 @@ docs/PaginatedTOTPDeviceList.md
 docs/PaginatedTenantList.md
 docs/PaginatedTokenList.md
 docs/PaginatedTokenModelList.md
+docs/PaginatedUserAssignedObjectPermissionList.md
 docs/PaginatedUserConsentList.md
 docs/PaginatedUserDeleteStageList.md
 docs/PaginatedUserList.md
@@ -354,6 +364,7 @@ docs/PatchedOutpostRequest.md
 docs/PatchedPasswordExpiryPolicyRequest.md
 docs/PatchedPasswordPolicyRequest.md
 docs/PatchedPasswordStageRequest.md
+docs/PatchedPermissionAssignRequest.md
 docs/PatchedPlexSourceConnectionRequest.md
 docs/PatchedPlexSourceRequest.md
 docs/PatchedPolicyBindingRequest.md
@@ -362,6 +373,7 @@ docs/PatchedPromptStageRequest.md
 docs/PatchedProxyProviderRequest.md
 docs/PatchedRadiusProviderRequest.md
 docs/PatchedReputationPolicyRequest.md
+docs/PatchedRoleRequest.md
 docs/PatchedSAMLPropertyMappingRequest.md
 docs/PatchedSAMLProviderRequest.md
 docs/PatchedSAMLSourceRequest.md
@@ -382,6 +394,7 @@ docs/PatchedUserSAMLSourceConnectionRequest.md
 docs/PatchedUserWriteStageRequest.md
 docs/PatchedWebAuthnDeviceRequest.md
 docs/Permission.md
+docs/PermissionAssignRequest.md
 docs/PlexAuthenticationChallenge.md
 docs/PlexAuthenticationChallengeResponseRequest.md
 docs/PlexSource.md
@@ -421,11 +434,16 @@ docs/ProxyProviderRequest.md
 docs/RadiusOutpostConfig.md
 docs/RadiusProvider.md
 docs/RadiusProviderRequest.md
+docs/RbacApi.md
 docs/RedirectChallenge.md
 docs/Reputation.md
 docs/ReputationPolicy.md
 docs/ReputationPolicyRequest.md
 docs/ResidentKeyRequirementEnum.md
+docs/Role.md
+docs/RoleAssignedObjectPermission.md
+docs/RoleObjectPermission.md
+docs/RoleRequest.md
 docs/RootApi.md
 docs/SAMLMetadata.md
 docs/SAMLPropertyMapping.md
@@ -486,6 +504,7 @@ docs/UsedBy.md
 docs/UsedByActionEnum.md
 docs/User.md
 docs/UserAccountRequest.md
+docs/UserAssignedObjectPermission.md
 docs/UserConsent.md
 docs/UserCreationModeEnum.md
 docs/UserDeleteStage.md
@@ -503,6 +522,7 @@ docs/UserMatchingModeEnum.md
 docs/UserMetrics.md
 docs/UserOAuthSourceConnection.md
 docs/UserOAuthSourceConnectionRequest.md
+docs/UserObjectPermission.md
 docs/UserPasswordSetRequest.md
 docs/UserPath.md
 docs/UserRequest.md
@@ -592,6 +612,7 @@ model_client_type_enum.go
 model_config.go
 model_consent_challenge.go
 model_consent_challenge_response_request.go
+model_consent_permission.go
 model_consent_stage.go
 model_consent_stage_mode_enum.go
 model_consent_stage_request.go
@@ -634,6 +655,8 @@ model_event_top_per_user.go
 model_expiring_base_grant_model.go
 model_expression_policy.go
 model_expression_policy_request.go
+model_extra_role_object_permission.go
+model_extra_user_object_permission.go
 model_file_path_request.go
 model_flow.go
 model_flow_challenge_response_request.go
@@ -738,6 +761,8 @@ model_paginated_event_list.go
 model_paginated_event_matcher_policy_list.go
 model_paginated_expiring_base_grant_model_list.go
 model_paginated_expression_policy_list.go
+model_paginated_extra_role_object_permission_list.go
+model_paginated_extra_user_object_permission_list.go
 model_paginated_flow_list.go
 model_paginated_flow_stage_binding_list.go
 model_paginated_group_list.go
@@ -760,6 +785,7 @@ model_paginated_outpost_list.go
 model_paginated_password_expiry_policy_list.go
 model_paginated_password_policy_list.go
 model_paginated_password_stage_list.go
+model_paginated_permission_list.go
 model_paginated_plex_source_connection_list.go
 model_paginated_plex_source_list.go
 model_paginated_policy_binding_list.go
@@ -774,6 +800,8 @@ model_paginated_radius_outpost_config_list.go
 model_paginated_radius_provider_list.go
 model_paginated_reputation_list.go
 model_paginated_reputation_policy_list.go
+model_paginated_role_assigned_object_permission_list.go
+model_paginated_role_list.go
 model_paginated_saml_property_mapping_list.go
 model_paginated_saml_provider_list.go
 model_paginated_saml_source_list.go
@@ -789,6 +817,7 @@ model_paginated_tenant_list.go
 model_paginated_token_list.go
 model_paginated_token_model_list.go
 model_paginated_totp_device_list.go
+model_paginated_user_assigned_object_permission_list.go
 model_paginated_user_consent_list.go
 model_paginated_user_delete_stage_list.go
 model_paginated_user_list.go
@@ -849,6 +878,7 @@ model_patched_outpost_request.go
 model_patched_password_expiry_policy_request.go
 model_patched_password_policy_request.go
 model_patched_password_stage_request.go
+model_patched_permission_assign_request.go
 model_patched_plex_source_connection_request.go
 model_patched_plex_source_request.go
 model_patched_policy_binding_request.go
@@ -857,6 +887,7 @@ model_patched_prompt_stage_request.go
 model_patched_proxy_provider_request.go
 model_patched_radius_provider_request.go
 model_patched_reputation_policy_request.go
+model_patched_role_request.go
 model_patched_saml_property_mapping_request.go
 model_patched_saml_provider_request.go
 model_patched_saml_source_request.go
@@ -877,6 +908,7 @@ model_patched_user_saml_source_connection_request.go
 model_patched_user_write_stage_request.go
 model_patched_web_authn_device_request.go
 model_permission.go
+model_permission_assign_request.go
 model_plex_authentication_challenge.go
 model_plex_authentication_challenge_response_request.go
 model_plex_source.go
@@ -918,6 +950,10 @@ model_reputation.go
 model_reputation_policy.go
 model_reputation_policy_request.go
 model_resident_key_requirement_enum.go
+model_role.go
+model_role_assigned_object_permission.go
+model_role_object_permission.go
+model_role_request.go
 model_saml_metadata.go
 model_saml_property_mapping.go
 model_saml_property_mapping_request.go
@@ -974,6 +1010,7 @@ model_used_by.go
 model_used_by_action_enum.go
 model_user.go
 model_user_account_request.go
+model_user_assigned_object_permission.go
 model_user_consent.go
 model_user_creation_mode_enum.go
 model_user_delete_stage.go
@@ -991,6 +1028,7 @@ model_user_matching_mode_enum.go
 model_user_metrics.go
 model_user_o_auth_source_connection.go
 model_user_o_auth_source_connection_request.go
+model_user_object_permission.go
 model_user_password_set_request.go
 model_user_path.go
 model_user_request.go

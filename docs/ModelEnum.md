@@ -65,6 +65,8 @@
 
 * `PROVIDERS_SCIM_SCIMMAPPING` (value: `"authentik_providers_scim.scimmapping"`)
 
+* `RBAC_ROLE` (value: `"authentik_rbac.role"`)
+
 * `SOURCES_LDAP_LDAPSOURCE` (value: `"authentik_sources_ldap.ldapsource"`)
 
 * `SOURCES_LDAP_LDAPPROPERTYMAPPING` (value: `"authentik_sources_ldap.ldappropertymapping"`)
@@ -146,6 +148,8 @@
 * `CORE_APPLICATION` (value: `"authentik_core.application"`)
 
 * `CORE_TOKEN` (value: `"authentik_core.token"`)
+
+* `ENTERPRISE_LICENSE` (value: `"authentik_enterprise.license"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

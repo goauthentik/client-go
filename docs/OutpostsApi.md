@@ -190,7 +190,7 @@ import (
 )
 
 func main() {
-    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this outpost.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -208,7 +208,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | **string** | A UUID string identifying this outpost. | 
+**uuid** | **string** | A UUID string identifying this Outpost. | 
 
 ### Other Parameters
 
@@ -258,7 +258,7 @@ import (
 )
 
 func main() {
-    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this outpost.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost.
     managedIcontains := "managedIcontains_example" // string |  (optional)
     managedIexact := "managedIexact_example" // string |  (optional)
     nameIcontains := "nameIcontains_example" // string |  (optional)
@@ -288,7 +288,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | **string** | A UUID string identifying this outpost. | 
+**uuid** | **string** | A UUID string identifying this Outpost. | 
 
 ### Other Parameters
 
@@ -436,7 +436,7 @@ import (
 )
 
 func main() {
-    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this outpost.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost.
     patchedOutpostRequest := *openapiclient.NewPatchedOutpostRequest() // PatchedOutpostRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -457,7 +457,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | **string** | A UUID string identifying this outpost. | 
+**uuid** | **string** | A UUID string identifying this Outpost. | 
 
 ### Other Parameters
 
@@ -508,7 +508,7 @@ import (
 )
 
 func main() {
-    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this outpost.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -528,7 +528,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | **string** | A UUID string identifying this outpost. | 
+**uuid** | **string** | A UUID string identifying this Outpost. | 
 
 ### Other Parameters
 
@@ -578,7 +578,7 @@ import (
 )
 
 func main() {
-    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this outpost.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost.
     outpostRequest := *openapiclient.NewOutpostRequest("Name_example", openapiclient.OutpostTypeEnum("proxy"), []int32{int32(123)}, map[string]interface{}{"key": interface{}(123)}) // OutpostRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -599,7 +599,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | **string** | A UUID string identifying this outpost. | 
+**uuid** | **string** | A UUID string identifying this Outpost. | 
 
 ### Other Parameters
 
@@ -650,7 +650,7 @@ import (
 )
 
 func main() {
-    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this outpost.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -670,7 +670,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | **string** | A UUID string identifying this outpost. | 
+**uuid** | **string** | A UUID string identifying this Outpost. | 
 
 ### Other Parameters
 

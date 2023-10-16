@@ -32,13 +32,15 @@ type UserSelf struct {
 	// Get user settings with tenant and group settings applied
 	Settings map[string]interface{} `json:"settings"`
 	Type     *UserTypeEnum          `json:"type,omitempty"`
+	// Get all system permissions assigned to the user
+	SystemPermissions []string `json:"system_permissions"`
 }
 
 // NewUserSelf instantiates a new UserSelf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserSelf(pk int32, username string, name string, isActive bool, isSuperuser bool, groups []UserSelfGroups, avatar string, uid string, settings map[string]interface{}) *UserSelf {
+func NewUserSelf(pk int32, username string, name string, isActive bool, isSuperuser bool, groups []UserSelfGroups, avatar string, uid string, settings map[string]interface{}, systemPermissions []string) *UserSelf {
 	this := UserSelf{}
 	this.Pk = pk
 	this.Username = username
@@ -49,6 +51,7 @@ func NewUserSelf(pk int32, username string, name string, isActive bool, isSuperu
 	this.Avatar = avatar
 	this.Uid = uid
 	this.Settings = settings
+	this.SystemPermissions = systemPermissions
 	return &this
 }
 
@@ -340,6 +343,30 @@ func (o *UserSelf) SetType(v UserTypeEnum) {
 	o.Type = &v
 }
 
+// GetSystemPermissions returns the SystemPermissions field value
+func (o *UserSelf) GetSystemPermissions() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.SystemPermissions
+}
+
+// GetSystemPermissionsOk returns a tuple with the SystemPermissions field value
+// and a boolean to check if the value has been set.
+func (o *UserSelf) GetSystemPermissionsOk() ([]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SystemPermissions, true
+}
+
+// SetSystemPermissions sets field value
+func (o *UserSelf) SetSystemPermissions(v []string) {
+	o.SystemPermissions = v
+}
+
 func (o UserSelf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -374,6 +401,9 @@ func (o UserSelf) MarshalJSON() ([]byte, error) {
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type
+	}
+	if true {
+		toSerialize["system_permissions"] = o.SystemPermissions
 	}
 	return json.Marshal(toSerialize)
 }

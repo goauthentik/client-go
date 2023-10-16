@@ -24,8 +24,8 @@ type ConsentChallenge struct {
 	PendingUser           string                    `json:"pending_user"`
 	PendingUserAvatar     string                    `json:"pending_user_avatar"`
 	HeaderText            *string                   `json:"header_text,omitempty"`
-	Permissions           []Permission              `json:"permissions"`
-	AdditionalPermissions []Permission              `json:"additional_permissions"`
+	Permissions           []ConsentPermission       `json:"permissions"`
+	AdditionalPermissions []ConsentPermission       `json:"additional_permissions"`
 	Token                 string                    `json:"token"`
 }
 
@@ -33,7 +33,7 @@ type ConsentChallenge struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConsentChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, permissions []Permission, additionalPermissions []Permission, token string) *ConsentChallenge {
+func NewConsentChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string) *ConsentChallenge {
 	this := ConsentChallenge{}
 	this.Type = type_
 	var component string = "ak-stage-consent"
@@ -257,9 +257,9 @@ func (o *ConsentChallenge) SetHeaderText(v string) {
 }
 
 // GetPermissions returns the Permissions field value
-func (o *ConsentChallenge) GetPermissions() []Permission {
+func (o *ConsentChallenge) GetPermissions() []ConsentPermission {
 	if o == nil {
-		var ret []Permission
+		var ret []ConsentPermission
 		return ret
 	}
 
@@ -268,7 +268,7 @@ func (o *ConsentChallenge) GetPermissions() []Permission {
 
 // GetPermissionsOk returns a tuple with the Permissions field value
 // and a boolean to check if the value has been set.
-func (o *ConsentChallenge) GetPermissionsOk() ([]Permission, bool) {
+func (o *ConsentChallenge) GetPermissionsOk() ([]ConsentPermission, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -276,14 +276,14 @@ func (o *ConsentChallenge) GetPermissionsOk() ([]Permission, bool) {
 }
 
 // SetPermissions sets field value
-func (o *ConsentChallenge) SetPermissions(v []Permission) {
+func (o *ConsentChallenge) SetPermissions(v []ConsentPermission) {
 	o.Permissions = v
 }
 
 // GetAdditionalPermissions returns the AdditionalPermissions field value
-func (o *ConsentChallenge) GetAdditionalPermissions() []Permission {
+func (o *ConsentChallenge) GetAdditionalPermissions() []ConsentPermission {
 	if o == nil {
-		var ret []Permission
+		var ret []ConsentPermission
 		return ret
 	}
 
@@ -292,7 +292,7 @@ func (o *ConsentChallenge) GetAdditionalPermissions() []Permission {
 
 // GetAdditionalPermissionsOk returns a tuple with the AdditionalPermissions field value
 // and a boolean to check if the value has been set.
-func (o *ConsentChallenge) GetAdditionalPermissionsOk() ([]Permission, bool) {
+func (o *ConsentChallenge) GetAdditionalPermissionsOk() ([]ConsentPermission, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -300,7 +300,7 @@ func (o *ConsentChallenge) GetAdditionalPermissionsOk() ([]Permission, bool) {
 }
 
 // SetAdditionalPermissions sets field value
-func (o *ConsentChallenge) SetAdditionalPermissions(v []Permission) {
+func (o *ConsentChallenge) SetAdditionalPermissions(v []ConsentPermission) {
 	o.AdditionalPermissions = v
 }
 

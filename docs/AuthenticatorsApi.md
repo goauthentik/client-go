@@ -1066,7 +1066,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Static device.
+    id := int32(56) // int32 | A unique integer value identifying this Static Device.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1084,7 +1084,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this Static device. | 
+**id** | **int32** | A unique integer value identifying this Static Device. | 
 
 ### Other Parameters
 
@@ -1208,7 +1208,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Static device.
+    id := int32(56) // int32 | A unique integer value identifying this Static Device.
     patchedStaticDeviceRequest := *openapiclient.NewPatchedStaticDeviceRequest() // PatchedStaticDeviceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -1229,7 +1229,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this Static device. | 
+**id** | **int32** | A unique integer value identifying this Static Device. | 
 
 ### Other Parameters
 
@@ -1280,7 +1280,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Static device.
+    id := int32(56) // int32 | A unique integer value identifying this Static Device.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1300,7 +1300,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this Static device. | 
+**id** | **int32** | A unique integer value identifying this Static Device. | 
 
 ### Other Parameters
 
@@ -1350,7 +1350,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Static device.
+    id := int32(56) // int32 | A unique integer value identifying this Static Device.
     staticDeviceRequest := *openapiclient.NewStaticDeviceRequest("Name_example") // StaticDeviceRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -1371,7 +1371,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this Static device. | 
+**id** | **int32** | A unique integer value identifying this Static Device. | 
 
 ### Other Parameters
 
@@ -1488,7 +1488,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this TOTP device.
+    id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1506,7 +1506,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this TOTP device. | 
+**id** | **int32** | A unique integer value identifying this TOTP Device. | 
 
 ### Other Parameters
 
@@ -1630,7 +1630,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this TOTP device.
+    id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
     patchedTOTPDeviceRequest := *openapiclient.NewPatchedTOTPDeviceRequest() // PatchedTOTPDeviceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -1651,7 +1651,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this TOTP device. | 
+**id** | **int32** | A unique integer value identifying this TOTP Device. | 
 
 ### Other Parameters
 
@@ -1702,7 +1702,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this TOTP device.
+    id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1722,7 +1722,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this TOTP device. | 
+**id** | **int32** | A unique integer value identifying this TOTP Device. | 
 
 ### Other Parameters
 
@@ -1772,7 +1772,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this TOTP device.
+    id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
     tOTPDeviceRequest := *openapiclient.NewTOTPDeviceRequest("Name_example") // TOTPDeviceRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -1793,7 +1793,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this TOTP device. | 
+**id** | **int32** | A unique integer value identifying this TOTP Device. | 
 
 ### Other Parameters
 
@@ -3179,7 +3179,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Static device.
+    id := int32(56) // int32 | A unique integer value identifying this Static Device.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -3197,7 +3197,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this Static device. | 
+**id** | **int32** | A unique integer value identifying this Static Device. | 
 
 ### Other Parameters
 
@@ -3321,7 +3321,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Static device.
+    id := int32(56) // int32 | A unique integer value identifying this Static Device.
     patchedStaticDeviceRequest := *openapiclient.NewPatchedStaticDeviceRequest() // PatchedStaticDeviceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -3342,7 +3342,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this Static device. | 
+**id** | **int32** | A unique integer value identifying this Static Device. | 
 
 ### Other Parameters
 
@@ -3393,7 +3393,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Static device.
+    id := int32(56) // int32 | A unique integer value identifying this Static Device.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -3413,7 +3413,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this Static device. | 
+**id** | **int32** | A unique integer value identifying this Static Device. | 
 
 ### Other Parameters
 
@@ -3463,7 +3463,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Static device.
+    id := int32(56) // int32 | A unique integer value identifying this Static Device.
     staticDeviceRequest := *openapiclient.NewStaticDeviceRequest("Name_example") // StaticDeviceRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -3484,7 +3484,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this Static device. | 
+**id** | **int32** | A unique integer value identifying this Static Device. | 
 
 ### Other Parameters
 
@@ -3535,7 +3535,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Static device.
+    id := int32(56) // int32 | A unique integer value identifying this Static Device.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -3555,7 +3555,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this Static device. | 
+**id** | **int32** | A unique integer value identifying this Static Device. | 
 
 ### Other Parameters
 
@@ -3605,7 +3605,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this TOTP device.
+    id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -3623,7 +3623,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this TOTP device. | 
+**id** | **int32** | A unique integer value identifying this TOTP Device. | 
 
 ### Other Parameters
 
@@ -3747,7 +3747,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this TOTP device.
+    id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
     patchedTOTPDeviceRequest := *openapiclient.NewPatchedTOTPDeviceRequest() // PatchedTOTPDeviceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -3768,7 +3768,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this TOTP device. | 
+**id** | **int32** | A unique integer value identifying this TOTP Device. | 
 
 ### Other Parameters
 
@@ -3819,7 +3819,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this TOTP device.
+    id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -3839,7 +3839,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this TOTP device. | 
+**id** | **int32** | A unique integer value identifying this TOTP Device. | 
 
 ### Other Parameters
 
@@ -3889,7 +3889,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this TOTP device.
+    id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
     tOTPDeviceRequest := *openapiclient.NewTOTPDeviceRequest("Name_example") // TOTPDeviceRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -3910,7 +3910,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this TOTP device. | 
+**id** | **int32** | A unique integer value identifying this TOTP Device. | 
 
 ### Other Parameters
 
@@ -3961,7 +3961,7 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this TOTP device.
+    id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -3981,7 +3981,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this TOTP device. | 
+**id** | **int32** | A unique integer value identifying this TOTP Device. | 
 
 ### Other Parameters
 

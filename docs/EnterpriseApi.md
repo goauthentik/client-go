@@ -104,7 +104,7 @@ import (
 )
 
 func main() {
-    licenseUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this license.
+    licenseUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this License.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -122,7 +122,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**licenseUuid** | **string** | A UUID string identifying this license. | 
+**licenseUuid** | **string** | A UUID string identifying this License. | 
 
 ### Other Parameters
 
@@ -368,7 +368,7 @@ import (
 )
 
 func main() {
-    licenseUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this license.
+    licenseUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this License.
     patchedLicenseRequest := *openapiclient.NewPatchedLicenseRequest() // PatchedLicenseRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -389,7 +389,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**licenseUuid** | **string** | A UUID string identifying this license. | 
+**licenseUuid** | **string** | A UUID string identifying this License. | 
 
 ### Other Parameters
 
@@ -440,7 +440,7 @@ import (
 )
 
 func main() {
-    licenseUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this license.
+    licenseUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this License.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -460,7 +460,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**licenseUuid** | **string** | A UUID string identifying this license. | 
+**licenseUuid** | **string** | A UUID string identifying this License. | 
 
 ### Other Parameters
 
@@ -571,7 +571,7 @@ import (
 )
 
 func main() {
-    licenseUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this license.
+    licenseUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this License.
     licenseRequest := *openapiclient.NewLicenseRequest("Key_example") // LicenseRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -592,7 +592,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**licenseUuid** | **string** | A UUID string identifying this license. | 
+**licenseUuid** | **string** | A UUID string identifying this License. | 
 
 ### Other Parameters
 
@@ -643,7 +643,7 @@ import (
 )
 
 func main() {
-    licenseUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this license.
+    licenseUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this License.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -663,7 +663,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**licenseUuid** | **string** | A UUID string identifying this license. | 
+**licenseUuid** | **string** | A UUID string identifying this License. | 
 
 ### Other Parameters
 

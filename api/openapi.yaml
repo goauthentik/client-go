@@ -939,7 +939,7 @@ paths:
       description: Viewset for static authenticator devices (for admins)
       operationId: authenticators_admin_static_destroy
       parameters:
-      - description: A unique integer value identifying this Static device.
+      - description: A unique integer value identifying this Static Device.
         explode: false
         in: path
         name: id
@@ -970,7 +970,7 @@ paths:
       description: Viewset for static authenticator devices (for admins)
       operationId: authenticators_admin_static_retrieve
       parameters:
-      - description: A unique integer value identifying this Static device.
+      - description: A unique integer value identifying this Static Device.
         explode: false
         in: path
         name: id
@@ -1005,7 +1005,7 @@ paths:
       description: Viewset for static authenticator devices (for admins)
       operationId: authenticators_admin_static_partial_update
       parameters:
-      - description: A unique integer value identifying this Static device.
+      - description: A unique integer value identifying this Static Device.
         explode: false
         in: path
         name: id
@@ -1045,7 +1045,7 @@ paths:
       description: Viewset for static authenticator devices (for admins)
       operationId: authenticators_admin_static_update
       parameters:
-      - description: A unique integer value identifying this Static device.
+      - description: A unique integer value identifying this Static Device.
         explode: false
         in: path
         name: id
@@ -1186,7 +1186,7 @@ paths:
       description: Viewset for totp authenticator devices (for admins)
       operationId: authenticators_admin_totp_destroy
       parameters:
-      - description: A unique integer value identifying this TOTP device.
+      - description: A unique integer value identifying this TOTP Device.
         explode: false
         in: path
         name: id
@@ -1217,7 +1217,7 @@ paths:
       description: Viewset for totp authenticator devices (for admins)
       operationId: authenticators_admin_totp_retrieve
       parameters:
-      - description: A unique integer value identifying this TOTP device.
+      - description: A unique integer value identifying this TOTP Device.
         explode: false
         in: path
         name: id
@@ -1252,7 +1252,7 @@ paths:
       description: Viewset for totp authenticator devices (for admins)
       operationId: authenticators_admin_totp_partial_update
       parameters:
-      - description: A unique integer value identifying this TOTP device.
+      - description: A unique integer value identifying this TOTP Device.
         explode: false
         in: path
         name: id
@@ -1292,7 +1292,7 @@ paths:
       description: Viewset for totp authenticator devices (for admins)
       operationId: authenticators_admin_totp_update
       parameters:
-      - description: A unique integer value identifying this TOTP device.
+      - description: A unique integer value identifying this TOTP Device.
         explode: false
         in: path
         name: id
@@ -2183,7 +2183,7 @@ paths:
       description: Viewset for static authenticator devices
       operationId: authenticators_static_destroy
       parameters:
-      - description: A unique integer value identifying this Static device.
+      - description: A unique integer value identifying this Static Device.
         explode: false
         in: path
         name: id
@@ -2214,7 +2214,7 @@ paths:
       description: Viewset for static authenticator devices
       operationId: authenticators_static_retrieve
       parameters:
-      - description: A unique integer value identifying this Static device.
+      - description: A unique integer value identifying this Static Device.
         explode: false
         in: path
         name: id
@@ -2249,7 +2249,7 @@ paths:
       description: Viewset for static authenticator devices
       operationId: authenticators_static_partial_update
       parameters:
-      - description: A unique integer value identifying this Static device.
+      - description: A unique integer value identifying this Static Device.
         explode: false
         in: path
         name: id
@@ -2289,7 +2289,7 @@ paths:
       description: Viewset for static authenticator devices
       operationId: authenticators_static_update
       parameters:
-      - description: A unique integer value identifying this Static device.
+      - description: A unique integer value identifying this Static Device.
         explode: false
         in: path
         name: id
@@ -2331,7 +2331,7 @@ paths:
       description: Get a list of all objects that use this object
       operationId: authenticators_static_used_by_list
       parameters:
-      - description: A unique integer value identifying this Static device.
+      - description: A unique integer value identifying this Static Device.
         explode: false
         in: path
         name: id
@@ -2436,7 +2436,7 @@ paths:
       description: Viewset for totp authenticator devices
       operationId: authenticators_totp_destroy
       parameters:
-      - description: A unique integer value identifying this TOTP device.
+      - description: A unique integer value identifying this TOTP Device.
         explode: false
         in: path
         name: id
@@ -2467,7 +2467,7 @@ paths:
       description: Viewset for totp authenticator devices
       operationId: authenticators_totp_retrieve
       parameters:
-      - description: A unique integer value identifying this TOTP device.
+      - description: A unique integer value identifying this TOTP Device.
         explode: false
         in: path
         name: id
@@ -2502,7 +2502,7 @@ paths:
       description: Viewset for totp authenticator devices
       operationId: authenticators_totp_partial_update
       parameters:
-      - description: A unique integer value identifying this TOTP device.
+      - description: A unique integer value identifying this TOTP Device.
         explode: false
         in: path
         name: id
@@ -2542,7 +2542,7 @@ paths:
       description: Viewset for totp authenticator devices
       operationId: authenticators_totp_update
       parameters:
-      - description: A unique integer value identifying this TOTP device.
+      - description: A unique integer value identifying this TOTP Device.
         explode: false
         in: path
         name: id
@@ -2584,7 +2584,7 @@ paths:
       description: Get a list of all objects that use this object
       operationId: authenticators_totp_used_by_list
       parameters:
-      - description: A unique integer value identifying this TOTP device.
+      - description: A unique integer value identifying this TOTP Device.
         explode: false
         in: path
         name: id
@@ -3675,7 +3675,7 @@ paths:
       description: Group Viewset
       operationId: core_groups_destroy
       parameters:
-      - description: A UUID string identifying this group.
+      - description: A UUID string identifying this Group.
         explode: false
         in: path
         name: group_uuid
@@ -3707,7 +3707,7 @@ paths:
       description: Group Viewset
       operationId: core_groups_retrieve
       parameters:
-      - description: A UUID string identifying this group.
+      - description: A UUID string identifying this Group.
         explode: false
         in: path
         name: group_uuid
@@ -3743,7 +3743,7 @@ paths:
       description: Group Viewset
       operationId: core_groups_partial_update
       parameters:
-      - description: A UUID string identifying this group.
+      - description: A UUID string identifying this Group.
         explode: false
         in: path
         name: group_uuid
@@ -3784,7 +3784,7 @@ paths:
       description: Group Viewset
       operationId: core_groups_update
       parameters:
-      - description: A UUID string identifying this group.
+      - description: A UUID string identifying this Group.
         explode: false
         in: path
         name: group_uuid
@@ -3827,7 +3827,7 @@ paths:
       description: Add user to group
       operationId: core_groups_add_user_create
       parameters:
-      - description: A UUID string identifying this group.
+      - description: A UUID string identifying this Group.
         explode: false
         in: path
         name: group_uuid
@@ -3868,7 +3868,7 @@ paths:
       description: Add user to group
       operationId: core_groups_remove_user_create
       parameters:
-      - description: A UUID string identifying this group.
+      - description: A UUID string identifying this Group.
         explode: false
         in: path
         name: group_uuid
@@ -3909,7 +3909,7 @@ paths:
       description: Get a list of all objects that use this object
       operationId: core_groups_used_by_list
       parameters:
-      - description: A UUID string identifying this group.
+      - description: A UUID string identifying this Group.
         explode: false
         in: path
         name: group_uuid
@@ -6200,7 +6200,7 @@ paths:
       description: License Viewset
       operationId: enterprise_license_destroy
       parameters:
-      - description: A UUID string identifying this license.
+      - description: A UUID string identifying this License.
         explode: false
         in: path
         name: license_uuid
@@ -6232,7 +6232,7 @@ paths:
       description: License Viewset
       operationId: enterprise_license_retrieve
       parameters:
-      - description: A UUID string identifying this license.
+      - description: A UUID string identifying this License.
         explode: false
         in: path
         name: license_uuid
@@ -6268,7 +6268,7 @@ paths:
       description: License Viewset
       operationId: enterprise_license_partial_update
       parameters:
-      - description: A UUID string identifying this license.
+      - description: A UUID string identifying this License.
         explode: false
         in: path
         name: license_uuid
@@ -6309,7 +6309,7 @@ paths:
       description: License Viewset
       operationId: enterprise_license_update
       parameters:
-      - description: A UUID string identifying this license.
+      - description: A UUID string identifying this License.
         explode: false
         in: path
         name: license_uuid
@@ -6352,7 +6352,7 @@ paths:
       description: Get a list of all objects that use this object
       operationId: enterprise_license_used_by_list
       parameters:
-      - description: A UUID string identifying this license.
+      - description: A UUID string identifying this License.
         explode: false
         in: path
         name: license_uuid
@@ -10039,7 +10039,7 @@ paths:
       description: Outpost Viewset
       operationId: outposts_instances_destroy
       parameters:
-      - description: A UUID string identifying this outpost.
+      - description: A UUID string identifying this Outpost.
         explode: false
         in: path
         name: uuid
@@ -10071,7 +10071,7 @@ paths:
       description: Outpost Viewset
       operationId: outposts_instances_retrieve
       parameters:
-      - description: A UUID string identifying this outpost.
+      - description: A UUID string identifying this Outpost.
         explode: false
         in: path
         name: uuid
@@ -10107,7 +10107,7 @@ paths:
       description: Outpost Viewset
       operationId: outposts_instances_partial_update
       parameters:
-      - description: A UUID string identifying this outpost.
+      - description: A UUID string identifying this Outpost.
         explode: false
         in: path
         name: uuid
@@ -10148,7 +10148,7 @@ paths:
       description: Outpost Viewset
       operationId: outposts_instances_update
       parameters:
-      - description: A UUID string identifying this outpost.
+      - description: A UUID string identifying this Outpost.
         explode: false
         in: path
         name: uuid
@@ -10265,7 +10265,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: A UUID string identifying this outpost.
+      - description: A UUID string identifying this Outpost.
         explode: false
         in: path
         name: uuid
@@ -10304,7 +10304,7 @@ paths:
       description: Get a list of all objects that use this object
       operationId: outposts_instances_used_by_list
       parameters:
-      - description: A UUID string identifying this outpost.
+      - description: A UUID string identifying this Outpost.
         explode: false
         in: path
         name: uuid
@@ -18989,6 +18989,1168 @@ paths:
       - authentik: []
       tags:
       - providers
+  /rbac/permissions/:
+    get:
+      description: "Read-only list of all permissions, filterable by model and app"
+      operationId: rbac_permissions_list
+      parameters:
+      - explode: true
+        in: query
+        name: codename
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: content_type__app_label
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: content_type__model
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: role
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: user
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPermissionList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+  /rbac/permissions/{id}/:
+    get:
+      description: "Read-only list of all permissions, filterable by model and app"
+      operationId: rbac_permissions_retrieve
+      parameters:
+      - description: A unique integer value identifying this permission.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permission'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+  /rbac/permissions/assigned_by_roles/:
+    get:
+      description: Get assigned object permissions for a single object
+      operationId: rbac_permissions_assigned_by_roles_list
+      parameters:
+      - description: |-
+          * `authentik_crypto.certificatekeypair` - Certificate-Key Pair
+          * `authentik_events.event` - Event
+          * `authentik_events.notificationtransport` - Notification Transport
+          * `authentik_events.notification` - Notification
+          * `authentik_events.notificationrule` - Notification Rule
+          * `authentik_events.notificationwebhookmapping` - Webhook Mapping
+          * `authentik_flows.flow` - Flow
+          * `authentik_flows.flowstagebinding` - Flow Stage Binding
+          * `authentik_outposts.dockerserviceconnection` - Docker Service-Connection
+          * `authentik_outposts.kubernetesserviceconnection` - Kubernetes Service-Connection
+          * `authentik_outposts.outpost` - Outpost
+          * `authentik_policies_dummy.dummypolicy` - Dummy Policy
+          * `authentik_policies_event_matcher.eventmatcherpolicy` - Event Matcher Policy
+          * `authentik_policies_expiry.passwordexpirypolicy` - Password Expiry Policy
+          * `authentik_policies_expression.expressionpolicy` - Expression Policy
+          * `authentik_policies_password.passwordpolicy` - Password Policy
+          * `authentik_policies_reputation.reputationpolicy` - Reputation Policy
+          * `authentik_policies_reputation.reputation` - Reputation Score
+          * `authentik_policies.policybinding` - Policy Binding
+          * `authentik_providers_ldap.ldapprovider` - LDAP Provider
+          * `authentik_providers_oauth2.scopemapping` - Scope Mapping
+          * `authentik_providers_oauth2.oauth2provider` - OAuth2/OpenID Provider
+          * `authentik_providers_oauth2.authorizationcode` - Authorization Code
+          * `authentik_providers_oauth2.accesstoken` - OAuth2 Access Token
+          * `authentik_providers_oauth2.refreshtoken` - OAuth2 Refresh Token
+          * `authentik_providers_proxy.proxyprovider` - Proxy Provider
+          * `authentik_providers_radius.radiusprovider` - Radius Provider
+          * `authentik_providers_saml.samlprovider` - SAML Provider
+          * `authentik_providers_saml.samlpropertymapping` - SAML Property Mapping
+          * `authentik_providers_scim.scimprovider` - SCIM Provider
+          * `authentik_providers_scim.scimmapping` - SCIM Mapping
+          * `authentik_rbac.role` - Role
+          * `authentik_sources_ldap.ldapsource` - LDAP Source
+          * `authentik_sources_ldap.ldappropertymapping` - LDAP Property Mapping
+          * `authentik_sources_oauth.oauthsource` - OAuth Source
+          * `authentik_sources_oauth.useroauthsourceconnection` - User OAuth Source Connection
+          * `authentik_sources_plex.plexsource` - Plex Source
+          * `authentik_sources_plex.plexsourceconnection` - User Plex Source Connection
+          * `authentik_sources_saml.samlsource` - SAML Source
+          * `authentik_sources_saml.usersamlsourceconnection` - User SAML Source Connection
+          * `authentik_stages_authenticator_duo.authenticatorduostage` - Duo Authenticator Setup Stage
+          * `authentik_stages_authenticator_duo.duodevice` - Duo Device
+          * `authentik_stages_authenticator_sms.authenticatorsmsstage` - SMS Authenticator Setup Stage
+          * `authentik_stages_authenticator_sms.smsdevice` - SMS Device
+          * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Stage
+          * `authentik_stages_authenticator_static.staticdevice` - Static Device
+          * `authentik_stages_authenticator_totp.authenticatortotpstage` - TOTP Authenticator Setup Stage
+          * `authentik_stages_authenticator_totp.totpdevice` - TOTP Device
+          * `authentik_stages_authenticator_validate.authenticatorvalidatestage` - Authenticator Validation Stage
+          * `authentik_stages_authenticator_webauthn.authenticatewebauthnstage` - WebAuthn Authenticator Setup Stage
+          * `authentik_stages_authenticator_webauthn.webauthndevice` - WebAuthn Device
+          * `authentik_stages_captcha.captchastage` - Captcha Stage
+          * `authentik_stages_consent.consentstage` - Consent Stage
+          * `authentik_stages_consent.userconsent` - User Consent
+          * `authentik_stages_deny.denystage` - Deny Stage
+          * `authentik_stages_dummy.dummystage` - Dummy Stage
+          * `authentik_stages_email.emailstage` - Email Stage
+          * `authentik_stages_identification.identificationstage` - Identification Stage
+          * `authentik_stages_invitation.invitationstage` - Invitation Stage
+          * `authentik_stages_invitation.invitation` - Invitation
+          * `authentik_stages_password.passwordstage` - Password Stage
+          * `authentik_stages_prompt.prompt` - Prompt
+          * `authentik_stages_prompt.promptstage` - Prompt Stage
+          * `authentik_stages_user_delete.userdeletestage` - User Delete Stage
+          * `authentik_stages_user_login.userloginstage` - User Login Stage
+          * `authentik_stages_user_logout.userlogoutstage` - User Logout Stage
+          * `authentik_stages_user_write.userwritestage` - User Write Stage
+          * `authentik_tenants.tenant` - Tenant
+          * `authentik_blueprints.blueprintinstance` - Blueprint Instance
+          * `authentik_core.group` - Group
+          * `authentik_core.user` - User
+          * `authentik_core.application` - Application
+          * `authentik_core.token` - Token
+          * `authentik_enterprise.license` - License
+        explode: true
+        in: query
+        name: model
+        required: true
+        schema:
+          enum:
+          - authentik_blueprints.blueprintinstance
+          - authentik_core.application
+          - authentik_core.group
+          - authentik_core.token
+          - authentik_core.user
+          - authentik_crypto.certificatekeypair
+          - authentik_enterprise.license
+          - authentik_events.event
+          - authentik_events.notification
+          - authentik_events.notificationrule
+          - authentik_events.notificationtransport
+          - authentik_events.notificationwebhookmapping
+          - authentik_flows.flow
+          - authentik_flows.flowstagebinding
+          - authentik_outposts.dockerserviceconnection
+          - authentik_outposts.kubernetesserviceconnection
+          - authentik_outposts.outpost
+          - authentik_policies.policybinding
+          - authentik_policies_dummy.dummypolicy
+          - authentik_policies_event_matcher.eventmatcherpolicy
+          - authentik_policies_expiry.passwordexpirypolicy
+          - authentik_policies_expression.expressionpolicy
+          - authentik_policies_password.passwordpolicy
+          - authentik_policies_reputation.reputation
+          - authentik_policies_reputation.reputationpolicy
+          - authentik_providers_ldap.ldapprovider
+          - authentik_providers_oauth2.accesstoken
+          - authentik_providers_oauth2.authorizationcode
+          - authentik_providers_oauth2.oauth2provider
+          - authentik_providers_oauth2.refreshtoken
+          - authentik_providers_oauth2.scopemapping
+          - authentik_providers_proxy.proxyprovider
+          - authentik_providers_radius.radiusprovider
+          - authentik_providers_saml.samlpropertymapping
+          - authentik_providers_saml.samlprovider
+          - authentik_providers_scim.scimmapping
+          - authentik_providers_scim.scimprovider
+          - authentik_rbac.role
+          - authentik_sources_ldap.ldappropertymapping
+          - authentik_sources_ldap.ldapsource
+          - authentik_sources_oauth.oauthsource
+          - authentik_sources_oauth.useroauthsourceconnection
+          - authentik_sources_plex.plexsource
+          - authentik_sources_plex.plexsourceconnection
+          - authentik_sources_saml.samlsource
+          - authentik_sources_saml.usersamlsourceconnection
+          - authentik_stages_authenticator_duo.authenticatorduostage
+          - authentik_stages_authenticator_duo.duodevice
+          - authentik_stages_authenticator_sms.authenticatorsmsstage
+          - authentik_stages_authenticator_sms.smsdevice
+          - authentik_stages_authenticator_static.authenticatorstaticstage
+          - authentik_stages_authenticator_static.staticdevice
+          - authentik_stages_authenticator_totp.authenticatortotpstage
+          - authentik_stages_authenticator_totp.totpdevice
+          - authentik_stages_authenticator_validate.authenticatorvalidatestage
+          - authentik_stages_authenticator_webauthn.authenticatewebauthnstage
+          - authentik_stages_authenticator_webauthn.webauthndevice
+          - authentik_stages_captcha.captchastage
+          - authentik_stages_consent.consentstage
+          - authentik_stages_consent.userconsent
+          - authentik_stages_deny.denystage
+          - authentik_stages_dummy.dummystage
+          - authentik_stages_email.emailstage
+          - authentik_stages_identification.identificationstage
+          - authentik_stages_invitation.invitation
+          - authentik_stages_invitation.invitationstage
+          - authentik_stages_password.passwordstage
+          - authentik_stages_prompt.prompt
+          - authentik_stages_prompt.promptstage
+          - authentik_stages_user_delete.userdeletestage
+          - authentik_stages_user_login.userloginstage
+          - authentik_stages_user_logout.userlogoutstage
+          - authentik_stages_user_write.userwritestage
+          - authentik_tenants.tenant
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: object_pk
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedRoleAssignedObjectPermissionList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+  /rbac/permissions/assigned_by_roles/{uuid}/assign/:
+    post:
+      description: |-
+        Assign permission(s) to role. When `object_pk` is set, the permissions
+        are only assigned to the specific object, otherwise they are assigned globally.
+      operationId: rbac_permissions_assigned_by_roles_assign_create
+      parameters:
+      - description: A UUID string identifying this Role.
+        explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PermissionAssignRequest'
+        required: true
+      responses:
+        "204":
+          description: Successfully assigned
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+  /rbac/permissions/assigned_by_roles/{uuid}/unassign/:
+    patch:
+      description: |-
+        Unassign permission(s) to role. When `object_pk` is set, the permissions
+        are only assigned to the specific object, otherwise they are assigned globally.
+      operationId: rbac_permissions_assigned_by_roles_unassign_partial_update
+      parameters:
+      - description: A UUID string identifying this Role.
+        explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPermissionAssignRequest'
+      responses:
+        "204":
+          description: Successfully unassigned
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+  /rbac/permissions/assigned_by_users/:
+    get:
+      description: Get assigned object permissions for a single object
+      operationId: rbac_permissions_assigned_by_users_list
+      parameters:
+      - description: |-
+          * `authentik_crypto.certificatekeypair` - Certificate-Key Pair
+          * `authentik_events.event` - Event
+          * `authentik_events.notificationtransport` - Notification Transport
+          * `authentik_events.notification` - Notification
+          * `authentik_events.notificationrule` - Notification Rule
+          * `authentik_events.notificationwebhookmapping` - Webhook Mapping
+          * `authentik_flows.flow` - Flow
+          * `authentik_flows.flowstagebinding` - Flow Stage Binding
+          * `authentik_outposts.dockerserviceconnection` - Docker Service-Connection
+          * `authentik_outposts.kubernetesserviceconnection` - Kubernetes Service-Connection
+          * `authentik_outposts.outpost` - Outpost
+          * `authentik_policies_dummy.dummypolicy` - Dummy Policy
+          * `authentik_policies_event_matcher.eventmatcherpolicy` - Event Matcher Policy
+          * `authentik_policies_expiry.passwordexpirypolicy` - Password Expiry Policy
+          * `authentik_policies_expression.expressionpolicy` - Expression Policy
+          * `authentik_policies_password.passwordpolicy` - Password Policy
+          * `authentik_policies_reputation.reputationpolicy` - Reputation Policy
+          * `authentik_policies_reputation.reputation` - Reputation Score
+          * `authentik_policies.policybinding` - Policy Binding
+          * `authentik_providers_ldap.ldapprovider` - LDAP Provider
+          * `authentik_providers_oauth2.scopemapping` - Scope Mapping
+          * `authentik_providers_oauth2.oauth2provider` - OAuth2/OpenID Provider
+          * `authentik_providers_oauth2.authorizationcode` - Authorization Code
+          * `authentik_providers_oauth2.accesstoken` - OAuth2 Access Token
+          * `authentik_providers_oauth2.refreshtoken` - OAuth2 Refresh Token
+          * `authentik_providers_proxy.proxyprovider` - Proxy Provider
+          * `authentik_providers_radius.radiusprovider` - Radius Provider
+          * `authentik_providers_saml.samlprovider` - SAML Provider
+          * `authentik_providers_saml.samlpropertymapping` - SAML Property Mapping
+          * `authentik_providers_scim.scimprovider` - SCIM Provider
+          * `authentik_providers_scim.scimmapping` - SCIM Mapping
+          * `authentik_rbac.role` - Role
+          * `authentik_sources_ldap.ldapsource` - LDAP Source
+          * `authentik_sources_ldap.ldappropertymapping` - LDAP Property Mapping
+          * `authentik_sources_oauth.oauthsource` - OAuth Source
+          * `authentik_sources_oauth.useroauthsourceconnection` - User OAuth Source Connection
+          * `authentik_sources_plex.plexsource` - Plex Source
+          * `authentik_sources_plex.plexsourceconnection` - User Plex Source Connection
+          * `authentik_sources_saml.samlsource` - SAML Source
+          * `authentik_sources_saml.usersamlsourceconnection` - User SAML Source Connection
+          * `authentik_stages_authenticator_duo.authenticatorduostage` - Duo Authenticator Setup Stage
+          * `authentik_stages_authenticator_duo.duodevice` - Duo Device
+          * `authentik_stages_authenticator_sms.authenticatorsmsstage` - SMS Authenticator Setup Stage
+          * `authentik_stages_authenticator_sms.smsdevice` - SMS Device
+          * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Stage
+          * `authentik_stages_authenticator_static.staticdevice` - Static Device
+          * `authentik_stages_authenticator_totp.authenticatortotpstage` - TOTP Authenticator Setup Stage
+          * `authentik_stages_authenticator_totp.totpdevice` - TOTP Device
+          * `authentik_stages_authenticator_validate.authenticatorvalidatestage` - Authenticator Validation Stage
+          * `authentik_stages_authenticator_webauthn.authenticatewebauthnstage` - WebAuthn Authenticator Setup Stage
+          * `authentik_stages_authenticator_webauthn.webauthndevice` - WebAuthn Device
+          * `authentik_stages_captcha.captchastage` - Captcha Stage
+          * `authentik_stages_consent.consentstage` - Consent Stage
+          * `authentik_stages_consent.userconsent` - User Consent
+          * `authentik_stages_deny.denystage` - Deny Stage
+          * `authentik_stages_dummy.dummystage` - Dummy Stage
+          * `authentik_stages_email.emailstage` - Email Stage
+          * `authentik_stages_identification.identificationstage` - Identification Stage
+          * `authentik_stages_invitation.invitationstage` - Invitation Stage
+          * `authentik_stages_invitation.invitation` - Invitation
+          * `authentik_stages_password.passwordstage` - Password Stage
+          * `authentik_stages_prompt.prompt` - Prompt
+          * `authentik_stages_prompt.promptstage` - Prompt Stage
+          * `authentik_stages_user_delete.userdeletestage` - User Delete Stage
+          * `authentik_stages_user_login.userloginstage` - User Login Stage
+          * `authentik_stages_user_logout.userlogoutstage` - User Logout Stage
+          * `authentik_stages_user_write.userwritestage` - User Write Stage
+          * `authentik_tenants.tenant` - Tenant
+          * `authentik_blueprints.blueprintinstance` - Blueprint Instance
+          * `authentik_core.group` - Group
+          * `authentik_core.user` - User
+          * `authentik_core.application` - Application
+          * `authentik_core.token` - Token
+          * `authentik_enterprise.license` - License
+        explode: true
+        in: query
+        name: model
+        required: true
+        schema:
+          enum:
+          - authentik_blueprints.blueprintinstance
+          - authentik_core.application
+          - authentik_core.group
+          - authentik_core.token
+          - authentik_core.user
+          - authentik_crypto.certificatekeypair
+          - authentik_enterprise.license
+          - authentik_events.event
+          - authentik_events.notification
+          - authentik_events.notificationrule
+          - authentik_events.notificationtransport
+          - authentik_events.notificationwebhookmapping
+          - authentik_flows.flow
+          - authentik_flows.flowstagebinding
+          - authentik_outposts.dockerserviceconnection
+          - authentik_outposts.kubernetesserviceconnection
+          - authentik_outposts.outpost
+          - authentik_policies.policybinding
+          - authentik_policies_dummy.dummypolicy
+          - authentik_policies_event_matcher.eventmatcherpolicy
+          - authentik_policies_expiry.passwordexpirypolicy
+          - authentik_policies_expression.expressionpolicy
+          - authentik_policies_password.passwordpolicy
+          - authentik_policies_reputation.reputation
+          - authentik_policies_reputation.reputationpolicy
+          - authentik_providers_ldap.ldapprovider
+          - authentik_providers_oauth2.accesstoken
+          - authentik_providers_oauth2.authorizationcode
+          - authentik_providers_oauth2.oauth2provider
+          - authentik_providers_oauth2.refreshtoken
+          - authentik_providers_oauth2.scopemapping
+          - authentik_providers_proxy.proxyprovider
+          - authentik_providers_radius.radiusprovider
+          - authentik_providers_saml.samlpropertymapping
+          - authentik_providers_saml.samlprovider
+          - authentik_providers_scim.scimmapping
+          - authentik_providers_scim.scimprovider
+          - authentik_rbac.role
+          - authentik_sources_ldap.ldappropertymapping
+          - authentik_sources_ldap.ldapsource
+          - authentik_sources_oauth.oauthsource
+          - authentik_sources_oauth.useroauthsourceconnection
+          - authentik_sources_plex.plexsource
+          - authentik_sources_plex.plexsourceconnection
+          - authentik_sources_saml.samlsource
+          - authentik_sources_saml.usersamlsourceconnection
+          - authentik_stages_authenticator_duo.authenticatorduostage
+          - authentik_stages_authenticator_duo.duodevice
+          - authentik_stages_authenticator_sms.authenticatorsmsstage
+          - authentik_stages_authenticator_sms.smsdevice
+          - authentik_stages_authenticator_static.authenticatorstaticstage
+          - authentik_stages_authenticator_static.staticdevice
+          - authentik_stages_authenticator_totp.authenticatortotpstage
+          - authentik_stages_authenticator_totp.totpdevice
+          - authentik_stages_authenticator_validate.authenticatorvalidatestage
+          - authentik_stages_authenticator_webauthn.authenticatewebauthnstage
+          - authentik_stages_authenticator_webauthn.webauthndevice
+          - authentik_stages_captcha.captchastage
+          - authentik_stages_consent.consentstage
+          - authentik_stages_consent.userconsent
+          - authentik_stages_deny.denystage
+          - authentik_stages_dummy.dummystage
+          - authentik_stages_email.emailstage
+          - authentik_stages_identification.identificationstage
+          - authentik_stages_invitation.invitation
+          - authentik_stages_invitation.invitationstage
+          - authentik_stages_password.passwordstage
+          - authentik_stages_prompt.prompt
+          - authentik_stages_prompt.promptstage
+          - authentik_stages_user_delete.userdeletestage
+          - authentik_stages_user_login.userloginstage
+          - authentik_stages_user_logout.userlogoutstage
+          - authentik_stages_user_write.userwritestage
+          - authentik_tenants.tenant
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: object_pk
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedUserAssignedObjectPermissionList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+  /rbac/permissions/assigned_by_users/{id}/assign/:
+    post:
+      description: Assign permission(s) to user
+      operationId: rbac_permissions_assigned_by_users_assign_create
+      parameters:
+      - description: A unique integer value identifying this User.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PermissionAssignRequest'
+        required: true
+      responses:
+        "204":
+          description: Successfully assigned
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+  /rbac/permissions/assigned_by_users/{id}/unassign/:
+    patch:
+      description: |-
+        Unassign permission(s) to user. When `object_pk` is set, the permissions
+        are only assigned to the specific object, otherwise they are assigned globally.
+      operationId: rbac_permissions_assigned_by_users_unassign_partial_update
+      parameters:
+      - description: A unique integer value identifying this User.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPermissionAssignRequest'
+      responses:
+        "204":
+          description: Successfully unassigned
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+  /rbac/permissions/roles/:
+    get:
+      description: Get a role's assigned object permissions
+      operationId: rbac_permissions_roles_list
+      parameters:
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedExtraRoleObjectPermissionList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+  /rbac/permissions/users/:
+    get:
+      description: Get a users's assigned object permissions
+      operationId: rbac_permissions_users_list
+      parameters:
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: user_id
+        required: true
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedExtraUserObjectPermissionList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+  /rbac/roles/:
+    get:
+      description: Role viewset
+      operationId: rbac_roles_list
+      parameters:
+      - explode: true
+        in: query
+        name: group__name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedRoleList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+    post:
+      description: Role viewset
+      operationId: rbac_roles_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+  /rbac/roles/{uuid}/:
+    delete:
+      description: Role viewset
+      operationId: rbac_roles_destroy
+      parameters:
+      - description: A UUID string identifying this Role.
+        explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+    get:
+      description: Role viewset
+      operationId: rbac_roles_retrieve
+      parameters:
+      - description: A UUID string identifying this Role.
+        explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+    patch:
+      description: Role viewset
+      operationId: rbac_roles_partial_update
+      parameters:
+      - description: A UUID string identifying this Role.
+        explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRoleRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+    put:
+      description: Role viewset
+      operationId: rbac_roles_update
+      parameters:
+      - description: A UUID string identifying this Role.
+        explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+  /rbac/roles/{uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: rbac_roles_used_by_list
+      parameters:
+      - description: A UUID string identifying this Role.
+        explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
   /root/config/:
     get:
       description: Retrieve public configuration options
@@ -29771,6 +30933,7 @@ components:
         * `authentik.providers.radius` - authentik Providers.Radius
         * `authentik.providers.saml` - authentik Providers.SAML
         * `authentik.providers.scim` - authentik Providers.SCIM
+        * `authentik.rbac` - authentik RBAC
         * `authentik.recovery` - authentik Recovery
         * `authentik.sources.ldap` - authentik Sources.LDAP
         * `authentik.sources.oauth` - authentik Sources.OAuth
@@ -29820,6 +30983,7 @@ components:
       - authentik.providers.radius
       - authentik.providers.saml
       - authentik.providers.scim
+      - authentik.rbac
       - authentik.recovery
       - authentik.sources.ldap
       - authentik.sources.oauth
@@ -32058,11 +33222,11 @@ components:
           type: string
         permissions:
           items:
-            $ref: '#/components/schemas/Permission'
+            $ref: '#/components/schemas/ConsentPermission'
           type: array
         additional_permissions:
           items:
-            $ref: '#/components/schemas/Permission'
+            $ref: '#/components/schemas/ConsentPermission'
           type: array
         token:
           type: string
@@ -32086,6 +33250,17 @@ components:
           type: string
       required:
       - token
+      type: object
+    ConsentPermission:
+      description: Permission used for consent
+      properties:
+        name:
+          type: string
+        id:
+          type: string
+      required:
+      - id
+      - name
       type: object
     ConsentStage:
       description: ConsentStage Serializer
@@ -33418,6 +34593,7 @@ components:
             * `authentik.providers.radius` - authentik Providers.Radius
             * `authentik.providers.saml` - authentik Providers.SAML
             * `authentik.providers.scim` - authentik Providers.SCIM
+            * `authentik.rbac` - authentik RBAC
             * `authentik.recovery` - authentik Recovery
             * `authentik.sources.ldap` - authentik Sources.LDAP
             * `authentik.sources.oauth` - authentik Sources.OAuth
@@ -33464,7 +34640,7 @@ components:
             * `authentik_flows.flowstagebinding` - Flow Stage Binding
             * `authentik_outposts.dockerserviceconnection` - Docker Service-Connection
             * `authentik_outposts.kubernetesserviceconnection` - Kubernetes Service-Connection
-            * `authentik_outposts.outpost` - outpost
+            * `authentik_outposts.outpost` - Outpost
             * `authentik_policies_dummy.dummypolicy` - Dummy Policy
             * `authentik_policies_event_matcher.eventmatcherpolicy` - Event Matcher Policy
             * `authentik_policies_expiry.passwordexpirypolicy` - Password Expiry Policy
@@ -33485,6 +34661,7 @@ components:
             * `authentik_providers_saml.samlpropertymapping` - SAML Property Mapping
             * `authentik_providers_scim.scimprovider` - SCIM Provider
             * `authentik_providers_scim.scimmapping` - SCIM Mapping
+            * `authentik_rbac.role` - Role
             * `authentik_sources_ldap.ldapsource` - LDAP Source
             * `authentik_sources_ldap.ldappropertymapping` - LDAP Property Mapping
             * `authentik_sources_oauth.oauthsource` - OAuth Source
@@ -33498,9 +34675,9 @@ components:
             * `authentik_stages_authenticator_sms.authenticatorsmsstage` - SMS Authenticator Setup Stage
             * `authentik_stages_authenticator_sms.smsdevice` - SMS Device
             * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Stage
-            * `authentik_stages_authenticator_static.staticdevice` - Static device
+            * `authentik_stages_authenticator_static.staticdevice` - Static Device
             * `authentik_stages_authenticator_totp.authenticatortotpstage` - TOTP Authenticator Setup Stage
-            * `authentik_stages_authenticator_totp.totpdevice` - TOTP device
+            * `authentik_stages_authenticator_totp.totpdevice` - TOTP Device
             * `authentik_stages_authenticator_validate.authenticatorvalidatestage` - Authenticator Validation Stage
             * `authentik_stages_authenticator_webauthn.authenticatewebauthnstage` - WebAuthn Authenticator Setup Stage
             * `authentik_stages_authenticator_webauthn.webauthndevice` - WebAuthn Device
@@ -33522,10 +34699,11 @@ components:
             * `authentik_stages_user_write.userwritestage` - User Write Stage
             * `authentik_tenants.tenant` - Tenant
             * `authentik_blueprints.blueprintinstance` - Blueprint Instance
-            * `authentik_core.group` - group
+            * `authentik_core.group` - Group
             * `authentik_core.user` - User
             * `authentik_core.application` - Application
             * `authentik_core.token` - Token
+            * `authentik_enterprise.license` - License
           nullable: true
       required:
       - bound_to
@@ -33618,6 +34796,7 @@ components:
             * `authentik.providers.radius` - authentik Providers.Radius
             * `authentik.providers.saml` - authentik Providers.SAML
             * `authentik.providers.scim` - authentik Providers.SCIM
+            * `authentik.rbac` - authentik RBAC
             * `authentik.recovery` - authentik Recovery
             * `authentik.sources.ldap` - authentik Sources.LDAP
             * `authentik.sources.oauth` - authentik Sources.OAuth
@@ -33664,7 +34843,7 @@ components:
             * `authentik_flows.flowstagebinding` - Flow Stage Binding
             * `authentik_outposts.dockerserviceconnection` - Docker Service-Connection
             * `authentik_outposts.kubernetesserviceconnection` - Kubernetes Service-Connection
-            * `authentik_outposts.outpost` - outpost
+            * `authentik_outposts.outpost` - Outpost
             * `authentik_policies_dummy.dummypolicy` - Dummy Policy
             * `authentik_policies_event_matcher.eventmatcherpolicy` - Event Matcher Policy
             * `authentik_policies_expiry.passwordexpirypolicy` - Password Expiry Policy
@@ -33685,6 +34864,7 @@ components:
             * `authentik_providers_saml.samlpropertymapping` - SAML Property Mapping
             * `authentik_providers_scim.scimprovider` - SCIM Provider
             * `authentik_providers_scim.scimmapping` - SCIM Mapping
+            * `authentik_rbac.role` - Role
             * `authentik_sources_ldap.ldapsource` - LDAP Source
             * `authentik_sources_ldap.ldappropertymapping` - LDAP Property Mapping
             * `authentik_sources_oauth.oauthsource` - OAuth Source
@@ -33698,9 +34878,9 @@ components:
             * `authentik_stages_authenticator_sms.authenticatorsmsstage` - SMS Authenticator Setup Stage
             * `authentik_stages_authenticator_sms.smsdevice` - SMS Device
             * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Stage
-            * `authentik_stages_authenticator_static.staticdevice` - Static device
+            * `authentik_stages_authenticator_static.staticdevice` - Static Device
             * `authentik_stages_authenticator_totp.authenticatortotpstage` - TOTP Authenticator Setup Stage
-            * `authentik_stages_authenticator_totp.totpdevice` - TOTP device
+            * `authentik_stages_authenticator_totp.totpdevice` - TOTP Device
             * `authentik_stages_authenticator_validate.authenticatorvalidatestage` - Authenticator Validation Stage
             * `authentik_stages_authenticator_webauthn.authenticatewebauthnstage` - WebAuthn Authenticator Setup Stage
             * `authentik_stages_authenticator_webauthn.webauthndevice` - WebAuthn Device
@@ -33722,10 +34902,11 @@ components:
             * `authentik_stages_user_write.userwritestage` - User Write Stage
             * `authentik_tenants.tenant` - Tenant
             * `authentik_blueprints.blueprintinstance` - Blueprint Instance
-            * `authentik_core.group` - group
+            * `authentik_core.group` - Group
             * `authentik_core.user` - User
             * `authentik_core.application` - Application
             * `authentik_core.token` - Token
+            * `authentik_enterprise.license` - License
           nullable: true
       required:
       - name
@@ -33966,6 +35147,126 @@ components:
       required:
       - expression
       - name
+      type: object
+    ExtraRoleObjectPermission:
+      description: User permission with additional object-related data
+      example:
+        app_label: app_label
+        codename: codename
+        model_verbose: model_verbose
+        name: name
+        object_description: object_description
+        model: model
+        id: 0
+        app_label_verbose: app_label_verbose
+        object_pk: object_pk
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        codename:
+          readOnly: true
+          type: string
+        model:
+          readOnly: true
+          title: Python model class name
+          type: string
+        app_label:
+          readOnly: true
+          type: string
+        object_pk:
+          readOnly: true
+          title: Object ID
+          type: string
+        name:
+          readOnly: true
+          type: string
+        app_label_verbose:
+          description: Get app label from permission's model
+          readOnly: true
+          type: string
+        model_verbose:
+          description: Get model label from permission's model
+          readOnly: true
+          type: string
+        object_description:
+          description: |-
+            Get model description from attached model. This operation takes at least
+            one additional query, and the description is only shown if the user/role has the
+            view_ permission on the object
+          nullable: true
+          readOnly: true
+          type: string
+      required:
+      - app_label
+      - app_label_verbose
+      - codename
+      - id
+      - model
+      - model_verbose
+      - name
+      - object_description
+      - object_pk
+      type: object
+    ExtraUserObjectPermission:
+      description: User permission with additional object-related data
+      example:
+        app_label: app_label
+        codename: codename
+        model_verbose: model_verbose
+        name: name
+        object_description: object_description
+        model: model
+        id: 0
+        app_label_verbose: app_label_verbose
+        object_pk: object_pk
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        codename:
+          readOnly: true
+          type: string
+        model:
+          readOnly: true
+          title: Python model class name
+          type: string
+        app_label:
+          readOnly: true
+          type: string
+        object_pk:
+          readOnly: true
+          title: Object ID
+          type: string
+        name:
+          readOnly: true
+          type: string
+        app_label_verbose:
+          description: Get app label from permission's model
+          readOnly: true
+          type: string
+        model_verbose:
+          description: Get model label from permission's model
+          readOnly: true
+          type: string
+        object_description:
+          description: |-
+            Get model description from attached model. This operation takes at least
+            one additional query, and the description is only shown if the user/role has the
+            view_ permission on the object
+          nullable: true
+          readOnly: true
+          type: string
+      required:
+      - app_label
+      - app_label_verbose
+      - codename
+      - id
+      - model
+      - model_verbose
+      - name
+      - object_description
+      - object_pk
       type: object
     FilePathRequest:
       description: Serializer to upload file
@@ -34651,7 +35952,15 @@ components:
       example:
         parent_name: parent_name
         parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        roles_obj:
+        - name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         is_superuser: true
+        roles:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         attributes:
           key: ""
@@ -34706,12 +36015,22 @@ components:
           items:
             type: integer
           type: array
-        attributes:
-          additionalProperties: {}
-          type: object
         users_obj:
           items:
             $ref: '#/components/schemas/GroupMember'
+          readOnly: true
+          type: array
+        attributes:
+          additionalProperties: {}
+          type: object
+        roles:
+          items:
+            format: uuid
+            type: string
+          type: array
+        roles_obj:
+          items:
+            $ref: '#/components/schemas/Role'
           readOnly: true
           type: array
       required:
@@ -34719,6 +36038,7 @@ components:
       - num_pk
       - parent_name
       - pk
+      - roles_obj
       - users_obj
       type: object
     GroupMember:
@@ -34813,6 +36133,9 @@ components:
       example:
         parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         is_superuser: true
+        roles:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         attributes:
           key: ""
@@ -34838,6 +36161,11 @@ components:
         attributes:
           additionalProperties: {}
           type: object
+        roles:
+          items:
+            format: uuid
+            type: string
+          type: array
       required:
       - name
       type: object
@@ -36451,7 +37779,7 @@ components:
         * `authentik_flows.flowstagebinding` - Flow Stage Binding
         * `authentik_outposts.dockerserviceconnection` - Docker Service-Connection
         * `authentik_outposts.kubernetesserviceconnection` - Kubernetes Service-Connection
-        * `authentik_outposts.outpost` - outpost
+        * `authentik_outposts.outpost` - Outpost
         * `authentik_policies_dummy.dummypolicy` - Dummy Policy
         * `authentik_policies_event_matcher.eventmatcherpolicy` - Event Matcher Policy
         * `authentik_policies_expiry.passwordexpirypolicy` - Password Expiry Policy
@@ -36472,6 +37800,7 @@ components:
         * `authentik_providers_saml.samlpropertymapping` - SAML Property Mapping
         * `authentik_providers_scim.scimprovider` - SCIM Provider
         * `authentik_providers_scim.scimmapping` - SCIM Mapping
+        * `authentik_rbac.role` - Role
         * `authentik_sources_ldap.ldapsource` - LDAP Source
         * `authentik_sources_ldap.ldappropertymapping` - LDAP Property Mapping
         * `authentik_sources_oauth.oauthsource` - OAuth Source
@@ -36485,9 +37814,9 @@ components:
         * `authentik_stages_authenticator_sms.authenticatorsmsstage` - SMS Authenticator Setup Stage
         * `authentik_stages_authenticator_sms.smsdevice` - SMS Device
         * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Stage
-        * `authentik_stages_authenticator_static.staticdevice` - Static device
+        * `authentik_stages_authenticator_static.staticdevice` - Static Device
         * `authentik_stages_authenticator_totp.authenticatortotpstage` - TOTP Authenticator Setup Stage
-        * `authentik_stages_authenticator_totp.totpdevice` - TOTP device
+        * `authentik_stages_authenticator_totp.totpdevice` - TOTP Device
         * `authentik_stages_authenticator_validate.authenticatorvalidatestage` - Authenticator Validation Stage
         * `authentik_stages_authenticator_webauthn.authenticatewebauthnstage` - WebAuthn Authenticator Setup Stage
         * `authentik_stages_authenticator_webauthn.webauthndevice` - WebAuthn Device
@@ -36509,10 +37838,11 @@ components:
         * `authentik_stages_user_write.userwritestage` - User Write Stage
         * `authentik_tenants.tenant` - Tenant
         * `authentik_blueprints.blueprintinstance` - Blueprint Instance
-        * `authentik_core.group` - group
+        * `authentik_core.group` - Group
         * `authentik_core.user` - User
         * `authentik_core.application` - Application
         * `authentik_core.token` - Token
+        * `authentik_enterprise.license` - License
       enum:
       - authentik_crypto.certificatekeypair
       - authentik_events.event
@@ -36545,6 +37875,7 @@ components:
       - authentik_providers_saml.samlpropertymapping
       - authentik_providers_scim.scimprovider
       - authentik_providers_scim.scimmapping
+      - authentik_rbac.role
       - authentik_sources_ldap.ldapsource
       - authentik_sources_ldap.ldappropertymapping
       - authentik_sources_oauth.oauthsource
@@ -36586,6 +37917,7 @@ components:
       - authentik_core.user
       - authentik_core.application
       - authentik_core.token
+      - authentik_enterprise.license
       type: string
     NameIdPolicyEnum:
       description: |-
@@ -39552,6 +40884,86 @@ components:
       - pagination
       - results
       type: object
+    PaginatedExtraRoleObjectPermissionList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - app_label: app_label
+          codename: codename
+          model_verbose: model_verbose
+          name: name
+          object_description: object_description
+          model: model
+          id: 0
+          app_label_verbose: app_label_verbose
+          object_pk: object_pk
+        - app_label: app_label
+          codename: codename
+          model_verbose: model_verbose
+          name: name
+          object_description: object_description
+          model: model
+          id: 0
+          app_label_verbose: app_label_verbose
+          object_pk: object_pk
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/ExtraRoleObjectPermission'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedExtraUserObjectPermissionList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - app_label: app_label
+          codename: codename
+          model_verbose: model_verbose
+          name: name
+          object_description: object_description
+          model: model
+          id: 0
+          app_label_verbose: app_label_verbose
+          object_pk: object_pk
+        - app_label: app_label
+          codename: codename
+          model_verbose: model_verbose
+          name: name
+          object_description: object_description
+          model: model
+          id: 0
+          app_label_verbose: app_label_verbose
+          object_pk: object_pk
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/ExtraUserObjectPermission'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedFlowList:
       example:
         pagination:
@@ -39669,7 +41081,15 @@ components:
         results:
         - parent_name: parent_name
           parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          roles_obj:
+          - name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           is_superuser: true
+          roles:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           attributes:
             key: ""
@@ -39699,7 +41119,15 @@ components:
           - 6
         - parent_name: parent_name
           parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          roles_obj:
+          - name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           is_superuser: true
+          roles:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           attributes:
             key: ""
@@ -40938,6 +42366,42 @@ components:
       - pagination
       - results
       type: object
+    PaginatedPermissionList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - app_label: app_label
+          codename: codename
+          model_verbose: model_verbose
+          name: name
+          model: model
+          id: 0
+          app_label_verbose: app_label_verbose
+        - app_label: app_label
+          codename: codename
+          model_verbose: model_verbose
+          name: name
+          model: model
+          id: 0
+          app_label_verbose: app_label_verbose
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/Permission'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedPlexSourceConnectionList:
       example:
         pagination:
@@ -41816,6 +43280,84 @@ components:
       - pagination
       - results
       type: object
+    PaginatedRoleAssignedObjectPermissionList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - role_pk: role_pk
+          permissions:
+          - app_label: app_label
+            codename: codename
+            name: name
+            model: model
+            id: 0
+            object_pk: object_pk
+          - app_label: app_label
+            codename: codename
+            name: name
+            model: model
+            id: 0
+            object_pk: object_pk
+          name: name
+        - role_pk: role_pk
+          permissions:
+          - app_label: app_label
+            codename: codename
+            name: name
+            model: model
+            id: 0
+            object_pk: object_pk
+          - app_label: app_label
+            codename: codename
+            name: name
+            model: model
+            id: 0
+            object_pk: object_pk
+          name: name
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/RoleAssignedObjectPermission'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedRoleList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/Role'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedSAMLPropertyMappingList:
       example:
         pagination:
@@ -42677,6 +44219,74 @@ components:
         results:
           items:
             $ref: '#/components/schemas/TokenModel'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedUserAssignedObjectPermissionList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - uid: uid
+          is_active: true
+          is_superuser: true
+          last_login: 2000-01-23T04:56:07.000+00:00
+          permissions:
+          - app_label: app_label
+            codename: codename
+            name: name
+            model: model
+            id: 6
+            object_pk: object_pk
+          - app_label: app_label
+            codename: codename
+            name: name
+            model: model
+            id: 6
+            object_pk: object_pk
+          name: name
+          attributes:
+            key: ""
+          pk: 0
+          email: email
+          username: username
+        - uid: uid
+          is_active: true
+          is_superuser: true
+          last_login: 2000-01-23T04:56:07.000+00:00
+          permissions:
+          - app_label: app_label
+            codename: codename
+            name: name
+            model: model
+            id: 6
+            object_pk: object_pk
+          - app_label: app_label
+            codename: codename
+            name: name
+            model: model
+            id: 6
+            object_pk: object_pk
+          name: name
+          attributes:
+            key: ""
+          pk: 0
+          email: email
+          username: username
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/UserAssignedObjectPermission'
           type: array
       required:
       - pagination
@@ -44770,6 +46380,7 @@ components:
             * `authentik.providers.radius` - authentik Providers.Radius
             * `authentik.providers.saml` - authentik Providers.SAML
             * `authentik.providers.scim` - authentik Providers.SCIM
+            * `authentik.rbac` - authentik RBAC
             * `authentik.recovery` - authentik Recovery
             * `authentik.sources.ldap` - authentik Sources.LDAP
             * `authentik.sources.oauth` - authentik Sources.OAuth
@@ -44816,7 +46427,7 @@ components:
             * `authentik_flows.flowstagebinding` - Flow Stage Binding
             * `authentik_outposts.dockerserviceconnection` - Docker Service-Connection
             * `authentik_outposts.kubernetesserviceconnection` - Kubernetes Service-Connection
-            * `authentik_outposts.outpost` - outpost
+            * `authentik_outposts.outpost` - Outpost
             * `authentik_policies_dummy.dummypolicy` - Dummy Policy
             * `authentik_policies_event_matcher.eventmatcherpolicy` - Event Matcher Policy
             * `authentik_policies_expiry.passwordexpirypolicy` - Password Expiry Policy
@@ -44837,6 +46448,7 @@ components:
             * `authentik_providers_saml.samlpropertymapping` - SAML Property Mapping
             * `authentik_providers_scim.scimprovider` - SCIM Provider
             * `authentik_providers_scim.scimmapping` - SCIM Mapping
+            * `authentik_rbac.role` - Role
             * `authentik_sources_ldap.ldapsource` - LDAP Source
             * `authentik_sources_ldap.ldappropertymapping` - LDAP Property Mapping
             * `authentik_sources_oauth.oauthsource` - OAuth Source
@@ -44850,9 +46462,9 @@ components:
             * `authentik_stages_authenticator_sms.authenticatorsmsstage` - SMS Authenticator Setup Stage
             * `authentik_stages_authenticator_sms.smsdevice` - SMS Device
             * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Stage
-            * `authentik_stages_authenticator_static.staticdevice` - Static device
+            * `authentik_stages_authenticator_static.staticdevice` - Static Device
             * `authentik_stages_authenticator_totp.authenticatortotpstage` - TOTP Authenticator Setup Stage
-            * `authentik_stages_authenticator_totp.totpdevice` - TOTP device
+            * `authentik_stages_authenticator_totp.totpdevice` - TOTP Device
             * `authentik_stages_authenticator_validate.authenticatorvalidatestage` - Authenticator Validation Stage
             * `authentik_stages_authenticator_webauthn.authenticatewebauthnstage` - WebAuthn Authenticator Setup Stage
             * `authentik_stages_authenticator_webauthn.webauthndevice` - WebAuthn Device
@@ -44874,10 +46486,11 @@ components:
             * `authentik_stages_user_write.userwritestage` - User Write Stage
             * `authentik_tenants.tenant` - Tenant
             * `authentik_blueprints.blueprintinstance` - Blueprint Instance
-            * `authentik_core.group` - group
+            * `authentik_core.group` - Group
             * `authentik_core.user` - User
             * `authentik_core.application` - Application
             * `authentik_core.token` - Token
+            * `authentik_enterprise.license` - License
           nullable: true
       type: object
     PatchedEventRequest:
@@ -45045,6 +46658,9 @@ components:
       example:
         parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         is_superuser: true
+        roles:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         attributes:
           key: ""
@@ -45070,6 +46686,11 @@ components:
         attributes:
           additionalProperties: {}
           type: object
+        roles:
+          items:
+            format: uuid
+            type: string
+          type: array
       type: object
     PatchedIdentificationStageRequest:
       description: IdentificationStage Serializer
@@ -46026,6 +47647,26 @@ components:
           minimum: -2147483648
           type: integer
       type: object
+    PatchedPermissionAssignRequest:
+      description: Request to assign a new permission
+      example:
+        permissions:
+        - permissions
+        - permissions
+        model: null
+        object_pk: object_pk
+      properties:
+        permissions:
+          items:
+            minLength: 1
+            type: string
+          type: array
+        model:
+          $ref: '#/components/schemas/ModelEnum'
+        object_pk:
+          minLength: 1
+          type: string
+      type: object
     PatchedPlexSourceConnectionRequest:
       description: Plex Source connection Serializer
       example:
@@ -46472,6 +48113,16 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: integer
+      type: object
+    PatchedRoleRequest:
+      description: Role serializer
+      example:
+        name: name
+      properties:
+        name:
+          maxLength: 150
+          minLength: 1
+          type: string
       type: object
     PatchedSAMLPropertyMappingRequest:
       description: SAMLPropertyMapping Serializer
@@ -47222,15 +48873,70 @@ components:
           type: string
       type: object
     Permission:
-      description: Permission used for consent
+      description: Global permission
+      example:
+        app_label: app_label
+        codename: codename
+        model_verbose: model_verbose
+        name: name
+        model: model
+        id: 0
+        app_label_verbose: app_label_verbose
       properties:
-        name:
-          type: string
         id:
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 255
+          type: string
+        codename:
+          maxLength: 100
+          type: string
+        model:
+          readOnly: true
+          title: Python model class name
+          type: string
+        app_label:
+          readOnly: true
+          type: string
+        app_label_verbose:
+          description: Human-readable app label
+          readOnly: true
+          type: string
+        model_verbose:
+          description: Human-readable model name
+          readOnly: true
           type: string
       required:
+      - app_label
+      - app_label_verbose
+      - codename
       - id
+      - model
+      - model_verbose
       - name
+      type: object
+    PermissionAssignRequest:
+      description: Request to assign a new permission
+      example:
+        permissions:
+        - permissions
+        - permissions
+        model: null
+        object_pk: object_pk
+      properties:
+        permissions:
+          items:
+            minLength: 1
+            type: string
+          type: array
+        model:
+          $ref: '#/components/schemas/ModelEnum'
+        object_pk:
+          minLength: 1
+          type: string
+      required:
+      - permissions
       type: object
     PlexAuthenticationChallenge:
       description: Challenge shown to the user in identification stage
@@ -49270,6 +50976,108 @@ components:
       - preferred
       - required
       type: string
+    Role:
+      description: Role serializer
+      example:
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Uuid
+          type: string
+        name:
+          maxLength: 150
+          type: string
+      required:
+      - name
+      - pk
+      type: object
+    RoleAssignedObjectPermission:
+      description: Roles assigned object permission serializer
+      example:
+        role_pk: role_pk
+        permissions:
+        - app_label: app_label
+          codename: codename
+          name: name
+          model: model
+          id: 0
+          object_pk: object_pk
+        - app_label: app_label
+          codename: codename
+          name: name
+          model: model
+          id: 0
+          object_pk: object_pk
+        name: name
+      properties:
+        role_pk:
+          readOnly: true
+          type: string
+        name:
+          readOnly: true
+          type: string
+        permissions:
+          items:
+            $ref: '#/components/schemas/RoleObjectPermission'
+          type: array
+      required:
+      - name
+      - permissions
+      - role_pk
+      type: object
+    RoleObjectPermission:
+      description: Role-bound object level permission
+      example:
+        app_label: app_label
+        codename: codename
+        name: name
+        model: model
+        id: 0
+        object_pk: object_pk
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        codename:
+          readOnly: true
+          type: string
+        model:
+          readOnly: true
+          title: Python model class name
+          type: string
+        app_label:
+          readOnly: true
+          type: string
+        object_pk:
+          readOnly: true
+          title: Object ID
+          type: string
+        name:
+          readOnly: true
+          type: string
+      required:
+      - app_label
+      - codename
+      - id
+      - model
+      - name
+      - object_pk
+      type: object
+    RoleRequest:
+      description: Role serializer
+      example:
+        name: name
+      properties:
+        name:
+          maxLength: 150
+          minLength: 1
+          type: string
+      required:
+      - name
+      type: object
     SAMLMetadata:
       description: SAML Provider Metadata serializer
       example:
@@ -50472,6 +52280,9 @@ components:
             pk: pk
           - name: name
             pk: pk
+          system_permissions:
+          - system_permissions
+          - system_permissions
           pk: 0
           avatar: avatar
           type: null
@@ -50489,6 +52300,9 @@ components:
             pk: pk
           - name: name
             pk: pk
+          system_permissions:
+          - system_permissions
+          - system_permissions
           pk: 0
           avatar: avatar
           type: null
@@ -51705,6 +53519,80 @@ components:
       required:
       - pk
       type: object
+    UserAssignedObjectPermission:
+      description: Users assigned object permission serializer
+      example:
+        uid: uid
+        is_active: true
+        is_superuser: true
+        last_login: 2000-01-23T04:56:07.000+00:00
+        permissions:
+        - app_label: app_label
+          codename: codename
+          name: name
+          model: model
+          id: 6
+          object_pk: object_pk
+        - app_label: app_label
+          codename: codename
+          name: name
+          model: model
+          id: 6
+          object_pk: object_pk
+        name: name
+        attributes:
+          key: ""
+        pk: 0
+        email: email
+        username: username
+      properties:
+        pk:
+          readOnly: true
+          title: ID
+          type: integer
+        username:
+          description: "Required. 150 characters or fewer. Letters, digits and @/./+/-/_\
+            \ only."
+          maxLength: 150
+          pattern: "^[\\w.@+-]+$"
+          type: string
+        name:
+          description: User's display name.
+          type: string
+        is_active:
+          description: Designates whether this user should be treated as active. Unselect
+            this instead of deleting accounts.
+          title: Active
+          type: boolean
+        last_login:
+          format: date-time
+          nullable: true
+          type: string
+        email:
+          format: email
+          maxLength: 254
+          title: Email address
+          type: string
+        attributes:
+          additionalProperties: {}
+          type: object
+        uid:
+          readOnly: true
+          type: string
+        permissions:
+          items:
+            $ref: '#/components/schemas/UserObjectPermission'
+          type: array
+        is_superuser:
+          type: boolean
+      required:
+      - is_superuser
+      - name
+      - permissions
+      - pk
+      - uid
+      - username
+      type: object
     UserConsent:
       description: UserConsent Serializer
       example:
@@ -52373,6 +54261,44 @@ components:
       - identifier
       - user
       type: object
+    UserObjectPermission:
+      description: User-bound object level permission
+      example:
+        app_label: app_label
+        codename: codename
+        name: name
+        model: model
+        id: 6
+        object_pk: object_pk
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        codename:
+          readOnly: true
+          type: string
+        model:
+          readOnly: true
+          title: Python model class name
+          type: string
+        app_label:
+          readOnly: true
+          type: string
+        object_pk:
+          readOnly: true
+          title: Object ID
+          type: string
+        name:
+          readOnly: true
+          type: string
+      required:
+      - app_label
+      - codename
+      - id
+      - model
+      - name
+      - object_pk
+      type: object
     UserPasswordSetRequest:
       example:
         password: password
@@ -52506,6 +54432,9 @@ components:
           pk: pk
         - name: name
           pk: pk
+        system_permissions:
+        - system_permissions
+        - system_permissions
         pk: 0
         avatar: avatar
         type: null
@@ -52557,6 +54486,12 @@ components:
           type: object
         type:
           $ref: '#/components/schemas/UserTypeEnum'
+        system_permissions:
+          description: Get all system permissions assigned to the user
+          items:
+            type: string
+          readOnly: true
+          type: array
       required:
       - avatar
       - groups
@@ -52565,6 +54500,7 @@ components:
       - name
       - pk
       - settings
+      - system_permissions
       - uid
       - username
       type: object

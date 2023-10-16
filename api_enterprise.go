@@ -183,7 +183,7 @@ EnterpriseLicenseDestroy Method for EnterpriseLicenseDestroy
 License Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param licenseUuid A UUID string identifying this license.
+	@param licenseUuid A UUID string identifying this License.
 	@return ApiEnterpriseLicenseDestroyRequest
 */
 func (a *EnterpriseApiService) EnterpriseLicenseDestroy(ctx context.Context, licenseUuid string) ApiEnterpriseLicenseDestroyRequest {
@@ -762,7 +762,7 @@ EnterpriseLicensePartialUpdate Method for EnterpriseLicensePartialUpdate
 License Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param licenseUuid A UUID string identifying this license.
+	@param licenseUuid A UUID string identifying this License.
 	@return ApiEnterpriseLicensePartialUpdateRequest
 */
 func (a *EnterpriseApiService) EnterpriseLicensePartialUpdate(ctx context.Context, licenseUuid string) ApiEnterpriseLicensePartialUpdateRequest {
@@ -901,7 +901,7 @@ EnterpriseLicenseRetrieve Method for EnterpriseLicenseRetrieve
 License Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param licenseUuid A UUID string identifying this license.
+	@param licenseUuid A UUID string identifying this License.
 	@return ApiEnterpriseLicenseRetrieveRequest
 */
 func (a *EnterpriseApiService) EnterpriseLicenseRetrieve(ctx context.Context, licenseUuid string) ApiEnterpriseLicenseRetrieveRequest {
@@ -1177,7 +1177,7 @@ EnterpriseLicenseUpdate Method for EnterpriseLicenseUpdate
 License Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param licenseUuid A UUID string identifying this license.
+	@param licenseUuid A UUID string identifying this License.
 	@return ApiEnterpriseLicenseUpdateRequest
 */
 func (a *EnterpriseApiService) EnterpriseLicenseUpdate(ctx context.Context, licenseUuid string) ApiEnterpriseLicenseUpdateRequest {
@@ -1319,7 +1319,7 @@ EnterpriseLicenseUsedByList Method for EnterpriseLicenseUsedByList
 Get a list of all objects that use this object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param licenseUuid A UUID string identifying this license.
+	@param licenseUuid A UUID string identifying this License.
 	@return ApiEnterpriseLicenseUsedByListRequest
 */
 func (a *EnterpriseApiService) EnterpriseLicenseUsedByList(ctx context.Context, licenseUuid string) ApiEnterpriseLicenseUsedByListRequest {

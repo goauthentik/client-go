@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Parent** | Pointer to **NullableString** |  | [optional] 
 **Users** | Pointer to **[]int32** |  | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
+**Roles** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -158,6 +159,31 @@ SetAttributes sets Attributes field to given value.
 `func (o *GroupRequest) HasAttributes() bool`
 
 HasAttributes returns a boolean if a field has been set.
+
+### GetRoles
+
+`func (o *GroupRequest) GetRoles() []string`
+
+GetRoles returns the Roles field if non-nil, zero value otherwise.
+
+### GetRolesOk
+
+`func (o *GroupRequest) GetRolesOk() (*[]string, bool)`
+
+GetRolesOk returns a tuple with the Roles field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoles
+
+`func (o *GroupRequest) SetRoles(v []string)`
+
+SetRoles sets Roles field to given value.
+
+### HasRoles
+
+`func (o *GroupRequest) HasRoles() bool`
+
+HasRoles returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

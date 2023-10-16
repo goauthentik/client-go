@@ -2275,7 +2275,7 @@ CoreGroupsAddUserCreate Method for CoreGroupsAddUserCreate
 Add user to group
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupUuid A UUID string identifying this group.
+	@param groupUuid A UUID string identifying this Group.
 	@return ApiCoreGroupsAddUserCreateRequest
 */
 func (a *CoreApiService) CoreGroupsAddUserCreate(ctx context.Context, groupUuid string) ApiCoreGroupsAddUserCreateRequest {
@@ -2549,7 +2549,7 @@ CoreGroupsDestroy Method for CoreGroupsDestroy
 Group Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupUuid A UUID string identifying this group.
+	@param groupUuid A UUID string identifying this Group.
 	@return ApiCoreGroupsDestroyRequest
 */
 func (a *CoreApiService) CoreGroupsDestroy(ctx context.Context, groupUuid string) ApiCoreGroupsDestroyRequest {
@@ -2916,7 +2916,7 @@ CoreGroupsPartialUpdate Method for CoreGroupsPartialUpdate
 Group Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupUuid A UUID string identifying this group.
+	@param groupUuid A UUID string identifying this Group.
 	@return ApiCoreGroupsPartialUpdateRequest
 */
 func (a *CoreApiService) CoreGroupsPartialUpdate(ctx context.Context, groupUuid string) ApiCoreGroupsPartialUpdateRequest {
@@ -3061,7 +3061,7 @@ CoreGroupsRemoveUserCreate Method for CoreGroupsRemoveUserCreate
 Add user to group
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupUuid A UUID string identifying this group.
+	@param groupUuid A UUID string identifying this Group.
 	@return ApiCoreGroupsRemoveUserCreateRequest
 */
 func (a *CoreApiService) CoreGroupsRemoveUserCreate(ctx context.Context, groupUuid string) ApiCoreGroupsRemoveUserCreateRequest {
@@ -3191,7 +3191,7 @@ CoreGroupsRetrieve Method for CoreGroupsRetrieve
 Group Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupUuid A UUID string identifying this group.
+	@param groupUuid A UUID string identifying this Group.
 	@return ApiCoreGroupsRetrieveRequest
 */
 func (a *CoreApiService) CoreGroupsRetrieve(ctx context.Context, groupUuid string) ApiCoreGroupsRetrieveRequest {
@@ -3334,7 +3334,7 @@ CoreGroupsUpdate Method for CoreGroupsUpdate
 Group Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupUuid A UUID string identifying this group.
+	@param groupUuid A UUID string identifying this Group.
 	@return ApiCoreGroupsUpdateRequest
 */
 func (a *CoreApiService) CoreGroupsUpdate(ctx context.Context, groupUuid string) ApiCoreGroupsUpdateRequest {
@@ -3476,7 +3476,7 @@ CoreGroupsUsedByList Method for CoreGroupsUsedByList
 Get a list of all objects that use this object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupUuid A UUID string identifying this group.
+	@param groupUuid A UUID string identifying this Group.
 	@return ApiCoreGroupsUsedByListRequest
 */
 func (a *CoreApiService) CoreGroupsUsedByList(ctx context.Context, groupUuid string) ApiCoreGroupsUsedByListRequest {
