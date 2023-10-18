@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **ClientNetworks** | Pointer to **string** | List of CIDRs (comma-separated) that clients can connect from. A more specific CIDR will match before a looser one. Clients connecting from a non-specified CIDR will be dropped. | [optional] 
 **SharedSecret** | Pointer to **string** | Shared secret between clients and server to hash packets. | [optional] 
+**MfaSupport** | Pointer to **bool** | When enabled, code-based multi-factor authentication can be used by appending a semicolon and the TOTP code to the password. This should only be enabled if all users that will bind to this provider have a TOTP device configured, as otherwise a password may incorrectly be rejected if it contains a semicolon. | [optional] 
 
 ## Methods
 
@@ -189,6 +190,31 @@ SetSharedSecret sets SharedSecret field to given value.
 `func (o *PatchedRadiusProviderRequest) HasSharedSecret() bool`
 
 HasSharedSecret returns a boolean if a field has been set.
+
+### GetMfaSupport
+
+`func (o *PatchedRadiusProviderRequest) GetMfaSupport() bool`
+
+GetMfaSupport returns the MfaSupport field if non-nil, zero value otherwise.
+
+### GetMfaSupportOk
+
+`func (o *PatchedRadiusProviderRequest) GetMfaSupportOk() (*bool, bool)`
+
+GetMfaSupportOk returns a tuple with the MfaSupport field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMfaSupport
+
+`func (o *PatchedRadiusProviderRequest) SetMfaSupport(v bool)`
+
+SetMfaSupport sets MfaSupport field to given value.
+
+### HasMfaSupport
+
+`func (o *PatchedRadiusProviderRequest) HasMfaSupport() bool`
+
+HasMfaSupport returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

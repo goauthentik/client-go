@@ -25,6 +25,8 @@ type RadiusOutpostConfig struct {
 	ClientNetworks *string `json:"client_networks,omitempty"`
 	// Shared secret between clients and server to hash packets.
 	SharedSecret *string `json:"shared_secret,omitempty"`
+	// When enabled, code-based multi-factor authentication can be used by appending a semicolon and the TOTP code to the password. This should only be enabled if all users that will bind to this provider have a TOTP device configured, as otherwise a password may incorrectly be rejected if it contains a semicolon.
+	MfaSupport *bool `json:"mfa_support,omitempty"`
 }
 
 // NewRadiusOutpostConfig instantiates a new RadiusOutpostConfig object
@@ -208,6 +210,38 @@ func (o *RadiusOutpostConfig) SetSharedSecret(v string) {
 	o.SharedSecret = &v
 }
 
+// GetMfaSupport returns the MfaSupport field value if set, zero value otherwise.
+func (o *RadiusOutpostConfig) GetMfaSupport() bool {
+	if o == nil || o.MfaSupport == nil {
+		var ret bool
+		return ret
+	}
+	return *o.MfaSupport
+}
+
+// GetMfaSupportOk returns a tuple with the MfaSupport field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RadiusOutpostConfig) GetMfaSupportOk() (*bool, bool) {
+	if o == nil || o.MfaSupport == nil {
+		return nil, false
+	}
+	return o.MfaSupport, true
+}
+
+// HasMfaSupport returns a boolean if a field has been set.
+func (o *RadiusOutpostConfig) HasMfaSupport() bool {
+	if o != nil && o.MfaSupport != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMfaSupport gets a reference to the given bool and assigns it to the MfaSupport field.
+func (o *RadiusOutpostConfig) SetMfaSupport(v bool) {
+	o.MfaSupport = &v
+}
+
 func (o RadiusOutpostConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -227,6 +261,9 @@ func (o RadiusOutpostConfig) MarshalJSON() ([]byte, error) {
 	}
 	if o.SharedSecret != nil {
 		toSerialize["shared_secret"] = o.SharedSecret
+	}
+	if o.MfaSupport != nil {
+		toSerialize["mfa_support"] = o.MfaSupport
 	}
 	return json.Marshal(toSerialize)
 }
