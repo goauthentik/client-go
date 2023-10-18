@@ -10007,14 +10007,20 @@ func (a *StagesApiService) StagesDenyDestroyExecute(r ApiStagesDenyDestroyReques
 }
 
 type ApiStagesDenyListRequest struct {
-	ctx        context.Context
-	ApiService *StagesApiService
-	name       *string
-	ordering   *string
-	page       *int32
-	pageSize   *int32
-	search     *string
-	stageUuid  *string
+	ctx         context.Context
+	ApiService  *StagesApiService
+	denyMessage *string
+	name        *string
+	ordering    *string
+	page        *int32
+	pageSize    *int32
+	search      *string
+	stageUuid   *string
+}
+
+func (r ApiStagesDenyListRequest) DenyMessage(denyMessage string) ApiStagesDenyListRequest {
+	r.denyMessage = &denyMessage
+	return r
 }
 
 func (r ApiStagesDenyListRequest) Name(name string) ApiStagesDenyListRequest {
@@ -10092,6 +10098,9 @@ func (a *StagesApiService) StagesDenyListExecute(r ApiStagesDenyListRequest) (*P
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.denyMessage != nil {
+		localVarQueryParams.Add("deny_message", parameterToString(*r.denyMessage, ""))
+	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}

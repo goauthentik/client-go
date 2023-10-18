@@ -4921,7 +4921,7 @@ Name | Type | Description  | Notes
 
 ## StagesDenyList
 
-> PaginatedDenyStageList StagesDenyList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
+> PaginatedDenyStageList StagesDenyList(ctx).DenyMessage(denyMessage).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
 
 
 
@@ -4940,6 +4940,7 @@ import (
 )
 
 func main() {
+    denyMessage := "denyMessage_example" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -4949,7 +4950,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesDenyList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
+    resp, r, err := apiClient.StagesApi.StagesDenyList(context.Background()).DenyMessage(denyMessage).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesDenyList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4970,6 +4971,7 @@ Other parameters are passed through a pointer to a apiStagesDenyListRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **denyMessage** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 

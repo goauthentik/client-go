@@ -17,8 +17,9 @@ import (
 
 // PatchedDenyStageRequest DenyStage Serializer
 type PatchedDenyStageRequest struct {
-	Name    *string          `json:"name,omitempty"`
-	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
+	Name        *string          `json:"name,omitempty"`
+	FlowSet     []FlowSetRequest `json:"flow_set,omitempty"`
+	DenyMessage *string          `json:"deny_message,omitempty"`
 }
 
 // NewPatchedDenyStageRequest instantiates a new PatchedDenyStageRequest object
@@ -102,6 +103,38 @@ func (o *PatchedDenyStageRequest) SetFlowSet(v []FlowSetRequest) {
 	o.FlowSet = v
 }
 
+// GetDenyMessage returns the DenyMessage field value if set, zero value otherwise.
+func (o *PatchedDenyStageRequest) GetDenyMessage() string {
+	if o == nil || o.DenyMessage == nil {
+		var ret string
+		return ret
+	}
+	return *o.DenyMessage
+}
+
+// GetDenyMessageOk returns a tuple with the DenyMessage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedDenyStageRequest) GetDenyMessageOk() (*string, bool) {
+	if o == nil || o.DenyMessage == nil {
+		return nil, false
+	}
+	return o.DenyMessage, true
+}
+
+// HasDenyMessage returns a boolean if a field has been set.
+func (o *PatchedDenyStageRequest) HasDenyMessage() bool {
+	if o != nil && o.DenyMessage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDenyMessage gets a reference to the given string and assigns it to the DenyMessage field.
+func (o *PatchedDenyStageRequest) SetDenyMessage(v string) {
+	o.DenyMessage = &v
+}
+
 func (o PatchedDenyStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -109,6 +142,9 @@ func (o PatchedDenyStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
+	}
+	if o.DenyMessage != nil {
+		toSerialize["deny_message"] = o.DenyMessage
 	}
 	return json.Marshal(toSerialize)
 }

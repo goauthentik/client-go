@@ -26641,6 +26641,13 @@ paths:
       parameters:
       - explode: true
         in: query
+        name: deny_message
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: name
         required: false
         schema:
@@ -33507,6 +33514,7 @@ components:
         verbose_name: verbose_name
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
+        deny_message: deny_message
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
@@ -33562,6 +33570,8 @@ components:
           items:
             $ref: '#/components/schemas/FlowSet'
           type: array
+        deny_message:
+          type: string
       required:
       - component
       - meta_model_name
@@ -33573,6 +33583,7 @@ components:
     DenyStageRequest:
       description: DenyStage Serializer
       example:
+        deny_message: deny_message
         name: name
         flow_set:
         - policy_engine_mode: null
@@ -33599,6 +33610,8 @@ components:
           items:
             $ref: '#/components/schemas/FlowSetRequest'
           type: array
+        deny_message:
+          type: string
       required:
       - name
       type: object
@@ -40213,6 +40226,7 @@ components:
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
+          deny_message: deny_message
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
@@ -40244,6 +40258,7 @@ components:
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
+          deny_message: deny_message
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
@@ -46079,6 +46094,7 @@ components:
     PatchedDenyStageRequest:
       description: DenyStage Serializer
       example:
+        deny_message: deny_message
         name: name
         flow_set:
         - policy_engine_mode: null
@@ -46105,6 +46121,8 @@ components:
           items:
             $ref: '#/components/schemas/FlowSetRequest'
           type: array
+        deny_message:
+          type: string
       type: object
     PatchedDockerServiceConnectionRequest:
       description: DockerServiceConnection Serializer
