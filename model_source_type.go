@@ -24,13 +24,15 @@ type SourceType struct {
 	AuthorizationUrl NullableString `json:"authorization_url"`
 	AccessTokenUrl   NullableString `json:"access_token_url"`
 	ProfileUrl       NullableString `json:"profile_url"`
+	OidcWellKnownUrl NullableString `json:"oidc_well_known_url"`
+	OidcJwksUrl      NullableString `json:"oidc_jwks_url"`
 }
 
 // NewSourceType instantiates a new SourceType object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourceType(name string, slug string, urlsCustomizable bool, requestTokenUrl NullableString, authorizationUrl NullableString, accessTokenUrl NullableString, profileUrl NullableString) *SourceType {
+func NewSourceType(name string, slug string, urlsCustomizable bool, requestTokenUrl NullableString, authorizationUrl NullableString, accessTokenUrl NullableString, profileUrl NullableString, oidcWellKnownUrl NullableString, oidcJwksUrl NullableString) *SourceType {
 	this := SourceType{}
 	this.Name = name
 	this.Slug = slug
@@ -39,6 +41,8 @@ func NewSourceType(name string, slug string, urlsCustomizable bool, requestToken
 	this.AuthorizationUrl = authorizationUrl
 	this.AccessTokenUrl = accessTokenUrl
 	this.ProfileUrl = profileUrl
+	this.OidcWellKnownUrl = oidcWellKnownUrl
+	this.OidcJwksUrl = oidcJwksUrl
 	return &this
 }
 
@@ -226,6 +230,58 @@ func (o *SourceType) SetProfileUrl(v string) {
 	o.ProfileUrl.Set(&v)
 }
 
+// GetOidcWellKnownUrl returns the OidcWellKnownUrl field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *SourceType) GetOidcWellKnownUrl() string {
+	if o == nil || o.OidcWellKnownUrl.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.OidcWellKnownUrl.Get()
+}
+
+// GetOidcWellKnownUrlOk returns a tuple with the OidcWellKnownUrl field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SourceType) GetOidcWellKnownUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OidcWellKnownUrl.Get(), o.OidcWellKnownUrl.IsSet()
+}
+
+// SetOidcWellKnownUrl sets field value
+func (o *SourceType) SetOidcWellKnownUrl(v string) {
+	o.OidcWellKnownUrl.Set(&v)
+}
+
+// GetOidcJwksUrl returns the OidcJwksUrl field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *SourceType) GetOidcJwksUrl() string {
+	if o == nil || o.OidcJwksUrl.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.OidcJwksUrl.Get()
+}
+
+// GetOidcJwksUrlOk returns a tuple with the OidcJwksUrl field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SourceType) GetOidcJwksUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OidcJwksUrl.Get(), o.OidcJwksUrl.IsSet()
+}
+
+// SetOidcJwksUrl sets field value
+func (o *SourceType) SetOidcJwksUrl(v string) {
+	o.OidcJwksUrl.Set(&v)
+}
+
 func (o SourceType) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -248,6 +304,12 @@ func (o SourceType) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["profile_url"] = o.ProfileUrl.Get()
+	}
+	if true {
+		toSerialize["oidc_well_known_url"] = o.OidcWellKnownUrl.Get()
+	}
+	if true {
+		toSerialize["oidc_jwks_url"] = o.OidcJwksUrl.Get()
 	}
 	return json.Marshal(toSerialize)
 }

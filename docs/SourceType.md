@@ -11,12 +11,14 @@ Name | Type | Description | Notes
 **AuthorizationUrl** | **NullableString** |  | [readonly] 
 **AccessTokenUrl** | **NullableString** |  | [readonly] 
 **ProfileUrl** | **NullableString** |  | [readonly] 
+**OidcWellKnownUrl** | **NullableString** |  | [readonly] 
+**OidcJwksUrl** | **NullableString** |  | [readonly] 
 
 ## Methods
 
 ### NewSourceType
 
-`func NewSourceType(name string, slug string, urlsCustomizable bool, requestTokenUrl NullableString, authorizationUrl NullableString, accessTokenUrl NullableString, profileUrl NullableString, ) *SourceType`
+`func NewSourceType(name string, slug string, urlsCustomizable bool, requestTokenUrl NullableString, authorizationUrl NullableString, accessTokenUrl NullableString, profileUrl NullableString, oidcWellKnownUrl NullableString, oidcJwksUrl NullableString, ) *SourceType`
 
 NewSourceType instantiates a new SourceType object
 This constructor will assign default values to properties that have it defined,
@@ -211,6 +213,66 @@ SetProfileUrl sets ProfileUrl field to given value.
 `func (o *SourceType) UnsetProfileUrl()`
 
 UnsetProfileUrl ensures that no value is present for ProfileUrl, not even an explicit nil
+### GetOidcWellKnownUrl
+
+`func (o *SourceType) GetOidcWellKnownUrl() string`
+
+GetOidcWellKnownUrl returns the OidcWellKnownUrl field if non-nil, zero value otherwise.
+
+### GetOidcWellKnownUrlOk
+
+`func (o *SourceType) GetOidcWellKnownUrlOk() (*string, bool)`
+
+GetOidcWellKnownUrlOk returns a tuple with the OidcWellKnownUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOidcWellKnownUrl
+
+`func (o *SourceType) SetOidcWellKnownUrl(v string)`
+
+SetOidcWellKnownUrl sets OidcWellKnownUrl field to given value.
+
+
+### SetOidcWellKnownUrlNil
+
+`func (o *SourceType) SetOidcWellKnownUrlNil(b bool)`
+
+ SetOidcWellKnownUrlNil sets the value for OidcWellKnownUrl to be an explicit nil
+
+### UnsetOidcWellKnownUrl
+`func (o *SourceType) UnsetOidcWellKnownUrl()`
+
+UnsetOidcWellKnownUrl ensures that no value is present for OidcWellKnownUrl, not even an explicit nil
+### GetOidcJwksUrl
+
+`func (o *SourceType) GetOidcJwksUrl() string`
+
+GetOidcJwksUrl returns the OidcJwksUrl field if non-nil, zero value otherwise.
+
+### GetOidcJwksUrlOk
+
+`func (o *SourceType) GetOidcJwksUrlOk() (*string, bool)`
+
+GetOidcJwksUrlOk returns a tuple with the OidcJwksUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOidcJwksUrl
+
+`func (o *SourceType) SetOidcJwksUrl(v string)`
+
+SetOidcJwksUrl sets OidcJwksUrl field to given value.
+
+
+### SetOidcJwksUrlNil
+
+`func (o *SourceType) SetOidcJwksUrlNil(b bool)`
+
+ SetOidcJwksUrlNil sets the value for OidcJwksUrl to be an explicit nil
+
+### UnsetOidcJwksUrl
+`func (o *SourceType) UnsetOidcJwksUrl()`
+
+UnsetOidcJwksUrl ensures that no value is present for OidcJwksUrl, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

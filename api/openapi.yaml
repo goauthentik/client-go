@@ -52566,6 +52566,8 @@ components:
     SourceType:
       description: Serializer for SourceType
       example:
+        oidc_well_known_url: oidc_well_known_url
+        oidc_jwks_url: oidc_jwks_url
         request_token_url: request_token_url
         profile_url: profile_url
         authorization_url: authorization_url
@@ -52596,10 +52598,20 @@ components:
           nullable: true
           readOnly: true
           type: string
+        oidc_well_known_url:
+          nullable: true
+          readOnly: true
+          type: string
+        oidc_jwks_url:
+          nullable: true
+          readOnly: true
+          type: string
       required:
       - access_token_url
       - authorization_url
       - name
+      - oidc_jwks_url
+      - oidc_well_known_url
       - profile_url
       - request_token_url
       - slug
