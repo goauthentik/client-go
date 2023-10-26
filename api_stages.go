@@ -22925,6 +22925,7 @@ type ApiStagesUserWriteListRequest struct {
 	stageUuid             *string
 	userCreationMode      *string
 	userPathTemplate      *string
+	userType              *string
 }
 
 func (r ApiStagesUserWriteListRequest) CreateUsersAsInactive(createUsersAsInactive bool) ApiStagesUserWriteListRequest {
@@ -22979,6 +22980,12 @@ func (r ApiStagesUserWriteListRequest) UserCreationMode(userCreationMode string)
 
 func (r ApiStagesUserWriteListRequest) UserPathTemplate(userPathTemplate string) ApiStagesUserWriteListRequest {
 	r.userPathTemplate = &userPathTemplate
+	return r
+}
+
+// * &#x60;internal&#x60; - Internal * &#x60;external&#x60; - External * &#x60;service_account&#x60; - Service Account * &#x60;internal_service_account&#x60; - Internal Service Account
+func (r ApiStagesUserWriteListRequest) UserType(userType string) ApiStagesUserWriteListRequest {
+	r.userType = &userType
 	return r
 }
 
@@ -23052,6 +23059,9 @@ func (a *StagesApiService) StagesUserWriteListExecute(r ApiStagesUserWriteListRe
 	}
 	if r.userPathTemplate != nil {
 		localVarQueryParams.Add("user_path_template", parameterToString(*r.userPathTemplate, ""))
+	}
+	if r.userType != nil {
+		localVarQueryParams.Add("user_type", parameterToString(*r.userType, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

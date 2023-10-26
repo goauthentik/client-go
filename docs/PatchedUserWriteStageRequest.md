@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **UserCreationMode** | Pointer to [**UserCreationModeEnum**](UserCreationModeEnum.md) |  | [optional] 
 **CreateUsersAsInactive** | Pointer to **bool** | When set, newly created users are inactive and cannot login. | [optional] 
 **CreateUsersGroup** | Pointer to **NullableString** | Optionally add newly created users to this group. | [optional] 
+**UserType** | Pointer to [**UserTypeEnum**](UserTypeEnum.md) |  | [optional] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -165,6 +166,31 @@ HasCreateUsersGroup returns a boolean if a field has been set.
 `func (o *PatchedUserWriteStageRequest) UnsetCreateUsersGroup()`
 
 UnsetCreateUsersGroup ensures that no value is present for CreateUsersGroup, not even an explicit nil
+### GetUserType
+
+`func (o *PatchedUserWriteStageRequest) GetUserType() UserTypeEnum`
+
+GetUserType returns the UserType field if non-nil, zero value otherwise.
+
+### GetUserTypeOk
+
+`func (o *PatchedUserWriteStageRequest) GetUserTypeOk() (*UserTypeEnum, bool)`
+
+GetUserTypeOk returns a tuple with the UserType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserType
+
+`func (o *PatchedUserWriteStageRequest) SetUserType(v UserTypeEnum)`
+
+SetUserType sets UserType field to given value.
+
+### HasUserType
+
+`func (o *PatchedUserWriteStageRequest) HasUserType() bool`
+
+HasUserType returns a boolean if a field has been set.
+
 ### GetUserPathTemplate
 
 `func (o *PatchedUserWriteStageRequest) GetUserPathTemplate() string`

@@ -11041,7 +11041,7 @@ Name | Type | Description  | Notes
 
 ## StagesUserWriteList
 
-> PaginatedUserWriteStageList StagesUserWriteList(ctx).CreateUsersAsInactive(createUsersAsInactive).CreateUsersGroup(createUsersGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).UserCreationMode(userCreationMode).UserPathTemplate(userPathTemplate).Execute()
+> PaginatedUserWriteStageList StagesUserWriteList(ctx).CreateUsersAsInactive(createUsersAsInactive).CreateUsersGroup(createUsersGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).UserCreationMode(userCreationMode).UserPathTemplate(userPathTemplate).UserType(userType).Execute()
 
 
 
@@ -11070,10 +11070,11 @@ func main() {
     stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     userCreationMode := "userCreationMode_example" // string | * `never_create` - Never Create * `create_when_required` - Create When Required * `always_create` - Always Create (optional)
     userPathTemplate := "userPathTemplate_example" // string |  (optional)
+    userType := "userType_example" // string | * `internal` - Internal * `external` - External * `service_account` - Service Account * `internal_service_account` - Internal Service Account (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserWriteList(context.Background()).CreateUsersAsInactive(createUsersAsInactive).CreateUsersGroup(createUsersGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).UserCreationMode(userCreationMode).UserPathTemplate(userPathTemplate).Execute()
+    resp, r, err := apiClient.StagesApi.StagesUserWriteList(context.Background()).CreateUsersAsInactive(createUsersAsInactive).CreateUsersGroup(createUsersGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).UserCreationMode(userCreationMode).UserPathTemplate(userPathTemplate).UserType(userType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserWriteList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -11104,6 +11105,7 @@ Name | Type | Description  | Notes
  **stageUuid** | **string** |  | 
  **userCreationMode** | **string** | * &#x60;never_create&#x60; - Never Create * &#x60;create_when_required&#x60; - Create When Required * &#x60;always_create&#x60; - Always Create | 
  **userPathTemplate** | **string** |  | 
+ **userType** | **string** | * &#x60;internal&#x60; - Internal * &#x60;external&#x60; - External * &#x60;service_account&#x60; - Service Account * &#x60;internal_service_account&#x60; - Internal Service Account | 
 
 ### Return type
 

@@ -33,6 +33,7 @@ type UserWriteStage struct {
 	CreateUsersAsInactive *bool `json:"create_users_as_inactive,omitempty"`
 	// Optionally add newly created users to this group.
 	CreateUsersGroup NullableString `json:"create_users_group,omitempty"`
+	UserType         *UserTypeEnum  `json:"user_type,omitempty"`
 	UserPathTemplate *string        `json:"user_path_template,omitempty"`
 }
 
@@ -342,6 +343,38 @@ func (o *UserWriteStage) UnsetCreateUsersGroup() {
 	o.CreateUsersGroup.Unset()
 }
 
+// GetUserType returns the UserType field value if set, zero value otherwise.
+func (o *UserWriteStage) GetUserType() UserTypeEnum {
+	if o == nil || o.UserType == nil {
+		var ret UserTypeEnum
+		return ret
+	}
+	return *o.UserType
+}
+
+// GetUserTypeOk returns a tuple with the UserType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserWriteStage) GetUserTypeOk() (*UserTypeEnum, bool) {
+	if o == nil || o.UserType == nil {
+		return nil, false
+	}
+	return o.UserType, true
+}
+
+// HasUserType returns a boolean if a field has been set.
+func (o *UserWriteStage) HasUserType() bool {
+	if o != nil && o.UserType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserType gets a reference to the given UserTypeEnum and assigns it to the UserType field.
+func (o *UserWriteStage) SetUserType(v UserTypeEnum) {
+	o.UserType = &v
+}
+
 // GetUserPathTemplate returns the UserPathTemplate field value if set, zero value otherwise.
 func (o *UserWriteStage) GetUserPathTemplate() string {
 	if o == nil || o.UserPathTemplate == nil {
@@ -405,6 +438,9 @@ func (o UserWriteStage) MarshalJSON() ([]byte, error) {
 	}
 	if o.CreateUsersGroup.IsSet() {
 		toSerialize["create_users_group"] = o.CreateUsersGroup.Get()
+	}
+	if o.UserType != nil {
+		toSerialize["user_type"] = o.UserType
 	}
 	if o.UserPathTemplate != nil {
 		toSerialize["user_path_template"] = o.UserPathTemplate

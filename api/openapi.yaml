@@ -30630,6 +30630,23 @@ paths:
         schema:
           type: string
         style: form
+      - description: |-
+          * `internal` - Internal
+          * `external` - External
+          * `service_account` - Service Account
+          * `internal_service_account` - Internal Service Account
+        explode: true
+        in: query
+        name: user_type
+        required: false
+        schema:
+          enum:
+          - external
+          - internal
+          - internal_service_account
+          - service_account
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -44956,6 +44973,7 @@ components:
         results:
         - component: component
           verbose_name: verbose_name
+          user_type: null
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
           user_path_template: user_path_template
@@ -44991,6 +45009,7 @@ components:
           create_users_as_inactive: true
         - component: component
           verbose_name: verbose_name
+          user_type: null
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
           user_path_template: user_path_template
@@ -48849,6 +48868,7 @@ components:
     PatchedUserWriteStageRequest:
       description: UserWriteStage Serializer
       example:
+        user_type: null
         user_path_template: user_path_template
         name: name
         create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -48889,6 +48909,8 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_type:
+          $ref: '#/components/schemas/UserTypeEnum'
         user_path_template:
           type: string
       type: object
@@ -54712,6 +54734,7 @@ components:
       example:
         component: component
         verbose_name: verbose_name
+        user_type: null
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
         user_path_template: user_path_template
@@ -54783,6 +54806,8 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_type:
+          $ref: '#/components/schemas/UserTypeEnum'
         user_path_template:
           type: string
       required:
@@ -54796,6 +54821,7 @@ components:
     UserWriteStageRequest:
       description: UserWriteStage Serializer
       example:
+        user_type: null
         user_path_template: user_path_template
         name: name
         create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -54836,6 +54862,8 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_type:
+          $ref: '#/components/schemas/UserTypeEnum'
         user_path_template:
           type: string
       required:
