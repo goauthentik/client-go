@@ -21094,7 +21094,7 @@ paths:
   /sources/ldap/{slug}/sync_status/:
     get:
       description: Get source's sync status
-      operationId: sources_ldap_sync_status_list
+      operationId: sources_ldap_sync_status_retrieve
       parameters:
       - explode: false
         in: path
@@ -21109,9 +21109,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/Task'
-                type: array
+                $ref: '#/components/schemas/LDAPSyncStatus'
           description: ""
         "400":
           content:
@@ -37252,6 +37250,9 @@ components:
         enabled: true
         client_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         base_dn: base_dn
+        connectivity:
+          key:
+            key: connectivity
         managed: managed
         additional_group_dn: additional_group_dn
         sync_parent_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -37418,9 +37419,19 @@ components:
             format: uuid
             type: string
           type: array
+        connectivity:
+          additionalProperties:
+            additionalProperties:
+              type: string
+            type: object
+          description: Get cached source connectivity
+          nullable: true
+          readOnly: true
+          type: object
       required:
       - base_dn
       - component
+      - connectivity
       - icon
       - managed
       - meta_model_name
@@ -37587,6 +37598,40 @@ components:
       - name
       - server_uri
       - slug
+      type: object
+    LDAPSyncStatus:
+      description: LDAP Source sync status
+      example:
+        is_running: true
+        tasks:
+        - task_name: task_name
+          task_description: task_description
+          task_finish_timestamp: 2000-01-23T04:56:07.000+00:00
+          task_duration: 0
+          messages:
+          - ""
+          - ""
+          status: null
+        - task_name: task_name
+          task_description: task_description
+          task_finish_timestamp: 2000-01-23T04:56:07.000+00:00
+          task_duration: 0
+          messages:
+          - ""
+          - ""
+          status: null
+      properties:
+        is_running:
+          readOnly: true
+          type: boolean
+        tasks:
+          items:
+            $ref: '#/components/schemas/Task'
+          readOnly: true
+          type: array
+      required:
+      - is_running
+      - tasks
       type: object
     LayoutEnum:
       description: |-
@@ -41664,6 +41709,9 @@ components:
           enabled: true
           client_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           base_dn: base_dn
+          connectivity:
+            key:
+              key: connectivity
           managed: managed
           additional_group_dn: additional_group_dn
           sync_parent_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -41702,6 +41750,9 @@ components:
           enabled: true
           client_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           base_dn: base_dn
+          connectivity:
+            key:
+              key: connectivity
           managed: managed
           additional_group_dn: additional_group_dn
           sync_parent_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91

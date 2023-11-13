@@ -72,13 +72,15 @@ type LDAPSource struct {
 	PropertyMappings  []string       `json:"property_mappings,omitempty"`
 	// Property mappings used for group creation/updating.
 	PropertyMappingsGroup []string `json:"property_mappings_group,omitempty"`
+	// Get cached source connectivity
+	Connectivity map[string]map[string]string `json:"connectivity"`
 }
 
 // NewLDAPSource instantiates a new LDAPSource object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLDAPSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon NullableString, serverUri string, baseDn string) *LDAPSource {
+func NewLDAPSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon NullableString, serverUri string, baseDn string, connectivity map[string]map[string]string) *LDAPSource {
 	this := LDAPSource{}
 	this.Pk = pk
 	this.Name = name
@@ -91,6 +93,7 @@ func NewLDAPSource(pk string, name string, slug string, component string, verbos
 	this.Icon = icon
 	this.ServerUri = serverUri
 	this.BaseDn = baseDn
+	this.Connectivity = connectivity
 	return &this
 }
 
@@ -1161,6 +1164,32 @@ func (o *LDAPSource) SetPropertyMappingsGroup(v []string) {
 	o.PropertyMappingsGroup = v
 }
 
+// GetConnectivity returns the Connectivity field value
+// If the value is explicit nil, the zero value for map[string]map[string]string will be returned
+func (o *LDAPSource) GetConnectivity() map[string]map[string]string {
+	if o == nil {
+		var ret map[string]map[string]string
+		return ret
+	}
+
+	return o.Connectivity
+}
+
+// GetConnectivityOk returns a tuple with the Connectivity field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *LDAPSource) GetConnectivityOk() (*map[string]map[string]string, bool) {
+	if o == nil || o.Connectivity == nil {
+		return nil, false
+	}
+	return &o.Connectivity, true
+}
+
+// SetConnectivity sets field value
+func (o *LDAPSource) SetConnectivity(v map[string]map[string]string) {
+	o.Connectivity = v
+}
+
 func (o LDAPSource) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -1264,6 +1293,9 @@ func (o LDAPSource) MarshalJSON() ([]byte, error) {
 	}
 	if o.PropertyMappingsGroup != nil {
 		toSerialize["property_mappings_group"] = o.PropertyMappingsGroup
+	}
+	if o.Connectivity != nil {
+		toSerialize["connectivity"] = o.Connectivity
 	}
 	return json.Marshal(toSerialize)
 }

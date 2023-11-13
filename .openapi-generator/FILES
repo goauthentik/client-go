@@ -183,6 +183,7 @@ docs/LDAPProvider.md
 docs/LDAPProviderRequest.md
 docs/LDAPSource.md
 docs/LDAPSourceRequest.md
+docs/LDAPSyncStatus.md
 docs/LayoutEnum.md
 docs/License.md
 docs/LicenseForecast.md
@@ -700,6 +701,7 @@ model_ldap_provider.go
 model_ldap_provider_request.go
 model_ldap_source.go
 model_ldap_source_request.go
+model_ldap_sync_status.go
 model_ldapapi_access_mode.go
 model_license.go
 model_license_forecast.go

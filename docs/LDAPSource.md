@@ -38,12 +38,13 @@ Name | Type | Description | Notes
 **SyncParentGroup** | Pointer to **NullableString** |  | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **PropertyMappingsGroup** | Pointer to **[]string** | Property mappings used for group creation/updating. | [optional] 
+**Connectivity** | **map[string]map[string]string** | Get cached source connectivity | [readonly] 
 
 ## Methods
 
 ### NewLDAPSource
 
-`func NewLDAPSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon NullableString, serverUri string, baseDn string, ) *LDAPSource`
+`func NewLDAPSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon NullableString, serverUri string, baseDn string, connectivity map[string]map[string]string, ) *LDAPSource`
 
 NewLDAPSource instantiates a new LDAPSource object
 This constructor will assign default values to properties that have it defined,
@@ -923,6 +924,36 @@ SetPropertyMappingsGroup sets PropertyMappingsGroup field to given value.
 
 HasPropertyMappingsGroup returns a boolean if a field has been set.
 
+### GetConnectivity
+
+`func (o *LDAPSource) GetConnectivity() map[string]map[string]string`
+
+GetConnectivity returns the Connectivity field if non-nil, zero value otherwise.
+
+### GetConnectivityOk
+
+`func (o *LDAPSource) GetConnectivityOk() (*map[string]map[string]string, bool)`
+
+GetConnectivityOk returns a tuple with the Connectivity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectivity
+
+`func (o *LDAPSource) SetConnectivity(v map[string]map[string]string)`
+
+SetConnectivity sets Connectivity field to given value.
+
+
+### SetConnectivityNil
+
+`func (o *LDAPSource) SetConnectivityNil(b bool)`
+
+ SetConnectivityNil sets the value for Connectivity to be an explicit nil
+
+### UnsetConnectivity
+`func (o *LDAPSource) UnsetConnectivity()`
+
+UnsetConnectivity ensures that no value is present for Connectivity, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**SourcesLdapList**](SourcesApi.md#SourcesLdapList) | **Get** /sources/ldap/ | 
 [**SourcesLdapPartialUpdate**](SourcesApi.md#SourcesLdapPartialUpdate) | **Patch** /sources/ldap/{slug}/ | 
 [**SourcesLdapRetrieve**](SourcesApi.md#SourcesLdapRetrieve) | **Get** /sources/ldap/{slug}/ | 
-[**SourcesLdapSyncStatusList**](SourcesApi.md#SourcesLdapSyncStatusList) | **Get** /sources/ldap/{slug}/sync_status/ | 
+[**SourcesLdapSyncStatusRetrieve**](SourcesApi.md#SourcesLdapSyncStatusRetrieve) | **Get** /sources/ldap/{slug}/sync_status/ | 
 [**SourcesLdapUpdate**](SourcesApi.md#SourcesLdapUpdate) | **Put** /sources/ldap/{slug}/ | 
 [**SourcesLdapUsedByList**](SourcesApi.md#SourcesLdapUsedByList) | **Get** /sources/ldap/{slug}/used_by/ | 
 [**SourcesOauthCreate**](SourcesApi.md#SourcesOauthCreate) | **Post** /sources/oauth/ | 
@@ -1088,9 +1088,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SourcesLdapSyncStatusList
+## SourcesLdapSyncStatusRetrieve
 
-> []Task SourcesLdapSyncStatusList(ctx, slug).Execute()
+> LDAPSyncStatus SourcesLdapSyncStatusRetrieve(ctx, slug).Execute()
 
 
 
@@ -1113,13 +1113,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesLdapSyncStatusList(context.Background(), slug).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesLdapSyncStatusRetrieve(context.Background(), slug).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapSyncStatusList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapSyncStatusRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SourcesLdapSyncStatusList`: []Task
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesLdapSyncStatusList`: %v\n", resp)
+    // response from `SourcesLdapSyncStatusRetrieve`: LDAPSyncStatus
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesLdapSyncStatusRetrieve`: %v\n", resp)
 }
 ```
 
@@ -1133,7 +1133,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSourcesLdapSyncStatusListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiSourcesLdapSyncStatusRetrieveRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1142,7 +1142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Task**](Task.md)
+[**LDAPSyncStatus**](LDAPSyncStatus.md)
 
 ### Authorization
 
