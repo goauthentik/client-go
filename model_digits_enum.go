@@ -17,22 +17,22 @@ import (
 )
 
 // DigitsEnum * `6` - 6 digits, widely compatible * `8` - 8 digits, not compatible with apps like Google Authenticator
-type DigitsEnum int32
+type DigitsEnum string
 
 // List of DigitsEnum
 const (
-	DIGITSENUM__6 DigitsEnum = 6
-	DIGITSENUM__8 DigitsEnum = 8
+	DIGITSENUM__6 DigitsEnum = "6"
+	DIGITSENUM__8 DigitsEnum = "8"
 )
 
 // All allowed values of DigitsEnum enum
 var AllowedDigitsEnumEnumValues = []DigitsEnum{
-	6,
-	8,
+	"6",
+	"8",
 }
 
 func (v *DigitsEnum) UnmarshalJSON(src []byte) error {
-	var value int32
+	var value string
 	err := json.Unmarshal(src, &value)
 	if err != nil {
 		return err
@@ -50,7 +50,7 @@ func (v *DigitsEnum) UnmarshalJSON(src []byte) error {
 
 // NewDigitsEnumFromValue returns a pointer to a valid DigitsEnum
 // for the value passed as argument, or an error if the value passed is not allowed by the enum
-func NewDigitsEnumFromValue(v int32) (*DigitsEnum, error) {
+func NewDigitsEnumFromValue(v string) (*DigitsEnum, error) {
 	ev := DigitsEnum(v)
 	if ev.IsValid() {
 		return &ev, nil

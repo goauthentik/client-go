@@ -105,7 +105,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/System'
+                $ref: '#/components/schemas/SystemInfo'
           description: ""
         "400":
           content:
@@ -131,7 +131,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/System'
+                $ref: '#/components/schemas/SystemInfo'
           description: ""
         "400":
           content:
@@ -25039,9 +25039,9 @@ paths:
         required: false
         schema:
           enum:
-          - 6
-          - 8
-          type: integer
+          - "6"
+          - "8"
+          type: string
         style: form
       - explode: true
         in: query
@@ -32184,7 +32184,7 @@ components:
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
         name: name
-        digits: ""
+        digits: null
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
         - policy_engine_mode: null
@@ -32249,10 +32249,7 @@ components:
           nullable: true
           type: string
         digits:
-          allOf:
-          - $ref: '#/components/schemas/DigitsEnum'
-          maximum: 2147483647
-          minimum: -2147483648
+          $ref: '#/components/schemas/DigitsEnum'
       required:
       - component
       - digits
@@ -32268,7 +32265,7 @@ components:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         friendly_name: friendly_name
         name: name
-        digits: ""
+        digits: null
         flow_set:
         - policy_engine_mode: null
           compatibility_mode: true
@@ -32305,10 +32302,7 @@ components:
           nullable: true
           type: string
         digits:
-          allOf:
-          - $ref: '#/components/schemas/DigitsEnum'
-          maximum: 2147483647
-          minimum: -2147483648
+          $ref: '#/components/schemas/DigitsEnum'
       required:
       - digits
       - name
@@ -33735,9 +33729,9 @@ components:
         * `6` - 6 digits, widely compatible
         * `8` - 8 digits, not compatible with apps like Google Authenticator
       enum:
-      - 6
-      - 8
-      type: integer
+      - "6"
+      - "8"
+      type: string
     DockerServiceConnection:
       description: DockerServiceConnection Serializer
       example:
@@ -39825,7 +39819,7 @@ components:
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
           name: name
-          digits: ""
+          digits: null
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
           - policy_engine_mode: null
@@ -39859,7 +39853,7 @@ components:
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
           name: name
-          digits: ""
+          digits: null
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
           - policy_engine_mode: null
@@ -45922,7 +45916,7 @@ components:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         friendly_name: friendly_name
         name: name
-        digits: ""
+        digits: null
         flow_set:
         - policy_engine_mode: null
           compatibility_mode: true
@@ -45959,10 +45953,7 @@ components:
           nullable: true
           type: string
         digits:
-          allOf:
-          - $ref: '#/components/schemas/DigitsEnum'
-          maximum: 2147483647
-          minimum: -2147483648
+          $ref: '#/components/schemas/DigitsEnum'
       type: object
     PatchedAuthenticatorValidateStageRequest:
       description: AuthenticatorValidateStage Serializer
@@ -52924,7 +52915,7 @@ components:
       - user_email
       - user_upn
       type: string
-    System:
+    SystemInfo:
       description: Get system information.
       example:
         server_time: 2000-01-23T04:56:07.000+00:00
@@ -52957,7 +52948,7 @@ components:
           readOnly: true
           type: boolean
         runtime:
-          $ref: '#/components/schemas/System_runtime'
+          $ref: '#/components/schemas/SystemInfo_runtime'
         tenant:
           description: Currently active tenant
           readOnly: true
@@ -55153,7 +55144,7 @@ components:
       - lat
       - long
       type: object
-    System_runtime:
+    SystemInfo_runtime:
       description: Get versions
       example:
         environment: environment

@@ -4762,7 +4762,7 @@ type ApiStagesAuthenticatorTotpListRequest struct {
 	ctx           context.Context
 	ApiService    *StagesApiService
 	configureFlow *string
-	digits        *int32
+	digits        *string
 	friendlyName  *string
 	name          *string
 	ordering      *string
@@ -4778,7 +4778,7 @@ func (r ApiStagesAuthenticatorTotpListRequest) ConfigureFlow(configureFlow strin
 }
 
 // * &#x60;6&#x60; - 6 digits, widely compatible * &#x60;8&#x60; - 8 digits, not compatible with apps like Google Authenticator
-func (r ApiStagesAuthenticatorTotpListRequest) Digits(digits int32) ApiStagesAuthenticatorTotpListRequest {
+func (r ApiStagesAuthenticatorTotpListRequest) Digits(digits string) ApiStagesAuthenticatorTotpListRequest {
 	r.digits = &digits
 	return r
 }

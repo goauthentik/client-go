@@ -427,7 +427,7 @@ type ApiAdminSystemCreateRequest struct {
 	ApiService *AdminApiService
 }
 
-func (r ApiAdminSystemCreateRequest) Execute() (*System, *http.Response, error) {
+func (r ApiAdminSystemCreateRequest) Execute() (*SystemInfo, *http.Response, error) {
 	return r.ApiService.AdminSystemCreateExecute(r)
 }
 
@@ -448,13 +448,13 @@ func (a *AdminApiService) AdminSystemCreate(ctx context.Context) ApiAdminSystemC
 
 // Execute executes the request
 //
-//	@return System
-func (a *AdminApiService) AdminSystemCreateExecute(r ApiAdminSystemCreateRequest) (*System, *http.Response, error) {
+//	@return SystemInfo
+func (a *AdminApiService) AdminSystemCreateExecute(r ApiAdminSystemCreateRequest) (*SystemInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *System
+		localVarReturnValue *SystemInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminSystemCreate")
@@ -560,7 +560,7 @@ type ApiAdminSystemRetrieveRequest struct {
 	ApiService *AdminApiService
 }
 
-func (r ApiAdminSystemRetrieveRequest) Execute() (*System, *http.Response, error) {
+func (r ApiAdminSystemRetrieveRequest) Execute() (*SystemInfo, *http.Response, error) {
 	return r.ApiService.AdminSystemRetrieveExecute(r)
 }
 
@@ -581,13 +581,13 @@ func (a *AdminApiService) AdminSystemRetrieve(ctx context.Context) ApiAdminSyste
 
 // Execute executes the request
 //
-//	@return System
-func (a *AdminApiService) AdminSystemRetrieveExecute(r ApiAdminSystemRetrieveRequest) (*System, *http.Response, error) {
+//	@return SystemInfo
+func (a *AdminApiService) AdminSystemRetrieveExecute(r ApiAdminSystemRetrieveRequest) (*SystemInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *System
+		localVarReturnValue *SystemInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminSystemRetrieve")

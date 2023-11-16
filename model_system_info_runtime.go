@@ -15,8 +15,8 @@ import (
 	"encoding/json"
 )
 
-// SystemRuntime Get versions
-type SystemRuntime struct {
+// SystemInfoRuntime Get versions
+type SystemInfoRuntime struct {
 	PythonVersion   string `json:"python_version"`
 	GunicornVersion string `json:"gunicorn_version"`
 	Environment     string `json:"environment"`
@@ -25,12 +25,12 @@ type SystemRuntime struct {
 	Uname           string `json:"uname"`
 }
 
-// NewSystemRuntime instantiates a new SystemRuntime object
+// NewSystemInfoRuntime instantiates a new SystemInfoRuntime object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSystemRuntime(pythonVersion string, gunicornVersion string, environment string, architecture string, platform string, uname string) *SystemRuntime {
-	this := SystemRuntime{}
+func NewSystemInfoRuntime(pythonVersion string, gunicornVersion string, environment string, architecture string, platform string, uname string) *SystemInfoRuntime {
+	this := SystemInfoRuntime{}
 	this.PythonVersion = pythonVersion
 	this.GunicornVersion = gunicornVersion
 	this.Environment = environment
@@ -40,16 +40,16 @@ func NewSystemRuntime(pythonVersion string, gunicornVersion string, environment 
 	return &this
 }
 
-// NewSystemRuntimeWithDefaults instantiates a new SystemRuntime object
+// NewSystemInfoRuntimeWithDefaults instantiates a new SystemInfoRuntime object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSystemRuntimeWithDefaults() *SystemRuntime {
-	this := SystemRuntime{}
+func NewSystemInfoRuntimeWithDefaults() *SystemInfoRuntime {
+	this := SystemInfoRuntime{}
 	return &this
 }
 
 // GetPythonVersion returns the PythonVersion field value
-func (o *SystemRuntime) GetPythonVersion() string {
+func (o *SystemInfoRuntime) GetPythonVersion() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -60,7 +60,7 @@ func (o *SystemRuntime) GetPythonVersion() string {
 
 // GetPythonVersionOk returns a tuple with the PythonVersion field value
 // and a boolean to check if the value has been set.
-func (o *SystemRuntime) GetPythonVersionOk() (*string, bool) {
+func (o *SystemInfoRuntime) GetPythonVersionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -68,12 +68,12 @@ func (o *SystemRuntime) GetPythonVersionOk() (*string, bool) {
 }
 
 // SetPythonVersion sets field value
-func (o *SystemRuntime) SetPythonVersion(v string) {
+func (o *SystemInfoRuntime) SetPythonVersion(v string) {
 	o.PythonVersion = v
 }
 
 // GetGunicornVersion returns the GunicornVersion field value
-func (o *SystemRuntime) GetGunicornVersion() string {
+func (o *SystemInfoRuntime) GetGunicornVersion() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -84,7 +84,7 @@ func (o *SystemRuntime) GetGunicornVersion() string {
 
 // GetGunicornVersionOk returns a tuple with the GunicornVersion field value
 // and a boolean to check if the value has been set.
-func (o *SystemRuntime) GetGunicornVersionOk() (*string, bool) {
+func (o *SystemInfoRuntime) GetGunicornVersionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -92,12 +92,12 @@ func (o *SystemRuntime) GetGunicornVersionOk() (*string, bool) {
 }
 
 // SetGunicornVersion sets field value
-func (o *SystemRuntime) SetGunicornVersion(v string) {
+func (o *SystemInfoRuntime) SetGunicornVersion(v string) {
 	o.GunicornVersion = v
 }
 
 // GetEnvironment returns the Environment field value
-func (o *SystemRuntime) GetEnvironment() string {
+func (o *SystemInfoRuntime) GetEnvironment() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -108,7 +108,7 @@ func (o *SystemRuntime) GetEnvironment() string {
 
 // GetEnvironmentOk returns a tuple with the Environment field value
 // and a boolean to check if the value has been set.
-func (o *SystemRuntime) GetEnvironmentOk() (*string, bool) {
+func (o *SystemInfoRuntime) GetEnvironmentOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -116,12 +116,12 @@ func (o *SystemRuntime) GetEnvironmentOk() (*string, bool) {
 }
 
 // SetEnvironment sets field value
-func (o *SystemRuntime) SetEnvironment(v string) {
+func (o *SystemInfoRuntime) SetEnvironment(v string) {
 	o.Environment = v
 }
 
 // GetArchitecture returns the Architecture field value
-func (o *SystemRuntime) GetArchitecture() string {
+func (o *SystemInfoRuntime) GetArchitecture() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -132,7 +132,7 @@ func (o *SystemRuntime) GetArchitecture() string {
 
 // GetArchitectureOk returns a tuple with the Architecture field value
 // and a boolean to check if the value has been set.
-func (o *SystemRuntime) GetArchitectureOk() (*string, bool) {
+func (o *SystemInfoRuntime) GetArchitectureOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -140,12 +140,12 @@ func (o *SystemRuntime) GetArchitectureOk() (*string, bool) {
 }
 
 // SetArchitecture sets field value
-func (o *SystemRuntime) SetArchitecture(v string) {
+func (o *SystemInfoRuntime) SetArchitecture(v string) {
 	o.Architecture = v
 }
 
 // GetPlatform returns the Platform field value
-func (o *SystemRuntime) GetPlatform() string {
+func (o *SystemInfoRuntime) GetPlatform() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -156,7 +156,7 @@ func (o *SystemRuntime) GetPlatform() string {
 
 // GetPlatformOk returns a tuple with the Platform field value
 // and a boolean to check if the value has been set.
-func (o *SystemRuntime) GetPlatformOk() (*string, bool) {
+func (o *SystemInfoRuntime) GetPlatformOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -164,12 +164,12 @@ func (o *SystemRuntime) GetPlatformOk() (*string, bool) {
 }
 
 // SetPlatform sets field value
-func (o *SystemRuntime) SetPlatform(v string) {
+func (o *SystemInfoRuntime) SetPlatform(v string) {
 	o.Platform = v
 }
 
 // GetUname returns the Uname field value
-func (o *SystemRuntime) GetUname() string {
+func (o *SystemInfoRuntime) GetUname() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -180,7 +180,7 @@ func (o *SystemRuntime) GetUname() string {
 
 // GetUnameOk returns a tuple with the Uname field value
 // and a boolean to check if the value has been set.
-func (o *SystemRuntime) GetUnameOk() (*string, bool) {
+func (o *SystemInfoRuntime) GetUnameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -188,11 +188,11 @@ func (o *SystemRuntime) GetUnameOk() (*string, bool) {
 }
 
 // SetUname sets field value
-func (o *SystemRuntime) SetUname(v string) {
+func (o *SystemInfoRuntime) SetUname(v string) {
 	o.Uname = v
 }
 
-func (o SystemRuntime) MarshalJSON() ([]byte, error) {
+func (o SystemInfoRuntime) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["python_version"] = o.PythonVersion
@@ -215,38 +215,38 @@ func (o SystemRuntime) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableSystemRuntime struct {
-	value *SystemRuntime
+type NullableSystemInfoRuntime struct {
+	value *SystemInfoRuntime
 	isSet bool
 }
 
-func (v NullableSystemRuntime) Get() *SystemRuntime {
+func (v NullableSystemInfoRuntime) Get() *SystemInfoRuntime {
 	return v.value
 }
 
-func (v *NullableSystemRuntime) Set(val *SystemRuntime) {
+func (v *NullableSystemInfoRuntime) Set(val *SystemInfoRuntime) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSystemRuntime) IsSet() bool {
+func (v NullableSystemInfoRuntime) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSystemRuntime) Unset() {
+func (v *NullableSystemInfoRuntime) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSystemRuntime(val *SystemRuntime) *NullableSystemRuntime {
-	return &NullableSystemRuntime{value: val, isSet: true}
+func NewNullableSystemInfoRuntime(val *SystemInfoRuntime) *NullableSystemInfoRuntime {
+	return &NullableSystemInfoRuntime{value: val, isSet: true}
 }
 
-func (v NullableSystemRuntime) MarshalJSON() ([]byte, error) {
+func (v NullableSystemInfoRuntime) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSystemRuntime) UnmarshalJSON(src []byte) error {
+func (v *NullableSystemInfoRuntime) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

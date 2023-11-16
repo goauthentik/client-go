@@ -2314,7 +2314,7 @@ import (
 )
 
 func main() {
-    authenticatorTOTPStageRequest := *openapiclient.NewAuthenticatorTOTPStageRequest("Name_example", openapiclient.DigitsEnum(6)) // AuthenticatorTOTPStageRequest | 
+    authenticatorTOTPStageRequest := *openapiclient.NewAuthenticatorTOTPStageRequest("Name_example", openapiclient.DigitsEnum("6")) // AuthenticatorTOTPStageRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2449,7 +2449,7 @@ import (
 
 func main() {
     configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    digits := int32(56) // int32 | * `6` - 6 digits, widely compatible * `8` - 8 digits, not compatible with apps like Google Authenticator (optional)
+    digits := "digits_example" // string | * `6` - 6 digits, widely compatible * `8` - 8 digits, not compatible with apps like Google Authenticator (optional)
     friendlyName := "friendlyName_example" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
@@ -2482,7 +2482,7 @@ Other parameters are passed through a pointer to a apiStagesAuthenticatorTotpLis
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **configureFlow** | **string** |  | 
- **digits** | **int32** | * &#x60;6&#x60; - 6 digits, widely compatible * &#x60;8&#x60; - 8 digits, not compatible with apps like Google Authenticator | 
+ **digits** | **string** | * &#x60;6&#x60; - 6 digits, widely compatible * &#x60;8&#x60; - 8 digits, not compatible with apps like Google Authenticator | 
  **friendlyName** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
@@ -2673,7 +2673,7 @@ import (
 
 func main() {
     stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this TOTP Authenticator Setup Stage.
-    authenticatorTOTPStageRequest := *openapiclient.NewAuthenticatorTOTPStageRequest("Name_example", openapiclient.DigitsEnum(6)) // AuthenticatorTOTPStageRequest | 
+    authenticatorTOTPStageRequest := *openapiclient.NewAuthenticatorTOTPStageRequest("Name_example", openapiclient.DigitsEnum("6")) // AuthenticatorTOTPStageRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

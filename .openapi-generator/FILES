@@ -484,8 +484,8 @@ docs/StaticDeviceRequest.md
 docs/StaticDeviceToken.md
 docs/StaticDeviceTokenRequest.md
 docs/SubModeEnum.md
-docs/System.md
-docs/SystemRuntime.md
+docs/SystemInfo.md
+docs/SystemInfoRuntime.md
 docs/TOTPDevice.md
 docs/TOTPDeviceRequest.md
 docs/Task.md
@@ -991,8 +991,8 @@ model_static_device_request.go
 model_static_device_token.go
 model_static_device_token_request.go
 model_sub_mode_enum.go
-model_system.go
-model_system_runtime.go
+model_system_info.go
+model_system_info_runtime.go
 model_task.go
 model_task_status_enum.go
 model_tenant.go

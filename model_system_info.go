@@ -16,15 +16,15 @@ import (
 	"time"
 )
 
-// System Get system information.
-type System struct {
+// SystemInfo Get system information.
+type SystemInfo struct {
 	// Get HTTP Request headers
 	HttpHeaders map[string]string `json:"http_headers"`
 	// Get HTTP host
 	HttpHost string `json:"http_host"`
 	// Get HTTP Secure flag
-	HttpIsSecure bool          `json:"http_is_secure"`
-	Runtime      SystemRuntime `json:"runtime"`
+	HttpIsSecure bool              `json:"http_is_secure"`
+	Runtime      SystemInfoRuntime `json:"runtime"`
 	// Currently active tenant
 	Tenant string `json:"tenant"`
 	// Current server time
@@ -33,12 +33,12 @@ type System struct {
 	EmbeddedOutpostHost string `json:"embedded_outpost_host"`
 }
 
-// NewSystem instantiates a new System object
+// NewSystemInfo instantiates a new SystemInfo object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSystem(httpHeaders map[string]string, httpHost string, httpIsSecure bool, runtime SystemRuntime, tenant string, serverTime time.Time, embeddedOutpostHost string) *System {
-	this := System{}
+func NewSystemInfo(httpHeaders map[string]string, httpHost string, httpIsSecure bool, runtime SystemInfoRuntime, tenant string, serverTime time.Time, embeddedOutpostHost string) *SystemInfo {
+	this := SystemInfo{}
 	this.HttpHeaders = httpHeaders
 	this.HttpHost = httpHost
 	this.HttpIsSecure = httpIsSecure
@@ -49,16 +49,16 @@ func NewSystem(httpHeaders map[string]string, httpHost string, httpIsSecure bool
 	return &this
 }
 
-// NewSystemWithDefaults instantiates a new System object
+// NewSystemInfoWithDefaults instantiates a new SystemInfo object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSystemWithDefaults() *System {
-	this := System{}
+func NewSystemInfoWithDefaults() *SystemInfo {
+	this := SystemInfo{}
 	return &this
 }
 
 // GetHttpHeaders returns the HttpHeaders field value
-func (o *System) GetHttpHeaders() map[string]string {
+func (o *SystemInfo) GetHttpHeaders() map[string]string {
 	if o == nil {
 		var ret map[string]string
 		return ret
@@ -69,7 +69,7 @@ func (o *System) GetHttpHeaders() map[string]string {
 
 // GetHttpHeadersOk returns a tuple with the HttpHeaders field value
 // and a boolean to check if the value has been set.
-func (o *System) GetHttpHeadersOk() (*map[string]string, bool) {
+func (o *SystemInfo) GetHttpHeadersOk() (*map[string]string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -77,12 +77,12 @@ func (o *System) GetHttpHeadersOk() (*map[string]string, bool) {
 }
 
 // SetHttpHeaders sets field value
-func (o *System) SetHttpHeaders(v map[string]string) {
+func (o *SystemInfo) SetHttpHeaders(v map[string]string) {
 	o.HttpHeaders = v
 }
 
 // GetHttpHost returns the HttpHost field value
-func (o *System) GetHttpHost() string {
+func (o *SystemInfo) GetHttpHost() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -93,7 +93,7 @@ func (o *System) GetHttpHost() string {
 
 // GetHttpHostOk returns a tuple with the HttpHost field value
 // and a boolean to check if the value has been set.
-func (o *System) GetHttpHostOk() (*string, bool) {
+func (o *SystemInfo) GetHttpHostOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -101,12 +101,12 @@ func (o *System) GetHttpHostOk() (*string, bool) {
 }
 
 // SetHttpHost sets field value
-func (o *System) SetHttpHost(v string) {
+func (o *SystemInfo) SetHttpHost(v string) {
 	o.HttpHost = v
 }
 
 // GetHttpIsSecure returns the HttpIsSecure field value
-func (o *System) GetHttpIsSecure() bool {
+func (o *SystemInfo) GetHttpIsSecure() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -117,7 +117,7 @@ func (o *System) GetHttpIsSecure() bool {
 
 // GetHttpIsSecureOk returns a tuple with the HttpIsSecure field value
 // and a boolean to check if the value has been set.
-func (o *System) GetHttpIsSecureOk() (*bool, bool) {
+func (o *SystemInfo) GetHttpIsSecureOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -125,14 +125,14 @@ func (o *System) GetHttpIsSecureOk() (*bool, bool) {
 }
 
 // SetHttpIsSecure sets field value
-func (o *System) SetHttpIsSecure(v bool) {
+func (o *SystemInfo) SetHttpIsSecure(v bool) {
 	o.HttpIsSecure = v
 }
 
 // GetRuntime returns the Runtime field value
-func (o *System) GetRuntime() SystemRuntime {
+func (o *SystemInfo) GetRuntime() SystemInfoRuntime {
 	if o == nil {
-		var ret SystemRuntime
+		var ret SystemInfoRuntime
 		return ret
 	}
 
@@ -141,7 +141,7 @@ func (o *System) GetRuntime() SystemRuntime {
 
 // GetRuntimeOk returns a tuple with the Runtime field value
 // and a boolean to check if the value has been set.
-func (o *System) GetRuntimeOk() (*SystemRuntime, bool) {
+func (o *SystemInfo) GetRuntimeOk() (*SystemInfoRuntime, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -149,12 +149,12 @@ func (o *System) GetRuntimeOk() (*SystemRuntime, bool) {
 }
 
 // SetRuntime sets field value
-func (o *System) SetRuntime(v SystemRuntime) {
+func (o *SystemInfo) SetRuntime(v SystemInfoRuntime) {
 	o.Runtime = v
 }
 
 // GetTenant returns the Tenant field value
-func (o *System) GetTenant() string {
+func (o *SystemInfo) GetTenant() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -165,7 +165,7 @@ func (o *System) GetTenant() string {
 
 // GetTenantOk returns a tuple with the Tenant field value
 // and a boolean to check if the value has been set.
-func (o *System) GetTenantOk() (*string, bool) {
+func (o *SystemInfo) GetTenantOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -173,12 +173,12 @@ func (o *System) GetTenantOk() (*string, bool) {
 }
 
 // SetTenant sets field value
-func (o *System) SetTenant(v string) {
+func (o *SystemInfo) SetTenant(v string) {
 	o.Tenant = v
 }
 
 // GetServerTime returns the ServerTime field value
-func (o *System) GetServerTime() time.Time {
+func (o *SystemInfo) GetServerTime() time.Time {
 	if o == nil {
 		var ret time.Time
 		return ret
@@ -189,7 +189,7 @@ func (o *System) GetServerTime() time.Time {
 
 // GetServerTimeOk returns a tuple with the ServerTime field value
 // and a boolean to check if the value has been set.
-func (o *System) GetServerTimeOk() (*time.Time, bool) {
+func (o *SystemInfo) GetServerTimeOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -197,12 +197,12 @@ func (o *System) GetServerTimeOk() (*time.Time, bool) {
 }
 
 // SetServerTime sets field value
-func (o *System) SetServerTime(v time.Time) {
+func (o *SystemInfo) SetServerTime(v time.Time) {
 	o.ServerTime = v
 }
 
 // GetEmbeddedOutpostHost returns the EmbeddedOutpostHost field value
-func (o *System) GetEmbeddedOutpostHost() string {
+func (o *SystemInfo) GetEmbeddedOutpostHost() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -213,7 +213,7 @@ func (o *System) GetEmbeddedOutpostHost() string {
 
 // GetEmbeddedOutpostHostOk returns a tuple with the EmbeddedOutpostHost field value
 // and a boolean to check if the value has been set.
-func (o *System) GetEmbeddedOutpostHostOk() (*string, bool) {
+func (o *SystemInfo) GetEmbeddedOutpostHostOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -221,11 +221,11 @@ func (o *System) GetEmbeddedOutpostHostOk() (*string, bool) {
 }
 
 // SetEmbeddedOutpostHost sets field value
-func (o *System) SetEmbeddedOutpostHost(v string) {
+func (o *SystemInfo) SetEmbeddedOutpostHost(v string) {
 	o.EmbeddedOutpostHost = v
 }
 
-func (o System) MarshalJSON() ([]byte, error) {
+func (o SystemInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["http_headers"] = o.HttpHeaders
@@ -251,38 +251,38 @@ func (o System) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableSystem struct {
-	value *System
+type NullableSystemInfo struct {
+	value *SystemInfo
 	isSet bool
 }
 
-func (v NullableSystem) Get() *System {
+func (v NullableSystemInfo) Get() *SystemInfo {
 	return v.value
 }
 
-func (v *NullableSystem) Set(val *System) {
+func (v *NullableSystemInfo) Set(val *SystemInfo) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSystem) IsSet() bool {
+func (v NullableSystemInfo) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSystem) Unset() {
+func (v *NullableSystemInfo) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSystem(val *System) *NullableSystem {
-	return &NullableSystem{value: val, isSet: true}
+func NewNullableSystemInfo(val *SystemInfo) *NullableSystemInfo {
+	return &NullableSystemInfo{value: val, isSet: true}
 }
 
-func (v NullableSystem) MarshalJSON() ([]byte, error) {
+func (v NullableSystemInfo) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSystem) UnmarshalJSON(src []byte) error {
+func (v *NullableSystemInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

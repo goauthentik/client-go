@@ -202,7 +202,7 @@ Other parameters are passed through a pointer to a apiAdminModelsListRequest str
 
 ## AdminSystemCreate
 
-> System AdminSystemCreate(ctx).Execute()
+> SystemInfo AdminSystemCreate(ctx).Execute()
 
 
 
@@ -229,7 +229,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminSystemCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AdminSystemCreate`: System
+    // response from `AdminSystemCreate`: SystemInfo
     fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminSystemCreate`: %v\n", resp)
 }
 ```
@@ -245,7 +245,7 @@ Other parameters are passed through a pointer to a apiAdminSystemCreateRequest s
 
 ### Return type
 
-[**System**](System.md)
+[**SystemInfo**](SystemInfo.md)
 
 ### Authorization
 
@@ -263,7 +263,7 @@ Other parameters are passed through a pointer to a apiAdminSystemCreateRequest s
 
 ## AdminSystemRetrieve
 
-> System AdminSystemRetrieve(ctx).Execute()
+> SystemInfo AdminSystemRetrieve(ctx).Execute()
 
 
 
@@ -290,7 +290,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminSystemRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AdminSystemRetrieve`: System
+    // response from `AdminSystemRetrieve`: SystemInfo
     fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminSystemRetrieve`: %v\n", resp)
 }
 ```
@@ -306,7 +306,7 @@ Other parameters are passed through a pointer to a apiAdminSystemRetrieveRequest
 
 ### Return type
 
-[**System**](System.md)
+[**SystemInfo**](SystemInfo.md)
 
 ### Authorization
 
