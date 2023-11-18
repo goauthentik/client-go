@@ -36286,6 +36286,7 @@ components:
           designation: ""
           title: title
           slug: slug
+        pretend_user_exists: true
         passwordless_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         component: component
@@ -36375,6 +36376,10 @@ components:
           type: array
         show_source_labels:
           type: boolean
+        pretend_user_exists:
+          description: "When enabled, the stage will succeed and continue even when\
+            \ incorrect user info is entered."
+          type: boolean
       required:
       - component
       - meta_model_name
@@ -36416,6 +36421,7 @@ components:
           title: title
           slug: slug
         recovery_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        pretend_user_exists: true
         case_insensitive_matching: true
       properties:
         name:
@@ -36471,6 +36477,10 @@ components:
             type: string
           type: array
         show_source_labels:
+          type: boolean
+        pretend_user_exists:
+          description: "When enabled, the stage will succeed and continue even when\
+            \ incorrect user info is entered."
           type: boolean
       required:
       - name
@@ -41278,6 +41288,7 @@ components:
             designation: ""
             title: title
             slug: slug
+          pretend_user_exists: true
           passwordless_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
@@ -41322,6 +41333,7 @@ components:
             designation: ""
             title: title
             slug: slug
+          pretend_user_exists: true
           passwordless_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
@@ -46808,6 +46820,7 @@ components:
           title: title
           slug: slug
         recovery_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        pretend_user_exists: true
         case_insensitive_matching: true
       properties:
         name:
@@ -46863,6 +46876,10 @@ components:
             type: string
           type: array
         show_source_labels:
+          type: boolean
+        pretend_user_exists:
+          description: "When enabled, the stage will succeed and continue even when\
+            \ incorrect user info is entered."
           type: boolean
       type: object
     PatchedInvitationRequest:

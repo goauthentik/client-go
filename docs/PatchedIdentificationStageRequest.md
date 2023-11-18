@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **PasswordlessFlow** | Pointer to **NullableString** | Optional passwordless flow, which is linked at the bottom of the page. | [optional] 
 **Sources** | Pointer to **[]string** | Specify which sources should be shown. | [optional] 
 **ShowSourceLabels** | Pointer to **bool** |  | [optional] 
+**PretendUserExists** | Pointer to **bool** | When enabled, the stage will succeed and continue even when incorrect user info is entered. | [optional] 
 
 ## Methods
 
@@ -349,6 +350,31 @@ SetShowSourceLabels sets ShowSourceLabels field to given value.
 `func (o *PatchedIdentificationStageRequest) HasShowSourceLabels() bool`
 
 HasShowSourceLabels returns a boolean if a field has been set.
+
+### GetPretendUserExists
+
+`func (o *PatchedIdentificationStageRequest) GetPretendUserExists() bool`
+
+GetPretendUserExists returns the PretendUserExists field if non-nil, zero value otherwise.
+
+### GetPretendUserExistsOk
+
+`func (o *PatchedIdentificationStageRequest) GetPretendUserExistsOk() (*bool, bool)`
+
+GetPretendUserExistsOk returns a tuple with the PretendUserExists field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPretendUserExists
+
+`func (o *PatchedIdentificationStageRequest) SetPretendUserExists(v bool)`
+
+SetPretendUserExists sets PretendUserExists field to given value.
+
+### HasPretendUserExists
+
+`func (o *PatchedIdentificationStageRequest) HasPretendUserExists() bool`
+
+HasPretendUserExists returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

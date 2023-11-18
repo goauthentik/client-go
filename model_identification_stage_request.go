@@ -36,6 +36,8 @@ type IdentificationStageRequest struct {
 	// Specify which sources should be shown.
 	Sources          []string `json:"sources,omitempty"`
 	ShowSourceLabels *bool    `json:"show_source_labels,omitempty"`
+	// When enabled, the stage will succeed and continue even when incorrect user info is entered.
+	PretendUserExists *bool `json:"pretend_user_exists,omitempty"`
 }
 
 // NewIdentificationStageRequest instantiates a new IdentificationStageRequest object
@@ -444,6 +446,38 @@ func (o *IdentificationStageRequest) SetShowSourceLabels(v bool) {
 	o.ShowSourceLabels = &v
 }
 
+// GetPretendUserExists returns the PretendUserExists field value if set, zero value otherwise.
+func (o *IdentificationStageRequest) GetPretendUserExists() bool {
+	if o == nil || o.PretendUserExists == nil {
+		var ret bool
+		return ret
+	}
+	return *o.PretendUserExists
+}
+
+// GetPretendUserExistsOk returns a tuple with the PretendUserExists field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentificationStageRequest) GetPretendUserExistsOk() (*bool, bool) {
+	if o == nil || o.PretendUserExists == nil {
+		return nil, false
+	}
+	return o.PretendUserExists, true
+}
+
+// HasPretendUserExists returns a boolean if a field has been set.
+func (o *IdentificationStageRequest) HasPretendUserExists() bool {
+	if o != nil && o.PretendUserExists != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPretendUserExists gets a reference to the given bool and assigns it to the PretendUserExists field.
+func (o *IdentificationStageRequest) SetPretendUserExists(v bool) {
+	o.PretendUserExists = &v
+}
+
 func (o IdentificationStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -478,6 +512,9 @@ func (o IdentificationStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.ShowSourceLabels != nil {
 		toSerialize["show_source_labels"] = o.ShowSourceLabels
+	}
+	if o.PretendUserExists != nil {
+		toSerialize["pretend_user_exists"] = o.PretendUserExists
 	}
 	return json.Marshal(toSerialize)
 }
