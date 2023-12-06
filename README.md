@@ -200,6 +200,7 @@ Class | Method | HTTP request | Description
 *EventsApi* | [**EventsEventsRetrieve**](docs/EventsApi.md#eventseventsretrieve) | **Get** /events/events/{event_uuid}/ | 
 *EventsApi* | [**EventsEventsTopPerUserList**](docs/EventsApi.md#eventseventstopperuserlist) | **Get** /events/events/top_per_user/ | 
 *EventsApi* | [**EventsEventsUpdate**](docs/EventsApi.md#eventseventsupdate) | **Put** /events/events/{event_uuid}/ | 
+*EventsApi* | [**EventsEventsVolumeList**](docs/EventsApi.md#eventseventsvolumelist) | **Get** /events/events/volume/ | 
 *EventsApi* | [**EventsNotificationsDestroy**](docs/EventsApi.md#eventsnotificationsdestroy) | **Delete** /events/notifications/{uuid}/ | 
 *EventsApi* | [**EventsNotificationsList**](docs/EventsApi.md#eventsnotificationslist) | **Get** /events/notifications/ | 
 *EventsApi* | [**EventsNotificationsMarkAllSeenCreate**](docs/EventsApi.md#eventsnotificationsmarkallseencreate) | **Post** /events/notifications/mark_all_seen/ | 

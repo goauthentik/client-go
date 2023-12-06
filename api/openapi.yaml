@@ -6890,6 +6890,114 @@ paths:
       - authentik: []
       tags:
       - events
+  /events/events/volume/:
+    get:
+      description: Get event volume for specified filters and timeframe
+      operationId: events_events_volume_list
+      parameters:
+      - explode: true
+        in: query
+        name: action
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: client_ip
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Context Authorized application
+        explode: true
+        in: query
+        name: context_authorized_app
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Context Model App
+        explode: true
+        in: query
+        name: context_model_app
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Context Model Name
+        explode: true
+        in: query
+        name: context_model_name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Context Model Primary Key
+        explode: true
+        in: query
+        name: context_model_pk
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Tenant name
+        explode: true
+        in: query
+        name: tenant_name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Username
+        explode: true
+        in: query
+        name: username
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Coordinate'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - events
   /events/notifications/:
     get:
       description: Notification Viewset

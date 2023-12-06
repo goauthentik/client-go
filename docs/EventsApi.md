@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**EventsEventsRetrieve**](EventsApi.md#EventsEventsRetrieve) | **Get** /events/events/{event_uuid}/ | 
 [**EventsEventsTopPerUserList**](EventsApi.md#EventsEventsTopPerUserList) | **Get** /events/events/top_per_user/ | 
 [**EventsEventsUpdate**](EventsApi.md#EventsEventsUpdate) | **Put** /events/events/{event_uuid}/ | 
+[**EventsEventsVolumeList**](EventsApi.md#EventsEventsVolumeList) | **Get** /events/events/volume/ | 
 [**EventsNotificationsDestroy**](EventsApi.md#EventsNotificationsDestroy) | **Delete** /events/notifications/{uuid}/ | 
 [**EventsNotificationsList**](EventsApi.md#EventsNotificationsList) | **Get** /events/notifications/ | 
 [**EventsNotificationsMarkAllSeenCreate**](EventsApi.md#EventsNotificationsMarkAllSeenCreate) | **Post** /events/notifications/mark_all_seen/ | 
@@ -664,6 +665,90 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EventsEventsVolumeList
+
+> []Coordinate EventsEventsVolumeList(ctx).Action(action).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Search(search).TenantName(tenantName).Username(username).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    action := "action_example" // string |  (optional)
+    clientIp := "clientIp_example" // string |  (optional)
+    contextAuthorizedApp := "contextAuthorizedApp_example" // string | Context Authorized application (optional)
+    contextModelApp := "contextModelApp_example" // string | Context Model App (optional)
+    contextModelName := "contextModelName_example" // string | Context Model Name (optional)
+    contextModelPk := "contextModelPk_example" // string | Context Model Primary Key (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    search := "search_example" // string | A search term. (optional)
+    tenantName := "tenantName_example" // string | Tenant name (optional)
+    username := "username_example" // string | Username (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsEventsVolumeList(context.Background()).Action(action).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Search(search).TenantName(tenantName).Username(username).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsVolumeList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsEventsVolumeList`: []Coordinate
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsEventsVolumeList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEventsEventsVolumeListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **action** | **string** |  | 
+ **clientIp** | **string** |  | 
+ **contextAuthorizedApp** | **string** | Context Authorized application | 
+ **contextModelApp** | **string** | Context Model App | 
+ **contextModelName** | **string** | Context Model Name | 
+ **contextModelPk** | **string** | Context Model Primary Key | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **search** | **string** | A search term. | 
+ **tenantName** | **string** | Tenant name | 
+ **username** | **string** | Username | 
+
+### Return type
+
+[**[]Coordinate**](Coordinate.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
