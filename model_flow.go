@@ -36,8 +36,8 @@ type Flow struct {
 	// Enable compatibility mode, increases compatibility with password managers on mobile devices.
 	CompatibilityMode *bool `json:"compatibility_mode,omitempty"`
 	// Get export URL for flow
-	ExportUrl string      `json:"export_url"`
-	Layout    *LayoutEnum `json:"layout,omitempty"`
+	ExportUrl string          `json:"export_url"`
+	Layout    *FlowLayoutEnum `json:"layout,omitempty"`
 	// Configure what should happen when a flow denies access to a user.  * `message_continue` - Message Continue * `message` - Message * `continue` - Continue
 	DeniedAction *DeniedActionEnum `json:"denied_action,omitempty"`
 	// Required level of authentication and authorization to access a flow.  * `none` - None * `require_authenticated` - Require Authenticated * `require_unauthenticated` - Require Unauthenticated * `require_superuser` - Require Superuser
@@ -401,9 +401,9 @@ func (o *Flow) SetExportUrl(v string) {
 }
 
 // GetLayout returns the Layout field value if set, zero value otherwise.
-func (o *Flow) GetLayout() LayoutEnum {
+func (o *Flow) GetLayout() FlowLayoutEnum {
 	if o == nil || o.Layout == nil {
-		var ret LayoutEnum
+		var ret FlowLayoutEnum
 		return ret
 	}
 	return *o.Layout
@@ -411,7 +411,7 @@ func (o *Flow) GetLayout() LayoutEnum {
 
 // GetLayoutOk returns a tuple with the Layout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Flow) GetLayoutOk() (*LayoutEnum, bool) {
+func (o *Flow) GetLayoutOk() (*FlowLayoutEnum, bool) {
 	if o == nil || o.Layout == nil {
 		return nil, false
 	}
@@ -427,8 +427,8 @@ func (o *Flow) HasLayout() bool {
 	return false
 }
 
-// SetLayout gets a reference to the given LayoutEnum and assigns it to the Layout field.
-func (o *Flow) SetLayout(v LayoutEnum) {
+// SetLayout gets a reference to the given FlowLayoutEnum and assigns it to the Layout field.
+func (o *Flow) SetLayout(v FlowLayoutEnum) {
 	o.Layout = &v
 }
 

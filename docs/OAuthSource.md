@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 **Type** | [**SourceType**](SourceType.md) |  | [readonly] 
 **OidcWellKnownUrl** | Pointer to **string** |  | [optional] 
 **OidcJwksUrl** | Pointer to **string** |  | [optional] 
-**OidcJwks** | Pointer to **map[string]interface{}** |  | [optional] 
+**OidcJwks** | Pointer to **interface{}** |  | [optional] 
 
 ## Methods
 
@@ -718,20 +718,20 @@ HasOidcJwksUrl returns a boolean if a field has been set.
 
 ### GetOidcJwks
 
-`func (o *OAuthSource) GetOidcJwks() map[string]interface{}`
+`func (o *OAuthSource) GetOidcJwks() interface{}`
 
 GetOidcJwks returns the OidcJwks field if non-nil, zero value otherwise.
 
 ### GetOidcJwksOk
 
-`func (o *OAuthSource) GetOidcJwksOk() (*map[string]interface{}, bool)`
+`func (o *OAuthSource) GetOidcJwksOk() (*interface{}, bool)`
 
 GetOidcJwksOk returns a tuple with the OidcJwks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOidcJwks
 
-`func (o *OAuthSource) SetOidcJwks(v map[string]interface{})`
+`func (o *OAuthSource) SetOidcJwks(v interface{})`
 
 SetOidcJwks sets OidcJwks field to given value.
 
@@ -741,6 +741,16 @@ SetOidcJwks sets OidcJwks field to given value.
 
 HasOidcJwks returns a boolean if a field has been set.
 
+### SetOidcJwksNil
+
+`func (o *OAuthSource) SetOidcJwksNil(b bool)`
+
+ SetOidcJwksNil sets the value for OidcJwks to be an explicit nil
+
+### UnsetOidcJwks
+`func (o *OAuthSource) UnsetOidcJwks()`
+
+UnsetOidcJwks ensures that no value is present for OidcJwks, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

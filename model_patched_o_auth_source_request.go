@@ -38,13 +38,13 @@ type PatchedOAuthSourceRequest struct {
 	// URL used by authentik to retrieve tokens.
 	AccessTokenUrl NullableString `json:"access_token_url,omitempty"`
 	// URL used by authentik to get user information.
-	ProfileUrl       NullableString         `json:"profile_url,omitempty"`
-	ConsumerKey      *string                `json:"consumer_key,omitempty"`
-	ConsumerSecret   *string                `json:"consumer_secret,omitempty"`
-	AdditionalScopes *string                `json:"additional_scopes,omitempty"`
-	OidcWellKnownUrl *string                `json:"oidc_well_known_url,omitempty"`
-	OidcJwksUrl      *string                `json:"oidc_jwks_url,omitempty"`
-	OidcJwks         map[string]interface{} `json:"oidc_jwks,omitempty"`
+	ProfileUrl       NullableString `json:"profile_url,omitempty"`
+	ConsumerKey      *string        `json:"consumer_key,omitempty"`
+	ConsumerSecret   *string        `json:"consumer_secret,omitempty"`
+	AdditionalScopes *string        `json:"additional_scopes,omitempty"`
+	OidcWellKnownUrl *string        `json:"oidc_well_known_url,omitempty"`
+	OidcJwksUrl      *string        `json:"oidc_jwks_url,omitempty"`
+	OidcJwks         interface{}    `json:"oidc_jwks,omitempty"`
 }
 
 // NewPatchedOAuthSourceRequest instantiates a new PatchedOAuthSourceRequest object
@@ -706,10 +706,10 @@ func (o *PatchedOAuthSourceRequest) SetOidcJwksUrl(v string) {
 	o.OidcJwksUrl = &v
 }
 
-// GetOidcJwks returns the OidcJwks field value if set, zero value otherwise.
-func (o *PatchedOAuthSourceRequest) GetOidcJwks() map[string]interface{} {
-	if o == nil || o.OidcJwks == nil {
-		var ret map[string]interface{}
+// GetOidcJwks returns the OidcJwks field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedOAuthSourceRequest) GetOidcJwks() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.OidcJwks
@@ -717,11 +717,12 @@ func (o *PatchedOAuthSourceRequest) GetOidcJwks() map[string]interface{} {
 
 // GetOidcJwksOk returns a tuple with the OidcJwks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedOAuthSourceRequest) GetOidcJwksOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedOAuthSourceRequest) GetOidcJwksOk() (*interface{}, bool) {
 	if o == nil || o.OidcJwks == nil {
 		return nil, false
 	}
-	return o.OidcJwks, true
+	return &o.OidcJwks, true
 }
 
 // HasOidcJwks returns a boolean if a field has been set.
@@ -733,8 +734,8 @@ func (o *PatchedOAuthSourceRequest) HasOidcJwks() bool {
 	return false
 }
 
-// SetOidcJwks gets a reference to the given map[string]interface{} and assigns it to the OidcJwks field.
-func (o *PatchedOAuthSourceRequest) SetOidcJwks(v map[string]interface{}) {
+// SetOidcJwks gets a reference to the given interface{} and assigns it to the OidcJwks field.
+func (o *PatchedOAuthSourceRequest) SetOidcJwks(v interface{}) {
 	o.OidcJwks = v
 }
 

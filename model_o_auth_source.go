@@ -54,12 +54,12 @@ type OAuthSource struct {
 	ProfileUrl  NullableString `json:"profile_url,omitempty"`
 	ConsumerKey string         `json:"consumer_key"`
 	// Get OAuth Callback URL
-	CallbackUrl      string                 `json:"callback_url"`
-	AdditionalScopes *string                `json:"additional_scopes,omitempty"`
-	Type             SourceType             `json:"type"`
-	OidcWellKnownUrl *string                `json:"oidc_well_known_url,omitempty"`
-	OidcJwksUrl      *string                `json:"oidc_jwks_url,omitempty"`
-	OidcJwks         map[string]interface{} `json:"oidc_jwks,omitempty"`
+	CallbackUrl      string      `json:"callback_url"`
+	AdditionalScopes *string     `json:"additional_scopes,omitempty"`
+	Type             SourceType  `json:"type"`
+	OidcWellKnownUrl *string     `json:"oidc_well_known_url,omitempty"`
+	OidcJwksUrl      *string     `json:"oidc_jwks_url,omitempty"`
+	OidcJwks         interface{} `json:"oidc_jwks,omitempty"`
 }
 
 // NewOAuthSource instantiates a new OAuthSource object
@@ -890,10 +890,10 @@ func (o *OAuthSource) SetOidcJwksUrl(v string) {
 	o.OidcJwksUrl = &v
 }
 
-// GetOidcJwks returns the OidcJwks field value if set, zero value otherwise.
-func (o *OAuthSource) GetOidcJwks() map[string]interface{} {
-	if o == nil || o.OidcJwks == nil {
-		var ret map[string]interface{}
+// GetOidcJwks returns the OidcJwks field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OAuthSource) GetOidcJwks() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.OidcJwks
@@ -901,11 +901,12 @@ func (o *OAuthSource) GetOidcJwks() map[string]interface{} {
 
 // GetOidcJwksOk returns a tuple with the OidcJwks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OAuthSource) GetOidcJwksOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OAuthSource) GetOidcJwksOk() (*interface{}, bool) {
 	if o == nil || o.OidcJwks == nil {
 		return nil, false
 	}
-	return o.OidcJwks, true
+	return &o.OidcJwks, true
 }
 
 // HasOidcJwks returns a boolean if a field has been set.
@@ -917,8 +918,8 @@ func (o *OAuthSource) HasOidcJwks() bool {
 	return false
 }
 
-// SetOidcJwks gets a reference to the given map[string]interface{} and assigns it to the OidcJwks field.
-func (o *OAuthSource) SetOidcJwks(v map[string]interface{}) {
+// SetOidcJwks gets a reference to the given interface{} and assigns it to the OidcJwks field.
+func (o *OAuthSource) SetOidcJwks(v interface{}) {
 	o.OidcJwks = v
 }
 

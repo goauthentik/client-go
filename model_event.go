@@ -18,15 +18,15 @@ import (
 
 // Event Event Serializer
 type Event struct {
-	Pk       string                 `json:"pk"`
-	User     map[string]interface{} `json:"user,omitempty"`
-	Action   EventActions           `json:"action"`
-	App      string                 `json:"app"`
-	Context  map[string]interface{} `json:"context,omitempty"`
-	ClientIp NullableString         `json:"client_ip,omitempty"`
-	Created  time.Time              `json:"created"`
-	Expires  *time.Time             `json:"expires,omitempty"`
-	Tenant   map[string]interface{} `json:"tenant,omitempty"`
+	Pk       string         `json:"pk"`
+	User     interface{}    `json:"user,omitempty"`
+	Action   EventActions   `json:"action"`
+	App      string         `json:"app"`
+	Context  interface{}    `json:"context,omitempty"`
+	ClientIp NullableString `json:"client_ip,omitempty"`
+	Created  time.Time      `json:"created"`
+	Expires  *time.Time     `json:"expires,omitempty"`
+	Tenant   interface{}    `json:"tenant,omitempty"`
 }
 
 // NewEvent instantiates a new Event object
@@ -74,10 +74,10 @@ func (o *Event) SetPk(v string) {
 	o.Pk = v
 }
 
-// GetUser returns the User field value if set, zero value otherwise.
-func (o *Event) GetUser() map[string]interface{} {
-	if o == nil || o.User == nil {
-		var ret map[string]interface{}
+// GetUser returns the User field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Event) GetUser() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.User
@@ -85,11 +85,12 @@ func (o *Event) GetUser() map[string]interface{} {
 
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Event) GetUserOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Event) GetUserOk() (*interface{}, bool) {
 	if o == nil || o.User == nil {
 		return nil, false
 	}
-	return o.User, true
+	return &o.User, true
 }
 
 // HasUser returns a boolean if a field has been set.
@@ -101,8 +102,8 @@ func (o *Event) HasUser() bool {
 	return false
 }
 
-// SetUser gets a reference to the given map[string]interface{} and assigns it to the User field.
-func (o *Event) SetUser(v map[string]interface{}) {
+// SetUser gets a reference to the given interface{} and assigns it to the User field.
+func (o *Event) SetUser(v interface{}) {
 	o.User = v
 }
 
@@ -154,10 +155,10 @@ func (o *Event) SetApp(v string) {
 	o.App = v
 }
 
-// GetContext returns the Context field value if set, zero value otherwise.
-func (o *Event) GetContext() map[string]interface{} {
-	if o == nil || o.Context == nil {
-		var ret map[string]interface{}
+// GetContext returns the Context field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Event) GetContext() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.Context
@@ -165,11 +166,12 @@ func (o *Event) GetContext() map[string]interface{} {
 
 // GetContextOk returns a tuple with the Context field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Event) GetContextOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Event) GetContextOk() (*interface{}, bool) {
 	if o == nil || o.Context == nil {
 		return nil, false
 	}
-	return o.Context, true
+	return &o.Context, true
 }
 
 // HasContext returns a boolean if a field has been set.
@@ -181,8 +183,8 @@ func (o *Event) HasContext() bool {
 	return false
 }
 
-// SetContext gets a reference to the given map[string]interface{} and assigns it to the Context field.
-func (o *Event) SetContext(v map[string]interface{}) {
+// SetContext gets a reference to the given interface{} and assigns it to the Context field.
+func (o *Event) SetContext(v interface{}) {
 	o.Context = v
 }
 
@@ -285,10 +287,10 @@ func (o *Event) SetExpires(v time.Time) {
 	o.Expires = &v
 }
 
-// GetTenant returns the Tenant field value if set, zero value otherwise.
-func (o *Event) GetTenant() map[string]interface{} {
-	if o == nil || o.Tenant == nil {
-		var ret map[string]interface{}
+// GetTenant returns the Tenant field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Event) GetTenant() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.Tenant
@@ -296,11 +298,12 @@ func (o *Event) GetTenant() map[string]interface{} {
 
 // GetTenantOk returns a tuple with the Tenant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Event) GetTenantOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Event) GetTenantOk() (*interface{}, bool) {
 	if o == nil || o.Tenant == nil {
 		return nil, false
 	}
-	return o.Tenant, true
+	return &o.Tenant, true
 }
 
 // HasTenant returns a boolean if a field has been set.
@@ -312,8 +315,8 @@ func (o *Event) HasTenant() bool {
 	return false
 }
 
-// SetTenant gets a reference to the given map[string]interface{} and assigns it to the Tenant field.
-func (o *Event) SetTenant(v map[string]interface{}) {
+// SetTenant gets a reference to the given interface{} and assigns it to the Tenant field.
+func (o *Event) SetTenant(v interface{}) {
 	o.Tenant = v
 }
 

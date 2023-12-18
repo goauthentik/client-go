@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Designation** | [**FlowDesignationEnum**](FlowDesignationEnum.md) | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.  * &#x60;authentication&#x60; - Authentication * &#x60;authorization&#x60; - Authorization * &#x60;invalidation&#x60; - Invalidation * &#x60;enrollment&#x60; - Enrollment * &#x60;unenrollment&#x60; - Unrenollment * &#x60;recovery&#x60; - Recovery * &#x60;stage_configuration&#x60; - Stage Configuration | 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **CompatibilityMode** | Pointer to **bool** | Enable compatibility mode, increases compatibility with password managers on mobile devices. | [optional] 
-**Layout** | Pointer to [**LayoutEnum**](LayoutEnum.md) |  | [optional] 
+**Layout** | Pointer to [**FlowLayoutEnum**](FlowLayoutEnum.md) |  | [optional] 
 **DeniedAction** | Pointer to [**DeniedActionEnum**](DeniedActionEnum.md) | Configure what should happen when a flow denies access to a user.  * &#x60;message_continue&#x60; - Message Continue * &#x60;message&#x60; - Message * &#x60;continue&#x60; - Continue | [optional] 
 
 ## Methods
@@ -164,20 +164,20 @@ HasCompatibilityMode returns a boolean if a field has been set.
 
 ### GetLayout
 
-`func (o *FlowSetRequest) GetLayout() LayoutEnum`
+`func (o *FlowSetRequest) GetLayout() FlowLayoutEnum`
 
 GetLayout returns the Layout field if non-nil, zero value otherwise.
 
 ### GetLayoutOk
 
-`func (o *FlowSetRequest) GetLayoutOk() (*LayoutEnum, bool)`
+`func (o *FlowSetRequest) GetLayoutOk() (*FlowLayoutEnum, bool)`
 
 GetLayoutOk returns a tuple with the Layout field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLayout
 
-`func (o *FlowSetRequest) SetLayout(v LayoutEnum)`
+`func (o *FlowSetRequest) SetLayout(v FlowLayoutEnum)`
 
 SetLayout sets Layout field to given value.
 

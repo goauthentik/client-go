@@ -26,8 +26,8 @@ type FlowRequest struct {
 	Designation      FlowDesignationEnum `json:"designation"`
 	PolicyEngineMode *PolicyEngineMode   `json:"policy_engine_mode,omitempty"`
 	// Enable compatibility mode, increases compatibility with password managers on mobile devices.
-	CompatibilityMode *bool       `json:"compatibility_mode,omitempty"`
-	Layout            *LayoutEnum `json:"layout,omitempty"`
+	CompatibilityMode *bool           `json:"compatibility_mode,omitempty"`
+	Layout            *FlowLayoutEnum `json:"layout,omitempty"`
 	// Configure what should happen when a flow denies access to a user.  * `message_continue` - Message Continue * `message` - Message * `continue` - Continue
 	DeniedAction *DeniedActionEnum `json:"denied_action,omitempty"`
 	// Required level of authentication and authorization to access a flow.  * `none` - None * `require_authenticated` - Require Authenticated * `require_unauthenticated` - Require Unauthenticated * `require_superuser` - Require Superuser
@@ -216,9 +216,9 @@ func (o *FlowRequest) SetCompatibilityMode(v bool) {
 }
 
 // GetLayout returns the Layout field value if set, zero value otherwise.
-func (o *FlowRequest) GetLayout() LayoutEnum {
+func (o *FlowRequest) GetLayout() FlowLayoutEnum {
 	if o == nil || o.Layout == nil {
-		var ret LayoutEnum
+		var ret FlowLayoutEnum
 		return ret
 	}
 	return *o.Layout
@@ -226,7 +226,7 @@ func (o *FlowRequest) GetLayout() LayoutEnum {
 
 // GetLayoutOk returns a tuple with the Layout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FlowRequest) GetLayoutOk() (*LayoutEnum, bool) {
+func (o *FlowRequest) GetLayoutOk() (*FlowLayoutEnum, bool) {
 	if o == nil || o.Layout == nil {
 		return nil, false
 	}
@@ -242,8 +242,8 @@ func (o *FlowRequest) HasLayout() bool {
 	return false
 }
 
-// SetLayout gets a reference to the given LayoutEnum and assigns it to the Layout field.
-func (o *FlowRequest) SetLayout(v LayoutEnum) {
+// SetLayout gets a reference to the given FlowLayoutEnum and assigns it to the Layout field.
+func (o *FlowRequest) SetLayout(v FlowLayoutEnum) {
 	o.Layout = &v
 }
 

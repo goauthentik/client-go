@@ -20404,6 +20404,7 @@ paths:
           - tr
           - tt
           - udm
+          - ug
           - uk
           - ur
           - uz
@@ -32775,16 +32776,14 @@ components:
       description: Info about a single blueprint instance file
       example:
         path: path
-        metadata:
-          key: ""
+        metadata: ""
         last_applied_hash: last_applied_hash
         managed_models:
         - managed_models
         - managed_models
         last_applied: 2000-01-23T04:56:07.000+00:00
         name: name
-        context:
-          key: ""
+        context: ""
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enabled: true
         content: content
@@ -32800,9 +32799,7 @@ components:
         path:
           default: ""
           type: string
-        context:
-          additionalProperties: {}
-          type: object
+        context: {}
         last_applied:
           format: date-time
           readOnly: true
@@ -32822,9 +32819,7 @@ components:
           readOnly: true
           type: array
         metadata:
-          additionalProperties: {}
           readOnly: true
-          type: object
         content:
           type: string
       required:
@@ -32841,8 +32836,7 @@ components:
       example:
         path: path
         name: name
-        context:
-          key: ""
+        context: ""
         enabled: true
         content: content
       properties:
@@ -32852,9 +32846,7 @@ components:
         path:
           default: ""
           type: string
-        context:
-          additionalProperties: {}
-          type: object
+        context: {}
         enabled:
           type: boolean
         content:
@@ -33530,11 +33522,25 @@ components:
         cancel_url:
           type: string
         layout:
-          $ref: '#/components/schemas/LayoutEnum'
+          $ref: '#/components/schemas/ContextualFlowInfoLayoutEnum'
       required:
       - cancel_url
       - layout
       type: object
+    ContextualFlowInfoLayoutEnum:
+      description: |-
+        * `stacked` - STACKED
+        * `content_left` - CONTENT_LEFT
+        * `content_right` - CONTENT_RIGHT
+        * `sidebar_left` - SIDEBAR_LEFT
+        * `sidebar_right` - SIDEBAR_RIGHT
+      enum:
+      - stacked
+      - content_left
+      - content_right
+      - sidebar_left
+      - sidebar_right
+      type: string
     Coordinate:
       description: Coordinates for diagrams
       example:
@@ -34510,31 +34516,24 @@ components:
         app: app
         expires: 2000-01-23T04:56:07.000+00:00
         created: 2000-01-23T04:56:07.000+00:00
-        context:
-          key: ""
+        context: ""
         action: null
         client_ip: client_ip
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        user:
-          key: ""
-        tenant:
-          key: ""
+        user: ""
+        tenant: ""
       properties:
         pk:
           format: uuid
           readOnly: true
           title: Event uuid
           type: string
-        user:
-          additionalProperties: {}
-          type: object
+        user: {}
         action:
           $ref: '#/components/schemas/EventActions'
         app:
           type: string
-        context:
-          additionalProperties: {}
-          type: object
+        context: {}
         client_ip:
           nullable: true
           type: string
@@ -34545,9 +34544,7 @@ components:
         expires:
           format: date-time
           type: string
-        tenant:
-          additionalProperties: {}
-          type: object
+        tenant: {}
       required:
       - action
       - app
@@ -35046,26 +35043,19 @@ components:
       example:
         app: app
         expires: 2000-01-23T04:56:07.000+00:00
-        context:
-          key: ""
+        context: ""
         action: null
         client_ip: client_ip
-        user:
-          key: ""
-        tenant:
-          key: ""
+        user: ""
+        tenant: ""
       properties:
-        user:
-          additionalProperties: {}
-          type: object
+        user: {}
         action:
           $ref: '#/components/schemas/EventActions'
         app:
           minLength: 1
           type: string
-        context:
-          additionalProperties: {}
-          type: object
+        context: {}
         client_ip:
           minLength: 1
           nullable: true
@@ -35073,9 +35063,7 @@ components:
         expires:
           format: date-time
           type: string
-        tenant:
-          additionalProperties: {}
-          type: object
+        tenant: {}
       required:
       - action
       - app
@@ -35508,7 +35496,7 @@ components:
           readOnly: true
           type: string
         layout:
-          $ref: '#/components/schemas/LayoutEnum'
+          $ref: '#/components/schemas/FlowLayoutEnum'
         denied_action:
           allOf:
           - $ref: '#/components/schemas/DeniedActionEnum'
@@ -35728,6 +35716,20 @@ components:
       - plan_context
       - session_id
       type: object
+    FlowLayoutEnum:
+      description: |-
+        * `stacked` - Stacked
+        * `content_left` - Content Left
+        * `content_right` - Content Right
+        * `sidebar_left` - Sidebar Left
+        * `sidebar_right` - Sidebar Right
+      enum:
+      - stacked
+      - content_left
+      - content_right
+      - sidebar_left
+      - sidebar_right
+      type: string
     FlowRequest:
       description: Flow Serializer
       example:
@@ -35774,7 +35776,7 @@ components:
             \ managers on mobile devices."
           type: boolean
         layout:
-          $ref: '#/components/schemas/LayoutEnum'
+          $ref: '#/components/schemas/FlowLayoutEnum'
         denied_action:
           allOf:
           - $ref: '#/components/schemas/DeniedActionEnum'
@@ -35865,7 +35867,7 @@ components:
           readOnly: true
           type: string
         layout:
-          $ref: '#/components/schemas/LayoutEnum'
+          $ref: '#/components/schemas/FlowLayoutEnum'
         denied_action:
           allOf:
           - $ref: '#/components/schemas/DeniedActionEnum'
@@ -35930,7 +35932,7 @@ components:
             \ managers on mobile devices."
           type: boolean
         layout:
-          $ref: '#/components/schemas/LayoutEnum'
+          $ref: '#/components/schemas/FlowLayoutEnum'
         denied_action:
           allOf:
           - $ref: '#/components/schemas/DeniedActionEnum'
@@ -36839,8 +36841,7 @@ components:
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         local: true
-        kubeconfig:
-          key: ""
+        kubeconfig: ""
       properties:
         pk:
           format: uuid
@@ -36869,10 +36870,8 @@ components:
           readOnly: true
           type: string
         kubeconfig:
-          additionalProperties: {}
           description: Paste your kubeconfig here. authentik will automatically use
             the currently selected context.
-          type: object
         verify_ssl:
           description: Verify SSL Certificates of the Kubernetes API endpoint
           type: boolean
@@ -36890,8 +36889,7 @@ components:
         verify_ssl: true
         name: name
         local: true
-        kubeconfig:
-          key: ""
+        kubeconfig: ""
       properties:
         name:
           minLength: 1
@@ -36901,10 +36899,8 @@ components:
             \ Integration"
           type: boolean
         kubeconfig:
-          additionalProperties: {}
           description: Paste your kubeconfig here. authentik will automatically use
             the currently selected context.
-          type: object
         verify_ssl:
           description: Verify SSL Certificates of the Kubernetes API endpoint
           type: boolean
@@ -37745,20 +37741,6 @@ components:
       - is_running
       - tasks
       type: object
-    LayoutEnum:
-      description: |-
-        * `stacked` - STACKED
-        * `content_left` - CONTENT_LEFT
-        * `content_right` - CONTENT_RIGHT
-        * `sidebar_left` - SIDEBAR_LEFT
-        * `sidebar_right` - SIDEBAR_RIGHT
-      enum:
-      - stacked
-      - content_left
-      - content_right
-      - sidebar_left
-      - sidebar_right
-      type: string
     License:
       description: License Serializer
       example:
@@ -38141,15 +38123,12 @@ components:
           app: app
           expires: 2000-01-23T04:56:07.000+00:00
           created: 2000-01-23T04:56:07.000+00:00
-          context:
-            key: ""
+          context: ""
           action: null
           client_ip: client_ip
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          user:
-            key: ""
-          tenant:
-            key: ""
+          user: ""
+          tenant: ""
         seen: true
       properties:
         pk:
@@ -38184,14 +38163,11 @@ components:
         event:
           app: app
           expires: 2000-01-23T04:56:07.000+00:00
-          context:
-            key: ""
+          context: ""
           action: null
           client_ip: client_ip
-          user:
-            key: ""
-          tenant:
-            key: ""
+          user: ""
+          tenant: ""
         seen: true
       properties:
         event:
@@ -38811,8 +38787,7 @@ components:
         request_token_url: request_token_url
         profile_url: profile_url
         icon: icon
-        oidc_jwks:
-          key: ""
+        oidc_jwks: ""
         type: ""
         additional_scopes: additional_scopes
         enabled: true
@@ -38945,9 +38920,7 @@ components:
           type: string
         oidc_jwks_url:
           type: string
-        oidc_jwks:
-          additionalProperties: {}
-          type: object
+        oidc_jwks: {}
       required:
       - callback_url
       - component
@@ -38974,8 +38947,7 @@ components:
         request_token_url: request_token_url
         profile_url: profile_url
         authorization_url: authorization_url
-        oidc_jwks:
-          key: ""
+        oidc_jwks: ""
         additional_scopes: additional_scopes
         enabled: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -39065,9 +39037,7 @@ components:
           type: string
         oidc_jwks_url:
           type: string
-        oidc_jwks:
-          additionalProperties: {}
-          type: object
+        oidc_jwks: {}
       required:
       - consumer_key
       - consumer_secret
@@ -40123,31 +40093,27 @@ components:
           total_pages: 5.637376656633329
         results:
         - path: path
-          metadata:
-            key: ""
+          metadata: ""
           last_applied_hash: last_applied_hash
           managed_models:
           - managed_models
           - managed_models
           last_applied: 2000-01-23T04:56:07.000+00:00
           name: name
-          context:
-            key: ""
+          context: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enabled: true
           content: content
           status: ""
         - path: path
-          metadata:
-            key: ""
+          metadata: ""
           last_applied_hash: last_applied_hash
           managed_models:
           - managed_models
           - managed_models
           last_applied: 2000-01-23T04:56:07.000+00:00
           name: name
-          context:
-            key: ""
+          context: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enabled: true
           content: content
@@ -40791,27 +40757,21 @@ components:
         - app: app
           expires: 2000-01-23T04:56:07.000+00:00
           created: 2000-01-23T04:56:07.000+00:00
-          context:
-            key: ""
+          context: ""
           action: null
           client_ip: client_ip
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          user:
-            key: ""
-          tenant:
-            key: ""
+          user: ""
+          tenant: ""
         - app: app
           expires: 2000-01-23T04:56:07.000+00:00
           created: 2000-01-23T04:56:07.000+00:00
-          context:
-            key: ""
+          context: ""
           action: null
           client_ip: client_ip
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          user:
-            key: ""
-          tenant:
-            key: ""
+          user: ""
+          tenant: ""
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -41612,8 +41572,7 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           local: true
-          kubeconfig:
-            key: ""
+          kubeconfig: ""
         - component: component
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
@@ -41622,8 +41581,7 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           local: true
-          kubeconfig:
-            key: ""
+          kubeconfig: ""
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -41956,15 +41914,12 @@ components:
             app: app
             expires: 2000-01-23T04:56:07.000+00:00
             created: 2000-01-23T04:56:07.000+00:00
-            context:
-              key: ""
+            context: ""
             action: null
             client_ip: client_ip
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            user:
-              key: ""
-            tenant:
-              key: ""
+            user: ""
+            tenant: ""
           seen: true
         - severity: ""
           created: 2000-01-23T04:56:07.000+00:00
@@ -41974,15 +41929,12 @@ components:
             app: app
             expires: 2000-01-23T04:56:07.000+00:00
             created: 2000-01-23T04:56:07.000+00:00
-            context:
-              key: ""
+            context: ""
             action: null
             client_ip: client_ip
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            user:
-              key: ""
-            tenant:
-              key: ""
+            user: ""
+            tenant: ""
           seen: true
       properties:
         pagination:
@@ -42194,8 +42146,7 @@ components:
           request_token_url: request_token_url
           profile_url: profile_url
           icon: icon
-          oidc_jwks:
-            key: ""
+          oidc_jwks: ""
           type: ""
           additional_scopes: additional_scopes
           enabled: true
@@ -42222,8 +42173,7 @@ components:
           request_token_url: request_token_url
           profile_url: profile_url
           icon: icon
-          oidc_jwks:
-            key: ""
+          oidc_jwks: ""
           type: ""
           additional_scopes: additional_scopes
           enabled: true
@@ -43414,15 +43364,13 @@ components:
         results:
         - identifier: identifier
           score: -7746104769210155008
-          ip_geo_data:
-            key: ""
+          ip_geo_data: ""
           ip: ip
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated: 2000-01-23T04:56:07.000+00:00
         - identifier: identifier
           score: -7746104769210155008
-          ip_geo_data:
-            key: ""
+          ip_geo_data: ""
           ip: ip
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated: 2000-01-23T04:56:07.000+00:00
@@ -44184,8 +44132,7 @@ components:
           tenant_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           domain: domain
           flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          attributes:
-            key: ""
+          attributes: ""
           branding_title: branding_title
           branding_favicon: branding_favicon
           flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -44200,8 +44147,7 @@ components:
           tenant_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           domain: domain
           flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          attributes:
-            key: ""
+          attributes: ""
           branding_title: branding_title
           branding_favicon: branding_favicon
           flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -46148,8 +46094,7 @@ components:
       example:
         path: path
         name: name
-        context:
-          key: ""
+        context: ""
         enabled: true
         content: content
       properties:
@@ -46159,9 +46104,7 @@ components:
         path:
           default: ""
           type: string
-        context:
-          additionalProperties: {}
-          type: object
+        context: {}
         enabled:
           type: boolean
         content:
@@ -46701,26 +46644,19 @@ components:
       example:
         app: app
         expires: 2000-01-23T04:56:07.000+00:00
-        context:
-          key: ""
+        context: ""
         action: null
         client_ip: client_ip
-        user:
-          key: ""
-        tenant:
-          key: ""
+        user: ""
+        tenant: ""
       properties:
-        user:
-          additionalProperties: {}
-          type: object
+        user: {}
         action:
           $ref: '#/components/schemas/EventActions'
         app:
           minLength: 1
           type: string
-        context:
-          additionalProperties: {}
-          type: object
+        context: {}
         client_ip:
           minLength: 1
           nullable: true
@@ -46728,9 +46664,7 @@ components:
         expires:
           format: date-time
           type: string
-        tenant:
-          additionalProperties: {}
-          type: object
+        tenant: {}
       type: object
     PatchedExpressionPolicyRequest:
       description: Group Membership Policy Serializer
@@ -46796,7 +46730,7 @@ components:
             \ managers on mobile devices."
           type: boolean
         layout:
-          $ref: '#/components/schemas/LayoutEnum'
+          $ref: '#/components/schemas/FlowLayoutEnum'
         denied_action:
           allOf:
           - $ref: '#/components/schemas/DeniedActionEnum'
@@ -47062,8 +46996,7 @@ components:
         verify_ssl: true
         name: name
         local: true
-        kubeconfig:
-          key: ""
+        kubeconfig: ""
       properties:
         name:
           minLength: 1
@@ -47073,10 +47006,8 @@ components:
             \ Integration"
           type: boolean
         kubeconfig:
-          additionalProperties: {}
           description: Paste your kubeconfig here. authentik will automatically use
             the currently selected context.
-          type: object
         verify_ssl:
           description: Verify SSL Certificates of the Kubernetes API endpoint
           type: boolean
@@ -47355,14 +47286,11 @@ components:
         event:
           app: app
           expires: 2000-01-23T04:56:07.000+00:00
-          context:
-            key: ""
+          context: ""
           action: null
           client_ip: client_ip
-          user:
-            key: ""
-          tenant:
-            key: ""
+          user: ""
+          tenant: ""
         seen: true
       properties:
         event:
@@ -47571,8 +47499,7 @@ components:
         request_token_url: request_token_url
         profile_url: profile_url
         authorization_url: authorization_url
-        oidc_jwks:
-          key: ""
+        oidc_jwks: ""
         additional_scopes: additional_scopes
         enabled: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -47662,9 +47589,7 @@ components:
           type: string
         oidc_jwks_url:
           type: string
-        oidc_jwks:
-          additionalProperties: {}
-          type: object
+        oidc_jwks: {}
       type: object
     PatchedOutpostRequest:
       description: Outpost Serializer
@@ -48747,8 +48672,7 @@ components:
         flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         domain: domain
         flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        attributes:
-          key: ""
+        attributes: ""
         branding_title: branding_title
         branding_favicon: branding_favicon
         flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -48803,9 +48727,7 @@ components:
           format: uuid
           nullable: true
           type: string
-        attributes:
-          additionalProperties: {}
-          type: object
+        attributes: {}
       type: object
     PatchedTokenRequest:
       description: Token Serializer
@@ -51088,8 +51010,7 @@ components:
       example:
         identifier: identifier
         score: -7746104769210155008
-        ip_geo_data:
-          key: ""
+        ip_geo_data: ""
         ip: ip
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         updated: 2000-01-23T04:56:07.000+00:00
@@ -51102,9 +51023,7 @@ components:
           type: string
         ip:
           type: string
-        ip_geo_data:
-          additionalProperties: {}
-          type: object
+        ip_geo_data: {}
         score:
           format: int64
           maximum: 9223372036854775807
@@ -53188,8 +53107,7 @@ components:
         tenant_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         domain: domain
         flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        attributes:
-          key: ""
+        attributes: ""
         branding_title: branding_title
         branding_favicon: branding_favicon
         flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -53243,9 +53161,7 @@ components:
           format: uuid
           nullable: true
           type: string
-        attributes:
-          additionalProperties: {}
-          type: object
+        attributes: {}
       required:
       - domain
       - tenant_uuid
@@ -53262,8 +53178,7 @@ components:
         flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         domain: domain
         flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        attributes:
-          key: ""
+        attributes: ""
         branding_title: branding_title
         branding_favicon: branding_favicon
         flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -53318,9 +53233,7 @@ components:
           format: uuid
           nullable: true
           type: string
-        attributes:
-          additionalProperties: {}
-          type: object
+        attributes: {}
       required:
       - domain
       type: object

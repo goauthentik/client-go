@@ -32,8 +32,8 @@ type TenantRequest struct {
 	// Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2).
 	EventRetention *string `json:"event_retention,omitempty"`
 	// Web Certificate used by the authentik Core webserver.
-	WebCertificate NullableString         `json:"web_certificate,omitempty"`
-	Attributes     map[string]interface{} `json:"attributes,omitempty"`
+	WebCertificate NullableString `json:"web_certificate,omitempty"`
+	Attributes     interface{}    `json:"attributes,omitempty"`
 }
 
 // NewTenantRequest instantiates a new TenantRequest object
@@ -539,10 +539,10 @@ func (o *TenantRequest) UnsetWebCertificate() {
 	o.WebCertificate.Unset()
 }
 
-// GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *TenantRequest) GetAttributes() map[string]interface{} {
-	if o == nil || o.Attributes == nil {
-		var ret map[string]interface{}
+// GetAttributes returns the Attributes field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TenantRequest) GetAttributes() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.Attributes
@@ -550,11 +550,12 @@ func (o *TenantRequest) GetAttributes() map[string]interface{} {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TenantRequest) GetAttributesOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TenantRequest) GetAttributesOk() (*interface{}, bool) {
 	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
-	return o.Attributes, true
+	return &o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
@@ -566,8 +567,8 @@ func (o *TenantRequest) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
-func (o *TenantRequest) SetAttributes(v map[string]interface{}) {
+// SetAttributes gets a reference to the given interface{} and assigns it to the Attributes field.
+func (o *TenantRequest) SetAttributes(v interface{}) {
 	o.Attributes = v
 }
 

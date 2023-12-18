@@ -32,8 +32,8 @@ type FlowSet struct {
 	// Enable compatibility mode, increases compatibility with password managers on mobile devices.
 	CompatibilityMode *bool `json:"compatibility_mode,omitempty"`
 	// Get export URL for flow
-	ExportUrl string      `json:"export_url"`
-	Layout    *LayoutEnum `json:"layout,omitempty"`
+	ExportUrl string          `json:"export_url"`
+	Layout    *FlowLayoutEnum `json:"layout,omitempty"`
 	// Configure what should happen when a flow denies access to a user.  * `message_continue` - Message Continue * `message` - Message * `continue` - Continue
 	DeniedAction *DeniedActionEnum `json:"denied_action,omitempty"`
 }
@@ -320,9 +320,9 @@ func (o *FlowSet) SetExportUrl(v string) {
 }
 
 // GetLayout returns the Layout field value if set, zero value otherwise.
-func (o *FlowSet) GetLayout() LayoutEnum {
+func (o *FlowSet) GetLayout() FlowLayoutEnum {
 	if o == nil || o.Layout == nil {
-		var ret LayoutEnum
+		var ret FlowLayoutEnum
 		return ret
 	}
 	return *o.Layout
@@ -330,7 +330,7 @@ func (o *FlowSet) GetLayout() LayoutEnum {
 
 // GetLayoutOk returns a tuple with the Layout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FlowSet) GetLayoutOk() (*LayoutEnum, bool) {
+func (o *FlowSet) GetLayoutOk() (*FlowLayoutEnum, bool) {
 	if o == nil || o.Layout == nil {
 		return nil, false
 	}
@@ -346,8 +346,8 @@ func (o *FlowSet) HasLayout() bool {
 	return false
 }
 
-// SetLayout gets a reference to the given LayoutEnum and assigns it to the Layout field.
-func (o *FlowSet) SetLayout(v LayoutEnum) {
+// SetLayout gets a reference to the given FlowLayoutEnum and assigns it to the Layout field.
+func (o *FlowSet) SetLayout(v FlowLayoutEnum) {
 	o.Layout = &v
 }
 

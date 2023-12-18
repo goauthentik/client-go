@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **CompatibilityMode** | Pointer to **bool** | Enable compatibility mode, increases compatibility with password managers on mobile devices. | [optional] 
 **ExportUrl** | **string** | Get export URL for flow | [readonly] 
-**Layout** | Pointer to [**LayoutEnum**](LayoutEnum.md) |  | [optional] 
+**Layout** | Pointer to [**FlowLayoutEnum**](FlowLayoutEnum.md) |  | [optional] 
 **DeniedAction** | Pointer to [**DeniedActionEnum**](DeniedActionEnum.md) | Configure what should happen when a flow denies access to a user.  * &#x60;message_continue&#x60; - Message Continue * &#x60;message&#x60; - Message * &#x60;continue&#x60; - Continue | [optional] 
 **Authentication** | Pointer to [**AuthenticationEnum**](AuthenticationEnum.md) | Required level of authentication and authorization to access a flow.  * &#x60;none&#x60; - None * &#x60;require_authenticated&#x60; - Require Authenticated * &#x60;require_unauthenticated&#x60; - Require Unauthenticated * &#x60;require_superuser&#x60; - Require Superuser | [optional] 
 
@@ -312,20 +312,20 @@ SetExportUrl sets ExportUrl field to given value.
 
 ### GetLayout
 
-`func (o *Flow) GetLayout() LayoutEnum`
+`func (o *Flow) GetLayout() FlowLayoutEnum`
 
 GetLayout returns the Layout field if non-nil, zero value otherwise.
 
 ### GetLayoutOk
 
-`func (o *Flow) GetLayoutOk() (*LayoutEnum, bool)`
+`func (o *Flow) GetLayoutOk() (*FlowLayoutEnum, bool)`
 
 GetLayoutOk returns a tuple with the Layout field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLayout
 
-`func (o *Flow) SetLayout(v LayoutEnum)`
+`func (o *Flow) SetLayout(v FlowLayoutEnum)`
 
 SetLayout sets Layout field to given value.
 

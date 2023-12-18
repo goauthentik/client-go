@@ -17,17 +17,17 @@ import (
 
 // ContextualFlowInfo Contextual flow information for a challenge
 type ContextualFlowInfo struct {
-	Title      *string    `json:"title,omitempty"`
-	Background *string    `json:"background,omitempty"`
-	CancelUrl  string     `json:"cancel_url"`
-	Layout     LayoutEnum `json:"layout"`
+	Title      *string                      `json:"title,omitempty"`
+	Background *string                      `json:"background,omitempty"`
+	CancelUrl  string                       `json:"cancel_url"`
+	Layout     ContextualFlowInfoLayoutEnum `json:"layout"`
 }
 
 // NewContextualFlowInfo instantiates a new ContextualFlowInfo object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContextualFlowInfo(cancelUrl string, layout LayoutEnum) *ContextualFlowInfo {
+func NewContextualFlowInfo(cancelUrl string, layout ContextualFlowInfoLayoutEnum) *ContextualFlowInfo {
 	this := ContextualFlowInfo{}
 	this.CancelUrl = cancelUrl
 	this.Layout = layout
@@ -131,9 +131,9 @@ func (o *ContextualFlowInfo) SetCancelUrl(v string) {
 }
 
 // GetLayout returns the Layout field value
-func (o *ContextualFlowInfo) GetLayout() LayoutEnum {
+func (o *ContextualFlowInfo) GetLayout() ContextualFlowInfoLayoutEnum {
 	if o == nil {
-		var ret LayoutEnum
+		var ret ContextualFlowInfoLayoutEnum
 		return ret
 	}
 
@@ -142,7 +142,7 @@ func (o *ContextualFlowInfo) GetLayout() LayoutEnum {
 
 // GetLayoutOk returns a tuple with the Layout field value
 // and a boolean to check if the value has been set.
-func (o *ContextualFlowInfo) GetLayoutOk() (*LayoutEnum, bool) {
+func (o *ContextualFlowInfo) GetLayoutOk() (*ContextualFlowInfoLayoutEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -150,7 +150,7 @@ func (o *ContextualFlowInfo) GetLayoutOk() (*LayoutEnum, bool) {
 }
 
 // SetLayout sets field value
-func (o *ContextualFlowInfo) SetLayout(v LayoutEnum) {
+func (o *ContextualFlowInfo) SetLayout(v ContextualFlowInfoLayoutEnum) {
 	o.Layout = v
 }
 

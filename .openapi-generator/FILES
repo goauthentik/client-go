@@ -95,6 +95,7 @@ docs/ConsentStage.md
 docs/ConsentStageModeEnum.md
 docs/ConsentStageRequest.md
 docs/ContextualFlowInfo.md
+docs/ContextualFlowInfoLayoutEnum.md
 docs/Coordinate.md
 docs/CoreApi.md
 docs/CryptoApi.md
@@ -148,6 +149,7 @@ docs/FlowErrorChallenge.md
 docs/FlowImportResult.md
 docs/FlowInspection.md
 docs/FlowInspectorPlan.md
+docs/FlowLayoutEnum.md
 docs/FlowRequest.md
 docs/FlowSet.md
 docs/FlowSetRequest.md
@@ -184,7 +186,6 @@ docs/LDAPProviderRequest.md
 docs/LDAPSource.md
 docs/LDAPSourceRequest.md
 docs/LDAPSyncStatus.md
-docs/LayoutEnum.md
 docs/License.md
 docs/LicenseForecast.md
 docs/LicenseRequest.md
@@ -618,6 +619,7 @@ model_consent_stage.go
 model_consent_stage_mode_enum.go
 model_consent_stage_request.go
 model_contextual_flow_info.go
+model_contextual_flow_info_layout_enum.go
 model_coordinate.go
 model_current_tenant.go
 model_denied_action_enum.go
@@ -667,6 +669,7 @@ model_flow_error_challenge.go
 model_flow_import_result.go
 model_flow_inspection.go
 model_flow_inspector_plan.go
+model_flow_layout_enum.go
 model_flow_request.go
 model_flow_set.go
 model_flow_set_request.go
@@ -692,7 +695,6 @@ model_invitation_stage_request.go
 model_issuer_mode_enum.go
 model_kubernetes_service_connection.go
 model_kubernetes_service_connection_request.go
-model_layout_enum.go
 model_ldap_debug.go
 model_ldap_outpost_config.go
 model_ldap_property_mapping.go

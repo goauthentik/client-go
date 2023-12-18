@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **FlowDeviceCode** | Pointer to **NullableString** |  | [optional] 
 **EventRetention** | Pointer to **string** | Events will be deleted after this duration.(Format: weeks&#x3D;3;days&#x3D;2;hours&#x3D;3,seconds&#x3D;2). | [optional] 
 **WebCertificate** | Pointer to **NullableString** | Web Certificate used by the authentik Core webserver. | [optional] 
-**Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
+**Attributes** | Pointer to **interface{}** |  | [optional] 
 
 ## Methods
 
@@ -451,20 +451,20 @@ HasWebCertificate returns a boolean if a field has been set.
 UnsetWebCertificate ensures that no value is present for WebCertificate, not even an explicit nil
 ### GetAttributes
 
-`func (o *Tenant) GetAttributes() map[string]interface{}`
+`func (o *Tenant) GetAttributes() interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *Tenant) GetAttributesOk() (*map[string]interface{}, bool)`
+`func (o *Tenant) GetAttributesOk() (*interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *Tenant) SetAttributes(v map[string]interface{})`
+`func (o *Tenant) SetAttributes(v interface{})`
 
 SetAttributes sets Attributes field to given value.
 
@@ -474,6 +474,16 @@ SetAttributes sets Attributes field to given value.
 
 HasAttributes returns a boolean if a field has been set.
 
+### SetAttributesNil
+
+`func (o *Tenant) SetAttributesNil(b bool)`
+
+ SetAttributesNil sets the value for Attributes to be an explicit nil
+
+### UnsetAttributes
+`func (o *Tenant) UnsetAttributes()`
+
+UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

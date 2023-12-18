@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **CompatibilityMode** | Pointer to **bool** | Enable compatibility mode, increases compatibility with password managers on mobile devices. | [optional] 
 **ExportUrl** | **string** | Get export URL for flow | [readonly] 
-**Layout** | Pointer to [**LayoutEnum**](LayoutEnum.md) |  | [optional] 
+**Layout** | Pointer to [**FlowLayoutEnum**](FlowLayoutEnum.md) |  | [optional] 
 **DeniedAction** | Pointer to [**DeniedActionEnum**](DeniedActionEnum.md) | Configure what should happen when a flow denies access to a user.  * &#x60;message_continue&#x60; - Message Continue * &#x60;message&#x60; - Message * &#x60;continue&#x60; - Continue | [optional] 
 
 ## Methods
@@ -248,20 +248,20 @@ SetExportUrl sets ExportUrl field to given value.
 
 ### GetLayout
 
-`func (o *FlowSet) GetLayout() LayoutEnum`
+`func (o *FlowSet) GetLayout() FlowLayoutEnum`
 
 GetLayout returns the Layout field if non-nil, zero value otherwise.
 
 ### GetLayoutOk
 
-`func (o *FlowSet) GetLayoutOk() (*LayoutEnum, bool)`
+`func (o *FlowSet) GetLayoutOk() (*FlowLayoutEnum, bool)`
 
 GetLayoutOk returns a tuple with the Layout field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLayout
 
-`func (o *FlowSet) SetLayout(v LayoutEnum)`
+`func (o *FlowSet) SetLayout(v FlowLayoutEnum)`
 
 SetLayout sets Layout field to given value.
 

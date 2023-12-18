@@ -21,13 +21,13 @@ type BlueprintInstance struct {
 	Pk              string                      `json:"pk"`
 	Name            string                      `json:"name"`
 	Path            *string                     `json:"path,omitempty"`
-	Context         map[string]interface{}      `json:"context,omitempty"`
+	Context         interface{}                 `json:"context,omitempty"`
 	LastApplied     time.Time                   `json:"last_applied"`
 	LastAppliedHash string                      `json:"last_applied_hash"`
 	Status          BlueprintInstanceStatusEnum `json:"status"`
 	Enabled         *bool                       `json:"enabled,omitempty"`
 	ManagedModels   []string                    `json:"managed_models"`
-	Metadata        map[string]interface{}      `json:"metadata"`
+	Metadata        interface{}                 `json:"metadata"`
 	Content         *string                     `json:"content,omitempty"`
 }
 
@@ -35,7 +35,7 @@ type BlueprintInstance struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBlueprintInstance(pk string, name string, lastApplied time.Time, lastAppliedHash string, status BlueprintInstanceStatusEnum, managedModels []string, metadata map[string]interface{}) *BlueprintInstance {
+func NewBlueprintInstance(pk string, name string, lastApplied time.Time, lastAppliedHash string, status BlueprintInstanceStatusEnum, managedModels []string, metadata interface{}) *BlueprintInstance {
 	this := BlueprintInstance{}
 	this.Pk = pk
 	this.Name = name
@@ -139,10 +139,10 @@ func (o *BlueprintInstance) SetPath(v string) {
 	o.Path = &v
 }
 
-// GetContext returns the Context field value if set, zero value otherwise.
-func (o *BlueprintInstance) GetContext() map[string]interface{} {
-	if o == nil || o.Context == nil {
-		var ret map[string]interface{}
+// GetContext returns the Context field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *BlueprintInstance) GetContext() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.Context
@@ -150,11 +150,12 @@ func (o *BlueprintInstance) GetContext() map[string]interface{} {
 
 // GetContextOk returns a tuple with the Context field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BlueprintInstance) GetContextOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *BlueprintInstance) GetContextOk() (*interface{}, bool) {
 	if o == nil || o.Context == nil {
 		return nil, false
 	}
-	return o.Context, true
+	return &o.Context, true
 }
 
 // HasContext returns a boolean if a field has been set.
@@ -166,8 +167,8 @@ func (o *BlueprintInstance) HasContext() bool {
 	return false
 }
 
-// SetContext gets a reference to the given map[string]interface{} and assigns it to the Context field.
-func (o *BlueprintInstance) SetContext(v map[string]interface{}) {
+// SetContext gets a reference to the given interface{} and assigns it to the Context field.
+func (o *BlueprintInstance) SetContext(v interface{}) {
 	o.Context = v
 }
 
@@ -300,9 +301,10 @@ func (o *BlueprintInstance) SetManagedModels(v []string) {
 }
 
 // GetMetadata returns the Metadata field value
-func (o *BlueprintInstance) GetMetadata() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *BlueprintInstance) GetMetadata() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -311,15 +313,16 @@ func (o *BlueprintInstance) GetMetadata() map[string]interface{} {
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
-func (o *BlueprintInstance) GetMetadataOk() (map[string]interface{}, bool) {
-	if o == nil {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *BlueprintInstance) GetMetadataOk() (*interface{}, bool) {
+	if o == nil || o.Metadata == nil {
 		return nil, false
 	}
-	return o.Metadata, true
+	return &o.Metadata, true
 }
 
 // SetMetadata sets field value
-func (o *BlueprintInstance) SetMetadata(v map[string]interface{}) {
+func (o *BlueprintInstance) SetMetadata(v interface{}) {
 	o.Metadata = v
 }
 
@@ -384,7 +387,7 @@ func (o BlueprintInstance) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["managed_models"] = o.ManagedModels
 	}
-	if true {
+	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
 	}
 	if o.Content != nil {
