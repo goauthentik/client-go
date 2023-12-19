@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// AuthenticationEnum * `none` - None * `require_authenticated` - Require Authenticated * `require_unauthenticated` - Require Unauthenticated * `require_superuser` - Require Superuser
+// AuthenticationEnum * `none` - None * `require_authenticated` - Require Authenticated * `require_unauthenticated` - Require Unauthenticated * `require_superuser` - Require Superuser * `require_outpost` - Require Outpost
 type AuthenticationEnum string
 
 // List of AuthenticationEnum
@@ -25,6 +25,7 @@ const (
 	AUTHENTICATIONENUM_REQUIRE_AUTHENTICATED   AuthenticationEnum = "require_authenticated"
 	AUTHENTICATIONENUM_REQUIRE_UNAUTHENTICATED AuthenticationEnum = "require_unauthenticated"
 	AUTHENTICATIONENUM_REQUIRE_SUPERUSER       AuthenticationEnum = "require_superuser"
+	AUTHENTICATIONENUM_REQUIRE_OUTPOST         AuthenticationEnum = "require_outpost"
 )
 
 // All allowed values of AuthenticationEnum enum
@@ -33,6 +34,7 @@ var AllowedAuthenticationEnumEnumValues = []AuthenticationEnum{
 	"require_authenticated",
 	"require_unauthenticated",
 	"require_superuser",
+	"require_outpost",
 }
 
 func (v *AuthenticationEnum) UnmarshalJSON(src []byte) error {

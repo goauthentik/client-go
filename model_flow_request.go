@@ -30,7 +30,7 @@ type FlowRequest struct {
 	Layout            *FlowLayoutEnum `json:"layout,omitempty"`
 	// Configure what should happen when a flow denies access to a user.  * `message_continue` - Message Continue * `message` - Message * `continue` - Continue
 	DeniedAction *DeniedActionEnum `json:"denied_action,omitempty"`
-	// Required level of authentication and authorization to access a flow.  * `none` - None * `require_authenticated` - Require Authenticated * `require_unauthenticated` - Require Unauthenticated * `require_superuser` - Require Superuser
+	// Required level of authentication and authorization to access a flow.  * `none` - None * `require_authenticated` - Require Authenticated * `require_unauthenticated` - Require Unauthenticated * `require_superuser` - Require Superuser * `require_outpost` - Require Outpost
 	Authentication *AuthenticationEnum `json:"authentication,omitempty"`
 }
 
