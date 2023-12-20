@@ -23,6 +23,7 @@ type AuthenticatedSession struct {
 	Current       bool                              `json:"current"`
 	UserAgent     AuthenticatedSessionUserAgent     `json:"user_agent"`
 	GeoIp         NullableAuthenticatedSessionGeoIp `json:"geo_ip"`
+	Asn           NullableAuthenticatedSessionAsn   `json:"asn"`
 	User          int32                             `json:"user"`
 	LastIp        string                            `json:"last_ip"`
 	LastUserAgent *string                           `json:"last_user_agent,omitempty"`
@@ -34,11 +35,12 @@ type AuthenticatedSession struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatedSession(current bool, userAgent AuthenticatedSessionUserAgent, geoIp NullableAuthenticatedSessionGeoIp, user int32, lastIp string, lastUsed time.Time) *AuthenticatedSession {
+func NewAuthenticatedSession(current bool, userAgent AuthenticatedSessionUserAgent, geoIp NullableAuthenticatedSessionGeoIp, asn NullableAuthenticatedSessionAsn, user int32, lastIp string, lastUsed time.Time) *AuthenticatedSession {
 	this := AuthenticatedSession{}
 	this.Current = current
 	this.UserAgent = userAgent
 	this.GeoIp = geoIp
+	this.Asn = asn
 	this.User = user
 	this.LastIp = lastIp
 	this.LastUsed = lastUsed
@@ -157,6 +159,32 @@ func (o *AuthenticatedSession) GetGeoIpOk() (*AuthenticatedSessionGeoIp, bool) {
 // SetGeoIp sets field value
 func (o *AuthenticatedSession) SetGeoIp(v AuthenticatedSessionGeoIp) {
 	o.GeoIp.Set(&v)
+}
+
+// GetAsn returns the Asn field value
+// If the value is explicit nil, the zero value for AuthenticatedSessionAsn will be returned
+func (o *AuthenticatedSession) GetAsn() AuthenticatedSessionAsn {
+	if o == nil || o.Asn.Get() == nil {
+		var ret AuthenticatedSessionAsn
+		return ret
+	}
+
+	return *o.Asn.Get()
+}
+
+// GetAsnOk returns a tuple with the Asn field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AuthenticatedSession) GetAsnOk() (*AuthenticatedSessionAsn, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Asn.Get(), o.Asn.IsSet()
+}
+
+// SetAsn sets field value
+func (o *AuthenticatedSession) SetAsn(v AuthenticatedSessionAsn) {
+	o.Asn.Set(&v)
 }
 
 // GetUser returns the User field value
@@ -308,6 +336,9 @@ func (o AuthenticatedSession) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["geo_ip"] = o.GeoIp.Get()
+	}
+	if true {
+		toSerialize["asn"] = o.Asn.Get()
 	}
 	if true {
 		toSerialize["user"] = o.User

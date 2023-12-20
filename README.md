@@ -720,6 +720,7 @@ Class | Method | HTTP request | Description
  - [AuthenticateWebAuthnStage](docs/AuthenticateWebAuthnStage.md)
  - [AuthenticateWebAuthnStageRequest](docs/AuthenticateWebAuthnStageRequest.md)
  - [AuthenticatedSession](docs/AuthenticatedSession.md)
+ - [AuthenticatedSessionAsn](docs/AuthenticatedSessionAsn.md)
  - [AuthenticatedSessionGeoIp](docs/AuthenticatedSessionGeoIp.md)
  - [AuthenticatedSessionUserAgent](docs/AuthenticatedSessionUserAgent.md)
  - [AuthenticatedSessionUserAgentDevice](docs/AuthenticatedSessionUserAgentDevice.md)

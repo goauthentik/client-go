@@ -16,13 +16,14 @@ import (
 	"fmt"
 )
 
-// CapabilitiesEnum * `can_save_media` - Can Save Media * `can_geo_ip` - Can Geo Ip * `can_impersonate` - Can Impersonate * `can_debug` - Can Debug * `is_enterprise` - Is Enterprise
+// CapabilitiesEnum * `can_save_media` - Can Save Media * `can_geo_ip` - Can Geo Ip * `can_asn` - Can Asn * `can_impersonate` - Can Impersonate * `can_debug` - Can Debug * `is_enterprise` - Is Enterprise
 type CapabilitiesEnum string
 
 // List of CapabilitiesEnum
 const (
 	CAPABILITIESENUM_CAN_SAVE_MEDIA  CapabilitiesEnum = "can_save_media"
 	CAPABILITIESENUM_CAN_GEO_IP      CapabilitiesEnum = "can_geo_ip"
+	CAPABILITIESENUM_CAN_ASN         CapabilitiesEnum = "can_asn"
 	CAPABILITIESENUM_CAN_IMPERSONATE CapabilitiesEnum = "can_impersonate"
 	CAPABILITIESENUM_CAN_DEBUG       CapabilitiesEnum = "can_debug"
 	CAPABILITIESENUM_IS_ENTERPRISE   CapabilitiesEnum = "is_enterprise"
@@ -32,6 +33,7 @@ const (
 var AllowedCapabilitiesEnumEnumValues = []CapabilitiesEnum{
 	"can_save_media",
 	"can_geo_ip",
+	"can_asn",
 	"can_impersonate",
 	"can_debug",
 	"is_enterprise",

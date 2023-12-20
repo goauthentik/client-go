@@ -31521,7 +31521,11 @@ components:
         last_used: 2000-01-23T04:56:07.000+00:00
         last_user_agent: last_user_agent
         uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        user: 1
+        asn:
+          as_org: as_org
+          asn: 1
+          network: network
+        user: 5
         user_agent:
           os:
             patch: patch
@@ -31551,6 +31555,8 @@ components:
           $ref: '#/components/schemas/AuthenticatedSession_user_agent'
         geo_ip:
           $ref: '#/components/schemas/AuthenticatedSession_geo_ip'
+        asn:
+          $ref: '#/components/schemas/AuthenticatedSession_asn'
         user:
           type: integer
         last_ip:
@@ -31565,6 +31571,7 @@ components:
           format: date-time
           type: string
       required:
+      - asn
       - current
       - geo_ip
       - last_ip
@@ -32885,12 +32892,14 @@ components:
       description: |-
         * `can_save_media` - Can Save Media
         * `can_geo_ip` - Can Geo Ip
+        * `can_asn` - Can Asn
         * `can_impersonate` - Can Impersonate
         * `can_debug` - Can Debug
         * `is_enterprise` - Is Enterprise
       enum:
       - can_save_media
       - can_geo_ip
+      - can_asn
       - can_impersonate
       - can_debug
       - is_enterprise
@@ -39544,7 +39553,11 @@ components:
           last_used: 2000-01-23T04:56:07.000+00:00
           last_user_agent: last_user_agent
           uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          user: 1
+          asn:
+            as_org: as_org
+            asn: 1
+            network: network
+          user: 5
           user_agent:
             os:
               patch: patch
@@ -39574,7 +39587,11 @@ components:
           last_used: 2000-01-23T04:56:07.000+00:00
           last_user_agent: last_user_agent
           uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          user: 1
+          asn:
+            as_org: as_org
+            asn: 1
+            network: network
+          user: 5
           user_agent:
             os:
               patch: patch
@@ -43368,12 +43385,14 @@ components:
         results:
         - identifier: identifier
           score: -7746104769210155008
+          ip_asn_data: ""
           ip_geo_data: ""
           ip: ip
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated: 2000-01-23T04:56:07.000+00:00
         - identifier: identifier
           score: -7746104769210155008
+          ip_asn_data: ""
           ip_geo_data: ""
           ip: ip
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -51015,6 +51034,7 @@ components:
       example:
         identifier: identifier
         score: -7746104769210155008
+        ip_asn_data: ""
         ip_geo_data: ""
         ip: ip
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -51029,6 +51049,7 @@ components:
         ip:
           type: string
         ip_geo_data: {}
+        ip_asn_data: {}
         score:
           format: int64
           maximum: 9223372036854775807
@@ -55158,7 +55179,7 @@ components:
       - user_agent
       type: object
     AuthenticatedSession_geo_ip:
-      description: Get parsed user agent
+      description: Get GeoIP Data
       example:
         continent: continent
         country: country
@@ -55186,6 +55207,28 @@ components:
       - country
       - lat
       - long
+      type: object
+    AuthenticatedSession_asn:
+      description: Get ASN Data
+      example:
+        as_org: as_org
+        asn: 1
+        network: network
+      nullable: true
+      properties:
+        asn:
+          type: integer
+        as_org:
+          nullable: true
+          type: string
+        network:
+          nullable: true
+          type: string
+      readOnly: true
+      required:
+      - as_org
+      - asn
+      - network
       type: object
     SystemInfo_runtime:
       description: Get versions

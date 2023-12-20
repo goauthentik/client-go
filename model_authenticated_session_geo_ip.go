@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// AuthenticatedSessionGeoIp Get parsed user agent
+// AuthenticatedSessionGeoIp Get GeoIP Data
 type AuthenticatedSessionGeoIp struct {
 	Continent string  `json:"continent"`
 	Country   string  `json:"country"`

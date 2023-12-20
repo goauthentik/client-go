@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Current** | **bool** | Check if session is currently active session | [readonly] 
 **UserAgent** | [**AuthenticatedSessionUserAgent**](AuthenticatedSessionUserAgent.md) |  | 
 **GeoIp** | [**NullableAuthenticatedSessionGeoIp**](AuthenticatedSessionGeoIp.md) |  | 
+**Asn** | [**NullableAuthenticatedSessionAsn**](AuthenticatedSessionAsn.md) |  | 
 **User** | **int32** |  | 
 **LastIp** | **string** |  | 
 **LastUserAgent** | Pointer to **string** |  | [optional] 
@@ -18,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewAuthenticatedSession
 
-`func NewAuthenticatedSession(current bool, userAgent AuthenticatedSessionUserAgent, geoIp NullableAuthenticatedSessionGeoIp, user int32, lastIp string, lastUsed time.Time, ) *AuthenticatedSession`
+`func NewAuthenticatedSession(current bool, userAgent AuthenticatedSessionUserAgent, geoIp NullableAuthenticatedSessionGeoIp, asn NullableAuthenticatedSessionAsn, user int32, lastIp string, lastUsed time.Time, ) *AuthenticatedSession`
 
 NewAuthenticatedSession instantiates a new AuthenticatedSession object
 This constructor will assign default values to properties that have it defined,
@@ -128,6 +129,36 @@ SetGeoIp sets GeoIp field to given value.
 `func (o *AuthenticatedSession) UnsetGeoIp()`
 
 UnsetGeoIp ensures that no value is present for GeoIp, not even an explicit nil
+### GetAsn
+
+`func (o *AuthenticatedSession) GetAsn() AuthenticatedSessionAsn`
+
+GetAsn returns the Asn field if non-nil, zero value otherwise.
+
+### GetAsnOk
+
+`func (o *AuthenticatedSession) GetAsnOk() (*AuthenticatedSessionAsn, bool)`
+
+GetAsnOk returns a tuple with the Asn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAsn
+
+`func (o *AuthenticatedSession) SetAsn(v AuthenticatedSessionAsn)`
+
+SetAsn sets Asn field to given value.
+
+
+### SetAsnNil
+
+`func (o *AuthenticatedSession) SetAsnNil(b bool)`
+
+ SetAsnNil sets the value for Asn to be an explicit nil
+
+### UnsetAsn
+`func (o *AuthenticatedSession) UnsetAsn()`
+
+UnsetAsn ensures that no value is present for Asn, not even an explicit nil
 ### GetUser
 
 `func (o *AuthenticatedSession) GetUser() int32`

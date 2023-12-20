@@ -34,6 +34,7 @@ docs/AuthTypeEnum.md
 docs/AuthenticateWebAuthnStage.md
 docs/AuthenticateWebAuthnStageRequest.md
 docs/AuthenticatedSession.md
+docs/AuthenticatedSessionAsn.md
 docs/AuthenticatedSessionGeoIp.md
 docs/AuthenticatedSessionUserAgent.md
 docs/AuthenticatedSessionUserAgentDevice.md
@@ -559,6 +560,7 @@ model_auth_type_enum.go
 model_authenticate_web_authn_stage.go
 model_authenticate_web_authn_stage_request.go
 model_authenticated_session.go
+model_authenticated_session_asn.go
 model_authenticated_session_geo_ip.go
 model_authenticated_session_user_agent.go
 model_authenticated_session_user_agent_device.go

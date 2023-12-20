@@ -22,6 +22,7 @@ type Reputation struct {
 	Identifier string      `json:"identifier"`
 	Ip         string      `json:"ip"`
 	IpGeoData  interface{} `json:"ip_geo_data,omitempty"`
+	IpAsnData  interface{} `json:"ip_asn_data,omitempty"`
 	Score      *int64      `json:"score,omitempty"`
 	Updated    time.Time   `json:"updated"`
 }
@@ -159,6 +160,39 @@ func (o *Reputation) SetIpGeoData(v interface{}) {
 	o.IpGeoData = v
 }
 
+// GetIpAsnData returns the IpAsnData field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Reputation) GetIpAsnData() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+	return o.IpAsnData
+}
+
+// GetIpAsnDataOk returns a tuple with the IpAsnData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Reputation) GetIpAsnDataOk() (*interface{}, bool) {
+	if o == nil || o.IpAsnData == nil {
+		return nil, false
+	}
+	return &o.IpAsnData, true
+}
+
+// HasIpAsnData returns a boolean if a field has been set.
+func (o *Reputation) HasIpAsnData() bool {
+	if o != nil && o.IpAsnData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIpAsnData gets a reference to the given interface{} and assigns it to the IpAsnData field.
+func (o *Reputation) SetIpAsnData(v interface{}) {
+	o.IpAsnData = v
+}
+
 // GetScore returns the Score field value if set, zero value otherwise.
 func (o *Reputation) GetScore() int64 {
 	if o == nil || o.Score == nil {
@@ -228,6 +262,9 @@ func (o Reputation) MarshalJSON() ([]byte, error) {
 	}
 	if o.IpGeoData != nil {
 		toSerialize["ip_geo_data"] = o.IpGeoData
+	}
+	if o.IpAsnData != nil {
+		toSerialize["ip_asn_data"] = o.IpAsnData
 	}
 	if o.Score != nil {
 		toSerialize["score"] = o.Score
