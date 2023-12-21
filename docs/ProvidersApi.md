@@ -3693,7 +3693,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersScimSyncStatusRetrieve
 
-> Task ProvidersScimSyncStatusRetrieve(ctx, id).Execute()
+> SCIMSyncStatus ProvidersScimSyncStatusRetrieve(ctx, id).Execute()
 
 
 
@@ -3721,7 +3721,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimSyncStatusRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ProvidersScimSyncStatusRetrieve`: Task
+    // response from `ProvidersScimSyncStatusRetrieve`: SCIMSyncStatus
     fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersScimSyncStatusRetrieve`: %v\n", resp)
 }
 ```
@@ -3745,7 +3745,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Task**](Task.md)
+[**SCIMSyncStatus**](SCIMSyncStatus.md)
 
 ### Authorization
 

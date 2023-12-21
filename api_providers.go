@@ -7869,7 +7869,7 @@ type ApiProvidersScimSyncStatusRetrieveRequest struct {
 	id         int32
 }
 
-func (r ApiProvidersScimSyncStatusRetrieveRequest) Execute() (*Task, *http.Response, error) {
+func (r ApiProvidersScimSyncStatusRetrieveRequest) Execute() (*SCIMSyncStatus, *http.Response, error) {
 	return r.ApiService.ProvidersScimSyncStatusRetrieveExecute(r)
 }
 
@@ -7892,13 +7892,13 @@ func (a *ProvidersApiService) ProvidersScimSyncStatusRetrieve(ctx context.Contex
 
 // Execute executes the request
 //
-//	@return Task
-func (a *ProvidersApiService) ProvidersScimSyncStatusRetrieveExecute(r ApiProvidersScimSyncStatusRetrieveRequest) (*Task, *http.Response, error) {
+//	@return SCIMSyncStatus
+func (a *ProvidersApiService) ProvidersScimSyncStatusRetrieveExecute(r ApiProvidersScimSyncStatusRetrieveRequest) (*SCIMSyncStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Task
+		localVarReturnValue *SCIMSyncStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimSyncStatusRetrieve")

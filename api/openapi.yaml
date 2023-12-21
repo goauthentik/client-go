@@ -19039,7 +19039,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Task'
+                $ref: '#/components/schemas/SCIMSyncStatus'
           description: ""
         "404":
           description: Task not found
@@ -52220,6 +52220,40 @@ components:
       - name
       - token
       - url
+      type: object
+    SCIMSyncStatus:
+      description: SCIM Provider sync status
+      example:
+        is_running: true
+        tasks:
+        - task_name: task_name
+          task_description: task_description
+          task_finish_timestamp: 2000-01-23T04:56:07.000+00:00
+          task_duration: 0
+          messages:
+          - ""
+          - ""
+          status: null
+        - task_name: task_name
+          task_description: task_description
+          task_finish_timestamp: 2000-01-23T04:56:07.000+00:00
+          task_duration: 0
+          messages:
+          - ""
+          - ""
+          status: null
+      properties:
+        is_running:
+          readOnly: true
+          type: boolean
+        tasks:
+          items:
+            $ref: '#/components/schemas/Task'
+          readOnly: true
+          type: array
+      required:
+      - is_running
+      - tasks
       type: object
     SMSDevice:
       description: Serializer for sms authenticator devices

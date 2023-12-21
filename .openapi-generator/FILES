@@ -459,6 +459,7 @@ docs/SCIMMapping.md
 docs/SCIMMappingRequest.md
 docs/SCIMProvider.md
 docs/SCIMProviderRequest.md
+docs/SCIMSyncStatus.md
 docs/SMSDevice.md
 docs/SMSDeviceRequest.md
 docs/SchemaApi.md
@@ -971,6 +972,7 @@ model_scim_mapping.go
 model_scim_mapping_request.go
 model_scim_provider.go
 model_scim_provider_request.go
+model_scim_sync_status.go
 model_scope_mapping.go
 model_scope_mapping_request.go
 model_selectable_stage.go

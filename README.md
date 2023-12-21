@@ -1131,6 +1131,7 @@ Class | Method | HTTP request | Description
  - [SCIMMappingRequest](docs/SCIMMappingRequest.md)
  - [SCIMProvider](docs/SCIMProvider.md)
  - [SCIMProviderRequest](docs/SCIMProviderRequest.md)
+ - [SCIMSyncStatus](docs/SCIMSyncStatus.md)
  - [SMSDevice](docs/SMSDevice.md)
  - [SMSDeviceRequest](docs/SMSDeviceRequest.md)
  - [ScopeMapping](docs/ScopeMapping.md)
