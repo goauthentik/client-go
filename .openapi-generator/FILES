@@ -159,6 +159,7 @@ docs/FlowStageBindingRequest.md
 docs/FlowsApi.md
 docs/FooterLink.md
 docs/GenericError.md
+docs/GeoipBindingEnum.md
 docs/Group.md
 docs/GroupMember.md
 docs/GroupMemberRequest.md
@@ -200,6 +201,7 @@ docs/Metadata.md
 docs/ModelEnum.md
 docs/ModelRequest.md
 docs/NameIdPolicyEnum.md
+docs/NetworkBindingEnum.md
 docs/NotConfiguredActionEnum.md
 docs/Notification.md
 docs/NotificationRequest.md
@@ -680,6 +682,7 @@ model_flow_stage_binding.go
 model_flow_stage_binding_request.go
 model_footer_link.go
 model_generic_error.go
+model_geoip_binding_enum.go
 model_group.go
 model_group_member.go
 model_group_member_request.go
@@ -720,6 +723,7 @@ model_metadata.go
 model_model_enum.go
 model_model_request.go
 model_name_id_policy_enum.go
+model_network_binding_enum.go
 model_not_configured_action_enum.go
 model_notification.go
 model_notification_request.go

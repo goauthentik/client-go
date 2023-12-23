@@ -20834,7 +20834,9 @@ func (a *StagesApiService) StagesUserLoginDestroyExecute(r ApiStagesUserLoginDes
 type ApiStagesUserLoginListRequest struct {
 	ctx                    context.Context
 	ApiService             *StagesApiService
+	geoipBinding           *string
 	name                   *string
+	networkBinding         *string
 	ordering               *string
 	page                   *int32
 	pageSize               *int32
@@ -20845,8 +20847,20 @@ type ApiStagesUserLoginListRequest struct {
 	terminateOtherSessions *bool
 }
 
+// Bind sessions created by this stage to the configured GeoIP location  * &#x60;no_binding&#x60; - No Binding * &#x60;bind_continent&#x60; - Bind Continent * &#x60;bind_continent_country&#x60; - Bind Continent Country * &#x60;bind_continent_country_city&#x60; - Bind Continent Country City
+func (r ApiStagesUserLoginListRequest) GeoipBinding(geoipBinding string) ApiStagesUserLoginListRequest {
+	r.geoipBinding = &geoipBinding
+	return r
+}
+
 func (r ApiStagesUserLoginListRequest) Name(name string) ApiStagesUserLoginListRequest {
 	r.name = &name
+	return r
+}
+
+// Bind sessions created by this stage to the configured network  * &#x60;no_binding&#x60; - No Binding * &#x60;bind_asn&#x60; - Bind Asn * &#x60;bind_asn_network&#x60; - Bind Asn Network * &#x60;bind_asn_network_ip&#x60; - Bind Asn Network Ip
+func (r ApiStagesUserLoginListRequest) NetworkBinding(networkBinding string) ApiStagesUserLoginListRequest {
+	r.networkBinding = &networkBinding
 	return r
 }
 
@@ -20935,8 +20949,14 @@ func (a *StagesApiService) StagesUserLoginListExecute(r ApiStagesUserLoginListRe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.geoipBinding != nil {
+		localVarQueryParams.Add("geoip_binding", parameterToString(*r.geoipBinding, ""))
+	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.networkBinding != nil {
+		localVarQueryParams.Add("network_binding", parameterToString(*r.networkBinding, ""))
 	}
 	if r.ordering != nil {
 		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))

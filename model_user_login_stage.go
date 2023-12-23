@@ -34,6 +34,10 @@ type UserLoginStage struct {
 	TerminateOtherSessions *bool `json:"terminate_other_sessions,omitempty"`
 	// Offset the session will be extended by when the user picks the remember me option. Default of 0 means that the remember me option will not be shown. (Format: hours=-1;minutes=-2;seconds=-3)
 	RememberMeOffset *string `json:"remember_me_offset,omitempty"`
+	// Bind sessions created by this stage to the configured network  * `no_binding` - No Binding * `bind_asn` - Bind Asn * `bind_asn_network` - Bind Asn Network * `bind_asn_network_ip` - Bind Asn Network Ip
+	NetworkBinding *NetworkBindingEnum `json:"network_binding,omitempty"`
+	// Bind sessions created by this stage to the configured GeoIP location  * `no_binding` - No Binding * `bind_continent` - Bind Continent * `bind_continent_country` - Bind Continent Country * `bind_continent_country_city` - Bind Continent Country City
+	GeoipBinding *GeoipBindingEnum `json:"geoip_binding,omitempty"`
 }
 
 // NewUserLoginStage instantiates a new UserLoginStage object
@@ -331,6 +335,70 @@ func (o *UserLoginStage) SetRememberMeOffset(v string) {
 	o.RememberMeOffset = &v
 }
 
+// GetNetworkBinding returns the NetworkBinding field value if set, zero value otherwise.
+func (o *UserLoginStage) GetNetworkBinding() NetworkBindingEnum {
+	if o == nil || o.NetworkBinding == nil {
+		var ret NetworkBindingEnum
+		return ret
+	}
+	return *o.NetworkBinding
+}
+
+// GetNetworkBindingOk returns a tuple with the NetworkBinding field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserLoginStage) GetNetworkBindingOk() (*NetworkBindingEnum, bool) {
+	if o == nil || o.NetworkBinding == nil {
+		return nil, false
+	}
+	return o.NetworkBinding, true
+}
+
+// HasNetworkBinding returns a boolean if a field has been set.
+func (o *UserLoginStage) HasNetworkBinding() bool {
+	if o != nil && o.NetworkBinding != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkBinding gets a reference to the given NetworkBindingEnum and assigns it to the NetworkBinding field.
+func (o *UserLoginStage) SetNetworkBinding(v NetworkBindingEnum) {
+	o.NetworkBinding = &v
+}
+
+// GetGeoipBinding returns the GeoipBinding field value if set, zero value otherwise.
+func (o *UserLoginStage) GetGeoipBinding() GeoipBindingEnum {
+	if o == nil || o.GeoipBinding == nil {
+		var ret GeoipBindingEnum
+		return ret
+	}
+	return *o.GeoipBinding
+}
+
+// GetGeoipBindingOk returns a tuple with the GeoipBinding field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserLoginStage) GetGeoipBindingOk() (*GeoipBindingEnum, bool) {
+	if o == nil || o.GeoipBinding == nil {
+		return nil, false
+	}
+	return o.GeoipBinding, true
+}
+
+// HasGeoipBinding returns a boolean if a field has been set.
+func (o *UserLoginStage) HasGeoipBinding() bool {
+	if o != nil && o.GeoipBinding != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGeoipBinding gets a reference to the given GeoipBindingEnum and assigns it to the GeoipBinding field.
+func (o *UserLoginStage) SetGeoipBinding(v GeoipBindingEnum) {
+	o.GeoipBinding = &v
+}
+
 func (o UserLoginStage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -362,6 +430,12 @@ func (o UserLoginStage) MarshalJSON() ([]byte, error) {
 	}
 	if o.RememberMeOffset != nil {
 		toSerialize["remember_me_offset"] = o.RememberMeOffset
+	}
+	if o.NetworkBinding != nil {
+		toSerialize["network_binding"] = o.NetworkBinding
+	}
+	if o.GeoipBinding != nil {
+		toSerialize["geoip_binding"] = o.GeoipBinding
 	}
 	return json.Marshal(toSerialize)
 }

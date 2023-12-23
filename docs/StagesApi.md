@@ -10047,7 +10047,7 @@ Name | Type | Description  | Notes
 
 ## StagesUserLoginList
 
-> PaginatedUserLoginStageList StagesUserLoginList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).RememberMeOffset(rememberMeOffset).Search(search).SessionDuration(sessionDuration).StageUuid(stageUuid).TerminateOtherSessions(terminateOtherSessions).Execute()
+> PaginatedUserLoginStageList StagesUserLoginList(ctx).GeoipBinding(geoipBinding).Name(name).NetworkBinding(networkBinding).Ordering(ordering).Page(page).PageSize(pageSize).RememberMeOffset(rememberMeOffset).Search(search).SessionDuration(sessionDuration).StageUuid(stageUuid).TerminateOtherSessions(terminateOtherSessions).Execute()
 
 
 
@@ -10066,7 +10066,9 @@ import (
 )
 
 func main() {
+    geoipBinding := "geoipBinding_example" // string | Bind sessions created by this stage to the configured GeoIP location  * `no_binding` - No Binding * `bind_continent` - Bind Continent * `bind_continent_country` - Bind Continent Country * `bind_continent_country_city` - Bind Continent Country City (optional)
     name := "name_example" // string |  (optional)
+    networkBinding := "networkBinding_example" // string | Bind sessions created by this stage to the configured network  * `no_binding` - No Binding * `bind_asn` - Bind Asn * `bind_asn_network` - Bind Asn Network * `bind_asn_network_ip` - Bind Asn Network Ip (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
@@ -10078,7 +10080,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserLoginList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).RememberMeOffset(rememberMeOffset).Search(search).SessionDuration(sessionDuration).StageUuid(stageUuid).TerminateOtherSessions(terminateOtherSessions).Execute()
+    resp, r, err := apiClient.StagesApi.StagesUserLoginList(context.Background()).GeoipBinding(geoipBinding).Name(name).NetworkBinding(networkBinding).Ordering(ordering).Page(page).PageSize(pageSize).RememberMeOffset(rememberMeOffset).Search(search).SessionDuration(sessionDuration).StageUuid(stageUuid).TerminateOtherSessions(terminateOtherSessions).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserLoginList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -10099,7 +10101,9 @@ Other parameters are passed through a pointer to a apiStagesUserLoginListRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **geoipBinding** | **string** | Bind sessions created by this stage to the configured GeoIP location  * &#x60;no_binding&#x60; - No Binding * &#x60;bind_continent&#x60; - Bind Continent * &#x60;bind_continent_country&#x60; - Bind Continent Country * &#x60;bind_continent_country_city&#x60; - Bind Continent Country City | 
  **name** | **string** |  | 
+ **networkBinding** | **string** | Bind sessions created by this stage to the configured network  * &#x60;no_binding&#x60; - No Binding * &#x60;bind_asn&#x60; - Bind Asn * &#x60;bind_asn_network&#x60; - Bind Asn Network * &#x60;bind_asn_network_ip&#x60; - Bind Asn Network Ip | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
