@@ -1,15 +1,13 @@
-# OutpostTypeEnum
+# ProtocolEnum
 
 ## Enum
 
 
-* `PROXY` (value: `"proxy"`)
+* `RDP` (value: `"rdp"`)
 
-* `LDAP` (value: `"ldap"`)
+* `VNC` (value: `"vnc"`)
 
-* `RADIUS` (value: `"radius"`)
-
-* `RAC` (value: `"rac"`)
+* `SSH` (value: `"ssh"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -1,15 +1,11 @@
-# OutpostTypeEnum
+# AuthModeEnum
 
 ## Enum
 
 
-* `PROXY` (value: `"proxy"`)
+* `STATIC` (value: `"static"`)
 
-* `LDAP` (value: `"ldap"`)
-
-* `RADIUS` (value: `"radius"`)
-
-* `RAC` (value: `"rac"`)
+* `PROMPT` (value: `"prompt"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -39,6 +39,8 @@ Name | Type | Description | Notes
 **Mode** | Pointer to [**ProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.  * &#x60;proxy&#x60; - Proxy * &#x60;forward_single&#x60; - Forward Single * &#x60;forward_domain&#x60; - Forward Domain | [optional] 
 **InterceptHeaderAuth** | Pointer to **bool** | When enabled, this provider will intercept the authorization header and authenticate requests based on its value. | [optional] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
+**Settings** | Pointer to **interface{}** |  | [optional] 
+**ConnectionExpiry** | Pointer to **string** | Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] 
 **ClientNetworks** | Pointer to **string** | List of CIDRs (comma-separated) that clients can connect from. A more specific CIDR will match before a looser one. Clients connecting from a non-specified CIDR will be dropped. | [optional] 
 **SharedSecret** | Pointer to **string** | Shared secret between clients and server to hash packets. | [optional] 
 **AcsUrl** | **string** |  | 
@@ -978,6 +980,66 @@ SetCookieDomain sets CookieDomain field to given value.
 `func (o *ModelRequest) HasCookieDomain() bool`
 
 HasCookieDomain returns a boolean if a field has been set.
+
+### GetSettings
+
+`func (o *ModelRequest) GetSettings() interface{}`
+
+GetSettings returns the Settings field if non-nil, zero value otherwise.
+
+### GetSettingsOk
+
+`func (o *ModelRequest) GetSettingsOk() (*interface{}, bool)`
+
+GetSettingsOk returns a tuple with the Settings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSettings
+
+`func (o *ModelRequest) SetSettings(v interface{})`
+
+SetSettings sets Settings field to given value.
+
+### HasSettings
+
+`func (o *ModelRequest) HasSettings() bool`
+
+HasSettings returns a boolean if a field has been set.
+
+### SetSettingsNil
+
+`func (o *ModelRequest) SetSettingsNil(b bool)`
+
+ SetSettingsNil sets the value for Settings to be an explicit nil
+
+### UnsetSettings
+`func (o *ModelRequest) UnsetSettings()`
+
+UnsetSettings ensures that no value is present for Settings, not even an explicit nil
+### GetConnectionExpiry
+
+`func (o *ModelRequest) GetConnectionExpiry() string`
+
+GetConnectionExpiry returns the ConnectionExpiry field if non-nil, zero value otherwise.
+
+### GetConnectionExpiryOk
+
+`func (o *ModelRequest) GetConnectionExpiryOk() (*string, bool)`
+
+GetConnectionExpiryOk returns a tuple with the ConnectionExpiry field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectionExpiry
+
+`func (o *ModelRequest) SetConnectionExpiry(v string)`
+
+SetConnectionExpiry sets ConnectionExpiry field to given value.
+
+### HasConnectionExpiry
+
+`func (o *ModelRequest) HasConnectionExpiry() bool`
+
+HasConnectionExpiry returns a boolean if a field has been set.
 
 ### GetClientNetworks
 

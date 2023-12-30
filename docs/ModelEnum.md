@@ -151,6 +151,12 @@
 
 * `ENTERPRISE_LICENSE` (value: `"authentik_enterprise.license"`)
 
+* `PROVIDERS_RAC_RACPROVIDER` (value: `"authentik_providers_rac.racprovider"`)
+
+* `PROVIDERS_RAC_ENDPOINT` (value: `"authentik_providers_rac.endpoint"`)
+
+* `PROVIDERS_RAC_RACPROPERTYMAPPING` (value: `"authentik_providers_rac.racpropertymapping"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

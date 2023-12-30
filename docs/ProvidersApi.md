@@ -32,6 +32,13 @@ Method | HTTP request | Description
 [**ProvidersProxyRetrieve**](ProvidersApi.md#ProvidersProxyRetrieve) | **Get** /providers/proxy/{id}/ | 
 [**ProvidersProxyUpdate**](ProvidersApi.md#ProvidersProxyUpdate) | **Put** /providers/proxy/{id}/ | 
 [**ProvidersProxyUsedByList**](ProvidersApi.md#ProvidersProxyUsedByList) | **Get** /providers/proxy/{id}/used_by/ | 
+[**ProvidersRacCreate**](ProvidersApi.md#ProvidersRacCreate) | **Post** /providers/rac/ | 
+[**ProvidersRacDestroy**](ProvidersApi.md#ProvidersRacDestroy) | **Delete** /providers/rac/{id}/ | 
+[**ProvidersRacList**](ProvidersApi.md#ProvidersRacList) | **Get** /providers/rac/ | 
+[**ProvidersRacPartialUpdate**](ProvidersApi.md#ProvidersRacPartialUpdate) | **Patch** /providers/rac/{id}/ | 
+[**ProvidersRacRetrieve**](ProvidersApi.md#ProvidersRacRetrieve) | **Get** /providers/rac/{id}/ | 
+[**ProvidersRacUpdate**](ProvidersApi.md#ProvidersRacUpdate) | **Put** /providers/rac/{id}/ | 
+[**ProvidersRacUsedByList**](ProvidersApi.md#ProvidersRacUsedByList) | **Get** /providers/rac/{id}/used_by/ | 
 [**ProvidersRadiusCreate**](ProvidersApi.md#ProvidersRadiusCreate) | **Post** /providers/radius/ | 
 [**ProvidersRadiusDestroy**](ProvidersApi.md#ProvidersRadiusDestroy) | **Delete** /providers/radius/{id}/ | 
 [**ProvidersRadiusList**](ProvidersApi.md#ProvidersRadiusList) | **Get** /providers/radius/ | 
@@ -2073,6 +2080,500 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiProvidersProxyUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersRacCreate
+
+> RACProvider ProvidersRacCreate(ctx).RACProviderRequest(rACProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    rACProviderRequest := *openapiclient.NewRACProviderRequest("Name_example", "AuthorizationFlow_example") // RACProviderRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersRacCreate(context.Background()).RACProviderRequest(rACProviderRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersRacCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersRacCreate`: RACProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersRacCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersRacCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rACProviderRequest** | [**RACProviderRequest**](RACProviderRequest.md) |  | 
+
+### Return type
+
+[**RACProvider**](RACProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersRacDestroy
+
+> ProvidersRacDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this RAC Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersRacDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersRacDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this RAC Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersRacDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersRacList
+
+> PaginatedRACProviderList ProvidersRacList(ctx).ApplicationIsnull(applicationIsnull).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    applicationIsnull := true // bool |  (optional)
+    nameIexact := "nameIexact_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersRacList(context.Background()).ApplicationIsnull(applicationIsnull).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersRacList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersRacList`: PaginatedRACProviderList
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersRacList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersRacListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicationIsnull** | **bool** |  | 
+ **nameIexact** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedRACProviderList**](PaginatedRACProviderList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersRacPartialUpdate
+
+> RACProvider ProvidersRacPartialUpdate(ctx, id).PatchedRACProviderRequest(patchedRACProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this RAC Provider.
+    patchedRACProviderRequest := *openapiclient.NewPatchedRACProviderRequest() // PatchedRACProviderRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersRacPartialUpdate(context.Background(), id).PatchedRACProviderRequest(patchedRACProviderRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersRacPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersRacPartialUpdate`: RACProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersRacPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this RAC Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersRacPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedRACProviderRequest** | [**PatchedRACProviderRequest**](PatchedRACProviderRequest.md) |  | 
+
+### Return type
+
+[**RACProvider**](RACProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersRacRetrieve
+
+> RACProvider ProvidersRacRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this RAC Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersRacRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersRacRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersRacRetrieve`: RACProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersRacRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this RAC Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersRacRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**RACProvider**](RACProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersRacUpdate
+
+> RACProvider ProvidersRacUpdate(ctx, id).RACProviderRequest(rACProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this RAC Provider.
+    rACProviderRequest := *openapiclient.NewRACProviderRequest("Name_example", "AuthorizationFlow_example") // RACProviderRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersRacUpdate(context.Background(), id).RACProviderRequest(rACProviderRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersRacUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersRacUpdate`: RACProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersRacUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this RAC Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersRacUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **rACProviderRequest** | [**RACProviderRequest**](RACProviderRequest.md) |  | 
+
+### Return type
+
+[**RACProvider**](RACProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersRacUsedByList
+
+> []UsedBy ProvidersRacUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this RAC Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersRacUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersRacUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersRacUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersRacUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this RAC Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersRacUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

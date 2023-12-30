@@ -15,6 +15,7 @@ api_outposts.go
 api_policies.go
 api_propertymappings.go
 api_providers.go
+api_rac.go
 api_rbac.go
 api_root.go
 api_schema.go
@@ -30,6 +31,7 @@ docs/AppleChallengeResponseRequest.md
 docs/AppleLoginChallenge.md
 docs/Application.md
 docs/ApplicationRequest.md
+docs/AuthModeEnum.md
 docs/AuthTypeEnum.md
 docs/AuthenticateWebAuthnStage.md
 docs/AuthenticateWebAuthnStageRequest.md
@@ -126,6 +128,8 @@ docs/EmailChallenge.md
 docs/EmailChallengeResponseRequest.md
 docs/EmailStage.md
 docs/EmailStageRequest.md
+docs/Endpoint.md
+docs/EndpointRequest.md
 docs/EnterpriseApi.md
 docs/ErrorDetail.md
 docs/ErrorReportingConfig.md
@@ -248,6 +252,7 @@ docs/PaginatedDummyPolicyList.md
 docs/PaginatedDummyStageList.md
 docs/PaginatedDuoDeviceList.md
 docs/PaginatedEmailStageList.md
+docs/PaginatedEndpointList.md
 docs/PaginatedEventList.md
 docs/PaginatedEventMatcherPolicyList.md
 docs/PaginatedExpiringBaseGrantModelList.md
@@ -287,6 +292,8 @@ docs/PaginatedPropertyMappingList.md
 docs/PaginatedProviderList.md
 docs/PaginatedProxyOutpostConfigList.md
 docs/PaginatedProxyProviderList.md
+docs/PaginatedRACPropertyMappingList.md
+docs/PaginatedRACProviderList.md
 docs/PaginatedRadiusOutpostConfigList.md
 docs/PaginatedRadiusProviderList.md
 docs/PaginatedReputationList.md
@@ -345,6 +352,7 @@ docs/PatchedDummyPolicyRequest.md
 docs/PatchedDummyStageRequest.md
 docs/PatchedDuoDeviceRequest.md
 docs/PatchedEmailStageRequest.md
+docs/PatchedEndpointRequest.md
 docs/PatchedEventMatcherPolicyRequest.md
 docs/PatchedEventRequest.md
 docs/PatchedExpressionPolicyRequest.md
@@ -376,6 +384,8 @@ docs/PatchedPolicyBindingRequest.md
 docs/PatchedPromptRequest.md
 docs/PatchedPromptStageRequest.md
 docs/PatchedProxyProviderRequest.md
+docs/PatchedRACPropertyMappingRequest.md
+docs/PatchedRACProviderRequest.md
 docs/PatchedRadiusProviderRequest.md
 docs/PatchedReputationPolicyRequest.md
 docs/PatchedRoleRequest.md
@@ -426,6 +436,7 @@ docs/PropertyMapping.md
 docs/PropertyMappingPreview.md
 docs/PropertyMappingTestResult.md
 docs/PropertymappingsApi.md
+docs/ProtocolEnum.md
 docs/Provider.md
 docs/ProviderEnum.md
 docs/ProviderModelEnum.md
@@ -436,6 +447,11 @@ docs/ProxyMode.md
 docs/ProxyOutpostConfig.md
 docs/ProxyProvider.md
 docs/ProxyProviderRequest.md
+docs/RACPropertyMapping.md
+docs/RACPropertyMappingRequest.md
+docs/RACProvider.md
+docs/RACProviderRequest.md
+docs/RacApi.md
 docs/RadiusOutpostConfig.md
 docs/RadiusProvider.md
 docs/RadiusProviderRequest.md
@@ -559,6 +575,7 @@ model_apple_challenge_response_request.go
 model_apple_login_challenge.go
 model_application.go
 model_application_request.go
+model_auth_mode_enum.go
 model_auth_type_enum.go
 model_authenticate_web_authn_stage.go
 model_authenticate_web_authn_stage_request.go
@@ -652,6 +669,8 @@ model_email_challenge.go
 model_email_challenge_response_request.go
 model_email_stage.go
 model_email_stage_request.go
+model_endpoint.go
+model_endpoint_request.go
 model_error_detail.go
 model_error_reporting_config.go
 model_event.go
@@ -768,6 +787,7 @@ model_paginated_dummy_policy_list.go
 model_paginated_dummy_stage_list.go
 model_paginated_duo_device_list.go
 model_paginated_email_stage_list.go
+model_paginated_endpoint_list.go
 model_paginated_event_list.go
 model_paginated_event_matcher_policy_list.go
 model_paginated_expiring_base_grant_model_list.go
@@ -807,6 +827,8 @@ model_paginated_property_mapping_list.go
 model_paginated_provider_list.go
 model_paginated_proxy_outpost_config_list.go
 model_paginated_proxy_provider_list.go
+model_paginated_rac_property_mapping_list.go
+model_paginated_rac_provider_list.go
 model_paginated_radius_outpost_config_list.go
 model_paginated_radius_provider_list.go
 model_paginated_reputation_list.go
@@ -865,6 +887,7 @@ model_patched_dummy_policy_request.go
 model_patched_dummy_stage_request.go
 model_patched_duo_device_request.go
 model_patched_email_stage_request.go
+model_patched_endpoint_request.go
 model_patched_event_matcher_policy_request.go
 model_patched_event_request.go
 model_patched_expression_policy_request.go
@@ -896,6 +919,8 @@ model_patched_policy_binding_request.go
 model_patched_prompt_request.go
 model_patched_prompt_stage_request.go
 model_patched_proxy_provider_request.go
+model_patched_rac_property_mapping_request.go
+model_patched_rac_provider_request.go
 model_patched_radius_provider_request.go
 model_patched_reputation_policy_request.go
 model_patched_role_request.go
@@ -944,6 +969,7 @@ model_prompt_type_enum.go
 model_property_mapping.go
 model_property_mapping_preview.go
 model_property_mapping_test_result.go
+model_protocol_enum.go
 model_provider.go
 model_provider_enum.go
 model_provider_model_enum.go
@@ -953,6 +979,10 @@ model_proxy_mode.go
 model_proxy_outpost_config.go
 model_proxy_provider.go
 model_proxy_provider_request.go
+model_rac_property_mapping.go
+model_rac_property_mapping_request.go
+model_rac_provider.go
+model_rac_provider_request.go
 model_radius_outpost_config.go
 model_radius_provider.go
 model_radius_provider_request.go

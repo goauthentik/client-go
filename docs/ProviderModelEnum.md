@@ -9,6 +9,8 @@
 
 * `PROXY_PROXYPROVIDER` (value: `"authentik_providers_proxy.proxyprovider"`)
 
+* `RAC_RACPROVIDER` (value: `"authentik_providers_rac.racprovider"`)
+
 * `RADIUS_RADIUSPROVIDER` (value: `"authentik_providers_radius.radiusprovider"`)
 
 * `SAML_SAMLPROVIDER` (value: `"authentik_providers_saml.samlprovider"`)

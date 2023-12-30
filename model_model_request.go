@@ -21,6 +21,7 @@ type ModelRequest struct {
 	LDAPProviderRequest   *LDAPProviderRequest
 	OAuth2ProviderRequest *OAuth2ProviderRequest
 	ProxyProviderRequest  *ProxyProviderRequest
+	RACProviderRequest    *RACProviderRequest
 	RadiusProviderRequest *RadiusProviderRequest
 	SAMLProviderRequest   *SAMLProviderRequest
 	SCIMProviderRequest   *SCIMProviderRequest
@@ -44,6 +45,13 @@ func OAuth2ProviderRequestAsModelRequest(v *OAuth2ProviderRequest) ModelRequest 
 func ProxyProviderRequestAsModelRequest(v *ProxyProviderRequest) ModelRequest {
 	return ModelRequest{
 		ProxyProviderRequest: v,
+	}
+}
+
+// RACProviderRequestAsModelRequest is a convenience function that returns RACProviderRequest wrapped in ModelRequest
+func RACProviderRequestAsModelRequest(v *RACProviderRequest) ModelRequest {
+	return ModelRequest{
+		RACProviderRequest: v,
 	}
 }
 
@@ -111,6 +119,18 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.ProxyProviderRequest = nil
 			return fmt.Errorf("Failed to unmarshal ModelRequest as ProxyProviderRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'RACProviderRequest'
+	if jsonDict["provider_model"] == "RACProviderRequest" {
+		// try to unmarshal JSON data into RACProviderRequest
+		err = json.Unmarshal(data, &dst.RACProviderRequest)
+		if err == nil {
+			return nil // data stored in dst.RACProviderRequest, return on the first match
+		} else {
+			dst.RACProviderRequest = nil
+			return fmt.Errorf("Failed to unmarshal ModelRequest as RACProviderRequest: %s", err.Error())
 		}
 	}
 
@@ -186,6 +206,18 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'authentik_providers_rac.racprovider'
+	if jsonDict["provider_model"] == "authentik_providers_rac.racprovider" {
+		// try to unmarshal JSON data into RACProviderRequest
+		err = json.Unmarshal(data, &dst.RACProviderRequest)
+		if err == nil {
+			return nil // data stored in dst.RACProviderRequest, return on the first match
+		} else {
+			dst.RACProviderRequest = nil
+			return fmt.Errorf("Failed to unmarshal ModelRequest as RACProviderRequest: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'authentik_providers_radius.radiusprovider'
 	if jsonDict["provider_model"] == "authentik_providers_radius.radiusprovider" {
 		// try to unmarshal JSON data into RadiusProviderRequest
@@ -239,6 +271,10 @@ func (src ModelRequest) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.ProxyProviderRequest)
 	}
 
+	if src.RACProviderRequest != nil {
+		return json.Marshal(&src.RACProviderRequest)
+	}
+
 	if src.RadiusProviderRequest != nil {
 		return json.Marshal(&src.RadiusProviderRequest)
 	}
@@ -269,6 +305,10 @@ func (obj *ModelRequest) GetActualInstance() interface{} {
 
 	if obj.ProxyProviderRequest != nil {
 		return obj.ProxyProviderRequest
+	}
+
+	if obj.RACProviderRequest != nil {
+		return obj.RACProviderRequest
 	}
 
 	if obj.RadiusProviderRequest != nil {

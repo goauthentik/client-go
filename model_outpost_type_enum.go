@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// OutpostTypeEnum * `proxy` - Proxy * `ldap` - Ldap * `radius` - Radius
+// OutpostTypeEnum * `proxy` - Proxy * `ldap` - Ldap * `radius` - Radius * `rac` - Rac
 type OutpostTypeEnum string
 
 // List of OutpostTypeEnum
@@ -24,6 +24,7 @@ const (
 	OUTPOSTTYPEENUM_PROXY  OutpostTypeEnum = "proxy"
 	OUTPOSTTYPEENUM_LDAP   OutpostTypeEnum = "ldap"
 	OUTPOSTTYPEENUM_RADIUS OutpostTypeEnum = "radius"
+	OUTPOSTTYPEENUM_RAC    OutpostTypeEnum = "rac"
 )
 
 // All allowed values of OutpostTypeEnum enum
@@ -31,6 +32,7 @@ var AllowedOutpostTypeEnumEnumValues = []OutpostTypeEnum{
 	"proxy",
 	"ldap",
 	"radius",
+	"rac",
 }
 
 func (v *OutpostTypeEnum) UnmarshalJSON(src []byte) error {
