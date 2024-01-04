@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Settings** | Pointer to **interface{}** |  | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **AuthMode** | [**AuthModeEnum**](AuthModeEnum.md) |  | 
+**MaximumConnections** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -190,6 +191,31 @@ and a boolean to check if the value has been set.
 
 SetAuthMode sets AuthMode field to given value.
 
+
+### GetMaximumConnections
+
+`func (o *EndpointRequest) GetMaximumConnections() int32`
+
+GetMaximumConnections returns the MaximumConnections field if non-nil, zero value otherwise.
+
+### GetMaximumConnectionsOk
+
+`func (o *EndpointRequest) GetMaximumConnectionsOk() (*int32, bool)`
+
+GetMaximumConnectionsOk returns a tuple with the MaximumConnections field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaximumConnections
+
+`func (o *EndpointRequest) SetMaximumConnections(v int32)`
+
+SetMaximumConnections sets MaximumConnections field to given value.
+
+### HasMaximumConnections
+
+`func (o *EndpointRequest) HasMaximumConnections() bool`
+
+HasMaximumConnections returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

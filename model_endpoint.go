@@ -27,7 +27,8 @@ type Endpoint struct {
 	PropertyMappings []string     `json:"property_mappings,omitempty"`
 	AuthMode         AuthModeEnum `json:"auth_mode"`
 	// Build actual launch URL (the provider itself does not have one, just individual endpoints)
-	LaunchUrl NullableString `json:"launch_url"`
+	LaunchUrl          NullableString `json:"launch_url"`
+	MaximumConnections *int32         `json:"maximum_connections,omitempty"`
 }
 
 // NewEndpoint instantiates a new Endpoint object
@@ -314,6 +315,38 @@ func (o *Endpoint) SetLaunchUrl(v string) {
 	o.LaunchUrl.Set(&v)
 }
 
+// GetMaximumConnections returns the MaximumConnections field value if set, zero value otherwise.
+func (o *Endpoint) GetMaximumConnections() int32 {
+	if o == nil || o.MaximumConnections == nil {
+		var ret int32
+		return ret
+	}
+	return *o.MaximumConnections
+}
+
+// GetMaximumConnectionsOk returns a tuple with the MaximumConnections field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Endpoint) GetMaximumConnectionsOk() (*int32, bool) {
+	if o == nil || o.MaximumConnections == nil {
+		return nil, false
+	}
+	return o.MaximumConnections, true
+}
+
+// HasMaximumConnections returns a boolean if a field has been set.
+func (o *Endpoint) HasMaximumConnections() bool {
+	if o != nil && o.MaximumConnections != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaximumConnections gets a reference to the given int32 and assigns it to the MaximumConnections field.
+func (o *Endpoint) SetMaximumConnections(v int32) {
+	o.MaximumConnections = &v
+}
+
 func (o Endpoint) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -345,6 +378,9 @@ func (o Endpoint) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["launch_url"] = o.LaunchUrl.Get()
+	}
+	if o.MaximumConnections != nil {
+		toSerialize["maximum_connections"] = o.MaximumConnections
 	}
 	return json.Marshal(toSerialize)
 }

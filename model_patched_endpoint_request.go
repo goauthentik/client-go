@@ -17,13 +17,14 @@ import (
 
 // PatchedEndpointRequest Endpoint Serializer
 type PatchedEndpointRequest struct {
-	Name             *string       `json:"name,omitempty"`
-	Provider         *int32        `json:"provider,omitempty"`
-	Protocol         *ProtocolEnum `json:"protocol,omitempty"`
-	Host             *string       `json:"host,omitempty"`
-	Settings         interface{}   `json:"settings,omitempty"`
-	PropertyMappings []string      `json:"property_mappings,omitempty"`
-	AuthMode         *AuthModeEnum `json:"auth_mode,omitempty"`
+	Name               *string       `json:"name,omitempty"`
+	Provider           *int32        `json:"provider,omitempty"`
+	Protocol           *ProtocolEnum `json:"protocol,omitempty"`
+	Host               *string       `json:"host,omitempty"`
+	Settings           interface{}   `json:"settings,omitempty"`
+	PropertyMappings   []string      `json:"property_mappings,omitempty"`
+	AuthMode           *AuthModeEnum `json:"auth_mode,omitempty"`
+	MaximumConnections *int32        `json:"maximum_connections,omitempty"`
 }
 
 // NewPatchedEndpointRequest instantiates a new PatchedEndpointRequest object
@@ -268,6 +269,38 @@ func (o *PatchedEndpointRequest) SetAuthMode(v AuthModeEnum) {
 	o.AuthMode = &v
 }
 
+// GetMaximumConnections returns the MaximumConnections field value if set, zero value otherwise.
+func (o *PatchedEndpointRequest) GetMaximumConnections() int32 {
+	if o == nil || o.MaximumConnections == nil {
+		var ret int32
+		return ret
+	}
+	return *o.MaximumConnections
+}
+
+// GetMaximumConnectionsOk returns a tuple with the MaximumConnections field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedEndpointRequest) GetMaximumConnectionsOk() (*int32, bool) {
+	if o == nil || o.MaximumConnections == nil {
+		return nil, false
+	}
+	return o.MaximumConnections, true
+}
+
+// HasMaximumConnections returns a boolean if a field has been set.
+func (o *PatchedEndpointRequest) HasMaximumConnections() bool {
+	if o != nil && o.MaximumConnections != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaximumConnections gets a reference to the given int32 and assigns it to the MaximumConnections field.
+func (o *PatchedEndpointRequest) SetMaximumConnections(v int32) {
+	o.MaximumConnections = &v
+}
+
 func (o PatchedEndpointRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -290,6 +323,9 @@ func (o PatchedEndpointRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.AuthMode != nil {
 		toSerialize["auth_mode"] = o.AuthMode
+	}
+	if o.MaximumConnections != nil {
+		toSerialize["maximum_connections"] = o.MaximumConnections
 	}
 	return json.Marshal(toSerialize)
 }

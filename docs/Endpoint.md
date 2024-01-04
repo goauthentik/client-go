@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **AuthMode** | [**AuthModeEnum**](AuthModeEnum.md) |  | 
 **LaunchUrl** | **NullableString** | Build actual launch URL (the provider itself does not have one, just individual endpoints) | [readonly] 
+**MaximumConnections** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -264,6 +265,31 @@ SetLaunchUrl sets LaunchUrl field to given value.
 `func (o *Endpoint) UnsetLaunchUrl()`
 
 UnsetLaunchUrl ensures that no value is present for LaunchUrl, not even an explicit nil
+### GetMaximumConnections
+
+`func (o *Endpoint) GetMaximumConnections() int32`
+
+GetMaximumConnections returns the MaximumConnections field if non-nil, zero value otherwise.
+
+### GetMaximumConnectionsOk
+
+`func (o *Endpoint) GetMaximumConnectionsOk() (*int32, bool)`
+
+GetMaximumConnectionsOk returns a tuple with the MaximumConnections field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaximumConnections
+
+`func (o *Endpoint) SetMaximumConnections(v int32)`
+
+SetMaximumConnections sets MaximumConnections field to given value.
+
+### HasMaximumConnections
+
+`func (o *Endpoint) HasMaximumConnections() bool`
+
+HasMaximumConnections returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

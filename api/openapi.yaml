@@ -35431,6 +35431,7 @@ components:
         provider_obj: ""
         launch_url: launch_url
         provider: 0
+        maximum_connections: 441289069
         name: name
         host: host
         auth_mode: null
@@ -35471,6 +35472,10 @@ components:
           nullable: true
           readOnly: true
           type: string
+        maximum_connections:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
       required:
       - auth_mode
       - host
@@ -35487,6 +35492,7 @@ components:
         settings: ""
         protocol: null
         provider: 0
+        maximum_connections: 441289069
         name: name
         host: host
         auth_mode: null
@@ -35512,6 +35518,10 @@ components:
           type: array
         auth_mode:
           $ref: '#/components/schemas/AuthModeEnum'
+        maximum_connections:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
       required:
       - auth_mode
       - host
@@ -41864,6 +41874,7 @@ components:
           provider_obj: ""
           launch_url: launch_url
           provider: 0
+          maximum_connections: 441289069
           name: name
           host: host
           auth_mode: null
@@ -41876,6 +41887,7 @@ components:
           provider_obj: ""
           launch_url: launch_url
           provider: 0
+          maximum_connections: 441289069
           name: name
           host: host
           auth_mode: null
@@ -47711,6 +47723,7 @@ components:
         settings: ""
         protocol: null
         provider: 0
+        maximum_connections: 441289069
         name: name
         host: host
         auth_mode: null
@@ -47736,6 +47749,10 @@ components:
           type: array
         auth_mode:
           $ref: '#/components/schemas/AuthModeEnum'
+        maximum_connections:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
       type: object
     PatchedEventMatcherPolicyRequest:
       description: Event Matcher Policy Serializer
