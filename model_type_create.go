@@ -17,10 +17,11 @@ import (
 
 // TypeCreate Types of an object that can be created
 type TypeCreate struct {
-	Name        string `json:"name"`
-	Description string `json:"description"`
-	Component   string `json:"component"`
-	ModelName   string `json:"model_name"`
+	Name               string `json:"name"`
+	Description        string `json:"description"`
+	Component          string `json:"component"`
+	ModelName          string `json:"model_name"`
+	RequiresEnterprise *bool  `json:"requires_enterprise,omitempty"`
 }
 
 // NewTypeCreate instantiates a new TypeCreate object
@@ -33,6 +34,8 @@ func NewTypeCreate(name string, description string, component string, modelName 
 	this.Description = description
 	this.Component = component
 	this.ModelName = modelName
+	var requiresEnterprise bool = false
+	this.RequiresEnterprise = &requiresEnterprise
 	return &this
 }
 
@@ -41,6 +44,8 @@ func NewTypeCreate(name string, description string, component string, modelName 
 // but it doesn't guarantee that properties required by API are set
 func NewTypeCreateWithDefaults() *TypeCreate {
 	this := TypeCreate{}
+	var requiresEnterprise bool = false
+	this.RequiresEnterprise = &requiresEnterprise
 	return &this
 }
 
@@ -140,6 +145,38 @@ func (o *TypeCreate) SetModelName(v string) {
 	o.ModelName = v
 }
 
+// GetRequiresEnterprise returns the RequiresEnterprise field value if set, zero value otherwise.
+func (o *TypeCreate) GetRequiresEnterprise() bool {
+	if o == nil || o.RequiresEnterprise == nil {
+		var ret bool
+		return ret
+	}
+	return *o.RequiresEnterprise
+}
+
+// GetRequiresEnterpriseOk returns a tuple with the RequiresEnterprise field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TypeCreate) GetRequiresEnterpriseOk() (*bool, bool) {
+	if o == nil || o.RequiresEnterprise == nil {
+		return nil, false
+	}
+	return o.RequiresEnterprise, true
+}
+
+// HasRequiresEnterprise returns a boolean if a field has been set.
+func (o *TypeCreate) HasRequiresEnterprise() bool {
+	if o != nil && o.RequiresEnterprise != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRequiresEnterprise gets a reference to the given bool and assigns it to the RequiresEnterprise field.
+func (o *TypeCreate) SetRequiresEnterprise(v bool) {
+	o.RequiresEnterprise = &v
+}
+
 func (o TypeCreate) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -153,6 +190,9 @@ func (o TypeCreate) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["model_name"] = o.ModelName
+	}
+	if o.RequiresEnterprise != nil {
+		toSerialize["requires_enterprise"] = o.RequiresEnterprise
 	}
 	return json.Marshal(toSerialize)
 }

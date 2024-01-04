@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Description** | **string** |  | 
 **Component** | **string** |  | 
 **ModelName** | **string** |  | 
+**RequiresEnterprise** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -107,6 +108,31 @@ and a boolean to check if the value has been set.
 
 SetModelName sets ModelName field to given value.
 
+
+### GetRequiresEnterprise
+
+`func (o *TypeCreate) GetRequiresEnterprise() bool`
+
+GetRequiresEnterprise returns the RequiresEnterprise field if non-nil, zero value otherwise.
+
+### GetRequiresEnterpriseOk
+
+`func (o *TypeCreate) GetRequiresEnterpriseOk() (*bool, bool)`
+
+GetRequiresEnterpriseOk returns a tuple with the RequiresEnterprise field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequiresEnterprise
+
+`func (o *TypeCreate) SetRequiresEnterprise(v bool)`
+
+SetRequiresEnterprise sets RequiresEnterprise field to given value.
+
+### HasRequiresEnterprise
+
+`func (o *TypeCreate) HasRequiresEnterprise() bool`
+
+HasRequiresEnterprise returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
