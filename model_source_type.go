@@ -18,7 +18,7 @@ import (
 // SourceType Serializer for SourceType
 type SourceType struct {
 	Name             string         `json:"name"`
-	Slug             string         `json:"slug"`
+	VerboseName      string         `json:"verbose_name"`
 	UrlsCustomizable bool           `json:"urls_customizable"`
 	RequestTokenUrl  NullableString `json:"request_token_url"`
 	AuthorizationUrl NullableString `json:"authorization_url"`
@@ -32,10 +32,10 @@ type SourceType struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourceType(name string, slug string, urlsCustomizable bool, requestTokenUrl NullableString, authorizationUrl NullableString, accessTokenUrl NullableString, profileUrl NullableString, oidcWellKnownUrl NullableString, oidcJwksUrl NullableString) *SourceType {
+func NewSourceType(name string, verboseName string, urlsCustomizable bool, requestTokenUrl NullableString, authorizationUrl NullableString, accessTokenUrl NullableString, profileUrl NullableString, oidcWellKnownUrl NullableString, oidcJwksUrl NullableString) *SourceType {
 	this := SourceType{}
 	this.Name = name
-	this.Slug = slug
+	this.VerboseName = verboseName
 	this.UrlsCustomizable = urlsCustomizable
 	this.RequestTokenUrl = requestTokenUrl
 	this.AuthorizationUrl = authorizationUrl
@@ -78,28 +78,28 @@ func (o *SourceType) SetName(v string) {
 	o.Name = v
 }
 
-// GetSlug returns the Slug field value
-func (o *SourceType) GetSlug() string {
+// GetVerboseName returns the VerboseName field value
+func (o *SourceType) GetVerboseName() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Slug
+	return o.VerboseName
 }
 
-// GetSlugOk returns a tuple with the Slug field value
+// GetVerboseNameOk returns a tuple with the VerboseName field value
 // and a boolean to check if the value has been set.
-func (o *SourceType) GetSlugOk() (*string, bool) {
+func (o *SourceType) GetVerboseNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Slug, true
+	return &o.VerboseName, true
 }
 
-// SetSlug sets field value
-func (o *SourceType) SetSlug(v string) {
-	o.Slug = v
+// SetVerboseName sets field value
+func (o *SourceType) SetVerboseName(v string) {
+	o.VerboseName = v
 }
 
 // GetUrlsCustomizable returns the UrlsCustomizable field value
@@ -288,7 +288,7 @@ func (o SourceType) MarshalJSON() ([]byte, error) {
 		toSerialize["name"] = o.Name
 	}
 	if true {
-		toSerialize["slug"] = o.Slug
+		toSerialize["verbose_name"] = o.VerboseName
 	}
 	if true {
 		toSerialize["urls_customizable"] = o.UrlsCustomizable

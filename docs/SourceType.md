@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**Slug** | **string** |  | 
+**VerboseName** | **string** |  | 
 **UrlsCustomizable** | **bool** |  | 
 **RequestTokenUrl** | **NullableString** |  | [readonly] 
 **AuthorizationUrl** | **NullableString** |  | [readonly] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewSourceType
 
-`func NewSourceType(name string, slug string, urlsCustomizable bool, requestTokenUrl NullableString, authorizationUrl NullableString, accessTokenUrl NullableString, profileUrl NullableString, oidcWellKnownUrl NullableString, oidcJwksUrl NullableString, ) *SourceType`
+`func NewSourceType(name string, verboseName string, urlsCustomizable bool, requestTokenUrl NullableString, authorizationUrl NullableString, accessTokenUrl NullableString, profileUrl NullableString, oidcWellKnownUrl NullableString, oidcJwksUrl NullableString, ) *SourceType`
 
 NewSourceType instantiates a new SourceType object
 This constructor will assign default values to properties that have it defined,
@@ -53,24 +53,24 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetSlug
+### GetVerboseName
 
-`func (o *SourceType) GetSlug() string`
+`func (o *SourceType) GetVerboseName() string`
 
-GetSlug returns the Slug field if non-nil, zero value otherwise.
+GetVerboseName returns the VerboseName field if non-nil, zero value otherwise.
 
-### GetSlugOk
+### GetVerboseNameOk
 
-`func (o *SourceType) GetSlugOk() (*string, bool)`
+`func (o *SourceType) GetVerboseNameOk() (*string, bool)`
 
-GetSlugOk returns a tuple with the Slug field if it's non-nil, zero value otherwise
+GetVerboseNameOk returns a tuple with the VerboseName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSlug
+### SetVerboseName
 
-`func (o *SourceType) SetSlug(v string)`
+`func (o *SourceType) SetVerboseName(v string)`
 
-SetSlug sets Slug field to given value.
+SetVerboseName sets VerboseName field to given value.
 
 
 ### GetUrlsCustomizable

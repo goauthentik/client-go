@@ -54354,6 +54354,7 @@ components:
       description: Serializer for SourceType
       example:
         oidc_well_known_url: oidc_well_known_url
+        verbose_name: verbose_name
         oidc_jwks_url: oidc_jwks_url
         request_token_url: request_token_url
         profile_url: profile_url
@@ -54361,11 +54362,10 @@ components:
         name: name
         urls_customizable: true
         access_token_url: access_token_url
-        slug: slug
       properties:
         name:
           type: string
-        slug:
+        verbose_name:
           type: string
         urls_customizable:
           type: boolean
@@ -54401,8 +54401,8 @@ components:
       - oidc_well_known_url
       - profile_url
       - request_token_url
-      - slug
       - urls_customizable
+      - verbose_name
       type: object
     SpBindingEnum:
       description: |-
