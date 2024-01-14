@@ -3237,7 +3237,7 @@ func (a *PropertymappingsApiService) PropertymappingsRacDestroyExecute(r ApiProp
 type ApiPropertymappingsRacListRequest struct {
 	ctx        context.Context
 	ApiService *PropertymappingsApiService
-	managed    *string
+	managed    *[]string
 	name       *string
 	ordering   *string
 	page       *int32
@@ -3245,7 +3245,7 @@ type ApiPropertymappingsRacListRequest struct {
 	search     *string
 }
 
-func (r ApiPropertymappingsRacListRequest) Managed(managed string) ApiPropertymappingsRacListRequest {
+func (r ApiPropertymappingsRacListRequest) Managed(managed []string) ApiPropertymappingsRacListRequest {
 	r.managed = &managed
 	return r
 }
@@ -3321,7 +3321,15 @@ func (a *PropertymappingsApiService) PropertymappingsRacListExecute(r ApiPropert
 	localVarFormParams := url.Values{}
 
 	if r.managed != nil {
-		localVarQueryParams.Add("managed", parameterToString(*r.managed, ""))
+		t := *r.managed
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("managed", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("managed", parameterToString(t, "multi"))
+		}
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))

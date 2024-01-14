@@ -1619,7 +1619,7 @@ import (
 )
 
 func main() {
-    managed := "managed_example" // string |  (optional)
+    managed := []string{"Inner_example"} // []string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -1649,7 +1649,7 @@ Other parameters are passed through a pointer to a apiPropertymappingsRacListReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **managed** | **string** |  | 
+ **managed** | **[]string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
