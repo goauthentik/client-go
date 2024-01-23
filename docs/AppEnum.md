@@ -3,6 +3,8 @@
 ## Enum
 
 
+* `TENANTS` (value: `"authentik.tenants"`)
+
 * `ADMIN` (value: `"authentik.admin"`)
 
 * `API` (value: `"authentik.api"`)
@@ -93,7 +95,7 @@
 
 * `STAGES_USER_WRITE` (value: `"authentik.stages.user_write"`)
 
-* `TENANTS` (value: `"authentik.tenants"`)
+* `BRANDS` (value: `"authentik.brands"`)
 
 * `BLUEPRINTS` (value: `"authentik.blueprints"`)
 

@@ -236,7 +236,7 @@ Name | Type | Description  | Notes
 
 ## EventsEventsList
 
-> PaginatedEventList EventsEventsList(ctx).Action(action).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TenantName(tenantName).Username(username).Execute()
+> PaginatedEventList EventsEventsList(ctx).Action(action).BrandName(brandName).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Username(username).Execute()
 
 
 
@@ -256,6 +256,7 @@ import (
 
 func main() {
     action := "action_example" // string |  (optional)
+    brandName := "brandName_example" // string | Brand name (optional)
     clientIp := "clientIp_example" // string |  (optional)
     contextAuthorizedApp := "contextAuthorizedApp_example" // string | Context Authorized application (optional)
     contextModelApp := "contextModelApp_example" // string | Context Model App (optional)
@@ -265,12 +266,11 @@ func main() {
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     search := "search_example" // string | A search term. (optional)
-    tenantName := "tenantName_example" // string | Tenant name (optional)
     username := "username_example" // string | Username (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EventsApi.EventsEventsList(context.Background()).Action(action).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TenantName(tenantName).Username(username).Execute()
+    resp, r, err := apiClient.EventsApi.EventsEventsList(context.Background()).Action(action).BrandName(brandName).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Username(username).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -292,6 +292,7 @@ Other parameters are passed through a pointer to a apiEventsEventsListRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **action** | **string** |  | 
+ **brandName** | **string** | Brand name | 
  **clientIp** | **string** |  | 
  **contextAuthorizedApp** | **string** | Context Authorized application | 
  **contextModelApp** | **string** | Context Model App | 
@@ -301,7 +302,6 @@ Name | Type | Description  | Notes
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **search** | **string** | A search term. | 
- **tenantName** | **string** | Tenant name | 
  **username** | **string** | Username | 
 
 ### Return type
@@ -674,7 +674,7 @@ Name | Type | Description  | Notes
 
 ## EventsEventsVolumeList
 
-> []Coordinate EventsEventsVolumeList(ctx).Action(action).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Search(search).TenantName(tenantName).Username(username).Execute()
+> []Coordinate EventsEventsVolumeList(ctx).Action(action).BrandName(brandName).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Search(search).Username(username).Execute()
 
 
 
@@ -694,6 +694,7 @@ import (
 
 func main() {
     action := "action_example" // string |  (optional)
+    brandName := "brandName_example" // string | Brand name (optional)
     clientIp := "clientIp_example" // string |  (optional)
     contextAuthorizedApp := "contextAuthorizedApp_example" // string | Context Authorized application (optional)
     contextModelApp := "contextModelApp_example" // string | Context Model App (optional)
@@ -701,12 +702,11 @@ func main() {
     contextModelPk := "contextModelPk_example" // string | Context Model Primary Key (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     search := "search_example" // string | A search term. (optional)
-    tenantName := "tenantName_example" // string | Tenant name (optional)
     username := "username_example" // string | Username (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EventsApi.EventsEventsVolumeList(context.Background()).Action(action).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Search(search).TenantName(tenantName).Username(username).Execute()
+    resp, r, err := apiClient.EventsApi.EventsEventsVolumeList(context.Background()).Action(action).BrandName(brandName).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Search(search).Username(username).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsVolumeList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -728,6 +728,7 @@ Other parameters are passed through a pointer to a apiEventsEventsVolumeListRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **action** | **string** |  | 
+ **brandName** | **string** | Brand name | 
  **clientIp** | **string** |  | 
  **contextAuthorizedApp** | **string** | Context Authorized application | 
  **contextModelApp** | **string** | Context Model App | 
@@ -735,7 +736,6 @@ Name | Type | Description  | Notes
  **contextModelPk** | **string** | Context Model Primary Key | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **search** | **string** | A search term. | 
- **tenantName** | **string** | Tenant name | 
  **username** | **string** | Username | 
 
 ### Return type

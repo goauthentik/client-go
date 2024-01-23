@@ -25,10 +25,12 @@ type SystemInfo struct {
 	// Get HTTP Secure flag
 	HttpIsSecure bool              `json:"http_is_secure"`
 	Runtime      SystemInfoRuntime `json:"runtime"`
-	// Currently active tenant
-	Tenant string `json:"tenant"`
+	// Currently active brand
+	Brand string `json:"brand"`
 	// Current server time
 	ServerTime time.Time `json:"server_time"`
+	// Whether the embedded outpost is disabled
+	EmbeddedOutpostDisabled bool `json:"embedded_outpost_disabled"`
 	// Get the FQDN configured on the embedded outpost
 	EmbeddedOutpostHost string `json:"embedded_outpost_host"`
 }
@@ -37,14 +39,15 @@ type SystemInfo struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSystemInfo(httpHeaders map[string]string, httpHost string, httpIsSecure bool, runtime SystemInfoRuntime, tenant string, serverTime time.Time, embeddedOutpostHost string) *SystemInfo {
+func NewSystemInfo(httpHeaders map[string]string, httpHost string, httpIsSecure bool, runtime SystemInfoRuntime, brand string, serverTime time.Time, embeddedOutpostDisabled bool, embeddedOutpostHost string) *SystemInfo {
 	this := SystemInfo{}
 	this.HttpHeaders = httpHeaders
 	this.HttpHost = httpHost
 	this.HttpIsSecure = httpIsSecure
 	this.Runtime = runtime
-	this.Tenant = tenant
+	this.Brand = brand
 	this.ServerTime = serverTime
+	this.EmbeddedOutpostDisabled = embeddedOutpostDisabled
 	this.EmbeddedOutpostHost = embeddedOutpostHost
 	return &this
 }
@@ -153,28 +156,28 @@ func (o *SystemInfo) SetRuntime(v SystemInfoRuntime) {
 	o.Runtime = v
 }
 
-// GetTenant returns the Tenant field value
-func (o *SystemInfo) GetTenant() string {
+// GetBrand returns the Brand field value
+func (o *SystemInfo) GetBrand() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Tenant
+	return o.Brand
 }
 
-// GetTenantOk returns a tuple with the Tenant field value
+// GetBrandOk returns a tuple with the Brand field value
 // and a boolean to check if the value has been set.
-func (o *SystemInfo) GetTenantOk() (*string, bool) {
+func (o *SystemInfo) GetBrandOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Tenant, true
+	return &o.Brand, true
 }
 
-// SetTenant sets field value
-func (o *SystemInfo) SetTenant(v string) {
-	o.Tenant = v
+// SetBrand sets field value
+func (o *SystemInfo) SetBrand(v string) {
+	o.Brand = v
 }
 
 // GetServerTime returns the ServerTime field value
@@ -199,6 +202,30 @@ func (o *SystemInfo) GetServerTimeOk() (*time.Time, bool) {
 // SetServerTime sets field value
 func (o *SystemInfo) SetServerTime(v time.Time) {
 	o.ServerTime = v
+}
+
+// GetEmbeddedOutpostDisabled returns the EmbeddedOutpostDisabled field value
+func (o *SystemInfo) GetEmbeddedOutpostDisabled() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.EmbeddedOutpostDisabled
+}
+
+// GetEmbeddedOutpostDisabledOk returns a tuple with the EmbeddedOutpostDisabled field value
+// and a boolean to check if the value has been set.
+func (o *SystemInfo) GetEmbeddedOutpostDisabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EmbeddedOutpostDisabled, true
+}
+
+// SetEmbeddedOutpostDisabled sets field value
+func (o *SystemInfo) SetEmbeddedOutpostDisabled(v bool) {
+	o.EmbeddedOutpostDisabled = v
 }
 
 // GetEmbeddedOutpostHost returns the EmbeddedOutpostHost field value
@@ -240,10 +267,13 @@ func (o SystemInfo) MarshalJSON() ([]byte, error) {
 		toSerialize["runtime"] = o.Runtime
 	}
 	if true {
-		toSerialize["tenant"] = o.Tenant
+		toSerialize["brand"] = o.Brand
 	}
 	if true {
 		toSerialize["server_time"] = o.ServerTime
+	}
+	if true {
+		toSerialize["embedded_outpost_disabled"] = o.EmbeddedOutpostDisabled
 	}
 	if true {
 		toSerialize["embedded_outpost_host"] = o.EmbeddedOutpostHost

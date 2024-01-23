@@ -96,6 +96,95 @@ paths:
       - authentik: []
       tags:
       - admin
+  /admin/settings/:
+    get:
+      description: Settings view
+      operationId: admin_settings_retrieve
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Settings'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - admin
+    patch:
+      description: Settings view
+      operationId: admin_settings_partial_update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSettingsRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Settings'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - admin
+    put:
+      description: Settings view
+      operationId: admin_settings_update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SettingsRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Settings'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - admin
   /admin/system/:
     get:
       description: Get system information.
@@ -3536,6 +3625,416 @@ paths:
       - authentik: []
       tags:
       - core
+  /core/brands/:
+    get:
+      description: Brand Viewset
+      operationId: core_brands_list
+      parameters:
+      - explode: true
+        in: query
+        name: brand_uuid
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: branding_favicon
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: branding_logo
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: branding_title
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: default
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: domain
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: flow_authentication
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: flow_device_code
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: flow_invalidation
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: flow_recovery
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: flow_unenrollment
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: flow_user_settings
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: web_certificate
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedBrandList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - core
+    post:
+      description: Brand Viewset
+      operationId: core_brands_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Brand'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - core
+  /core/brands/{brand_uuid}/:
+    delete:
+      description: Brand Viewset
+      operationId: core_brands_destroy
+      parameters:
+      - description: A UUID string identifying this Brand.
+        explode: false
+        in: path
+        name: brand_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - core
+    get:
+      description: Brand Viewset
+      operationId: core_brands_retrieve
+      parameters:
+      - description: A UUID string identifying this Brand.
+        explode: false
+        in: path
+        name: brand_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Brand'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - core
+    patch:
+      description: Brand Viewset
+      operationId: core_brands_partial_update
+      parameters:
+      - description: A UUID string identifying this Brand.
+        explode: false
+        in: path
+        name: brand_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBrandRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Brand'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - core
+    put:
+      description: Brand Viewset
+      operationId: core_brands_update
+      parameters:
+      - description: A UUID string identifying this Brand.
+        explode: false
+        in: path
+        name: brand_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Brand'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - core
+  /core/brands/{brand_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: core_brands_used_by_list
+      parameters:
+      - description: A UUID string identifying this Brand.
+        explode: false
+        in: path
+        name: brand_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - core
+  /core/brands/current/:
+    get:
+      description: Get current brand
+      operationId: core_brands_current_retrieve
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrentBrand'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      - {}
+      tags:
+      - core
   /core/groups/:
     get:
       description: Group Viewset
@@ -3941,423 +4440,6 @@ paths:
           description: ""
       security:
       - authentik: []
-      tags:
-      - core
-  /core/tenants/:
-    get:
-      description: Tenant Viewset
-      operationId: core_tenants_list
-      parameters:
-      - explode: true
-        in: query
-        name: branding_favicon
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: branding_logo
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: branding_title
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: default
-        required: false
-        schema:
-          type: boolean
-        style: form
-      - explode: true
-        in: query
-        name: domain
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: event_retention
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: flow_authentication
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: flow_device_code
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: flow_invalidation
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: flow_recovery
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: flow_unenrollment
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: flow_user_settings
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      - description: Which field to use when ordering the results.
-        explode: true
-        in: query
-        name: ordering
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: A page number within the paginated result set.
-        explode: true
-        in: query
-        name: page
-        required: false
-        schema:
-          type: integer
-        style: form
-      - description: Number of results to return per page.
-        explode: true
-        in: query
-        name: page_size
-        required: false
-        schema:
-          type: integer
-        style: form
-      - description: A search term.
-        explode: true
-        in: query
-        name: search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: tenant_uuid
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: web_certificate
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaginatedTenantList'
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - core
-    post:
-      description: Tenant Viewset
-      operationId: core_tenants_create
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TenantRequest'
-        required: true
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Tenant'
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - core
-  /core/tenants/{tenant_uuid}/:
-    delete:
-      description: Tenant Viewset
-      operationId: core_tenants_destroy
-      parameters:
-      - description: A UUID string identifying this Tenant.
-        explode: false
-        in: path
-        name: tenant_uuid
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "204":
-          description: No response body
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - core
-    get:
-      description: Tenant Viewset
-      operationId: core_tenants_retrieve
-      parameters:
-      - description: A UUID string identifying this Tenant.
-        explode: false
-        in: path
-        name: tenant_uuid
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Tenant'
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - core
-    patch:
-      description: Tenant Viewset
-      operationId: core_tenants_partial_update
-      parameters:
-      - description: A UUID string identifying this Tenant.
-        explode: false
-        in: path
-        name: tenant_uuid
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedTenantRequest'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Tenant'
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - core
-    put:
-      description: Tenant Viewset
-      operationId: core_tenants_update
-      parameters:
-      - description: A UUID string identifying this Tenant.
-        explode: false
-        in: path
-        name: tenant_uuid
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TenantRequest'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Tenant'
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - core
-  /core/tenants/{tenant_uuid}/used_by/:
-    get:
-      description: Get a list of all objects that use this object
-      operationId: core_tenants_used_by_list
-      parameters:
-      - description: A UUID string identifying this Tenant.
-        explode: false
-        in: path
-        name: tenant_uuid
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/UsedBy'
-                type: array
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - core
-  /core/tenants/current/:
-    get:
-      description: Get current tenant
-      operationId: core_tenants_current_retrieve
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CurrentTenant'
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      - {}
       tags:
       - core
   /core/tokens/:
@@ -6479,6 +6561,14 @@ paths:
         schema:
           type: string
         style: form
+      - description: Brand name
+        explode: true
+        in: query
+        name: brand_name
+        required: false
+        schema:
+          type: string
+        style: form
       - explode: true
         in: query
         name: client_ip
@@ -6546,14 +6636,6 @@ paths:
         explode: true
         in: query
         name: search
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Tenant name
-        explode: true
-        in: query
-        name: tenant_name
         required: false
         schema:
           type: string
@@ -6902,6 +6984,14 @@ paths:
         schema:
           type: string
         style: form
+      - description: Brand name
+        explode: true
+        in: query
+        name: brand_name
+        required: false
+        schema:
+          type: string
+        style: form
       - explode: true
         in: query
         name: client_ip
@@ -6953,14 +7043,6 @@ paths:
         explode: true
         in: query
         name: search
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Tenant name
-        explode: true
-        in: query
-        name: tenant_name
         required: false
         schema:
           type: string
@@ -20124,6 +20206,7 @@ paths:
       operationId: rbac_permissions_assigned_by_roles_list
       parameters:
       - description: |-
+          * `authentik_tenants.domain` - Domain
           * `authentik_crypto.certificatekeypair` - Certificate-Key Pair
           * `authentik_events.event` - Event
           * `authentik_events.notificationtransport` - Notification Transport
@@ -20191,7 +20274,7 @@ paths:
           * `authentik_stages_user_login.userloginstage` - User Login Stage
           * `authentik_stages_user_logout.userlogoutstage` - User Logout Stage
           * `authentik_stages_user_write.userwritestage` - User Write Stage
-          * `authentik_tenants.tenant` - Tenant
+          * `authentik_brands.brand` - Brand
           * `authentik_blueprints.blueprintinstance` - Blueprint Instance
           * `authentik_core.group` - Group
           * `authentik_core.user` - User
@@ -20208,6 +20291,7 @@ paths:
         schema:
           enum:
           - authentik_blueprints.blueprintinstance
+          - authentik_brands.brand
           - authentik_core.application
           - authentik_core.group
           - authentik_core.token
@@ -20283,7 +20367,7 @@ paths:
           - authentik_stages_user_login.userloginstage
           - authentik_stages_user_logout.userlogoutstage
           - authentik_stages_user_write.userwritestage
-          - authentik_tenants.tenant
+          - authentik_tenants.domain
           type: string
         style: form
       - explode: true
@@ -20435,6 +20519,7 @@ paths:
       operationId: rbac_permissions_assigned_by_users_list
       parameters:
       - description: |-
+          * `authentik_tenants.domain` - Domain
           * `authentik_crypto.certificatekeypair` - Certificate-Key Pair
           * `authentik_events.event` - Event
           * `authentik_events.notificationtransport` - Notification Transport
@@ -20502,7 +20587,7 @@ paths:
           * `authentik_stages_user_login.userloginstage` - User Login Stage
           * `authentik_stages_user_logout.userlogoutstage` - User Logout Stage
           * `authentik_stages_user_write.userwritestage` - User Write Stage
-          * `authentik_tenants.tenant` - Tenant
+          * `authentik_brands.brand` - Brand
           * `authentik_blueprints.blueprintinstance` - Blueprint Instance
           * `authentik_core.group` - Group
           * `authentik_core.user` - User
@@ -20519,6 +20604,7 @@ paths:
         schema:
           enum:
           - authentik_blueprints.blueprintinstance
+          - authentik_brands.brand
           - authentik_core.application
           - authentik_core.group
           - authentik_core.token
@@ -20594,7 +20680,7 @@ paths:
           - authentik_stages_user_login.userloginstage
           - authentik_stages_user_logout.userlogoutstage
           - authentik_stages_user_write.userwritestage
-          - authentik_tenants.tenant
+          - authentik_tenants.domain
           type: string
         style: form
       - explode: true
@@ -31940,6 +32026,540 @@ paths:
       - authentik: []
       tags:
       - stages
+  /tenants/domains/:
+    get:
+      description: Domain ViewSet
+      operationId: tenants_domains_list
+      parameters:
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDomainList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - tenants
+    post:
+      description: Domain ViewSet
+      operationId: tenants_domains_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DomainRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domain'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - tenants
+  /tenants/domains/{id}/:
+    delete:
+      description: Domain ViewSet
+      operationId: tenants_domains_destroy
+      parameters:
+      - description: A unique integer value identifying this Domain.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - tenants
+    get:
+      description: Domain ViewSet
+      operationId: tenants_domains_retrieve
+      parameters:
+      - description: A unique integer value identifying this Domain.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domain'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - tenants
+    patch:
+      description: Domain ViewSet
+      operationId: tenants_domains_partial_update
+      parameters:
+      - description: A unique integer value identifying this Domain.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDomainRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domain'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - tenants
+    put:
+      description: Domain ViewSet
+      operationId: tenants_domains_update
+      parameters:
+      - description: A unique integer value identifying this Domain.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DomainRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domain'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - tenants
+  /tenants/tenants/:
+    get:
+      description: Tenant Viewset
+      operationId: tenants_tenants_list
+      parameters:
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTenantList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - tenants
+    post:
+      description: Tenant Viewset
+      operationId: tenants_tenants_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tenant'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - tenants
+  /tenants/tenants/{tenant_uuid}/:
+    delete:
+      description: Tenant Viewset
+      operationId: tenants_tenants_destroy
+      parameters:
+      - description: A UUID string identifying this Tenant.
+        explode: false
+        in: path
+        name: tenant_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - tenants
+    get:
+      description: Tenant Viewset
+      operationId: tenants_tenants_retrieve
+      parameters:
+      - description: A UUID string identifying this Tenant.
+        explode: false
+        in: path
+        name: tenant_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tenant'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - tenants
+    patch:
+      description: Tenant Viewset
+      operationId: tenants_tenants_partial_update
+      parameters:
+      - description: A UUID string identifying this Tenant.
+        explode: false
+        in: path
+        name: tenant_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTenantRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tenant'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - tenants
+    put:
+      description: Tenant Viewset
+      operationId: tenants_tenants_update
+      parameters:
+      - description: A UUID string identifying this Tenant.
+        explode: false
+        in: path
+        name: tenant_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tenant'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - tenants
+  /tenants/tenants/{tenant_uuid}/create_admin_group/:
+    post:
+      description: Create admin group and add user to it.
+      operationId: tenants_tenants_create_admin_group_create
+      parameters:
+      - description: A UUID string identifying this Tenant.
+        explode: false
+        in: path
+        name: tenant_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantAdminGroupRequestRequest'
+        required: true
+      responses:
+        "204":
+          description: Group created successfully.
+        "400":
+          description: Bad request
+        "404":
+          description: User not found
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - tenants
+  /tenants/tenants/{tenant_uuid}/create_recovery_key/:
+    post:
+      description: Create recovery key for user.
+      operationId: tenants_tenants_create_recovery_key_create
+      parameters:
+      - description: A UUID string identifying this Tenant.
+        explode: false
+        in: path
+        name: tenant_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantRecoveryKeyRequestRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantRecoveryKeyResponse'
+          description: ""
+        "400":
+          description: Bad request
+        "404":
+          description: User not found
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - tenants
 components:
   schemas:
     AccessDeniedChallenge:
@@ -31985,6 +32605,7 @@ components:
       type: object
     AppEnum:
       description: |-
+        * `authentik.tenants` - authentik Tenants
         * `authentik.admin` - authentik Admin
         * `authentik.api` - authentik API
         * `authentik.crypto` - authentik Crypto
@@ -32030,12 +32651,13 @@ components:
         * `authentik.stages.user_login` - authentik Stages.User Login
         * `authentik.stages.user_logout` - authentik Stages.User Logout
         * `authentik.stages.user_write` - authentik Stages.User Write
-        * `authentik.tenants` - authentik Tenants
+        * `authentik.brands` - authentik Brands
         * `authentik.blueprints` - authentik Blueprints
         * `authentik.core` - authentik Core
         * `authentik.enterprise` - authentik Enterprise
         * `authentik.enterprise.providers.rac` - authentik Enterprise.Providers.RAC
       enum:
+      - authentik.tenants
       - authentik.admin
       - authentik.api
       - authentik.crypto
@@ -32081,7 +32703,7 @@ components:
       - authentik.stages.user_login
       - authentik.stages.user_logout
       - authentik.stages.user_write
-      - authentik.tenants
+      - authentik.brands
       - authentik.blueprints
       - authentik.core
       - authentik.enterprise
@@ -33827,6 +34449,140 @@ components:
       - orphaned
       - unknown
       type: string
+    Brand:
+      description: Brand Serializer
+      example:
+        branding_logo: branding_logo
+        flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        default: true
+        flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        domain: domain
+        flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        attributes: ""
+        branding_title: branding_title
+        branding_favicon: branding_favicon
+        flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        brand_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        brand_uuid:
+          format: uuid
+          readOnly: true
+          type: string
+        domain:
+          description: "Domain that activates this brand. Can be a superset, i.e.\
+            \ `a.b` for `aa.b` and `ba.b`"
+          type: string
+        default:
+          type: boolean
+        branding_title:
+          type: string
+        branding_logo:
+          type: string
+        branding_favicon:
+          type: string
+        flow_authentication:
+          format: uuid
+          nullable: true
+          type: string
+        flow_invalidation:
+          format: uuid
+          nullable: true
+          type: string
+        flow_recovery:
+          format: uuid
+          nullable: true
+          type: string
+        flow_unenrollment:
+          format: uuid
+          nullable: true
+          type: string
+        flow_user_settings:
+          format: uuid
+          nullable: true
+          type: string
+        flow_device_code:
+          format: uuid
+          nullable: true
+          type: string
+        web_certificate:
+          description: Web Certificate used by the authentik Core webserver.
+          format: uuid
+          nullable: true
+          type: string
+        attributes: {}
+      required:
+      - brand_uuid
+      - domain
+      type: object
+    BrandRequest:
+      description: Brand Serializer
+      example:
+        branding_logo: branding_logo
+        flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        default: true
+        flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        domain: domain
+        flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        attributes: ""
+        branding_title: branding_title
+        branding_favicon: branding_favicon
+        flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        domain:
+          description: "Domain that activates this brand. Can be a superset, i.e.\
+            \ `a.b` for `aa.b` and `ba.b`"
+          minLength: 1
+          type: string
+        default:
+          type: boolean
+        branding_title:
+          minLength: 1
+          type: string
+        branding_logo:
+          minLength: 1
+          type: string
+        branding_favicon:
+          minLength: 1
+          type: string
+        flow_authentication:
+          format: uuid
+          nullable: true
+          type: string
+        flow_invalidation:
+          format: uuid
+          nullable: true
+          type: string
+        flow_recovery:
+          format: uuid
+          nullable: true
+          type: string
+        flow_unenrollment:
+          format: uuid
+          nullable: true
+          type: string
+        flow_user_settings:
+          format: uuid
+          nullable: true
+          type: string
+        flow_device_code:
+          format: uuid
+          nullable: true
+          type: string
+        web_certificate:
+          description: Web Certificate used by the authentik Core webserver.
+          format: uuid
+          nullable: true
+          type: string
+        attributes: {}
+      required:
+      - domain
+      type: object
     Cache:
       description: Generic cache stats for an object
       example:
@@ -34518,8 +35274,8 @@ components:
       - x_cord
       - y_cord
       type: object
-    CurrentTenant:
-      description: Partial tenant information for styling
+    CurrentBrand:
+      description: Partial brand information for styling
       example:
         branding_logo: branding_logo
         ui_footer_links:
@@ -34548,7 +35304,6 @@ components:
         branding_favicon:
           type: string
         ui_footer_links:
-          default: []
           items:
             $ref: '#/components/schemas/FooterLink'
           readOnly: true
@@ -34910,6 +35665,50 @@ components:
       required:
       - name
       - url
+      type: object
+    Domain:
+      description: Domain Serializer
+      example:
+        is_primary: true
+        domain: domain
+        id: 0
+        tenant: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        domain:
+          maxLength: 253
+          type: string
+        is_primary:
+          type: boolean
+        tenant:
+          format: uuid
+          type: string
+      required:
+      - domain
+      - id
+      - tenant
+      type: object
+    DomainRequest:
+      description: Domain Serializer
+      example:
+        is_primary: true
+        domain: domain
+        tenant: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        domain:
+          maxLength: 253
+          minLength: 1
+          type: string
+        is_primary:
+          type: boolean
+        tenant:
+          format: uuid
+          type: string
+      required:
+      - domain
+      - tenant
       type: object
     DummyChallenge:
       description: Dummy challenge
@@ -35588,7 +36387,7 @@ components:
         client_ip: client_ip
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: ""
-        tenant: ""
+        brand: ""
       properties:
         pk:
           format: uuid
@@ -35611,7 +36410,7 @@ components:
         expires:
           format: date-time
           type: string
-        tenant: {}
+        brand: {}
       required:
       - action
       - app
@@ -35768,6 +36567,7 @@ components:
           description: |-
             Match events created by selected application. When left empty, all applications are matched.
 
+            * `authentik.tenants` - authentik Tenants
             * `authentik.admin` - authentik Admin
             * `authentik.api` - authentik API
             * `authentik.crypto` - authentik Crypto
@@ -35813,7 +36613,7 @@ components:
             * `authentik.stages.user_login` - authentik Stages.User Login
             * `authentik.stages.user_logout` - authentik Stages.User Logout
             * `authentik.stages.user_write` - authentik Stages.User Write
-            * `authentik.tenants` - authentik Tenants
+            * `authentik.brands` - authentik Brands
             * `authentik.blueprints` - authentik Blueprints
             * `authentik.core` - authentik Core
             * `authentik.enterprise` - authentik Enterprise
@@ -35825,6 +36625,7 @@ components:
           description: |-
             Match events created by selected model. When left empty, all models are matched. When an app is selected, all the application's models are matched.
 
+            * `authentik_tenants.domain` - Domain
             * `authentik_crypto.certificatekeypair` - Certificate-Key Pair
             * `authentik_events.event` - Event
             * `authentik_events.notificationtransport` - Notification Transport
@@ -35892,7 +36693,7 @@ components:
             * `authentik_stages_user_login.userloginstage` - User Login Stage
             * `authentik_stages_user_logout.userlogoutstage` - User Logout Stage
             * `authentik_stages_user_write.userwritestage` - User Write Stage
-            * `authentik_tenants.tenant` - Tenant
+            * `authentik_brands.brand` - Brand
             * `authentik_blueprints.blueprintinstance` - Blueprint Instance
             * `authentik_core.group` - Group
             * `authentik_core.user` - User
@@ -35975,6 +36776,7 @@ components:
           description: |-
             Match events created by selected application. When left empty, all applications are matched.
 
+            * `authentik.tenants` - authentik Tenants
             * `authentik.admin` - authentik Admin
             * `authentik.api` - authentik API
             * `authentik.crypto` - authentik Crypto
@@ -36020,7 +36822,7 @@ components:
             * `authentik.stages.user_login` - authentik Stages.User Login
             * `authentik.stages.user_logout` - authentik Stages.User Logout
             * `authentik.stages.user_write` - authentik Stages.User Write
-            * `authentik.tenants` - authentik Tenants
+            * `authentik.brands` - authentik Brands
             * `authentik.blueprints` - authentik Blueprints
             * `authentik.core` - authentik Core
             * `authentik.enterprise` - authentik Enterprise
@@ -36032,6 +36834,7 @@ components:
           description: |-
             Match events created by selected model. When left empty, all models are matched. When an app is selected, all the application's models are matched.
 
+            * `authentik_tenants.domain` - Domain
             * `authentik_crypto.certificatekeypair` - Certificate-Key Pair
             * `authentik_events.event` - Event
             * `authentik_events.notificationtransport` - Notification Transport
@@ -36099,7 +36902,7 @@ components:
             * `authentik_stages_user_login.userloginstage` - User Login Stage
             * `authentik_stages_user_logout.userlogoutstage` - User Logout Stage
             * `authentik_stages_user_write.userwritestage` - User Write Stage
-            * `authentik_tenants.tenant` - Tenant
+            * `authentik_brands.brand` - Brand
             * `authentik_blueprints.blueprintinstance` - Blueprint Instance
             * `authentik_core.group` - Group
             * `authentik_core.user` - User
@@ -36122,7 +36925,7 @@ components:
         action: null
         client_ip: client_ip
         user: ""
-        tenant: ""
+        brand: ""
       properties:
         user: {}
         action:
@@ -36138,7 +36941,7 @@ components:
         expires:
           format: date-time
           type: string
-        tenant: {}
+        brand: {}
       required:
       - action
       - app
@@ -39027,6 +39830,7 @@ components:
       type: object
     ModelEnum:
       description: |-
+        * `authentik_tenants.domain` - Domain
         * `authentik_crypto.certificatekeypair` - Certificate-Key Pair
         * `authentik_events.event` - Event
         * `authentik_events.notificationtransport` - Notification Transport
@@ -39094,7 +39898,7 @@ components:
         * `authentik_stages_user_login.userloginstage` - User Login Stage
         * `authentik_stages_user_logout.userlogoutstage` - User Logout Stage
         * `authentik_stages_user_write.userwritestage` - User Write Stage
-        * `authentik_tenants.tenant` - Tenant
+        * `authentik_brands.brand` - Brand
         * `authentik_blueprints.blueprintinstance` - Blueprint Instance
         * `authentik_core.group` - Group
         * `authentik_core.user` - User
@@ -39105,6 +39909,7 @@ components:
         * `authentik_providers_rac.endpoint` - RAC Endpoint
         * `authentik_providers_rac.racpropertymapping` - RAC Property Mapping
       enum:
+      - authentik_tenants.domain
       - authentik_crypto.certificatekeypair
       - authentik_events.event
       - authentik_events.notificationtransport
@@ -39172,7 +39977,7 @@ components:
       - authentik_stages_user_login.userloginstage
       - authentik_stages_user_logout.userlogoutstage
       - authentik_stages_user_write.userwritestage
-      - authentik_tenants.tenant
+      - authentik_brands.brand
       - authentik_blueprints.blueprintinstance
       - authentik_core.group
       - authentik_core.user
@@ -39235,7 +40040,7 @@ components:
           client_ip: client_ip
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: ""
-          tenant: ""
+          brand: ""
         seen: true
       properties:
         pk:
@@ -39274,7 +40079,7 @@ components:
           action: null
           client_ip: client_ip
           user: ""
-          tenant: ""
+          brand: ""
         seen: true
       properties:
         event:
@@ -41246,6 +42051,56 @@ components:
       - pagination
       - results
       type: object
+    PaginatedBrandList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - branding_logo: branding_logo
+          flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          default: true
+          flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          domain: domain
+          flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          attributes: ""
+          branding_title: branding_title
+          branding_favicon: branding_favicon
+          flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          brand_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - branding_logo: branding_logo
+          flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          default: true
+          flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          domain: domain
+          flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          attributes: ""
+          branding_title: branding_title
+          branding_favicon: branding_favicon
+          flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          brand_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/Brand'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedCaptchaStageList:
       example:
         pagination:
@@ -41596,6 +42451,36 @@ components:
       - pagination
       - results
       type: object
+    PaginatedDomainList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - is_primary: true
+          domain: domain
+          id: 0
+          tenant: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - is_primary: true
+          domain: domain
+          id: 0
+          tenant: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/Domain'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedDummyPolicyList:
       example:
         pagination:
@@ -41927,7 +42812,7 @@ components:
           client_ip: client_ip
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: ""
-          tenant: ""
+          brand: ""
         - app: app
           expires: 2000-01-23T04:56:07.000+00:00
           created: 2000-01-23T04:56:07.000+00:00
@@ -41936,7 +42821,7 @@ components:
           client_ip: client_ip
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: ""
-          tenant: ""
+          brand: ""
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -43084,7 +43969,7 @@ components:
             client_ip: client_ip
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             user: ""
-            tenant: ""
+            brand: ""
           seen: true
         - severity: ""
           created: 2000-01-23T04:56:07.000+00:00
@@ -43099,7 +43984,7 @@ components:
             client_ip: client_ip
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             user: ""
-            tenant: ""
+            brand: ""
           seen: true
       properties:
         pagination:
@@ -45393,36 +46278,14 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - branding_logo: branding_logo
-          flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          event_retention: event_retention
-          flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          default: true
-          flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          tenant_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          domain: domain
-          flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          attributes: ""
-          branding_title: branding_title
-          branding_favicon: branding_favicon
-          flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - branding_logo: branding_logo
-          flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          event_retention: event_retention
-          flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          default: true
-          flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          tenant_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          domain: domain
-          flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          attributes: ""
-          branding_title: branding_title
-          branding_favicon: branding_favicon
-          flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - tenant_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          ready: true
+          name: name
+          schema_name: schema_name
+        - tenant_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          ready: true
+          name: name
+          schema_name: schema_name
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -47385,6 +48248,70 @@ components:
         content:
           type: string
       type: object
+    PatchedBrandRequest:
+      description: Brand Serializer
+      example:
+        branding_logo: branding_logo
+        flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        default: true
+        flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        domain: domain
+        flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        attributes: ""
+        branding_title: branding_title
+        branding_favicon: branding_favicon
+        flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        domain:
+          description: "Domain that activates this brand. Can be a superset, i.e.\
+            \ `a.b` for `aa.b` and `ba.b`"
+          minLength: 1
+          type: string
+        default:
+          type: boolean
+        branding_title:
+          minLength: 1
+          type: string
+        branding_logo:
+          minLength: 1
+          type: string
+        branding_favicon:
+          minLength: 1
+          type: string
+        flow_authentication:
+          format: uuid
+          nullable: true
+          type: string
+        flow_invalidation:
+          format: uuid
+          nullable: true
+          type: string
+        flow_recovery:
+          format: uuid
+          nullable: true
+          type: string
+        flow_unenrollment:
+          format: uuid
+          nullable: true
+          type: string
+        flow_user_settings:
+          format: uuid
+          nullable: true
+          type: string
+        flow_device_code:
+          format: uuid
+          nullable: true
+          type: string
+        web_certificate:
+          description: Web Certificate used by the authentik Core webserver.
+          format: uuid
+          nullable: true
+          type: string
+        attributes: {}
+      type: object
     PatchedCaptchaStageRequest:
       description: CaptchaStage Serializer
       example:
@@ -47560,6 +48487,23 @@ components:
             for no authentication.
           format: uuid
           nullable: true
+          type: string
+      type: object
+    PatchedDomainRequest:
+      description: Domain Serializer
+      example:
+        is_primary: true
+        domain: domain
+        tenant: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        domain:
+          maxLength: 253
+          minLength: 1
+          type: string
+        is_primary:
+          type: boolean
+        tenant:
+          format: uuid
           type: string
       type: object
     PatchedDummyPolicyRequest:
@@ -47819,6 +48763,7 @@ components:
           description: |-
             Match events created by selected application. When left empty, all applications are matched.
 
+            * `authentik.tenants` - authentik Tenants
             * `authentik.admin` - authentik Admin
             * `authentik.api` - authentik API
             * `authentik.crypto` - authentik Crypto
@@ -47864,7 +48809,7 @@ components:
             * `authentik.stages.user_login` - authentik Stages.User Login
             * `authentik.stages.user_logout` - authentik Stages.User Logout
             * `authentik.stages.user_write` - authentik Stages.User Write
-            * `authentik.tenants` - authentik Tenants
+            * `authentik.brands` - authentik Brands
             * `authentik.blueprints` - authentik Blueprints
             * `authentik.core` - authentik Core
             * `authentik.enterprise` - authentik Enterprise
@@ -47876,6 +48821,7 @@ components:
           description: |-
             Match events created by selected model. When left empty, all models are matched. When an app is selected, all the application's models are matched.
 
+            * `authentik_tenants.domain` - Domain
             * `authentik_crypto.certificatekeypair` - Certificate-Key Pair
             * `authentik_events.event` - Event
             * `authentik_events.notificationtransport` - Notification Transport
@@ -47943,7 +48889,7 @@ components:
             * `authentik_stages_user_login.userloginstage` - User Login Stage
             * `authentik_stages_user_logout.userlogoutstage` - User Logout Stage
             * `authentik_stages_user_write.userwritestage` - User Write Stage
-            * `authentik_tenants.tenant` - Tenant
+            * `authentik_brands.brand` - Brand
             * `authentik_blueprints.blueprintinstance` - Blueprint Instance
             * `authentik_core.group` - Group
             * `authentik_core.user` - User
@@ -47964,7 +48910,7 @@ components:
         action: null
         client_ip: client_ip
         user: ""
-        tenant: ""
+        brand: ""
       properties:
         user: {}
         action:
@@ -47980,7 +48926,7 @@ components:
         expires:
           format: date-time
           type: string
-        tenant: {}
+        brand: {}
       type: object
     PatchedExpressionPolicyRequest:
       description: Group Membership Policy Serializer
@@ -48607,7 +49553,7 @@ components:
           action: null
           client_ip: client_ip
           user: ""
-          tenant: ""
+          brand: ""
         seen: true
       properties:
         event:
@@ -50019,6 +50965,46 @@ components:
             \ the user won't be informed."
           type: string
       type: object
+    PatchedSettingsRequest:
+      description: Settings Serializer
+      example:
+        default_user_change_email: true
+        default_user_change_name: true
+        impersonation: true
+        default_user_change_username: true
+        event_retention: event_retention
+        footer_links: ""
+        gdpr_compliance: true
+        avatars: avatars
+      properties:
+        avatars:
+          description: Configure how authentik should show avatars for users.
+          minLength: 1
+          type: string
+        default_user_change_name:
+          description: Enable the ability for users to change their name.
+          type: boolean
+        default_user_change_email:
+          description: Enable the ability for users to change their email address.
+          type: boolean
+        default_user_change_username:
+          description: Enable the ability for users to change their username.
+          type: boolean
+        event_retention:
+          description: "Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2)."
+          minLength: 1
+          type: string
+        footer_links:
+          description: The option configures the footer links on the flow executor
+            pages.
+        gdpr_compliance:
+          description: "When enabled, all the events caused by a user will be deleted\
+            \ upon the user's deletion."
+          type: boolean
+        impersonation:
+          description: Globally enable/disable impersonation.
+          type: boolean
+      type: object
     PatchedStaticDeviceRequest:
       description: Serializer for static authenticator devices
       example:
@@ -50044,71 +51030,19 @@ components:
     PatchedTenantRequest:
       description: Tenant Serializer
       example:
-        branding_logo: branding_logo
-        flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        event_retention: event_retention
-        flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        default: true
-        flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        domain: domain
-        flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        attributes: ""
-        branding_title: branding_title
-        branding_favicon: branding_favicon
-        flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        ready: true
+        name: name
+        schema_name: schema_name
       properties:
-        domain:
-          description: "Domain that activates this tenant. Can be a superset, i.e.\
-            \ `a.b` for `aa.b` and `ba.b`"
+        schema_name:
+          maxLength: 63
           minLength: 1
           type: string
-        default:
+        name:
+          minLength: 1
+          type: string
+        ready:
           type: boolean
-        branding_title:
-          minLength: 1
-          type: string
-        branding_logo:
-          minLength: 1
-          type: string
-        branding_favicon:
-          minLength: 1
-          type: string
-        flow_authentication:
-          format: uuid
-          nullable: true
-          type: string
-        flow_invalidation:
-          format: uuid
-          nullable: true
-          type: string
-        flow_recovery:
-          format: uuid
-          nullable: true
-          type: string
-        flow_unenrollment:
-          format: uuid
-          nullable: true
-          type: string
-        flow_user_settings:
-          format: uuid
-          nullable: true
-          type: string
-        flow_device_code:
-          format: uuid
-          nullable: true
-          type: string
-        event_retention:
-          description: "Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2)."
-          minLength: 1
-          type: string
-        web_certificate:
-          description: Web Certificate used by the authentik Core webserver.
-          format: uuid
-          nullable: true
-          type: string
-        attributes: {}
       type: object
     PatchedTokenRequest:
       description: Token Serializer
@@ -54159,6 +55093,84 @@ components:
       required:
       - user
       type: object
+    Settings:
+      description: Settings Serializer
+      example:
+        default_user_change_email: true
+        default_user_change_name: true
+        impersonation: true
+        default_user_change_username: true
+        event_retention: event_retention
+        footer_links: ""
+        gdpr_compliance: true
+        avatars: avatars
+      properties:
+        avatars:
+          description: Configure how authentik should show avatars for users.
+          type: string
+        default_user_change_name:
+          description: Enable the ability for users to change their name.
+          type: boolean
+        default_user_change_email:
+          description: Enable the ability for users to change their email address.
+          type: boolean
+        default_user_change_username:
+          description: Enable the ability for users to change their username.
+          type: boolean
+        event_retention:
+          description: "Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2)."
+          type: string
+        footer_links:
+          description: The option configures the footer links on the flow executor
+            pages.
+        gdpr_compliance:
+          description: "When enabled, all the events caused by a user will be deleted\
+            \ upon the user's deletion."
+          type: boolean
+        impersonation:
+          description: Globally enable/disable impersonation.
+          type: boolean
+      type: object
+    SettingsRequest:
+      description: Settings Serializer
+      example:
+        default_user_change_email: true
+        default_user_change_name: true
+        impersonation: true
+        default_user_change_username: true
+        event_retention: event_retention
+        footer_links: ""
+        gdpr_compliance: true
+        avatars: avatars
+      properties:
+        avatars:
+          description: Configure how authentik should show avatars for users.
+          minLength: 1
+          type: string
+        default_user_change_name:
+          description: Enable the ability for users to change their name.
+          type: boolean
+        default_user_change_email:
+          description: Enable the ability for users to change their email address.
+          type: boolean
+        default_user_change_username:
+          description: Enable the ability for users to change their username.
+          type: boolean
+        event_retention:
+          description: "Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2)."
+          minLength: 1
+          type: string
+        footer_links:
+          description: The option configures the footer links on the flow executor
+            pages.
+        gdpr_compliance:
+          description: "When enabled, all the events caused by a user will be deleted\
+            \ upon the user's deletion."
+          type: boolean
+        impersonation:
+          description: Globally enable/disable impersonation.
+          type: boolean
+      type: object
     SeverityEnum:
       description: |-
         * `notice` - Notice
@@ -54655,8 +55667,9 @@ components:
           architecture: architecture
         embedded_outpost_host: embedded_outpost_host
         http_host: http_host
+        brand: brand
         http_is_secure: true
-        tenant: tenant
+        embedded_outpost_disabled: true
       properties:
         http_headers:
           additionalProperties:
@@ -54674,8 +55687,8 @@ components:
           type: boolean
         runtime:
           $ref: '#/components/schemas/SystemInfo_runtime'
-        tenant:
-          description: Currently active tenant
+        brand:
+          description: Currently active brand
           readOnly: true
           type: string
         server_time:
@@ -54683,18 +55696,23 @@ components:
           format: date-time
           readOnly: true
           type: string
+        embedded_outpost_disabled:
+          description: Whether the embedded outpost is disabled
+          readOnly: true
+          type: boolean
         embedded_outpost_host:
           description: Get the FQDN configured on the embedded outpost
           readOnly: true
           type: string
       required:
+      - brand
+      - embedded_outpost_disabled
       - embedded_outpost_host
       - http_headers
       - http_host
       - http_is_secure
       - runtime
       - server_time
-      - tenant
       type: object
     TOTPDevice:
       description: Serializer for totp authenticator devices
@@ -54778,145 +55796,87 @@ components:
     Tenant:
       description: Tenant Serializer
       example:
-        branding_logo: branding_logo
-        flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        event_retention: event_retention
-        flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        default: true
-        flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         tenant_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        domain: domain
-        flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        attributes: ""
-        branding_title: branding_title
-        branding_favicon: branding_favicon
-        flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        ready: true
+        name: name
+        schema_name: schema_name
       properties:
         tenant_uuid:
           format: uuid
           readOnly: true
           type: string
-        domain:
-          description: "Domain that activates this tenant. Can be a superset, i.e.\
-            \ `a.b` for `aa.b` and `ba.b`"
+        schema_name:
+          maxLength: 63
           type: string
-        default:
+        name:
+          type: string
+        ready:
           type: boolean
-        branding_title:
-          type: string
-        branding_logo:
-          type: string
-        branding_favicon:
-          type: string
-        flow_authentication:
-          format: uuid
-          nullable: true
-          type: string
-        flow_invalidation:
-          format: uuid
-          nullable: true
-          type: string
-        flow_recovery:
-          format: uuid
-          nullable: true
-          type: string
-        flow_unenrollment:
-          format: uuid
-          nullable: true
-          type: string
-        flow_user_settings:
-          format: uuid
-          nullable: true
-          type: string
-        flow_device_code:
-          format: uuid
-          nullable: true
-          type: string
-        event_retention:
-          description: "Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2)."
-          type: string
-        web_certificate:
-          description: Web Certificate used by the authentik Core webserver.
-          format: uuid
-          nullable: true
-          type: string
-        attributes: {}
       required:
-      - domain
+      - name
+      - schema_name
       - tenant_uuid
+      type: object
+    TenantAdminGroupRequestRequest:
+      description: Tenant admin group creation request serializer
+      example:
+        user: user
+      properties:
+        user:
+          minLength: 1
+          type: string
+      required:
+      - user
+      type: object
+    TenantRecoveryKeyRequestRequest:
+      description: Tenant recovery key creation request serializer
+      example:
+        duration_days: 0
+        user: user
+      properties:
+        user:
+          minLength: 1
+          type: string
+        duration_days:
+          type: integer
+      required:
+      - duration_days
+      - user
+      type: object
+    TenantRecoveryKeyResponse:
+      description: Tenant recovery key creation response serializer
+      example:
+        expiry: 2000-01-23T04:56:07.000+00:00
+        url: url
+      properties:
+        expiry:
+          format: date-time
+          type: string
+        url:
+          type: string
+      required:
+      - expiry
+      - url
       type: object
     TenantRequest:
       description: Tenant Serializer
       example:
-        branding_logo: branding_logo
-        flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        event_retention: event_retention
-        flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        default: true
-        flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        domain: domain
-        flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        attributes: ""
-        branding_title: branding_title
-        branding_favicon: branding_favicon
-        flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        ready: true
+        name: name
+        schema_name: schema_name
       properties:
-        domain:
-          description: "Domain that activates this tenant. Can be a superset, i.e.\
-            \ `a.b` for `aa.b` and `ba.b`"
+        schema_name:
+          maxLength: 63
           minLength: 1
           type: string
-        default:
+        name:
+          minLength: 1
+          type: string
+        ready:
           type: boolean
-        branding_title:
-          minLength: 1
-          type: string
-        branding_logo:
-          minLength: 1
-          type: string
-        branding_favicon:
-          minLength: 1
-          type: string
-        flow_authentication:
-          format: uuid
-          nullable: true
-          type: string
-        flow_invalidation:
-          format: uuid
-          nullable: true
-          type: string
-        flow_recovery:
-          format: uuid
-          nullable: true
-          type: string
-        flow_unenrollment:
-          format: uuid
-          nullable: true
-          type: string
-        flow_user_settings:
-          format: uuid
-          nullable: true
-          type: string
-        flow_device_code:
-          format: uuid
-          nullable: true
-          type: string
-        event_retention:
-          description: "Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2)."
-          minLength: 1
-          type: string
-        web_certificate:
-          description: Web Certificate used by the authentik Core webserver.
-          format: uuid
-          nullable: true
-          type: string
-        attributes: {}
       required:
-      - domain
+      - name
+      - schema_name
       type: object
     Token:
       description: Token Serializer
@@ -56378,7 +57338,7 @@ components:
           type: string
         settings:
           additionalProperties: {}
-          description: Get user settings with tenant and group settings applied
+          description: Get user settings with brand and group settings applied
           readOnly: true
           type: object
         type:

@@ -40,6 +40,9 @@ Class | Method | HTTP request | Description
 *AdminApi* | [**AdminAppsList**](docs/AdminApi.md#adminappslist) | **Get** /admin/apps/ | 
 *AdminApi* | [**AdminMetricsRetrieve**](docs/AdminApi.md#adminmetricsretrieve) | **Get** /admin/metrics/ | 
 *AdminApi* | [**AdminModelsList**](docs/AdminApi.md#adminmodelslist) | **Get** /admin/models/ | 
+*AdminApi* | [**AdminSettingsPartialUpdate**](docs/AdminApi.md#adminsettingspartialupdate) | **Patch** /admin/settings/ | 
+*AdminApi* | [**AdminSettingsRetrieve**](docs/AdminApi.md#adminsettingsretrieve) | **Get** /admin/settings/ | 
+*AdminApi* | [**AdminSettingsUpdate**](docs/AdminApi.md#adminsettingsupdate) | **Put** /admin/settings/ | 
 *AdminApi* | [**AdminSystemCreate**](docs/AdminApi.md#adminsystemcreate) | **Post** /admin/system/ | 
 *AdminApi* | [**AdminSystemRetrieve**](docs/AdminApi.md#adminsystemretrieve) | **Get** /admin/system/ | 
 *AdminApi* | [**AdminSystemTasksList**](docs/AdminApi.md#adminsystemtaskslist) | **Get** /admin/system_tasks/ | 
@@ -124,6 +127,14 @@ Class | Method | HTTP request | Description
 *CoreApi* | [**CoreAuthenticatedSessionsList**](docs/CoreApi.md#coreauthenticatedsessionslist) | **Get** /core/authenticated_sessions/ | 
 *CoreApi* | [**CoreAuthenticatedSessionsRetrieve**](docs/CoreApi.md#coreauthenticatedsessionsretrieve) | **Get** /core/authenticated_sessions/{uuid}/ | 
 *CoreApi* | [**CoreAuthenticatedSessionsUsedByList**](docs/CoreApi.md#coreauthenticatedsessionsusedbylist) | **Get** /core/authenticated_sessions/{uuid}/used_by/ | 
+*CoreApi* | [**CoreBrandsCreate**](docs/CoreApi.md#corebrandscreate) | **Post** /core/brands/ | 
+*CoreApi* | [**CoreBrandsCurrentRetrieve**](docs/CoreApi.md#corebrandscurrentretrieve) | **Get** /core/brands/current/ | 
+*CoreApi* | [**CoreBrandsDestroy**](docs/CoreApi.md#corebrandsdestroy) | **Delete** /core/brands/{brand_uuid}/ | 
+*CoreApi* | [**CoreBrandsList**](docs/CoreApi.md#corebrandslist) | **Get** /core/brands/ | 
+*CoreApi* | [**CoreBrandsPartialUpdate**](docs/CoreApi.md#corebrandspartialupdate) | **Patch** /core/brands/{brand_uuid}/ | 
+*CoreApi* | [**CoreBrandsRetrieve**](docs/CoreApi.md#corebrandsretrieve) | **Get** /core/brands/{brand_uuid}/ | 
+*CoreApi* | [**CoreBrandsUpdate**](docs/CoreApi.md#corebrandsupdate) | **Put** /core/brands/{brand_uuid}/ | 
+*CoreApi* | [**CoreBrandsUsedByList**](docs/CoreApi.md#corebrandsusedbylist) | **Get** /core/brands/{brand_uuid}/used_by/ | 
 *CoreApi* | [**CoreGroupsAddUserCreate**](docs/CoreApi.md#coregroupsaddusercreate) | **Post** /core/groups/{group_uuid}/add_user/ | 
 *CoreApi* | [**CoreGroupsCreate**](docs/CoreApi.md#coregroupscreate) | **Post** /core/groups/ | 
 *CoreApi* | [**CoreGroupsDestroy**](docs/CoreApi.md#coregroupsdestroy) | **Delete** /core/groups/{group_uuid}/ | 
@@ -133,14 +144,6 @@ Class | Method | HTTP request | Description
 *CoreApi* | [**CoreGroupsRetrieve**](docs/CoreApi.md#coregroupsretrieve) | **Get** /core/groups/{group_uuid}/ | 
 *CoreApi* | [**CoreGroupsUpdate**](docs/CoreApi.md#coregroupsupdate) | **Put** /core/groups/{group_uuid}/ | 
 *CoreApi* | [**CoreGroupsUsedByList**](docs/CoreApi.md#coregroupsusedbylist) | **Get** /core/groups/{group_uuid}/used_by/ | 
-*CoreApi* | [**CoreTenantsCreate**](docs/CoreApi.md#coretenantscreate) | **Post** /core/tenants/ | 
-*CoreApi* | [**CoreTenantsCurrentRetrieve**](docs/CoreApi.md#coretenantscurrentretrieve) | **Get** /core/tenants/current/ | 
-*CoreApi* | [**CoreTenantsDestroy**](docs/CoreApi.md#coretenantsdestroy) | **Delete** /core/tenants/{tenant_uuid}/ | 
-*CoreApi* | [**CoreTenantsList**](docs/CoreApi.md#coretenantslist) | **Get** /core/tenants/ | 
-*CoreApi* | [**CoreTenantsPartialUpdate**](docs/CoreApi.md#coretenantspartialupdate) | **Patch** /core/tenants/{tenant_uuid}/ | 
-*CoreApi* | [**CoreTenantsRetrieve**](docs/CoreApi.md#coretenantsretrieve) | **Get** /core/tenants/{tenant_uuid}/ | 
-*CoreApi* | [**CoreTenantsUpdate**](docs/CoreApi.md#coretenantsupdate) | **Put** /core/tenants/{tenant_uuid}/ | 
-*CoreApi* | [**CoreTenantsUsedByList**](docs/CoreApi.md#coretenantsusedbylist) | **Get** /core/tenants/{tenant_uuid}/used_by/ | 
 *CoreApi* | [**CoreTokensCreate**](docs/CoreApi.md#coretokenscreate) | **Post** /core/tokens/ | 
 *CoreApi* | [**CoreTokensDestroy**](docs/CoreApi.md#coretokensdestroy) | **Delete** /core/tokens/{identifier}/ | 
 *CoreApi* | [**CoreTokensList**](docs/CoreApi.md#coretokenslist) | **Get** /core/tokens/ | 
@@ -726,6 +729,20 @@ Class | Method | HTTP request | Description
 *StagesApi* | [**StagesUserWriteRetrieve**](docs/StagesApi.md#stagesuserwriteretrieve) | **Get** /stages/user_write/{stage_uuid}/ | 
 *StagesApi* | [**StagesUserWriteUpdate**](docs/StagesApi.md#stagesuserwriteupdate) | **Put** /stages/user_write/{stage_uuid}/ | 
 *StagesApi* | [**StagesUserWriteUsedByList**](docs/StagesApi.md#stagesuserwriteusedbylist) | **Get** /stages/user_write/{stage_uuid}/used_by/ | 
+*TenantsApi* | [**TenantsDomainsCreate**](docs/TenantsApi.md#tenantsdomainscreate) | **Post** /tenants/domains/ | 
+*TenantsApi* | [**TenantsDomainsDestroy**](docs/TenantsApi.md#tenantsdomainsdestroy) | **Delete** /tenants/domains/{id}/ | 
+*TenantsApi* | [**TenantsDomainsList**](docs/TenantsApi.md#tenantsdomainslist) | **Get** /tenants/domains/ | 
+*TenantsApi* | [**TenantsDomainsPartialUpdate**](docs/TenantsApi.md#tenantsdomainspartialupdate) | **Patch** /tenants/domains/{id}/ | 
+*TenantsApi* | [**TenantsDomainsRetrieve**](docs/TenantsApi.md#tenantsdomainsretrieve) | **Get** /tenants/domains/{id}/ | 
+*TenantsApi* | [**TenantsDomainsUpdate**](docs/TenantsApi.md#tenantsdomainsupdate) | **Put** /tenants/domains/{id}/ | 
+*TenantsApi* | [**TenantsTenantsCreate**](docs/TenantsApi.md#tenantstenantscreate) | **Post** /tenants/tenants/ | 
+*TenantsApi* | [**TenantsTenantsCreateAdminGroupCreate**](docs/TenantsApi.md#tenantstenantscreateadmingroupcreate) | **Post** /tenants/tenants/{tenant_uuid}/create_admin_group/ | 
+*TenantsApi* | [**TenantsTenantsCreateRecoveryKeyCreate**](docs/TenantsApi.md#tenantstenantscreaterecoverykeycreate) | **Post** /tenants/tenants/{tenant_uuid}/create_recovery_key/ | 
+*TenantsApi* | [**TenantsTenantsDestroy**](docs/TenantsApi.md#tenantstenantsdestroy) | **Delete** /tenants/tenants/{tenant_uuid}/ | 
+*TenantsApi* | [**TenantsTenantsList**](docs/TenantsApi.md#tenantstenantslist) | **Get** /tenants/tenants/ | 
+*TenantsApi* | [**TenantsTenantsPartialUpdate**](docs/TenantsApi.md#tenantstenantspartialupdate) | **Patch** /tenants/tenants/{tenant_uuid}/ | 
+*TenantsApi* | [**TenantsTenantsRetrieve**](docs/TenantsApi.md#tenantstenantsretrieve) | **Get** /tenants/tenants/{tenant_uuid}/ | 
+*TenantsApi* | [**TenantsTenantsUpdate**](docs/TenantsApi.md#tenantstenantsupdate) | **Put** /tenants/tenants/{tenant_uuid}/ | 
 
 
 ## Documentation For Models
@@ -782,6 +799,8 @@ Class | Method | HTTP request | Description
  - [BlueprintInstance](docs/BlueprintInstance.md)
  - [BlueprintInstanceRequest](docs/BlueprintInstanceRequest.md)
  - [BlueprintInstanceStatusEnum](docs/BlueprintInstanceStatusEnum.md)
+ - [Brand](docs/Brand.md)
+ - [BrandRequest](docs/BrandRequest.md)
  - [Cache](docs/Cache.md)
  - [CapabilitiesEnum](docs/CapabilitiesEnum.md)
  - [CaptchaChallenge](docs/CaptchaChallenge.md)
@@ -805,7 +824,7 @@ Class | Method | HTTP request | Description
  - [ContextualFlowInfo](docs/ContextualFlowInfo.md)
  - [ContextualFlowInfoLayoutEnum](docs/ContextualFlowInfoLayoutEnum.md)
  - [Coordinate](docs/Coordinate.md)
- - [CurrentTenant](docs/CurrentTenant.md)
+ - [CurrentBrand](docs/CurrentBrand.md)
  - [DeniedActionEnum](docs/DeniedActionEnum.md)
  - [DenyStage](docs/DenyStage.md)
  - [DenyStageRequest](docs/DenyStageRequest.md)
@@ -817,6 +836,8 @@ Class | Method | HTTP request | Description
  - [DigitsEnum](docs/DigitsEnum.md)
  - [DockerServiceConnection](docs/DockerServiceConnection.md)
  - [DockerServiceConnectionRequest](docs/DockerServiceConnectionRequest.md)
+ - [Domain](docs/Domain.md)
+ - [DomainRequest](docs/DomainRequest.md)
  - [DummyChallenge](docs/DummyChallenge.md)
  - [DummyChallengeResponseRequest](docs/DummyChallengeResponseRequest.md)
  - [DummyPolicy](docs/DummyPolicy.md)
@@ -940,11 +961,13 @@ Class | Method | HTTP request | Description
  - [PaginatedAuthenticatorTOTPStageList](docs/PaginatedAuthenticatorTOTPStageList.md)
  - [PaginatedAuthenticatorValidateStageList](docs/PaginatedAuthenticatorValidateStageList.md)
  - [PaginatedBlueprintInstanceList](docs/PaginatedBlueprintInstanceList.md)
+ - [PaginatedBrandList](docs/PaginatedBrandList.md)
  - [PaginatedCaptchaStageList](docs/PaginatedCaptchaStageList.md)
  - [PaginatedCertificateKeyPairList](docs/PaginatedCertificateKeyPairList.md)
  - [PaginatedConsentStageList](docs/PaginatedConsentStageList.md)
  - [PaginatedDenyStageList](docs/PaginatedDenyStageList.md)
  - [PaginatedDockerServiceConnectionList](docs/PaginatedDockerServiceConnectionList.md)
+ - [PaginatedDomainList](docs/PaginatedDomainList.md)
  - [PaginatedDummyPolicyList](docs/PaginatedDummyPolicyList.md)
  - [PaginatedDummyStageList](docs/PaginatedDummyStageList.md)
  - [PaginatedDuoDeviceList](docs/PaginatedDuoDeviceList.md)
@@ -1040,11 +1063,13 @@ Class | Method | HTTP request | Description
  - [PatchedAuthenticatorTOTPStageRequest](docs/PatchedAuthenticatorTOTPStageRequest.md)
  - [PatchedAuthenticatorValidateStageRequest](docs/PatchedAuthenticatorValidateStageRequest.md)
  - [PatchedBlueprintInstanceRequest](docs/PatchedBlueprintInstanceRequest.md)
+ - [PatchedBrandRequest](docs/PatchedBrandRequest.md)
  - [PatchedCaptchaStageRequest](docs/PatchedCaptchaStageRequest.md)
  - [PatchedCertificateKeyPairRequest](docs/PatchedCertificateKeyPairRequest.md)
  - [PatchedConsentStageRequest](docs/PatchedConsentStageRequest.md)
  - [PatchedDenyStageRequest](docs/PatchedDenyStageRequest.md)
  - [PatchedDockerServiceConnectionRequest](docs/PatchedDockerServiceConnectionRequest.md)
+ - [PatchedDomainRequest](docs/PatchedDomainRequest.md)
  - [PatchedDummyPolicyRequest](docs/PatchedDummyPolicyRequest.md)
  - [PatchedDummyStageRequest](docs/PatchedDummyStageRequest.md)
  - [PatchedDuoDeviceRequest](docs/PatchedDuoDeviceRequest.md)
@@ -1093,6 +1118,7 @@ Class | Method | HTTP request | Description
  - [PatchedSCIMProviderRequest](docs/PatchedSCIMProviderRequest.md)
  - [PatchedSMSDeviceRequest](docs/PatchedSMSDeviceRequest.md)
  - [PatchedScopeMappingRequest](docs/PatchedScopeMappingRequest.md)
+ - [PatchedSettingsRequest](docs/PatchedSettingsRequest.md)
  - [PatchedStaticDeviceRequest](docs/PatchedStaticDeviceRequest.md)
  - [PatchedTOTPDeviceRequest](docs/PatchedTOTPDeviceRequest.md)
  - [PatchedTenantRequest](docs/PatchedTenantRequest.md)
@@ -1178,6 +1204,8 @@ Class | Method | HTTP request | Description
  - [ServiceConnectionRequest](docs/ServiceConnectionRequest.md)
  - [ServiceConnectionState](docs/ServiceConnectionState.md)
  - [SessionUser](docs/SessionUser.md)
+ - [Settings](docs/Settings.md)
+ - [SettingsRequest](docs/SettingsRequest.md)
  - [SeverityEnum](docs/SeverityEnum.md)
  - [ShellChallenge](docs/ShellChallenge.md)
  - [SignatureAlgorithmEnum](docs/SignatureAlgorithmEnum.md)
@@ -1200,6 +1228,9 @@ Class | Method | HTTP request | Description
  - [Task](docs/Task.md)
  - [TaskStatusEnum](docs/TaskStatusEnum.md)
  - [Tenant](docs/Tenant.md)
+ - [TenantAdminGroupRequestRequest](docs/TenantAdminGroupRequestRequest.md)
+ - [TenantRecoveryKeyRequestRequest](docs/TenantRecoveryKeyRequestRequest.md)
+ - [TenantRecoveryKeyResponse](docs/TenantRecoveryKeyResponse.md)
  - [TenantRequest](docs/TenantRequest.md)
  - [Token](docs/Token.md)
  - [TokenModel](docs/TokenModel.md)

@@ -21,6 +21,7 @@ api_root.go
 api_schema.go
 api_sources.go
 api_stages.go
+api_tenants.go
 client.go
 configuration.go
 docs/AccessDeniedChallenge.md
@@ -77,6 +78,8 @@ docs/BlueprintFile.md
 docs/BlueprintInstance.md
 docs/BlueprintInstanceRequest.md
 docs/BlueprintInstanceStatusEnum.md
+docs/Brand.md
+docs/BrandRequest.md
 docs/Cache.md
 docs/CapabilitiesEnum.md
 docs/CaptchaChallenge.md
@@ -102,7 +105,7 @@ docs/ContextualFlowInfoLayoutEnum.md
 docs/Coordinate.md
 docs/CoreApi.md
 docs/CryptoApi.md
-docs/CurrentTenant.md
+docs/CurrentBrand.md
 docs/DeniedActionEnum.md
 docs/DenyStage.md
 docs/DenyStageRequest.md
@@ -114,6 +117,8 @@ docs/DigestAlgorithmEnum.md
 docs/DigitsEnum.md
 docs/DockerServiceConnection.md
 docs/DockerServiceConnectionRequest.md
+docs/Domain.md
+docs/DomainRequest.md
 docs/DummyChallenge.md
 docs/DummyChallengeResponseRequest.md
 docs/DummyPolicy.md
@@ -243,11 +248,13 @@ docs/PaginatedAuthenticatorStaticStageList.md
 docs/PaginatedAuthenticatorTOTPStageList.md
 docs/PaginatedAuthenticatorValidateStageList.md
 docs/PaginatedBlueprintInstanceList.md
+docs/PaginatedBrandList.md
 docs/PaginatedCaptchaStageList.md
 docs/PaginatedCertificateKeyPairList.md
 docs/PaginatedConsentStageList.md
 docs/PaginatedDenyStageList.md
 docs/PaginatedDockerServiceConnectionList.md
+docs/PaginatedDomainList.md
 docs/PaginatedDummyPolicyList.md
 docs/PaginatedDummyStageList.md
 docs/PaginatedDuoDeviceList.md
@@ -343,11 +350,13 @@ docs/PatchedAuthenticatorStaticStageRequest.md
 docs/PatchedAuthenticatorTOTPStageRequest.md
 docs/PatchedAuthenticatorValidateStageRequest.md
 docs/PatchedBlueprintInstanceRequest.md
+docs/PatchedBrandRequest.md
 docs/PatchedCaptchaStageRequest.md
 docs/PatchedCertificateKeyPairRequest.md
 docs/PatchedConsentStageRequest.md
 docs/PatchedDenyStageRequest.md
 docs/PatchedDockerServiceConnectionRequest.md
+docs/PatchedDomainRequest.md
 docs/PatchedDummyPolicyRequest.md
 docs/PatchedDummyStageRequest.md
 docs/PatchedDuoDeviceRequest.md
@@ -396,6 +405,7 @@ docs/PatchedSCIMMappingRequest.md
 docs/PatchedSCIMProviderRequest.md
 docs/PatchedSMSDeviceRequest.md
 docs/PatchedScopeMappingRequest.md
+docs/PatchedSettingsRequest.md
 docs/PatchedStaticDeviceRequest.md
 docs/PatchedTOTPDeviceRequest.md
 docs/PatchedTenantRequest.md
@@ -488,6 +498,8 @@ docs/ServiceConnection.md
 docs/ServiceConnectionRequest.md
 docs/ServiceConnectionState.md
 docs/SessionUser.md
+docs/Settings.md
+docs/SettingsRequest.md
 docs/SeverityEnum.md
 docs/ShellChallenge.md
 docs/SignatureAlgorithmEnum.md
@@ -512,7 +524,11 @@ docs/TOTPDeviceRequest.md
 docs/Task.md
 docs/TaskStatusEnum.md
 docs/Tenant.md
+docs/TenantAdminGroupRequestRequest.md
+docs/TenantRecoveryKeyRequestRequest.md
+docs/TenantRecoveryKeyResponse.md
 docs/TenantRequest.md
+docs/TenantsApi.md
 docs/Token.md
 docs/TokenModel.md
 docs/TokenRequest.md
@@ -620,6 +636,8 @@ model_blueprint_file.go
 model_blueprint_instance.go
 model_blueprint_instance_request.go
 model_blueprint_instance_status_enum.go
+model_brand.go
+model_brand_request.go
 model_cache.go
 model_capabilities_enum.go
 model_captcha_challenge.go
@@ -643,7 +661,7 @@ model_consent_stage_request.go
 model_contextual_flow_info.go
 model_contextual_flow_info_layout_enum.go
 model_coordinate.go
-model_current_tenant.go
+model_current_brand.go
 model_denied_action_enum.go
 model_deny_stage.go
 model_deny_stage_request.go
@@ -655,6 +673,8 @@ model_digest_algorithm_enum.go
 model_digits_enum.go
 model_docker_service_connection.go
 model_docker_service_connection_request.go
+model_domain.go
+model_domain_request.go
 model_dummy_challenge.go
 model_dummy_challenge_response_request.go
 model_dummy_policy.go
@@ -778,11 +798,13 @@ model_paginated_authenticator_static_stage_list.go
 model_paginated_authenticator_totp_stage_list.go
 model_paginated_authenticator_validate_stage_list.go
 model_paginated_blueprint_instance_list.go
+model_paginated_brand_list.go
 model_paginated_captcha_stage_list.go
 model_paginated_certificate_key_pair_list.go
 model_paginated_consent_stage_list.go
 model_paginated_deny_stage_list.go
 model_paginated_docker_service_connection_list.go
+model_paginated_domain_list.go
 model_paginated_dummy_policy_list.go
 model_paginated_dummy_stage_list.go
 model_paginated_duo_device_list.go
@@ -878,11 +900,13 @@ model_patched_authenticator_static_stage_request.go
 model_patched_authenticator_totp_stage_request.go
 model_patched_authenticator_validate_stage_request.go
 model_patched_blueprint_instance_request.go
+model_patched_brand_request.go
 model_patched_captcha_stage_request.go
 model_patched_certificate_key_pair_request.go
 model_patched_consent_stage_request.go
 model_patched_deny_stage_request.go
 model_patched_docker_service_connection_request.go
+model_patched_domain_request.go
 model_patched_dummy_policy_request.go
 model_patched_dummy_stage_request.go
 model_patched_duo_device_request.go
@@ -930,6 +954,7 @@ model_patched_saml_source_request.go
 model_patched_scim_mapping_request.go
 model_patched_scim_provider_request.go
 model_patched_scope_mapping_request.go
+model_patched_settings_request.go
 model_patched_sms_device_request.go
 model_patched_static_device_request.go
 model_patched_tenant_request.go
@@ -1014,6 +1039,8 @@ model_service_connection.go
 model_service_connection_request.go
 model_service_connection_state.go
 model_session_user.go
+model_settings.go
+model_settings_request.go
 model_severity_enum.go
 model_shell_challenge.go
 model_signature_algorithm_enum.go
@@ -1036,6 +1063,9 @@ model_system_info_runtime.go
 model_task.go
 model_task_status_enum.go
 model_tenant.go
+model_tenant_admin_group_request_request.go
+model_tenant_recovery_key_request_request.go
+model_tenant_recovery_key_response.go
 model_tenant_request.go
 model_token.go
 model_token_model.go

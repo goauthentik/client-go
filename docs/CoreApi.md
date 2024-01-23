@@ -19,6 +19,14 @@ Method | HTTP request | Description
 [**CoreAuthenticatedSessionsList**](CoreApi.md#CoreAuthenticatedSessionsList) | **Get** /core/authenticated_sessions/ | 
 [**CoreAuthenticatedSessionsRetrieve**](CoreApi.md#CoreAuthenticatedSessionsRetrieve) | **Get** /core/authenticated_sessions/{uuid}/ | 
 [**CoreAuthenticatedSessionsUsedByList**](CoreApi.md#CoreAuthenticatedSessionsUsedByList) | **Get** /core/authenticated_sessions/{uuid}/used_by/ | 
+[**CoreBrandsCreate**](CoreApi.md#CoreBrandsCreate) | **Post** /core/brands/ | 
+[**CoreBrandsCurrentRetrieve**](CoreApi.md#CoreBrandsCurrentRetrieve) | **Get** /core/brands/current/ | 
+[**CoreBrandsDestroy**](CoreApi.md#CoreBrandsDestroy) | **Delete** /core/brands/{brand_uuid}/ | 
+[**CoreBrandsList**](CoreApi.md#CoreBrandsList) | **Get** /core/brands/ | 
+[**CoreBrandsPartialUpdate**](CoreApi.md#CoreBrandsPartialUpdate) | **Patch** /core/brands/{brand_uuid}/ | 
+[**CoreBrandsRetrieve**](CoreApi.md#CoreBrandsRetrieve) | **Get** /core/brands/{brand_uuid}/ | 
+[**CoreBrandsUpdate**](CoreApi.md#CoreBrandsUpdate) | **Put** /core/brands/{brand_uuid}/ | 
+[**CoreBrandsUsedByList**](CoreApi.md#CoreBrandsUsedByList) | **Get** /core/brands/{brand_uuid}/used_by/ | 
 [**CoreGroupsAddUserCreate**](CoreApi.md#CoreGroupsAddUserCreate) | **Post** /core/groups/{group_uuid}/add_user/ | 
 [**CoreGroupsCreate**](CoreApi.md#CoreGroupsCreate) | **Post** /core/groups/ | 
 [**CoreGroupsDestroy**](CoreApi.md#CoreGroupsDestroy) | **Delete** /core/groups/{group_uuid}/ | 
@@ -28,14 +36,6 @@ Method | HTTP request | Description
 [**CoreGroupsRetrieve**](CoreApi.md#CoreGroupsRetrieve) | **Get** /core/groups/{group_uuid}/ | 
 [**CoreGroupsUpdate**](CoreApi.md#CoreGroupsUpdate) | **Put** /core/groups/{group_uuid}/ | 
 [**CoreGroupsUsedByList**](CoreApi.md#CoreGroupsUsedByList) | **Get** /core/groups/{group_uuid}/used_by/ | 
-[**CoreTenantsCreate**](CoreApi.md#CoreTenantsCreate) | **Post** /core/tenants/ | 
-[**CoreTenantsCurrentRetrieve**](CoreApi.md#CoreTenantsCurrentRetrieve) | **Get** /core/tenants/current/ | 
-[**CoreTenantsDestroy**](CoreApi.md#CoreTenantsDestroy) | **Delete** /core/tenants/{tenant_uuid}/ | 
-[**CoreTenantsList**](CoreApi.md#CoreTenantsList) | **Get** /core/tenants/ | 
-[**CoreTenantsPartialUpdate**](CoreApi.md#CoreTenantsPartialUpdate) | **Patch** /core/tenants/{tenant_uuid}/ | 
-[**CoreTenantsRetrieve**](CoreApi.md#CoreTenantsRetrieve) | **Get** /core/tenants/{tenant_uuid}/ | 
-[**CoreTenantsUpdate**](CoreApi.md#CoreTenantsUpdate) | **Put** /core/tenants/{tenant_uuid}/ | 
-[**CoreTenantsUsedByList**](CoreApi.md#CoreTenantsUsedByList) | **Get** /core/tenants/{tenant_uuid}/used_by/ | 
 [**CoreTokensCreate**](CoreApi.md#CoreTokensCreate) | **Post** /core/tokens/ | 
 [**CoreTokensDestroy**](CoreApi.md#CoreTokensDestroy) | **Delete** /core/tokens/{identifier}/ | 
 [**CoreTokensList**](CoreApi.md#CoreTokensList) | **Get** /core/tokens/ | 
@@ -1143,6 +1143,583 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## CoreBrandsCreate
+
+> Brand CoreBrandsCreate(ctx).BrandRequest(brandRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    brandRequest := *openapiclient.NewBrandRequest("Domain_example") // BrandRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreBrandsCreate(context.Background()).BrandRequest(brandRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreBrandsCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CoreBrandsCreate`: Brand
+    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreBrandsCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreBrandsCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **brandRequest** | [**BrandRequest**](BrandRequest.md) |  | 
+
+### Return type
+
+[**Brand**](Brand.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreBrandsCurrentRetrieve
+
+> CurrentBrand CoreBrandsCurrentRetrieve(ctx).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreBrandsCurrentRetrieve(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreBrandsCurrentRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CoreBrandsCurrentRetrieve`: CurrentBrand
+    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreBrandsCurrentRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreBrandsCurrentRetrieveRequest struct via the builder pattern
+
+
+### Return type
+
+[**CurrentBrand**](CurrentBrand.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreBrandsDestroy
+
+> CoreBrandsDestroy(ctx, brandUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    brandUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Brand.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreBrandsDestroy(context.Background(), brandUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreBrandsDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**brandUuid** | **string** | A UUID string identifying this Brand. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreBrandsDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreBrandsList
+
+> PaginatedBrandList CoreBrandsList(ctx).BrandUuid(brandUuid).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).Default_(default_).Domain(domain).FlowAuthentication(flowAuthentication).FlowDeviceCode(flowDeviceCode).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).FlowUserSettings(flowUserSettings).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).WebCertificate(webCertificate).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    brandUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    brandingFavicon := "brandingFavicon_example" // string |  (optional)
+    brandingLogo := "brandingLogo_example" // string |  (optional)
+    brandingTitle := "brandingTitle_example" // string |  (optional)
+    default_ := true // bool |  (optional)
+    domain := "domain_example" // string |  (optional)
+    flowAuthentication := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    flowDeviceCode := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    flowInvalidation := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    flowRecovery := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    flowUnenrollment := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    flowUserSettings := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    webCertificate := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreBrandsList(context.Background()).BrandUuid(brandUuid).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).Default_(default_).Domain(domain).FlowAuthentication(flowAuthentication).FlowDeviceCode(flowDeviceCode).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).FlowUserSettings(flowUserSettings).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).WebCertificate(webCertificate).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreBrandsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CoreBrandsList`: PaginatedBrandList
+    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreBrandsList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreBrandsListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **brandUuid** | **string** |  | 
+ **brandingFavicon** | **string** |  | 
+ **brandingLogo** | **string** |  | 
+ **brandingTitle** | **string** |  | 
+ **default_** | **bool** |  | 
+ **domain** | **string** |  | 
+ **flowAuthentication** | **string** |  | 
+ **flowDeviceCode** | **string** |  | 
+ **flowInvalidation** | **string** |  | 
+ **flowRecovery** | **string** |  | 
+ **flowUnenrollment** | **string** |  | 
+ **flowUserSettings** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+ **webCertificate** | **string** |  | 
+
+### Return type
+
+[**PaginatedBrandList**](PaginatedBrandList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreBrandsPartialUpdate
+
+> Brand CoreBrandsPartialUpdate(ctx, brandUuid).PatchedBrandRequest(patchedBrandRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    brandUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Brand.
+    patchedBrandRequest := *openapiclient.NewPatchedBrandRequest() // PatchedBrandRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreBrandsPartialUpdate(context.Background(), brandUuid).PatchedBrandRequest(patchedBrandRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreBrandsPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CoreBrandsPartialUpdate`: Brand
+    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreBrandsPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**brandUuid** | **string** | A UUID string identifying this Brand. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreBrandsPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedBrandRequest** | [**PatchedBrandRequest**](PatchedBrandRequest.md) |  | 
+
+### Return type
+
+[**Brand**](Brand.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreBrandsRetrieve
+
+> Brand CoreBrandsRetrieve(ctx, brandUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    brandUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Brand.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreBrandsRetrieve(context.Background(), brandUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreBrandsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CoreBrandsRetrieve`: Brand
+    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreBrandsRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**brandUuid** | **string** | A UUID string identifying this Brand. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreBrandsRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**Brand**](Brand.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreBrandsUpdate
+
+> Brand CoreBrandsUpdate(ctx, brandUuid).BrandRequest(brandRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    brandUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Brand.
+    brandRequest := *openapiclient.NewBrandRequest("Domain_example") // BrandRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreBrandsUpdate(context.Background(), brandUuid).BrandRequest(brandRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreBrandsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CoreBrandsUpdate`: Brand
+    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreBrandsUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**brandUuid** | **string** | A UUID string identifying this Brand. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreBrandsUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **brandRequest** | [**BrandRequest**](BrandRequest.md) |  | 
+
+### Return type
+
+[**Brand**](Brand.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreBrandsUsedByList
+
+> []UsedBy CoreBrandsUsedByList(ctx, brandUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    brandUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Brand.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreBrandsUsedByList(context.Background(), brandUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreBrandsUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CoreBrandsUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreBrandsUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**brandUuid** | **string** | A UUID string identifying this Brand. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreBrandsUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CoreGroupsAddUserCreate
 
 > CoreGroupsAddUserCreate(ctx, groupUuid).UserAccountRequest(userAccountRequest).Execute()
@@ -1759,585 +2336,6 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCoreGroupsUsedByListRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**[]UsedBy**](UsedBy.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CoreTenantsCreate
-
-> Tenant CoreTenantsCreate(ctx).TenantRequest(tenantRequest).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenantRequest := *openapiclient.NewTenantRequest("Domain_example") // TenantRequest | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreTenantsCreate(context.Background()).TenantRequest(tenantRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTenantsCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CoreTenantsCreate`: Tenant
-    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreTenantsCreate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCoreTenantsCreateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tenantRequest** | [**TenantRequest**](TenantRequest.md) |  | 
-
-### Return type
-
-[**Tenant**](Tenant.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CoreTenantsCurrentRetrieve
-
-> CurrentTenant CoreTenantsCurrentRetrieve(ctx).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreTenantsCurrentRetrieve(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTenantsCurrentRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CoreTenantsCurrentRetrieve`: CurrentTenant
-    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreTenantsCurrentRetrieve`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCoreTenantsCurrentRetrieveRequest struct via the builder pattern
-
-
-### Return type
-
-[**CurrentTenant**](CurrentTenant.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CoreTenantsDestroy
-
-> CoreTenantsDestroy(ctx, tenantUuid).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreTenantsDestroy(context.Background(), tenantUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTenantsDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenantUuid** | **string** | A UUID string identifying this Tenant. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCoreTenantsDestroyRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CoreTenantsList
-
-> PaginatedTenantList CoreTenantsList(ctx).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).Default_(default_).Domain(domain).EventRetention(eventRetention).FlowAuthentication(flowAuthentication).FlowDeviceCode(flowDeviceCode).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).FlowUserSettings(flowUserSettings).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TenantUuid(tenantUuid).WebCertificate(webCertificate).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    brandingFavicon := "brandingFavicon_example" // string |  (optional)
-    brandingLogo := "brandingLogo_example" // string |  (optional)
-    brandingTitle := "brandingTitle_example" // string |  (optional)
-    default_ := true // bool |  (optional)
-    domain := "domain_example" // string |  (optional)
-    eventRetention := "eventRetention_example" // string |  (optional)
-    flowAuthentication := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    flowDeviceCode := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    flowInvalidation := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    flowRecovery := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    flowUnenrollment := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    flowUserSettings := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
-    tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    webCertificate := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreTenantsList(context.Background()).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).Default_(default_).Domain(domain).EventRetention(eventRetention).FlowAuthentication(flowAuthentication).FlowDeviceCode(flowDeviceCode).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).FlowUserSettings(flowUserSettings).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TenantUuid(tenantUuid).WebCertificate(webCertificate).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTenantsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CoreTenantsList`: PaginatedTenantList
-    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreTenantsList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCoreTenantsListRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **brandingFavicon** | **string** |  | 
- **brandingLogo** | **string** |  | 
- **brandingTitle** | **string** |  | 
- **default_** | **bool** |  | 
- **domain** | **string** |  | 
- **eventRetention** | **string** |  | 
- **flowAuthentication** | **string** |  | 
- **flowDeviceCode** | **string** |  | 
- **flowInvalidation** | **string** |  | 
- **flowRecovery** | **string** |  | 
- **flowUnenrollment** | **string** |  | 
- **flowUserSettings** | **string** |  | 
- **ordering** | **string** | Which field to use when ordering the results. | 
- **page** | **int32** | A page number within the paginated result set. | 
- **pageSize** | **int32** | Number of results to return per page. | 
- **search** | **string** | A search term. | 
- **tenantUuid** | **string** |  | 
- **webCertificate** | **string** |  | 
-
-### Return type
-
-[**PaginatedTenantList**](PaginatedTenantList.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CoreTenantsPartialUpdate
-
-> Tenant CoreTenantsPartialUpdate(ctx, tenantUuid).PatchedTenantRequest(patchedTenantRequest).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
-    patchedTenantRequest := *openapiclient.NewPatchedTenantRequest() // PatchedTenantRequest |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreTenantsPartialUpdate(context.Background(), tenantUuid).PatchedTenantRequest(patchedTenantRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTenantsPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CoreTenantsPartialUpdate`: Tenant
-    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreTenantsPartialUpdate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenantUuid** | **string** | A UUID string identifying this Tenant. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCoreTenantsPartialUpdateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **patchedTenantRequest** | [**PatchedTenantRequest**](PatchedTenantRequest.md) |  | 
-
-### Return type
-
-[**Tenant**](Tenant.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CoreTenantsRetrieve
-
-> Tenant CoreTenantsRetrieve(ctx, tenantUuid).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreTenantsRetrieve(context.Background(), tenantUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTenantsRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CoreTenantsRetrieve`: Tenant
-    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreTenantsRetrieve`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenantUuid** | **string** | A UUID string identifying this Tenant. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCoreTenantsRetrieveRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**Tenant**](Tenant.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CoreTenantsUpdate
-
-> Tenant CoreTenantsUpdate(ctx, tenantUuid).TenantRequest(tenantRequest).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
-    tenantRequest := *openapiclient.NewTenantRequest("Domain_example") // TenantRequest | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreTenantsUpdate(context.Background(), tenantUuid).TenantRequest(tenantRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTenantsUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CoreTenantsUpdate`: Tenant
-    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreTenantsUpdate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenantUuid** | **string** | A UUID string identifying this Tenant. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCoreTenantsUpdateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **tenantRequest** | [**TenantRequest**](TenantRequest.md) |  | 
-
-### Return type
-
-[**Tenant**](Tenant.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CoreTenantsUsedByList
-
-> []UsedBy CoreTenantsUsedByList(ctx, tenantUuid).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreTenantsUsedByList(context.Background(), tenantUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreTenantsUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CoreTenantsUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreTenantsUsedByList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenantUuid** | **string** | A UUID string identifying this Tenant. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCoreTenantsUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

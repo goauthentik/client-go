@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Context** | Pointer to **interface{}** |  | [optional] 
 **ClientIp** | Pointer to **NullableString** |  | [optional] 
 **Expires** | Pointer to **time.Time** |  | [optional] 
-**Tenant** | Pointer to **interface{}** |  | [optional] 
+**Brand** | Pointer to **interface{}** |  | [optional] 
 
 ## Methods
 
@@ -201,41 +201,41 @@ SetExpires sets Expires field to given value.
 
 HasExpires returns a boolean if a field has been set.
 
-### GetTenant
+### GetBrand
 
-`func (o *EventRequest) GetTenant() interface{}`
+`func (o *EventRequest) GetBrand() interface{}`
 
-GetTenant returns the Tenant field if non-nil, zero value otherwise.
+GetBrand returns the Brand field if non-nil, zero value otherwise.
 
-### GetTenantOk
+### GetBrandOk
 
-`func (o *EventRequest) GetTenantOk() (*interface{}, bool)`
+`func (o *EventRequest) GetBrandOk() (*interface{}, bool)`
 
-GetTenantOk returns a tuple with the Tenant field if it's non-nil, zero value otherwise
+GetBrandOk returns a tuple with the Brand field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTenant
+### SetBrand
 
-`func (o *EventRequest) SetTenant(v interface{})`
+`func (o *EventRequest) SetBrand(v interface{})`
 
-SetTenant sets Tenant field to given value.
+SetBrand sets Brand field to given value.
 
-### HasTenant
+### HasBrand
 
-`func (o *EventRequest) HasTenant() bool`
+`func (o *EventRequest) HasBrand() bool`
 
-HasTenant returns a boolean if a field has been set.
+HasBrand returns a boolean if a field has been set.
 
-### SetTenantNil
+### SetBrandNil
 
-`func (o *EventRequest) SetTenantNil(b bool)`
+`func (o *EventRequest) SetBrandNil(b bool)`
 
- SetTenantNil sets the value for Tenant to be an explicit nil
+ SetBrandNil sets the value for Brand to be an explicit nil
 
-### UnsetTenant
-`func (o *EventRequest) UnsetTenant()`
+### UnsetBrand
+`func (o *EventRequest) UnsetBrand()`
 
-UnsetTenant ensures that no value is present for Tenant, not even an explicit nil
+UnsetBrand ensures that no value is present for Brand, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

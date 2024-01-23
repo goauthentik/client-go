@@ -15,8 +15,8 @@ import (
 	"encoding/json"
 )
 
-// CurrentTenant Partial tenant information for styling
-type CurrentTenant struct {
+// CurrentBrand Partial brand information for styling
+type CurrentBrand struct {
 	MatchedDomain      string       `json:"matched_domain"`
 	BrandingTitle      string       `json:"branding_title"`
 	BrandingLogo       string       `json:"branding_logo"`
@@ -32,12 +32,12 @@ type CurrentTenant struct {
 	DefaultLocale      string       `json:"default_locale"`
 }
 
-// NewCurrentTenant instantiates a new CurrentTenant object
+// NewCurrentBrand instantiates a new CurrentBrand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCurrentTenant(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, uiFooterLinks []FooterLink, uiTheme UiThemeEnum, defaultLocale string) *CurrentTenant {
-	this := CurrentTenant{}
+func NewCurrentBrand(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, uiFooterLinks []FooterLink, uiTheme UiThemeEnum, defaultLocale string) *CurrentBrand {
+	this := CurrentBrand{}
 	this.MatchedDomain = matchedDomain
 	this.BrandingTitle = brandingTitle
 	this.BrandingLogo = brandingLogo
@@ -48,16 +48,16 @@ func NewCurrentTenant(matchedDomain string, brandingTitle string, brandingLogo s
 	return &this
 }
 
-// NewCurrentTenantWithDefaults instantiates a new CurrentTenant object
+// NewCurrentBrandWithDefaults instantiates a new CurrentBrand object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCurrentTenantWithDefaults() *CurrentTenant {
-	this := CurrentTenant{}
+func NewCurrentBrandWithDefaults() *CurrentBrand {
+	this := CurrentBrand{}
 	return &this
 }
 
 // GetMatchedDomain returns the MatchedDomain field value
-func (o *CurrentTenant) GetMatchedDomain() string {
+func (o *CurrentBrand) GetMatchedDomain() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -68,7 +68,7 @@ func (o *CurrentTenant) GetMatchedDomain() string {
 
 // GetMatchedDomainOk returns a tuple with the MatchedDomain field value
 // and a boolean to check if the value has been set.
-func (o *CurrentTenant) GetMatchedDomainOk() (*string, bool) {
+func (o *CurrentBrand) GetMatchedDomainOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -76,12 +76,12 @@ func (o *CurrentTenant) GetMatchedDomainOk() (*string, bool) {
 }
 
 // SetMatchedDomain sets field value
-func (o *CurrentTenant) SetMatchedDomain(v string) {
+func (o *CurrentBrand) SetMatchedDomain(v string) {
 	o.MatchedDomain = v
 }
 
 // GetBrandingTitle returns the BrandingTitle field value
-func (o *CurrentTenant) GetBrandingTitle() string {
+func (o *CurrentBrand) GetBrandingTitle() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -92,7 +92,7 @@ func (o *CurrentTenant) GetBrandingTitle() string {
 
 // GetBrandingTitleOk returns a tuple with the BrandingTitle field value
 // and a boolean to check if the value has been set.
-func (o *CurrentTenant) GetBrandingTitleOk() (*string, bool) {
+func (o *CurrentBrand) GetBrandingTitleOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -100,12 +100,12 @@ func (o *CurrentTenant) GetBrandingTitleOk() (*string, bool) {
 }
 
 // SetBrandingTitle sets field value
-func (o *CurrentTenant) SetBrandingTitle(v string) {
+func (o *CurrentBrand) SetBrandingTitle(v string) {
 	o.BrandingTitle = v
 }
 
 // GetBrandingLogo returns the BrandingLogo field value
-func (o *CurrentTenant) GetBrandingLogo() string {
+func (o *CurrentBrand) GetBrandingLogo() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -116,7 +116,7 @@ func (o *CurrentTenant) GetBrandingLogo() string {
 
 // GetBrandingLogoOk returns a tuple with the BrandingLogo field value
 // and a boolean to check if the value has been set.
-func (o *CurrentTenant) GetBrandingLogoOk() (*string, bool) {
+func (o *CurrentBrand) GetBrandingLogoOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -124,12 +124,12 @@ func (o *CurrentTenant) GetBrandingLogoOk() (*string, bool) {
 }
 
 // SetBrandingLogo sets field value
-func (o *CurrentTenant) SetBrandingLogo(v string) {
+func (o *CurrentBrand) SetBrandingLogo(v string) {
 	o.BrandingLogo = v
 }
 
 // GetBrandingFavicon returns the BrandingFavicon field value
-func (o *CurrentTenant) GetBrandingFavicon() string {
+func (o *CurrentBrand) GetBrandingFavicon() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -140,7 +140,7 @@ func (o *CurrentTenant) GetBrandingFavicon() string {
 
 // GetBrandingFaviconOk returns a tuple with the BrandingFavicon field value
 // and a boolean to check if the value has been set.
-func (o *CurrentTenant) GetBrandingFaviconOk() (*string, bool) {
+func (o *CurrentBrand) GetBrandingFaviconOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -148,12 +148,12 @@ func (o *CurrentTenant) GetBrandingFaviconOk() (*string, bool) {
 }
 
 // SetBrandingFavicon sets field value
-func (o *CurrentTenant) SetBrandingFavicon(v string) {
+func (o *CurrentBrand) SetBrandingFavicon(v string) {
 	o.BrandingFavicon = v
 }
 
 // GetUiFooterLinks returns the UiFooterLinks field value
-func (o *CurrentTenant) GetUiFooterLinks() []FooterLink {
+func (o *CurrentBrand) GetUiFooterLinks() []FooterLink {
 	if o == nil {
 		var ret []FooterLink
 		return ret
@@ -164,7 +164,7 @@ func (o *CurrentTenant) GetUiFooterLinks() []FooterLink {
 
 // GetUiFooterLinksOk returns a tuple with the UiFooterLinks field value
 // and a boolean to check if the value has been set.
-func (o *CurrentTenant) GetUiFooterLinksOk() ([]FooterLink, bool) {
+func (o *CurrentBrand) GetUiFooterLinksOk() ([]FooterLink, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -172,12 +172,12 @@ func (o *CurrentTenant) GetUiFooterLinksOk() ([]FooterLink, bool) {
 }
 
 // SetUiFooterLinks sets field value
-func (o *CurrentTenant) SetUiFooterLinks(v []FooterLink) {
+func (o *CurrentBrand) SetUiFooterLinks(v []FooterLink) {
 	o.UiFooterLinks = v
 }
 
 // GetUiTheme returns the UiTheme field value
-func (o *CurrentTenant) GetUiTheme() UiThemeEnum {
+func (o *CurrentBrand) GetUiTheme() UiThemeEnum {
 	if o == nil {
 		var ret UiThemeEnum
 		return ret
@@ -188,7 +188,7 @@ func (o *CurrentTenant) GetUiTheme() UiThemeEnum {
 
 // GetUiThemeOk returns a tuple with the UiTheme field value
 // and a boolean to check if the value has been set.
-func (o *CurrentTenant) GetUiThemeOk() (*UiThemeEnum, bool) {
+func (o *CurrentBrand) GetUiThemeOk() (*UiThemeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -196,12 +196,12 @@ func (o *CurrentTenant) GetUiThemeOk() (*UiThemeEnum, bool) {
 }
 
 // SetUiTheme sets field value
-func (o *CurrentTenant) SetUiTheme(v UiThemeEnum) {
+func (o *CurrentBrand) SetUiTheme(v UiThemeEnum) {
 	o.UiTheme = v
 }
 
 // GetFlowAuthentication returns the FlowAuthentication field value if set, zero value otherwise.
-func (o *CurrentTenant) GetFlowAuthentication() string {
+func (o *CurrentBrand) GetFlowAuthentication() string {
 	if o == nil || o.FlowAuthentication == nil {
 		var ret string
 		return ret
@@ -211,7 +211,7 @@ func (o *CurrentTenant) GetFlowAuthentication() string {
 
 // GetFlowAuthenticationOk returns a tuple with the FlowAuthentication field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CurrentTenant) GetFlowAuthenticationOk() (*string, bool) {
+func (o *CurrentBrand) GetFlowAuthenticationOk() (*string, bool) {
 	if o == nil || o.FlowAuthentication == nil {
 		return nil, false
 	}
@@ -219,7 +219,7 @@ func (o *CurrentTenant) GetFlowAuthenticationOk() (*string, bool) {
 }
 
 // HasFlowAuthentication returns a boolean if a field has been set.
-func (o *CurrentTenant) HasFlowAuthentication() bool {
+func (o *CurrentBrand) HasFlowAuthentication() bool {
 	if o != nil && o.FlowAuthentication != nil {
 		return true
 	}
@@ -228,12 +228,12 @@ func (o *CurrentTenant) HasFlowAuthentication() bool {
 }
 
 // SetFlowAuthentication gets a reference to the given string and assigns it to the FlowAuthentication field.
-func (o *CurrentTenant) SetFlowAuthentication(v string) {
+func (o *CurrentBrand) SetFlowAuthentication(v string) {
 	o.FlowAuthentication = &v
 }
 
 // GetFlowInvalidation returns the FlowInvalidation field value if set, zero value otherwise.
-func (o *CurrentTenant) GetFlowInvalidation() string {
+func (o *CurrentBrand) GetFlowInvalidation() string {
 	if o == nil || o.FlowInvalidation == nil {
 		var ret string
 		return ret
@@ -243,7 +243,7 @@ func (o *CurrentTenant) GetFlowInvalidation() string {
 
 // GetFlowInvalidationOk returns a tuple with the FlowInvalidation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CurrentTenant) GetFlowInvalidationOk() (*string, bool) {
+func (o *CurrentBrand) GetFlowInvalidationOk() (*string, bool) {
 	if o == nil || o.FlowInvalidation == nil {
 		return nil, false
 	}
@@ -251,7 +251,7 @@ func (o *CurrentTenant) GetFlowInvalidationOk() (*string, bool) {
 }
 
 // HasFlowInvalidation returns a boolean if a field has been set.
-func (o *CurrentTenant) HasFlowInvalidation() bool {
+func (o *CurrentBrand) HasFlowInvalidation() bool {
 	if o != nil && o.FlowInvalidation != nil {
 		return true
 	}
@@ -260,12 +260,12 @@ func (o *CurrentTenant) HasFlowInvalidation() bool {
 }
 
 // SetFlowInvalidation gets a reference to the given string and assigns it to the FlowInvalidation field.
-func (o *CurrentTenant) SetFlowInvalidation(v string) {
+func (o *CurrentBrand) SetFlowInvalidation(v string) {
 	o.FlowInvalidation = &v
 }
 
 // GetFlowRecovery returns the FlowRecovery field value if set, zero value otherwise.
-func (o *CurrentTenant) GetFlowRecovery() string {
+func (o *CurrentBrand) GetFlowRecovery() string {
 	if o == nil || o.FlowRecovery == nil {
 		var ret string
 		return ret
@@ -275,7 +275,7 @@ func (o *CurrentTenant) GetFlowRecovery() string {
 
 // GetFlowRecoveryOk returns a tuple with the FlowRecovery field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CurrentTenant) GetFlowRecoveryOk() (*string, bool) {
+func (o *CurrentBrand) GetFlowRecoveryOk() (*string, bool) {
 	if o == nil || o.FlowRecovery == nil {
 		return nil, false
 	}
@@ -283,7 +283,7 @@ func (o *CurrentTenant) GetFlowRecoveryOk() (*string, bool) {
 }
 
 // HasFlowRecovery returns a boolean if a field has been set.
-func (o *CurrentTenant) HasFlowRecovery() bool {
+func (o *CurrentBrand) HasFlowRecovery() bool {
 	if o != nil && o.FlowRecovery != nil {
 		return true
 	}
@@ -292,12 +292,12 @@ func (o *CurrentTenant) HasFlowRecovery() bool {
 }
 
 // SetFlowRecovery gets a reference to the given string and assigns it to the FlowRecovery field.
-func (o *CurrentTenant) SetFlowRecovery(v string) {
+func (o *CurrentBrand) SetFlowRecovery(v string) {
 	o.FlowRecovery = &v
 }
 
 // GetFlowUnenrollment returns the FlowUnenrollment field value if set, zero value otherwise.
-func (o *CurrentTenant) GetFlowUnenrollment() string {
+func (o *CurrentBrand) GetFlowUnenrollment() string {
 	if o == nil || o.FlowUnenrollment == nil {
 		var ret string
 		return ret
@@ -307,7 +307,7 @@ func (o *CurrentTenant) GetFlowUnenrollment() string {
 
 // GetFlowUnenrollmentOk returns a tuple with the FlowUnenrollment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CurrentTenant) GetFlowUnenrollmentOk() (*string, bool) {
+func (o *CurrentBrand) GetFlowUnenrollmentOk() (*string, bool) {
 	if o == nil || o.FlowUnenrollment == nil {
 		return nil, false
 	}
@@ -315,7 +315,7 @@ func (o *CurrentTenant) GetFlowUnenrollmentOk() (*string, bool) {
 }
 
 // HasFlowUnenrollment returns a boolean if a field has been set.
-func (o *CurrentTenant) HasFlowUnenrollment() bool {
+func (o *CurrentBrand) HasFlowUnenrollment() bool {
 	if o != nil && o.FlowUnenrollment != nil {
 		return true
 	}
@@ -324,12 +324,12 @@ func (o *CurrentTenant) HasFlowUnenrollment() bool {
 }
 
 // SetFlowUnenrollment gets a reference to the given string and assigns it to the FlowUnenrollment field.
-func (o *CurrentTenant) SetFlowUnenrollment(v string) {
+func (o *CurrentBrand) SetFlowUnenrollment(v string) {
 	o.FlowUnenrollment = &v
 }
 
 // GetFlowUserSettings returns the FlowUserSettings field value if set, zero value otherwise.
-func (o *CurrentTenant) GetFlowUserSettings() string {
+func (o *CurrentBrand) GetFlowUserSettings() string {
 	if o == nil || o.FlowUserSettings == nil {
 		var ret string
 		return ret
@@ -339,7 +339,7 @@ func (o *CurrentTenant) GetFlowUserSettings() string {
 
 // GetFlowUserSettingsOk returns a tuple with the FlowUserSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CurrentTenant) GetFlowUserSettingsOk() (*string, bool) {
+func (o *CurrentBrand) GetFlowUserSettingsOk() (*string, bool) {
 	if o == nil || o.FlowUserSettings == nil {
 		return nil, false
 	}
@@ -347,7 +347,7 @@ func (o *CurrentTenant) GetFlowUserSettingsOk() (*string, bool) {
 }
 
 // HasFlowUserSettings returns a boolean if a field has been set.
-func (o *CurrentTenant) HasFlowUserSettings() bool {
+func (o *CurrentBrand) HasFlowUserSettings() bool {
 	if o != nil && o.FlowUserSettings != nil {
 		return true
 	}
@@ -356,12 +356,12 @@ func (o *CurrentTenant) HasFlowUserSettings() bool {
 }
 
 // SetFlowUserSettings gets a reference to the given string and assigns it to the FlowUserSettings field.
-func (o *CurrentTenant) SetFlowUserSettings(v string) {
+func (o *CurrentBrand) SetFlowUserSettings(v string) {
 	o.FlowUserSettings = &v
 }
 
 // GetFlowDeviceCode returns the FlowDeviceCode field value if set, zero value otherwise.
-func (o *CurrentTenant) GetFlowDeviceCode() string {
+func (o *CurrentBrand) GetFlowDeviceCode() string {
 	if o == nil || o.FlowDeviceCode == nil {
 		var ret string
 		return ret
@@ -371,7 +371,7 @@ func (o *CurrentTenant) GetFlowDeviceCode() string {
 
 // GetFlowDeviceCodeOk returns a tuple with the FlowDeviceCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CurrentTenant) GetFlowDeviceCodeOk() (*string, bool) {
+func (o *CurrentBrand) GetFlowDeviceCodeOk() (*string, bool) {
 	if o == nil || o.FlowDeviceCode == nil {
 		return nil, false
 	}
@@ -379,7 +379,7 @@ func (o *CurrentTenant) GetFlowDeviceCodeOk() (*string, bool) {
 }
 
 // HasFlowDeviceCode returns a boolean if a field has been set.
-func (o *CurrentTenant) HasFlowDeviceCode() bool {
+func (o *CurrentBrand) HasFlowDeviceCode() bool {
 	if o != nil && o.FlowDeviceCode != nil {
 		return true
 	}
@@ -388,12 +388,12 @@ func (o *CurrentTenant) HasFlowDeviceCode() bool {
 }
 
 // SetFlowDeviceCode gets a reference to the given string and assigns it to the FlowDeviceCode field.
-func (o *CurrentTenant) SetFlowDeviceCode(v string) {
+func (o *CurrentBrand) SetFlowDeviceCode(v string) {
 	o.FlowDeviceCode = &v
 }
 
 // GetDefaultLocale returns the DefaultLocale field value
-func (o *CurrentTenant) GetDefaultLocale() string {
+func (o *CurrentBrand) GetDefaultLocale() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -404,7 +404,7 @@ func (o *CurrentTenant) GetDefaultLocale() string {
 
 // GetDefaultLocaleOk returns a tuple with the DefaultLocale field value
 // and a boolean to check if the value has been set.
-func (o *CurrentTenant) GetDefaultLocaleOk() (*string, bool) {
+func (o *CurrentBrand) GetDefaultLocaleOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -412,11 +412,11 @@ func (o *CurrentTenant) GetDefaultLocaleOk() (*string, bool) {
 }
 
 // SetDefaultLocale sets field value
-func (o *CurrentTenant) SetDefaultLocale(v string) {
+func (o *CurrentBrand) SetDefaultLocale(v string) {
 	o.DefaultLocale = v
 }
 
-func (o CurrentTenant) MarshalJSON() ([]byte, error) {
+func (o CurrentBrand) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["matched_domain"] = o.MatchedDomain
@@ -460,38 +460,38 @@ func (o CurrentTenant) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableCurrentTenant struct {
-	value *CurrentTenant
+type NullableCurrentBrand struct {
+	value *CurrentBrand
 	isSet bool
 }
 
-func (v NullableCurrentTenant) Get() *CurrentTenant {
+func (v NullableCurrentBrand) Get() *CurrentBrand {
 	return v.value
 }
 
-func (v *NullableCurrentTenant) Set(val *CurrentTenant) {
+func (v *NullableCurrentBrand) Set(val *CurrentBrand) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCurrentTenant) IsSet() bool {
+func (v NullableCurrentBrand) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCurrentTenant) Unset() {
+func (v *NullableCurrentBrand) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCurrentTenant(val *CurrentTenant) *NullableCurrentTenant {
-	return &NullableCurrentTenant{value: val, isSet: true}
+func NewNullableCurrentBrand(val *CurrentBrand) *NullableCurrentBrand {
+	return &NullableCurrentBrand{value: val, isSet: true}
 }
 
-func (v NullableCurrentTenant) MarshalJSON() ([]byte, error) {
+func (v NullableCurrentBrand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCurrentTenant) UnmarshalJSON(src []byte) error {
+func (v *NullableCurrentBrand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

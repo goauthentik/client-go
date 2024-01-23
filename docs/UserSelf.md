@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Email** | Pointer to **string** |  | [optional] 
 **Avatar** | **string** |  | [readonly] 
 **Uid** | **string** |  | [readonly] 
-**Settings** | **map[string]interface{}** | Get user settings with tenant and group settings applied | [readonly] 
+**Settings** | **map[string]interface{}** | Get user settings with brand and group settings applied | [readonly] 
 **Type** | Pointer to [**UserTypeEnum**](UserTypeEnum.md) |  | [optional] 
 **SystemPermissions** | **[]string** | Get all system permissions assigned to the user | [readonly] 
 

@@ -3,6 +3,8 @@
 ## Enum
 
 
+* `TENANTS_DOMAIN` (value: `"authentik_tenants.domain"`)
+
 * `CRYPTO_CERTIFICATEKEYPAIR` (value: `"authentik_crypto.certificatekeypair"`)
 
 * `EVENTS_EVENT` (value: `"authentik_events.event"`)
@@ -137,7 +139,7 @@
 
 * `STAGES_USER_WRITE_USERWRITESTAGE` (value: `"authentik_stages_user_write.userwritestage"`)
 
-* `TENANTS_TENANT` (value: `"authentik_tenants.tenant"`)
+* `BRANDS_BRAND` (value: `"authentik_brands.brand"`)
 
 * `BLUEPRINTS_BLUEPRINTINSTANCE` (value: `"authentik_blueprints.blueprintinstance"`)
 

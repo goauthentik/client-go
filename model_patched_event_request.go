@@ -24,7 +24,7 @@ type PatchedEventRequest struct {
 	Context  interface{}    `json:"context,omitempty"`
 	ClientIp NullableString `json:"client_ip,omitempty"`
 	Expires  *time.Time     `json:"expires,omitempty"`
-	Tenant   interface{}    `json:"tenant,omitempty"`
+	Brand    interface{}    `json:"brand,omitempty"`
 }
 
 // NewPatchedEventRequest instantiates a new PatchedEventRequest object
@@ -249,37 +249,37 @@ func (o *PatchedEventRequest) SetExpires(v time.Time) {
 	o.Expires = &v
 }
 
-// GetTenant returns the Tenant field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PatchedEventRequest) GetTenant() interface{} {
+// GetBrand returns the Brand field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedEventRequest) GetBrand() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-	return o.Tenant
+	return o.Brand
 }
 
-// GetTenantOk returns a tuple with the Tenant field value if set, nil otherwise
+// GetBrandOk returns a tuple with the Brand field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PatchedEventRequest) GetTenantOk() (*interface{}, bool) {
-	if o == nil || o.Tenant == nil {
+func (o *PatchedEventRequest) GetBrandOk() (*interface{}, bool) {
+	if o == nil || o.Brand == nil {
 		return nil, false
 	}
-	return &o.Tenant, true
+	return &o.Brand, true
 }
 
-// HasTenant returns a boolean if a field has been set.
-func (o *PatchedEventRequest) HasTenant() bool {
-	if o != nil && o.Tenant != nil {
+// HasBrand returns a boolean if a field has been set.
+func (o *PatchedEventRequest) HasBrand() bool {
+	if o != nil && o.Brand != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetTenant gets a reference to the given interface{} and assigns it to the Tenant field.
-func (o *PatchedEventRequest) SetTenant(v interface{}) {
-	o.Tenant = v
+// SetBrand gets a reference to the given interface{} and assigns it to the Brand field.
+func (o *PatchedEventRequest) SetBrand(v interface{}) {
+	o.Brand = v
 }
 
 func (o PatchedEventRequest) MarshalJSON() ([]byte, error) {
@@ -302,8 +302,8 @@ func (o PatchedEventRequest) MarshalJSON() ([]byte, error) {
 	if o.Expires != nil {
 		toSerialize["expires"] = o.Expires
 	}
-	if o.Tenant != nil {
-		toSerialize["tenant"] = o.Tenant
+	if o.Brand != nil {
+		toSerialize["brand"] = o.Brand
 	}
 	return json.Marshal(toSerialize)
 }

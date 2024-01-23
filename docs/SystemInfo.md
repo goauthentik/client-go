@@ -8,15 +8,16 @@ Name | Type | Description | Notes
 **HttpHost** | **string** | Get HTTP host | [readonly] 
 **HttpIsSecure** | **bool** | Get HTTP Secure flag | [readonly] 
 **Runtime** | [**SystemInfoRuntime**](SystemInfoRuntime.md) |  | 
-**Tenant** | **string** | Currently active tenant | [readonly] 
+**Brand** | **string** | Currently active brand | [readonly] 
 **ServerTime** | **time.Time** | Current server time | [readonly] 
+**EmbeddedOutpostDisabled** | **bool** | Whether the embedded outpost is disabled | [readonly] 
 **EmbeddedOutpostHost** | **string** | Get the FQDN configured on the embedded outpost | [readonly] 
 
 ## Methods
 
 ### NewSystemInfo
 
-`func NewSystemInfo(httpHeaders map[string]string, httpHost string, httpIsSecure bool, runtime SystemInfoRuntime, tenant string, serverTime time.Time, embeddedOutpostHost string, ) *SystemInfo`
+`func NewSystemInfo(httpHeaders map[string]string, httpHost string, httpIsSecure bool, runtime SystemInfoRuntime, brand string, serverTime time.Time, embeddedOutpostDisabled bool, embeddedOutpostHost string, ) *SystemInfo`
 
 NewSystemInfo instantiates a new SystemInfo object
 This constructor will assign default values to properties that have it defined,
@@ -111,24 +112,24 @@ and a boolean to check if the value has been set.
 SetRuntime sets Runtime field to given value.
 
 
-### GetTenant
+### GetBrand
 
-`func (o *SystemInfo) GetTenant() string`
+`func (o *SystemInfo) GetBrand() string`
 
-GetTenant returns the Tenant field if non-nil, zero value otherwise.
+GetBrand returns the Brand field if non-nil, zero value otherwise.
 
-### GetTenantOk
+### GetBrandOk
 
-`func (o *SystemInfo) GetTenantOk() (*string, bool)`
+`func (o *SystemInfo) GetBrandOk() (*string, bool)`
 
-GetTenantOk returns a tuple with the Tenant field if it's non-nil, zero value otherwise
+GetBrandOk returns a tuple with the Brand field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTenant
+### SetBrand
 
-`func (o *SystemInfo) SetTenant(v string)`
+`func (o *SystemInfo) SetBrand(v string)`
 
-SetTenant sets Tenant field to given value.
+SetBrand sets Brand field to given value.
 
 
 ### GetServerTime
@@ -149,6 +150,26 @@ and a boolean to check if the value has been set.
 `func (o *SystemInfo) SetServerTime(v time.Time)`
 
 SetServerTime sets ServerTime field to given value.
+
+
+### GetEmbeddedOutpostDisabled
+
+`func (o *SystemInfo) GetEmbeddedOutpostDisabled() bool`
+
+GetEmbeddedOutpostDisabled returns the EmbeddedOutpostDisabled field if non-nil, zero value otherwise.
+
+### GetEmbeddedOutpostDisabledOk
+
+`func (o *SystemInfo) GetEmbeddedOutpostDisabledOk() (*bool, bool)`
+
+GetEmbeddedOutpostDisabledOk returns a tuple with the EmbeddedOutpostDisabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmbeddedOutpostDisabled
+
+`func (o *SystemInfo) SetEmbeddedOutpostDisabled(v bool)`
+
+SetEmbeddedOutpostDisabled sets EmbeddedOutpostDisabled field to given value.
 
 
 ### GetEmbeddedOutpostHost

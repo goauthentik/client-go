@@ -29,7 +29,7 @@ type UserSelf struct {
 	Email       *string          `json:"email,omitempty"`
 	Avatar      string           `json:"avatar"`
 	Uid         string           `json:"uid"`
-	// Get user settings with tenant and group settings applied
+	// Get user settings with brand and group settings applied
 	Settings map[string]interface{} `json:"settings"`
 	Type     *UserTypeEnum          `json:"type,omitempty"`
 	// Get all system permissions assigned to the user

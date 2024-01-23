@@ -430,6 +430,7 @@ type ApiEventsEventsListRequest struct {
 	ctx                  context.Context
 	ApiService           *EventsApiService
 	action               *string
+	brandName            *string
 	clientIp             *string
 	contextAuthorizedApp *string
 	contextModelApp      *string
@@ -439,12 +440,17 @@ type ApiEventsEventsListRequest struct {
 	page                 *int32
 	pageSize             *int32
 	search               *string
-	tenantName           *string
 	username             *string
 }
 
 func (r ApiEventsEventsListRequest) Action(action string) ApiEventsEventsListRequest {
 	r.action = &action
+	return r
+}
+
+// Brand name
+func (r ApiEventsEventsListRequest) BrandName(brandName string) ApiEventsEventsListRequest {
+	r.brandName = &brandName
 	return r
 }
 
@@ -501,12 +507,6 @@ func (r ApiEventsEventsListRequest) Search(search string) ApiEventsEventsListReq
 	return r
 }
 
-// Tenant name
-func (r ApiEventsEventsListRequest) TenantName(tenantName string) ApiEventsEventsListRequest {
-	r.tenantName = &tenantName
-	return r
-}
-
 // Username
 func (r ApiEventsEventsListRequest) Username(username string) ApiEventsEventsListRequest {
 	r.username = &username
@@ -557,6 +557,9 @@ func (a *EventsApiService) EventsEventsListExecute(r ApiEventsEventsListRequest)
 	if r.action != nil {
 		localVarQueryParams.Add("action", parameterToString(*r.action, ""))
 	}
+	if r.brandName != nil {
+		localVarQueryParams.Add("brand_name", parameterToString(*r.brandName, ""))
+	}
 	if r.clientIp != nil {
 		localVarQueryParams.Add("client_ip", parameterToString(*r.clientIp, ""))
 	}
@@ -583,9 +586,6 @@ func (a *EventsApiService) EventsEventsListExecute(r ApiEventsEventsListRequest)
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
-	}
-	if r.tenantName != nil {
-		localVarQueryParams.Add("tenant_name", parameterToString(*r.tenantName, ""))
 	}
 	if r.username != nil {
 		localVarQueryParams.Add("username", parameterToString(*r.username, ""))
@@ -1413,6 +1413,7 @@ type ApiEventsEventsVolumeListRequest struct {
 	ctx                  context.Context
 	ApiService           *EventsApiService
 	action               *string
+	brandName            *string
 	clientIp             *string
 	contextAuthorizedApp *string
 	contextModelApp      *string
@@ -1420,12 +1421,17 @@ type ApiEventsEventsVolumeListRequest struct {
 	contextModelPk       *string
 	ordering             *string
 	search               *string
-	tenantName           *string
 	username             *string
 }
 
 func (r ApiEventsEventsVolumeListRequest) Action(action string) ApiEventsEventsVolumeListRequest {
 	r.action = &action
+	return r
+}
+
+// Brand name
+func (r ApiEventsEventsVolumeListRequest) BrandName(brandName string) ApiEventsEventsVolumeListRequest {
+	r.brandName = &brandName
 	return r
 }
 
@@ -1467,12 +1473,6 @@ func (r ApiEventsEventsVolumeListRequest) Ordering(ordering string) ApiEventsEve
 // A search term.
 func (r ApiEventsEventsVolumeListRequest) Search(search string) ApiEventsEventsVolumeListRequest {
 	r.search = &search
-	return r
-}
-
-// Tenant name
-func (r ApiEventsEventsVolumeListRequest) TenantName(tenantName string) ApiEventsEventsVolumeListRequest {
-	r.tenantName = &tenantName
 	return r
 }
 
@@ -1526,6 +1526,9 @@ func (a *EventsApiService) EventsEventsVolumeListExecute(r ApiEventsEventsVolume
 	if r.action != nil {
 		localVarQueryParams.Add("action", parameterToString(*r.action, ""))
 	}
+	if r.brandName != nil {
+		localVarQueryParams.Add("brand_name", parameterToString(*r.brandName, ""))
+	}
 	if r.clientIp != nil {
 		localVarQueryParams.Add("client_ip", parameterToString(*r.clientIp, ""))
 	}
@@ -1546,9 +1549,6 @@ func (a *EventsApiService) EventsEventsVolumeListExecute(r ApiEventsEventsVolume
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
-	}
-	if r.tenantName != nil {
-		localVarQueryParams.Add("tenant_name", parameterToString(*r.tenantName, ""))
 	}
 	if r.username != nil {
 		localVarQueryParams.Add("username", parameterToString(*r.username, ""))

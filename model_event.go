@@ -26,7 +26,7 @@ type Event struct {
 	ClientIp NullableString `json:"client_ip,omitempty"`
 	Created  time.Time      `json:"created"`
 	Expires  *time.Time     `json:"expires,omitempty"`
-	Tenant   interface{}    `json:"tenant,omitempty"`
+	Brand    interface{}    `json:"brand,omitempty"`
 }
 
 // NewEvent instantiates a new Event object
@@ -287,37 +287,37 @@ func (o *Event) SetExpires(v time.Time) {
 	o.Expires = &v
 }
 
-// GetTenant returns the Tenant field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Event) GetTenant() interface{} {
+// GetBrand returns the Brand field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Event) GetBrand() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-	return o.Tenant
+	return o.Brand
 }
 
-// GetTenantOk returns a tuple with the Tenant field value if set, nil otherwise
+// GetBrandOk returns a tuple with the Brand field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Event) GetTenantOk() (*interface{}, bool) {
-	if o == nil || o.Tenant == nil {
+func (o *Event) GetBrandOk() (*interface{}, bool) {
+	if o == nil || o.Brand == nil {
 		return nil, false
 	}
-	return &o.Tenant, true
+	return &o.Brand, true
 }
 
-// HasTenant returns a boolean if a field has been set.
-func (o *Event) HasTenant() bool {
-	if o != nil && o.Tenant != nil {
+// HasBrand returns a boolean if a field has been set.
+func (o *Event) HasBrand() bool {
+	if o != nil && o.Brand != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetTenant gets a reference to the given interface{} and assigns it to the Tenant field.
-func (o *Event) SetTenant(v interface{}) {
-	o.Tenant = v
+// SetBrand gets a reference to the given interface{} and assigns it to the Brand field.
+func (o *Event) SetBrand(v interface{}) {
+	o.Brand = v
 }
 
 func (o Event) MarshalJSON() ([]byte, error) {
@@ -346,8 +346,8 @@ func (o Event) MarshalJSON() ([]byte, error) {
 	if o.Expires != nil {
 		toSerialize["expires"] = o.Expires
 	}
-	if o.Tenant != nil {
-		toSerialize["tenant"] = o.Tenant
+	if o.Brand != nil {
+		toSerialize["brand"] = o.Brand
 	}
 	return json.Marshal(toSerialize)
 }
