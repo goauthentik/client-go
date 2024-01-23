@@ -11,13 +11,13 @@ clean:
 
 build:
 	mv schema.yml schema-old.yml
-	wget -O schema.yml https://raw.githubusercontent.com/goauthentik/authentik/master/schema.yml
+	wget -O schema.yml https://raw.githubusercontent.com/goauthentik/authentik/main/schema.yml
 	docker run \
 		--rm -v ${PWD}:/local \
 		--user ${UID}:${GID} \
 		docker.io/openapitools/openapi-diff:2.1.0-beta.6 \
 		--markdown /local/diff.test \
-		/local/schema-old.yml /local/schema.yml
+		/local/schema-old.yml /local/schema.yml || true
 	rm schema-old.yml
 	docker run \
 		--rm -v ${PWD}:/local \
