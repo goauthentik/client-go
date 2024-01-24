@@ -103,6 +103,8 @@
 
 * `ENTERPRISE` (value: `"authentik.enterprise"`)
 
+* `ENTERPRISE_AUDIT` (value: `"authentik.enterprise.audit"`)
+
 * `ENTERPRISE_PROVIDERS_RAC` (value: `"authentik.enterprise.providers.rac"`)
 
 
