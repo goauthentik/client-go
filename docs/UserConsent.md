@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **int32** |  | [readonly] 
 **Expires** | Pointer to **time.Time** |  | [optional] 
+**Expiring** | Pointer to **bool** |  | [optional] 
 **User** | [**User**](User.md) |  | 
 **Application** | [**Application**](Application.md) |  | 
 **Permissions** | Pointer to **string** |  | [optional] [default to ""]
@@ -73,6 +74,31 @@ SetExpires sets Expires field to given value.
 `func (o *UserConsent) HasExpires() bool`
 
 HasExpires returns a boolean if a field has been set.
+
+### GetExpiring
+
+`func (o *UserConsent) GetExpiring() bool`
+
+GetExpiring returns the Expiring field if non-nil, zero value otherwise.
+
+### GetExpiringOk
+
+`func (o *UserConsent) GetExpiringOk() (*bool, bool)`
+
+GetExpiringOk returns a tuple with the Expiring field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpiring
+
+`func (o *UserConsent) SetExpiring(v bool)`
+
+SetExpiring sets Expiring field to given value.
+
+### HasExpiring
+
+`func (o *UserConsent) HasExpiring() bool`
+
+HasExpiring returns a boolean if a field has been set.
 
 ### GetUser
 

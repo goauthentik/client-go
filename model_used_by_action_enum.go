@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2023.10.6
+API version: 2023.10.7
 Contact: hello@goauthentik.io
 */
 
@@ -16,23 +16,23 @@ import (
 	"fmt"
 )
 
-// UsedByActionEnum * `CASCADE` - CASCADE * `CASCADE_MANY` - CASCADE_MANY * `SET_NULL` - SET_NULL * `SET_DEFAULT` - SET_DEFAULT
+// UsedByActionEnum * `cascade` - CASCADE * `cascade_many` - CASCADE_MANY * `set_null` - SET_NULL * `set_default` - SET_DEFAULT
 type UsedByActionEnum string
 
 // List of UsedByActionEnum
 const (
-	USEDBYACTIONENUM_CASCADE      UsedByActionEnum = "CASCADE"
-	USEDBYACTIONENUM_CASCADE_MANY UsedByActionEnum = "CASCADE_MANY"
-	USEDBYACTIONENUM_SET_NULL     UsedByActionEnum = "SET_NULL"
-	USEDBYACTIONENUM_SET_DEFAULT  UsedByActionEnum = "SET_DEFAULT"
+	USEDBYACTIONENUM_CASCADE      UsedByActionEnum = "cascade"
+	USEDBYACTIONENUM_CASCADE_MANY UsedByActionEnum = "cascade_many"
+	USEDBYACTIONENUM_SET_NULL     UsedByActionEnum = "set_null"
+	USEDBYACTIONENUM_SET_DEFAULT  UsedByActionEnum = "set_default"
 )
 
 // All allowed values of UsedByActionEnum enum
 var AllowedUsedByActionEnumEnumValues = []UsedByActionEnum{
-	"CASCADE",
-	"CASCADE_MANY",
-	"SET_NULL",
-	"SET_DEFAULT",
+	"cascade",
+	"cascade_many",
+	"set_null",
+	"set_default",
 }
 
 func (v *UsedByActionEnum) UnmarshalJSON(src []byte) error {

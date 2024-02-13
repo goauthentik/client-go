@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **IsRunning** | **bool** |  | [readonly] 
-**Tasks** | [**[]Task**](Task.md) |  | [readonly] 
+**Tasks** | [**[]SystemTask**](SystemTask.md) |  | [readonly] 
 
 ## Methods
 
 ### NewLDAPSyncStatus
 
-`func NewLDAPSyncStatus(isRunning bool, tasks []Task, ) *LDAPSyncStatus`
+`func NewLDAPSyncStatus(isRunning bool, tasks []SystemTask, ) *LDAPSyncStatus`
 
 NewLDAPSyncStatus instantiates a new LDAPSyncStatus object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetIsRunning sets IsRunning field to given value.
 
 ### GetTasks
 
-`func (o *LDAPSyncStatus) GetTasks() []Task`
+`func (o *LDAPSyncStatus) GetTasks() []SystemTask`
 
 GetTasks returns the Tasks field if non-nil, zero value otherwise.
 
 ### GetTasksOk
 
-`func (o *LDAPSyncStatus) GetTasksOk() (*[]Task, bool)`
+`func (o *LDAPSyncStatus) GetTasksOk() (*[]SystemTask, bool)`
 
 GetTasksOk returns a tuple with the Tasks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTasks
 
-`func (o *LDAPSyncStatus) SetTasks(v []Task)`
+`func (o *LDAPSyncStatus) SetTasks(v []SystemTask)`
 
 SetTasks sets Tasks field to given value.
 

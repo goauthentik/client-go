@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **IsRunning** | **bool** |  | [readonly] 
-**Tasks** | [**[]Task**](Task.md) |  | [readonly] 
+**Tasks** | [**[]SystemTask**](SystemTask.md) |  | [readonly] 
 
 ## Methods
 
 ### NewSCIMSyncStatus
 
-`func NewSCIMSyncStatus(isRunning bool, tasks []Task, ) *SCIMSyncStatus`
+`func NewSCIMSyncStatus(isRunning bool, tasks []SystemTask, ) *SCIMSyncStatus`
 
 NewSCIMSyncStatus instantiates a new SCIMSyncStatus object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetIsRunning sets IsRunning field to given value.
 
 ### GetTasks
 
-`func (o *SCIMSyncStatus) GetTasks() []Task`
+`func (o *SCIMSyncStatus) GetTasks() []SystemTask`
 
 GetTasks returns the Tasks field if non-nil, zero value otherwise.
 
 ### GetTasksOk
 
-`func (o *SCIMSyncStatus) GetTasksOk() (*[]Task, bool)`
+`func (o *SCIMSyncStatus) GetTasksOk() (*[]SystemTask, bool)`
 
 GetTasksOk returns a tuple with the Tasks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTasks
 
-`func (o *SCIMSyncStatus) SetTasks(v []Task)`
+`func (o *SCIMSyncStatus) SetTasks(v []SystemTask)`
 
 SetTasks sets Tasks field to given value.
 

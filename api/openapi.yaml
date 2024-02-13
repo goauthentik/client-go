@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2023.10.6
+  version: 2023.10.7
 servers:
 - url: /api/v3/
 paths:
@@ -222,107 +222,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/SystemInfo'
           description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - admin
-  /admin/system_tasks/:
-    get:
-      description: List system tasks
-      operationId: admin_system_tasks_list
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Task'
-                type: array
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - admin
-  /admin/system_tasks/{id}/:
-    get:
-      description: Get a single system task
-      operationId: admin_system_tasks_retrieve
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Task'
-          description: ""
-        "404":
-          description: Task not found
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - admin
-  /admin/system_tasks/{id}/retry/:
-    post:
-      description: Retry task
-      operationId: admin_system_tasks_retry_create
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "204":
-          description: Task retried successfully
-        "404":
-          description: Task not found
-        "500":
-          description: Failed to retry task
         "400":
           content:
             application/json:
@@ -2966,6 +2865,13 @@ paths:
       parameters:
       - explode: true
         in: query
+        name: for_user
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
         name: group
         required: false
         schema:
@@ -3275,8 +3181,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/PolicyTestResult'
           description: ""
-        "404":
-          description: for_user user not found
         "400":
           content:
             application/json:
@@ -7703,6 +7607,171 @@ paths:
                   $ref: '#/components/schemas/UsedBy'
                 type: array
           description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - events
+  /events/system_tasks/:
+    get:
+      description: Read-only view set that returns all background tasks
+      operationId: events_system_tasks_list
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          * `unknown` - Unknown
+          * `successful` - Successful
+          * `warning` - Warning
+          * `error` - Error
+        explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          enum:
+          - error
+          - successful
+          - unknown
+          - warning
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: uid
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSystemTaskList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - events
+  /events/system_tasks/{uuid}/:
+    get:
+      description: Read-only view set that returns all background tasks
+      operationId: events_system_tasks_retrieve
+      parameters:
+      - description: A UUID string identifying this System Task.
+        explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemTask'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - events
+  /events/system_tasks/{uuid}/run/:
+    post:
+      description: Run task
+      operationId: events_system_tasks_run_create
+      parameters:
+      - description: A UUID string identifying this System Task.
+        explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Task retried successfully
+        "404":
+          description: Task not found
+        "500":
+          description: Failed to retry task
         "400":
           content:
             application/json:
@@ -17765,6 +17834,13 @@ paths:
       description: Preview user data for provider
       operationId: providers_oauth2_preview_user_retrieve
       parameters:
+      - explode: true
+        in: query
+        name: for_user
+        required: false
+        schema:
+          type: integer
+        style: form
       - description: A unique integer value identifying this OAuth2/OpenID Provider.
         explode: false
         in: path
@@ -19335,6 +19411,13 @@ paths:
       description: Preview user data for provider
       operationId: providers_saml_preview_user_retrieve
       parameters:
+      - explode: true
+        in: query
+        name: for_user
+        required: false
+        schema:
+          type: integer
+        style: form
       - description: A unique integer value identifying this SAML Provider.
         explode: false
         in: path
@@ -20208,11 +20291,6 @@ paths:
       - description: |-
           * `authentik_tenants.domain` - Domain
           * `authentik_crypto.certificatekeypair` - Certificate-Key Pair
-          * `authentik_events.event` - Event
-          * `authentik_events.notificationtransport` - Notification Transport
-          * `authentik_events.notification` - Notification
-          * `authentik_events.notificationrule` - Notification Rule
-          * `authentik_events.notificationwebhookmapping` - Webhook Mapping
           * `authentik_flows.flow` - Flow
           * `authentik_flows.flowstagebinding` - Flow Stage Binding
           * `authentik_outposts.dockerserviceconnection` - Docker Service-Connection
@@ -20224,14 +20302,10 @@ paths:
           * `authentik_policies_expression.expressionpolicy` - Expression Policy
           * `authentik_policies_password.passwordpolicy` - Password Policy
           * `authentik_policies_reputation.reputationpolicy` - Reputation Policy
-          * `authentik_policies_reputation.reputation` - Reputation Score
           * `authentik_policies.policybinding` - Policy Binding
           * `authentik_providers_ldap.ldapprovider` - LDAP Provider
           * `authentik_providers_oauth2.scopemapping` - Scope Mapping
           * `authentik_providers_oauth2.oauth2provider` - OAuth2/OpenID Provider
-          * `authentik_providers_oauth2.authorizationcode` - Authorization Code
-          * `authentik_providers_oauth2.accesstoken` - OAuth2 Access Token
-          * `authentik_providers_oauth2.refreshtoken` - OAuth2 Refresh Token
           * `authentik_providers_proxy.proxyprovider` - Proxy Provider
           * `authentik_providers_radius.radiusprovider` - Radius Provider
           * `authentik_providers_saml.samlprovider` - SAML Provider
@@ -20251,7 +20325,7 @@ paths:
           * `authentik_stages_authenticator_duo.duodevice` - Duo Device
           * `authentik_stages_authenticator_sms.authenticatorsmsstage` - SMS Authenticator Setup Stage
           * `authentik_stages_authenticator_sms.smsdevice` - SMS Device
-          * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Stage
+          * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Setup Stage
           * `authentik_stages_authenticator_static.staticdevice` - Static Device
           * `authentik_stages_authenticator_totp.authenticatortotpstage` - TOTP Authenticator Setup Stage
           * `authentik_stages_authenticator_totp.totpdevice` - TOTP Device
@@ -20284,6 +20358,11 @@ paths:
           * `authentik_providers_rac.racprovider` - RAC Provider
           * `authentik_providers_rac.endpoint` - RAC Endpoint
           * `authentik_providers_rac.racpropertymapping` - RAC Property Mapping
+          * `authentik_events.event` - Event
+          * `authentik_events.notificationtransport` - Notification Transport
+          * `authentik_events.notification` - Notification
+          * `authentik_events.notificationrule` - Notification Rule
+          * `authentik_events.notificationwebhookmapping` - Webhook Mapping
         explode: true
         in: query
         name: model
@@ -20314,13 +20393,9 @@ paths:
           - authentik_policies_expiry.passwordexpirypolicy
           - authentik_policies_expression.expressionpolicy
           - authentik_policies_password.passwordpolicy
-          - authentik_policies_reputation.reputation
           - authentik_policies_reputation.reputationpolicy
           - authentik_providers_ldap.ldapprovider
-          - authentik_providers_oauth2.accesstoken
-          - authentik_providers_oauth2.authorizationcode
           - authentik_providers_oauth2.oauth2provider
-          - authentik_providers_oauth2.refreshtoken
           - authentik_providers_oauth2.scopemapping
           - authentik_providers_proxy.proxyprovider
           - authentik_providers_rac.endpoint
@@ -20521,11 +20596,6 @@ paths:
       - description: |-
           * `authentik_tenants.domain` - Domain
           * `authentik_crypto.certificatekeypair` - Certificate-Key Pair
-          * `authentik_events.event` - Event
-          * `authentik_events.notificationtransport` - Notification Transport
-          * `authentik_events.notification` - Notification
-          * `authentik_events.notificationrule` - Notification Rule
-          * `authentik_events.notificationwebhookmapping` - Webhook Mapping
           * `authentik_flows.flow` - Flow
           * `authentik_flows.flowstagebinding` - Flow Stage Binding
           * `authentik_outposts.dockerserviceconnection` - Docker Service-Connection
@@ -20537,14 +20607,10 @@ paths:
           * `authentik_policies_expression.expressionpolicy` - Expression Policy
           * `authentik_policies_password.passwordpolicy` - Password Policy
           * `authentik_policies_reputation.reputationpolicy` - Reputation Policy
-          * `authentik_policies_reputation.reputation` - Reputation Score
           * `authentik_policies.policybinding` - Policy Binding
           * `authentik_providers_ldap.ldapprovider` - LDAP Provider
           * `authentik_providers_oauth2.scopemapping` - Scope Mapping
           * `authentik_providers_oauth2.oauth2provider` - OAuth2/OpenID Provider
-          * `authentik_providers_oauth2.authorizationcode` - Authorization Code
-          * `authentik_providers_oauth2.accesstoken` - OAuth2 Access Token
-          * `authentik_providers_oauth2.refreshtoken` - OAuth2 Refresh Token
           * `authentik_providers_proxy.proxyprovider` - Proxy Provider
           * `authentik_providers_radius.radiusprovider` - Radius Provider
           * `authentik_providers_saml.samlprovider` - SAML Provider
@@ -20564,7 +20630,7 @@ paths:
           * `authentik_stages_authenticator_duo.duodevice` - Duo Device
           * `authentik_stages_authenticator_sms.authenticatorsmsstage` - SMS Authenticator Setup Stage
           * `authentik_stages_authenticator_sms.smsdevice` - SMS Device
-          * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Stage
+          * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Setup Stage
           * `authentik_stages_authenticator_static.staticdevice` - Static Device
           * `authentik_stages_authenticator_totp.authenticatortotpstage` - TOTP Authenticator Setup Stage
           * `authentik_stages_authenticator_totp.totpdevice` - TOTP Device
@@ -20597,6 +20663,11 @@ paths:
           * `authentik_providers_rac.racprovider` - RAC Provider
           * `authentik_providers_rac.endpoint` - RAC Endpoint
           * `authentik_providers_rac.racpropertymapping` - RAC Property Mapping
+          * `authentik_events.event` - Event
+          * `authentik_events.notificationtransport` - Notification Transport
+          * `authentik_events.notification` - Notification
+          * `authentik_events.notificationrule` - Notification Rule
+          * `authentik_events.notificationwebhookmapping` - Webhook Mapping
         explode: true
         in: query
         name: model
@@ -20627,13 +20698,9 @@ paths:
           - authentik_policies_expiry.passwordexpirypolicy
           - authentik_policies_expression.expressionpolicy
           - authentik_policies_password.passwordpolicy
-          - authentik_policies_reputation.reputation
           - authentik_policies_reputation.reputationpolicy
           - authentik_providers_ldap.ldapprovider
-          - authentik_providers_oauth2.accesstoken
-          - authentik_providers_oauth2.authorizationcode
           - authentik_providers_oauth2.oauth2provider
-          - authentik_providers_oauth2.refreshtoken
           - authentik_providers_oauth2.scopemapping
           - authentik_providers_proxy.proxyprovider
           - authentik_providers_rac.endpoint
@@ -25928,7 +25995,7 @@ paths:
       description: AuthenticatorStaticStage Viewset
       operationId: stages_authenticator_static_destroy
       parameters:
-      - description: A UUID string identifying this Static Authenticator Stage.
+      - description: A UUID string identifying this Static Authenticator Setup Stage.
         explode: false
         in: path
         name: stage_uuid
@@ -25960,7 +26027,7 @@ paths:
       description: AuthenticatorStaticStage Viewset
       operationId: stages_authenticator_static_retrieve
       parameters:
-      - description: A UUID string identifying this Static Authenticator Stage.
+      - description: A UUID string identifying this Static Authenticator Setup Stage.
         explode: false
         in: path
         name: stage_uuid
@@ -25996,7 +26063,7 @@ paths:
       description: AuthenticatorStaticStage Viewset
       operationId: stages_authenticator_static_partial_update
       parameters:
-      - description: A UUID string identifying this Static Authenticator Stage.
+      - description: A UUID string identifying this Static Authenticator Setup Stage.
         explode: false
         in: path
         name: stage_uuid
@@ -26037,7 +26104,7 @@ paths:
       description: AuthenticatorStaticStage Viewset
       operationId: stages_authenticator_static_update
       parameters:
-      - description: A UUID string identifying this Static Authenticator Stage.
+      - description: A UUID string identifying this Static Authenticator Setup Stage.
         explode: false
         in: path
         name: stage_uuid
@@ -26080,7 +26147,7 @@ paths:
       description: Get a list of all objects that use this object
       operationId: stages_authenticator_static_used_by_list
       parameters:
-      - description: A UUID string identifying this Static Authenticator Stage.
+      - description: A UUID string identifying this Static Authenticator Setup Stage.
         explode: false
         in: path
         name: stage_uuid
@@ -32609,7 +32676,6 @@ components:
         * `authentik.admin` - authentik Admin
         * `authentik.api` - authentik API
         * `authentik.crypto` - authentik Crypto
-        * `authentik.events` - authentik Events
         * `authentik.flows` - authentik Flows
         * `authentik.outposts` - authentik Outpost
         * `authentik.policies.dummy` - authentik Policies.Dummy
@@ -32657,12 +32723,12 @@ components:
         * `authentik.enterprise` - authentik Enterprise
         * `authentik.enterprise.audit` - authentik Enterprise.Audit
         * `authentik.enterprise.providers.rac` - authentik Enterprise.Providers.RAC
+        * `authentik.events` - authentik Events
       enum:
       - authentik.tenants
       - authentik.admin
       - authentik.api
       - authentik.crypto
-      - authentik.events
       - authentik.flows
       - authentik.outposts
       - authentik.policies.dummy
@@ -32710,6 +32776,7 @@ components:
       - authentik.enterprise
       - authentik.enterprise.audit
       - authentik.enterprise.providers.rac
+      - authentik.events
       type: string
     AppleChallengeResponseRequest:
       description: Pseudo class for plex response
@@ -36573,7 +36640,6 @@ components:
             * `authentik.admin` - authentik Admin
             * `authentik.api` - authentik API
             * `authentik.crypto` - authentik Crypto
-            * `authentik.events` - authentik Events
             * `authentik.flows` - authentik Flows
             * `authentik.outposts` - authentik Outpost
             * `authentik.policies.dummy` - authentik Policies.Dummy
@@ -36621,6 +36687,7 @@ components:
             * `authentik.enterprise` - authentik Enterprise
             * `authentik.enterprise.audit` - authentik Enterprise.Audit
             * `authentik.enterprise.providers.rac` - authentik Enterprise.Providers.RAC
+            * `authentik.events` - authentik Events
           nullable: true
         model:
           allOf:
@@ -36630,11 +36697,6 @@ components:
 
             * `authentik_tenants.domain` - Domain
             * `authentik_crypto.certificatekeypair` - Certificate-Key Pair
-            * `authentik_events.event` - Event
-            * `authentik_events.notificationtransport` - Notification Transport
-            * `authentik_events.notification` - Notification
-            * `authentik_events.notificationrule` - Notification Rule
-            * `authentik_events.notificationwebhookmapping` - Webhook Mapping
             * `authentik_flows.flow` - Flow
             * `authentik_flows.flowstagebinding` - Flow Stage Binding
             * `authentik_outposts.dockerserviceconnection` - Docker Service-Connection
@@ -36646,14 +36708,10 @@ components:
             * `authentik_policies_expression.expressionpolicy` - Expression Policy
             * `authentik_policies_password.passwordpolicy` - Password Policy
             * `authentik_policies_reputation.reputationpolicy` - Reputation Policy
-            * `authentik_policies_reputation.reputation` - Reputation Score
             * `authentik_policies.policybinding` - Policy Binding
             * `authentik_providers_ldap.ldapprovider` - LDAP Provider
             * `authentik_providers_oauth2.scopemapping` - Scope Mapping
             * `authentik_providers_oauth2.oauth2provider` - OAuth2/OpenID Provider
-            * `authentik_providers_oauth2.authorizationcode` - Authorization Code
-            * `authentik_providers_oauth2.accesstoken` - OAuth2 Access Token
-            * `authentik_providers_oauth2.refreshtoken` - OAuth2 Refresh Token
             * `authentik_providers_proxy.proxyprovider` - Proxy Provider
             * `authentik_providers_radius.radiusprovider` - Radius Provider
             * `authentik_providers_saml.samlprovider` - SAML Provider
@@ -36673,7 +36731,7 @@ components:
             * `authentik_stages_authenticator_duo.duodevice` - Duo Device
             * `authentik_stages_authenticator_sms.authenticatorsmsstage` - SMS Authenticator Setup Stage
             * `authentik_stages_authenticator_sms.smsdevice` - SMS Device
-            * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Stage
+            * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Setup Stage
             * `authentik_stages_authenticator_static.staticdevice` - Static Device
             * `authentik_stages_authenticator_totp.authenticatortotpstage` - TOTP Authenticator Setup Stage
             * `authentik_stages_authenticator_totp.totpdevice` - TOTP Device
@@ -36706,6 +36764,11 @@ components:
             * `authentik_providers_rac.racprovider` - RAC Provider
             * `authentik_providers_rac.endpoint` - RAC Endpoint
             * `authentik_providers_rac.racpropertymapping` - RAC Property Mapping
+            * `authentik_events.event` - Event
+            * `authentik_events.notificationtransport` - Notification Transport
+            * `authentik_events.notification` - Notification
+            * `authentik_events.notificationrule` - Notification Rule
+            * `authentik_events.notificationwebhookmapping` - Webhook Mapping
           nullable: true
       required:
       - bound_to
@@ -36783,7 +36846,6 @@ components:
             * `authentik.admin` - authentik Admin
             * `authentik.api` - authentik API
             * `authentik.crypto` - authentik Crypto
-            * `authentik.events` - authentik Events
             * `authentik.flows` - authentik Flows
             * `authentik.outposts` - authentik Outpost
             * `authentik.policies.dummy` - authentik Policies.Dummy
@@ -36831,6 +36893,7 @@ components:
             * `authentik.enterprise` - authentik Enterprise
             * `authentik.enterprise.audit` - authentik Enterprise.Audit
             * `authentik.enterprise.providers.rac` - authentik Enterprise.Providers.RAC
+            * `authentik.events` - authentik Events
           nullable: true
         model:
           allOf:
@@ -36840,11 +36903,6 @@ components:
 
             * `authentik_tenants.domain` - Domain
             * `authentik_crypto.certificatekeypair` - Certificate-Key Pair
-            * `authentik_events.event` - Event
-            * `authentik_events.notificationtransport` - Notification Transport
-            * `authentik_events.notification` - Notification
-            * `authentik_events.notificationrule` - Notification Rule
-            * `authentik_events.notificationwebhookmapping` - Webhook Mapping
             * `authentik_flows.flow` - Flow
             * `authentik_flows.flowstagebinding` - Flow Stage Binding
             * `authentik_outposts.dockerserviceconnection` - Docker Service-Connection
@@ -36856,14 +36914,10 @@ components:
             * `authentik_policies_expression.expressionpolicy` - Expression Policy
             * `authentik_policies_password.passwordpolicy` - Password Policy
             * `authentik_policies_reputation.reputationpolicy` - Reputation Policy
-            * `authentik_policies_reputation.reputation` - Reputation Score
             * `authentik_policies.policybinding` - Policy Binding
             * `authentik_providers_ldap.ldapprovider` - LDAP Provider
             * `authentik_providers_oauth2.scopemapping` - Scope Mapping
             * `authentik_providers_oauth2.oauth2provider` - OAuth2/OpenID Provider
-            * `authentik_providers_oauth2.authorizationcode` - Authorization Code
-            * `authentik_providers_oauth2.accesstoken` - OAuth2 Access Token
-            * `authentik_providers_oauth2.refreshtoken` - OAuth2 Refresh Token
             * `authentik_providers_proxy.proxyprovider` - Proxy Provider
             * `authentik_providers_radius.radiusprovider` - Radius Provider
             * `authentik_providers_saml.samlprovider` - SAML Provider
@@ -36883,7 +36937,7 @@ components:
             * `authentik_stages_authenticator_duo.duodevice` - Duo Device
             * `authentik_stages_authenticator_sms.authenticatorsmsstage` - SMS Authenticator Setup Stage
             * `authentik_stages_authenticator_sms.smsdevice` - SMS Device
-            * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Stage
+            * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Setup Stage
             * `authentik_stages_authenticator_static.staticdevice` - Static Device
             * `authentik_stages_authenticator_totp.authenticatortotpstage` - TOTP Authenticator Setup Stage
             * `authentik_stages_authenticator_totp.totpdevice` - TOTP Device
@@ -36916,6 +36970,11 @@ components:
             * `authentik_providers_rac.racprovider` - RAC Provider
             * `authentik_providers_rac.endpoint` - RAC Endpoint
             * `authentik_providers_rac.racpropertymapping` - RAC Property Mapping
+            * `authentik_events.event` - Event
+            * `authentik_events.notificationtransport` - Notification Transport
+            * `authentik_events.notification` - Notification
+            * `authentik_events.notificationrule` - Notification Rule
+            * `authentik_events.notificationwebhookmapping` - Webhook Mapping
           nullable: true
       required:
       - name
@@ -39608,21 +39667,29 @@ components:
       example:
         is_running: true
         tasks:
-        - task_name: task_name
-          task_description: task_description
-          task_finish_timestamp: 2000-01-23T04:56:07.000+00:00
-          task_duration: 0
+        - duration: 0.8008281904610115
+          uid: uid
+          full_name: full_name
+          start_timestamp: 2000-01-23T04:56:07.000+00:00
+          name: name
+          description: description
           messages:
-          - ""
-          - ""
+          - messages
+          - messages
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          finish_timestamp: 2000-01-23T04:56:07.000+00:00
           status: null
-        - task_name: task_name
-          task_description: task_description
-          task_finish_timestamp: 2000-01-23T04:56:07.000+00:00
-          task_duration: 0
+        - duration: 0.8008281904610115
+          uid: uid
+          full_name: full_name
+          start_timestamp: 2000-01-23T04:56:07.000+00:00
+          name: name
+          description: description
           messages:
-          - ""
-          - ""
+          - messages
+          - messages
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          finish_timestamp: 2000-01-23T04:56:07.000+00:00
           status: null
       properties:
         is_running:
@@ -39630,7 +39697,7 @@ components:
           type: boolean
         tasks:
           items:
-            $ref: '#/components/schemas/Task'
+            $ref: '#/components/schemas/SystemTask'
           readOnly: true
           type: array
       required:
@@ -39836,11 +39903,6 @@ components:
       description: |-
         * `authentik_tenants.domain` - Domain
         * `authentik_crypto.certificatekeypair` - Certificate-Key Pair
-        * `authentik_events.event` - Event
-        * `authentik_events.notificationtransport` - Notification Transport
-        * `authentik_events.notification` - Notification
-        * `authentik_events.notificationrule` - Notification Rule
-        * `authentik_events.notificationwebhookmapping` - Webhook Mapping
         * `authentik_flows.flow` - Flow
         * `authentik_flows.flowstagebinding` - Flow Stage Binding
         * `authentik_outposts.dockerserviceconnection` - Docker Service-Connection
@@ -39852,14 +39914,10 @@ components:
         * `authentik_policies_expression.expressionpolicy` - Expression Policy
         * `authentik_policies_password.passwordpolicy` - Password Policy
         * `authentik_policies_reputation.reputationpolicy` - Reputation Policy
-        * `authentik_policies_reputation.reputation` - Reputation Score
         * `authentik_policies.policybinding` - Policy Binding
         * `authentik_providers_ldap.ldapprovider` - LDAP Provider
         * `authentik_providers_oauth2.scopemapping` - Scope Mapping
         * `authentik_providers_oauth2.oauth2provider` - OAuth2/OpenID Provider
-        * `authentik_providers_oauth2.authorizationcode` - Authorization Code
-        * `authentik_providers_oauth2.accesstoken` - OAuth2 Access Token
-        * `authentik_providers_oauth2.refreshtoken` - OAuth2 Refresh Token
         * `authentik_providers_proxy.proxyprovider` - Proxy Provider
         * `authentik_providers_radius.radiusprovider` - Radius Provider
         * `authentik_providers_saml.samlprovider` - SAML Provider
@@ -39879,7 +39937,7 @@ components:
         * `authentik_stages_authenticator_duo.duodevice` - Duo Device
         * `authentik_stages_authenticator_sms.authenticatorsmsstage` - SMS Authenticator Setup Stage
         * `authentik_stages_authenticator_sms.smsdevice` - SMS Device
-        * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Stage
+        * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Setup Stage
         * `authentik_stages_authenticator_static.staticdevice` - Static Device
         * `authentik_stages_authenticator_totp.authenticatortotpstage` - TOTP Authenticator Setup Stage
         * `authentik_stages_authenticator_totp.totpdevice` - TOTP Device
@@ -39912,14 +39970,14 @@ components:
         * `authentik_providers_rac.racprovider` - RAC Provider
         * `authentik_providers_rac.endpoint` - RAC Endpoint
         * `authentik_providers_rac.racpropertymapping` - RAC Property Mapping
+        * `authentik_events.event` - Event
+        * `authentik_events.notificationtransport` - Notification Transport
+        * `authentik_events.notification` - Notification
+        * `authentik_events.notificationrule` - Notification Rule
+        * `authentik_events.notificationwebhookmapping` - Webhook Mapping
       enum:
       - authentik_tenants.domain
       - authentik_crypto.certificatekeypair
-      - authentik_events.event
-      - authentik_events.notificationtransport
-      - authentik_events.notification
-      - authentik_events.notificationrule
-      - authentik_events.notificationwebhookmapping
       - authentik_flows.flow
       - authentik_flows.flowstagebinding
       - authentik_outposts.dockerserviceconnection
@@ -39931,14 +39989,10 @@ components:
       - authentik_policies_expression.expressionpolicy
       - authentik_policies_password.passwordpolicy
       - authentik_policies_reputation.reputationpolicy
-      - authentik_policies_reputation.reputation
       - authentik_policies.policybinding
       - authentik_providers_ldap.ldapprovider
       - authentik_providers_oauth2.scopemapping
       - authentik_providers_oauth2.oauth2provider
-      - authentik_providers_oauth2.authorizationcode
-      - authentik_providers_oauth2.accesstoken
-      - authentik_providers_oauth2.refreshtoken
       - authentik_providers_proxy.proxyprovider
       - authentik_providers_radius.radiusprovider
       - authentik_providers_saml.samlprovider
@@ -39991,6 +40045,11 @@ components:
       - authentik_providers_rac.racprovider
       - authentik_providers_rac.endpoint
       - authentik_providers_rac.racpropertymapping
+      - authentik_events.event
+      - authentik_events.notificationtransport
+      - authentik_events.notification
+      - authentik_events.notificationrule
+      - authentik_events.notificationwebhookmapping
       type: string
     NameIdPolicyEnum:
       description: |-
@@ -46245,6 +46304,52 @@ components:
       - pagination
       - results
       type: object
+    PaginatedSystemTaskList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - duration: 0.8008281904610115
+          uid: uid
+          full_name: full_name
+          start_timestamp: 2000-01-23T04:56:07.000+00:00
+          name: name
+          description: description
+          messages:
+          - messages
+          - messages
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          finish_timestamp: 2000-01-23T04:56:07.000+00:00
+          status: null
+        - duration: 0.8008281904610115
+          uid: uid
+          full_name: full_name
+          start_timestamp: 2000-01-23T04:56:07.000+00:00
+          name: name
+          description: description
+          messages:
+          - messages
+          - messages
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          finish_timestamp: 2000-01-23T04:56:07.000+00:00
+          status: null
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/SystemTask'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedTOTPDeviceList:
       example:
         pagination:
@@ -46589,6 +46694,7 @@ components:
           total_pages: 5.637376656633329
         results:
         - expires: 2000-01-23T04:56:07.000+00:00
+          expiring: true
           application:
             provider_obj: ""
             backchannel_providers:
@@ -46675,6 +46781,7 @@ components:
             email: email
             username: username
         - expires: 2000-01-23T04:56:07.000+00:00
+          expiring: true
           application:
             provider_obj: ""
             backchannel_providers:
@@ -48771,7 +48878,6 @@ components:
             * `authentik.admin` - authentik Admin
             * `authentik.api` - authentik API
             * `authentik.crypto` - authentik Crypto
-            * `authentik.events` - authentik Events
             * `authentik.flows` - authentik Flows
             * `authentik.outposts` - authentik Outpost
             * `authentik.policies.dummy` - authentik Policies.Dummy
@@ -48819,6 +48925,7 @@ components:
             * `authentik.enterprise` - authentik Enterprise
             * `authentik.enterprise.audit` - authentik Enterprise.Audit
             * `authentik.enterprise.providers.rac` - authentik Enterprise.Providers.RAC
+            * `authentik.events` - authentik Events
           nullable: true
         model:
           allOf:
@@ -48828,11 +48935,6 @@ components:
 
             * `authentik_tenants.domain` - Domain
             * `authentik_crypto.certificatekeypair` - Certificate-Key Pair
-            * `authentik_events.event` - Event
-            * `authentik_events.notificationtransport` - Notification Transport
-            * `authentik_events.notification` - Notification
-            * `authentik_events.notificationrule` - Notification Rule
-            * `authentik_events.notificationwebhookmapping` - Webhook Mapping
             * `authentik_flows.flow` - Flow
             * `authentik_flows.flowstagebinding` - Flow Stage Binding
             * `authentik_outposts.dockerserviceconnection` - Docker Service-Connection
@@ -48844,14 +48946,10 @@ components:
             * `authentik_policies_expression.expressionpolicy` - Expression Policy
             * `authentik_policies_password.passwordpolicy` - Password Policy
             * `authentik_policies_reputation.reputationpolicy` - Reputation Policy
-            * `authentik_policies_reputation.reputation` - Reputation Score
             * `authentik_policies.policybinding` - Policy Binding
             * `authentik_providers_ldap.ldapprovider` - LDAP Provider
             * `authentik_providers_oauth2.scopemapping` - Scope Mapping
             * `authentik_providers_oauth2.oauth2provider` - OAuth2/OpenID Provider
-            * `authentik_providers_oauth2.authorizationcode` - Authorization Code
-            * `authentik_providers_oauth2.accesstoken` - OAuth2 Access Token
-            * `authentik_providers_oauth2.refreshtoken` - OAuth2 Refresh Token
             * `authentik_providers_proxy.proxyprovider` - Proxy Provider
             * `authentik_providers_radius.radiusprovider` - Radius Provider
             * `authentik_providers_saml.samlprovider` - SAML Provider
@@ -48871,7 +48969,7 @@ components:
             * `authentik_stages_authenticator_duo.duodevice` - Duo Device
             * `authentik_stages_authenticator_sms.authenticatorsmsstage` - SMS Authenticator Setup Stage
             * `authentik_stages_authenticator_sms.smsdevice` - SMS Device
-            * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Stage
+            * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Setup Stage
             * `authentik_stages_authenticator_static.staticdevice` - Static Device
             * `authentik_stages_authenticator_totp.authenticatortotpstage` - TOTP Authenticator Setup Stage
             * `authentik_stages_authenticator_totp.totpdevice` - TOTP Device
@@ -48904,6 +49002,11 @@ components:
             * `authentik_providers_rac.racprovider` - RAC Provider
             * `authentik_providers_rac.endpoint` - RAC Endpoint
             * `authentik_providers_rac.racpropertymapping` - RAC Property Mapping
+            * `authentik_events.event` - Event
+            * `authentik_events.notificationtransport` - Notification Transport
+            * `authentik_events.notification` - Notification
+            * `authentik_events.notificationrule` - Notification Rule
+            * `authentik_events.notificationwebhookmapping` - Webhook Mapping
           nullable: true
       type: object
     PatchedEventRequest:
@@ -54786,21 +54889,29 @@ components:
       example:
         is_running: true
         tasks:
-        - task_name: task_name
-          task_description: task_description
-          task_finish_timestamp: 2000-01-23T04:56:07.000+00:00
-          task_duration: 0
+        - duration: 0.8008281904610115
+          uid: uid
+          full_name: full_name
+          start_timestamp: 2000-01-23T04:56:07.000+00:00
+          name: name
+          description: description
           messages:
-          - ""
-          - ""
+          - messages
+          - messages
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          finish_timestamp: 2000-01-23T04:56:07.000+00:00
           status: null
-        - task_name: task_name
-          task_description: task_description
-          task_finish_timestamp: 2000-01-23T04:56:07.000+00:00
-          task_duration: 0
+        - duration: 0.8008281904610115
+          uid: uid
+          full_name: full_name
+          start_timestamp: 2000-01-23T04:56:07.000+00:00
+          name: name
+          description: description
           messages:
-          - ""
-          - ""
+          - messages
+          - messages
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          finish_timestamp: 2000-01-23T04:56:07.000+00:00
           status: null
       properties:
         is_running:
@@ -54808,7 +54919,7 @@ components:
           type: boolean
         tasks:
           items:
-            $ref: '#/components/schemas/Task'
+            $ref: '#/components/schemas/SystemTask'
           readOnly: true
           type: array
       required:
@@ -55719,6 +55830,77 @@ components:
       - runtime
       - server_time
       type: object
+    SystemTask:
+      description: Serialize TaskInfo and TaskResult
+      example:
+        duration: 0.8008281904610115
+        uid: uid
+        full_name: full_name
+        start_timestamp: 2000-01-23T04:56:07.000+00:00
+        name: name
+        description: description
+        messages:
+        - messages
+        - messages
+        uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        finish_timestamp: 2000-01-23T04:56:07.000+00:00
+        status: null
+      properties:
+        uuid:
+          format: uuid
+          readOnly: true
+          type: string
+        name:
+          type: string
+        full_name:
+          description: Get full name with UID
+          readOnly: true
+          type: string
+        uid:
+          type: string
+        description:
+          type: string
+        start_timestamp:
+          format: date-time
+          readOnly: true
+          type: string
+        finish_timestamp:
+          format: date-time
+          readOnly: true
+          type: string
+        duration:
+          format: double
+          readOnly: true
+          type: number
+        status:
+          $ref: '#/components/schemas/SystemTaskStatusEnum'
+        messages:
+          items:
+            type: string
+          type: array
+      required:
+      - description
+      - duration
+      - finish_timestamp
+      - full_name
+      - messages
+      - name
+      - start_timestamp
+      - status
+      - uuid
+      type: object
+    SystemTaskStatusEnum:
+      description: |-
+        * `unknown` - UNKNOWN
+        * `successful` - SUCCESSFUL
+        * `warning` - WARNING
+        * `error` - ERROR
+      enum:
+      - unknown
+      - successful
+      - warning
+      - error
+      type: string
     TOTPDevice:
       description: Serializer for totp authenticator devices
       example:
@@ -55750,54 +55932,6 @@ components:
       required:
       - name
       type: object
-    Task:
-      description: Serialize TaskInfo and TaskResult
-      example:
-        task_name: task_name
-        task_description: task_description
-        task_finish_timestamp: 2000-01-23T04:56:07.000+00:00
-        task_duration: 0
-        messages:
-        - ""
-        - ""
-        status: null
-      properties:
-        task_name:
-          type: string
-        task_description:
-          type: string
-        task_finish_timestamp:
-          format: date-time
-          type: string
-        task_duration:
-          description: Get the duration a task took to run
-          readOnly: true
-          type: integer
-        status:
-          $ref: '#/components/schemas/TaskStatusEnum'
-        messages:
-          items: {}
-          type: array
-      required:
-      - messages
-      - status
-      - task_description
-      - task_duration
-      - task_finish_timestamp
-      - task_name
-      type: object
-    TaskStatusEnum:
-      description: |-
-        * `SUCCESSFUL` - SUCCESSFUL
-        * `WARNING` - WARNING
-        * `ERROR` - ERROR
-        * `UNKNOWN` - UNKNOWN
-      enum:
-      - SUCCESSFUL
-      - WARNING
-      - ERROR
-      - UNKNOWN
-      type: string
     Tenant:
       description: Tenant Serializer
       example:
@@ -56215,15 +56349,15 @@ components:
       type: object
     UsedByActionEnum:
       description: |-
-        * `CASCADE` - CASCADE
-        * `CASCADE_MANY` - CASCADE_MANY
-        * `SET_NULL` - SET_NULL
-        * `SET_DEFAULT` - SET_DEFAULT
+        * `cascade` - CASCADE
+        * `cascade_many` - CASCADE_MANY
+        * `set_null` - SET_NULL
+        * `set_default` - SET_DEFAULT
       enum:
-      - CASCADE
-      - CASCADE_MANY
-      - SET_NULL
-      - SET_DEFAULT
+      - cascade
+      - cascade_many
+      - set_null
+      - set_default
       type: string
     User:
       description: User Serializer
@@ -56301,6 +56435,7 @@ components:
           title: Email address
           type: string
         avatar:
+          description: "User's avatar, either a http/https URL or a data URI"
           readOnly: true
           type: string
         attributes:
@@ -56415,6 +56550,7 @@ components:
       description: UserConsent Serializer
       example:
         expires: 2000-01-23T04:56:07.000+00:00
+        expiring: true
         application:
           provider_obj: ""
           backchannel_providers:
@@ -56508,6 +56644,8 @@ components:
         expires:
           format: date-time
           type: string
+        expiring:
+          type: boolean
         user:
           $ref: '#/components/schemas/User'
         application:
@@ -57336,6 +57474,7 @@ components:
           title: Email address
           type: string
         avatar:
+          description: "User's avatar, either a http/https URL or a data URI"
           readOnly: true
           type: string
         uid:

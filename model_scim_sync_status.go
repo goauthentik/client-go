@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2023.10.6
+API version: 2023.10.7
 Contact: hello@goauthentik.io
 */
 
@@ -17,15 +17,15 @@ import (
 
 // SCIMSyncStatus SCIM Provider sync status
 type SCIMSyncStatus struct {
-	IsRunning bool   `json:"is_running"`
-	Tasks     []Task `json:"tasks"`
+	IsRunning bool         `json:"is_running"`
+	Tasks     []SystemTask `json:"tasks"`
 }
 
 // NewSCIMSyncStatus instantiates a new SCIMSyncStatus object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSCIMSyncStatus(isRunning bool, tasks []Task) *SCIMSyncStatus {
+func NewSCIMSyncStatus(isRunning bool, tasks []SystemTask) *SCIMSyncStatus {
 	this := SCIMSyncStatus{}
 	this.IsRunning = isRunning
 	this.Tasks = tasks
@@ -65,9 +65,9 @@ func (o *SCIMSyncStatus) SetIsRunning(v bool) {
 }
 
 // GetTasks returns the Tasks field value
-func (o *SCIMSyncStatus) GetTasks() []Task {
+func (o *SCIMSyncStatus) GetTasks() []SystemTask {
 	if o == nil {
-		var ret []Task
+		var ret []SystemTask
 		return ret
 	}
 
@@ -76,7 +76,7 @@ func (o *SCIMSyncStatus) GetTasks() []Task {
 
 // GetTasksOk returns a tuple with the Tasks field value
 // and a boolean to check if the value has been set.
-func (o *SCIMSyncStatus) GetTasksOk() ([]Task, bool) {
+func (o *SCIMSyncStatus) GetTasksOk() ([]SystemTask, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -84,7 +84,7 @@ func (o *SCIMSyncStatus) GetTasksOk() ([]Task, bool) {
 }
 
 // SetTasks sets field value
-func (o *SCIMSyncStatus) SetTasks(v []Task) {
+func (o *SCIMSyncStatus) SetTasks(v []SystemTask) {
 	o.Tasks = v
 }
 

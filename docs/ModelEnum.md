@@ -7,16 +7,6 @@
 
 * `CRYPTO_CERTIFICATEKEYPAIR` (value: `"authentik_crypto.certificatekeypair"`)
 
-* `EVENTS_EVENT` (value: `"authentik_events.event"`)
-
-* `EVENTS_NOTIFICATIONTRANSPORT` (value: `"authentik_events.notificationtransport"`)
-
-* `EVENTS_NOTIFICATION` (value: `"authentik_events.notification"`)
-
-* `EVENTS_NOTIFICATIONRULE` (value: `"authentik_events.notificationrule"`)
-
-* `EVENTS_NOTIFICATIONWEBHOOKMAPPING` (value: `"authentik_events.notificationwebhookmapping"`)
-
 * `FLOWS_FLOW` (value: `"authentik_flows.flow"`)
 
 * `FLOWS_FLOWSTAGEBINDING` (value: `"authentik_flows.flowstagebinding"`)
@@ -39,8 +29,6 @@
 
 * `POLICIES_REPUTATION_REPUTATIONPOLICY` (value: `"authentik_policies_reputation.reputationpolicy"`)
 
-* `POLICIES_REPUTATION_REPUTATION` (value: `"authentik_policies_reputation.reputation"`)
-
 * `POLICIES_POLICYBINDING` (value: `"authentik_policies.policybinding"`)
 
 * `PROVIDERS_LDAP_LDAPPROVIDER` (value: `"authentik_providers_ldap.ldapprovider"`)
@@ -48,12 +36,6 @@
 * `PROVIDERS_OAUTH2_SCOPEMAPPING` (value: `"authentik_providers_oauth2.scopemapping"`)
 
 * `PROVIDERS_OAUTH2_OAUTH2PROVIDER` (value: `"authentik_providers_oauth2.oauth2provider"`)
-
-* `PROVIDERS_OAUTH2_AUTHORIZATIONCODE` (value: `"authentik_providers_oauth2.authorizationcode"`)
-
-* `PROVIDERS_OAUTH2_ACCESSTOKEN` (value: `"authentik_providers_oauth2.accesstoken"`)
-
-* `PROVIDERS_OAUTH2_REFRESHTOKEN` (value: `"authentik_providers_oauth2.refreshtoken"`)
 
 * `PROVIDERS_PROXY_PROXYPROVIDER` (value: `"authentik_providers_proxy.proxyprovider"`)
 
@@ -158,6 +140,16 @@
 * `PROVIDERS_RAC_ENDPOINT` (value: `"authentik_providers_rac.endpoint"`)
 
 * `PROVIDERS_RAC_RACPROPERTYMAPPING` (value: `"authentik_providers_rac.racpropertymapping"`)
+
+* `EVENTS_EVENT` (value: `"authentik_events.event"`)
+
+* `EVENTS_NOTIFICATIONTRANSPORT` (value: `"authentik_events.notificationtransport"`)
+
+* `EVENTS_NOTIFICATION` (value: `"authentik_events.notification"`)
+
+* `EVENTS_NOTIFICATIONRULE` (value: `"authentik_events.notificationrule"`)
+
+* `EVENTS_NOTIFICATIONWEBHOOKMAPPING` (value: `"authentik_events.notificationwebhookmapping"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

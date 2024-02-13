@@ -11,8 +11,6 @@
 
 * `CRYPTO` (value: `"authentik.crypto"`)
 
-* `EVENTS` (value: `"authentik.events"`)
-
 * `FLOWS` (value: `"authentik.flows"`)
 
 * `OUTPOSTS` (value: `"authentik.outposts"`)
@@ -106,6 +104,8 @@
 * `ENTERPRISE_AUDIT` (value: `"authentik.enterprise.audit"`)
 
 * `ENTERPRISE_PROVIDERS_RAC` (value: `"authentik.enterprise.providers.rac"`)
+
+* `EVENTS` (value: `"authentik.events"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

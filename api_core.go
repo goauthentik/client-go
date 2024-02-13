@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2023.10.6
+API version: 2023.10.7
 Contact: hello@goauthentik.io
 */
 
@@ -444,6 +444,7 @@ func (a *CoreApiService) CoreApplicationsDestroyExecute(r ApiCoreApplicationsDes
 type ApiCoreApplicationsListRequest struct {
 	ctx               context.Context
 	ApiService        *CoreApiService
+	forUser           *int32
 	group             *string
 	metaDescription   *string
 	metaLaunchUrl     *string
@@ -455,6 +456,11 @@ type ApiCoreApplicationsListRequest struct {
 	search            *string
 	slug              *string
 	superuserFullList *bool
+}
+
+func (r ApiCoreApplicationsListRequest) ForUser(forUser int32) ApiCoreApplicationsListRequest {
+	r.forUser = &forUser
+	return r
 }
 
 func (r ApiCoreApplicationsListRequest) Group(group string) ApiCoreApplicationsListRequest {
@@ -557,6 +563,9 @@ func (a *CoreApiService) CoreApplicationsListExecute(r ApiCoreApplicationsListRe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.forUser != nil {
+		localVarQueryParams.Add("for_user", parameterToString(*r.forUser, ""))
+	}
 	if r.group != nil {
 		localVarQueryParams.Add("group", parameterToString(*r.group, ""))
 	}

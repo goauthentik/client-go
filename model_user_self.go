@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2023.10.6
+API version: 2023.10.7
 Contact: hello@goauthentik.io
 */
 
@@ -27,8 +27,9 @@ type UserSelf struct {
 	IsSuperuser bool             `json:"is_superuser"`
 	Groups      []UserSelfGroups `json:"groups"`
 	Email       *string          `json:"email,omitempty"`
-	Avatar      string           `json:"avatar"`
-	Uid         string           `json:"uid"`
+	// User's avatar, either a http/https URL or a data URI
+	Avatar string `json:"avatar"`
+	Uid    string `json:"uid"`
 	// Get user settings with brand and group settings applied
 	Settings map[string]interface{} `json:"settings"`
 	Type     *UserTypeEnum          `json:"type,omitempty"`

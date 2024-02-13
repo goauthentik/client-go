@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Groups** | Pointer to **[]string** |  | [optional] 
 **GroupsObj** | [**[]UserGroup**](UserGroup.md) |  | [readonly] 
 **Email** | Pointer to **string** |  | [optional] 
-**Avatar** | **string** |  | [readonly] 
+**Avatar** | **string** | User&#39;s avatar, either a http/https URL or a data URI | [readonly] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 **Uid** | **string** |  | [readonly] 
 **Path** | Pointer to **string** |  | [optional] 

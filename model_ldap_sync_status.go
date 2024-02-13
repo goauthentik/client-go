@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2023.10.6
+API version: 2023.10.7
 Contact: hello@goauthentik.io
 */
 
@@ -17,15 +17,15 @@ import (
 
 // LDAPSyncStatus LDAP Source sync status
 type LDAPSyncStatus struct {
-	IsRunning bool   `json:"is_running"`
-	Tasks     []Task `json:"tasks"`
+	IsRunning bool         `json:"is_running"`
+	Tasks     []SystemTask `json:"tasks"`
 }
 
 // NewLDAPSyncStatus instantiates a new LDAPSyncStatus object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLDAPSyncStatus(isRunning bool, tasks []Task) *LDAPSyncStatus {
+func NewLDAPSyncStatus(isRunning bool, tasks []SystemTask) *LDAPSyncStatus {
 	this := LDAPSyncStatus{}
 	this.IsRunning = isRunning
 	this.Tasks = tasks
@@ -65,9 +65,9 @@ func (o *LDAPSyncStatus) SetIsRunning(v bool) {
 }
 
 // GetTasks returns the Tasks field value
-func (o *LDAPSyncStatus) GetTasks() []Task {
+func (o *LDAPSyncStatus) GetTasks() []SystemTask {
 	if o == nil {
-		var ret []Task
+		var ret []SystemTask
 		return ret
 	}
 
@@ -76,7 +76,7 @@ func (o *LDAPSyncStatus) GetTasks() []Task {
 
 // GetTasksOk returns a tuple with the Tasks field value
 // and a boolean to check if the value has been set.
-func (o *LDAPSyncStatus) GetTasksOk() ([]Task, bool) {
+func (o *LDAPSyncStatus) GetTasksOk() ([]SystemTask, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -84,7 +84,7 @@ func (o *LDAPSyncStatus) GetTasksOk() ([]Task, bool) {
 }
 
 // SetTasks sets field value
-func (o *LDAPSyncStatus) SetTasks(v []Task) {
+func (o *LDAPSyncStatus) SetTasks(v []SystemTask) {
 	o.Tasks = v
 }
 

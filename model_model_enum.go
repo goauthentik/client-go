@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2023.10.6
+API version: 2023.10.7
 Contact: hello@goauthentik.io
 */
 
@@ -16,18 +16,13 @@ import (
 	"fmt"
 )
 
-// ModelEnum * `authentik_tenants.domain` - Domain * `authentik_crypto.certificatekeypair` - Certificate-Key Pair * `authentik_events.event` - Event * `authentik_events.notificationtransport` - Notification Transport * `authentik_events.notification` - Notification * `authentik_events.notificationrule` - Notification Rule * `authentik_events.notificationwebhookmapping` - Webhook Mapping * `authentik_flows.flow` - Flow * `authentik_flows.flowstagebinding` - Flow Stage Binding * `authentik_outposts.dockerserviceconnection` - Docker Service-Connection * `authentik_outposts.kubernetesserviceconnection` - Kubernetes Service-Connection * `authentik_outposts.outpost` - Outpost * `authentik_policies_dummy.dummypolicy` - Dummy Policy * `authentik_policies_event_matcher.eventmatcherpolicy` - Event Matcher Policy * `authentik_policies_expiry.passwordexpirypolicy` - Password Expiry Policy * `authentik_policies_expression.expressionpolicy` - Expression Policy * `authentik_policies_password.passwordpolicy` - Password Policy * `authentik_policies_reputation.reputationpolicy` - Reputation Policy * `authentik_policies_reputation.reputation` - Reputation Score * `authentik_policies.policybinding` - Policy Binding * `authentik_providers_ldap.ldapprovider` - LDAP Provider * `authentik_providers_oauth2.scopemapping` - Scope Mapping * `authentik_providers_oauth2.oauth2provider` - OAuth2/OpenID Provider * `authentik_providers_oauth2.authorizationcode` - Authorization Code * `authentik_providers_oauth2.accesstoken` - OAuth2 Access Token * `authentik_providers_oauth2.refreshtoken` - OAuth2 Refresh Token * `authentik_providers_proxy.proxyprovider` - Proxy Provider * `authentik_providers_radius.radiusprovider` - Radius Provider * `authentik_providers_saml.samlprovider` - SAML Provider * `authentik_providers_saml.samlpropertymapping` - SAML Property Mapping * `authentik_providers_scim.scimprovider` - SCIM Provider * `authentik_providers_scim.scimmapping` - SCIM Mapping * `authentik_rbac.role` - Role * `authentik_sources_ldap.ldapsource` - LDAP Source * `authentik_sources_ldap.ldappropertymapping` - LDAP Property Mapping * `authentik_sources_oauth.oauthsource` - OAuth Source * `authentik_sources_oauth.useroauthsourceconnection` - User OAuth Source Connection * `authentik_sources_plex.plexsource` - Plex Source * `authentik_sources_plex.plexsourceconnection` - User Plex Source Connection * `authentik_sources_saml.samlsource` - SAML Source * `authentik_sources_saml.usersamlsourceconnection` - User SAML Source Connection * `authentik_stages_authenticator_duo.authenticatorduostage` - Duo Authenticator Setup Stage * `authentik_stages_authenticator_duo.duodevice` - Duo Device * `authentik_stages_authenticator_sms.authenticatorsmsstage` - SMS Authenticator Setup Stage * `authentik_stages_authenticator_sms.smsdevice` - SMS Device * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Stage * `authentik_stages_authenticator_static.staticdevice` - Static Device * `authentik_stages_authenticator_totp.authenticatortotpstage` - TOTP Authenticator Setup Stage * `authentik_stages_authenticator_totp.totpdevice` - TOTP Device * `authentik_stages_authenticator_validate.authenticatorvalidatestage` - Authenticator Validation Stage * `authentik_stages_authenticator_webauthn.authenticatewebauthnstage` - WebAuthn Authenticator Setup Stage * `authentik_stages_authenticator_webauthn.webauthndevice` - WebAuthn Device * `authentik_stages_captcha.captchastage` - Captcha Stage * `authentik_stages_consent.consentstage` - Consent Stage * `authentik_stages_consent.userconsent` - User Consent * `authentik_stages_deny.denystage` - Deny Stage * `authentik_stages_dummy.dummystage` - Dummy Stage * `authentik_stages_email.emailstage` - Email Stage * `authentik_stages_identification.identificationstage` - Identification Stage * `authentik_stages_invitation.invitationstage` - Invitation Stage * `authentik_stages_invitation.invitation` - Invitation * `authentik_stages_password.passwordstage` - Password Stage * `authentik_stages_prompt.prompt` - Prompt * `authentik_stages_prompt.promptstage` - Prompt Stage * `authentik_stages_user_delete.userdeletestage` - User Delete Stage * `authentik_stages_user_login.userloginstage` - User Login Stage * `authentik_stages_user_logout.userlogoutstage` - User Logout Stage * `authentik_stages_user_write.userwritestage` - User Write Stage * `authentik_brands.brand` - Brand * `authentik_blueprints.blueprintinstance` - Blueprint Instance * `authentik_core.group` - Group * `authentik_core.user` - User * `authentik_core.application` - Application * `authentik_core.token` - Token * `authentik_enterprise.license` - License * `authentik_providers_rac.racprovider` - RAC Provider * `authentik_providers_rac.endpoint` - RAC Endpoint * `authentik_providers_rac.racpropertymapping` - RAC Property Mapping
+// ModelEnum * `authentik_tenants.domain` - Domain * `authentik_crypto.certificatekeypair` - Certificate-Key Pair * `authentik_flows.flow` - Flow * `authentik_flows.flowstagebinding` - Flow Stage Binding * `authentik_outposts.dockerserviceconnection` - Docker Service-Connection * `authentik_outposts.kubernetesserviceconnection` - Kubernetes Service-Connection * `authentik_outposts.outpost` - Outpost * `authentik_policies_dummy.dummypolicy` - Dummy Policy * `authentik_policies_event_matcher.eventmatcherpolicy` - Event Matcher Policy * `authentik_policies_expiry.passwordexpirypolicy` - Password Expiry Policy * `authentik_policies_expression.expressionpolicy` - Expression Policy * `authentik_policies_password.passwordpolicy` - Password Policy * `authentik_policies_reputation.reputationpolicy` - Reputation Policy * `authentik_policies.policybinding` - Policy Binding * `authentik_providers_ldap.ldapprovider` - LDAP Provider * `authentik_providers_oauth2.scopemapping` - Scope Mapping * `authentik_providers_oauth2.oauth2provider` - OAuth2/OpenID Provider * `authentik_providers_proxy.proxyprovider` - Proxy Provider * `authentik_providers_radius.radiusprovider` - Radius Provider * `authentik_providers_saml.samlprovider` - SAML Provider * `authentik_providers_saml.samlpropertymapping` - SAML Property Mapping * `authentik_providers_scim.scimprovider` - SCIM Provider * `authentik_providers_scim.scimmapping` - SCIM Mapping * `authentik_rbac.role` - Role * `authentik_sources_ldap.ldapsource` - LDAP Source * `authentik_sources_ldap.ldappropertymapping` - LDAP Property Mapping * `authentik_sources_oauth.oauthsource` - OAuth Source * `authentik_sources_oauth.useroauthsourceconnection` - User OAuth Source Connection * `authentik_sources_plex.plexsource` - Plex Source * `authentik_sources_plex.plexsourceconnection` - User Plex Source Connection * `authentik_sources_saml.samlsource` - SAML Source * `authentik_sources_saml.usersamlsourceconnection` - User SAML Source Connection * `authentik_stages_authenticator_duo.authenticatorduostage` - Duo Authenticator Setup Stage * `authentik_stages_authenticator_duo.duodevice` - Duo Device * `authentik_stages_authenticator_sms.authenticatorsmsstage` - SMS Authenticator Setup Stage * `authentik_stages_authenticator_sms.smsdevice` - SMS Device * `authentik_stages_authenticator_static.authenticatorstaticstage` - Static Authenticator Setup Stage * `authentik_stages_authenticator_static.staticdevice` - Static Device * `authentik_stages_authenticator_totp.authenticatortotpstage` - TOTP Authenticator Setup Stage * `authentik_stages_authenticator_totp.totpdevice` - TOTP Device * `authentik_stages_authenticator_validate.authenticatorvalidatestage` - Authenticator Validation Stage * `authentik_stages_authenticator_webauthn.authenticatewebauthnstage` - WebAuthn Authenticator Setup Stage * `authentik_stages_authenticator_webauthn.webauthndevice` - WebAuthn Device * `authentik_stages_captcha.captchastage` - Captcha Stage * `authentik_stages_consent.consentstage` - Consent Stage * `authentik_stages_consent.userconsent` - User Consent * `authentik_stages_deny.denystage` - Deny Stage * `authentik_stages_dummy.dummystage` - Dummy Stage * `authentik_stages_email.emailstage` - Email Stage * `authentik_stages_identification.identificationstage` - Identification Stage * `authentik_stages_invitation.invitationstage` - Invitation Stage * `authentik_stages_invitation.invitation` - Invitation * `authentik_stages_password.passwordstage` - Password Stage * `authentik_stages_prompt.prompt` - Prompt * `authentik_stages_prompt.promptstage` - Prompt Stage * `authentik_stages_user_delete.userdeletestage` - User Delete Stage * `authentik_stages_user_login.userloginstage` - User Login Stage * `authentik_stages_user_logout.userlogoutstage` - User Logout Stage * `authentik_stages_user_write.userwritestage` - User Write Stage * `authentik_brands.brand` - Brand * `authentik_blueprints.blueprintinstance` - Blueprint Instance * `authentik_core.group` - Group * `authentik_core.user` - User * `authentik_core.application` - Application * `authentik_core.token` - Token * `authentik_enterprise.license` - License * `authentik_providers_rac.racprovider` - RAC Provider * `authentik_providers_rac.endpoint` - RAC Endpoint * `authentik_providers_rac.racpropertymapping` - RAC Property Mapping * `authentik_events.event` - Event * `authentik_events.notificationtransport` - Notification Transport * `authentik_events.notification` - Notification * `authentik_events.notificationrule` - Notification Rule * `authentik_events.notificationwebhookmapping` - Webhook Mapping
 type ModelEnum string
 
 // List of ModelEnum
 const (
 	MODELENUM_TENANTS_DOMAIN                                           ModelEnum = "authentik_tenants.domain"
 	MODELENUM_CRYPTO_CERTIFICATEKEYPAIR                                ModelEnum = "authentik_crypto.certificatekeypair"
-	MODELENUM_EVENTS_EVENT                                             ModelEnum = "authentik_events.event"
-	MODELENUM_EVENTS_NOTIFICATIONTRANSPORT                             ModelEnum = "authentik_events.notificationtransport"
-	MODELENUM_EVENTS_NOTIFICATION                                      ModelEnum = "authentik_events.notification"
-	MODELENUM_EVENTS_NOTIFICATIONRULE                                  ModelEnum = "authentik_events.notificationrule"
-	MODELENUM_EVENTS_NOTIFICATIONWEBHOOKMAPPING                        ModelEnum = "authentik_events.notificationwebhookmapping"
 	MODELENUM_FLOWS_FLOW                                               ModelEnum = "authentik_flows.flow"
 	MODELENUM_FLOWS_FLOWSTAGEBINDING                                   ModelEnum = "authentik_flows.flowstagebinding"
 	MODELENUM_OUTPOSTS_DOCKERSERVICECONNECTION                         ModelEnum = "authentik_outposts.dockerserviceconnection"
@@ -39,14 +34,10 @@ const (
 	MODELENUM_POLICIES_EXPRESSION_EXPRESSIONPOLICY                     ModelEnum = "authentik_policies_expression.expressionpolicy"
 	MODELENUM_POLICIES_PASSWORD_PASSWORDPOLICY                         ModelEnum = "authentik_policies_password.passwordpolicy"
 	MODELENUM_POLICIES_REPUTATION_REPUTATIONPOLICY                     ModelEnum = "authentik_policies_reputation.reputationpolicy"
-	MODELENUM_POLICIES_REPUTATION_REPUTATION                           ModelEnum = "authentik_policies_reputation.reputation"
 	MODELENUM_POLICIES_POLICYBINDING                                   ModelEnum = "authentik_policies.policybinding"
 	MODELENUM_PROVIDERS_LDAP_LDAPPROVIDER                              ModelEnum = "authentik_providers_ldap.ldapprovider"
 	MODELENUM_PROVIDERS_OAUTH2_SCOPEMAPPING                            ModelEnum = "authentik_providers_oauth2.scopemapping"
 	MODELENUM_PROVIDERS_OAUTH2_OAUTH2PROVIDER                          ModelEnum = "authentik_providers_oauth2.oauth2provider"
-	MODELENUM_PROVIDERS_OAUTH2_AUTHORIZATIONCODE                       ModelEnum = "authentik_providers_oauth2.authorizationcode"
-	MODELENUM_PROVIDERS_OAUTH2_ACCESSTOKEN                             ModelEnum = "authentik_providers_oauth2.accesstoken"
-	MODELENUM_PROVIDERS_OAUTH2_REFRESHTOKEN                            ModelEnum = "authentik_providers_oauth2.refreshtoken"
 	MODELENUM_PROVIDERS_PROXY_PROXYPROVIDER                            ModelEnum = "authentik_providers_proxy.proxyprovider"
 	MODELENUM_PROVIDERS_RADIUS_RADIUSPROVIDER                          ModelEnum = "authentik_providers_radius.radiusprovider"
 	MODELENUM_PROVIDERS_SAML_SAMLPROVIDER                              ModelEnum = "authentik_providers_saml.samlprovider"
@@ -99,17 +90,17 @@ const (
 	MODELENUM_PROVIDERS_RAC_RACPROVIDER                                ModelEnum = "authentik_providers_rac.racprovider"
 	MODELENUM_PROVIDERS_RAC_ENDPOINT                                   ModelEnum = "authentik_providers_rac.endpoint"
 	MODELENUM_PROVIDERS_RAC_RACPROPERTYMAPPING                         ModelEnum = "authentik_providers_rac.racpropertymapping"
+	MODELENUM_EVENTS_EVENT                                             ModelEnum = "authentik_events.event"
+	MODELENUM_EVENTS_NOTIFICATIONTRANSPORT                             ModelEnum = "authentik_events.notificationtransport"
+	MODELENUM_EVENTS_NOTIFICATION                                      ModelEnum = "authentik_events.notification"
+	MODELENUM_EVENTS_NOTIFICATIONRULE                                  ModelEnum = "authentik_events.notificationrule"
+	MODELENUM_EVENTS_NOTIFICATIONWEBHOOKMAPPING                        ModelEnum = "authentik_events.notificationwebhookmapping"
 )
 
 // All allowed values of ModelEnum enum
 var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_tenants.domain",
 	"authentik_crypto.certificatekeypair",
-	"authentik_events.event",
-	"authentik_events.notificationtransport",
-	"authentik_events.notification",
-	"authentik_events.notificationrule",
-	"authentik_events.notificationwebhookmapping",
 	"authentik_flows.flow",
 	"authentik_flows.flowstagebinding",
 	"authentik_outposts.dockerserviceconnection",
@@ -121,14 +112,10 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_policies_expression.expressionpolicy",
 	"authentik_policies_password.passwordpolicy",
 	"authentik_policies_reputation.reputationpolicy",
-	"authentik_policies_reputation.reputation",
 	"authentik_policies.policybinding",
 	"authentik_providers_ldap.ldapprovider",
 	"authentik_providers_oauth2.scopemapping",
 	"authentik_providers_oauth2.oauth2provider",
-	"authentik_providers_oauth2.authorizationcode",
-	"authentik_providers_oauth2.accesstoken",
-	"authentik_providers_oauth2.refreshtoken",
 	"authentik_providers_proxy.proxyprovider",
 	"authentik_providers_radius.radiusprovider",
 	"authentik_providers_saml.samlprovider",
@@ -181,6 +168,11 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_providers_rac.racprovider",
 	"authentik_providers_rac.endpoint",
 	"authentik_providers_rac.racpropertymapping",
+	"authentik_events.event",
+	"authentik_events.notificationtransport",
+	"authentik_events.notification",
+	"authentik_events.notificationrule",
+	"authentik_events.notificationwebhookmapping",
 }
 
 func (v *ModelEnum) UnmarshalJSON(src []byte) error {

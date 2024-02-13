@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2023.10.6
+API version: 2023.10.7
 Contact: hello@goauthentik.io
 */
 
@@ -23,18 +23,19 @@ type User struct {
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-	IsActive    *bool                  `json:"is_active,omitempty"`
-	LastLogin   NullableTime           `json:"last_login,omitempty"`
-	IsSuperuser bool                   `json:"is_superuser"`
-	Groups      []string               `json:"groups,omitempty"`
-	GroupsObj   []UserGroup            `json:"groups_obj"`
-	Email       *string                `json:"email,omitempty"`
-	Avatar      string                 `json:"avatar"`
-	Attributes  map[string]interface{} `json:"attributes,omitempty"`
-	Uid         string                 `json:"uid"`
-	Path        *string                `json:"path,omitempty"`
-	Type        *UserTypeEnum          `json:"type,omitempty"`
-	Uuid        string                 `json:"uuid"`
+	IsActive    *bool        `json:"is_active,omitempty"`
+	LastLogin   NullableTime `json:"last_login,omitempty"`
+	IsSuperuser bool         `json:"is_superuser"`
+	Groups      []string     `json:"groups,omitempty"`
+	GroupsObj   []UserGroup  `json:"groups_obj"`
+	Email       *string      `json:"email,omitempty"`
+	// User's avatar, either a http/https URL or a data URI
+	Avatar     string                 `json:"avatar"`
+	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Uid        string                 `json:"uid"`
+	Path       *string                `json:"path,omitempty"`
+	Type       *UserTypeEnum          `json:"type,omitempty"`
+	Uuid       string                 `json:"uuid"`
 }
 
 // NewUser instantiates a new User object

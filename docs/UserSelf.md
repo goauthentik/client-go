@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **IsSuperuser** | **bool** |  | [readonly] 
 **Groups** | [**[]UserSelfGroups**](UserSelfGroups.md) |  | [readonly] 
 **Email** | Pointer to **string** |  | [optional] 
-**Avatar** | **string** |  | [readonly] 
+**Avatar** | **string** | User&#39;s avatar, either a http/https URL or a data URI | [readonly] 
 **Uid** | **string** |  | [readonly] 
 **Settings** | **map[string]interface{}** | Get user settings with brand and group settings applied | [readonly] 
 **Type** | Pointer to [**UserTypeEnum**](UserTypeEnum.md) |  | [optional] 

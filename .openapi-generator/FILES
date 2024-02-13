@@ -318,6 +318,7 @@ docs/PaginatedServiceConnectionList.md
 docs/PaginatedSourceList.md
 docs/PaginatedStageList.md
 docs/PaginatedStaticDeviceList.md
+docs/PaginatedSystemTaskList.md
 docs/PaginatedTOTPDeviceList.md
 docs/PaginatedTenantList.md
 docs/PaginatedTokenList.md
@@ -519,10 +520,10 @@ docs/StaticDeviceTokenRequest.md
 docs/SubModeEnum.md
 docs/SystemInfo.md
 docs/SystemInfoRuntime.md
+docs/SystemTask.md
+docs/SystemTaskStatusEnum.md
 docs/TOTPDevice.md
 docs/TOTPDeviceRequest.md
-docs/Task.md
-docs/TaskStatusEnum.md
 docs/Tenant.md
 docs/TenantAdminGroupRequestRequest.md
 docs/TenantRecoveryKeyRequestRequest.md
@@ -868,6 +869,7 @@ model_paginated_sms_device_list.go
 model_paginated_source_list.go
 model_paginated_stage_list.go
 model_paginated_static_device_list.go
+model_paginated_system_task_list.go
 model_paginated_tenant_list.go
 model_paginated_token_list.go
 model_paginated_token_model_list.go
@@ -1060,8 +1062,8 @@ model_static_device_token_request.go
 model_sub_mode_enum.go
 model_system_info.go
 model_system_info_runtime.go
-model_task.go
-model_task_status_enum.go
+model_system_task.go
+model_system_task_status_enum.go
 model_tenant.go
 model_tenant_admin_group_request_request.go
 model_tenant_recovery_key_request_request.go

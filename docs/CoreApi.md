@@ -277,7 +277,7 @@ Name | Type | Description  | Notes
 
 ## CoreApplicationsList
 
-> PaginatedApplicationList CoreApplicationsList(ctx).Group(group).MetaDescription(metaDescription).MetaLaunchUrl(metaLaunchUrl).MetaPublisher(metaPublisher).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).SuperuserFullList(superuserFullList).Execute()
+> PaginatedApplicationList CoreApplicationsList(ctx).ForUser(forUser).Group(group).MetaDescription(metaDescription).MetaLaunchUrl(metaLaunchUrl).MetaPublisher(metaPublisher).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).SuperuserFullList(superuserFullList).Execute()
 
 
 
@@ -296,6 +296,7 @@ import (
 )
 
 func main() {
+    forUser := int32(56) // int32 |  (optional)
     group := "group_example" // string |  (optional)
     metaDescription := "metaDescription_example" // string |  (optional)
     metaLaunchUrl := "metaLaunchUrl_example" // string |  (optional)
@@ -310,7 +311,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreApplicationsList(context.Background()).Group(group).MetaDescription(metaDescription).MetaLaunchUrl(metaLaunchUrl).MetaPublisher(metaPublisher).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).SuperuserFullList(superuserFullList).Execute()
+    resp, r, err := apiClient.CoreApi.CoreApplicationsList(context.Background()).ForUser(forUser).Group(group).MetaDescription(metaDescription).MetaLaunchUrl(metaLaunchUrl).MetaPublisher(metaPublisher).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).SuperuserFullList(superuserFullList).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -331,6 +332,7 @@ Other parameters are passed through a pointer to a apiCoreApplicationsListReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **forUser** | **int32** |  | 
  **group** | **string** |  | 
  **metaDescription** | **string** |  | 
  **metaLaunchUrl** | **string** |  | 

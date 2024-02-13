@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2023.10.6
+API version: 2023.10.7
 Contact: hello@goauthentik.io
 */
 
@@ -3586,7 +3586,7 @@ StagesAuthenticatorStaticDestroy Method for StagesAuthenticatorStaticDestroy
 AuthenticatorStaticStage Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Static Authenticator Stage.
+	@param stageUuid A UUID string identifying this Static Authenticator Setup Stage.
 	@return ApiStagesAuthenticatorStaticDestroyRequest
 */
 func (a *StagesApiService) StagesAuthenticatorStaticDestroy(ctx context.Context, stageUuid string) ApiStagesAuthenticatorStaticDestroyRequest {
@@ -3944,7 +3944,7 @@ StagesAuthenticatorStaticPartialUpdate Method for StagesAuthenticatorStaticParti
 AuthenticatorStaticStage Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Static Authenticator Stage.
+	@param stageUuid A UUID string identifying this Static Authenticator Setup Stage.
 	@return ApiStagesAuthenticatorStaticPartialUpdateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorStaticPartialUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorStaticPartialUpdateRequest {
@@ -4083,7 +4083,7 @@ StagesAuthenticatorStaticRetrieve Method for StagesAuthenticatorStaticRetrieve
 AuthenticatorStaticStage Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Static Authenticator Stage.
+	@param stageUuid A UUID string identifying this Static Authenticator Setup Stage.
 	@return ApiStagesAuthenticatorStaticRetrieveRequest
 */
 func (a *StagesApiService) StagesAuthenticatorStaticRetrieve(ctx context.Context, stageUuid string) ApiStagesAuthenticatorStaticRetrieveRequest {
@@ -4226,7 +4226,7 @@ StagesAuthenticatorStaticUpdate Method for StagesAuthenticatorStaticUpdate
 AuthenticatorStaticStage Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Static Authenticator Stage.
+	@param stageUuid A UUID string identifying this Static Authenticator Setup Stage.
 	@return ApiStagesAuthenticatorStaticUpdateRequest
 */
 func (a *StagesApiService) StagesAuthenticatorStaticUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorStaticUpdateRequest {
@@ -4368,7 +4368,7 @@ StagesAuthenticatorStaticUsedByList Method for StagesAuthenticatorStaticUsedByLi
 Get a list of all objects that use this object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param stageUuid A UUID string identifying this Static Authenticator Stage.
+	@param stageUuid A UUID string identifying this Static Authenticator Setup Stage.
 	@return ApiStagesAuthenticatorStaticUsedByListRequest
 */
 func (a *StagesApiService) StagesAuthenticatorStaticUsedByList(ctx context.Context, stageUuid string) ApiStagesAuthenticatorStaticUsedByListRequest {

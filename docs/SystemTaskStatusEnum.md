@@ -1,15 +1,15 @@
-# TaskStatusEnum
+# SystemTaskStatusEnum
 
 ## Enum
 
 
-* `SUCCESSFUL` (value: `"SUCCESSFUL"`)
+* `UNKNOWN` (value: `"unknown"`)
 
-* `WARNING` (value: `"WARNING"`)
+* `SUCCESSFUL` (value: `"successful"`)
 
-* `ERROR` (value: `"ERROR"`)
+* `WARNING` (value: `"warning"`)
 
-* `UNKNOWN` (value: `"UNKNOWN"`)
+* `ERROR` (value: `"error"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

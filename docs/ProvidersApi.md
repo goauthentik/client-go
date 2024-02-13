@@ -1232,7 +1232,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersOauth2PreviewUserRetrieve
 
-> PropertyMappingPreview ProvidersOauth2PreviewUserRetrieve(ctx, id).Execute()
+> PropertyMappingPreview ProvidersOauth2PreviewUserRetrieve(ctx, id).ForUser(forUser).Execute()
 
 
 
@@ -1252,10 +1252,11 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this OAuth2/OpenID Provider.
+    forUser := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProvidersApi.ProvidersOauth2PreviewUserRetrieve(context.Background(), id).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersOauth2PreviewUserRetrieve(context.Background(), id).ForUser(forUser).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersOauth2PreviewUserRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1281,6 +1282,7 @@ Other parameters are passed through a pointer to a apiProvidersOauth2PreviewUser
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **forUser** | **int32** |  | 
 
 ### Return type
 
@@ -3556,7 +3558,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersSamlPreviewUserRetrieve
 
-> PropertyMappingPreview ProvidersSamlPreviewUserRetrieve(ctx, id).Execute()
+> PropertyMappingPreview ProvidersSamlPreviewUserRetrieve(ctx, id).ForUser(forUser).Execute()
 
 
 
@@ -3576,10 +3578,11 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this SAML Provider.
+    forUser := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProvidersApi.ProvidersSamlPreviewUserRetrieve(context.Background(), id).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersSamlPreviewUserRetrieve(context.Background(), id).ForUser(forUser).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSamlPreviewUserRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3605,6 +3608,7 @@ Other parameters are passed through a pointer to a apiProvidersSamlPreviewUserRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **forUser** | **int32** |  | 
 
 ### Return type
 

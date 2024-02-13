@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2023.10.6
+API version: 2023.10.7
 Contact: hello@goauthentik.io
 */
 
@@ -2584,6 +2584,12 @@ type ApiProvidersOauth2PreviewUserRetrieveRequest struct {
 	ctx        context.Context
 	ApiService *ProvidersApiService
 	id         int32
+	forUser    *int32
+}
+
+func (r ApiProvidersOauth2PreviewUserRetrieveRequest) ForUser(forUser int32) ApiProvidersOauth2PreviewUserRetrieveRequest {
+	r.forUser = &forUser
+	return r
 }
 
 func (r ApiProvidersOauth2PreviewUserRetrieveRequest) Execute() (*PropertyMappingPreview, *http.Response, error) {
@@ -2630,6 +2636,9 @@ func (a *ProvidersApiService) ProvidersOauth2PreviewUserRetrieveExecute(r ApiPro
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.forUser != nil {
+		localVarQueryParams.Add("for_user", parameterToString(*r.forUser, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -7585,6 +7594,12 @@ type ApiProvidersSamlPreviewUserRetrieveRequest struct {
 	ctx        context.Context
 	ApiService *ProvidersApiService
 	id         int32
+	forUser    *int32
+}
+
+func (r ApiProvidersSamlPreviewUserRetrieveRequest) ForUser(forUser int32) ApiProvidersSamlPreviewUserRetrieveRequest {
+	r.forUser = &forUser
+	return r
 }
 
 func (r ApiProvidersSamlPreviewUserRetrieveRequest) Execute() (*PropertyMappingPreview, *http.Response, error) {
@@ -7631,6 +7646,9 @@ func (a *ProvidersApiService) ProvidersSamlPreviewUserRetrieveExecute(r ApiProvi
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.forUser != nil {
+		localVarQueryParams.Add("for_user", parameterToString(*r.forUser, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

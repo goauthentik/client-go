@@ -1878,7 +1878,7 @@ import (
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Static Authenticator Stage.
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Static Authenticator Setup Stage.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1896,7 +1896,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**stageUuid** | **string** | A UUID string identifying this Static Authenticator Stage. | 
+**stageUuid** | **string** | A UUID string identifying this Static Authenticator Setup Stage. | 
 
 ### Other Parameters
 
@@ -2030,7 +2030,7 @@ import (
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Static Authenticator Stage.
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Static Authenticator Setup Stage.
     patchedAuthenticatorStaticStageRequest := *openapiclient.NewPatchedAuthenticatorStaticStageRequest() // PatchedAuthenticatorStaticStageRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -2051,7 +2051,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**stageUuid** | **string** | A UUID string identifying this Static Authenticator Stage. | 
+**stageUuid** | **string** | A UUID string identifying this Static Authenticator Setup Stage. | 
 
 ### Other Parameters
 
@@ -2102,7 +2102,7 @@ import (
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Static Authenticator Stage.
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Static Authenticator Setup Stage.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2122,7 +2122,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**stageUuid** | **string** | A UUID string identifying this Static Authenticator Stage. | 
+**stageUuid** | **string** | A UUID string identifying this Static Authenticator Setup Stage. | 
 
 ### Other Parameters
 
@@ -2172,7 +2172,7 @@ import (
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Static Authenticator Stage.
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Static Authenticator Setup Stage.
     authenticatorStaticStageRequest := *openapiclient.NewAuthenticatorStaticStageRequest("Name_example") // AuthenticatorStaticStageRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -2193,7 +2193,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**stageUuid** | **string** | A UUID string identifying this Static Authenticator Stage. | 
+**stageUuid** | **string** | A UUID string identifying this Static Authenticator Setup Stage. | 
 
 ### Other Parameters
 
@@ -2244,7 +2244,7 @@ import (
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Static Authenticator Stage.
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Static Authenticator Setup Stage.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2264,7 +2264,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**stageUuid** | **string** | A UUID string identifying this Static Authenticator Stage. | 
+**stageUuid** | **string** | A UUID string identifying this Static Authenticator Setup Stage. | 
 
 ### Other Parameters
 

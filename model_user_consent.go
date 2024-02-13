@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2023.10.6
+API version: 2023.10.7
 Contact: hello@goauthentik.io
 */
 
@@ -20,6 +20,7 @@ import (
 type UserConsent struct {
 	Pk          int32       `json:"pk"`
 	Expires     *time.Time  `json:"expires,omitempty"`
+	Expiring    *bool       `json:"expiring,omitempty"`
 	User        User        `json:"user"`
 	Application Application `json:"application"`
 	Permissions *string     `json:"permissions,omitempty"`
@@ -103,6 +104,38 @@ func (o *UserConsent) HasExpires() bool {
 // SetExpires gets a reference to the given time.Time and assigns it to the Expires field.
 func (o *UserConsent) SetExpires(v time.Time) {
 	o.Expires = &v
+}
+
+// GetExpiring returns the Expiring field value if set, zero value otherwise.
+func (o *UserConsent) GetExpiring() bool {
+	if o == nil || o.Expiring == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Expiring
+}
+
+// GetExpiringOk returns a tuple with the Expiring field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserConsent) GetExpiringOk() (*bool, bool) {
+	if o == nil || o.Expiring == nil {
+		return nil, false
+	}
+	return o.Expiring, true
+}
+
+// HasExpiring returns a boolean if a field has been set.
+func (o *UserConsent) HasExpiring() bool {
+	if o != nil && o.Expiring != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExpiring gets a reference to the given bool and assigns it to the Expiring field.
+func (o *UserConsent) SetExpiring(v bool) {
+	o.Expiring = &v
 }
 
 // GetUser returns the User field value
@@ -192,6 +225,9 @@ func (o UserConsent) MarshalJSON() ([]byte, error) {
 	}
 	if o.Expires != nil {
 		toSerialize["expires"] = o.Expires
+	}
+	if o.Expiring != nil {
+		toSerialize["expiring"] = o.Expiring
 	}
 	if true {
 		toSerialize["user"] = o.User
