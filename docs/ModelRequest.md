@@ -41,6 +41,7 @@ Name | Type | Description | Notes
 **CookieDomain** | Pointer to **string** |  | [optional] 
 **Settings** | Pointer to **interface{}** |  | [optional] 
 **ConnectionExpiry** | Pointer to **string** | Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] 
+**DeleteTokenOnDisconnect** | Pointer to **bool** | When set to true, connection tokens will be deleted upon disconnect. | [optional] 
 **ClientNetworks** | Pointer to **string** | List of CIDRs (comma-separated) that clients can connect from. A more specific CIDR will match before a looser one. Clients connecting from a non-specified CIDR will be dropped. | [optional] 
 **SharedSecret** | Pointer to **string** | Shared secret between clients and server to hash packets. | [optional] 
 **AcsUrl** | **string** |  | 
@@ -1040,6 +1041,31 @@ SetConnectionExpiry sets ConnectionExpiry field to given value.
 `func (o *ModelRequest) HasConnectionExpiry() bool`
 
 HasConnectionExpiry returns a boolean if a field has been set.
+
+### GetDeleteTokenOnDisconnect
+
+`func (o *ModelRequest) GetDeleteTokenOnDisconnect() bool`
+
+GetDeleteTokenOnDisconnect returns the DeleteTokenOnDisconnect field if non-nil, zero value otherwise.
+
+### GetDeleteTokenOnDisconnectOk
+
+`func (o *ModelRequest) GetDeleteTokenOnDisconnectOk() (*bool, bool)`
+
+GetDeleteTokenOnDisconnectOk returns a tuple with the DeleteTokenOnDisconnect field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteTokenOnDisconnect
+
+`func (o *ModelRequest) SetDeleteTokenOnDisconnect(v bool)`
+
+SetDeleteTokenOnDisconnect sets DeleteTokenOnDisconnect field to given value.
+
+### HasDeleteTokenOnDisconnect
+
+`func (o *ModelRequest) HasDeleteTokenOnDisconnect() bool`
+
+HasDeleteTokenOnDisconnect returns a boolean if a field has been set.
 
 ### GetClientNetworks
 

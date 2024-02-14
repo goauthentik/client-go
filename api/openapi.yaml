@@ -19853,6 +19853,279 @@ paths:
       - authentik: []
       tags:
       - providers
+  /rac/connection_tokens/:
+    get:
+      description: ConnectionToken Viewset
+      operationId: rac_connection_tokens_list
+      parameters:
+      - explode: true
+        in: query
+        name: endpoint
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: provider
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: session__user
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedConnectionTokenList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rac
+  /rac/connection_tokens/{connection_token_uuid}/:
+    delete:
+      description: ConnectionToken Viewset
+      operationId: rac_connection_tokens_destroy
+      parameters:
+      - description: A UUID string identifying this connection token.
+        explode: false
+        in: path
+        name: connection_token_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rac
+    get:
+      description: ConnectionToken Viewset
+      operationId: rac_connection_tokens_retrieve
+      parameters:
+      - description: A UUID string identifying this connection token.
+        explode: false
+        in: path
+        name: connection_token_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectionToken'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rac
+    patch:
+      description: ConnectionToken Viewset
+      operationId: rac_connection_tokens_partial_update
+      parameters:
+      - description: A UUID string identifying this connection token.
+        explode: false
+        in: path
+        name: connection_token_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedConnectionTokenRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectionToken'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rac
+    put:
+      description: ConnectionToken Viewset
+      operationId: rac_connection_tokens_update
+      parameters:
+      - description: A UUID string identifying this connection token.
+        explode: false
+        in: path
+        name: connection_token_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConnectionTokenRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectionToken'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rac
+  /rac/connection_tokens/{connection_token_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: rac_connection_tokens_used_by_list
+      parameters:
+      - description: A UUID string identifying this connection token.
+        explode: false
+        in: path
+        name: connection_token_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rac
   /rac/endpoints/:
     get:
       description: List accessible endpoints
@@ -35100,6 +35373,57 @@ components:
       - capabilities
       - error_reporting
       type: object
+    ConnectionToken:
+      description: ConnectionToken Serializer
+      example:
+        endpoint: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        provider_obj: ""
+        provider: 0
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        endpoint_obj: ""
+        user: ""
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Pbm uuid
+          type: string
+        provider:
+          type: integer
+        provider_obj:
+          allOf:
+          - $ref: '#/components/schemas/RACProvider'
+          readOnly: true
+        endpoint:
+          format: uuid
+          readOnly: true
+          type: string
+        endpoint_obj:
+          allOf:
+          - $ref: '#/components/schemas/Endpoint'
+          readOnly: true
+        user:
+          allOf:
+          - $ref: '#/components/schemas/GroupMember'
+          readOnly: true
+      required:
+      - endpoint
+      - endpoint_obj
+      - pk
+      - provider
+      - provider_obj
+      - user
+      type: object
+    ConnectionTokenRequest:
+      description: ConnectionToken Serializer
+      example:
+        provider: 0
+      properties:
+        provider:
+          type: integer
+      required:
+      - provider
+      type: object
     ConsentChallenge:
       description: Challenge info for consent screens
       properties:
@@ -42298,6 +42622,40 @@ components:
       - pagination
       - results
       type: object
+    PaginatedConnectionTokenList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - endpoint: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          provider_obj: ""
+          provider: 0
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          endpoint_obj: ""
+          user: ""
+        - endpoint: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          provider_obj: ""
+          provider: 0
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          endpoint_obj: ""
+          user: ""
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/ConnectionToken'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedConsentStageList:
       example:
         pagination:
@@ -45419,6 +45777,7 @@ components:
         results:
         - settings: ""
           verbose_name_plural: verbose_name_plural
+          delete_token_on_disconnect: true
           assigned_application_slug: assigned_application_slug
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           outpost_set:
@@ -45439,6 +45798,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - settings: ""
           verbose_name_plural: verbose_name_plural
+          delete_token_on_disconnect: true
           assigned_application_slug: assigned_application_slug
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           outpost_set:
@@ -48493,6 +48853,14 @@ components:
           type: string
           writeOnly: true
       type: object
+    PatchedConnectionTokenRequest:
+      description: ConnectionToken Serializer
+      example:
+        provider: 0
+      properties:
+        provider:
+          type: integer
+      type: object
     PatchedConsentStageRequest:
       description: ConsentStage Serializer
       example:
@@ -50585,6 +50953,7 @@ components:
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         settings: ""
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        delete_token_on_disconnect: true
         name: name
         connection_expiry: connection_expiry
         property_mappings:
@@ -50615,6 +50984,9 @@ components:
             \ the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)"
           minLength: 1
           type: string
+        delete_token_on_disconnect:
+          description: "When set to true, connection tokens will be deleted upon disconnect."
+          type: boolean
       type: object
     PatchedRadiusProviderRequest:
       description: RadiusProvider Serializer
@@ -53313,6 +53685,7 @@ components:
       example:
         settings: ""
         verbose_name_plural: verbose_name_plural
+        delete_token_on_disconnect: true
         assigned_application_slug: assigned_application_slug
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         outpost_set:
@@ -53395,6 +53768,9 @@ components:
           description: "Determines how long a session lasts. Default of 0 means that\
             \ the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)"
           type: string
+        delete_token_on_disconnect:
+          description: "When set to true, connection tokens will be deleted upon disconnect."
+          type: boolean
       required:
       - assigned_application_name
       - assigned_application_slug
@@ -53415,6 +53791,7 @@ components:
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         settings: ""
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        delete_token_on_disconnect: true
         name: name
         connection_expiry: connection_expiry
         property_mappings:
@@ -53445,6 +53822,9 @@ components:
             \ the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)"
           minLength: 1
           type: string
+        delete_token_on_disconnect:
+          description: "When set to true, connection tokens will be deleted upon disconnect."
+          type: boolean
       required:
       - authorization_flow
       - name

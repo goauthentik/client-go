@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **Settings** | Pointer to **interface{}** |  | [optional] 
 **ConnectionExpiry** | Pointer to **string** | Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] 
+**DeleteTokenOnDisconnect** | Pointer to **bool** | When set to true, connection tokens will be deleted upon disconnect. | [optional] 
 
 ## Methods
 
@@ -199,6 +200,31 @@ SetConnectionExpiry sets ConnectionExpiry field to given value.
 `func (o *PatchedRACProviderRequest) HasConnectionExpiry() bool`
 
 HasConnectionExpiry returns a boolean if a field has been set.
+
+### GetDeleteTokenOnDisconnect
+
+`func (o *PatchedRACProviderRequest) GetDeleteTokenOnDisconnect() bool`
+
+GetDeleteTokenOnDisconnect returns the DeleteTokenOnDisconnect field if non-nil, zero value otherwise.
+
+### GetDeleteTokenOnDisconnectOk
+
+`func (o *PatchedRACProviderRequest) GetDeleteTokenOnDisconnectOk() (*bool, bool)`
+
+GetDeleteTokenOnDisconnectOk returns a tuple with the DeleteTokenOnDisconnect field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteTokenOnDisconnect
+
+`func (o *PatchedRACProviderRequest) SetDeleteTokenOnDisconnect(v bool)`
+
+SetDeleteTokenOnDisconnect sets DeleteTokenOnDisconnect field to given value.
+
+### HasDeleteTokenOnDisconnect
+
+`func (o *PatchedRACProviderRequest) HasDeleteTokenOnDisconnect() bool`
+
+HasDeleteTokenOnDisconnect returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

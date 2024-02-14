@@ -476,6 +476,12 @@ Class | Method | HTTP request | Description
 *ProvidersApi* | [**ProvidersScimSyncStatusRetrieve**](docs/ProvidersApi.md#providersscimsyncstatusretrieve) | **Get** /providers/scim/{id}/sync_status/ | 
 *ProvidersApi* | [**ProvidersScimUpdate**](docs/ProvidersApi.md#providersscimupdate) | **Put** /providers/scim/{id}/ | 
 *ProvidersApi* | [**ProvidersScimUsedByList**](docs/ProvidersApi.md#providersscimusedbylist) | **Get** /providers/scim/{id}/used_by/ | 
+*RacApi* | [**RacConnectionTokensDestroy**](docs/RacApi.md#racconnectiontokensdestroy) | **Delete** /rac/connection_tokens/{connection_token_uuid}/ | 
+*RacApi* | [**RacConnectionTokensList**](docs/RacApi.md#racconnectiontokenslist) | **Get** /rac/connection_tokens/ | 
+*RacApi* | [**RacConnectionTokensPartialUpdate**](docs/RacApi.md#racconnectiontokenspartialupdate) | **Patch** /rac/connection_tokens/{connection_token_uuid}/ | 
+*RacApi* | [**RacConnectionTokensRetrieve**](docs/RacApi.md#racconnectiontokensretrieve) | **Get** /rac/connection_tokens/{connection_token_uuid}/ | 
+*RacApi* | [**RacConnectionTokensUpdate**](docs/RacApi.md#racconnectiontokensupdate) | **Put** /rac/connection_tokens/{connection_token_uuid}/ | 
+*RacApi* | [**RacConnectionTokensUsedByList**](docs/RacApi.md#racconnectiontokensusedbylist) | **Get** /rac/connection_tokens/{connection_token_uuid}/used_by/ | 
 *RacApi* | [**RacEndpointsCreate**](docs/RacApi.md#racendpointscreate) | **Post** /rac/endpoints/ | 
 *RacApi* | [**RacEndpointsDestroy**](docs/RacApi.md#racendpointsdestroy) | **Delete** /rac/endpoints/{pbm_uuid}/ | 
 *RacApi* | [**RacEndpointsList**](docs/RacApi.md#racendpointslist) | **Get** /rac/endpoints/ | 
@@ -815,6 +821,8 @@ Class | Method | HTTP request | Description
  - [ChallengeTypes](docs/ChallengeTypes.md)
  - [ClientTypeEnum](docs/ClientTypeEnum.md)
  - [Config](docs/Config.md)
+ - [ConnectionToken](docs/ConnectionToken.md)
+ - [ConnectionTokenRequest](docs/ConnectionTokenRequest.md)
  - [ConsentChallenge](docs/ConsentChallenge.md)
  - [ConsentChallengeResponseRequest](docs/ConsentChallengeResponseRequest.md)
  - [ConsentPermission](docs/ConsentPermission.md)
@@ -964,6 +972,7 @@ Class | Method | HTTP request | Description
  - [PaginatedBrandList](docs/PaginatedBrandList.md)
  - [PaginatedCaptchaStageList](docs/PaginatedCaptchaStageList.md)
  - [PaginatedCertificateKeyPairList](docs/PaginatedCertificateKeyPairList.md)
+ - [PaginatedConnectionTokenList](docs/PaginatedConnectionTokenList.md)
  - [PaginatedConsentStageList](docs/PaginatedConsentStageList.md)
  - [PaginatedDenyStageList](docs/PaginatedDenyStageList.md)
  - [PaginatedDockerServiceConnectionList](docs/PaginatedDockerServiceConnectionList.md)
@@ -1067,6 +1076,7 @@ Class | Method | HTTP request | Description
  - [PatchedBrandRequest](docs/PatchedBrandRequest.md)
  - [PatchedCaptchaStageRequest](docs/PatchedCaptchaStageRequest.md)
  - [PatchedCertificateKeyPairRequest](docs/PatchedCertificateKeyPairRequest.md)
+ - [PatchedConnectionTokenRequest](docs/PatchedConnectionTokenRequest.md)
  - [PatchedConsentStageRequest](docs/PatchedConsentStageRequest.md)
  - [PatchedDenyStageRequest](docs/PatchedDenyStageRequest.md)
  - [PatchedDockerServiceConnectionRequest](docs/PatchedDockerServiceConnectionRequest.md)

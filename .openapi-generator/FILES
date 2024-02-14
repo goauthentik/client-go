@@ -94,6 +94,8 @@ docs/ChallengeChoices.md
 docs/ChallengeTypes.md
 docs/ClientTypeEnum.md
 docs/Config.md
+docs/ConnectionToken.md
+docs/ConnectionTokenRequest.md
 docs/ConsentChallenge.md
 docs/ConsentChallengeResponseRequest.md
 docs/ConsentPermission.md
@@ -251,6 +253,7 @@ docs/PaginatedBlueprintInstanceList.md
 docs/PaginatedBrandList.md
 docs/PaginatedCaptchaStageList.md
 docs/PaginatedCertificateKeyPairList.md
+docs/PaginatedConnectionTokenList.md
 docs/PaginatedConsentStageList.md
 docs/PaginatedDenyStageList.md
 docs/PaginatedDockerServiceConnectionList.md
@@ -354,6 +357,7 @@ docs/PatchedBlueprintInstanceRequest.md
 docs/PatchedBrandRequest.md
 docs/PatchedCaptchaStageRequest.md
 docs/PatchedCertificateKeyPairRequest.md
+docs/PatchedConnectionTokenRequest.md
 docs/PatchedConsentStageRequest.md
 docs/PatchedDenyStageRequest.md
 docs/PatchedDockerServiceConnectionRequest.md
@@ -653,6 +657,8 @@ model_challenge_choices.go
 model_challenge_types.go
 model_client_type_enum.go
 model_config.go
+model_connection_token.go
+model_connection_token_request.go
 model_consent_challenge.go
 model_consent_challenge_response_request.go
 model_consent_permission.go
@@ -802,6 +808,7 @@ model_paginated_blueprint_instance_list.go
 model_paginated_brand_list.go
 model_paginated_captcha_stage_list.go
 model_paginated_certificate_key_pair_list.go
+model_paginated_connection_token_list.go
 model_paginated_consent_stage_list.go
 model_paginated_deny_stage_list.go
 model_paginated_docker_service_connection_list.go
@@ -905,6 +912,7 @@ model_patched_blueprint_instance_request.go
 model_patched_brand_request.go
 model_patched_captcha_stage_request.go
 model_patched_certificate_key_pair_request.go
+model_patched_connection_token_request.go
 model_patched_consent_stage_request.go
 model_patched_deny_stage_request.go
 model_patched_docker_service_connection_request.go

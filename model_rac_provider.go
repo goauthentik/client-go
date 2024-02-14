@@ -44,6 +44,8 @@ type RACProvider struct {
 	OutpostSet    []string    `json:"outpost_set"`
 	// Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)
 	ConnectionExpiry *string `json:"connection_expiry,omitempty"`
+	// When set to true, connection tokens will be deleted upon disconnect.
+	DeleteTokenOnDisconnect *bool `json:"delete_token_on_disconnect,omitempty"`
 }
 
 // NewRACProvider instantiates a new RACProvider object
@@ -503,6 +505,38 @@ func (o *RACProvider) SetConnectionExpiry(v string) {
 	o.ConnectionExpiry = &v
 }
 
+// GetDeleteTokenOnDisconnect returns the DeleteTokenOnDisconnect field value if set, zero value otherwise.
+func (o *RACProvider) GetDeleteTokenOnDisconnect() bool {
+	if o == nil || o.DeleteTokenOnDisconnect == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DeleteTokenOnDisconnect
+}
+
+// GetDeleteTokenOnDisconnectOk returns a tuple with the DeleteTokenOnDisconnect field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RACProvider) GetDeleteTokenOnDisconnectOk() (*bool, bool) {
+	if o == nil || o.DeleteTokenOnDisconnect == nil {
+		return nil, false
+	}
+	return o.DeleteTokenOnDisconnect, true
+}
+
+// HasDeleteTokenOnDisconnect returns a boolean if a field has been set.
+func (o *RACProvider) HasDeleteTokenOnDisconnect() bool {
+	if o != nil && o.DeleteTokenOnDisconnect != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteTokenOnDisconnect gets a reference to the given bool and assigns it to the DeleteTokenOnDisconnect field.
+func (o *RACProvider) SetDeleteTokenOnDisconnect(v bool) {
+	o.DeleteTokenOnDisconnect = &v
+}
+
 func (o RACProvider) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -552,6 +586,9 @@ func (o RACProvider) MarshalJSON() ([]byte, error) {
 	}
 	if o.ConnectionExpiry != nil {
 		toSerialize["connection_expiry"] = o.ConnectionExpiry
+	}
+	if o.DeleteTokenOnDisconnect != nil {
+		toSerialize["delete_token_on_disconnect"] = o.DeleteTokenOnDisconnect
 	}
 	return json.Marshal(toSerialize)
 }
