@@ -8315,33 +8315,27 @@ func (a *CoreApiService) CoreUsersPathsRetrieveExecute(r ApiCoreUsersPathsRetrie
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCoreUsersRecoveryEmailRetrieveRequest struct {
+type ApiCoreUsersRecoveryCreateRequest struct {
 	ctx        context.Context
 	ApiService *CoreApiService
-	emailStage *string
 	id         int32
 }
 
-func (r ApiCoreUsersRecoveryEmailRetrieveRequest) EmailStage(emailStage string) ApiCoreUsersRecoveryEmailRetrieveRequest {
-	r.emailStage = &emailStage
-	return r
-}
-
-func (r ApiCoreUsersRecoveryEmailRetrieveRequest) Execute() (*http.Response, error) {
-	return r.ApiService.CoreUsersRecoveryEmailRetrieveExecute(r)
+func (r ApiCoreUsersRecoveryCreateRequest) Execute() (*Link, *http.Response, error) {
+	return r.ApiService.CoreUsersRecoveryCreateExecute(r)
 }
 
 /*
-CoreUsersRecoveryEmailRetrieve Method for CoreUsersRecoveryEmailRetrieve
+CoreUsersRecoveryCreate Method for CoreUsersRecoveryCreate
 
 Create a temporary link that a user can use to recover their accounts
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User.
-	@return ApiCoreUsersRecoveryEmailRetrieveRequest
+	@return ApiCoreUsersRecoveryCreateRequest
 */
-func (a *CoreApiService) CoreUsersRecoveryEmailRetrieve(ctx context.Context, id int32) ApiCoreUsersRecoveryEmailRetrieveRequest {
-	return ApiCoreUsersRecoveryEmailRetrieveRequest{
+func (a *CoreApiService) CoreUsersRecoveryCreate(ctx context.Context, id int32) ApiCoreUsersRecoveryCreateRequest {
+	return ApiCoreUsersRecoveryCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -8349,14 +8343,157 @@ func (a *CoreApiService) CoreUsersRecoveryEmailRetrieve(ctx context.Context, id 
 }
 
 // Execute executes the request
-func (a *CoreApiService) CoreUsersRecoveryEmailRetrieveExecute(r ApiCoreUsersRecoveryEmailRetrieveRequest) (*http.Response, error) {
+//
+//	@return Link
+func (a *CoreApiService) CoreUsersRecoveryCreateExecute(r ApiCoreUsersRecoveryCreateRequest) (*Link, *http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Link
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersRecoveryCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/core/users/{id}/recovery/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCoreUsersRecoveryEmailCreateRequest struct {
+	ctx        context.Context
+	ApiService *CoreApiService
+	emailStage *string
+	id         int32
+}
+
+func (r ApiCoreUsersRecoveryEmailCreateRequest) EmailStage(emailStage string) ApiCoreUsersRecoveryEmailCreateRequest {
+	r.emailStage = &emailStage
+	return r
+}
+
+func (r ApiCoreUsersRecoveryEmailCreateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CoreUsersRecoveryEmailCreateExecute(r)
+}
+
+/*
+CoreUsersRecoveryEmailCreate Method for CoreUsersRecoveryEmailCreate
+
+Create a temporary link that a user can use to recover their accounts
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this User.
+	@return ApiCoreUsersRecoveryEmailCreateRequest
+*/
+func (a *CoreApiService) CoreUsersRecoveryEmailCreate(ctx context.Context, id int32) ApiCoreUsersRecoveryEmailCreateRequest {
+	return ApiCoreUsersRecoveryEmailCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+func (a *CoreApiService) CoreUsersRecoveryEmailCreateExecute(r ApiCoreUsersRecoveryEmailCreateRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersRecoveryEmailRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersRecoveryEmailCreate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -8448,153 +8585,6 @@ func (a *CoreApiService) CoreUsersRecoveryEmailRetrieveExecute(r ApiCoreUsersRec
 	}
 
 	return localVarHTTPResponse, nil
-}
-
-type ApiCoreUsersRecoveryRetrieveRequest struct {
-	ctx        context.Context
-	ApiService *CoreApiService
-	id         int32
-}
-
-func (r ApiCoreUsersRecoveryRetrieveRequest) Execute() (*Link, *http.Response, error) {
-	return r.ApiService.CoreUsersRecoveryRetrieveExecute(r)
-}
-
-/*
-CoreUsersRecoveryRetrieve Method for CoreUsersRecoveryRetrieve
-
-Create a temporary link that a user can use to recover their accounts
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this User.
-	@return ApiCoreUsersRecoveryRetrieveRequest
-*/
-func (a *CoreApiService) CoreUsersRecoveryRetrieve(ctx context.Context, id int32) ApiCoreUsersRecoveryRetrieveRequest {
-	return ApiCoreUsersRecoveryRetrieveRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-//
-//	@return Link
-func (a *CoreApiService) CoreUsersRecoveryRetrieveExecute(r ApiCoreUsersRecoveryRetrieveRequest) (*Link, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Link
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersRecoveryRetrieve")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/core/users/{id}/recovery/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["authentik"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v Link
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiCoreUsersRetrieveRequest struct {

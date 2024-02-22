@@ -164,8 +164,8 @@ Class | Method | HTTP request | Description
 *CoreApi* | [**CoreUsersMetricsRetrieve**](docs/CoreApi.md#coreusersmetricsretrieve) | **Get** /core/users/{id}/metrics/ | 
 *CoreApi* | [**CoreUsersPartialUpdate**](docs/CoreApi.md#coreuserspartialupdate) | **Patch** /core/users/{id}/ | 
 *CoreApi* | [**CoreUsersPathsRetrieve**](docs/CoreApi.md#coreuserspathsretrieve) | **Get** /core/users/paths/ | 
-*CoreApi* | [**CoreUsersRecoveryEmailRetrieve**](docs/CoreApi.md#coreusersrecoveryemailretrieve) | **Get** /core/users/{id}/recovery_email/ | 
-*CoreApi* | [**CoreUsersRecoveryRetrieve**](docs/CoreApi.md#coreusersrecoveryretrieve) | **Get** /core/users/{id}/recovery/ | 
+*CoreApi* | [**CoreUsersRecoveryCreate**](docs/CoreApi.md#coreusersrecoverycreate) | **Post** /core/users/{id}/recovery/ | 
+*CoreApi* | [**CoreUsersRecoveryEmailCreate**](docs/CoreApi.md#coreusersrecoveryemailcreate) | **Post** /core/users/{id}/recovery_email/ | 
 *CoreApi* | [**CoreUsersRetrieve**](docs/CoreApi.md#coreusersretrieve) | **Get** /core/users/{id}/ | 
 *CoreApi* | [**CoreUsersServiceAccountCreate**](docs/CoreApi.md#coreusersserviceaccountcreate) | **Post** /core/users/service_account/ | 
 *CoreApi* | [**CoreUsersSetPasswordCreate**](docs/CoreApi.md#coreuserssetpasswordcreate) | **Post** /core/users/{id}/set_password/ | 

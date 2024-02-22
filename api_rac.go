@@ -39,7 +39,7 @@ RacConnectionTokensDestroy Method for RacConnectionTokensDestroy
 ConnectionToken Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param connectionTokenUuid A UUID string identifying this connection token.
+	@param connectionTokenUuid A UUID string identifying this RAC Connection token.
 	@return ApiRacConnectionTokensDestroyRequest
 */
 func (a *RacApiService) RacConnectionTokensDestroy(ctx context.Context, connectionTokenUuid string) ApiRacConnectionTokensDestroyRequest {
@@ -370,7 +370,7 @@ RacConnectionTokensPartialUpdate Method for RacConnectionTokensPartialUpdate
 ConnectionToken Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param connectionTokenUuid A UUID string identifying this connection token.
+	@param connectionTokenUuid A UUID string identifying this RAC Connection token.
 	@return ApiRacConnectionTokensPartialUpdateRequest
 */
 func (a *RacApiService) RacConnectionTokensPartialUpdate(ctx context.Context, connectionTokenUuid string) ApiRacConnectionTokensPartialUpdateRequest {
@@ -509,7 +509,7 @@ RacConnectionTokensRetrieve Method for RacConnectionTokensRetrieve
 ConnectionToken Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param connectionTokenUuid A UUID string identifying this connection token.
+	@param connectionTokenUuid A UUID string identifying this RAC Connection token.
 	@return ApiRacConnectionTokensRetrieveRequest
 */
 func (a *RacApiService) RacConnectionTokensRetrieve(ctx context.Context, connectionTokenUuid string) ApiRacConnectionTokensRetrieveRequest {
@@ -652,7 +652,7 @@ RacConnectionTokensUpdate Method for RacConnectionTokensUpdate
 ConnectionToken Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param connectionTokenUuid A UUID string identifying this connection token.
+	@param connectionTokenUuid A UUID string identifying this RAC Connection token.
 	@return ApiRacConnectionTokensUpdateRequest
 */
 func (a *RacApiService) RacConnectionTokensUpdate(ctx context.Context, connectionTokenUuid string) ApiRacConnectionTokensUpdateRequest {
@@ -794,7 +794,7 @@ RacConnectionTokensUsedByList Method for RacConnectionTokensUsedByList
 Get a list of all objects that use this object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param connectionTokenUuid A UUID string identifying this connection token.
+	@param connectionTokenUuid A UUID string identifying this RAC Connection token.
 	@return ApiRacConnectionTokensUsedByListRequest
 */
 func (a *RacApiService) RacConnectionTokensUsedByList(ctx context.Context, connectionTokenUuid string) ApiRacConnectionTokensUsedByListRequest {

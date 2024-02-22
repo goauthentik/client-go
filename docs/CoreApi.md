@@ -59,8 +59,8 @@ Method | HTTP request | Description
 [**CoreUsersMetricsRetrieve**](CoreApi.md#CoreUsersMetricsRetrieve) | **Get** /core/users/{id}/metrics/ | 
 [**CoreUsersPartialUpdate**](CoreApi.md#CoreUsersPartialUpdate) | **Patch** /core/users/{id}/ | 
 [**CoreUsersPathsRetrieve**](CoreApi.md#CoreUsersPathsRetrieve) | **Get** /core/users/paths/ | 
-[**CoreUsersRecoveryEmailRetrieve**](CoreApi.md#CoreUsersRecoveryEmailRetrieve) | **Get** /core/users/{id}/recovery_email/ | 
-[**CoreUsersRecoveryRetrieve**](CoreApi.md#CoreUsersRecoveryRetrieve) | **Get** /core/users/{id}/recovery/ | 
+[**CoreUsersRecoveryCreate**](CoreApi.md#CoreUsersRecoveryCreate) | **Post** /core/users/{id}/recovery/ | 
+[**CoreUsersRecoveryEmailCreate**](CoreApi.md#CoreUsersRecoveryEmailCreate) | **Post** /core/users/{id}/recovery_email/ | 
 [**CoreUsersRetrieve**](CoreApi.md#CoreUsersRetrieve) | **Get** /core/users/{id}/ | 
 [**CoreUsersServiceAccountCreate**](CoreApi.md#CoreUsersServiceAccountCreate) | **Post** /core/users/service_account/ | 
 [**CoreUsersSetPasswordCreate**](CoreApi.md#CoreUsersSetPasswordCreate) | **Post** /core/users/{id}/set_password/ | 
@@ -3983,9 +3983,79 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CoreUsersRecoveryEmailRetrieve
+## CoreUsersRecoveryCreate
 
-> CoreUsersRecoveryEmailRetrieve(ctx, id).EmailStage(emailStage).Execute()
+> Link CoreUsersRecoveryCreate(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUsersRecoveryCreate(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersRecoveryCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CoreUsersRecoveryCreate`: Link
+    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreUsersRecoveryCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreUsersRecoveryCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**Link**](Link.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreUsersRecoveryEmailCreate
+
+> CoreUsersRecoveryEmailCreate(ctx, id).EmailStage(emailStage).Execute()
 
 
 
@@ -4009,9 +4079,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreUsersRecoveryEmailRetrieve(context.Background(), id).EmailStage(emailStage).Execute()
+    resp, r, err := apiClient.CoreApi.CoreUsersRecoveryEmailCreate(context.Background(), id).EmailStage(emailStage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersRecoveryEmailRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersRecoveryEmailCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -4027,7 +4097,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCoreUsersRecoveryEmailRetrieveRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCoreUsersRecoveryEmailCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -4038,76 +4108,6 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CoreUsersRecoveryRetrieve
-
-> Link CoreUsersRecoveryRetrieve(ctx, id).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := int32(56) // int32 | A unique integer value identifying this User.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreUsersRecoveryRetrieve(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersRecoveryRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CoreUsersRecoveryRetrieve`: Link
-    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreUsersRecoveryRetrieve`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this User. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCoreUsersRecoveryRetrieveRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**Link**](Link.md)
 
 ### Authorization
 

@@ -41,7 +41,7 @@ import (
 )
 
 func main() {
-    connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this connection token.
+    connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Connection token.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -59,7 +59,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**connectionTokenUuid** | **string** | A UUID string identifying this connection token. | 
+**connectionTokenUuid** | **string** | A UUID string identifying this RAC Connection token. | 
 
 ### Other Parameters
 
@@ -187,7 +187,7 @@ import (
 )
 
 func main() {
-    connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this connection token.
+    connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Connection token.
     patchedConnectionTokenRequest := *openapiclient.NewPatchedConnectionTokenRequest() // PatchedConnectionTokenRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -208,7 +208,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**connectionTokenUuid** | **string** | A UUID string identifying this connection token. | 
+**connectionTokenUuid** | **string** | A UUID string identifying this RAC Connection token. | 
 
 ### Other Parameters
 
@@ -259,7 +259,7 @@ import (
 )
 
 func main() {
-    connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this connection token.
+    connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Connection token.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -279,7 +279,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**connectionTokenUuid** | **string** | A UUID string identifying this connection token. | 
+**connectionTokenUuid** | **string** | A UUID string identifying this RAC Connection token. | 
 
 ### Other Parameters
 
@@ -329,7 +329,7 @@ import (
 )
 
 func main() {
-    connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this connection token.
+    connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Connection token.
     connectionTokenRequest := *openapiclient.NewConnectionTokenRequest(int32(123)) // ConnectionTokenRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -350,7 +350,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**connectionTokenUuid** | **string** | A UUID string identifying this connection token. | 
+**connectionTokenUuid** | **string** | A UUID string identifying this RAC Connection token. | 
 
 ### Other Parameters
 
@@ -401,7 +401,7 @@ import (
 )
 
 func main() {
-    connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this connection token.
+    connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Connection token.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -421,7 +421,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**connectionTokenUuid** | **string** | A UUID string identifying this connection token. | 
+**connectionTokenUuid** | **string** | A UUID string identifying this RAC Connection token. | 
 
 ### Other Parameters
 

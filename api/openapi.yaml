@@ -5380,9 +5380,9 @@ paths:
       tags:
       - core
   /core/users/{id}/recovery/:
-    get:
+    post:
       description: Create a temporary link that a user can use to recover their accounts
-      operationId: core_users_recovery_retrieve
+      operationId: core_users_recovery_create
       parameters:
       - description: A unique integer value identifying this User.
         explode: false
@@ -5394,12 +5394,6 @@ paths:
         style: simple
       responses:
         "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Link'
-          description: ""
-        "404":
           content:
             application/json:
               schema:
@@ -5422,9 +5416,9 @@ paths:
       tags:
       - core
   /core/users/{id}/recovery_email/:
-    get:
+    post:
       description: Create a temporary link that a user can use to recover their accounts
-      operationId: core_users_recovery_email_retrieve
+      operationId: core_users_recovery_email_create
       parameters:
       - explode: true
         in: query
@@ -5444,8 +5438,6 @@ paths:
       responses:
         "204":
           description: Successfully sent recover email
-        "404":
-          description: Bad request
         "400":
           content:
             application/json:
@@ -19940,7 +19932,7 @@ paths:
       description: ConnectionToken Viewset
       operationId: rac_connection_tokens_destroy
       parameters:
-      - description: A UUID string identifying this connection token.
+      - description: A UUID string identifying this RAC Connection token.
         explode: false
         in: path
         name: connection_token_uuid
@@ -19972,7 +19964,7 @@ paths:
       description: ConnectionToken Viewset
       operationId: rac_connection_tokens_retrieve
       parameters:
-      - description: A UUID string identifying this connection token.
+      - description: A UUID string identifying this RAC Connection token.
         explode: false
         in: path
         name: connection_token_uuid
@@ -20008,7 +20000,7 @@ paths:
       description: ConnectionToken Viewset
       operationId: rac_connection_tokens_partial_update
       parameters:
-      - description: A UUID string identifying this connection token.
+      - description: A UUID string identifying this RAC Connection token.
         explode: false
         in: path
         name: connection_token_uuid
@@ -20049,7 +20041,7 @@ paths:
       description: ConnectionToken Viewset
       operationId: rac_connection_tokens_update
       parameters:
-      - description: A UUID string identifying this connection token.
+      - description: A UUID string identifying this RAC Connection token.
         explode: false
         in: path
         name: connection_token_uuid
@@ -20092,7 +20084,7 @@ paths:
       description: Get a list of all objects that use this object
       operationId: rac_connection_tokens_used_by_list
       parameters:
-      - description: A UUID string identifying this connection token.
+      - description: A UUID string identifying this RAC Connection token.
         explode: false
         in: path
         name: connection_token_uuid
