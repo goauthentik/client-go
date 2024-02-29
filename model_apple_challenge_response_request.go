@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// AppleChallengeResponseRequest Pseudo class for plex response
+// AppleChallengeResponseRequest Pseudo class for apple response
 type AppleChallengeResponseRequest struct {
 	Component *string `json:"component,omitempty"`
 }

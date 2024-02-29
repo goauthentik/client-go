@@ -33044,7 +33044,7 @@ components:
       - authentik.events
       type: string
     AppleChallengeResponseRequest:
-      description: Pseudo class for plex response
+      description: Pseudo class for apple response
       properties:
         component:
           default: ak-source-oauth-apple
@@ -53128,6 +53128,7 @@ components:
         * `discord` - Discord
         * `facebook` - Facebook
         * `github` - GitHub
+        * `gitlab` - GitLab
         * `google` - Google
         * `mailcow` - Mailcow
         * `okta` - Okta
@@ -53142,6 +53143,7 @@ components:
       - discord
       - facebook
       - github
+      - gitlab
       - google
       - mailcow
       - okta

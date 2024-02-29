@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// ProviderTypeEnum * `apple` - Apple * `openidconnect` - OpenID Connect * `azuread` - Azure AD * `discord` - Discord * `facebook` - Facebook * `github` - GitHub * `google` - Google * `mailcow` - Mailcow * `okta` - Okta * `patreon` - Patreon * `reddit` - Reddit * `twitch` - Twitch * `twitter` - Twitter
+// ProviderTypeEnum * `apple` - Apple * `openidconnect` - OpenID Connect * `azuread` - Azure AD * `discord` - Discord * `facebook` - Facebook * `github` - GitHub * `gitlab` - GitLab * `google` - Google * `mailcow` - Mailcow * `okta` - Okta * `patreon` - Patreon * `reddit` - Reddit * `twitch` - Twitch * `twitter` - Twitter
 type ProviderTypeEnum string
 
 // List of ProviderTypeEnum
@@ -27,6 +27,7 @@ const (
 	PROVIDERTYPEENUM_DISCORD       ProviderTypeEnum = "discord"
 	PROVIDERTYPEENUM_FACEBOOK      ProviderTypeEnum = "facebook"
 	PROVIDERTYPEENUM_GITHUB        ProviderTypeEnum = "github"
+	PROVIDERTYPEENUM_GITLAB        ProviderTypeEnum = "gitlab"
 	PROVIDERTYPEENUM_GOOGLE        ProviderTypeEnum = "google"
 	PROVIDERTYPEENUM_MAILCOW       ProviderTypeEnum = "mailcow"
 	PROVIDERTYPEENUM_OKTA          ProviderTypeEnum = "okta"
@@ -44,6 +45,7 @@ var AllowedProviderTypeEnumEnumValues = []ProviderTypeEnum{
 	"discord",
 	"facebook",
 	"github",
+	"gitlab",
 	"google",
 	"mailcow",
 	"okta",

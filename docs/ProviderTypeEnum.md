@@ -15,6 +15,8 @@
 
 * `GITHUB` (value: `"github"`)
 
+* `GITLAB` (value: `"gitlab"`)
+
 * `GOOGLE` (value: `"google"`)
 
 * `MAILCOW` (value: `"mailcow"`)
