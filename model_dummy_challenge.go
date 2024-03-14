@@ -21,17 +21,19 @@ type DummyChallenge struct {
 	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
 	Component      *string                   `json:"component,omitempty"`
 	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	Name           string                    `json:"name"`
 }
 
 // NewDummyChallenge instantiates a new DummyChallenge object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDummyChallenge(type_ ChallengeChoices) *DummyChallenge {
+func NewDummyChallenge(type_ ChallengeChoices, name string) *DummyChallenge {
 	this := DummyChallenge{}
 	this.Type = type_
 	var component string = "ak-stage-dummy"
 	this.Component = &component
+	this.Name = name
 	return &this
 }
 
@@ -165,6 +167,30 @@ func (o *DummyChallenge) SetResponseErrors(v map[string][]ErrorDetail) {
 	o.ResponseErrors = &v
 }
 
+// GetName returns the Name field value
+func (o *DummyChallenge) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *DummyChallenge) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *DummyChallenge) SetName(v string) {
+	o.Name = v
+}
+
 func (o DummyChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -178,6 +204,9 @@ func (o DummyChallenge) MarshalJSON() ([]byte, error) {
 	}
 	if o.ResponseErrors != nil {
 		toSerialize["response_errors"] = o.ResponseErrors
+	}
+	if true {
+		toSerialize["name"] = o.Name
 	}
 	return json.Marshal(toSerialize)
 }

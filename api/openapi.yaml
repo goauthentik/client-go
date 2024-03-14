@@ -20623,6 +20623,7 @@ paths:
           * `authentik_providers_rac.racprovider` - RAC Provider
           * `authentik_providers_rac.endpoint` - RAC Endpoint
           * `authentik_providers_rac.racpropertymapping` - RAC Property Mapping
+          * `authentik_stages_source.sourcestage` - Source Stage
           * `authentik_events.event` - Event
           * `authentik_events.notificationtransport` - Notification Transport
           * `authentik_events.notification` - Notification
@@ -20703,6 +20704,7 @@ paths:
           - authentik_stages_password.passwordstage
           - authentik_stages_prompt.prompt
           - authentik_stages_prompt.promptstage
+          - authentik_stages_source.sourcestage
           - authentik_stages_user_delete.userdeletestage
           - authentik_stages_user_login.userloginstage
           - authentik_stages_user_logout.userlogoutstage
@@ -20928,6 +20930,7 @@ paths:
           * `authentik_providers_rac.racprovider` - RAC Provider
           * `authentik_providers_rac.endpoint` - RAC Endpoint
           * `authentik_providers_rac.racpropertymapping` - RAC Property Mapping
+          * `authentik_stages_source.sourcestage` - Source Stage
           * `authentik_events.event` - Event
           * `authentik_events.notificationtransport` - Notification Transport
           * `authentik_events.notification` - Notification
@@ -21008,6 +21011,7 @@ paths:
           - authentik_stages_password.passwordstage
           - authentik_stages_prompt.prompt
           - authentik_stages_prompt.promptstage
+          - authentik_stages_source.sourcestage
           - authentik_stages_user_delete.userdeletestage
           - authentik_stages_user_login.userloginstage
           - authentik_stages_user_logout.userlogoutstage
@@ -31053,6 +31057,319 @@ paths:
       - authentik: []
       tags:
       - stages
+  /stages/source/:
+    get:
+      description: SourceStage Viewset
+      operationId: stages_source_list
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: resume_timeout
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: source
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: stage_uuid
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSourceStageList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    post:
+      description: SourceStage Viewset
+      operationId: stages_source_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SourceStageRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+  /stages/source/{stage_uuid}/:
+    delete:
+      description: SourceStage Viewset
+      operationId: stages_source_destroy
+      parameters:
+      - description: A UUID string identifying this Source Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    get:
+      description: SourceStage Viewset
+      operationId: stages_source_retrieve
+      parameters:
+      - description: A UUID string identifying this Source Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    patch:
+      description: SourceStage Viewset
+      operationId: stages_source_partial_update
+      parameters:
+      - description: A UUID string identifying this Source Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSourceStageRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    put:
+      description: SourceStage Viewset
+      operationId: stages_source_update
+      parameters:
+      - description: A UUID string identifying this Source Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SourceStageRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+  /stages/source/{stage_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: stages_source_used_by_list
+      parameters:
+      - description: A UUID string identifying this Source Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
   /stages/user_delete/:
     get:
       description: UserDeleteStage Viewset
@@ -32988,6 +33305,7 @@ components:
         * `authentik.enterprise` - authentik Enterprise
         * `authentik.enterprise.audit` - authentik Enterprise.Audit
         * `authentik.enterprise.providers.rac` - authentik Enterprise.Providers.RAC
+        * `authentik.enterprise.stages.source` - authentik Enterprise.Stages.Source
         * `authentik.events` - authentik Events
       enum:
       - authentik.tenants
@@ -33041,6 +33359,7 @@ components:
       - authentik.enterprise
       - authentik.enterprise.audit
       - authentik.enterprise.providers.rac
+      - authentik.enterprise.stages.source
       - authentik.events
       type: string
     AppleChallengeResponseRequest:
@@ -36111,7 +36430,10 @@ components:
               $ref: '#/components/schemas/ErrorDetail'
             type: array
           type: object
+        name:
+          type: string
       required:
+      - name
       - type
       type: object
     DummyChallengeResponseRequest:
@@ -37003,6 +37325,7 @@ components:
             * `authentik.enterprise` - authentik Enterprise
             * `authentik.enterprise.audit` - authentik Enterprise.Audit
             * `authentik.enterprise.providers.rac` - authentik Enterprise.Providers.RAC
+            * `authentik.enterprise.stages.source` - authentik Enterprise.Stages.Source
             * `authentik.events` - authentik Events
           nullable: true
         model:
@@ -37080,6 +37403,7 @@ components:
             * `authentik_providers_rac.racprovider` - RAC Provider
             * `authentik_providers_rac.endpoint` - RAC Endpoint
             * `authentik_providers_rac.racpropertymapping` - RAC Property Mapping
+            * `authentik_stages_source.sourcestage` - Source Stage
             * `authentik_events.event` - Event
             * `authentik_events.notificationtransport` - Notification Transport
             * `authentik_events.notification` - Notification
@@ -37209,6 +37533,7 @@ components:
             * `authentik.enterprise` - authentik Enterprise
             * `authentik.enterprise.audit` - authentik Enterprise.Audit
             * `authentik.enterprise.providers.rac` - authentik Enterprise.Providers.RAC
+            * `authentik.enterprise.stages.source` - authentik Enterprise.Stages.Source
             * `authentik.events` - authentik Events
           nullable: true
         model:
@@ -37286,6 +37611,7 @@ components:
             * `authentik_providers_rac.racprovider` - RAC Provider
             * `authentik_providers_rac.endpoint` - RAC Endpoint
             * `authentik_providers_rac.racpropertymapping` - RAC Property Mapping
+            * `authentik_stages_source.sourcestage` - Source Stage
             * `authentik_events.event` - Event
             * `authentik_events.notificationtransport` - Notification Transport
             * `authentik_events.notification` - Notification
@@ -40286,6 +40612,7 @@ components:
         * `authentik_providers_rac.racprovider` - RAC Provider
         * `authentik_providers_rac.endpoint` - RAC Endpoint
         * `authentik_providers_rac.racpropertymapping` - RAC Property Mapping
+        * `authentik_stages_source.sourcestage` - Source Stage
         * `authentik_events.event` - Event
         * `authentik_events.notificationtransport` - Notification Transport
         * `authentik_events.notification` - Notification
@@ -40361,6 +40688,7 @@ components:
       - authentik_providers_rac.racprovider
       - authentik_providers_rac.endpoint
       - authentik_providers_rac.racpropertymapping
+      - authentik_stages_source.sourcestage
       - authentik_events.event
       - authentik_events.notificationtransport
       - authentik_events.notification
@@ -46540,6 +46868,94 @@ components:
       - pagination
       - results
       type: object
+    PaginatedSourceStageList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - component: component
+          verbose_name: verbose_name
+          resume_timeout: resume_timeout
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          flow_set:
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+        - component: component
+          verbose_name: verbose_name
+          resume_timeout: resume_timeout
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          flow_set:
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/SourceStage'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedStageList:
       example:
         pagination:
@@ -49285,6 +49701,7 @@ components:
             * `authentik.enterprise` - authentik Enterprise
             * `authentik.enterprise.audit` - authentik Enterprise.Audit
             * `authentik.enterprise.providers.rac` - authentik Enterprise.Providers.RAC
+            * `authentik.enterprise.stages.source` - authentik Enterprise.Stages.Source
             * `authentik.events` - authentik Events
           nullable: true
         model:
@@ -49362,6 +49779,7 @@ components:
             * `authentik_providers_rac.racprovider` - RAC Provider
             * `authentik_providers_rac.endpoint` - RAC Endpoint
             * `authentik_providers_rac.racpropertymapping` - RAC Property Mapping
+            * `authentik_stages_source.sourcestage` - Source Stage
             * `authentik_events.event` - Event
             * `authentik_events.notificationtransport` - Notification Transport
             * `authentik_events.notification` - Notification
@@ -51476,6 +51894,46 @@ components:
         impersonation:
           description: Globally enable/disable impersonation.
           type: boolean
+      type: object
+    PatchedSourceStageRequest:
+      description: SourceStage Serializer
+      example:
+        resume_timeout: resume_timeout
+        name: name
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        flow_set:
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+      properties:
+        name:
+          minLength: 1
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/FlowSetRequest'
+          type: array
+        source:
+          format: uuid
+          type: string
+        resume_timeout:
+          description: "Amount of time a user can take to return from the source to\
+            \ continue the flow (Format: hours=-1;minutes=-2;seconds=-3)"
+          minLength: 1
+          type: string
       type: object
     PatchedStaticDeviceRequest:
       description: Serializer for static authenticator devices
@@ -55853,6 +56311,129 @@ components:
       required:
       - name
       - slug
+      type: object
+    SourceStage:
+      description: SourceStage Serializer
+      example:
+        component: component
+        verbose_name: verbose_name
+        resume_timeout: resume_timeout
+        verbose_name_plural: verbose_name_plural
+        meta_model_name: meta_model_name
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        flow_set:
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          background: background
+          denied_action: ""
+          name: name
+          export_url: export_url
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          designation: ""
+          title: title
+          slug: slug
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          background: background
+          denied_action: ""
+          name: name
+          export_url: export_url
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          designation: ""
+          title: title
+          slug: slug
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Stage uuid
+          type: string
+        name:
+          type: string
+        component:
+          description: Get object type so that we know how to edit the object
+          readOnly: true
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/FlowSet'
+          type: array
+        source:
+          format: uuid
+          type: string
+        resume_timeout:
+          description: "Amount of time a user can take to return from the source to\
+            \ continue the flow (Format: hours=-1;minutes=-2;seconds=-3)"
+          type: string
+      required:
+      - component
+      - meta_model_name
+      - name
+      - pk
+      - source
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    SourceStageRequest:
+      description: SourceStage Serializer
+      example:
+        resume_timeout: resume_timeout
+        name: name
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        flow_set:
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+      properties:
+        name:
+          minLength: 1
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/FlowSetRequest'
+          type: array
+        source:
+          format: uuid
+          type: string
+        resume_timeout:
+          description: "Amount of time a user can take to return from the source to\
+            \ continue the flow (Format: hours=-1;minutes=-2;seconds=-3)"
+          minLength: 1
+          type: string
+      required:
+      - name
+      - source
       type: object
     SourceType:
       description: Serializer for SourceType

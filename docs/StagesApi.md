@@ -134,6 +134,13 @@ Method | HTTP request | Description
 [**StagesPromptStagesRetrieve**](StagesApi.md#StagesPromptStagesRetrieve) | **Get** /stages/prompt/stages/{stage_uuid}/ | 
 [**StagesPromptStagesUpdate**](StagesApi.md#StagesPromptStagesUpdate) | **Put** /stages/prompt/stages/{stage_uuid}/ | 
 [**StagesPromptStagesUsedByList**](StagesApi.md#StagesPromptStagesUsedByList) | **Get** /stages/prompt/stages/{stage_uuid}/used_by/ | 
+[**StagesSourceCreate**](StagesApi.md#StagesSourceCreate) | **Post** /stages/source/ | 
+[**StagesSourceDestroy**](StagesApi.md#StagesSourceDestroy) | **Delete** /stages/source/{stage_uuid}/ | 
+[**StagesSourceList**](StagesApi.md#StagesSourceList) | **Get** /stages/source/ | 
+[**StagesSourcePartialUpdate**](StagesApi.md#StagesSourcePartialUpdate) | **Patch** /stages/source/{stage_uuid}/ | 
+[**StagesSourceRetrieve**](StagesApi.md#StagesSourceRetrieve) | **Get** /stages/source/{stage_uuid}/ | 
+[**StagesSourceUpdate**](StagesApi.md#StagesSourceUpdate) | **Put** /stages/source/{stage_uuid}/ | 
+[**StagesSourceUsedByList**](StagesApi.md#StagesSourceUsedByList) | **Get** /stages/source/{stage_uuid}/used_by/ | 
 [**StagesUserDeleteCreate**](StagesApi.md#StagesUserDeleteCreate) | **Post** /stages/user_delete/ | 
 [**StagesUserDeleteDestroy**](StagesApi.md#StagesUserDeleteDestroy) | **Delete** /stages/user_delete/{stage_uuid}/ | 
 [**StagesUserDeleteList**](StagesApi.md#StagesUserDeleteList) | **Get** /stages/user_delete/ | 
@@ -9393,6 +9400,504 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStagesPromptStagesUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesSourceCreate
+
+> SourceStage StagesSourceCreate(ctx).SourceStageRequest(sourceStageRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    sourceStageRequest := *openapiclient.NewSourceStageRequest("Name_example", "Source_example") // SourceStageRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesSourceCreate(context.Background()).SourceStageRequest(sourceStageRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesSourceCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesSourceCreate`: SourceStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesSourceCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesSourceCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sourceStageRequest** | [**SourceStageRequest**](SourceStageRequest.md) |  | 
+
+### Return type
+
+[**SourceStage**](SourceStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesSourceDestroy
+
+> StagesSourceDestroy(ctx, stageUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Source Stage.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesSourceDestroy(context.Background(), stageUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesSourceDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Source Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesSourceDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesSourceList
+
+> PaginatedSourceStageList StagesSourceList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ResumeTimeout(resumeTimeout).Search(search).Source(source).StageUuid(stageUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    resumeTimeout := "resumeTimeout_example" // string |  (optional)
+    search := "search_example" // string | A search term. (optional)
+    source := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesSourceList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ResumeTimeout(resumeTimeout).Search(search).Source(source).StageUuid(stageUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesSourceList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesSourceList`: PaginatedSourceStageList
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesSourceList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesSourceListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **resumeTimeout** | **string** |  | 
+ **search** | **string** | A search term. | 
+ **source** | **string** |  | 
+ **stageUuid** | **string** |  | 
+
+### Return type
+
+[**PaginatedSourceStageList**](PaginatedSourceStageList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesSourcePartialUpdate
+
+> SourceStage StagesSourcePartialUpdate(ctx, stageUuid).PatchedSourceStageRequest(patchedSourceStageRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Source Stage.
+    patchedSourceStageRequest := *openapiclient.NewPatchedSourceStageRequest() // PatchedSourceStageRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesSourcePartialUpdate(context.Background(), stageUuid).PatchedSourceStageRequest(patchedSourceStageRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesSourcePartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesSourcePartialUpdate`: SourceStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesSourcePartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Source Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesSourcePartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedSourceStageRequest** | [**PatchedSourceStageRequest**](PatchedSourceStageRequest.md) |  | 
+
+### Return type
+
+[**SourceStage**](SourceStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesSourceRetrieve
+
+> SourceStage StagesSourceRetrieve(ctx, stageUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Source Stage.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesSourceRetrieve(context.Background(), stageUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesSourceRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesSourceRetrieve`: SourceStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesSourceRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Source Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesSourceRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SourceStage**](SourceStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesSourceUpdate
+
+> SourceStage StagesSourceUpdate(ctx, stageUuid).SourceStageRequest(sourceStageRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Source Stage.
+    sourceStageRequest := *openapiclient.NewSourceStageRequest("Name_example", "Source_example") // SourceStageRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesSourceUpdate(context.Background(), stageUuid).SourceStageRequest(sourceStageRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesSourceUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesSourceUpdate`: SourceStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesSourceUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Source Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesSourceUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **sourceStageRequest** | [**SourceStageRequest**](SourceStageRequest.md) |  | 
+
+### Return type
+
+[**SourceStage**](SourceStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesSourceUsedByList
+
+> []UsedBy StagesSourceUsedByList(ctx, stageUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Source Stage.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesSourceUsedByList(context.Background(), stageUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesSourceUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesSourceUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesSourceUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Source Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesSourceUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

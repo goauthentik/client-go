@@ -707,6 +707,13 @@ Class | Method | HTTP request | Description
 *StagesApi* | [**StagesPromptStagesRetrieve**](docs/StagesApi.md#stagespromptstagesretrieve) | **Get** /stages/prompt/stages/{stage_uuid}/ | 
 *StagesApi* | [**StagesPromptStagesUpdate**](docs/StagesApi.md#stagespromptstagesupdate) | **Put** /stages/prompt/stages/{stage_uuid}/ | 
 *StagesApi* | [**StagesPromptStagesUsedByList**](docs/StagesApi.md#stagespromptstagesusedbylist) | **Get** /stages/prompt/stages/{stage_uuid}/used_by/ | 
+*StagesApi* | [**StagesSourceCreate**](docs/StagesApi.md#stagessourcecreate) | **Post** /stages/source/ | 
+*StagesApi* | [**StagesSourceDestroy**](docs/StagesApi.md#stagessourcedestroy) | **Delete** /stages/source/{stage_uuid}/ | 
+*StagesApi* | [**StagesSourceList**](docs/StagesApi.md#stagessourcelist) | **Get** /stages/source/ | 
+*StagesApi* | [**StagesSourcePartialUpdate**](docs/StagesApi.md#stagessourcepartialupdate) | **Patch** /stages/source/{stage_uuid}/ | 
+*StagesApi* | [**StagesSourceRetrieve**](docs/StagesApi.md#stagessourceretrieve) | **Get** /stages/source/{stage_uuid}/ | 
+*StagesApi* | [**StagesSourceUpdate**](docs/StagesApi.md#stagessourceupdate) | **Put** /stages/source/{stage_uuid}/ | 
+*StagesApi* | [**StagesSourceUsedByList**](docs/StagesApi.md#stagessourceusedbylist) | **Get** /stages/source/{stage_uuid}/used_by/ | 
 *StagesApi* | [**StagesUserDeleteCreate**](docs/StagesApi.md#stagesuserdeletecreate) | **Post** /stages/user_delete/ | 
 *StagesApi* | [**StagesUserDeleteDestroy**](docs/StagesApi.md#stagesuserdeletedestroy) | **Delete** /stages/user_delete/{stage_uuid}/ | 
 *StagesApi* | [**StagesUserDeleteList**](docs/StagesApi.md#stagesuserdeletelist) | **Get** /stages/user_delete/ | 
@@ -1038,6 +1045,7 @@ Class | Method | HTTP request | Description
  - [PaginatedScopeMappingList](docs/PaginatedScopeMappingList.md)
  - [PaginatedServiceConnectionList](docs/PaginatedServiceConnectionList.md)
  - [PaginatedSourceList](docs/PaginatedSourceList.md)
+ - [PaginatedSourceStageList](docs/PaginatedSourceStageList.md)
  - [PaginatedStageList](docs/PaginatedStageList.md)
  - [PaginatedStaticDeviceList](docs/PaginatedStaticDeviceList.md)
  - [PaginatedSystemTaskList](docs/PaginatedSystemTaskList.md)
@@ -1130,6 +1138,7 @@ Class | Method | HTTP request | Description
  - [PatchedSMSDeviceRequest](docs/PatchedSMSDeviceRequest.md)
  - [PatchedScopeMappingRequest](docs/PatchedScopeMappingRequest.md)
  - [PatchedSettingsRequest](docs/PatchedSettingsRequest.md)
+ - [PatchedSourceStageRequest](docs/PatchedSourceStageRequest.md)
  - [PatchedStaticDeviceRequest](docs/PatchedStaticDeviceRequest.md)
  - [PatchedTOTPDeviceRequest](docs/PatchedTOTPDeviceRequest.md)
  - [PatchedTenantRequest](docs/PatchedTenantRequest.md)
@@ -1222,6 +1231,8 @@ Class | Method | HTTP request | Description
  - [SignatureAlgorithmEnum](docs/SignatureAlgorithmEnum.md)
  - [Source](docs/Source.md)
  - [SourceRequest](docs/SourceRequest.md)
+ - [SourceStage](docs/SourceStage.md)
+ - [SourceStageRequest](docs/SourceStageRequest.md)
  - [SourceType](docs/SourceType.md)
  - [SpBindingEnum](docs/SpBindingEnum.md)
  - [Stage](docs/Stage.md)

@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **Permissions** | [**[]ConsentPermission**](ConsentPermission.md) |  | 
 **AdditionalPermissions** | [**[]ConsentPermission**](ConsentPermission.md) |  | 
 **Token** | **string** |  | 
+**Name** | **string** |  | 
 **RequestId** | **string** |  | 
 **Error** | Pointer to **string** |  | [optional] 
 **Traceback** | Pointer to **string** |  | [optional] 
@@ -54,7 +55,7 @@ Name | Type | Description | Notes
 
 ### NewChallengeTypes
 
-`func NewChallengeTypes(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, requestId string, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
+`func NewChallengeTypes(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, name string, requestId string, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
 
 NewChallengeTypes instantiates a new ChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -682,6 +683,26 @@ and a boolean to check if the value has been set.
 `func (o *ChallengeTypes) SetToken(v string)`
 
 SetToken sets Token field to given value.
+
+
+### GetName
+
+`func (o *ChallengeTypes) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *ChallengeTypes) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *ChallengeTypes) SetName(v string)`
+
+SetName sets Name field to given value.
 
 
 ### GetRequestId

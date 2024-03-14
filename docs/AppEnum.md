@@ -105,6 +105,8 @@
 
 * `ENTERPRISE_PROVIDERS_RAC` (value: `"authentik.enterprise.providers.rac"`)
 
+* `ENTERPRISE_STAGES_SOURCE` (value: `"authentik.enterprise.stages.source"`)
+
 * `EVENTS` (value: `"authentik.events"`)
 
 

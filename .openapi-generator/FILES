@@ -319,6 +319,7 @@ docs/PaginatedSMSDeviceList.md
 docs/PaginatedScopeMappingList.md
 docs/PaginatedServiceConnectionList.md
 docs/PaginatedSourceList.md
+docs/PaginatedSourceStageList.md
 docs/PaginatedStageList.md
 docs/PaginatedStaticDeviceList.md
 docs/PaginatedSystemTaskList.md
@@ -411,6 +412,7 @@ docs/PatchedSCIMProviderRequest.md
 docs/PatchedSMSDeviceRequest.md
 docs/PatchedScopeMappingRequest.md
 docs/PatchedSettingsRequest.md
+docs/PatchedSourceStageRequest.md
 docs/PatchedStaticDeviceRequest.md
 docs/PatchedTOTPDeviceRequest.md
 docs/PatchedTenantRequest.md
@@ -510,6 +512,8 @@ docs/ShellChallenge.md
 docs/SignatureAlgorithmEnum.md
 docs/Source.md
 docs/SourceRequest.md
+docs/SourceStage.md
+docs/SourceStageRequest.md
 docs/SourceType.md
 docs/SourcesApi.md
 docs/SpBindingEnum.md
@@ -874,6 +878,7 @@ model_paginated_scope_mapping_list.go
 model_paginated_service_connection_list.go
 model_paginated_sms_device_list.go
 model_paginated_source_list.go
+model_paginated_source_stage_list.go
 model_paginated_stage_list.go
 model_paginated_static_device_list.go
 model_paginated_system_task_list.go
@@ -966,6 +971,7 @@ model_patched_scim_provider_request.go
 model_patched_scope_mapping_request.go
 model_patched_settings_request.go
 model_patched_sms_device_request.go
+model_patched_source_stage_request.go
 model_patched_static_device_request.go
 model_patched_tenant_request.go
 model_patched_token_request.go
@@ -1058,6 +1064,8 @@ model_sms_device.go
 model_sms_device_request.go
 model_source.go
 model_source_request.go
+model_source_stage.go
+model_source_stage_request.go
 model_source_type.go
 model_sp_binding_enum.go
 model_stage.go

@@ -141,6 +141,8 @@
 
 * `PROVIDERS_RAC_RACPROPERTYMAPPING` (value: `"authentik_providers_rac.racpropertymapping"`)
 
+* `STAGES_SOURCE_SOURCESTAGE` (value: `"authentik_stages_source.sourcestage"`)
+
 * `EVENTS_EVENT` (value: `"authentik_events.event"`)
 
 * `EVENTS_NOTIFICATIONTRANSPORT` (value: `"authentik_events.notificationtransport"`)
