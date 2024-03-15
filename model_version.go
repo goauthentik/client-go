@@ -21,6 +21,8 @@ type Version struct {
 	VersionCurrent string `json:"version_current"`
 	// Get latest version from cache
 	VersionLatest string `json:"version_latest"`
+	// Latest version query is a valid non-default value
+	VersionLatestValid bool `json:"version_latest_valid"`
 	// Get build hash, if version is not latest or released
 	BuildHash string `json:"build_hash"`
 	// Check if we're running the latest version
@@ -31,10 +33,11 @@ type Version struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVersion(versionCurrent string, versionLatest string, buildHash string, outdated bool) *Version {
+func NewVersion(versionCurrent string, versionLatest string, versionLatestValid bool, buildHash string, outdated bool) *Version {
 	this := Version{}
 	this.VersionCurrent = versionCurrent
 	this.VersionLatest = versionLatest
+	this.VersionLatestValid = versionLatestValid
 	this.BuildHash = buildHash
 	this.Outdated = outdated
 	return &this
@@ -96,6 +99,30 @@ func (o *Version) SetVersionLatest(v string) {
 	o.VersionLatest = v
 }
 
+// GetVersionLatestValid returns the VersionLatestValid field value
+func (o *Version) GetVersionLatestValid() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.VersionLatestValid
+}
+
+// GetVersionLatestValidOk returns a tuple with the VersionLatestValid field value
+// and a boolean to check if the value has been set.
+func (o *Version) GetVersionLatestValidOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.VersionLatestValid, true
+}
+
+// SetVersionLatestValid sets field value
+func (o *Version) SetVersionLatestValid(v bool) {
+	o.VersionLatestValid = v
+}
+
 // GetBuildHash returns the BuildHash field value
 func (o *Version) GetBuildHash() string {
 	if o == nil {
@@ -151,6 +178,9 @@ func (o Version) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["version_latest"] = o.VersionLatest
+	}
+	if true {
+		toSerialize["version_latest_valid"] = o.VersionLatestValid
 	}
 	if true {
 		toSerialize["build_hash"] = o.BuildHash

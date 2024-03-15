@@ -58753,6 +58753,7 @@ components:
       example:
         version_current: version_current
         outdated: true
+        version_latest_valid: true
         version_latest: version_latest
         build_hash: build_hash
       properties:
@@ -58764,6 +58765,10 @@ components:
           description: Get latest version from cache
           readOnly: true
           type: string
+        version_latest_valid:
+          description: Latest version query is a valid non-default value
+          readOnly: true
+          type: boolean
         build_hash:
           description: "Get build hash, if version is not latest or released"
           readOnly: true
@@ -58777,6 +58782,7 @@ components:
       - outdated
       - version_current
       - version_latest
+      - version_latest_valid
       type: object
     WebAuthnDevice:
       description: Serializer for WebAuthn authenticator devices

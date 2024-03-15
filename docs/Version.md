@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **VersionCurrent** | **string** | Get current version | [readonly] 
 **VersionLatest** | **string** | Get latest version from cache | [readonly] 
+**VersionLatestValid** | **bool** | Latest version query is a valid non-default value | [readonly] 
 **BuildHash** | **string** | Get build hash, if version is not latest or released | [readonly] 
 **Outdated** | **bool** | Check if we&#39;re running the latest version | [readonly] 
 
@@ -13,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewVersion
 
-`func NewVersion(versionCurrent string, versionLatest string, buildHash string, outdated bool, ) *Version`
+`func NewVersion(versionCurrent string, versionLatest string, versionLatestValid bool, buildHash string, outdated bool, ) *Version`
 
 NewVersion instantiates a new Version object
 This constructor will assign default values to properties that have it defined,
@@ -66,6 +67,26 @@ and a boolean to check if the value has been set.
 `func (o *Version) SetVersionLatest(v string)`
 
 SetVersionLatest sets VersionLatest field to given value.
+
+
+### GetVersionLatestValid
+
+`func (o *Version) GetVersionLatestValid() bool`
+
+GetVersionLatestValid returns the VersionLatestValid field if non-nil, zero value otherwise.
+
+### GetVersionLatestValidOk
+
+`func (o *Version) GetVersionLatestValidOk() (*bool, bool)`
+
+GetVersionLatestValidOk returns a tuple with the VersionLatestValid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersionLatestValid
+
+`func (o *Version) SetVersionLatestValid(v bool)`
+
+SetVersionLatestValid sets VersionLatestValid field to given value.
 
 
 ### GetBuildHash
