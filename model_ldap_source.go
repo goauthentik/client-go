@@ -64,7 +64,9 @@ type LDAPSource struct {
 	GroupMembershipField *string `json:"group_membership_field,omitempty"`
 	// Field which contains a unique Identifier.
 	ObjectUniquenessField *string `json:"object_uniqueness_field,omitempty"`
-	SyncUsers             *bool   `json:"sync_users,omitempty"`
+	// Update internal authentik password when login succeeds with LDAP
+	PasswordLoginUpdateInternalPassword *bool `json:"password_login_update_internal_password,omitempty"`
+	SyncUsers                           *bool `json:"sync_users,omitempty"`
 	// When a user changes their password, sync it back to LDAP. This can only be enabled on a single LDAP source.
 	SyncUsersPassword *bool          `json:"sync_users_password,omitempty"`
 	SyncGroups        *bool          `json:"sync_groups,omitempty"`
@@ -961,6 +963,38 @@ func (o *LDAPSource) SetObjectUniquenessField(v string) {
 	o.ObjectUniquenessField = &v
 }
 
+// GetPasswordLoginUpdateInternalPassword returns the PasswordLoginUpdateInternalPassword field value if set, zero value otherwise.
+func (o *LDAPSource) GetPasswordLoginUpdateInternalPassword() bool {
+	if o == nil || o.PasswordLoginUpdateInternalPassword == nil {
+		var ret bool
+		return ret
+	}
+	return *o.PasswordLoginUpdateInternalPassword
+}
+
+// GetPasswordLoginUpdateInternalPasswordOk returns a tuple with the PasswordLoginUpdateInternalPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LDAPSource) GetPasswordLoginUpdateInternalPasswordOk() (*bool, bool) {
+	if o == nil || o.PasswordLoginUpdateInternalPassword == nil {
+		return nil, false
+	}
+	return o.PasswordLoginUpdateInternalPassword, true
+}
+
+// HasPasswordLoginUpdateInternalPassword returns a boolean if a field has been set.
+func (o *LDAPSource) HasPasswordLoginUpdateInternalPassword() bool {
+	if o != nil && o.PasswordLoginUpdateInternalPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordLoginUpdateInternalPassword gets a reference to the given bool and assigns it to the PasswordLoginUpdateInternalPassword field.
+func (o *LDAPSource) SetPasswordLoginUpdateInternalPassword(v bool) {
+	o.PasswordLoginUpdateInternalPassword = &v
+}
+
 // GetSyncUsers returns the SyncUsers field value if set, zero value otherwise.
 func (o *LDAPSource) GetSyncUsers() bool {
 	if o == nil || o.SyncUsers == nil {
@@ -1275,6 +1309,9 @@ func (o LDAPSource) MarshalJSON() ([]byte, error) {
 	}
 	if o.ObjectUniquenessField != nil {
 		toSerialize["object_uniqueness_field"] = o.ObjectUniquenessField
+	}
+	if o.PasswordLoginUpdateInternalPassword != nil {
+		toSerialize["password_login_update_internal_password"] = o.PasswordLoginUpdateInternalPassword
 	}
 	if o.SyncUsers != nil {
 		toSerialize["sync_users"] = o.SyncUsers

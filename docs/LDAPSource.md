@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **GroupObjectFilter** | Pointer to **string** | Consider Objects matching this filter to be Groups. | [optional] 
 **GroupMembershipField** | Pointer to **string** | Field which contains members of a group. | [optional] 
 **ObjectUniquenessField** | Pointer to **string** | Field which contains a unique Identifier. | [optional] 
+**PasswordLoginUpdateInternalPassword** | Pointer to **bool** | Update internal authentik password when login succeeds with LDAP | [optional] 
 **SyncUsers** | Pointer to **bool** |  | [optional] 
 **SyncUsersPassword** | Pointer to **bool** | When a user changes their password, sync it back to LDAP. This can only be enabled on a single LDAP source. | [optional] 
 **SyncGroups** | Pointer to **bool** |  | [optional] 
@@ -763,6 +764,31 @@ SetObjectUniquenessField sets ObjectUniquenessField field to given value.
 `func (o *LDAPSource) HasObjectUniquenessField() bool`
 
 HasObjectUniquenessField returns a boolean if a field has been set.
+
+### GetPasswordLoginUpdateInternalPassword
+
+`func (o *LDAPSource) GetPasswordLoginUpdateInternalPassword() bool`
+
+GetPasswordLoginUpdateInternalPassword returns the PasswordLoginUpdateInternalPassword field if non-nil, zero value otherwise.
+
+### GetPasswordLoginUpdateInternalPasswordOk
+
+`func (o *LDAPSource) GetPasswordLoginUpdateInternalPasswordOk() (*bool, bool)`
+
+GetPasswordLoginUpdateInternalPasswordOk returns a tuple with the PasswordLoginUpdateInternalPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordLoginUpdateInternalPassword
+
+`func (o *LDAPSource) SetPasswordLoginUpdateInternalPassword(v bool)`
+
+SetPasswordLoginUpdateInternalPassword sets PasswordLoginUpdateInternalPassword field to given value.
+
+### HasPasswordLoginUpdateInternalPassword
+
+`func (o *LDAPSource) HasPasswordLoginUpdateInternalPassword() bool`
+
+HasPasswordLoginUpdateInternalPassword returns a boolean if a field has been set.
 
 ### GetSyncUsers
 

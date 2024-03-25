@@ -1570,34 +1570,35 @@ func (a *SourcesApiService) SourcesLdapDestroyExecute(r ApiSourcesLdapDestroyReq
 }
 
 type ApiSourcesLdapListRequest struct {
-	ctx                   context.Context
-	ApiService            *SourcesApiService
-	additionalGroupDn     *string
-	additionalUserDn      *string
-	baseDn                *string
-	bindCn                *string
-	clientCertificate     *string
-	enabled               *bool
-	groupMembershipField  *string
-	groupObjectFilter     *string
-	name                  *string
-	objectUniquenessField *string
-	ordering              *string
-	page                  *int32
-	pageSize              *int32
-	peerCertificate       *string
-	propertyMappings      *[]string
-	propertyMappingsGroup *[]string
-	search                *string
-	serverUri             *string
-	slug                  *string
-	sni                   *bool
-	startTls              *bool
-	syncGroups            *bool
-	syncParentGroup       *string
-	syncUsers             *bool
-	syncUsersPassword     *bool
-	userObjectFilter      *string
+	ctx                                 context.Context
+	ApiService                          *SourcesApiService
+	additionalGroupDn                   *string
+	additionalUserDn                    *string
+	baseDn                              *string
+	bindCn                              *string
+	clientCertificate                   *string
+	enabled                             *bool
+	groupMembershipField                *string
+	groupObjectFilter                   *string
+	name                                *string
+	objectUniquenessField               *string
+	ordering                            *string
+	page                                *int32
+	pageSize                            *int32
+	passwordLoginUpdateInternalPassword *bool
+	peerCertificate                     *string
+	propertyMappings                    *[]string
+	propertyMappingsGroup               *[]string
+	search                              *string
+	serverUri                           *string
+	slug                                *string
+	sni                                 *bool
+	startTls                            *bool
+	syncGroups                          *bool
+	syncParentGroup                     *string
+	syncUsers                           *bool
+	syncUsersPassword                   *bool
+	userObjectFilter                    *string
 }
 
 func (r ApiSourcesLdapListRequest) AdditionalGroupDn(additionalGroupDn string) ApiSourcesLdapListRequest {
@@ -1665,6 +1666,11 @@ func (r ApiSourcesLdapListRequest) Page(page int32) ApiSourcesLdapListRequest {
 // Number of results to return per page.
 func (r ApiSourcesLdapListRequest) PageSize(pageSize int32) ApiSourcesLdapListRequest {
 	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiSourcesLdapListRequest) PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword bool) ApiSourcesLdapListRequest {
+	r.passwordLoginUpdateInternalPassword = &passwordLoginUpdateInternalPassword
 	return r
 }
 
@@ -1813,6 +1819,9 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 	}
 	if r.pageSize != nil {
 		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.passwordLoginUpdateInternalPassword != nil {
+		localVarQueryParams.Add("password_login_update_internal_password", parameterToString(*r.passwordLoginUpdateInternalPassword, ""))
 	}
 	if r.peerCertificate != nil {
 		localVarQueryParams.Add("peer_certificate", parameterToString(*r.peerCertificate, ""))

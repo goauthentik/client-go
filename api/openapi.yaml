@@ -22187,6 +22187,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: password_login_update_internal_password
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
         name: peer_certificate
         required: false
         schema:
@@ -39982,6 +39989,7 @@ components:
         sync_groups: true
         group_object_filter: group_object_filter
         sni: true
+        password_login_update_internal_password: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -40111,6 +40119,10 @@ components:
         object_uniqueness_field:
           description: Field which contains a unique Identifier.
           type: string
+        password_login_update_internal_password:
+          description: Update internal authentik password when login succeeds with
+            LDAP
+          type: boolean
         sync_users:
           type: boolean
         sync_users_password:
@@ -40184,6 +40196,7 @@ components:
         sync_groups: true
         group_object_filter: group_object_filter
         sni: true
+        password_login_update_internal_password: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -40285,6 +40298,10 @@ components:
           description: Field which contains a unique Identifier.
           minLength: 1
           type: string
+        password_login_update_internal_password:
+          description: Update internal authentik password when login succeeds with
+            LDAP
+          type: boolean
         sync_users:
           type: boolean
         sync_users_password:
@@ -44599,6 +44616,7 @@ components:
           sync_groups: true
           group_object_filter: group_object_filter
           sni: true
+          password_login_update_internal_password: true
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
           enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -44640,6 +44658,7 @@ components:
           sync_groups: true
           group_object_filter: group_object_filter
           sni: true
+          password_login_update_internal_password: true
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
           enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -50314,6 +50333,7 @@ components:
         sync_groups: true
         group_object_filter: group_object_filter
         sni: true
+        password_login_update_internal_password: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -50415,6 +50435,10 @@ components:
           description: Field which contains a unique Identifier.
           minLength: 1
           type: string
+        password_login_update_internal_password:
+          description: Update internal authentik password when login succeeds with
+            LDAP
+          type: boolean
         sync_users:
           type: boolean
         sync_users_password:
