@@ -17,7 +17,7 @@ import (
 
 // ConnectionToken ConnectionToken Serializer
 type ConnectionToken struct {
-	Pk          string      `json:"pk"`
+	Pk          *string     `json:"pk,omitempty"`
 	Provider    int32       `json:"provider"`
 	ProviderObj RACProvider `json:"provider_obj"`
 	Endpoint    string      `json:"endpoint"`
@@ -29,9 +29,8 @@ type ConnectionToken struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConnectionToken(pk string, provider int32, providerObj RACProvider, endpoint string, endpointObj Endpoint, user GroupMember) *ConnectionToken {
+func NewConnectionToken(provider int32, providerObj RACProvider, endpoint string, endpointObj Endpoint, user GroupMember) *ConnectionToken {
 	this := ConnectionToken{}
-	this.Pk = pk
 	this.Provider = provider
 	this.ProviderObj = providerObj
 	this.Endpoint = endpoint
@@ -48,28 +47,36 @@ func NewConnectionTokenWithDefaults() *ConnectionToken {
 	return &this
 }
 
-// GetPk returns the Pk field value
+// GetPk returns the Pk field value if set, zero value otherwise.
 func (o *ConnectionToken) GetPk() string {
-	if o == nil {
+	if o == nil || o.Pk == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Pk
+	return *o.Pk
 }
 
-// GetPkOk returns a tuple with the Pk field value
+// GetPkOk returns a tuple with the Pk field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectionToken) GetPkOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Pk == nil {
 		return nil, false
 	}
-	return &o.Pk, true
+	return o.Pk, true
 }
 
-// SetPk sets field value
+// HasPk returns a boolean if a field has been set.
+func (o *ConnectionToken) HasPk() bool {
+	if o != nil && o.Pk != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPk gets a reference to the given string and assigns it to the Pk field.
 func (o *ConnectionToken) SetPk(v string) {
-	o.Pk = v
+	o.Pk = &v
 }
 
 // GetProvider returns the Provider field value
@@ -194,7 +201,7 @@ func (o *ConnectionToken) SetUser(v GroupMember) {
 
 func (o ConnectionToken) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.Pk != nil {
 		toSerialize["pk"] = o.Pk
 	}
 	if true {

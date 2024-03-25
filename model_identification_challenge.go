@@ -24,6 +24,7 @@ type IdentificationChallenge struct {
 	UserFields       []string                  `json:"user_fields"`
 	PasswordFields   bool                      `json:"password_fields"`
 	ApplicationPre   *string                   `json:"application_pre,omitempty"`
+	FlowDesignation  FlowDesignationEnum       `json:"flow_designation"`
 	EnrollUrl        *string                   `json:"enroll_url,omitempty"`
 	RecoveryUrl      *string                   `json:"recovery_url,omitempty"`
 	PasswordlessUrl  *string                   `json:"passwordless_url,omitempty"`
@@ -36,13 +37,14 @@ type IdentificationChallenge struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentificationChallenge(type_ ChallengeChoices, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool) *IdentificationChallenge {
+func NewIdentificationChallenge(type_ ChallengeChoices, userFields []string, passwordFields bool, flowDesignation FlowDesignationEnum, primaryAction string, showSourceLabels bool) *IdentificationChallenge {
 	this := IdentificationChallenge{}
 	this.Type = type_
 	var component string = "ak-stage-identification"
 	this.Component = &component
 	this.UserFields = userFields
 	this.PasswordFields = passwordFields
+	this.FlowDesignation = flowDesignation
 	this.PrimaryAction = primaryAction
 	this.ShowSourceLabels = showSourceLabels
 	return &this
@@ -260,6 +262,30 @@ func (o *IdentificationChallenge) SetApplicationPre(v string) {
 	o.ApplicationPre = &v
 }
 
+// GetFlowDesignation returns the FlowDesignation field value
+func (o *IdentificationChallenge) GetFlowDesignation() FlowDesignationEnum {
+	if o == nil {
+		var ret FlowDesignationEnum
+		return ret
+	}
+
+	return o.FlowDesignation
+}
+
+// GetFlowDesignationOk returns a tuple with the FlowDesignation field value
+// and a boolean to check if the value has been set.
+func (o *IdentificationChallenge) GetFlowDesignationOk() (*FlowDesignationEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.FlowDesignation, true
+}
+
+// SetFlowDesignation sets field value
+func (o *IdentificationChallenge) SetFlowDesignation(v FlowDesignationEnum) {
+	o.FlowDesignation = v
+}
+
 // GetEnrollUrl returns the EnrollUrl field value if set, zero value otherwise.
 func (o *IdentificationChallenge) GetEnrollUrl() string {
 	if o == nil || o.EnrollUrl == nil {
@@ -458,6 +484,9 @@ func (o IdentificationChallenge) MarshalJSON() ([]byte, error) {
 	}
 	if o.ApplicationPre != nil {
 		toSerialize["application_pre"] = o.ApplicationPre
+	}
+	if true {
+		toSerialize["flow_designation"] = o.FlowDesignation
 	}
 	if o.EnrollUrl != nil {
 		toSerialize["enroll_url"] = o.EnrollUrl

@@ -17,7 +17,9 @@ import (
 
 // PatchedConnectionTokenRequest ConnectionToken Serializer
 type PatchedConnectionTokenRequest struct {
-	Provider *int32 `json:"provider,omitempty"`
+	Pk       *string `json:"pk,omitempty"`
+	Provider *int32  `json:"provider,omitempty"`
+	Endpoint *string `json:"endpoint,omitempty"`
 }
 
 // NewPatchedConnectionTokenRequest instantiates a new PatchedConnectionTokenRequest object
@@ -35,6 +37,38 @@ func NewPatchedConnectionTokenRequest() *PatchedConnectionTokenRequest {
 func NewPatchedConnectionTokenRequestWithDefaults() *PatchedConnectionTokenRequest {
 	this := PatchedConnectionTokenRequest{}
 	return &this
+}
+
+// GetPk returns the Pk field value if set, zero value otherwise.
+func (o *PatchedConnectionTokenRequest) GetPk() string {
+	if o == nil || o.Pk == nil {
+		var ret string
+		return ret
+	}
+	return *o.Pk
+}
+
+// GetPkOk returns a tuple with the Pk field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedConnectionTokenRequest) GetPkOk() (*string, bool) {
+	if o == nil || o.Pk == nil {
+		return nil, false
+	}
+	return o.Pk, true
+}
+
+// HasPk returns a boolean if a field has been set.
+func (o *PatchedConnectionTokenRequest) HasPk() bool {
+	if o != nil && o.Pk != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPk gets a reference to the given string and assigns it to the Pk field.
+func (o *PatchedConnectionTokenRequest) SetPk(v string) {
+	o.Pk = &v
 }
 
 // GetProvider returns the Provider field value if set, zero value otherwise.
@@ -69,10 +103,48 @@ func (o *PatchedConnectionTokenRequest) SetProvider(v int32) {
 	o.Provider = &v
 }
 
+// GetEndpoint returns the Endpoint field value if set, zero value otherwise.
+func (o *PatchedConnectionTokenRequest) GetEndpoint() string {
+	if o == nil || o.Endpoint == nil {
+		var ret string
+		return ret
+	}
+	return *o.Endpoint
+}
+
+// GetEndpointOk returns a tuple with the Endpoint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedConnectionTokenRequest) GetEndpointOk() (*string, bool) {
+	if o == nil || o.Endpoint == nil {
+		return nil, false
+	}
+	return o.Endpoint, true
+}
+
+// HasEndpoint returns a boolean if a field has been set.
+func (o *PatchedConnectionTokenRequest) HasEndpoint() bool {
+	if o != nil && o.Endpoint != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEndpoint gets a reference to the given string and assigns it to the Endpoint field.
+func (o *PatchedConnectionTokenRequest) SetEndpoint(v string) {
+	o.Endpoint = &v
+}
+
 func (o PatchedConnectionTokenRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Pk != nil {
+		toSerialize["pk"] = o.Pk
+	}
 	if o.Provider != nil {
 		toSerialize["provider"] = o.Provider
+	}
+	if o.Endpoint != nil {
+		toSerialize["endpoint"] = o.Endpoint
 	}
 	return json.Marshal(toSerialize)
 }

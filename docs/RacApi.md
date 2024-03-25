@@ -330,7 +330,7 @@ import (
 
 func main() {
     connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Connection token.
-    connectionTokenRequest := *openapiclient.NewConnectionTokenRequest(int32(123)) // ConnectionTokenRequest | 
+    connectionTokenRequest := *openapiclient.NewConnectionTokenRequest(int32(123), "Endpoint_example") // ConnectionTokenRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

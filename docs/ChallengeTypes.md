@@ -40,6 +40,7 @@ Name | Type | Description | Notes
 **UserFields** | **[]string** |  | 
 **PasswordFields** | **bool** |  | 
 **ApplicationPre** | Pointer to **string** |  | [optional] 
+**FlowDesignation** | [**FlowDesignationEnum**](FlowDesignationEnum.md) |  | 
 **EnrollUrl** | Pointer to **string** |  | [optional] 
 **RecoveryUrl** | Pointer to **string** |  | [optional] 
 **PasswordlessUrl** | Pointer to **string** |  | [optional] 
@@ -55,7 +56,7 @@ Name | Type | Description | Notes
 
 ### NewChallengeTypes
 
-`func NewChallengeTypes(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, name string, requestId string, userFields []string, passwordFields bool, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
+`func NewChallengeTypes(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, name string, requestId string, userFields []string, passwordFields bool, flowDesignation FlowDesignationEnum, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
 
 NewChallengeTypes instantiates a new ChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -849,6 +850,26 @@ SetApplicationPre sets ApplicationPre field to given value.
 `func (o *ChallengeTypes) HasApplicationPre() bool`
 
 HasApplicationPre returns a boolean if a field has been set.
+
+### GetFlowDesignation
+
+`func (o *ChallengeTypes) GetFlowDesignation() FlowDesignationEnum`
+
+GetFlowDesignation returns the FlowDesignation field if non-nil, zero value otherwise.
+
+### GetFlowDesignationOk
+
+`func (o *ChallengeTypes) GetFlowDesignationOk() (*FlowDesignationEnum, bool)`
+
+GetFlowDesignationOk returns a tuple with the FlowDesignation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowDesignation
+
+`func (o *ChallengeTypes) SetFlowDesignation(v FlowDesignationEnum)`
+
+SetFlowDesignation sets FlowDesignation field to given value.
+
 
 ### GetEnrollUrl
 

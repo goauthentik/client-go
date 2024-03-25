@@ -35696,8 +35696,7 @@ components:
       properties:
         pk:
           format: uuid
-          readOnly: true
-          title: Pbm uuid
+          title: Connection token uuid
           type: string
         provider:
           type: integer
@@ -35707,7 +35706,6 @@ components:
           readOnly: true
         endpoint:
           format: uuid
-          readOnly: true
           type: string
         endpoint_obj:
           allOf:
@@ -35720,7 +35718,6 @@ components:
       required:
       - endpoint
       - endpoint_obj
-      - pk
       - provider
       - provider_obj
       - user
@@ -35728,11 +35725,21 @@ components:
     ConnectionTokenRequest:
       description: ConnectionToken Serializer
       example:
+        endpoint: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         provider: 0
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
+        pk:
+          format: uuid
+          title: Connection token uuid
+          type: string
         provider:
           type: integer
+        endpoint:
+          format: uuid
+          type: string
       required:
+      - endpoint
       - provider
       type: object
     ConsentChallenge:
@@ -38923,6 +38930,8 @@ components:
           type: boolean
         application_pre:
           type: string
+        flow_designation:
+          $ref: '#/components/schemas/FlowDesignationEnum'
         enroll_url:
           type: string
         recovery_url:
@@ -38938,6 +38947,7 @@ components:
         show_source_labels:
           type: boolean
       required:
+      - flow_designation
       - password_fields
       - primary_action
       - show_source_labels
@@ -49264,10 +49274,19 @@ components:
     PatchedConnectionTokenRequest:
       description: ConnectionToken Serializer
       example:
+        endpoint: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         provider: 0
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
+        pk:
+          format: uuid
+          title: Connection token uuid
+          type: string
         provider:
           type: integer
+        endpoint:
+          format: uuid
+          type: string
       type: object
     PatchedConsentStageRequest:
       description: ConsentStage Serializer
@@ -58753,7 +58772,7 @@ components:
       example:
         version_current: version_current
         outdated: true
-        version_latest_valid: true
+        version_latest_valid: version_latest_valid
         version_latest: version_latest
         build_hash: build_hash
       properties:
@@ -58766,9 +58785,9 @@ components:
           readOnly: true
           type: string
         version_latest_valid:
-          description: Latest version query is a valid non-default value
+          description: Check if latest version is valid
           readOnly: true
-          type: boolean
+          type: string
         build_hash:
           description: "Get build hash, if version is not latest or released"
           readOnly: true

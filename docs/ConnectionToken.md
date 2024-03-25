@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Pk** | **string** |  | [readonly] 
+**Pk** | Pointer to **string** |  | [optional] 
 **Provider** | **int32** |  | 
 **ProviderObj** | [**RACProvider**](RACProvider.md) |  | [readonly] 
-**Endpoint** | **string** |  | [readonly] 
+**Endpoint** | **string** |  | 
 **EndpointObj** | [**Endpoint**](Endpoint.md) |  | [readonly] 
 **User** | [**GroupMember**](GroupMember.md) |  | [readonly] 
 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewConnectionToken
 
-`func NewConnectionToken(pk string, provider int32, providerObj RACProvider, endpoint string, endpointObj Endpoint, user GroupMember, ) *ConnectionToken`
+`func NewConnectionToken(provider int32, providerObj RACProvider, endpoint string, endpointObj Endpoint, user GroupMember, ) *ConnectionToken`
 
 NewConnectionToken instantiates a new ConnectionToken object
 This constructor will assign default values to properties that have it defined,
@@ -49,6 +49,11 @@ and a boolean to check if the value has been set.
 
 SetPk sets Pk field to given value.
 
+### HasPk
+
+`func (o *ConnectionToken) HasPk() bool`
+
+HasPk returns a boolean if a field has been set.
 
 ### GetProvider
 
