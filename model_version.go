@@ -22,7 +22,7 @@ type Version struct {
 	// Get latest version from cache
 	VersionLatest string `json:"version_latest"`
 	// Check if latest version is valid
-	VersionLatestValid string `json:"version_latest_valid"`
+	VersionLatestValid bool `json:"version_latest_valid"`
 	// Get build hash, if version is not latest or released
 	BuildHash string `json:"build_hash"`
 	// Check if we're running the latest version
@@ -33,7 +33,7 @@ type Version struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVersion(versionCurrent string, versionLatest string, versionLatestValid string, buildHash string, outdated bool) *Version {
+func NewVersion(versionCurrent string, versionLatest string, versionLatestValid bool, buildHash string, outdated bool) *Version {
 	this := Version{}
 	this.VersionCurrent = versionCurrent
 	this.VersionLatest = versionLatest
@@ -100,9 +100,9 @@ func (o *Version) SetVersionLatest(v string) {
 }
 
 // GetVersionLatestValid returns the VersionLatestValid field value
-func (o *Version) GetVersionLatestValid() string {
+func (o *Version) GetVersionLatestValid() bool {
 	if o == nil {
-		var ret string
+		var ret bool
 		return ret
 	}
 
@@ -111,7 +111,7 @@ func (o *Version) GetVersionLatestValid() string {
 
 // GetVersionLatestValidOk returns a tuple with the VersionLatestValid field value
 // and a boolean to check if the value has been set.
-func (o *Version) GetVersionLatestValidOk() (*string, bool) {
+func (o *Version) GetVersionLatestValidOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -119,7 +119,7 @@ func (o *Version) GetVersionLatestValidOk() (*string, bool) {
 }
 
 // SetVersionLatestValid sets field value
-func (o *Version) SetVersionLatestValid(v string) {
+func (o *Version) SetVersionLatestValid(v bool) {
 	o.VersionLatestValid = v
 }
 

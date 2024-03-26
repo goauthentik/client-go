@@ -58796,7 +58796,7 @@ components:
       example:
         version_current: version_current
         outdated: true
-        version_latest_valid: version_latest_valid
+        version_latest_valid: true
         version_latest: version_latest
         build_hash: build_hash
       properties:
@@ -58811,7 +58811,7 @@ components:
         version_latest_valid:
           description: Check if latest version is valid
           readOnly: true
-          type: string
+          type: boolean
         build_hash:
           description: "Get build hash, if version is not latest or released"
           readOnly: true
