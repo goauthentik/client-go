@@ -13,13 +13,13 @@ Name | Type | Description | Notes
 **FinishTimestamp** | **time.Time** |  | [readonly] 
 **Duration** | **float64** |  | [readonly] 
 **Status** | [**SystemTaskStatusEnum**](SystemTaskStatusEnum.md) |  | 
-**Messages** | **[]string** |  | 
+**Messages** | [**[]LogEvent**](LogEvent.md) |  | 
 
 ## Methods
 
 ### NewSystemTask
 
-`func NewSystemTask(uuid string, name string, fullName string, description string, startTimestamp time.Time, finishTimestamp time.Time, duration float64, status SystemTaskStatusEnum, messages []string, ) *SystemTask`
+`func NewSystemTask(uuid string, name string, fullName string, description string, startTimestamp time.Time, finishTimestamp time.Time, duration float64, status SystemTaskStatusEnum, messages []LogEvent, ) *SystemTask`
 
 NewSystemTask instantiates a new SystemTask object
 This constructor will assign default values to properties that have it defined,
@@ -221,20 +221,20 @@ SetStatus sets Status field to given value.
 
 ### GetMessages
 
-`func (o *SystemTask) GetMessages() []string`
+`func (o *SystemTask) GetMessages() []LogEvent`
 
 GetMessages returns the Messages field if non-nil, zero value otherwise.
 
 ### GetMessagesOk
 
-`func (o *SystemTask) GetMessagesOk() (*[]string, bool)`
+`func (o *SystemTask) GetMessagesOk() (*[]LogEvent, bool)`
 
 GetMessagesOk returns a tuple with the Messages field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessages
 
-`func (o *SystemTask) SetMessages(v []string)`
+`func (o *SystemTask) SetMessages(v []LogEvent)`
 
 SetMessages sets Messages field to given value.
 

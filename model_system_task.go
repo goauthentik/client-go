@@ -28,14 +28,14 @@ type SystemTask struct {
 	FinishTimestamp time.Time            `json:"finish_timestamp"`
 	Duration        float64              `json:"duration"`
 	Status          SystemTaskStatusEnum `json:"status"`
-	Messages        []string             `json:"messages"`
+	Messages        []LogEvent           `json:"messages"`
 }
 
 // NewSystemTask instantiates a new SystemTask object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSystemTask(uuid string, name string, fullName string, description string, startTimestamp time.Time, finishTimestamp time.Time, duration float64, status SystemTaskStatusEnum, messages []string) *SystemTask {
+func NewSystemTask(uuid string, name string, fullName string, description string, startTimestamp time.Time, finishTimestamp time.Time, duration float64, status SystemTaskStatusEnum, messages []LogEvent) *SystemTask {
 	this := SystemTask{}
 	this.Uuid = uuid
 	this.Name = name
@@ -282,9 +282,9 @@ func (o *SystemTask) SetStatus(v SystemTaskStatusEnum) {
 }
 
 // GetMessages returns the Messages field value
-func (o *SystemTask) GetMessages() []string {
+func (o *SystemTask) GetMessages() []LogEvent {
 	if o == nil {
-		var ret []string
+		var ret []LogEvent
 		return ret
 	}
 
@@ -293,7 +293,7 @@ func (o *SystemTask) GetMessages() []string {
 
 // GetMessagesOk returns a tuple with the Messages field value
 // and a boolean to check if the value has been set.
-func (o *SystemTask) GetMessagesOk() ([]string, bool) {
+func (o *SystemTask) GetMessagesOk() ([]LogEvent, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -301,7 +301,7 @@ func (o *SystemTask) GetMessagesOk() ([]string, bool) {
 }
 
 // SetMessages sets field value
-func (o *SystemTask) SetMessages(v []string) {
+func (o *SystemTask) SetMessages(v []LogEvent) {
 	o.Messages = v
 }
 

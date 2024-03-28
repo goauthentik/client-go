@@ -933,6 +933,8 @@ Class | Method | HTTP request | Description
  - [LicenseRequest](docs/LicenseRequest.md)
  - [LicenseSummary](docs/LicenseSummary.md)
  - [Link](docs/Link.md)
+ - [LogEvent](docs/LogEvent.md)
+ - [LogLevelEnum](docs/LogLevelEnum.md)
  - [LoginChallengeTypes](docs/LoginChallengeTypes.md)
  - [LoginMetrics](docs/LoginMetrics.md)
  - [LoginSource](docs/LoginSource.md)

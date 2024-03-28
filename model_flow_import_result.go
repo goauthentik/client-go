@@ -17,15 +17,15 @@ import (
 
 // FlowImportResult Logs of an attempted flow import
 type FlowImportResult struct {
-	Logs    []map[string]interface{} `json:"logs"`
-	Success bool                     `json:"success"`
+	Logs    []LogEvent `json:"logs"`
+	Success bool       `json:"success"`
 }
 
 // NewFlowImportResult instantiates a new FlowImportResult object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFlowImportResult(logs []map[string]interface{}, success bool) *FlowImportResult {
+func NewFlowImportResult(logs []LogEvent, success bool) *FlowImportResult {
 	this := FlowImportResult{}
 	this.Logs = logs
 	this.Success = success
@@ -41,9 +41,9 @@ func NewFlowImportResultWithDefaults() *FlowImportResult {
 }
 
 // GetLogs returns the Logs field value
-func (o *FlowImportResult) GetLogs() []map[string]interface{} {
+func (o *FlowImportResult) GetLogs() []LogEvent {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []LogEvent
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *FlowImportResult) GetLogs() []map[string]interface{} {
 
 // GetLogsOk returns a tuple with the Logs field value
 // and a boolean to check if the value has been set.
-func (o *FlowImportResult) GetLogsOk() ([]map[string]interface{}, bool) {
+func (o *FlowImportResult) GetLogsOk() ([]LogEvent, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *FlowImportResult) GetLogsOk() ([]map[string]interface{}, bool) {
 }
 
 // SetLogs sets field value
-func (o *FlowImportResult) SetLogs(v []map[string]interface{}) {
+func (o *FlowImportResult) SetLogs(v []LogEvent) {
 	o.Logs = v
 }
 

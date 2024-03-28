@@ -204,6 +204,8 @@ docs/LicenseForecast.md
 docs/LicenseRequest.md
 docs/LicenseSummary.md
 docs/Link.md
+docs/LogEvent.md
+docs/LogLevelEnum.md
 docs/LoginChallengeTypes.md
 docs/LoginMetrics.md
 docs/LoginSource.md
@@ -766,6 +768,8 @@ model_license_forecast.go
 model_license_request.go
 model_license_summary.go
 model_link.go
+model_log_event.go
+model_log_level_enum.go
 model_login_challenge_types.go
 model_login_metrics.go
 model_login_source.go

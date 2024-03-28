@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Logs** | **[]map[string]interface{}** |  | [readonly] 
+**Logs** | [**[]LogEvent**](LogEvent.md) |  | [readonly] 
 **Success** | **bool** |  | [readonly] 
 
 ## Methods
 
 ### NewFlowImportResult
 
-`func NewFlowImportResult(logs []map[string]interface{}, success bool, ) *FlowImportResult`
+`func NewFlowImportResult(logs []LogEvent, success bool, ) *FlowImportResult`
 
 NewFlowImportResult instantiates a new FlowImportResult object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLogs
 
-`func (o *FlowImportResult) GetLogs() []map[string]interface{}`
+`func (o *FlowImportResult) GetLogs() []LogEvent`
 
 GetLogs returns the Logs field if non-nil, zero value otherwise.
 
 ### GetLogsOk
 
-`func (o *FlowImportResult) GetLogsOk() (*[]map[string]interface{}, bool)`
+`func (o *FlowImportResult) GetLogsOk() (*[]LogEvent, bool)`
 
 GetLogsOk returns a tuple with the Logs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLogs
 
-`func (o *FlowImportResult) SetLogs(v []map[string]interface{})`
+`func (o *FlowImportResult) SetLogs(v []LogEvent)`
 
 SetLogs sets Logs field to given value.
 

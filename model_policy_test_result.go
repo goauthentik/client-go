@@ -17,16 +17,16 @@ import (
 
 // PolicyTestResult result of a policy test
 type PolicyTestResult struct {
-	Passing     bool                     `json:"passing"`
-	Messages    []string                 `json:"messages"`
-	LogMessages []map[string]interface{} `json:"log_messages"`
+	Passing     bool       `json:"passing"`
+	Messages    []string   `json:"messages"`
+	LogMessages []LogEvent `json:"log_messages"`
 }
 
 // NewPolicyTestResult instantiates a new PolicyTestResult object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPolicyTestResult(passing bool, messages []string, logMessages []map[string]interface{}) *PolicyTestResult {
+func NewPolicyTestResult(passing bool, messages []string, logMessages []LogEvent) *PolicyTestResult {
 	this := PolicyTestResult{}
 	this.Passing = passing
 	this.Messages = messages
@@ -91,9 +91,9 @@ func (o *PolicyTestResult) SetMessages(v []string) {
 }
 
 // GetLogMessages returns the LogMessages field value
-func (o *PolicyTestResult) GetLogMessages() []map[string]interface{} {
+func (o *PolicyTestResult) GetLogMessages() []LogEvent {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []LogEvent
 		return ret
 	}
 
@@ -102,7 +102,7 @@ func (o *PolicyTestResult) GetLogMessages() []map[string]interface{} {
 
 // GetLogMessagesOk returns a tuple with the LogMessages field value
 // and a boolean to check if the value has been set.
-func (o *PolicyTestResult) GetLogMessagesOk() ([]map[string]interface{}, bool) {
+func (o *PolicyTestResult) GetLogMessagesOk() ([]LogEvent, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -110,7 +110,7 @@ func (o *PolicyTestResult) GetLogMessagesOk() ([]map[string]interface{}, bool) {
 }
 
 // SetLogMessages sets field value
-func (o *PolicyTestResult) SetLogMessages(v []map[string]interface{}) {
+func (o *PolicyTestResult) SetLogMessages(v []LogEvent) {
 	o.LogMessages = v
 }
 

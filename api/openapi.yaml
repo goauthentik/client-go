@@ -38232,13 +38232,22 @@ components:
       example:
         success: true
         logs:
-        - key: ""
-        - key: ""
+        - logger: logger
+          log_level: null
+          attributes:
+            key: ""
+          event: event
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - logger: logger
+          log_level: null
+          attributes:
+            key: ""
+          event: event
+          timestamp: 2000-01-23T04:56:07.000+00:00
       properties:
         logs:
           items:
-            additionalProperties: {}
-            type: object
+            $ref: '#/components/schemas/LogEvent'
           readOnly: true
           type: array
         success:
@@ -40343,8 +40352,18 @@ components:
           name: name
           description: description
           messages:
-          - messages
-          - messages
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
           uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           finish_timestamp: 2000-01-23T04:56:07.000+00:00
           status: null
@@ -40355,8 +40374,18 @@ components:
           name: name
           description: description
           messages:
-          - messages
-          - messages
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
           uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           finish_timestamp: 2000-01-23T04:56:07.000+00:00
           status: null
@@ -40492,6 +40521,55 @@ components:
       required:
       - link
       type: object
+    LogEvent:
+      description: Single log message with all context logged.
+      example:
+        logger: logger
+        log_level: null
+        attributes:
+          key: ""
+        event: event
+        timestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        timestamp:
+          format: date-time
+          type: string
+        log_level:
+          $ref: '#/components/schemas/LogLevelEnum'
+        logger:
+          type: string
+        event:
+          type: string
+        attributes:
+          additionalProperties: {}
+          type: object
+      required:
+      - attributes
+      - event
+      - log_level
+      - logger
+      - timestamp
+      type: object
+    LogLevelEnum:
+      description: |-
+        * `critical` - critical
+        * `exception` - exception
+        * `error` - error
+        * `warn` - warn
+        * `warning` - warning
+        * `info` - info
+        * `debug` - debug
+        * `notset` - notset
+      enum:
+      - critical
+      - exception
+      - error
+      - warn
+      - warning
+      - info
+      - debug
+      - notset
+      type: string
     LoginChallengeTypes:
       discriminator:
         mapping:
@@ -47119,8 +47197,18 @@ components:
           name: name
           description: description
           messages:
-          - messages
-          - messages
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
           uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           finish_timestamp: 2000-01-23T04:56:07.000+00:00
           status: null
@@ -47131,8 +47219,18 @@ components:
           name: name
           description: description
           messages:
-          - messages
-          - messages
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
           uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           finish_timestamp: 2000-01-23T04:56:07.000+00:00
           status: null
@@ -52896,8 +52994,18 @@ components:
       description: result of a policy test
       example:
         log_messages:
-        - key: ""
-        - key: ""
+        - logger: logger
+          log_level: null
+          attributes:
+            key: ""
+          event: event
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - logger: logger
+          log_level: null
+          attributes:
+            key: ""
+          event: event
+          timestamp: 2000-01-23T04:56:07.000+00:00
         messages:
         - messages
         - messages
@@ -52912,8 +53020,7 @@ components:
           type: array
         log_messages:
           items:
-            additionalProperties: {}
-            type: object
+            $ref: '#/components/schemas/LogEvent'
           readOnly: true
           type: array
       required:
@@ -55771,8 +55878,18 @@ components:
           name: name
           description: description
           messages:
-          - messages
-          - messages
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
           uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           finish_timestamp: 2000-01-23T04:56:07.000+00:00
           status: null
@@ -55783,8 +55900,18 @@ components:
           name: name
           description: description
           messages:
-          - messages
-          - messages
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
           uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           finish_timestamp: 2000-01-23T04:56:07.000+00:00
           status: null
@@ -56838,8 +56965,18 @@ components:
         name: name
         description: description
         messages:
-        - messages
-        - messages
+        - logger: logger
+          log_level: null
+          attributes:
+            key: ""
+          event: event
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - logger: logger
+          log_level: null
+          attributes:
+            key: ""
+          event: event
+          timestamp: 2000-01-23T04:56:07.000+00:00
         uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         finish_timestamp: 2000-01-23T04:56:07.000+00:00
         status: null
@@ -56874,7 +57011,7 @@ components:
           $ref: '#/components/schemas/SystemTaskStatusEnum'
         messages:
           items:
-            type: string
+            $ref: '#/components/schemas/LogEvent'
           type: array
       required:
       - description
