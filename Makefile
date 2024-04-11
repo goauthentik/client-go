@@ -31,3 +31,6 @@ build:
 	rm -f .travis.yml git_push.sh
 	go get
 	go fmt .
+	mv diff.test ${TMPDIR}/diff.test
+	echo "Update API Client\n\n" > diff.test
+	cat ${TMPDIR}/diff.test >> diff.test
