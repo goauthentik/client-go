@@ -24,7 +24,7 @@ type PatchedTokenRequest struct {
 	Intent      *IntentEnum    `json:"intent,omitempty"`
 	User        *int32         `json:"user,omitempty"`
 	Description *string        `json:"description,omitempty"`
-	Expires     *time.Time     `json:"expires,omitempty"`
+	Expires     NullableTime   `json:"expires,omitempty"`
 	Expiring    *bool          `json:"expiring,omitempty"`
 }
 
@@ -216,36 +216,47 @@ func (o *PatchedTokenRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetExpires returns the Expires field value if set, zero value otherwise.
+// GetExpires returns the Expires field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedTokenRequest) GetExpires() time.Time {
-	if o == nil || o.Expires == nil {
+	if o == nil || o.Expires.Get() == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.Expires
+	return *o.Expires.Get()
 }
 
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedTokenRequest) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || o.Expires == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Expires, true
+	return o.Expires.Get(), o.Expires.IsSet()
 }
 
 // HasExpires returns a boolean if a field has been set.
 func (o *PatchedTokenRequest) HasExpires() bool {
-	if o != nil && o.Expires != nil {
+	if o != nil && o.Expires.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetExpires gets a reference to the given time.Time and assigns it to the Expires field.
+// SetExpires gets a reference to the given NullableTime and assigns it to the Expires field.
 func (o *PatchedTokenRequest) SetExpires(v time.Time) {
-	o.Expires = &v
+	o.Expires.Set(&v)
+}
+
+// SetExpiresNil sets the value for Expires to be an explicit nil
+func (o *PatchedTokenRequest) SetExpiresNil() {
+	o.Expires.Set(nil)
+}
+
+// UnsetExpires ensures that no value is present for Expires, not even an explicit nil
+func (o *PatchedTokenRequest) UnsetExpires() {
+	o.Expires.Unset()
 }
 
 // GetExpiring returns the Expiring field value if set, zero value otherwise.
@@ -297,8 +308,8 @@ func (o PatchedTokenRequest) MarshalJSON() ([]byte, error) {
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
-	if o.Expires != nil {
-		toSerialize["expires"] = o.Expires
+	if o.Expires.IsSet() {
+		toSerialize["expires"] = o.Expires.Get()
 	}
 	if o.Expiring != nil {
 		toSerialize["expiring"] = o.Expiring

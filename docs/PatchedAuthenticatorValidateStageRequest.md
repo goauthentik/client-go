@@ -10,7 +10,8 @@ Name | Type | Description | Notes
 **DeviceClasses** | Pointer to [**[]DeviceClassesEnum**](DeviceClassesEnum.md) | Device classes which can be used to authenticate | [optional] 
 **ConfigurationStages** | Pointer to **[]string** | Stages used to configure Authenticator when user doesn&#39;t have any compatible devices. After this configuration Stage passes, the user is not prompted again. | [optional] 
 **LastAuthThreshold** | Pointer to **string** | If any of the user&#39;s device has been used within this threshold, this stage will be skipped | [optional] 
-**WebauthnUserVerification** | Pointer to [**UserVerificationEnum**](UserVerificationEnum.md) | Enforce user verification for WebAuthn devices.  * &#x60;required&#x60; - Required * &#x60;preferred&#x60; - Preferred * &#x60;discouraged&#x60; - Discouraged | [optional] 
+**WebauthnUserVerification** | Pointer to [**UserVerificationEnum**](UserVerificationEnum.md) | Enforce user verification for WebAuthn devices. | [optional] 
+**WebauthnAllowedDeviceTypes** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -205,6 +206,31 @@ SetWebauthnUserVerification sets WebauthnUserVerification field to given value.
 `func (o *PatchedAuthenticatorValidateStageRequest) HasWebauthnUserVerification() bool`
 
 HasWebauthnUserVerification returns a boolean if a field has been set.
+
+### GetWebauthnAllowedDeviceTypes
+
+`func (o *PatchedAuthenticatorValidateStageRequest) GetWebauthnAllowedDeviceTypes() []string`
+
+GetWebauthnAllowedDeviceTypes returns the WebauthnAllowedDeviceTypes field if non-nil, zero value otherwise.
+
+### GetWebauthnAllowedDeviceTypesOk
+
+`func (o *PatchedAuthenticatorValidateStageRequest) GetWebauthnAllowedDeviceTypesOk() (*[]string, bool)`
+
+GetWebauthnAllowedDeviceTypesOk returns a tuple with the WebauthnAllowedDeviceTypes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebauthnAllowedDeviceTypes
+
+`func (o *PatchedAuthenticatorValidateStageRequest) SetWebauthnAllowedDeviceTypes(v []string)`
+
+SetWebauthnAllowedDeviceTypes sets WebauthnAllowedDeviceTypes field to given value.
+
+### HasWebauthnAllowedDeviceTypes
+
+`func (o *PatchedAuthenticatorValidateStageRequest) HasWebauthnAllowedDeviceTypes() bool`
+
+HasWebauthnAllowedDeviceTypes returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

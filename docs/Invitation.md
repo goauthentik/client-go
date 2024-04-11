@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **string** |  | [readonly] 
 **Name** | **string** |  | 
-**Expires** | Pointer to **time.Time** |  | [optional] 
+**Expires** | Pointer to **NullableTime** |  | [optional] 
 **FixedData** | Pointer to **map[string]interface{}** |  | [optional] 
 **CreatedBy** | [**GroupMember**](GroupMember.md) |  | [readonly] 
 **SingleUse** | Pointer to **bool** | When enabled, the invitation will be deleted after usage. | [optional] 
@@ -97,6 +97,16 @@ SetExpires sets Expires field to given value.
 
 HasExpires returns a boolean if a field has been set.
 
+### SetExpiresNil
+
+`func (o *Invitation) SetExpiresNil(b bool)`
+
+ SetExpiresNil sets the value for Expires to be an explicit nil
+
+### UnsetExpires
+`func (o *Invitation) UnsetExpires()`
+
+UnsetExpires ensures that no value is present for Expires, not even an explicit nil
 ### GetFixedData
 
 `func (o *Invitation) GetFixedData() map[string]interface{}`

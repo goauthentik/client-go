@@ -24,7 +24,7 @@ type UserGroup struct {
 	// Users added to this group will be superusers.
 	IsSuperuser *bool                  `json:"is_superuser,omitempty"`
 	Parent      NullableString         `json:"parent,omitempty"`
-	ParentName  string                 `json:"parent_name"`
+	ParentName  NullableString         `json:"parent_name"`
 	Attributes  map[string]interface{} `json:"attributes,omitempty"`
 }
 
@@ -32,7 +32,7 @@ type UserGroup struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserGroup(pk string, numPk int32, name string, parentName string) *UserGroup {
+func NewUserGroup(pk string, numPk int32, name string, parentName NullableString) *UserGroup {
 	this := UserGroup{}
 	this.Pk = pk
 	this.NumPk = numPk
@@ -197,27 +197,29 @@ func (o *UserGroup) UnsetParent() {
 }
 
 // GetParentName returns the ParentName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *UserGroup) GetParentName() string {
-	if o == nil {
+	if o == nil || o.ParentName.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.ParentName
+	return *o.ParentName.Get()
 }
 
 // GetParentNameOk returns a tuple with the ParentName field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserGroup) GetParentNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ParentName, true
+	return o.ParentName.Get(), o.ParentName.IsSet()
 }
 
 // SetParentName sets field value
 func (o *UserGroup) SetParentName(v string) {
-	o.ParentName = v
+	o.ParentName.Set(&v)
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
@@ -270,7 +272,7 @@ func (o UserGroup) MarshalJSON() ([]byte, error) {
 		toSerialize["parent"] = o.Parent.Get()
 	}
 	if true {
-		toSerialize["parent_name"] = o.ParentName
+		toSerialize["parent_name"] = o.ParentName.Get()
 	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes

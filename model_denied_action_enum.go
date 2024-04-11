@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// DeniedActionEnum * `message_continue` - Message Continue * `message` - Message * `continue` - Continue
+// DeniedActionEnum the model 'DeniedActionEnum'
 type DeniedActionEnum string
 
 // List of DeniedActionEnum

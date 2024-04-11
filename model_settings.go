@@ -33,6 +33,10 @@ type Settings struct {
 	GdprCompliance *bool `json:"gdpr_compliance,omitempty"`
 	// Globally enable/disable impersonation.
 	Impersonation *bool `json:"impersonation,omitempty"`
+	// Default token duration
+	DefaultTokenDuration *string `json:"default_token_duration,omitempty"`
+	// Default token length
+	DefaultTokenLength *int32 `json:"default_token_length,omitempty"`
 }
 
 // NewSettings instantiates a new Settings object
@@ -309,6 +313,70 @@ func (o *Settings) SetImpersonation(v bool) {
 	o.Impersonation = &v
 }
 
+// GetDefaultTokenDuration returns the DefaultTokenDuration field value if set, zero value otherwise.
+func (o *Settings) GetDefaultTokenDuration() string {
+	if o == nil || o.DefaultTokenDuration == nil {
+		var ret string
+		return ret
+	}
+	return *o.DefaultTokenDuration
+}
+
+// GetDefaultTokenDurationOk returns a tuple with the DefaultTokenDuration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Settings) GetDefaultTokenDurationOk() (*string, bool) {
+	if o == nil || o.DefaultTokenDuration == nil {
+		return nil, false
+	}
+	return o.DefaultTokenDuration, true
+}
+
+// HasDefaultTokenDuration returns a boolean if a field has been set.
+func (o *Settings) HasDefaultTokenDuration() bool {
+	if o != nil && o.DefaultTokenDuration != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultTokenDuration gets a reference to the given string and assigns it to the DefaultTokenDuration field.
+func (o *Settings) SetDefaultTokenDuration(v string) {
+	o.DefaultTokenDuration = &v
+}
+
+// GetDefaultTokenLength returns the DefaultTokenLength field value if set, zero value otherwise.
+func (o *Settings) GetDefaultTokenLength() int32 {
+	if o == nil || o.DefaultTokenLength == nil {
+		var ret int32
+		return ret
+	}
+	return *o.DefaultTokenLength
+}
+
+// GetDefaultTokenLengthOk returns a tuple with the DefaultTokenLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Settings) GetDefaultTokenLengthOk() (*int32, bool) {
+	if o == nil || o.DefaultTokenLength == nil {
+		return nil, false
+	}
+	return o.DefaultTokenLength, true
+}
+
+// HasDefaultTokenLength returns a boolean if a field has been set.
+func (o *Settings) HasDefaultTokenLength() bool {
+	if o != nil && o.DefaultTokenLength != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultTokenLength gets a reference to the given int32 and assigns it to the DefaultTokenLength field.
+func (o *Settings) SetDefaultTokenLength(v int32) {
+	o.DefaultTokenLength = &v
+}
+
 func (o Settings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Avatars != nil {
@@ -334,6 +402,12 @@ func (o Settings) MarshalJSON() ([]byte, error) {
 	}
 	if o.Impersonation != nil {
 		toSerialize["impersonation"] = o.Impersonation
+	}
+	if o.DefaultTokenDuration != nil {
+		toSerialize["default_token_duration"] = o.DefaultTokenDuration
+	}
+	if o.DefaultTokenLength != nil {
+		toSerialize["default_token_length"] = o.DefaultTokenLength
 	}
 	return json.Marshal(toSerialize)
 }

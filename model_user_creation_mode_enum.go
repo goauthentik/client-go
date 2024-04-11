@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// UserCreationModeEnum * `never_create` - Never Create * `create_when_required` - Create When Required * `always_create` - Always Create
+// UserCreationModeEnum the model 'UserCreationModeEnum'
 type UserCreationModeEnum string
 
 // List of UserCreationModeEnum

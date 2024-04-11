@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// DuoResponseEnum * `success` - Success * `waiting` - Waiting * `invalid` - Invalid
+// DuoResponseEnum the model 'DuoResponseEnum'
 type DuoResponseEnum string
 
 // List of DuoResponseEnum

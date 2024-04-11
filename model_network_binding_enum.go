@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// NetworkBindingEnum * `no_binding` - No Binding * `bind_asn` - Bind Asn * `bind_asn_network` - Bind Asn Network * `bind_asn_network_ip` - Bind Asn Network Ip
+// NetworkBindingEnum the model 'NetworkBindingEnum'
 type NetworkBindingEnum string
 
 // List of NetworkBindingEnum

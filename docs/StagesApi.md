@@ -50,6 +50,8 @@ Method | HTTP request | Description
 [**StagesAuthenticatorValidateUsedByList**](StagesApi.md#StagesAuthenticatorValidateUsedByList) | **Get** /stages/authenticator/validate/{stage_uuid}/used_by/ | 
 [**StagesAuthenticatorWebauthnCreate**](StagesApi.md#StagesAuthenticatorWebauthnCreate) | **Post** /stages/authenticator/webauthn/ | 
 [**StagesAuthenticatorWebauthnDestroy**](StagesApi.md#StagesAuthenticatorWebauthnDestroy) | **Delete** /stages/authenticator/webauthn/{stage_uuid}/ | 
+[**StagesAuthenticatorWebauthnDeviceTypesList**](StagesApi.md#StagesAuthenticatorWebauthnDeviceTypesList) | **Get** /stages/authenticator/webauthn_device_types/ | 
+[**StagesAuthenticatorWebauthnDeviceTypesRetrieve**](StagesApi.md#StagesAuthenticatorWebauthnDeviceTypesRetrieve) | **Get** /stages/authenticator/webauthn_device_types/{aaguid}/ | 
 [**StagesAuthenticatorWebauthnList**](StagesApi.md#StagesAuthenticatorWebauthnList) | **Get** /stages/authenticator/webauthn/ | 
 [**StagesAuthenticatorWebauthnPartialUpdate**](StagesApi.md#StagesAuthenticatorWebauthnPartialUpdate) | **Patch** /stages/authenticator/webauthn/{stage_uuid}/ | 
 [**StagesAuthenticatorWebauthnRetrieve**](StagesApi.md#StagesAuthenticatorWebauthnRetrieve) | **Get** /stages/authenticator/webauthn/{stage_uuid}/ | 
@@ -1442,7 +1444,7 @@ func main() {
     accountSid := "accountSid_example" // string |  (optional)
     auth := "auth_example" // string |  (optional)
     authPassword := "authPassword_example" // string |  (optional)
-    authType := "authType_example" // string | * `basic` - Basic * `bearer` - Bearer (optional)
+    authType := "authType_example" // string |  (optional)
     configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     friendlyName := "friendlyName_example" // string |  (optional)
     fromNumber := "fromNumber_example" // string |  (optional)
@@ -1451,7 +1453,7 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    provider := "provider_example" // string | * `twilio` - Twilio * `generic` - Generic (optional)
+    provider := "provider_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     verifyOnly := true // bool |  (optional)
@@ -1482,7 +1484,7 @@ Name | Type | Description  | Notes
  **accountSid** | **string** |  | 
  **auth** | **string** |  | 
  **authPassword** | **string** |  | 
- **authType** | **string** | * &#x60;basic&#x60; - Basic * &#x60;bearer&#x60; - Bearer | 
+ **authType** | **string** |  | 
  **configureFlow** | **string** |  | 
  **friendlyName** | **string** |  | 
  **fromNumber** | **string** |  | 
@@ -1491,7 +1493,7 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **provider** | **string** | * &#x60;twilio&#x60; - Twilio * &#x60;generic&#x60; - Generic | 
+ **provider** | **string** |  | 
  **search** | **string** | A search term. | 
  **stageUuid** | **string** |  | 
  **verifyOnly** | **bool** |  | 
@@ -2456,7 +2458,7 @@ import (
 
 func main() {
     configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    digits := "digits_example" // string | * `6` - 6 digits, widely compatible * `8` - 8 digits, not compatible with apps like Google Authenticator (optional)
+    digits := "digits_example" // string |  (optional)
     friendlyName := "friendlyName_example" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
@@ -2489,7 +2491,7 @@ Other parameters are passed through a pointer to a apiStagesAuthenticatorTotpLis
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **configureFlow** | **string** |  | 
- **digits** | **string** | * &#x60;6&#x60; - 6 digits, widely compatible * &#x60;8&#x60; - 8 digits, not compatible with apps like Google Authenticator | 
+ **digits** | **string** |  | 
  **friendlyName** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
@@ -2957,7 +2959,7 @@ import (
 func main() {
     configurationStages := []string{"Inner_example"} // []string |  (optional)
     name := "name_example" // string |  (optional)
-    notConfiguredAction := "notConfiguredAction_example" // string | * `skip` - Skip * `deny` - Deny * `configure` - Configure (optional)
+    notConfiguredAction := "notConfiguredAction_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
@@ -2988,7 +2990,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **configurationStages** | **[]string** |  | 
  **name** | **string** |  | 
- **notConfiguredAction** | **string** | * &#x60;skip&#x60; - Skip * &#x60;deny&#x60; - Deny * &#x60;configure&#x60; - Configure | 
+ **notConfiguredAction** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
@@ -3298,7 +3300,7 @@ Name | Type | Description  | Notes
 
 ## StagesAuthenticatorWebauthnCreate
 
-> AuthenticateWebAuthnStage StagesAuthenticatorWebauthnCreate(ctx).AuthenticateWebAuthnStageRequest(authenticateWebAuthnStageRequest).Execute()
+> AuthenticatorWebAuthnStage StagesAuthenticatorWebauthnCreate(ctx).AuthenticatorWebAuthnStageRequest(authenticatorWebAuthnStageRequest).Execute()
 
 
 
@@ -3317,16 +3319,16 @@ import (
 )
 
 func main() {
-    authenticateWebAuthnStageRequest := *openapiclient.NewAuthenticateWebAuthnStageRequest("Name_example") // AuthenticateWebAuthnStageRequest | 
+    authenticatorWebAuthnStageRequest := *openapiclient.NewAuthenticatorWebAuthnStageRequest("Name_example") // AuthenticatorWebAuthnStageRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnCreate(context.Background()).AuthenticateWebAuthnStageRequest(authenticateWebAuthnStageRequest).Execute()
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnCreate(context.Background()).AuthenticatorWebAuthnStageRequest(authenticatorWebAuthnStageRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorWebauthnCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StagesAuthenticatorWebauthnCreate`: AuthenticateWebAuthnStage
+    // response from `StagesAuthenticatorWebauthnCreate`: AuthenticatorWebAuthnStage
     fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorWebauthnCreate`: %v\n", resp)
 }
 ```
@@ -3342,11 +3344,11 @@ Other parameters are passed through a pointer to a apiStagesAuthenticatorWebauth
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authenticateWebAuthnStageRequest** | [**AuthenticateWebAuthnStageRequest**](AuthenticateWebAuthnStageRequest.md) |  | 
+ **authenticatorWebAuthnStageRequest** | [**AuthenticatorWebAuthnStageRequest**](AuthenticatorWebAuthnStageRequest.md) |  | 
 
 ### Return type
 
-[**AuthenticateWebAuthnStage**](AuthenticateWebAuthnStage.md)
+[**AuthenticatorWebAuthnStage**](AuthenticatorWebAuthnStage.md)
 
 ### Authorization
 
@@ -3430,9 +3432,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## StagesAuthenticatorWebauthnList
+## StagesAuthenticatorWebauthnDeviceTypesList
 
-> PaginatedAuthenticateWebAuthnStageList StagesAuthenticatorWebauthnList(ctx).AuthenticatorAttachment(authenticatorAttachment).ConfigureFlow(configureFlow).FriendlyName(friendlyName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ResidentKeyRequirement(residentKeyRequirement).Search(search).StageUuid(stageUuid).UserVerification(userVerification).Execute()
+> PaginatedWebAuthnDeviceTypeList StagesAuthenticatorWebauthnDeviceTypesList(ctx).Aaguid(aaguid).Description(description).Icon(icon).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -3451,26 +3453,175 @@ import (
 )
 
 func main() {
-    authenticatorAttachment := "authenticatorAttachment_example" // string | * `platform` - Platform * `cross-platform` - Cross Platform (optional)
+    aaguid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    description := "description_example" // string |  (optional)
+    icon := "icon_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnDeviceTypesList(context.Background()).Aaguid(aaguid).Description(description).Icon(icon).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorWebauthnDeviceTypesList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorWebauthnDeviceTypesList`: PaginatedWebAuthnDeviceTypeList
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorWebauthnDeviceTypesList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorWebauthnDeviceTypesListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **aaguid** | **string** |  | 
+ **description** | **string** |  | 
+ **icon** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedWebAuthnDeviceTypeList**](PaginatedWebAuthnDeviceTypeList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorWebauthnDeviceTypesRetrieve
+
+> WebAuthnDeviceType StagesAuthenticatorWebauthnDeviceTypesRetrieve(ctx, aaguid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    aaguid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this WebAuthn Device type.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnDeviceTypesRetrieve(context.Background(), aaguid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorWebauthnDeviceTypesRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorWebauthnDeviceTypesRetrieve`: WebAuthnDeviceType
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorWebauthnDeviceTypesRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**aaguid** | **string** | A UUID string identifying this WebAuthn Device type. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorWebauthnDeviceTypesRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**WebAuthnDeviceType**](WebAuthnDeviceType.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorWebauthnList
+
+> PaginatedAuthenticatorWebAuthnStageList StagesAuthenticatorWebauthnList(ctx).AuthenticatorAttachment(authenticatorAttachment).ConfigureFlow(configureFlow).DeviceTypeRestrictions(deviceTypeRestrictions).FriendlyName(friendlyName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ResidentKeyRequirement(residentKeyRequirement).Search(search).StageUuid(stageUuid).UserVerification(userVerification).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    authenticatorAttachment := "authenticatorAttachment_example" // string |  (optional)
     configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    deviceTypeRestrictions := []string{"Inner_example"} // []string |  (optional)
     friendlyName := "friendlyName_example" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    residentKeyRequirement := "residentKeyRequirement_example" // string | * `discouraged` - Discouraged * `preferred` - Preferred * `required` - Required (optional)
+    residentKeyRequirement := "residentKeyRequirement_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    userVerification := "userVerification_example" // string | * `required` - Required * `preferred` - Preferred * `discouraged` - Discouraged (optional)
+    userVerification := "userVerification_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnList(context.Background()).AuthenticatorAttachment(authenticatorAttachment).ConfigureFlow(configureFlow).FriendlyName(friendlyName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ResidentKeyRequirement(residentKeyRequirement).Search(search).StageUuid(stageUuid).UserVerification(userVerification).Execute()
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnList(context.Background()).AuthenticatorAttachment(authenticatorAttachment).ConfigureFlow(configureFlow).DeviceTypeRestrictions(deviceTypeRestrictions).FriendlyName(friendlyName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ResidentKeyRequirement(residentKeyRequirement).Search(search).StageUuid(stageUuid).UserVerification(userVerification).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorWebauthnList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StagesAuthenticatorWebauthnList`: PaginatedAuthenticateWebAuthnStageList
+    // response from `StagesAuthenticatorWebauthnList`: PaginatedAuthenticatorWebAuthnStageList
     fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorWebauthnList`: %v\n", resp)
 }
 ```
@@ -3486,21 +3637,22 @@ Other parameters are passed through a pointer to a apiStagesAuthenticatorWebauth
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authenticatorAttachment** | **string** | * &#x60;platform&#x60; - Platform * &#x60;cross-platform&#x60; - Cross Platform | 
+ **authenticatorAttachment** | **string** |  | 
  **configureFlow** | **string** |  | 
+ **deviceTypeRestrictions** | **[]string** |  | 
  **friendlyName** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **residentKeyRequirement** | **string** | * &#x60;discouraged&#x60; - Discouraged * &#x60;preferred&#x60; - Preferred * &#x60;required&#x60; - Required | 
+ **residentKeyRequirement** | **string** |  | 
  **search** | **string** | A search term. | 
  **stageUuid** | **string** |  | 
- **userVerification** | **string** | * &#x60;required&#x60; - Required * &#x60;preferred&#x60; - Preferred * &#x60;discouraged&#x60; - Discouraged | 
+ **userVerification** | **string** |  | 
 
 ### Return type
 
-[**PaginatedAuthenticateWebAuthnStageList**](PaginatedAuthenticateWebAuthnStageList.md)
+[**PaginatedAuthenticatorWebAuthnStageList**](PaginatedAuthenticatorWebAuthnStageList.md)
 
 ### Authorization
 
@@ -3518,7 +3670,7 @@ Name | Type | Description  | Notes
 
 ## StagesAuthenticatorWebauthnPartialUpdate
 
-> AuthenticateWebAuthnStage StagesAuthenticatorWebauthnPartialUpdate(ctx, stageUuid).PatchedAuthenticateWebAuthnStageRequest(patchedAuthenticateWebAuthnStageRequest).Execute()
+> AuthenticatorWebAuthnStage StagesAuthenticatorWebauthnPartialUpdate(ctx, stageUuid).PatchedAuthenticatorWebAuthnStageRequest(patchedAuthenticatorWebAuthnStageRequest).Execute()
 
 
 
@@ -3538,16 +3690,16 @@ import (
 
 func main() {
     stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this WebAuthn Authenticator Setup Stage.
-    patchedAuthenticateWebAuthnStageRequest := *openapiclient.NewPatchedAuthenticateWebAuthnStageRequest() // PatchedAuthenticateWebAuthnStageRequest |  (optional)
+    patchedAuthenticatorWebAuthnStageRequest := *openapiclient.NewPatchedAuthenticatorWebAuthnStageRequest() // PatchedAuthenticatorWebAuthnStageRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnPartialUpdate(context.Background(), stageUuid).PatchedAuthenticateWebAuthnStageRequest(patchedAuthenticateWebAuthnStageRequest).Execute()
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnPartialUpdate(context.Background(), stageUuid).PatchedAuthenticatorWebAuthnStageRequest(patchedAuthenticatorWebAuthnStageRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorWebauthnPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StagesAuthenticatorWebauthnPartialUpdate`: AuthenticateWebAuthnStage
+    // response from `StagesAuthenticatorWebauthnPartialUpdate`: AuthenticatorWebAuthnStage
     fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorWebauthnPartialUpdate`: %v\n", resp)
 }
 ```
@@ -3568,11 +3720,11 @@ Other parameters are passed through a pointer to a apiStagesAuthenticatorWebauth
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **patchedAuthenticateWebAuthnStageRequest** | [**PatchedAuthenticateWebAuthnStageRequest**](PatchedAuthenticateWebAuthnStageRequest.md) |  | 
+ **patchedAuthenticatorWebAuthnStageRequest** | [**PatchedAuthenticatorWebAuthnStageRequest**](PatchedAuthenticatorWebAuthnStageRequest.md) |  | 
 
 ### Return type
 
-[**AuthenticateWebAuthnStage**](AuthenticateWebAuthnStage.md)
+[**AuthenticatorWebAuthnStage**](AuthenticatorWebAuthnStage.md)
 
 ### Authorization
 
@@ -3590,7 +3742,7 @@ Name | Type | Description  | Notes
 
 ## StagesAuthenticatorWebauthnRetrieve
 
-> AuthenticateWebAuthnStage StagesAuthenticatorWebauthnRetrieve(ctx, stageUuid).Execute()
+> AuthenticatorWebAuthnStage StagesAuthenticatorWebauthnRetrieve(ctx, stageUuid).Execute()
 
 
 
@@ -3618,7 +3770,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorWebauthnRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StagesAuthenticatorWebauthnRetrieve`: AuthenticateWebAuthnStage
+    // response from `StagesAuthenticatorWebauthnRetrieve`: AuthenticatorWebAuthnStage
     fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorWebauthnRetrieve`: %v\n", resp)
 }
 ```
@@ -3642,7 +3794,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AuthenticateWebAuthnStage**](AuthenticateWebAuthnStage.md)
+[**AuthenticatorWebAuthnStage**](AuthenticatorWebAuthnStage.md)
 
 ### Authorization
 
@@ -3660,7 +3812,7 @@ Name | Type | Description  | Notes
 
 ## StagesAuthenticatorWebauthnUpdate
 
-> AuthenticateWebAuthnStage StagesAuthenticatorWebauthnUpdate(ctx, stageUuid).AuthenticateWebAuthnStageRequest(authenticateWebAuthnStageRequest).Execute()
+> AuthenticatorWebAuthnStage StagesAuthenticatorWebauthnUpdate(ctx, stageUuid).AuthenticatorWebAuthnStageRequest(authenticatorWebAuthnStageRequest).Execute()
 
 
 
@@ -3680,16 +3832,16 @@ import (
 
 func main() {
     stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this WebAuthn Authenticator Setup Stage.
-    authenticateWebAuthnStageRequest := *openapiclient.NewAuthenticateWebAuthnStageRequest("Name_example") // AuthenticateWebAuthnStageRequest | 
+    authenticatorWebAuthnStageRequest := *openapiclient.NewAuthenticatorWebAuthnStageRequest("Name_example") // AuthenticatorWebAuthnStageRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnUpdate(context.Background(), stageUuid).AuthenticateWebAuthnStageRequest(authenticateWebAuthnStageRequest).Execute()
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnUpdate(context.Background(), stageUuid).AuthenticatorWebAuthnStageRequest(authenticatorWebAuthnStageRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorWebauthnUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StagesAuthenticatorWebauthnUpdate`: AuthenticateWebAuthnStage
+    // response from `StagesAuthenticatorWebauthnUpdate`: AuthenticatorWebAuthnStage
     fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorWebauthnUpdate`: %v\n", resp)
 }
 ```
@@ -3710,11 +3862,11 @@ Other parameters are passed through a pointer to a apiStagesAuthenticatorWebauth
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authenticateWebAuthnStageRequest** | [**AuthenticateWebAuthnStageRequest**](AuthenticateWebAuthnStageRequest.md) |  | 
+ **authenticatorWebAuthnStageRequest** | [**AuthenticatorWebAuthnStageRequest**](AuthenticatorWebAuthnStageRequest.md) |  | 
 
 ### Return type
 
-[**AuthenticateWebAuthnStage**](AuthenticateWebAuthnStage.md)
+[**AuthenticatorWebAuthnStage**](AuthenticatorWebAuthnStage.md)
 
 ### Authorization
 
@@ -4450,7 +4602,7 @@ import (
 
 func main() {
     consentExpireIn := "consentExpireIn_example" // string |  (optional)
-    mode := "mode_example" // string | * `always_require` - Always Require * `permanent` - Permanent * `expiring` - Expiring (optional)
+    mode := "mode_example" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -4482,7 +4634,7 @@ Other parameters are passed through a pointer to a apiStagesConsentListRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consentExpireIn** | **string** |  | 
- **mode** | **string** | * &#x60;always_require&#x60; - Always Require * &#x60;permanent&#x60; - Permanent * &#x60;expiring&#x60; - Expiring | 
+ **mode** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
@@ -8523,7 +8675,7 @@ func main() {
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     placeholder := "placeholder_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
-    type_ := "type__example" // string | * `text` - Text: Simple Text input * `text_area` - Text area: Multiline Text Input. * `text_read_only` - Text (read-only): Simple Text input, but cannot be edited. * `text_area_read_only` - Text area (read-only): Multiline Text input, but cannot be edited. * `username` - Username: Same as Text input, but checks for and prevents duplicate usernames. * `email` - Email: Text field with Email type. * `password` - Password: Masked input, multiple inputs of this type on the same prompt need to be identical. * `number` - Number * `checkbox` - Checkbox * `radio-button-group` - Fixed choice field rendered as a group of radio buttons. * `dropdown` - Fixed choice field rendered as a dropdown. * `date` - Date * `date-time` - Date Time * `file` - File: File upload for arbitrary files. File content will be available in flow context as data-URI * `separator` - Separator: Static Separator Line * `hidden` - Hidden: Hidden field, can be used to insert data into form. * `static` - Static: Static value, displayed as-is. * `ak-locale` - authentik: Selection of locales authentik supports (optional)
+    type_ := "type__example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -8556,7 +8708,7 @@ Name | Type | Description  | Notes
  **pageSize** | **int32** | Number of results to return per page. | 
  **placeholder** | **string** |  | 
  **search** | **string** | A search term. | 
- **type_** | **string** | * &#x60;text&#x60; - Text: Simple Text input * &#x60;text_area&#x60; - Text area: Multiline Text Input. * &#x60;text_read_only&#x60; - Text (read-only): Simple Text input, but cannot be edited. * &#x60;text_area_read_only&#x60; - Text area (read-only): Multiline Text input, but cannot be edited. * &#x60;username&#x60; - Username: Same as Text input, but checks for and prevents duplicate usernames. * &#x60;email&#x60; - Email: Text field with Email type. * &#x60;password&#x60; - Password: Masked input, multiple inputs of this type on the same prompt need to be identical. * &#x60;number&#x60; - Number * &#x60;checkbox&#x60; - Checkbox * &#x60;radio-button-group&#x60; - Fixed choice field rendered as a group of radio buttons. * &#x60;dropdown&#x60; - Fixed choice field rendered as a dropdown. * &#x60;date&#x60; - Date * &#x60;date-time&#x60; - Date Time * &#x60;file&#x60; - File: File upload for arbitrary files. File content will be available in flow context as data-URI * &#x60;separator&#x60; - Separator: Static Separator Line * &#x60;hidden&#x60; - Hidden: Hidden field, can be used to insert data into form. * &#x60;static&#x60; - Static: Static value, displayed as-is. * &#x60;ak-locale&#x60; - authentik: Selection of locales authentik supports | 
+ **type_** | **string** |  | 
 
 ### Return type
 
@@ -10571,9 +10723,9 @@ import (
 )
 
 func main() {
-    geoipBinding := "geoipBinding_example" // string | Bind sessions created by this stage to the configured GeoIP location  * `no_binding` - No Binding * `bind_continent` - Bind Continent * `bind_continent_country` - Bind Continent Country * `bind_continent_country_city` - Bind Continent Country City (optional)
+    geoipBinding := "geoipBinding_example" // string | Bind sessions created by this stage to the configured GeoIP location   (optional)
     name := "name_example" // string |  (optional)
-    networkBinding := "networkBinding_example" // string | Bind sessions created by this stage to the configured network  * `no_binding` - No Binding * `bind_asn` - Bind Asn * `bind_asn_network` - Bind Asn Network * `bind_asn_network_ip` - Bind Asn Network Ip (optional)
+    networkBinding := "networkBinding_example" // string | Bind sessions created by this stage to the configured network   (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
@@ -10606,9 +10758,9 @@ Other parameters are passed through a pointer to a apiStagesUserLoginListRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **geoipBinding** | **string** | Bind sessions created by this stage to the configured GeoIP location  * &#x60;no_binding&#x60; - No Binding * &#x60;bind_continent&#x60; - Bind Continent * &#x60;bind_continent_country&#x60; - Bind Continent Country * &#x60;bind_continent_country_city&#x60; - Bind Continent Country City | 
+ **geoipBinding** | **string** | Bind sessions created by this stage to the configured GeoIP location   | 
  **name** | **string** |  | 
- **networkBinding** | **string** | Bind sessions created by this stage to the configured network  * &#x60;no_binding&#x60; - No Binding * &#x60;bind_asn&#x60; - Bind Asn * &#x60;bind_asn_network&#x60; - Bind Asn Network * &#x60;bind_asn_network_ip&#x60; - Bind Asn Network Ip | 
+ **networkBinding** | **string** | Bind sessions created by this stage to the configured network   | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
@@ -11577,9 +11729,9 @@ func main() {
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     search := "search_example" // string | A search term. (optional)
     stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    userCreationMode := "userCreationMode_example" // string | * `never_create` - Never Create * `create_when_required` - Create When Required * `always_create` - Always Create (optional)
+    userCreationMode := "userCreationMode_example" // string |  (optional)
     userPathTemplate := "userPathTemplate_example" // string |  (optional)
-    userType := "userType_example" // string | * `internal` - Internal * `external` - External * `service_account` - Service Account * `internal_service_account` - Internal Service Account (optional)
+    userType := "userType_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -11612,9 +11764,9 @@ Name | Type | Description  | Notes
  **pageSize** | **int32** | Number of results to return per page. | 
  **search** | **string** | A search term. | 
  **stageUuid** | **string** |  | 
- **userCreationMode** | **string** | * &#x60;never_create&#x60; - Never Create * &#x60;create_when_required&#x60; - Create When Required * &#x60;always_create&#x60; - Always Create | 
+ **userCreationMode** | **string** |  | 
  **userPathTemplate** | **string** |  | 
- **userType** | **string** | * &#x60;internal&#x60; - Internal * &#x60;external&#x60; - External * &#x60;service_account&#x60; - Service Account * &#x60;internal_service_account&#x60; - Internal Service Account | 
+ **userType** | **string** |  | 
 
 ### Return type
 

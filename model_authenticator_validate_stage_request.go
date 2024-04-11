@@ -26,8 +26,9 @@ type AuthenticatorValidateStageRequest struct {
 	ConfigurationStages []string `json:"configuration_stages,omitempty"`
 	// If any of the user's device has been used within this threshold, this stage will be skipped
 	LastAuthThreshold *string `json:"last_auth_threshold,omitempty"`
-	// Enforce user verification for WebAuthn devices.  * `required` - Required * `preferred` - Preferred * `discouraged` - Discouraged
-	WebauthnUserVerification *UserVerificationEnum `json:"webauthn_user_verification,omitempty"`
+	// Enforce user verification for WebAuthn devices.
+	WebauthnUserVerification   *UserVerificationEnum `json:"webauthn_user_verification,omitempty"`
+	WebauthnAllowedDeviceTypes []string              `json:"webauthn_allowed_device_types,omitempty"`
 }
 
 // NewAuthenticatorValidateStageRequest instantiates a new AuthenticatorValidateStageRequest object
@@ -264,6 +265,38 @@ func (o *AuthenticatorValidateStageRequest) SetWebauthnUserVerification(v UserVe
 	o.WebauthnUserVerification = &v
 }
 
+// GetWebauthnAllowedDeviceTypes returns the WebauthnAllowedDeviceTypes field value if set, zero value otherwise.
+func (o *AuthenticatorValidateStageRequest) GetWebauthnAllowedDeviceTypes() []string {
+	if o == nil || o.WebauthnAllowedDeviceTypes == nil {
+		var ret []string
+		return ret
+	}
+	return o.WebauthnAllowedDeviceTypes
+}
+
+// GetWebauthnAllowedDeviceTypesOk returns a tuple with the WebauthnAllowedDeviceTypes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthenticatorValidateStageRequest) GetWebauthnAllowedDeviceTypesOk() ([]string, bool) {
+	if o == nil || o.WebauthnAllowedDeviceTypes == nil {
+		return nil, false
+	}
+	return o.WebauthnAllowedDeviceTypes, true
+}
+
+// HasWebauthnAllowedDeviceTypes returns a boolean if a field has been set.
+func (o *AuthenticatorValidateStageRequest) HasWebauthnAllowedDeviceTypes() bool {
+	if o != nil && o.WebauthnAllowedDeviceTypes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWebauthnAllowedDeviceTypes gets a reference to the given []string and assigns it to the WebauthnAllowedDeviceTypes field.
+func (o *AuthenticatorValidateStageRequest) SetWebauthnAllowedDeviceTypes(v []string) {
+	o.WebauthnAllowedDeviceTypes = v
+}
+
 func (o AuthenticatorValidateStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -286,6 +319,9 @@ func (o AuthenticatorValidateStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.WebauthnUserVerification != nil {
 		toSerialize["webauthn_user_verification"] = o.WebauthnUserVerification
+	}
+	if o.WebauthnAllowedDeviceTypes != nil {
+		toSerialize["webauthn_allowed_device_types"] = o.WebauthnAllowedDeviceTypes
 	}
 	return json.Marshal(toSerialize)
 }

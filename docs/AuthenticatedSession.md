@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **LastIp** | **string** |  | 
 **LastUserAgent** | Pointer to **string** |  | [optional] 
 **LastUsed** | **time.Time** |  | [readonly] 
-**Expires** | Pointer to **time.Time** |  | [optional] 
+**Expires** | Pointer to **NullableTime** |  | [optional] 
 
 ## Methods
 
@@ -269,6 +269,16 @@ SetExpires sets Expires field to given value.
 
 HasExpires returns a boolean if a field has been set.
 
+### SetExpiresNil
+
+`func (o *AuthenticatedSession) SetExpiresNil(b bool)`
+
+ SetExpiresNil sets the value for Expires to be an explicit nil
+
+### UnsetExpires
+`func (o *AuthenticatedSession) UnsetExpires()`
+
+UnsetExpires ensures that no value is present for Expires, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

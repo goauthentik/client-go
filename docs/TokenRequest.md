@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Intent** | Pointer to [**IntentEnum**](IntentEnum.md) |  | [optional] 
 **User** | Pointer to **int32** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**Expires** | Pointer to **time.Time** |  | [optional] 
+**Expires** | Pointer to **NullableTime** |  | [optional] 
 **Expiring** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -186,6 +186,16 @@ SetExpires sets Expires field to given value.
 
 HasExpires returns a boolean if a field has been set.
 
+### SetExpiresNil
+
+`func (o *TokenRequest) SetExpiresNil(b bool)`
+
+ SetExpiresNil sets the value for Expires to be an explicit nil
+
+### UnsetExpires
+`func (o *TokenRequest) UnsetExpires()`
+
+UnsetExpires ensures that no value is present for Expires, not even an explicit nil
 ### GetExpiring
 
 `func (o *TokenRequest) GetExpiring() bool`

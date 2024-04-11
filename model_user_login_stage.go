@@ -34,9 +34,9 @@ type UserLoginStage struct {
 	TerminateOtherSessions *bool `json:"terminate_other_sessions,omitempty"`
 	// Offset the session will be extended by when the user picks the remember me option. Default of 0 means that the remember me option will not be shown. (Format: hours=-1;minutes=-2;seconds=-3)
 	RememberMeOffset *string `json:"remember_me_offset,omitempty"`
-	// Bind sessions created by this stage to the configured network  * `no_binding` - No Binding * `bind_asn` - Bind Asn * `bind_asn_network` - Bind Asn Network * `bind_asn_network_ip` - Bind Asn Network Ip
+	// Bind sessions created by this stage to the configured network
 	NetworkBinding *NetworkBindingEnum `json:"network_binding,omitempty"`
-	// Bind sessions created by this stage to the configured GeoIP location  * `no_binding` - No Binding * `bind_continent` - Bind Continent * `bind_continent_country` - Bind Continent Country * `bind_continent_country_city` - Bind Continent Country City
+	// Bind sessions created by this stage to the configured GeoIP location
 	GeoipBinding *GeoipBindingEnum `json:"geoip_binding,omitempty"`
 }
 

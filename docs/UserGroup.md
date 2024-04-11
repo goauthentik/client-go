@@ -9,14 +9,14 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **IsSuperuser** | Pointer to **bool** | Users added to this group will be superusers. | [optional] 
 **Parent** | Pointer to **NullableString** |  | [optional] 
-**ParentName** | **string** |  | [readonly] 
+**ParentName** | **NullableString** |  | [readonly] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
 ### NewUserGroup
 
-`func NewUserGroup(pk string, numPk int32, name string, parentName string, ) *UserGroup`
+`func NewUserGroup(pk string, numPk int32, name string, parentName NullableString, ) *UserGroup`
 
 NewUserGroup instantiates a new UserGroup object
 This constructor will assign default values to properties that have it defined,
@@ -171,6 +171,16 @@ and a boolean to check if the value has been set.
 SetParentName sets ParentName field to given value.
 
 
+### SetParentNameNil
+
+`func (o *UserGroup) SetParentNameNil(b bool)`
+
+ SetParentNameNil sets the value for ParentName to be an explicit nil
+
+### UnsetParentName
+`func (o *UserGroup) UnsetParentName()`
+
+UnsetParentName ensures that no value is present for ParentName, not even an explicit nil
 ### GetAttributes
 
 `func (o *UserGroup) GetAttributes() map[string]interface{}`

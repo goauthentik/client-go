@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// AuthTypeEnum * `basic` - Basic * `bearer` - Bearer
+// AuthTypeEnum the model 'AuthTypeEnum'
 type AuthTypeEnum string
 
 // List of AuthTypeEnum

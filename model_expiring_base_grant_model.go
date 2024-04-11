@@ -22,9 +22,9 @@ type ExpiringBaseGrantModel struct {
 	Provider OAuth2Provider `json:"provider"`
 	User     User           `json:"user"`
 	// Check if token is expired yet.
-	IsExpired bool       `json:"is_expired"`
-	Expires   *time.Time `json:"expires,omitempty"`
-	Scope     []string   `json:"scope"`
+	IsExpired bool         `json:"is_expired"`
+	Expires   NullableTime `json:"expires,omitempty"`
+	Scope     []string     `json:"scope"`
 }
 
 // NewExpiringBaseGrantModel instantiates a new ExpiringBaseGrantModel object
@@ -145,36 +145,47 @@ func (o *ExpiringBaseGrantModel) SetIsExpired(v bool) {
 	o.IsExpired = v
 }
 
-// GetExpires returns the Expires field value if set, zero value otherwise.
+// GetExpires returns the Expires field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ExpiringBaseGrantModel) GetExpires() time.Time {
-	if o == nil || o.Expires == nil {
+	if o == nil || o.Expires.Get() == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.Expires
+	return *o.Expires.Get()
 }
 
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ExpiringBaseGrantModel) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || o.Expires == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Expires, true
+	return o.Expires.Get(), o.Expires.IsSet()
 }
 
 // HasExpires returns a boolean if a field has been set.
 func (o *ExpiringBaseGrantModel) HasExpires() bool {
-	if o != nil && o.Expires != nil {
+	if o != nil && o.Expires.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetExpires gets a reference to the given time.Time and assigns it to the Expires field.
+// SetExpires gets a reference to the given NullableTime and assigns it to the Expires field.
 func (o *ExpiringBaseGrantModel) SetExpires(v time.Time) {
-	o.Expires = &v
+	o.Expires.Set(&v)
+}
+
+// SetExpiresNil sets the value for Expires to be an explicit nil
+func (o *ExpiringBaseGrantModel) SetExpiresNil() {
+	o.Expires.Set(nil)
+}
+
+// UnsetExpires ensures that no value is present for Expires, not even an explicit nil
+func (o *ExpiringBaseGrantModel) UnsetExpires() {
+	o.Expires.Unset()
 }
 
 // GetScope returns the Scope field value
@@ -215,8 +226,8 @@ func (o ExpiringBaseGrantModel) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["is_expired"] = o.IsExpired
 	}
-	if o.Expires != nil {
-		toSerialize["expires"] = o.Expires
+	if o.Expires.IsSet() {
+		toSerialize["expires"] = o.Expires.Get()
 	}
 	if true {
 		toSerialize["scope"] = o.Scope

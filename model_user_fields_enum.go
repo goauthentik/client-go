@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// UserFieldsEnum * `email` - E Mail * `username` - Username * `upn` - Upn
+// UserFieldsEnum the model 'UserFieldsEnum'
 type UserFieldsEnum string
 
 // List of UserFieldsEnum

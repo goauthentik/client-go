@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **FooterLinks** | Pointer to **interface{}** | The option configures the footer links on the flow executor pages. | [optional] 
 **GdprCompliance** | Pointer to **bool** | When enabled, all the events caused by a user will be deleted upon the user&#39;s deletion. | [optional] 
 **Impersonation** | Pointer to **bool** | Globally enable/disable impersonation. | [optional] 
+**DefaultTokenDuration** | Pointer to **string** | Default token duration | [optional] 
+**DefaultTokenLength** | Pointer to **int32** | Default token length | [optional] 
 
 ## Methods
 
@@ -241,6 +243,56 @@ SetImpersonation sets Impersonation field to given value.
 `func (o *Settings) HasImpersonation() bool`
 
 HasImpersonation returns a boolean if a field has been set.
+
+### GetDefaultTokenDuration
+
+`func (o *Settings) GetDefaultTokenDuration() string`
+
+GetDefaultTokenDuration returns the DefaultTokenDuration field if non-nil, zero value otherwise.
+
+### GetDefaultTokenDurationOk
+
+`func (o *Settings) GetDefaultTokenDurationOk() (*string, bool)`
+
+GetDefaultTokenDurationOk returns a tuple with the DefaultTokenDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultTokenDuration
+
+`func (o *Settings) SetDefaultTokenDuration(v string)`
+
+SetDefaultTokenDuration sets DefaultTokenDuration field to given value.
+
+### HasDefaultTokenDuration
+
+`func (o *Settings) HasDefaultTokenDuration() bool`
+
+HasDefaultTokenDuration returns a boolean if a field has been set.
+
+### GetDefaultTokenLength
+
+`func (o *Settings) GetDefaultTokenLength() int32`
+
+GetDefaultTokenLength returns the DefaultTokenLength field if non-nil, zero value otherwise.
+
+### GetDefaultTokenLengthOk
+
+`func (o *Settings) GetDefaultTokenLengthOk() (*int32, bool)`
+
+GetDefaultTokenLengthOk returns a tuple with the DefaultTokenLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultTokenLength
+
+`func (o *Settings) SetDefaultTokenLength(v int32)`
+
+SetDefaultTokenLength sets DefaultTokenLength field to given value.
+
+### HasDefaultTokenLength
+
+`func (o *Settings) HasDefaultTokenLength() bool`
+
+HasDefaultTokenLength returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

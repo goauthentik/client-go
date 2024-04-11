@@ -54,7 +54,7 @@ type ProxyProvider struct {
 	BasicAuthPasswordAttribute *string `json:"basic_auth_password_attribute,omitempty"`
 	// User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user's Email address is used.
 	BasicAuthUserAttribute *string `json:"basic_auth_user_attribute,omitempty"`
-	// Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.  * `proxy` - Proxy * `forward_single` - Forward Single * `forward_domain` - Forward Domain
+	// Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.
 	Mode *ProxyMode `json:"mode,omitempty"`
 	// When enabled, this provider will intercept the authorization header and authenticate requests based on its value.
 	InterceptHeaderAuth *bool    `json:"intercept_header_auth,omitempty"`

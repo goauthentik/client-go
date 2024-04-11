@@ -15,8 +15,8 @@ import (
 	"encoding/json"
 )
 
-// AuthenticateWebAuthnStageRequest AuthenticateWebAuthnStage Serializer
-type AuthenticateWebAuthnStageRequest struct {
+// AuthenticatorWebAuthnStageRequest AuthenticatorWebAuthnStage Serializer
+type AuthenticatorWebAuthnStageRequest struct {
 	Name    string           `json:"name"`
 	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
@@ -25,28 +25,29 @@ type AuthenticateWebAuthnStageRequest struct {
 	UserVerification        *UserVerificationEnum               `json:"user_verification,omitempty"`
 	AuthenticatorAttachment NullableAuthenticatorAttachmentEnum `json:"authenticator_attachment,omitempty"`
 	ResidentKeyRequirement  *ResidentKeyRequirementEnum         `json:"resident_key_requirement,omitempty"`
+	DeviceTypeRestrictions  []string                            `json:"device_type_restrictions,omitempty"`
 }
 
-// NewAuthenticateWebAuthnStageRequest instantiates a new AuthenticateWebAuthnStageRequest object
+// NewAuthenticatorWebAuthnStageRequest instantiates a new AuthenticatorWebAuthnStageRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticateWebAuthnStageRequest(name string) *AuthenticateWebAuthnStageRequest {
-	this := AuthenticateWebAuthnStageRequest{}
+func NewAuthenticatorWebAuthnStageRequest(name string) *AuthenticatorWebAuthnStageRequest {
+	this := AuthenticatorWebAuthnStageRequest{}
 	this.Name = name
 	return &this
 }
 
-// NewAuthenticateWebAuthnStageRequestWithDefaults instantiates a new AuthenticateWebAuthnStageRequest object
+// NewAuthenticatorWebAuthnStageRequestWithDefaults instantiates a new AuthenticatorWebAuthnStageRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAuthenticateWebAuthnStageRequestWithDefaults() *AuthenticateWebAuthnStageRequest {
-	this := AuthenticateWebAuthnStageRequest{}
+func NewAuthenticatorWebAuthnStageRequestWithDefaults() *AuthenticatorWebAuthnStageRequest {
+	this := AuthenticatorWebAuthnStageRequest{}
 	return &this
 }
 
 // GetName returns the Name field value
-func (o *AuthenticateWebAuthnStageRequest) GetName() string {
+func (o *AuthenticatorWebAuthnStageRequest) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -57,7 +58,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *AuthenticateWebAuthnStageRequest) GetNameOk() (*string, bool) {
+func (o *AuthenticatorWebAuthnStageRequest) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,12 +66,12 @@ func (o *AuthenticateWebAuthnStageRequest) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *AuthenticateWebAuthnStageRequest) SetName(v string) {
+func (o *AuthenticatorWebAuthnStageRequest) SetName(v string) {
 	o.Name = v
 }
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *AuthenticateWebAuthnStageRequest) GetFlowSet() []FlowSetRequest {
+func (o *AuthenticatorWebAuthnStageRequest) GetFlowSet() []FlowSetRequest {
 	if o == nil || o.FlowSet == nil {
 		var ret []FlowSetRequest
 		return ret
@@ -80,7 +81,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetFlowSet() []FlowSetRequest {
 
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticateWebAuthnStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
+func (o *AuthenticatorWebAuthnStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
@@ -88,7 +89,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetFlowSetOk() ([]FlowSetRequest, boo
 }
 
 // HasFlowSet returns a boolean if a field has been set.
-func (o *AuthenticateWebAuthnStageRequest) HasFlowSet() bool {
+func (o *AuthenticatorWebAuthnStageRequest) HasFlowSet() bool {
 	if o != nil && o.FlowSet != nil {
 		return true
 	}
@@ -97,12 +98,12 @@ func (o *AuthenticateWebAuthnStageRequest) HasFlowSet() bool {
 }
 
 // SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
-func (o *AuthenticateWebAuthnStageRequest) SetFlowSet(v []FlowSetRequest) {
+func (o *AuthenticatorWebAuthnStageRequest) SetFlowSet(v []FlowSetRequest) {
 	o.FlowSet = v
 }
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AuthenticateWebAuthnStageRequest) GetConfigureFlow() string {
+func (o *AuthenticatorWebAuthnStageRequest) GetConfigureFlow() string {
 	if o == nil || o.ConfigureFlow.Get() == nil {
 		var ret string
 		return ret
@@ -113,7 +114,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetConfigureFlow() string {
 // GetConfigureFlowOk returns a tuple with the ConfigureFlow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AuthenticateWebAuthnStageRequest) GetConfigureFlowOk() (*string, bool) {
+func (o *AuthenticatorWebAuthnStageRequest) GetConfigureFlowOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -121,7 +122,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetConfigureFlowOk() (*string, bool) 
 }
 
 // HasConfigureFlow returns a boolean if a field has been set.
-func (o *AuthenticateWebAuthnStageRequest) HasConfigureFlow() bool {
+func (o *AuthenticatorWebAuthnStageRequest) HasConfigureFlow() bool {
 	if o != nil && o.ConfigureFlow.IsSet() {
 		return true
 	}
@@ -130,22 +131,22 @@ func (o *AuthenticateWebAuthnStageRequest) HasConfigureFlow() bool {
 }
 
 // SetConfigureFlow gets a reference to the given NullableString and assigns it to the ConfigureFlow field.
-func (o *AuthenticateWebAuthnStageRequest) SetConfigureFlow(v string) {
+func (o *AuthenticatorWebAuthnStageRequest) SetConfigureFlow(v string) {
 	o.ConfigureFlow.Set(&v)
 }
 
 // SetConfigureFlowNil sets the value for ConfigureFlow to be an explicit nil
-func (o *AuthenticateWebAuthnStageRequest) SetConfigureFlowNil() {
+func (o *AuthenticatorWebAuthnStageRequest) SetConfigureFlowNil() {
 	o.ConfigureFlow.Set(nil)
 }
 
 // UnsetConfigureFlow ensures that no value is present for ConfigureFlow, not even an explicit nil
-func (o *AuthenticateWebAuthnStageRequest) UnsetConfigureFlow() {
+func (o *AuthenticatorWebAuthnStageRequest) UnsetConfigureFlow() {
 	o.ConfigureFlow.Unset()
 }
 
 // GetFriendlyName returns the FriendlyName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AuthenticateWebAuthnStageRequest) GetFriendlyName() string {
+func (o *AuthenticatorWebAuthnStageRequest) GetFriendlyName() string {
 	if o == nil || o.FriendlyName.Get() == nil {
 		var ret string
 		return ret
@@ -156,7 +157,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetFriendlyName() string {
 // GetFriendlyNameOk returns a tuple with the FriendlyName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AuthenticateWebAuthnStageRequest) GetFriendlyNameOk() (*string, bool) {
+func (o *AuthenticatorWebAuthnStageRequest) GetFriendlyNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -164,7 +165,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetFriendlyNameOk() (*string, bool) {
 }
 
 // HasFriendlyName returns a boolean if a field has been set.
-func (o *AuthenticateWebAuthnStageRequest) HasFriendlyName() bool {
+func (o *AuthenticatorWebAuthnStageRequest) HasFriendlyName() bool {
 	if o != nil && o.FriendlyName.IsSet() {
 		return true
 	}
@@ -173,22 +174,22 @@ func (o *AuthenticateWebAuthnStageRequest) HasFriendlyName() bool {
 }
 
 // SetFriendlyName gets a reference to the given NullableString and assigns it to the FriendlyName field.
-func (o *AuthenticateWebAuthnStageRequest) SetFriendlyName(v string) {
+func (o *AuthenticatorWebAuthnStageRequest) SetFriendlyName(v string) {
 	o.FriendlyName.Set(&v)
 }
 
 // SetFriendlyNameNil sets the value for FriendlyName to be an explicit nil
-func (o *AuthenticateWebAuthnStageRequest) SetFriendlyNameNil() {
+func (o *AuthenticatorWebAuthnStageRequest) SetFriendlyNameNil() {
 	o.FriendlyName.Set(nil)
 }
 
 // UnsetFriendlyName ensures that no value is present for FriendlyName, not even an explicit nil
-func (o *AuthenticateWebAuthnStageRequest) UnsetFriendlyName() {
+func (o *AuthenticatorWebAuthnStageRequest) UnsetFriendlyName() {
 	o.FriendlyName.Unset()
 }
 
 // GetUserVerification returns the UserVerification field value if set, zero value otherwise.
-func (o *AuthenticateWebAuthnStageRequest) GetUserVerification() UserVerificationEnum {
+func (o *AuthenticatorWebAuthnStageRequest) GetUserVerification() UserVerificationEnum {
 	if o == nil || o.UserVerification == nil {
 		var ret UserVerificationEnum
 		return ret
@@ -198,7 +199,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetUserVerification() UserVerificatio
 
 // GetUserVerificationOk returns a tuple with the UserVerification field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticateWebAuthnStageRequest) GetUserVerificationOk() (*UserVerificationEnum, bool) {
+func (o *AuthenticatorWebAuthnStageRequest) GetUserVerificationOk() (*UserVerificationEnum, bool) {
 	if o == nil || o.UserVerification == nil {
 		return nil, false
 	}
@@ -206,7 +207,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetUserVerificationOk() (*UserVerific
 }
 
 // HasUserVerification returns a boolean if a field has been set.
-func (o *AuthenticateWebAuthnStageRequest) HasUserVerification() bool {
+func (o *AuthenticatorWebAuthnStageRequest) HasUserVerification() bool {
 	if o != nil && o.UserVerification != nil {
 		return true
 	}
@@ -215,12 +216,12 @@ func (o *AuthenticateWebAuthnStageRequest) HasUserVerification() bool {
 }
 
 // SetUserVerification gets a reference to the given UserVerificationEnum and assigns it to the UserVerification field.
-func (o *AuthenticateWebAuthnStageRequest) SetUserVerification(v UserVerificationEnum) {
+func (o *AuthenticatorWebAuthnStageRequest) SetUserVerification(v UserVerificationEnum) {
 	o.UserVerification = &v
 }
 
 // GetAuthenticatorAttachment returns the AuthenticatorAttachment field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AuthenticateWebAuthnStageRequest) GetAuthenticatorAttachment() AuthenticatorAttachmentEnum {
+func (o *AuthenticatorWebAuthnStageRequest) GetAuthenticatorAttachment() AuthenticatorAttachmentEnum {
 	if o == nil || o.AuthenticatorAttachment.Get() == nil {
 		var ret AuthenticatorAttachmentEnum
 		return ret
@@ -231,7 +232,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetAuthenticatorAttachment() Authenti
 // GetAuthenticatorAttachmentOk returns a tuple with the AuthenticatorAttachment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AuthenticateWebAuthnStageRequest) GetAuthenticatorAttachmentOk() (*AuthenticatorAttachmentEnum, bool) {
+func (o *AuthenticatorWebAuthnStageRequest) GetAuthenticatorAttachmentOk() (*AuthenticatorAttachmentEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -239,7 +240,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetAuthenticatorAttachmentOk() (*Auth
 }
 
 // HasAuthenticatorAttachment returns a boolean if a field has been set.
-func (o *AuthenticateWebAuthnStageRequest) HasAuthenticatorAttachment() bool {
+func (o *AuthenticatorWebAuthnStageRequest) HasAuthenticatorAttachment() bool {
 	if o != nil && o.AuthenticatorAttachment.IsSet() {
 		return true
 	}
@@ -248,22 +249,22 @@ func (o *AuthenticateWebAuthnStageRequest) HasAuthenticatorAttachment() bool {
 }
 
 // SetAuthenticatorAttachment gets a reference to the given NullableAuthenticatorAttachmentEnum and assigns it to the AuthenticatorAttachment field.
-func (o *AuthenticateWebAuthnStageRequest) SetAuthenticatorAttachment(v AuthenticatorAttachmentEnum) {
+func (o *AuthenticatorWebAuthnStageRequest) SetAuthenticatorAttachment(v AuthenticatorAttachmentEnum) {
 	o.AuthenticatorAttachment.Set(&v)
 }
 
 // SetAuthenticatorAttachmentNil sets the value for AuthenticatorAttachment to be an explicit nil
-func (o *AuthenticateWebAuthnStageRequest) SetAuthenticatorAttachmentNil() {
+func (o *AuthenticatorWebAuthnStageRequest) SetAuthenticatorAttachmentNil() {
 	o.AuthenticatorAttachment.Set(nil)
 }
 
 // UnsetAuthenticatorAttachment ensures that no value is present for AuthenticatorAttachment, not even an explicit nil
-func (o *AuthenticateWebAuthnStageRequest) UnsetAuthenticatorAttachment() {
+func (o *AuthenticatorWebAuthnStageRequest) UnsetAuthenticatorAttachment() {
 	o.AuthenticatorAttachment.Unset()
 }
 
 // GetResidentKeyRequirement returns the ResidentKeyRequirement field value if set, zero value otherwise.
-func (o *AuthenticateWebAuthnStageRequest) GetResidentKeyRequirement() ResidentKeyRequirementEnum {
+func (o *AuthenticatorWebAuthnStageRequest) GetResidentKeyRequirement() ResidentKeyRequirementEnum {
 	if o == nil || o.ResidentKeyRequirement == nil {
 		var ret ResidentKeyRequirementEnum
 		return ret
@@ -273,7 +274,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetResidentKeyRequirement() ResidentK
 
 // GetResidentKeyRequirementOk returns a tuple with the ResidentKeyRequirement field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticateWebAuthnStageRequest) GetResidentKeyRequirementOk() (*ResidentKeyRequirementEnum, bool) {
+func (o *AuthenticatorWebAuthnStageRequest) GetResidentKeyRequirementOk() (*ResidentKeyRequirementEnum, bool) {
 	if o == nil || o.ResidentKeyRequirement == nil {
 		return nil, false
 	}
@@ -281,7 +282,7 @@ func (o *AuthenticateWebAuthnStageRequest) GetResidentKeyRequirementOk() (*Resid
 }
 
 // HasResidentKeyRequirement returns a boolean if a field has been set.
-func (o *AuthenticateWebAuthnStageRequest) HasResidentKeyRequirement() bool {
+func (o *AuthenticatorWebAuthnStageRequest) HasResidentKeyRequirement() bool {
 	if o != nil && o.ResidentKeyRequirement != nil {
 		return true
 	}
@@ -290,11 +291,43 @@ func (o *AuthenticateWebAuthnStageRequest) HasResidentKeyRequirement() bool {
 }
 
 // SetResidentKeyRequirement gets a reference to the given ResidentKeyRequirementEnum and assigns it to the ResidentKeyRequirement field.
-func (o *AuthenticateWebAuthnStageRequest) SetResidentKeyRequirement(v ResidentKeyRequirementEnum) {
+func (o *AuthenticatorWebAuthnStageRequest) SetResidentKeyRequirement(v ResidentKeyRequirementEnum) {
 	o.ResidentKeyRequirement = &v
 }
 
-func (o AuthenticateWebAuthnStageRequest) MarshalJSON() ([]byte, error) {
+// GetDeviceTypeRestrictions returns the DeviceTypeRestrictions field value if set, zero value otherwise.
+func (o *AuthenticatorWebAuthnStageRequest) GetDeviceTypeRestrictions() []string {
+	if o == nil || o.DeviceTypeRestrictions == nil {
+		var ret []string
+		return ret
+	}
+	return o.DeviceTypeRestrictions
+}
+
+// GetDeviceTypeRestrictionsOk returns a tuple with the DeviceTypeRestrictions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthenticatorWebAuthnStageRequest) GetDeviceTypeRestrictionsOk() ([]string, bool) {
+	if o == nil || o.DeviceTypeRestrictions == nil {
+		return nil, false
+	}
+	return o.DeviceTypeRestrictions, true
+}
+
+// HasDeviceTypeRestrictions returns a boolean if a field has been set.
+func (o *AuthenticatorWebAuthnStageRequest) HasDeviceTypeRestrictions() bool {
+	if o != nil && o.DeviceTypeRestrictions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeviceTypeRestrictions gets a reference to the given []string and assigns it to the DeviceTypeRestrictions field.
+func (o *AuthenticatorWebAuthnStageRequest) SetDeviceTypeRestrictions(v []string) {
+	o.DeviceTypeRestrictions = v
+}
+
+func (o AuthenticatorWebAuthnStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
@@ -317,41 +350,44 @@ func (o AuthenticateWebAuthnStageRequest) MarshalJSON() ([]byte, error) {
 	if o.ResidentKeyRequirement != nil {
 		toSerialize["resident_key_requirement"] = o.ResidentKeyRequirement
 	}
+	if o.DeviceTypeRestrictions != nil {
+		toSerialize["device_type_restrictions"] = o.DeviceTypeRestrictions
+	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableAuthenticateWebAuthnStageRequest struct {
-	value *AuthenticateWebAuthnStageRequest
+type NullableAuthenticatorWebAuthnStageRequest struct {
+	value *AuthenticatorWebAuthnStageRequest
 	isSet bool
 }
 
-func (v NullableAuthenticateWebAuthnStageRequest) Get() *AuthenticateWebAuthnStageRequest {
+func (v NullableAuthenticatorWebAuthnStageRequest) Get() *AuthenticatorWebAuthnStageRequest {
 	return v.value
 }
 
-func (v *NullableAuthenticateWebAuthnStageRequest) Set(val *AuthenticateWebAuthnStageRequest) {
+func (v *NullableAuthenticatorWebAuthnStageRequest) Set(val *AuthenticatorWebAuthnStageRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAuthenticateWebAuthnStageRequest) IsSet() bool {
+func (v NullableAuthenticatorWebAuthnStageRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAuthenticateWebAuthnStageRequest) Unset() {
+func (v *NullableAuthenticatorWebAuthnStageRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAuthenticateWebAuthnStageRequest(val *AuthenticateWebAuthnStageRequest) *NullableAuthenticateWebAuthnStageRequest {
-	return &NullableAuthenticateWebAuthnStageRequest{value: val, isSet: true}
+func NewNullableAuthenticatorWebAuthnStageRequest(val *AuthenticatorWebAuthnStageRequest) *NullableAuthenticatorWebAuthnStageRequest {
+	return &NullableAuthenticatorWebAuthnStageRequest{value: val, isSet: true}
 }
 
-func (v NullableAuthenticateWebAuthnStageRequest) MarshalJSON() ([]byte, error) {
+func (v NullableAuthenticatorWebAuthnStageRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAuthenticateWebAuthnStageRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableAuthenticatorWebAuthnStageRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

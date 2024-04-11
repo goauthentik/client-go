@@ -59,7 +59,7 @@ type SAMLProvider struct {
 	SigningKp NullableString `json:"signing_kp,omitempty"`
 	// When selected, incoming assertion's Signatures will be validated against this certificate. To allow unsigned Requests, leave on default.
 	VerificationKp NullableString `json:"verification_kp,omitempty"`
-	// This determines how authentik sends the response back to the Service Provider.  * `redirect` - Redirect * `post` - Post
+	// This determines how authentik sends the response back to the Service Provider.
 	SpBinding *SpBindingEnum `json:"sp_binding,omitempty"`
 	// Default relay_state value for IDP-initiated logins
 	DefaultRelayState *string `json:"default_relay_state,omitempty"`

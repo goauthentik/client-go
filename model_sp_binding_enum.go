@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// SpBindingEnum * `redirect` - Redirect * `post` - Post
+// SpBindingEnum the model 'SpBindingEnum'
 type SpBindingEnum string
 
 // List of SpBindingEnum

@@ -20,7 +20,7 @@ import (
 type Invitation struct {
 	Pk        string                 `json:"pk"`
 	Name      string                 `json:"name"`
-	Expires   *time.Time             `json:"expires,omitempty"`
+	Expires   NullableTime           `json:"expires,omitempty"`
 	FixedData map[string]interface{} `json:"fixed_data,omitempty"`
 	CreatedBy GroupMember            `json:"created_by"`
 	// When enabled, the invitation will be deleted after usage.
@@ -99,36 +99,47 @@ func (o *Invitation) SetName(v string) {
 	o.Name = v
 }
 
-// GetExpires returns the Expires field value if set, zero value otherwise.
+// GetExpires returns the Expires field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Invitation) GetExpires() time.Time {
-	if o == nil || o.Expires == nil {
+	if o == nil || o.Expires.Get() == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.Expires
+	return *o.Expires.Get()
 }
 
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Invitation) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || o.Expires == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Expires, true
+	return o.Expires.Get(), o.Expires.IsSet()
 }
 
 // HasExpires returns a boolean if a field has been set.
 func (o *Invitation) HasExpires() bool {
-	if o != nil && o.Expires != nil {
+	if o != nil && o.Expires.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetExpires gets a reference to the given time.Time and assigns it to the Expires field.
+// SetExpires gets a reference to the given NullableTime and assigns it to the Expires field.
 func (o *Invitation) SetExpires(v time.Time) {
-	o.Expires = &v
+	o.Expires.Set(&v)
+}
+
+// SetExpiresNil sets the value for Expires to be an explicit nil
+func (o *Invitation) SetExpiresNil() {
+	o.Expires.Set(nil)
+}
+
+// UnsetExpires ensures that no value is present for Expires, not even an explicit nil
+func (o *Invitation) UnsetExpires() {
+	o.Expires.Unset()
 }
 
 // GetFixedData returns the FixedData field value if set, zero value otherwise.
@@ -294,8 +305,8 @@ func (o Invitation) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Expires != nil {
-		toSerialize["expires"] = o.Expires
+	if o.Expires.IsSet() {
+		toSerialize["expires"] = o.Expires.Get()
 	}
 	if o.FixedData != nil {
 		toSerialize["fixed_data"] = o.FixedData

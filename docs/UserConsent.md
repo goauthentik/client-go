@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **int32** |  | [readonly] 
-**Expires** | Pointer to **time.Time** |  | [optional] 
+**Expires** | Pointer to **NullableTime** |  | [optional] 
 **Expiring** | Pointer to **bool** |  | [optional] 
 **User** | [**User**](User.md) |  | 
 **Application** | [**Application**](Application.md) |  | 
@@ -75,6 +75,16 @@ SetExpires sets Expires field to given value.
 
 HasExpires returns a boolean if a field has been set.
 
+### SetExpiresNil
+
+`func (o *UserConsent) SetExpiresNil(b bool)`
+
+ SetExpiresNil sets the value for Expires to be an explicit nil
+
+### UnsetExpires
+`func (o *UserConsent) UnsetExpires()`
+
+UnsetExpires ensures that no value is present for Expires, not even an explicit nil
 ### GetExpiring
 
 `func (o *UserConsent) GetExpiring() bool`

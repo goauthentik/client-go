@@ -5170,7 +5170,6 @@ func (r ApiCoreTokensListRequest) Identifier(identifier string) ApiCoreTokensLis
 	return r
 }
 
-// * &#x60;verification&#x60; - Intent Verification * &#x60;api&#x60; - Intent Api * &#x60;recovery&#x60; - Intent Recovery * &#x60;app_password&#x60; - Intent App Password
 func (r ApiCoreTokensListRequest) Intent(intent string) ApiCoreTokensListRequest {
 	r.intent = &intent
 	return r
@@ -7542,7 +7541,6 @@ func (r ApiCoreUsersListRequest) Search(search string) ApiCoreUsersListRequest {
 	return r
 }
 
-// * &#x60;internal&#x60; - Internal * &#x60;external&#x60; - External * &#x60;service_account&#x60; - Service Account * &#x60;internal_service_account&#x60; - Internal Service Account
 func (r ApiCoreUsersListRequest) Type_(type_ []string) ApiCoreUsersListRequest {
 	r.type_ = &type_
 	return r

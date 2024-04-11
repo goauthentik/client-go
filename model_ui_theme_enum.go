@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// UiThemeEnum * `automatic` - Automatic * `light` - Light * `dark` - Dark
+// UiThemeEnum the model 'UiThemeEnum'
 type UiThemeEnum string
 
 // List of UiThemeEnum

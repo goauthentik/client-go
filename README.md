@@ -623,6 +623,8 @@ Class | Method | HTTP request | Description
 *StagesApi* | [**StagesAuthenticatorValidateUsedByList**](docs/StagesApi.md#stagesauthenticatorvalidateusedbylist) | **Get** /stages/authenticator/validate/{stage_uuid}/used_by/ | 
 *StagesApi* | [**StagesAuthenticatorWebauthnCreate**](docs/StagesApi.md#stagesauthenticatorwebauthncreate) | **Post** /stages/authenticator/webauthn/ | 
 *StagesApi* | [**StagesAuthenticatorWebauthnDestroy**](docs/StagesApi.md#stagesauthenticatorwebauthndestroy) | **Delete** /stages/authenticator/webauthn/{stage_uuid}/ | 
+*StagesApi* | [**StagesAuthenticatorWebauthnDeviceTypesList**](docs/StagesApi.md#stagesauthenticatorwebauthndevicetypeslist) | **Get** /stages/authenticator/webauthn_device_types/ | 
+*StagesApi* | [**StagesAuthenticatorWebauthnDeviceTypesRetrieve**](docs/StagesApi.md#stagesauthenticatorwebauthndevicetypesretrieve) | **Get** /stages/authenticator/webauthn_device_types/{aaguid}/ | 
 *StagesApi* | [**StagesAuthenticatorWebauthnList**](docs/StagesApi.md#stagesauthenticatorwebauthnlist) | **Get** /stages/authenticator/webauthn/ | 
 *StagesApi* | [**StagesAuthenticatorWebauthnPartialUpdate**](docs/StagesApi.md#stagesauthenticatorwebauthnpartialupdate) | **Patch** /stages/authenticator/webauthn/{stage_uuid}/ | 
 *StagesApi* | [**StagesAuthenticatorWebauthnRetrieve**](docs/StagesApi.md#stagesauthenticatorwebauthnretrieve) | **Get** /stages/authenticator/webauthn/{stage_uuid}/ | 
@@ -769,8 +771,6 @@ Class | Method | HTTP request | Description
  - [ApplicationRequest](docs/ApplicationRequest.md)
  - [AuthModeEnum](docs/AuthModeEnum.md)
  - [AuthTypeEnum](docs/AuthTypeEnum.md)
- - [AuthenticateWebAuthnStage](docs/AuthenticateWebAuthnStage.md)
- - [AuthenticateWebAuthnStageRequest](docs/AuthenticateWebAuthnStageRequest.md)
  - [AuthenticatedSession](docs/AuthenticatedSession.md)
  - [AuthenticatedSessionAsn](docs/AuthenticatedSessionAsn.md)
  - [AuthenticatedSessionGeoIp](docs/AuthenticatedSessionGeoIp.md)
@@ -804,6 +804,8 @@ Class | Method | HTTP request | Description
  - [AuthenticatorValidationChallengeResponseRequest](docs/AuthenticatorValidationChallengeResponseRequest.md)
  - [AuthenticatorWebAuthnChallenge](docs/AuthenticatorWebAuthnChallenge.md)
  - [AuthenticatorWebAuthnChallengeResponseRequest](docs/AuthenticatorWebAuthnChallengeResponseRequest.md)
+ - [AuthenticatorWebAuthnStage](docs/AuthenticatorWebAuthnStage.md)
+ - [AuthenticatorWebAuthnStageRequest](docs/AuthenticatorWebAuthnStageRequest.md)
  - [AutoSubmitChallengeResponseRequest](docs/AutoSubmitChallengeResponseRequest.md)
  - [AutosubmitChallenge](docs/AutosubmitChallenge.md)
  - [BackendsEnum](docs/BackendsEnum.md)
@@ -970,13 +972,13 @@ Class | Method | HTTP request | Description
  - [OutpostRequest](docs/OutpostRequest.md)
  - [OutpostTypeEnum](docs/OutpostTypeEnum.md)
  - [PaginatedApplicationList](docs/PaginatedApplicationList.md)
- - [PaginatedAuthenticateWebAuthnStageList](docs/PaginatedAuthenticateWebAuthnStageList.md)
  - [PaginatedAuthenticatedSessionList](docs/PaginatedAuthenticatedSessionList.md)
  - [PaginatedAuthenticatorDuoStageList](docs/PaginatedAuthenticatorDuoStageList.md)
  - [PaginatedAuthenticatorSMSStageList](docs/PaginatedAuthenticatorSMSStageList.md)
  - [PaginatedAuthenticatorStaticStageList](docs/PaginatedAuthenticatorStaticStageList.md)
  - [PaginatedAuthenticatorTOTPStageList](docs/PaginatedAuthenticatorTOTPStageList.md)
  - [PaginatedAuthenticatorValidateStageList](docs/PaginatedAuthenticatorValidateStageList.md)
+ - [PaginatedAuthenticatorWebAuthnStageList](docs/PaginatedAuthenticatorWebAuthnStageList.md)
  - [PaginatedBlueprintInstanceList](docs/PaginatedBlueprintInstanceList.md)
  - [PaginatedBrandList](docs/PaginatedBrandList.md)
  - [PaginatedCaptchaStageList](docs/PaginatedCaptchaStageList.md)
@@ -1066,6 +1068,7 @@ Class | Method | HTTP request | Description
  - [PaginatedUserSourceConnectionList](docs/PaginatedUserSourceConnectionList.md)
  - [PaginatedUserWriteStageList](docs/PaginatedUserWriteStageList.md)
  - [PaginatedWebAuthnDeviceList](docs/PaginatedWebAuthnDeviceList.md)
+ - [PaginatedWebAuthnDeviceTypeList](docs/PaginatedWebAuthnDeviceTypeList.md)
  - [Pagination](docs/Pagination.md)
  - [PasswordChallenge](docs/PasswordChallenge.md)
  - [PasswordChallengeResponseRequest](docs/PasswordChallengeResponseRequest.md)
@@ -1076,12 +1079,12 @@ Class | Method | HTTP request | Description
  - [PasswordStage](docs/PasswordStage.md)
  - [PasswordStageRequest](docs/PasswordStageRequest.md)
  - [PatchedApplicationRequest](docs/PatchedApplicationRequest.md)
- - [PatchedAuthenticateWebAuthnStageRequest](docs/PatchedAuthenticateWebAuthnStageRequest.md)
  - [PatchedAuthenticatorDuoStageRequest](docs/PatchedAuthenticatorDuoStageRequest.md)
  - [PatchedAuthenticatorSMSStageRequest](docs/PatchedAuthenticatorSMSStageRequest.md)
  - [PatchedAuthenticatorStaticStageRequest](docs/PatchedAuthenticatorStaticStageRequest.md)
  - [PatchedAuthenticatorTOTPStageRequest](docs/PatchedAuthenticatorTOTPStageRequest.md)
  - [PatchedAuthenticatorValidateStageRequest](docs/PatchedAuthenticatorValidateStageRequest.md)
+ - [PatchedAuthenticatorWebAuthnStageRequest](docs/PatchedAuthenticatorWebAuthnStageRequest.md)
  - [PatchedBlueprintInstanceRequest](docs/PatchedBlueprintInstanceRequest.md)
  - [PatchedBrandRequest](docs/PatchedBrandRequest.md)
  - [PatchedCaptchaStageRequest](docs/PatchedCaptchaStageRequest.md)
@@ -1306,7 +1309,10 @@ Class | Method | HTTP request | Description
  - [ValidationError](docs/ValidationError.md)
  - [Version](docs/Version.md)
  - [WebAuthnDevice](docs/WebAuthnDevice.md)
+ - [WebAuthnDeviceDeviceType](docs/WebAuthnDeviceDeviceType.md)
  - [WebAuthnDeviceRequest](docs/WebAuthnDeviceRequest.md)
+ - [WebAuthnDeviceType](docs/WebAuthnDeviceType.md)
+ - [WebAuthnDeviceTypeRequest](docs/WebAuthnDeviceTypeRequest.md)
  - [Workers](docs/Workers.md)
 
 

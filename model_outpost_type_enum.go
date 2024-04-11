@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// OutpostTypeEnum * `proxy` - Proxy * `ldap` - Ldap * `radius` - Radius * `rac` - Rac
+// OutpostTypeEnum the model 'OutpostTypeEnum'
 type OutpostTypeEnum string
 
 // List of OutpostTypeEnum

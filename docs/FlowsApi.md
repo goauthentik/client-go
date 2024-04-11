@@ -189,14 +189,14 @@ import (
 func main() {
     evaluateOnPlan := true // bool |  (optional)
     fsbUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    invalidResponseAction := "invalidResponseAction_example" // string | Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.  * `retry` - Retry * `restart` - Restart * `restart_with_context` - Restart With Context (optional)
+    invalidResponseAction := "invalidResponseAction_example" // string | Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.   (optional)
     order := int32(56) // int32 |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     policies := []string{"Inner_example"} // []string |  (optional)
-    policyEngineMode := "policyEngineMode_example" // string | * `all` - all, all policies must pass * `any` - any, any policy must pass (optional)
+    policyEngineMode := "policyEngineMode_example" // string |  (optional)
     reEvaluatePolicies := true // bool |  (optional)
     search := "search_example" // string | A search term. (optional)
     stage := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
@@ -227,14 +227,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **evaluateOnPlan** | **bool** |  | 
  **fsbUuid** | **string** |  | 
- **invalidResponseAction** | **string** | Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.  * &#x60;retry&#x60; - Retry * &#x60;restart&#x60; - Restart * &#x60;restart_with_context&#x60; - Restart With Context | 
+ **invalidResponseAction** | **string** | Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.   | 
  **order** | **int32** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **pbmUuid** | **string** |  | 
  **policies** | **[]string** |  | 
- **policyEngineMode** | **string** | * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass | 
+ **policyEngineMode** | **string** |  | 
  **reEvaluatePolicies** | **bool** |  | 
  **search** | **string** | A search term. | 
  **stage** | **string** |  | 
@@ -1311,8 +1311,8 @@ import (
 )
 
 func main() {
-    deniedAction := "deniedAction_example" // string | Configure what should happen when a flow denies access to a user.  * `message_continue` - Message Continue * `message` - Message * `continue` - Continue (optional)
-    designation := "designation_example" // string | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.  * `authentication` - Authentication * `authorization` - Authorization * `invalidation` - Invalidation * `enrollment` - Enrollment * `unenrollment` - Unrenollment * `recovery` - Recovery * `stage_configuration` - Stage Configuration (optional)
+    deniedAction := "deniedAction_example" // string | Configure what should happen when a flow denies access to a user.   (optional)
+    designation := "designation_example" // string | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.   (optional)
     flowUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
@@ -1344,8 +1344,8 @@ Other parameters are passed through a pointer to a apiFlowsInstancesListRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deniedAction** | **string** | Configure what should happen when a flow denies access to a user.  * &#x60;message_continue&#x60; - Message Continue * &#x60;message&#x60; - Message * &#x60;continue&#x60; - Continue | 
- **designation** | **string** | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.  * &#x60;authentication&#x60; - Authentication * &#x60;authorization&#x60; - Authorization * &#x60;invalidation&#x60; - Invalidation * &#x60;enrollment&#x60; - Enrollment * &#x60;unenrollment&#x60; - Unrenollment * &#x60;recovery&#x60; - Recovery * &#x60;stage_configuration&#x60; - Stage Configuration | 
+ **deniedAction** | **string** | Configure what should happen when a flow denies access to a user.   | 
+ **designation** | **string** | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.   | 
  **flowUuid** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 

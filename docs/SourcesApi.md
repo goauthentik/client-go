@@ -1469,13 +1469,13 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    policyEngineMode := "policyEngineMode_example" // string | * `all` - all, all policies must pass * `any` - any, any policy must pass (optional)
+    policyEngineMode := "policyEngineMode_example" // string |  (optional)
     profileUrl := "profileUrl_example" // string |  (optional)
     providerType := "providerType_example" // string |  (optional)
     requestTokenUrl := "requestTokenUrl_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     slug := "slug_example" // string |  (optional)
-    userMatchingMode := "userMatchingMode_example" // string | How the source determines if an existing user should be authenticated or a new user enrolled.  * `identifier` - Use the source-specific identifier * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses. * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists. * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source. * `username_deny` - Use the user's username, but deny enrollment when the username already exists. (optional)
+    userMatchingMode := "userMatchingMode_example" // string | How the source determines if an existing user should be authenticated or a new user enrolled.   (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1512,13 +1512,13 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **policyEngineMode** | **string** | * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass | 
+ **policyEngineMode** | **string** |  | 
  **profileUrl** | **string** |  | 
  **providerType** | **string** |  | 
  **requestTokenUrl** | **string** |  | 
  **search** | **string** | A search term. | 
  **slug** | **string** |  | 
- **userMatchingMode** | **string** | How the source determines if an existing user should be authenticated or a new user enrolled.  * &#x60;identifier&#x60; - Use the source-specific identifier * &#x60;email_link&#x60; - Link to a user with identical email address. Can have security implications when a source doesn&#39;t validate email addresses. * &#x60;email_deny&#x60; - Use the user&#39;s email address, but deny enrollment when the email address already exists. * &#x60;username_link&#x60; - Link to a user with identical username. Can have security implications when a username is used with another source. * &#x60;username_deny&#x60; - Use the user&#39;s username, but deny enrollment when the username already exists. | 
+ **userMatchingMode** | **string** | How the source determines if an existing user should be authenticated or a new user enrolled.   | 
 
 ### Return type
 
@@ -2052,10 +2052,10 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    policyEngineMode := "policyEngineMode_example" // string | * `all` - all, all policies must pass * `any` - any, any policy must pass (optional)
+    policyEngineMode := "policyEngineMode_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     slug := "slug_example" // string |  (optional)
-    userMatchingMode := "userMatchingMode_example" // string | How the source determines if an existing user should be authenticated or a new user enrolled.  * `identifier` - Use the source-specific identifier * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses. * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists. * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source. * `username_deny` - Use the user's username, but deny enrollment when the username already exists. (optional)
+    userMatchingMode := "userMatchingMode_example" // string | How the source determines if an existing user should be authenticated or a new user enrolled.   (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2089,10 +2089,10 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **policyEngineMode** | **string** | * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass | 
+ **policyEngineMode** | **string** |  | 
  **search** | **string** | A search term. | 
  **slug** | **string** |  | 
- **userMatchingMode** | **string** | How the source determines if an existing user should be authenticated or a new user enrolled.  * &#x60;identifier&#x60; - Use the source-specific identifier * &#x60;email_link&#x60; - Link to a user with identical email address. Can have security implications when a source doesn&#39;t validate email addresses. * &#x60;email_deny&#x60; - Use the user&#39;s email address, but deny enrollment when the email address already exists. * &#x60;username_link&#x60; - Link to a user with identical username. Can have security implications when a username is used with another source. * &#x60;username_deny&#x60; - Use the user&#39;s username, but deny enrollment when the username already exists. | 
+ **userMatchingMode** | **string** | How the source determines if an existing user should be authenticated or a new user enrolled.   | 
 
 ### Return type
 
@@ -2687,27 +2687,27 @@ import (
 func main() {
     allowIdpInitiated := true // bool |  (optional)
     authenticationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    bindingType := "bindingType_example" // string | * `REDIRECT` - Redirect Binding * `POST` - POST Binding * `POST_AUTO` - POST Binding with auto-confirmation (optional)
-    digestAlgorithm := "digestAlgorithm_example" // string | * `http://www.w3.org/2000/09/xmldsig#sha1` - SHA1 * `http://www.w3.org/2001/04/xmlenc#sha256` - SHA256 * `http://www.w3.org/2001/04/xmldsig-more#sha384` - SHA384 * `http://www.w3.org/2001/04/xmlenc#sha512` - SHA512 (optional)
+    bindingType := "bindingType_example" // string |  (optional)
+    digestAlgorithm := "digestAlgorithm_example" // string |  (optional)
     enabled := true // bool |  (optional)
     enrollmentFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     issuer := "issuer_example" // string |  (optional)
     managed := "managed_example" // string |  (optional)
     name := "name_example" // string |  (optional)
-    nameIdPolicy := "nameIdPolicy_example" // string | NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.  * `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` - Email * `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` - Persistent * `urn:oasis:names:tc:SAML:2.0:nameid-format:X509SubjectName` - X509 * `urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName` - Windows * `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` - Transient (optional)
+    nameIdPolicy := "nameIdPolicy_example" // string | NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.   (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    policyEngineMode := "policyEngineMode_example" // string | * `all` - all, all policies must pass * `any` - any, any policy must pass (optional)
+    policyEngineMode := "policyEngineMode_example" // string |  (optional)
     preAuthenticationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
-    signatureAlgorithm := "signatureAlgorithm_example" // string | * `http://www.w3.org/2000/09/xmldsig#rsa-sha1` - RSA-SHA1 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha256` - RSA-SHA256 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha384` - RSA-SHA384 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha512` - RSA-SHA512 * `http://www.w3.org/2000/09/xmldsig#dsa-sha1` - DSA-SHA1 (optional)
+    signatureAlgorithm := "signatureAlgorithm_example" // string |  (optional)
     signingKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     sloUrl := "sloUrl_example" // string |  (optional)
     slug := "slug_example" // string |  (optional)
     ssoUrl := "ssoUrl_example" // string |  (optional)
     temporaryUserDeleteAfter := "temporaryUserDeleteAfter_example" // string |  (optional)
-    userMatchingMode := "userMatchingMode_example" // string | How the source determines if an existing user should be authenticated or a new user enrolled.  * `identifier` - Use the source-specific identifier * `email_link` - Link to a user with identical email address. Can have security implications when a source doesn't validate email addresses. * `email_deny` - Use the user's email address, but deny enrollment when the email address already exists. * `username_link` - Link to a user with identical username. Can have security implications when a username is used with another source. * `username_deny` - Use the user's username, but deny enrollment when the username already exists. (optional)
+    userMatchingMode := "userMatchingMode_example" // string | How the source determines if an existing user should be authenticated or a new user enrolled.   (optional)
     verificationKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -2735,27 +2735,27 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **allowIdpInitiated** | **bool** |  | 
  **authenticationFlow** | **string** |  | 
- **bindingType** | **string** | * &#x60;REDIRECT&#x60; - Redirect Binding * &#x60;POST&#x60; - POST Binding * &#x60;POST_AUTO&#x60; - POST Binding with auto-confirmation | 
- **digestAlgorithm** | **string** | * &#x60;http://www.w3.org/2000/09/xmldsig#sha1&#x60; - SHA1 * &#x60;http://www.w3.org/2001/04/xmlenc#sha256&#x60; - SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#sha384&#x60; - SHA384 * &#x60;http://www.w3.org/2001/04/xmlenc#sha512&#x60; - SHA512 | 
+ **bindingType** | **string** |  | 
+ **digestAlgorithm** | **string** |  | 
  **enabled** | **bool** |  | 
  **enrollmentFlow** | **string** |  | 
  **issuer** | **string** |  | 
  **managed** | **string** |  | 
  **name** | **string** |  | 
- **nameIdPolicy** | **string** | NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.  * &#x60;urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress&#x60; - Email * &#x60;urn:oasis:names:tc:SAML:2.0:nameid-format:persistent&#x60; - Persistent * &#x60;urn:oasis:names:tc:SAML:2.0:nameid-format:X509SubjectName&#x60; - X509 * &#x60;urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName&#x60; - Windows * &#x60;urn:oasis:names:tc:SAML:2.0:nameid-format:transient&#x60; - Transient | 
+ **nameIdPolicy** | **string** | NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.   | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **policyEngineMode** | **string** | * &#x60;all&#x60; - all, all policies must pass * &#x60;any&#x60; - any, any policy must pass | 
+ **policyEngineMode** | **string** |  | 
  **preAuthenticationFlow** | **string** |  | 
  **search** | **string** | A search term. | 
- **signatureAlgorithm** | **string** | * &#x60;http://www.w3.org/2000/09/xmldsig#rsa-sha1&#x60; - RSA-SHA1 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&#x60; - RSA-SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha384&#x60; - RSA-SHA384 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha512&#x60; - RSA-SHA512 * &#x60;http://www.w3.org/2000/09/xmldsig#dsa-sha1&#x60; - DSA-SHA1 | 
+ **signatureAlgorithm** | **string** |  | 
  **signingKp** | **string** |  | 
  **sloUrl** | **string** |  | 
  **slug** | **string** |  | 
  **ssoUrl** | **string** |  | 
  **temporaryUserDeleteAfter** | **string** |  | 
- **userMatchingMode** | **string** | How the source determines if an existing user should be authenticated or a new user enrolled.  * &#x60;identifier&#x60; - Use the source-specific identifier * &#x60;email_link&#x60; - Link to a user with identical email address. Can have security implications when a source doesn&#39;t validate email addresses. * &#x60;email_deny&#x60; - Use the user&#39;s email address, but deny enrollment when the email address already exists. * &#x60;username_link&#x60; - Link to a user with identical username. Can have security implications when a username is used with another source. * &#x60;username_deny&#x60; - Use the user&#39;s username, but deny enrollment when the username already exists. | 
+ **userMatchingMode** | **string** | How the source determines if an existing user should be authenticated or a new user enrolled.   | 
  **verificationKp** | **string** |  | 
 
 ### Return type

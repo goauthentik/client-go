@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Provider** | [**OAuth2Provider**](OAuth2Provider.md) |  | 
 **User** | [**User**](User.md) |  | 
 **IsExpired** | **bool** | Check if token is expired yet. | [readonly] 
-**Expires** | Pointer to **time.Time** |  | [optional] 
+**Expires** | Pointer to **NullableTime** |  | [optional] 
 **Scope** | **[]string** |  | 
 
 ## Methods
@@ -135,6 +135,16 @@ SetExpires sets Expires field to given value.
 
 HasExpires returns a boolean if a field has been set.
 
+### SetExpiresNil
+
+`func (o *ExpiringBaseGrantModel) SetExpiresNil(b bool)`
+
+ SetExpiresNil sets the value for Expires to be an explicit nil
+
+### UnsetExpires
+`func (o *ExpiringBaseGrantModel) UnsetExpires()`
+
+UnsetExpires ensures that no value is present for Expires, not even an explicit nil
 ### GetScope
 
 `func (o *ExpiringBaseGrantModel) GetScope() []string`

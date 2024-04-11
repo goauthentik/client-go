@@ -2173,7 +2173,7 @@ func (r ApiProvidersOauth2ListRequest) ClientId(clientId string) ApiProvidersOau
 	return r
 }
 
-// Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable  * &#x60;confidential&#x60; - Confidential * &#x60;public&#x60; - Public
+// Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable
 func (r ApiProvidersOauth2ListRequest) ClientType(clientType string) ApiProvidersOauth2ListRequest {
 	r.clientType = &clientType
 	return r
@@ -2184,7 +2184,7 @@ func (r ApiProvidersOauth2ListRequest) IncludeClaimsInIdToken(includeClaimsInIdT
 	return r
 }
 
-// Configure how the issuer field of the ID Token should be filled.  * &#x60;global&#x60; - Same identifier is used for all providers * &#x60;per_provider&#x60; - Each provider has a different issuer, based on the application slug.
+// Configure how the issuer field of the ID Token should be filled.
 func (r ApiProvidersOauth2ListRequest) IssuerMode(issuerMode string) ApiProvidersOauth2ListRequest {
 	r.issuerMode = &issuerMode
 	return r
@@ -2239,7 +2239,7 @@ func (r ApiProvidersOauth2ListRequest) SigningKey(signingKey string) ApiProvider
 	return r
 }
 
-// Configure what data should be used as unique User Identifier. For most cases, the default should be fine.  * &#x60;hashed_user_id&#x60; - Based on the Hashed User ID * &#x60;user_id&#x60; - Based on user ID * &#x60;user_uuid&#x60; - Based on user UUID * &#x60;user_username&#x60; - Based on the username * &#x60;user_email&#x60; - Based on the User&#39;s Email. This is recommended over the UPN method. * &#x60;user_upn&#x60; - Based on the User&#39;s UPN, only works if user has a &#39;upn&#39; attribute set. Use this method only if you have different UPN and Mail domains.
+// Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
 func (r ApiProvidersOauth2ListRequest) SubMode(subMode string) ApiProvidersOauth2ListRequest {
 	r.subMode = &subMode
 	return r
@@ -7002,7 +7002,6 @@ func (r ApiProvidersSamlListRequest) DefaultRelayState(defaultRelayState string)
 	return r
 }
 
-// * &#x60;http://www.w3.org/2000/09/xmldsig#sha1&#x60; - SHA1 * &#x60;http://www.w3.org/2001/04/xmlenc#sha256&#x60; - SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#sha384&#x60; - SHA384 * &#x60;http://www.w3.org/2001/04/xmlenc#sha512&#x60; - SHA512
 func (r ApiProvidersSamlListRequest) DigestAlgorithm(digestAlgorithm string) ApiProvidersSamlListRequest {
 	r.digestAlgorithm = &digestAlgorithm
 	return r
@@ -7062,7 +7061,6 @@ func (r ApiProvidersSamlListRequest) SessionValidNotOnOrAfter(sessionValidNotOnO
 	return r
 }
 
-// * &#x60;http://www.w3.org/2000/09/xmldsig#rsa-sha1&#x60; - RSA-SHA1 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&#x60; - RSA-SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha384&#x60; - RSA-SHA384 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha512&#x60; - RSA-SHA512 * &#x60;http://www.w3.org/2000/09/xmldsig#dsa-sha1&#x60; - DSA-SHA1
 func (r ApiProvidersSamlListRequest) SignatureAlgorithm(signatureAlgorithm string) ApiProvidersSamlListRequest {
 	r.signatureAlgorithm = &signatureAlgorithm
 	return r
@@ -7073,7 +7071,7 @@ func (r ApiProvidersSamlListRequest) SigningKp(signingKp string) ApiProvidersSam
 	return r
 }
 
-// This determines how authentik sends the response back to the Service Provider.  * &#x60;redirect&#x60; - Redirect * &#x60;post&#x60; - Post
+// This determines how authentik sends the response back to the Service Provider.
 func (r ApiProvidersSamlListRequest) SpBinding(spBinding string) ApiProvidersSamlListRequest {
 	r.spBinding = &spBinding
 	return r

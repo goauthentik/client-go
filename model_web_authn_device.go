@@ -18,20 +18,22 @@ import (
 
 // WebAuthnDevice Serializer for WebAuthn authenticator devices
 type WebAuthnDevice struct {
-	Pk        int32     `json:"pk"`
-	Name      string    `json:"name"`
-	CreatedOn time.Time `json:"created_on"`
+	Pk         int32                            `json:"pk"`
+	Name       string                           `json:"name"`
+	CreatedOn  time.Time                        `json:"created_on"`
+	DeviceType NullableWebAuthnDeviceDeviceType `json:"device_type"`
 }
 
 // NewWebAuthnDevice instantiates a new WebAuthnDevice object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWebAuthnDevice(pk int32, name string, createdOn time.Time) *WebAuthnDevice {
+func NewWebAuthnDevice(pk int32, name string, createdOn time.Time, deviceType NullableWebAuthnDeviceDeviceType) *WebAuthnDevice {
 	this := WebAuthnDevice{}
 	this.Pk = pk
 	this.Name = name
 	this.CreatedOn = createdOn
+	this.DeviceType = deviceType
 	return &this
 }
 
@@ -115,6 +117,32 @@ func (o *WebAuthnDevice) SetCreatedOn(v time.Time) {
 	o.CreatedOn = v
 }
 
+// GetDeviceType returns the DeviceType field value
+// If the value is explicit nil, the zero value for WebAuthnDeviceDeviceType will be returned
+func (o *WebAuthnDevice) GetDeviceType() WebAuthnDeviceDeviceType {
+	if o == nil || o.DeviceType.Get() == nil {
+		var ret WebAuthnDeviceDeviceType
+		return ret
+	}
+
+	return *o.DeviceType.Get()
+}
+
+// GetDeviceTypeOk returns a tuple with the DeviceType field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *WebAuthnDevice) GetDeviceTypeOk() (*WebAuthnDeviceDeviceType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DeviceType.Get(), o.DeviceType.IsSet()
+}
+
+// SetDeviceType sets field value
+func (o *WebAuthnDevice) SetDeviceType(v WebAuthnDeviceDeviceType) {
+	o.DeviceType.Set(&v)
+}
+
 func (o WebAuthnDevice) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -125,6 +153,9 @@ func (o WebAuthnDevice) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["created_on"] = o.CreatedOn
+	}
+	if true {
+		toSerialize["device_type"] = o.DeviceType.Get()
 	}
 	return json.Marshal(toSerialize)
 }

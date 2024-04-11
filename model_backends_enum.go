@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// BackendsEnum * `authentik.core.auth.InbuiltBackend` - User database + standard password * `authentik.core.auth.TokenBackend` - User database + app passwords * `authentik.sources.ldap.auth.LDAPBackend` - User database + LDAP password
+// BackendsEnum the model 'BackendsEnum'
 type BackendsEnum string
 
 // List of BackendsEnum

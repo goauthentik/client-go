@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// AuthModeEnum * `static` - Static * `prompt` - Prompt
+// AuthModeEnum the model 'AuthModeEnum'
 type AuthModeEnum string
 
 // List of AuthModeEnum

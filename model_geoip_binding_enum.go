@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// GeoipBindingEnum * `no_binding` - No Binding * `bind_continent` - Bind Continent * `bind_continent_country` - Bind Continent Country * `bind_continent_country_city` - Bind Continent Country City
+// GeoipBindingEnum the model 'GeoipBindingEnum'
 type GeoipBindingEnum string
 
 // List of GeoipBindingEnum

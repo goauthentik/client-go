@@ -7,12 +7,13 @@ Name | Type | Description | Notes
 **Pk** | **int32** |  | [readonly] 
 **Name** | **string** |  | 
 **CreatedOn** | **time.Time** |  | [readonly] 
+**DeviceType** | [**NullableWebAuthnDeviceDeviceType**](WebAuthnDeviceDeviceType.md) |  | 
 
 ## Methods
 
 ### NewWebAuthnDevice
 
-`func NewWebAuthnDevice(pk int32, name string, createdOn time.Time, ) *WebAuthnDevice`
+`func NewWebAuthnDevice(pk int32, name string, createdOn time.Time, deviceType NullableWebAuthnDeviceDeviceType, ) *WebAuthnDevice`
 
 NewWebAuthnDevice instantiates a new WebAuthnDevice object
 This constructor will assign default values to properties that have it defined,
@@ -87,6 +88,36 @@ and a boolean to check if the value has been set.
 SetCreatedOn sets CreatedOn field to given value.
 
 
+### GetDeviceType
+
+`func (o *WebAuthnDevice) GetDeviceType() WebAuthnDeviceDeviceType`
+
+GetDeviceType returns the DeviceType field if non-nil, zero value otherwise.
+
+### GetDeviceTypeOk
+
+`func (o *WebAuthnDevice) GetDeviceTypeOk() (*WebAuthnDeviceDeviceType, bool)`
+
+GetDeviceTypeOk returns a tuple with the DeviceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeviceType
+
+`func (o *WebAuthnDevice) SetDeviceType(v WebAuthnDeviceDeviceType)`
+
+SetDeviceType sets DeviceType field to given value.
+
+
+### SetDeviceTypeNil
+
+`func (o *WebAuthnDevice) SetDeviceTypeNil(b bool)`
+
+ SetDeviceTypeNil sets the value for DeviceType to be an explicit nil
+
+### UnsetDeviceType
+`func (o *WebAuthnDevice) UnsetDeviceType()`
+
+UnsetDeviceType ensures that no value is present for DeviceType, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

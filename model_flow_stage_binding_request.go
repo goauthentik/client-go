@@ -25,7 +25,7 @@ type FlowStageBindingRequest struct {
 	ReEvaluatePolicies *bool             `json:"re_evaluate_policies,omitempty"`
 	Order              int32             `json:"order"`
 	PolicyEngineMode   *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
-	// Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.  * `retry` - Retry * `restart` - Restart * `restart_with_context` - Restart With Context
+	// Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.
 	InvalidResponseAction *InvalidResponseActionEnum `json:"invalid_response_action,omitempty"`
 }
 

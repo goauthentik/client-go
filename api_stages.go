@@ -2612,7 +2612,6 @@ func (r ApiStagesAuthenticatorSmsListRequest) AuthPassword(authPassword string) 
 	return r
 }
 
-// * &#x60;basic&#x60; - Basic * &#x60;bearer&#x60; - Bearer
 func (r ApiStagesAuthenticatorSmsListRequest) AuthType(authType string) ApiStagesAuthenticatorSmsListRequest {
 	r.authType = &authType
 	return r
@@ -2661,7 +2660,6 @@ func (r ApiStagesAuthenticatorSmsListRequest) PageSize(pageSize int32) ApiStages
 	return r
 }
 
-// * &#x60;twilio&#x60; - Twilio * &#x60;generic&#x60; - Generic
 func (r ApiStagesAuthenticatorSmsListRequest) Provider(provider string) ApiStagesAuthenticatorSmsListRequest {
 	r.provider = &provider
 	return r
@@ -4777,7 +4775,6 @@ func (r ApiStagesAuthenticatorTotpListRequest) ConfigureFlow(configureFlow strin
 	return r
 }
 
-// * &#x60;6&#x60; - 6 digits, widely compatible * &#x60;8&#x60; - 8 digits, not compatible with apps like Google Authenticator
 func (r ApiStagesAuthenticatorTotpListRequest) Digits(digits string) ApiStagesAuthenticatorTotpListRequest {
 	r.digits = &digits
 	return r
@@ -5835,7 +5832,6 @@ func (r ApiStagesAuthenticatorValidateListRequest) Name(name string) ApiStagesAu
 	return r
 }
 
-// * &#x60;skip&#x60; - Skip * &#x60;deny&#x60; - Deny * &#x60;configure&#x60; - Configure
 func (r ApiStagesAuthenticatorValidateListRequest) NotConfiguredAction(notConfiguredAction string) ApiStagesAuthenticatorValidateListRequest {
 	r.notConfiguredAction = &notConfiguredAction
 	return r
@@ -6590,24 +6586,24 @@ func (a *StagesApiService) StagesAuthenticatorValidateUsedByListExecute(r ApiSta
 }
 
 type ApiStagesAuthenticatorWebauthnCreateRequest struct {
-	ctx                              context.Context
-	ApiService                       *StagesApiService
-	authenticateWebAuthnStageRequest *AuthenticateWebAuthnStageRequest
+	ctx                               context.Context
+	ApiService                        *StagesApiService
+	authenticatorWebAuthnStageRequest *AuthenticatorWebAuthnStageRequest
 }
 
-func (r ApiStagesAuthenticatorWebauthnCreateRequest) AuthenticateWebAuthnStageRequest(authenticateWebAuthnStageRequest AuthenticateWebAuthnStageRequest) ApiStagesAuthenticatorWebauthnCreateRequest {
-	r.authenticateWebAuthnStageRequest = &authenticateWebAuthnStageRequest
+func (r ApiStagesAuthenticatorWebauthnCreateRequest) AuthenticatorWebAuthnStageRequest(authenticatorWebAuthnStageRequest AuthenticatorWebAuthnStageRequest) ApiStagesAuthenticatorWebauthnCreateRequest {
+	r.authenticatorWebAuthnStageRequest = &authenticatorWebAuthnStageRequest
 	return r
 }
 
-func (r ApiStagesAuthenticatorWebauthnCreateRequest) Execute() (*AuthenticateWebAuthnStage, *http.Response, error) {
+func (r ApiStagesAuthenticatorWebauthnCreateRequest) Execute() (*AuthenticatorWebAuthnStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorWebauthnCreateExecute(r)
 }
 
 /*
 StagesAuthenticatorWebauthnCreate Method for StagesAuthenticatorWebauthnCreate
 
-AuthenticateWebAuthnStage Viewset
+AuthenticatorWebAuthnStage Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiStagesAuthenticatorWebauthnCreateRequest
@@ -6621,13 +6617,13 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnCreate(ctx context.Context
 
 // Execute executes the request
 //
-//	@return AuthenticateWebAuthnStage
-func (a *StagesApiService) StagesAuthenticatorWebauthnCreateExecute(r ApiStagesAuthenticatorWebauthnCreateRequest) (*AuthenticateWebAuthnStage, *http.Response, error) {
+//	@return AuthenticatorWebAuthnStage
+func (a *StagesApiService) StagesAuthenticatorWebauthnCreateExecute(r ApiStagesAuthenticatorWebauthnCreateRequest) (*AuthenticatorWebAuthnStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *AuthenticateWebAuthnStage
+		localVarReturnValue *AuthenticatorWebAuthnStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorWebauthnCreate")
@@ -6640,8 +6636,8 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnCreateExecute(r ApiStagesA
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authenticateWebAuthnStageRequest == nil {
-		return localVarReturnValue, nil, reportError("authenticateWebAuthnStageRequest is required and must be specified")
+	if r.authenticatorWebAuthnStageRequest == nil {
+		return localVarReturnValue, nil, reportError("authenticatorWebAuthnStageRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -6662,7 +6658,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnCreateExecute(r ApiStagesA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.authenticateWebAuthnStageRequest
+	localVarPostBody = r.authenticatorWebAuthnStageRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -6746,7 +6742,7 @@ func (r ApiStagesAuthenticatorWebauthnDestroyRequest) Execute() (*http.Response,
 /*
 StagesAuthenticatorWebauthnDestroy Method for StagesAuthenticatorWebauthnDestroy
 
-AuthenticateWebAuthnStage Viewset
+AuthenticatorWebAuthnStage Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param stageUuid A UUID string identifying this WebAuthn Authenticator Setup Stage.
@@ -6858,11 +6854,349 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnDestroyExecute(r ApiStages
 	return localVarHTTPResponse, nil
 }
 
+type ApiStagesAuthenticatorWebauthnDeviceTypesListRequest struct {
+	ctx         context.Context
+	ApiService  *StagesApiService
+	aaguid      *string
+	description *string
+	icon        *string
+	ordering    *string
+	page        *int32
+	pageSize    *int32
+	search      *string
+}
+
+func (r ApiStagesAuthenticatorWebauthnDeviceTypesListRequest) Aaguid(aaguid string) ApiStagesAuthenticatorWebauthnDeviceTypesListRequest {
+	r.aaguid = &aaguid
+	return r
+}
+
+func (r ApiStagesAuthenticatorWebauthnDeviceTypesListRequest) Description(description string) ApiStagesAuthenticatorWebauthnDeviceTypesListRequest {
+	r.description = &description
+	return r
+}
+
+func (r ApiStagesAuthenticatorWebauthnDeviceTypesListRequest) Icon(icon string) ApiStagesAuthenticatorWebauthnDeviceTypesListRequest {
+	r.icon = &icon
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiStagesAuthenticatorWebauthnDeviceTypesListRequest) Ordering(ordering string) ApiStagesAuthenticatorWebauthnDeviceTypesListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiStagesAuthenticatorWebauthnDeviceTypesListRequest) Page(page int32) ApiStagesAuthenticatorWebauthnDeviceTypesListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiStagesAuthenticatorWebauthnDeviceTypesListRequest) PageSize(pageSize int32) ApiStagesAuthenticatorWebauthnDeviceTypesListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// A search term.
+func (r ApiStagesAuthenticatorWebauthnDeviceTypesListRequest) Search(search string) ApiStagesAuthenticatorWebauthnDeviceTypesListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiStagesAuthenticatorWebauthnDeviceTypesListRequest) Execute() (*PaginatedWebAuthnDeviceTypeList, *http.Response, error) {
+	return r.ApiService.StagesAuthenticatorWebauthnDeviceTypesListExecute(r)
+}
+
+/*
+StagesAuthenticatorWebauthnDeviceTypesList Method for StagesAuthenticatorWebauthnDeviceTypesList
+
+WebAuthnDeviceType Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiStagesAuthenticatorWebauthnDeviceTypesListRequest
+*/
+func (a *StagesApiService) StagesAuthenticatorWebauthnDeviceTypesList(ctx context.Context) ApiStagesAuthenticatorWebauthnDeviceTypesListRequest {
+	return ApiStagesAuthenticatorWebauthnDeviceTypesListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedWebAuthnDeviceTypeList
+func (a *StagesApiService) StagesAuthenticatorWebauthnDeviceTypesListExecute(r ApiStagesAuthenticatorWebauthnDeviceTypesListRequest) (*PaginatedWebAuthnDeviceTypeList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedWebAuthnDeviceTypeList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorWebauthnDeviceTypesList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/authenticator/webauthn_device_types/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.aaguid != nil {
+		localVarQueryParams.Add("aaguid", parameterToString(*r.aaguid, ""))
+	}
+	if r.description != nil {
+		localVarQueryParams.Add("description", parameterToString(*r.description, ""))
+	}
+	if r.icon != nil {
+		localVarQueryParams.Add("icon", parameterToString(*r.icon, ""))
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStagesAuthenticatorWebauthnDeviceTypesRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *StagesApiService
+	aaguid     string
+}
+
+func (r ApiStagesAuthenticatorWebauthnDeviceTypesRetrieveRequest) Execute() (*WebAuthnDeviceType, *http.Response, error) {
+	return r.ApiService.StagesAuthenticatorWebauthnDeviceTypesRetrieveExecute(r)
+}
+
+/*
+StagesAuthenticatorWebauthnDeviceTypesRetrieve Method for StagesAuthenticatorWebauthnDeviceTypesRetrieve
+
+WebAuthnDeviceType Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param aaguid A UUID string identifying this WebAuthn Device type.
+	@return ApiStagesAuthenticatorWebauthnDeviceTypesRetrieveRequest
+*/
+func (a *StagesApiService) StagesAuthenticatorWebauthnDeviceTypesRetrieve(ctx context.Context, aaguid string) ApiStagesAuthenticatorWebauthnDeviceTypesRetrieveRequest {
+	return ApiStagesAuthenticatorWebauthnDeviceTypesRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		aaguid:     aaguid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return WebAuthnDeviceType
+func (a *StagesApiService) StagesAuthenticatorWebauthnDeviceTypesRetrieveExecute(r ApiStagesAuthenticatorWebauthnDeviceTypesRetrieveRequest) (*WebAuthnDeviceType, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *WebAuthnDeviceType
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorWebauthnDeviceTypesRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/authenticator/webauthn_device_types/{aaguid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"aaguid"+"}", url.PathEscape(parameterToString(r.aaguid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["authentik"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiStagesAuthenticatorWebauthnListRequest struct {
 	ctx                     context.Context
 	ApiService              *StagesApiService
 	authenticatorAttachment *string
 	configureFlow           *string
+	deviceTypeRestrictions  *[]string
 	friendlyName            *string
 	name                    *string
 	ordering                *string
@@ -6874,7 +7208,6 @@ type ApiStagesAuthenticatorWebauthnListRequest struct {
 	userVerification        *string
 }
 
-// * &#x60;platform&#x60; - Platform * &#x60;cross-platform&#x60; - Cross Platform
 func (r ApiStagesAuthenticatorWebauthnListRequest) AuthenticatorAttachment(authenticatorAttachment string) ApiStagesAuthenticatorWebauthnListRequest {
 	r.authenticatorAttachment = &authenticatorAttachment
 	return r
@@ -6882,6 +7215,11 @@ func (r ApiStagesAuthenticatorWebauthnListRequest) AuthenticatorAttachment(authe
 
 func (r ApiStagesAuthenticatorWebauthnListRequest) ConfigureFlow(configureFlow string) ApiStagesAuthenticatorWebauthnListRequest {
 	r.configureFlow = &configureFlow
+	return r
+}
+
+func (r ApiStagesAuthenticatorWebauthnListRequest) DeviceTypeRestrictions(deviceTypeRestrictions []string) ApiStagesAuthenticatorWebauthnListRequest {
+	r.deviceTypeRestrictions = &deviceTypeRestrictions
 	return r
 }
 
@@ -6913,7 +7251,6 @@ func (r ApiStagesAuthenticatorWebauthnListRequest) PageSize(pageSize int32) ApiS
 	return r
 }
 
-// * &#x60;discouraged&#x60; - Discouraged * &#x60;preferred&#x60; - Preferred * &#x60;required&#x60; - Required
 func (r ApiStagesAuthenticatorWebauthnListRequest) ResidentKeyRequirement(residentKeyRequirement string) ApiStagesAuthenticatorWebauthnListRequest {
 	r.residentKeyRequirement = &residentKeyRequirement
 	return r
@@ -6930,20 +7267,19 @@ func (r ApiStagesAuthenticatorWebauthnListRequest) StageUuid(stageUuid string) A
 	return r
 }
 
-// * &#x60;required&#x60; - Required * &#x60;preferred&#x60; - Preferred * &#x60;discouraged&#x60; - Discouraged
 func (r ApiStagesAuthenticatorWebauthnListRequest) UserVerification(userVerification string) ApiStagesAuthenticatorWebauthnListRequest {
 	r.userVerification = &userVerification
 	return r
 }
 
-func (r ApiStagesAuthenticatorWebauthnListRequest) Execute() (*PaginatedAuthenticateWebAuthnStageList, *http.Response, error) {
+func (r ApiStagesAuthenticatorWebauthnListRequest) Execute() (*PaginatedAuthenticatorWebAuthnStageList, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorWebauthnListExecute(r)
 }
 
 /*
 StagesAuthenticatorWebauthnList Method for StagesAuthenticatorWebauthnList
 
-AuthenticateWebAuthnStage Viewset
+AuthenticatorWebAuthnStage Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiStagesAuthenticatorWebauthnListRequest
@@ -6957,13 +7293,13 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnList(ctx context.Context) 
 
 // Execute executes the request
 //
-//	@return PaginatedAuthenticateWebAuthnStageList
-func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAuthenticatorWebauthnListRequest) (*PaginatedAuthenticateWebAuthnStageList, *http.Response, error) {
+//	@return PaginatedAuthenticatorWebAuthnStageList
+func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAuthenticatorWebauthnListRequest) (*PaginatedAuthenticatorWebAuthnStageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PaginatedAuthenticateWebAuthnStageList
+		localVarReturnValue *PaginatedAuthenticatorWebAuthnStageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorWebauthnList")
@@ -6982,6 +7318,17 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAut
 	}
 	if r.configureFlow != nil {
 		localVarQueryParams.Add("configure_flow", parameterToString(*r.configureFlow, ""))
+	}
+	if r.deviceTypeRestrictions != nil {
+		t := *r.deviceTypeRestrictions
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("device_type_restrictions", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("device_type_restrictions", parameterToString(t, "multi"))
+		}
 	}
 	if r.friendlyName != nil {
 		localVarQueryParams.Add("friendly_name", parameterToString(*r.friendlyName, ""))
@@ -7098,25 +7445,25 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAut
 }
 
 type ApiStagesAuthenticatorWebauthnPartialUpdateRequest struct {
-	ctx                                     context.Context
-	ApiService                              *StagesApiService
-	stageUuid                               string
-	patchedAuthenticateWebAuthnStageRequest *PatchedAuthenticateWebAuthnStageRequest
+	ctx                                      context.Context
+	ApiService                               *StagesApiService
+	stageUuid                                string
+	patchedAuthenticatorWebAuthnStageRequest *PatchedAuthenticatorWebAuthnStageRequest
 }
 
-func (r ApiStagesAuthenticatorWebauthnPartialUpdateRequest) PatchedAuthenticateWebAuthnStageRequest(patchedAuthenticateWebAuthnStageRequest PatchedAuthenticateWebAuthnStageRequest) ApiStagesAuthenticatorWebauthnPartialUpdateRequest {
-	r.patchedAuthenticateWebAuthnStageRequest = &patchedAuthenticateWebAuthnStageRequest
+func (r ApiStagesAuthenticatorWebauthnPartialUpdateRequest) PatchedAuthenticatorWebAuthnStageRequest(patchedAuthenticatorWebAuthnStageRequest PatchedAuthenticatorWebAuthnStageRequest) ApiStagesAuthenticatorWebauthnPartialUpdateRequest {
+	r.patchedAuthenticatorWebAuthnStageRequest = &patchedAuthenticatorWebAuthnStageRequest
 	return r
 }
 
-func (r ApiStagesAuthenticatorWebauthnPartialUpdateRequest) Execute() (*AuthenticateWebAuthnStage, *http.Response, error) {
+func (r ApiStagesAuthenticatorWebauthnPartialUpdateRequest) Execute() (*AuthenticatorWebAuthnStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorWebauthnPartialUpdateExecute(r)
 }
 
 /*
 StagesAuthenticatorWebauthnPartialUpdate Method for StagesAuthenticatorWebauthnPartialUpdate
 
-AuthenticateWebAuthnStage Viewset
+AuthenticatorWebAuthnStage Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param stageUuid A UUID string identifying this WebAuthn Authenticator Setup Stage.
@@ -7132,13 +7479,13 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdate(ctx context.
 
 // Execute executes the request
 //
-//	@return AuthenticateWebAuthnStage
-func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdateExecute(r ApiStagesAuthenticatorWebauthnPartialUpdateRequest) (*AuthenticateWebAuthnStage, *http.Response, error) {
+//	@return AuthenticatorWebAuthnStage
+func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdateExecute(r ApiStagesAuthenticatorWebauthnPartialUpdateRequest) (*AuthenticatorWebAuthnStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *AuthenticateWebAuthnStage
+		localVarReturnValue *AuthenticatorWebAuthnStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorWebauthnPartialUpdate")
@@ -7171,7 +7518,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnPartialUpdateExecute(r Api
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.patchedAuthenticateWebAuthnStageRequest
+	localVarPostBody = r.patchedAuthenticatorWebAuthnStageRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -7248,14 +7595,14 @@ type ApiStagesAuthenticatorWebauthnRetrieveRequest struct {
 	stageUuid  string
 }
 
-func (r ApiStagesAuthenticatorWebauthnRetrieveRequest) Execute() (*AuthenticateWebAuthnStage, *http.Response, error) {
+func (r ApiStagesAuthenticatorWebauthnRetrieveRequest) Execute() (*AuthenticatorWebAuthnStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorWebauthnRetrieveExecute(r)
 }
 
 /*
 StagesAuthenticatorWebauthnRetrieve Method for StagesAuthenticatorWebauthnRetrieve
 
-AuthenticateWebAuthnStage Viewset
+AuthenticatorWebAuthnStage Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param stageUuid A UUID string identifying this WebAuthn Authenticator Setup Stage.
@@ -7271,13 +7618,13 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieve(ctx context.Conte
 
 // Execute executes the request
 //
-//	@return AuthenticateWebAuthnStage
-func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieveExecute(r ApiStagesAuthenticatorWebauthnRetrieveRequest) (*AuthenticateWebAuthnStage, *http.Response, error) {
+//	@return AuthenticatorWebAuthnStage
+func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieveExecute(r ApiStagesAuthenticatorWebauthnRetrieveRequest) (*AuthenticatorWebAuthnStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *AuthenticateWebAuthnStage
+		localVarReturnValue *AuthenticatorWebAuthnStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorWebauthnRetrieve")
@@ -7380,25 +7727,25 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnRetrieveExecute(r ApiStage
 }
 
 type ApiStagesAuthenticatorWebauthnUpdateRequest struct {
-	ctx                              context.Context
-	ApiService                       *StagesApiService
-	stageUuid                        string
-	authenticateWebAuthnStageRequest *AuthenticateWebAuthnStageRequest
+	ctx                               context.Context
+	ApiService                        *StagesApiService
+	stageUuid                         string
+	authenticatorWebAuthnStageRequest *AuthenticatorWebAuthnStageRequest
 }
 
-func (r ApiStagesAuthenticatorWebauthnUpdateRequest) AuthenticateWebAuthnStageRequest(authenticateWebAuthnStageRequest AuthenticateWebAuthnStageRequest) ApiStagesAuthenticatorWebauthnUpdateRequest {
-	r.authenticateWebAuthnStageRequest = &authenticateWebAuthnStageRequest
+func (r ApiStagesAuthenticatorWebauthnUpdateRequest) AuthenticatorWebAuthnStageRequest(authenticatorWebAuthnStageRequest AuthenticatorWebAuthnStageRequest) ApiStagesAuthenticatorWebauthnUpdateRequest {
+	r.authenticatorWebAuthnStageRequest = &authenticatorWebAuthnStageRequest
 	return r
 }
 
-func (r ApiStagesAuthenticatorWebauthnUpdateRequest) Execute() (*AuthenticateWebAuthnStage, *http.Response, error) {
+func (r ApiStagesAuthenticatorWebauthnUpdateRequest) Execute() (*AuthenticatorWebAuthnStage, *http.Response, error) {
 	return r.ApiService.StagesAuthenticatorWebauthnUpdateExecute(r)
 }
 
 /*
 StagesAuthenticatorWebauthnUpdate Method for StagesAuthenticatorWebauthnUpdate
 
-AuthenticateWebAuthnStage Viewset
+AuthenticatorWebAuthnStage Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param stageUuid A UUID string identifying this WebAuthn Authenticator Setup Stage.
@@ -7414,13 +7761,13 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUpdate(ctx context.Context
 
 // Execute executes the request
 //
-//	@return AuthenticateWebAuthnStage
-func (a *StagesApiService) StagesAuthenticatorWebauthnUpdateExecute(r ApiStagesAuthenticatorWebauthnUpdateRequest) (*AuthenticateWebAuthnStage, *http.Response, error) {
+//	@return AuthenticatorWebAuthnStage
+func (a *StagesApiService) StagesAuthenticatorWebauthnUpdateExecute(r ApiStagesAuthenticatorWebauthnUpdateRequest) (*AuthenticatorWebAuthnStage, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *AuthenticateWebAuthnStage
+		localVarReturnValue *AuthenticatorWebAuthnStage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorWebauthnUpdate")
@@ -7434,8 +7781,8 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUpdateExecute(r ApiStagesA
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.authenticateWebAuthnStageRequest == nil {
-		return localVarReturnValue, nil, reportError("authenticateWebAuthnStageRequest is required and must be specified")
+	if r.authenticatorWebAuthnStageRequest == nil {
+		return localVarReturnValue, nil, reportError("authenticatorWebAuthnStageRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -7456,7 +7803,7 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnUpdateExecute(r ApiStagesA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.authenticateWebAuthnStageRequest
+	localVarPostBody = r.authenticatorWebAuthnStageRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -8978,7 +9325,6 @@ func (r ApiStagesConsentListRequest) ConsentExpireIn(consentExpireIn string) Api
 	return r
 }
 
-// * &#x60;always_require&#x60; - Always Require * &#x60;permanent&#x60; - Permanent * &#x60;expiring&#x60; - Expiring
 func (r ApiStagesConsentListRequest) Mode(mode string) ApiStagesConsentListRequest {
 	r.mode = &mode
 	return r
@@ -17602,7 +17948,6 @@ func (r ApiStagesPromptPromptsListRequest) Search(search string) ApiStagesPrompt
 	return r
 }
 
-// * &#x60;text&#x60; - Text: Simple Text input * &#x60;text_area&#x60; - Text area: Multiline Text Input. * &#x60;text_read_only&#x60; - Text (read-only): Simple Text input, but cannot be edited. * &#x60;text_area_read_only&#x60; - Text area (read-only): Multiline Text input, but cannot be edited. * &#x60;username&#x60; - Username: Same as Text input, but checks for and prevents duplicate usernames. * &#x60;email&#x60; - Email: Text field with Email type. * &#x60;password&#x60; - Password: Masked input, multiple inputs of this type on the same prompt need to be identical. * &#x60;number&#x60; - Number * &#x60;checkbox&#x60; - Checkbox * &#x60;radio-button-group&#x60; - Fixed choice field rendered as a group of radio buttons. * &#x60;dropdown&#x60; - Fixed choice field rendered as a dropdown. * &#x60;date&#x60; - Date * &#x60;date-time&#x60; - Date Time * &#x60;file&#x60; - File: File upload for arbitrary files. File content will be available in flow context as data-URI * &#x60;separator&#x60; - Separator: Static Separator Line * &#x60;hidden&#x60; - Hidden: Hidden field, can be used to insert data into form. * &#x60;static&#x60; - Static: Static value, displayed as-is. * &#x60;ak-locale&#x60; - authentik: Selection of locales authentik supports
 func (r ApiStagesPromptPromptsListRequest) Type_(type_ string) ApiStagesPromptPromptsListRequest {
 	r.type_ = &type_
 	return r
@@ -21892,7 +22237,7 @@ type ApiStagesUserLoginListRequest struct {
 	terminateOtherSessions *bool
 }
 
-// Bind sessions created by this stage to the configured GeoIP location  * &#x60;no_binding&#x60; - No Binding * &#x60;bind_continent&#x60; - Bind Continent * &#x60;bind_continent_country&#x60; - Bind Continent Country * &#x60;bind_continent_country_city&#x60; - Bind Continent Country City
+// Bind sessions created by this stage to the configured GeoIP location
 func (r ApiStagesUserLoginListRequest) GeoipBinding(geoipBinding string) ApiStagesUserLoginListRequest {
 	r.geoipBinding = &geoipBinding
 	return r
@@ -21903,7 +22248,7 @@ func (r ApiStagesUserLoginListRequest) Name(name string) ApiStagesUserLoginListR
 	return r
 }
 
-// Bind sessions created by this stage to the configured network  * &#x60;no_binding&#x60; - No Binding * &#x60;bind_asn&#x60; - Bind Asn * &#x60;bind_asn_network&#x60; - Bind Asn Network * &#x60;bind_asn_network_ip&#x60; - Bind Asn Network Ip
+// Bind sessions created by this stage to the configured network
 func (r ApiStagesUserLoginListRequest) NetworkBinding(networkBinding string) ApiStagesUserLoginListRequest {
 	r.networkBinding = &networkBinding
 	return r
@@ -24037,7 +24382,6 @@ func (r ApiStagesUserWriteListRequest) StageUuid(stageUuid string) ApiStagesUser
 	return r
 }
 
-// * &#x60;never_create&#x60; - Never Create * &#x60;create_when_required&#x60; - Create When Required * &#x60;always_create&#x60; - Always Create
 func (r ApiStagesUserWriteListRequest) UserCreationMode(userCreationMode string) ApiStagesUserWriteListRequest {
 	r.userCreationMode = &userCreationMode
 	return r
@@ -24048,7 +24392,6 @@ func (r ApiStagesUserWriteListRequest) UserPathTemplate(userPathTemplate string)
 	return r
 }
 
-// * &#x60;internal&#x60; - Internal * &#x60;external&#x60; - External * &#x60;service_account&#x60; - Service Account * &#x60;internal_service_account&#x60; - Internal Service Account
 func (r ApiStagesUserWriteListRequest) UserType(userType string) ApiStagesUserWriteListRequest {
 	r.userType = &userType
 	return r

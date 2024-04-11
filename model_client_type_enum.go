@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// ClientTypeEnum * `confidential` - Confidential * `public` - Public
+// ClientTypeEnum the model 'ClientTypeEnum'
 type ClientTypeEnum string
 
 // List of ClientTypeEnum

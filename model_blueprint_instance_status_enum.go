@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// BlueprintInstanceStatusEnum * `successful` - Successful * `warning` - Warning * `error` - Error * `orphaned` - Orphaned * `unknown` - Unknown
+// BlueprintInstanceStatusEnum the model 'BlueprintInstanceStatusEnum'
 type BlueprintInstanceStatusEnum string
 
 // List of BlueprintInstanceStatusEnum

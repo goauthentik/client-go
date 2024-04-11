@@ -20,7 +20,7 @@ type NotificationRuleRequest struct {
 	Name string `json:"name"`
 	// Select which transports should be used to notify the user. If none are selected, the notification will only be shown in the authentik UI.
 	Transports []string `json:"transports,omitempty"`
-	// Controls which severity level the created notifications will have.  * `notice` - Notice * `warning` - Warning * `alert` - Alert
+	// Controls which severity level the created notifications will have.
 	Severity *SeverityEnum `json:"severity,omitempty"`
 	// Define which group of users this notification should be sent and shown to. If left empty, Notification won't ben sent.
 	Group NullableString `json:"group,omitempty"`

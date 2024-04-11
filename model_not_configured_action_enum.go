@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// NotConfiguredActionEnum * `skip` - Skip * `deny` - Deny * `configure` - Configure
+// NotConfiguredActionEnum the model 'NotConfiguredActionEnum'
 type NotConfiguredActionEnum string
 
 // List of NotConfiguredActionEnum

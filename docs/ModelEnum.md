@@ -85,7 +85,7 @@
 
 * `STAGES_AUTHENTICATOR_VALIDATE_AUTHENTICATORVALIDATESTAGE` (value: `"authentik_stages_authenticator_validate.authenticatorvalidatestage"`)
 
-* `STAGES_AUTHENTICATOR_WEBAUTHN_AUTHENTICATEWEBAUTHNSTAGE` (value: `"authentik_stages_authenticator_webauthn.authenticatewebauthnstage"`)
+* `STAGES_AUTHENTICATOR_WEBAUTHN_AUTHENTICATORWEBAUTHNSTAGE` (value: `"authentik_stages_authenticator_webauthn.authenticatorwebauthnstage"`)
 
 * `STAGES_AUTHENTICATOR_WEBAUTHN_WEBAUTHNDEVICE` (value: `"authentik_stages_authenticator_webauthn.webauthndevice"`)
 

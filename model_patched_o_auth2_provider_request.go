@@ -23,7 +23,7 @@ type PatchedOAuth2ProviderRequest struct {
 	// Flow used when authorizing this provider.
 	AuthorizationFlow *string  `json:"authorization_flow,omitempty"`
 	PropertyMappings  []string `json:"property_mappings,omitempty"`
-	// Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable  * `confidential` - Confidential * `public` - Public
+	// Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable
 	ClientType   *ClientTypeEnum `json:"client_type,omitempty"`
 	ClientId     *string         `json:"client_id,omitempty"`
 	ClientSecret *string         `json:"client_secret,omitempty"`
@@ -39,9 +39,9 @@ type PatchedOAuth2ProviderRequest struct {
 	SigningKey NullableString `json:"signing_key,omitempty"`
 	// Enter each URI on a new line.
 	RedirectUris *string `json:"redirect_uris,omitempty"`
-	// Configure what data should be used as unique User Identifier. For most cases, the default should be fine.  * `hashed_user_id` - Based on the Hashed User ID * `user_id` - Based on user ID * `user_uuid` - Based on user UUID * `user_username` - Based on the username * `user_email` - Based on the User's Email. This is recommended over the UPN method. * `user_upn` - Based on the User's UPN, only works if user has a 'upn' attribute set. Use this method only if you have different UPN and Mail domains.
+	// Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
 	SubMode *SubModeEnum `json:"sub_mode,omitempty"`
-	// Configure how the issuer field of the ID Token should be filled.  * `global` - Same identifier is used for all providers * `per_provider` - Each provider has a different issuer, based on the application slug.
+	// Configure how the issuer field of the ID Token should be filled.
 	IssuerMode  *IssuerModeEnum `json:"issuer_mode,omitempty"`
 	JwksSources []string        `json:"jwks_sources,omitempty"`
 }

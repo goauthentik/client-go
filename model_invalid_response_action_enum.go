@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// InvalidResponseActionEnum * `retry` - Retry * `restart` - Restart * `restart_with_context` - Restart With Context
+// InvalidResponseActionEnum the model 'InvalidResponseActionEnum'
 type InvalidResponseActionEnum string
 
 // List of InvalidResponseActionEnum

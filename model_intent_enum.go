@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// IntentEnum * `verification` - Intent Verification * `api` - Intent Api * `recovery` - Intent Recovery * `app_password` - Intent App Password
+// IntentEnum the model 'IntentEnum'
 type IntentEnum string
 
 // List of IntentEnum

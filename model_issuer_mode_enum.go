@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// IssuerModeEnum * `global` - Same identifier is used for all providers * `per_provider` - Each provider has a different issuer, based on the application slug.
+// IssuerModeEnum the model 'IssuerModeEnum'
 type IssuerModeEnum string
 
 // List of IssuerModeEnum

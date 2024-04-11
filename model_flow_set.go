@@ -24,7 +24,7 @@ type FlowSet struct {
 	Slug string `json:"slug"`
 	// Shown as the Title in Flow pages.
 	Title string `json:"title"`
-	// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.  * `authentication` - Authentication * `authorization` - Authorization * `invalidation` - Invalidation * `enrollment` - Enrollment * `unenrollment` - Unrenollment * `recovery` - Recovery * `stage_configuration` - Stage Configuration
+	// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
 	Designation FlowDesignationEnum `json:"designation"`
 	// Get the URL to the background image. If the name is /static or starts with http it is returned as-is
 	Background       string            `json:"background"`
@@ -34,7 +34,7 @@ type FlowSet struct {
 	// Get export URL for flow
 	ExportUrl string          `json:"export_url"`
 	Layout    *FlowLayoutEnum `json:"layout,omitempty"`
-	// Configure what should happen when a flow denies access to a user.  * `message_continue` - Message Continue * `message` - Message * `continue` - Continue
+	// Configure what should happen when a flow denies access to a user.
 	DeniedAction *DeniedActionEnum `json:"denied_action,omitempty"`
 }
 

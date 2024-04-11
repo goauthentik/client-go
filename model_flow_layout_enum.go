@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// FlowLayoutEnum * `stacked` - Stacked * `content_left` - Content Left * `content_right` - Content Right * `sidebar_left` - Sidebar Left * `sidebar_right` - Sidebar Right
+// FlowLayoutEnum the model 'FlowLayoutEnum'
 type FlowLayoutEnum string
 
 // List of FlowLayoutEnum

@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// UserTypeEnum * `internal` - Internal * `external` - External * `service_account` - Service Account * `internal_service_account` - Internal Service Account
+// UserTypeEnum the model 'UserTypeEnum'
 type UserTypeEnum string
 
 // List of UserTypeEnum

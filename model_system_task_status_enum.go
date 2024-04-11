@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// SystemTaskStatusEnum * `unknown` - UNKNOWN * `successful` - SUCCESSFUL * `warning` - WARNING * `error` - ERROR
+// SystemTaskStatusEnum the model 'SystemTaskStatusEnum'
 type SystemTaskStatusEnum string
 
 // List of SystemTaskStatusEnum

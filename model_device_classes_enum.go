@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// DeviceClassesEnum * `static` - Static * `totp` - TOTP * `webauthn` - WebAuthn * `duo` - Duo * `sms` - SMS
+// DeviceClassesEnum the model 'DeviceClassesEnum'
 type DeviceClassesEnum string
 
 // List of DeviceClassesEnum

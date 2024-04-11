@@ -2522,7 +2522,7 @@ func main() {
     expires := time.Now() // time.Time |  (optional)
     expiring := true // bool |  (optional)
     identifier := "identifier_example" // string |  (optional)
-    intent := "intent_example" // string | * `verification` - Intent Verification * `api` - Intent Api * `recovery` - Intent Recovery * `app_password` - Intent App Password (optional)
+    intent := "intent_example" // string |  (optional)
     managed := "managed_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -2557,7 +2557,7 @@ Name | Type | Description  | Notes
  **expires** | **time.Time** |  | 
  **expiring** | **bool** |  | 
  **identifier** | **string** |  | 
- **intent** | **string** | * &#x60;verification&#x60; - Intent Verification * &#x60;api&#x60; - Intent Api * &#x60;recovery&#x60; - Intent Recovery * &#x60;app_password&#x60; - Intent App Password | 
+ **intent** | **string** |  | 
  **managed** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
@@ -3652,7 +3652,7 @@ func main() {
     path := "path_example" // string |  (optional)
     pathStartswith := "pathStartswith_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
-    type_ := []string{"Type_example"} // []string | * `internal` - Internal * `external` - External * `service_account` - Service Account * `internal_service_account` - Internal Service Account (optional)
+    type_ := []string{"Type_example"} // []string |  (optional)
     username := "username_example" // string |  (optional)
     uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
@@ -3692,7 +3692,7 @@ Name | Type | Description  | Notes
  **path** | **string** |  | 
  **pathStartswith** | **string** |  | 
  **search** | **string** | A search term. | 
- **type_** | **[]string** | * &#x60;internal&#x60; - Internal * &#x60;external&#x60; - External * &#x60;service_account&#x60; - Service Account * &#x60;internal_service_account&#x60; - Internal Service Account | 
+ **type_** | **[]string** |  | 
  **username** | **string** |  | 
  **uuid** | **string** |  | 
 

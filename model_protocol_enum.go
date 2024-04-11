@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// ProtocolEnum * `rdp` - Rdp * `vnc` - Vnc * `ssh` - Ssh
+// ProtocolEnum the model 'ProtocolEnum'
 type ProtocolEnum string
 
 // List of ProtocolEnum

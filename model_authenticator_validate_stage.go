@@ -35,15 +35,17 @@ type AuthenticatorValidateStage struct {
 	ConfigurationStages []string `json:"configuration_stages,omitempty"`
 	// If any of the user's device has been used within this threshold, this stage will be skipped
 	LastAuthThreshold *string `json:"last_auth_threshold,omitempty"`
-	// Enforce user verification for WebAuthn devices.  * `required` - Required * `preferred` - Preferred * `discouraged` - Discouraged
-	WebauthnUserVerification *UserVerificationEnum `json:"webauthn_user_verification,omitempty"`
+	// Enforce user verification for WebAuthn devices.
+	WebauthnUserVerification      *UserVerificationEnum `json:"webauthn_user_verification,omitempty"`
+	WebauthnAllowedDeviceTypes    []string              `json:"webauthn_allowed_device_types,omitempty"`
+	WebauthnAllowedDeviceTypesObj []WebAuthnDeviceType  `json:"webauthn_allowed_device_types_obj"`
 }
 
 // NewAuthenticatorValidateStage instantiates a new AuthenticatorValidateStage object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatorValidateStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string) *AuthenticatorValidateStage {
+func NewAuthenticatorValidateStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, webauthnAllowedDeviceTypesObj []WebAuthnDeviceType) *AuthenticatorValidateStage {
 	this := AuthenticatorValidateStage{}
 	this.Pk = pk
 	this.Name = name
@@ -51,6 +53,7 @@ func NewAuthenticatorValidateStage(pk string, name string, component string, ver
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
+	this.WebauthnAllowedDeviceTypesObj = webauthnAllowedDeviceTypesObj
 	return &this
 }
 
@@ -398,6 +401,62 @@ func (o *AuthenticatorValidateStage) SetWebauthnUserVerification(v UserVerificat
 	o.WebauthnUserVerification = &v
 }
 
+// GetWebauthnAllowedDeviceTypes returns the WebauthnAllowedDeviceTypes field value if set, zero value otherwise.
+func (o *AuthenticatorValidateStage) GetWebauthnAllowedDeviceTypes() []string {
+	if o == nil || o.WebauthnAllowedDeviceTypes == nil {
+		var ret []string
+		return ret
+	}
+	return o.WebauthnAllowedDeviceTypes
+}
+
+// GetWebauthnAllowedDeviceTypesOk returns a tuple with the WebauthnAllowedDeviceTypes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthenticatorValidateStage) GetWebauthnAllowedDeviceTypesOk() ([]string, bool) {
+	if o == nil || o.WebauthnAllowedDeviceTypes == nil {
+		return nil, false
+	}
+	return o.WebauthnAllowedDeviceTypes, true
+}
+
+// HasWebauthnAllowedDeviceTypes returns a boolean if a field has been set.
+func (o *AuthenticatorValidateStage) HasWebauthnAllowedDeviceTypes() bool {
+	if o != nil && o.WebauthnAllowedDeviceTypes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWebauthnAllowedDeviceTypes gets a reference to the given []string and assigns it to the WebauthnAllowedDeviceTypes field.
+func (o *AuthenticatorValidateStage) SetWebauthnAllowedDeviceTypes(v []string) {
+	o.WebauthnAllowedDeviceTypes = v
+}
+
+// GetWebauthnAllowedDeviceTypesObj returns the WebauthnAllowedDeviceTypesObj field value
+func (o *AuthenticatorValidateStage) GetWebauthnAllowedDeviceTypesObj() []WebAuthnDeviceType {
+	if o == nil {
+		var ret []WebAuthnDeviceType
+		return ret
+	}
+
+	return o.WebauthnAllowedDeviceTypesObj
+}
+
+// GetWebauthnAllowedDeviceTypesObjOk returns a tuple with the WebauthnAllowedDeviceTypesObj field value
+// and a boolean to check if the value has been set.
+func (o *AuthenticatorValidateStage) GetWebauthnAllowedDeviceTypesObjOk() ([]WebAuthnDeviceType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.WebauthnAllowedDeviceTypesObj, true
+}
+
+// SetWebauthnAllowedDeviceTypesObj sets field value
+func (o *AuthenticatorValidateStage) SetWebauthnAllowedDeviceTypesObj(v []WebAuthnDeviceType) {
+	o.WebauthnAllowedDeviceTypesObj = v
+}
+
 func (o AuthenticatorValidateStage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -435,6 +494,12 @@ func (o AuthenticatorValidateStage) MarshalJSON() ([]byte, error) {
 	}
 	if o.WebauthnUserVerification != nil {
 		toSerialize["webauthn_user_verification"] = o.WebauthnUserVerification
+	}
+	if o.WebauthnAllowedDeviceTypes != nil {
+		toSerialize["webauthn_allowed_device_types"] = o.WebauthnAllowedDeviceTypes
+	}
+	if true {
+		toSerialize["webauthn_allowed_device_types_obj"] = o.WebauthnAllowedDeviceTypesObj
 	}
 	return json.Marshal(toSerialize)
 }

@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// ResidentKeyRequirementEnum * `discouraged` - Discouraged * `preferred` - Preferred * `required` - Required
+// ResidentKeyRequirementEnum the model 'ResidentKeyRequirementEnum'
 type ResidentKeyRequirementEnum string
 
 // List of ResidentKeyRequirementEnum

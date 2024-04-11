@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// LogLevelEnum * `critical` - critical * `exception` - exception * `error` - error * `warn` - warn * `warning` - warning * `info` - info * `debug` - debug * `notset` - notset
+// LogLevelEnum the model 'LogLevelEnum'
 type LogLevelEnum string
 
 // List of LogLevelEnum

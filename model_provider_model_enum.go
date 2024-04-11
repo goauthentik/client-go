@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// ProviderModelEnum * `authentik_providers_ldap.ldapprovider` - authentik_providers_ldap.ldapprovider * `authentik_providers_oauth2.oauth2provider` - authentik_providers_oauth2.oauth2provider * `authentik_providers_proxy.proxyprovider` - authentik_providers_proxy.proxyprovider * `authentik_providers_rac.racprovider` - authentik_providers_rac.racprovider * `authentik_providers_radius.radiusprovider` - authentik_providers_radius.radiusprovider * `authentik_providers_saml.samlprovider` - authentik_providers_saml.samlprovider * `authentik_providers_scim.scimprovider` - authentik_providers_scim.scimprovider
+// ProviderModelEnum the model 'ProviderModelEnum'
 type ProviderModelEnum string
 
 // List of ProviderModelEnum

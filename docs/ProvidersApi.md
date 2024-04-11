@@ -1084,9 +1084,9 @@ func main() {
     application := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     authorizationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     clientId := "clientId_example" // string |  (optional)
-    clientType := "clientType_example" // string | Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable  * `confidential` - Confidential * `public` - Public (optional)
+    clientType := "clientType_example" // string | Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable   (optional)
     includeClaimsInIdToken := true // bool |  (optional)
-    issuerMode := "issuerMode_example" // string | Configure how the issuer field of the ID Token should be filled.  * `global` - Same identifier is used for all providers * `per_provider` - Each provider has a different issuer, based on the application slug. (optional)
+    issuerMode := "issuerMode_example" // string | Configure how the issuer field of the ID Token should be filled.   (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -1096,7 +1096,7 @@ func main() {
     refreshTokenValidity := "refreshTokenValidity_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     signingKey := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    subMode := "subMode_example" // string | Configure what data should be used as unique User Identifier. For most cases, the default should be fine.  * `hashed_user_id` - Based on the Hashed User ID * `user_id` - Based on user ID * `user_uuid` - Based on user UUID * `user_username` - Based on the username * `user_email` - Based on the User's Email. This is recommended over the UPN method. * `user_upn` - Based on the User's UPN, only works if user has a 'upn' attribute set. Use this method only if you have different UPN and Mail domains. (optional)
+    subMode := "subMode_example" // string | Configure what data should be used as unique User Identifier. For most cases, the default should be fine.   (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1126,9 +1126,9 @@ Name | Type | Description  | Notes
  **application** | **string** |  | 
  **authorizationFlow** | **string** |  | 
  **clientId** | **string** |  | 
- **clientType** | **string** | Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable  * &#x60;confidential&#x60; - Confidential * &#x60;public&#x60; - Public | 
+ **clientType** | **string** | Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable   | 
  **includeClaimsInIdToken** | **bool** |  | 
- **issuerMode** | **string** | Configure how the issuer field of the ID Token should be filled.  * &#x60;global&#x60; - Same identifier is used for all providers * &#x60;per_provider&#x60; - Each provider has a different issuer, based on the application slug. | 
+ **issuerMode** | **string** | Configure how the issuer field of the ID Token should be filled.   | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
@@ -1138,7 +1138,7 @@ Name | Type | Description  | Notes
  **refreshTokenValidity** | **string** |  | 
  **search** | **string** | A search term. | 
  **signingKey** | **string** |  | 
- **subMode** | **string** | Configure what data should be used as unique User Identifier. For most cases, the default should be fine.  * &#x60;hashed_user_id&#x60; - Based on the Hashed User ID * &#x60;user_id&#x60; - Based on user ID * &#x60;user_uuid&#x60; - Based on user UUID * &#x60;user_username&#x60; - Based on the username * &#x60;user_email&#x60; - Based on the User&#39;s Email. This is recommended over the UPN method. * &#x60;user_upn&#x60; - Based on the User&#39;s UPN, only works if user has a &#39;upn&#39; attribute set. Use this method only if you have different UPN and Mail domains. | 
+ **subMode** | **string** | Configure what data should be used as unique User Identifier. For most cases, the default should be fine.   | 
 
 ### Return type
 
@@ -3329,7 +3329,7 @@ func main() {
     authorizationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     backchannelApplication := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     defaultRelayState := "defaultRelayState_example" // string |  (optional)
-    digestAlgorithm := "digestAlgorithm_example" // string | * `http://www.w3.org/2000/09/xmldsig#sha1` - SHA1 * `http://www.w3.org/2001/04/xmlenc#sha256` - SHA256 * `http://www.w3.org/2001/04/xmldsig-more#sha384` - SHA384 * `http://www.w3.org/2001/04/xmlenc#sha512` - SHA512 (optional)
+    digestAlgorithm := "digestAlgorithm_example" // string |  (optional)
     isBackchannel := true // bool |  (optional)
     issuer := "issuer_example" // string |  (optional)
     name := "name_example" // string |  (optional)
@@ -3340,9 +3340,9 @@ func main() {
     propertyMappings := []string{"Inner_example"} // []string |  (optional)
     search := "search_example" // string | A search term. (optional)
     sessionValidNotOnOrAfter := "sessionValidNotOnOrAfter_example" // string |  (optional)
-    signatureAlgorithm := "signatureAlgorithm_example" // string | * `http://www.w3.org/2000/09/xmldsig#rsa-sha1` - RSA-SHA1 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha256` - RSA-SHA256 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha384` - RSA-SHA384 * `http://www.w3.org/2001/04/xmldsig-more#rsa-sha512` - RSA-SHA512 * `http://www.w3.org/2000/09/xmldsig#dsa-sha1` - DSA-SHA1 (optional)
+    signatureAlgorithm := "signatureAlgorithm_example" // string |  (optional)
     signingKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    spBinding := "spBinding_example" // string | This determines how authentik sends the response back to the Service Provider.  * `redirect` - Redirect * `post` - Post (optional)
+    spBinding := "spBinding_example" // string | This determines how authentik sends the response back to the Service Provider.   (optional)
     verificationKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -3376,7 +3376,7 @@ Name | Type | Description  | Notes
  **authorizationFlow** | **string** |  | 
  **backchannelApplication** | **string** |  | 
  **defaultRelayState** | **string** |  | 
- **digestAlgorithm** | **string** | * &#x60;http://www.w3.org/2000/09/xmldsig#sha1&#x60; - SHA1 * &#x60;http://www.w3.org/2001/04/xmlenc#sha256&#x60; - SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#sha384&#x60; - SHA384 * &#x60;http://www.w3.org/2001/04/xmlenc#sha512&#x60; - SHA512 | 
+ **digestAlgorithm** | **string** |  | 
  **isBackchannel** | **bool** |  | 
  **issuer** | **string** |  | 
  **name** | **string** |  | 
@@ -3387,9 +3387,9 @@ Name | Type | Description  | Notes
  **propertyMappings** | **[]string** |  | 
  **search** | **string** | A search term. | 
  **sessionValidNotOnOrAfter** | **string** |  | 
- **signatureAlgorithm** | **string** | * &#x60;http://www.w3.org/2000/09/xmldsig#rsa-sha1&#x60; - RSA-SHA1 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&#x60; - RSA-SHA256 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha384&#x60; - RSA-SHA384 * &#x60;http://www.w3.org/2001/04/xmldsig-more#rsa-sha512&#x60; - RSA-SHA512 * &#x60;http://www.w3.org/2000/09/xmldsig#dsa-sha1&#x60; - DSA-SHA1 | 
+ **signatureAlgorithm** | **string** |  | 
  **signingKp** | **string** |  | 
- **spBinding** | **string** | This determines how authentik sends the response back to the Service Provider.  * &#x60;redirect&#x60; - Redirect * &#x60;post&#x60; - Post | 
+ **spBinding** | **string** | This determines how authentik sends the response back to the Service Provider.   | 
  **verificationKp** | **string** |  | 
 
 ### Return type
