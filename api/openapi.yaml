@@ -57989,7 +57989,5 @@ components:
       readOnly: true
   securitySchemes:
     authentik:
-      in: header
-      name: Authorization
       scheme: bearer
-      type: apiKey
+      type: http

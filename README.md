@@ -1322,11 +1322,14 @@ Class | Method | HTTP request | Description
 
 ### authentik
 
-- **Type**: API key
-- **API key parameter name**: Authorization
-- **Location**: HTTP header
+- **Type**: HTTP Bearer token authentication
 
-Note, each API key must be added to a map of `map[string]APIKey` where the key is: Authorization and passed in as the auth context for each request.
+Example
+
+```golang
+auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARERTOKENSTRING")
+r, err := client.Service.Operation(auth, args)
+```
 
 
 ## Documentation for Utility Methods
