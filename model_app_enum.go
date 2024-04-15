@@ -46,6 +46,7 @@ const (
 	APPENUM_SOURCES_OAUTH                 AppEnum = "authentik.sources.oauth"
 	APPENUM_SOURCES_PLEX                  AppEnum = "authentik.sources.plex"
 	APPENUM_SOURCES_SAML                  AppEnum = "authentik.sources.saml"
+	APPENUM_SOURCES_SCIM                  AppEnum = "authentik.sources.scim"
 	APPENUM_STAGES_AUTHENTICATOR          AppEnum = "authentik.stages.authenticator"
 	APPENUM_STAGES_AUTHENTICATOR_DUO      AppEnum = "authentik.stages.authenticator_duo"
 	APPENUM_STAGES_AUTHENTICATOR_SMS      AppEnum = "authentik.stages.authenticator_sms"
@@ -103,6 +104,7 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.sources.oauth",
 	"authentik.sources.plex",
 	"authentik.sources.saml",
+	"authentik.sources.scim",
 	"authentik.stages.authenticator",
 	"authentik.stages.authenticator_duo",
 	"authentik.stages.authenticator_sms",

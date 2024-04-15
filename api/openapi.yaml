@@ -20528,6 +20528,7 @@ paths:
           - authentik_sources_plex.plexsourceconnection
           - authentik_sources_saml.samlsource
           - authentik_sources_saml.usersamlsourceconnection
+          - authentik_sources_scim.scimsource
           - authentik_stages_authenticator_duo.authenticatorduostage
           - authentik_stages_authenticator_duo.duodevice
           - authentik_stages_authenticator_sms.authenticatorsmsstage
@@ -20759,6 +20760,7 @@ paths:
           - authentik_sources_plex.plexsourceconnection
           - authentik_sources_saml.samlsource
           - authentik_sources_saml.usersamlsourceconnection
+          - authentik_sources_scim.scimsource
           - authentik_stages_authenticator_duo.authenticatorduostage
           - authentik_stages_authenticator_duo.duodevice
           - authentik_stages_authenticator_sms.authenticatorsmsstage
@@ -23701,6 +23703,897 @@ paths:
         required: true
         schema:
           description: "Internal source name, used in URLs."
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/scim/:
+    get:
+      description: SCIMSource Viewset
+      operationId: sources_scim_list
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: slug
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSCIMSourceList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    post:
+      description: SCIMSource Viewset
+      operationId: sources_scim_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SCIMSourceRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMSource'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/scim/{slug}/:
+    delete:
+      description: SCIMSource Viewset
+      operationId: sources_scim_destroy
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          description: "Internal source name, used in URLs."
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    get:
+      description: SCIMSource Viewset
+      operationId: sources_scim_retrieve
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          description: "Internal source name, used in URLs."
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMSource'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    patch:
+      description: SCIMSource Viewset
+      operationId: sources_scim_partial_update
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          description: "Internal source name, used in URLs."
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSCIMSourceRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMSource'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    put:
+      description: SCIMSource Viewset
+      operationId: sources_scim_update
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          description: "Internal source name, used in URLs."
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SCIMSourceRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMSource'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/scim/{slug}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: sources_scim_used_by_list
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          description: "Internal source name, used in URLs."
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/scim_groups/:
+    get:
+      description: SCIMSourceGroup Viewset
+      operationId: sources_scim_groups_list
+      parameters:
+      - explode: true
+        in: query
+        name: group__group_uuid
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: group__name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: source__slug
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSCIMSourceGroupList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    post:
+      description: SCIMSourceGroup Viewset
+      operationId: sources_scim_groups_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SCIMSourceGroupRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMSourceGroup'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/scim_groups/{id}/:
+    delete:
+      description: SCIMSourceGroup Viewset
+      operationId: sources_scim_groups_destroy
+      parameters:
+      - description: A unique value identifying this scim source group.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    get:
+      description: SCIMSourceGroup Viewset
+      operationId: sources_scim_groups_retrieve
+      parameters:
+      - description: A unique value identifying this scim source group.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMSourceGroup'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    patch:
+      description: SCIMSourceGroup Viewset
+      operationId: sources_scim_groups_partial_update
+      parameters:
+      - description: A unique value identifying this scim source group.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSCIMSourceGroupRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMSourceGroup'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    put:
+      description: SCIMSourceGroup Viewset
+      operationId: sources_scim_groups_update
+      parameters:
+      - description: A unique value identifying this scim source group.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SCIMSourceGroupRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMSourceGroup'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/scim_groups/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: sources_scim_groups_used_by_list
+      parameters:
+      - description: A unique value identifying this scim source group.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/scim_users/:
+    get:
+      description: SCIMSourceUser Viewset
+      operationId: sources_scim_users_list
+      parameters:
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: source__slug
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: user__id
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: user__username
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSCIMSourceUserList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    post:
+      description: SCIMSourceUser Viewset
+      operationId: sources_scim_users_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SCIMSourceUserRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMSourceUser'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/scim_users/{id}/:
+    delete:
+      description: SCIMSourceUser Viewset
+      operationId: sources_scim_users_destroy
+      parameters:
+      - description: A unique value identifying this scim source user.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    get:
+      description: SCIMSourceUser Viewset
+      operationId: sources_scim_users_retrieve
+      parameters:
+      - description: A unique value identifying this scim source user.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMSourceUser'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    patch:
+      description: SCIMSourceUser Viewset
+      operationId: sources_scim_users_partial_update
+      parameters:
+      - description: A unique value identifying this scim source user.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSCIMSourceUserRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMSourceUser'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    put:
+      description: SCIMSourceUser Viewset
+      operationId: sources_scim_users_update
+      parameters:
+      - description: A unique value identifying this scim source user.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SCIMSourceUserRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMSourceUser'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/scim_users/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: sources_scim_users_used_by_list
+      parameters:
+      - description: A unique value identifying this scim source user.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
           type: string
         style: simple
       responses:
@@ -33078,6 +33971,7 @@ components:
       - authentik.sources.oauth
       - authentik.sources.plex
       - authentik.sources.saml
+      - authentik.sources.scim
       - authentik.stages.authenticator
       - authentik.stages.authenticator_duo
       - authentik.stages.authenticator_sms
@@ -39930,6 +40824,7 @@ components:
       - authentik_sources_plex.plexsourceconnection
       - authentik_sources_saml.samlsource
       - authentik_sources_saml.usersamlsourceconnection
+      - authentik_sources_scim.scimsource
       - authentik_stages_authenticator_duo.authenticatorduostage
       - authentik_stages_authenticator_duo.duodevice
       - authentik_stages_authenticator_sms.authenticatorsmsstage
@@ -45946,6 +46841,118 @@ components:
       - pagination
       - results
       type: object
+    PaginatedSCIMSourceGroupList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - group_obj: ""
+          attributes: ""
+          id: id
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - group_obj: ""
+          attributes: ""
+          id: id
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/SCIMSourceGroup'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedSCIMSourceList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - root_url: root_url
+          token_obj: ""
+          user_matching_mode: ""
+          verbose_name_plural: verbose_name_plural
+          user_path_template: user_path_template
+          enabled: true
+          component: component
+          verbose_name: verbose_name
+          meta_model_name: meta_model_name
+          managed: managed
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          slug: slug
+        - root_url: root_url
+          token_obj: ""
+          user_matching_mode: ""
+          verbose_name_plural: verbose_name_plural
+          user_path_template: user_path_template
+          enabled: true
+          component: component
+          verbose_name: verbose_name
+          meta_model_name: meta_model_name
+          managed: managed
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          slug: slug
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/SCIMSource'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedSCIMSourceUserList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - user_obj: ""
+          attributes: ""
+          id: id
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user: 0
+        - user_obj: ""
+          attributes: ""
+          id: id
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user: 0
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/SCIMSourceUser'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedSMSDeviceList:
       example:
         pagination:
@@ -50885,6 +51892,73 @@ components:
           nullable: true
           type: string
       type: object
+    PatchedSCIMSourceGroupRequest:
+      description: SCIMSourceGroup Serializer
+      example:
+        attributes: ""
+        id: id
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          minLength: 1
+          type: string
+        group:
+          format: uuid
+          type: string
+        source:
+          format: uuid
+          type: string
+        attributes: {}
+      type: object
+    PatchedSCIMSourceRequest:
+      description: SCIMSource Serializer
+      example:
+        user_matching_mode: ""
+        user_path_template: user_path_template
+        name: name
+        slug: slug
+        enabled: true
+      properties:
+        name:
+          description: Source's display Name.
+          minLength: 1
+          type: string
+        slug:
+          description: "Internal source name, used in URLs."
+          maxLength: 50
+          minLength: 1
+          pattern: "^[-a-zA-Z0-9_]+$"
+          type: string
+        enabled:
+          type: boolean
+        user_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/UserMatchingModeEnum'
+          description: How the source determines if an existing user should be authenticated
+            or a new user enrolled.
+        user_path_template:
+          minLength: 1
+          type: string
+      type: object
+    PatchedSCIMSourceUserRequest:
+      description: SCIMSourceUser Serializer
+      example:
+        attributes: ""
+        id: id
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user: 0
+      properties:
+        id:
+          minLength: 1
+          type: string
+        user:
+          type: integer
+        source:
+          format: uuid
+          type: string
+        attributes: {}
+      type: object
     PatchedSMSDeviceRequest:
       description: Serializer for sms authenticator devices
       example:
@@ -54685,6 +55759,223 @@ components:
       - name
       - token
       - url
+      type: object
+    SCIMSource:
+      description: SCIMSource Serializer
+      example:
+        root_url: root_url
+        token_obj: ""
+        user_matching_mode: ""
+        verbose_name_plural: verbose_name_plural
+        user_path_template: user_path_template
+        enabled: true
+        component: component
+        verbose_name: verbose_name
+        meta_model_name: meta_model_name
+        managed: managed
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        slug: slug
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Pbm uuid
+          type: string
+        name:
+          description: Source's display Name.
+          type: string
+        slug:
+          description: "Internal source name, used in URLs."
+          maxLength: 50
+          pattern: "^[-a-zA-Z0-9_]+$"
+          type: string
+        enabled:
+          type: boolean
+        component:
+          description: Get object component so that we know how to edit the object
+          readOnly: true
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+        user_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/UserMatchingModeEnum'
+          description: How the source determines if an existing user should be authenticated
+            or a new user enrolled.
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          nullable: true
+          readOnly: true
+          title: Managed by authentik
+          type: string
+        user_path_template:
+          type: string
+        root_url:
+          description: Get Root URL
+          readOnly: true
+          type: string
+        token_obj:
+          allOf:
+          - $ref: '#/components/schemas/Token'
+          readOnly: true
+      required:
+      - component
+      - managed
+      - meta_model_name
+      - name
+      - pk
+      - root_url
+      - slug
+      - token_obj
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    SCIMSourceGroup:
+      description: SCIMSourceGroup Serializer
+      example:
+        group_obj: ""
+        attributes: ""
+        id: id
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          type: string
+        group:
+          format: uuid
+          type: string
+        group_obj:
+          allOf:
+          - $ref: '#/components/schemas/UserGroup'
+          readOnly: true
+        source:
+          format: uuid
+          type: string
+        attributes: {}
+      required:
+      - group
+      - group_obj
+      - id
+      - source
+      type: object
+    SCIMSourceGroupRequest:
+      description: SCIMSourceGroup Serializer
+      example:
+        attributes: ""
+        id: id
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          minLength: 1
+          type: string
+        group:
+          format: uuid
+          type: string
+        source:
+          format: uuid
+          type: string
+        attributes: {}
+      required:
+      - group
+      - id
+      - source
+      type: object
+    SCIMSourceRequest:
+      description: SCIMSource Serializer
+      example:
+        user_matching_mode: ""
+        user_path_template: user_path_template
+        name: name
+        slug: slug
+        enabled: true
+      properties:
+        name:
+          description: Source's display Name.
+          minLength: 1
+          type: string
+        slug:
+          description: "Internal source name, used in URLs."
+          maxLength: 50
+          minLength: 1
+          pattern: "^[-a-zA-Z0-9_]+$"
+          type: string
+        enabled:
+          type: boolean
+        user_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/UserMatchingModeEnum'
+          description: How the source determines if an existing user should be authenticated
+            or a new user enrolled.
+        user_path_template:
+          minLength: 1
+          type: string
+      required:
+      - name
+      - slug
+      type: object
+    SCIMSourceUser:
+      description: SCIMSourceUser Serializer
+      example:
+        user_obj: ""
+        attributes: ""
+        id: id
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user: 0
+      properties:
+        id:
+          type: string
+        user:
+          type: integer
+        user_obj:
+          allOf:
+          - $ref: '#/components/schemas/GroupMember'
+          readOnly: true
+        source:
+          format: uuid
+          type: string
+        attributes: {}
+      required:
+      - id
+      - source
+      - user
+      - user_obj
+      type: object
+    SCIMSourceUserRequest:
+      description: SCIMSourceUser Serializer
+      example:
+        attributes: ""
+        id: id
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user: 0
+      properties:
+        id:
+          minLength: 1
+          type: string
+        user:
+          type: integer
+        source:
+          format: uuid
+          type: string
+        attributes: {}
+      required:
+      - id
+      - source
+      - user
       type: object
     SCIMSyncStatus:
       description: SCIM Provider sync status

@@ -67,6 +67,8 @@
 
 * `SOURCES_SAML_USERSAMLSOURCECONNECTION` (value: `"authentik_sources_saml.usersamlsourceconnection"`)
 
+* `SOURCES_SCIM_SCIMSOURCE` (value: `"authentik_sources_scim.scimsource"`)
+
 * `STAGES_AUTHENTICATOR_DUO_AUTHENTICATORDUOSTAGE` (value: `"authentik_stages_authenticator_duo.authenticatorduostage"`)
 
 * `STAGES_AUTHENTICATOR_DUO_DUODEVICE` (value: `"authentik_stages_authenticator_duo.duodevice"`)

@@ -46,6 +46,27 @@ Method | HTTP request | Description
 [**SourcesSamlRetrieve**](SourcesApi.md#SourcesSamlRetrieve) | **Get** /sources/saml/{slug}/ | 
 [**SourcesSamlUpdate**](SourcesApi.md#SourcesSamlUpdate) | **Put** /sources/saml/{slug}/ | 
 [**SourcesSamlUsedByList**](SourcesApi.md#SourcesSamlUsedByList) | **Get** /sources/saml/{slug}/used_by/ | 
+[**SourcesScimCreate**](SourcesApi.md#SourcesScimCreate) | **Post** /sources/scim/ | 
+[**SourcesScimDestroy**](SourcesApi.md#SourcesScimDestroy) | **Delete** /sources/scim/{slug}/ | 
+[**SourcesScimGroupsCreate**](SourcesApi.md#SourcesScimGroupsCreate) | **Post** /sources/scim_groups/ | 
+[**SourcesScimGroupsDestroy**](SourcesApi.md#SourcesScimGroupsDestroy) | **Delete** /sources/scim_groups/{id}/ | 
+[**SourcesScimGroupsList**](SourcesApi.md#SourcesScimGroupsList) | **Get** /sources/scim_groups/ | 
+[**SourcesScimGroupsPartialUpdate**](SourcesApi.md#SourcesScimGroupsPartialUpdate) | **Patch** /sources/scim_groups/{id}/ | 
+[**SourcesScimGroupsRetrieve**](SourcesApi.md#SourcesScimGroupsRetrieve) | **Get** /sources/scim_groups/{id}/ | 
+[**SourcesScimGroupsUpdate**](SourcesApi.md#SourcesScimGroupsUpdate) | **Put** /sources/scim_groups/{id}/ | 
+[**SourcesScimGroupsUsedByList**](SourcesApi.md#SourcesScimGroupsUsedByList) | **Get** /sources/scim_groups/{id}/used_by/ | 
+[**SourcesScimList**](SourcesApi.md#SourcesScimList) | **Get** /sources/scim/ | 
+[**SourcesScimPartialUpdate**](SourcesApi.md#SourcesScimPartialUpdate) | **Patch** /sources/scim/{slug}/ | 
+[**SourcesScimRetrieve**](SourcesApi.md#SourcesScimRetrieve) | **Get** /sources/scim/{slug}/ | 
+[**SourcesScimUpdate**](SourcesApi.md#SourcesScimUpdate) | **Put** /sources/scim/{slug}/ | 
+[**SourcesScimUsedByList**](SourcesApi.md#SourcesScimUsedByList) | **Get** /sources/scim/{slug}/used_by/ | 
+[**SourcesScimUsersCreate**](SourcesApi.md#SourcesScimUsersCreate) | **Post** /sources/scim_users/ | 
+[**SourcesScimUsersDestroy**](SourcesApi.md#SourcesScimUsersDestroy) | **Delete** /sources/scim_users/{id}/ | 
+[**SourcesScimUsersList**](SourcesApi.md#SourcesScimUsersList) | **Get** /sources/scim_users/ | 
+[**SourcesScimUsersPartialUpdate**](SourcesApi.md#SourcesScimUsersPartialUpdate) | **Patch** /sources/scim_users/{id}/ | 
+[**SourcesScimUsersRetrieve**](SourcesApi.md#SourcesScimUsersRetrieve) | **Get** /sources/scim_users/{id}/ | 
+[**SourcesScimUsersUpdate**](SourcesApi.md#SourcesScimUsersUpdate) | **Put** /sources/scim_users/{id}/ | 
+[**SourcesScimUsersUsedByList**](SourcesApi.md#SourcesScimUsersUsedByList) | **Get** /sources/scim_users/{id}/used_by/ | 
 [**SourcesUserConnectionsAllDestroy**](SourcesApi.md#SourcesUserConnectionsAllDestroy) | **Delete** /sources/user_connections/all/{id}/ | 
 [**SourcesUserConnectionsAllList**](SourcesApi.md#SourcesUserConnectionsAllList) | **Get** /sources/user_connections/all/ | 
 [**SourcesUserConnectionsAllPartialUpdate**](SourcesApi.md#SourcesUserConnectionsAllPartialUpdate) | **Patch** /sources/user_connections/all/{id}/ | 
@@ -3106,6 +3127,1492 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSourcesSamlUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimCreate
+
+> SCIMSource SourcesScimCreate(ctx).SCIMSourceRequest(sCIMSourceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    sCIMSourceRequest := *openapiclient.NewSCIMSourceRequest("Name_example", "Slug_example") // SCIMSourceRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimCreate(context.Background()).SCIMSourceRequest(sCIMSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimCreate`: SCIMSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sCIMSourceRequest** | [**SCIMSourceRequest**](SCIMSourceRequest.md) |  | 
+
+### Return type
+
+[**SCIMSource**](SCIMSource.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimDestroy
+
+> SourcesScimDestroy(ctx, slug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    slug := "slug_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimDestroy(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimGroupsCreate
+
+> SCIMSourceGroup SourcesScimGroupsCreate(ctx).SCIMSourceGroupRequest(sCIMSourceGroupRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    sCIMSourceGroupRequest := *openapiclient.NewSCIMSourceGroupRequest("Id_example", "Group_example", "Source_example") // SCIMSourceGroupRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimGroupsCreate(context.Background()).SCIMSourceGroupRequest(sCIMSourceGroupRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimGroupsCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimGroupsCreate`: SCIMSourceGroup
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimGroupsCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimGroupsCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sCIMSourceGroupRequest** | [**SCIMSourceGroupRequest**](SCIMSourceGroupRequest.md) |  | 
+
+### Return type
+
+[**SCIMSourceGroup**](SCIMSourceGroup.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimGroupsDestroy
+
+> SourcesScimGroupsDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | A unique value identifying this scim source group.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimGroupsDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimGroupsDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A unique value identifying this scim source group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimGroupsDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimGroupsList
+
+> PaginatedSCIMSourceGroupList SourcesScimGroupsList(ctx).GroupGroupUuid(groupGroupUuid).GroupName(groupName).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    groupGroupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    groupName := "groupName_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimGroupsList(context.Background()).GroupGroupUuid(groupGroupUuid).GroupName(groupName).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimGroupsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimGroupsList`: PaginatedSCIMSourceGroupList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimGroupsList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimGroupsListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupGroupUuid** | **string** |  | 
+ **groupName** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+ **sourceSlug** | **string** |  | 
+
+### Return type
+
+[**PaginatedSCIMSourceGroupList**](PaginatedSCIMSourceGroupList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimGroupsPartialUpdate
+
+> SCIMSourceGroup SourcesScimGroupsPartialUpdate(ctx, id).PatchedSCIMSourceGroupRequest(patchedSCIMSourceGroupRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | A unique value identifying this scim source group.
+    patchedSCIMSourceGroupRequest := *openapiclient.NewPatchedSCIMSourceGroupRequest() // PatchedSCIMSourceGroupRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimGroupsPartialUpdate(context.Background(), id).PatchedSCIMSourceGroupRequest(patchedSCIMSourceGroupRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimGroupsPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimGroupsPartialUpdate`: SCIMSourceGroup
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimGroupsPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A unique value identifying this scim source group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimGroupsPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedSCIMSourceGroupRequest** | [**PatchedSCIMSourceGroupRequest**](PatchedSCIMSourceGroupRequest.md) |  | 
+
+### Return type
+
+[**SCIMSourceGroup**](SCIMSourceGroup.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimGroupsRetrieve
+
+> SCIMSourceGroup SourcesScimGroupsRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | A unique value identifying this scim source group.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimGroupsRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimGroupsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimGroupsRetrieve`: SCIMSourceGroup
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimGroupsRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A unique value identifying this scim source group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimGroupsRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SCIMSourceGroup**](SCIMSourceGroup.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimGroupsUpdate
+
+> SCIMSourceGroup SourcesScimGroupsUpdate(ctx, id).SCIMSourceGroupRequest(sCIMSourceGroupRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | A unique value identifying this scim source group.
+    sCIMSourceGroupRequest := *openapiclient.NewSCIMSourceGroupRequest("Id_example", "Group_example", "Source_example") // SCIMSourceGroupRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimGroupsUpdate(context.Background(), id).SCIMSourceGroupRequest(sCIMSourceGroupRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimGroupsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimGroupsUpdate`: SCIMSourceGroup
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimGroupsUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A unique value identifying this scim source group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimGroupsUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **sCIMSourceGroupRequest** | [**SCIMSourceGroupRequest**](SCIMSourceGroupRequest.md) |  | 
+
+### Return type
+
+[**SCIMSourceGroup**](SCIMSourceGroup.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimGroupsUsedByList
+
+> []UsedBy SourcesScimGroupsUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | A unique value identifying this scim source group.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimGroupsUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimGroupsUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimGroupsUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimGroupsUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A unique value identifying this scim source group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimGroupsUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimList
+
+> PaginatedSCIMSourceList SourcesScimList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    slug := "slug_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimList`: PaginatedSCIMSourceList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+ **slug** | **string** |  | 
+
+### Return type
+
+[**PaginatedSCIMSourceList**](PaginatedSCIMSourceList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimPartialUpdate
+
+> SCIMSource SourcesScimPartialUpdate(ctx, slug).PatchedSCIMSourceRequest(patchedSCIMSourceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    slug := "slug_example" // string | 
+    patchedSCIMSourceRequest := *openapiclient.NewPatchedSCIMSourceRequest() // PatchedSCIMSourceRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimPartialUpdate(context.Background(), slug).PatchedSCIMSourceRequest(patchedSCIMSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimPartialUpdate`: SCIMSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedSCIMSourceRequest** | [**PatchedSCIMSourceRequest**](PatchedSCIMSourceRequest.md) |  | 
+
+### Return type
+
+[**SCIMSource**](SCIMSource.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimRetrieve
+
+> SCIMSource SourcesScimRetrieve(ctx, slug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    slug := "slug_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimRetrieve(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimRetrieve`: SCIMSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SCIMSource**](SCIMSource.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimUpdate
+
+> SCIMSource SourcesScimUpdate(ctx, slug).SCIMSourceRequest(sCIMSourceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    slug := "slug_example" // string | 
+    sCIMSourceRequest := *openapiclient.NewSCIMSourceRequest("Name_example", "Slug_example") // SCIMSourceRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimUpdate(context.Background(), slug).SCIMSourceRequest(sCIMSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimUpdate`: SCIMSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **sCIMSourceRequest** | [**SCIMSourceRequest**](SCIMSourceRequest.md) |  | 
+
+### Return type
+
+[**SCIMSource**](SCIMSource.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimUsedByList
+
+> []UsedBy SourcesScimUsedByList(ctx, slug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    slug := "slug_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimUsedByList(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimUsersCreate
+
+> SCIMSourceUser SourcesScimUsersCreate(ctx).SCIMSourceUserRequest(sCIMSourceUserRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    sCIMSourceUserRequest := *openapiclient.NewSCIMSourceUserRequest("Id_example", int32(123), "Source_example") // SCIMSourceUserRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimUsersCreate(context.Background()).SCIMSourceUserRequest(sCIMSourceUserRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimUsersCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimUsersCreate`: SCIMSourceUser
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimUsersCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimUsersCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sCIMSourceUserRequest** | [**SCIMSourceUserRequest**](SCIMSourceUserRequest.md) |  | 
+
+### Return type
+
+[**SCIMSourceUser**](SCIMSourceUser.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimUsersDestroy
+
+> SourcesScimUsersDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | A unique value identifying this scim source user.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimUsersDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimUsersDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A unique value identifying this scim source user. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimUsersDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimUsersList
+
+> PaginatedSCIMSourceUserList SourcesScimUsersList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).UserId(userId).UserUsername(userUsername).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
+    userId := int32(56) // int32 |  (optional)
+    userUsername := "userUsername_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimUsersList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).UserId(userId).UserUsername(userUsername).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimUsersList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimUsersList`: PaginatedSCIMSourceUserList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimUsersList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimUsersListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+ **sourceSlug** | **string** |  | 
+ **userId** | **int32** |  | 
+ **userUsername** | **string** |  | 
+
+### Return type
+
+[**PaginatedSCIMSourceUserList**](PaginatedSCIMSourceUserList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimUsersPartialUpdate
+
+> SCIMSourceUser SourcesScimUsersPartialUpdate(ctx, id).PatchedSCIMSourceUserRequest(patchedSCIMSourceUserRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | A unique value identifying this scim source user.
+    patchedSCIMSourceUserRequest := *openapiclient.NewPatchedSCIMSourceUserRequest() // PatchedSCIMSourceUserRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimUsersPartialUpdate(context.Background(), id).PatchedSCIMSourceUserRequest(patchedSCIMSourceUserRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimUsersPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimUsersPartialUpdate`: SCIMSourceUser
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimUsersPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A unique value identifying this scim source user. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimUsersPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedSCIMSourceUserRequest** | [**PatchedSCIMSourceUserRequest**](PatchedSCIMSourceUserRequest.md) |  | 
+
+### Return type
+
+[**SCIMSourceUser**](SCIMSourceUser.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimUsersRetrieve
+
+> SCIMSourceUser SourcesScimUsersRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | A unique value identifying this scim source user.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimUsersRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimUsersRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimUsersRetrieve`: SCIMSourceUser
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimUsersRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A unique value identifying this scim source user. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimUsersRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SCIMSourceUser**](SCIMSourceUser.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimUsersUpdate
+
+> SCIMSourceUser SourcesScimUsersUpdate(ctx, id).SCIMSourceUserRequest(sCIMSourceUserRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | A unique value identifying this scim source user.
+    sCIMSourceUserRequest := *openapiclient.NewSCIMSourceUserRequest("Id_example", int32(123), "Source_example") // SCIMSourceUserRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimUsersUpdate(context.Background(), id).SCIMSourceUserRequest(sCIMSourceUserRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimUsersUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimUsersUpdate`: SCIMSourceUser
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimUsersUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A unique value identifying this scim source user. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimUsersUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **sCIMSourceUserRequest** | [**SCIMSourceUserRequest**](SCIMSourceUserRequest.md) |  | 
+
+### Return type
+
+[**SCIMSourceUser**](SCIMSourceUser.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesScimUsersUsedByList
+
+> []UsedBy SourcesScimUsersUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | A unique value identifying this scim source user.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimUsersUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimUsersUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimUsersUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimUsersUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A unique value identifying this scim source user. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesScimUsersUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -53,6 +53,8 @@
 
 * `SOURCES_SAML` (value: `"authentik.sources.saml"`)
 
+* `SOURCES_SCIM` (value: `"authentik.sources.scim"`)
+
 * `STAGES_AUTHENTICATOR` (value: `"authentik.stages.authenticator"`)
 
 * `STAGES_AUTHENTICATOR_DUO` (value: `"authentik.stages.authenticator_duo"`)

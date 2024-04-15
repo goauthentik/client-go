@@ -550,6 +550,27 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**SourcesSamlRetrieve**](docs/SourcesApi.md#sourcessamlretrieve) | **Get** /sources/saml/{slug}/ | 
 *SourcesApi* | [**SourcesSamlUpdate**](docs/SourcesApi.md#sourcessamlupdate) | **Put** /sources/saml/{slug}/ | 
 *SourcesApi* | [**SourcesSamlUsedByList**](docs/SourcesApi.md#sourcessamlusedbylist) | **Get** /sources/saml/{slug}/used_by/ | 
+*SourcesApi* | [**SourcesScimCreate**](docs/SourcesApi.md#sourcesscimcreate) | **Post** /sources/scim/ | 
+*SourcesApi* | [**SourcesScimDestroy**](docs/SourcesApi.md#sourcesscimdestroy) | **Delete** /sources/scim/{slug}/ | 
+*SourcesApi* | [**SourcesScimGroupsCreate**](docs/SourcesApi.md#sourcesscimgroupscreate) | **Post** /sources/scim_groups/ | 
+*SourcesApi* | [**SourcesScimGroupsDestroy**](docs/SourcesApi.md#sourcesscimgroupsdestroy) | **Delete** /sources/scim_groups/{id}/ | 
+*SourcesApi* | [**SourcesScimGroupsList**](docs/SourcesApi.md#sourcesscimgroupslist) | **Get** /sources/scim_groups/ | 
+*SourcesApi* | [**SourcesScimGroupsPartialUpdate**](docs/SourcesApi.md#sourcesscimgroupspartialupdate) | **Patch** /sources/scim_groups/{id}/ | 
+*SourcesApi* | [**SourcesScimGroupsRetrieve**](docs/SourcesApi.md#sourcesscimgroupsretrieve) | **Get** /sources/scim_groups/{id}/ | 
+*SourcesApi* | [**SourcesScimGroupsUpdate**](docs/SourcesApi.md#sourcesscimgroupsupdate) | **Put** /sources/scim_groups/{id}/ | 
+*SourcesApi* | [**SourcesScimGroupsUsedByList**](docs/SourcesApi.md#sourcesscimgroupsusedbylist) | **Get** /sources/scim_groups/{id}/used_by/ | 
+*SourcesApi* | [**SourcesScimList**](docs/SourcesApi.md#sourcesscimlist) | **Get** /sources/scim/ | 
+*SourcesApi* | [**SourcesScimPartialUpdate**](docs/SourcesApi.md#sourcesscimpartialupdate) | **Patch** /sources/scim/{slug}/ | 
+*SourcesApi* | [**SourcesScimRetrieve**](docs/SourcesApi.md#sourcesscimretrieve) | **Get** /sources/scim/{slug}/ | 
+*SourcesApi* | [**SourcesScimUpdate**](docs/SourcesApi.md#sourcesscimupdate) | **Put** /sources/scim/{slug}/ | 
+*SourcesApi* | [**SourcesScimUsedByList**](docs/SourcesApi.md#sourcesscimusedbylist) | **Get** /sources/scim/{slug}/used_by/ | 
+*SourcesApi* | [**SourcesScimUsersCreate**](docs/SourcesApi.md#sourcesscimuserscreate) | **Post** /sources/scim_users/ | 
+*SourcesApi* | [**SourcesScimUsersDestroy**](docs/SourcesApi.md#sourcesscimusersdestroy) | **Delete** /sources/scim_users/{id}/ | 
+*SourcesApi* | [**SourcesScimUsersList**](docs/SourcesApi.md#sourcesscimuserslist) | **Get** /sources/scim_users/ | 
+*SourcesApi* | [**SourcesScimUsersPartialUpdate**](docs/SourcesApi.md#sourcesscimuserspartialupdate) | **Patch** /sources/scim_users/{id}/ | 
+*SourcesApi* | [**SourcesScimUsersRetrieve**](docs/SourcesApi.md#sourcesscimusersretrieve) | **Get** /sources/scim_users/{id}/ | 
+*SourcesApi* | [**SourcesScimUsersUpdate**](docs/SourcesApi.md#sourcesscimusersupdate) | **Put** /sources/scim_users/{id}/ | 
+*SourcesApi* | [**SourcesScimUsersUsedByList**](docs/SourcesApi.md#sourcesscimusersusedbylist) | **Get** /sources/scim_users/{id}/used_by/ | 
 *SourcesApi* | [**SourcesUserConnectionsAllDestroy**](docs/SourcesApi.md#sourcesuserconnectionsalldestroy) | **Delete** /sources/user_connections/all/{id}/ | 
 *SourcesApi* | [**SourcesUserConnectionsAllList**](docs/SourcesApi.md#sourcesuserconnectionsalllist) | **Get** /sources/user_connections/all/ | 
 *SourcesApi* | [**SourcesUserConnectionsAllPartialUpdate**](docs/SourcesApi.md#sourcesuserconnectionsallpartialupdate) | **Patch** /sources/user_connections/all/{id}/ | 
@@ -1045,6 +1066,9 @@ Class | Method | HTTP request | Description
  - [PaginatedSAMLSourceList](docs/PaginatedSAMLSourceList.md)
  - [PaginatedSCIMMappingList](docs/PaginatedSCIMMappingList.md)
  - [PaginatedSCIMProviderList](docs/PaginatedSCIMProviderList.md)
+ - [PaginatedSCIMSourceGroupList](docs/PaginatedSCIMSourceGroupList.md)
+ - [PaginatedSCIMSourceList](docs/PaginatedSCIMSourceList.md)
+ - [PaginatedSCIMSourceUserList](docs/PaginatedSCIMSourceUserList.md)
  - [PaginatedSMSDeviceList](docs/PaginatedSMSDeviceList.md)
  - [PaginatedScopeMappingList](docs/PaginatedScopeMappingList.md)
  - [PaginatedServiceConnectionList](docs/PaginatedServiceConnectionList.md)
@@ -1140,6 +1164,9 @@ Class | Method | HTTP request | Description
  - [PatchedSAMLSourceRequest](docs/PatchedSAMLSourceRequest.md)
  - [PatchedSCIMMappingRequest](docs/PatchedSCIMMappingRequest.md)
  - [PatchedSCIMProviderRequest](docs/PatchedSCIMProviderRequest.md)
+ - [PatchedSCIMSourceGroupRequest](docs/PatchedSCIMSourceGroupRequest.md)
+ - [PatchedSCIMSourceRequest](docs/PatchedSCIMSourceRequest.md)
+ - [PatchedSCIMSourceUserRequest](docs/PatchedSCIMSourceUserRequest.md)
  - [PatchedSMSDeviceRequest](docs/PatchedSMSDeviceRequest.md)
  - [PatchedScopeMappingRequest](docs/PatchedScopeMappingRequest.md)
  - [PatchedSettingsRequest](docs/PatchedSettingsRequest.md)
@@ -1219,6 +1246,12 @@ Class | Method | HTTP request | Description
  - [SCIMMappingRequest](docs/SCIMMappingRequest.md)
  - [SCIMProvider](docs/SCIMProvider.md)
  - [SCIMProviderRequest](docs/SCIMProviderRequest.md)
+ - [SCIMSource](docs/SCIMSource.md)
+ - [SCIMSourceGroup](docs/SCIMSourceGroup.md)
+ - [SCIMSourceGroupRequest](docs/SCIMSourceGroupRequest.md)
+ - [SCIMSourceRequest](docs/SCIMSourceRequest.md)
+ - [SCIMSourceUser](docs/SCIMSourceUser.md)
+ - [SCIMSourceUserRequest](docs/SCIMSourceUserRequest.md)
  - [SCIMSyncStatus](docs/SCIMSyncStatus.md)
  - [SMSDevice](docs/SMSDevice.md)
  - [SMSDeviceRequest](docs/SMSDeviceRequest.md)

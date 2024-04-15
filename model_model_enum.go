@@ -53,6 +53,7 @@ const (
 	MODELENUM_SOURCES_PLEX_PLEXSOURCECONNECTION                        ModelEnum = "authentik_sources_plex.plexsourceconnection"
 	MODELENUM_SOURCES_SAML_SAMLSOURCE                                  ModelEnum = "authentik_sources_saml.samlsource"
 	MODELENUM_SOURCES_SAML_USERSAMLSOURCECONNECTION                    ModelEnum = "authentik_sources_saml.usersamlsourceconnection"
+	MODELENUM_SOURCES_SCIM_SCIMSOURCE                                  ModelEnum = "authentik_sources_scim.scimsource"
 	MODELENUM_STAGES_AUTHENTICATOR_DUO_AUTHENTICATORDUOSTAGE           ModelEnum = "authentik_stages_authenticator_duo.authenticatorduostage"
 	MODELENUM_STAGES_AUTHENTICATOR_DUO_DUODEVICE                       ModelEnum = "authentik_stages_authenticator_duo.duodevice"
 	MODELENUM_STAGES_AUTHENTICATOR_SMS_AUTHENTICATORSMSSTAGE           ModelEnum = "authentik_stages_authenticator_sms.authenticatorsmsstage"
@@ -132,6 +133,7 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_sources_plex.plexsourceconnection",
 	"authentik_sources_saml.samlsource",
 	"authentik_sources_saml.usersamlsourceconnection",
+	"authentik_sources_scim.scimsource",
 	"authentik_stages_authenticator_duo.authenticatorduostage",
 	"authentik_stages_authenticator_duo.duodevice",
 	"authentik_stages_authenticator_sms.authenticatorsmsstage",
