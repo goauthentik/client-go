@@ -3566,6 +3566,7 @@ type ApiCoreGroupsListRequest struct {
 	ctx               context.Context
 	ApiService        *CoreApiService
 	attributes        *string
+	includeUsers      *bool
 	isSuperuser       *bool
 	membersByPk       *[]int32
 	membersByUsername *[]string
@@ -3579,6 +3580,11 @@ type ApiCoreGroupsListRequest struct {
 // Attributes
 func (r ApiCoreGroupsListRequest) Attributes(attributes string) ApiCoreGroupsListRequest {
 	r.attributes = &attributes
+	return r
+}
+
+func (r ApiCoreGroupsListRequest) IncludeUsers(includeUsers bool) ApiCoreGroupsListRequest {
+	r.includeUsers = &includeUsers
 	return r
 }
 
@@ -3670,6 +3676,9 @@ func (a *CoreApiService) CoreGroupsListExecute(r ApiCoreGroupsListRequest) (*Pag
 
 	if r.attributes != nil {
 		localVarQueryParams.Add("attributes", parameterToString(*r.attributes, ""))
+	}
+	if r.includeUsers != nil {
+		localVarQueryParams.Add("include_users", parameterToString(*r.includeUsers, ""))
 	}
 	if r.isSuperuser != nil {
 		localVarQueryParams.Add("is_superuser", parameterToString(*r.isSuperuser, ""))
@@ -6757,6 +6766,7 @@ type ApiCoreUsersListRequest struct {
 	email          *string
 	groupsByName   *[]string
 	groupsByPk     *[]string
+	includeGroups  *bool
 	isActive       *bool
 	isSuperuser    *bool
 	name           *string
@@ -6789,6 +6799,11 @@ func (r ApiCoreUsersListRequest) GroupsByName(groupsByName []string) ApiCoreUser
 
 func (r ApiCoreUsersListRequest) GroupsByPk(groupsByPk []string) ApiCoreUsersListRequest {
 	r.groupsByPk = &groupsByPk
+	return r
+}
+
+func (r ApiCoreUsersListRequest) IncludeGroups(includeGroups bool) ApiCoreUsersListRequest {
+	r.includeGroups = &includeGroups
 	return r
 }
 
@@ -6924,6 +6939,9 @@ func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 		} else {
 			localVarQueryParams.Add("groups_by_pk", parameterToString(t, "multi"))
 		}
+	}
+	if r.includeGroups != nil {
+		localVarQueryParams.Add("include_groups", parameterToString(*r.includeGroups, ""))
 	}
 	if r.isActive != nil {
 		localVarQueryParams.Add("is_active", parameterToString(*r.isActive, ""))

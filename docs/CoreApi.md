@@ -1928,7 +1928,7 @@ Name | Type | Description  | Notes
 
 ## CoreGroupsList
 
-> PaginatedGroupList CoreGroupsList(ctx).Attributes(attributes).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedGroupList CoreGroupsList(ctx).Attributes(attributes).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -1948,6 +1948,7 @@ import (
 
 func main() {
     attributes := "attributes_example" // string | Attributes (optional)
+    includeUsers := true // bool |  (optional) (default to true)
     isSuperuser := true // bool |  (optional)
     membersByPk := []int32{int32(123)} // []int32 |  (optional)
     membersByUsername := []string{"Inner_example"} // []string | Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. (optional)
@@ -1959,7 +1960,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreGroupsList(context.Background()).Attributes(attributes).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    resp, r, err := apiClient.CoreApi.CoreGroupsList(context.Background()).Attributes(attributes).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreGroupsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1981,6 +1982,7 @@ Other parameters are passed through a pointer to a apiCoreGroupsListRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **attributes** | **string** | Attributes | 
+ **includeUsers** | **bool** |  | [default to true]
  **isSuperuser** | **bool** |  | 
  **membersByPk** | **[]int32** |  | 
  **membersByUsername** | **[]string** | Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. | 
@@ -3620,7 +3622,7 @@ Other parameters are passed through a pointer to a apiCoreUsersImpersonateEndRet
 
 ## CoreUsersList
 
-> PaginatedUserList CoreUsersList(ctx).Attributes(attributes).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
+> PaginatedUserList CoreUsersList(ctx).Attributes(attributes).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IsActive(isActive).IsSuperuser(isSuperuser).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
 
 
 
@@ -3643,6 +3645,7 @@ func main() {
     email := "email_example" // string |  (optional)
     groupsByName := []string{"Inner_example"} // []string |  (optional)
     groupsByPk := []string{"Inner_example"} // []string |  (optional)
+    includeGroups := true // bool |  (optional) (default to true)
     isActive := true // bool |  (optional)
     isSuperuser := true // bool |  (optional)
     name := "name_example" // string |  (optional)
@@ -3658,7 +3661,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreUsersList(context.Background()).Attributes(attributes).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
+    resp, r, err := apiClient.CoreApi.CoreUsersList(context.Background()).Attributes(attributes).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IsActive(isActive).IsSuperuser(isSuperuser).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3683,6 +3686,7 @@ Name | Type | Description  | Notes
  **email** | **string** |  | 
  **groupsByName** | **[]string** |  | 
  **groupsByPk** | **[]string** |  | 
+ **includeGroups** | **bool** |  | [default to true]
  **isActive** | **bool** |  | 
  **isSuperuser** | **bool** |  | 
  **name** | **string** |  | 

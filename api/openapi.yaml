@@ -3954,6 +3954,14 @@ paths:
         style: form
       - explode: true
         in: query
+        name: include_users
+        required: false
+        schema:
+          default: true
+          type: boolean
+        style: form
+      - explode: true
+        in: query
         name: is_superuser
         required: false
         schema:
@@ -4999,6 +5007,14 @@ paths:
             format: uuid
             type: string
           type: array
+        style: form
+      - explode: true
+        in: query
+        name: include_groups
+        required: false
+        schema:
+          default: true
+          type: boolean
         style: form
       - explode: true
         in: query
@@ -56733,26 +56749,6 @@ components:
       - num_pk
       - parent_name
       - pk
-      type: object
-    UserGroupRequest:
-      description: Simplified Group Serializer for user's groups
-      properties:
-        name:
-          maxLength: 80
-          minLength: 1
-          type: string
-        is_superuser:
-          description: Users added to this group will be superusers.
-          type: boolean
-        parent:
-          format: uuid
-          nullable: true
-          type: string
-        attributes:
-          additionalProperties: {}
-          type: object
-      required:
-      - name
       type: object
     UserLoginChallenge:
       description: Empty challenge

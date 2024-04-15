@@ -561,7 +561,6 @@ docs/UserDeleteStage.md
 docs/UserDeleteStageRequest.md
 docs/UserFieldsEnum.md
 docs/UserGroup.md
-docs/UserGroupRequest.md
 docs/UserLoginChallenge.md
 docs/UserLoginChallengeResponseRequest.md
 docs/UserLoginStage.md
@@ -1116,7 +1115,6 @@ model_user_delete_stage.go
 model_user_delete_stage_request.go
 model_user_fields_enum.go
 model_user_group.go
-model_user_group_request.go
 model_user_login_challenge.go
 model_user_login_challenge_response_request.go
 model_user_login_stage.go
