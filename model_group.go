@@ -260,6 +260,7 @@ func (o *Group) SetUsers(v []int32) {
 }
 
 // GetUsersObj returns the UsersObj field value
+// If the value is explicit nil, the zero value for []GroupMember will be returned
 func (o *Group) GetUsersObj() []GroupMember {
 	if o == nil {
 		var ret []GroupMember
@@ -271,8 +272,9 @@ func (o *Group) GetUsersObj() []GroupMember {
 
 // GetUsersObjOk returns a tuple with the UsersObj field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Group) GetUsersObjOk() ([]GroupMember, bool) {
-	if o == nil {
+	if o == nil || o.UsersObj == nil {
 		return nil, false
 	}
 	return o.UsersObj, true
@@ -394,7 +396,7 @@ func (o Group) MarshalJSON() ([]byte, error) {
 	if o.Users != nil {
 		toSerialize["users"] = o.Users
 	}
-	if true {
+	if o.UsersObj != nil {
 		toSerialize["users_obj"] = o.UsersObj
 	}
 	if o.Attributes != nil {

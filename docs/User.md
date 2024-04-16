@@ -224,6 +224,16 @@ and a boolean to check if the value has been set.
 SetGroupsObj sets GroupsObj field to given value.
 
 
+### SetGroupsObjNil
+
+`func (o *User) SetGroupsObjNil(b bool)`
+
+ SetGroupsObjNil sets the value for GroupsObj to be an explicit nil
+
+### UnsetGroupsObj
+`func (o *User) UnsetGroupsObj()`
+
+UnsetGroupsObj ensures that no value is present for GroupsObj, not even an explicit nil
 ### GetEmail
 
 `func (o *User) GetEmail() string`

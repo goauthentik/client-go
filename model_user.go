@@ -267,6 +267,7 @@ func (o *User) SetGroups(v []string) {
 }
 
 // GetGroupsObj returns the GroupsObj field value
+// If the value is explicit nil, the zero value for []UserGroup will be returned
 func (o *User) GetGroupsObj() []UserGroup {
 	if o == nil {
 		var ret []UserGroup
@@ -278,8 +279,9 @@ func (o *User) GetGroupsObj() []UserGroup {
 
 // GetGroupsObjOk returns a tuple with the GroupsObj field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *User) GetGroupsObjOk() ([]UserGroup, bool) {
-	if o == nil {
+	if o == nil || o.GroupsObj == nil {
 		return nil, false
 	}
 	return o.GroupsObj, true
@@ -513,7 +515,7 @@ func (o User) MarshalJSON() ([]byte, error) {
 	if o.Groups != nil {
 		toSerialize["groups"] = o.Groups
 	}
-	if true {
+	if o.GroupsObj != nil {
 		toSerialize["groups_obj"] = o.GroupsObj
 	}
 	if o.Email != nil {

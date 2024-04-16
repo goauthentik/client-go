@@ -38948,6 +38948,7 @@ components:
         users_obj:
           items:
             $ref: '#/components/schemas/GroupMember'
+          nullable: true
           readOnly: true
           type: array
         attributes:
@@ -57651,6 +57652,7 @@ components:
         groups_obj:
           items:
             $ref: '#/components/schemas/UserGroup'
+          nullable: true
           readOnly: true
           type: array
         email:

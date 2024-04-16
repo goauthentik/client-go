@@ -230,6 +230,16 @@ and a boolean to check if the value has been set.
 SetUsersObj sets UsersObj field to given value.
 
 
+### SetUsersObjNil
+
+`func (o *Group) SetUsersObjNil(b bool)`
+
+ SetUsersObjNil sets the value for UsersObj to be an explicit nil
+
+### UnsetUsersObj
+`func (o *Group) UnsetUsersObj()`
+
+UnsetUsersObj ensures that no value is present for UsersObj, not even an explicit nil
 ### GetAttributes
 
 `func (o *Group) GetAttributes() map[string]interface{}`
