@@ -1312,6 +1312,7 @@ Class | Method | HTTP request | Description
  - [UserDeleteStageRequest](docs/UserDeleteStageRequest.md)
  - [UserFieldsEnum](docs/UserFieldsEnum.md)
  - [UserGroup](docs/UserGroup.md)
+ - [UserGroupRequest](docs/UserGroupRequest.md)
  - [UserLoginChallenge](docs/UserLoginChallenge.md)
  - [UserLoginChallengeResponseRequest](docs/UserLoginChallengeResponseRequest.md)
  - [UserLoginStage](docs/UserLoginStage.md)

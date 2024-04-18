@@ -8,12 +8,13 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **CreatedOn** | **time.Time** |  | [readonly] 
 **DeviceType** | [**NullableWebAuthnDeviceDeviceType**](WebAuthnDeviceDeviceType.md) |  | 
+**Aaguid** | **string** |  | [readonly] 
 
 ## Methods
 
 ### NewWebAuthnDevice
 
-`func NewWebAuthnDevice(pk int32, name string, createdOn time.Time, deviceType NullableWebAuthnDeviceDeviceType, ) *WebAuthnDevice`
+`func NewWebAuthnDevice(pk int32, name string, createdOn time.Time, deviceType NullableWebAuthnDeviceDeviceType, aaguid string, ) *WebAuthnDevice`
 
 NewWebAuthnDevice instantiates a new WebAuthnDevice object
 This constructor will assign default values to properties that have it defined,
@@ -118,6 +119,26 @@ SetDeviceType sets DeviceType field to given value.
 `func (o *WebAuthnDevice) UnsetDeviceType()`
 
 UnsetDeviceType ensures that no value is present for DeviceType, not even an explicit nil
+### GetAaguid
+
+`func (o *WebAuthnDevice) GetAaguid() string`
+
+GetAaguid returns the Aaguid field if non-nil, zero value otherwise.
+
+### GetAaguidOk
+
+`func (o *WebAuthnDevice) GetAaguidOk() (*string, bool)`
+
+GetAaguidOk returns a tuple with the Aaguid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAaguid
+
+`func (o *WebAuthnDevice) SetAaguid(v string)`
+
+SetAaguid sets Aaguid field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

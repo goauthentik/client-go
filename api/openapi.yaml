@@ -48457,11 +48457,13 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - created_on: 2000-01-23T04:56:07.000+00:00
+        - aaguid: aaguid
+          created_on: 2000-01-23T04:56:07.000+00:00
           name: name
           device_type: null
           pk: 0
-        - created_on: 2000-01-23T04:56:07.000+00:00
+        - aaguid: aaguid
+          created_on: 2000-01-23T04:56:07.000+00:00
           name: name
           device_type: null
           pk: 0
@@ -58043,6 +58045,26 @@ components:
       - parent_name
       - pk
       type: object
+    UserGroupRequest:
+      description: Simplified Group Serializer for user's groups
+      properties:
+        name:
+          maxLength: 80
+          minLength: 1
+          type: string
+        is_superuser:
+          description: Users added to this group will be superusers.
+          type: boolean
+        parent:
+          format: uuid
+          nullable: true
+          type: string
+        attributes:
+          additionalProperties: {}
+          type: object
+      required:
+      - name
+      type: object
     UserLoginChallenge:
       description: Empty challenge
       properties:
@@ -58995,6 +59017,7 @@ components:
     WebAuthnDevice:
       description: Serializer for WebAuthn authenticator devices
       example:
+        aaguid: aaguid
         created_on: 2000-01-23T04:56:07.000+00:00
         name: name
         device_type: null
@@ -59013,7 +59036,11 @@ components:
           type: string
         device_type:
           $ref: '#/components/schemas/WebAuthnDevice_device_type'
+        aaguid:
+          readOnly: true
+          type: string
       required:
+      - aaguid
       - created_on
       - device_type
       - name

@@ -22,18 +22,20 @@ type WebAuthnDevice struct {
 	Name       string                           `json:"name"`
 	CreatedOn  time.Time                        `json:"created_on"`
 	DeviceType NullableWebAuthnDeviceDeviceType `json:"device_type"`
+	Aaguid     string                           `json:"aaguid"`
 }
 
 // NewWebAuthnDevice instantiates a new WebAuthnDevice object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWebAuthnDevice(pk int32, name string, createdOn time.Time, deviceType NullableWebAuthnDeviceDeviceType) *WebAuthnDevice {
+func NewWebAuthnDevice(pk int32, name string, createdOn time.Time, deviceType NullableWebAuthnDeviceDeviceType, aaguid string) *WebAuthnDevice {
 	this := WebAuthnDevice{}
 	this.Pk = pk
 	this.Name = name
 	this.CreatedOn = createdOn
 	this.DeviceType = deviceType
+	this.Aaguid = aaguid
 	return &this
 }
 
@@ -143,6 +145,30 @@ func (o *WebAuthnDevice) SetDeviceType(v WebAuthnDeviceDeviceType) {
 	o.DeviceType.Set(&v)
 }
 
+// GetAaguid returns the Aaguid field value
+func (o *WebAuthnDevice) GetAaguid() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Aaguid
+}
+
+// GetAaguidOk returns a tuple with the Aaguid field value
+// and a boolean to check if the value has been set.
+func (o *WebAuthnDevice) GetAaguidOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Aaguid, true
+}
+
+// SetAaguid sets field value
+func (o *WebAuthnDevice) SetAaguid(v string) {
+	o.Aaguid = v
+}
+
 func (o WebAuthnDevice) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -156,6 +182,9 @@ func (o WebAuthnDevice) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["device_type"] = o.DeviceType.Get()
+	}
+	if true {
+		toSerialize["aaguid"] = o.Aaguid
 	}
 	return json.Marshal(toSerialize)
 }
