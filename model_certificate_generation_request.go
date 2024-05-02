@@ -17,9 +17,10 @@ import (
 
 // CertificateGenerationRequest Certificate generation parameters
 type CertificateGenerationRequest struct {
-	CommonName     string  `json:"common_name"`
-	SubjectAltName *string `json:"subject_alt_name,omitempty"`
-	ValidityDays   int32   `json:"validity_days"`
+	CommonName     string   `json:"common_name"`
+	SubjectAltName *string  `json:"subject_alt_name,omitempty"`
+	ValidityDays   int32    `json:"validity_days"`
+	Alg            *AlgEnum `json:"alg,omitempty"`
 }
 
 // NewCertificateGenerationRequest instantiates a new CertificateGenerationRequest object
@@ -121,6 +122,38 @@ func (o *CertificateGenerationRequest) SetValidityDays(v int32) {
 	o.ValidityDays = v
 }
 
+// GetAlg returns the Alg field value if set, zero value otherwise.
+func (o *CertificateGenerationRequest) GetAlg() AlgEnum {
+	if o == nil || o.Alg == nil {
+		var ret AlgEnum
+		return ret
+	}
+	return *o.Alg
+}
+
+// GetAlgOk returns a tuple with the Alg field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateGenerationRequest) GetAlgOk() (*AlgEnum, bool) {
+	if o == nil || o.Alg == nil {
+		return nil, false
+	}
+	return o.Alg, true
+}
+
+// HasAlg returns a boolean if a field has been set.
+func (o *CertificateGenerationRequest) HasAlg() bool {
+	if o != nil && o.Alg != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAlg gets a reference to the given AlgEnum and assigns it to the Alg field.
+func (o *CertificateGenerationRequest) SetAlg(v AlgEnum) {
+	o.Alg = &v
+}
+
 func (o CertificateGenerationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -131,6 +164,9 @@ func (o CertificateGenerationRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["validity_days"] = o.ValidityDays
+	}
+	if o.Alg != nil {
+		toSerialize["alg"] = o.Alg
 	}
 	return json.Marshal(toSerialize)
 }

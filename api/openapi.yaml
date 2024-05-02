@@ -19026,6 +19026,10 @@ paths:
           enum:
           - http://www.w3.org/2000/09/xmldsig#dsa-sha1
           - http://www.w3.org/2000/09/xmldsig#rsa-sha1
+          - http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha1
+          - http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256
+          - http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha384
+          - http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha512
           - http://www.w3.org/2001/04/xmldsig-more#rsa-sha256
           - http://www.w3.org/2001/04/xmldsig-more#rsa-sha384
           - http://www.w3.org/2001/04/xmldsig-more#rsa-sha512
@@ -23388,6 +23392,10 @@ paths:
           enum:
           - http://www.w3.org/2000/09/xmldsig#dsa-sha1
           - http://www.w3.org/2000/09/xmldsig#rsa-sha1
+          - http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha1
+          - http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256
+          - http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha384
+          - http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha512
           - http://www.w3.org/2001/04/xmldsig-more#rsa-sha256
           - http://www.w3.org/2001/04/xmldsig-more#rsa-sha384
           - http://www.w3.org/2001/04/xmldsig-more#rsa-sha512
@@ -33930,6 +33938,11 @@ components:
       - pending_user_avatar
       - type
       type: object
+    AlgEnum:
+      enum:
+      - rsa
+      - ecdsa
+      type: string
     App:
       description: Serialize Application info
       example:
@@ -36106,6 +36119,7 @@ components:
         subject_alt_name: subject_alt_name
         validity_days: 0
         common_name: common_name
+        alg: ""
       properties:
         common_name:
           minLength: 1
@@ -36114,6 +36128,9 @@ components:
           type: string
         validity_days:
           type: integer
+        alg:
+          allOf:
+          - $ref: '#/components/schemas/AlgEnum'
       required:
       - common_name
       - validity_days
@@ -56458,6 +56475,10 @@ components:
       - http://www.w3.org/2001/04/xmldsig-more#rsa-sha256
       - http://www.w3.org/2001/04/xmldsig-more#rsa-sha384
       - http://www.w3.org/2001/04/xmldsig-more#rsa-sha512
+      - http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha1
+      - http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256
+      - http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha384
+      - http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha512
       - http://www.w3.org/2000/09/xmldsig#dsa-sha1
       type: string
     Source:

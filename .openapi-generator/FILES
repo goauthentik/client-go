@@ -26,6 +26,7 @@ client.go
 configuration.go
 docs/AccessDeniedChallenge.md
 docs/AdminApi.md
+docs/AlgEnum.md
 docs/App.md
 docs/AppEnum.md
 docs/AppleChallengeResponseRequest.md
@@ -612,6 +613,7 @@ git_push.sh
 go.mod
 go.sum
 model_access_denied_challenge.go
+model_alg_enum.go
 model_app.go
 model_app_enum.go
 model_apple_challenge_response_request.go

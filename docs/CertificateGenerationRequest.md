@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **CommonName** | **string** |  | 
 **SubjectAltName** | Pointer to **string** |  | [optional] 
 **ValidityDays** | **int32** |  | 
+**Alg** | Pointer to [**AlgEnum**](AlgEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -91,6 +92,31 @@ and a boolean to check if the value has been set.
 
 SetValidityDays sets ValidityDays field to given value.
 
+
+### GetAlg
+
+`func (o *CertificateGenerationRequest) GetAlg() AlgEnum`
+
+GetAlg returns the Alg field if non-nil, zero value otherwise.
+
+### GetAlgOk
+
+`func (o *CertificateGenerationRequest) GetAlgOk() (*AlgEnum, bool)`
+
+GetAlgOk returns a tuple with the Alg field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlg
+
+`func (o *CertificateGenerationRequest) SetAlg(v AlgEnum)`
+
+SetAlg sets Alg field to given value.
+
+### HasAlg
+
+`func (o *CertificateGenerationRequest) HasAlg() bool`
+
+HasAlg returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

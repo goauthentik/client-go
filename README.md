@@ -784,6 +784,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AccessDeniedChallenge](docs/AccessDeniedChallenge.md)
+ - [AlgEnum](docs/AlgEnum.md)
  - [App](docs/App.md)
  - [AppEnum](docs/AppEnum.md)
  - [AppleChallengeResponseRequest](docs/AppleChallengeResponseRequest.md)

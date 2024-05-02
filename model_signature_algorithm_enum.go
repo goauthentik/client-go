@@ -21,11 +21,15 @@ type SignatureAlgorithmEnum string
 
 // List of SignatureAlgorithmEnum
 const (
-	SIGNATUREALGORITHMENUM__2000_09_XMLDSIGRSA_SHA1        SignatureAlgorithmEnum = "http://www.w3.org/2000/09/xmldsig#rsa-sha1"
-	SIGNATUREALGORITHMENUM__2001_04_XMLDSIG_MORERSA_SHA256 SignatureAlgorithmEnum = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"
-	SIGNATUREALGORITHMENUM__2001_04_XMLDSIG_MORERSA_SHA384 SignatureAlgorithmEnum = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha384"
-	SIGNATUREALGORITHMENUM__2001_04_XMLDSIG_MORERSA_SHA512 SignatureAlgorithmEnum = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"
-	SIGNATUREALGORITHMENUM__2000_09_XMLDSIGDSA_SHA1        SignatureAlgorithmEnum = "http://www.w3.org/2000/09/xmldsig#dsa-sha1"
+	SIGNATUREALGORITHMENUM__2000_09_XMLDSIGRSA_SHA1          SignatureAlgorithmEnum = "http://www.w3.org/2000/09/xmldsig#rsa-sha1"
+	SIGNATUREALGORITHMENUM__2001_04_XMLDSIG_MORERSA_SHA256   SignatureAlgorithmEnum = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"
+	SIGNATUREALGORITHMENUM__2001_04_XMLDSIG_MORERSA_SHA384   SignatureAlgorithmEnum = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha384"
+	SIGNATUREALGORITHMENUM__2001_04_XMLDSIG_MORERSA_SHA512   SignatureAlgorithmEnum = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"
+	SIGNATUREALGORITHMENUM__2001_04_XMLDSIG_MOREECDSA_SHA1   SignatureAlgorithmEnum = "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha1"
+	SIGNATUREALGORITHMENUM__2001_04_XMLDSIG_MOREECDSA_SHA256 SignatureAlgorithmEnum = "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256"
+	SIGNATUREALGORITHMENUM__2001_04_XMLDSIG_MOREECDSA_SHA384 SignatureAlgorithmEnum = "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha384"
+	SIGNATUREALGORITHMENUM__2001_04_XMLDSIG_MOREECDSA_SHA512 SignatureAlgorithmEnum = "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha512"
+	SIGNATUREALGORITHMENUM__2000_09_XMLDSIGDSA_SHA1          SignatureAlgorithmEnum = "http://www.w3.org/2000/09/xmldsig#dsa-sha1"
 )
 
 // All allowed values of SignatureAlgorithmEnum enum
@@ -34,6 +38,10 @@ var AllowedSignatureAlgorithmEnumEnumValues = []SignatureAlgorithmEnum{
 	"http://www.w3.org/2001/04/xmldsig-more#rsa-sha256",
 	"http://www.w3.org/2001/04/xmldsig-more#rsa-sha384",
 	"http://www.w3.org/2001/04/xmldsig-more#rsa-sha512",
+	"http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha1",
+	"http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256",
+	"http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha384",
+	"http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha512",
 	"http://www.w3.org/2000/09/xmldsig#dsa-sha1",
 }
 
