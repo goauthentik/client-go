@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **Duration** | **float64** |  | [readonly] 
 **Status** | [**SystemTaskStatusEnum**](SystemTaskStatusEnum.md) |  | 
 **Messages** | [**[]LogEvent**](LogEvent.md) |  | 
+**Expires** | Pointer to **NullableTime** |  | [optional] 
+**Expiring** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -238,6 +240,66 @@ and a boolean to check if the value has been set.
 
 SetMessages sets Messages field to given value.
 
+
+### GetExpires
+
+`func (o *SystemTask) GetExpires() time.Time`
+
+GetExpires returns the Expires field if non-nil, zero value otherwise.
+
+### GetExpiresOk
+
+`func (o *SystemTask) GetExpiresOk() (*time.Time, bool)`
+
+GetExpiresOk returns a tuple with the Expires field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpires
+
+`func (o *SystemTask) SetExpires(v time.Time)`
+
+SetExpires sets Expires field to given value.
+
+### HasExpires
+
+`func (o *SystemTask) HasExpires() bool`
+
+HasExpires returns a boolean if a field has been set.
+
+### SetExpiresNil
+
+`func (o *SystemTask) SetExpiresNil(b bool)`
+
+ SetExpiresNil sets the value for Expires to be an explicit nil
+
+### UnsetExpires
+`func (o *SystemTask) UnsetExpires()`
+
+UnsetExpires ensures that no value is present for Expires, not even an explicit nil
+### GetExpiring
+
+`func (o *SystemTask) GetExpiring() bool`
+
+GetExpiring returns the Expiring field if non-nil, zero value otherwise.
+
+### GetExpiringOk
+
+`func (o *SystemTask) GetExpiringOk() (*bool, bool)`
+
+GetExpiringOk returns a tuple with the Expiring field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpiring
+
+`func (o *SystemTask) SetExpiring(v bool)`
+
+SetExpiring sets Expiring field to given value.
+
+### HasExpiring
+
+`func (o *SystemTask) HasExpiring() bool`
+
+HasExpiring returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

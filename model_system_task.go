@@ -29,6 +29,8 @@ type SystemTask struct {
 	Duration        float64              `json:"duration"`
 	Status          SystemTaskStatusEnum `json:"status"`
 	Messages        []LogEvent           `json:"messages"`
+	Expires         NullableTime         `json:"expires,omitempty"`
+	Expiring        *bool                `json:"expiring,omitempty"`
 }
 
 // NewSystemTask instantiates a new SystemTask object
@@ -305,6 +307,81 @@ func (o *SystemTask) SetMessages(v []LogEvent) {
 	o.Messages = v
 }
 
+// GetExpires returns the Expires field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SystemTask) GetExpires() time.Time {
+	if o == nil || o.Expires.Get() == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.Expires.Get()
+}
+
+// GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SystemTask) GetExpiresOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Expires.Get(), o.Expires.IsSet()
+}
+
+// HasExpires returns a boolean if a field has been set.
+func (o *SystemTask) HasExpires() bool {
+	if o != nil && o.Expires.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetExpires gets a reference to the given NullableTime and assigns it to the Expires field.
+func (o *SystemTask) SetExpires(v time.Time) {
+	o.Expires.Set(&v)
+}
+
+// SetExpiresNil sets the value for Expires to be an explicit nil
+func (o *SystemTask) SetExpiresNil() {
+	o.Expires.Set(nil)
+}
+
+// UnsetExpires ensures that no value is present for Expires, not even an explicit nil
+func (o *SystemTask) UnsetExpires() {
+	o.Expires.Unset()
+}
+
+// GetExpiring returns the Expiring field value if set, zero value otherwise.
+func (o *SystemTask) GetExpiring() bool {
+	if o == nil || o.Expiring == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Expiring
+}
+
+// GetExpiringOk returns a tuple with the Expiring field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SystemTask) GetExpiringOk() (*bool, bool) {
+	if o == nil || o.Expiring == nil {
+		return nil, false
+	}
+	return o.Expiring, true
+}
+
+// HasExpiring returns a boolean if a field has been set.
+func (o *SystemTask) HasExpiring() bool {
+	if o != nil && o.Expiring != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExpiring gets a reference to the given bool and assigns it to the Expiring field.
+func (o *SystemTask) SetExpiring(v bool) {
+	o.Expiring = &v
+}
+
 func (o SystemTask) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -336,6 +413,12 @@ func (o SystemTask) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["messages"] = o.Messages
+	}
+	if o.Expires.IsSet() {
+		toSerialize["expires"] = o.Expires.Get()
+	}
+	if o.Expiring != nil {
+		toSerialize["expiring"] = o.Expiring
 	}
 	return json.Marshal(toSerialize)
 }

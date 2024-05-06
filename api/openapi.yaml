@@ -40518,6 +40518,8 @@ components:
         tasks:
         - duration: 0.8008281904610115
           uid: uid
+          expires: 2000-01-23T04:56:07.000+00:00
+          expiring: true
           full_name: full_name
           start_timestamp: 2000-01-23T04:56:07.000+00:00
           name: name
@@ -40540,6 +40542,8 @@ components:
           status: null
         - duration: 0.8008281904610115
           uid: uid
+          expires: 2000-01-23T04:56:07.000+00:00
+          expiring: true
           full_name: full_name
           start_timestamp: 2000-01-23T04:56:07.000+00:00
           name: name
@@ -47346,6 +47350,8 @@ components:
         results:
         - duration: 0.8008281904610115
           uid: uid
+          expires: 2000-01-23T04:56:07.000+00:00
+          expiring: true
           full_name: full_name
           start_timestamp: 2000-01-23T04:56:07.000+00:00
           name: name
@@ -47368,6 +47374,8 @@ components:
           status: null
         - duration: 0.8008281904610115
           uid: uid
+          expires: 2000-01-23T04:56:07.000+00:00
+          expiring: true
           full_name: full_name
           start_timestamp: 2000-01-23T04:56:07.000+00:00
           name: name
@@ -56004,6 +56012,8 @@ components:
         tasks:
         - duration: 0.8008281904610115
           uid: uid
+          expires: 2000-01-23T04:56:07.000+00:00
+          expiring: true
           full_name: full_name
           start_timestamp: 2000-01-23T04:56:07.000+00:00
           name: name
@@ -56026,6 +56036,8 @@ components:
           status: null
         - duration: 0.8008281904610115
           uid: uid
+          expires: 2000-01-23T04:56:07.000+00:00
+          expiring: true
           full_name: full_name
           start_timestamp: 2000-01-23T04:56:07.000+00:00
           name: name
@@ -57084,6 +57096,8 @@ components:
       example:
         duration: 0.8008281904610115
         uid: uid
+        expires: 2000-01-23T04:56:07.000+00:00
+        expiring: true
         full_name: full_name
         start_timestamp: 2000-01-23T04:56:07.000+00:00
         name: name
@@ -57137,6 +57151,12 @@ components:
           items:
             $ref: '#/components/schemas/LogEvent'
           type: array
+        expires:
+          format: date-time
+          nullable: true
+          type: string
+        expiring:
+          type: boolean
       required:
       - description
       - duration
