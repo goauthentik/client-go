@@ -388,6 +388,13 @@ Class | Method | HTTP request | Description
 *PropertymappingsApi* | [**PropertymappingsNotificationRetrieve**](docs/PropertymappingsApi.md#propertymappingsnotificationretrieve) | **Get** /propertymappings/notification/{pm_uuid}/ | 
 *PropertymappingsApi* | [**PropertymappingsNotificationUpdate**](docs/PropertymappingsApi.md#propertymappingsnotificationupdate) | **Put** /propertymappings/notification/{pm_uuid}/ | 
 *PropertymappingsApi* | [**PropertymappingsNotificationUsedByList**](docs/PropertymappingsApi.md#propertymappingsnotificationusedbylist) | **Get** /propertymappings/notification/{pm_uuid}/used_by/ | 
+*PropertymappingsApi* | [**PropertymappingsProviderGoogleWorkspaceCreate**](docs/PropertymappingsApi.md#propertymappingsprovidergoogleworkspacecreate) | **Post** /propertymappings/provider/google_workspace/ | 
+*PropertymappingsApi* | [**PropertymappingsProviderGoogleWorkspaceDestroy**](docs/PropertymappingsApi.md#propertymappingsprovidergoogleworkspacedestroy) | **Delete** /propertymappings/provider/google_workspace/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsProviderGoogleWorkspaceList**](docs/PropertymappingsApi.md#propertymappingsprovidergoogleworkspacelist) | **Get** /propertymappings/provider/google_workspace/ | 
+*PropertymappingsApi* | [**PropertymappingsProviderGoogleWorkspacePartialUpdate**](docs/PropertymappingsApi.md#propertymappingsprovidergoogleworkspacepartialupdate) | **Patch** /propertymappings/provider/google_workspace/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsProviderGoogleWorkspaceRetrieve**](docs/PropertymappingsApi.md#propertymappingsprovidergoogleworkspaceretrieve) | **Get** /propertymappings/provider/google_workspace/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsProviderGoogleWorkspaceUpdate**](docs/PropertymappingsApi.md#propertymappingsprovidergoogleworkspaceupdate) | **Put** /propertymappings/provider/google_workspace/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsProviderGoogleWorkspaceUsedByList**](docs/PropertymappingsApi.md#propertymappingsprovidergoogleworkspaceusedbylist) | **Get** /propertymappings/provider/google_workspace/{pm_uuid}/used_by/ | 
 *PropertymappingsApi* | [**PropertymappingsRacCreate**](docs/PropertymappingsApi.md#propertymappingsraccreate) | **Post** /propertymappings/rac/ | 
 *PropertymappingsApi* | [**PropertymappingsRacDestroy**](docs/PropertymappingsApi.md#propertymappingsracdestroy) | **Delete** /propertymappings/rac/{pm_uuid}/ | 
 *PropertymappingsApi* | [**PropertymappingsRacList**](docs/PropertymappingsApi.md#propertymappingsraclist) | **Get** /propertymappings/rac/ | 
@@ -421,6 +428,14 @@ Class | Method | HTTP request | Description
 *ProvidersApi* | [**ProvidersAllRetrieve**](docs/ProvidersApi.md#providersallretrieve) | **Get** /providers/all/{id}/ | 
 *ProvidersApi* | [**ProvidersAllTypesList**](docs/ProvidersApi.md#providersalltypeslist) | **Get** /providers/all/types/ | 
 *ProvidersApi* | [**ProvidersAllUsedByList**](docs/ProvidersApi.md#providersallusedbylist) | **Get** /providers/all/{id}/used_by/ | 
+*ProvidersApi* | [**ProvidersGoogleWorkspaceCreate**](docs/ProvidersApi.md#providersgoogleworkspacecreate) | **Post** /providers/google_workspace/ | 
+*ProvidersApi* | [**ProvidersGoogleWorkspaceDestroy**](docs/ProvidersApi.md#providersgoogleworkspacedestroy) | **Delete** /providers/google_workspace/{id}/ | 
+*ProvidersApi* | [**ProvidersGoogleWorkspaceList**](docs/ProvidersApi.md#providersgoogleworkspacelist) | **Get** /providers/google_workspace/ | 
+*ProvidersApi* | [**ProvidersGoogleWorkspacePartialUpdate**](docs/ProvidersApi.md#providersgoogleworkspacepartialupdate) | **Patch** /providers/google_workspace/{id}/ | 
+*ProvidersApi* | [**ProvidersGoogleWorkspaceRetrieve**](docs/ProvidersApi.md#providersgoogleworkspaceretrieve) | **Get** /providers/google_workspace/{id}/ | 
+*ProvidersApi* | [**ProvidersGoogleWorkspaceSyncStatusRetrieve**](docs/ProvidersApi.md#providersgoogleworkspacesyncstatusretrieve) | **Get** /providers/google_workspace/{id}/sync/status/ | 
+*ProvidersApi* | [**ProvidersGoogleWorkspaceUpdate**](docs/ProvidersApi.md#providersgoogleworkspaceupdate) | **Put** /providers/google_workspace/{id}/ | 
+*ProvidersApi* | [**ProvidersGoogleWorkspaceUsedByList**](docs/ProvidersApi.md#providersgoogleworkspaceusedbylist) | **Get** /providers/google_workspace/{id}/used_by/ | 
 *ProvidersApi* | [**ProvidersLdapCreate**](docs/ProvidersApi.md#providersldapcreate) | **Post** /providers/ldap/ | 
 *ProvidersApi* | [**ProvidersLdapDestroy**](docs/ProvidersApi.md#providersldapdestroy) | **Delete** /providers/ldap/{id}/ | 
 *ProvidersApi* | [**ProvidersLdapList**](docs/ProvidersApi.md#providersldaplist) | **Get** /providers/ldap/ | 
@@ -473,7 +488,7 @@ Class | Method | HTTP request | Description
 *ProvidersApi* | [**ProvidersScimList**](docs/ProvidersApi.md#providersscimlist) | **Get** /providers/scim/ | 
 *ProvidersApi* | [**ProvidersScimPartialUpdate**](docs/ProvidersApi.md#providersscimpartialupdate) | **Patch** /providers/scim/{id}/ | 
 *ProvidersApi* | [**ProvidersScimRetrieve**](docs/ProvidersApi.md#providersscimretrieve) | **Get** /providers/scim/{id}/ | 
-*ProvidersApi* | [**ProvidersScimSyncStatusRetrieve**](docs/ProvidersApi.md#providersscimsyncstatusretrieve) | **Get** /providers/scim/{id}/sync_status/ | 
+*ProvidersApi* | [**ProvidersScimSyncStatusRetrieve**](docs/ProvidersApi.md#providersscimsyncstatusretrieve) | **Get** /providers/scim/{id}/sync/status/ | 
 *ProvidersApi* | [**ProvidersScimUpdate**](docs/ProvidersApi.md#providersscimupdate) | **Put** /providers/scim/{id}/ | 
 *ProvidersApi* | [**ProvidersScimUsedByList**](docs/ProvidersApi.md#providersscimusedbylist) | **Get** /providers/scim/{id}/used_by/ | 
 *RacApi* | [**RacConnectionTokensDestroy**](docs/RacApi.md#racconnectiontokensdestroy) | **Delete** /rac/connection_tokens/{connection_token_uuid}/ | 
@@ -522,7 +537,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**SourcesLdapList**](docs/SourcesApi.md#sourcesldaplist) | **Get** /sources/ldap/ | 
 *SourcesApi* | [**SourcesLdapPartialUpdate**](docs/SourcesApi.md#sourcesldappartialupdate) | **Patch** /sources/ldap/{slug}/ | 
 *SourcesApi* | [**SourcesLdapRetrieve**](docs/SourcesApi.md#sourcesldapretrieve) | **Get** /sources/ldap/{slug}/ | 
-*SourcesApi* | [**SourcesLdapSyncStatusRetrieve**](docs/SourcesApi.md#sourcesldapsyncstatusretrieve) | **Get** /sources/ldap/{slug}/sync_status/ | 
+*SourcesApi* | [**SourcesLdapSyncStatusRetrieve**](docs/SourcesApi.md#sourcesldapsyncstatusretrieve) | **Get** /sources/ldap/{slug}/sync/status/ | 
 *SourcesApi* | [**SourcesLdapUpdate**](docs/SourcesApi.md#sourcesldapupdate) | **Put** /sources/ldap/{slug}/ | 
 *SourcesApi* | [**SourcesLdapUsedByList**](docs/SourcesApi.md#sourcesldapusedbylist) | **Get** /sources/ldap/{slug}/used_by/ | 
 *SourcesApi* | [**SourcesOauthCreate**](docs/SourcesApi.md#sourcesoauthcreate) | **Post** /sources/oauth/ | 
@@ -924,6 +939,11 @@ Class | Method | HTTP request | Description
  - [FooterLink](docs/FooterLink.md)
  - [GenericError](docs/GenericError.md)
  - [GeoipBindingEnum](docs/GeoipBindingEnum.md)
+ - [GoogleProvider](docs/GoogleProvider.md)
+ - [GoogleProviderMapping](docs/GoogleProviderMapping.md)
+ - [GoogleProviderMappingRequest](docs/GoogleProviderMappingRequest.md)
+ - [GoogleProviderRequest](docs/GoogleProviderRequest.md)
+ - [GoogleWorkspaceDeleteAction](docs/GoogleWorkspaceDeleteAction.md)
  - [Group](docs/Group.md)
  - [GroupMember](docs/GroupMember.md)
  - [GroupMemberRequest](docs/GroupMemberRequest.md)
@@ -951,7 +971,6 @@ Class | Method | HTTP request | Description
  - [LDAPProviderRequest](docs/LDAPProviderRequest.md)
  - [LDAPSource](docs/LDAPSource.md)
  - [LDAPSourceRequest](docs/LDAPSourceRequest.md)
- - [LDAPSyncStatus](docs/LDAPSyncStatus.md)
  - [License](docs/License.md)
  - [LicenseForecast](docs/LicenseForecast.md)
  - [LicenseRequest](docs/LicenseRequest.md)
@@ -1023,6 +1042,8 @@ Class | Method | HTTP request | Description
  - [PaginatedExtraUserObjectPermissionList](docs/PaginatedExtraUserObjectPermissionList.md)
  - [PaginatedFlowList](docs/PaginatedFlowList.md)
  - [PaginatedFlowStageBindingList](docs/PaginatedFlowStageBindingList.md)
+ - [PaginatedGoogleProviderList](docs/PaginatedGoogleProviderList.md)
+ - [PaginatedGoogleProviderMappingList](docs/PaginatedGoogleProviderMappingList.md)
  - [PaginatedGroupList](docs/PaginatedGroupList.md)
  - [PaginatedIdentificationStageList](docs/PaginatedIdentificationStageList.md)
  - [PaginatedInvitationList](docs/PaginatedInvitationList.md)
@@ -1129,6 +1150,8 @@ Class | Method | HTTP request | Description
  - [PatchedExpressionPolicyRequest](docs/PatchedExpressionPolicyRequest.md)
  - [PatchedFlowRequest](docs/PatchedFlowRequest.md)
  - [PatchedFlowStageBindingRequest](docs/PatchedFlowStageBindingRequest.md)
+ - [PatchedGoogleProviderMappingRequest](docs/PatchedGoogleProviderMappingRequest.md)
+ - [PatchedGoogleProviderRequest](docs/PatchedGoogleProviderRequest.md)
  - [PatchedGroupRequest](docs/PatchedGroupRequest.md)
  - [PatchedIdentificationStageRequest](docs/PatchedIdentificationStageRequest.md)
  - [PatchedInvitationRequest](docs/PatchedInvitationRequest.md)
@@ -1253,7 +1276,6 @@ Class | Method | HTTP request | Description
  - [SCIMSourceRequest](docs/SCIMSourceRequest.md)
  - [SCIMSourceUser](docs/SCIMSourceUser.md)
  - [SCIMSourceUserRequest](docs/SCIMSourceUserRequest.md)
- - [SCIMSyncStatus](docs/SCIMSyncStatus.md)
  - [SMSDevice](docs/SMSDevice.md)
  - [SMSDeviceRequest](docs/SMSDeviceRequest.md)
  - [ScopeMapping](docs/ScopeMapping.md)
@@ -1282,6 +1304,7 @@ Class | Method | HTTP request | Description
  - [StaticDeviceToken](docs/StaticDeviceToken.md)
  - [StaticDeviceTokenRequest](docs/StaticDeviceTokenRequest.md)
  - [SubModeEnum](docs/SubModeEnum.md)
+ - [SyncStatus](docs/SyncStatus.md)
  - [SystemInfo](docs/SystemInfo.md)
  - [SystemInfoRuntime](docs/SystemInfoRuntime.md)
  - [SystemTask](docs/SystemTask.md)

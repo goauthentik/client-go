@@ -2057,7 +2057,7 @@ type ApiSourcesLdapSyncStatusRetrieveRequest struct {
 	slug       string
 }
 
-func (r ApiSourcesLdapSyncStatusRetrieveRequest) Execute() (*LDAPSyncStatus, *http.Response, error) {
+func (r ApiSourcesLdapSyncStatusRetrieveRequest) Execute() (*SyncStatus, *http.Response, error) {
 	return r.ApiService.SourcesLdapSyncStatusRetrieveExecute(r)
 }
 
@@ -2080,13 +2080,13 @@ func (a *SourcesApiService) SourcesLdapSyncStatusRetrieve(ctx context.Context, s
 
 // Execute executes the request
 //
-//	@return LDAPSyncStatus
-func (a *SourcesApiService) SourcesLdapSyncStatusRetrieveExecute(r ApiSourcesLdapSyncStatusRetrieveRequest) (*LDAPSyncStatus, *http.Response, error) {
+//	@return SyncStatus
+func (a *SourcesApiService) SourcesLdapSyncStatusRetrieveExecute(r ApiSourcesLdapSyncStatusRetrieveRequest) (*SyncStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *LDAPSyncStatus
+		localVarReturnValue *SyncStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesLdapSyncStatusRetrieve")
@@ -2094,7 +2094,7 @@ func (a *SourcesApiService) SourcesLdapSyncStatusRetrieveExecute(r ApiSourcesLda
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/sources/ldap/{slug}/sync_status/"
+	localVarPath := localBasePath + "/sources/ldap/{slug}/sync/status/"
 	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)

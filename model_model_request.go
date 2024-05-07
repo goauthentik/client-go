@@ -18,6 +18,7 @@ import (
 
 // ModelRequest - struct for ModelRequest
 type ModelRequest struct {
+	GoogleProviderRequest *GoogleProviderRequest
 	LDAPProviderRequest   *LDAPProviderRequest
 	OAuth2ProviderRequest *OAuth2ProviderRequest
 	ProxyProviderRequest  *ProxyProviderRequest
@@ -25,6 +26,13 @@ type ModelRequest struct {
 	RadiusProviderRequest *RadiusProviderRequest
 	SAMLProviderRequest   *SAMLProviderRequest
 	SCIMProviderRequest   *SCIMProviderRequest
+}
+
+// GoogleProviderRequestAsModelRequest is a convenience function that returns GoogleProviderRequest wrapped in ModelRequest
+func GoogleProviderRequestAsModelRequest(v *GoogleProviderRequest) ModelRequest {
+	return ModelRequest{
+		GoogleProviderRequest: v,
+	}
 }
 
 // LDAPProviderRequestAsModelRequest is a convenience function that returns LDAPProviderRequest wrapped in ModelRequest
@@ -84,6 +92,18 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 	err = newStrictDecoder(data).Decode(&jsonDict)
 	if err != nil {
 		return fmt.Errorf("Failed to unmarshal JSON into map for the discriminator lookup.")
+	}
+
+	// check if the discriminator value is 'GoogleProviderRequest'
+	if jsonDict["provider_model"] == "GoogleProviderRequest" {
+		// try to unmarshal JSON data into GoogleProviderRequest
+		err = json.Unmarshal(data, &dst.GoogleProviderRequest)
+		if err == nil {
+			return nil // data stored in dst.GoogleProviderRequest, return on the first match
+		} else {
+			dst.GoogleProviderRequest = nil
+			return fmt.Errorf("Failed to unmarshal ModelRequest as GoogleProviderRequest: %s", err.Error())
+		}
 	}
 
 	// check if the discriminator value is 'LDAPProviderRequest'
@@ -167,6 +187,18 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.SCIMProviderRequest = nil
 			return fmt.Errorf("Failed to unmarshal ModelRequest as SCIMProviderRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'authentik_providers_google_workspace.googleworkspaceprovider'
+	if jsonDict["provider_model"] == "authentik_providers_google_workspace.googleworkspaceprovider" {
+		// try to unmarshal JSON data into GoogleProviderRequest
+		err = json.Unmarshal(data, &dst.GoogleProviderRequest)
+		if err == nil {
+			return nil // data stored in dst.GoogleProviderRequest, return on the first match
+		} else {
+			dst.GoogleProviderRequest = nil
+			return fmt.Errorf("Failed to unmarshal ModelRequest as GoogleProviderRequest: %s", err.Error())
 		}
 	}
 
@@ -259,6 +291,10 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src ModelRequest) MarshalJSON() ([]byte, error) {
+	if src.GoogleProviderRequest != nil {
+		return json.Marshal(&src.GoogleProviderRequest)
+	}
+
 	if src.LDAPProviderRequest != nil {
 		return json.Marshal(&src.LDAPProviderRequest)
 	}
@@ -295,6 +331,10 @@ func (obj *ModelRequest) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
+	if obj.GoogleProviderRequest != nil {
+		return obj.GoogleProviderRequest
+	}
+
 	if obj.LDAPProviderRequest != nil {
 		return obj.LDAPProviderRequest
 	}

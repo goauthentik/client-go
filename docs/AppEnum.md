@@ -105,6 +105,8 @@
 
 * `ENTERPRISE_AUDIT` (value: `"authentik.enterprise.audit"`)
 
+* `ENTERPRISE_PROVIDERS_GOOGLE_WORKSPACE` (value: `"authentik.enterprise.providers.google_workspace"`)
+
 * `ENTERPRISE_PROVIDERS_RAC` (value: `"authentik.enterprise.providers.rac"`)
 
 * `ENTERPRISE_STAGES_SOURCE` (value: `"authentik.enterprise.stages.source"`)

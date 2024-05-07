@@ -2685,6 +2685,961 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByListExecu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiPropertymappingsProviderGoogleWorkspaceCreateRequest struct {
+	ctx                          context.Context
+	ApiService                   *PropertymappingsApiService
+	googleProviderMappingRequest *GoogleProviderMappingRequest
+}
+
+func (r ApiPropertymappingsProviderGoogleWorkspaceCreateRequest) GoogleProviderMappingRequest(googleProviderMappingRequest GoogleProviderMappingRequest) ApiPropertymappingsProviderGoogleWorkspaceCreateRequest {
+	r.googleProviderMappingRequest = &googleProviderMappingRequest
+	return r
+}
+
+func (r ApiPropertymappingsProviderGoogleWorkspaceCreateRequest) Execute() (*GoogleProviderMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderGoogleWorkspaceCreateExecute(r)
+}
+
+/*
+PropertymappingsProviderGoogleWorkspaceCreate Method for PropertymappingsProviderGoogleWorkspaceCreate
+
+GoogleProviderMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPropertymappingsProviderGoogleWorkspaceCreateRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceCreate(ctx context.Context) ApiPropertymappingsProviderGoogleWorkspaceCreateRequest {
+	return ApiPropertymappingsProviderGoogleWorkspaceCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GoogleProviderMapping
+func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceCreateExecute(r ApiPropertymappingsProviderGoogleWorkspaceCreateRequest) (*GoogleProviderMapping, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleProviderMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderGoogleWorkspaceCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/provider/google_workspace/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.googleProviderMappingRequest == nil {
+		return localVarReturnValue, nil, reportError("googleProviderMappingRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.googleProviderMappingRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsProviderGoogleWorkspaceDestroyRequest struct {
+	ctx        context.Context
+	ApiService *PropertymappingsApiService
+	pmUuid     string
+}
+
+func (r ApiPropertymappingsProviderGoogleWorkspaceDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PropertymappingsProviderGoogleWorkspaceDestroyExecute(r)
+}
+
+/*
+PropertymappingsProviderGoogleWorkspaceDestroy Method for PropertymappingsProviderGoogleWorkspaceDestroy
+
+GoogleProviderMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this Google Workspace Provider Mapping.
+	@return ApiPropertymappingsProviderGoogleWorkspaceDestroyRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsProviderGoogleWorkspaceDestroyRequest {
+	return ApiPropertymappingsProviderGoogleWorkspaceDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceDestroyExecute(r ApiPropertymappingsProviderGoogleWorkspaceDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderGoogleWorkspaceDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/provider/google_workspace/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsProviderGoogleWorkspaceListRequest struct {
+	ctx        context.Context
+	ApiService *PropertymappingsApiService
+	expression *string
+	managed    *[]string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	pmUuid     *string
+	search     *string
+}
+
+func (r ApiPropertymappingsProviderGoogleWorkspaceListRequest) Expression(expression string) ApiPropertymappingsProviderGoogleWorkspaceListRequest {
+	r.expression = &expression
+	return r
+}
+
+func (r ApiPropertymappingsProviderGoogleWorkspaceListRequest) Managed(managed []string) ApiPropertymappingsProviderGoogleWorkspaceListRequest {
+	r.managed = &managed
+	return r
+}
+
+func (r ApiPropertymappingsProviderGoogleWorkspaceListRequest) Name(name string) ApiPropertymappingsProviderGoogleWorkspaceListRequest {
+	r.name = &name
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiPropertymappingsProviderGoogleWorkspaceListRequest) Ordering(ordering string) ApiPropertymappingsProviderGoogleWorkspaceListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiPropertymappingsProviderGoogleWorkspaceListRequest) Page(page int32) ApiPropertymappingsProviderGoogleWorkspaceListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiPropertymappingsProviderGoogleWorkspaceListRequest) PageSize(pageSize int32) ApiPropertymappingsProviderGoogleWorkspaceListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiPropertymappingsProviderGoogleWorkspaceListRequest) PmUuid(pmUuid string) ApiPropertymappingsProviderGoogleWorkspaceListRequest {
+	r.pmUuid = &pmUuid
+	return r
+}
+
+// A search term.
+func (r ApiPropertymappingsProviderGoogleWorkspaceListRequest) Search(search string) ApiPropertymappingsProviderGoogleWorkspaceListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiPropertymappingsProviderGoogleWorkspaceListRequest) Execute() (*PaginatedGoogleProviderMappingList, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderGoogleWorkspaceListExecute(r)
+}
+
+/*
+PropertymappingsProviderGoogleWorkspaceList Method for PropertymappingsProviderGoogleWorkspaceList
+
+GoogleProviderMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPropertymappingsProviderGoogleWorkspaceListRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceList(ctx context.Context) ApiPropertymappingsProviderGoogleWorkspaceListRequest {
+	return ApiPropertymappingsProviderGoogleWorkspaceListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedGoogleProviderMappingList
+func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceListExecute(r ApiPropertymappingsProviderGoogleWorkspaceListRequest) (*PaginatedGoogleProviderMappingList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedGoogleProviderMappingList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderGoogleWorkspaceList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/provider/google_workspace/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.expression != nil {
+		localVarQueryParams.Add("expression", parameterToString(*r.expression, ""))
+	}
+	if r.managed != nil {
+		t := *r.managed
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("managed", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("managed", parameterToString(t, "multi"))
+		}
+	}
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.pmUuid != nil {
+		localVarQueryParams.Add("pm_uuid", parameterToString(*r.pmUuid, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsProviderGoogleWorkspacePartialUpdateRequest struct {
+	ctx                                 context.Context
+	ApiService                          *PropertymappingsApiService
+	pmUuid                              string
+	patchedGoogleProviderMappingRequest *PatchedGoogleProviderMappingRequest
+}
+
+func (r ApiPropertymappingsProviderGoogleWorkspacePartialUpdateRequest) PatchedGoogleProviderMappingRequest(patchedGoogleProviderMappingRequest PatchedGoogleProviderMappingRequest) ApiPropertymappingsProviderGoogleWorkspacePartialUpdateRequest {
+	r.patchedGoogleProviderMappingRequest = &patchedGoogleProviderMappingRequest
+	return r
+}
+
+func (r ApiPropertymappingsProviderGoogleWorkspacePartialUpdateRequest) Execute() (*GoogleProviderMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderGoogleWorkspacePartialUpdateExecute(r)
+}
+
+/*
+PropertymappingsProviderGoogleWorkspacePartialUpdate Method for PropertymappingsProviderGoogleWorkspacePartialUpdate
+
+GoogleProviderMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this Google Workspace Provider Mapping.
+	@return ApiPropertymappingsProviderGoogleWorkspacePartialUpdateRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspacePartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsProviderGoogleWorkspacePartialUpdateRequest {
+	return ApiPropertymappingsProviderGoogleWorkspacePartialUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GoogleProviderMapping
+func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspacePartialUpdateExecute(r ApiPropertymappingsProviderGoogleWorkspacePartialUpdateRequest) (*GoogleProviderMapping, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleProviderMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderGoogleWorkspacePartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/provider/google_workspace/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedGoogleProviderMappingRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsProviderGoogleWorkspaceRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *PropertymappingsApiService
+	pmUuid     string
+}
+
+func (r ApiPropertymappingsProviderGoogleWorkspaceRetrieveRequest) Execute() (*GoogleProviderMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderGoogleWorkspaceRetrieveExecute(r)
+}
+
+/*
+PropertymappingsProviderGoogleWorkspaceRetrieve Method for PropertymappingsProviderGoogleWorkspaceRetrieve
+
+GoogleProviderMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this Google Workspace Provider Mapping.
+	@return ApiPropertymappingsProviderGoogleWorkspaceRetrieveRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsProviderGoogleWorkspaceRetrieveRequest {
+	return ApiPropertymappingsProviderGoogleWorkspaceRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GoogleProviderMapping
+func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceRetrieveExecute(r ApiPropertymappingsProviderGoogleWorkspaceRetrieveRequest) (*GoogleProviderMapping, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleProviderMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderGoogleWorkspaceRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/provider/google_workspace/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsProviderGoogleWorkspaceUpdateRequest struct {
+	ctx                          context.Context
+	ApiService                   *PropertymappingsApiService
+	pmUuid                       string
+	googleProviderMappingRequest *GoogleProviderMappingRequest
+}
+
+func (r ApiPropertymappingsProviderGoogleWorkspaceUpdateRequest) GoogleProviderMappingRequest(googleProviderMappingRequest GoogleProviderMappingRequest) ApiPropertymappingsProviderGoogleWorkspaceUpdateRequest {
+	r.googleProviderMappingRequest = &googleProviderMappingRequest
+	return r
+}
+
+func (r ApiPropertymappingsProviderGoogleWorkspaceUpdateRequest) Execute() (*GoogleProviderMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderGoogleWorkspaceUpdateExecute(r)
+}
+
+/*
+PropertymappingsProviderGoogleWorkspaceUpdate Method for PropertymappingsProviderGoogleWorkspaceUpdate
+
+GoogleProviderMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this Google Workspace Provider Mapping.
+	@return ApiPropertymappingsProviderGoogleWorkspaceUpdateRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsProviderGoogleWorkspaceUpdateRequest {
+	return ApiPropertymappingsProviderGoogleWorkspaceUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GoogleProviderMapping
+func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceUpdateExecute(r ApiPropertymappingsProviderGoogleWorkspaceUpdateRequest) (*GoogleProviderMapping, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleProviderMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderGoogleWorkspaceUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/provider/google_workspace/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.googleProviderMappingRequest == nil {
+		return localVarReturnValue, nil, reportError("googleProviderMappingRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.googleProviderMappingRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsProviderGoogleWorkspaceUsedByListRequest struct {
+	ctx        context.Context
+	ApiService *PropertymappingsApiService
+	pmUuid     string
+}
+
+func (r ApiPropertymappingsProviderGoogleWorkspaceUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderGoogleWorkspaceUsedByListExecute(r)
+}
+
+/*
+PropertymappingsProviderGoogleWorkspaceUsedByList Method for PropertymappingsProviderGoogleWorkspaceUsedByList
+
+Get a list of all objects that use this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this Google Workspace Provider Mapping.
+	@return ApiPropertymappingsProviderGoogleWorkspaceUsedByListRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsProviderGoogleWorkspaceUsedByListRequest {
+	return ApiPropertymappingsProviderGoogleWorkspaceUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []UsedBy
+func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceUsedByListExecute(r ApiPropertymappingsProviderGoogleWorkspaceUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderGoogleWorkspaceUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/provider/google_workspace/{pm_uuid}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiPropertymappingsRacCreateRequest struct {
 	ctx                       context.Context
 	ApiService                *PropertymappingsApiService

@@ -21,17 +21,19 @@ type ProviderModelEnum string
 
 // List of ProviderModelEnum
 const (
-	PROVIDERMODELENUM_LDAP_LDAPPROVIDER     ProviderModelEnum = "authentik_providers_ldap.ldapprovider"
-	PROVIDERMODELENUM_OAUTH2_OAUTH2PROVIDER ProviderModelEnum = "authentik_providers_oauth2.oauth2provider"
-	PROVIDERMODELENUM_PROXY_PROXYPROVIDER   ProviderModelEnum = "authentik_providers_proxy.proxyprovider"
-	PROVIDERMODELENUM_RAC_RACPROVIDER       ProviderModelEnum = "authentik_providers_rac.racprovider"
-	PROVIDERMODELENUM_RADIUS_RADIUSPROVIDER ProviderModelEnum = "authentik_providers_radius.radiusprovider"
-	PROVIDERMODELENUM_SAML_SAMLPROVIDER     ProviderModelEnum = "authentik_providers_saml.samlprovider"
-	PROVIDERMODELENUM_SCIM_SCIMPROVIDER     ProviderModelEnum = "authentik_providers_scim.scimprovider"
+	PROVIDERMODELENUM_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDER ProviderModelEnum = "authentik_providers_google_workspace.googleworkspaceprovider"
+	PROVIDERMODELENUM_LDAP_LDAPPROVIDER                        ProviderModelEnum = "authentik_providers_ldap.ldapprovider"
+	PROVIDERMODELENUM_OAUTH2_OAUTH2PROVIDER                    ProviderModelEnum = "authentik_providers_oauth2.oauth2provider"
+	PROVIDERMODELENUM_PROXY_PROXYPROVIDER                      ProviderModelEnum = "authentik_providers_proxy.proxyprovider"
+	PROVIDERMODELENUM_RAC_RACPROVIDER                          ProviderModelEnum = "authentik_providers_rac.racprovider"
+	PROVIDERMODELENUM_RADIUS_RADIUSPROVIDER                    ProviderModelEnum = "authentik_providers_radius.radiusprovider"
+	PROVIDERMODELENUM_SAML_SAMLPROVIDER                        ProviderModelEnum = "authentik_providers_saml.samlprovider"
+	PROVIDERMODELENUM_SCIM_SCIMPROVIDER                        ProviderModelEnum = "authentik_providers_scim.scimprovider"
 )
 
 // All allowed values of ProviderModelEnum enum
 var AllowedProviderModelEnumEnumValues = []ProviderModelEnum{
+	"authentik_providers_google_workspace.googleworkspaceprovider",
 	"authentik_providers_ldap.ldapprovider",
 	"authentik_providers_oauth2.oauth2provider",
 	"authentik_providers_proxy.proxyprovider",

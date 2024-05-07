@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**SourcesLdapList**](SourcesApi.md#SourcesLdapList) | **Get** /sources/ldap/ | 
 [**SourcesLdapPartialUpdate**](SourcesApi.md#SourcesLdapPartialUpdate) | **Patch** /sources/ldap/{slug}/ | 
 [**SourcesLdapRetrieve**](SourcesApi.md#SourcesLdapRetrieve) | **Get** /sources/ldap/{slug}/ | 
-[**SourcesLdapSyncStatusRetrieve**](SourcesApi.md#SourcesLdapSyncStatusRetrieve) | **Get** /sources/ldap/{slug}/sync_status/ | 
+[**SourcesLdapSyncStatusRetrieve**](SourcesApi.md#SourcesLdapSyncStatusRetrieve) | **Get** /sources/ldap/{slug}/sync/status/ | 
 [**SourcesLdapUpdate**](SourcesApi.md#SourcesLdapUpdate) | **Put** /sources/ldap/{slug}/ | 
 [**SourcesLdapUsedByList**](SourcesApi.md#SourcesLdapUsedByList) | **Get** /sources/ldap/{slug}/used_by/ | 
 [**SourcesOauthCreate**](SourcesApi.md#SourcesOauthCreate) | **Post** /sources/oauth/ | 
@@ -1113,7 +1113,7 @@ Name | Type | Description  | Notes
 
 ## SourcesLdapSyncStatusRetrieve
 
-> LDAPSyncStatus SourcesLdapSyncStatusRetrieve(ctx, slug).Execute()
+> SyncStatus SourcesLdapSyncStatusRetrieve(ctx, slug).Execute()
 
 
 
@@ -1141,7 +1141,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapSyncStatusRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SourcesLdapSyncStatusRetrieve`: LDAPSyncStatus
+    // response from `SourcesLdapSyncStatusRetrieve`: SyncStatus
     fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesLdapSyncStatusRetrieve`: %v\n", resp)
 }
 ```
@@ -1165,7 +1165,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**LDAPSyncStatus**](LDAPSyncStatus.md)
+[**SyncStatus**](SyncStatus.md)
 
 ### Authorization
 

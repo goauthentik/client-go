@@ -137,6 +137,10 @@
 
 * `ENTERPRISE_LICENSE` (value: `"authentik_enterprise.license"`)
 
+* `PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDER` (value: `"authentik_providers_google_workspace.googleworkspaceprovider"`)
+
+* `PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDERMAPPING` (value: `"authentik_providers_google_workspace.googleworkspaceprovidermapping"`)
+
 * `PROVIDERS_RAC_RACPROVIDER` (value: `"authentik_providers_rac.racprovider"`)
 
 * `PROVIDERS_RAC_ENDPOINT` (value: `"authentik_providers_rac.endpoint"`)

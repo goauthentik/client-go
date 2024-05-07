@@ -3,6 +3,8 @@
 ## Enum
 
 
+* `GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDER` (value: `"authentik_providers_google_workspace.googleworkspaceprovider"`)
+
 * `LDAP_LDAPPROVIDER` (value: `"authentik_providers_ldap.ldapprovider"`)
 
 * `OAUTH2_OAUTH2PROVIDER` (value: `"authentik_providers_oauth2.oauth2provider"`)

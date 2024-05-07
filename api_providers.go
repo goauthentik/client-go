@@ -678,6 +678,1076 @@ func (a *ProvidersApiService) ProvidersAllUsedByListExecute(r ApiProvidersAllUse
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiProvidersGoogleWorkspaceCreateRequest struct {
+	ctx                   context.Context
+	ApiService            *ProvidersApiService
+	googleProviderRequest *GoogleProviderRequest
+}
+
+func (r ApiProvidersGoogleWorkspaceCreateRequest) GoogleProviderRequest(googleProviderRequest GoogleProviderRequest) ApiProvidersGoogleWorkspaceCreateRequest {
+	r.googleProviderRequest = &googleProviderRequest
+	return r
+}
+
+func (r ApiProvidersGoogleWorkspaceCreateRequest) Execute() (*GoogleProvider, *http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceCreateExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceCreate Method for ProvidersGoogleWorkspaceCreate
+
+GoogleProvider Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersGoogleWorkspaceCreateRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceCreate(ctx context.Context) ApiProvidersGoogleWorkspaceCreateRequest {
+	return ApiProvidersGoogleWorkspaceCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GoogleProvider
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceCreateExecute(r ApiProvidersGoogleWorkspaceCreateRequest) (*GoogleProvider, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleProvider
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.googleProviderRequest == nil {
+		return localVarReturnValue, nil, reportError("googleProviderRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.googleProviderRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersGoogleWorkspaceDestroyRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersApiService
+	id         int32
+}
+
+func (r ApiProvidersGoogleWorkspaceDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceDestroyExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceDestroy Method for ProvidersGoogleWorkspaceDestroy
+
+GoogleProvider Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Google Workspace Provider.
+	@return ApiProvidersGoogleWorkspaceDestroyRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceDestroy(ctx context.Context, id int32) ApiProvidersGoogleWorkspaceDestroyRequest {
+	return ApiProvidersGoogleWorkspaceDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceDestroyExecute(r ApiProvidersGoogleWorkspaceDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiProvidersGoogleWorkspaceListRequest struct {
+	ctx                        context.Context
+	ApiService                 *ProvidersApiService
+	delegatedSubject           *string
+	excludeUsersServiceAccount *bool
+	filterGroup                *string
+	name                       *string
+	ordering                   *string
+	page                       *int32
+	pageSize                   *int32
+	search                     *string
+}
+
+func (r ApiProvidersGoogleWorkspaceListRequest) DelegatedSubject(delegatedSubject string) ApiProvidersGoogleWorkspaceListRequest {
+	r.delegatedSubject = &delegatedSubject
+	return r
+}
+
+func (r ApiProvidersGoogleWorkspaceListRequest) ExcludeUsersServiceAccount(excludeUsersServiceAccount bool) ApiProvidersGoogleWorkspaceListRequest {
+	r.excludeUsersServiceAccount = &excludeUsersServiceAccount
+	return r
+}
+
+func (r ApiProvidersGoogleWorkspaceListRequest) FilterGroup(filterGroup string) ApiProvidersGoogleWorkspaceListRequest {
+	r.filterGroup = &filterGroup
+	return r
+}
+
+func (r ApiProvidersGoogleWorkspaceListRequest) Name(name string) ApiProvidersGoogleWorkspaceListRequest {
+	r.name = &name
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiProvidersGoogleWorkspaceListRequest) Ordering(ordering string) ApiProvidersGoogleWorkspaceListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiProvidersGoogleWorkspaceListRequest) Page(page int32) ApiProvidersGoogleWorkspaceListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiProvidersGoogleWorkspaceListRequest) PageSize(pageSize int32) ApiProvidersGoogleWorkspaceListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// A search term.
+func (r ApiProvidersGoogleWorkspaceListRequest) Search(search string) ApiProvidersGoogleWorkspaceListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiProvidersGoogleWorkspaceListRequest) Execute() (*PaginatedGoogleProviderList, *http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceListExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceList Method for ProvidersGoogleWorkspaceList
+
+GoogleProvider Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersGoogleWorkspaceListRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceList(ctx context.Context) ApiProvidersGoogleWorkspaceListRequest {
+	return ApiProvidersGoogleWorkspaceListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedGoogleProviderList
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceListExecute(r ApiProvidersGoogleWorkspaceListRequest) (*PaginatedGoogleProviderList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedGoogleProviderList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.delegatedSubject != nil {
+		localVarQueryParams.Add("delegated_subject", parameterToString(*r.delegatedSubject, ""))
+	}
+	if r.excludeUsersServiceAccount != nil {
+		localVarQueryParams.Add("exclude_users_service_account", parameterToString(*r.excludeUsersServiceAccount, ""))
+	}
+	if r.filterGroup != nil {
+		localVarQueryParams.Add("filter_group", parameterToString(*r.filterGroup, ""))
+	}
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersGoogleWorkspacePartialUpdateRequest struct {
+	ctx                          context.Context
+	ApiService                   *ProvidersApiService
+	id                           int32
+	patchedGoogleProviderRequest *PatchedGoogleProviderRequest
+}
+
+func (r ApiProvidersGoogleWorkspacePartialUpdateRequest) PatchedGoogleProviderRequest(patchedGoogleProviderRequest PatchedGoogleProviderRequest) ApiProvidersGoogleWorkspacePartialUpdateRequest {
+	r.patchedGoogleProviderRequest = &patchedGoogleProviderRequest
+	return r
+}
+
+func (r ApiProvidersGoogleWorkspacePartialUpdateRequest) Execute() (*GoogleProvider, *http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspacePartialUpdateExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspacePartialUpdate Method for ProvidersGoogleWorkspacePartialUpdate
+
+GoogleProvider Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Google Workspace Provider.
+	@return ApiProvidersGoogleWorkspacePartialUpdateRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspacePartialUpdate(ctx context.Context, id int32) ApiProvidersGoogleWorkspacePartialUpdateRequest {
+	return ApiProvidersGoogleWorkspacePartialUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GoogleProvider
+func (a *ProvidersApiService) ProvidersGoogleWorkspacePartialUpdateExecute(r ApiProvidersGoogleWorkspacePartialUpdateRequest) (*GoogleProvider, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleProvider
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspacePartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedGoogleProviderRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersGoogleWorkspaceRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersApiService
+	id         int32
+}
+
+func (r ApiProvidersGoogleWorkspaceRetrieveRequest) Execute() (*GoogleProvider, *http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceRetrieveExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceRetrieve Method for ProvidersGoogleWorkspaceRetrieve
+
+GoogleProvider Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Google Workspace Provider.
+	@return ApiProvidersGoogleWorkspaceRetrieveRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceRetrieve(ctx context.Context, id int32) ApiProvidersGoogleWorkspaceRetrieveRequest {
+	return ApiProvidersGoogleWorkspaceRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GoogleProvider
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceRetrieveExecute(r ApiProvidersGoogleWorkspaceRetrieveRequest) (*GoogleProvider, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleProvider
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersGoogleWorkspaceSyncStatusRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersApiService
+	id         int32
+}
+
+func (r ApiProvidersGoogleWorkspaceSyncStatusRetrieveRequest) Execute() (*SyncStatus, *http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceSyncStatusRetrieveExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceSyncStatusRetrieve Method for ProvidersGoogleWorkspaceSyncStatusRetrieve
+
+Get provider's sync status
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Google Workspace Provider.
+	@return ApiProvidersGoogleWorkspaceSyncStatusRetrieveRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceSyncStatusRetrieve(ctx context.Context, id int32) ApiProvidersGoogleWorkspaceSyncStatusRetrieveRequest {
+	return ApiProvidersGoogleWorkspaceSyncStatusRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return SyncStatus
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceSyncStatusRetrieveExecute(r ApiProvidersGoogleWorkspaceSyncStatusRetrieveRequest) (*SyncStatus, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SyncStatus
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceSyncStatusRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace/{id}/sync/status/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersGoogleWorkspaceUpdateRequest struct {
+	ctx                   context.Context
+	ApiService            *ProvidersApiService
+	id                    int32
+	googleProviderRequest *GoogleProviderRequest
+}
+
+func (r ApiProvidersGoogleWorkspaceUpdateRequest) GoogleProviderRequest(googleProviderRequest GoogleProviderRequest) ApiProvidersGoogleWorkspaceUpdateRequest {
+	r.googleProviderRequest = &googleProviderRequest
+	return r
+}
+
+func (r ApiProvidersGoogleWorkspaceUpdateRequest) Execute() (*GoogleProvider, *http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceUpdateExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceUpdate Method for ProvidersGoogleWorkspaceUpdate
+
+GoogleProvider Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Google Workspace Provider.
+	@return ApiProvidersGoogleWorkspaceUpdateRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUpdate(ctx context.Context, id int32) ApiProvidersGoogleWorkspaceUpdateRequest {
+	return ApiProvidersGoogleWorkspaceUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GoogleProvider
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUpdateExecute(r ApiProvidersGoogleWorkspaceUpdateRequest) (*GoogleProvider, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleProvider
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.googleProviderRequest == nil {
+		return localVarReturnValue, nil, reportError("googleProviderRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.googleProviderRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersGoogleWorkspaceUsedByListRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersApiService
+	id         int32
+}
+
+func (r ApiProvidersGoogleWorkspaceUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceUsedByListExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceUsedByList Method for ProvidersGoogleWorkspaceUsedByList
+
+Get a list of all objects that use this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Google Workspace Provider.
+	@return ApiProvidersGoogleWorkspaceUsedByListRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsedByList(ctx context.Context, id int32) ApiProvidersGoogleWorkspaceUsedByListRequest {
+	return ApiProvidersGoogleWorkspaceUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []UsedBy
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsedByListExecute(r ApiProvidersGoogleWorkspaceUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace/{id}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiProvidersLdapCreateRequest struct {
 	ctx                 context.Context
 	ApiService          *ProvidersApiService
@@ -8114,7 +9184,7 @@ type ApiProvidersScimSyncStatusRetrieveRequest struct {
 	id         int32
 }
 
-func (r ApiProvidersScimSyncStatusRetrieveRequest) Execute() (*SCIMSyncStatus, *http.Response, error) {
+func (r ApiProvidersScimSyncStatusRetrieveRequest) Execute() (*SyncStatus, *http.Response, error) {
 	return r.ApiService.ProvidersScimSyncStatusRetrieveExecute(r)
 }
 
@@ -8137,13 +9207,13 @@ func (a *ProvidersApiService) ProvidersScimSyncStatusRetrieve(ctx context.Contex
 
 // Execute executes the request
 //
-//	@return SCIMSyncStatus
-func (a *ProvidersApiService) ProvidersScimSyncStatusRetrieveExecute(r ApiProvidersScimSyncStatusRetrieveRequest) (*SCIMSyncStatus, *http.Response, error) {
+//	@return SyncStatus
+func (a *ProvidersApiService) ProvidersScimSyncStatusRetrieveExecute(r ApiProvidersScimSyncStatusRetrieveRequest) (*SyncStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *SCIMSyncStatus
+		localVarReturnValue *SyncStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimSyncStatusRetrieve")
@@ -8151,7 +9221,7 @@ func (a *ProvidersApiService) ProvidersScimSyncStatusRetrieveExecute(r ApiProvid
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/providers/scim/{id}/sync_status/"
+	localVarPath := localBasePath + "/providers/scim/{id}/sync/status/"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)

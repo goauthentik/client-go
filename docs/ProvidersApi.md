@@ -9,6 +9,14 @@ Method | HTTP request | Description
 [**ProvidersAllRetrieve**](ProvidersApi.md#ProvidersAllRetrieve) | **Get** /providers/all/{id}/ | 
 [**ProvidersAllTypesList**](ProvidersApi.md#ProvidersAllTypesList) | **Get** /providers/all/types/ | 
 [**ProvidersAllUsedByList**](ProvidersApi.md#ProvidersAllUsedByList) | **Get** /providers/all/{id}/used_by/ | 
+[**ProvidersGoogleWorkspaceCreate**](ProvidersApi.md#ProvidersGoogleWorkspaceCreate) | **Post** /providers/google_workspace/ | 
+[**ProvidersGoogleWorkspaceDestroy**](ProvidersApi.md#ProvidersGoogleWorkspaceDestroy) | **Delete** /providers/google_workspace/{id}/ | 
+[**ProvidersGoogleWorkspaceList**](ProvidersApi.md#ProvidersGoogleWorkspaceList) | **Get** /providers/google_workspace/ | 
+[**ProvidersGoogleWorkspacePartialUpdate**](ProvidersApi.md#ProvidersGoogleWorkspacePartialUpdate) | **Patch** /providers/google_workspace/{id}/ | 
+[**ProvidersGoogleWorkspaceRetrieve**](ProvidersApi.md#ProvidersGoogleWorkspaceRetrieve) | **Get** /providers/google_workspace/{id}/ | 
+[**ProvidersGoogleWorkspaceSyncStatusRetrieve**](ProvidersApi.md#ProvidersGoogleWorkspaceSyncStatusRetrieve) | **Get** /providers/google_workspace/{id}/sync/status/ | 
+[**ProvidersGoogleWorkspaceUpdate**](ProvidersApi.md#ProvidersGoogleWorkspaceUpdate) | **Put** /providers/google_workspace/{id}/ | 
+[**ProvidersGoogleWorkspaceUsedByList**](ProvidersApi.md#ProvidersGoogleWorkspaceUsedByList) | **Get** /providers/google_workspace/{id}/used_by/ | 
 [**ProvidersLdapCreate**](ProvidersApi.md#ProvidersLdapCreate) | **Post** /providers/ldap/ | 
 [**ProvidersLdapDestroy**](ProvidersApi.md#ProvidersLdapDestroy) | **Delete** /providers/ldap/{id}/ | 
 [**ProvidersLdapList**](ProvidersApi.md#ProvidersLdapList) | **Get** /providers/ldap/ | 
@@ -61,7 +69,7 @@ Method | HTTP request | Description
 [**ProvidersScimList**](ProvidersApi.md#ProvidersScimList) | **Get** /providers/scim/ | 
 [**ProvidersScimPartialUpdate**](ProvidersApi.md#ProvidersScimPartialUpdate) | **Patch** /providers/scim/{id}/ | 
 [**ProvidersScimRetrieve**](ProvidersApi.md#ProvidersScimRetrieve) | **Get** /providers/scim/{id}/ | 
-[**ProvidersScimSyncStatusRetrieve**](ProvidersApi.md#ProvidersScimSyncStatusRetrieve) | **Get** /providers/scim/{id}/sync_status/ | 
+[**ProvidersScimSyncStatusRetrieve**](ProvidersApi.md#ProvidersScimSyncStatusRetrieve) | **Get** /providers/scim/{id}/sync/status/ | 
 [**ProvidersScimUpdate**](ProvidersApi.md#ProvidersScimUpdate) | **Put** /providers/scim/{id}/ | 
 [**ProvidersScimUsedByList**](ProvidersApi.md#ProvidersScimUsedByList) | **Get** /providers/scim/{id}/used_by/ | 
 
@@ -388,6 +396,574 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiProvidersAllUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceCreate
+
+> GoogleProvider ProvidersGoogleWorkspaceCreate(ctx).GoogleProviderRequest(googleProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    googleProviderRequest := *openapiclient.NewGoogleProviderRequest("Name_example", "DelegatedSubject_example", interface{}(123), "DefaultGroupEmailDomain_example") // GoogleProviderRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceCreate(context.Background()).GoogleProviderRequest(googleProviderRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersGoogleWorkspaceCreate`: GoogleProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **googleProviderRequest** | [**GoogleProviderRequest**](GoogleProviderRequest.md) |  | 
+
+### Return type
+
+[**GoogleProvider**](GoogleProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceDestroy
+
+> ProvidersGoogleWorkspaceDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Google Workspace Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Google Workspace Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceList
+
+> PaginatedGoogleProviderList ProvidersGoogleWorkspaceList(ctx).DelegatedSubject(delegatedSubject).ExcludeUsersServiceAccount(excludeUsersServiceAccount).FilterGroup(filterGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    delegatedSubject := "delegatedSubject_example" // string |  (optional)
+    excludeUsersServiceAccount := true // bool |  (optional)
+    filterGroup := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceList(context.Background()).DelegatedSubject(delegatedSubject).ExcludeUsersServiceAccount(excludeUsersServiceAccount).FilterGroup(filterGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersGoogleWorkspaceList`: PaginatedGoogleProviderList
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **delegatedSubject** | **string** |  | 
+ **excludeUsersServiceAccount** | **bool** |  | 
+ **filterGroup** | **string** |  | 
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedGoogleProviderList**](PaginatedGoogleProviderList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspacePartialUpdate
+
+> GoogleProvider ProvidersGoogleWorkspacePartialUpdate(ctx, id).PatchedGoogleProviderRequest(patchedGoogleProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Google Workspace Provider.
+    patchedGoogleProviderRequest := *openapiclient.NewPatchedGoogleProviderRequest() // PatchedGoogleProviderRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspacePartialUpdate(context.Background(), id).PatchedGoogleProviderRequest(patchedGoogleProviderRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspacePartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersGoogleWorkspacePartialUpdate`: GoogleProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspacePartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Google Workspace Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspacePartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedGoogleProviderRequest** | [**PatchedGoogleProviderRequest**](PatchedGoogleProviderRequest.md) |  | 
+
+### Return type
+
+[**GoogleProvider**](GoogleProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceRetrieve
+
+> GoogleProvider ProvidersGoogleWorkspaceRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Google Workspace Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersGoogleWorkspaceRetrieve`: GoogleProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Google Workspace Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**GoogleProvider**](GoogleProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceSyncStatusRetrieve
+
+> SyncStatus ProvidersGoogleWorkspaceSyncStatusRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Google Workspace Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceSyncStatusRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceSyncStatusRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersGoogleWorkspaceSyncStatusRetrieve`: SyncStatus
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceSyncStatusRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Google Workspace Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceSyncStatusRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SyncStatus**](SyncStatus.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceUpdate
+
+> GoogleProvider ProvidersGoogleWorkspaceUpdate(ctx, id).GoogleProviderRequest(googleProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Google Workspace Provider.
+    googleProviderRequest := *openapiclient.NewGoogleProviderRequest("Name_example", "DelegatedSubject_example", interface{}(123), "DefaultGroupEmailDomain_example") // GoogleProviderRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceUpdate(context.Background(), id).GoogleProviderRequest(googleProviderRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersGoogleWorkspaceUpdate`: GoogleProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Google Workspace Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **googleProviderRequest** | [**GoogleProviderRequest**](GoogleProviderRequest.md) |  | 
+
+### Return type
+
+[**GoogleProvider**](GoogleProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceUsedByList
+
+> []UsedBy ProvidersGoogleWorkspaceUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Google Workspace Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersGoogleWorkspaceUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Google Workspace Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -4198,7 +4774,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersScimSyncStatusRetrieve
 
-> SCIMSyncStatus ProvidersScimSyncStatusRetrieve(ctx, id).Execute()
+> SyncStatus ProvidersScimSyncStatusRetrieve(ctx, id).Execute()
 
 
 
@@ -4226,7 +4802,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimSyncStatusRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ProvidersScimSyncStatusRetrieve`: SCIMSyncStatus
+    // response from `ProvidersScimSyncStatusRetrieve`: SyncStatus
     fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersScimSyncStatusRetrieve`: %v\n", resp)
 }
 ```
@@ -4250,7 +4826,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SCIMSyncStatus**](SCIMSyncStatus.md)
+[**SyncStatus**](SyncStatus.md)
 
 ### Authorization
 

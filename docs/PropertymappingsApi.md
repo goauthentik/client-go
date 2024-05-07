@@ -24,6 +24,13 @@ Method | HTTP request | Description
 [**PropertymappingsNotificationRetrieve**](PropertymappingsApi.md#PropertymappingsNotificationRetrieve) | **Get** /propertymappings/notification/{pm_uuid}/ | 
 [**PropertymappingsNotificationUpdate**](PropertymappingsApi.md#PropertymappingsNotificationUpdate) | **Put** /propertymappings/notification/{pm_uuid}/ | 
 [**PropertymappingsNotificationUsedByList**](PropertymappingsApi.md#PropertymappingsNotificationUsedByList) | **Get** /propertymappings/notification/{pm_uuid}/used_by/ | 
+[**PropertymappingsProviderGoogleWorkspaceCreate**](PropertymappingsApi.md#PropertymappingsProviderGoogleWorkspaceCreate) | **Post** /propertymappings/provider/google_workspace/ | 
+[**PropertymappingsProviderGoogleWorkspaceDestroy**](PropertymappingsApi.md#PropertymappingsProviderGoogleWorkspaceDestroy) | **Delete** /propertymappings/provider/google_workspace/{pm_uuid}/ | 
+[**PropertymappingsProviderGoogleWorkspaceList**](PropertymappingsApi.md#PropertymappingsProviderGoogleWorkspaceList) | **Get** /propertymappings/provider/google_workspace/ | 
+[**PropertymappingsProviderGoogleWorkspacePartialUpdate**](PropertymappingsApi.md#PropertymappingsProviderGoogleWorkspacePartialUpdate) | **Patch** /propertymappings/provider/google_workspace/{pm_uuid}/ | 
+[**PropertymappingsProviderGoogleWorkspaceRetrieve**](PropertymappingsApi.md#PropertymappingsProviderGoogleWorkspaceRetrieve) | **Get** /propertymappings/provider/google_workspace/{pm_uuid}/ | 
+[**PropertymappingsProviderGoogleWorkspaceUpdate**](PropertymappingsApi.md#PropertymappingsProviderGoogleWorkspaceUpdate) | **Put** /propertymappings/provider/google_workspace/{pm_uuid}/ | 
+[**PropertymappingsProviderGoogleWorkspaceUsedByList**](PropertymappingsApi.md#PropertymappingsProviderGoogleWorkspaceUsedByList) | **Get** /propertymappings/provider/google_workspace/{pm_uuid}/used_by/ | 
 [**PropertymappingsRacCreate**](PropertymappingsApi.md#PropertymappingsRacCreate) | **Post** /propertymappings/rac/ | 
 [**PropertymappingsRacDestroy**](PropertymappingsApi.md#PropertymappingsRacDestroy) | **Delete** /propertymappings/rac/{pm_uuid}/ | 
 [**PropertymappingsRacList**](PropertymappingsApi.md#PropertymappingsRacList) | **Get** /propertymappings/rac/ | 
@@ -1440,6 +1447,504 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPropertymappingsNotificationUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsProviderGoogleWorkspaceCreate
+
+> GoogleProviderMapping PropertymappingsProviderGoogleWorkspaceCreate(ctx).GoogleProviderMappingRequest(googleProviderMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    googleProviderMappingRequest := *openapiclient.NewGoogleProviderMappingRequest("Name_example", "Expression_example") // GoogleProviderMappingRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceCreate(context.Background()).GoogleProviderMappingRequest(googleProviderMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsProviderGoogleWorkspaceCreate`: GoogleProviderMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsProviderGoogleWorkspaceCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **googleProviderMappingRequest** | [**GoogleProviderMappingRequest**](GoogleProviderMappingRequest.md) |  | 
+
+### Return type
+
+[**GoogleProviderMapping**](GoogleProviderMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsProviderGoogleWorkspaceDestroy
+
+> PropertymappingsProviderGoogleWorkspaceDestroy(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceDestroy(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this Google Workspace Provider Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsProviderGoogleWorkspaceDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsProviderGoogleWorkspaceList
+
+> PaginatedGoogleProviderMappingList PropertymappingsProviderGoogleWorkspaceList(ctx).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    expression := "expression_example" // string |  (optional)
+    managed := []string{"Inner_example"} // []string |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceList(context.Background()).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsProviderGoogleWorkspaceList`: PaginatedGoogleProviderMappingList
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsProviderGoogleWorkspaceListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expression** | **string** |  | 
+ **managed** | **[]string** |  | 
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **pmUuid** | **string** |  | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedGoogleProviderMappingList**](PaginatedGoogleProviderMappingList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsProviderGoogleWorkspacePartialUpdate
+
+> GoogleProviderMapping PropertymappingsProviderGoogleWorkspacePartialUpdate(ctx, pmUuid).PatchedGoogleProviderMappingRequest(patchedGoogleProviderMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Mapping.
+    patchedGoogleProviderMappingRequest := *openapiclient.NewPatchedGoogleProviderMappingRequest() // PatchedGoogleProviderMappingRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderGoogleWorkspacePartialUpdate(context.Background(), pmUuid).PatchedGoogleProviderMappingRequest(patchedGoogleProviderMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderGoogleWorkspacePartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsProviderGoogleWorkspacePartialUpdate`: GoogleProviderMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderGoogleWorkspacePartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this Google Workspace Provider Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsProviderGoogleWorkspacePartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedGoogleProviderMappingRequest** | [**PatchedGoogleProviderMappingRequest**](PatchedGoogleProviderMappingRequest.md) |  | 
+
+### Return type
+
+[**GoogleProviderMapping**](GoogleProviderMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsProviderGoogleWorkspaceRetrieve
+
+> GoogleProviderMapping PropertymappingsProviderGoogleWorkspaceRetrieve(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceRetrieve(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsProviderGoogleWorkspaceRetrieve`: GoogleProviderMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this Google Workspace Provider Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsProviderGoogleWorkspaceRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**GoogleProviderMapping**](GoogleProviderMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsProviderGoogleWorkspaceUpdate
+
+> GoogleProviderMapping PropertymappingsProviderGoogleWorkspaceUpdate(ctx, pmUuid).GoogleProviderMappingRequest(googleProviderMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Mapping.
+    googleProviderMappingRequest := *openapiclient.NewGoogleProviderMappingRequest("Name_example", "Expression_example") // GoogleProviderMappingRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceUpdate(context.Background(), pmUuid).GoogleProviderMappingRequest(googleProviderMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsProviderGoogleWorkspaceUpdate`: GoogleProviderMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this Google Workspace Provider Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsProviderGoogleWorkspaceUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **googleProviderMappingRequest** | [**GoogleProviderMappingRequest**](GoogleProviderMappingRequest.md) |  | 
+
+### Return type
+
+[**GoogleProviderMapping**](GoogleProviderMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsProviderGoogleWorkspaceUsedByList
+
+> []UsedBy PropertymappingsProviderGoogleWorkspaceUsedByList(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceUsedByList(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsProviderGoogleWorkspaceUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this Google Workspace Provider Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsProviderGoogleWorkspaceUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

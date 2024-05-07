@@ -15,33 +15,33 @@ import (
 	"encoding/json"
 )
 
-// SCIMSyncStatus SCIM Provider sync status
-type SCIMSyncStatus struct {
+// SyncStatus Provider sync status
+type SyncStatus struct {
 	IsRunning bool         `json:"is_running"`
 	Tasks     []SystemTask `json:"tasks"`
 }
 
-// NewSCIMSyncStatus instantiates a new SCIMSyncStatus object
+// NewSyncStatus instantiates a new SyncStatus object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSCIMSyncStatus(isRunning bool, tasks []SystemTask) *SCIMSyncStatus {
-	this := SCIMSyncStatus{}
+func NewSyncStatus(isRunning bool, tasks []SystemTask) *SyncStatus {
+	this := SyncStatus{}
 	this.IsRunning = isRunning
 	this.Tasks = tasks
 	return &this
 }
 
-// NewSCIMSyncStatusWithDefaults instantiates a new SCIMSyncStatus object
+// NewSyncStatusWithDefaults instantiates a new SyncStatus object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSCIMSyncStatusWithDefaults() *SCIMSyncStatus {
-	this := SCIMSyncStatus{}
+func NewSyncStatusWithDefaults() *SyncStatus {
+	this := SyncStatus{}
 	return &this
 }
 
 // GetIsRunning returns the IsRunning field value
-func (o *SCIMSyncStatus) GetIsRunning() bool {
+func (o *SyncStatus) GetIsRunning() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -52,7 +52,7 @@ func (o *SCIMSyncStatus) GetIsRunning() bool {
 
 // GetIsRunningOk returns a tuple with the IsRunning field value
 // and a boolean to check if the value has been set.
-func (o *SCIMSyncStatus) GetIsRunningOk() (*bool, bool) {
+func (o *SyncStatus) GetIsRunningOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,12 +60,12 @@ func (o *SCIMSyncStatus) GetIsRunningOk() (*bool, bool) {
 }
 
 // SetIsRunning sets field value
-func (o *SCIMSyncStatus) SetIsRunning(v bool) {
+func (o *SyncStatus) SetIsRunning(v bool) {
 	o.IsRunning = v
 }
 
 // GetTasks returns the Tasks field value
-func (o *SCIMSyncStatus) GetTasks() []SystemTask {
+func (o *SyncStatus) GetTasks() []SystemTask {
 	if o == nil {
 		var ret []SystemTask
 		return ret
@@ -76,7 +76,7 @@ func (o *SCIMSyncStatus) GetTasks() []SystemTask {
 
 // GetTasksOk returns a tuple with the Tasks field value
 // and a boolean to check if the value has been set.
-func (o *SCIMSyncStatus) GetTasksOk() ([]SystemTask, bool) {
+func (o *SyncStatus) GetTasksOk() ([]SystemTask, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -84,11 +84,11 @@ func (o *SCIMSyncStatus) GetTasksOk() ([]SystemTask, bool) {
 }
 
 // SetTasks sets field value
-func (o *SCIMSyncStatus) SetTasks(v []SystemTask) {
+func (o *SyncStatus) SetTasks(v []SystemTask) {
 	o.Tasks = v
 }
 
-func (o SCIMSyncStatus) MarshalJSON() ([]byte, error) {
+func (o SyncStatus) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["is_running"] = o.IsRunning
@@ -99,38 +99,38 @@ func (o SCIMSyncStatus) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableSCIMSyncStatus struct {
-	value *SCIMSyncStatus
+type NullableSyncStatus struct {
+	value *SyncStatus
 	isSet bool
 }
 
-func (v NullableSCIMSyncStatus) Get() *SCIMSyncStatus {
+func (v NullableSyncStatus) Get() *SyncStatus {
 	return v.value
 }
 
-func (v *NullableSCIMSyncStatus) Set(val *SCIMSyncStatus) {
+func (v *NullableSyncStatus) Set(val *SyncStatus) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSCIMSyncStatus) IsSet() bool {
+func (v NullableSyncStatus) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSCIMSyncStatus) Unset() {
+func (v *NullableSyncStatus) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSCIMSyncStatus(val *SCIMSyncStatus) *NullableSCIMSyncStatus {
-	return &NullableSCIMSyncStatus{value: val, isSet: true}
+func NewNullableSyncStatus(val *SyncStatus) *NullableSyncStatus {
+	return &NullableSyncStatus{value: val, isSet: true}
 }
 
-func (v NullableSCIMSyncStatus) MarshalJSON() ([]byte, error) {
+func (v NullableSyncStatus) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSCIMSyncStatus) UnmarshalJSON(src []byte) error {
+func (v *NullableSyncStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
