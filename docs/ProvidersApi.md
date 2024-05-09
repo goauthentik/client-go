@@ -11,12 +11,26 @@ Method | HTTP request | Description
 [**ProvidersAllUsedByList**](ProvidersApi.md#ProvidersAllUsedByList) | **Get** /providers/all/{id}/used_by/ | 
 [**ProvidersGoogleWorkspaceCreate**](ProvidersApi.md#ProvidersGoogleWorkspaceCreate) | **Post** /providers/google_workspace/ | 
 [**ProvidersGoogleWorkspaceDestroy**](ProvidersApi.md#ProvidersGoogleWorkspaceDestroy) | **Delete** /providers/google_workspace/{id}/ | 
+[**ProvidersGoogleWorkspaceGroupsCreate**](ProvidersApi.md#ProvidersGoogleWorkspaceGroupsCreate) | **Post** /providers/google_workspace_groups/ | 
+[**ProvidersGoogleWorkspaceGroupsDestroy**](ProvidersApi.md#ProvidersGoogleWorkspaceGroupsDestroy) | **Delete** /providers/google_workspace_groups/{id}/ | 
+[**ProvidersGoogleWorkspaceGroupsList**](ProvidersApi.md#ProvidersGoogleWorkspaceGroupsList) | **Get** /providers/google_workspace_groups/ | 
+[**ProvidersGoogleWorkspaceGroupsPartialUpdate**](ProvidersApi.md#ProvidersGoogleWorkspaceGroupsPartialUpdate) | **Patch** /providers/google_workspace_groups/{id}/ | 
+[**ProvidersGoogleWorkspaceGroupsRetrieve**](ProvidersApi.md#ProvidersGoogleWorkspaceGroupsRetrieve) | **Get** /providers/google_workspace_groups/{id}/ | 
+[**ProvidersGoogleWorkspaceGroupsUpdate**](ProvidersApi.md#ProvidersGoogleWorkspaceGroupsUpdate) | **Put** /providers/google_workspace_groups/{id}/ | 
+[**ProvidersGoogleWorkspaceGroupsUsedByList**](ProvidersApi.md#ProvidersGoogleWorkspaceGroupsUsedByList) | **Get** /providers/google_workspace_groups/{id}/used_by/ | 
 [**ProvidersGoogleWorkspaceList**](ProvidersApi.md#ProvidersGoogleWorkspaceList) | **Get** /providers/google_workspace/ | 
 [**ProvidersGoogleWorkspacePartialUpdate**](ProvidersApi.md#ProvidersGoogleWorkspacePartialUpdate) | **Patch** /providers/google_workspace/{id}/ | 
 [**ProvidersGoogleWorkspaceRetrieve**](ProvidersApi.md#ProvidersGoogleWorkspaceRetrieve) | **Get** /providers/google_workspace/{id}/ | 
 [**ProvidersGoogleWorkspaceSyncStatusRetrieve**](ProvidersApi.md#ProvidersGoogleWorkspaceSyncStatusRetrieve) | **Get** /providers/google_workspace/{id}/sync/status/ | 
 [**ProvidersGoogleWorkspaceUpdate**](ProvidersApi.md#ProvidersGoogleWorkspaceUpdate) | **Put** /providers/google_workspace/{id}/ | 
 [**ProvidersGoogleWorkspaceUsedByList**](ProvidersApi.md#ProvidersGoogleWorkspaceUsedByList) | **Get** /providers/google_workspace/{id}/used_by/ | 
+[**ProvidersGoogleWorkspaceUsersCreate**](ProvidersApi.md#ProvidersGoogleWorkspaceUsersCreate) | **Post** /providers/google_workspace_users/ | 
+[**ProvidersGoogleWorkspaceUsersDestroy**](ProvidersApi.md#ProvidersGoogleWorkspaceUsersDestroy) | **Delete** /providers/google_workspace_users/{id}/ | 
+[**ProvidersGoogleWorkspaceUsersList**](ProvidersApi.md#ProvidersGoogleWorkspaceUsersList) | **Get** /providers/google_workspace_users/ | 
+[**ProvidersGoogleWorkspaceUsersPartialUpdate**](ProvidersApi.md#ProvidersGoogleWorkspaceUsersPartialUpdate) | **Patch** /providers/google_workspace_users/{id}/ | 
+[**ProvidersGoogleWorkspaceUsersRetrieve**](ProvidersApi.md#ProvidersGoogleWorkspaceUsersRetrieve) | **Get** /providers/google_workspace_users/{id}/ | 
+[**ProvidersGoogleWorkspaceUsersUpdate**](ProvidersApi.md#ProvidersGoogleWorkspaceUsersUpdate) | **Put** /providers/google_workspace_users/{id}/ | 
+[**ProvidersGoogleWorkspaceUsersUsedByList**](ProvidersApi.md#ProvidersGoogleWorkspaceUsersUsedByList) | **Get** /providers/google_workspace_users/{id}/used_by/ | 
 [**ProvidersLdapCreate**](ProvidersApi.md#ProvidersLdapCreate) | **Post** /providers/ldap/ | 
 [**ProvidersLdapDestroy**](ProvidersApi.md#ProvidersLdapDestroy) | **Delete** /providers/ldap/{id}/ | 
 [**ProvidersLdapList**](ProvidersApi.md#ProvidersLdapList) | **Get** /providers/ldap/ | 
@@ -24,6 +38,28 @@ Method | HTTP request | Description
 [**ProvidersLdapRetrieve**](ProvidersApi.md#ProvidersLdapRetrieve) | **Get** /providers/ldap/{id}/ | 
 [**ProvidersLdapUpdate**](ProvidersApi.md#ProvidersLdapUpdate) | **Put** /providers/ldap/{id}/ | 
 [**ProvidersLdapUsedByList**](ProvidersApi.md#ProvidersLdapUsedByList) | **Get** /providers/ldap/{id}/used_by/ | 
+[**ProvidersMicrosoftEntraCreate**](ProvidersApi.md#ProvidersMicrosoftEntraCreate) | **Post** /providers/microsoft_entra/ | 
+[**ProvidersMicrosoftEntraDestroy**](ProvidersApi.md#ProvidersMicrosoftEntraDestroy) | **Delete** /providers/microsoft_entra/{id}/ | 
+[**ProvidersMicrosoftEntraGroupsCreate**](ProvidersApi.md#ProvidersMicrosoftEntraGroupsCreate) | **Post** /providers/microsoft_entra_groups/ | 
+[**ProvidersMicrosoftEntraGroupsDestroy**](ProvidersApi.md#ProvidersMicrosoftEntraGroupsDestroy) | **Delete** /providers/microsoft_entra_groups/{id}/ | 
+[**ProvidersMicrosoftEntraGroupsList**](ProvidersApi.md#ProvidersMicrosoftEntraGroupsList) | **Get** /providers/microsoft_entra_groups/ | 
+[**ProvidersMicrosoftEntraGroupsPartialUpdate**](ProvidersApi.md#ProvidersMicrosoftEntraGroupsPartialUpdate) | **Patch** /providers/microsoft_entra_groups/{id}/ | 
+[**ProvidersMicrosoftEntraGroupsRetrieve**](ProvidersApi.md#ProvidersMicrosoftEntraGroupsRetrieve) | **Get** /providers/microsoft_entra_groups/{id}/ | 
+[**ProvidersMicrosoftEntraGroupsUpdate**](ProvidersApi.md#ProvidersMicrosoftEntraGroupsUpdate) | **Put** /providers/microsoft_entra_groups/{id}/ | 
+[**ProvidersMicrosoftEntraGroupsUsedByList**](ProvidersApi.md#ProvidersMicrosoftEntraGroupsUsedByList) | **Get** /providers/microsoft_entra_groups/{id}/used_by/ | 
+[**ProvidersMicrosoftEntraList**](ProvidersApi.md#ProvidersMicrosoftEntraList) | **Get** /providers/microsoft_entra/ | 
+[**ProvidersMicrosoftEntraPartialUpdate**](ProvidersApi.md#ProvidersMicrosoftEntraPartialUpdate) | **Patch** /providers/microsoft_entra/{id}/ | 
+[**ProvidersMicrosoftEntraRetrieve**](ProvidersApi.md#ProvidersMicrosoftEntraRetrieve) | **Get** /providers/microsoft_entra/{id}/ | 
+[**ProvidersMicrosoftEntraSyncStatusRetrieve**](ProvidersApi.md#ProvidersMicrosoftEntraSyncStatusRetrieve) | **Get** /providers/microsoft_entra/{id}/sync/status/ | 
+[**ProvidersMicrosoftEntraUpdate**](ProvidersApi.md#ProvidersMicrosoftEntraUpdate) | **Put** /providers/microsoft_entra/{id}/ | 
+[**ProvidersMicrosoftEntraUsedByList**](ProvidersApi.md#ProvidersMicrosoftEntraUsedByList) | **Get** /providers/microsoft_entra/{id}/used_by/ | 
+[**ProvidersMicrosoftEntraUsersCreate**](ProvidersApi.md#ProvidersMicrosoftEntraUsersCreate) | **Post** /providers/microsoft_entra_users/ | 
+[**ProvidersMicrosoftEntraUsersDestroy**](ProvidersApi.md#ProvidersMicrosoftEntraUsersDestroy) | **Delete** /providers/microsoft_entra_users/{id}/ | 
+[**ProvidersMicrosoftEntraUsersList**](ProvidersApi.md#ProvidersMicrosoftEntraUsersList) | **Get** /providers/microsoft_entra_users/ | 
+[**ProvidersMicrosoftEntraUsersPartialUpdate**](ProvidersApi.md#ProvidersMicrosoftEntraUsersPartialUpdate) | **Patch** /providers/microsoft_entra_users/{id}/ | 
+[**ProvidersMicrosoftEntraUsersRetrieve**](ProvidersApi.md#ProvidersMicrosoftEntraUsersRetrieve) | **Get** /providers/microsoft_entra_users/{id}/ | 
+[**ProvidersMicrosoftEntraUsersUpdate**](ProvidersApi.md#ProvidersMicrosoftEntraUsersUpdate) | **Put** /providers/microsoft_entra_users/{id}/ | 
+[**ProvidersMicrosoftEntraUsersUsedByList**](ProvidersApi.md#ProvidersMicrosoftEntraUsersUsedByList) | **Get** /providers/microsoft_entra_users/{id}/used_by/ | 
 [**ProvidersOauth2Create**](ProvidersApi.md#ProvidersOauth2Create) | **Post** /providers/oauth2/ | 
 [**ProvidersOauth2Destroy**](ProvidersApi.md#ProvidersOauth2Destroy) | **Delete** /providers/oauth2/{id}/ | 
 [**ProvidersOauth2List**](ProvidersApi.md#ProvidersOauth2List) | **Get** /providers/oauth2/ | 
@@ -422,7 +458,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersGoogleWorkspaceCreate
 
-> GoogleProvider ProvidersGoogleWorkspaceCreate(ctx).GoogleProviderRequest(googleProviderRequest).Execute()
+> GoogleWorkspaceProvider ProvidersGoogleWorkspaceCreate(ctx).GoogleWorkspaceProviderRequest(googleWorkspaceProviderRequest).Execute()
 
 
 
@@ -441,16 +477,16 @@ import (
 )
 
 func main() {
-    googleProviderRequest := *openapiclient.NewGoogleProviderRequest("Name_example", "DelegatedSubject_example", interface{}(123), "DefaultGroupEmailDomain_example") // GoogleProviderRequest | 
+    googleWorkspaceProviderRequest := *openapiclient.NewGoogleWorkspaceProviderRequest("Name_example", "DelegatedSubject_example", interface{}(123), "DefaultGroupEmailDomain_example") // GoogleWorkspaceProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceCreate(context.Background()).GoogleProviderRequest(googleProviderRequest).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceCreate(context.Background()).GoogleWorkspaceProviderRequest(googleWorkspaceProviderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ProvidersGoogleWorkspaceCreate`: GoogleProvider
+    // response from `ProvidersGoogleWorkspaceCreate`: GoogleWorkspaceProvider
     fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceCreate`: %v\n", resp)
 }
 ```
@@ -466,11 +502,11 @@ Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceCr
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **googleProviderRequest** | [**GoogleProviderRequest**](GoogleProviderRequest.md) |  | 
+ **googleWorkspaceProviderRequest** | [**GoogleWorkspaceProviderRequest**](GoogleWorkspaceProviderRequest.md) |  | 
 
 ### Return type
 
-[**GoogleProvider**](GoogleProvider.md)
+[**GoogleWorkspaceProvider**](GoogleWorkspaceProvider.md)
 
 ### Authorization
 
@@ -554,9 +590,505 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ProvidersGoogleWorkspaceGroupsCreate
+
+> GoogleWorkspaceProviderGroup ProvidersGoogleWorkspaceGroupsCreate(ctx).GoogleWorkspaceProviderGroupRequest(googleWorkspaceProviderGroupRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    googleWorkspaceProviderGroupRequest := *openapiclient.NewGoogleWorkspaceProviderGroupRequest("Group_example") // GoogleWorkspaceProviderGroupRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceGroupsCreate(context.Background()).GoogleWorkspaceProviderGroupRequest(googleWorkspaceProviderGroupRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceGroupsCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersGoogleWorkspaceGroupsCreate`: GoogleWorkspaceProviderGroup
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceGroupsCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceGroupsCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **googleWorkspaceProviderGroupRequest** | [**GoogleWorkspaceProviderGroupRequest**](GoogleWorkspaceProviderGroupRequest.md) |  | 
+
+### Return type
+
+[**GoogleWorkspaceProviderGroup**](GoogleWorkspaceProviderGroup.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceGroupsDestroy
+
+> ProvidersGoogleWorkspaceGroupsDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Group.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceGroupsDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceGroupsDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this Google Workspace Provider Group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceGroupsDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceGroupsList
+
+> PaginatedGoogleWorkspaceProviderGroupList ProvidersGoogleWorkspaceGroupsList(ctx).GroupGroupUuid(groupGroupUuid).GroupName(groupName).Ordering(ordering).Page(page).PageSize(pageSize).ProviderId(providerId).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    groupGroupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    groupName := "groupName_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    providerId := int32(56) // int32 |  (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceGroupsList(context.Background()).GroupGroupUuid(groupGroupUuid).GroupName(groupName).Ordering(ordering).Page(page).PageSize(pageSize).ProviderId(providerId).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceGroupsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersGoogleWorkspaceGroupsList`: PaginatedGoogleWorkspaceProviderGroupList
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceGroupsList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceGroupsListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupGroupUuid** | **string** |  | 
+ **groupName** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **providerId** | **int32** |  | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedGoogleWorkspaceProviderGroupList**](PaginatedGoogleWorkspaceProviderGroupList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceGroupsPartialUpdate
+
+> GoogleWorkspaceProviderGroup ProvidersGoogleWorkspaceGroupsPartialUpdate(ctx, id).PatchedGoogleWorkspaceProviderGroupRequest(patchedGoogleWorkspaceProviderGroupRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Group.
+    patchedGoogleWorkspaceProviderGroupRequest := *openapiclient.NewPatchedGoogleWorkspaceProviderGroupRequest() // PatchedGoogleWorkspaceProviderGroupRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceGroupsPartialUpdate(context.Background(), id).PatchedGoogleWorkspaceProviderGroupRequest(patchedGoogleWorkspaceProviderGroupRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceGroupsPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersGoogleWorkspaceGroupsPartialUpdate`: GoogleWorkspaceProviderGroup
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceGroupsPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this Google Workspace Provider Group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceGroupsPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedGoogleWorkspaceProviderGroupRequest** | [**PatchedGoogleWorkspaceProviderGroupRequest**](PatchedGoogleWorkspaceProviderGroupRequest.md) |  | 
+
+### Return type
+
+[**GoogleWorkspaceProviderGroup**](GoogleWorkspaceProviderGroup.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceGroupsRetrieve
+
+> GoogleWorkspaceProviderGroup ProvidersGoogleWorkspaceGroupsRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Group.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceGroupsRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceGroupsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersGoogleWorkspaceGroupsRetrieve`: GoogleWorkspaceProviderGroup
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceGroupsRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this Google Workspace Provider Group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceGroupsRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**GoogleWorkspaceProviderGroup**](GoogleWorkspaceProviderGroup.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceGroupsUpdate
+
+> GoogleWorkspaceProviderGroup ProvidersGoogleWorkspaceGroupsUpdate(ctx, id).GoogleWorkspaceProviderGroupRequest(googleWorkspaceProviderGroupRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Group.
+    googleWorkspaceProviderGroupRequest := *openapiclient.NewGoogleWorkspaceProviderGroupRequest("Group_example") // GoogleWorkspaceProviderGroupRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceGroupsUpdate(context.Background(), id).GoogleWorkspaceProviderGroupRequest(googleWorkspaceProviderGroupRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceGroupsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersGoogleWorkspaceGroupsUpdate`: GoogleWorkspaceProviderGroup
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceGroupsUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this Google Workspace Provider Group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceGroupsUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **googleWorkspaceProviderGroupRequest** | [**GoogleWorkspaceProviderGroupRequest**](GoogleWorkspaceProviderGroupRequest.md) |  | 
+
+### Return type
+
+[**GoogleWorkspaceProviderGroup**](GoogleWorkspaceProviderGroup.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceGroupsUsedByList
+
+> []UsedBy ProvidersGoogleWorkspaceGroupsUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Group.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceGroupsUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceGroupsUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersGoogleWorkspaceGroupsUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceGroupsUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this Google Workspace Provider Group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceGroupsUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ProvidersGoogleWorkspaceList
 
-> PaginatedGoogleProviderList ProvidersGoogleWorkspaceList(ctx).DelegatedSubject(delegatedSubject).ExcludeUsersServiceAccount(excludeUsersServiceAccount).FilterGroup(filterGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedGoogleWorkspaceProviderList ProvidersGoogleWorkspaceList(ctx).DelegatedSubject(delegatedSubject).ExcludeUsersServiceAccount(excludeUsersServiceAccount).FilterGroup(filterGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -591,7 +1123,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ProvidersGoogleWorkspaceList`: PaginatedGoogleProviderList
+    // response from `ProvidersGoogleWorkspaceList`: PaginatedGoogleWorkspaceProviderList
     fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceList`: %v\n", resp)
 }
 ```
@@ -618,7 +1150,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginatedGoogleProviderList**](PaginatedGoogleProviderList.md)
+[**PaginatedGoogleWorkspaceProviderList**](PaginatedGoogleWorkspaceProviderList.md)
 
 ### Authorization
 
@@ -636,7 +1168,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersGoogleWorkspacePartialUpdate
 
-> GoogleProvider ProvidersGoogleWorkspacePartialUpdate(ctx, id).PatchedGoogleProviderRequest(patchedGoogleProviderRequest).Execute()
+> GoogleWorkspaceProvider ProvidersGoogleWorkspacePartialUpdate(ctx, id).PatchedGoogleWorkspaceProviderRequest(patchedGoogleWorkspaceProviderRequest).Execute()
 
 
 
@@ -656,16 +1188,16 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this Google Workspace Provider.
-    patchedGoogleProviderRequest := *openapiclient.NewPatchedGoogleProviderRequest() // PatchedGoogleProviderRequest |  (optional)
+    patchedGoogleWorkspaceProviderRequest := *openapiclient.NewPatchedGoogleWorkspaceProviderRequest() // PatchedGoogleWorkspaceProviderRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspacePartialUpdate(context.Background(), id).PatchedGoogleProviderRequest(patchedGoogleProviderRequest).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspacePartialUpdate(context.Background(), id).PatchedGoogleWorkspaceProviderRequest(patchedGoogleWorkspaceProviderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspacePartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ProvidersGoogleWorkspacePartialUpdate`: GoogleProvider
+    // response from `ProvidersGoogleWorkspacePartialUpdate`: GoogleWorkspaceProvider
     fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspacePartialUpdate`: %v\n", resp)
 }
 ```
@@ -686,11 +1218,11 @@ Other parameters are passed through a pointer to a apiProvidersGoogleWorkspacePa
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **patchedGoogleProviderRequest** | [**PatchedGoogleProviderRequest**](PatchedGoogleProviderRequest.md) |  | 
+ **patchedGoogleWorkspaceProviderRequest** | [**PatchedGoogleWorkspaceProviderRequest**](PatchedGoogleWorkspaceProviderRequest.md) |  | 
 
 ### Return type
 
-[**GoogleProvider**](GoogleProvider.md)
+[**GoogleWorkspaceProvider**](GoogleWorkspaceProvider.md)
 
 ### Authorization
 
@@ -708,7 +1240,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersGoogleWorkspaceRetrieve
 
-> GoogleProvider ProvidersGoogleWorkspaceRetrieve(ctx, id).Execute()
+> GoogleWorkspaceProvider ProvidersGoogleWorkspaceRetrieve(ctx, id).Execute()
 
 
 
@@ -736,7 +1268,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ProvidersGoogleWorkspaceRetrieve`: GoogleProvider
+    // response from `ProvidersGoogleWorkspaceRetrieve`: GoogleWorkspaceProvider
     fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceRetrieve`: %v\n", resp)
 }
 ```
@@ -760,7 +1292,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GoogleProvider**](GoogleProvider.md)
+[**GoogleWorkspaceProvider**](GoogleWorkspaceProvider.md)
 
 ### Authorization
 
@@ -848,7 +1380,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersGoogleWorkspaceUpdate
 
-> GoogleProvider ProvidersGoogleWorkspaceUpdate(ctx, id).GoogleProviderRequest(googleProviderRequest).Execute()
+> GoogleWorkspaceProvider ProvidersGoogleWorkspaceUpdate(ctx, id).GoogleWorkspaceProviderRequest(googleWorkspaceProviderRequest).Execute()
 
 
 
@@ -868,16 +1400,16 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this Google Workspace Provider.
-    googleProviderRequest := *openapiclient.NewGoogleProviderRequest("Name_example", "DelegatedSubject_example", interface{}(123), "DefaultGroupEmailDomain_example") // GoogleProviderRequest | 
+    googleWorkspaceProviderRequest := *openapiclient.NewGoogleWorkspaceProviderRequest("Name_example", "DelegatedSubject_example", interface{}(123), "DefaultGroupEmailDomain_example") // GoogleWorkspaceProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceUpdate(context.Background(), id).GoogleProviderRequest(googleProviderRequest).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceUpdate(context.Background(), id).GoogleWorkspaceProviderRequest(googleWorkspaceProviderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ProvidersGoogleWorkspaceUpdate`: GoogleProvider
+    // response from `ProvidersGoogleWorkspaceUpdate`: GoogleWorkspaceProvider
     fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceUpdate`: %v\n", resp)
 }
 ```
@@ -898,11 +1430,11 @@ Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceUp
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **googleProviderRequest** | [**GoogleProviderRequest**](GoogleProviderRequest.md) |  | 
+ **googleWorkspaceProviderRequest** | [**GoogleWorkspaceProviderRequest**](GoogleWorkspaceProviderRequest.md) |  | 
 
 ### Return type
 
-[**GoogleProvider**](GoogleProvider.md)
+[**GoogleWorkspaceProvider**](GoogleWorkspaceProvider.md)
 
 ### Authorization
 
@@ -964,6 +1496,502 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceUsersCreate
+
+> GoogleWorkspaceProviderUser ProvidersGoogleWorkspaceUsersCreate(ctx).GoogleWorkspaceProviderUserRequest(googleWorkspaceProviderUserRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    googleWorkspaceProviderUserRequest := *openapiclient.NewGoogleWorkspaceProviderUserRequest(int32(123)) // GoogleWorkspaceProviderUserRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceUsersCreate(context.Background()).GoogleWorkspaceProviderUserRequest(googleWorkspaceProviderUserRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceUsersCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersGoogleWorkspaceUsersCreate`: GoogleWorkspaceProviderUser
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceUsersCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceUsersCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **googleWorkspaceProviderUserRequest** | [**GoogleWorkspaceProviderUserRequest**](GoogleWorkspaceProviderUserRequest.md) |  | 
+
+### Return type
+
+[**GoogleWorkspaceProviderUser**](GoogleWorkspaceProviderUser.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceUsersDestroy
+
+> ProvidersGoogleWorkspaceUsersDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider User.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceUsersDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceUsersDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this Google Workspace Provider User. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceUsersDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceUsersList
+
+> PaginatedGoogleWorkspaceProviderUserList ProvidersGoogleWorkspaceUsersList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).ProviderId(providerId).Search(search).UserId(userId).UserUsername(userUsername).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    providerId := int32(56) // int32 |  (optional)
+    search := "search_example" // string | A search term. (optional)
+    userId := int32(56) // int32 |  (optional)
+    userUsername := "userUsername_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceUsersList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).ProviderId(providerId).Search(search).UserId(userId).UserUsername(userUsername).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceUsersList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersGoogleWorkspaceUsersList`: PaginatedGoogleWorkspaceProviderUserList
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceUsersList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceUsersListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **providerId** | **int32** |  | 
+ **search** | **string** | A search term. | 
+ **userId** | **int32** |  | 
+ **userUsername** | **string** |  | 
+
+### Return type
+
+[**PaginatedGoogleWorkspaceProviderUserList**](PaginatedGoogleWorkspaceProviderUserList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceUsersPartialUpdate
+
+> GoogleWorkspaceProviderUser ProvidersGoogleWorkspaceUsersPartialUpdate(ctx, id).PatchedGoogleWorkspaceProviderUserRequest(patchedGoogleWorkspaceProviderUserRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider User.
+    patchedGoogleWorkspaceProviderUserRequest := *openapiclient.NewPatchedGoogleWorkspaceProviderUserRequest() // PatchedGoogleWorkspaceProviderUserRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceUsersPartialUpdate(context.Background(), id).PatchedGoogleWorkspaceProviderUserRequest(patchedGoogleWorkspaceProviderUserRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceUsersPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersGoogleWorkspaceUsersPartialUpdate`: GoogleWorkspaceProviderUser
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceUsersPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this Google Workspace Provider User. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceUsersPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedGoogleWorkspaceProviderUserRequest** | [**PatchedGoogleWorkspaceProviderUserRequest**](PatchedGoogleWorkspaceProviderUserRequest.md) |  | 
+
+### Return type
+
+[**GoogleWorkspaceProviderUser**](GoogleWorkspaceProviderUser.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceUsersRetrieve
+
+> GoogleWorkspaceProviderUser ProvidersGoogleWorkspaceUsersRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider User.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceUsersRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceUsersRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersGoogleWorkspaceUsersRetrieve`: GoogleWorkspaceProviderUser
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceUsersRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this Google Workspace Provider User. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceUsersRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**GoogleWorkspaceProviderUser**](GoogleWorkspaceProviderUser.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceUsersUpdate
+
+> GoogleWorkspaceProviderUser ProvidersGoogleWorkspaceUsersUpdate(ctx, id).GoogleWorkspaceProviderUserRequest(googleWorkspaceProviderUserRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider User.
+    googleWorkspaceProviderUserRequest := *openapiclient.NewGoogleWorkspaceProviderUserRequest(int32(123)) // GoogleWorkspaceProviderUserRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceUsersUpdate(context.Background(), id).GoogleWorkspaceProviderUserRequest(googleWorkspaceProviderUserRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceUsersUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersGoogleWorkspaceUsersUpdate`: GoogleWorkspaceProviderUser
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceUsersUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this Google Workspace Provider User. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceUsersUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **googleWorkspaceProviderUserRequest** | [**GoogleWorkspaceProviderUserRequest**](GoogleWorkspaceProviderUserRequest.md) |  | 
+
+### Return type
+
+[**GoogleWorkspaceProviderUser**](GoogleWorkspaceProviderUser.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceUsersUsedByList
+
+> []UsedBy ProvidersGoogleWorkspaceUsersUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider User.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceUsersUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceUsersUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersGoogleWorkspaceUsersUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceUsersUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this Google Workspace Provider User. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceUsersUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1476,6 +2504,1564 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiProvidersLdapUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraCreate
+
+> MicrosoftEntraProvider ProvidersMicrosoftEntraCreate(ctx).MicrosoftEntraProviderRequest(microsoftEntraProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    microsoftEntraProviderRequest := *openapiclient.NewMicrosoftEntraProviderRequest("Name_example", "ClientId_example", "ClientSecret_example", "TenantId_example") // MicrosoftEntraProviderRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraCreate(context.Background()).MicrosoftEntraProviderRequest(microsoftEntraProviderRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersMicrosoftEntraCreate`: MicrosoftEntraProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersMicrosoftEntraCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **microsoftEntraProviderRequest** | [**MicrosoftEntraProviderRequest**](MicrosoftEntraProviderRequest.md) |  | 
+
+### Return type
+
+[**MicrosoftEntraProvider**](MicrosoftEntraProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraDestroy
+
+> ProvidersMicrosoftEntraDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Microsoft Entra Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Microsoft Entra Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraGroupsCreate
+
+> MicrosoftEntraProviderGroup ProvidersMicrosoftEntraGroupsCreate(ctx).MicrosoftEntraProviderGroupRequest(microsoftEntraProviderGroupRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    microsoftEntraProviderGroupRequest := *openapiclient.NewMicrosoftEntraProviderGroupRequest("Group_example") // MicrosoftEntraProviderGroupRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraGroupsCreate(context.Background()).MicrosoftEntraProviderGroupRequest(microsoftEntraProviderGroupRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraGroupsCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersMicrosoftEntraGroupsCreate`: MicrosoftEntraProviderGroup
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersMicrosoftEntraGroupsCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraGroupsCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **microsoftEntraProviderGroupRequest** | [**MicrosoftEntraProviderGroupRequest**](MicrosoftEntraProviderGroupRequest.md) |  | 
+
+### Return type
+
+[**MicrosoftEntraProviderGroup**](MicrosoftEntraProviderGroup.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraGroupsDestroy
+
+> ProvidersMicrosoftEntraGroupsDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider Group.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraGroupsDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraGroupsDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this Microsoft Entra Provider Group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraGroupsDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraGroupsList
+
+> PaginatedMicrosoftEntraProviderGroupList ProvidersMicrosoftEntraGroupsList(ctx).GroupGroupUuid(groupGroupUuid).GroupName(groupName).Ordering(ordering).Page(page).PageSize(pageSize).ProviderId(providerId).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    groupGroupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    groupName := "groupName_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    providerId := int32(56) // int32 |  (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraGroupsList(context.Background()).GroupGroupUuid(groupGroupUuid).GroupName(groupName).Ordering(ordering).Page(page).PageSize(pageSize).ProviderId(providerId).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraGroupsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersMicrosoftEntraGroupsList`: PaginatedMicrosoftEntraProviderGroupList
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersMicrosoftEntraGroupsList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraGroupsListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupGroupUuid** | **string** |  | 
+ **groupName** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **providerId** | **int32** |  | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedMicrosoftEntraProviderGroupList**](PaginatedMicrosoftEntraProviderGroupList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraGroupsPartialUpdate
+
+> MicrosoftEntraProviderGroup ProvidersMicrosoftEntraGroupsPartialUpdate(ctx, id).PatchedMicrosoftEntraProviderGroupRequest(patchedMicrosoftEntraProviderGroupRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider Group.
+    patchedMicrosoftEntraProviderGroupRequest := *openapiclient.NewPatchedMicrosoftEntraProviderGroupRequest() // PatchedMicrosoftEntraProviderGroupRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraGroupsPartialUpdate(context.Background(), id).PatchedMicrosoftEntraProviderGroupRequest(patchedMicrosoftEntraProviderGroupRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraGroupsPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersMicrosoftEntraGroupsPartialUpdate`: MicrosoftEntraProviderGroup
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersMicrosoftEntraGroupsPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this Microsoft Entra Provider Group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraGroupsPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedMicrosoftEntraProviderGroupRequest** | [**PatchedMicrosoftEntraProviderGroupRequest**](PatchedMicrosoftEntraProviderGroupRequest.md) |  | 
+
+### Return type
+
+[**MicrosoftEntraProviderGroup**](MicrosoftEntraProviderGroup.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraGroupsRetrieve
+
+> MicrosoftEntraProviderGroup ProvidersMicrosoftEntraGroupsRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider Group.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraGroupsRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraGroupsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersMicrosoftEntraGroupsRetrieve`: MicrosoftEntraProviderGroup
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersMicrosoftEntraGroupsRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this Microsoft Entra Provider Group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraGroupsRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**MicrosoftEntraProviderGroup**](MicrosoftEntraProviderGroup.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraGroupsUpdate
+
+> MicrosoftEntraProviderGroup ProvidersMicrosoftEntraGroupsUpdate(ctx, id).MicrosoftEntraProviderGroupRequest(microsoftEntraProviderGroupRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider Group.
+    microsoftEntraProviderGroupRequest := *openapiclient.NewMicrosoftEntraProviderGroupRequest("Group_example") // MicrosoftEntraProviderGroupRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraGroupsUpdate(context.Background(), id).MicrosoftEntraProviderGroupRequest(microsoftEntraProviderGroupRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraGroupsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersMicrosoftEntraGroupsUpdate`: MicrosoftEntraProviderGroup
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersMicrosoftEntraGroupsUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this Microsoft Entra Provider Group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraGroupsUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **microsoftEntraProviderGroupRequest** | [**MicrosoftEntraProviderGroupRequest**](MicrosoftEntraProviderGroupRequest.md) |  | 
+
+### Return type
+
+[**MicrosoftEntraProviderGroup**](MicrosoftEntraProviderGroup.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraGroupsUsedByList
+
+> []UsedBy ProvidersMicrosoftEntraGroupsUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider Group.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraGroupsUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraGroupsUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersMicrosoftEntraGroupsUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersMicrosoftEntraGroupsUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this Microsoft Entra Provider Group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraGroupsUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraList
+
+> PaginatedMicrosoftEntraProviderList ProvidersMicrosoftEntraList(ctx).ExcludeUsersServiceAccount(excludeUsersServiceAccount).FilterGroup(filterGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    excludeUsersServiceAccount := true // bool |  (optional)
+    filterGroup := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraList(context.Background()).ExcludeUsersServiceAccount(excludeUsersServiceAccount).FilterGroup(filterGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersMicrosoftEntraList`: PaginatedMicrosoftEntraProviderList
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersMicrosoftEntraList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **excludeUsersServiceAccount** | **bool** |  | 
+ **filterGroup** | **string** |  | 
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedMicrosoftEntraProviderList**](PaginatedMicrosoftEntraProviderList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraPartialUpdate
+
+> MicrosoftEntraProvider ProvidersMicrosoftEntraPartialUpdate(ctx, id).PatchedMicrosoftEntraProviderRequest(patchedMicrosoftEntraProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Microsoft Entra Provider.
+    patchedMicrosoftEntraProviderRequest := *openapiclient.NewPatchedMicrosoftEntraProviderRequest() // PatchedMicrosoftEntraProviderRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraPartialUpdate(context.Background(), id).PatchedMicrosoftEntraProviderRequest(patchedMicrosoftEntraProviderRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersMicrosoftEntraPartialUpdate`: MicrosoftEntraProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersMicrosoftEntraPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Microsoft Entra Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedMicrosoftEntraProviderRequest** | [**PatchedMicrosoftEntraProviderRequest**](PatchedMicrosoftEntraProviderRequest.md) |  | 
+
+### Return type
+
+[**MicrosoftEntraProvider**](MicrosoftEntraProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraRetrieve
+
+> MicrosoftEntraProvider ProvidersMicrosoftEntraRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Microsoft Entra Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersMicrosoftEntraRetrieve`: MicrosoftEntraProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersMicrosoftEntraRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Microsoft Entra Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**MicrosoftEntraProvider**](MicrosoftEntraProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraSyncStatusRetrieve
+
+> SyncStatus ProvidersMicrosoftEntraSyncStatusRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Microsoft Entra Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraSyncStatusRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraSyncStatusRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersMicrosoftEntraSyncStatusRetrieve`: SyncStatus
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersMicrosoftEntraSyncStatusRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Microsoft Entra Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraSyncStatusRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SyncStatus**](SyncStatus.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraUpdate
+
+> MicrosoftEntraProvider ProvidersMicrosoftEntraUpdate(ctx, id).MicrosoftEntraProviderRequest(microsoftEntraProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Microsoft Entra Provider.
+    microsoftEntraProviderRequest := *openapiclient.NewMicrosoftEntraProviderRequest("Name_example", "ClientId_example", "ClientSecret_example", "TenantId_example") // MicrosoftEntraProviderRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraUpdate(context.Background(), id).MicrosoftEntraProviderRequest(microsoftEntraProviderRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersMicrosoftEntraUpdate`: MicrosoftEntraProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersMicrosoftEntraUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Microsoft Entra Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **microsoftEntraProviderRequest** | [**MicrosoftEntraProviderRequest**](MicrosoftEntraProviderRequest.md) |  | 
+
+### Return type
+
+[**MicrosoftEntraProvider**](MicrosoftEntraProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraUsedByList
+
+> []UsedBy ProvidersMicrosoftEntraUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Microsoft Entra Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersMicrosoftEntraUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersMicrosoftEntraUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Microsoft Entra Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraUsersCreate
+
+> MicrosoftEntraProviderUser ProvidersMicrosoftEntraUsersCreate(ctx).MicrosoftEntraProviderUserRequest(microsoftEntraProviderUserRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    microsoftEntraProviderUserRequest := *openapiclient.NewMicrosoftEntraProviderUserRequest(int32(123)) // MicrosoftEntraProviderUserRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraUsersCreate(context.Background()).MicrosoftEntraProviderUserRequest(microsoftEntraProviderUserRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraUsersCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersMicrosoftEntraUsersCreate`: MicrosoftEntraProviderUser
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersMicrosoftEntraUsersCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraUsersCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **microsoftEntraProviderUserRequest** | [**MicrosoftEntraProviderUserRequest**](MicrosoftEntraProviderUserRequest.md) |  | 
+
+### Return type
+
+[**MicrosoftEntraProviderUser**](MicrosoftEntraProviderUser.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraUsersDestroy
+
+> ProvidersMicrosoftEntraUsersDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider User.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraUsersDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraUsersDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this Microsoft Entra Provider User. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraUsersDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraUsersList
+
+> PaginatedMicrosoftEntraProviderUserList ProvidersMicrosoftEntraUsersList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).ProviderId(providerId).Search(search).UserId(userId).UserUsername(userUsername).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    providerId := int32(56) // int32 |  (optional)
+    search := "search_example" // string | A search term. (optional)
+    userId := int32(56) // int32 |  (optional)
+    userUsername := "userUsername_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraUsersList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).ProviderId(providerId).Search(search).UserId(userId).UserUsername(userUsername).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraUsersList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersMicrosoftEntraUsersList`: PaginatedMicrosoftEntraProviderUserList
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersMicrosoftEntraUsersList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraUsersListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **providerId** | **int32** |  | 
+ **search** | **string** | A search term. | 
+ **userId** | **int32** |  | 
+ **userUsername** | **string** |  | 
+
+### Return type
+
+[**PaginatedMicrosoftEntraProviderUserList**](PaginatedMicrosoftEntraProviderUserList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraUsersPartialUpdate
+
+> MicrosoftEntraProviderUser ProvidersMicrosoftEntraUsersPartialUpdate(ctx, id).PatchedMicrosoftEntraProviderUserRequest(patchedMicrosoftEntraProviderUserRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider User.
+    patchedMicrosoftEntraProviderUserRequest := *openapiclient.NewPatchedMicrosoftEntraProviderUserRequest() // PatchedMicrosoftEntraProviderUserRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraUsersPartialUpdate(context.Background(), id).PatchedMicrosoftEntraProviderUserRequest(patchedMicrosoftEntraProviderUserRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraUsersPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersMicrosoftEntraUsersPartialUpdate`: MicrosoftEntraProviderUser
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersMicrosoftEntraUsersPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this Microsoft Entra Provider User. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraUsersPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedMicrosoftEntraProviderUserRequest** | [**PatchedMicrosoftEntraProviderUserRequest**](PatchedMicrosoftEntraProviderUserRequest.md) |  | 
+
+### Return type
+
+[**MicrosoftEntraProviderUser**](MicrosoftEntraProviderUser.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraUsersRetrieve
+
+> MicrosoftEntraProviderUser ProvidersMicrosoftEntraUsersRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider User.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraUsersRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraUsersRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersMicrosoftEntraUsersRetrieve`: MicrosoftEntraProviderUser
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersMicrosoftEntraUsersRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this Microsoft Entra Provider User. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraUsersRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**MicrosoftEntraProviderUser**](MicrosoftEntraProviderUser.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraUsersUpdate
+
+> MicrosoftEntraProviderUser ProvidersMicrosoftEntraUsersUpdate(ctx, id).MicrosoftEntraProviderUserRequest(microsoftEntraProviderUserRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider User.
+    microsoftEntraProviderUserRequest := *openapiclient.NewMicrosoftEntraProviderUserRequest(int32(123)) // MicrosoftEntraProviderUserRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraUsersUpdate(context.Background(), id).MicrosoftEntraProviderUserRequest(microsoftEntraProviderUserRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraUsersUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersMicrosoftEntraUsersUpdate`: MicrosoftEntraProviderUser
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersMicrosoftEntraUsersUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this Microsoft Entra Provider User. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraUsersUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **microsoftEntraProviderUserRequest** | [**MicrosoftEntraProviderUserRequest**](MicrosoftEntraProviderUserRequest.md) |  | 
+
+### Return type
+
+[**MicrosoftEntraProviderUser**](MicrosoftEntraProviderUser.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraUsersUsedByList
+
+> []UsedBy ProvidersMicrosoftEntraUsersUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider User.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraUsersUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraUsersUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersMicrosoftEntraUsersUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersMicrosoftEntraUsersUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this Microsoft Entra Provider User. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraUsersUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

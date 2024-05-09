@@ -18,20 +18,21 @@ import (
 
 // ModelRequest - struct for ModelRequest
 type ModelRequest struct {
-	GoogleProviderRequest *GoogleProviderRequest
-	LDAPProviderRequest   *LDAPProviderRequest
-	OAuth2ProviderRequest *OAuth2ProviderRequest
-	ProxyProviderRequest  *ProxyProviderRequest
-	RACProviderRequest    *RACProviderRequest
-	RadiusProviderRequest *RadiusProviderRequest
-	SAMLProviderRequest   *SAMLProviderRequest
-	SCIMProviderRequest   *SCIMProviderRequest
+	GoogleWorkspaceProviderRequest *GoogleWorkspaceProviderRequest
+	LDAPProviderRequest            *LDAPProviderRequest
+	MicrosoftEntraProviderRequest  *MicrosoftEntraProviderRequest
+	OAuth2ProviderRequest          *OAuth2ProviderRequest
+	ProxyProviderRequest           *ProxyProviderRequest
+	RACProviderRequest             *RACProviderRequest
+	RadiusProviderRequest          *RadiusProviderRequest
+	SAMLProviderRequest            *SAMLProviderRequest
+	SCIMProviderRequest            *SCIMProviderRequest
 }
 
-// GoogleProviderRequestAsModelRequest is a convenience function that returns GoogleProviderRequest wrapped in ModelRequest
-func GoogleProviderRequestAsModelRequest(v *GoogleProviderRequest) ModelRequest {
+// GoogleWorkspaceProviderRequestAsModelRequest is a convenience function that returns GoogleWorkspaceProviderRequest wrapped in ModelRequest
+func GoogleWorkspaceProviderRequestAsModelRequest(v *GoogleWorkspaceProviderRequest) ModelRequest {
 	return ModelRequest{
-		GoogleProviderRequest: v,
+		GoogleWorkspaceProviderRequest: v,
 	}
 }
 
@@ -39,6 +40,13 @@ func GoogleProviderRequestAsModelRequest(v *GoogleProviderRequest) ModelRequest 
 func LDAPProviderRequestAsModelRequest(v *LDAPProviderRequest) ModelRequest {
 	return ModelRequest{
 		LDAPProviderRequest: v,
+	}
+}
+
+// MicrosoftEntraProviderRequestAsModelRequest is a convenience function that returns MicrosoftEntraProviderRequest wrapped in ModelRequest
+func MicrosoftEntraProviderRequestAsModelRequest(v *MicrosoftEntraProviderRequest) ModelRequest {
+	return ModelRequest{
+		MicrosoftEntraProviderRequest: v,
 	}
 }
 
@@ -94,15 +102,15 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 		return fmt.Errorf("Failed to unmarshal JSON into map for the discriminator lookup.")
 	}
 
-	// check if the discriminator value is 'GoogleProviderRequest'
-	if jsonDict["provider_model"] == "GoogleProviderRequest" {
-		// try to unmarshal JSON data into GoogleProviderRequest
-		err = json.Unmarshal(data, &dst.GoogleProviderRequest)
+	// check if the discriminator value is 'GoogleWorkspaceProviderRequest'
+	if jsonDict["provider_model"] == "GoogleWorkspaceProviderRequest" {
+		// try to unmarshal JSON data into GoogleWorkspaceProviderRequest
+		err = json.Unmarshal(data, &dst.GoogleWorkspaceProviderRequest)
 		if err == nil {
-			return nil // data stored in dst.GoogleProviderRequest, return on the first match
+			return nil // data stored in dst.GoogleWorkspaceProviderRequest, return on the first match
 		} else {
-			dst.GoogleProviderRequest = nil
-			return fmt.Errorf("Failed to unmarshal ModelRequest as GoogleProviderRequest: %s", err.Error())
+			dst.GoogleWorkspaceProviderRequest = nil
+			return fmt.Errorf("Failed to unmarshal ModelRequest as GoogleWorkspaceProviderRequest: %s", err.Error())
 		}
 	}
 
@@ -115,6 +123,18 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.LDAPProviderRequest = nil
 			return fmt.Errorf("Failed to unmarshal ModelRequest as LDAPProviderRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'MicrosoftEntraProviderRequest'
+	if jsonDict["provider_model"] == "MicrosoftEntraProviderRequest" {
+		// try to unmarshal JSON data into MicrosoftEntraProviderRequest
+		err = json.Unmarshal(data, &dst.MicrosoftEntraProviderRequest)
+		if err == nil {
+			return nil // data stored in dst.MicrosoftEntraProviderRequest, return on the first match
+		} else {
+			dst.MicrosoftEntraProviderRequest = nil
+			return fmt.Errorf("Failed to unmarshal ModelRequest as MicrosoftEntraProviderRequest: %s", err.Error())
 		}
 	}
 
@@ -192,13 +212,13 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 
 	// check if the discriminator value is 'authentik_providers_google_workspace.googleworkspaceprovider'
 	if jsonDict["provider_model"] == "authentik_providers_google_workspace.googleworkspaceprovider" {
-		// try to unmarshal JSON data into GoogleProviderRequest
-		err = json.Unmarshal(data, &dst.GoogleProviderRequest)
+		// try to unmarshal JSON data into GoogleWorkspaceProviderRequest
+		err = json.Unmarshal(data, &dst.GoogleWorkspaceProviderRequest)
 		if err == nil {
-			return nil // data stored in dst.GoogleProviderRequest, return on the first match
+			return nil // data stored in dst.GoogleWorkspaceProviderRequest, return on the first match
 		} else {
-			dst.GoogleProviderRequest = nil
-			return fmt.Errorf("Failed to unmarshal ModelRequest as GoogleProviderRequest: %s", err.Error())
+			dst.GoogleWorkspaceProviderRequest = nil
+			return fmt.Errorf("Failed to unmarshal ModelRequest as GoogleWorkspaceProviderRequest: %s", err.Error())
 		}
 	}
 
@@ -211,6 +231,18 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.LDAPProviderRequest = nil
 			return fmt.Errorf("Failed to unmarshal ModelRequest as LDAPProviderRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'authentik_providers_microsoft_entra.microsoftentraprovider'
+	if jsonDict["provider_model"] == "authentik_providers_microsoft_entra.microsoftentraprovider" {
+		// try to unmarshal JSON data into MicrosoftEntraProviderRequest
+		err = json.Unmarshal(data, &dst.MicrosoftEntraProviderRequest)
+		if err == nil {
+			return nil // data stored in dst.MicrosoftEntraProviderRequest, return on the first match
+		} else {
+			dst.MicrosoftEntraProviderRequest = nil
+			return fmt.Errorf("Failed to unmarshal ModelRequest as MicrosoftEntraProviderRequest: %s", err.Error())
 		}
 	}
 
@@ -291,12 +323,16 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src ModelRequest) MarshalJSON() ([]byte, error) {
-	if src.GoogleProviderRequest != nil {
-		return json.Marshal(&src.GoogleProviderRequest)
+	if src.GoogleWorkspaceProviderRequest != nil {
+		return json.Marshal(&src.GoogleWorkspaceProviderRequest)
 	}
 
 	if src.LDAPProviderRequest != nil {
 		return json.Marshal(&src.LDAPProviderRequest)
+	}
+
+	if src.MicrosoftEntraProviderRequest != nil {
+		return json.Marshal(&src.MicrosoftEntraProviderRequest)
 	}
 
 	if src.OAuth2ProviderRequest != nil {
@@ -331,12 +367,16 @@ func (obj *ModelRequest) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
-	if obj.GoogleProviderRequest != nil {
-		return obj.GoogleProviderRequest
+	if obj.GoogleWorkspaceProviderRequest != nil {
+		return obj.GoogleWorkspaceProviderRequest
 	}
 
 	if obj.LDAPProviderRequest != nil {
 		return obj.LDAPProviderRequest
+	}
+
+	if obj.MicrosoftEntraProviderRequest != nil {
+		return obj.MicrosoftEntraProviderRequest
 	}
 
 	if obj.OAuth2ProviderRequest != nil {

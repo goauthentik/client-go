@@ -15581,7 +15581,7 @@ paths:
       - propertymappings
   /propertymappings/provider/google_workspace/:
     get:
-      description: GoogleProviderMapping Viewset
+      description: GoogleWorkspaceProviderMapping Viewset
       operationId: propertymappings_provider_google_workspace_list
       parameters:
       - explode: true
@@ -15652,7 +15652,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedGoogleProviderMappingList'
+                $ref: '#/components/schemas/PaginatedGoogleWorkspaceProviderMappingList'
           description: ""
         "400":
           content:
@@ -15671,20 +15671,20 @@ paths:
       tags:
       - propertymappings
     post:
-      description: GoogleProviderMapping Viewset
+      description: GoogleWorkspaceProviderMapping Viewset
       operationId: propertymappings_provider_google_workspace_create
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GoogleProviderMappingRequest'
+              $ref: '#/components/schemas/GoogleWorkspaceProviderMappingRequest'
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GoogleProviderMapping'
+                $ref: '#/components/schemas/GoogleWorkspaceProviderMapping'
           description: ""
         "400":
           content:
@@ -15704,7 +15704,7 @@ paths:
       - propertymappings
   /propertymappings/provider/google_workspace/{pm_uuid}/:
     delete:
-      description: GoogleProviderMapping Viewset
+      description: GoogleWorkspaceProviderMapping Viewset
       operationId: propertymappings_provider_google_workspace_destroy
       parameters:
       - description: A UUID string identifying this Google Workspace Provider Mapping.
@@ -15736,7 +15736,7 @@ paths:
       tags:
       - propertymappings
     get:
-      description: GoogleProviderMapping Viewset
+      description: GoogleWorkspaceProviderMapping Viewset
       operationId: propertymappings_provider_google_workspace_retrieve
       parameters:
       - description: A UUID string identifying this Google Workspace Provider Mapping.
@@ -15753,7 +15753,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GoogleProviderMapping'
+                $ref: '#/components/schemas/GoogleWorkspaceProviderMapping'
           description: ""
         "400":
           content:
@@ -15772,7 +15772,7 @@ paths:
       tags:
       - propertymappings
     patch:
-      description: GoogleProviderMapping Viewset
+      description: GoogleWorkspaceProviderMapping Viewset
       operationId: propertymappings_provider_google_workspace_partial_update
       parameters:
       - description: A UUID string identifying this Google Workspace Provider Mapping.
@@ -15788,13 +15788,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedGoogleProviderMappingRequest'
+              $ref: '#/components/schemas/PatchedGoogleWorkspaceProviderMappingRequest'
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GoogleProviderMapping'
+                $ref: '#/components/schemas/GoogleWorkspaceProviderMapping'
           description: ""
         "400":
           content:
@@ -15813,7 +15813,7 @@ paths:
       tags:
       - propertymappings
     put:
-      description: GoogleProviderMapping Viewset
+      description: GoogleWorkspaceProviderMapping Viewset
       operationId: propertymappings_provider_google_workspace_update
       parameters:
       - description: A UUID string identifying this Google Workspace Provider Mapping.
@@ -15829,14 +15829,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GoogleProviderMappingRequest'
+              $ref: '#/components/schemas/GoogleWorkspaceProviderMappingRequest'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GoogleProviderMapping'
+                $ref: '#/components/schemas/GoogleWorkspaceProviderMapping'
           description: ""
         "400":
           content:
@@ -15860,6 +15860,320 @@ paths:
       operationId: propertymappings_provider_google_workspace_used_by_list
       parameters:
       - description: A UUID string identifying this Google Workspace Provider Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+  /propertymappings/provider/microsoft_entra/:
+    get:
+      description: MicrosoftEntraProviderMapping Viewset
+      operationId: propertymappings_provider_microsoft_entra_list
+      parameters:
+      - explode: true
+        in: query
+        name: expression
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: managed
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: pm_uuid
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedMicrosoftEntraProviderMappingList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    post:
+      description: MicrosoftEntraProviderMapping Viewset
+      operationId: propertymappings_provider_microsoft_entra_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MicrosoftEntraProviderMappingRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrosoftEntraProviderMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+  /propertymappings/provider/microsoft_entra/{pm_uuid}/:
+    delete:
+      description: MicrosoftEntraProviderMapping Viewset
+      operationId: propertymappings_provider_microsoft_entra_destroy
+      parameters:
+      - description: A UUID string identifying this Microsoft Entra Provider Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    get:
+      description: MicrosoftEntraProviderMapping Viewset
+      operationId: propertymappings_provider_microsoft_entra_retrieve
+      parameters:
+      - description: A UUID string identifying this Microsoft Entra Provider Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrosoftEntraProviderMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    patch:
+      description: MicrosoftEntraProviderMapping Viewset
+      operationId: propertymappings_provider_microsoft_entra_partial_update
+      parameters:
+      - description: A UUID string identifying this Microsoft Entra Provider Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedMicrosoftEntraProviderMappingRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrosoftEntraProviderMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    put:
+      description: MicrosoftEntraProviderMapping Viewset
+      operationId: propertymappings_provider_microsoft_entra_update
+      parameters:
+      - description: A UUID string identifying this Microsoft Entra Provider Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MicrosoftEntraProviderMappingRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrosoftEntraProviderMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+  /propertymappings/provider/microsoft_entra/{pm_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: propertymappings_provider_microsoft_entra_used_by_list
+      parameters:
+      - description: A UUID string identifying this Microsoft Entra Provider Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -17350,7 +17664,7 @@ paths:
       - providers
   /providers/google_workspace/:
     get:
-      description: GoogleProvider Viewset
+      description: GoogleWorkspaceProvider Viewset
       operationId: providers_google_workspace_list
       parameters:
       - explode: true
@@ -17419,7 +17733,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedGoogleProviderList'
+                $ref: '#/components/schemas/PaginatedGoogleWorkspaceProviderList'
           description: ""
         "400":
           content:
@@ -17438,20 +17752,20 @@ paths:
       tags:
       - providers
     post:
-      description: GoogleProvider Viewset
+      description: GoogleWorkspaceProvider Viewset
       operationId: providers_google_workspace_create
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GoogleProviderRequest'
+              $ref: '#/components/schemas/GoogleWorkspaceProviderRequest'
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GoogleProvider'
+                $ref: '#/components/schemas/GoogleWorkspaceProvider'
           description: ""
         "400":
           content:
@@ -17471,7 +17785,7 @@ paths:
       - providers
   /providers/google_workspace/{id}/:
     delete:
-      description: GoogleProvider Viewset
+      description: GoogleWorkspaceProvider Viewset
       operationId: providers_google_workspace_destroy
       parameters:
       - description: A unique integer value identifying this Google Workspace Provider.
@@ -17502,7 +17816,7 @@ paths:
       tags:
       - providers
     get:
-      description: GoogleProvider Viewset
+      description: GoogleWorkspaceProvider Viewset
       operationId: providers_google_workspace_retrieve
       parameters:
       - description: A unique integer value identifying this Google Workspace Provider.
@@ -17518,7 +17832,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GoogleProvider'
+                $ref: '#/components/schemas/GoogleWorkspaceProvider'
           description: ""
         "400":
           content:
@@ -17537,7 +17851,7 @@ paths:
       tags:
       - providers
     patch:
-      description: GoogleProvider Viewset
+      description: GoogleWorkspaceProvider Viewset
       operationId: providers_google_workspace_partial_update
       parameters:
       - description: A unique integer value identifying this Google Workspace Provider.
@@ -17552,13 +17866,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedGoogleProviderRequest'
+              $ref: '#/components/schemas/PatchedGoogleWorkspaceProviderRequest'
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GoogleProvider'
+                $ref: '#/components/schemas/GoogleWorkspaceProvider'
           description: ""
         "400":
           content:
@@ -17577,7 +17891,7 @@ paths:
       tags:
       - providers
     put:
-      description: GoogleProvider Viewset
+      description: GoogleWorkspaceProvider Viewset
       operationId: providers_google_workspace_update
       parameters:
       - description: A unique integer value identifying this Google Workspace Provider.
@@ -17592,14 +17906,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GoogleProviderRequest'
+              $ref: '#/components/schemas/GoogleWorkspaceProviderRequest'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GoogleProvider'
+                $ref: '#/components/schemas/GoogleWorkspaceProvider'
           description: ""
         "400":
           content:
@@ -17667,6 +17981,615 @@ paths:
         required: true
         schema:
           type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/google_workspace_groups/:
+    get:
+      description: GoogleWorkspaceProviderGroup Viewset
+      operationId: providers_google_workspace_groups_list
+      parameters:
+      - explode: true
+        in: query
+        name: group__group_uuid
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: group__name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: provider__id
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedGoogleWorkspaceProviderGroupList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    post:
+      description: GoogleWorkspaceProviderGroup Viewset
+      operationId: providers_google_workspace_groups_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleWorkspaceProviderGroupRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleWorkspaceProviderGroup'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/google_workspace_groups/{id}/:
+    delete:
+      description: GoogleWorkspaceProviderGroup Viewset
+      operationId: providers_google_workspace_groups_destroy
+      parameters:
+      - description: A UUID string identifying this Google Workspace Provider Group.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    get:
+      description: GoogleWorkspaceProviderGroup Viewset
+      operationId: providers_google_workspace_groups_retrieve
+      parameters:
+      - description: A UUID string identifying this Google Workspace Provider Group.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleWorkspaceProviderGroup'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    patch:
+      description: GoogleWorkspaceProviderGroup Viewset
+      operationId: providers_google_workspace_groups_partial_update
+      parameters:
+      - description: A UUID string identifying this Google Workspace Provider Group.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedGoogleWorkspaceProviderGroupRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleWorkspaceProviderGroup'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    put:
+      description: GoogleWorkspaceProviderGroup Viewset
+      operationId: providers_google_workspace_groups_update
+      parameters:
+      - description: A UUID string identifying this Google Workspace Provider Group.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleWorkspaceProviderGroupRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleWorkspaceProviderGroup'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/google_workspace_groups/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: providers_google_workspace_groups_used_by_list
+      parameters:
+      - description: A UUID string identifying this Google Workspace Provider Group.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/google_workspace_users/:
+    get:
+      description: GoogleWorkspaceProviderUser Viewset
+      operationId: providers_google_workspace_users_list
+      parameters:
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: provider__id
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: user__id
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: user__username
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedGoogleWorkspaceProviderUserList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    post:
+      description: GoogleWorkspaceProviderUser Viewset
+      operationId: providers_google_workspace_users_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleWorkspaceProviderUserRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleWorkspaceProviderUser'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/google_workspace_users/{id}/:
+    delete:
+      description: GoogleWorkspaceProviderUser Viewset
+      operationId: providers_google_workspace_users_destroy
+      parameters:
+      - description: A UUID string identifying this Google Workspace Provider User.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    get:
+      description: GoogleWorkspaceProviderUser Viewset
+      operationId: providers_google_workspace_users_retrieve
+      parameters:
+      - description: A UUID string identifying this Google Workspace Provider User.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleWorkspaceProviderUser'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    patch:
+      description: GoogleWorkspaceProviderUser Viewset
+      operationId: providers_google_workspace_users_partial_update
+      parameters:
+      - description: A UUID string identifying this Google Workspace Provider User.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedGoogleWorkspaceProviderUserRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleWorkspaceProviderUser'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    put:
+      description: GoogleWorkspaceProviderUser Viewset
+      operationId: providers_google_workspace_users_update
+      parameters:
+      - description: A UUID string identifying this Google Workspace Provider User.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleWorkspaceProviderUserRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleWorkspaceProviderUser'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/google_workspace_users/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: providers_google_workspace_users_used_by_list
+      parameters:
+      - description: A UUID string identifying this Google Workspace Provider User.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
         style: simple
       responses:
         "200":
@@ -18024,6 +18947,953 @@ paths:
         required: true
         schema:
           type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/microsoft_entra/:
+    get:
+      description: MicrosoftEntraProvider Viewset
+      operationId: providers_microsoft_entra_list
+      parameters:
+      - explode: true
+        in: query
+        name: exclude_users_service_account
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: filter_group
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedMicrosoftEntraProviderList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    post:
+      description: MicrosoftEntraProvider Viewset
+      operationId: providers_microsoft_entra_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MicrosoftEntraProviderRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrosoftEntraProvider'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/microsoft_entra/{id}/:
+    delete:
+      description: MicrosoftEntraProvider Viewset
+      operationId: providers_microsoft_entra_destroy
+      parameters:
+      - description: A unique integer value identifying this Microsoft Entra Provider.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    get:
+      description: MicrosoftEntraProvider Viewset
+      operationId: providers_microsoft_entra_retrieve
+      parameters:
+      - description: A unique integer value identifying this Microsoft Entra Provider.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrosoftEntraProvider'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    patch:
+      description: MicrosoftEntraProvider Viewset
+      operationId: providers_microsoft_entra_partial_update
+      parameters:
+      - description: A unique integer value identifying this Microsoft Entra Provider.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedMicrosoftEntraProviderRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrosoftEntraProvider'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    put:
+      description: MicrosoftEntraProvider Viewset
+      operationId: providers_microsoft_entra_update
+      parameters:
+      - description: A unique integer value identifying this Microsoft Entra Provider.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MicrosoftEntraProviderRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrosoftEntraProvider'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/microsoft_entra/{id}/sync/status/:
+    get:
+      description: Get provider's sync status
+      operationId: providers_microsoft_entra_sync_status_retrieve
+      parameters:
+      - description: A unique integer value identifying this Microsoft Entra Provider.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncStatus'
+          description: ""
+        "404":
+          description: Task not found
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/microsoft_entra/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: providers_microsoft_entra_used_by_list
+      parameters:
+      - description: A unique integer value identifying this Microsoft Entra Provider.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/microsoft_entra_groups/:
+    get:
+      description: MicrosoftEntraProviderGroup Viewset
+      operationId: providers_microsoft_entra_groups_list
+      parameters:
+      - explode: true
+        in: query
+        name: group__group_uuid
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: group__name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: provider__id
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedMicrosoftEntraProviderGroupList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    post:
+      description: MicrosoftEntraProviderGroup Viewset
+      operationId: providers_microsoft_entra_groups_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MicrosoftEntraProviderGroupRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrosoftEntraProviderGroup'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/microsoft_entra_groups/{id}/:
+    delete:
+      description: MicrosoftEntraProviderGroup Viewset
+      operationId: providers_microsoft_entra_groups_destroy
+      parameters:
+      - description: A UUID string identifying this Microsoft Entra Provider Group.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    get:
+      description: MicrosoftEntraProviderGroup Viewset
+      operationId: providers_microsoft_entra_groups_retrieve
+      parameters:
+      - description: A UUID string identifying this Microsoft Entra Provider Group.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrosoftEntraProviderGroup'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    patch:
+      description: MicrosoftEntraProviderGroup Viewset
+      operationId: providers_microsoft_entra_groups_partial_update
+      parameters:
+      - description: A UUID string identifying this Microsoft Entra Provider Group.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedMicrosoftEntraProviderGroupRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrosoftEntraProviderGroup'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    put:
+      description: MicrosoftEntraProviderGroup Viewset
+      operationId: providers_microsoft_entra_groups_update
+      parameters:
+      - description: A UUID string identifying this Microsoft Entra Provider Group.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MicrosoftEntraProviderGroupRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrosoftEntraProviderGroup'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/microsoft_entra_groups/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: providers_microsoft_entra_groups_used_by_list
+      parameters:
+      - description: A UUID string identifying this Microsoft Entra Provider Group.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/microsoft_entra_users/:
+    get:
+      description: MicrosoftEntraProviderUser Viewset
+      operationId: providers_microsoft_entra_users_list
+      parameters:
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: provider__id
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: user__id
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: user__username
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedMicrosoftEntraProviderUserList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    post:
+      description: MicrosoftEntraProviderUser Viewset
+      operationId: providers_microsoft_entra_users_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MicrosoftEntraProviderUserRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrosoftEntraProviderUser'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/microsoft_entra_users/{id}/:
+    delete:
+      description: MicrosoftEntraProviderUser Viewset
+      operationId: providers_microsoft_entra_users_destroy
+      parameters:
+      - description: A UUID string identifying this Microsoft Entra Provider User.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    get:
+      description: MicrosoftEntraProviderUser Viewset
+      operationId: providers_microsoft_entra_users_retrieve
+      parameters:
+      - description: A UUID string identifying this Microsoft Entra Provider User.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrosoftEntraProviderUser'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    patch:
+      description: MicrosoftEntraProviderUser Viewset
+      operationId: providers_microsoft_entra_users_partial_update
+      parameters:
+      - description: A UUID string identifying this Microsoft Entra Provider User.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedMicrosoftEntraProviderUserRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrosoftEntraProviderUser'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    put:
+      description: MicrosoftEntraProviderUser Viewset
+      operationId: providers_microsoft_entra_users_update
+      parameters:
+      - description: A UUID string identifying this Microsoft Entra Provider User.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MicrosoftEntraProviderUserRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrosoftEntraProviderUser'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/microsoft_entra_users/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: providers_microsoft_entra_users_used_by_list
+      parameters:
+      - description: A UUID string identifying this Microsoft Entra Provider User.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
         style: simple
       responses:
         "200":
@@ -21173,6 +23043,8 @@ paths:
           - authentik_providers_google_workspace.googleworkspaceprovider
           - authentik_providers_google_workspace.googleworkspaceprovidermapping
           - authentik_providers_ldap.ldapprovider
+          - authentik_providers_microsoft_entra.microsoftentraprovider
+          - authentik_providers_microsoft_entra.microsoftentraprovidermapping
           - authentik_providers_oauth2.oauth2provider
           - authentik_providers_oauth2.scopemapping
           - authentik_providers_proxy.proxyprovider
@@ -21407,6 +23279,8 @@ paths:
           - authentik_providers_google_workspace.googleworkspaceprovider
           - authentik_providers_google_workspace.googleworkspaceprovidermapping
           - authentik_providers_ldap.ldapprovider
+          - authentik_providers_microsoft_entra.microsoftentraprovider
+          - authentik_providers_microsoft_entra.microsoftentraprovidermapping
           - authentik_providers_oauth2.oauth2provider
           - authentik_providers_oauth2.scopemapping
           - authentik_providers_proxy.proxyprovider
@@ -34674,6 +36548,7 @@ components:
       - authentik.enterprise
       - authentik.enterprise.audit
       - authentik.enterprise.providers.google_workspace
+      - authentik.enterprise.providers.microsoft_entra
       - authentik.enterprise.providers.rac
       - authentik.enterprise.stages.source
       - authentik.events
@@ -39558,8 +41433,8 @@ components:
       - bind_continent_country
       - bind_continent_country_city
       type: string
-    GoogleProvider:
-      description: GoogleProvider Serializer
+    GoogleWorkspaceProvider:
+      description: GoogleWorkspaceProvider Serializer
       example:
         delegated_subject: delegated_subject
         property_mappings_group:
@@ -39639,9 +41514,9 @@ components:
           nullable: true
           type: string
         user_delete_action:
-          $ref: '#/components/schemas/GoogleWorkspaceDeleteAction'
+          $ref: '#/components/schemas/OutgoingSyncDeleteAction'
         group_delete_action:
-          $ref: '#/components/schemas/GoogleWorkspaceDeleteAction'
+          $ref: '#/components/schemas/OutgoingSyncDeleteAction'
         default_group_email_domain:
           type: string
       required:
@@ -39657,8 +41532,42 @@ components:
       - verbose_name
       - verbose_name_plural
       type: object
-    GoogleProviderMapping:
-      description: GoogleProviderMapping Serializer
+    GoogleWorkspaceProviderGroup:
+      description: GoogleWorkspaceProviderGroup Serializer
+      example:
+        group_obj: ""
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          readOnly: true
+          type: string
+        group:
+          format: uuid
+          type: string
+        group_obj:
+          allOf:
+          - $ref: '#/components/schemas/UserGroup'
+          readOnly: true
+      required:
+      - group
+      - group_obj
+      - id
+      type: object
+    GoogleWorkspaceProviderGroupRequest:
+      description: GoogleWorkspaceProviderGroup Serializer
+      example:
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        group:
+          format: uuid
+          type: string
+      required:
+      - group
+      type: object
+    GoogleWorkspaceProviderMapping:
+      description: GoogleWorkspaceProviderMapping Serializer
       example:
         component: component
         verbose_name: verbose_name
@@ -39711,8 +41620,8 @@ components:
       - verbose_name
       - verbose_name_plural
       type: object
-    GoogleProviderMappingRequest:
-      description: GoogleProviderMapping Serializer
+    GoogleWorkspaceProviderMappingRequest:
+      description: GoogleWorkspaceProviderMapping Serializer
       example:
         expression: expression
         managed: managed
@@ -39737,8 +41646,8 @@ components:
       - expression
       - name
       type: object
-    GoogleProviderRequest:
-      description: GoogleProvider Serializer
+    GoogleWorkspaceProviderRequest:
+      description: GoogleWorkspaceProvider Serializer
       example:
         default_group_email_domain: default_group_email_domain
         delegated_subject: delegated_subject
@@ -39786,9 +41695,9 @@ components:
           nullable: true
           type: string
         user_delete_action:
-          $ref: '#/components/schemas/GoogleWorkspaceDeleteAction'
+          $ref: '#/components/schemas/OutgoingSyncDeleteAction'
         group_delete_action:
-          $ref: '#/components/schemas/GoogleWorkspaceDeleteAction'
+          $ref: '#/components/schemas/OutgoingSyncDeleteAction'
         default_group_email_domain:
           minLength: 1
           type: string
@@ -39798,12 +41707,38 @@ components:
       - delegated_subject
       - name
       type: object
-    GoogleWorkspaceDeleteAction:
-      enum:
-      - do_nothing
-      - delete
-      - suspend
-      type: string
+    GoogleWorkspaceProviderUser:
+      description: GoogleWorkspaceProviderUser Serializer
+      example:
+        user_obj: ""
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user: 0
+      properties:
+        id:
+          format: uuid
+          readOnly: true
+          type: string
+        user:
+          type: integer
+        user_obj:
+          allOf:
+          - $ref: '#/components/schemas/GroupMember'
+          readOnly: true
+      required:
+      - id
+      - user
+      - user_obj
+      type: object
+    GoogleWorkspaceProviderUserRequest:
+      description: GoogleWorkspaceProviderUser Serializer
+      example:
+        user: 0
+      properties:
+        user:
+          type: integer
+      required:
+      - user
+      type: object
     Group:
       description: Group Serializer
       example:
@@ -41656,6 +43591,304 @@ components:
       - labels
       - name
       type: object
+    MicrosoftEntraProvider:
+      description: MicrosoftEntraProvider Serializer
+      example:
+        tenant_id: tenant_id
+        property_mappings_group:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        verbose_name_plural: verbose_name_plural
+        user_delete_action: null
+        client_id: client_id
+        exclude_users_service_account: true
+        component: component
+        verbose_name: verbose_name
+        meta_model_name: meta_model_name
+        assigned_backchannel_application_slug: assigned_backchannel_application_slug
+        filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        assigned_backchannel_application_name: assigned_backchannel_application_name
+        name: name
+        pk: 0
+        client_secret: client_secret
+        property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group_delete_action: null
+      properties:
+        pk:
+          readOnly: true
+          title: ID
+          type: integer
+        name:
+          type: string
+        property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        property_mappings_group:
+          description: Property mappings used for group creation/updating.
+          items:
+            format: uuid
+            type: string
+          type: array
+        component:
+          description: Get object component so that we know how to edit the object
+          readOnly: true
+          type: string
+        assigned_backchannel_application_slug:
+          description: "Internal application name, used in URLs."
+          readOnly: true
+          type: string
+        assigned_backchannel_application_name:
+          description: Application's display Name.
+          readOnly: true
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        tenant_id:
+          type: string
+        exclude_users_service_account:
+          type: boolean
+        filter_group:
+          format: uuid
+          nullable: true
+          type: string
+        user_delete_action:
+          $ref: '#/components/schemas/OutgoingSyncDeleteAction'
+        group_delete_action:
+          $ref: '#/components/schemas/OutgoingSyncDeleteAction'
+      required:
+      - assigned_backchannel_application_name
+      - assigned_backchannel_application_slug
+      - client_id
+      - client_secret
+      - component
+      - meta_model_name
+      - name
+      - pk
+      - tenant_id
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    MicrosoftEntraProviderGroup:
+      description: MicrosoftEntraProviderGroup Serializer
+      example:
+        group_obj: ""
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          readOnly: true
+          type: string
+        group:
+          format: uuid
+          type: string
+        group_obj:
+          allOf:
+          - $ref: '#/components/schemas/UserGroup'
+          readOnly: true
+      required:
+      - group
+      - group_obj
+      - id
+      type: object
+    MicrosoftEntraProviderGroupRequest:
+      description: MicrosoftEntraProviderGroup Serializer
+      example:
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        group:
+          format: uuid
+          type: string
+      required:
+      - group
+      type: object
+    MicrosoftEntraProviderMapping:
+      description: MicrosoftEntraProviderMapping Serializer
+      example:
+        component: component
+        verbose_name: verbose_name
+        expression: expression
+        verbose_name_plural: verbose_name_plural
+        meta_model_name: meta_model_name
+        managed: managed
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Pm uuid
+          type: string
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          nullable: true
+          title: Managed by authentik
+          type: string
+        name:
+          type: string
+        expression:
+          type: string
+        component:
+          description: Get object's component so that we know how to edit the object
+          readOnly: true
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+      required:
+      - component
+      - expression
+      - meta_model_name
+      - name
+      - pk
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    MicrosoftEntraProviderMappingRequest:
+      description: MicrosoftEntraProviderMapping Serializer
+      example:
+        expression: expression
+        managed: managed
+        name: name
+      properties:
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          minLength: 1
+          nullable: true
+          title: Managed by authentik
+          type: string
+        name:
+          minLength: 1
+          type: string
+        expression:
+          minLength: 1
+          type: string
+      required:
+      - expression
+      - name
+      type: object
+    MicrosoftEntraProviderRequest:
+      description: MicrosoftEntraProvider Serializer
+      example:
+        tenant_id: tenant_id
+        property_mappings_group:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        client_secret: client_secret
+        user_delete_action: null
+        property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        client_id: client_id
+        group_delete_action: null
+        exclude_users_service_account: true
+      properties:
+        name:
+          minLength: 1
+          type: string
+        property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        property_mappings_group:
+          description: Property mappings used for group creation/updating.
+          items:
+            format: uuid
+            type: string
+          type: array
+        client_id:
+          minLength: 1
+          type: string
+        client_secret:
+          minLength: 1
+          type: string
+        tenant_id:
+          minLength: 1
+          type: string
+        exclude_users_service_account:
+          type: boolean
+        filter_group:
+          format: uuid
+          nullable: true
+          type: string
+        user_delete_action:
+          $ref: '#/components/schemas/OutgoingSyncDeleteAction'
+        group_delete_action:
+          $ref: '#/components/schemas/OutgoingSyncDeleteAction'
+      required:
+      - client_id
+      - client_secret
+      - name
+      - tenant_id
+      type: object
+    MicrosoftEntraProviderUser:
+      description: MicrosoftEntraProviderUser Serializer
+      example:
+        user_obj: ""
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user: 0
+      properties:
+        id:
+          format: uuid
+          readOnly: true
+          type: string
+        user:
+          type: integer
+        user_obj:
+          allOf:
+          - $ref: '#/components/schemas/GroupMember'
+          readOnly: true
+      required:
+      - id
+      - user
+      - user_obj
+      type: object
+    MicrosoftEntraProviderUserRequest:
+      description: MicrosoftEntraProviderUser Serializer
+      example:
+        user: 0
+      properties:
+        user:
+          type: integer
+      required:
+      - user
+      type: object
     ModelEnum:
       enum:
       - authentik_tenants.domain
@@ -41727,6 +43960,8 @@ components:
       - authentik_enterprise.license
       - authentik_providers_google_workspace.googleworkspaceprovider
       - authentik_providers_google_workspace.googleworkspaceprovidermapping
+      - authentik_providers_microsoft_entra.microsoftentraprovider
+      - authentik_providers_microsoft_entra.microsoftentraprovidermapping
       - authentik_providers_rac.racprovider
       - authentik_providers_rac.endpoint
       - authentik_providers_rac.racpropertymapping
@@ -42680,6 +44915,12 @@ components:
       - token_endpoint_auth_methods_supported
       - userinfo_endpoint
       type: object
+    OutgoingSyncDeleteAction:
+      enum:
+      - do_nothing
+      - delete
+      - suspend
+      type: string
     Outpost:
       description: Outpost Serializer
       example:
@@ -45005,7 +47246,7 @@ components:
       - pagination
       - results
       type: object
-    PaginatedGoogleProviderList:
+    PaginatedGoogleWorkspaceProviderGroupList:
       example:
         pagination:
           next: 0.8008281904610115
@@ -45016,62 +47257,90 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - delegated_subject: delegated_subject
-          property_mappings_group:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          verbose_name_plural: verbose_name_plural
-          credentials: ""
-          user_delete_action: null
-          exclude_users_service_account: true
-          default_group_email_domain: default_group_email_domain
-          component: component
-          verbose_name: verbose_name
-          meta_model_name: meta_model_name
-          assigned_backchannel_application_slug: assigned_backchannel_application_slug
-          filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          assigned_backchannel_application_name: assigned_backchannel_application_name
-          name: name
-          pk: 0
-          scopes: scopes
-          property_mappings:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          group_delete_action: null
-        - delegated_subject: delegated_subject
-          property_mappings_group:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          verbose_name_plural: verbose_name_plural
-          credentials: ""
-          user_delete_action: null
-          exclude_users_service_account: true
-          default_group_email_domain: default_group_email_domain
-          component: component
-          verbose_name: verbose_name
-          meta_model_name: meta_model_name
-          assigned_backchannel_application_slug: assigned_backchannel_application_slug
-          filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          assigned_backchannel_application_name: assigned_backchannel_application_name
-          name: name
-          pk: 0
-          scopes: scopes
-          property_mappings:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          group_delete_action: null
+        - group_obj: ""
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - group_obj: ""
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
         results:
           items:
-            $ref: '#/components/schemas/GoogleProvider'
+            $ref: '#/components/schemas/GoogleWorkspaceProviderGroup'
           type: array
       required:
       - pagination
       - results
       type: object
-    PaginatedGoogleProviderMappingList:
+    PaginatedGoogleWorkspaceProviderList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - delegated_subject: delegated_subject
+          property_mappings_group:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          verbose_name_plural: verbose_name_plural
+          credentials: ""
+          user_delete_action: null
+          exclude_users_service_account: true
+          default_group_email_domain: default_group_email_domain
+          component: component
+          verbose_name: verbose_name
+          meta_model_name: meta_model_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
+          filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          assigned_backchannel_application_name: assigned_backchannel_application_name
+          name: name
+          pk: 0
+          scopes: scopes
+          property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group_delete_action: null
+        - delegated_subject: delegated_subject
+          property_mappings_group:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          verbose_name_plural: verbose_name_plural
+          credentials: ""
+          user_delete_action: null
+          exclude_users_service_account: true
+          default_group_email_domain: default_group_email_domain
+          component: component
+          verbose_name: verbose_name
+          meta_model_name: meta_model_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
+          filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          assigned_backchannel_application_name: assigned_backchannel_application_name
+          name: name
+          pk: 0
+          scopes: scopes
+          property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group_delete_action: null
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/GoogleWorkspaceProvider'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedGoogleWorkspaceProviderMappingList:
       example:
         pagination:
           next: 0.8008281904610115
@@ -45103,7 +47372,35 @@ components:
           $ref: '#/components/schemas/Pagination'
         results:
           items:
-            $ref: '#/components/schemas/GoogleProviderMapping'
+            $ref: '#/components/schemas/GoogleWorkspaceProviderMapping'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedGoogleWorkspaceProviderUserList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - user_obj: ""
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user: 0
+        - user_obj: ""
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user: 0
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/GoogleWorkspaceProviderUser'
           type: array
       required:
       - pagination
@@ -45784,6 +48081,164 @@ components:
         results:
           items:
             $ref: '#/components/schemas/License'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedMicrosoftEntraProviderGroupList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - group_obj: ""
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - group_obj: ""
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/MicrosoftEntraProviderGroup'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedMicrosoftEntraProviderList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - tenant_id: tenant_id
+          property_mappings_group:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          verbose_name_plural: verbose_name_plural
+          user_delete_action: null
+          client_id: client_id
+          exclude_users_service_account: true
+          component: component
+          verbose_name: verbose_name
+          meta_model_name: meta_model_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
+          filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          assigned_backchannel_application_name: assigned_backchannel_application_name
+          name: name
+          pk: 0
+          client_secret: client_secret
+          property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group_delete_action: null
+        - tenant_id: tenant_id
+          property_mappings_group:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          verbose_name_plural: verbose_name_plural
+          user_delete_action: null
+          client_id: client_id
+          exclude_users_service_account: true
+          component: component
+          verbose_name: verbose_name
+          meta_model_name: meta_model_name
+          assigned_backchannel_application_slug: assigned_backchannel_application_slug
+          filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          assigned_backchannel_application_name: assigned_backchannel_application_name
+          name: name
+          pk: 0
+          client_secret: client_secret
+          property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group_delete_action: null
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/MicrosoftEntraProvider'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedMicrosoftEntraProviderMappingList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - component: component
+          verbose_name: verbose_name
+          expression: expression
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          managed: managed
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - component: component
+          verbose_name: verbose_name
+          expression: expression
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          managed: managed
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/MicrosoftEntraProviderMapping'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedMicrosoftEntraProviderUserList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - user_obj: ""
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user: 0
+        - user_obj: ""
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user: 0
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/MicrosoftEntraProviderUser'
           type: array
       required:
       - pagination
@@ -51051,8 +53506,17 @@ components:
             \ to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT\
             \ restarts the flow while keeping the current context."
       type: object
-    PatchedGoogleProviderMappingRequest:
-      description: GoogleProviderMapping Serializer
+    PatchedGoogleWorkspaceProviderGroupRequest:
+      description: GoogleWorkspaceProviderGroup Serializer
+      example:
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        group:
+          format: uuid
+          type: string
+      type: object
+    PatchedGoogleWorkspaceProviderMappingRequest:
+      description: GoogleWorkspaceProviderMapping Serializer
       example:
         expression: expression
         managed: managed
@@ -51074,8 +53538,8 @@ components:
           minLength: 1
           type: string
       type: object
-    PatchedGoogleProviderRequest:
-      description: GoogleProvider Serializer
+    PatchedGoogleWorkspaceProviderRequest:
+      description: GoogleWorkspaceProvider Serializer
       example:
         default_group_email_domain: default_group_email_domain
         delegated_subject: delegated_subject
@@ -51123,12 +53587,20 @@ components:
           nullable: true
           type: string
         user_delete_action:
-          $ref: '#/components/schemas/GoogleWorkspaceDeleteAction'
+          $ref: '#/components/schemas/OutgoingSyncDeleteAction'
         group_delete_action:
-          $ref: '#/components/schemas/GoogleWorkspaceDeleteAction'
+          $ref: '#/components/schemas/OutgoingSyncDeleteAction'
         default_group_email_domain:
           minLength: 1
           type: string
+      type: object
+    PatchedGoogleWorkspaceProviderUserRequest:
+      description: GoogleWorkspaceProviderUser Serializer
+      example:
+        user: 0
+      properties:
+        user:
+          type: integer
       type: object
     PatchedGroupRequest:
       description: Group Serializer
@@ -51619,6 +54091,98 @@ components:
         key:
           minLength: 1
           type: string
+      type: object
+    PatchedMicrosoftEntraProviderGroupRequest:
+      description: MicrosoftEntraProviderGroup Serializer
+      example:
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        group:
+          format: uuid
+          type: string
+      type: object
+    PatchedMicrosoftEntraProviderMappingRequest:
+      description: MicrosoftEntraProviderMapping Serializer
+      example:
+        expression: expression
+        managed: managed
+        name: name
+      properties:
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          minLength: 1
+          nullable: true
+          title: Managed by authentik
+          type: string
+        name:
+          minLength: 1
+          type: string
+        expression:
+          minLength: 1
+          type: string
+      type: object
+    PatchedMicrosoftEntraProviderRequest:
+      description: MicrosoftEntraProvider Serializer
+      example:
+        tenant_id: tenant_id
+        property_mappings_group:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        client_secret: client_secret
+        user_delete_action: null
+        property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        client_id: client_id
+        group_delete_action: null
+        exclude_users_service_account: true
+      properties:
+        name:
+          minLength: 1
+          type: string
+        property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        property_mappings_group:
+          description: Property mappings used for group creation/updating.
+          items:
+            format: uuid
+            type: string
+          type: array
+        client_id:
+          minLength: 1
+          type: string
+        client_secret:
+          minLength: 1
+          type: string
+        tenant_id:
+          minLength: 1
+          type: string
+        exclude_users_service_account:
+          type: boolean
+        filter_group:
+          format: uuid
+          nullable: true
+          type: string
+        user_delete_action:
+          $ref: '#/components/schemas/OutgoingSyncDeleteAction'
+        group_delete_action:
+          $ref: '#/components/schemas/OutgoingSyncDeleteAction'
+      type: object
+    PatchedMicrosoftEntraProviderUserRequest:
+      description: MicrosoftEntraProviderUser Serializer
+      example:
+        user: 0
+      properties:
+        user:
+          type: integer
       type: object
     PatchedNotificationRequest:
       description: Notification Serializer
@@ -54713,6 +57277,7 @@ components:
       enum:
       - authentik_providers_google_workspace.googleworkspaceprovider
       - authentik_providers_ldap.ldapprovider
+      - authentik_providers_microsoft_entra.microsoftentraprovider
       - authentik_providers_oauth2.oauth2provider
       - authentik_providers_proxy.proxyprovider
       - authentik_providers_rac.racprovider
@@ -60169,8 +62734,9 @@ components:
     modelRequest:
       discriminator:
         mapping:
-          authentik_providers_google_workspace.googleworkspaceprovider: '#/components/schemas/GoogleProviderRequest'
+          authentik_providers_google_workspace.googleworkspaceprovider: '#/components/schemas/GoogleWorkspaceProviderRequest'
           authentik_providers_ldap.ldapprovider: '#/components/schemas/LDAPProviderRequest'
+          authentik_providers_microsoft_entra.microsoftentraprovider: '#/components/schemas/MicrosoftEntraProviderRequest'
           authentik_providers_oauth2.oauth2provider: '#/components/schemas/OAuth2ProviderRequest'
           authentik_providers_proxy.proxyprovider: '#/components/schemas/ProxyProviderRequest'
           authentik_providers_rac.racprovider: '#/components/schemas/RACProviderRequest'
@@ -60179,8 +62745,9 @@ components:
           authentik_providers_scim.scimprovider: '#/components/schemas/SCIMProviderRequest'
         propertyName: provider_model
       oneOf:
-      - $ref: '#/components/schemas/GoogleProviderRequest'
+      - $ref: '#/components/schemas/GoogleWorkspaceProviderRequest'
       - $ref: '#/components/schemas/LDAPProviderRequest'
+      - $ref: '#/components/schemas/MicrosoftEntraProviderRequest'
       - $ref: '#/components/schemas/OAuth2ProviderRequest'
       - $ref: '#/components/schemas/ProxyProviderRequest'
       - $ref: '#/components/schemas/RACProviderRequest'

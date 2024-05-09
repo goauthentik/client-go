@@ -31,6 +31,13 @@ Method | HTTP request | Description
 [**PropertymappingsProviderGoogleWorkspaceRetrieve**](PropertymappingsApi.md#PropertymappingsProviderGoogleWorkspaceRetrieve) | **Get** /propertymappings/provider/google_workspace/{pm_uuid}/ | 
 [**PropertymappingsProviderGoogleWorkspaceUpdate**](PropertymappingsApi.md#PropertymappingsProviderGoogleWorkspaceUpdate) | **Put** /propertymappings/provider/google_workspace/{pm_uuid}/ | 
 [**PropertymappingsProviderGoogleWorkspaceUsedByList**](PropertymappingsApi.md#PropertymappingsProviderGoogleWorkspaceUsedByList) | **Get** /propertymappings/provider/google_workspace/{pm_uuid}/used_by/ | 
+[**PropertymappingsProviderMicrosoftEntraCreate**](PropertymappingsApi.md#PropertymappingsProviderMicrosoftEntraCreate) | **Post** /propertymappings/provider/microsoft_entra/ | 
+[**PropertymappingsProviderMicrosoftEntraDestroy**](PropertymappingsApi.md#PropertymappingsProviderMicrosoftEntraDestroy) | **Delete** /propertymappings/provider/microsoft_entra/{pm_uuid}/ | 
+[**PropertymappingsProviderMicrosoftEntraList**](PropertymappingsApi.md#PropertymappingsProviderMicrosoftEntraList) | **Get** /propertymappings/provider/microsoft_entra/ | 
+[**PropertymappingsProviderMicrosoftEntraPartialUpdate**](PropertymappingsApi.md#PropertymappingsProviderMicrosoftEntraPartialUpdate) | **Patch** /propertymappings/provider/microsoft_entra/{pm_uuid}/ | 
+[**PropertymappingsProviderMicrosoftEntraRetrieve**](PropertymappingsApi.md#PropertymappingsProviderMicrosoftEntraRetrieve) | **Get** /propertymappings/provider/microsoft_entra/{pm_uuid}/ | 
+[**PropertymappingsProviderMicrosoftEntraUpdate**](PropertymappingsApi.md#PropertymappingsProviderMicrosoftEntraUpdate) | **Put** /propertymappings/provider/microsoft_entra/{pm_uuid}/ | 
+[**PropertymappingsProviderMicrosoftEntraUsedByList**](PropertymappingsApi.md#PropertymappingsProviderMicrosoftEntraUsedByList) | **Get** /propertymappings/provider/microsoft_entra/{pm_uuid}/used_by/ | 
 [**PropertymappingsRacCreate**](PropertymappingsApi.md#PropertymappingsRacCreate) | **Post** /propertymappings/rac/ | 
 [**PropertymappingsRacDestroy**](PropertymappingsApi.md#PropertymappingsRacDestroy) | **Delete** /propertymappings/rac/{pm_uuid}/ | 
 [**PropertymappingsRacList**](PropertymappingsApi.md#PropertymappingsRacList) | **Get** /propertymappings/rac/ | 
@@ -1473,7 +1480,7 @@ Name | Type | Description  | Notes
 
 ## PropertymappingsProviderGoogleWorkspaceCreate
 
-> GoogleProviderMapping PropertymappingsProviderGoogleWorkspaceCreate(ctx).GoogleProviderMappingRequest(googleProviderMappingRequest).Execute()
+> GoogleWorkspaceProviderMapping PropertymappingsProviderGoogleWorkspaceCreate(ctx).GoogleWorkspaceProviderMappingRequest(googleWorkspaceProviderMappingRequest).Execute()
 
 
 
@@ -1492,16 +1499,16 @@ import (
 )
 
 func main() {
-    googleProviderMappingRequest := *openapiclient.NewGoogleProviderMappingRequest("Name_example", "Expression_example") // GoogleProviderMappingRequest | 
+    googleWorkspaceProviderMappingRequest := *openapiclient.NewGoogleWorkspaceProviderMappingRequest("Name_example", "Expression_example") // GoogleWorkspaceProviderMappingRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceCreate(context.Background()).GoogleProviderMappingRequest(googleProviderMappingRequest).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceCreate(context.Background()).GoogleWorkspaceProviderMappingRequest(googleWorkspaceProviderMappingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsProviderGoogleWorkspaceCreate`: GoogleProviderMapping
+    // response from `PropertymappingsProviderGoogleWorkspaceCreate`: GoogleWorkspaceProviderMapping
     fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceCreate`: %v\n", resp)
 }
 ```
@@ -1517,11 +1524,11 @@ Other parameters are passed through a pointer to a apiPropertymappingsProviderGo
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **googleProviderMappingRequest** | [**GoogleProviderMappingRequest**](GoogleProviderMappingRequest.md) |  | 
+ **googleWorkspaceProviderMappingRequest** | [**GoogleWorkspaceProviderMappingRequest**](GoogleWorkspaceProviderMappingRequest.md) |  | 
 
 ### Return type
 
-[**GoogleProviderMapping**](GoogleProviderMapping.md)
+[**GoogleWorkspaceProviderMapping**](GoogleWorkspaceProviderMapping.md)
 
 ### Authorization
 
@@ -1607,7 +1614,7 @@ Name | Type | Description  | Notes
 
 ## PropertymappingsProviderGoogleWorkspaceList
 
-> PaginatedGoogleProviderMappingList PropertymappingsProviderGoogleWorkspaceList(ctx).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
+> PaginatedGoogleWorkspaceProviderMappingList PropertymappingsProviderGoogleWorkspaceList(ctx).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
 
 
 
@@ -1642,7 +1649,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsProviderGoogleWorkspaceList`: PaginatedGoogleProviderMappingList
+    // response from `PropertymappingsProviderGoogleWorkspaceList`: PaginatedGoogleWorkspaceProviderMappingList
     fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceList`: %v\n", resp)
 }
 ```
@@ -1669,7 +1676,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginatedGoogleProviderMappingList**](PaginatedGoogleProviderMappingList.md)
+[**PaginatedGoogleWorkspaceProviderMappingList**](PaginatedGoogleWorkspaceProviderMappingList.md)
 
 ### Authorization
 
@@ -1687,7 +1694,7 @@ Name | Type | Description  | Notes
 
 ## PropertymappingsProviderGoogleWorkspacePartialUpdate
 
-> GoogleProviderMapping PropertymappingsProviderGoogleWorkspacePartialUpdate(ctx, pmUuid).PatchedGoogleProviderMappingRequest(patchedGoogleProviderMappingRequest).Execute()
+> GoogleWorkspaceProviderMapping PropertymappingsProviderGoogleWorkspacePartialUpdate(ctx, pmUuid).PatchedGoogleWorkspaceProviderMappingRequest(patchedGoogleWorkspaceProviderMappingRequest).Execute()
 
 
 
@@ -1707,16 +1714,16 @@ import (
 
 func main() {
     pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Mapping.
-    patchedGoogleProviderMappingRequest := *openapiclient.NewPatchedGoogleProviderMappingRequest() // PatchedGoogleProviderMappingRequest |  (optional)
+    patchedGoogleWorkspaceProviderMappingRequest := *openapiclient.NewPatchedGoogleWorkspaceProviderMappingRequest() // PatchedGoogleWorkspaceProviderMappingRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderGoogleWorkspacePartialUpdate(context.Background(), pmUuid).PatchedGoogleProviderMappingRequest(patchedGoogleProviderMappingRequest).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderGoogleWorkspacePartialUpdate(context.Background(), pmUuid).PatchedGoogleWorkspaceProviderMappingRequest(patchedGoogleWorkspaceProviderMappingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderGoogleWorkspacePartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsProviderGoogleWorkspacePartialUpdate`: GoogleProviderMapping
+    // response from `PropertymappingsProviderGoogleWorkspacePartialUpdate`: GoogleWorkspaceProviderMapping
     fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderGoogleWorkspacePartialUpdate`: %v\n", resp)
 }
 ```
@@ -1737,11 +1744,11 @@ Other parameters are passed through a pointer to a apiPropertymappingsProviderGo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **patchedGoogleProviderMappingRequest** | [**PatchedGoogleProviderMappingRequest**](PatchedGoogleProviderMappingRequest.md) |  | 
+ **patchedGoogleWorkspaceProviderMappingRequest** | [**PatchedGoogleWorkspaceProviderMappingRequest**](PatchedGoogleWorkspaceProviderMappingRequest.md) |  | 
 
 ### Return type
 
-[**GoogleProviderMapping**](GoogleProviderMapping.md)
+[**GoogleWorkspaceProviderMapping**](GoogleWorkspaceProviderMapping.md)
 
 ### Authorization
 
@@ -1759,7 +1766,7 @@ Name | Type | Description  | Notes
 
 ## PropertymappingsProviderGoogleWorkspaceRetrieve
 
-> GoogleProviderMapping PropertymappingsProviderGoogleWorkspaceRetrieve(ctx, pmUuid).Execute()
+> GoogleWorkspaceProviderMapping PropertymappingsProviderGoogleWorkspaceRetrieve(ctx, pmUuid).Execute()
 
 
 
@@ -1787,7 +1794,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsProviderGoogleWorkspaceRetrieve`: GoogleProviderMapping
+    // response from `PropertymappingsProviderGoogleWorkspaceRetrieve`: GoogleWorkspaceProviderMapping
     fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceRetrieve`: %v\n", resp)
 }
 ```
@@ -1811,7 +1818,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GoogleProviderMapping**](GoogleProviderMapping.md)
+[**GoogleWorkspaceProviderMapping**](GoogleWorkspaceProviderMapping.md)
 
 ### Authorization
 
@@ -1829,7 +1836,7 @@ Name | Type | Description  | Notes
 
 ## PropertymappingsProviderGoogleWorkspaceUpdate
 
-> GoogleProviderMapping PropertymappingsProviderGoogleWorkspaceUpdate(ctx, pmUuid).GoogleProviderMappingRequest(googleProviderMappingRequest).Execute()
+> GoogleWorkspaceProviderMapping PropertymappingsProviderGoogleWorkspaceUpdate(ctx, pmUuid).GoogleWorkspaceProviderMappingRequest(googleWorkspaceProviderMappingRequest).Execute()
 
 
 
@@ -1849,16 +1856,16 @@ import (
 
 func main() {
     pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Mapping.
-    googleProviderMappingRequest := *openapiclient.NewGoogleProviderMappingRequest("Name_example", "Expression_example") // GoogleProviderMappingRequest | 
+    googleWorkspaceProviderMappingRequest := *openapiclient.NewGoogleWorkspaceProviderMappingRequest("Name_example", "Expression_example") // GoogleWorkspaceProviderMappingRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceUpdate(context.Background(), pmUuid).GoogleProviderMappingRequest(googleProviderMappingRequest).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceUpdate(context.Background(), pmUuid).GoogleWorkspaceProviderMappingRequest(googleWorkspaceProviderMappingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsProviderGoogleWorkspaceUpdate`: GoogleProviderMapping
+    // response from `PropertymappingsProviderGoogleWorkspaceUpdate`: GoogleWorkspaceProviderMapping
     fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceUpdate`: %v\n", resp)
 }
 ```
@@ -1879,11 +1886,11 @@ Other parameters are passed through a pointer to a apiPropertymappingsProviderGo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **googleProviderMappingRequest** | [**GoogleProviderMappingRequest**](GoogleProviderMappingRequest.md) |  | 
+ **googleWorkspaceProviderMappingRequest** | [**GoogleWorkspaceProviderMappingRequest**](GoogleWorkspaceProviderMappingRequest.md) |  | 
 
 ### Return type
 
-[**GoogleProviderMapping**](GoogleProviderMapping.md)
+[**GoogleWorkspaceProviderMapping**](GoogleWorkspaceProviderMapping.md)
 
 ### Authorization
 
@@ -1945,6 +1952,504 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPropertymappingsProviderGoogleWorkspaceUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsProviderMicrosoftEntraCreate
+
+> MicrosoftEntraProviderMapping PropertymappingsProviderMicrosoftEntraCreate(ctx).MicrosoftEntraProviderMappingRequest(microsoftEntraProviderMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    microsoftEntraProviderMappingRequest := *openapiclient.NewMicrosoftEntraProviderMappingRequest("Name_example", "Expression_example") // MicrosoftEntraProviderMappingRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderMicrosoftEntraCreate(context.Background()).MicrosoftEntraProviderMappingRequest(microsoftEntraProviderMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsProviderMicrosoftEntraCreate`: MicrosoftEntraProviderMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsProviderMicrosoftEntraCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **microsoftEntraProviderMappingRequest** | [**MicrosoftEntraProviderMappingRequest**](MicrosoftEntraProviderMappingRequest.md) |  | 
+
+### Return type
+
+[**MicrosoftEntraProviderMapping**](MicrosoftEntraProviderMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsProviderMicrosoftEntraDestroy
+
+> PropertymappingsProviderMicrosoftEntraDestroy(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderMicrosoftEntraDestroy(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this Microsoft Entra Provider Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsProviderMicrosoftEntraDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsProviderMicrosoftEntraList
+
+> PaginatedMicrosoftEntraProviderMappingList PropertymappingsProviderMicrosoftEntraList(ctx).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    expression := "expression_example" // string |  (optional)
+    managed := []string{"Inner_example"} // []string |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderMicrosoftEntraList(context.Background()).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsProviderMicrosoftEntraList`: PaginatedMicrosoftEntraProviderMappingList
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsProviderMicrosoftEntraListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expression** | **string** |  | 
+ **managed** | **[]string** |  | 
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **pmUuid** | **string** |  | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedMicrosoftEntraProviderMappingList**](PaginatedMicrosoftEntraProviderMappingList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsProviderMicrosoftEntraPartialUpdate
+
+> MicrosoftEntraProviderMapping PropertymappingsProviderMicrosoftEntraPartialUpdate(ctx, pmUuid).PatchedMicrosoftEntraProviderMappingRequest(patchedMicrosoftEntraProviderMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider Mapping.
+    patchedMicrosoftEntraProviderMappingRequest := *openapiclient.NewPatchedMicrosoftEntraProviderMappingRequest() // PatchedMicrosoftEntraProviderMappingRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderMicrosoftEntraPartialUpdate(context.Background(), pmUuid).PatchedMicrosoftEntraProviderMappingRequest(patchedMicrosoftEntraProviderMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsProviderMicrosoftEntraPartialUpdate`: MicrosoftEntraProviderMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this Microsoft Entra Provider Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsProviderMicrosoftEntraPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedMicrosoftEntraProviderMappingRequest** | [**PatchedMicrosoftEntraProviderMappingRequest**](PatchedMicrosoftEntraProviderMappingRequest.md) |  | 
+
+### Return type
+
+[**MicrosoftEntraProviderMapping**](MicrosoftEntraProviderMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsProviderMicrosoftEntraRetrieve
+
+> MicrosoftEntraProviderMapping PropertymappingsProviderMicrosoftEntraRetrieve(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderMicrosoftEntraRetrieve(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsProviderMicrosoftEntraRetrieve`: MicrosoftEntraProviderMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this Microsoft Entra Provider Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsProviderMicrosoftEntraRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**MicrosoftEntraProviderMapping**](MicrosoftEntraProviderMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsProviderMicrosoftEntraUpdate
+
+> MicrosoftEntraProviderMapping PropertymappingsProviderMicrosoftEntraUpdate(ctx, pmUuid).MicrosoftEntraProviderMappingRequest(microsoftEntraProviderMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider Mapping.
+    microsoftEntraProviderMappingRequest := *openapiclient.NewMicrosoftEntraProviderMappingRequest("Name_example", "Expression_example") // MicrosoftEntraProviderMappingRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderMicrosoftEntraUpdate(context.Background(), pmUuid).MicrosoftEntraProviderMappingRequest(microsoftEntraProviderMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsProviderMicrosoftEntraUpdate`: MicrosoftEntraProviderMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this Microsoft Entra Provider Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsProviderMicrosoftEntraUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **microsoftEntraProviderMappingRequest** | [**MicrosoftEntraProviderMappingRequest**](MicrosoftEntraProviderMappingRequest.md) |  | 
+
+### Return type
+
+[**MicrosoftEntraProviderMapping**](MicrosoftEntraProviderMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsProviderMicrosoftEntraUsedByList
+
+> []UsedBy PropertymappingsProviderMicrosoftEntraUsedByList(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderMicrosoftEntraUsedByList(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsProviderMicrosoftEntraUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this Microsoft Entra Provider Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsProviderMicrosoftEntraUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -2686,24 +2686,24 @@ func (a *PropertymappingsApiService) PropertymappingsNotificationUsedByListExecu
 }
 
 type ApiPropertymappingsProviderGoogleWorkspaceCreateRequest struct {
-	ctx                          context.Context
-	ApiService                   *PropertymappingsApiService
-	googleProviderMappingRequest *GoogleProviderMappingRequest
+	ctx                                   context.Context
+	ApiService                            *PropertymappingsApiService
+	googleWorkspaceProviderMappingRequest *GoogleWorkspaceProviderMappingRequest
 }
 
-func (r ApiPropertymappingsProviderGoogleWorkspaceCreateRequest) GoogleProviderMappingRequest(googleProviderMappingRequest GoogleProviderMappingRequest) ApiPropertymappingsProviderGoogleWorkspaceCreateRequest {
-	r.googleProviderMappingRequest = &googleProviderMappingRequest
+func (r ApiPropertymappingsProviderGoogleWorkspaceCreateRequest) GoogleWorkspaceProviderMappingRequest(googleWorkspaceProviderMappingRequest GoogleWorkspaceProviderMappingRequest) ApiPropertymappingsProviderGoogleWorkspaceCreateRequest {
+	r.googleWorkspaceProviderMappingRequest = &googleWorkspaceProviderMappingRequest
 	return r
 }
 
-func (r ApiPropertymappingsProviderGoogleWorkspaceCreateRequest) Execute() (*GoogleProviderMapping, *http.Response, error) {
+func (r ApiPropertymappingsProviderGoogleWorkspaceCreateRequest) Execute() (*GoogleWorkspaceProviderMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsProviderGoogleWorkspaceCreateExecute(r)
 }
 
 /*
 PropertymappingsProviderGoogleWorkspaceCreate Method for PropertymappingsProviderGoogleWorkspaceCreate
 
-GoogleProviderMapping Viewset
+GoogleWorkspaceProviderMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiPropertymappingsProviderGoogleWorkspaceCreateRequest
@@ -2717,13 +2717,13 @@ func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceCrea
 
 // Execute executes the request
 //
-//	@return GoogleProviderMapping
-func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceCreateExecute(r ApiPropertymappingsProviderGoogleWorkspaceCreateRequest) (*GoogleProviderMapping, *http.Response, error) {
+//	@return GoogleWorkspaceProviderMapping
+func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceCreateExecute(r ApiPropertymappingsProviderGoogleWorkspaceCreateRequest) (*GoogleWorkspaceProviderMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *GoogleProviderMapping
+		localVarReturnValue *GoogleWorkspaceProviderMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderGoogleWorkspaceCreate")
@@ -2736,8 +2736,8 @@ func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceCrea
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.googleProviderMappingRequest == nil {
-		return localVarReturnValue, nil, reportError("googleProviderMappingRequest is required and must be specified")
+	if r.googleWorkspaceProviderMappingRequest == nil {
+		return localVarReturnValue, nil, reportError("googleWorkspaceProviderMappingRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2758,7 +2758,7 @@ func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceCrea
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.googleProviderMappingRequest
+	localVarPostBody = r.googleWorkspaceProviderMappingRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2828,7 +2828,7 @@ func (r ApiPropertymappingsProviderGoogleWorkspaceDestroyRequest) Execute() (*ht
 /*
 PropertymappingsProviderGoogleWorkspaceDestroy Method for PropertymappingsProviderGoogleWorkspaceDestroy
 
-GoogleProviderMapping Viewset
+GoogleWorkspaceProviderMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param pmUuid A UUID string identifying this Google Workspace Provider Mapping.
@@ -2983,14 +2983,14 @@ func (r ApiPropertymappingsProviderGoogleWorkspaceListRequest) Search(search str
 	return r
 }
 
-func (r ApiPropertymappingsProviderGoogleWorkspaceListRequest) Execute() (*PaginatedGoogleProviderMappingList, *http.Response, error) {
+func (r ApiPropertymappingsProviderGoogleWorkspaceListRequest) Execute() (*PaginatedGoogleWorkspaceProviderMappingList, *http.Response, error) {
 	return r.ApiService.PropertymappingsProviderGoogleWorkspaceListExecute(r)
 }
 
 /*
 PropertymappingsProviderGoogleWorkspaceList Method for PropertymappingsProviderGoogleWorkspaceList
 
-GoogleProviderMapping Viewset
+GoogleWorkspaceProviderMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiPropertymappingsProviderGoogleWorkspaceListRequest
@@ -3004,13 +3004,13 @@ func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceList
 
 // Execute executes the request
 //
-//	@return PaginatedGoogleProviderMappingList
-func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceListExecute(r ApiPropertymappingsProviderGoogleWorkspaceListRequest) (*PaginatedGoogleProviderMappingList, *http.Response, error) {
+//	@return PaginatedGoogleWorkspaceProviderMappingList
+func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceListExecute(r ApiPropertymappingsProviderGoogleWorkspaceListRequest) (*PaginatedGoogleWorkspaceProviderMappingList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PaginatedGoogleProviderMappingList
+		localVarReturnValue *PaginatedGoogleWorkspaceProviderMappingList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderGoogleWorkspaceList")
@@ -3130,25 +3130,25 @@ func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceList
 }
 
 type ApiPropertymappingsProviderGoogleWorkspacePartialUpdateRequest struct {
-	ctx                                 context.Context
-	ApiService                          *PropertymappingsApiService
-	pmUuid                              string
-	patchedGoogleProviderMappingRequest *PatchedGoogleProviderMappingRequest
+	ctx                                          context.Context
+	ApiService                                   *PropertymappingsApiService
+	pmUuid                                       string
+	patchedGoogleWorkspaceProviderMappingRequest *PatchedGoogleWorkspaceProviderMappingRequest
 }
 
-func (r ApiPropertymappingsProviderGoogleWorkspacePartialUpdateRequest) PatchedGoogleProviderMappingRequest(patchedGoogleProviderMappingRequest PatchedGoogleProviderMappingRequest) ApiPropertymappingsProviderGoogleWorkspacePartialUpdateRequest {
-	r.patchedGoogleProviderMappingRequest = &patchedGoogleProviderMappingRequest
+func (r ApiPropertymappingsProviderGoogleWorkspacePartialUpdateRequest) PatchedGoogleWorkspaceProviderMappingRequest(patchedGoogleWorkspaceProviderMappingRequest PatchedGoogleWorkspaceProviderMappingRequest) ApiPropertymappingsProviderGoogleWorkspacePartialUpdateRequest {
+	r.patchedGoogleWorkspaceProviderMappingRequest = &patchedGoogleWorkspaceProviderMappingRequest
 	return r
 }
 
-func (r ApiPropertymappingsProviderGoogleWorkspacePartialUpdateRequest) Execute() (*GoogleProviderMapping, *http.Response, error) {
+func (r ApiPropertymappingsProviderGoogleWorkspacePartialUpdateRequest) Execute() (*GoogleWorkspaceProviderMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsProviderGoogleWorkspacePartialUpdateExecute(r)
 }
 
 /*
 PropertymappingsProviderGoogleWorkspacePartialUpdate Method for PropertymappingsProviderGoogleWorkspacePartialUpdate
 
-GoogleProviderMapping Viewset
+GoogleWorkspaceProviderMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param pmUuid A UUID string identifying this Google Workspace Provider Mapping.
@@ -3164,13 +3164,13 @@ func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspacePart
 
 // Execute executes the request
 //
-//	@return GoogleProviderMapping
-func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspacePartialUpdateExecute(r ApiPropertymappingsProviderGoogleWorkspacePartialUpdateRequest) (*GoogleProviderMapping, *http.Response, error) {
+//	@return GoogleWorkspaceProviderMapping
+func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspacePartialUpdateExecute(r ApiPropertymappingsProviderGoogleWorkspacePartialUpdateRequest) (*GoogleWorkspaceProviderMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *GoogleProviderMapping
+		localVarReturnValue *GoogleWorkspaceProviderMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderGoogleWorkspacePartialUpdate")
@@ -3203,7 +3203,7 @@ func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspacePart
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.patchedGoogleProviderMappingRequest
+	localVarPostBody = r.patchedGoogleWorkspaceProviderMappingRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3266,14 +3266,14 @@ type ApiPropertymappingsProviderGoogleWorkspaceRetrieveRequest struct {
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsProviderGoogleWorkspaceRetrieveRequest) Execute() (*GoogleProviderMapping, *http.Response, error) {
+func (r ApiPropertymappingsProviderGoogleWorkspaceRetrieveRequest) Execute() (*GoogleWorkspaceProviderMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsProviderGoogleWorkspaceRetrieveExecute(r)
 }
 
 /*
 PropertymappingsProviderGoogleWorkspaceRetrieve Method for PropertymappingsProviderGoogleWorkspaceRetrieve
 
-GoogleProviderMapping Viewset
+GoogleWorkspaceProviderMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param pmUuid A UUID string identifying this Google Workspace Provider Mapping.
@@ -3289,13 +3289,13 @@ func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceRetr
 
 // Execute executes the request
 //
-//	@return GoogleProviderMapping
-func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceRetrieveExecute(r ApiPropertymappingsProviderGoogleWorkspaceRetrieveRequest) (*GoogleProviderMapping, *http.Response, error) {
+//	@return GoogleWorkspaceProviderMapping
+func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceRetrieveExecute(r ApiPropertymappingsProviderGoogleWorkspaceRetrieveRequest) (*GoogleWorkspaceProviderMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *GoogleProviderMapping
+		localVarReturnValue *GoogleWorkspaceProviderMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderGoogleWorkspaceRetrieve")
@@ -3384,25 +3384,25 @@ func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceRetr
 }
 
 type ApiPropertymappingsProviderGoogleWorkspaceUpdateRequest struct {
-	ctx                          context.Context
-	ApiService                   *PropertymappingsApiService
-	pmUuid                       string
-	googleProviderMappingRequest *GoogleProviderMappingRequest
+	ctx                                   context.Context
+	ApiService                            *PropertymappingsApiService
+	pmUuid                                string
+	googleWorkspaceProviderMappingRequest *GoogleWorkspaceProviderMappingRequest
 }
 
-func (r ApiPropertymappingsProviderGoogleWorkspaceUpdateRequest) GoogleProviderMappingRequest(googleProviderMappingRequest GoogleProviderMappingRequest) ApiPropertymappingsProviderGoogleWorkspaceUpdateRequest {
-	r.googleProviderMappingRequest = &googleProviderMappingRequest
+func (r ApiPropertymappingsProviderGoogleWorkspaceUpdateRequest) GoogleWorkspaceProviderMappingRequest(googleWorkspaceProviderMappingRequest GoogleWorkspaceProviderMappingRequest) ApiPropertymappingsProviderGoogleWorkspaceUpdateRequest {
+	r.googleWorkspaceProviderMappingRequest = &googleWorkspaceProviderMappingRequest
 	return r
 }
 
-func (r ApiPropertymappingsProviderGoogleWorkspaceUpdateRequest) Execute() (*GoogleProviderMapping, *http.Response, error) {
+func (r ApiPropertymappingsProviderGoogleWorkspaceUpdateRequest) Execute() (*GoogleWorkspaceProviderMapping, *http.Response, error) {
 	return r.ApiService.PropertymappingsProviderGoogleWorkspaceUpdateExecute(r)
 }
 
 /*
 PropertymappingsProviderGoogleWorkspaceUpdate Method for PropertymappingsProviderGoogleWorkspaceUpdate
 
-GoogleProviderMapping Viewset
+GoogleWorkspaceProviderMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param pmUuid A UUID string identifying this Google Workspace Provider Mapping.
@@ -3418,13 +3418,13 @@ func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceUpda
 
 // Execute executes the request
 //
-//	@return GoogleProviderMapping
-func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceUpdateExecute(r ApiPropertymappingsProviderGoogleWorkspaceUpdateRequest) (*GoogleProviderMapping, *http.Response, error) {
+//	@return GoogleWorkspaceProviderMapping
+func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceUpdateExecute(r ApiPropertymappingsProviderGoogleWorkspaceUpdateRequest) (*GoogleWorkspaceProviderMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *GoogleProviderMapping
+		localVarReturnValue *GoogleWorkspaceProviderMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderGoogleWorkspaceUpdate")
@@ -3438,8 +3438,8 @@ func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceUpda
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.googleProviderMappingRequest == nil {
-		return localVarReturnValue, nil, reportError("googleProviderMappingRequest is required and must be specified")
+	if r.googleWorkspaceProviderMappingRequest == nil {
+		return localVarReturnValue, nil, reportError("googleWorkspaceProviderMappingRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -3460,7 +3460,7 @@ func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceUpda
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.googleProviderMappingRequest
+	localVarPostBody = r.googleWorkspaceProviderMappingRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3561,6 +3561,961 @@ func (a *PropertymappingsApiService) PropertymappingsProviderGoogleWorkspaceUsed
 	}
 
 	localVarPath := localBasePath + "/propertymappings/provider/google_workspace/{pm_uuid}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsProviderMicrosoftEntraCreateRequest struct {
+	ctx                                  context.Context
+	ApiService                           *PropertymappingsApiService
+	microsoftEntraProviderMappingRequest *MicrosoftEntraProviderMappingRequest
+}
+
+func (r ApiPropertymappingsProviderMicrosoftEntraCreateRequest) MicrosoftEntraProviderMappingRequest(microsoftEntraProviderMappingRequest MicrosoftEntraProviderMappingRequest) ApiPropertymappingsProviderMicrosoftEntraCreateRequest {
+	r.microsoftEntraProviderMappingRequest = &microsoftEntraProviderMappingRequest
+	return r
+}
+
+func (r ApiPropertymappingsProviderMicrosoftEntraCreateRequest) Execute() (*MicrosoftEntraProviderMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderMicrosoftEntraCreateExecute(r)
+}
+
+/*
+PropertymappingsProviderMicrosoftEntraCreate Method for PropertymappingsProviderMicrosoftEntraCreate
+
+MicrosoftEntraProviderMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPropertymappingsProviderMicrosoftEntraCreateRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsProviderMicrosoftEntraCreate(ctx context.Context) ApiPropertymappingsProviderMicrosoftEntraCreateRequest {
+	return ApiPropertymappingsProviderMicrosoftEntraCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return MicrosoftEntraProviderMapping
+func (a *PropertymappingsApiService) PropertymappingsProviderMicrosoftEntraCreateExecute(r ApiPropertymappingsProviderMicrosoftEntraCreateRequest) (*MicrosoftEntraProviderMapping, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MicrosoftEntraProviderMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderMicrosoftEntraCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/provider/microsoft_entra/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.microsoftEntraProviderMappingRequest == nil {
+		return localVarReturnValue, nil, reportError("microsoftEntraProviderMappingRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.microsoftEntraProviderMappingRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsProviderMicrosoftEntraDestroyRequest struct {
+	ctx        context.Context
+	ApiService *PropertymappingsApiService
+	pmUuid     string
+}
+
+func (r ApiPropertymappingsProviderMicrosoftEntraDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PropertymappingsProviderMicrosoftEntraDestroyExecute(r)
+}
+
+/*
+PropertymappingsProviderMicrosoftEntraDestroy Method for PropertymappingsProviderMicrosoftEntraDestroy
+
+MicrosoftEntraProviderMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this Microsoft Entra Provider Mapping.
+	@return ApiPropertymappingsProviderMicrosoftEntraDestroyRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsProviderMicrosoftEntraDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsProviderMicrosoftEntraDestroyRequest {
+	return ApiPropertymappingsProviderMicrosoftEntraDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+func (a *PropertymappingsApiService) PropertymappingsProviderMicrosoftEntraDestroyExecute(r ApiPropertymappingsProviderMicrosoftEntraDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderMicrosoftEntraDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/provider/microsoft_entra/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsProviderMicrosoftEntraListRequest struct {
+	ctx        context.Context
+	ApiService *PropertymappingsApiService
+	expression *string
+	managed    *[]string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	pmUuid     *string
+	search     *string
+}
+
+func (r ApiPropertymappingsProviderMicrosoftEntraListRequest) Expression(expression string) ApiPropertymappingsProviderMicrosoftEntraListRequest {
+	r.expression = &expression
+	return r
+}
+
+func (r ApiPropertymappingsProviderMicrosoftEntraListRequest) Managed(managed []string) ApiPropertymappingsProviderMicrosoftEntraListRequest {
+	r.managed = &managed
+	return r
+}
+
+func (r ApiPropertymappingsProviderMicrosoftEntraListRequest) Name(name string) ApiPropertymappingsProviderMicrosoftEntraListRequest {
+	r.name = &name
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiPropertymappingsProviderMicrosoftEntraListRequest) Ordering(ordering string) ApiPropertymappingsProviderMicrosoftEntraListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiPropertymappingsProviderMicrosoftEntraListRequest) Page(page int32) ApiPropertymappingsProviderMicrosoftEntraListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiPropertymappingsProviderMicrosoftEntraListRequest) PageSize(pageSize int32) ApiPropertymappingsProviderMicrosoftEntraListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiPropertymappingsProviderMicrosoftEntraListRequest) PmUuid(pmUuid string) ApiPropertymappingsProviderMicrosoftEntraListRequest {
+	r.pmUuid = &pmUuid
+	return r
+}
+
+// A search term.
+func (r ApiPropertymappingsProviderMicrosoftEntraListRequest) Search(search string) ApiPropertymappingsProviderMicrosoftEntraListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiPropertymappingsProviderMicrosoftEntraListRequest) Execute() (*PaginatedMicrosoftEntraProviderMappingList, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderMicrosoftEntraListExecute(r)
+}
+
+/*
+PropertymappingsProviderMicrosoftEntraList Method for PropertymappingsProviderMicrosoftEntraList
+
+MicrosoftEntraProviderMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPropertymappingsProviderMicrosoftEntraListRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsProviderMicrosoftEntraList(ctx context.Context) ApiPropertymappingsProviderMicrosoftEntraListRequest {
+	return ApiPropertymappingsProviderMicrosoftEntraListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedMicrosoftEntraProviderMappingList
+func (a *PropertymappingsApiService) PropertymappingsProviderMicrosoftEntraListExecute(r ApiPropertymappingsProviderMicrosoftEntraListRequest) (*PaginatedMicrosoftEntraProviderMappingList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedMicrosoftEntraProviderMappingList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderMicrosoftEntraList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/provider/microsoft_entra/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.expression != nil {
+		localVarQueryParams.Add("expression", parameterToString(*r.expression, ""))
+	}
+	if r.managed != nil {
+		t := *r.managed
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("managed", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("managed", parameterToString(t, "multi"))
+		}
+	}
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.pmUuid != nil {
+		localVarQueryParams.Add("pm_uuid", parameterToString(*r.pmUuid, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsProviderMicrosoftEntraPartialUpdateRequest struct {
+	ctx                                         context.Context
+	ApiService                                  *PropertymappingsApiService
+	pmUuid                                      string
+	patchedMicrosoftEntraProviderMappingRequest *PatchedMicrosoftEntraProviderMappingRequest
+}
+
+func (r ApiPropertymappingsProviderMicrosoftEntraPartialUpdateRequest) PatchedMicrosoftEntraProviderMappingRequest(patchedMicrosoftEntraProviderMappingRequest PatchedMicrosoftEntraProviderMappingRequest) ApiPropertymappingsProviderMicrosoftEntraPartialUpdateRequest {
+	r.patchedMicrosoftEntraProviderMappingRequest = &patchedMicrosoftEntraProviderMappingRequest
+	return r
+}
+
+func (r ApiPropertymappingsProviderMicrosoftEntraPartialUpdateRequest) Execute() (*MicrosoftEntraProviderMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderMicrosoftEntraPartialUpdateExecute(r)
+}
+
+/*
+PropertymappingsProviderMicrosoftEntraPartialUpdate Method for PropertymappingsProviderMicrosoftEntraPartialUpdate
+
+MicrosoftEntraProviderMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this Microsoft Entra Provider Mapping.
+	@return ApiPropertymappingsProviderMicrosoftEntraPartialUpdateRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsProviderMicrosoftEntraPartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsProviderMicrosoftEntraPartialUpdateRequest {
+	return ApiPropertymappingsProviderMicrosoftEntraPartialUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return MicrosoftEntraProviderMapping
+func (a *PropertymappingsApiService) PropertymappingsProviderMicrosoftEntraPartialUpdateExecute(r ApiPropertymappingsProviderMicrosoftEntraPartialUpdateRequest) (*MicrosoftEntraProviderMapping, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MicrosoftEntraProviderMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderMicrosoftEntraPartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/provider/microsoft_entra/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedMicrosoftEntraProviderMappingRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsProviderMicrosoftEntraRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *PropertymappingsApiService
+	pmUuid     string
+}
+
+func (r ApiPropertymappingsProviderMicrosoftEntraRetrieveRequest) Execute() (*MicrosoftEntraProviderMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderMicrosoftEntraRetrieveExecute(r)
+}
+
+/*
+PropertymappingsProviderMicrosoftEntraRetrieve Method for PropertymappingsProviderMicrosoftEntraRetrieve
+
+MicrosoftEntraProviderMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this Microsoft Entra Provider Mapping.
+	@return ApiPropertymappingsProviderMicrosoftEntraRetrieveRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsProviderMicrosoftEntraRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsProviderMicrosoftEntraRetrieveRequest {
+	return ApiPropertymappingsProviderMicrosoftEntraRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return MicrosoftEntraProviderMapping
+func (a *PropertymappingsApiService) PropertymappingsProviderMicrosoftEntraRetrieveExecute(r ApiPropertymappingsProviderMicrosoftEntraRetrieveRequest) (*MicrosoftEntraProviderMapping, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MicrosoftEntraProviderMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderMicrosoftEntraRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/provider/microsoft_entra/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsProviderMicrosoftEntraUpdateRequest struct {
+	ctx                                  context.Context
+	ApiService                           *PropertymappingsApiService
+	pmUuid                               string
+	microsoftEntraProviderMappingRequest *MicrosoftEntraProviderMappingRequest
+}
+
+func (r ApiPropertymappingsProviderMicrosoftEntraUpdateRequest) MicrosoftEntraProviderMappingRequest(microsoftEntraProviderMappingRequest MicrosoftEntraProviderMappingRequest) ApiPropertymappingsProviderMicrosoftEntraUpdateRequest {
+	r.microsoftEntraProviderMappingRequest = &microsoftEntraProviderMappingRequest
+	return r
+}
+
+func (r ApiPropertymappingsProviderMicrosoftEntraUpdateRequest) Execute() (*MicrosoftEntraProviderMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderMicrosoftEntraUpdateExecute(r)
+}
+
+/*
+PropertymappingsProviderMicrosoftEntraUpdate Method for PropertymappingsProviderMicrosoftEntraUpdate
+
+MicrosoftEntraProviderMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this Microsoft Entra Provider Mapping.
+	@return ApiPropertymappingsProviderMicrosoftEntraUpdateRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsProviderMicrosoftEntraUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsProviderMicrosoftEntraUpdateRequest {
+	return ApiPropertymappingsProviderMicrosoftEntraUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return MicrosoftEntraProviderMapping
+func (a *PropertymappingsApiService) PropertymappingsProviderMicrosoftEntraUpdateExecute(r ApiPropertymappingsProviderMicrosoftEntraUpdateRequest) (*MicrosoftEntraProviderMapping, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MicrosoftEntraProviderMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderMicrosoftEntraUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/provider/microsoft_entra/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.microsoftEntraProviderMappingRequest == nil {
+		return localVarReturnValue, nil, reportError("microsoftEntraProviderMappingRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.microsoftEntraProviderMappingRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsProviderMicrosoftEntraUsedByListRequest struct {
+	ctx        context.Context
+	ApiService *PropertymappingsApiService
+	pmUuid     string
+}
+
+func (r ApiPropertymappingsProviderMicrosoftEntraUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderMicrosoftEntraUsedByListExecute(r)
+}
+
+/*
+PropertymappingsProviderMicrosoftEntraUsedByList Method for PropertymappingsProviderMicrosoftEntraUsedByList
+
+Get a list of all objects that use this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this Microsoft Entra Provider Mapping.
+	@return ApiPropertymappingsProviderMicrosoftEntraUsedByListRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsProviderMicrosoftEntraUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsProviderMicrosoftEntraUsedByListRequest {
+	return ApiPropertymappingsProviderMicrosoftEntraUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []UsedBy
+func (a *PropertymappingsApiService) PropertymappingsProviderMicrosoftEntraUsedByListExecute(r ApiPropertymappingsProviderMicrosoftEntraUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderMicrosoftEntraUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/provider/microsoft_entra/{pm_uuid}/used_by/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)

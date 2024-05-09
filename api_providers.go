@@ -679,24 +679,24 @@ func (a *ProvidersApiService) ProvidersAllUsedByListExecute(r ApiProvidersAllUse
 }
 
 type ApiProvidersGoogleWorkspaceCreateRequest struct {
-	ctx                   context.Context
-	ApiService            *ProvidersApiService
-	googleProviderRequest *GoogleProviderRequest
+	ctx                            context.Context
+	ApiService                     *ProvidersApiService
+	googleWorkspaceProviderRequest *GoogleWorkspaceProviderRequest
 }
 
-func (r ApiProvidersGoogleWorkspaceCreateRequest) GoogleProviderRequest(googleProviderRequest GoogleProviderRequest) ApiProvidersGoogleWorkspaceCreateRequest {
-	r.googleProviderRequest = &googleProviderRequest
+func (r ApiProvidersGoogleWorkspaceCreateRequest) GoogleWorkspaceProviderRequest(googleWorkspaceProviderRequest GoogleWorkspaceProviderRequest) ApiProvidersGoogleWorkspaceCreateRequest {
+	r.googleWorkspaceProviderRequest = &googleWorkspaceProviderRequest
 	return r
 }
 
-func (r ApiProvidersGoogleWorkspaceCreateRequest) Execute() (*GoogleProvider, *http.Response, error) {
+func (r ApiProvidersGoogleWorkspaceCreateRequest) Execute() (*GoogleWorkspaceProvider, *http.Response, error) {
 	return r.ApiService.ProvidersGoogleWorkspaceCreateExecute(r)
 }
 
 /*
 ProvidersGoogleWorkspaceCreate Method for ProvidersGoogleWorkspaceCreate
 
-GoogleProvider Viewset
+GoogleWorkspaceProvider Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersGoogleWorkspaceCreateRequest
@@ -710,13 +710,13 @@ func (a *ProvidersApiService) ProvidersGoogleWorkspaceCreate(ctx context.Context
 
 // Execute executes the request
 //
-//	@return GoogleProvider
-func (a *ProvidersApiService) ProvidersGoogleWorkspaceCreateExecute(r ApiProvidersGoogleWorkspaceCreateRequest) (*GoogleProvider, *http.Response, error) {
+//	@return GoogleWorkspaceProvider
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceCreateExecute(r ApiProvidersGoogleWorkspaceCreateRequest) (*GoogleWorkspaceProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *GoogleProvider
+		localVarReturnValue *GoogleWorkspaceProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceCreate")
@@ -729,8 +729,8 @@ func (a *ProvidersApiService) ProvidersGoogleWorkspaceCreateExecute(r ApiProvide
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.googleProviderRequest == nil {
-		return localVarReturnValue, nil, reportError("googleProviderRequest is required and must be specified")
+	if r.googleWorkspaceProviderRequest == nil {
+		return localVarReturnValue, nil, reportError("googleWorkspaceProviderRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -751,7 +751,7 @@ func (a *ProvidersApiService) ProvidersGoogleWorkspaceCreateExecute(r ApiProvide
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.googleProviderRequest
+	localVarPostBody = r.googleWorkspaceProviderRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -821,7 +821,7 @@ func (r ApiProvidersGoogleWorkspaceDestroyRequest) Execute() (*http.Response, er
 /*
 ProvidersGoogleWorkspaceDestroy Method for ProvidersGoogleWorkspaceDestroy
 
-GoogleProvider Viewset
+GoogleWorkspaceProvider Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this Google Workspace Provider.
@@ -919,6 +919,944 @@ func (a *ProvidersApiService) ProvidersGoogleWorkspaceDestroyExecute(r ApiProvid
 	return localVarHTTPResponse, nil
 }
 
+type ApiProvidersGoogleWorkspaceGroupsCreateRequest struct {
+	ctx                                 context.Context
+	ApiService                          *ProvidersApiService
+	googleWorkspaceProviderGroupRequest *GoogleWorkspaceProviderGroupRequest
+}
+
+func (r ApiProvidersGoogleWorkspaceGroupsCreateRequest) GoogleWorkspaceProviderGroupRequest(googleWorkspaceProviderGroupRequest GoogleWorkspaceProviderGroupRequest) ApiProvidersGoogleWorkspaceGroupsCreateRequest {
+	r.googleWorkspaceProviderGroupRequest = &googleWorkspaceProviderGroupRequest
+	return r
+}
+
+func (r ApiProvidersGoogleWorkspaceGroupsCreateRequest) Execute() (*GoogleWorkspaceProviderGroup, *http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceGroupsCreateExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceGroupsCreate Method for ProvidersGoogleWorkspaceGroupsCreate
+
+GoogleWorkspaceProviderGroup Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersGoogleWorkspaceGroupsCreateRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsCreate(ctx context.Context) ApiProvidersGoogleWorkspaceGroupsCreateRequest {
+	return ApiProvidersGoogleWorkspaceGroupsCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GoogleWorkspaceProviderGroup
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsCreateExecute(r ApiProvidersGoogleWorkspaceGroupsCreateRequest) (*GoogleWorkspaceProviderGroup, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleWorkspaceProviderGroup
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceGroupsCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace_groups/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.googleWorkspaceProviderGroupRequest == nil {
+		return localVarReturnValue, nil, reportError("googleWorkspaceProviderGroupRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.googleWorkspaceProviderGroupRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersGoogleWorkspaceGroupsDestroyRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersApiService
+	id         string
+}
+
+func (r ApiProvidersGoogleWorkspaceGroupsDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceGroupsDestroyExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceGroupsDestroy Method for ProvidersGoogleWorkspaceGroupsDestroy
+
+GoogleWorkspaceProviderGroup Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Google Workspace Provider Group.
+	@return ApiProvidersGoogleWorkspaceGroupsDestroyRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsDestroy(ctx context.Context, id string) ApiProvidersGoogleWorkspaceGroupsDestroyRequest {
+	return ApiProvidersGoogleWorkspaceGroupsDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsDestroyExecute(r ApiProvidersGoogleWorkspaceGroupsDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceGroupsDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace_groups/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiProvidersGoogleWorkspaceGroupsListRequest struct {
+	ctx            context.Context
+	ApiService     *ProvidersApiService
+	groupGroupUuid *string
+	groupName      *string
+	ordering       *string
+	page           *int32
+	pageSize       *int32
+	providerId     *int32
+	search         *string
+}
+
+func (r ApiProvidersGoogleWorkspaceGroupsListRequest) GroupGroupUuid(groupGroupUuid string) ApiProvidersGoogleWorkspaceGroupsListRequest {
+	r.groupGroupUuid = &groupGroupUuid
+	return r
+}
+
+func (r ApiProvidersGoogleWorkspaceGroupsListRequest) GroupName(groupName string) ApiProvidersGoogleWorkspaceGroupsListRequest {
+	r.groupName = &groupName
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiProvidersGoogleWorkspaceGroupsListRequest) Ordering(ordering string) ApiProvidersGoogleWorkspaceGroupsListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiProvidersGoogleWorkspaceGroupsListRequest) Page(page int32) ApiProvidersGoogleWorkspaceGroupsListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiProvidersGoogleWorkspaceGroupsListRequest) PageSize(pageSize int32) ApiProvidersGoogleWorkspaceGroupsListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiProvidersGoogleWorkspaceGroupsListRequest) ProviderId(providerId int32) ApiProvidersGoogleWorkspaceGroupsListRequest {
+	r.providerId = &providerId
+	return r
+}
+
+// A search term.
+func (r ApiProvidersGoogleWorkspaceGroupsListRequest) Search(search string) ApiProvidersGoogleWorkspaceGroupsListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiProvidersGoogleWorkspaceGroupsListRequest) Execute() (*PaginatedGoogleWorkspaceProviderGroupList, *http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceGroupsListExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceGroupsList Method for ProvidersGoogleWorkspaceGroupsList
+
+GoogleWorkspaceProviderGroup Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersGoogleWorkspaceGroupsListRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsList(ctx context.Context) ApiProvidersGoogleWorkspaceGroupsListRequest {
+	return ApiProvidersGoogleWorkspaceGroupsListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedGoogleWorkspaceProviderGroupList
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsListExecute(r ApiProvidersGoogleWorkspaceGroupsListRequest) (*PaginatedGoogleWorkspaceProviderGroupList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedGoogleWorkspaceProviderGroupList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceGroupsList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace_groups/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.groupGroupUuid != nil {
+		localVarQueryParams.Add("group__group_uuid", parameterToString(*r.groupGroupUuid, ""))
+	}
+	if r.groupName != nil {
+		localVarQueryParams.Add("group__name", parameterToString(*r.groupName, ""))
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.providerId != nil {
+		localVarQueryParams.Add("provider__id", parameterToString(*r.providerId, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersGoogleWorkspaceGroupsPartialUpdateRequest struct {
+	ctx                                        context.Context
+	ApiService                                 *ProvidersApiService
+	id                                         string
+	patchedGoogleWorkspaceProviderGroupRequest *PatchedGoogleWorkspaceProviderGroupRequest
+}
+
+func (r ApiProvidersGoogleWorkspaceGroupsPartialUpdateRequest) PatchedGoogleWorkspaceProviderGroupRequest(patchedGoogleWorkspaceProviderGroupRequest PatchedGoogleWorkspaceProviderGroupRequest) ApiProvidersGoogleWorkspaceGroupsPartialUpdateRequest {
+	r.patchedGoogleWorkspaceProviderGroupRequest = &patchedGoogleWorkspaceProviderGroupRequest
+	return r
+}
+
+func (r ApiProvidersGoogleWorkspaceGroupsPartialUpdateRequest) Execute() (*GoogleWorkspaceProviderGroup, *http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceGroupsPartialUpdateExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceGroupsPartialUpdate Method for ProvidersGoogleWorkspaceGroupsPartialUpdate
+
+GoogleWorkspaceProviderGroup Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Google Workspace Provider Group.
+	@return ApiProvidersGoogleWorkspaceGroupsPartialUpdateRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsPartialUpdate(ctx context.Context, id string) ApiProvidersGoogleWorkspaceGroupsPartialUpdateRequest {
+	return ApiProvidersGoogleWorkspaceGroupsPartialUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GoogleWorkspaceProviderGroup
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsPartialUpdateExecute(r ApiProvidersGoogleWorkspaceGroupsPartialUpdateRequest) (*GoogleWorkspaceProviderGroup, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleWorkspaceProviderGroup
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceGroupsPartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace_groups/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedGoogleWorkspaceProviderGroupRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersGoogleWorkspaceGroupsRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersApiService
+	id         string
+}
+
+func (r ApiProvidersGoogleWorkspaceGroupsRetrieveRequest) Execute() (*GoogleWorkspaceProviderGroup, *http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceGroupsRetrieveExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceGroupsRetrieve Method for ProvidersGoogleWorkspaceGroupsRetrieve
+
+GoogleWorkspaceProviderGroup Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Google Workspace Provider Group.
+	@return ApiProvidersGoogleWorkspaceGroupsRetrieveRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsRetrieve(ctx context.Context, id string) ApiProvidersGoogleWorkspaceGroupsRetrieveRequest {
+	return ApiProvidersGoogleWorkspaceGroupsRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GoogleWorkspaceProviderGroup
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsRetrieveExecute(r ApiProvidersGoogleWorkspaceGroupsRetrieveRequest) (*GoogleWorkspaceProviderGroup, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleWorkspaceProviderGroup
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceGroupsRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace_groups/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersGoogleWorkspaceGroupsUpdateRequest struct {
+	ctx                                 context.Context
+	ApiService                          *ProvidersApiService
+	id                                  string
+	googleWorkspaceProviderGroupRequest *GoogleWorkspaceProviderGroupRequest
+}
+
+func (r ApiProvidersGoogleWorkspaceGroupsUpdateRequest) GoogleWorkspaceProviderGroupRequest(googleWorkspaceProviderGroupRequest GoogleWorkspaceProviderGroupRequest) ApiProvidersGoogleWorkspaceGroupsUpdateRequest {
+	r.googleWorkspaceProviderGroupRequest = &googleWorkspaceProviderGroupRequest
+	return r
+}
+
+func (r ApiProvidersGoogleWorkspaceGroupsUpdateRequest) Execute() (*GoogleWorkspaceProviderGroup, *http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceGroupsUpdateExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceGroupsUpdate Method for ProvidersGoogleWorkspaceGroupsUpdate
+
+GoogleWorkspaceProviderGroup Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Google Workspace Provider Group.
+	@return ApiProvidersGoogleWorkspaceGroupsUpdateRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsUpdate(ctx context.Context, id string) ApiProvidersGoogleWorkspaceGroupsUpdateRequest {
+	return ApiProvidersGoogleWorkspaceGroupsUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GoogleWorkspaceProviderGroup
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsUpdateExecute(r ApiProvidersGoogleWorkspaceGroupsUpdateRequest) (*GoogleWorkspaceProviderGroup, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleWorkspaceProviderGroup
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceGroupsUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace_groups/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.googleWorkspaceProviderGroupRequest == nil {
+		return localVarReturnValue, nil, reportError("googleWorkspaceProviderGroupRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.googleWorkspaceProviderGroupRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersGoogleWorkspaceGroupsUsedByListRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersApiService
+	id         string
+}
+
+func (r ApiProvidersGoogleWorkspaceGroupsUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceGroupsUsedByListExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceGroupsUsedByList Method for ProvidersGoogleWorkspaceGroupsUsedByList
+
+Get a list of all objects that use this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Google Workspace Provider Group.
+	@return ApiProvidersGoogleWorkspaceGroupsUsedByListRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsUsedByList(ctx context.Context, id string) ApiProvidersGoogleWorkspaceGroupsUsedByListRequest {
+	return ApiProvidersGoogleWorkspaceGroupsUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []UsedBy
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsUsedByListExecute(r ApiProvidersGoogleWorkspaceGroupsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceGroupsUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace_groups/{id}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiProvidersGoogleWorkspaceListRequest struct {
 	ctx                        context.Context
 	ApiService                 *ProvidersApiService
@@ -976,14 +1914,14 @@ func (r ApiProvidersGoogleWorkspaceListRequest) Search(search string) ApiProvide
 	return r
 }
 
-func (r ApiProvidersGoogleWorkspaceListRequest) Execute() (*PaginatedGoogleProviderList, *http.Response, error) {
+func (r ApiProvidersGoogleWorkspaceListRequest) Execute() (*PaginatedGoogleWorkspaceProviderList, *http.Response, error) {
 	return r.ApiService.ProvidersGoogleWorkspaceListExecute(r)
 }
 
 /*
 ProvidersGoogleWorkspaceList Method for ProvidersGoogleWorkspaceList
 
-GoogleProvider Viewset
+GoogleWorkspaceProvider Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersGoogleWorkspaceListRequest
@@ -997,13 +1935,13 @@ func (a *ProvidersApiService) ProvidersGoogleWorkspaceList(ctx context.Context) 
 
 // Execute executes the request
 //
-//	@return PaginatedGoogleProviderList
-func (a *ProvidersApiService) ProvidersGoogleWorkspaceListExecute(r ApiProvidersGoogleWorkspaceListRequest) (*PaginatedGoogleProviderList, *http.Response, error) {
+//	@return PaginatedGoogleWorkspaceProviderList
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceListExecute(r ApiProvidersGoogleWorkspaceListRequest) (*PaginatedGoogleWorkspaceProviderList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PaginatedGoogleProviderList
+		localVarReturnValue *PaginatedGoogleWorkspaceProviderList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceList")
@@ -1115,25 +2053,25 @@ func (a *ProvidersApiService) ProvidersGoogleWorkspaceListExecute(r ApiProviders
 }
 
 type ApiProvidersGoogleWorkspacePartialUpdateRequest struct {
-	ctx                          context.Context
-	ApiService                   *ProvidersApiService
-	id                           int32
-	patchedGoogleProviderRequest *PatchedGoogleProviderRequest
+	ctx                                   context.Context
+	ApiService                            *ProvidersApiService
+	id                                    int32
+	patchedGoogleWorkspaceProviderRequest *PatchedGoogleWorkspaceProviderRequest
 }
 
-func (r ApiProvidersGoogleWorkspacePartialUpdateRequest) PatchedGoogleProviderRequest(patchedGoogleProviderRequest PatchedGoogleProviderRequest) ApiProvidersGoogleWorkspacePartialUpdateRequest {
-	r.patchedGoogleProviderRequest = &patchedGoogleProviderRequest
+func (r ApiProvidersGoogleWorkspacePartialUpdateRequest) PatchedGoogleWorkspaceProviderRequest(patchedGoogleWorkspaceProviderRequest PatchedGoogleWorkspaceProviderRequest) ApiProvidersGoogleWorkspacePartialUpdateRequest {
+	r.patchedGoogleWorkspaceProviderRequest = &patchedGoogleWorkspaceProviderRequest
 	return r
 }
 
-func (r ApiProvidersGoogleWorkspacePartialUpdateRequest) Execute() (*GoogleProvider, *http.Response, error) {
+func (r ApiProvidersGoogleWorkspacePartialUpdateRequest) Execute() (*GoogleWorkspaceProvider, *http.Response, error) {
 	return r.ApiService.ProvidersGoogleWorkspacePartialUpdateExecute(r)
 }
 
 /*
 ProvidersGoogleWorkspacePartialUpdate Method for ProvidersGoogleWorkspacePartialUpdate
 
-GoogleProvider Viewset
+GoogleWorkspaceProvider Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this Google Workspace Provider.
@@ -1149,13 +2087,13 @@ func (a *ProvidersApiService) ProvidersGoogleWorkspacePartialUpdate(ctx context.
 
 // Execute executes the request
 //
-//	@return GoogleProvider
-func (a *ProvidersApiService) ProvidersGoogleWorkspacePartialUpdateExecute(r ApiProvidersGoogleWorkspacePartialUpdateRequest) (*GoogleProvider, *http.Response, error) {
+//	@return GoogleWorkspaceProvider
+func (a *ProvidersApiService) ProvidersGoogleWorkspacePartialUpdateExecute(r ApiProvidersGoogleWorkspacePartialUpdateRequest) (*GoogleWorkspaceProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *GoogleProvider
+		localVarReturnValue *GoogleWorkspaceProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspacePartialUpdate")
@@ -1188,7 +2126,7 @@ func (a *ProvidersApiService) ProvidersGoogleWorkspacePartialUpdateExecute(r Api
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.patchedGoogleProviderRequest
+	localVarPostBody = r.patchedGoogleWorkspaceProviderRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1251,14 +2189,14 @@ type ApiProvidersGoogleWorkspaceRetrieveRequest struct {
 	id         int32
 }
 
-func (r ApiProvidersGoogleWorkspaceRetrieveRequest) Execute() (*GoogleProvider, *http.Response, error) {
+func (r ApiProvidersGoogleWorkspaceRetrieveRequest) Execute() (*GoogleWorkspaceProvider, *http.Response, error) {
 	return r.ApiService.ProvidersGoogleWorkspaceRetrieveExecute(r)
 }
 
 /*
 ProvidersGoogleWorkspaceRetrieve Method for ProvidersGoogleWorkspaceRetrieve
 
-GoogleProvider Viewset
+GoogleWorkspaceProvider Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this Google Workspace Provider.
@@ -1274,13 +2212,13 @@ func (a *ProvidersApiService) ProvidersGoogleWorkspaceRetrieve(ctx context.Conte
 
 // Execute executes the request
 //
-//	@return GoogleProvider
-func (a *ProvidersApiService) ProvidersGoogleWorkspaceRetrieveExecute(r ApiProvidersGoogleWorkspaceRetrieveRequest) (*GoogleProvider, *http.Response, error) {
+//	@return GoogleWorkspaceProvider
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceRetrieveExecute(r ApiProvidersGoogleWorkspaceRetrieveRequest) (*GoogleWorkspaceProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *GoogleProvider
+		localVarReturnValue *GoogleWorkspaceProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceRetrieve")
@@ -1492,25 +2430,25 @@ func (a *ProvidersApiService) ProvidersGoogleWorkspaceSyncStatusRetrieveExecute(
 }
 
 type ApiProvidersGoogleWorkspaceUpdateRequest struct {
-	ctx                   context.Context
-	ApiService            *ProvidersApiService
-	id                    int32
-	googleProviderRequest *GoogleProviderRequest
+	ctx                            context.Context
+	ApiService                     *ProvidersApiService
+	id                             int32
+	googleWorkspaceProviderRequest *GoogleWorkspaceProviderRequest
 }
 
-func (r ApiProvidersGoogleWorkspaceUpdateRequest) GoogleProviderRequest(googleProviderRequest GoogleProviderRequest) ApiProvidersGoogleWorkspaceUpdateRequest {
-	r.googleProviderRequest = &googleProviderRequest
+func (r ApiProvidersGoogleWorkspaceUpdateRequest) GoogleWorkspaceProviderRequest(googleWorkspaceProviderRequest GoogleWorkspaceProviderRequest) ApiProvidersGoogleWorkspaceUpdateRequest {
+	r.googleWorkspaceProviderRequest = &googleWorkspaceProviderRequest
 	return r
 }
 
-func (r ApiProvidersGoogleWorkspaceUpdateRequest) Execute() (*GoogleProvider, *http.Response, error) {
+func (r ApiProvidersGoogleWorkspaceUpdateRequest) Execute() (*GoogleWorkspaceProvider, *http.Response, error) {
 	return r.ApiService.ProvidersGoogleWorkspaceUpdateExecute(r)
 }
 
 /*
 ProvidersGoogleWorkspaceUpdate Method for ProvidersGoogleWorkspaceUpdate
 
-GoogleProvider Viewset
+GoogleWorkspaceProvider Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this Google Workspace Provider.
@@ -1526,13 +2464,13 @@ func (a *ProvidersApiService) ProvidersGoogleWorkspaceUpdate(ctx context.Context
 
 // Execute executes the request
 //
-//	@return GoogleProvider
-func (a *ProvidersApiService) ProvidersGoogleWorkspaceUpdateExecute(r ApiProvidersGoogleWorkspaceUpdateRequest) (*GoogleProvider, *http.Response, error) {
+//	@return GoogleWorkspaceProvider
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUpdateExecute(r ApiProvidersGoogleWorkspaceUpdateRequest) (*GoogleWorkspaceProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *GoogleProvider
+		localVarReturnValue *GoogleWorkspaceProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceUpdate")
@@ -1546,8 +2484,8 @@ func (a *ProvidersApiService) ProvidersGoogleWorkspaceUpdateExecute(r ApiProvide
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.googleProviderRequest == nil {
-		return localVarReturnValue, nil, reportError("googleProviderRequest is required and must be specified")
+	if r.googleWorkspaceProviderRequest == nil {
+		return localVarReturnValue, nil, reportError("googleWorkspaceProviderRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1568,7 +2506,7 @@ func (a *ProvidersApiService) ProvidersGoogleWorkspaceUpdateExecute(r ApiProvide
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.googleProviderRequest
+	localVarPostBody = r.googleWorkspaceProviderRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1669,6 +2607,944 @@ func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsedByListExecute(r ApiPro
 	}
 
 	localVarPath := localBasePath + "/providers/google_workspace/{id}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersGoogleWorkspaceUsersCreateRequest struct {
+	ctx                                context.Context
+	ApiService                         *ProvidersApiService
+	googleWorkspaceProviderUserRequest *GoogleWorkspaceProviderUserRequest
+}
+
+func (r ApiProvidersGoogleWorkspaceUsersCreateRequest) GoogleWorkspaceProviderUserRequest(googleWorkspaceProviderUserRequest GoogleWorkspaceProviderUserRequest) ApiProvidersGoogleWorkspaceUsersCreateRequest {
+	r.googleWorkspaceProviderUserRequest = &googleWorkspaceProviderUserRequest
+	return r
+}
+
+func (r ApiProvidersGoogleWorkspaceUsersCreateRequest) Execute() (*GoogleWorkspaceProviderUser, *http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceUsersCreateExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceUsersCreate Method for ProvidersGoogleWorkspaceUsersCreate
+
+GoogleWorkspaceProviderUser Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersGoogleWorkspaceUsersCreateRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersCreate(ctx context.Context) ApiProvidersGoogleWorkspaceUsersCreateRequest {
+	return ApiProvidersGoogleWorkspaceUsersCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GoogleWorkspaceProviderUser
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersCreateExecute(r ApiProvidersGoogleWorkspaceUsersCreateRequest) (*GoogleWorkspaceProviderUser, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleWorkspaceProviderUser
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceUsersCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace_users/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.googleWorkspaceProviderUserRequest == nil {
+		return localVarReturnValue, nil, reportError("googleWorkspaceProviderUserRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.googleWorkspaceProviderUserRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersGoogleWorkspaceUsersDestroyRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersApiService
+	id         string
+}
+
+func (r ApiProvidersGoogleWorkspaceUsersDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceUsersDestroyExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceUsersDestroy Method for ProvidersGoogleWorkspaceUsersDestroy
+
+GoogleWorkspaceProviderUser Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Google Workspace Provider User.
+	@return ApiProvidersGoogleWorkspaceUsersDestroyRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersDestroy(ctx context.Context, id string) ApiProvidersGoogleWorkspaceUsersDestroyRequest {
+	return ApiProvidersGoogleWorkspaceUsersDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersDestroyExecute(r ApiProvidersGoogleWorkspaceUsersDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceUsersDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace_users/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiProvidersGoogleWorkspaceUsersListRequest struct {
+	ctx          context.Context
+	ApiService   *ProvidersApiService
+	ordering     *string
+	page         *int32
+	pageSize     *int32
+	providerId   *int32
+	search       *string
+	userId       *int32
+	userUsername *string
+}
+
+// Which field to use when ordering the results.
+func (r ApiProvidersGoogleWorkspaceUsersListRequest) Ordering(ordering string) ApiProvidersGoogleWorkspaceUsersListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiProvidersGoogleWorkspaceUsersListRequest) Page(page int32) ApiProvidersGoogleWorkspaceUsersListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiProvidersGoogleWorkspaceUsersListRequest) PageSize(pageSize int32) ApiProvidersGoogleWorkspaceUsersListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiProvidersGoogleWorkspaceUsersListRequest) ProviderId(providerId int32) ApiProvidersGoogleWorkspaceUsersListRequest {
+	r.providerId = &providerId
+	return r
+}
+
+// A search term.
+func (r ApiProvidersGoogleWorkspaceUsersListRequest) Search(search string) ApiProvidersGoogleWorkspaceUsersListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiProvidersGoogleWorkspaceUsersListRequest) UserId(userId int32) ApiProvidersGoogleWorkspaceUsersListRequest {
+	r.userId = &userId
+	return r
+}
+
+func (r ApiProvidersGoogleWorkspaceUsersListRequest) UserUsername(userUsername string) ApiProvidersGoogleWorkspaceUsersListRequest {
+	r.userUsername = &userUsername
+	return r
+}
+
+func (r ApiProvidersGoogleWorkspaceUsersListRequest) Execute() (*PaginatedGoogleWorkspaceProviderUserList, *http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceUsersListExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceUsersList Method for ProvidersGoogleWorkspaceUsersList
+
+GoogleWorkspaceProviderUser Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersGoogleWorkspaceUsersListRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersList(ctx context.Context) ApiProvidersGoogleWorkspaceUsersListRequest {
+	return ApiProvidersGoogleWorkspaceUsersListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedGoogleWorkspaceProviderUserList
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersListExecute(r ApiProvidersGoogleWorkspaceUsersListRequest) (*PaginatedGoogleWorkspaceProviderUserList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedGoogleWorkspaceProviderUserList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceUsersList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace_users/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.providerId != nil {
+		localVarQueryParams.Add("provider__id", parameterToString(*r.providerId, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	if r.userId != nil {
+		localVarQueryParams.Add("user__id", parameterToString(*r.userId, ""))
+	}
+	if r.userUsername != nil {
+		localVarQueryParams.Add("user__username", parameterToString(*r.userUsername, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersGoogleWorkspaceUsersPartialUpdateRequest struct {
+	ctx                                       context.Context
+	ApiService                                *ProvidersApiService
+	id                                        string
+	patchedGoogleWorkspaceProviderUserRequest *PatchedGoogleWorkspaceProviderUserRequest
+}
+
+func (r ApiProvidersGoogleWorkspaceUsersPartialUpdateRequest) PatchedGoogleWorkspaceProviderUserRequest(patchedGoogleWorkspaceProviderUserRequest PatchedGoogleWorkspaceProviderUserRequest) ApiProvidersGoogleWorkspaceUsersPartialUpdateRequest {
+	r.patchedGoogleWorkspaceProviderUserRequest = &patchedGoogleWorkspaceProviderUserRequest
+	return r
+}
+
+func (r ApiProvidersGoogleWorkspaceUsersPartialUpdateRequest) Execute() (*GoogleWorkspaceProviderUser, *http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceUsersPartialUpdateExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceUsersPartialUpdate Method for ProvidersGoogleWorkspaceUsersPartialUpdate
+
+GoogleWorkspaceProviderUser Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Google Workspace Provider User.
+	@return ApiProvidersGoogleWorkspaceUsersPartialUpdateRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersPartialUpdate(ctx context.Context, id string) ApiProvidersGoogleWorkspaceUsersPartialUpdateRequest {
+	return ApiProvidersGoogleWorkspaceUsersPartialUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GoogleWorkspaceProviderUser
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersPartialUpdateExecute(r ApiProvidersGoogleWorkspaceUsersPartialUpdateRequest) (*GoogleWorkspaceProviderUser, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleWorkspaceProviderUser
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceUsersPartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace_users/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedGoogleWorkspaceProviderUserRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersGoogleWorkspaceUsersRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersApiService
+	id         string
+}
+
+func (r ApiProvidersGoogleWorkspaceUsersRetrieveRequest) Execute() (*GoogleWorkspaceProviderUser, *http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceUsersRetrieveExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceUsersRetrieve Method for ProvidersGoogleWorkspaceUsersRetrieve
+
+GoogleWorkspaceProviderUser Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Google Workspace Provider User.
+	@return ApiProvidersGoogleWorkspaceUsersRetrieveRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersRetrieve(ctx context.Context, id string) ApiProvidersGoogleWorkspaceUsersRetrieveRequest {
+	return ApiProvidersGoogleWorkspaceUsersRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GoogleWorkspaceProviderUser
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersRetrieveExecute(r ApiProvidersGoogleWorkspaceUsersRetrieveRequest) (*GoogleWorkspaceProviderUser, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleWorkspaceProviderUser
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceUsersRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace_users/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersGoogleWorkspaceUsersUpdateRequest struct {
+	ctx                                context.Context
+	ApiService                         *ProvidersApiService
+	id                                 string
+	googleWorkspaceProviderUserRequest *GoogleWorkspaceProviderUserRequest
+}
+
+func (r ApiProvidersGoogleWorkspaceUsersUpdateRequest) GoogleWorkspaceProviderUserRequest(googleWorkspaceProviderUserRequest GoogleWorkspaceProviderUserRequest) ApiProvidersGoogleWorkspaceUsersUpdateRequest {
+	r.googleWorkspaceProviderUserRequest = &googleWorkspaceProviderUserRequest
+	return r
+}
+
+func (r ApiProvidersGoogleWorkspaceUsersUpdateRequest) Execute() (*GoogleWorkspaceProviderUser, *http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceUsersUpdateExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceUsersUpdate Method for ProvidersGoogleWorkspaceUsersUpdate
+
+GoogleWorkspaceProviderUser Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Google Workspace Provider User.
+	@return ApiProvidersGoogleWorkspaceUsersUpdateRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersUpdate(ctx context.Context, id string) ApiProvidersGoogleWorkspaceUsersUpdateRequest {
+	return ApiProvidersGoogleWorkspaceUsersUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GoogleWorkspaceProviderUser
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersUpdateExecute(r ApiProvidersGoogleWorkspaceUsersUpdateRequest) (*GoogleWorkspaceProviderUser, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleWorkspaceProviderUser
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceUsersUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace_users/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.googleWorkspaceProviderUserRequest == nil {
+		return localVarReturnValue, nil, reportError("googleWorkspaceProviderUserRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.googleWorkspaceProviderUserRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersGoogleWorkspaceUsersUsedByListRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersApiService
+	id         string
+}
+
+func (r ApiProvidersGoogleWorkspaceUsersUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.ProvidersGoogleWorkspaceUsersUsedByListExecute(r)
+}
+
+/*
+ProvidersGoogleWorkspaceUsersUsedByList Method for ProvidersGoogleWorkspaceUsersUsedByList
+
+Get a list of all objects that use this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Google Workspace Provider User.
+	@return ApiProvidersGoogleWorkspaceUsersUsedByListRequest
+*/
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersUsedByList(ctx context.Context, id string) ApiProvidersGoogleWorkspaceUsersUsedByListRequest {
+	return ApiProvidersGoogleWorkspaceUsersUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []UsedBy
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersUsedByListExecute(r ApiProvidersGoogleWorkspaceUsersUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceUsersUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/google_workspace_users/{id}/used_by/"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2679,6 +4555,2943 @@ func (a *ProvidersApiService) ProvidersLdapUsedByListExecute(r ApiProvidersLdapU
 	}
 
 	localVarPath := localBasePath + "/providers/ldap/{id}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraCreateRequest struct {
+	ctx                           context.Context
+	ApiService                    *ProvidersApiService
+	microsoftEntraProviderRequest *MicrosoftEntraProviderRequest
+}
+
+func (r ApiProvidersMicrosoftEntraCreateRequest) MicrosoftEntraProviderRequest(microsoftEntraProviderRequest MicrosoftEntraProviderRequest) ApiProvidersMicrosoftEntraCreateRequest {
+	r.microsoftEntraProviderRequest = &microsoftEntraProviderRequest
+	return r
+}
+
+func (r ApiProvidersMicrosoftEntraCreateRequest) Execute() (*MicrosoftEntraProvider, *http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraCreateExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraCreate Method for ProvidersMicrosoftEntraCreate
+
+MicrosoftEntraProvider Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersMicrosoftEntraCreateRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraCreate(ctx context.Context) ApiProvidersMicrosoftEntraCreateRequest {
+	return ApiProvidersMicrosoftEntraCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return MicrosoftEntraProvider
+func (a *ProvidersApiService) ProvidersMicrosoftEntraCreateExecute(r ApiProvidersMicrosoftEntraCreateRequest) (*MicrosoftEntraProvider, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MicrosoftEntraProvider
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.microsoftEntraProviderRequest == nil {
+		return localVarReturnValue, nil, reportError("microsoftEntraProviderRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.microsoftEntraProviderRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraDestroyRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersApiService
+	id         int32
+}
+
+func (r ApiProvidersMicrosoftEntraDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraDestroyExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraDestroy Method for ProvidersMicrosoftEntraDestroy
+
+MicrosoftEntraProvider Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Microsoft Entra Provider.
+	@return ApiProvidersMicrosoftEntraDestroyRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraDestroy(ctx context.Context, id int32) ApiProvidersMicrosoftEntraDestroyRequest {
+	return ApiProvidersMicrosoftEntraDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+func (a *ProvidersApiService) ProvidersMicrosoftEntraDestroyExecute(r ApiProvidersMicrosoftEntraDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraGroupsCreateRequest struct {
+	ctx                                context.Context
+	ApiService                         *ProvidersApiService
+	microsoftEntraProviderGroupRequest *MicrosoftEntraProviderGroupRequest
+}
+
+func (r ApiProvidersMicrosoftEntraGroupsCreateRequest) MicrosoftEntraProviderGroupRequest(microsoftEntraProviderGroupRequest MicrosoftEntraProviderGroupRequest) ApiProvidersMicrosoftEntraGroupsCreateRequest {
+	r.microsoftEntraProviderGroupRequest = &microsoftEntraProviderGroupRequest
+	return r
+}
+
+func (r ApiProvidersMicrosoftEntraGroupsCreateRequest) Execute() (*MicrosoftEntraProviderGroup, *http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraGroupsCreateExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraGroupsCreate Method for ProvidersMicrosoftEntraGroupsCreate
+
+MicrosoftEntraProviderGroup Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersMicrosoftEntraGroupsCreateRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsCreate(ctx context.Context) ApiProvidersMicrosoftEntraGroupsCreateRequest {
+	return ApiProvidersMicrosoftEntraGroupsCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return MicrosoftEntraProviderGroup
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsCreateExecute(r ApiProvidersMicrosoftEntraGroupsCreateRequest) (*MicrosoftEntraProviderGroup, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MicrosoftEntraProviderGroup
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraGroupsCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra_groups/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.microsoftEntraProviderGroupRequest == nil {
+		return localVarReturnValue, nil, reportError("microsoftEntraProviderGroupRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.microsoftEntraProviderGroupRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraGroupsDestroyRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersApiService
+	id         string
+}
+
+func (r ApiProvidersMicrosoftEntraGroupsDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraGroupsDestroyExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraGroupsDestroy Method for ProvidersMicrosoftEntraGroupsDestroy
+
+MicrosoftEntraProviderGroup Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Microsoft Entra Provider Group.
+	@return ApiProvidersMicrosoftEntraGroupsDestroyRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsDestroy(ctx context.Context, id string) ApiProvidersMicrosoftEntraGroupsDestroyRequest {
+	return ApiProvidersMicrosoftEntraGroupsDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsDestroyExecute(r ApiProvidersMicrosoftEntraGroupsDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraGroupsDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra_groups/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraGroupsListRequest struct {
+	ctx            context.Context
+	ApiService     *ProvidersApiService
+	groupGroupUuid *string
+	groupName      *string
+	ordering       *string
+	page           *int32
+	pageSize       *int32
+	providerId     *int32
+	search         *string
+}
+
+func (r ApiProvidersMicrosoftEntraGroupsListRequest) GroupGroupUuid(groupGroupUuid string) ApiProvidersMicrosoftEntraGroupsListRequest {
+	r.groupGroupUuid = &groupGroupUuid
+	return r
+}
+
+func (r ApiProvidersMicrosoftEntraGroupsListRequest) GroupName(groupName string) ApiProvidersMicrosoftEntraGroupsListRequest {
+	r.groupName = &groupName
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiProvidersMicrosoftEntraGroupsListRequest) Ordering(ordering string) ApiProvidersMicrosoftEntraGroupsListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiProvidersMicrosoftEntraGroupsListRequest) Page(page int32) ApiProvidersMicrosoftEntraGroupsListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiProvidersMicrosoftEntraGroupsListRequest) PageSize(pageSize int32) ApiProvidersMicrosoftEntraGroupsListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiProvidersMicrosoftEntraGroupsListRequest) ProviderId(providerId int32) ApiProvidersMicrosoftEntraGroupsListRequest {
+	r.providerId = &providerId
+	return r
+}
+
+// A search term.
+func (r ApiProvidersMicrosoftEntraGroupsListRequest) Search(search string) ApiProvidersMicrosoftEntraGroupsListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiProvidersMicrosoftEntraGroupsListRequest) Execute() (*PaginatedMicrosoftEntraProviderGroupList, *http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraGroupsListExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraGroupsList Method for ProvidersMicrosoftEntraGroupsList
+
+MicrosoftEntraProviderGroup Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersMicrosoftEntraGroupsListRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsList(ctx context.Context) ApiProvidersMicrosoftEntraGroupsListRequest {
+	return ApiProvidersMicrosoftEntraGroupsListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedMicrosoftEntraProviderGroupList
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsListExecute(r ApiProvidersMicrosoftEntraGroupsListRequest) (*PaginatedMicrosoftEntraProviderGroupList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedMicrosoftEntraProviderGroupList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraGroupsList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra_groups/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.groupGroupUuid != nil {
+		localVarQueryParams.Add("group__group_uuid", parameterToString(*r.groupGroupUuid, ""))
+	}
+	if r.groupName != nil {
+		localVarQueryParams.Add("group__name", parameterToString(*r.groupName, ""))
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.providerId != nil {
+		localVarQueryParams.Add("provider__id", parameterToString(*r.providerId, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraGroupsPartialUpdateRequest struct {
+	ctx                                       context.Context
+	ApiService                                *ProvidersApiService
+	id                                        string
+	patchedMicrosoftEntraProviderGroupRequest *PatchedMicrosoftEntraProviderGroupRequest
+}
+
+func (r ApiProvidersMicrosoftEntraGroupsPartialUpdateRequest) PatchedMicrosoftEntraProviderGroupRequest(patchedMicrosoftEntraProviderGroupRequest PatchedMicrosoftEntraProviderGroupRequest) ApiProvidersMicrosoftEntraGroupsPartialUpdateRequest {
+	r.patchedMicrosoftEntraProviderGroupRequest = &patchedMicrosoftEntraProviderGroupRequest
+	return r
+}
+
+func (r ApiProvidersMicrosoftEntraGroupsPartialUpdateRequest) Execute() (*MicrosoftEntraProviderGroup, *http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraGroupsPartialUpdateExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraGroupsPartialUpdate Method for ProvidersMicrosoftEntraGroupsPartialUpdate
+
+MicrosoftEntraProviderGroup Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Microsoft Entra Provider Group.
+	@return ApiProvidersMicrosoftEntraGroupsPartialUpdateRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsPartialUpdate(ctx context.Context, id string) ApiProvidersMicrosoftEntraGroupsPartialUpdateRequest {
+	return ApiProvidersMicrosoftEntraGroupsPartialUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return MicrosoftEntraProviderGroup
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsPartialUpdateExecute(r ApiProvidersMicrosoftEntraGroupsPartialUpdateRequest) (*MicrosoftEntraProviderGroup, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MicrosoftEntraProviderGroup
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraGroupsPartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra_groups/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedMicrosoftEntraProviderGroupRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraGroupsRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersApiService
+	id         string
+}
+
+func (r ApiProvidersMicrosoftEntraGroupsRetrieveRequest) Execute() (*MicrosoftEntraProviderGroup, *http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraGroupsRetrieveExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraGroupsRetrieve Method for ProvidersMicrosoftEntraGroupsRetrieve
+
+MicrosoftEntraProviderGroup Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Microsoft Entra Provider Group.
+	@return ApiProvidersMicrosoftEntraGroupsRetrieveRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsRetrieve(ctx context.Context, id string) ApiProvidersMicrosoftEntraGroupsRetrieveRequest {
+	return ApiProvidersMicrosoftEntraGroupsRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return MicrosoftEntraProviderGroup
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsRetrieveExecute(r ApiProvidersMicrosoftEntraGroupsRetrieveRequest) (*MicrosoftEntraProviderGroup, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MicrosoftEntraProviderGroup
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraGroupsRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra_groups/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraGroupsUpdateRequest struct {
+	ctx                                context.Context
+	ApiService                         *ProvidersApiService
+	id                                 string
+	microsoftEntraProviderGroupRequest *MicrosoftEntraProviderGroupRequest
+}
+
+func (r ApiProvidersMicrosoftEntraGroupsUpdateRequest) MicrosoftEntraProviderGroupRequest(microsoftEntraProviderGroupRequest MicrosoftEntraProviderGroupRequest) ApiProvidersMicrosoftEntraGroupsUpdateRequest {
+	r.microsoftEntraProviderGroupRequest = &microsoftEntraProviderGroupRequest
+	return r
+}
+
+func (r ApiProvidersMicrosoftEntraGroupsUpdateRequest) Execute() (*MicrosoftEntraProviderGroup, *http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraGroupsUpdateExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraGroupsUpdate Method for ProvidersMicrosoftEntraGroupsUpdate
+
+MicrosoftEntraProviderGroup Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Microsoft Entra Provider Group.
+	@return ApiProvidersMicrosoftEntraGroupsUpdateRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsUpdate(ctx context.Context, id string) ApiProvidersMicrosoftEntraGroupsUpdateRequest {
+	return ApiProvidersMicrosoftEntraGroupsUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return MicrosoftEntraProviderGroup
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsUpdateExecute(r ApiProvidersMicrosoftEntraGroupsUpdateRequest) (*MicrosoftEntraProviderGroup, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MicrosoftEntraProviderGroup
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraGroupsUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra_groups/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.microsoftEntraProviderGroupRequest == nil {
+		return localVarReturnValue, nil, reportError("microsoftEntraProviderGroupRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.microsoftEntraProviderGroupRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraGroupsUsedByListRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersApiService
+	id         string
+}
+
+func (r ApiProvidersMicrosoftEntraGroupsUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraGroupsUsedByListExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraGroupsUsedByList Method for ProvidersMicrosoftEntraGroupsUsedByList
+
+Get a list of all objects that use this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Microsoft Entra Provider Group.
+	@return ApiProvidersMicrosoftEntraGroupsUsedByListRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsUsedByList(ctx context.Context, id string) ApiProvidersMicrosoftEntraGroupsUsedByListRequest {
+	return ApiProvidersMicrosoftEntraGroupsUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []UsedBy
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsUsedByListExecute(r ApiProvidersMicrosoftEntraGroupsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraGroupsUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra_groups/{id}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraListRequest struct {
+	ctx                        context.Context
+	ApiService                 *ProvidersApiService
+	excludeUsersServiceAccount *bool
+	filterGroup                *string
+	name                       *string
+	ordering                   *string
+	page                       *int32
+	pageSize                   *int32
+	search                     *string
+}
+
+func (r ApiProvidersMicrosoftEntraListRequest) ExcludeUsersServiceAccount(excludeUsersServiceAccount bool) ApiProvidersMicrosoftEntraListRequest {
+	r.excludeUsersServiceAccount = &excludeUsersServiceAccount
+	return r
+}
+
+func (r ApiProvidersMicrosoftEntraListRequest) FilterGroup(filterGroup string) ApiProvidersMicrosoftEntraListRequest {
+	r.filterGroup = &filterGroup
+	return r
+}
+
+func (r ApiProvidersMicrosoftEntraListRequest) Name(name string) ApiProvidersMicrosoftEntraListRequest {
+	r.name = &name
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiProvidersMicrosoftEntraListRequest) Ordering(ordering string) ApiProvidersMicrosoftEntraListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiProvidersMicrosoftEntraListRequest) Page(page int32) ApiProvidersMicrosoftEntraListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiProvidersMicrosoftEntraListRequest) PageSize(pageSize int32) ApiProvidersMicrosoftEntraListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// A search term.
+func (r ApiProvidersMicrosoftEntraListRequest) Search(search string) ApiProvidersMicrosoftEntraListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiProvidersMicrosoftEntraListRequest) Execute() (*PaginatedMicrosoftEntraProviderList, *http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraListExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraList Method for ProvidersMicrosoftEntraList
+
+MicrosoftEntraProvider Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersMicrosoftEntraListRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraList(ctx context.Context) ApiProvidersMicrosoftEntraListRequest {
+	return ApiProvidersMicrosoftEntraListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedMicrosoftEntraProviderList
+func (a *ProvidersApiService) ProvidersMicrosoftEntraListExecute(r ApiProvidersMicrosoftEntraListRequest) (*PaginatedMicrosoftEntraProviderList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedMicrosoftEntraProviderList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.excludeUsersServiceAccount != nil {
+		localVarQueryParams.Add("exclude_users_service_account", parameterToString(*r.excludeUsersServiceAccount, ""))
+	}
+	if r.filterGroup != nil {
+		localVarQueryParams.Add("filter_group", parameterToString(*r.filterGroup, ""))
+	}
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraPartialUpdateRequest struct {
+	ctx                                  context.Context
+	ApiService                           *ProvidersApiService
+	id                                   int32
+	patchedMicrosoftEntraProviderRequest *PatchedMicrosoftEntraProviderRequest
+}
+
+func (r ApiProvidersMicrosoftEntraPartialUpdateRequest) PatchedMicrosoftEntraProviderRequest(patchedMicrosoftEntraProviderRequest PatchedMicrosoftEntraProviderRequest) ApiProvidersMicrosoftEntraPartialUpdateRequest {
+	r.patchedMicrosoftEntraProviderRequest = &patchedMicrosoftEntraProviderRequest
+	return r
+}
+
+func (r ApiProvidersMicrosoftEntraPartialUpdateRequest) Execute() (*MicrosoftEntraProvider, *http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraPartialUpdateExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraPartialUpdate Method for ProvidersMicrosoftEntraPartialUpdate
+
+MicrosoftEntraProvider Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Microsoft Entra Provider.
+	@return ApiProvidersMicrosoftEntraPartialUpdateRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraPartialUpdate(ctx context.Context, id int32) ApiProvidersMicrosoftEntraPartialUpdateRequest {
+	return ApiProvidersMicrosoftEntraPartialUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return MicrosoftEntraProvider
+func (a *ProvidersApiService) ProvidersMicrosoftEntraPartialUpdateExecute(r ApiProvidersMicrosoftEntraPartialUpdateRequest) (*MicrosoftEntraProvider, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MicrosoftEntraProvider
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraPartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedMicrosoftEntraProviderRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersApiService
+	id         int32
+}
+
+func (r ApiProvidersMicrosoftEntraRetrieveRequest) Execute() (*MicrosoftEntraProvider, *http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraRetrieveExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraRetrieve Method for ProvidersMicrosoftEntraRetrieve
+
+MicrosoftEntraProvider Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Microsoft Entra Provider.
+	@return ApiProvidersMicrosoftEntraRetrieveRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraRetrieve(ctx context.Context, id int32) ApiProvidersMicrosoftEntraRetrieveRequest {
+	return ApiProvidersMicrosoftEntraRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return MicrosoftEntraProvider
+func (a *ProvidersApiService) ProvidersMicrosoftEntraRetrieveExecute(r ApiProvidersMicrosoftEntraRetrieveRequest) (*MicrosoftEntraProvider, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MicrosoftEntraProvider
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraSyncStatusRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersApiService
+	id         int32
+}
+
+func (r ApiProvidersMicrosoftEntraSyncStatusRetrieveRequest) Execute() (*SyncStatus, *http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraSyncStatusRetrieveExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraSyncStatusRetrieve Method for ProvidersMicrosoftEntraSyncStatusRetrieve
+
+Get provider's sync status
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Microsoft Entra Provider.
+	@return ApiProvidersMicrosoftEntraSyncStatusRetrieveRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraSyncStatusRetrieve(ctx context.Context, id int32) ApiProvidersMicrosoftEntraSyncStatusRetrieveRequest {
+	return ApiProvidersMicrosoftEntraSyncStatusRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return SyncStatus
+func (a *ProvidersApiService) ProvidersMicrosoftEntraSyncStatusRetrieveExecute(r ApiProvidersMicrosoftEntraSyncStatusRetrieveRequest) (*SyncStatus, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SyncStatus
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraSyncStatusRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra/{id}/sync/status/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraUpdateRequest struct {
+	ctx                           context.Context
+	ApiService                    *ProvidersApiService
+	id                            int32
+	microsoftEntraProviderRequest *MicrosoftEntraProviderRequest
+}
+
+func (r ApiProvidersMicrosoftEntraUpdateRequest) MicrosoftEntraProviderRequest(microsoftEntraProviderRequest MicrosoftEntraProviderRequest) ApiProvidersMicrosoftEntraUpdateRequest {
+	r.microsoftEntraProviderRequest = &microsoftEntraProviderRequest
+	return r
+}
+
+func (r ApiProvidersMicrosoftEntraUpdateRequest) Execute() (*MicrosoftEntraProvider, *http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraUpdateExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraUpdate Method for ProvidersMicrosoftEntraUpdate
+
+MicrosoftEntraProvider Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Microsoft Entra Provider.
+	@return ApiProvidersMicrosoftEntraUpdateRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUpdate(ctx context.Context, id int32) ApiProvidersMicrosoftEntraUpdateRequest {
+	return ApiProvidersMicrosoftEntraUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return MicrosoftEntraProvider
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUpdateExecute(r ApiProvidersMicrosoftEntraUpdateRequest) (*MicrosoftEntraProvider, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MicrosoftEntraProvider
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.microsoftEntraProviderRequest == nil {
+		return localVarReturnValue, nil, reportError("microsoftEntraProviderRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.microsoftEntraProviderRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraUsedByListRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersApiService
+	id         int32
+}
+
+func (r ApiProvidersMicrosoftEntraUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraUsedByListExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraUsedByList Method for ProvidersMicrosoftEntraUsedByList
+
+Get a list of all objects that use this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Microsoft Entra Provider.
+	@return ApiProvidersMicrosoftEntraUsedByListRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsedByList(ctx context.Context, id int32) ApiProvidersMicrosoftEntraUsedByListRequest {
+	return ApiProvidersMicrosoftEntraUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []UsedBy
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsedByListExecute(r ApiProvidersMicrosoftEntraUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra/{id}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraUsersCreateRequest struct {
+	ctx                               context.Context
+	ApiService                        *ProvidersApiService
+	microsoftEntraProviderUserRequest *MicrosoftEntraProviderUserRequest
+}
+
+func (r ApiProvidersMicrosoftEntraUsersCreateRequest) MicrosoftEntraProviderUserRequest(microsoftEntraProviderUserRequest MicrosoftEntraProviderUserRequest) ApiProvidersMicrosoftEntraUsersCreateRequest {
+	r.microsoftEntraProviderUserRequest = &microsoftEntraProviderUserRequest
+	return r
+}
+
+func (r ApiProvidersMicrosoftEntraUsersCreateRequest) Execute() (*MicrosoftEntraProviderUser, *http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraUsersCreateExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraUsersCreate Method for ProvidersMicrosoftEntraUsersCreate
+
+MicrosoftEntraProviderUser Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersMicrosoftEntraUsersCreateRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersCreate(ctx context.Context) ApiProvidersMicrosoftEntraUsersCreateRequest {
+	return ApiProvidersMicrosoftEntraUsersCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return MicrosoftEntraProviderUser
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersCreateExecute(r ApiProvidersMicrosoftEntraUsersCreateRequest) (*MicrosoftEntraProviderUser, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MicrosoftEntraProviderUser
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraUsersCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra_users/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.microsoftEntraProviderUserRequest == nil {
+		return localVarReturnValue, nil, reportError("microsoftEntraProviderUserRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.microsoftEntraProviderUserRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraUsersDestroyRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersApiService
+	id         string
+}
+
+func (r ApiProvidersMicrosoftEntraUsersDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraUsersDestroyExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraUsersDestroy Method for ProvidersMicrosoftEntraUsersDestroy
+
+MicrosoftEntraProviderUser Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Microsoft Entra Provider User.
+	@return ApiProvidersMicrosoftEntraUsersDestroyRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersDestroy(ctx context.Context, id string) ApiProvidersMicrosoftEntraUsersDestroyRequest {
+	return ApiProvidersMicrosoftEntraUsersDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersDestroyExecute(r ApiProvidersMicrosoftEntraUsersDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraUsersDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra_users/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraUsersListRequest struct {
+	ctx          context.Context
+	ApiService   *ProvidersApiService
+	ordering     *string
+	page         *int32
+	pageSize     *int32
+	providerId   *int32
+	search       *string
+	userId       *int32
+	userUsername *string
+}
+
+// Which field to use when ordering the results.
+func (r ApiProvidersMicrosoftEntraUsersListRequest) Ordering(ordering string) ApiProvidersMicrosoftEntraUsersListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiProvidersMicrosoftEntraUsersListRequest) Page(page int32) ApiProvidersMicrosoftEntraUsersListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiProvidersMicrosoftEntraUsersListRequest) PageSize(pageSize int32) ApiProvidersMicrosoftEntraUsersListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiProvidersMicrosoftEntraUsersListRequest) ProviderId(providerId int32) ApiProvidersMicrosoftEntraUsersListRequest {
+	r.providerId = &providerId
+	return r
+}
+
+// A search term.
+func (r ApiProvidersMicrosoftEntraUsersListRequest) Search(search string) ApiProvidersMicrosoftEntraUsersListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiProvidersMicrosoftEntraUsersListRequest) UserId(userId int32) ApiProvidersMicrosoftEntraUsersListRequest {
+	r.userId = &userId
+	return r
+}
+
+func (r ApiProvidersMicrosoftEntraUsersListRequest) UserUsername(userUsername string) ApiProvidersMicrosoftEntraUsersListRequest {
+	r.userUsername = &userUsername
+	return r
+}
+
+func (r ApiProvidersMicrosoftEntraUsersListRequest) Execute() (*PaginatedMicrosoftEntraProviderUserList, *http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraUsersListExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraUsersList Method for ProvidersMicrosoftEntraUsersList
+
+MicrosoftEntraProviderUser Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersMicrosoftEntraUsersListRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersList(ctx context.Context) ApiProvidersMicrosoftEntraUsersListRequest {
+	return ApiProvidersMicrosoftEntraUsersListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedMicrosoftEntraProviderUserList
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersListExecute(r ApiProvidersMicrosoftEntraUsersListRequest) (*PaginatedMicrosoftEntraProviderUserList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedMicrosoftEntraProviderUserList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraUsersList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra_users/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.providerId != nil {
+		localVarQueryParams.Add("provider__id", parameterToString(*r.providerId, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	if r.userId != nil {
+		localVarQueryParams.Add("user__id", parameterToString(*r.userId, ""))
+	}
+	if r.userUsername != nil {
+		localVarQueryParams.Add("user__username", parameterToString(*r.userUsername, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraUsersPartialUpdateRequest struct {
+	ctx                                      context.Context
+	ApiService                               *ProvidersApiService
+	id                                       string
+	patchedMicrosoftEntraProviderUserRequest *PatchedMicrosoftEntraProviderUserRequest
+}
+
+func (r ApiProvidersMicrosoftEntraUsersPartialUpdateRequest) PatchedMicrosoftEntraProviderUserRequest(patchedMicrosoftEntraProviderUserRequest PatchedMicrosoftEntraProviderUserRequest) ApiProvidersMicrosoftEntraUsersPartialUpdateRequest {
+	r.patchedMicrosoftEntraProviderUserRequest = &patchedMicrosoftEntraProviderUserRequest
+	return r
+}
+
+func (r ApiProvidersMicrosoftEntraUsersPartialUpdateRequest) Execute() (*MicrosoftEntraProviderUser, *http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraUsersPartialUpdateExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraUsersPartialUpdate Method for ProvidersMicrosoftEntraUsersPartialUpdate
+
+MicrosoftEntraProviderUser Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Microsoft Entra Provider User.
+	@return ApiProvidersMicrosoftEntraUsersPartialUpdateRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersPartialUpdate(ctx context.Context, id string) ApiProvidersMicrosoftEntraUsersPartialUpdateRequest {
+	return ApiProvidersMicrosoftEntraUsersPartialUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return MicrosoftEntraProviderUser
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersPartialUpdateExecute(r ApiProvidersMicrosoftEntraUsersPartialUpdateRequest) (*MicrosoftEntraProviderUser, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MicrosoftEntraProviderUser
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraUsersPartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra_users/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedMicrosoftEntraProviderUserRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraUsersRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersApiService
+	id         string
+}
+
+func (r ApiProvidersMicrosoftEntraUsersRetrieveRequest) Execute() (*MicrosoftEntraProviderUser, *http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraUsersRetrieveExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraUsersRetrieve Method for ProvidersMicrosoftEntraUsersRetrieve
+
+MicrosoftEntraProviderUser Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Microsoft Entra Provider User.
+	@return ApiProvidersMicrosoftEntraUsersRetrieveRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersRetrieve(ctx context.Context, id string) ApiProvidersMicrosoftEntraUsersRetrieveRequest {
+	return ApiProvidersMicrosoftEntraUsersRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return MicrosoftEntraProviderUser
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersRetrieveExecute(r ApiProvidersMicrosoftEntraUsersRetrieveRequest) (*MicrosoftEntraProviderUser, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MicrosoftEntraProviderUser
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraUsersRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra_users/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraUsersUpdateRequest struct {
+	ctx                               context.Context
+	ApiService                        *ProvidersApiService
+	id                                string
+	microsoftEntraProviderUserRequest *MicrosoftEntraProviderUserRequest
+}
+
+func (r ApiProvidersMicrosoftEntraUsersUpdateRequest) MicrosoftEntraProviderUserRequest(microsoftEntraProviderUserRequest MicrosoftEntraProviderUserRequest) ApiProvidersMicrosoftEntraUsersUpdateRequest {
+	r.microsoftEntraProviderUserRequest = &microsoftEntraProviderUserRequest
+	return r
+}
+
+func (r ApiProvidersMicrosoftEntraUsersUpdateRequest) Execute() (*MicrosoftEntraProviderUser, *http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraUsersUpdateExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraUsersUpdate Method for ProvidersMicrosoftEntraUsersUpdate
+
+MicrosoftEntraProviderUser Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Microsoft Entra Provider User.
+	@return ApiProvidersMicrosoftEntraUsersUpdateRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersUpdate(ctx context.Context, id string) ApiProvidersMicrosoftEntraUsersUpdateRequest {
+	return ApiProvidersMicrosoftEntraUsersUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return MicrosoftEntraProviderUser
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersUpdateExecute(r ApiProvidersMicrosoftEntraUsersUpdateRequest) (*MicrosoftEntraProviderUser, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MicrosoftEntraProviderUser
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraUsersUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra_users/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.microsoftEntraProviderUserRequest == nil {
+		return localVarReturnValue, nil, reportError("microsoftEntraProviderUserRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.microsoftEntraProviderUserRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersMicrosoftEntraUsersUsedByListRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersApiService
+	id         string
+}
+
+func (r ApiProvidersMicrosoftEntraUsersUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.ProvidersMicrosoftEntraUsersUsedByListExecute(r)
+}
+
+/*
+ProvidersMicrosoftEntraUsersUsedByList Method for ProvidersMicrosoftEntraUsersUsedByList
+
+Get a list of all objects that use this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Microsoft Entra Provider User.
+	@return ApiProvidersMicrosoftEntraUsersUsedByListRequest
+*/
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersUsedByList(ctx context.Context, id string) ApiProvidersMicrosoftEntraUsersUsedByListRequest {
+	return ApiProvidersMicrosoftEntraUsersUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []UsedBy
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersUsedByListExecute(r ApiProvidersMicrosoftEntraUsersUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraUsersUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/microsoft_entra_users/{id}/used_by/"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)

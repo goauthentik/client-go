@@ -7,6 +7,8 @@
 
 * `LDAP_LDAPPROVIDER` (value: `"authentik_providers_ldap.ldapprovider"`)
 
+* `MICROSOFT_ENTRA_MICROSOFTENTRAPROVIDER` (value: `"authentik_providers_microsoft_entra.microsoftentraprovider"`)
+
 * `OAUTH2_OAUTH2PROVIDER` (value: `"authentik_providers_oauth2.oauth2provider"`)
 
 * `PROXY_PROXYPROVIDER` (value: `"authentik_providers_proxy.proxyprovider"`)

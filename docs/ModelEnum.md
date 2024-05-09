@@ -141,6 +141,10 @@
 
 * `PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDERMAPPING` (value: `"authentik_providers_google_workspace.googleworkspaceprovidermapping"`)
 
+* `PROVIDERS_MICROSOFT_ENTRA_MICROSOFTENTRAPROVIDER` (value: `"authentik_providers_microsoft_entra.microsoftentraprovider"`)
+
+* `PROVIDERS_MICROSOFT_ENTRA_MICROSOFTENTRAPROVIDERMAPPING` (value: `"authentik_providers_microsoft_entra.microsoftentraprovidermapping"`)
+
 * `PROVIDERS_RAC_RACPROVIDER` (value: `"authentik_providers_rac.racprovider"`)
 
 * `PROVIDERS_RAC_ENDPOINT` (value: `"authentik_providers_rac.endpoint"`)

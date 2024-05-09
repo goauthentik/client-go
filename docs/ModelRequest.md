@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **Scopes** | Pointer to **string** |  | [optional] 
 **ExcludeUsersServiceAccount** | Pointer to **bool** |  | [optional] 
 **FilterGroup** | Pointer to **NullableString** |  | [optional] 
-**UserDeleteAction** | Pointer to [**GoogleWorkspaceDeleteAction**](GoogleWorkspaceDeleteAction.md) |  | [optional] 
-**GroupDeleteAction** | Pointer to [**GoogleWorkspaceDeleteAction**](GoogleWorkspaceDeleteAction.md) |  | [optional] 
+**UserDeleteAction** | Pointer to [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] 
+**GroupDeleteAction** | Pointer to [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] 
 **DefaultGroupEmailDomain** | **string** |  | 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
@@ -26,9 +26,10 @@ Name | Type | Description | Notes
 **SearchMode** | Pointer to [**LDAPAPIAccessMode**](LDAPAPIAccessMode.md) |  | [optional] 
 **BindMode** | Pointer to [**LDAPAPIAccessMode**](LDAPAPIAccessMode.md) |  | [optional] 
 **MfaSupport** | Pointer to **bool** | When enabled, code-based multi-factor authentication can be used by appending a semicolon and the TOTP code to the password. This should only be enabled if all users that will bind to this provider have a TOTP device configured, as otherwise a password may incorrectly be rejected if it contains a semicolon. | [optional] 
+**ClientId** | **string** |  | 
+**ClientSecret** | **string** |  | 
+**TenantId** | **string** |  | 
 **ClientType** | Pointer to [**ClientTypeEnum**](ClientTypeEnum.md) | Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable | [optional] 
-**ClientId** | Pointer to **string** |  | [optional] 
-**ClientSecret** | Pointer to **string** |  | [optional] 
 **AccessCodeValidity** | Pointer to **string** | Access codes not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **AccessTokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **RefreshTokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
@@ -73,7 +74,7 @@ Name | Type | Description | Notes
 
 ### NewModelRequest
 
-`func NewModelRequest(name string, delegatedSubject string, credentials interface{}, defaultGroupEmailDomain string, authorizationFlow string, externalHost string, acsUrl string, url string, token string, ) *ModelRequest`
+`func NewModelRequest(name string, delegatedSubject string, credentials interface{}, defaultGroupEmailDomain string, authorizationFlow string, clientId string, clientSecret string, tenantId string, externalHost string, acsUrl string, url string, token string, ) *ModelRequest`
 
 NewModelRequest instantiates a new ModelRequest object
 This constructor will assign default values to properties that have it defined,
@@ -295,20 +296,20 @@ HasFilterGroup returns a boolean if a field has been set.
 UnsetFilterGroup ensures that no value is present for FilterGroup, not even an explicit nil
 ### GetUserDeleteAction
 
-`func (o *ModelRequest) GetUserDeleteAction() GoogleWorkspaceDeleteAction`
+`func (o *ModelRequest) GetUserDeleteAction() OutgoingSyncDeleteAction`
 
 GetUserDeleteAction returns the UserDeleteAction field if non-nil, zero value otherwise.
 
 ### GetUserDeleteActionOk
 
-`func (o *ModelRequest) GetUserDeleteActionOk() (*GoogleWorkspaceDeleteAction, bool)`
+`func (o *ModelRequest) GetUserDeleteActionOk() (*OutgoingSyncDeleteAction, bool)`
 
 GetUserDeleteActionOk returns a tuple with the UserDeleteAction field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserDeleteAction
 
-`func (o *ModelRequest) SetUserDeleteAction(v GoogleWorkspaceDeleteAction)`
+`func (o *ModelRequest) SetUserDeleteAction(v OutgoingSyncDeleteAction)`
 
 SetUserDeleteAction sets UserDeleteAction field to given value.
 
@@ -320,20 +321,20 @@ HasUserDeleteAction returns a boolean if a field has been set.
 
 ### GetGroupDeleteAction
 
-`func (o *ModelRequest) GetGroupDeleteAction() GoogleWorkspaceDeleteAction`
+`func (o *ModelRequest) GetGroupDeleteAction() OutgoingSyncDeleteAction`
 
 GetGroupDeleteAction returns the GroupDeleteAction field if non-nil, zero value otherwise.
 
 ### GetGroupDeleteActionOk
 
-`func (o *ModelRequest) GetGroupDeleteActionOk() (*GoogleWorkspaceDeleteAction, bool)`
+`func (o *ModelRequest) GetGroupDeleteActionOk() (*OutgoingSyncDeleteAction, bool)`
 
 GetGroupDeleteActionOk returns a tuple with the GroupDeleteAction field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroupDeleteAction
 
-`func (o *ModelRequest) SetGroupDeleteAction(v GoogleWorkspaceDeleteAction)`
+`func (o *ModelRequest) SetGroupDeleteAction(v OutgoingSyncDeleteAction)`
 
 SetGroupDeleteAction sets GroupDeleteAction field to given value.
 
@@ -663,6 +664,66 @@ SetMfaSupport sets MfaSupport field to given value.
 
 HasMfaSupport returns a boolean if a field has been set.
 
+### GetClientId
+
+`func (o *ModelRequest) GetClientId() string`
+
+GetClientId returns the ClientId field if non-nil, zero value otherwise.
+
+### GetClientIdOk
+
+`func (o *ModelRequest) GetClientIdOk() (*string, bool)`
+
+GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientId
+
+`func (o *ModelRequest) SetClientId(v string)`
+
+SetClientId sets ClientId field to given value.
+
+
+### GetClientSecret
+
+`func (o *ModelRequest) GetClientSecret() string`
+
+GetClientSecret returns the ClientSecret field if non-nil, zero value otherwise.
+
+### GetClientSecretOk
+
+`func (o *ModelRequest) GetClientSecretOk() (*string, bool)`
+
+GetClientSecretOk returns a tuple with the ClientSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientSecret
+
+`func (o *ModelRequest) SetClientSecret(v string)`
+
+SetClientSecret sets ClientSecret field to given value.
+
+
+### GetTenantId
+
+`func (o *ModelRequest) GetTenantId() string`
+
+GetTenantId returns the TenantId field if non-nil, zero value otherwise.
+
+### GetTenantIdOk
+
+`func (o *ModelRequest) GetTenantIdOk() (*string, bool)`
+
+GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenantId
+
+`func (o *ModelRequest) SetTenantId(v string)`
+
+SetTenantId sets TenantId field to given value.
+
+
 ### GetClientType
 
 `func (o *ModelRequest) GetClientType() ClientTypeEnum`
@@ -687,56 +748,6 @@ SetClientType sets ClientType field to given value.
 `func (o *ModelRequest) HasClientType() bool`
 
 HasClientType returns a boolean if a field has been set.
-
-### GetClientId
-
-`func (o *ModelRequest) GetClientId() string`
-
-GetClientId returns the ClientId field if non-nil, zero value otherwise.
-
-### GetClientIdOk
-
-`func (o *ModelRequest) GetClientIdOk() (*string, bool)`
-
-GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClientId
-
-`func (o *ModelRequest) SetClientId(v string)`
-
-SetClientId sets ClientId field to given value.
-
-### HasClientId
-
-`func (o *ModelRequest) HasClientId() bool`
-
-HasClientId returns a boolean if a field has been set.
-
-### GetClientSecret
-
-`func (o *ModelRequest) GetClientSecret() string`
-
-GetClientSecret returns the ClientSecret field if non-nil, zero value otherwise.
-
-### GetClientSecretOk
-
-`func (o *ModelRequest) GetClientSecretOk() (*string, bool)`
-
-GetClientSecretOk returns a tuple with the ClientSecret field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClientSecret
-
-`func (o *ModelRequest) SetClientSecret(v string)`
-
-SetClientSecret sets ClientSecret field to given value.
-
-### HasClientSecret
-
-`func (o *ModelRequest) HasClientSecret() bool`
-
-HasClientSecret returns a boolean if a field has been set.
 
 ### GetAccessCodeValidity
 

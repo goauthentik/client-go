@@ -23,6 +23,7 @@ type ProviderModelEnum string
 const (
 	PROVIDERMODELENUM_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDER ProviderModelEnum = "authentik_providers_google_workspace.googleworkspaceprovider"
 	PROVIDERMODELENUM_LDAP_LDAPPROVIDER                        ProviderModelEnum = "authentik_providers_ldap.ldapprovider"
+	PROVIDERMODELENUM_MICROSOFT_ENTRA_MICROSOFTENTRAPROVIDER   ProviderModelEnum = "authentik_providers_microsoft_entra.microsoftentraprovider"
 	PROVIDERMODELENUM_OAUTH2_OAUTH2PROVIDER                    ProviderModelEnum = "authentik_providers_oauth2.oauth2provider"
 	PROVIDERMODELENUM_PROXY_PROXYPROVIDER                      ProviderModelEnum = "authentik_providers_proxy.proxyprovider"
 	PROVIDERMODELENUM_RAC_RACPROVIDER                          ProviderModelEnum = "authentik_providers_rac.racprovider"
@@ -35,6 +36,7 @@ const (
 var AllowedProviderModelEnumEnumValues = []ProviderModelEnum{
 	"authentik_providers_google_workspace.googleworkspaceprovider",
 	"authentik_providers_ldap.ldapprovider",
+	"authentik_providers_microsoft_entra.microsoftentraprovider",
 	"authentik_providers_oauth2.oauth2provider",
 	"authentik_providers_proxy.proxyprovider",
 	"authentik_providers_rac.racprovider",

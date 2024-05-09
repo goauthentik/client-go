@@ -73,6 +73,7 @@ const (
 	APPENUM_ENTERPRISE                            AppEnum = "authentik.enterprise"
 	APPENUM_ENTERPRISE_AUDIT                      AppEnum = "authentik.enterprise.audit"
 	APPENUM_ENTERPRISE_PROVIDERS_GOOGLE_WORKSPACE AppEnum = "authentik.enterprise.providers.google_workspace"
+	APPENUM_ENTERPRISE_PROVIDERS_MICROSOFT_ENTRA  AppEnum = "authentik.enterprise.providers.microsoft_entra"
 	APPENUM_ENTERPRISE_PROVIDERS_RAC              AppEnum = "authentik.enterprise.providers.rac"
 	APPENUM_ENTERPRISE_STAGES_SOURCE              AppEnum = "authentik.enterprise.stages.source"
 	APPENUM_EVENTS                                AppEnum = "authentik.events"
@@ -132,6 +133,7 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.enterprise",
 	"authentik.enterprise.audit",
 	"authentik.enterprise.providers.google_workspace",
+	"authentik.enterprise.providers.microsoft_entra",
 	"authentik.enterprise.providers.rac",
 	"authentik.enterprise.stages.source",
 	"authentik.events",

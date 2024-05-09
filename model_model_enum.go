@@ -90,6 +90,8 @@ const (
 	MODELENUM_ENTERPRISE_LICENSE                                        ModelEnum = "authentik_enterprise.license"
 	MODELENUM_PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDER        ModelEnum = "authentik_providers_google_workspace.googleworkspaceprovider"
 	MODELENUM_PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDERMAPPING ModelEnum = "authentik_providers_google_workspace.googleworkspaceprovidermapping"
+	MODELENUM_PROVIDERS_MICROSOFT_ENTRA_MICROSOFTENTRAPROVIDER          ModelEnum = "authentik_providers_microsoft_entra.microsoftentraprovider"
+	MODELENUM_PROVIDERS_MICROSOFT_ENTRA_MICROSOFTENTRAPROVIDERMAPPING   ModelEnum = "authentik_providers_microsoft_entra.microsoftentraprovidermapping"
 	MODELENUM_PROVIDERS_RAC_RACPROVIDER                                 ModelEnum = "authentik_providers_rac.racprovider"
 	MODELENUM_PROVIDERS_RAC_ENDPOINT                                    ModelEnum = "authentik_providers_rac.endpoint"
 	MODELENUM_PROVIDERS_RAC_RACPROPERTYMAPPING                          ModelEnum = "authentik_providers_rac.racpropertymapping"
@@ -172,6 +174,8 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_enterprise.license",
 	"authentik_providers_google_workspace.googleworkspaceprovider",
 	"authentik_providers_google_workspace.googleworkspaceprovidermapping",
+	"authentik_providers_microsoft_entra.microsoftentraprovider",
+	"authentik_providers_microsoft_entra.microsoftentraprovidermapping",
 	"authentik_providers_rac.racprovider",
 	"authentik_providers_rac.endpoint",
 	"authentik_providers_rac.racpropertymapping",
