@@ -140,7 +140,7 @@ type ApiProvidersAllListRequest struct {
 	ctx               context.Context
 	ApiService        *ProvidersApiService
 	applicationIsnull *bool
-	backchannelOnly   *bool
+	backchannel       *bool
 	ordering          *string
 	page              *int32
 	pageSize          *int32
@@ -152,8 +152,9 @@ func (r ApiProvidersAllListRequest) ApplicationIsnull(applicationIsnull bool) Ap
 	return r
 }
 
-func (r ApiProvidersAllListRequest) BackchannelOnly(backchannelOnly bool) ApiProvidersAllListRequest {
-	r.backchannelOnly = &backchannelOnly
+// When not set all providers are returned. When set to true, only backchannel providers are returned. When set to false, backchannel providers are excluded
+func (r ApiProvidersAllListRequest) Backchannel(backchannel bool) ApiProvidersAllListRequest {
+	r.backchannel = &backchannel
 	return r
 }
 
@@ -225,8 +226,8 @@ func (a *ProvidersApiService) ProvidersAllListExecute(r ApiProvidersAllListReque
 	if r.applicationIsnull != nil {
 		localVarQueryParams.Add("application__isnull", parameterToString(*r.applicationIsnull, ""))
 	}
-	if r.backchannelOnly != nil {
-		localVarQueryParams.Add("backchannel_only", parameterToString(*r.backchannelOnly, ""))
+	if r.backchannel != nil {
+		localVarQueryParams.Add("backchannel", parameterToString(*r.backchannel, ""))
 	}
 	if r.ordering != nil {
 		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))

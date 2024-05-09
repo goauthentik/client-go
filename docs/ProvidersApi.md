@@ -181,7 +181,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersAllList
 
-> PaginatedProviderList ProvidersAllList(ctx).ApplicationIsnull(applicationIsnull).BackchannelOnly(backchannelOnly).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedProviderList ProvidersAllList(ctx).ApplicationIsnull(applicationIsnull).Backchannel(backchannel).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -201,7 +201,7 @@ import (
 
 func main() {
     applicationIsnull := true // bool |  (optional)
-    backchannelOnly := true // bool |  (optional)
+    backchannel := true // bool | When not set all providers are returned. When set to true, only backchannel providers are returned. When set to false, backchannel providers are excluded (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
@@ -209,7 +209,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProvidersApi.ProvidersAllList(context.Background()).ApplicationIsnull(applicationIsnull).BackchannelOnly(backchannelOnly).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersAllList(context.Background()).ApplicationIsnull(applicationIsnull).Backchannel(backchannel).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersAllList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -231,7 +231,7 @@ Other parameters are passed through a pointer to a apiProvidersAllListRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationIsnull** | **bool** |  | 
- **backchannelOnly** | **bool** |  | 
+ **backchannel** | **bool** | When not set all providers are returned. When set to true, only backchannel providers are returned. When set to false, backchannel providers are excluded | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
