@@ -2154,7 +2154,7 @@ Name | Type | Description  | Notes
 
 ## CoreGroupsRetrieve
 
-> Group CoreGroupsRetrieve(ctx, groupUuid).Execute()
+> Group CoreGroupsRetrieve(ctx, groupUuid).IncludeUsers(includeUsers).Execute()
 
 
 
@@ -2174,10 +2174,11 @@ import (
 
 func main() {
     groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Group.
+    includeUsers := true // bool |  (optional) (default to true)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreGroupsRetrieve(context.Background(), groupUuid).Execute()
+    resp, r, err := apiClient.CoreApi.CoreGroupsRetrieve(context.Background(), groupUuid).IncludeUsers(includeUsers).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreGroupsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2203,6 +2204,7 @@ Other parameters are passed through a pointer to a apiCoreGroupsRetrieveRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **includeUsers** | **bool** |  | [default to true]
 
 ### Return type
 

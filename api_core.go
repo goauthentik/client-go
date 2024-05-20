@@ -4047,9 +4047,15 @@ func (a *CoreApiService) CoreGroupsRemoveUserCreateExecute(r ApiCoreGroupsRemove
 }
 
 type ApiCoreGroupsRetrieveRequest struct {
-	ctx        context.Context
-	ApiService *CoreApiService
-	groupUuid  string
+	ctx          context.Context
+	ApiService   *CoreApiService
+	groupUuid    string
+	includeUsers *bool
+}
+
+func (r ApiCoreGroupsRetrieveRequest) IncludeUsers(includeUsers bool) ApiCoreGroupsRetrieveRequest {
+	r.includeUsers = &includeUsers
+	return r
 }
 
 func (r ApiCoreGroupsRetrieveRequest) Execute() (*Group, *http.Response, error) {
@@ -4096,6 +4102,9 @@ func (a *CoreApiService) CoreGroupsRetrieveExecute(r ApiCoreGroupsRetrieveReques
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.includeUsers != nil {
+		localVarQueryParams.Add("include_users", parameterToString(*r.includeUsers, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
