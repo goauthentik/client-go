@@ -702,7 +702,7 @@ func (r ApiSourcesAllTypesListRequest) Execute() ([]TypeCreate, *http.Response, 
 /*
 SourcesAllTypesList Method for SourcesAllTypesList
 
-Get all creatable source types
+Get all creatable types
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesAllTypesListRequest

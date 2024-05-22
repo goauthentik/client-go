@@ -439,7 +439,7 @@ func (r ApiStagesAllTypesListRequest) Execute() ([]TypeCreate, *http.Response, e
 /*
 StagesAllTypesList Method for StagesAllTypesList
 
-Get all creatable stage types
+Get all creatable types
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiStagesAllTypesListRequest

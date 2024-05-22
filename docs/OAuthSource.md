@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **Managed** | **NullableString** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
-**Icon** | **NullableString** | Get the URL to the Icon. If the name is /static or starts with http it is returned as-is | [readonly] 
+**Icon** | **NullableString** |  | [readonly] 
 **ProviderType** | [**ProviderTypeEnum**](ProviderTypeEnum.md) |  | 
 **RequestTokenUrl** | Pointer to **NullableString** | URL used to request the initial token. This URL is only required for OAuth 1. | [optional] 
 **AuthorizationUrl** | Pointer to **NullableString** | URL the user is redirect to to conest the flow. | [optional] 

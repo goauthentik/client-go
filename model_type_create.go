@@ -17,11 +17,12 @@ import (
 
 // TypeCreate Types of an object that can be created
 type TypeCreate struct {
-	Name               string `json:"name"`
-	Description        string `json:"description"`
-	Component          string `json:"component"`
-	ModelName          string `json:"model_name"`
-	RequiresEnterprise *bool  `json:"requires_enterprise,omitempty"`
+	Name               string  `json:"name"`
+	Description        string  `json:"description"`
+	Component          string  `json:"component"`
+	ModelName          string  `json:"model_name"`
+	IconUrl            *string `json:"icon_url,omitempty"`
+	RequiresEnterprise *bool   `json:"requires_enterprise,omitempty"`
 }
 
 // NewTypeCreate instantiates a new TypeCreate object
@@ -145,6 +146,38 @@ func (o *TypeCreate) SetModelName(v string) {
 	o.ModelName = v
 }
 
+// GetIconUrl returns the IconUrl field value if set, zero value otherwise.
+func (o *TypeCreate) GetIconUrl() string {
+	if o == nil || o.IconUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.IconUrl
+}
+
+// GetIconUrlOk returns a tuple with the IconUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TypeCreate) GetIconUrlOk() (*string, bool) {
+	if o == nil || o.IconUrl == nil {
+		return nil, false
+	}
+	return o.IconUrl, true
+}
+
+// HasIconUrl returns a boolean if a field has been set.
+func (o *TypeCreate) HasIconUrl() bool {
+	if o != nil && o.IconUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIconUrl gets a reference to the given string and assigns it to the IconUrl field.
+func (o *TypeCreate) SetIconUrl(v string) {
+	o.IconUrl = &v
+}
+
 // GetRequiresEnterprise returns the RequiresEnterprise field value if set, zero value otherwise.
 func (o *TypeCreate) GetRequiresEnterprise() bool {
 	if o == nil || o.RequiresEnterprise == nil {
@@ -190,6 +223,9 @@ func (o TypeCreate) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["model_name"] = o.ModelName
+	}
+	if o.IconUrl != nil {
+		toSerialize["icon_url"] = o.IconUrl
 	}
 	if o.RequiresEnterprise != nil {
 		toSerialize["requires_enterprise"] = o.RequiresEnterprise

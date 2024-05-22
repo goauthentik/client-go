@@ -39,11 +39,10 @@ type OAuthSource struct {
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed          NullableString `json:"managed"`
-	UserPathTemplate *string        `json:"user_path_template,omitempty"`
-	// Get the URL to the Icon. If the name is /static or starts with http it is returned as-is
-	Icon         NullableString   `json:"icon"`
-	ProviderType ProviderTypeEnum `json:"provider_type"`
+	Managed          NullableString   `json:"managed"`
+	UserPathTemplate *string          `json:"user_path_template,omitempty"`
+	Icon             NullableString   `json:"icon"`
+	ProviderType     ProviderTypeEnum `json:"provider_type"`
 	// URL used to request the initial token. This URL is only required for OAuth 1.
 	RequestTokenUrl NullableString `json:"request_token_url,omitempty"`
 	// URL the user is redirect to to conest the flow.

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Description** | **string** |  | 
 **Component** | **string** |  | 
 **ModelName** | **string** |  | 
+**IconUrl** | Pointer to **string** |  | [optional] 
 **RequiresEnterprise** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
@@ -108,6 +109,31 @@ and a boolean to check if the value has been set.
 
 SetModelName sets ModelName field to given value.
 
+
+### GetIconUrl
+
+`func (o *TypeCreate) GetIconUrl() string`
+
+GetIconUrl returns the IconUrl field if non-nil, zero value otherwise.
+
+### GetIconUrlOk
+
+`func (o *TypeCreate) GetIconUrlOk() (*string, bool)`
+
+GetIconUrlOk returns a tuple with the IconUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconUrl
+
+`func (o *TypeCreate) SetIconUrl(v string)`
+
+SetIconUrl sets IconUrl field to given value.
+
+### HasIconUrl
+
+`func (o *TypeCreate) HasIconUrl() bool`
+
+HasIconUrl returns a boolean if a field has been set.
 
 ### GetRequiresEnterprise
 

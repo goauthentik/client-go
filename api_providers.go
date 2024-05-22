@@ -449,7 +449,7 @@ func (r ApiProvidersAllTypesListRequest) Execute() ([]TypeCreate, *http.Response
 /*
 ProvidersAllTypesList Method for ProvidersAllTypesList
 
-Get all creatable provider types
+Get all creatable types
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersAllTypesListRequest

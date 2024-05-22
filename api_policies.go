@@ -788,7 +788,7 @@ func (r ApiPoliciesAllTypesListRequest) Execute() ([]TypeCreate, *http.Response,
 /*
 PoliciesAllTypesList Method for PoliciesAllTypesList
 
-Get all creatable policy types
+Get all creatable types
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiPoliciesAllTypesListRequest

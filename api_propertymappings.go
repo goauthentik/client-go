@@ -571,7 +571,7 @@ func (r ApiPropertymappingsAllTypesListRequest) Execute() ([]TypeCreate, *http.R
 /*
 PropertymappingsAllTypesList Method for PropertymappingsAllTypesList
 
-Get all creatable property-mapping types
+Get all creatable types
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiPropertymappingsAllTypesListRequest

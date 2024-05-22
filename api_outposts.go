@@ -2767,7 +2767,7 @@ func (r ApiOutpostsServiceConnectionsAllTypesListRequest) Execute() ([]TypeCreat
 /*
 OutpostsServiceConnectionsAllTypesList Method for OutpostsServiceConnectionsAllTypesList
 
-Get all creatable service connection types
+Get all creatable types
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiOutpostsServiceConnectionsAllTypesListRequest

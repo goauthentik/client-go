@@ -41,9 +41,8 @@ type LDAPSource struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed          NullableString `json:"managed"`
 	UserPathTemplate *string        `json:"user_path_template,omitempty"`
-	// Get the URL to the Icon. If the name is /static or starts with http it is returned as-is
-	Icon      NullableString `json:"icon"`
-	ServerUri string         `json:"server_uri"`
+	Icon             string         `json:"icon"`
+	ServerUri        string         `json:"server_uri"`
 	// Optionally verify the LDAP Server's Certificate against the CA Chain in this keypair.
 	PeerCertificate NullableString `json:"peer_certificate,omitempty"`
 	// Client certificate to authenticate against the LDAP Server's Certificate.
@@ -82,7 +81,7 @@ type LDAPSource struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLDAPSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon NullableString, serverUri string, baseDn string, connectivity map[string]map[string]string) *LDAPSource {
+func NewLDAPSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon string, serverUri string, baseDn string, connectivity map[string]map[string]string) *LDAPSource {
 	this := LDAPSource{}
 	this.Pk = pk
 	this.Name = name
@@ -516,29 +515,27 @@ func (o *LDAPSource) SetUserPathTemplate(v string) {
 }
 
 // GetIcon returns the Icon field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *LDAPSource) GetIcon() string {
-	if o == nil || o.Icon.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Icon.Get()
+	return o.Icon
 }
 
 // GetIconOk returns a tuple with the Icon field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LDAPSource) GetIconOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Icon.Get(), o.Icon.IsSet()
+	return &o.Icon, true
 }
 
 // SetIcon sets field value
 func (o *LDAPSource) SetIcon(v string) {
-	o.Icon.Set(&v)
+	o.Icon = v
 }
 
 // GetServerUri returns the ServerUri field value
@@ -1269,7 +1266,7 @@ func (o LDAPSource) MarshalJSON() ([]byte, error) {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
 	if true {
-		toSerialize["icon"] = o.Icon.Get()
+		toSerialize["icon"] = o.Icon
 	}
 	if true {
 		toSerialize["server_uri"] = o.ServerUri
