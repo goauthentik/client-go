@@ -17,26 +17,30 @@ import (
 
 // SystemInfoRuntime Get versions
 type SystemInfoRuntime struct {
-	PythonVersion   string `json:"python_version"`
-	GunicornVersion string `json:"gunicorn_version"`
-	Environment     string `json:"environment"`
-	Architecture    string `json:"architecture"`
-	Platform        string `json:"platform"`
-	Uname           string `json:"uname"`
+	PythonVersion    string `json:"python_version"`
+	Environment      string `json:"environment"`
+	Architecture     string `json:"architecture"`
+	Platform         string `json:"platform"`
+	Uname            string `json:"uname"`
+	OpensslVersion   string `json:"openssl_version"`
+	OpensslFipsMode  bool   `json:"openssl_fips_mode"`
+	AuthentikVersion string `json:"authentik_version"`
 }
 
 // NewSystemInfoRuntime instantiates a new SystemInfoRuntime object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSystemInfoRuntime(pythonVersion string, gunicornVersion string, environment string, architecture string, platform string, uname string) *SystemInfoRuntime {
+func NewSystemInfoRuntime(pythonVersion string, environment string, architecture string, platform string, uname string, opensslVersion string, opensslFipsMode bool, authentikVersion string) *SystemInfoRuntime {
 	this := SystemInfoRuntime{}
 	this.PythonVersion = pythonVersion
-	this.GunicornVersion = gunicornVersion
 	this.Environment = environment
 	this.Architecture = architecture
 	this.Platform = platform
 	this.Uname = uname
+	this.OpensslVersion = opensslVersion
+	this.OpensslFipsMode = opensslFipsMode
+	this.AuthentikVersion = authentikVersion
 	return &this
 }
 
@@ -70,30 +74,6 @@ func (o *SystemInfoRuntime) GetPythonVersionOk() (*string, bool) {
 // SetPythonVersion sets field value
 func (o *SystemInfoRuntime) SetPythonVersion(v string) {
 	o.PythonVersion = v
-}
-
-// GetGunicornVersion returns the GunicornVersion field value
-func (o *SystemInfoRuntime) GetGunicornVersion() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.GunicornVersion
-}
-
-// GetGunicornVersionOk returns a tuple with the GunicornVersion field value
-// and a boolean to check if the value has been set.
-func (o *SystemInfoRuntime) GetGunicornVersionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.GunicornVersion, true
-}
-
-// SetGunicornVersion sets field value
-func (o *SystemInfoRuntime) SetGunicornVersion(v string) {
-	o.GunicornVersion = v
 }
 
 // GetEnvironment returns the Environment field value
@@ -192,13 +172,82 @@ func (o *SystemInfoRuntime) SetUname(v string) {
 	o.Uname = v
 }
 
+// GetOpensslVersion returns the OpensslVersion field value
+func (o *SystemInfoRuntime) GetOpensslVersion() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.OpensslVersion
+}
+
+// GetOpensslVersionOk returns a tuple with the OpensslVersion field value
+// and a boolean to check if the value has been set.
+func (o *SystemInfoRuntime) GetOpensslVersionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.OpensslVersion, true
+}
+
+// SetOpensslVersion sets field value
+func (o *SystemInfoRuntime) SetOpensslVersion(v string) {
+	o.OpensslVersion = v
+}
+
+// GetOpensslFipsMode returns the OpensslFipsMode field value
+func (o *SystemInfoRuntime) GetOpensslFipsMode() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.OpensslFipsMode
+}
+
+// GetOpensslFipsModeOk returns a tuple with the OpensslFipsMode field value
+// and a boolean to check if the value has been set.
+func (o *SystemInfoRuntime) GetOpensslFipsModeOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.OpensslFipsMode, true
+}
+
+// SetOpensslFipsMode sets field value
+func (o *SystemInfoRuntime) SetOpensslFipsMode(v bool) {
+	o.OpensslFipsMode = v
+}
+
+// GetAuthentikVersion returns the AuthentikVersion field value
+func (o *SystemInfoRuntime) GetAuthentikVersion() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.AuthentikVersion
+}
+
+// GetAuthentikVersionOk returns a tuple with the AuthentikVersion field value
+// and a boolean to check if the value has been set.
+func (o *SystemInfoRuntime) GetAuthentikVersionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AuthentikVersion, true
+}
+
+// SetAuthentikVersion sets field value
+func (o *SystemInfoRuntime) SetAuthentikVersion(v string) {
+	o.AuthentikVersion = v
+}
+
 func (o SystemInfoRuntime) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["python_version"] = o.PythonVersion
-	}
-	if true {
-		toSerialize["gunicorn_version"] = o.GunicornVersion
 	}
 	if true {
 		toSerialize["environment"] = o.Environment
@@ -211,6 +260,15 @@ func (o SystemInfoRuntime) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["uname"] = o.Uname
+	}
+	if true {
+		toSerialize["openssl_version"] = o.OpensslVersion
+	}
+	if true {
+		toSerialize["openssl_fips_mode"] = o.OpensslFipsMode
+	}
+	if true {
+		toSerialize["authentik_version"] = o.AuthentikVersion
 	}
 	return json.Marshal(toSerialize)
 }

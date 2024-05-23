@@ -21,6 +21,10 @@ type OutpostHealth struct {
 	Uid             string    `json:"uid"`
 	LastSeen        time.Time `json:"last_seen"`
 	Version         string    `json:"version"`
+	GolangVersion   string    `json:"golang_version"`
+	OpensslEnabled  bool      `json:"openssl_enabled"`
+	OpensslVersion  string    `json:"openssl_version"`
+	FipsEnabled     bool      `json:"fips_enabled"`
 	VersionShould   string    `json:"version_should"`
 	VersionOutdated bool      `json:"version_outdated"`
 	BuildHash       string    `json:"build_hash"`
@@ -32,11 +36,15 @@ type OutpostHealth struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOutpostHealth(uid string, lastSeen time.Time, version string, versionShould string, versionOutdated bool, buildHash string, buildHashShould string, hostname string) *OutpostHealth {
+func NewOutpostHealth(uid string, lastSeen time.Time, version string, golangVersion string, opensslEnabled bool, opensslVersion string, fipsEnabled bool, versionShould string, versionOutdated bool, buildHash string, buildHashShould string, hostname string) *OutpostHealth {
 	this := OutpostHealth{}
 	this.Uid = uid
 	this.LastSeen = lastSeen
 	this.Version = version
+	this.GolangVersion = golangVersion
+	this.OpensslEnabled = opensslEnabled
+	this.OpensslVersion = opensslVersion
+	this.FipsEnabled = fipsEnabled
 	this.VersionShould = versionShould
 	this.VersionOutdated = versionOutdated
 	this.BuildHash = buildHash
@@ -123,6 +131,102 @@ func (o *OutpostHealth) GetVersionOk() (*string, bool) {
 // SetVersion sets field value
 func (o *OutpostHealth) SetVersion(v string) {
 	o.Version = v
+}
+
+// GetGolangVersion returns the GolangVersion field value
+func (o *OutpostHealth) GetGolangVersion() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.GolangVersion
+}
+
+// GetGolangVersionOk returns a tuple with the GolangVersion field value
+// and a boolean to check if the value has been set.
+func (o *OutpostHealth) GetGolangVersionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.GolangVersion, true
+}
+
+// SetGolangVersion sets field value
+func (o *OutpostHealth) SetGolangVersion(v string) {
+	o.GolangVersion = v
+}
+
+// GetOpensslEnabled returns the OpensslEnabled field value
+func (o *OutpostHealth) GetOpensslEnabled() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.OpensslEnabled
+}
+
+// GetOpensslEnabledOk returns a tuple with the OpensslEnabled field value
+// and a boolean to check if the value has been set.
+func (o *OutpostHealth) GetOpensslEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.OpensslEnabled, true
+}
+
+// SetOpensslEnabled sets field value
+func (o *OutpostHealth) SetOpensslEnabled(v bool) {
+	o.OpensslEnabled = v
+}
+
+// GetOpensslVersion returns the OpensslVersion field value
+func (o *OutpostHealth) GetOpensslVersion() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.OpensslVersion
+}
+
+// GetOpensslVersionOk returns a tuple with the OpensslVersion field value
+// and a boolean to check if the value has been set.
+func (o *OutpostHealth) GetOpensslVersionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.OpensslVersion, true
+}
+
+// SetOpensslVersion sets field value
+func (o *OutpostHealth) SetOpensslVersion(v string) {
+	o.OpensslVersion = v
+}
+
+// GetFipsEnabled returns the FipsEnabled field value
+func (o *OutpostHealth) GetFipsEnabled() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.FipsEnabled
+}
+
+// GetFipsEnabledOk returns a tuple with the FipsEnabled field value
+// and a boolean to check if the value has been set.
+func (o *OutpostHealth) GetFipsEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.FipsEnabled, true
+}
+
+// SetFipsEnabled sets field value
+func (o *OutpostHealth) SetFipsEnabled(v bool) {
+	o.FipsEnabled = v
 }
 
 // GetVersionShould returns the VersionShould field value
@@ -255,6 +359,18 @@ func (o OutpostHealth) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["version"] = o.Version
+	}
+	if true {
+		toSerialize["golang_version"] = o.GolangVersion
+	}
+	if true {
+		toSerialize["openssl_enabled"] = o.OpensslEnabled
+	}
+	if true {
+		toSerialize["openssl_version"] = o.OpensslVersion
+	}
+	if true {
+		toSerialize["fips_enabled"] = o.FipsEnabled
 	}
 	if true {
 		toSerialize["version_should"] = o.VersionShould

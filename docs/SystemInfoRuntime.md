@@ -5,17 +5,19 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PythonVersion** | **string** |  | 
-**GunicornVersion** | **string** |  | 
 **Environment** | **string** |  | 
 **Architecture** | **string** |  | 
 **Platform** | **string** |  | 
 **Uname** | **string** |  | 
+**OpensslVersion** | **string** |  | 
+**OpensslFipsMode** | **bool** |  | 
+**AuthentikVersion** | **string** |  | 
 
 ## Methods
 
 ### NewSystemInfoRuntime
 
-`func NewSystemInfoRuntime(pythonVersion string, gunicornVersion string, environment string, architecture string, platform string, uname string, ) *SystemInfoRuntime`
+`func NewSystemInfoRuntime(pythonVersion string, environment string, architecture string, platform string, uname string, opensslVersion string, opensslFipsMode bool, authentikVersion string, ) *SystemInfoRuntime`
 
 NewSystemInfoRuntime instantiates a new SystemInfoRuntime object
 This constructor will assign default values to properties that have it defined,
@@ -48,26 +50,6 @@ and a boolean to check if the value has been set.
 `func (o *SystemInfoRuntime) SetPythonVersion(v string)`
 
 SetPythonVersion sets PythonVersion field to given value.
-
-
-### GetGunicornVersion
-
-`func (o *SystemInfoRuntime) GetGunicornVersion() string`
-
-GetGunicornVersion returns the GunicornVersion field if non-nil, zero value otherwise.
-
-### GetGunicornVersionOk
-
-`func (o *SystemInfoRuntime) GetGunicornVersionOk() (*string, bool)`
-
-GetGunicornVersionOk returns a tuple with the GunicornVersion field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGunicornVersion
-
-`func (o *SystemInfoRuntime) SetGunicornVersion(v string)`
-
-SetGunicornVersion sets GunicornVersion field to given value.
 
 
 ### GetEnvironment
@@ -148,6 +130,66 @@ and a boolean to check if the value has been set.
 `func (o *SystemInfoRuntime) SetUname(v string)`
 
 SetUname sets Uname field to given value.
+
+
+### GetOpensslVersion
+
+`func (o *SystemInfoRuntime) GetOpensslVersion() string`
+
+GetOpensslVersion returns the OpensslVersion field if non-nil, zero value otherwise.
+
+### GetOpensslVersionOk
+
+`func (o *SystemInfoRuntime) GetOpensslVersionOk() (*string, bool)`
+
+GetOpensslVersionOk returns a tuple with the OpensslVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpensslVersion
+
+`func (o *SystemInfoRuntime) SetOpensslVersion(v string)`
+
+SetOpensslVersion sets OpensslVersion field to given value.
+
+
+### GetOpensslFipsMode
+
+`func (o *SystemInfoRuntime) GetOpensslFipsMode() bool`
+
+GetOpensslFipsMode returns the OpensslFipsMode field if non-nil, zero value otherwise.
+
+### GetOpensslFipsModeOk
+
+`func (o *SystemInfoRuntime) GetOpensslFipsModeOk() (*bool, bool)`
+
+GetOpensslFipsModeOk returns a tuple with the OpensslFipsMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpensslFipsMode
+
+`func (o *SystemInfoRuntime) SetOpensslFipsMode(v bool)`
+
+SetOpensslFipsMode sets OpensslFipsMode field to given value.
+
+
+### GetAuthentikVersion
+
+`func (o *SystemInfoRuntime) GetAuthentikVersion() string`
+
+GetAuthentikVersion returns the AuthentikVersion field if non-nil, zero value otherwise.
+
+### GetAuthentikVersionOk
+
+`func (o *SystemInfoRuntime) GetAuthentikVersionOk() (*string, bool)`
+
+GetAuthentikVersionOk returns a tuple with the AuthentikVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthentikVersion
+
+`func (o *SystemInfoRuntime) SetAuthentikVersion(v string)`
+
+SetAuthentikVersion sets AuthentikVersion field to given value.
 
 
 

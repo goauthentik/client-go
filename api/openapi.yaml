@@ -45044,10 +45044,14 @@ components:
         uid: uid
         hostname: hostname
         last_seen: 2000-01-23T04:56:07.000+00:00
+        openssl_version: openssl_version
         version_should: version_should
         build_hash_should: build_hash_should
+        fips_enabled: true
         version_outdated: true
         version: version
+        golang_version: golang_version
+        openssl_enabled: true
         build_hash: build_hash
       properties:
         uid:
@@ -45060,6 +45064,18 @@ components:
         version:
           readOnly: true
           type: string
+        golang_version:
+          readOnly: true
+          type: string
+        openssl_enabled:
+          readOnly: true
+          type: boolean
+        openssl_version:
+          readOnly: true
+          type: string
+        fips_enabled:
+          readOnly: true
+          type: boolean
         version_should:
           readOnly: true
           type: string
@@ -45078,8 +45094,12 @@ components:
       required:
       - build_hash
       - build_hash_should
+      - fips_enabled
+      - golang_version
       - hostname
       - last_seen
+      - openssl_enabled
+      - openssl_version
       - uid
       - version
       - version_outdated
@@ -60629,10 +60649,12 @@ components:
         runtime:
           environment: environment
           uname: uname
-          gunicorn_version: gunicorn_version
+          openssl_version: openssl_version
           python_version: python_version
+          authentik_version: authentik_version
           platform: platform
           architecture: architecture
+          openssl_fips_mode: true
         embedded_outpost_host: embedded_outpost_host
         http_host: http_host
         brand: brand
@@ -62911,14 +62933,14 @@ components:
       example:
         environment: environment
         uname: uname
-        gunicorn_version: gunicorn_version
+        openssl_version: openssl_version
         python_version: python_version
+        authentik_version: authentik_version
         platform: platform
         architecture: architecture
+        openssl_fips_mode: true
       properties:
         python_version:
-          type: string
-        gunicorn_version:
           type: string
         environment:
           type: string
@@ -62928,11 +62950,19 @@ components:
           type: string
         uname:
           type: string
+        openssl_version:
+          type: string
+        openssl_fips_mode:
+          type: boolean
+        authentik_version:
+          type: string
       readOnly: true
       required:
       - architecture
+      - authentik_version
       - environment
-      - gunicorn_version
+      - openssl_fips_mode
+      - openssl_version
       - platform
       - python_version
       - uname
