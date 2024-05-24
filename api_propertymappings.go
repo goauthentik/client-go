@@ -427,20 +427,20 @@ func (a *PropertymappingsApiService) PropertymappingsAllRetrieveExecute(r ApiPro
 }
 
 type ApiPropertymappingsAllTestCreateRequest struct {
-	ctx               context.Context
-	ApiService        *PropertymappingsApiService
-	pmUuid            string
-	policyTestRequest *PolicyTestRequest
-	formatResult      *bool
-}
-
-func (r ApiPropertymappingsAllTestCreateRequest) PolicyTestRequest(policyTestRequest PolicyTestRequest) ApiPropertymappingsAllTestCreateRequest {
-	r.policyTestRequest = &policyTestRequest
-	return r
+	ctx                        context.Context
+	ApiService                 *PropertymappingsApiService
+	pmUuid                     string
+	formatResult               *bool
+	propertyMappingTestRequest *PropertyMappingTestRequest
 }
 
 func (r ApiPropertymappingsAllTestCreateRequest) FormatResult(formatResult bool) ApiPropertymappingsAllTestCreateRequest {
 	r.formatResult = &formatResult
+	return r
+}
+
+func (r ApiPropertymappingsAllTestCreateRequest) PropertyMappingTestRequest(propertyMappingTestRequest PropertyMappingTestRequest) ApiPropertymappingsAllTestCreateRequest {
+	r.propertyMappingTestRequest = &propertyMappingTestRequest
 	return r
 }
 
@@ -487,9 +487,6 @@ func (a *PropertymappingsApiService) PropertymappingsAllTestCreateExecute(r ApiP
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.policyTestRequest == nil {
-		return localVarReturnValue, nil, reportError("policyTestRequest is required and must be specified")
-	}
 
 	if r.formatResult != nil {
 		localVarQueryParams.Add("format_result", parameterToString(*r.formatResult, ""))
@@ -512,7 +509,7 @@ func (a *PropertymappingsApiService) PropertymappingsAllTestCreateExecute(r ApiP
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.policyTestRequest
+	localVarPostBody = r.propertyMappingTestRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -1299,6 +1299,7 @@ Class | Method | HTTP request | Description
  - [PromptTypeEnum](docs/PromptTypeEnum.md)
  - [PropertyMapping](docs/PropertyMapping.md)
  - [PropertyMappingPreview](docs/PropertyMappingPreview.md)
+ - [PropertyMappingTestRequest](docs/PropertyMappingTestRequest.md)
  - [PropertyMappingTestResult](docs/PropertyMappingTestResult.md)
  - [ProtocolEnum](docs/ProtocolEnum.md)
  - [Provider](docs/Provider.md)

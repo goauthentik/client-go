@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 
 ## PropertymappingsAllTestCreate
 
-> PropertyMappingTestResult PropertymappingsAllTestCreate(ctx, pmUuid).PolicyTestRequest(policyTestRequest).FormatResult(formatResult).Execute()
+> PropertyMappingTestResult PropertymappingsAllTestCreate(ctx, pmUuid).FormatResult(formatResult).PropertyMappingTestRequest(propertyMappingTestRequest).Execute()
 
 
 
@@ -303,12 +303,12 @@ import (
 
 func main() {
     pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Property Mapping.
-    policyTestRequest := *openapiclient.NewPolicyTestRequest(int32(123)) // PolicyTestRequest | 
     formatResult := true // bool |  (optional)
+    propertyMappingTestRequest := *openapiclient.NewPropertyMappingTestRequest() // PropertyMappingTestRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsAllTestCreate(context.Background(), pmUuid).PolicyTestRequest(policyTestRequest).FormatResult(formatResult).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsAllTestCreate(context.Background(), pmUuid).FormatResult(formatResult).PropertyMappingTestRequest(propertyMappingTestRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsAllTestCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -334,8 +334,8 @@ Other parameters are passed through a pointer to a apiPropertymappingsAllTestCre
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **policyTestRequest** | [**PolicyTestRequest**](PolicyTestRequest.md) |  | 
  **formatResult** | **bool** |  | 
+ **propertyMappingTestRequest** | [**PropertyMappingTestRequest**](PropertyMappingTestRequest.md) |  | 
 
 ### Return type
 

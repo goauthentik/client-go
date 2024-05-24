@@ -14887,8 +14887,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PolicyTestRequest'
-        required: true
+              $ref: '#/components/schemas/PropertyMappingTestRequest'
       responses:
         "200":
           content:
@@ -57180,6 +57179,23 @@ components:
           type: object
       required:
       - preview
+      type: object
+    PropertyMappingTestRequest:
+      description: Test property mapping execution for a user/group with context
+      example:
+        context:
+          key: ""
+        user: 0
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        user:
+          type: integer
+        context:
+          additionalProperties: {}
+          type: object
+        group:
+          format: uuid
+          type: string
       type: object
     PropertyMappingTestResult:
       description: Result of a Property-mapping test

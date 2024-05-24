@@ -493,6 +493,7 @@ docs/PromptStageRequest.md
 docs/PromptTypeEnum.md
 docs/PropertyMapping.md
 docs/PropertyMappingPreview.md
+docs/PropertyMappingTestRequest.md
 docs/PropertyMappingTestResult.md
 docs/PropertymappingsApi.md
 docs/ProtocolEnum.md
@@ -1102,6 +1103,7 @@ model_prompt_stage_request.go
 model_prompt_type_enum.go
 model_property_mapping.go
 model_property_mapping_preview.go
+model_property_mapping_test_request.go
 model_property_mapping_test_result.go
 model_protocol_enum.go
 model_provider.go
