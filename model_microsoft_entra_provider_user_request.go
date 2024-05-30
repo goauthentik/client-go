@@ -17,16 +17,18 @@ import (
 
 // MicrosoftEntraProviderUserRequest MicrosoftEntraProviderUser Serializer
 type MicrosoftEntraProviderUserRequest struct {
-	User int32 `json:"user"`
+	User     int32 `json:"user"`
+	Provider int32 `json:"provider"`
 }
 
 // NewMicrosoftEntraProviderUserRequest instantiates a new MicrosoftEntraProviderUserRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMicrosoftEntraProviderUserRequest(user int32) *MicrosoftEntraProviderUserRequest {
+func NewMicrosoftEntraProviderUserRequest(user int32, provider int32) *MicrosoftEntraProviderUserRequest {
 	this := MicrosoftEntraProviderUserRequest{}
 	this.User = user
+	this.Provider = provider
 	return &this
 }
 
@@ -62,10 +64,37 @@ func (o *MicrosoftEntraProviderUserRequest) SetUser(v int32) {
 	o.User = v
 }
 
+// GetProvider returns the Provider field value
+func (o *MicrosoftEntraProviderUserRequest) GetProvider() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Provider
+}
+
+// GetProviderOk returns a tuple with the Provider field value
+// and a boolean to check if the value has been set.
+func (o *MicrosoftEntraProviderUserRequest) GetProviderOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Provider, true
+}
+
+// SetProvider sets field value
+func (o *MicrosoftEntraProviderUserRequest) SetProvider(v int32) {
+	o.Provider = v
+}
+
 func (o MicrosoftEntraProviderUserRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["user"] = o.User
+	}
+	if true {
+		toSerialize["provider"] = o.Provider
 	}
 	return json.Marshal(toSerialize)
 }

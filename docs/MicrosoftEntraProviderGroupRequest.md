@@ -5,12 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Group** | **string** |  | 
+**Provider** | **int32** |  | 
 
 ## Methods
 
 ### NewMicrosoftEntraProviderGroupRequest
 
-`func NewMicrosoftEntraProviderGroupRequest(group string, ) *MicrosoftEntraProviderGroupRequest`
+`func NewMicrosoftEntraProviderGroupRequest(group string, provider int32, ) *MicrosoftEntraProviderGroupRequest`
 
 NewMicrosoftEntraProviderGroupRequest instantiates a new MicrosoftEntraProviderGroupRequest object
 This constructor will assign default values to properties that have it defined,
@@ -43,6 +44,26 @@ and a boolean to check if the value has been set.
 `func (o *MicrosoftEntraProviderGroupRequest) SetGroup(v string)`
 
 SetGroup sets Group field to given value.
+
+
+### GetProvider
+
+`func (o *MicrosoftEntraProviderGroupRequest) GetProvider() int32`
+
+GetProvider returns the Provider field if non-nil, zero value otherwise.
+
+### GetProviderOk
+
+`func (o *MicrosoftEntraProviderGroupRequest) GetProviderOk() (*int32, bool)`
+
+GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvider
+
+`func (o *MicrosoftEntraProviderGroupRequest) SetProvider(v int32)`
+
+SetProvider sets Provider field to given value.
 
 
 

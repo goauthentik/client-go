@@ -17,20 +17,24 @@ import (
 
 // GoogleWorkspaceProviderGroup GoogleWorkspaceProviderGroup Serializer
 type GoogleWorkspaceProviderGroup struct {
-	Id       string    `json:"id"`
-	Group    string    `json:"group"`
-	GroupObj UserGroup `json:"group_obj"`
+	Id         string      `json:"id"`
+	Group      string      `json:"group"`
+	GroupObj   UserGroup   `json:"group_obj"`
+	Provider   int32       `json:"provider"`
+	Attributes interface{} `json:"attributes"`
 }
 
 // NewGoogleWorkspaceProviderGroup instantiates a new GoogleWorkspaceProviderGroup object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGoogleWorkspaceProviderGroup(id string, group string, groupObj UserGroup) *GoogleWorkspaceProviderGroup {
+func NewGoogleWorkspaceProviderGroup(id string, group string, groupObj UserGroup, provider int32, attributes interface{}) *GoogleWorkspaceProviderGroup {
 	this := GoogleWorkspaceProviderGroup{}
 	this.Id = id
 	this.Group = group
 	this.GroupObj = groupObj
+	this.Provider = provider
+	this.Attributes = attributes
 	return &this
 }
 
@@ -114,6 +118,56 @@ func (o *GoogleWorkspaceProviderGroup) SetGroupObj(v UserGroup) {
 	o.GroupObj = v
 }
 
+// GetProvider returns the Provider field value
+func (o *GoogleWorkspaceProviderGroup) GetProvider() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Provider
+}
+
+// GetProviderOk returns a tuple with the Provider field value
+// and a boolean to check if the value has been set.
+func (o *GoogleWorkspaceProviderGroup) GetProviderOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Provider, true
+}
+
+// SetProvider sets field value
+func (o *GoogleWorkspaceProviderGroup) SetProvider(v int32) {
+	o.Provider = v
+}
+
+// GetAttributes returns the Attributes field value
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *GoogleWorkspaceProviderGroup) GetAttributes() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+
+	return o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GoogleWorkspaceProviderGroup) GetAttributesOk() (*interface{}, bool) {
+	if o == nil || o.Attributes == nil {
+		return nil, false
+	}
+	return &o.Attributes, true
+}
+
+// SetAttributes sets field value
+func (o *GoogleWorkspaceProviderGroup) SetAttributes(v interface{}) {
+	o.Attributes = v
+}
+
 func (o GoogleWorkspaceProviderGroup) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -124,6 +178,12 @@ func (o GoogleWorkspaceProviderGroup) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["group_obj"] = o.GroupObj
+	}
+	if true {
+		toSerialize["provider"] = o.Provider
+	}
+	if o.Attributes != nil {
+		toSerialize["attributes"] = o.Attributes
 	}
 	return json.Marshal(toSerialize)
 }

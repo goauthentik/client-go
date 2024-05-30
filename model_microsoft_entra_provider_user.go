@@ -17,20 +17,24 @@ import (
 
 // MicrosoftEntraProviderUser MicrosoftEntraProviderUser Serializer
 type MicrosoftEntraProviderUser struct {
-	Id      string      `json:"id"`
-	User    int32       `json:"user"`
-	UserObj GroupMember `json:"user_obj"`
+	Id         string      `json:"id"`
+	User       int32       `json:"user"`
+	UserObj    GroupMember `json:"user_obj"`
+	Provider   int32       `json:"provider"`
+	Attributes interface{} `json:"attributes"`
 }
 
 // NewMicrosoftEntraProviderUser instantiates a new MicrosoftEntraProviderUser object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMicrosoftEntraProviderUser(id string, user int32, userObj GroupMember) *MicrosoftEntraProviderUser {
+func NewMicrosoftEntraProviderUser(id string, user int32, userObj GroupMember, provider int32, attributes interface{}) *MicrosoftEntraProviderUser {
 	this := MicrosoftEntraProviderUser{}
 	this.Id = id
 	this.User = user
 	this.UserObj = userObj
+	this.Provider = provider
+	this.Attributes = attributes
 	return &this
 }
 
@@ -114,6 +118,56 @@ func (o *MicrosoftEntraProviderUser) SetUserObj(v GroupMember) {
 	o.UserObj = v
 }
 
+// GetProvider returns the Provider field value
+func (o *MicrosoftEntraProviderUser) GetProvider() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Provider
+}
+
+// GetProviderOk returns a tuple with the Provider field value
+// and a boolean to check if the value has been set.
+func (o *MicrosoftEntraProviderUser) GetProviderOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Provider, true
+}
+
+// SetProvider sets field value
+func (o *MicrosoftEntraProviderUser) SetProvider(v int32) {
+	o.Provider = v
+}
+
+// GetAttributes returns the Attributes field value
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *MicrosoftEntraProviderUser) GetAttributes() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+
+	return o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MicrosoftEntraProviderUser) GetAttributesOk() (*interface{}, bool) {
+	if o == nil || o.Attributes == nil {
+		return nil, false
+	}
+	return &o.Attributes, true
+}
+
+// SetAttributes sets field value
+func (o *MicrosoftEntraProviderUser) SetAttributes(v interface{}) {
+	o.Attributes = v
+}
+
 func (o MicrosoftEntraProviderUser) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -124,6 +178,12 @@ func (o MicrosoftEntraProviderUser) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["user_obj"] = o.UserObj
+	}
+	if true {
+		toSerialize["provider"] = o.Provider
+	}
+	if o.Attributes != nil {
+		toSerialize["attributes"] = o.Attributes
 	}
 	return json.Marshal(toSerialize)
 }

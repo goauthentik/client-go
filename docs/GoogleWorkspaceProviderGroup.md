@@ -7,12 +7,14 @@ Name | Type | Description | Notes
 **Id** | **string** |  | [readonly] 
 **Group** | **string** |  | 
 **GroupObj** | [**UserGroup**](UserGroup.md) |  | [readonly] 
+**Provider** | **int32** |  | 
+**Attributes** | **interface{}** |  | [readonly] 
 
 ## Methods
 
 ### NewGoogleWorkspaceProviderGroup
 
-`func NewGoogleWorkspaceProviderGroup(id string, group string, groupObj UserGroup, ) *GoogleWorkspaceProviderGroup`
+`func NewGoogleWorkspaceProviderGroup(id string, group string, groupObj UserGroup, provider int32, attributes interface{}, ) *GoogleWorkspaceProviderGroup`
 
 NewGoogleWorkspaceProviderGroup instantiates a new GoogleWorkspaceProviderGroup object
 This constructor will assign default values to properties that have it defined,
@@ -87,6 +89,56 @@ and a boolean to check if the value has been set.
 SetGroupObj sets GroupObj field to given value.
 
 
+### GetProvider
+
+`func (o *GoogleWorkspaceProviderGroup) GetProvider() int32`
+
+GetProvider returns the Provider field if non-nil, zero value otherwise.
+
+### GetProviderOk
+
+`func (o *GoogleWorkspaceProviderGroup) GetProviderOk() (*int32, bool)`
+
+GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvider
+
+`func (o *GoogleWorkspaceProviderGroup) SetProvider(v int32)`
+
+SetProvider sets Provider field to given value.
+
+
+### GetAttributes
+
+`func (o *GoogleWorkspaceProviderGroup) GetAttributes() interface{}`
+
+GetAttributes returns the Attributes field if non-nil, zero value otherwise.
+
+### GetAttributesOk
+
+`func (o *GoogleWorkspaceProviderGroup) GetAttributesOk() (*interface{}, bool)`
+
+GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttributes
+
+`func (o *GoogleWorkspaceProviderGroup) SetAttributes(v interface{})`
+
+SetAttributes sets Attributes field to given value.
+
+
+### SetAttributesNil
+
+`func (o *GoogleWorkspaceProviderGroup) SetAttributesNil(b bool)`
+
+ SetAttributesNil sets the value for Attributes to be an explicit nil
+
+### UnsetAttributes
+`func (o *GoogleWorkspaceProviderGroup) UnsetAttributes()`
+
+UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

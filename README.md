@@ -440,9 +440,7 @@ Class | Method | HTTP request | Description
 *ProvidersApi* | [**ProvidersGoogleWorkspaceGroupsCreate**](docs/ProvidersApi.md#providersgoogleworkspacegroupscreate) | **Post** /providers/google_workspace_groups/ | 
 *ProvidersApi* | [**ProvidersGoogleWorkspaceGroupsDestroy**](docs/ProvidersApi.md#providersgoogleworkspacegroupsdestroy) | **Delete** /providers/google_workspace_groups/{id}/ | 
 *ProvidersApi* | [**ProvidersGoogleWorkspaceGroupsList**](docs/ProvidersApi.md#providersgoogleworkspacegroupslist) | **Get** /providers/google_workspace_groups/ | 
-*ProvidersApi* | [**ProvidersGoogleWorkspaceGroupsPartialUpdate**](docs/ProvidersApi.md#providersgoogleworkspacegroupspartialupdate) | **Patch** /providers/google_workspace_groups/{id}/ | 
 *ProvidersApi* | [**ProvidersGoogleWorkspaceGroupsRetrieve**](docs/ProvidersApi.md#providersgoogleworkspacegroupsretrieve) | **Get** /providers/google_workspace_groups/{id}/ | 
-*ProvidersApi* | [**ProvidersGoogleWorkspaceGroupsUpdate**](docs/ProvidersApi.md#providersgoogleworkspacegroupsupdate) | **Put** /providers/google_workspace_groups/{id}/ | 
 *ProvidersApi* | [**ProvidersGoogleWorkspaceGroupsUsedByList**](docs/ProvidersApi.md#providersgoogleworkspacegroupsusedbylist) | **Get** /providers/google_workspace_groups/{id}/used_by/ | 
 *ProvidersApi* | [**ProvidersGoogleWorkspaceList**](docs/ProvidersApi.md#providersgoogleworkspacelist) | **Get** /providers/google_workspace/ | 
 *ProvidersApi* | [**ProvidersGoogleWorkspacePartialUpdate**](docs/ProvidersApi.md#providersgoogleworkspacepartialupdate) | **Patch** /providers/google_workspace/{id}/ | 
@@ -453,9 +451,7 @@ Class | Method | HTTP request | Description
 *ProvidersApi* | [**ProvidersGoogleWorkspaceUsersCreate**](docs/ProvidersApi.md#providersgoogleworkspaceuserscreate) | **Post** /providers/google_workspace_users/ | 
 *ProvidersApi* | [**ProvidersGoogleWorkspaceUsersDestroy**](docs/ProvidersApi.md#providersgoogleworkspaceusersdestroy) | **Delete** /providers/google_workspace_users/{id}/ | 
 *ProvidersApi* | [**ProvidersGoogleWorkspaceUsersList**](docs/ProvidersApi.md#providersgoogleworkspaceuserslist) | **Get** /providers/google_workspace_users/ | 
-*ProvidersApi* | [**ProvidersGoogleWorkspaceUsersPartialUpdate**](docs/ProvidersApi.md#providersgoogleworkspaceuserspartialupdate) | **Patch** /providers/google_workspace_users/{id}/ | 
 *ProvidersApi* | [**ProvidersGoogleWorkspaceUsersRetrieve**](docs/ProvidersApi.md#providersgoogleworkspaceusersretrieve) | **Get** /providers/google_workspace_users/{id}/ | 
-*ProvidersApi* | [**ProvidersGoogleWorkspaceUsersUpdate**](docs/ProvidersApi.md#providersgoogleworkspaceusersupdate) | **Put** /providers/google_workspace_users/{id}/ | 
 *ProvidersApi* | [**ProvidersGoogleWorkspaceUsersUsedByList**](docs/ProvidersApi.md#providersgoogleworkspaceusersusedbylist) | **Get** /providers/google_workspace_users/{id}/used_by/ | 
 *ProvidersApi* | [**ProvidersLdapCreate**](docs/ProvidersApi.md#providersldapcreate) | **Post** /providers/ldap/ | 
 *ProvidersApi* | [**ProvidersLdapDestroy**](docs/ProvidersApi.md#providersldapdestroy) | **Delete** /providers/ldap/{id}/ | 
@@ -469,9 +465,7 @@ Class | Method | HTTP request | Description
 *ProvidersApi* | [**ProvidersMicrosoftEntraGroupsCreate**](docs/ProvidersApi.md#providersmicrosoftentragroupscreate) | **Post** /providers/microsoft_entra_groups/ | 
 *ProvidersApi* | [**ProvidersMicrosoftEntraGroupsDestroy**](docs/ProvidersApi.md#providersmicrosoftentragroupsdestroy) | **Delete** /providers/microsoft_entra_groups/{id}/ | 
 *ProvidersApi* | [**ProvidersMicrosoftEntraGroupsList**](docs/ProvidersApi.md#providersmicrosoftentragroupslist) | **Get** /providers/microsoft_entra_groups/ | 
-*ProvidersApi* | [**ProvidersMicrosoftEntraGroupsPartialUpdate**](docs/ProvidersApi.md#providersmicrosoftentragroupspartialupdate) | **Patch** /providers/microsoft_entra_groups/{id}/ | 
 *ProvidersApi* | [**ProvidersMicrosoftEntraGroupsRetrieve**](docs/ProvidersApi.md#providersmicrosoftentragroupsretrieve) | **Get** /providers/microsoft_entra_groups/{id}/ | 
-*ProvidersApi* | [**ProvidersMicrosoftEntraGroupsUpdate**](docs/ProvidersApi.md#providersmicrosoftentragroupsupdate) | **Put** /providers/microsoft_entra_groups/{id}/ | 
 *ProvidersApi* | [**ProvidersMicrosoftEntraGroupsUsedByList**](docs/ProvidersApi.md#providersmicrosoftentragroupsusedbylist) | **Get** /providers/microsoft_entra_groups/{id}/used_by/ | 
 *ProvidersApi* | [**ProvidersMicrosoftEntraList**](docs/ProvidersApi.md#providersmicrosoftentralist) | **Get** /providers/microsoft_entra/ | 
 *ProvidersApi* | [**ProvidersMicrosoftEntraPartialUpdate**](docs/ProvidersApi.md#providersmicrosoftentrapartialupdate) | **Patch** /providers/microsoft_entra/{id}/ | 
@@ -482,9 +476,7 @@ Class | Method | HTTP request | Description
 *ProvidersApi* | [**ProvidersMicrosoftEntraUsersCreate**](docs/ProvidersApi.md#providersmicrosoftentrauserscreate) | **Post** /providers/microsoft_entra_users/ | 
 *ProvidersApi* | [**ProvidersMicrosoftEntraUsersDestroy**](docs/ProvidersApi.md#providersmicrosoftentrausersdestroy) | **Delete** /providers/microsoft_entra_users/{id}/ | 
 *ProvidersApi* | [**ProvidersMicrosoftEntraUsersList**](docs/ProvidersApi.md#providersmicrosoftentrauserslist) | **Get** /providers/microsoft_entra_users/ | 
-*ProvidersApi* | [**ProvidersMicrosoftEntraUsersPartialUpdate**](docs/ProvidersApi.md#providersmicrosoftentrauserspartialupdate) | **Patch** /providers/microsoft_entra_users/{id}/ | 
 *ProvidersApi* | [**ProvidersMicrosoftEntraUsersRetrieve**](docs/ProvidersApi.md#providersmicrosoftentrausersretrieve) | **Get** /providers/microsoft_entra_users/{id}/ | 
-*ProvidersApi* | [**ProvidersMicrosoftEntraUsersUpdate**](docs/ProvidersApi.md#providersmicrosoftentrausersupdate) | **Put** /providers/microsoft_entra_users/{id}/ | 
 *ProvidersApi* | [**ProvidersMicrosoftEntraUsersUsedByList**](docs/ProvidersApi.md#providersmicrosoftentrausersusedbylist) | **Get** /providers/microsoft_entra_users/{id}/used_by/ | 
 *ProvidersApi* | [**ProvidersOauth2Create**](docs/ProvidersApi.md#providersoauth2create) | **Post** /providers/oauth2/ | 
 *ProvidersApi* | [**ProvidersOauth2Destroy**](docs/ProvidersApi.md#providersoauth2destroy) | **Delete** /providers/oauth2/{id}/ | 
@@ -1211,10 +1203,8 @@ Class | Method | HTTP request | Description
  - [PatchedExpressionPolicyRequest](docs/PatchedExpressionPolicyRequest.md)
  - [PatchedFlowRequest](docs/PatchedFlowRequest.md)
  - [PatchedFlowStageBindingRequest](docs/PatchedFlowStageBindingRequest.md)
- - [PatchedGoogleWorkspaceProviderGroupRequest](docs/PatchedGoogleWorkspaceProviderGroupRequest.md)
  - [PatchedGoogleWorkspaceProviderMappingRequest](docs/PatchedGoogleWorkspaceProviderMappingRequest.md)
  - [PatchedGoogleWorkspaceProviderRequest](docs/PatchedGoogleWorkspaceProviderRequest.md)
- - [PatchedGoogleWorkspaceProviderUserRequest](docs/PatchedGoogleWorkspaceProviderUserRequest.md)
  - [PatchedGroupRequest](docs/PatchedGroupRequest.md)
  - [PatchedIdentificationStageRequest](docs/PatchedIdentificationStageRequest.md)
  - [PatchedInvitationRequest](docs/PatchedInvitationRequest.md)
@@ -1224,10 +1214,8 @@ Class | Method | HTTP request | Description
  - [PatchedLDAPProviderRequest](docs/PatchedLDAPProviderRequest.md)
  - [PatchedLDAPSourceRequest](docs/PatchedLDAPSourceRequest.md)
  - [PatchedLicenseRequest](docs/PatchedLicenseRequest.md)
- - [PatchedMicrosoftEntraProviderGroupRequest](docs/PatchedMicrosoftEntraProviderGroupRequest.md)
  - [PatchedMicrosoftEntraProviderMappingRequest](docs/PatchedMicrosoftEntraProviderMappingRequest.md)
  - [PatchedMicrosoftEntraProviderRequest](docs/PatchedMicrosoftEntraProviderRequest.md)
- - [PatchedMicrosoftEntraProviderUserRequest](docs/PatchedMicrosoftEntraProviderUserRequest.md)
  - [PatchedNotificationRequest](docs/PatchedNotificationRequest.md)
  - [PatchedNotificationRuleRequest](docs/PatchedNotificationRuleRequest.md)
  - [PatchedNotificationTransportRequest](docs/PatchedNotificationTransportRequest.md)
