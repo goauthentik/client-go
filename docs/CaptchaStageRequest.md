@@ -10,6 +10,9 @@ Name | Type | Description | Notes
 **PrivateKey** | **string** | Private key, acquired your captcha Provider. | 
 **JsUrl** | Pointer to **string** |  | [optional] 
 **ApiUrl** | Pointer to **string** |  | [optional] 
+**ScoreMinThreshold** | Pointer to **float64** |  | [optional] 
+**ScoreMaxThreshold** | Pointer to **float64** |  | [optional] 
+**ErrorOnInvalidScore** | Pointer to **bool** | When enabled and the received captcha score is outside of the given threshold, the stage will show an error message. When not enabled, the flow will continue, but the data from the captcha will be available in the context for policy decisions | [optional] 
 
 ## Methods
 
@@ -164,6 +167,81 @@ SetApiUrl sets ApiUrl field to given value.
 `func (o *CaptchaStageRequest) HasApiUrl() bool`
 
 HasApiUrl returns a boolean if a field has been set.
+
+### GetScoreMinThreshold
+
+`func (o *CaptchaStageRequest) GetScoreMinThreshold() float64`
+
+GetScoreMinThreshold returns the ScoreMinThreshold field if non-nil, zero value otherwise.
+
+### GetScoreMinThresholdOk
+
+`func (o *CaptchaStageRequest) GetScoreMinThresholdOk() (*float64, bool)`
+
+GetScoreMinThresholdOk returns a tuple with the ScoreMinThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScoreMinThreshold
+
+`func (o *CaptchaStageRequest) SetScoreMinThreshold(v float64)`
+
+SetScoreMinThreshold sets ScoreMinThreshold field to given value.
+
+### HasScoreMinThreshold
+
+`func (o *CaptchaStageRequest) HasScoreMinThreshold() bool`
+
+HasScoreMinThreshold returns a boolean if a field has been set.
+
+### GetScoreMaxThreshold
+
+`func (o *CaptchaStageRequest) GetScoreMaxThreshold() float64`
+
+GetScoreMaxThreshold returns the ScoreMaxThreshold field if non-nil, zero value otherwise.
+
+### GetScoreMaxThresholdOk
+
+`func (o *CaptchaStageRequest) GetScoreMaxThresholdOk() (*float64, bool)`
+
+GetScoreMaxThresholdOk returns a tuple with the ScoreMaxThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScoreMaxThreshold
+
+`func (o *CaptchaStageRequest) SetScoreMaxThreshold(v float64)`
+
+SetScoreMaxThreshold sets ScoreMaxThreshold field to given value.
+
+### HasScoreMaxThreshold
+
+`func (o *CaptchaStageRequest) HasScoreMaxThreshold() bool`
+
+HasScoreMaxThreshold returns a boolean if a field has been set.
+
+### GetErrorOnInvalidScore
+
+`func (o *CaptchaStageRequest) GetErrorOnInvalidScore() bool`
+
+GetErrorOnInvalidScore returns the ErrorOnInvalidScore field if non-nil, zero value otherwise.
+
+### GetErrorOnInvalidScoreOk
+
+`func (o *CaptchaStageRequest) GetErrorOnInvalidScoreOk() (*bool, bool)`
+
+GetErrorOnInvalidScoreOk returns a tuple with the ErrorOnInvalidScore field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetErrorOnInvalidScore
+
+`func (o *CaptchaStageRequest) SetErrorOnInvalidScore(v bool)`
+
+SetErrorOnInvalidScore sets ErrorOnInvalidScore field to given value.
+
+### HasErrorOnInvalidScore
+
+`func (o *CaptchaStageRequest) HasErrorOnInvalidScore() bool`
+
+HasErrorOnInvalidScore returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -38189,14 +38189,10 @@ components:
       description: CaptchaStage Serializer
       example:
         public_key: public_key
-        component: component
-        verbose_name: verbose_name
+        error_on_invalid_score: true
         verbose_name_plural: verbose_name_plural
-        meta_model_name: meta_model_name
         api_url: api_url
-        name: name
-        js_url: js_url
-        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        score_min_threshold: 0.8008281904610115
         flow_set:
         - policy_engine_mode: null
           compatibility_mode: true
@@ -38222,6 +38218,13 @@ components:
           designation: ""
           title: title
           slug: slug
+        component: component
+        verbose_name: verbose_name
+        meta_model_name: meta_model_name
+        name: name
+        js_url: js_url
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        score_max_threshold: 6.027456183070403
       properties:
         pk:
           format: uuid
@@ -38257,6 +38260,18 @@ components:
           type: string
         api_url:
           type: string
+        score_min_threshold:
+          format: double
+          type: number
+        score_max_threshold:
+          format: double
+          type: number
+        error_on_invalid_score:
+          description: "When enabled and the received captcha score is outside of\
+            \ the given threshold, the stage will show an error message. When not\
+            \ enabled, the flow will continue, but the data from the captcha will\
+            \ be available in the context for policy decisions"
+          type: boolean
       required:
       - component
       - meta_model_name
@@ -38270,10 +38285,13 @@ components:
       description: CaptchaStage Serializer
       example:
         public_key: public_key
+        error_on_invalid_score: true
         api_url: api_url
         name: name
         private_key: private_key
         js_url: js_url
+        score_min_threshold: 0.8008281904610115
+        score_max_threshold: 6.027456183070403
         flow_set:
         - policy_engine_mode: null
           compatibility_mode: true
@@ -38314,6 +38332,18 @@ components:
         api_url:
           minLength: 1
           type: string
+        score_min_threshold:
+          format: double
+          type: number
+        score_max_threshold:
+          format: double
+          type: number
+        error_on_invalid_score:
+          description: "When enabled and the received captcha score is outside of\
+            \ the given threshold, the stage will show an error message. When not\
+            \ enabled, the flow will continue, but the data from the captcha will\
+            \ be available in the context for policy decisions"
+          type: boolean
       required:
       - name
       - private_key
@@ -45797,14 +45827,10 @@ components:
           total_pages: 5.637376656633329
         results:
         - public_key: public_key
-          component: component
-          verbose_name: verbose_name
+          error_on_invalid_score: true
           verbose_name_plural: verbose_name_plural
-          meta_model_name: meta_model_name
           api_url: api_url
-          name: name
-          js_url: js_url
-          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          score_min_threshold: 0.8008281904610115
           flow_set:
           - policy_engine_mode: null
             compatibility_mode: true
@@ -45830,15 +45856,18 @@ components:
             designation: ""
             title: title
             slug: slug
+          component: component
+          verbose_name: verbose_name
+          meta_model_name: meta_model_name
+          name: name
+          js_url: js_url
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          score_max_threshold: 6.027456183070403
         - public_key: public_key
-          component: component
-          verbose_name: verbose_name
+          error_on_invalid_score: true
           verbose_name_plural: verbose_name_plural
-          meta_model_name: meta_model_name
           api_url: api_url
-          name: name
-          js_url: js_url
-          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          score_min_threshold: 0.8008281904610115
           flow_set:
           - policy_engine_mode: null
             compatibility_mode: true
@@ -45864,6 +45893,13 @@ components:
             designation: ""
             title: title
             slug: slug
+          component: component
+          verbose_name: verbose_name
+          meta_model_name: meta_model_name
+          name: name
+          js_url: js_url
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          score_max_threshold: 6.027456183070403
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -52685,10 +52721,13 @@ components:
       description: CaptchaStage Serializer
       example:
         public_key: public_key
+        error_on_invalid_score: true
         api_url: api_url
         name: name
         private_key: private_key
         js_url: js_url
+        score_min_threshold: 0.8008281904610115
+        score_max_threshold: 6.027456183070403
         flow_set:
         - policy_engine_mode: null
           compatibility_mode: true
@@ -52729,6 +52768,18 @@ components:
         api_url:
           minLength: 1
           type: string
+        score_min_threshold:
+          format: double
+          type: number
+        score_max_threshold:
+          format: double
+          type: number
+        error_on_invalid_score:
+          description: "When enabled and the received captcha score is outside of\
+            \ the given threshold, the stage will show an error message. When not\
+            \ enabled, the flow will continue, but the data from the captcha will\
+            \ be available in the context for policy decisions"
+          type: boolean
       type: object
     PatchedCertificateKeyPairRequest:
       description: CertificateKeyPair Serializer

@@ -22,9 +22,13 @@ type CaptchaStageRequest struct {
 	// Public key, acquired your captcha Provider.
 	PublicKey string `json:"public_key"`
 	// Private key, acquired your captcha Provider.
-	PrivateKey string  `json:"private_key"`
-	JsUrl      *string `json:"js_url,omitempty"`
-	ApiUrl     *string `json:"api_url,omitempty"`
+	PrivateKey        string   `json:"private_key"`
+	JsUrl             *string  `json:"js_url,omitempty"`
+	ApiUrl            *string  `json:"api_url,omitempty"`
+	ScoreMinThreshold *float64 `json:"score_min_threshold,omitempty"`
+	ScoreMaxThreshold *float64 `json:"score_max_threshold,omitempty"`
+	// When enabled and the received captcha score is outside of the given threshold, the stage will show an error message. When not enabled, the flow will continue, but the data from the captcha will be available in the context for policy decisions
+	ErrorOnInvalidScore *bool `json:"error_on_invalid_score,omitempty"`
 }
 
 // NewCaptchaStageRequest instantiates a new CaptchaStageRequest object
@@ -215,6 +219,102 @@ func (o *CaptchaStageRequest) SetApiUrl(v string) {
 	o.ApiUrl = &v
 }
 
+// GetScoreMinThreshold returns the ScoreMinThreshold field value if set, zero value otherwise.
+func (o *CaptchaStageRequest) GetScoreMinThreshold() float64 {
+	if o == nil || o.ScoreMinThreshold == nil {
+		var ret float64
+		return ret
+	}
+	return *o.ScoreMinThreshold
+}
+
+// GetScoreMinThresholdOk returns a tuple with the ScoreMinThreshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CaptchaStageRequest) GetScoreMinThresholdOk() (*float64, bool) {
+	if o == nil || o.ScoreMinThreshold == nil {
+		return nil, false
+	}
+	return o.ScoreMinThreshold, true
+}
+
+// HasScoreMinThreshold returns a boolean if a field has been set.
+func (o *CaptchaStageRequest) HasScoreMinThreshold() bool {
+	if o != nil && o.ScoreMinThreshold != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetScoreMinThreshold gets a reference to the given float64 and assigns it to the ScoreMinThreshold field.
+func (o *CaptchaStageRequest) SetScoreMinThreshold(v float64) {
+	o.ScoreMinThreshold = &v
+}
+
+// GetScoreMaxThreshold returns the ScoreMaxThreshold field value if set, zero value otherwise.
+func (o *CaptchaStageRequest) GetScoreMaxThreshold() float64 {
+	if o == nil || o.ScoreMaxThreshold == nil {
+		var ret float64
+		return ret
+	}
+	return *o.ScoreMaxThreshold
+}
+
+// GetScoreMaxThresholdOk returns a tuple with the ScoreMaxThreshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CaptchaStageRequest) GetScoreMaxThresholdOk() (*float64, bool) {
+	if o == nil || o.ScoreMaxThreshold == nil {
+		return nil, false
+	}
+	return o.ScoreMaxThreshold, true
+}
+
+// HasScoreMaxThreshold returns a boolean if a field has been set.
+func (o *CaptchaStageRequest) HasScoreMaxThreshold() bool {
+	if o != nil && o.ScoreMaxThreshold != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetScoreMaxThreshold gets a reference to the given float64 and assigns it to the ScoreMaxThreshold field.
+func (o *CaptchaStageRequest) SetScoreMaxThreshold(v float64) {
+	o.ScoreMaxThreshold = &v
+}
+
+// GetErrorOnInvalidScore returns the ErrorOnInvalidScore field value if set, zero value otherwise.
+func (o *CaptchaStageRequest) GetErrorOnInvalidScore() bool {
+	if o == nil || o.ErrorOnInvalidScore == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ErrorOnInvalidScore
+}
+
+// GetErrorOnInvalidScoreOk returns a tuple with the ErrorOnInvalidScore field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CaptchaStageRequest) GetErrorOnInvalidScoreOk() (*bool, bool) {
+	if o == nil || o.ErrorOnInvalidScore == nil {
+		return nil, false
+	}
+	return o.ErrorOnInvalidScore, true
+}
+
+// HasErrorOnInvalidScore returns a boolean if a field has been set.
+func (o *CaptchaStageRequest) HasErrorOnInvalidScore() bool {
+	if o != nil && o.ErrorOnInvalidScore != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetErrorOnInvalidScore gets a reference to the given bool and assigns it to the ErrorOnInvalidScore field.
+func (o *CaptchaStageRequest) SetErrorOnInvalidScore(v bool) {
+	o.ErrorOnInvalidScore = &v
+}
+
 func (o CaptchaStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -234,6 +334,15 @@ func (o CaptchaStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.ApiUrl != nil {
 		toSerialize["api_url"] = o.ApiUrl
+	}
+	if o.ScoreMinThreshold != nil {
+		toSerialize["score_min_threshold"] = o.ScoreMinThreshold
+	}
+	if o.ScoreMaxThreshold != nil {
+		toSerialize["score_max_threshold"] = o.ScoreMaxThreshold
+	}
+	if o.ErrorOnInvalidScore != nil {
+		toSerialize["error_on_invalid_score"] = o.ErrorOnInvalidScore
 	}
 	return json.Marshal(toSerialize)
 }
