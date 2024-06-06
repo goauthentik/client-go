@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**MicrosoftId** | **string** |  | 
 **User** | **int32** |  | 
 **Provider** | **int32** |  | 
 
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewMicrosoftEntraProviderUserRequest
 
-`func NewMicrosoftEntraProviderUserRequest(user int32, provider int32, ) *MicrosoftEntraProviderUserRequest`
+`func NewMicrosoftEntraProviderUserRequest(microsoftId string, user int32, provider int32, ) *MicrosoftEntraProviderUserRequest`
 
 NewMicrosoftEntraProviderUserRequest instantiates a new MicrosoftEntraProviderUserRequest object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +26,26 @@ will change when the set of required properties is changed
 NewMicrosoftEntraProviderUserRequestWithDefaults instantiates a new MicrosoftEntraProviderUserRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetMicrosoftId
+
+`func (o *MicrosoftEntraProviderUserRequest) GetMicrosoftId() string`
+
+GetMicrosoftId returns the MicrosoftId field if non-nil, zero value otherwise.
+
+### GetMicrosoftIdOk
+
+`func (o *MicrosoftEntraProviderUserRequest) GetMicrosoftIdOk() (*string, bool)`
+
+GetMicrosoftIdOk returns a tuple with the MicrosoftId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMicrosoftId
+
+`func (o *MicrosoftEntraProviderUserRequest) SetMicrosoftId(v string)`
+
+SetMicrosoftId sets MicrosoftId field to given value.
+
 
 ### GetUser
 

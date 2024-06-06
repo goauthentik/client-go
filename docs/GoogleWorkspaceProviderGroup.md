@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | [readonly] 
+**GoogleId** | **string** |  | 
 **Group** | **string** |  | 
 **GroupObj** | [**UserGroup**](UserGroup.md) |  | [readonly] 
 **Provider** | **int32** |  | 
@@ -14,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewGoogleWorkspaceProviderGroup
 
-`func NewGoogleWorkspaceProviderGroup(id string, group string, groupObj UserGroup, provider int32, attributes interface{}, ) *GoogleWorkspaceProviderGroup`
+`func NewGoogleWorkspaceProviderGroup(id string, googleId string, group string, groupObj UserGroup, provider int32, attributes interface{}, ) *GoogleWorkspaceProviderGroup`
 
 NewGoogleWorkspaceProviderGroup instantiates a new GoogleWorkspaceProviderGroup object
 This constructor will assign default values to properties that have it defined,
@@ -47,6 +48,26 @@ and a boolean to check if the value has been set.
 `func (o *GoogleWorkspaceProviderGroup) SetId(v string)`
 
 SetId sets Id field to given value.
+
+
+### GetGoogleId
+
+`func (o *GoogleWorkspaceProviderGroup) GetGoogleId() string`
+
+GetGoogleId returns the GoogleId field if non-nil, zero value otherwise.
+
+### GetGoogleIdOk
+
+`func (o *GoogleWorkspaceProviderGroup) GetGoogleIdOk() (*string, bool)`
+
+GetGoogleIdOk returns a tuple with the GoogleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGoogleId
+
+`func (o *GoogleWorkspaceProviderGroup) SetGoogleId(v string)`
+
+SetGoogleId sets GoogleId field to given value.
 
 
 ### GetGroup

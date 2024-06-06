@@ -520,12 +520,22 @@ Class | Method | HTTP request | Description
 *ProvidersApi* | [**ProvidersSamlUsedByList**](docs/ProvidersApi.md#providerssamlusedbylist) | **Get** /providers/saml/{id}/used_by/ | 
 *ProvidersApi* | [**ProvidersScimCreate**](docs/ProvidersApi.md#providersscimcreate) | **Post** /providers/scim/ | 
 *ProvidersApi* | [**ProvidersScimDestroy**](docs/ProvidersApi.md#providersscimdestroy) | **Delete** /providers/scim/{id}/ | 
+*ProvidersApi* | [**ProvidersScimGroupsCreate**](docs/ProvidersApi.md#providersscimgroupscreate) | **Post** /providers/scim_groups/ | 
+*ProvidersApi* | [**ProvidersScimGroupsDestroy**](docs/ProvidersApi.md#providersscimgroupsdestroy) | **Delete** /providers/scim_groups/{id}/ | 
+*ProvidersApi* | [**ProvidersScimGroupsList**](docs/ProvidersApi.md#providersscimgroupslist) | **Get** /providers/scim_groups/ | 
+*ProvidersApi* | [**ProvidersScimGroupsRetrieve**](docs/ProvidersApi.md#providersscimgroupsretrieve) | **Get** /providers/scim_groups/{id}/ | 
+*ProvidersApi* | [**ProvidersScimGroupsUsedByList**](docs/ProvidersApi.md#providersscimgroupsusedbylist) | **Get** /providers/scim_groups/{id}/used_by/ | 
 *ProvidersApi* | [**ProvidersScimList**](docs/ProvidersApi.md#providersscimlist) | **Get** /providers/scim/ | 
 *ProvidersApi* | [**ProvidersScimPartialUpdate**](docs/ProvidersApi.md#providersscimpartialupdate) | **Patch** /providers/scim/{id}/ | 
 *ProvidersApi* | [**ProvidersScimRetrieve**](docs/ProvidersApi.md#providersscimretrieve) | **Get** /providers/scim/{id}/ | 
 *ProvidersApi* | [**ProvidersScimSyncStatusRetrieve**](docs/ProvidersApi.md#providersscimsyncstatusretrieve) | **Get** /providers/scim/{id}/sync/status/ | 
 *ProvidersApi* | [**ProvidersScimUpdate**](docs/ProvidersApi.md#providersscimupdate) | **Put** /providers/scim/{id}/ | 
 *ProvidersApi* | [**ProvidersScimUsedByList**](docs/ProvidersApi.md#providersscimusedbylist) | **Get** /providers/scim/{id}/used_by/ | 
+*ProvidersApi* | [**ProvidersScimUsersCreate**](docs/ProvidersApi.md#providersscimuserscreate) | **Post** /providers/scim_users/ | 
+*ProvidersApi* | [**ProvidersScimUsersDestroy**](docs/ProvidersApi.md#providersscimusersdestroy) | **Delete** /providers/scim_users/{id}/ | 
+*ProvidersApi* | [**ProvidersScimUsersList**](docs/ProvidersApi.md#providersscimuserslist) | **Get** /providers/scim_users/ | 
+*ProvidersApi* | [**ProvidersScimUsersRetrieve**](docs/ProvidersApi.md#providersscimusersretrieve) | **Get** /providers/scim_users/{id}/ | 
+*ProvidersApi* | [**ProvidersScimUsersUsedByList**](docs/ProvidersApi.md#providersscimusersusedbylist) | **Get** /providers/scim_users/{id}/used_by/ | 
 *RacApi* | [**RacConnectionTokensDestroy**](docs/RacApi.md#racconnectiontokensdestroy) | **Delete** /rac/connection_tokens/{connection_token_uuid}/ | 
 *RacApi* | [**RacConnectionTokensList**](docs/RacApi.md#racconnectiontokenslist) | **Get** /rac/connection_tokens/ | 
 *RacApi* | [**RacConnectionTokensPartialUpdate**](docs/RacApi.md#racconnectiontokenspartialupdate) | **Patch** /rac/connection_tokens/{connection_token_uuid}/ | 
@@ -1140,7 +1150,9 @@ Class | Method | HTTP request | Description
  - [PaginatedSAMLProviderList](docs/PaginatedSAMLProviderList.md)
  - [PaginatedSAMLSourceList](docs/PaginatedSAMLSourceList.md)
  - [PaginatedSCIMMappingList](docs/PaginatedSCIMMappingList.md)
+ - [PaginatedSCIMProviderGroupList](docs/PaginatedSCIMProviderGroupList.md)
  - [PaginatedSCIMProviderList](docs/PaginatedSCIMProviderList.md)
+ - [PaginatedSCIMProviderUserList](docs/PaginatedSCIMProviderUserList.md)
  - [PaginatedSCIMSourceGroupList](docs/PaginatedSCIMSourceGroupList.md)
  - [PaginatedSCIMSourceList](docs/PaginatedSCIMSourceList.md)
  - [PaginatedSCIMSourceUserList](docs/PaginatedSCIMSourceUserList.md)
@@ -1325,7 +1337,11 @@ Class | Method | HTTP request | Description
  - [SCIMMapping](docs/SCIMMapping.md)
  - [SCIMMappingRequest](docs/SCIMMappingRequest.md)
  - [SCIMProvider](docs/SCIMProvider.md)
+ - [SCIMProviderGroup](docs/SCIMProviderGroup.md)
+ - [SCIMProviderGroupRequest](docs/SCIMProviderGroupRequest.md)
  - [SCIMProviderRequest](docs/SCIMProviderRequest.md)
+ - [SCIMProviderUser](docs/SCIMProviderUser.md)
+ - [SCIMProviderUserRequest](docs/SCIMProviderUserRequest.md)
  - [SCIMSource](docs/SCIMSource.md)
  - [SCIMSourceGroup](docs/SCIMSourceGroup.md)
  - [SCIMSourceGroupRequest](docs/SCIMSourceGroupRequest.md)

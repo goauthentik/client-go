@@ -341,7 +341,9 @@ docs/PaginatedSAMLPropertyMappingList.md
 docs/PaginatedSAMLProviderList.md
 docs/PaginatedSAMLSourceList.md
 docs/PaginatedSCIMMappingList.md
+docs/PaginatedSCIMProviderGroupList.md
 docs/PaginatedSCIMProviderList.md
+docs/PaginatedSCIMProviderUserList.md
 docs/PaginatedSCIMSourceGroupList.md
 docs/PaginatedSCIMSourceList.md
 docs/PaginatedSCIMSourceUserList.md
@@ -532,7 +534,11 @@ docs/SAMLSourceRequest.md
 docs/SCIMMapping.md
 docs/SCIMMappingRequest.md
 docs/SCIMProvider.md
+docs/SCIMProviderGroup.md
+docs/SCIMProviderGroupRequest.md
 docs/SCIMProviderRequest.md
+docs/SCIMProviderUser.md
+docs/SCIMProviderUserRequest.md
 docs/SCIMSource.md
 docs/SCIMSourceGroup.md
 docs/SCIMSourceGroupRequest.md
@@ -948,7 +954,9 @@ model_paginated_saml_property_mapping_list.go
 model_paginated_saml_provider_list.go
 model_paginated_saml_source_list.go
 model_paginated_scim_mapping_list.go
+model_paginated_scim_provider_group_list.go
 model_paginated_scim_provider_list.go
+model_paginated_scim_provider_user_list.go
 model_paginated_scim_source_group_list.go
 model_paginated_scim_source_list.go
 model_paginated_scim_source_user_list.go
@@ -1133,7 +1141,11 @@ model_saml_source_request.go
 model_scim_mapping.go
 model_scim_mapping_request.go
 model_scim_provider.go
+model_scim_provider_group.go
+model_scim_provider_group_request.go
 model_scim_provider_request.go
+model_scim_provider_user.go
+model_scim_provider_user_request.go
 model_scim_source.go
 model_scim_source_group.go
 model_scim_source_group_request.go

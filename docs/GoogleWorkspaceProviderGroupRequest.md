@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**GoogleId** | **string** |  | 
 **Group** | **string** |  | 
 **Provider** | **int32** |  | 
 
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewGoogleWorkspaceProviderGroupRequest
 
-`func NewGoogleWorkspaceProviderGroupRequest(group string, provider int32, ) *GoogleWorkspaceProviderGroupRequest`
+`func NewGoogleWorkspaceProviderGroupRequest(googleId string, group string, provider int32, ) *GoogleWorkspaceProviderGroupRequest`
 
 NewGoogleWorkspaceProviderGroupRequest instantiates a new GoogleWorkspaceProviderGroupRequest object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +26,26 @@ will change when the set of required properties is changed
 NewGoogleWorkspaceProviderGroupRequestWithDefaults instantiates a new GoogleWorkspaceProviderGroupRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetGoogleId
+
+`func (o *GoogleWorkspaceProviderGroupRequest) GetGoogleId() string`
+
+GetGoogleId returns the GoogleId field if non-nil, zero value otherwise.
+
+### GetGoogleIdOk
+
+`func (o *GoogleWorkspaceProviderGroupRequest) GetGoogleIdOk() (*string, bool)`
+
+GetGoogleIdOk returns a tuple with the GoogleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGoogleId
+
+`func (o *GoogleWorkspaceProviderGroupRequest) SetGoogleId(v string)`
+
+SetGoogleId sets GoogleId field to given value.
+
 
 ### GetGroup
 

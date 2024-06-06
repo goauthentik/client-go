@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | [readonly] 
+**MicrosoftId** | **string** |  | 
 **Group** | **string** |  | 
 **GroupObj** | [**UserGroup**](UserGroup.md) |  | [readonly] 
 **Provider** | **int32** |  | 
@@ -14,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewMicrosoftEntraProviderGroup
 
-`func NewMicrosoftEntraProviderGroup(id string, group string, groupObj UserGroup, provider int32, attributes interface{}, ) *MicrosoftEntraProviderGroup`
+`func NewMicrosoftEntraProviderGroup(id string, microsoftId string, group string, groupObj UserGroup, provider int32, attributes interface{}, ) *MicrosoftEntraProviderGroup`
 
 NewMicrosoftEntraProviderGroup instantiates a new MicrosoftEntraProviderGroup object
 This constructor will assign default values to properties that have it defined,
@@ -47,6 +48,26 @@ and a boolean to check if the value has been set.
 `func (o *MicrosoftEntraProviderGroup) SetId(v string)`
 
 SetId sets Id field to given value.
+
+
+### GetMicrosoftId
+
+`func (o *MicrosoftEntraProviderGroup) GetMicrosoftId() string`
+
+GetMicrosoftId returns the MicrosoftId field if non-nil, zero value otherwise.
+
+### GetMicrosoftIdOk
+
+`func (o *MicrosoftEntraProviderGroup) GetMicrosoftIdOk() (*string, bool)`
+
+GetMicrosoftIdOk returns a tuple with the MicrosoftId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMicrosoftId
+
+`func (o *MicrosoftEntraProviderGroup) SetMicrosoftId(v string)`
+
+SetMicrosoftId sets MicrosoftId field to given value.
 
 
 ### GetGroup

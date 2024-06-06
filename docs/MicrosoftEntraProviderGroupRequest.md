@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**MicrosoftId** | **string** |  | 
 **Group** | **string** |  | 
 **Provider** | **int32** |  | 
 
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewMicrosoftEntraProviderGroupRequest
 
-`func NewMicrosoftEntraProviderGroupRequest(group string, provider int32, ) *MicrosoftEntraProviderGroupRequest`
+`func NewMicrosoftEntraProviderGroupRequest(microsoftId string, group string, provider int32, ) *MicrosoftEntraProviderGroupRequest`
 
 NewMicrosoftEntraProviderGroupRequest instantiates a new MicrosoftEntraProviderGroupRequest object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +26,26 @@ will change when the set of required properties is changed
 NewMicrosoftEntraProviderGroupRequestWithDefaults instantiates a new MicrosoftEntraProviderGroupRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetMicrosoftId
+
+`func (o *MicrosoftEntraProviderGroupRequest) GetMicrosoftId() string`
+
+GetMicrosoftId returns the MicrosoftId field if non-nil, zero value otherwise.
+
+### GetMicrosoftIdOk
+
+`func (o *MicrosoftEntraProviderGroupRequest) GetMicrosoftIdOk() (*string, bool)`
+
+GetMicrosoftIdOk returns a tuple with the MicrosoftId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMicrosoftId
+
+`func (o *MicrosoftEntraProviderGroupRequest) SetMicrosoftId(v string)`
+
+SetMicrosoftId sets MicrosoftId field to given value.
+
 
 ### GetGroup
 

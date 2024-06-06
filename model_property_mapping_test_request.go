@@ -17,9 +17,9 @@ import (
 
 // PropertyMappingTestRequest Test property mapping execution for a user/group with context
 type PropertyMappingTestRequest struct {
-	User    *int32                 `json:"user,omitempty"`
+	User    NullableInt32          `json:"user,omitempty"`
 	Context map[string]interface{} `json:"context,omitempty"`
-	Group   *string                `json:"group,omitempty"`
+	Group   NullableString         `json:"group,omitempty"`
 }
 
 // NewPropertyMappingTestRequest instantiates a new PropertyMappingTestRequest object
@@ -39,36 +39,47 @@ func NewPropertyMappingTestRequestWithDefaults() *PropertyMappingTestRequest {
 	return &this
 }
 
-// GetUser returns the User field value if set, zero value otherwise.
+// GetUser returns the User field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PropertyMappingTestRequest) GetUser() int32 {
-	if o == nil || o.User == nil {
+	if o == nil || o.User.Get() == nil {
 		var ret int32
 		return ret
 	}
-	return *o.User
+	return *o.User.Get()
 }
 
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PropertyMappingTestRequest) GetUserOk() (*int32, bool) {
-	if o == nil || o.User == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.User, true
+	return o.User.Get(), o.User.IsSet()
 }
 
 // HasUser returns a boolean if a field has been set.
 func (o *PropertyMappingTestRequest) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && o.User.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUser gets a reference to the given int32 and assigns it to the User field.
+// SetUser gets a reference to the given NullableInt32 and assigns it to the User field.
 func (o *PropertyMappingTestRequest) SetUser(v int32) {
-	o.User = &v
+	o.User.Set(&v)
+}
+
+// SetUserNil sets the value for User to be an explicit nil
+func (o *PropertyMappingTestRequest) SetUserNil() {
+	o.User.Set(nil)
+}
+
+// UnsetUser ensures that no value is present for User, not even an explicit nil
+func (o *PropertyMappingTestRequest) UnsetUser() {
+	o.User.Unset()
 }
 
 // GetContext returns the Context field value if set, zero value otherwise.
@@ -103,48 +114,59 @@ func (o *PropertyMappingTestRequest) SetContext(v map[string]interface{}) {
 	o.Context = v
 }
 
-// GetGroup returns the Group field value if set, zero value otherwise.
+// GetGroup returns the Group field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PropertyMappingTestRequest) GetGroup() string {
-	if o == nil || o.Group == nil {
+	if o == nil || o.Group.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.Group
+	return *o.Group.Get()
 }
 
 // GetGroupOk returns a tuple with the Group field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PropertyMappingTestRequest) GetGroupOk() (*string, bool) {
-	if o == nil || o.Group == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Group, true
+	return o.Group.Get(), o.Group.IsSet()
 }
 
 // HasGroup returns a boolean if a field has been set.
 func (o *PropertyMappingTestRequest) HasGroup() bool {
-	if o != nil && o.Group != nil {
+	if o != nil && o.Group.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGroup gets a reference to the given string and assigns it to the Group field.
+// SetGroup gets a reference to the given NullableString and assigns it to the Group field.
 func (o *PropertyMappingTestRequest) SetGroup(v string) {
-	o.Group = &v
+	o.Group.Set(&v)
+}
+
+// SetGroupNil sets the value for Group to be an explicit nil
+func (o *PropertyMappingTestRequest) SetGroupNil() {
+	o.Group.Set(nil)
+}
+
+// UnsetGroup ensures that no value is present for Group, not even an explicit nil
+func (o *PropertyMappingTestRequest) UnsetGroup() {
+	o.Group.Unset()
 }
 
 func (o PropertyMappingTestRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.User != nil {
-		toSerialize["user"] = o.User
+	if o.User.IsSet() {
+		toSerialize["user"] = o.User.Get()
 	}
 	if o.Context != nil {
 		toSerialize["context"] = o.Context
 	}
-	if o.Group != nil {
-		toSerialize["group"] = o.Group
+	if o.Group.IsSet() {
+		toSerialize["group"] = o.Group.Get()
 	}
 	return json.Marshal(toSerialize)
 }

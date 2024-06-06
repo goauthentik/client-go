@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**User** | Pointer to **int32** |  | [optional] 
+**User** | Pointer to **NullableInt32** |  | [optional] 
 **Context** | Pointer to **map[string]interface{}** |  | [optional] 
-**Group** | Pointer to **string** |  | [optional] 
+**Group** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -52,6 +52,16 @@ SetUser sets User field to given value.
 
 HasUser returns a boolean if a field has been set.
 
+### SetUserNil
+
+`func (o *PropertyMappingTestRequest) SetUserNil(b bool)`
+
+ SetUserNil sets the value for User to be an explicit nil
+
+### UnsetUser
+`func (o *PropertyMappingTestRequest) UnsetUser()`
+
+UnsetUser ensures that no value is present for User, not even an explicit nil
 ### GetContext
 
 `func (o *PropertyMappingTestRequest) GetContext() map[string]interface{}`
@@ -102,6 +112,16 @@ SetGroup sets Group field to given value.
 
 HasGroup returns a boolean if a field has been set.
 
+### SetGroupNil
+
+`func (o *PropertyMappingTestRequest) SetGroupNil(b bool)`
+
+ SetGroupNil sets the value for Group to be an explicit nil
+
+### UnsetGroup
+`func (o *PropertyMappingTestRequest) UnsetGroup()`
+
+UnsetGroup ensures that no value is present for Group, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

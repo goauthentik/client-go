@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**GoogleId** | **string** |  | 
 **User** | **int32** |  | 
 **Provider** | **int32** |  | 
 
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewGoogleWorkspaceProviderUserRequest
 
-`func NewGoogleWorkspaceProviderUserRequest(user int32, provider int32, ) *GoogleWorkspaceProviderUserRequest`
+`func NewGoogleWorkspaceProviderUserRequest(googleId string, user int32, provider int32, ) *GoogleWorkspaceProviderUserRequest`
 
 NewGoogleWorkspaceProviderUserRequest instantiates a new GoogleWorkspaceProviderUserRequest object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +26,26 @@ will change when the set of required properties is changed
 NewGoogleWorkspaceProviderUserRequestWithDefaults instantiates a new GoogleWorkspaceProviderUserRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetGoogleId
+
+`func (o *GoogleWorkspaceProviderUserRequest) GetGoogleId() string`
+
+GetGoogleId returns the GoogleId field if non-nil, zero value otherwise.
+
+### GetGoogleIdOk
+
+`func (o *GoogleWorkspaceProviderUserRequest) GetGoogleIdOk() (*string, bool)`
+
+GetGoogleIdOk returns a tuple with the GoogleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGoogleId
+
+`func (o *GoogleWorkspaceProviderUserRequest) SetGoogleId(v string)`
+
+SetGoogleId sets GoogleId field to given value.
+
 
 ### GetUser
 

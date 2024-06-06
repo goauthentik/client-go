@@ -17,16 +17,18 @@ import (
 
 // MicrosoftEntraProviderGroupRequest MicrosoftEntraProviderGroup Serializer
 type MicrosoftEntraProviderGroupRequest struct {
-	Group    string `json:"group"`
-	Provider int32  `json:"provider"`
+	MicrosoftId string `json:"microsoft_id"`
+	Group       string `json:"group"`
+	Provider    int32  `json:"provider"`
 }
 
 // NewMicrosoftEntraProviderGroupRequest instantiates a new MicrosoftEntraProviderGroupRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMicrosoftEntraProviderGroupRequest(group string, provider int32) *MicrosoftEntraProviderGroupRequest {
+func NewMicrosoftEntraProviderGroupRequest(microsoftId string, group string, provider int32) *MicrosoftEntraProviderGroupRequest {
 	this := MicrosoftEntraProviderGroupRequest{}
+	this.MicrosoftId = microsoftId
 	this.Group = group
 	this.Provider = provider
 	return &this
@@ -38,6 +40,30 @@ func NewMicrosoftEntraProviderGroupRequest(group string, provider int32) *Micros
 func NewMicrosoftEntraProviderGroupRequestWithDefaults() *MicrosoftEntraProviderGroupRequest {
 	this := MicrosoftEntraProviderGroupRequest{}
 	return &this
+}
+
+// GetMicrosoftId returns the MicrosoftId field value
+func (o *MicrosoftEntraProviderGroupRequest) GetMicrosoftId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MicrosoftId
+}
+
+// GetMicrosoftIdOk returns a tuple with the MicrosoftId field value
+// and a boolean to check if the value has been set.
+func (o *MicrosoftEntraProviderGroupRequest) GetMicrosoftIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MicrosoftId, true
+}
+
+// SetMicrosoftId sets field value
+func (o *MicrosoftEntraProviderGroupRequest) SetMicrosoftId(v string) {
+	o.MicrosoftId = v
 }
 
 // GetGroup returns the Group field value
@@ -90,6 +116,9 @@ func (o *MicrosoftEntraProviderGroupRequest) SetProvider(v int32) {
 
 func (o MicrosoftEntraProviderGroupRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["microsoft_id"] = o.MicrosoftId
+	}
 	if true {
 		toSerialize["group"] = o.Group
 	}

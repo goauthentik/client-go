@@ -17,16 +17,18 @@ import (
 
 // MicrosoftEntraProviderUserRequest MicrosoftEntraProviderUser Serializer
 type MicrosoftEntraProviderUserRequest struct {
-	User     int32 `json:"user"`
-	Provider int32 `json:"provider"`
+	MicrosoftId string `json:"microsoft_id"`
+	User        int32  `json:"user"`
+	Provider    int32  `json:"provider"`
 }
 
 // NewMicrosoftEntraProviderUserRequest instantiates a new MicrosoftEntraProviderUserRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMicrosoftEntraProviderUserRequest(user int32, provider int32) *MicrosoftEntraProviderUserRequest {
+func NewMicrosoftEntraProviderUserRequest(microsoftId string, user int32, provider int32) *MicrosoftEntraProviderUserRequest {
 	this := MicrosoftEntraProviderUserRequest{}
+	this.MicrosoftId = microsoftId
 	this.User = user
 	this.Provider = provider
 	return &this
@@ -38,6 +40,30 @@ func NewMicrosoftEntraProviderUserRequest(user int32, provider int32) *Microsoft
 func NewMicrosoftEntraProviderUserRequestWithDefaults() *MicrosoftEntraProviderUserRequest {
 	this := MicrosoftEntraProviderUserRequest{}
 	return &this
+}
+
+// GetMicrosoftId returns the MicrosoftId field value
+func (o *MicrosoftEntraProviderUserRequest) GetMicrosoftId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MicrosoftId
+}
+
+// GetMicrosoftIdOk returns a tuple with the MicrosoftId field value
+// and a boolean to check if the value has been set.
+func (o *MicrosoftEntraProviderUserRequest) GetMicrosoftIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MicrosoftId, true
+}
+
+// SetMicrosoftId sets field value
+func (o *MicrosoftEntraProviderUserRequest) SetMicrosoftId(v string) {
+	o.MicrosoftId = v
 }
 
 // GetUser returns the User field value
@@ -90,6 +116,9 @@ func (o *MicrosoftEntraProviderUserRequest) SetProvider(v int32) {
 
 func (o MicrosoftEntraProviderUserRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["microsoft_id"] = o.MicrosoftId
+	}
 	if true {
 		toSerialize["user"] = o.User
 	}

@@ -21979,6 +21979,449 @@ paths:
       - authentik: []
       tags:
       - providers
+  /providers/scim_groups/:
+    get:
+      description: SCIMProviderGroup Viewset
+      operationId: providers_scim_groups_list
+      parameters:
+      - explode: true
+        in: query
+        name: group__group_uuid
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: group__name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: provider__id
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSCIMProviderGroupList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    post:
+      description: SCIMProviderGroup Viewset
+      operationId: providers_scim_groups_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SCIMProviderGroupRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMProviderGroup'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/scim_groups/{id}/:
+    delete:
+      description: SCIMProviderGroup Viewset
+      operationId: providers_scim_groups_destroy
+      parameters:
+      - description: A UUID string identifying this scim provider group.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    get:
+      description: SCIMProviderGroup Viewset
+      operationId: providers_scim_groups_retrieve
+      parameters:
+      - description: A UUID string identifying this scim provider group.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMProviderGroup'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/scim_groups/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: providers_scim_groups_used_by_list
+      parameters:
+      - description: A UUID string identifying this scim provider group.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/scim_users/:
+    get:
+      description: SCIMProviderUser Viewset
+      operationId: providers_scim_users_list
+      parameters:
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: provider__id
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: user__id
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: user__username
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSCIMProviderUserList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    post:
+      description: SCIMProviderUser Viewset
+      operationId: providers_scim_users_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SCIMProviderUserRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMProviderUser'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/scim_users/{id}/:
+    delete:
+      description: SCIMProviderUser Viewset
+      operationId: providers_scim_users_destroy
+      parameters:
+      - description: A UUID string identifying this scim provider user.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    get:
+      description: SCIMProviderUser Viewset
+      operationId: providers_scim_users_retrieve
+      parameters:
+      - description: A UUID string identifying this scim provider user.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMProviderUser'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/scim_users/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: providers_scim_users_used_by_list
+      parameters:
+      - description: A UUID string identifying this scim provider user.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
   /rac/connection_tokens/:
     get:
       description: ConnectionToken Viewset
@@ -41243,6 +41686,7 @@ components:
     GoogleWorkspaceProviderGroup:
       description: GoogleWorkspaceProviderGroup Serializer
       example:
+        google_id: google_id
         provider: 0
         group_obj: ""
         attributes: ""
@@ -41252,6 +41696,8 @@ components:
         id:
           format: uuid
           readOnly: true
+          type: string
+        google_id:
           type: string
         group:
           format: uuid
@@ -41266,6 +41712,7 @@ components:
           readOnly: true
       required:
       - attributes
+      - google_id
       - group
       - group_obj
       - id
@@ -41274,15 +41721,20 @@ components:
     GoogleWorkspaceProviderGroupRequest:
       description: GoogleWorkspaceProviderGroup Serializer
       example:
+        google_id: google_id
         provider: 0
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
+        google_id:
+          minLength: 1
+          type: string
         group:
           format: uuid
           type: string
         provider:
           type: integer
       required:
+      - google_id
       - group
       - provider
       type: object
@@ -41431,6 +41883,7 @@ components:
       description: GoogleWorkspaceProviderUser Serializer
       example:
         user_obj: ""
+        google_id: google_id
         provider: 6
         attributes: ""
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -41439,6 +41892,8 @@ components:
         id:
           format: uuid
           readOnly: true
+          type: string
+        google_id:
           type: string
         user:
           type: integer
@@ -41452,6 +41907,7 @@ components:
           readOnly: true
       required:
       - attributes
+      - google_id
       - id
       - provider
       - user
@@ -41460,14 +41916,19 @@ components:
     GoogleWorkspaceProviderUserRequest:
       description: GoogleWorkspaceProviderUser Serializer
       example:
+        google_id: google_id
         provider: 6
         user: 0
       properties:
+        google_id:
+          minLength: 1
+          type: string
         user:
           type: integer
         provider:
           type: integer
       required:
+      - google_id
       - provider
       - user
       type: object
@@ -43417,6 +43878,7 @@ components:
     MicrosoftEntraProviderGroup:
       description: MicrosoftEntraProviderGroup Serializer
       example:
+        microsoft_id: microsoft_id
         provider: 0
         group_obj: ""
         attributes: ""
@@ -43426,6 +43888,8 @@ components:
         id:
           format: uuid
           readOnly: true
+          type: string
+        microsoft_id:
           type: string
         group:
           format: uuid
@@ -43443,14 +43907,19 @@ components:
       - group
       - group_obj
       - id
+      - microsoft_id
       - provider
       type: object
     MicrosoftEntraProviderGroupRequest:
       description: MicrosoftEntraProviderGroup Serializer
       example:
+        microsoft_id: microsoft_id
         provider: 0
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
+        microsoft_id:
+          minLength: 1
+          type: string
         group:
           format: uuid
           type: string
@@ -43458,6 +43927,7 @@ components:
           type: integer
       required:
       - group
+      - microsoft_id
       - provider
       type: object
     MicrosoftEntraProviderMapping:
@@ -43600,6 +44070,7 @@ components:
     MicrosoftEntraProviderUser:
       description: MicrosoftEntraProviderUser Serializer
       example:
+        microsoft_id: microsoft_id
         user_obj: ""
         provider: 6
         attributes: ""
@@ -43609,6 +44080,8 @@ components:
         id:
           format: uuid
           readOnly: true
+          type: string
+        microsoft_id:
           type: string
         user:
           type: integer
@@ -43623,6 +44096,7 @@ components:
       required:
       - attributes
       - id
+      - microsoft_id
       - provider
       - user
       - user_obj
@@ -43630,14 +44104,19 @@ components:
     MicrosoftEntraProviderUserRequest:
       description: MicrosoftEntraProviderUser Serializer
       example:
+        microsoft_id: microsoft_id
         provider: 6
         user: 0
       properties:
+        microsoft_id:
+          minLength: 1
+          type: string
         user:
           type: integer
         provider:
           type: integer
       required:
+      - microsoft_id
       - provider
       - user
       type: object
@@ -47032,12 +47511,14 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - provider: 0
+        - google_id: google_id
+          provider: 0
           group_obj: ""
           attributes: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - provider: 0
+        - google_id: google_id
+          provider: 0
           group_obj: ""
           attributes: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -47169,11 +47650,13 @@ components:
           total_pages: 5.637376656633329
         results:
         - user_obj: ""
+          google_id: google_id
           provider: 6
           attributes: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 0
         - user_obj: ""
+          google_id: google_id
           provider: 6
           attributes: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -47880,12 +48363,14 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - provider: 0
+        - microsoft_id: microsoft_id
+          provider: 0
           group_obj: ""
           attributes: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - provider: 0
+        - microsoft_id: microsoft_id
+          provider: 0
           group_obj: ""
           attributes: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -48014,12 +48499,14 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - user_obj: ""
+        - microsoft_id: microsoft_id
+          user_obj: ""
           provider: 6
           attributes: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 0
-        - user_obj: ""
+        - microsoft_id: microsoft_id
+          user_obj: ""
           provider: 6
           attributes: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -50001,6 +50488,38 @@ components:
       - pagination
       - results
       type: object
+    PaginatedSCIMProviderGroupList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - scim_id: scim_id
+          provider: 0
+          group_obj: ""
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - scim_id: scim_id
+          provider: 0
+          group_obj: ""
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/SCIMProviderGroup'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedSCIMProviderList:
       example:
         pagination:
@@ -50054,6 +50573,38 @@ components:
         results:
           items:
             $ref: '#/components/schemas/SCIMProvider'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedSCIMProviderUserList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - scim_id: scim_id
+          user_obj: ""
+          provider: 6
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user: 0
+        - scim_id: scim_id
+          user_obj: ""
+          provider: 6
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user: 0
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/SCIMProviderUser'
           type: array
       required:
       - pagination
@@ -56938,12 +57489,14 @@ components:
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         user:
+          nullable: true
           type: integer
         context:
           additionalProperties: {}
           type: object
         group:
           format: uuid
+          nullable: true
           type: string
       type: object
     PropertyMappingTestResult:
@@ -59116,6 +59669,57 @@ components:
       - verbose_name
       - verbose_name_plural
       type: object
+    SCIMProviderGroup:
+      description: SCIMProviderGroup Serializer
+      example:
+        scim_id: scim_id
+        provider: 0
+        group_obj: ""
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          readOnly: true
+          type: string
+        scim_id:
+          type: string
+        group:
+          format: uuid
+          type: string
+        group_obj:
+          allOf:
+          - $ref: '#/components/schemas/UserGroup'
+          readOnly: true
+        provider:
+          type: integer
+      required:
+      - group
+      - group_obj
+      - id
+      - provider
+      - scim_id
+      type: object
+    SCIMProviderGroupRequest:
+      description: SCIMProviderGroup Serializer
+      example:
+        scim_id: scim_id
+        provider: 0
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        scim_id:
+          minLength: 1
+          type: string
+        group:
+          format: uuid
+          type: string
+        provider:
+          type: integer
+      required:
+      - group
+      - provider
+      - scim_id
+      type: object
     SCIMProviderRequest:
       description: SCIMProvider Serializer
       example:
@@ -59163,6 +59767,55 @@ components:
       - name
       - token
       - url
+      type: object
+    SCIMProviderUser:
+      description: SCIMProviderUser Serializer
+      example:
+        scim_id: scim_id
+        user_obj: ""
+        provider: 6
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user: 0
+      properties:
+        id:
+          format: uuid
+          readOnly: true
+          type: string
+        scim_id:
+          type: string
+        user:
+          type: integer
+        user_obj:
+          allOf:
+          - $ref: '#/components/schemas/GroupMember'
+          readOnly: true
+        provider:
+          type: integer
+      required:
+      - id
+      - provider
+      - scim_id
+      - user
+      - user_obj
+      type: object
+    SCIMProviderUserRequest:
+      description: SCIMProviderUser Serializer
+      example:
+        scim_id: scim_id
+        provider: 6
+        user: 0
+      properties:
+        scim_id:
+          minLength: 1
+          type: string
+        user:
+          type: integer
+        provider:
+          type: integer
+      required:
+      - provider
+      - scim_id
+      - user
       type: object
     SCIMSource:
       description: SCIMSource Serializer

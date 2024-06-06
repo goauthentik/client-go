@@ -17,20 +17,22 @@ import (
 
 // MicrosoftEntraProviderGroup MicrosoftEntraProviderGroup Serializer
 type MicrosoftEntraProviderGroup struct {
-	Id         string      `json:"id"`
-	Group      string      `json:"group"`
-	GroupObj   UserGroup   `json:"group_obj"`
-	Provider   int32       `json:"provider"`
-	Attributes interface{} `json:"attributes"`
+	Id          string      `json:"id"`
+	MicrosoftId string      `json:"microsoft_id"`
+	Group       string      `json:"group"`
+	GroupObj    UserGroup   `json:"group_obj"`
+	Provider    int32       `json:"provider"`
+	Attributes  interface{} `json:"attributes"`
 }
 
 // NewMicrosoftEntraProviderGroup instantiates a new MicrosoftEntraProviderGroup object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMicrosoftEntraProviderGroup(id string, group string, groupObj UserGroup, provider int32, attributes interface{}) *MicrosoftEntraProviderGroup {
+func NewMicrosoftEntraProviderGroup(id string, microsoftId string, group string, groupObj UserGroup, provider int32, attributes interface{}) *MicrosoftEntraProviderGroup {
 	this := MicrosoftEntraProviderGroup{}
 	this.Id = id
+	this.MicrosoftId = microsoftId
 	this.Group = group
 	this.GroupObj = groupObj
 	this.Provider = provider
@@ -68,6 +70,30 @@ func (o *MicrosoftEntraProviderGroup) GetIdOk() (*string, bool) {
 // SetId sets field value
 func (o *MicrosoftEntraProviderGroup) SetId(v string) {
 	o.Id = v
+}
+
+// GetMicrosoftId returns the MicrosoftId field value
+func (o *MicrosoftEntraProviderGroup) GetMicrosoftId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MicrosoftId
+}
+
+// GetMicrosoftIdOk returns a tuple with the MicrosoftId field value
+// and a boolean to check if the value has been set.
+func (o *MicrosoftEntraProviderGroup) GetMicrosoftIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MicrosoftId, true
+}
+
+// SetMicrosoftId sets field value
+func (o *MicrosoftEntraProviderGroup) SetMicrosoftId(v string) {
+	o.MicrosoftId = v
 }
 
 // GetGroup returns the Group field value
@@ -172,6 +198,9 @@ func (o MicrosoftEntraProviderGroup) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["microsoft_id"] = o.MicrosoftId
 	}
 	if true {
 		toSerialize["group"] = o.Group

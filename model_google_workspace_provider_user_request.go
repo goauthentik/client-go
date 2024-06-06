@@ -17,16 +17,18 @@ import (
 
 // GoogleWorkspaceProviderUserRequest GoogleWorkspaceProviderUser Serializer
 type GoogleWorkspaceProviderUserRequest struct {
-	User     int32 `json:"user"`
-	Provider int32 `json:"provider"`
+	GoogleId string `json:"google_id"`
+	User     int32  `json:"user"`
+	Provider int32  `json:"provider"`
 }
 
 // NewGoogleWorkspaceProviderUserRequest instantiates a new GoogleWorkspaceProviderUserRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGoogleWorkspaceProviderUserRequest(user int32, provider int32) *GoogleWorkspaceProviderUserRequest {
+func NewGoogleWorkspaceProviderUserRequest(googleId string, user int32, provider int32) *GoogleWorkspaceProviderUserRequest {
 	this := GoogleWorkspaceProviderUserRequest{}
+	this.GoogleId = googleId
 	this.User = user
 	this.Provider = provider
 	return &this
@@ -38,6 +40,30 @@ func NewGoogleWorkspaceProviderUserRequest(user int32, provider int32) *GoogleWo
 func NewGoogleWorkspaceProviderUserRequestWithDefaults() *GoogleWorkspaceProviderUserRequest {
 	this := GoogleWorkspaceProviderUserRequest{}
 	return &this
+}
+
+// GetGoogleId returns the GoogleId field value
+func (o *GoogleWorkspaceProviderUserRequest) GetGoogleId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.GoogleId
+}
+
+// GetGoogleIdOk returns a tuple with the GoogleId field value
+// and a boolean to check if the value has been set.
+func (o *GoogleWorkspaceProviderUserRequest) GetGoogleIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.GoogleId, true
+}
+
+// SetGoogleId sets field value
+func (o *GoogleWorkspaceProviderUserRequest) SetGoogleId(v string) {
+	o.GoogleId = v
 }
 
 // GetUser returns the User field value
@@ -90,6 +116,9 @@ func (o *GoogleWorkspaceProviderUserRequest) SetProvider(v int32) {
 
 func (o GoogleWorkspaceProviderUserRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["google_id"] = o.GoogleId
+	}
 	if true {
 		toSerialize["user"] = o.User
 	}

@@ -94,12 +94,22 @@ Method | HTTP request | Description
 [**ProvidersSamlUsedByList**](ProvidersApi.md#ProvidersSamlUsedByList) | **Get** /providers/saml/{id}/used_by/ | 
 [**ProvidersScimCreate**](ProvidersApi.md#ProvidersScimCreate) | **Post** /providers/scim/ | 
 [**ProvidersScimDestroy**](ProvidersApi.md#ProvidersScimDestroy) | **Delete** /providers/scim/{id}/ | 
+[**ProvidersScimGroupsCreate**](ProvidersApi.md#ProvidersScimGroupsCreate) | **Post** /providers/scim_groups/ | 
+[**ProvidersScimGroupsDestroy**](ProvidersApi.md#ProvidersScimGroupsDestroy) | **Delete** /providers/scim_groups/{id}/ | 
+[**ProvidersScimGroupsList**](ProvidersApi.md#ProvidersScimGroupsList) | **Get** /providers/scim_groups/ | 
+[**ProvidersScimGroupsRetrieve**](ProvidersApi.md#ProvidersScimGroupsRetrieve) | **Get** /providers/scim_groups/{id}/ | 
+[**ProvidersScimGroupsUsedByList**](ProvidersApi.md#ProvidersScimGroupsUsedByList) | **Get** /providers/scim_groups/{id}/used_by/ | 
 [**ProvidersScimList**](ProvidersApi.md#ProvidersScimList) | **Get** /providers/scim/ | 
 [**ProvidersScimPartialUpdate**](ProvidersApi.md#ProvidersScimPartialUpdate) | **Patch** /providers/scim/{id}/ | 
 [**ProvidersScimRetrieve**](ProvidersApi.md#ProvidersScimRetrieve) | **Get** /providers/scim/{id}/ | 
 [**ProvidersScimSyncStatusRetrieve**](ProvidersApi.md#ProvidersScimSyncStatusRetrieve) | **Get** /providers/scim/{id}/sync/status/ | 
 [**ProvidersScimUpdate**](ProvidersApi.md#ProvidersScimUpdate) | **Put** /providers/scim/{id}/ | 
 [**ProvidersScimUsedByList**](ProvidersApi.md#ProvidersScimUsedByList) | **Get** /providers/scim/{id}/used_by/ | 
+[**ProvidersScimUsersCreate**](ProvidersApi.md#ProvidersScimUsersCreate) | **Post** /providers/scim_users/ | 
+[**ProvidersScimUsersDestroy**](ProvidersApi.md#ProvidersScimUsersDestroy) | **Delete** /providers/scim_users/{id}/ | 
+[**ProvidersScimUsersList**](ProvidersApi.md#ProvidersScimUsersList) | **Get** /providers/scim_users/ | 
+[**ProvidersScimUsersRetrieve**](ProvidersApi.md#ProvidersScimUsersRetrieve) | **Get** /providers/scim_users/{id}/ | 
+[**ProvidersScimUsersUsedByList**](ProvidersApi.md#ProvidersScimUsersUsedByList) | **Get** /providers/scim_users/{id}/used_by/ | 
 
 
 
@@ -603,7 +613,7 @@ import (
 )
 
 func main() {
-    googleWorkspaceProviderGroupRequest := *openapiclient.NewGoogleWorkspaceProviderGroupRequest("Group_example", int32(123)) // GoogleWorkspaceProviderGroupRequest | 
+    googleWorkspaceProviderGroupRequest := *openapiclient.NewGoogleWorkspaceProviderGroupRequest("GoogleId_example", "Group_example", int32(123)) // GoogleWorkspaceProviderGroupRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1389,7 +1399,7 @@ import (
 )
 
 func main() {
-    googleWorkspaceProviderUserRequest := *openapiclient.NewGoogleWorkspaceProviderUserRequest(int32(123), int32(123)) // GoogleWorkspaceProviderUserRequest | 
+    googleWorkspaceProviderUserRequest := *openapiclient.NewGoogleWorkspaceProviderUserRequest("GoogleId_example", int32(123), int32(123)) // GoogleWorkspaceProviderUserRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2387,7 +2397,7 @@ import (
 )
 
 func main() {
-    microsoftEntraProviderGroupRequest := *openapiclient.NewMicrosoftEntraProviderGroupRequest("Group_example", int32(123)) // MicrosoftEntraProviderGroupRequest | 
+    microsoftEntraProviderGroupRequest := *openapiclient.NewMicrosoftEntraProviderGroupRequest("MicrosoftId_example", "Group_example", int32(123)) // MicrosoftEntraProviderGroupRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -3171,7 +3181,7 @@ import (
 )
 
 func main() {
-    microsoftEntraProviderUserRequest := *openapiclient.NewMicrosoftEntraProviderUserRequest(int32(123), int32(123)) // MicrosoftEntraProviderUserRequest | 
+    microsoftEntraProviderUserRequest := *openapiclient.NewMicrosoftEntraProviderUserRequest("MicrosoftId_example", int32(123), int32(123)) // MicrosoftEntraProviderUserRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -6552,6 +6562,358 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ProvidersScimGroupsCreate
+
+> SCIMProviderGroup ProvidersScimGroupsCreate(ctx).SCIMProviderGroupRequest(sCIMProviderGroupRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    sCIMProviderGroupRequest := *openapiclient.NewSCIMProviderGroupRequest("ScimId_example", "Group_example", int32(123)) // SCIMProviderGroupRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimGroupsCreate(context.Background()).SCIMProviderGroupRequest(sCIMProviderGroupRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimGroupsCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersScimGroupsCreate`: SCIMProviderGroup
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersScimGroupsCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersScimGroupsCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sCIMProviderGroupRequest** | [**SCIMProviderGroupRequest**](SCIMProviderGroupRequest.md) |  | 
+
+### Return type
+
+[**SCIMProviderGroup**](SCIMProviderGroup.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersScimGroupsDestroy
+
+> ProvidersScimGroupsDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this scim provider group.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimGroupsDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimGroupsDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this scim provider group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersScimGroupsDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersScimGroupsList
+
+> PaginatedSCIMProviderGroupList ProvidersScimGroupsList(ctx).GroupGroupUuid(groupGroupUuid).GroupName(groupName).Ordering(ordering).Page(page).PageSize(pageSize).ProviderId(providerId).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    groupGroupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    groupName := "groupName_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    providerId := int32(56) // int32 |  (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimGroupsList(context.Background()).GroupGroupUuid(groupGroupUuid).GroupName(groupName).Ordering(ordering).Page(page).PageSize(pageSize).ProviderId(providerId).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimGroupsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersScimGroupsList`: PaginatedSCIMProviderGroupList
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersScimGroupsList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersScimGroupsListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupGroupUuid** | **string** |  | 
+ **groupName** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **providerId** | **int32** |  | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedSCIMProviderGroupList**](PaginatedSCIMProviderGroupList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersScimGroupsRetrieve
+
+> SCIMProviderGroup ProvidersScimGroupsRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this scim provider group.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimGroupsRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimGroupsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersScimGroupsRetrieve`: SCIMProviderGroup
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersScimGroupsRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this scim provider group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersScimGroupsRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SCIMProviderGroup**](SCIMProviderGroup.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersScimGroupsUsedByList
+
+> []UsedBy ProvidersScimGroupsUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this scim provider group.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimGroupsUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimGroupsUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersScimGroupsUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersScimGroupsUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this scim provider group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersScimGroupsUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ProvidersScimList
 
 > PaginatedSCIMProviderList ProvidersScimList(ctx).ExcludeUsersServiceAccount(excludeUsersServiceAccount).FilterGroup(filterGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Url(url).Execute()
@@ -6962,6 +7324,358 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiProvidersScimUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersScimUsersCreate
+
+> SCIMProviderUser ProvidersScimUsersCreate(ctx).SCIMProviderUserRequest(sCIMProviderUserRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    sCIMProviderUserRequest := *openapiclient.NewSCIMProviderUserRequest("ScimId_example", int32(123), int32(123)) // SCIMProviderUserRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimUsersCreate(context.Background()).SCIMProviderUserRequest(sCIMProviderUserRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimUsersCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersScimUsersCreate`: SCIMProviderUser
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersScimUsersCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersScimUsersCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sCIMProviderUserRequest** | [**SCIMProviderUserRequest**](SCIMProviderUserRequest.md) |  | 
+
+### Return type
+
+[**SCIMProviderUser**](SCIMProviderUser.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersScimUsersDestroy
+
+> ProvidersScimUsersDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this scim provider user.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimUsersDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimUsersDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this scim provider user. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersScimUsersDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersScimUsersList
+
+> PaginatedSCIMProviderUserList ProvidersScimUsersList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).ProviderId(providerId).Search(search).UserId(userId).UserUsername(userUsername).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    providerId := int32(56) // int32 |  (optional)
+    search := "search_example" // string | A search term. (optional)
+    userId := int32(56) // int32 |  (optional)
+    userUsername := "userUsername_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimUsersList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).ProviderId(providerId).Search(search).UserId(userId).UserUsername(userUsername).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimUsersList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersScimUsersList`: PaginatedSCIMProviderUserList
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersScimUsersList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersScimUsersListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **providerId** | **int32** |  | 
+ **search** | **string** | A search term. | 
+ **userId** | **int32** |  | 
+ **userUsername** | **string** |  | 
+
+### Return type
+
+[**PaginatedSCIMProviderUserList**](PaginatedSCIMProviderUserList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersScimUsersRetrieve
+
+> SCIMProviderUser ProvidersScimUsersRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this scim provider user.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimUsersRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimUsersRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersScimUsersRetrieve`: SCIMProviderUser
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersScimUsersRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this scim provider user. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersScimUsersRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SCIMProviderUser**](SCIMProviderUser.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersScimUsersUsedByList
+
+> []UsedBy ProvidersScimUsersUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this scim provider user.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimUsersUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimUsersUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersScimUsersUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersScimUsersUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | A UUID string identifying this scim provider user. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersScimUsersUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

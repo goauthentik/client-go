@@ -18,6 +18,7 @@ import (
 // GoogleWorkspaceProviderGroup GoogleWorkspaceProviderGroup Serializer
 type GoogleWorkspaceProviderGroup struct {
 	Id         string      `json:"id"`
+	GoogleId   string      `json:"google_id"`
 	Group      string      `json:"group"`
 	GroupObj   UserGroup   `json:"group_obj"`
 	Provider   int32       `json:"provider"`
@@ -28,9 +29,10 @@ type GoogleWorkspaceProviderGroup struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGoogleWorkspaceProviderGroup(id string, group string, groupObj UserGroup, provider int32, attributes interface{}) *GoogleWorkspaceProviderGroup {
+func NewGoogleWorkspaceProviderGroup(id string, googleId string, group string, groupObj UserGroup, provider int32, attributes interface{}) *GoogleWorkspaceProviderGroup {
 	this := GoogleWorkspaceProviderGroup{}
 	this.Id = id
+	this.GoogleId = googleId
 	this.Group = group
 	this.GroupObj = groupObj
 	this.Provider = provider
@@ -68,6 +70,30 @@ func (o *GoogleWorkspaceProviderGroup) GetIdOk() (*string, bool) {
 // SetId sets field value
 func (o *GoogleWorkspaceProviderGroup) SetId(v string) {
 	o.Id = v
+}
+
+// GetGoogleId returns the GoogleId field value
+func (o *GoogleWorkspaceProviderGroup) GetGoogleId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.GoogleId
+}
+
+// GetGoogleIdOk returns a tuple with the GoogleId field value
+// and a boolean to check if the value has been set.
+func (o *GoogleWorkspaceProviderGroup) GetGoogleIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.GoogleId, true
+}
+
+// SetGoogleId sets field value
+func (o *GoogleWorkspaceProviderGroup) SetGoogleId(v string) {
+	o.GoogleId = v
 }
 
 // GetGroup returns the Group field value
@@ -172,6 +198,9 @@ func (o GoogleWorkspaceProviderGroup) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["google_id"] = o.GoogleId
 	}
 	if true {
 		toSerialize["group"] = o.Group
