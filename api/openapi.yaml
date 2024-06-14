@@ -61071,10 +61071,10 @@ components:
           uname: uname
           openssl_version: openssl_version
           python_version: python_version
+          openssl_fips_enabled: true
           authentik_version: authentik_version
           platform: platform
           architecture: architecture
-          openssl_fips_mode: true
         embedded_outpost_host: embedded_outpost_host
         http_host: http_host
         brand: brand
@@ -63355,10 +63355,10 @@ components:
         uname: uname
         openssl_version: openssl_version
         python_version: python_version
+        openssl_fips_enabled: true
         authentik_version: authentik_version
         platform: platform
         architecture: architecture
-        openssl_fips_mode: true
       properties:
         python_version:
           type: string
@@ -63372,7 +63372,7 @@ components:
           type: string
         openssl_version:
           type: string
-        openssl_fips_mode:
+        openssl_fips_enabled:
           nullable: true
           type: boolean
         authentik_version:
@@ -63382,7 +63382,7 @@ components:
       - architecture
       - authentik_version
       - environment
-      - openssl_fips_mode
+      - openssl_fips_enabled
       - openssl_version
       - platform
       - python_version

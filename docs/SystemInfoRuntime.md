@@ -10,14 +10,14 @@ Name | Type | Description | Notes
 **Platform** | **string** |  | 
 **Uname** | **string** |  | 
 **OpensslVersion** | **string** |  | 
-**OpensslFipsMode** | **NullableBool** |  | 
+**OpensslFipsEnabled** | **NullableBool** |  | 
 **AuthentikVersion** | **string** |  | 
 
 ## Methods
 
 ### NewSystemInfoRuntime
 
-`func NewSystemInfoRuntime(pythonVersion string, environment string, architecture string, platform string, uname string, opensslVersion string, opensslFipsMode NullableBool, authentikVersion string, ) *SystemInfoRuntime`
+`func NewSystemInfoRuntime(pythonVersion string, environment string, architecture string, platform string, uname string, opensslVersion string, opensslFipsEnabled NullableBool, authentikVersion string, ) *SystemInfoRuntime`
 
 NewSystemInfoRuntime instantiates a new SystemInfoRuntime object
 This constructor will assign default values to properties that have it defined,
@@ -152,36 +152,36 @@ and a boolean to check if the value has been set.
 SetOpensslVersion sets OpensslVersion field to given value.
 
 
-### GetOpensslFipsMode
+### GetOpensslFipsEnabled
 
-`func (o *SystemInfoRuntime) GetOpensslFipsMode() bool`
+`func (o *SystemInfoRuntime) GetOpensslFipsEnabled() bool`
 
-GetOpensslFipsMode returns the OpensslFipsMode field if non-nil, zero value otherwise.
+GetOpensslFipsEnabled returns the OpensslFipsEnabled field if non-nil, zero value otherwise.
 
-### GetOpensslFipsModeOk
+### GetOpensslFipsEnabledOk
 
-`func (o *SystemInfoRuntime) GetOpensslFipsModeOk() (*bool, bool)`
+`func (o *SystemInfoRuntime) GetOpensslFipsEnabledOk() (*bool, bool)`
 
-GetOpensslFipsModeOk returns a tuple with the OpensslFipsMode field if it's non-nil, zero value otherwise
+GetOpensslFipsEnabledOk returns a tuple with the OpensslFipsEnabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOpensslFipsMode
+### SetOpensslFipsEnabled
 
-`func (o *SystemInfoRuntime) SetOpensslFipsMode(v bool)`
+`func (o *SystemInfoRuntime) SetOpensslFipsEnabled(v bool)`
 
-SetOpensslFipsMode sets OpensslFipsMode field to given value.
+SetOpensslFipsEnabled sets OpensslFipsEnabled field to given value.
 
 
-### SetOpensslFipsModeNil
+### SetOpensslFipsEnabledNil
 
-`func (o *SystemInfoRuntime) SetOpensslFipsModeNil(b bool)`
+`func (o *SystemInfoRuntime) SetOpensslFipsEnabledNil(b bool)`
 
- SetOpensslFipsModeNil sets the value for OpensslFipsMode to be an explicit nil
+ SetOpensslFipsEnabledNil sets the value for OpensslFipsEnabled to be an explicit nil
 
-### UnsetOpensslFipsMode
-`func (o *SystemInfoRuntime) UnsetOpensslFipsMode()`
+### UnsetOpensslFipsEnabled
+`func (o *SystemInfoRuntime) UnsetOpensslFipsEnabled()`
 
-UnsetOpensslFipsMode ensures that no value is present for OpensslFipsMode, not even an explicit nil
+UnsetOpensslFipsEnabled ensures that no value is present for OpensslFipsEnabled, not even an explicit nil
 ### GetAuthentikVersion
 
 `func (o *SystemInfoRuntime) GetAuthentikVersion() string`
