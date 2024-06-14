@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **GolangVersion** | **string** |  | [readonly] 
 **OpensslEnabled** | **bool** |  | [readonly] 
 **OpensslVersion** | **string** |  | [readonly] 
-**FipsEnabled** | **bool** |  | [readonly] 
+**FipsEnabled** | **NullableBool** | Get FIPS enabled | [readonly] 
 **VersionShould** | **string** |  | [readonly] 
 **VersionOutdated** | **bool** |  | [readonly] 
 **BuildHash** | **string** |  | [readonly] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewOutpostHealth
 
-`func NewOutpostHealth(uid string, lastSeen time.Time, version string, golangVersion string, opensslEnabled bool, opensslVersion string, fipsEnabled bool, versionShould string, versionOutdated bool, buildHash string, buildHashShould string, hostname string, ) *OutpostHealth`
+`func NewOutpostHealth(uid string, lastSeen time.Time, version string, golangVersion string, opensslEnabled bool, opensslVersion string, fipsEnabled NullableBool, versionShould string, versionOutdated bool, buildHash string, buildHashShould string, hostname string, ) *OutpostHealth`
 
 NewOutpostHealth instantiates a new OutpostHealth object
 This constructor will assign default values to properties that have it defined,
@@ -176,6 +176,16 @@ and a boolean to check if the value has been set.
 SetFipsEnabled sets FipsEnabled field to given value.
 
 
+### SetFipsEnabledNil
+
+`func (o *OutpostHealth) SetFipsEnabledNil(b bool)`
+
+ SetFipsEnabledNil sets the value for FipsEnabled to be an explicit nil
+
+### UnsetFipsEnabled
+`func (o *OutpostHealth) UnsetFipsEnabled()`
+
+UnsetFipsEnabled ensures that no value is present for FipsEnabled, not even an explicit nil
 ### GetVersionShould
 
 `func (o *OutpostHealth) GetVersionShould() string`

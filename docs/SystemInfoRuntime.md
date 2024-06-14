@@ -10,14 +10,14 @@ Name | Type | Description | Notes
 **Platform** | **string** |  | 
 **Uname** | **string** |  | 
 **OpensslVersion** | **string** |  | 
-**OpensslFipsMode** | **bool** |  | 
+**OpensslFipsMode** | **NullableBool** |  | 
 **AuthentikVersion** | **string** |  | 
 
 ## Methods
 
 ### NewSystemInfoRuntime
 
-`func NewSystemInfoRuntime(pythonVersion string, environment string, architecture string, platform string, uname string, opensslVersion string, opensslFipsMode bool, authentikVersion string, ) *SystemInfoRuntime`
+`func NewSystemInfoRuntime(pythonVersion string, environment string, architecture string, platform string, uname string, opensslVersion string, opensslFipsMode NullableBool, authentikVersion string, ) *SystemInfoRuntime`
 
 NewSystemInfoRuntime instantiates a new SystemInfoRuntime object
 This constructor will assign default values to properties that have it defined,
@@ -172,6 +172,16 @@ and a boolean to check if the value has been set.
 SetOpensslFipsMode sets OpensslFipsMode field to given value.
 
 
+### SetOpensslFipsModeNil
+
+`func (o *SystemInfoRuntime) SetOpensslFipsModeNil(b bool)`
+
+ SetOpensslFipsModeNil sets the value for OpensslFipsMode to be an explicit nil
+
+### UnsetOpensslFipsMode
+`func (o *SystemInfoRuntime) UnsetOpensslFipsMode()`
+
+UnsetOpensslFipsMode ensures that no value is present for OpensslFipsMode, not even an explicit nil
 ### GetAuthentikVersion
 
 `func (o *SystemInfoRuntime) GetAuthentikVersion() string`

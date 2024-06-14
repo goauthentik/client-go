@@ -18,25 +18,26 @@ import (
 
 // OutpostHealth Outpost health status
 type OutpostHealth struct {
-	Uid             string    `json:"uid"`
-	LastSeen        time.Time `json:"last_seen"`
-	Version         string    `json:"version"`
-	GolangVersion   string    `json:"golang_version"`
-	OpensslEnabled  bool      `json:"openssl_enabled"`
-	OpensslVersion  string    `json:"openssl_version"`
-	FipsEnabled     bool      `json:"fips_enabled"`
-	VersionShould   string    `json:"version_should"`
-	VersionOutdated bool      `json:"version_outdated"`
-	BuildHash       string    `json:"build_hash"`
-	BuildHashShould string    `json:"build_hash_should"`
-	Hostname        string    `json:"hostname"`
+	Uid            string    `json:"uid"`
+	LastSeen       time.Time `json:"last_seen"`
+	Version        string    `json:"version"`
+	GolangVersion  string    `json:"golang_version"`
+	OpensslEnabled bool      `json:"openssl_enabled"`
+	OpensslVersion string    `json:"openssl_version"`
+	// Get FIPS enabled
+	FipsEnabled     NullableBool `json:"fips_enabled"`
+	VersionShould   string       `json:"version_should"`
+	VersionOutdated bool         `json:"version_outdated"`
+	BuildHash       string       `json:"build_hash"`
+	BuildHashShould string       `json:"build_hash_should"`
+	Hostname        string       `json:"hostname"`
 }
 
 // NewOutpostHealth instantiates a new OutpostHealth object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOutpostHealth(uid string, lastSeen time.Time, version string, golangVersion string, opensslEnabled bool, opensslVersion string, fipsEnabled bool, versionShould string, versionOutdated bool, buildHash string, buildHashShould string, hostname string) *OutpostHealth {
+func NewOutpostHealth(uid string, lastSeen time.Time, version string, golangVersion string, opensslEnabled bool, opensslVersion string, fipsEnabled NullableBool, versionShould string, versionOutdated bool, buildHash string, buildHashShould string, hostname string) *OutpostHealth {
 	this := OutpostHealth{}
 	this.Uid = uid
 	this.LastSeen = lastSeen
@@ -206,27 +207,29 @@ func (o *OutpostHealth) SetOpensslVersion(v string) {
 }
 
 // GetFipsEnabled returns the FipsEnabled field value
+// If the value is explicit nil, the zero value for bool will be returned
 func (o *OutpostHealth) GetFipsEnabled() bool {
-	if o == nil {
+	if o == nil || o.FipsEnabled.Get() == nil {
 		var ret bool
 		return ret
 	}
 
-	return o.FipsEnabled
+	return *o.FipsEnabled.Get()
 }
 
 // GetFipsEnabledOk returns a tuple with the FipsEnabled field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OutpostHealth) GetFipsEnabledOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.FipsEnabled, true
+	return o.FipsEnabled.Get(), o.FipsEnabled.IsSet()
 }
 
 // SetFipsEnabled sets field value
 func (o *OutpostHealth) SetFipsEnabled(v bool) {
-	o.FipsEnabled = v
+	o.FipsEnabled.Set(&v)
 }
 
 // GetVersionShould returns the VersionShould field value
@@ -370,7 +373,7 @@ func (o OutpostHealth) MarshalJSON() ([]byte, error) {
 		toSerialize["openssl_version"] = o.OpensslVersion
 	}
 	if true {
-		toSerialize["fips_enabled"] = o.FipsEnabled
+		toSerialize["fips_enabled"] = o.FipsEnabled.Get()
 	}
 	if true {
 		toSerialize["version_should"] = o.VersionShould

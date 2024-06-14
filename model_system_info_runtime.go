@@ -17,21 +17,21 @@ import (
 
 // SystemInfoRuntime Get versions
 type SystemInfoRuntime struct {
-	PythonVersion    string `json:"python_version"`
-	Environment      string `json:"environment"`
-	Architecture     string `json:"architecture"`
-	Platform         string `json:"platform"`
-	Uname            string `json:"uname"`
-	OpensslVersion   string `json:"openssl_version"`
-	OpensslFipsMode  bool   `json:"openssl_fips_mode"`
-	AuthentikVersion string `json:"authentik_version"`
+	PythonVersion    string       `json:"python_version"`
+	Environment      string       `json:"environment"`
+	Architecture     string       `json:"architecture"`
+	Platform         string       `json:"platform"`
+	Uname            string       `json:"uname"`
+	OpensslVersion   string       `json:"openssl_version"`
+	OpensslFipsMode  NullableBool `json:"openssl_fips_mode"`
+	AuthentikVersion string       `json:"authentik_version"`
 }
 
 // NewSystemInfoRuntime instantiates a new SystemInfoRuntime object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSystemInfoRuntime(pythonVersion string, environment string, architecture string, platform string, uname string, opensslVersion string, opensslFipsMode bool, authentikVersion string) *SystemInfoRuntime {
+func NewSystemInfoRuntime(pythonVersion string, environment string, architecture string, platform string, uname string, opensslVersion string, opensslFipsMode NullableBool, authentikVersion string) *SystemInfoRuntime {
 	this := SystemInfoRuntime{}
 	this.PythonVersion = pythonVersion
 	this.Environment = environment
@@ -197,27 +197,29 @@ func (o *SystemInfoRuntime) SetOpensslVersion(v string) {
 }
 
 // GetOpensslFipsMode returns the OpensslFipsMode field value
+// If the value is explicit nil, the zero value for bool will be returned
 func (o *SystemInfoRuntime) GetOpensslFipsMode() bool {
-	if o == nil {
+	if o == nil || o.OpensslFipsMode.Get() == nil {
 		var ret bool
 		return ret
 	}
 
-	return o.OpensslFipsMode
+	return *o.OpensslFipsMode.Get()
 }
 
 // GetOpensslFipsModeOk returns a tuple with the OpensslFipsMode field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SystemInfoRuntime) GetOpensslFipsModeOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.OpensslFipsMode, true
+	return o.OpensslFipsMode.Get(), o.OpensslFipsMode.IsSet()
 }
 
 // SetOpensslFipsMode sets field value
 func (o *SystemInfoRuntime) SetOpensslFipsMode(v bool) {
-	o.OpensslFipsMode = v
+	o.OpensslFipsMode.Set(&v)
 }
 
 // GetAuthentikVersion returns the AuthentikVersion field value
@@ -265,7 +267,7 @@ func (o SystemInfoRuntime) MarshalJSON() ([]byte, error) {
 		toSerialize["openssl_version"] = o.OpensslVersion
 	}
 	if true {
-		toSerialize["openssl_fips_mode"] = o.OpensslFipsMode
+		toSerialize["openssl_fips_mode"] = o.OpensslFipsMode.Get()
 	}
 	if true {
 		toSerialize["authentik_version"] = o.AuthentikVersion
