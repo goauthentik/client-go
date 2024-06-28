@@ -14549,6 +14549,16 @@ paths:
         schema:
           type: string
         style: form
+      - description: Multiple values may be separated by commas.
+        explode: false
+        in: query
+        name: identifier_in
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       - explode: true
         in: query
         name: ip

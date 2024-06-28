@@ -7826,19 +7826,26 @@ func (a *PoliciesApiService) PoliciesReputationScoresDestroyExecute(r ApiPolicie
 }
 
 type ApiPoliciesReputationScoresListRequest struct {
-	ctx        context.Context
-	ApiService *PoliciesApiService
-	identifier *string
-	ip         *string
-	ordering   *string
-	page       *int32
-	pageSize   *int32
-	score      *int32
-	search     *string
+	ctx          context.Context
+	ApiService   *PoliciesApiService
+	identifier   *string
+	identifierIn *[]string
+	ip           *string
+	ordering     *string
+	page         *int32
+	pageSize     *int32
+	score        *int32
+	search       *string
 }
 
 func (r ApiPoliciesReputationScoresListRequest) Identifier(identifier string) ApiPoliciesReputationScoresListRequest {
 	r.identifier = &identifier
+	return r
+}
+
+// Multiple values may be separated by commas.
+func (r ApiPoliciesReputationScoresListRequest) IdentifierIn(identifierIn []string) ApiPoliciesReputationScoresListRequest {
+	r.identifierIn = &identifierIn
 	return r
 }
 
@@ -7919,6 +7926,9 @@ func (a *PoliciesApiService) PoliciesReputationScoresListExecute(r ApiPoliciesRe
 
 	if r.identifier != nil {
 		localVarQueryParams.Add("identifier", parameterToString(*r.identifier, ""))
+	}
+	if r.identifierIn != nil {
+		localVarQueryParams.Add("identifier_in", parameterToString(*r.identifierIn, "csv"))
 	}
 	if r.ip != nil {
 		localVarQueryParams.Add("ip", parameterToString(*r.ip, ""))

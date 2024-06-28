@@ -4095,7 +4095,7 @@ Name | Type | Description  | Notes
 
 ## PoliciesReputationScoresList
 
-> PaginatedReputationList PoliciesReputationScoresList(ctx).Identifier(identifier).Ip(ip).Ordering(ordering).Page(page).PageSize(pageSize).Score(score).Search(search).Execute()
+> PaginatedReputationList PoliciesReputationScoresList(ctx).Identifier(identifier).IdentifierIn(identifierIn).Ip(ip).Ordering(ordering).Page(page).PageSize(pageSize).Score(score).Search(search).Execute()
 
 
 
@@ -4115,6 +4115,7 @@ import (
 
 func main() {
     identifier := "identifier_example" // string |  (optional)
+    identifierIn := []string{"Inner_example"} // []string | Multiple values may be separated by commas. (optional)
     ip := "ip_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -4124,7 +4125,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PoliciesApi.PoliciesReputationScoresList(context.Background()).Identifier(identifier).Ip(ip).Ordering(ordering).Page(page).PageSize(pageSize).Score(score).Search(search).Execute()
+    resp, r, err := apiClient.PoliciesApi.PoliciesReputationScoresList(context.Background()).Identifier(identifier).IdentifierIn(identifierIn).Ip(ip).Ordering(ordering).Page(page).PageSize(pageSize).Score(score).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesReputationScoresList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4146,6 +4147,7 @@ Other parameters are passed through a pointer to a apiPoliciesReputationScoresLi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **string** |  | 
+ **identifierIn** | **[]string** | Multiple values may be separated by commas. | 
  **ip** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
