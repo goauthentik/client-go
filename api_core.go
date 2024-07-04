@@ -408,7 +408,6 @@ type ApiCoreApplicationsListRequest struct {
 	metaLaunchUrl     *string
 	metaPublisher     *string
 	name              *string
-	onlyWithLaunchUrl *bool
 	ordering          *string
 	page              *int32
 	pageSize          *int32
@@ -444,11 +443,6 @@ func (r ApiCoreApplicationsListRequest) MetaPublisher(metaPublisher string) ApiC
 
 func (r ApiCoreApplicationsListRequest) Name(name string) ApiCoreApplicationsListRequest {
 	r.name = &name
-	return r
-}
-
-func (r ApiCoreApplicationsListRequest) OnlyWithLaunchUrl(onlyWithLaunchUrl bool) ApiCoreApplicationsListRequest {
-	r.onlyWithLaunchUrl = &onlyWithLaunchUrl
 	return r
 }
 
@@ -544,9 +538,6 @@ func (a *CoreApiService) CoreApplicationsListExecute(r ApiCoreApplicationsListRe
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
-	}
-	if r.onlyWithLaunchUrl != nil {
-		localVarQueryParams.Add("only_with_launch_url", parameterToString(*r.onlyWithLaunchUrl, ""))
 	}
 	if r.ordering != nil {
 		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))

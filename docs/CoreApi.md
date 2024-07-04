@@ -277,7 +277,7 @@ Name | Type | Description  | Notes
 
 ## CoreApplicationsList
 
-> PaginatedApplicationList CoreApplicationsList(ctx).ForUser(forUser).Group(group).MetaDescription(metaDescription).MetaLaunchUrl(metaLaunchUrl).MetaPublisher(metaPublisher).Name(name).OnlyWithLaunchUrl(onlyWithLaunchUrl).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).SuperuserFullList(superuserFullList).Execute()
+> PaginatedApplicationList CoreApplicationsList(ctx).ForUser(forUser).Group(group).MetaDescription(metaDescription).MetaLaunchUrl(metaLaunchUrl).MetaPublisher(metaPublisher).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).SuperuserFullList(superuserFullList).Execute()
 
 
 
@@ -302,7 +302,6 @@ func main() {
     metaLaunchUrl := "metaLaunchUrl_example" // string |  (optional)
     metaPublisher := "metaPublisher_example" // string |  (optional)
     name := "name_example" // string |  (optional)
-    onlyWithLaunchUrl := true // bool |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
@@ -312,7 +311,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreApplicationsList(context.Background()).ForUser(forUser).Group(group).MetaDescription(metaDescription).MetaLaunchUrl(metaLaunchUrl).MetaPublisher(metaPublisher).Name(name).OnlyWithLaunchUrl(onlyWithLaunchUrl).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).SuperuserFullList(superuserFullList).Execute()
+    resp, r, err := apiClient.CoreApi.CoreApplicationsList(context.Background()).ForUser(forUser).Group(group).MetaDescription(metaDescription).MetaLaunchUrl(metaLaunchUrl).MetaPublisher(metaPublisher).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).SuperuserFullList(superuserFullList).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -339,7 +338,6 @@ Name | Type | Description  | Notes
  **metaLaunchUrl** | **string** |  | 
  **metaPublisher** | **string** |  | 
  **name** | **string** |  | 
- **onlyWithLaunchUrl** | **bool** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
