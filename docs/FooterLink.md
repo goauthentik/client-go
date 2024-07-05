@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Href** | **string** |  | [readonly] 
+**Href** | **NullableString** |  | [readonly] 
 **Name** | **string** |  | [readonly] 
 
 ## Methods
 
 ### NewFooterLink
 
-`func NewFooterLink(href string, name string, ) *FooterLink`
+`func NewFooterLink(href NullableString, name string, ) *FooterLink`
 
 NewFooterLink instantiates a new FooterLink object
 This constructor will assign default values to properties that have it defined,
@@ -46,6 +46,16 @@ and a boolean to check if the value has been set.
 SetHref sets Href field to given value.
 
 
+### SetHrefNil
+
+`func (o *FooterLink) SetHrefNil(b bool)`
+
+ SetHrefNil sets the value for Href to be an explicit nil
+
+### UnsetHref
+`func (o *FooterLink) UnsetHref()`
+
+UnsetHref ensures that no value is present for Href, not even an explicit nil
 ### GetName
 
 `func (o *FooterLink) GetName() string`

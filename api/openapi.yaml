@@ -41568,6 +41568,7 @@ components:
         href: href
       properties:
         href:
+          nullable: true
           readOnly: true
           type: string
         name:

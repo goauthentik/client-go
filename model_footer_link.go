@@ -17,15 +17,15 @@ import (
 
 // FooterLink Links returned in Config API
 type FooterLink struct {
-	Href string `json:"href"`
-	Name string `json:"name"`
+	Href NullableString `json:"href"`
+	Name string         `json:"name"`
 }
 
 // NewFooterLink instantiates a new FooterLink object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFooterLink(href string, name string) *FooterLink {
+func NewFooterLink(href NullableString, name string) *FooterLink {
 	this := FooterLink{}
 	this.Href = href
 	this.Name = name
@@ -41,27 +41,29 @@ func NewFooterLinkWithDefaults() *FooterLink {
 }
 
 // GetHref returns the Href field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *FooterLink) GetHref() string {
-	if o == nil {
+	if o == nil || o.Href.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Href
+	return *o.Href.Get()
 }
 
 // GetHrefOk returns a tuple with the Href field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FooterLink) GetHrefOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Href, true
+	return o.Href.Get(), o.Href.IsSet()
 }
 
 // SetHref sets field value
 func (o *FooterLink) SetHref(v string) {
-	o.Href = v
+	o.Href.Set(&v)
 }
 
 // GetName returns the Name field value
@@ -91,7 +93,7 @@ func (o *FooterLink) SetName(v string) {
 func (o FooterLink) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["href"] = o.Href
+		toSerialize["href"] = o.Href.Get()
 	}
 	if true {
 		toSerialize["name"] = o.Name
