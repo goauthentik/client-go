@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **ProvidersObj** | [**[]Provider**](Provider.md) |  | [readonly] 
 **ServiceConnection** | Pointer to **NullableString** | Select Service-Connection authentik should use to manage this outpost. Leave empty if authentik should not handle the deployment. | [optional] 
 **ServiceConnectionObj** | [**ServiceConnection**](ServiceConnection.md) |  | [readonly] 
+**RefreshIntervalS** | **int32** |  | [readonly] 
 **TokenIdentifier** | **string** | Get Token identifier | [readonly] 
 **Config** | **map[string]interface{}** |  | 
 **Managed** | Pointer to **NullableString** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [optional] 
@@ -19,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewOutpost
 
-`func NewOutpost(pk string, name string, type_ OutpostTypeEnum, providers []int32, providersObj []Provider, serviceConnectionObj ServiceConnection, tokenIdentifier string, config map[string]interface{}, ) *Outpost`
+`func NewOutpost(pk string, name string, type_ OutpostTypeEnum, providers []int32, providersObj []Provider, serviceConnectionObj ServiceConnection, refreshIntervalS int32, tokenIdentifier string, config map[string]interface{}, ) *Outpost`
 
 NewOutpost instantiates a new Outpost object
 This constructor will assign default values to properties that have it defined,
@@ -187,6 +188,26 @@ and a boolean to check if the value has been set.
 `func (o *Outpost) SetServiceConnectionObj(v ServiceConnection)`
 
 SetServiceConnectionObj sets ServiceConnectionObj field to given value.
+
+
+### GetRefreshIntervalS
+
+`func (o *Outpost) GetRefreshIntervalS() int32`
+
+GetRefreshIntervalS returns the RefreshIntervalS field if non-nil, zero value otherwise.
+
+### GetRefreshIntervalSOk
+
+`func (o *Outpost) GetRefreshIntervalSOk() (*int32, bool)`
+
+GetRefreshIntervalSOk returns a tuple with the RefreshIntervalS field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRefreshIntervalS
+
+`func (o *Outpost) SetRefreshIntervalS(v int32)`
+
+SetRefreshIntervalS sets RefreshIntervalS field to given value.
 
 
 ### GetTokenIdentifier

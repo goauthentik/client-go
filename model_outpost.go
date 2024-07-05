@@ -25,6 +25,7 @@ type Outpost struct {
 	// Select Service-Connection authentik should use to manage this outpost. Leave empty if authentik should not handle the deployment.
 	ServiceConnection    NullableString    `json:"service_connection,omitempty"`
 	ServiceConnectionObj ServiceConnection `json:"service_connection_obj"`
+	RefreshIntervalS     int32             `json:"refresh_interval_s"`
 	// Get Token identifier
 	TokenIdentifier string                 `json:"token_identifier"`
 	Config          map[string]interface{} `json:"config"`
@@ -36,7 +37,7 @@ type Outpost struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOutpost(pk string, name string, type_ OutpostTypeEnum, providers []int32, providersObj []Provider, serviceConnectionObj ServiceConnection, tokenIdentifier string, config map[string]interface{}) *Outpost {
+func NewOutpost(pk string, name string, type_ OutpostTypeEnum, providers []int32, providersObj []Provider, serviceConnectionObj ServiceConnection, refreshIntervalS int32, tokenIdentifier string, config map[string]interface{}) *Outpost {
 	this := Outpost{}
 	this.Pk = pk
 	this.Name = name
@@ -44,6 +45,7 @@ func NewOutpost(pk string, name string, type_ OutpostTypeEnum, providers []int32
 	this.Providers = providers
 	this.ProvidersObj = providersObj
 	this.ServiceConnectionObj = serviceConnectionObj
+	this.RefreshIntervalS = refreshIntervalS
 	this.TokenIdentifier = tokenIdentifier
 	this.Config = config
 	return &this
@@ -244,6 +246,30 @@ func (o *Outpost) SetServiceConnectionObj(v ServiceConnection) {
 	o.ServiceConnectionObj = v
 }
 
+// GetRefreshIntervalS returns the RefreshIntervalS field value
+func (o *Outpost) GetRefreshIntervalS() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.RefreshIntervalS
+}
+
+// GetRefreshIntervalSOk returns a tuple with the RefreshIntervalS field value
+// and a boolean to check if the value has been set.
+func (o *Outpost) GetRefreshIntervalSOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RefreshIntervalS, true
+}
+
+// SetRefreshIntervalS sets field value
+func (o *Outpost) SetRefreshIntervalS(v int32) {
+	o.RefreshIntervalS = v
+}
+
 // GetTokenIdentifier returns the TokenIdentifier field value
 func (o *Outpost) GetTokenIdentifier() string {
 	if o == nil {
@@ -357,6 +383,9 @@ func (o Outpost) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["service_connection_obj"] = o.ServiceConnectionObj
+	}
+	if true {
+		toSerialize["refresh_interval_s"] = o.RefreshIntervalS
 	}
 	if true {
 		toSerialize["token_identifier"] = o.TokenIdentifier

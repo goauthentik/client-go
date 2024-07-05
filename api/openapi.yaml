@@ -45194,6 +45194,7 @@ components:
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        refresh_interval_s: 6
         token_identifier: token_identifier
         managed: managed
         name: name
@@ -45234,6 +45235,9 @@ components:
           allOf:
           - $ref: '#/components/schemas/ServiceConnection'
           readOnly: true
+        refresh_interval_s:
+          readOnly: true
+          type: integer
         token_identifier:
           description: Get Token identifier
           readOnly: true
@@ -45255,6 +45259,7 @@ components:
       - pk
       - providers
       - providers_obj
+      - refresh_interval_s
       - service_connection_obj
       - token_identifier
       - type
@@ -48887,6 +48892,7 @@ components:
             property_mappings:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          refresh_interval_s: 6
           token_identifier: token_identifier
           managed: managed
           name: name
@@ -48930,6 +48936,7 @@ components:
             property_mappings:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          refresh_interval_s: 6
           token_identifier: token_identifier
           managed: managed
           name: name
