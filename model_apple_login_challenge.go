@@ -17,7 +17,6 @@ import (
 
 // AppleLoginChallenge Special challenge for apple-native authentication flow, which happens on the client.
 type AppleLoginChallenge struct {
-	Type           ChallengeChoices          `json:"type"`
 	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
 	Component      *string                   `json:"component,omitempty"`
 	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
@@ -31,9 +30,8 @@ type AppleLoginChallenge struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAppleLoginChallenge(type_ ChallengeChoices, clientId string, scope string, redirectUri string, state string) *AppleLoginChallenge {
+func NewAppleLoginChallenge(clientId string, scope string, redirectUri string, state string) *AppleLoginChallenge {
 	this := AppleLoginChallenge{}
-	this.Type = type_
 	var component string = "ak-source-oauth-apple"
 	this.Component = &component
 	this.ClientId = clientId
@@ -51,30 +49,6 @@ func NewAppleLoginChallengeWithDefaults() *AppleLoginChallenge {
 	var component string = "ak-source-oauth-apple"
 	this.Component = &component
 	return &this
-}
-
-// GetType returns the Type field value
-func (o *AppleLoginChallenge) GetType() ChallengeChoices {
-	if o == nil {
-		var ret ChallengeChoices
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *AppleLoginChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *AppleLoginChallenge) SetType(v ChallengeChoices) {
-	o.Type = v
 }
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
@@ -271,9 +245,6 @@ func (o *AppleLoginChallenge) SetState(v string) {
 
 func (o AppleLoginChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
 	if o.FlowInfo != nil {
 		toSerialize["flow_info"] = o.FlowInfo
 	}

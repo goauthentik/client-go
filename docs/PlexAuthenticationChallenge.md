@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | [**ChallengeChoices**](ChallengeChoices.md) |  | 
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
 **Component** | Pointer to **string** |  | [optional] [default to "ak-source-plex"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
@@ -15,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewPlexAuthenticationChallenge
 
-`func NewPlexAuthenticationChallenge(type_ ChallengeChoices, clientId string, slug string, ) *PlexAuthenticationChallenge`
+`func NewPlexAuthenticationChallenge(clientId string, slug string, ) *PlexAuthenticationChallenge`
 
 NewPlexAuthenticationChallenge instantiates a new PlexAuthenticationChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -29,26 +28,6 @@ will change when the set of required properties is changed
 NewPlexAuthenticationChallengeWithDefaults instantiates a new PlexAuthenticationChallenge object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetType
-
-`func (o *PlexAuthenticationChallenge) GetType() ChallengeChoices`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *PlexAuthenticationChallenge) GetTypeOk() (*ChallengeChoices, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *PlexAuthenticationChallenge) SetType(v ChallengeChoices)`
-
-SetType sets Type field to given value.
-
 
 ### GetFlowInfo
 

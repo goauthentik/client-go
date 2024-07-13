@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | [**ChallengeChoices**](ChallengeChoices.md) |  | 
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
 **Component** | Pointer to **string** |  | [optional] [default to "ak-stage-authenticator-totp"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
@@ -16,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewAuthenticatorTOTPChallenge
 
-`func NewAuthenticatorTOTPChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, configUrl string, ) *AuthenticatorTOTPChallenge`
+`func NewAuthenticatorTOTPChallenge(pendingUser string, pendingUserAvatar string, configUrl string, ) *AuthenticatorTOTPChallenge`
 
 NewAuthenticatorTOTPChallenge instantiates a new AuthenticatorTOTPChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -30,26 +29,6 @@ will change when the set of required properties is changed
 NewAuthenticatorTOTPChallengeWithDefaults instantiates a new AuthenticatorTOTPChallenge object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetType
-
-`func (o *AuthenticatorTOTPChallenge) GetType() ChallengeChoices`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *AuthenticatorTOTPChallenge) GetTypeOk() (*ChallengeChoices, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *AuthenticatorTOTPChallenge) SetType(v ChallengeChoices)`
-
-SetType sets Type field to given value.
-
 
 ### GetFlowInfo
 

@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | [**ChallengeChoices**](ChallengeChoices.md) |  | 
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
 **Component** | Pointer to **string** |  | [optional] [default to "ak-source-oauth-apple"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
@@ -17,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewAppleLoginChallenge
 
-`func NewAppleLoginChallenge(type_ ChallengeChoices, clientId string, scope string, redirectUri string, state string, ) *AppleLoginChallenge`
+`func NewAppleLoginChallenge(clientId string, scope string, redirectUri string, state string, ) *AppleLoginChallenge`
 
 NewAppleLoginChallenge instantiates a new AppleLoginChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -31,26 +30,6 @@ will change when the set of required properties is changed
 NewAppleLoginChallengeWithDefaults instantiates a new AppleLoginChallenge object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetType
-
-`func (o *AppleLoginChallenge) GetType() ChallengeChoices`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *AppleLoginChallenge) GetTypeOk() (*ChallengeChoices, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *AppleLoginChallenge) SetType(v ChallengeChoices)`
-
-SetType sets Type field to given value.
-
 
 ### GetFlowInfo
 

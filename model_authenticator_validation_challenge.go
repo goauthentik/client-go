@@ -17,7 +17,6 @@ import (
 
 // AuthenticatorValidationChallenge Authenticator challenge
 type AuthenticatorValidationChallenge struct {
-	Type                ChallengeChoices          `json:"type"`
 	FlowInfo            *ContextualFlowInfo       `json:"flow_info,omitempty"`
 	Component           *string                   `json:"component,omitempty"`
 	ResponseErrors      *map[string][]ErrorDetail `json:"response_errors,omitempty"`
@@ -31,9 +30,8 @@ type AuthenticatorValidationChallenge struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatorValidationChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage) *AuthenticatorValidationChallenge {
+func NewAuthenticatorValidationChallenge(pendingUser string, pendingUserAvatar string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage) *AuthenticatorValidationChallenge {
 	this := AuthenticatorValidationChallenge{}
-	this.Type = type_
 	var component string = "ak-stage-authenticator-validate"
 	this.Component = &component
 	this.PendingUser = pendingUser
@@ -51,30 +49,6 @@ func NewAuthenticatorValidationChallengeWithDefaults() *AuthenticatorValidationC
 	var component string = "ak-stage-authenticator-validate"
 	this.Component = &component
 	return &this
-}
-
-// GetType returns the Type field value
-func (o *AuthenticatorValidationChallenge) GetType() ChallengeChoices {
-	if o == nil {
-		var ret ChallengeChoices
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *AuthenticatorValidationChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *AuthenticatorValidationChallenge) SetType(v ChallengeChoices) {
-	o.Type = v
 }
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
@@ -271,9 +245,6 @@ func (o *AuthenticatorValidationChallenge) SetConfigurationStages(v []Selectable
 
 func (o AuthenticatorValidationChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
 	if o.FlowInfo != nil {
 		toSerialize["flow_info"] = o.FlowInfo
 	}

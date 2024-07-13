@@ -91,7 +91,6 @@ docs/CertificateData.md
 docs/CertificateGenerationRequest.md
 docs/CertificateKeyPair.md
 docs/CertificateKeyPairRequest.md
-docs/ChallengeChoices.md
 docs/ChallengeTypes.md
 docs/ClientTypeEnum.md
 docs/Config.md
@@ -712,7 +711,6 @@ model_certificate_data.go
 model_certificate_generation_request.go
 model_certificate_key_pair.go
 model_certificate_key_pair_request.go
-model_challenge_choices.go
 model_challenge_types.go
 model_client_type_enum.go
 model_config.go

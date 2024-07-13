@@ -908,7 +908,6 @@ Class | Method | HTTP request | Description
  - [CertificateGenerationRequest](docs/CertificateGenerationRequest.md)
  - [CertificateKeyPair](docs/CertificateKeyPair.md)
  - [CertificateKeyPairRequest](docs/CertificateKeyPairRequest.md)
- - [ChallengeChoices](docs/ChallengeChoices.md)
  - [ChallengeTypes](docs/ChallengeTypes.md)
  - [ClientTypeEnum](docs/ClientTypeEnum.md)
  - [Config](docs/Config.md)

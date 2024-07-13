@@ -17,7 +17,6 @@ import (
 
 // AuthenticatorSMSChallenge SMS Setup challenge
 type AuthenticatorSMSChallenge struct {
-	Type                ChallengeChoices          `json:"type"`
 	FlowInfo            *ContextualFlowInfo       `json:"flow_info,omitempty"`
 	Component           *string                   `json:"component,omitempty"`
 	ResponseErrors      *map[string][]ErrorDetail `json:"response_errors,omitempty"`
@@ -30,9 +29,8 @@ type AuthenticatorSMSChallenge struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatorSMSChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string) *AuthenticatorSMSChallenge {
+func NewAuthenticatorSMSChallenge(pendingUser string, pendingUserAvatar string) *AuthenticatorSMSChallenge {
 	this := AuthenticatorSMSChallenge{}
-	this.Type = type_
 	var component string = "ak-stage-authenticator-sms"
 	this.Component = &component
 	this.PendingUser = pendingUser
@@ -52,30 +50,6 @@ func NewAuthenticatorSMSChallengeWithDefaults() *AuthenticatorSMSChallenge {
 	var phoneNumberRequired bool = true
 	this.PhoneNumberRequired = &phoneNumberRequired
 	return &this
-}
-
-// GetType returns the Type field value
-func (o *AuthenticatorSMSChallenge) GetType() ChallengeChoices {
-	if o == nil {
-		var ret ChallengeChoices
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *AuthenticatorSMSChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *AuthenticatorSMSChallenge) SetType(v ChallengeChoices) {
-	o.Type = v
 }
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
@@ -256,9 +230,6 @@ func (o *AuthenticatorSMSChallenge) SetPhoneNumberRequired(v bool) {
 
 func (o AuthenticatorSMSChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
 	if o.FlowInfo != nil {
 		toSerialize["flow_info"] = o.FlowInfo
 	}

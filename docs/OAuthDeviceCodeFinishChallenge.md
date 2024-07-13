@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | [**ChallengeChoices**](ChallengeChoices.md) |  | 
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
 **Component** | Pointer to **string** |  | [optional] [default to "ak-provider-oauth2-device-code-finish"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
@@ -13,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewOAuthDeviceCodeFinishChallenge
 
-`func NewOAuthDeviceCodeFinishChallenge(type_ ChallengeChoices, ) *OAuthDeviceCodeFinishChallenge`
+`func NewOAuthDeviceCodeFinishChallenge() *OAuthDeviceCodeFinishChallenge`
 
 NewOAuthDeviceCodeFinishChallenge instantiates a new OAuthDeviceCodeFinishChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -27,26 +26,6 @@ will change when the set of required properties is changed
 NewOAuthDeviceCodeFinishChallengeWithDefaults instantiates a new OAuthDeviceCodeFinishChallenge object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetType
-
-`func (o *OAuthDeviceCodeFinishChallenge) GetType() ChallengeChoices`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *OAuthDeviceCodeFinishChallenge) GetTypeOk() (*ChallengeChoices, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *OAuthDeviceCodeFinishChallenge) SetType(v ChallengeChoices)`
-
-SetType sets Type field to given value.
-
 
 ### GetFlowInfo
 

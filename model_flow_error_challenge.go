@@ -17,7 +17,6 @@ import (
 
 // FlowErrorChallenge Challenge class when an unhandled error occurs during a stage. Normal users are shown an error message, superusers are shown a full stacktrace.
 type FlowErrorChallenge struct {
-	Type           *string                   `json:"type,omitempty"`
 	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
 	Component      *string                   `json:"component,omitempty"`
 	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
@@ -32,8 +31,6 @@ type FlowErrorChallenge struct {
 // will change when the set of required properties is changed
 func NewFlowErrorChallenge(requestId string) *FlowErrorChallenge {
 	this := FlowErrorChallenge{}
-	var type_ string = "native"
-	this.Type = &type_
 	var component string = "ak-stage-flow-error"
 	this.Component = &component
 	this.RequestId = requestId
@@ -45,43 +42,9 @@ func NewFlowErrorChallenge(requestId string) *FlowErrorChallenge {
 // but it doesn't guarantee that properties required by API are set
 func NewFlowErrorChallengeWithDefaults() *FlowErrorChallenge {
 	this := FlowErrorChallenge{}
-	var type_ string = "native"
-	this.Type = &type_
 	var component string = "ak-stage-flow-error"
 	this.Component = &component
 	return &this
-}
-
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *FlowErrorChallenge) GetType() string {
-	if o == nil || o.Type == nil {
-		var ret string
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FlowErrorChallenge) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *FlowErrorChallenge) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *FlowErrorChallenge) SetType(v string) {
-	o.Type = &v
 }
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
@@ -270,9 +233,6 @@ func (o *FlowErrorChallenge) SetTraceback(v string) {
 
 func (o FlowErrorChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
 	if o.FlowInfo != nil {
 		toSerialize["flow_info"] = o.FlowInfo
 	}

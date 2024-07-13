@@ -17,7 +17,6 @@ import (
 
 // RedirectChallenge Challenge type to redirect the client
 type RedirectChallenge struct {
-	Type           ChallengeChoices          `json:"type"`
 	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
 	Component      *string                   `json:"component,omitempty"`
 	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
@@ -28,9 +27,8 @@ type RedirectChallenge struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRedirectChallenge(type_ ChallengeChoices, to string) *RedirectChallenge {
+func NewRedirectChallenge(to string) *RedirectChallenge {
 	this := RedirectChallenge{}
-	this.Type = type_
 	var component string = "xak-flow-redirect"
 	this.Component = &component
 	this.To = to
@@ -45,30 +43,6 @@ func NewRedirectChallengeWithDefaults() *RedirectChallenge {
 	var component string = "xak-flow-redirect"
 	this.Component = &component
 	return &this
-}
-
-// GetType returns the Type field value
-func (o *RedirectChallenge) GetType() ChallengeChoices {
-	if o == nil {
-		var ret ChallengeChoices
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *RedirectChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *RedirectChallenge) SetType(v ChallengeChoices) {
-	o.Type = v
 }
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
@@ -193,9 +167,6 @@ func (o *RedirectChallenge) SetTo(v string) {
 
 func (o RedirectChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
 	if o.FlowInfo != nil {
 		toSerialize["flow_info"] = o.FlowInfo
 	}

@@ -17,7 +17,6 @@ import (
 
 // OAuthDeviceCodeFinishChallenge Final challenge after user enters their code
 type OAuthDeviceCodeFinishChallenge struct {
-	Type           ChallengeChoices          `json:"type"`
 	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
 	Component      *string                   `json:"component,omitempty"`
 	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
@@ -27,9 +26,8 @@ type OAuthDeviceCodeFinishChallenge struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuthDeviceCodeFinishChallenge(type_ ChallengeChoices) *OAuthDeviceCodeFinishChallenge {
+func NewOAuthDeviceCodeFinishChallenge() *OAuthDeviceCodeFinishChallenge {
 	this := OAuthDeviceCodeFinishChallenge{}
-	this.Type = type_
 	var component string = "ak-provider-oauth2-device-code-finish"
 	this.Component = &component
 	return &this
@@ -43,30 +41,6 @@ func NewOAuthDeviceCodeFinishChallengeWithDefaults() *OAuthDeviceCodeFinishChall
 	var component string = "ak-provider-oauth2-device-code-finish"
 	this.Component = &component
 	return &this
-}
-
-// GetType returns the Type field value
-func (o *OAuthDeviceCodeFinishChallenge) GetType() ChallengeChoices {
-	if o == nil {
-		var ret ChallengeChoices
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *OAuthDeviceCodeFinishChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *OAuthDeviceCodeFinishChallenge) SetType(v ChallengeChoices) {
-	o.Type = v
 }
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
@@ -167,9 +141,6 @@ func (o *OAuthDeviceCodeFinishChallenge) SetResponseErrors(v map[string][]ErrorD
 
 func (o OAuthDeviceCodeFinishChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
 	if o.FlowInfo != nil {
 		toSerialize["flow_info"] = o.FlowInfo
 	}

@@ -17,7 +17,6 @@ import (
 
 // PasswordChallenge Password challenge UI fields
 type PasswordChallenge struct {
-	Type              ChallengeChoices          `json:"type"`
 	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
 	Component         *string                   `json:"component,omitempty"`
 	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
@@ -30,9 +29,8 @@ type PasswordChallenge struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPasswordChallenge(type_ ChallengeChoices, pendingUser string, pendingUserAvatar string) *PasswordChallenge {
+func NewPasswordChallenge(pendingUser string, pendingUserAvatar string) *PasswordChallenge {
 	this := PasswordChallenge{}
-	this.Type = type_
 	var component string = "ak-stage-password"
 	this.Component = &component
 	this.PendingUser = pendingUser
@@ -48,30 +46,6 @@ func NewPasswordChallengeWithDefaults() *PasswordChallenge {
 	var component string = "ak-stage-password"
 	this.Component = &component
 	return &this
-}
-
-// GetType returns the Type field value
-func (o *PasswordChallenge) GetType() ChallengeChoices {
-	if o == nil {
-		var ret ChallengeChoices
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *PasswordChallenge) GetTypeOk() (*ChallengeChoices, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *PasswordChallenge) SetType(v ChallengeChoices) {
-	o.Type = v
 }
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
@@ -252,9 +226,6 @@ func (o *PasswordChallenge) SetRecoveryUrl(v string) {
 
 func (o PasswordChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
 	if o.FlowInfo != nil {
 		toSerialize["flow_info"] = o.FlowInfo
 	}
