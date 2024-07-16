@@ -34,6 +34,8 @@ type PasswordStage struct {
 	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
 	// How many attempts a user has before the flow is canceled. To lock the user out, use a reputation policy and a user_write stage.
 	FailedAttemptsBeforeCancel *int32 `json:"failed_attempts_before_cancel,omitempty"`
+	// When enabled, provides a 'show password' button with the password input field.
+	AllowShowPassword *bool `json:"allow_show_password,omitempty"`
 }
 
 // NewPasswordStage instantiates a new PasswordStage object
@@ -335,6 +337,38 @@ func (o *PasswordStage) SetFailedAttemptsBeforeCancel(v int32) {
 	o.FailedAttemptsBeforeCancel = &v
 }
 
+// GetAllowShowPassword returns the AllowShowPassword field value if set, zero value otherwise.
+func (o *PasswordStage) GetAllowShowPassword() bool {
+	if o == nil || o.AllowShowPassword == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AllowShowPassword
+}
+
+// GetAllowShowPasswordOk returns a tuple with the AllowShowPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PasswordStage) GetAllowShowPasswordOk() (*bool, bool) {
+	if o == nil || o.AllowShowPassword == nil {
+		return nil, false
+	}
+	return o.AllowShowPassword, true
+}
+
+// HasAllowShowPassword returns a boolean if a field has been set.
+func (o *PasswordStage) HasAllowShowPassword() bool {
+	if o != nil && o.AllowShowPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowShowPassword gets a reference to the given bool and assigns it to the AllowShowPassword field.
+func (o *PasswordStage) SetAllowShowPassword(v bool) {
+	o.AllowShowPassword = &v
+}
+
 func (o PasswordStage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -366,6 +400,9 @@ func (o PasswordStage) MarshalJSON() ([]byte, error) {
 	}
 	if o.FailedAttemptsBeforeCancel != nil {
 		toSerialize["failed_attempts_before_cancel"] = o.FailedAttemptsBeforeCancel
+	}
+	if o.AllowShowPassword != nil {
+		toSerialize["allow_show_password"] = o.AllowShowPassword
 	}
 	return json.Marshal(toSerialize)
 }

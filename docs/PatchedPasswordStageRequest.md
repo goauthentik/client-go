@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Backends** | Pointer to [**[]BackendsEnum**](BackendsEnum.md) | Selection of backends to test the password against. | [optional] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
 **FailedAttemptsBeforeCancel** | Pointer to **int32** | How many attempts a user has before the flow is canceled. To lock the user out, use a reputation policy and a user_write stage. | [optional] 
+**AllowShowPassword** | Pointer to **bool** | When enabled, provides a &#39;show password&#39; button with the password input field. | [optional] 
 
 ## Methods
 
@@ -163,6 +164,31 @@ SetFailedAttemptsBeforeCancel sets FailedAttemptsBeforeCancel field to given val
 `func (o *PatchedPasswordStageRequest) HasFailedAttemptsBeforeCancel() bool`
 
 HasFailedAttemptsBeforeCancel returns a boolean if a field has been set.
+
+### GetAllowShowPassword
+
+`func (o *PatchedPasswordStageRequest) GetAllowShowPassword() bool`
+
+GetAllowShowPassword returns the AllowShowPassword field if non-nil, zero value otherwise.
+
+### GetAllowShowPasswordOk
+
+`func (o *PatchedPasswordStageRequest) GetAllowShowPasswordOk() (*bool, bool)`
+
+GetAllowShowPasswordOk returns a tuple with the AllowShowPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowShowPassword
+
+`func (o *PatchedPasswordStageRequest) SetAllowShowPassword(v bool)`
+
+SetAllowShowPassword sets AllowShowPassword field to given value.
+
+### HasAllowShowPassword
+
+`func (o *PatchedPasswordStageRequest) HasAllowShowPassword() bool`
+
+HasAllowShowPassword returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

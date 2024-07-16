@@ -33456,6 +33456,13 @@ paths:
       parameters:
       - explode: true
         in: query
+        name: allow_show_password
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
         name: configure_flow
         required: false
         schema:
@@ -42138,6 +42145,9 @@ components:
           type: array
         password_fields:
           type: boolean
+        allow_show_password:
+          default: false
+          type: boolean
         application_pre:
           type: string
         flow_designation:
@@ -42263,7 +42273,7 @@ components:
           type: array
         password_stage:
           description: "When set, shows a password field, instead of showing the password\
-            \ field as seaprate step."
+            \ field as separate step."
           format: uuid
           nullable: true
           type: string
@@ -42365,7 +42375,7 @@ components:
           type: array
         password_stage:
           description: "When set, shows a password field, instead of showing the password\
-            \ field as seaprate step."
+            \ field as separate step."
           format: uuid
           nullable: true
           type: string
@@ -49022,6 +49032,7 @@ components:
           configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
+          allow_show_password: true
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           failed_attempts_before_cancel: -1803530559
@@ -49058,6 +49069,7 @@ components:
           configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
+          allow_show_password: true
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           failed_attempts_before_cancel: -1803530559
@@ -52289,6 +52301,9 @@ components:
           type: string
         recovery_url:
           type: string
+        allow_show_password:
+          default: false
+          type: boolean
       required:
       - pending_user
       - pending_user_avatar
@@ -52586,6 +52601,7 @@ components:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
+        allow_show_password: true
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         failed_attempts_before_cancel: -1803530559
@@ -52662,6 +52678,10 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: integer
+        allow_show_password:
+          description: "When enabled, provides a 'show password' button with the password\
+            \ input field."
+          type: boolean
       required:
       - backends
       - component
@@ -52675,6 +52695,7 @@ components:
       description: PasswordStage Serializer
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        allow_show_password: true
         name: name
         failed_attempts_before_cancel: -1803530559
         flow_set:
@@ -52722,6 +52743,10 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: integer
+        allow_show_password:
+          description: "When enabled, provides a 'show password' button with the password\
+            \ input field."
+          type: boolean
       required:
       - backends
       - name
@@ -53989,7 +54014,7 @@ components:
           type: array
         password_stage:
           description: "When set, shows a password field, instead of showing the password\
-            \ field as seaprate step."
+            \ field as separate step."
           format: uuid
           nullable: true
           type: string
@@ -54888,6 +54913,7 @@ components:
       description: PasswordStage Serializer
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        allow_show_password: true
         name: name
         failed_attempts_before_cancel: -1803530559
         flow_set:
@@ -54935,6 +54961,10 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: integer
+        allow_show_password:
+          description: "When enabled, provides a 'show password' button with the password\
+            \ input field."
+          type: boolean
       type: object
     PatchedPermissionAssignRequest:
       description: Request to assign a new permission

@@ -17,19 +17,20 @@ import (
 
 // IdentificationChallenge Identification challenges with all UI elements
 type IdentificationChallenge struct {
-	FlowInfo         *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component        *string                   `json:"component,omitempty"`
-	ResponseErrors   *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	UserFields       []string                  `json:"user_fields"`
-	PasswordFields   bool                      `json:"password_fields"`
-	ApplicationPre   *string                   `json:"application_pre,omitempty"`
-	FlowDesignation  FlowDesignationEnum       `json:"flow_designation"`
-	EnrollUrl        *string                   `json:"enroll_url,omitempty"`
-	RecoveryUrl      *string                   `json:"recovery_url,omitempty"`
-	PasswordlessUrl  *string                   `json:"passwordless_url,omitempty"`
-	PrimaryAction    string                    `json:"primary_action"`
-	Sources          []LoginSource             `json:"sources,omitempty"`
-	ShowSourceLabels bool                      `json:"show_source_labels"`
+	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component         *string                   `json:"component,omitempty"`
+	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	UserFields        []string                  `json:"user_fields"`
+	PasswordFields    bool                      `json:"password_fields"`
+	AllowShowPassword *bool                     `json:"allow_show_password,omitempty"`
+	ApplicationPre    *string                   `json:"application_pre,omitempty"`
+	FlowDesignation   FlowDesignationEnum       `json:"flow_designation"`
+	EnrollUrl         *string                   `json:"enroll_url,omitempty"`
+	RecoveryUrl       *string                   `json:"recovery_url,omitempty"`
+	PasswordlessUrl   *string                   `json:"passwordless_url,omitempty"`
+	PrimaryAction     string                    `json:"primary_action"`
+	Sources           []LoginSource             `json:"sources,omitempty"`
+	ShowSourceLabels  bool                      `json:"show_source_labels"`
 }
 
 // NewIdentificationChallenge instantiates a new IdentificationChallenge object
@@ -42,6 +43,8 @@ func NewIdentificationChallenge(userFields []string, passwordFields bool, flowDe
 	this.Component = &component
 	this.UserFields = userFields
 	this.PasswordFields = passwordFields
+	var allowShowPassword bool = false
+	this.AllowShowPassword = &allowShowPassword
 	this.FlowDesignation = flowDesignation
 	this.PrimaryAction = primaryAction
 	this.ShowSourceLabels = showSourceLabels
@@ -55,6 +58,8 @@ func NewIdentificationChallengeWithDefaults() *IdentificationChallenge {
 	this := IdentificationChallenge{}
 	var component string = "ak-stage-identification"
 	this.Component = &component
+	var allowShowPassword bool = false
+	this.AllowShowPassword = &allowShowPassword
 	return &this
 }
 
@@ -202,6 +207,38 @@ func (o *IdentificationChallenge) GetPasswordFieldsOk() (*bool, bool) {
 // SetPasswordFields sets field value
 func (o *IdentificationChallenge) SetPasswordFields(v bool) {
 	o.PasswordFields = v
+}
+
+// GetAllowShowPassword returns the AllowShowPassword field value if set, zero value otherwise.
+func (o *IdentificationChallenge) GetAllowShowPassword() bool {
+	if o == nil || o.AllowShowPassword == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AllowShowPassword
+}
+
+// GetAllowShowPasswordOk returns a tuple with the AllowShowPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentificationChallenge) GetAllowShowPasswordOk() (*bool, bool) {
+	if o == nil || o.AllowShowPassword == nil {
+		return nil, false
+	}
+	return o.AllowShowPassword, true
+}
+
+// HasAllowShowPassword returns a boolean if a field has been set.
+func (o *IdentificationChallenge) HasAllowShowPassword() bool {
+	if o != nil && o.AllowShowPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowShowPassword gets a reference to the given bool and assigns it to the AllowShowPassword field.
+func (o *IdentificationChallenge) SetAllowShowPassword(v bool) {
+	o.AllowShowPassword = &v
 }
 
 // GetApplicationPre returns the ApplicationPre field value if set, zero value otherwise.
@@ -452,6 +489,9 @@ func (o IdentificationChallenge) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["password_fields"] = o.PasswordFields
+	}
+	if o.AllowShowPassword != nil {
+		toSerialize["allow_show_password"] = o.AllowShowPassword
 	}
 	if o.ApplicationPre != nil {
 		toSerialize["application_pre"] = o.ApplicationPre

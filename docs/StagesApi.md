@@ -8152,7 +8152,7 @@ Name | Type | Description  | Notes
 
 ## StagesPasswordList
 
-> PaginatedPasswordStageList StagesPasswordList(ctx).ConfigureFlow(configureFlow).FailedAttemptsBeforeCancel(failedAttemptsBeforeCancel).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedPasswordStageList StagesPasswordList(ctx).AllowShowPassword(allowShowPassword).ConfigureFlow(configureFlow).FailedAttemptsBeforeCancel(failedAttemptsBeforeCancel).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -8171,6 +8171,7 @@ import (
 )
 
 func main() {
+    allowShowPassword := true // bool |  (optional)
     configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     failedAttemptsBeforeCancel := int32(56) // int32 |  (optional)
     name := "name_example" // string |  (optional)
@@ -8181,7 +8182,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPasswordList(context.Background()).ConfigureFlow(configureFlow).FailedAttemptsBeforeCancel(failedAttemptsBeforeCancel).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    resp, r, err := apiClient.StagesApi.StagesPasswordList(context.Background()).AllowShowPassword(allowShowPassword).ConfigureFlow(configureFlow).FailedAttemptsBeforeCancel(failedAttemptsBeforeCancel).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPasswordList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -8202,6 +8203,7 @@ Other parameters are passed through a pointer to a apiStagesPasswordListRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **allowShowPassword** | **bool** |  | 
  **configureFlow** | **string** |  | 
  **failedAttemptsBeforeCancel** | **int32** |  | 
  **name** | **string** |  | 

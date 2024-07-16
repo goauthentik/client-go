@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **PendingUser** | **string** |  | 
 **PendingUserAvatar** | **string** |  | 
 **RecoveryUrl** | Pointer to **string** |  | [optional] 
+**AllowShowPassword** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -169,6 +170,31 @@ SetRecoveryUrl sets RecoveryUrl field to given value.
 `func (o *PasswordChallenge) HasRecoveryUrl() bool`
 
 HasRecoveryUrl returns a boolean if a field has been set.
+
+### GetAllowShowPassword
+
+`func (o *PasswordChallenge) GetAllowShowPassword() bool`
+
+GetAllowShowPassword returns the AllowShowPassword field if non-nil, zero value otherwise.
+
+### GetAllowShowPasswordOk
+
+`func (o *PasswordChallenge) GetAllowShowPasswordOk() (*bool, bool)`
+
+GetAllowShowPasswordOk returns a tuple with the AllowShowPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowShowPassword
+
+`func (o *PasswordChallenge) SetAllowShowPassword(v bool)`
+
+SetAllowShowPassword sets AllowShowPassword field to given value.
+
+### HasAllowShowPassword
+
+`func (o *PasswordChallenge) HasAllowShowPassword() bool`
+
+HasAllowShowPassword returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

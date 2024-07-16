@@ -30,7 +30,7 @@ type IdentificationStage struct {
 	FlowSet       []FlowSet `json:"flow_set,omitempty"`
 	// Fields of the user object to match against. (Hold shift to select multiple options)
 	UserFields []UserFieldsEnum `json:"user_fields,omitempty"`
-	// When set, shows a password field, instead of showing the password field as seaprate step.
+	// When set, shows a password field, instead of showing the password field as separate step.
 	PasswordStage NullableString `json:"password_stage,omitempty"`
 	// When enabled, user fields are matched regardless of their casing.
 	CaseInsensitiveMatching *bool `json:"case_insensitive_matching,omitempty"`

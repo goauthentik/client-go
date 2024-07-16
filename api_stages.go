@@ -15289,6 +15289,7 @@ func (a *StagesApiService) StagesPasswordDestroyExecute(r ApiStagesPasswordDestr
 type ApiStagesPasswordListRequest struct {
 	ctx                        context.Context
 	ApiService                 *StagesApiService
+	allowShowPassword          *bool
 	configureFlow              *string
 	failedAttemptsBeforeCancel *int32
 	name                       *string
@@ -15296,6 +15297,11 @@ type ApiStagesPasswordListRequest struct {
 	page                       *int32
 	pageSize                   *int32
 	search                     *string
+}
+
+func (r ApiStagesPasswordListRequest) AllowShowPassword(allowShowPassword bool) ApiStagesPasswordListRequest {
+	r.allowShowPassword = &allowShowPassword
+	return r
 }
 
 func (r ApiStagesPasswordListRequest) ConfigureFlow(configureFlow string) ApiStagesPasswordListRequest {
@@ -15378,6 +15384,9 @@ func (a *StagesApiService) StagesPasswordListExecute(r ApiStagesPasswordListRequ
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.allowShowPassword != nil {
+		localVarQueryParams.Add("allow_show_password", parameterToString(*r.allowShowPassword, ""))
+	}
 	if r.configureFlow != nil {
 		localVarQueryParams.Add("configure_flow", parameterToString(*r.configureFlow, ""))
 	}

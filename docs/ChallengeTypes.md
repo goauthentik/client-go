@@ -38,6 +38,7 @@ Name | Type | Description | Notes
 **Traceback** | Pointer to **string** |  | [optional] 
 **UserFields** | **[]string** |  | 
 **PasswordFields** | **bool** |  | 
+**AllowShowPassword** | Pointer to **bool** |  | [optional] [default to false]
 **ApplicationPre** | Pointer to **string** |  | [optional] 
 **FlowDesignation** | [**FlowDesignationEnum**](FlowDesignationEnum.md) |  | 
 **EnrollUrl** | Pointer to **string** |  | [optional] 
@@ -804,6 +805,31 @@ and a boolean to check if the value has been set.
 
 SetPasswordFields sets PasswordFields field to given value.
 
+
+### GetAllowShowPassword
+
+`func (o *ChallengeTypes) GetAllowShowPassword() bool`
+
+GetAllowShowPassword returns the AllowShowPassword field if non-nil, zero value otherwise.
+
+### GetAllowShowPasswordOk
+
+`func (o *ChallengeTypes) GetAllowShowPasswordOk() (*bool, bool)`
+
+GetAllowShowPasswordOk returns a tuple with the AllowShowPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowShowPassword
+
+`func (o *ChallengeTypes) SetAllowShowPassword(v bool)`
+
+SetAllowShowPassword sets AllowShowPassword field to given value.
+
+### HasAllowShowPassword
+
+`func (o *ChallengeTypes) HasAllowShowPassword() bool`
+
+HasAllowShowPassword returns a boolean if a field has been set.
 
 ### GetApplicationPre
 

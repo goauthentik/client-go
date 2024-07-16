@@ -23,6 +23,7 @@ type PasswordChallenge struct {
 	PendingUser       string                    `json:"pending_user"`
 	PendingUserAvatar string                    `json:"pending_user_avatar"`
 	RecoveryUrl       *string                   `json:"recovery_url,omitempty"`
+	AllowShowPassword *bool                     `json:"allow_show_password,omitempty"`
 }
 
 // NewPasswordChallenge instantiates a new PasswordChallenge object
@@ -35,6 +36,8 @@ func NewPasswordChallenge(pendingUser string, pendingUserAvatar string) *Passwor
 	this.Component = &component
 	this.PendingUser = pendingUser
 	this.PendingUserAvatar = pendingUserAvatar
+	var allowShowPassword bool = false
+	this.AllowShowPassword = &allowShowPassword
 	return &this
 }
 
@@ -45,6 +48,8 @@ func NewPasswordChallengeWithDefaults() *PasswordChallenge {
 	this := PasswordChallenge{}
 	var component string = "ak-stage-password"
 	this.Component = &component
+	var allowShowPassword bool = false
+	this.AllowShowPassword = &allowShowPassword
 	return &this
 }
 
@@ -224,6 +229,38 @@ func (o *PasswordChallenge) SetRecoveryUrl(v string) {
 	o.RecoveryUrl = &v
 }
 
+// GetAllowShowPassword returns the AllowShowPassword field value if set, zero value otherwise.
+func (o *PasswordChallenge) GetAllowShowPassword() bool {
+	if o == nil || o.AllowShowPassword == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AllowShowPassword
+}
+
+// GetAllowShowPasswordOk returns a tuple with the AllowShowPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PasswordChallenge) GetAllowShowPasswordOk() (*bool, bool) {
+	if o == nil || o.AllowShowPassword == nil {
+		return nil, false
+	}
+	return o.AllowShowPassword, true
+}
+
+// HasAllowShowPassword returns a boolean if a field has been set.
+func (o *PasswordChallenge) HasAllowShowPassword() bool {
+	if o != nil && o.AllowShowPassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowShowPassword gets a reference to the given bool and assigns it to the AllowShowPassword field.
+func (o *PasswordChallenge) SetAllowShowPassword(v bool) {
+	o.AllowShowPassword = &v
+}
+
 func (o PasswordChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.FlowInfo != nil {
@@ -243,6 +280,9 @@ func (o PasswordChallenge) MarshalJSON() ([]byte, error) {
 	}
 	if o.RecoveryUrl != nil {
 		toSerialize["recovery_url"] = o.RecoveryUrl
+	}
+	if o.AllowShowPassword != nil {
+		toSerialize["allow_show_password"] = o.AllowShowPassword
 	}
 	return json.Marshal(toSerialize)
 }
