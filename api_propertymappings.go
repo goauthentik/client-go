@@ -1040,17 +1040,16 @@ func (a *PropertymappingsApiService) PropertymappingsLdapDestroyExecute(r ApiPro
 }
 
 type ApiPropertymappingsLdapListRequest struct {
-	ctx         context.Context
-	ApiService  *PropertymappingsApiService
-	expression  *string
-	managed     *[]string
-	name        *string
-	objectField *string
-	ordering    *string
-	page        *int32
-	pageSize    *int32
-	pmUuid      *string
-	search      *string
+	ctx        context.Context
+	ApiService *PropertymappingsApiService
+	expression *string
+	managed    *[]string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	pmUuid     *string
+	search     *string
 }
 
 func (r ApiPropertymappingsLdapListRequest) Expression(expression string) ApiPropertymappingsLdapListRequest {
@@ -1065,11 +1064,6 @@ func (r ApiPropertymappingsLdapListRequest) Managed(managed []string) ApiPropert
 
 func (r ApiPropertymappingsLdapListRequest) Name(name string) ApiPropertymappingsLdapListRequest {
 	r.name = &name
-	return r
-}
-
-func (r ApiPropertymappingsLdapListRequest) ObjectField(objectField string) ApiPropertymappingsLdapListRequest {
-	r.objectField = &objectField
 	return r
 }
 
@@ -1159,9 +1153,6 @@ func (a *PropertymappingsApiService) PropertymappingsLdapListExecute(r ApiProper
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
-	}
-	if r.objectField != nil {
-		localVarQueryParams.Add("object_field", parameterToString(*r.objectField, ""))
 	}
 	if r.ordering != nil {
 		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))

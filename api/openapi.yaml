@@ -15013,13 +15013,6 @@ paths:
         schema:
           type: string
         style: form
-      - explode: true
-        in: query
-        name: object_field
-        required: false
-        schema:
-          type: string
-        style: form
       - description: Which field to use when ordering the results.
         explode: true
         in: query
@@ -24594,6 +24587,16 @@ paths:
         style: form
       - explode: true
         in: query
+        name: group_property_mappings
+        required: false
+        schema:
+          items:
+            format: uuid
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
         name: name
         required: false
         schema:
@@ -24644,26 +24647,6 @@ paths:
         schema:
           format: uuid
           type: string
-        style: form
-      - explode: true
-        in: query
-        name: property_mappings
-        required: false
-        schema:
-          items:
-            format: uuid
-            type: string
-          type: array
-        style: form
-      - explode: true
-        in: query
-        name: property_mappings_group
-        required: false
-        schema:
-          items:
-            format: uuid
-            type: string
-          type: array
         style: form
       - description: A search term.
         explode: true
@@ -24736,6 +24719,16 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: user_property_mappings
+        required: false
+        schema:
+          items:
+            format: uuid
+            type: string
+          type: array
         style: form
       responses:
         "200":
@@ -42848,7 +42841,6 @@ components:
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
         managed: managed
-        object_field: object_field
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -42885,14 +42877,11 @@ components:
           description: Return internal model name
           readOnly: true
           type: string
-        object_field:
-          type: string
       required:
       - component
       - expression
       - meta_model_name
       - name
-      - object_field
       - pk
       - verbose_name
       - verbose_name_plural
@@ -42902,7 +42891,6 @@ components:
       example:
         expression: expression
         managed: managed
-        object_field: object_field
         name: name
       properties:
         managed:
@@ -42920,13 +42908,9 @@ components:
         expression:
           minLength: 1
           type: string
-        object_field:
-          minLength: 1
-          type: string
       required:
       - expression
       - name
-      - object_field
       type: object
     LDAPProvider:
       description: LDAPProvider Serializer
@@ -43162,7 +43146,7 @@ components:
         user_matching_mode: ""
         verbose_name_plural: verbose_name_plural
         start_tls: true
-        property_mappings_group:
+        group_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         additional_user_dn: additional_user_dn
@@ -43175,11 +43159,11 @@ components:
           key:
             key: connectivity
         managed: managed
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         additional_group_dn: additional_group_dn
         sync_parent_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        property_mappings:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         slug: slug
         group_membership_field: group_membership_field
         server_uri: https://openapi-generator.tech
@@ -43226,6 +43210,16 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
         component:
           description: Get object component so that we know how to edit the object
           readOnly: true
@@ -43324,17 +43318,6 @@ components:
           format: uuid
           nullable: true
           type: string
-        property_mappings:
-          items:
-            format: uuid
-            type: string
-          type: array
-        property_mappings_group:
-          description: Property mappings used for group creation/updating.
-          items:
-            format: uuid
-            type: string
-          type: array
         connectivity:
           additionalProperties:
             additionalProperties:
@@ -43364,7 +43347,7 @@ components:
         object_uniqueness_field: object_uniqueness_field
         user_matching_mode: ""
         start_tls: true
-        property_mappings_group:
+        group_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         additional_user_dn: additional_user_dn
@@ -43372,11 +43355,11 @@ components:
         enabled: true
         client_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         base_dn: base_dn
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         additional_group_dn: additional_group_dn
         sync_parent_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        property_mappings:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         slug: slug
         group_membership_field: group_membership_field
         server_uri: https://openapi-generator.tech
@@ -43417,6 +43400,16 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
         policy_engine_mode:
           $ref: '#/components/schemas/PolicyEngineMode'
         user_matching_mode:
@@ -43497,17 +43490,6 @@ components:
           format: uuid
           nullable: true
           type: string
-        property_mappings:
-          items:
-            format: uuid
-            type: string
-          type: array
-        property_mappings_group:
-          description: Property mappings used for group creation/updating.
-          items:
-            format: uuid
-            type: string
-          type: array
       required:
       - base_dn
       - name
@@ -44817,6 +44799,9 @@ components:
         user_matching_mode: ""
         verbose_name_plural: verbose_name_plural
         request_token_url: request_token_url
+        group_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         profile_url: profile_url
         icon: icon
         oidc_jwks: ""
@@ -44825,6 +44810,9 @@ components:
         enabled: true
         callback_url: callback_url
         managed: managed
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         access_token_url: access_token_url
         slug: slug
         oidc_jwks_url: oidc_jwks_url
@@ -44866,6 +44854,16 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
         component:
           description: Get object component so that we know how to edit the object
           readOnly: true
@@ -44968,6 +44966,9 @@ components:
         oidc_jwks_url: oidc_jwks_url
         user_path_template: user_path_template
         request_token_url: request_token_url
+        group_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         profile_url: profile_url
         authorization_url: authorization_url
         oidc_jwks: ""
@@ -44979,6 +44980,9 @@ components:
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         oidc_well_known_url: oidc_well_known_url
         name: name
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         access_token_url: access_token_url
         slug: slug
       properties:
@@ -45004,6 +45008,16 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
         policy_engine_mode:
           $ref: '#/components/schemas/PolicyEngineMode'
         user_matching_mode:
@@ -48081,7 +48095,6 @@ components:
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
           managed: managed
-          object_field: object_field
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - component: component
@@ -48090,7 +48103,6 @@ components:
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
           managed: managed
-          object_field: object_field
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -48195,7 +48207,7 @@ components:
           user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           start_tls: true
-          property_mappings_group:
+          group_property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           additional_user_dn: additional_user_dn
@@ -48208,11 +48220,11 @@ components:
             key:
               key: connectivity
           managed: managed
+          user_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           additional_group_dn: additional_group_dn
           sync_parent_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          property_mappings:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           slug: slug
           group_membership_field: group_membership_field
           server_uri: https://openapi-generator.tech
@@ -48237,7 +48249,7 @@ components:
           user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           start_tls: true
-          property_mappings_group:
+          group_property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           additional_user_dn: additional_user_dn
@@ -48250,11 +48262,11 @@ components:
             key:
               key: connectivity
           managed: managed
+          user_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           additional_group_dn: additional_group_dn
           sync_parent_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          property_mappings:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           slug: slug
           group_membership_field: group_membership_field
           server_uri: https://openapi-generator.tech
@@ -48739,6 +48751,9 @@ components:
           user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           request_token_url: request_token_url
+          group_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           profile_url: profile_url
           icon: icon
           oidc_jwks: ""
@@ -48747,6 +48762,9 @@ components:
           enabled: true
           callback_url: callback_url
           managed: managed
+          user_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           access_token_url: access_token_url
           slug: slug
           oidc_jwks_url: oidc_jwks_url
@@ -48766,6 +48784,9 @@ components:
           user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           request_token_url: request_token_url
+          group_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           profile_url: profile_url
           icon: icon
           oidc_jwks: ""
@@ -48774,6 +48795,9 @@ components:
           enabled: true
           callback_url: callback_url
           managed: managed
+          user_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           access_token_url: access_token_url
           slug: slug
           oidc_jwks_url: oidc_jwks_url
@@ -49197,6 +49221,9 @@ components:
           user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           user_path_template: user_path_template
+          group_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon: icon
           enabled: true
           client_id: client_id
@@ -49208,6 +49235,9 @@ components:
           meta_model_name: meta_model_name
           managed: managed
           name: name
+          user_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           allow_friends: true
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           plex_token: plex_token
@@ -49218,6 +49248,9 @@ components:
           user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           user_path_template: user_path_template
+          group_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon: icon
           enabled: true
           client_id: client_id
@@ -49229,6 +49262,9 @@ components:
           meta_model_name: meta_model_name
           managed: managed
           name: name
+          user_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           allow_friends: true
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           plex_token: plex_token
@@ -50360,12 +50396,18 @@ components:
         - allow_idp_initiated: true
           user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
+          group_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon: icon
           sso_url: https://openapi-generator.tech
           enabled: true
           issuer: issuer
           managed: managed
           name_id_policy: ""
+          user_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           signature_algorithm: null
           slug: slug
           signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -50387,12 +50429,18 @@ components:
         - allow_idp_initiated: true
           user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
+          group_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon: icon
           sso_url: https://openapi-generator.tech
           enabled: true
           issuer: issuer
           managed: managed
           name_id_policy: ""
+          user_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           signature_algorithm: null
           slug: slug
           signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -50814,6 +50862,9 @@ components:
         - user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           user_path_template: user_path_template
+          group_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon: icon
           enabled: true
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -50824,11 +50875,17 @@ components:
           meta_model_name: meta_model_name
           managed: managed
           name: name
+          user_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           slug: slug
         - user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           user_path_template: user_path_template
+          group_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon: icon
           enabled: true
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -50839,6 +50896,9 @@ components:
           meta_model_name: meta_model_name
           managed: managed
           name: name
+          user_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           slug: slug
       properties:
@@ -54152,7 +54212,6 @@ components:
       example:
         expression: expression
         managed: managed
-        object_field: object_field
         name: name
       properties:
         managed:
@@ -54168,9 +54227,6 @@ components:
           minLength: 1
           type: string
         expression:
-          minLength: 1
-          type: string
-        object_field:
           minLength: 1
           type: string
       type: object
@@ -54260,7 +54316,7 @@ components:
         object_uniqueness_field: object_uniqueness_field
         user_matching_mode: ""
         start_tls: true
-        property_mappings_group:
+        group_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         additional_user_dn: additional_user_dn
@@ -54268,11 +54324,11 @@ components:
         enabled: true
         client_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         base_dn: base_dn
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         additional_group_dn: additional_group_dn
         sync_parent_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        property_mappings:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         slug: slug
         group_membership_field: group_membership_field
         server_uri: https://openapi-generator.tech
@@ -54313,6 +54369,16 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
         policy_engine_mode:
           $ref: '#/components/schemas/PolicyEngineMode'
         user_matching_mode:
@@ -54393,17 +54459,6 @@ components:
           format: uuid
           nullable: true
           type: string
-        property_mappings:
-          items:
-            format: uuid
-            type: string
-          type: array
-        property_mappings_group:
-          description: Property mappings used for group creation/updating.
-          items:
-            format: uuid
-            type: string
-          type: array
       type: object
     PatchedLicenseRequest:
       description: License Serializer
@@ -54688,6 +54743,9 @@ components:
         oidc_jwks_url: oidc_jwks_url
         user_path_template: user_path_template
         request_token_url: request_token_url
+        group_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         profile_url: profile_url
         authorization_url: authorization_url
         oidc_jwks: ""
@@ -54699,6 +54757,9 @@ components:
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         oidc_well_known_url: oidc_well_known_url
         name: name
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         access_token_url: access_token_url
         slug: slug
       properties:
@@ -54724,6 +54785,16 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
         policy_engine_mode:
           $ref: '#/components/schemas/PolicyEngineMode'
         user_matching_mode:
@@ -55002,20 +55073,26 @@ components:
     PatchedPlexSourceRequest:
       description: Plex Source Serializer
       example:
-        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        policy_engine_mode: null
         allowed_servers:
         - allowed_servers
         - allowed_servers
-        enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user_matching_mode: ""
         user_path_template: user_path_template
+        group_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        enabled: true
+        client_id: client_id
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        policy_engine_mode: null
+        enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         allow_friends: true
         plex_token: plex_token
         slug: slug
-        enabled: true
-        client_id: client_id
       properties:
         name:
           description: Source's display Name.
@@ -55039,6 +55116,16 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
         policy_engine_mode:
           $ref: '#/components/schemas/PolicyEngineMode'
         user_matching_mode:
@@ -55651,6 +55738,9 @@ components:
         allow_idp_initiated: true
         user_matching_mode: ""
         user_path_template: user_path_template
+        group_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         slo_url: https://openapi-generator.tech
         sso_url: https://openapi-generator.tech
         enabled: true
@@ -55662,6 +55752,9 @@ components:
         pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name_id_policy: ""
         name: name
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         verification_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         signature_algorithm: null
         slug: slug
@@ -55690,6 +55783,16 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
         policy_engine_mode:
           $ref: '#/components/schemas/PolicyEngineMode'
         user_matching_mode:
@@ -56465,6 +56568,9 @@ components:
         user_matching_mode: ""
         verbose_name_plural: verbose_name_plural
         user_path_template: user_path_template
+        group_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         icon: icon
         enabled: true
         client_id: client_id
@@ -56476,6 +56582,9 @@ components:
         meta_model_name: meta_model_name
         managed: managed
         name: name
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         allow_friends: true
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         plex_token: plex_token
@@ -56506,6 +56615,16 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
         component:
           description: Get object component so that we know how to edit the object
           readOnly: true
@@ -56620,20 +56739,26 @@ components:
     PlexSourceRequest:
       description: Plex Source Serializer
       example:
-        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        policy_engine_mode: null
         allowed_servers:
         - allowed_servers
         - allowed_servers
-        enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user_matching_mode: ""
         user_path_template: user_path_template
+        group_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        enabled: true
+        client_id: client_id
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        policy_engine_mode: null
+        enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         allow_friends: true
         plex_token: plex_token
         slug: slug
-        enabled: true
-        client_id: client_id
       properties:
         name:
           description: Source's display Name.
@@ -56657,6 +56782,16 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
         policy_engine_mode:
           $ref: '#/components/schemas/PolicyEngineMode'
         user_matching_mode:
@@ -59208,12 +59343,18 @@ components:
         allow_idp_initiated: true
         user_matching_mode: ""
         verbose_name_plural: verbose_name_plural
+        group_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         icon: icon
         sso_url: https://openapi-generator.tech
         enabled: true
         issuer: issuer
         managed: managed
         name_id_policy: ""
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         signature_algorithm: null
         slug: slug
         signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -59258,6 +59399,16 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
         component:
           description: Get object component so that we know how to edit the object
           readOnly: true
@@ -59368,6 +59519,9 @@ components:
         allow_idp_initiated: true
         user_matching_mode: ""
         user_path_template: user_path_template
+        group_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         slo_url: https://openapi-generator.tech
         sso_url: https://openapi-generator.tech
         enabled: true
@@ -59379,6 +59533,9 @@ components:
         pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name_id_policy: ""
         name: name
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         verification_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         signature_algorithm: null
         slug: slug
@@ -59407,6 +59564,16 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
         policy_engine_mode:
           $ref: '#/components/schemas/PolicyEngineMode'
         user_matching_mode:
@@ -60435,6 +60602,9 @@ components:
         user_matching_mode: ""
         verbose_name_plural: verbose_name_plural
         user_path_template: user_path_template
+        group_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         icon: icon
         enabled: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -60445,6 +60615,9 @@ components:
         meta_model_name: meta_model_name
         managed: managed
         name: name
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         slug: slug
       properties:
@@ -60473,6 +60646,16 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
         component:
           description: Get object component so that we know how to edit the object
           readOnly: true
@@ -60550,6 +60733,16 @@ components:
           format: uuid
           nullable: true
           type: string
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
         policy_engine_mode:
           $ref: '#/components/schemas/PolicyEngineMode'
         user_matching_mode:

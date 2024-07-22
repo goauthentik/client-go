@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** |  | [optional] 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow to use when authenticating existing users. | [optional] 
 **EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
+**UserPropertyMappings** | Pointer to **[]string** |  | [optional] 
+**GroupPropertyMappings** | Pointer to **[]string** |  | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
@@ -178,6 +180,56 @@ HasEnrollmentFlow returns a boolean if a field has been set.
 `func (o *OAuthSourceRequest) UnsetEnrollmentFlow()`
 
 UnsetEnrollmentFlow ensures that no value is present for EnrollmentFlow, not even an explicit nil
+### GetUserPropertyMappings
+
+`func (o *OAuthSourceRequest) GetUserPropertyMappings() []string`
+
+GetUserPropertyMappings returns the UserPropertyMappings field if non-nil, zero value otherwise.
+
+### GetUserPropertyMappingsOk
+
+`func (o *OAuthSourceRequest) GetUserPropertyMappingsOk() (*[]string, bool)`
+
+GetUserPropertyMappingsOk returns a tuple with the UserPropertyMappings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserPropertyMappings
+
+`func (o *OAuthSourceRequest) SetUserPropertyMappings(v []string)`
+
+SetUserPropertyMappings sets UserPropertyMappings field to given value.
+
+### HasUserPropertyMappings
+
+`func (o *OAuthSourceRequest) HasUserPropertyMappings() bool`
+
+HasUserPropertyMappings returns a boolean if a field has been set.
+
+### GetGroupPropertyMappings
+
+`func (o *OAuthSourceRequest) GetGroupPropertyMappings() []string`
+
+GetGroupPropertyMappings returns the GroupPropertyMappings field if non-nil, zero value otherwise.
+
+### GetGroupPropertyMappingsOk
+
+`func (o *OAuthSourceRequest) GetGroupPropertyMappingsOk() (*[]string, bool)`
+
+GetGroupPropertyMappingsOk returns a tuple with the GroupPropertyMappings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupPropertyMappings
+
+`func (o *OAuthSourceRequest) SetGroupPropertyMappings(v []string)`
+
+SetGroupPropertyMappings sets GroupPropertyMappings field to given value.
+
+### HasGroupPropertyMappings
+
+`func (o *OAuthSourceRequest) HasGroupPropertyMappings() bool`
+
+HasGroupPropertyMappings returns a boolean if a field has been set.
+
 ### GetPolicyEngineMode
 
 `func (o *OAuthSourceRequest) GetPolicyEngineMode() PolicyEngineMode`

@@ -25,8 +25,10 @@ type PatchedLDAPSourceRequest struct {
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
-	EnrollmentFlow   NullableString    `json:"enrollment_flow,omitempty"`
-	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
+	EnrollmentFlow        NullableString    `json:"enrollment_flow,omitempty"`
+	UserPropertyMappings  []string          `json:"user_property_mappings,omitempty"`
+	GroupPropertyMappings []string          `json:"group_property_mappings,omitempty"`
+	PolicyEngineMode      *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	UserPathTemplate *string               `json:"user_path_template,omitempty"`
@@ -59,9 +61,6 @@ type PatchedLDAPSourceRequest struct {
 	SyncUsersPassword *bool          `json:"sync_users_password,omitempty"`
 	SyncGroups        *bool          `json:"sync_groups,omitempty"`
 	SyncParentGroup   NullableString `json:"sync_parent_group,omitempty"`
-	PropertyMappings  []string       `json:"property_mappings,omitempty"`
-	// Property mappings used for group creation/updating.
-	PropertyMappingsGroup []string `json:"property_mappings_group,omitempty"`
 }
 
 // NewPatchedLDAPSourceRequest instantiates a new PatchedLDAPSourceRequest object
@@ -261,6 +260,70 @@ func (o *PatchedLDAPSourceRequest) SetEnrollmentFlowNil() {
 // UnsetEnrollmentFlow ensures that no value is present for EnrollmentFlow, not even an explicit nil
 func (o *PatchedLDAPSourceRequest) UnsetEnrollmentFlow() {
 	o.EnrollmentFlow.Unset()
+}
+
+// GetUserPropertyMappings returns the UserPropertyMappings field value if set, zero value otherwise.
+func (o *PatchedLDAPSourceRequest) GetUserPropertyMappings() []string {
+	if o == nil || o.UserPropertyMappings == nil {
+		var ret []string
+		return ret
+	}
+	return o.UserPropertyMappings
+}
+
+// GetUserPropertyMappingsOk returns a tuple with the UserPropertyMappings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedLDAPSourceRequest) GetUserPropertyMappingsOk() ([]string, bool) {
+	if o == nil || o.UserPropertyMappings == nil {
+		return nil, false
+	}
+	return o.UserPropertyMappings, true
+}
+
+// HasUserPropertyMappings returns a boolean if a field has been set.
+func (o *PatchedLDAPSourceRequest) HasUserPropertyMappings() bool {
+	if o != nil && o.UserPropertyMappings != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserPropertyMappings gets a reference to the given []string and assigns it to the UserPropertyMappings field.
+func (o *PatchedLDAPSourceRequest) SetUserPropertyMappings(v []string) {
+	o.UserPropertyMappings = v
+}
+
+// GetGroupPropertyMappings returns the GroupPropertyMappings field value if set, zero value otherwise.
+func (o *PatchedLDAPSourceRequest) GetGroupPropertyMappings() []string {
+	if o == nil || o.GroupPropertyMappings == nil {
+		var ret []string
+		return ret
+	}
+	return o.GroupPropertyMappings
+}
+
+// GetGroupPropertyMappingsOk returns a tuple with the GroupPropertyMappings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedLDAPSourceRequest) GetGroupPropertyMappingsOk() ([]string, bool) {
+	if o == nil || o.GroupPropertyMappings == nil {
+		return nil, false
+	}
+	return o.GroupPropertyMappings, true
+}
+
+// HasGroupPropertyMappings returns a boolean if a field has been set.
+func (o *PatchedLDAPSourceRequest) HasGroupPropertyMappings() bool {
+	if o != nil && o.GroupPropertyMappings != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupPropertyMappings gets a reference to the given []string and assigns it to the GroupPropertyMappings field.
+func (o *PatchedLDAPSourceRequest) SetGroupPropertyMappings(v []string) {
+	o.GroupPropertyMappings = v
 }
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
@@ -1000,70 +1063,6 @@ func (o *PatchedLDAPSourceRequest) UnsetSyncParentGroup() {
 	o.SyncParentGroup.Unset()
 }
 
-// GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
-func (o *PatchedLDAPSourceRequest) GetPropertyMappings() []string {
-	if o == nil || o.PropertyMappings == nil {
-		var ret []string
-		return ret
-	}
-	return o.PropertyMappings
-}
-
-// GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedLDAPSourceRequest) GetPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.PropertyMappings == nil {
-		return nil, false
-	}
-	return o.PropertyMappings, true
-}
-
-// HasPropertyMappings returns a boolean if a field has been set.
-func (o *PatchedLDAPSourceRequest) HasPropertyMappings() bool {
-	if o != nil && o.PropertyMappings != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPropertyMappings gets a reference to the given []string and assigns it to the PropertyMappings field.
-func (o *PatchedLDAPSourceRequest) SetPropertyMappings(v []string) {
-	o.PropertyMappings = v
-}
-
-// GetPropertyMappingsGroup returns the PropertyMappingsGroup field value if set, zero value otherwise.
-func (o *PatchedLDAPSourceRequest) GetPropertyMappingsGroup() []string {
-	if o == nil || o.PropertyMappingsGroup == nil {
-		var ret []string
-		return ret
-	}
-	return o.PropertyMappingsGroup
-}
-
-// GetPropertyMappingsGroupOk returns a tuple with the PropertyMappingsGroup field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedLDAPSourceRequest) GetPropertyMappingsGroupOk() ([]string, bool) {
-	if o == nil || o.PropertyMappingsGroup == nil {
-		return nil, false
-	}
-	return o.PropertyMappingsGroup, true
-}
-
-// HasPropertyMappingsGroup returns a boolean if a field has been set.
-func (o *PatchedLDAPSourceRequest) HasPropertyMappingsGroup() bool {
-	if o != nil && o.PropertyMappingsGroup != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPropertyMappingsGroup gets a reference to the given []string and assigns it to the PropertyMappingsGroup field.
-func (o *PatchedLDAPSourceRequest) SetPropertyMappingsGroup(v []string) {
-	o.PropertyMappingsGroup = v
-}
-
 func (o PatchedLDAPSourceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -1080,6 +1079,12 @@ func (o PatchedLDAPSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.EnrollmentFlow.IsSet() {
 		toSerialize["enrollment_flow"] = o.EnrollmentFlow.Get()
+	}
+	if o.UserPropertyMappings != nil {
+		toSerialize["user_property_mappings"] = o.UserPropertyMappings
+	}
+	if o.GroupPropertyMappings != nil {
+		toSerialize["group_property_mappings"] = o.GroupPropertyMappings
 	}
 	if o.PolicyEngineMode != nil {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
@@ -1146,12 +1151,6 @@ func (o PatchedLDAPSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.SyncParentGroup.IsSet() {
 		toSerialize["sync_parent_group"] = o.SyncParentGroup.Get()
-	}
-	if o.PropertyMappings != nil {
-		toSerialize["property_mappings"] = o.PropertyMappings
-	}
-	if o.PropertyMappingsGroup != nil {
-		toSerialize["property_mappings_group"] = o.PropertyMappingsGroup
 	}
 	return json.Marshal(toSerialize)
 }

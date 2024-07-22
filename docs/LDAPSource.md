@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** |  | [optional] 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow to use when authenticating existing users. | [optional] 
 **EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
+**UserPropertyMappings** | Pointer to **[]string** |  | [optional] 
+**GroupPropertyMappings** | Pointer to **[]string** |  | [optional] 
 **Component** | **string** | Get object component so that we know how to edit the object | [readonly] 
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
@@ -37,8 +39,6 @@ Name | Type | Description | Notes
 **SyncUsersPassword** | Pointer to **bool** | When a user changes their password, sync it back to LDAP. This can only be enabled on a single LDAP source. | [optional] 
 **SyncGroups** | Pointer to **bool** |  | [optional] 
 **SyncParentGroup** | Pointer to **NullableString** |  | [optional] 
-**PropertyMappings** | Pointer to **[]string** |  | [optional] 
-**PropertyMappingsGroup** | Pointer to **[]string** | Property mappings used for group creation/updating. | [optional] 
 **Connectivity** | **map[string]map[string]string** | Get cached source connectivity | [readonly] 
 
 ## Methods
@@ -215,6 +215,56 @@ HasEnrollmentFlow returns a boolean if a field has been set.
 `func (o *LDAPSource) UnsetEnrollmentFlow()`
 
 UnsetEnrollmentFlow ensures that no value is present for EnrollmentFlow, not even an explicit nil
+### GetUserPropertyMappings
+
+`func (o *LDAPSource) GetUserPropertyMappings() []string`
+
+GetUserPropertyMappings returns the UserPropertyMappings field if non-nil, zero value otherwise.
+
+### GetUserPropertyMappingsOk
+
+`func (o *LDAPSource) GetUserPropertyMappingsOk() (*[]string, bool)`
+
+GetUserPropertyMappingsOk returns a tuple with the UserPropertyMappings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserPropertyMappings
+
+`func (o *LDAPSource) SetUserPropertyMappings(v []string)`
+
+SetUserPropertyMappings sets UserPropertyMappings field to given value.
+
+### HasUserPropertyMappings
+
+`func (o *LDAPSource) HasUserPropertyMappings() bool`
+
+HasUserPropertyMappings returns a boolean if a field has been set.
+
+### GetGroupPropertyMappings
+
+`func (o *LDAPSource) GetGroupPropertyMappings() []string`
+
+GetGroupPropertyMappings returns the GroupPropertyMappings field if non-nil, zero value otherwise.
+
+### GetGroupPropertyMappingsOk
+
+`func (o *LDAPSource) GetGroupPropertyMappingsOk() (*[]string, bool)`
+
+GetGroupPropertyMappingsOk returns a tuple with the GroupPropertyMappings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupPropertyMappings
+
+`func (o *LDAPSource) SetGroupPropertyMappings(v []string)`
+
+SetGroupPropertyMappings sets GroupPropertyMappings field to given value.
+
+### HasGroupPropertyMappings
+
+`func (o *LDAPSource) HasGroupPropertyMappings() bool`
+
+HasGroupPropertyMappings returns a boolean if a field has been set.
+
 ### GetComponent
 
 `func (o *LDAPSource) GetComponent() string`
@@ -890,56 +940,6 @@ HasSyncParentGroup returns a boolean if a field has been set.
 `func (o *LDAPSource) UnsetSyncParentGroup()`
 
 UnsetSyncParentGroup ensures that no value is present for SyncParentGroup, not even an explicit nil
-### GetPropertyMappings
-
-`func (o *LDAPSource) GetPropertyMappings() []string`
-
-GetPropertyMappings returns the PropertyMappings field if non-nil, zero value otherwise.
-
-### GetPropertyMappingsOk
-
-`func (o *LDAPSource) GetPropertyMappingsOk() (*[]string, bool)`
-
-GetPropertyMappingsOk returns a tuple with the PropertyMappings field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPropertyMappings
-
-`func (o *LDAPSource) SetPropertyMappings(v []string)`
-
-SetPropertyMappings sets PropertyMappings field to given value.
-
-### HasPropertyMappings
-
-`func (o *LDAPSource) HasPropertyMappings() bool`
-
-HasPropertyMappings returns a boolean if a field has been set.
-
-### GetPropertyMappingsGroup
-
-`func (o *LDAPSource) GetPropertyMappingsGroup() []string`
-
-GetPropertyMappingsGroup returns the PropertyMappingsGroup field if non-nil, zero value otherwise.
-
-### GetPropertyMappingsGroupOk
-
-`func (o *LDAPSource) GetPropertyMappingsGroupOk() (*[]string, bool)`
-
-GetPropertyMappingsGroupOk returns a tuple with the PropertyMappingsGroup field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPropertyMappingsGroup
-
-`func (o *LDAPSource) SetPropertyMappingsGroup(v []string)`
-
-SetPropertyMappingsGroup sets PropertyMappingsGroup field to given value.
-
-### HasPropertyMappingsGroup
-
-`func (o *LDAPSource) HasPropertyMappingsGroup() bool`
-
-HasPropertyMappingsGroup returns a boolean if a field has been set.
-
 ### GetConnectivity
 
 `func (o *LDAPSource) GetConnectivity() map[string]map[string]string`

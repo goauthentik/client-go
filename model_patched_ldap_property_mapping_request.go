@@ -18,10 +18,9 @@ import (
 // PatchedLDAPPropertyMappingRequest LDAP PropertyMapping Serializer
 type PatchedLDAPPropertyMappingRequest struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed     NullableString `json:"managed,omitempty"`
-	Name        *string        `json:"name,omitempty"`
-	Expression  *string        `json:"expression,omitempty"`
-	ObjectField *string        `json:"object_field,omitempty"`
+	Managed    NullableString `json:"managed,omitempty"`
+	Name       *string        `json:"name,omitempty"`
+	Expression *string        `json:"expression,omitempty"`
 }
 
 // NewPatchedLDAPPropertyMappingRequest instantiates a new PatchedLDAPPropertyMappingRequest object
@@ -148,38 +147,6 @@ func (o *PatchedLDAPPropertyMappingRequest) SetExpression(v string) {
 	o.Expression = &v
 }
 
-// GetObjectField returns the ObjectField field value if set, zero value otherwise.
-func (o *PatchedLDAPPropertyMappingRequest) GetObjectField() string {
-	if o == nil || o.ObjectField == nil {
-		var ret string
-		return ret
-	}
-	return *o.ObjectField
-}
-
-// GetObjectFieldOk returns a tuple with the ObjectField field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedLDAPPropertyMappingRequest) GetObjectFieldOk() (*string, bool) {
-	if o == nil || o.ObjectField == nil {
-		return nil, false
-	}
-	return o.ObjectField, true
-}
-
-// HasObjectField returns a boolean if a field has been set.
-func (o *PatchedLDAPPropertyMappingRequest) HasObjectField() bool {
-	if o != nil && o.ObjectField != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetObjectField gets a reference to the given string and assigns it to the ObjectField field.
-func (o *PatchedLDAPPropertyMappingRequest) SetObjectField(v string) {
-	o.ObjectField = &v
-}
-
 func (o PatchedLDAPPropertyMappingRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Managed.IsSet() {
@@ -190,9 +157,6 @@ func (o PatchedLDAPPropertyMappingRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Expression != nil {
 		toSerialize["expression"] = o.Expression
-	}
-	if o.ObjectField != nil {
-		toSerialize["object_field"] = o.ObjectField
 	}
 	return json.Marshal(toSerialize)
 }

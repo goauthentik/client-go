@@ -507,7 +507,7 @@ import (
 )
 
 func main() {
-    lDAPPropertyMappingRequest := *openapiclient.NewLDAPPropertyMappingRequest("Name_example", "Expression_example", "ObjectField_example") // LDAPPropertyMappingRequest | 
+    lDAPPropertyMappingRequest := *openapiclient.NewLDAPPropertyMappingRequest("Name_example", "Expression_example") // LDAPPropertyMappingRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -622,7 +622,7 @@ Name | Type | Description  | Notes
 
 ## PropertymappingsLdapList
 
-> PaginatedLDAPPropertyMappingList PropertymappingsLdapList(ctx).Expression(expression).Managed(managed).Name(name).ObjectField(objectField).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
+> PaginatedLDAPPropertyMappingList PropertymappingsLdapList(ctx).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
 
 
 
@@ -644,7 +644,6 @@ func main() {
     expression := "expression_example" // string |  (optional)
     managed := []string{"Inner_example"} // []string |  (optional)
     name := "name_example" // string |  (optional)
-    objectField := "objectField_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
@@ -653,7 +652,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsLdapList(context.Background()).Expression(expression).Managed(managed).Name(name).ObjectField(objectField).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsLdapList(context.Background()).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsLdapList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -677,7 +676,6 @@ Name | Type | Description  | Notes
  **expression** | **string** |  | 
  **managed** | **[]string** |  | 
  **name** | **string** |  | 
- **objectField** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
@@ -866,7 +864,7 @@ import (
 
 func main() {
     pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Property Mapping.
-    lDAPPropertyMappingRequest := *openapiclient.NewLDAPPropertyMappingRequest("Name_example", "Expression_example", "ObjectField_example") // LDAPPropertyMappingRequest | 
+    lDAPPropertyMappingRequest := *openapiclient.NewLDAPPropertyMappingRequest("Name_example", "Expression_example") // LDAPPropertyMappingRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

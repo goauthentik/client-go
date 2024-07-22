@@ -30,14 +30,13 @@ type LDAPPropertyMapping struct {
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
 	MetaModelName string `json:"meta_model_name"`
-	ObjectField   string `json:"object_field"`
 }
 
 // NewLDAPPropertyMapping instantiates a new LDAPPropertyMapping object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLDAPPropertyMapping(pk string, name string, expression string, component string, verboseName string, verboseNamePlural string, metaModelName string, objectField string) *LDAPPropertyMapping {
+func NewLDAPPropertyMapping(pk string, name string, expression string, component string, verboseName string, verboseNamePlural string, metaModelName string) *LDAPPropertyMapping {
 	this := LDAPPropertyMapping{}
 	this.Pk = pk
 	this.Name = name
@@ -46,7 +45,6 @@ func NewLDAPPropertyMapping(pk string, name string, expression string, component
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
-	this.ObjectField = objectField
 	return &this
 }
 
@@ -269,30 +267,6 @@ func (o *LDAPPropertyMapping) SetMetaModelName(v string) {
 	o.MetaModelName = v
 }
 
-// GetObjectField returns the ObjectField field value
-func (o *LDAPPropertyMapping) GetObjectField() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ObjectField
-}
-
-// GetObjectFieldOk returns a tuple with the ObjectField field value
-// and a boolean to check if the value has been set.
-func (o *LDAPPropertyMapping) GetObjectFieldOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ObjectField, true
-}
-
-// SetObjectField sets field value
-func (o *LDAPPropertyMapping) SetObjectField(v string) {
-	o.ObjectField = v
-}
-
 func (o LDAPPropertyMapping) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -318,9 +292,6 @@ func (o LDAPPropertyMapping) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if true {
-		toSerialize["object_field"] = o.ObjectField
 	}
 	return json.Marshal(toSerialize)
 }

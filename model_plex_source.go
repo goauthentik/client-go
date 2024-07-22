@@ -26,7 +26,9 @@ type PlexSource struct {
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
-	EnrollmentFlow NullableString `json:"enrollment_flow,omitempty"`
+	EnrollmentFlow        NullableString `json:"enrollment_flow,omitempty"`
+	UserPropertyMappings  []string       `json:"user_property_mappings,omitempty"`
+	GroupPropertyMappings []string       `json:"group_property_mappings,omitempty"`
 	// Get object component so that we know how to edit the object
 	Component string `json:"component"`
 	// Return object's verbose_name
@@ -267,6 +269,70 @@ func (o *PlexSource) SetEnrollmentFlowNil() {
 // UnsetEnrollmentFlow ensures that no value is present for EnrollmentFlow, not even an explicit nil
 func (o *PlexSource) UnsetEnrollmentFlow() {
 	o.EnrollmentFlow.Unset()
+}
+
+// GetUserPropertyMappings returns the UserPropertyMappings field value if set, zero value otherwise.
+func (o *PlexSource) GetUserPropertyMappings() []string {
+	if o == nil || o.UserPropertyMappings == nil {
+		var ret []string
+		return ret
+	}
+	return o.UserPropertyMappings
+}
+
+// GetUserPropertyMappingsOk returns a tuple with the UserPropertyMappings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PlexSource) GetUserPropertyMappingsOk() ([]string, bool) {
+	if o == nil || o.UserPropertyMappings == nil {
+		return nil, false
+	}
+	return o.UserPropertyMappings, true
+}
+
+// HasUserPropertyMappings returns a boolean if a field has been set.
+func (o *PlexSource) HasUserPropertyMappings() bool {
+	if o != nil && o.UserPropertyMappings != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserPropertyMappings gets a reference to the given []string and assigns it to the UserPropertyMappings field.
+func (o *PlexSource) SetUserPropertyMappings(v []string) {
+	o.UserPropertyMappings = v
+}
+
+// GetGroupPropertyMappings returns the GroupPropertyMappings field value if set, zero value otherwise.
+func (o *PlexSource) GetGroupPropertyMappings() []string {
+	if o == nil || o.GroupPropertyMappings == nil {
+		var ret []string
+		return ret
+	}
+	return o.GroupPropertyMappings
+}
+
+// GetGroupPropertyMappingsOk returns a tuple with the GroupPropertyMappings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PlexSource) GetGroupPropertyMappingsOk() ([]string, bool) {
+	if o == nil || o.GroupPropertyMappings == nil {
+		return nil, false
+	}
+	return o.GroupPropertyMappings, true
+}
+
+// HasGroupPropertyMappings returns a boolean if a field has been set.
+func (o *PlexSource) HasGroupPropertyMappings() bool {
+	if o != nil && o.GroupPropertyMappings != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupPropertyMappings gets a reference to the given []string and assigns it to the GroupPropertyMappings field.
+func (o *PlexSource) SetGroupPropertyMappings(v []string) {
+	o.GroupPropertyMappings = v
 }
 
 // GetComponent returns the Component field value
@@ -650,6 +716,12 @@ func (o PlexSource) MarshalJSON() ([]byte, error) {
 	}
 	if o.EnrollmentFlow.IsSet() {
 		toSerialize["enrollment_flow"] = o.EnrollmentFlow.Get()
+	}
+	if o.UserPropertyMappings != nil {
+		toSerialize["user_property_mappings"] = o.UserPropertyMappings
+	}
+	if o.GroupPropertyMappings != nil {
+		toSerialize["group_property_mappings"] = o.GroupPropertyMappings
 	}
 	if true {
 		toSerialize["component"] = o.Component

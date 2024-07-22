@@ -853,7 +853,7 @@ Name | Type | Description  | Notes
 
 ## SourcesLdapList
 
-> PaginatedLDAPSourceList SourcesLdapList(ctx).AdditionalGroupDn(additionalGroupDn).AdditionalUserDn(additionalUserDn).BaseDn(baseDn).BindCn(bindCn).ClientCertificate(clientCertificate).Enabled(enabled).GroupMembershipField(groupMembershipField).GroupObjectFilter(groupObjectFilter).Name(name).ObjectUniquenessField(objectUniquenessField).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).PeerCertificate(peerCertificate).PropertyMappings(propertyMappings).PropertyMappingsGroup(propertyMappingsGroup).Search(search).ServerUri(serverUri).Slug(slug).Sni(sni).StartTls(startTls).SyncGroups(syncGroups).SyncParentGroup(syncParentGroup).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).UserObjectFilter(userObjectFilter).Execute()
+> PaginatedLDAPSourceList SourcesLdapList(ctx).AdditionalGroupDn(additionalGroupDn).AdditionalUserDn(additionalUserDn).BaseDn(baseDn).BindCn(bindCn).ClientCertificate(clientCertificate).Enabled(enabled).GroupMembershipField(groupMembershipField).GroupObjectFilter(groupObjectFilter).GroupPropertyMappings(groupPropertyMappings).Name(name).ObjectUniquenessField(objectUniquenessField).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).PeerCertificate(peerCertificate).Search(search).ServerUri(serverUri).Slug(slug).Sni(sni).StartTls(startTls).SyncGroups(syncGroups).SyncParentGroup(syncParentGroup).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).UserObjectFilter(userObjectFilter).UserPropertyMappings(userPropertyMappings).Execute()
 
 
 
@@ -880,6 +880,7 @@ func main() {
     enabled := true // bool |  (optional)
     groupMembershipField := "groupMembershipField_example" // string |  (optional)
     groupObjectFilter := "groupObjectFilter_example" // string |  (optional)
+    groupPropertyMappings := []string{"Inner_example"} // []string |  (optional)
     name := "name_example" // string |  (optional)
     objectUniquenessField := "objectUniquenessField_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
@@ -887,8 +888,6 @@ func main() {
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     passwordLoginUpdateInternalPassword := true // bool |  (optional)
     peerCertificate := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    propertyMappings := []string{"Inner_example"} // []string |  (optional)
-    propertyMappingsGroup := []string{"Inner_example"} // []string |  (optional)
     search := "search_example" // string | A search term. (optional)
     serverUri := "serverUri_example" // string |  (optional)
     slug := "slug_example" // string |  (optional)
@@ -899,10 +898,11 @@ func main() {
     syncUsers := true // bool |  (optional)
     syncUsersPassword := true // bool |  (optional)
     userObjectFilter := "userObjectFilter_example" // string |  (optional)
+    userPropertyMappings := []string{"Inner_example"} // []string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesLdapList(context.Background()).AdditionalGroupDn(additionalGroupDn).AdditionalUserDn(additionalUserDn).BaseDn(baseDn).BindCn(bindCn).ClientCertificate(clientCertificate).Enabled(enabled).GroupMembershipField(groupMembershipField).GroupObjectFilter(groupObjectFilter).Name(name).ObjectUniquenessField(objectUniquenessField).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).PeerCertificate(peerCertificate).PropertyMappings(propertyMappings).PropertyMappingsGroup(propertyMappingsGroup).Search(search).ServerUri(serverUri).Slug(slug).Sni(sni).StartTls(startTls).SyncGroups(syncGroups).SyncParentGroup(syncParentGroup).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).UserObjectFilter(userObjectFilter).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesLdapList(context.Background()).AdditionalGroupDn(additionalGroupDn).AdditionalUserDn(additionalUserDn).BaseDn(baseDn).BindCn(bindCn).ClientCertificate(clientCertificate).Enabled(enabled).GroupMembershipField(groupMembershipField).GroupObjectFilter(groupObjectFilter).GroupPropertyMappings(groupPropertyMappings).Name(name).ObjectUniquenessField(objectUniquenessField).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).PeerCertificate(peerCertificate).Search(search).ServerUri(serverUri).Slug(slug).Sni(sni).StartTls(startTls).SyncGroups(syncGroups).SyncParentGroup(syncParentGroup).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).UserObjectFilter(userObjectFilter).UserPropertyMappings(userPropertyMappings).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -931,6 +931,7 @@ Name | Type | Description  | Notes
  **enabled** | **bool** |  | 
  **groupMembershipField** | **string** |  | 
  **groupObjectFilter** | **string** |  | 
+ **groupPropertyMappings** | **[]string** |  | 
  **name** | **string** |  | 
  **objectUniquenessField** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
@@ -938,8 +939,6 @@ Name | Type | Description  | Notes
  **pageSize** | **int32** | Number of results to return per page. | 
  **passwordLoginUpdateInternalPassword** | **bool** |  | 
  **peerCertificate** | **string** |  | 
- **propertyMappings** | **[]string** |  | 
- **propertyMappingsGroup** | **[]string** |  | 
  **search** | **string** | A search term. | 
  **serverUri** | **string** |  | 
  **slug** | **string** |  | 
@@ -950,6 +949,7 @@ Name | Type | Description  | Notes
  **syncUsers** | **bool** |  | 
  **syncUsersPassword** | **bool** |  | 
  **userObjectFilter** | **string** |  | 
+ **userPropertyMappings** | **[]string** |  | 
 
 ### Return type
 

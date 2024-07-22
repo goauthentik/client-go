@@ -12,13 +12,12 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**ObjectField** | **string** |  | 
 
 ## Methods
 
 ### NewLDAPPropertyMapping
 
-`func NewLDAPPropertyMapping(pk string, name string, expression string, component string, verboseName string, verboseNamePlural string, metaModelName string, objectField string, ) *LDAPPropertyMapping`
+`func NewLDAPPropertyMapping(pk string, name string, expression string, component string, verboseName string, verboseNamePlural string, metaModelName string, ) *LDAPPropertyMapping`
 
 NewLDAPPropertyMapping instantiates a new LDAPPropertyMapping object
 This constructor will assign default values to properties that have it defined,
@@ -206,26 +205,6 @@ and a boolean to check if the value has been set.
 `func (o *LDAPPropertyMapping) SetMetaModelName(v string)`
 
 SetMetaModelName sets MetaModelName field to given value.
-
-
-### GetObjectField
-
-`func (o *LDAPPropertyMapping) GetObjectField() string`
-
-GetObjectField returns the ObjectField field if non-nil, zero value otherwise.
-
-### GetObjectFieldOk
-
-`func (o *LDAPPropertyMapping) GetObjectFieldOk() (*string, bool)`
-
-GetObjectFieldOk returns a tuple with the ObjectField field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetObjectField
-
-`func (o *LDAPPropertyMapping) SetObjectField(v string)`
-
-SetObjectField sets ObjectField field to given value.
 
 
 

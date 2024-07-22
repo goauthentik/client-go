@@ -25,8 +25,10 @@ type PatchedPlexSourceRequest struct {
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
-	EnrollmentFlow   NullableString    `json:"enrollment_flow,omitempty"`
-	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
+	EnrollmentFlow        NullableString    `json:"enrollment_flow,omitempty"`
+	UserPropertyMappings  []string          `json:"user_property_mappings,omitempty"`
+	GroupPropertyMappings []string          `json:"group_property_mappings,omitempty"`
+	PolicyEngineMode      *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	UserPathTemplate *string               `json:"user_path_template,omitempty"`
@@ -237,6 +239,70 @@ func (o *PatchedPlexSourceRequest) SetEnrollmentFlowNil() {
 // UnsetEnrollmentFlow ensures that no value is present for EnrollmentFlow, not even an explicit nil
 func (o *PatchedPlexSourceRequest) UnsetEnrollmentFlow() {
 	o.EnrollmentFlow.Unset()
+}
+
+// GetUserPropertyMappings returns the UserPropertyMappings field value if set, zero value otherwise.
+func (o *PatchedPlexSourceRequest) GetUserPropertyMappings() []string {
+	if o == nil || o.UserPropertyMappings == nil {
+		var ret []string
+		return ret
+	}
+	return o.UserPropertyMappings
+}
+
+// GetUserPropertyMappingsOk returns a tuple with the UserPropertyMappings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedPlexSourceRequest) GetUserPropertyMappingsOk() ([]string, bool) {
+	if o == nil || o.UserPropertyMappings == nil {
+		return nil, false
+	}
+	return o.UserPropertyMappings, true
+}
+
+// HasUserPropertyMappings returns a boolean if a field has been set.
+func (o *PatchedPlexSourceRequest) HasUserPropertyMappings() bool {
+	if o != nil && o.UserPropertyMappings != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserPropertyMappings gets a reference to the given []string and assigns it to the UserPropertyMappings field.
+func (o *PatchedPlexSourceRequest) SetUserPropertyMappings(v []string) {
+	o.UserPropertyMappings = v
+}
+
+// GetGroupPropertyMappings returns the GroupPropertyMappings field value if set, zero value otherwise.
+func (o *PatchedPlexSourceRequest) GetGroupPropertyMappings() []string {
+	if o == nil || o.GroupPropertyMappings == nil {
+		var ret []string
+		return ret
+	}
+	return o.GroupPropertyMappings
+}
+
+// GetGroupPropertyMappingsOk returns a tuple with the GroupPropertyMappings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedPlexSourceRequest) GetGroupPropertyMappingsOk() ([]string, bool) {
+	if o == nil || o.GroupPropertyMappings == nil {
+		return nil, false
+	}
+	return o.GroupPropertyMappings, true
+}
+
+// HasGroupPropertyMappings returns a boolean if a field has been set.
+func (o *PatchedPlexSourceRequest) HasGroupPropertyMappings() bool {
+	if o != nil && o.GroupPropertyMappings != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupPropertyMappings gets a reference to the given []string and assigns it to the GroupPropertyMappings field.
+func (o *PatchedPlexSourceRequest) SetGroupPropertyMappings(v []string) {
+	o.GroupPropertyMappings = v
 }
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
@@ -479,6 +545,12 @@ func (o PatchedPlexSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.EnrollmentFlow.IsSet() {
 		toSerialize["enrollment_flow"] = o.EnrollmentFlow.Get()
+	}
+	if o.UserPropertyMappings != nil {
+		toSerialize["user_property_mappings"] = o.UserPropertyMappings
+	}
+	if o.GroupPropertyMappings != nil {
+		toSerialize["group_property_mappings"] = o.GroupPropertyMappings
 	}
 	if o.PolicyEngineMode != nil {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode

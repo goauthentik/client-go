@@ -18,21 +18,19 @@ import (
 // LDAPPropertyMappingRequest LDAP PropertyMapping Serializer
 type LDAPPropertyMappingRequest struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed     NullableString `json:"managed,omitempty"`
-	Name        string         `json:"name"`
-	Expression  string         `json:"expression"`
-	ObjectField string         `json:"object_field"`
+	Managed    NullableString `json:"managed,omitempty"`
+	Name       string         `json:"name"`
+	Expression string         `json:"expression"`
 }
 
 // NewLDAPPropertyMappingRequest instantiates a new LDAPPropertyMappingRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLDAPPropertyMappingRequest(name string, expression string, objectField string) *LDAPPropertyMappingRequest {
+func NewLDAPPropertyMappingRequest(name string, expression string) *LDAPPropertyMappingRequest {
 	this := LDAPPropertyMappingRequest{}
 	this.Name = name
 	this.Expression = expression
-	this.ObjectField = objectField
 	return &this
 }
 
@@ -135,30 +133,6 @@ func (o *LDAPPropertyMappingRequest) SetExpression(v string) {
 	o.Expression = v
 }
 
-// GetObjectField returns the ObjectField field value
-func (o *LDAPPropertyMappingRequest) GetObjectField() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ObjectField
-}
-
-// GetObjectFieldOk returns a tuple with the ObjectField field value
-// and a boolean to check if the value has been set.
-func (o *LDAPPropertyMappingRequest) GetObjectFieldOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ObjectField, true
-}
-
-// SetObjectField sets field value
-func (o *LDAPPropertyMappingRequest) SetObjectField(v string) {
-	o.ObjectField = v
-}
-
 func (o LDAPPropertyMappingRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Managed.IsSet() {
@@ -169,9 +143,6 @@ func (o LDAPPropertyMappingRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["expression"] = o.Expression
-	}
-	if true {
-		toSerialize["object_field"] = o.ObjectField
 	}
 	return json.Marshal(toSerialize)
 }

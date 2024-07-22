@@ -1426,6 +1426,7 @@ type ApiSourcesLdapListRequest struct {
 	enabled                             *bool
 	groupMembershipField                *string
 	groupObjectFilter                   *string
+	groupPropertyMappings               *[]string
 	name                                *string
 	objectUniquenessField               *string
 	ordering                            *string
@@ -1433,8 +1434,6 @@ type ApiSourcesLdapListRequest struct {
 	pageSize                            *int32
 	passwordLoginUpdateInternalPassword *bool
 	peerCertificate                     *string
-	propertyMappings                    *[]string
-	propertyMappingsGroup               *[]string
 	search                              *string
 	serverUri                           *string
 	slug                                *string
@@ -1445,6 +1444,7 @@ type ApiSourcesLdapListRequest struct {
 	syncUsers                           *bool
 	syncUsersPassword                   *bool
 	userObjectFilter                    *string
+	userPropertyMappings                *[]string
 }
 
 func (r ApiSourcesLdapListRequest) AdditionalGroupDn(additionalGroupDn string) ApiSourcesLdapListRequest {
@@ -1487,6 +1487,11 @@ func (r ApiSourcesLdapListRequest) GroupObjectFilter(groupObjectFilter string) A
 	return r
 }
 
+func (r ApiSourcesLdapListRequest) GroupPropertyMappings(groupPropertyMappings []string) ApiSourcesLdapListRequest {
+	r.groupPropertyMappings = &groupPropertyMappings
+	return r
+}
+
 func (r ApiSourcesLdapListRequest) Name(name string) ApiSourcesLdapListRequest {
 	r.name = &name
 	return r
@@ -1522,16 +1527,6 @@ func (r ApiSourcesLdapListRequest) PasswordLoginUpdateInternalPassword(passwordL
 
 func (r ApiSourcesLdapListRequest) PeerCertificate(peerCertificate string) ApiSourcesLdapListRequest {
 	r.peerCertificate = &peerCertificate
-	return r
-}
-
-func (r ApiSourcesLdapListRequest) PropertyMappings(propertyMappings []string) ApiSourcesLdapListRequest {
-	r.propertyMappings = &propertyMappings
-	return r
-}
-
-func (r ApiSourcesLdapListRequest) PropertyMappingsGroup(propertyMappingsGroup []string) ApiSourcesLdapListRequest {
-	r.propertyMappingsGroup = &propertyMappingsGroup
 	return r
 }
 
@@ -1583,6 +1578,11 @@ func (r ApiSourcesLdapListRequest) SyncUsersPassword(syncUsersPassword bool) Api
 
 func (r ApiSourcesLdapListRequest) UserObjectFilter(userObjectFilter string) ApiSourcesLdapListRequest {
 	r.userObjectFilter = &userObjectFilter
+	return r
+}
+
+func (r ApiSourcesLdapListRequest) UserPropertyMappings(userPropertyMappings []string) ApiSourcesLdapListRequest {
+	r.userPropertyMappings = &userPropertyMappings
 	return r
 }
 
@@ -1651,6 +1651,17 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 	if r.groupObjectFilter != nil {
 		localVarQueryParams.Add("group_object_filter", parameterToString(*r.groupObjectFilter, ""))
 	}
+	if r.groupPropertyMappings != nil {
+		t := *r.groupPropertyMappings
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("group_property_mappings", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("group_property_mappings", parameterToString(t, "multi"))
+		}
+	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
@@ -1671,28 +1682,6 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 	}
 	if r.peerCertificate != nil {
 		localVarQueryParams.Add("peer_certificate", parameterToString(*r.peerCertificate, ""))
-	}
-	if r.propertyMappings != nil {
-		t := *r.propertyMappings
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("property_mappings", parameterToString(s.Index(i), "multi"))
-			}
-		} else {
-			localVarQueryParams.Add("property_mappings", parameterToString(t, "multi"))
-		}
-	}
-	if r.propertyMappingsGroup != nil {
-		t := *r.propertyMappingsGroup
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("property_mappings_group", parameterToString(s.Index(i), "multi"))
-			}
-		} else {
-			localVarQueryParams.Add("property_mappings_group", parameterToString(t, "multi"))
-		}
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
@@ -1723,6 +1712,17 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 	}
 	if r.userObjectFilter != nil {
 		localVarQueryParams.Add("user_object_filter", parameterToString(*r.userObjectFilter, ""))
+	}
+	if r.userPropertyMappings != nil {
+		t := *r.userPropertyMappings
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("user_property_mappings", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("user_property_mappings", parameterToString(t, "multi"))
+		}
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **Managed** | Pointer to **NullableString** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Expression** | Pointer to **string** |  | [optional] 
-**ObjectField** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -112,31 +111,6 @@ SetExpression sets Expression field to given value.
 `func (o *PatchedLDAPPropertyMappingRequest) HasExpression() bool`
 
 HasExpression returns a boolean if a field has been set.
-
-### GetObjectField
-
-`func (o *PatchedLDAPPropertyMappingRequest) GetObjectField() string`
-
-GetObjectField returns the ObjectField field if non-nil, zero value otherwise.
-
-### GetObjectFieldOk
-
-`func (o *PatchedLDAPPropertyMappingRequest) GetObjectFieldOk() (*string, bool)`
-
-GetObjectFieldOk returns a tuple with the ObjectField field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetObjectField
-
-`func (o *PatchedLDAPPropertyMappingRequest) SetObjectField(v string)`
-
-SetObjectField sets ObjectField field to given value.
-
-### HasObjectField
-
-`func (o *PatchedLDAPPropertyMappingRequest) HasObjectField() bool`
-
-HasObjectField returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

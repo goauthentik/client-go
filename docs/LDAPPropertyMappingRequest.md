@@ -7,13 +7,12 @@ Name | Type | Description | Notes
 **Managed** | Pointer to **NullableString** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [optional] 
 **Name** | **string** |  | 
 **Expression** | **string** |  | 
-**ObjectField** | **string** |  | 
 
 ## Methods
 
 ### NewLDAPPropertyMappingRequest
 
-`func NewLDAPPropertyMappingRequest(name string, expression string, objectField string, ) *LDAPPropertyMappingRequest`
+`func NewLDAPPropertyMappingRequest(name string, expression string, ) *LDAPPropertyMappingRequest`
 
 NewLDAPPropertyMappingRequest instantiates a new LDAPPropertyMappingRequest object
 This constructor will assign default values to properties that have it defined,
@@ -101,26 +100,6 @@ and a boolean to check if the value has been set.
 `func (o *LDAPPropertyMappingRequest) SetExpression(v string)`
 
 SetExpression sets Expression field to given value.
-
-
-### GetObjectField
-
-`func (o *LDAPPropertyMappingRequest) GetObjectField() string`
-
-GetObjectField returns the ObjectField field if non-nil, zero value otherwise.
-
-### GetObjectFieldOk
-
-`func (o *LDAPPropertyMappingRequest) GetObjectFieldOk() (*string, bool)`
-
-GetObjectFieldOk returns a tuple with the ObjectField field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetObjectField
-
-`func (o *LDAPPropertyMappingRequest) SetObjectField(v string)`
-
-SetObjectField sets ObjectField field to given value.
 
 
 
