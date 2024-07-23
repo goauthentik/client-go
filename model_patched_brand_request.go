@@ -29,6 +29,8 @@ type PatchedBrandRequest struct {
 	FlowUnenrollment   NullableString `json:"flow_unenrollment,omitempty"`
 	FlowUserSettings   NullableString `json:"flow_user_settings,omitempty"`
 	FlowDeviceCode     NullableString `json:"flow_device_code,omitempty"`
+	// When set, external users will be redirected to this application after authenticating.
+	DefaultApplication NullableString `json:"default_application,omitempty"`
 	// Web Certificate used by the authentik Core webserver.
 	WebCertificate NullableString `json:"web_certificate,omitempty"`
 	Attributes     interface{}    `json:"attributes,omitempty"`
@@ -469,6 +471,49 @@ func (o *PatchedBrandRequest) UnsetFlowDeviceCode() {
 	o.FlowDeviceCode.Unset()
 }
 
+// GetDefaultApplication returns the DefaultApplication field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedBrandRequest) GetDefaultApplication() string {
+	if o == nil || o.DefaultApplication.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.DefaultApplication.Get()
+}
+
+// GetDefaultApplicationOk returns a tuple with the DefaultApplication field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedBrandRequest) GetDefaultApplicationOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DefaultApplication.Get(), o.DefaultApplication.IsSet()
+}
+
+// HasDefaultApplication returns a boolean if a field has been set.
+func (o *PatchedBrandRequest) HasDefaultApplication() bool {
+	if o != nil && o.DefaultApplication.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultApplication gets a reference to the given NullableString and assigns it to the DefaultApplication field.
+func (o *PatchedBrandRequest) SetDefaultApplication(v string) {
+	o.DefaultApplication.Set(&v)
+}
+
+// SetDefaultApplicationNil sets the value for DefaultApplication to be an explicit nil
+func (o *PatchedBrandRequest) SetDefaultApplicationNil() {
+	o.DefaultApplication.Set(nil)
+}
+
+// UnsetDefaultApplication ensures that no value is present for DefaultApplication, not even an explicit nil
+func (o *PatchedBrandRequest) UnsetDefaultApplication() {
+	o.DefaultApplication.Unset()
+}
+
 // GetWebCertificate returns the WebCertificate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedBrandRequest) GetWebCertificate() string {
 	if o == nil || o.WebCertificate.Get() == nil {
@@ -579,6 +624,9 @@ func (o PatchedBrandRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.FlowDeviceCode.IsSet() {
 		toSerialize["flow_device_code"] = o.FlowDeviceCode.Get()
+	}
+	if o.DefaultApplication.IsSet() {
+		toSerialize["default_application"] = o.DefaultApplication.Get()
 	}
 	if o.WebCertificate.IsSet() {
 		toSerialize["web_certificate"] = o.WebCertificate.Get()

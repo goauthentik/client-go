@@ -38417,6 +38417,7 @@ components:
       description: Brand Serializer
       example:
         branding_logo: branding_logo
+        default_application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -38471,6 +38472,12 @@ components:
           format: uuid
           nullable: true
           type: string
+        default_application:
+          description: "When set, external users will be redirected to this application\
+            \ after authenticating."
+          format: uuid
+          nullable: true
+          type: string
         web_certificate:
           description: Web Certificate used by the authentik Core webserver.
           format: uuid
@@ -38485,6 +38492,7 @@ components:
       description: Brand Serializer
       example:
         branding_logo: branding_logo
+        default_application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -38535,6 +38543,12 @@ components:
           nullable: true
           type: string
         flow_device_code:
+          format: uuid
+          nullable: true
+          type: string
+        default_application:
+          description: "When set, external users will be redirected to this application\
+            \ after authenticating."
           format: uuid
           nullable: true
           type: string
@@ -46238,6 +46252,7 @@ components:
           total_pages: 5.637376656633329
         results:
         - branding_logo: branding_logo
+          default_application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -46252,6 +46267,7 @@ components:
           brand_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - branding_logo: branding_logo
+          default_application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -53250,6 +53266,7 @@ components:
       description: Brand Serializer
       example:
         branding_logo: branding_logo
+        default_application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -53300,6 +53317,12 @@ components:
           nullable: true
           type: string
         flow_device_code:
+          format: uuid
+          nullable: true
+          type: string
+        default_application:
+          description: "When set, external users will be redirected to this application\
+            \ after authenticating."
           format: uuid
           nullable: true
           type: string

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **FlowUnenrollment** | Pointer to **NullableString** |  | [optional] 
 **FlowUserSettings** | Pointer to **NullableString** |  | [optional] 
 **FlowDeviceCode** | Pointer to **NullableString** |  | [optional] 
+**DefaultApplication** | Pointer to **NullableString** | When set, external users will be redirected to this application after authenticating. | [optional] 
 **WebCertificate** | Pointer to **NullableString** | Web Certificate used by the authentik Core webserver. | [optional] 
 **Attributes** | Pointer to **interface{}** |  | [optional] 
 
@@ -367,6 +368,41 @@ HasFlowDeviceCode returns a boolean if a field has been set.
 `func (o *BrandRequest) UnsetFlowDeviceCode()`
 
 UnsetFlowDeviceCode ensures that no value is present for FlowDeviceCode, not even an explicit nil
+### GetDefaultApplication
+
+`func (o *BrandRequest) GetDefaultApplication() string`
+
+GetDefaultApplication returns the DefaultApplication field if non-nil, zero value otherwise.
+
+### GetDefaultApplicationOk
+
+`func (o *BrandRequest) GetDefaultApplicationOk() (*string, bool)`
+
+GetDefaultApplicationOk returns a tuple with the DefaultApplication field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultApplication
+
+`func (o *BrandRequest) SetDefaultApplication(v string)`
+
+SetDefaultApplication sets DefaultApplication field to given value.
+
+### HasDefaultApplication
+
+`func (o *BrandRequest) HasDefaultApplication() bool`
+
+HasDefaultApplication returns a boolean if a field has been set.
+
+### SetDefaultApplicationNil
+
+`func (o *BrandRequest) SetDefaultApplicationNil(b bool)`
+
+ SetDefaultApplicationNil sets the value for DefaultApplication to be an explicit nil
+
+### UnsetDefaultApplication
+`func (o *BrandRequest) UnsetDefaultApplication()`
+
+UnsetDefaultApplication ensures that no value is present for DefaultApplication, not even an explicit nil
 ### GetWebCertificate
 
 `func (o *BrandRequest) GetWebCertificate() string`
