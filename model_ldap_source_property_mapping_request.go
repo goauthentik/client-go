@@ -15,35 +15,35 @@ import (
 	"encoding/json"
 )
 
-// LDAPPropertyMappingRequest LDAP PropertyMapping Serializer
-type LDAPPropertyMappingRequest struct {
+// LDAPSourcePropertyMappingRequest LDAP PropertyMapping Serializer
+type LDAPSourcePropertyMappingRequest struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed    NullableString `json:"managed,omitempty"`
 	Name       string         `json:"name"`
 	Expression string         `json:"expression"`
 }
 
-// NewLDAPPropertyMappingRequest instantiates a new LDAPPropertyMappingRequest object
+// NewLDAPSourcePropertyMappingRequest instantiates a new LDAPSourcePropertyMappingRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLDAPPropertyMappingRequest(name string, expression string) *LDAPPropertyMappingRequest {
-	this := LDAPPropertyMappingRequest{}
+func NewLDAPSourcePropertyMappingRequest(name string, expression string) *LDAPSourcePropertyMappingRequest {
+	this := LDAPSourcePropertyMappingRequest{}
 	this.Name = name
 	this.Expression = expression
 	return &this
 }
 
-// NewLDAPPropertyMappingRequestWithDefaults instantiates a new LDAPPropertyMappingRequest object
+// NewLDAPSourcePropertyMappingRequestWithDefaults instantiates a new LDAPSourcePropertyMappingRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewLDAPPropertyMappingRequestWithDefaults() *LDAPPropertyMappingRequest {
-	this := LDAPPropertyMappingRequest{}
+func NewLDAPSourcePropertyMappingRequestWithDefaults() *LDAPSourcePropertyMappingRequest {
+	this := LDAPSourcePropertyMappingRequest{}
 	return &this
 }
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *LDAPPropertyMappingRequest) GetManaged() string {
+func (o *LDAPSourcePropertyMappingRequest) GetManaged() string {
 	if o == nil || o.Managed.Get() == nil {
 		var ret string
 		return ret
@@ -54,7 +54,7 @@ func (o *LDAPPropertyMappingRequest) GetManaged() string {
 // GetManagedOk returns a tuple with the Managed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *LDAPPropertyMappingRequest) GetManagedOk() (*string, bool) {
+func (o *LDAPSourcePropertyMappingRequest) GetManagedOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *LDAPPropertyMappingRequest) GetManagedOk() (*string, bool) {
 }
 
 // HasManaged returns a boolean if a field has been set.
-func (o *LDAPPropertyMappingRequest) HasManaged() bool {
+func (o *LDAPSourcePropertyMappingRequest) HasManaged() bool {
 	if o != nil && o.Managed.IsSet() {
 		return true
 	}
@@ -71,22 +71,22 @@ func (o *LDAPPropertyMappingRequest) HasManaged() bool {
 }
 
 // SetManaged gets a reference to the given NullableString and assigns it to the Managed field.
-func (o *LDAPPropertyMappingRequest) SetManaged(v string) {
+func (o *LDAPSourcePropertyMappingRequest) SetManaged(v string) {
 	o.Managed.Set(&v)
 }
 
 // SetManagedNil sets the value for Managed to be an explicit nil
-func (o *LDAPPropertyMappingRequest) SetManagedNil() {
+func (o *LDAPSourcePropertyMappingRequest) SetManagedNil() {
 	o.Managed.Set(nil)
 }
 
 // UnsetManaged ensures that no value is present for Managed, not even an explicit nil
-func (o *LDAPPropertyMappingRequest) UnsetManaged() {
+func (o *LDAPSourcePropertyMappingRequest) UnsetManaged() {
 	o.Managed.Unset()
 }
 
 // GetName returns the Name field value
-func (o *LDAPPropertyMappingRequest) GetName() string {
+func (o *LDAPSourcePropertyMappingRequest) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -97,7 +97,7 @@ func (o *LDAPPropertyMappingRequest) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *LDAPPropertyMappingRequest) GetNameOk() (*string, bool) {
+func (o *LDAPSourcePropertyMappingRequest) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -105,12 +105,12 @@ func (o *LDAPPropertyMappingRequest) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *LDAPPropertyMappingRequest) SetName(v string) {
+func (o *LDAPSourcePropertyMappingRequest) SetName(v string) {
 	o.Name = v
 }
 
 // GetExpression returns the Expression field value
-func (o *LDAPPropertyMappingRequest) GetExpression() string {
+func (o *LDAPSourcePropertyMappingRequest) GetExpression() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -121,7 +121,7 @@ func (o *LDAPPropertyMappingRequest) GetExpression() string {
 
 // GetExpressionOk returns a tuple with the Expression field value
 // and a boolean to check if the value has been set.
-func (o *LDAPPropertyMappingRequest) GetExpressionOk() (*string, bool) {
+func (o *LDAPSourcePropertyMappingRequest) GetExpressionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -129,11 +129,11 @@ func (o *LDAPPropertyMappingRequest) GetExpressionOk() (*string, bool) {
 }
 
 // SetExpression sets field value
-func (o *LDAPPropertyMappingRequest) SetExpression(v string) {
+func (o *LDAPSourcePropertyMappingRequest) SetExpression(v string) {
 	o.Expression = v
 }
 
-func (o LDAPPropertyMappingRequest) MarshalJSON() ([]byte, error) {
+func (o LDAPSourcePropertyMappingRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
@@ -147,38 +147,38 @@ func (o LDAPPropertyMappingRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableLDAPPropertyMappingRequest struct {
-	value *LDAPPropertyMappingRequest
+type NullableLDAPSourcePropertyMappingRequest struct {
+	value *LDAPSourcePropertyMappingRequest
 	isSet bool
 }
 
-func (v NullableLDAPPropertyMappingRequest) Get() *LDAPPropertyMappingRequest {
+func (v NullableLDAPSourcePropertyMappingRequest) Get() *LDAPSourcePropertyMappingRequest {
 	return v.value
 }
 
-func (v *NullableLDAPPropertyMappingRequest) Set(val *LDAPPropertyMappingRequest) {
+func (v *NullableLDAPSourcePropertyMappingRequest) Set(val *LDAPSourcePropertyMappingRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableLDAPPropertyMappingRequest) IsSet() bool {
+func (v NullableLDAPSourcePropertyMappingRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableLDAPPropertyMappingRequest) Unset() {
+func (v *NullableLDAPSourcePropertyMappingRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableLDAPPropertyMappingRequest(val *LDAPPropertyMappingRequest) *NullableLDAPPropertyMappingRequest {
-	return &NullableLDAPPropertyMappingRequest{value: val, isSet: true}
+func NewNullableLDAPSourcePropertyMappingRequest(val *LDAPSourcePropertyMappingRequest) *NullableLDAPSourcePropertyMappingRequest {
+	return &NullableLDAPSourcePropertyMappingRequest{value: val, isSet: true}
 }
 
-func (v NullableLDAPPropertyMappingRequest) MarshalJSON() ([]byte, error) {
+func (v NullableLDAPSourcePropertyMappingRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableLDAPPropertyMappingRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableLDAPSourcePropertyMappingRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

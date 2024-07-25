@@ -1,67 +1,67 @@
-# PaginatedLDAPPropertyMappingList
+# PaginatedLDAPSourcePropertyMappingList
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
-**Results** | [**[]LDAPPropertyMapping**](LDAPPropertyMapping.md) |  | 
+**Results** | [**[]LDAPSourcePropertyMapping**](LDAPSourcePropertyMapping.md) |  | 
 
 ## Methods
 
-### NewPaginatedLDAPPropertyMappingList
+### NewPaginatedLDAPSourcePropertyMappingList
 
-`func NewPaginatedLDAPPropertyMappingList(pagination Pagination, results []LDAPPropertyMapping, ) *PaginatedLDAPPropertyMappingList`
+`func NewPaginatedLDAPSourcePropertyMappingList(pagination Pagination, results []LDAPSourcePropertyMapping, ) *PaginatedLDAPSourcePropertyMappingList`
 
-NewPaginatedLDAPPropertyMappingList instantiates a new PaginatedLDAPPropertyMappingList object
+NewPaginatedLDAPSourcePropertyMappingList instantiates a new PaginatedLDAPSourcePropertyMappingList object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewPaginatedLDAPPropertyMappingListWithDefaults
+### NewPaginatedLDAPSourcePropertyMappingListWithDefaults
 
-`func NewPaginatedLDAPPropertyMappingListWithDefaults() *PaginatedLDAPPropertyMappingList`
+`func NewPaginatedLDAPSourcePropertyMappingListWithDefaults() *PaginatedLDAPSourcePropertyMappingList`
 
-NewPaginatedLDAPPropertyMappingListWithDefaults instantiates a new PaginatedLDAPPropertyMappingList object
+NewPaginatedLDAPSourcePropertyMappingListWithDefaults instantiates a new PaginatedLDAPSourcePropertyMappingList object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedLDAPPropertyMappingList) GetPagination() Pagination`
+`func (o *PaginatedLDAPSourcePropertyMappingList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedLDAPPropertyMappingList) GetPaginationOk() (*Pagination, bool)`
+`func (o *PaginatedLDAPSourcePropertyMappingList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedLDAPPropertyMappingList) SetPagination(v Pagination)`
+`func (o *PaginatedLDAPSourcePropertyMappingList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 
 
 ### GetResults
 
-`func (o *PaginatedLDAPPropertyMappingList) GetResults() []LDAPPropertyMapping`
+`func (o *PaginatedLDAPSourcePropertyMappingList) GetResults() []LDAPSourcePropertyMapping`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *PaginatedLDAPPropertyMappingList) GetResultsOk() (*[]LDAPPropertyMapping, bool)`
+`func (o *PaginatedLDAPSourcePropertyMappingList) GetResultsOk() (*[]LDAPSourcePropertyMapping, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *PaginatedLDAPPropertyMappingList) SetResults(v []LDAPPropertyMapping)`
+`func (o *PaginatedLDAPSourcePropertyMappingList) SetResults(v []LDAPSourcePropertyMapping)`
 
 SetResults sets Results field to given value.
 

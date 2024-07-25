@@ -14985,320 +14985,6 @@ paths:
       - authentik: []
       tags:
       - propertymappings
-  /propertymappings/ldap/:
-    get:
-      description: LDAP PropertyMapping Viewset
-      operationId: propertymappings_ldap_list
-      parameters:
-      - explode: true
-        in: query
-        name: expression
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: managed
-        required: false
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-      - explode: true
-        in: query
-        name: name
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Which field to use when ordering the results.
-        explode: true
-        in: query
-        name: ordering
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: A page number within the paginated result set.
-        explode: true
-        in: query
-        name: page
-        required: false
-        schema:
-          type: integer
-        style: form
-      - description: Number of results to return per page.
-        explode: true
-        in: query
-        name: page_size
-        required: false
-        schema:
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: pm_uuid
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      - description: A search term.
-        explode: true
-        in: query
-        name: search
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaginatedLDAPPropertyMappingList'
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - propertymappings
-    post:
-      description: LDAP PropertyMapping Viewset
-      operationId: propertymappings_ldap_create
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/LDAPPropertyMappingRequest'
-        required: true
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LDAPPropertyMapping'
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - propertymappings
-  /propertymappings/ldap/{pm_uuid}/:
-    delete:
-      description: LDAP PropertyMapping Viewset
-      operationId: propertymappings_ldap_destroy
-      parameters:
-      - description: A UUID string identifying this LDAP Property Mapping.
-        explode: false
-        in: path
-        name: pm_uuid
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "204":
-          description: No response body
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - propertymappings
-    get:
-      description: LDAP PropertyMapping Viewset
-      operationId: propertymappings_ldap_retrieve
-      parameters:
-      - description: A UUID string identifying this LDAP Property Mapping.
-        explode: false
-        in: path
-        name: pm_uuid
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LDAPPropertyMapping'
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - propertymappings
-    patch:
-      description: LDAP PropertyMapping Viewset
-      operationId: propertymappings_ldap_partial_update
-      parameters:
-      - description: A UUID string identifying this LDAP Property Mapping.
-        explode: false
-        in: path
-        name: pm_uuid
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedLDAPPropertyMappingRequest'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LDAPPropertyMapping'
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - propertymappings
-    put:
-      description: LDAP PropertyMapping Viewset
-      operationId: propertymappings_ldap_update
-      parameters:
-      - description: A UUID string identifying this LDAP Property Mapping.
-        explode: false
-        in: path
-        name: pm_uuid
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/LDAPPropertyMappingRequest'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LDAPPropertyMapping'
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - propertymappings
-  /propertymappings/ldap/{pm_uuid}/used_by/:
-    get:
-      description: Get a list of all objects that use this object
-      operationId: propertymappings_ldap_used_by_list
-      parameters:
-      - description: A UUID string identifying this LDAP Property Mapping.
-        explode: false
-        in: path
-        name: pm_uuid
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/UsedBy'
-                type: array
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - propertymappings
   /propertymappings/notification/:
     get:
       description: NotificationWebhookMapping Viewset
@@ -17431,6 +17117,320 @@ paths:
       operationId: propertymappings_scope_used_by_list
       parameters:
       - description: A UUID string identifying this Scope Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+  /propertymappings/source/ldap/:
+    get:
+      description: LDAP PropertyMapping Viewset
+      operationId: propertymappings_source_ldap_list
+      parameters:
+      - explode: true
+        in: query
+        name: expression
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: managed
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: pm_uuid
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedLDAPSourcePropertyMappingList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    post:
+      description: LDAP PropertyMapping Viewset
+      operationId: propertymappings_source_ldap_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LDAPSourcePropertyMappingRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LDAPSourcePropertyMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+  /propertymappings/source/ldap/{pm_uuid}/:
+    delete:
+      description: LDAP PropertyMapping Viewset
+      operationId: propertymappings_source_ldap_destroy
+      parameters:
+      - description: A UUID string identifying this LDAP Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    get:
+      description: LDAP PropertyMapping Viewset
+      operationId: propertymappings_source_ldap_retrieve
+      parameters:
+      - description: A UUID string identifying this LDAP Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LDAPSourcePropertyMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    patch:
+      description: LDAP PropertyMapping Viewset
+      operationId: propertymappings_source_ldap_partial_update
+      parameters:
+      - description: A UUID string identifying this LDAP Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedLDAPSourcePropertyMappingRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LDAPSourcePropertyMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    put:
+      description: LDAP PropertyMapping Viewset
+      operationId: propertymappings_source_ldap_update
+      parameters:
+      - description: A UUID string identifying this LDAP Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LDAPSourcePropertyMappingRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LDAPSourcePropertyMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+  /propertymappings/source/ldap/{pm_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: propertymappings_source_ldap_used_by_list
+      parameters:
+      - description: A UUID string identifying this LDAP Source Property Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -23181,8 +23181,8 @@ paths:
           - authentik_providers_scim.scimmapping
           - authentik_providers_scim.scimprovider
           - authentik_rbac.role
-          - authentik_sources_ldap.ldappropertymapping
           - authentik_sources_ldap.ldapsource
+          - authentik_sources_ldap.ldapsourcepropertymapping
           - authentik_sources_oauth.oauthsource
           - authentik_sources_oauth.useroauthsourceconnection
           - authentik_sources_plex.plexsource
@@ -23417,8 +23417,8 @@ paths:
           - authentik_providers_scim.scimmapping
           - authentik_providers_scim.scimprovider
           - authentik_rbac.role
-          - authentik_sources_ldap.ldappropertymapping
           - authentik_sources_ldap.ldapsource
+          - authentik_sources_ldap.ldapsourcepropertymapping
           - authentik_sources_oauth.oauthsource
           - authentik_sources_oauth.useroauthsourceconnection
           - authentik_sources_plex.plexsource
@@ -42874,86 +42874,6 @@ components:
       - name
       - pk
       type: object
-    LDAPPropertyMapping:
-      description: LDAP PropertyMapping Serializer
-      example:
-        component: component
-        verbose_name: verbose_name
-        expression: expression
-        verbose_name_plural: verbose_name_plural
-        meta_model_name: meta_model_name
-        managed: managed
-        name: name
-        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        pk:
-          format: uuid
-          readOnly: true
-          title: Pm uuid
-          type: string
-        managed:
-          description: "Objects that are managed by authentik. These objects are created\
-            \ and updated automatically. This flag only indicates that an object can\
-            \ be overwritten by migrations. You can still modify the objects via the\
-            \ API, but expect changes to be overwritten in a later update."
-          nullable: true
-          title: Managed by authentik
-          type: string
-        name:
-          type: string
-        expression:
-          type: string
-        component:
-          description: Get object's component so that we know how to edit the object
-          readOnly: true
-          type: string
-        verbose_name:
-          description: Return object's verbose_name
-          readOnly: true
-          type: string
-        verbose_name_plural:
-          description: Return object's plural verbose_name
-          readOnly: true
-          type: string
-        meta_model_name:
-          description: Return internal model name
-          readOnly: true
-          type: string
-      required:
-      - component
-      - expression
-      - meta_model_name
-      - name
-      - pk
-      - verbose_name
-      - verbose_name_plural
-      type: object
-    LDAPPropertyMappingRequest:
-      description: LDAP PropertyMapping Serializer
-      example:
-        expression: expression
-        managed: managed
-        name: name
-      properties:
-        managed:
-          description: "Objects that are managed by authentik. These objects are created\
-            \ and updated automatically. This flag only indicates that an object can\
-            \ be overwritten by migrations. You can still modify the objects via the\
-            \ API, but expect changes to be overwritten in a later update."
-          minLength: 1
-          nullable: true
-          title: Managed by authentik
-          type: string
-        name:
-          minLength: 1
-          type: string
-        expression:
-          minLength: 1
-          type: string
-      required:
-      - expression
-      - name
-      type: object
     LDAPProvider:
       description: LDAPProvider Serializer
       example:
@@ -43382,6 +43302,86 @@ components:
       - slug
       - verbose_name
       - verbose_name_plural
+      type: object
+    LDAPSourcePropertyMapping:
+      description: LDAP PropertyMapping Serializer
+      example:
+        component: component
+        verbose_name: verbose_name
+        expression: expression
+        verbose_name_plural: verbose_name_plural
+        meta_model_name: meta_model_name
+        managed: managed
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Pm uuid
+          type: string
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          nullable: true
+          title: Managed by authentik
+          type: string
+        name:
+          type: string
+        expression:
+          type: string
+        component:
+          description: Get object's component so that we know how to edit the object
+          readOnly: true
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+      required:
+      - component
+      - expression
+      - meta_model_name
+      - name
+      - pk
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    LDAPSourcePropertyMappingRequest:
+      description: LDAP PropertyMapping Serializer
+      example:
+        expression: expression
+        managed: managed
+        name: name
+      properties:
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          minLength: 1
+          nullable: true
+          title: Managed by authentik
+          type: string
+        name:
+          minLength: 1
+          type: string
+        expression:
+          minLength: 1
+          type: string
+      required:
+      - expression
+      - name
       type: object
     LDAPSourceRequest:
       description: LDAP Source Serializer
@@ -44140,7 +44140,7 @@ components:
       - authentik_providers_scim.scimmapping
       - authentik_rbac.role
       - authentik_sources_ldap.ldapsource
-      - authentik_sources_ldap.ldappropertymapping
+      - authentik_sources_ldap.ldapsourcepropertymapping
       - authentik_sources_oauth.oauthsource
       - authentik_sources_oauth.useroauthsourceconnection
       - authentik_sources_plex.plexsource
@@ -48122,44 +48122,6 @@ components:
       - pagination
       - results
       type: object
-    PaginatedLDAPPropertyMappingList:
-      example:
-        pagination:
-          next: 0.8008281904610115
-          current: 5.962133916683182
-          previous: 6.027456183070403
-          start_index: 2.3021358869347655
-          count: 1.4658129805029452
-          end_index: 7.061401241503109
-          total_pages: 5.637376656633329
-        results:
-        - component: component
-          verbose_name: verbose_name
-          expression: expression
-          verbose_name_plural: verbose_name_plural
-          meta_model_name: meta_model_name
-          managed: managed
-          name: name
-          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - component: component
-          verbose_name: verbose_name
-          expression: expression
-          verbose_name_plural: verbose_name_plural
-          meta_model_name: meta_model_name
-          managed: managed
-          name: name
-          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        results:
-          items:
-            $ref: '#/components/schemas/LDAPPropertyMapping'
-          type: array
-      required:
-      - pagination
-      - results
-      type: object
     PaginatedLDAPProviderList:
       example:
         pagination:
@@ -48337,6 +48299,44 @@ components:
         results:
           items:
             $ref: '#/components/schemas/LDAPSource'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedLDAPSourcePropertyMappingList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - component: component
+          verbose_name: verbose_name
+          expression: expression
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          managed: managed
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - component: component
+          verbose_name: verbose_name
+          expression: expression
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          managed: managed
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/LDAPSourcePropertyMapping'
           type: array
       required:
       - pagination
@@ -54262,29 +54262,6 @@ components:
           description: Verify SSL Certificates of the Kubernetes API endpoint
           type: boolean
       type: object
-    PatchedLDAPPropertyMappingRequest:
-      description: LDAP PropertyMapping Serializer
-      example:
-        expression: expression
-        managed: managed
-        name: name
-      properties:
-        managed:
-          description: "Objects that are managed by authentik. These objects are created\
-            \ and updated automatically. This flag only indicates that an object can\
-            \ be overwritten by migrations. You can still modify the objects via the\
-            \ API, but expect changes to be overwritten in a later update."
-          minLength: 1
-          nullable: true
-          title: Managed by authentik
-          type: string
-        name:
-          minLength: 1
-          type: string
-        expression:
-          minLength: 1
-          type: string
-      type: object
     PatchedLDAPProviderRequest:
       description: LDAPProvider Serializer
       example:
@@ -54364,6 +54341,29 @@ components:
             \ have a TOTP device configured, as otherwise a password may incorrectly\
             \ be rejected if it contains a semicolon."
           type: boolean
+      type: object
+    PatchedLDAPSourcePropertyMappingRequest:
+      description: LDAP PropertyMapping Serializer
+      example:
+        expression: expression
+        managed: managed
+        name: name
+      properties:
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          minLength: 1
+          nullable: true
+          title: Managed by authentik
+          type: string
+        name:
+          minLength: 1
+          type: string
+        expression:
+          minLength: 1
+          type: string
       type: object
     PatchedLDAPSourceRequest:
       description: LDAP Source Serializer

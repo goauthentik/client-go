@@ -374,13 +374,6 @@ Class | Method | HTTP request | Description
 *PropertymappingsApi* | [**PropertymappingsAllTestCreate**](docs/PropertymappingsApi.md#propertymappingsalltestcreate) | **Post** /propertymappings/all/{pm_uuid}/test/ | 
 *PropertymappingsApi* | [**PropertymappingsAllTypesList**](docs/PropertymappingsApi.md#propertymappingsalltypeslist) | **Get** /propertymappings/all/types/ | 
 *PropertymappingsApi* | [**PropertymappingsAllUsedByList**](docs/PropertymappingsApi.md#propertymappingsallusedbylist) | **Get** /propertymappings/all/{pm_uuid}/used_by/ | 
-*PropertymappingsApi* | [**PropertymappingsLdapCreate**](docs/PropertymappingsApi.md#propertymappingsldapcreate) | **Post** /propertymappings/ldap/ | 
-*PropertymappingsApi* | [**PropertymappingsLdapDestroy**](docs/PropertymappingsApi.md#propertymappingsldapdestroy) | **Delete** /propertymappings/ldap/{pm_uuid}/ | 
-*PropertymappingsApi* | [**PropertymappingsLdapList**](docs/PropertymappingsApi.md#propertymappingsldaplist) | **Get** /propertymappings/ldap/ | 
-*PropertymappingsApi* | [**PropertymappingsLdapPartialUpdate**](docs/PropertymappingsApi.md#propertymappingsldappartialupdate) | **Patch** /propertymappings/ldap/{pm_uuid}/ | 
-*PropertymappingsApi* | [**PropertymappingsLdapRetrieve**](docs/PropertymappingsApi.md#propertymappingsldapretrieve) | **Get** /propertymappings/ldap/{pm_uuid}/ | 
-*PropertymappingsApi* | [**PropertymappingsLdapUpdate**](docs/PropertymappingsApi.md#propertymappingsldapupdate) | **Put** /propertymappings/ldap/{pm_uuid}/ | 
-*PropertymappingsApi* | [**PropertymappingsLdapUsedByList**](docs/PropertymappingsApi.md#propertymappingsldapusedbylist) | **Get** /propertymappings/ldap/{pm_uuid}/used_by/ | 
 *PropertymappingsApi* | [**PropertymappingsNotificationCreate**](docs/PropertymappingsApi.md#propertymappingsnotificationcreate) | **Post** /propertymappings/notification/ | 
 *PropertymappingsApi* | [**PropertymappingsNotificationDestroy**](docs/PropertymappingsApi.md#propertymappingsnotificationdestroy) | **Delete** /propertymappings/notification/{pm_uuid}/ | 
 *PropertymappingsApi* | [**PropertymappingsNotificationList**](docs/PropertymappingsApi.md#propertymappingsnotificationlist) | **Get** /propertymappings/notification/ | 
@@ -430,6 +423,13 @@ Class | Method | HTTP request | Description
 *PropertymappingsApi* | [**PropertymappingsScopeRetrieve**](docs/PropertymappingsApi.md#propertymappingsscoperetrieve) | **Get** /propertymappings/scope/{pm_uuid}/ | 
 *PropertymappingsApi* | [**PropertymappingsScopeUpdate**](docs/PropertymappingsApi.md#propertymappingsscopeupdate) | **Put** /propertymappings/scope/{pm_uuid}/ | 
 *PropertymappingsApi* | [**PropertymappingsScopeUsedByList**](docs/PropertymappingsApi.md#propertymappingsscopeusedbylist) | **Get** /propertymappings/scope/{pm_uuid}/used_by/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceLdapCreate**](docs/PropertymappingsApi.md#propertymappingssourceldapcreate) | **Post** /propertymappings/source/ldap/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceLdapDestroy**](docs/PropertymappingsApi.md#propertymappingssourceldapdestroy) | **Delete** /propertymappings/source/ldap/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceLdapList**](docs/PropertymappingsApi.md#propertymappingssourceldaplist) | **Get** /propertymappings/source/ldap/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceLdapPartialUpdate**](docs/PropertymappingsApi.md#propertymappingssourceldappartialupdate) | **Patch** /propertymappings/source/ldap/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceLdapRetrieve**](docs/PropertymappingsApi.md#propertymappingssourceldapretrieve) | **Get** /propertymappings/source/ldap/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceLdapUpdate**](docs/PropertymappingsApi.md#propertymappingssourceldapupdate) | **Put** /propertymappings/source/ldap/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceLdapUsedByList**](docs/PropertymappingsApi.md#propertymappingssourceldapusedbylist) | **Get** /propertymappings/source/ldap/{pm_uuid}/used_by/ | 
 *ProvidersApi* | [**ProvidersAllDestroy**](docs/ProvidersApi.md#providersalldestroy) | **Delete** /providers/all/{id}/ | 
 *ProvidersApi* | [**ProvidersAllList**](docs/ProvidersApi.md#providersalllist) | **Get** /providers/all/ | 
 *ProvidersApi* | [**ProvidersAllRetrieve**](docs/ProvidersApi.md#providersallretrieve) | **Get** /providers/all/{id}/ | 
@@ -1012,11 +1012,11 @@ Class | Method | HTTP request | Description
  - [LDAPAPIAccessMode](docs/LDAPAPIAccessMode.md)
  - [LDAPDebug](docs/LDAPDebug.md)
  - [LDAPOutpostConfig](docs/LDAPOutpostConfig.md)
- - [LDAPPropertyMapping](docs/LDAPPropertyMapping.md)
- - [LDAPPropertyMappingRequest](docs/LDAPPropertyMappingRequest.md)
  - [LDAPProvider](docs/LDAPProvider.md)
  - [LDAPProviderRequest](docs/LDAPProviderRequest.md)
  - [LDAPSource](docs/LDAPSource.md)
+ - [LDAPSourcePropertyMapping](docs/LDAPSourcePropertyMapping.md)
+ - [LDAPSourcePropertyMappingRequest](docs/LDAPSourcePropertyMappingRequest.md)
  - [LDAPSourceRequest](docs/LDAPSourceRequest.md)
  - [License](docs/License.md)
  - [LicenseForecast](docs/LicenseForecast.md)
@@ -1108,9 +1108,9 @@ Class | Method | HTTP request | Description
  - [PaginatedInvitationStageList](docs/PaginatedInvitationStageList.md)
  - [PaginatedKubernetesServiceConnectionList](docs/PaginatedKubernetesServiceConnectionList.md)
  - [PaginatedLDAPOutpostConfigList](docs/PaginatedLDAPOutpostConfigList.md)
- - [PaginatedLDAPPropertyMappingList](docs/PaginatedLDAPPropertyMappingList.md)
  - [PaginatedLDAPProviderList](docs/PaginatedLDAPProviderList.md)
  - [PaginatedLDAPSourceList](docs/PaginatedLDAPSourceList.md)
+ - [PaginatedLDAPSourcePropertyMappingList](docs/PaginatedLDAPSourcePropertyMappingList.md)
  - [PaginatedLicenseList](docs/PaginatedLicenseList.md)
  - [PaginatedMicrosoftEntraProviderGroupList](docs/PaginatedMicrosoftEntraProviderGroupList.md)
  - [PaginatedMicrosoftEntraProviderList](docs/PaginatedMicrosoftEntraProviderList.md)
@@ -1221,8 +1221,8 @@ Class | Method | HTTP request | Description
  - [PatchedInvitationRequest](docs/PatchedInvitationRequest.md)
  - [PatchedInvitationStageRequest](docs/PatchedInvitationStageRequest.md)
  - [PatchedKubernetesServiceConnectionRequest](docs/PatchedKubernetesServiceConnectionRequest.md)
- - [PatchedLDAPPropertyMappingRequest](docs/PatchedLDAPPropertyMappingRequest.md)
  - [PatchedLDAPProviderRequest](docs/PatchedLDAPProviderRequest.md)
+ - [PatchedLDAPSourcePropertyMappingRequest](docs/PatchedLDAPSourcePropertyMappingRequest.md)
  - [PatchedLDAPSourceRequest](docs/PatchedLDAPSourceRequest.md)
  - [PatchedLicenseRequest](docs/PatchedLicenseRequest.md)
  - [PatchedMicrosoftEntraProviderMappingRequest](docs/PatchedMicrosoftEntraProviderMappingRequest.md)

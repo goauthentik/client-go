@@ -10,13 +10,6 @@ Method | HTTP request | Description
 [**PropertymappingsAllTestCreate**](PropertymappingsApi.md#PropertymappingsAllTestCreate) | **Post** /propertymappings/all/{pm_uuid}/test/ | 
 [**PropertymappingsAllTypesList**](PropertymappingsApi.md#PropertymappingsAllTypesList) | **Get** /propertymappings/all/types/ | 
 [**PropertymappingsAllUsedByList**](PropertymappingsApi.md#PropertymappingsAllUsedByList) | **Get** /propertymappings/all/{pm_uuid}/used_by/ | 
-[**PropertymappingsLdapCreate**](PropertymappingsApi.md#PropertymappingsLdapCreate) | **Post** /propertymappings/ldap/ | 
-[**PropertymappingsLdapDestroy**](PropertymappingsApi.md#PropertymappingsLdapDestroy) | **Delete** /propertymappings/ldap/{pm_uuid}/ | 
-[**PropertymappingsLdapList**](PropertymappingsApi.md#PropertymappingsLdapList) | **Get** /propertymappings/ldap/ | 
-[**PropertymappingsLdapPartialUpdate**](PropertymappingsApi.md#PropertymappingsLdapPartialUpdate) | **Patch** /propertymappings/ldap/{pm_uuid}/ | 
-[**PropertymappingsLdapRetrieve**](PropertymappingsApi.md#PropertymappingsLdapRetrieve) | **Get** /propertymappings/ldap/{pm_uuid}/ | 
-[**PropertymappingsLdapUpdate**](PropertymappingsApi.md#PropertymappingsLdapUpdate) | **Put** /propertymappings/ldap/{pm_uuid}/ | 
-[**PropertymappingsLdapUsedByList**](PropertymappingsApi.md#PropertymappingsLdapUsedByList) | **Get** /propertymappings/ldap/{pm_uuid}/used_by/ | 
 [**PropertymappingsNotificationCreate**](PropertymappingsApi.md#PropertymappingsNotificationCreate) | **Post** /propertymappings/notification/ | 
 [**PropertymappingsNotificationDestroy**](PropertymappingsApi.md#PropertymappingsNotificationDestroy) | **Delete** /propertymappings/notification/{pm_uuid}/ | 
 [**PropertymappingsNotificationList**](PropertymappingsApi.md#PropertymappingsNotificationList) | **Get** /propertymappings/notification/ | 
@@ -66,6 +59,13 @@ Method | HTTP request | Description
 [**PropertymappingsScopeRetrieve**](PropertymappingsApi.md#PropertymappingsScopeRetrieve) | **Get** /propertymappings/scope/{pm_uuid}/ | 
 [**PropertymappingsScopeUpdate**](PropertymappingsApi.md#PropertymappingsScopeUpdate) | **Put** /propertymappings/scope/{pm_uuid}/ | 
 [**PropertymappingsScopeUsedByList**](PropertymappingsApi.md#PropertymappingsScopeUsedByList) | **Get** /propertymappings/scope/{pm_uuid}/used_by/ | 
+[**PropertymappingsSourceLdapCreate**](PropertymappingsApi.md#PropertymappingsSourceLdapCreate) | **Post** /propertymappings/source/ldap/ | 
+[**PropertymappingsSourceLdapDestroy**](PropertymappingsApi.md#PropertymappingsSourceLdapDestroy) | **Delete** /propertymappings/source/ldap/{pm_uuid}/ | 
+[**PropertymappingsSourceLdapList**](PropertymappingsApi.md#PropertymappingsSourceLdapList) | **Get** /propertymappings/source/ldap/ | 
+[**PropertymappingsSourceLdapPartialUpdate**](PropertymappingsApi.md#PropertymappingsSourceLdapPartialUpdate) | **Patch** /propertymappings/source/ldap/{pm_uuid}/ | 
+[**PropertymappingsSourceLdapRetrieve**](PropertymappingsApi.md#PropertymappingsSourceLdapRetrieve) | **Get** /propertymappings/source/ldap/{pm_uuid}/ | 
+[**PropertymappingsSourceLdapUpdate**](PropertymappingsApi.md#PropertymappingsSourceLdapUpdate) | **Put** /propertymappings/source/ldap/{pm_uuid}/ | 
+[**PropertymappingsSourceLdapUsedByList**](PropertymappingsApi.md#PropertymappingsSourceLdapUsedByList) | **Get** /propertymappings/source/ldap/{pm_uuid}/used_by/ | 
 
 
 
@@ -462,504 +462,6 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPropertymappingsAllUsedByListRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**[]UsedBy**](UsedBy.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PropertymappingsLdapCreate
-
-> LDAPPropertyMapping PropertymappingsLdapCreate(ctx).LDAPPropertyMappingRequest(lDAPPropertyMappingRequest).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    lDAPPropertyMappingRequest := *openapiclient.NewLDAPPropertyMappingRequest("Name_example", "Expression_example") // LDAPPropertyMappingRequest | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsLdapCreate(context.Background()).LDAPPropertyMappingRequest(lDAPPropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsLdapCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsLdapCreate`: LDAPPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsLdapCreate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPropertymappingsLdapCreateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **lDAPPropertyMappingRequest** | [**LDAPPropertyMappingRequest**](LDAPPropertyMappingRequest.md) |  | 
-
-### Return type
-
-[**LDAPPropertyMapping**](LDAPPropertyMapping.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PropertymappingsLdapDestroy
-
-> PropertymappingsLdapDestroy(ctx, pmUuid).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Property Mapping.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsLdapDestroy(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsLdapDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this LDAP Property Mapping. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPropertymappingsLdapDestroyRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PropertymappingsLdapList
-
-> PaginatedLDAPPropertyMappingList PropertymappingsLdapList(ctx).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    expression := "expression_example" // string |  (optional)
-    managed := []string{"Inner_example"} // []string |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    search := "search_example" // string | A search term. (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsLdapList(context.Background()).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsLdapList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsLdapList`: PaginatedLDAPPropertyMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsLdapList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPropertymappingsLdapListRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **expression** | **string** |  | 
- **managed** | **[]string** |  | 
- **name** | **string** |  | 
- **ordering** | **string** | Which field to use when ordering the results. | 
- **page** | **int32** | A page number within the paginated result set. | 
- **pageSize** | **int32** | Number of results to return per page. | 
- **pmUuid** | **string** |  | 
- **search** | **string** | A search term. | 
-
-### Return type
-
-[**PaginatedLDAPPropertyMappingList**](PaginatedLDAPPropertyMappingList.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PropertymappingsLdapPartialUpdate
-
-> LDAPPropertyMapping PropertymappingsLdapPartialUpdate(ctx, pmUuid).PatchedLDAPPropertyMappingRequest(patchedLDAPPropertyMappingRequest).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Property Mapping.
-    patchedLDAPPropertyMappingRequest := *openapiclient.NewPatchedLDAPPropertyMappingRequest() // PatchedLDAPPropertyMappingRequest |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsLdapPartialUpdate(context.Background(), pmUuid).PatchedLDAPPropertyMappingRequest(patchedLDAPPropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsLdapPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsLdapPartialUpdate`: LDAPPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsLdapPartialUpdate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this LDAP Property Mapping. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPropertymappingsLdapPartialUpdateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **patchedLDAPPropertyMappingRequest** | [**PatchedLDAPPropertyMappingRequest**](PatchedLDAPPropertyMappingRequest.md) |  | 
-
-### Return type
-
-[**LDAPPropertyMapping**](LDAPPropertyMapping.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PropertymappingsLdapRetrieve
-
-> LDAPPropertyMapping PropertymappingsLdapRetrieve(ctx, pmUuid).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Property Mapping.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsLdapRetrieve(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsLdapRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsLdapRetrieve`: LDAPPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsLdapRetrieve`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this LDAP Property Mapping. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPropertymappingsLdapRetrieveRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**LDAPPropertyMapping**](LDAPPropertyMapping.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PropertymappingsLdapUpdate
-
-> LDAPPropertyMapping PropertymappingsLdapUpdate(ctx, pmUuid).LDAPPropertyMappingRequest(lDAPPropertyMappingRequest).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Property Mapping.
-    lDAPPropertyMappingRequest := *openapiclient.NewLDAPPropertyMappingRequest("Name_example", "Expression_example") // LDAPPropertyMappingRequest | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsLdapUpdate(context.Background(), pmUuid).LDAPPropertyMappingRequest(lDAPPropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsLdapUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsLdapUpdate`: LDAPPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsLdapUpdate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this LDAP Property Mapping. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPropertymappingsLdapUpdateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **lDAPPropertyMappingRequest** | [**LDAPPropertyMappingRequest**](LDAPPropertyMappingRequest.md) |  | 
-
-### Return type
-
-[**LDAPPropertyMapping**](LDAPPropertyMapping.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PropertymappingsLdapUsedByList
-
-> []UsedBy PropertymappingsLdapUsedByList(ctx, pmUuid).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Property Mapping.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsLdapUsedByList(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsLdapUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsLdapUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsLdapUsedByList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this LDAP Property Mapping. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPropertymappingsLdapUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -4438,6 +3940,504 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPropertymappingsScopeUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceLdapCreate
+
+> LDAPSourcePropertyMapping PropertymappingsSourceLdapCreate(ctx).LDAPSourcePropertyMappingRequest(lDAPSourcePropertyMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    lDAPSourcePropertyMappingRequest := *openapiclient.NewLDAPSourcePropertyMappingRequest("Name_example", "Expression_example") // LDAPSourcePropertyMappingRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceLdapCreate(context.Background()).LDAPSourcePropertyMappingRequest(lDAPSourcePropertyMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceLdapCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsSourceLdapCreate`: LDAPSourcePropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceLdapCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceLdapCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **lDAPSourcePropertyMappingRequest** | [**LDAPSourcePropertyMappingRequest**](LDAPSourcePropertyMappingRequest.md) |  | 
+
+### Return type
+
+[**LDAPSourcePropertyMapping**](LDAPSourcePropertyMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceLdapDestroy
+
+> PropertymappingsSourceLdapDestroy(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Source Property Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceLdapDestroy(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceLdapDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this LDAP Source Property Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceLdapDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceLdapList
+
+> PaginatedLDAPSourcePropertyMappingList PropertymappingsSourceLdapList(ctx).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    expression := "expression_example" // string |  (optional)
+    managed := []string{"Inner_example"} // []string |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceLdapList(context.Background()).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceLdapList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsSourceLdapList`: PaginatedLDAPSourcePropertyMappingList
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceLdapList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceLdapListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expression** | **string** |  | 
+ **managed** | **[]string** |  | 
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **pmUuid** | **string** |  | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedLDAPSourcePropertyMappingList**](PaginatedLDAPSourcePropertyMappingList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceLdapPartialUpdate
+
+> LDAPSourcePropertyMapping PropertymappingsSourceLdapPartialUpdate(ctx, pmUuid).PatchedLDAPSourcePropertyMappingRequest(patchedLDAPSourcePropertyMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Source Property Mapping.
+    patchedLDAPSourcePropertyMappingRequest := *openapiclient.NewPatchedLDAPSourcePropertyMappingRequest() // PatchedLDAPSourcePropertyMappingRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceLdapPartialUpdate(context.Background(), pmUuid).PatchedLDAPSourcePropertyMappingRequest(patchedLDAPSourcePropertyMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceLdapPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsSourceLdapPartialUpdate`: LDAPSourcePropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceLdapPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this LDAP Source Property Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceLdapPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedLDAPSourcePropertyMappingRequest** | [**PatchedLDAPSourcePropertyMappingRequest**](PatchedLDAPSourcePropertyMappingRequest.md) |  | 
+
+### Return type
+
+[**LDAPSourcePropertyMapping**](LDAPSourcePropertyMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceLdapRetrieve
+
+> LDAPSourcePropertyMapping PropertymappingsSourceLdapRetrieve(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Source Property Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceLdapRetrieve(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceLdapRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsSourceLdapRetrieve`: LDAPSourcePropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceLdapRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this LDAP Source Property Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceLdapRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**LDAPSourcePropertyMapping**](LDAPSourcePropertyMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceLdapUpdate
+
+> LDAPSourcePropertyMapping PropertymappingsSourceLdapUpdate(ctx, pmUuid).LDAPSourcePropertyMappingRequest(lDAPSourcePropertyMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Source Property Mapping.
+    lDAPSourcePropertyMappingRequest := *openapiclient.NewLDAPSourcePropertyMappingRequest("Name_example", "Expression_example") // LDAPSourcePropertyMappingRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceLdapUpdate(context.Background(), pmUuid).LDAPSourcePropertyMappingRequest(lDAPSourcePropertyMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceLdapUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsSourceLdapUpdate`: LDAPSourcePropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceLdapUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this LDAP Source Property Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceLdapUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **lDAPSourcePropertyMappingRequest** | [**LDAPSourcePropertyMappingRequest**](LDAPSourcePropertyMappingRequest.md) |  | 
+
+### Return type
+
+[**LDAPSourcePropertyMapping**](LDAPSourcePropertyMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceLdapUsedByList
+
+> []UsedBy PropertymappingsSourceLdapUsedByList(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Source Property Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceLdapUsedByList(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceLdapUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsSourceLdapUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceLdapUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this LDAP Source Property Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceLdapUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

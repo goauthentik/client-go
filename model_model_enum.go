@@ -46,7 +46,7 @@ const (
 	MODELENUM_PROVIDERS_SCIM_SCIMMAPPING                                ModelEnum = "authentik_providers_scim.scimmapping"
 	MODELENUM_RBAC_ROLE                                                 ModelEnum = "authentik_rbac.role"
 	MODELENUM_SOURCES_LDAP_LDAPSOURCE                                   ModelEnum = "authentik_sources_ldap.ldapsource"
-	MODELENUM_SOURCES_LDAP_LDAPPROPERTYMAPPING                          ModelEnum = "authentik_sources_ldap.ldappropertymapping"
+	MODELENUM_SOURCES_LDAP_LDAPSOURCEPROPERTYMAPPING                    ModelEnum = "authentik_sources_ldap.ldapsourcepropertymapping"
 	MODELENUM_SOURCES_OAUTH_OAUTHSOURCE                                 ModelEnum = "authentik_sources_oauth.oauthsource"
 	MODELENUM_SOURCES_OAUTH_USEROAUTHSOURCECONNECTION                   ModelEnum = "authentik_sources_oauth.useroauthsourceconnection"
 	MODELENUM_SOURCES_PLEX_PLEXSOURCE                                   ModelEnum = "authentik_sources_plex.plexsource"
@@ -130,7 +130,7 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_providers_scim.scimmapping",
 	"authentik_rbac.role",
 	"authentik_sources_ldap.ldapsource",
-	"authentik_sources_ldap.ldappropertymapping",
+	"authentik_sources_ldap.ldapsourcepropertymapping",
 	"authentik_sources_oauth.oauthsource",
 	"authentik_sources_oauth.useroauthsourceconnection",
 	"authentik_sources_plex.plexsource",
