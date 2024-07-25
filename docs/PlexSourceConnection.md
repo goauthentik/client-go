@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **Pk** | **int32** |  | [readonly] 
 **User** | **int32** |  | [readonly] 
 **Source** | [**Source**](Source.md) |  | [readonly] 
+**Created** | **time.Time** |  | [readonly] 
 **Identifier** | **string** |  | 
-**PlexToken** | **string** |  | 
 
 ## Methods
 
 ### NewPlexSourceConnection
 
-`func NewPlexSourceConnection(pk int32, user int32, source Source, identifier string, plexToken string, ) *PlexSourceConnection`
+`func NewPlexSourceConnection(pk int32, user int32, source Source, created time.Time, identifier string, ) *PlexSourceConnection`
 
 NewPlexSourceConnection instantiates a new PlexSourceConnection object
 This constructor will assign default values to properties that have it defined,
@@ -89,6 +89,26 @@ and a boolean to check if the value has been set.
 SetSource sets Source field to given value.
 
 
+### GetCreated
+
+`func (o *PlexSourceConnection) GetCreated() time.Time`
+
+GetCreated returns the Created field if non-nil, zero value otherwise.
+
+### GetCreatedOk
+
+`func (o *PlexSourceConnection) GetCreatedOk() (*time.Time, bool)`
+
+GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreated
+
+`func (o *PlexSourceConnection) SetCreated(v time.Time)`
+
+SetCreated sets Created field to given value.
+
+
 ### GetIdentifier
 
 `func (o *PlexSourceConnection) GetIdentifier() string`
@@ -107,26 +127,6 @@ and a boolean to check if the value has been set.
 `func (o *PlexSourceConnection) SetIdentifier(v string)`
 
 SetIdentifier sets Identifier field to given value.
-
-
-### GetPlexToken
-
-`func (o *PlexSourceConnection) GetPlexToken() string`
-
-GetPlexToken returns the PlexToken field if non-nil, zero value otherwise.
-
-### GetPlexTokenOk
-
-`func (o *PlexSourceConnection) GetPlexTokenOk() (*string, bool)`
-
-GetPlexTokenOk returns a tuple with the PlexToken field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPlexToken
-
-`func (o *PlexSourceConnection) SetPlexToken(v string)`
-
-SetPlexToken sets PlexToken field to given value.
 
 
 

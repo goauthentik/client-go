@@ -4,14 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**User** | **int32** |  | 
 **Identifier** | **string** |  | 
 
 ## Methods
 
 ### NewUserSAMLSourceConnectionRequest
 
-`func NewUserSAMLSourceConnectionRequest(user int32, identifier string, ) *UserSAMLSourceConnectionRequest`
+`func NewUserSAMLSourceConnectionRequest(identifier string, ) *UserSAMLSourceConnectionRequest`
 
 NewUserSAMLSourceConnectionRequest instantiates a new UserSAMLSourceConnectionRequest object
 This constructor will assign default values to properties that have it defined,
@@ -25,26 +24,6 @@ will change when the set of required properties is changed
 NewUserSAMLSourceConnectionRequestWithDefaults instantiates a new UserSAMLSourceConnectionRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetUser
-
-`func (o *UserSAMLSourceConnectionRequest) GetUser() int32`
-
-GetUser returns the User field if non-nil, zero value otherwise.
-
-### GetUserOk
-
-`func (o *UserSAMLSourceConnectionRequest) GetUserOk() (*int32, bool)`
-
-GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUser
-
-`func (o *UserSAMLSourceConnectionRequest) SetUser(v int32)`
-
-SetUser sets User field to given value.
-
 
 ### GetIdentifier
 

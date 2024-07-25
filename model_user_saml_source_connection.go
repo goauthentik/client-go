@@ -13,25 +13,28 @@ package api
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // UserSAMLSourceConnection SAML Source Serializer
 type UserSAMLSourceConnection struct {
-	Pk         int32  `json:"pk"`
-	User       int32  `json:"user"`
-	Source     Source `json:"source"`
-	Identifier string `json:"identifier"`
+	Pk         int32     `json:"pk"`
+	User       int32     `json:"user"`
+	Source     Source    `json:"source"`
+	Created    time.Time `json:"created"`
+	Identifier string    `json:"identifier"`
 }
 
 // NewUserSAMLSourceConnection instantiates a new UserSAMLSourceConnection object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserSAMLSourceConnection(pk int32, user int32, source Source, identifier string) *UserSAMLSourceConnection {
+func NewUserSAMLSourceConnection(pk int32, user int32, source Source, created time.Time, identifier string) *UserSAMLSourceConnection {
 	this := UserSAMLSourceConnection{}
 	this.Pk = pk
 	this.User = user
 	this.Source = source
+	this.Created = created
 	this.Identifier = identifier
 	return &this
 }
@@ -116,6 +119,30 @@ func (o *UserSAMLSourceConnection) SetSource(v Source) {
 	o.Source = v
 }
 
+// GetCreated returns the Created field value
+func (o *UserSAMLSourceConnection) GetCreated() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.Created
+}
+
+// GetCreatedOk returns a tuple with the Created field value
+// and a boolean to check if the value has been set.
+func (o *UserSAMLSourceConnection) GetCreatedOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Created, true
+}
+
+// SetCreated sets field value
+func (o *UserSAMLSourceConnection) SetCreated(v time.Time) {
+	o.Created = v
+}
+
 // GetIdentifier returns the Identifier field value
 func (o *UserSAMLSourceConnection) GetIdentifier() string {
 	if o == nil {
@@ -150,6 +177,9 @@ func (o UserSAMLSourceConnection) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["source"] = o.Source
+	}
+	if true {
+		toSerialize["created"] = o.Created
 	}
 	if true {
 		toSerialize["identifier"] = o.Identifier

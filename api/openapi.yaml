@@ -27329,6 +27329,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: source__slug
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: user
         required: false
         schema:
@@ -27575,6 +27582,13 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: user
+        required: false
+        schema:
+          type: integer
         style: form
       responses:
         "200":
@@ -27861,6 +27875,13 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: user
+        required: false
+        schema:
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -28145,6 +28166,13 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: user
+        required: false
+        schema:
+          type: integer
         style: form
       responses:
         "200":
@@ -49200,14 +49228,14 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
+          created: 2000-01-23T04:56:07.000+00:00
           pk: 0
           source: ""
-          plex_token: plex_token
           user: 6
         - identifier: identifier
+          created: 2000-01-23T04:56:07.000+00:00
           pk: 0
           source: ""
-          plex_token: plex_token
           user: 6
       properties:
         pagination:
@@ -52094,10 +52122,12 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
+          created: 2000-01-23T04:56:07.000+00:00
           pk: 0
           source: ""
           user: 6
         - identifier: identifier
+          created: 2000-01-23T04:56:07.000+00:00
           pk: 0
           source: ""
           user: 6
@@ -52124,10 +52154,12 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
+          created: 2000-01-23T04:56:07.000+00:00
           pk: 0
           source: ""
           user: 6
         - identifier: identifier
+          created: 2000-01-23T04:56:07.000+00:00
           pk: 0
           source: ""
           user: 6
@@ -55092,6 +55124,7 @@ components:
         plex_token:
           minLength: 1
           type: string
+          writeOnly: true
       type: object
     PatchedPlexSourceRequest:
       description: Plex Source Serializer
@@ -56351,10 +56384,7 @@ components:
       example:
         access_token: access_token
         identifier: identifier
-        user: 0
       properties:
-        user:
-          type: integer
         identifier:
           maxLength: 255
           minLength: 1
@@ -56419,10 +56449,7 @@ components:
       description: SAML Source Serializer
       example:
         identifier: identifier
-        user: 0
       properties:
-        user:
-          type: integer
         identifier:
           minLength: 1
           type: string
@@ -56716,9 +56743,9 @@ components:
       description: Plex Source connection Serializer
       example:
         identifier: identifier
+        created: 2000-01-23T04:56:07.000+00:00
         pk: 0
         source: ""
-        plex_token: plex_token
         user: 6
       properties:
         pk:
@@ -56732,14 +56759,16 @@ components:
           allOf:
           - $ref: '#/components/schemas/Source'
           readOnly: true
+        created:
+          format: date-time
+          readOnly: true
+          type: string
         identifier:
           type: string
-        plex_token:
-          type: string
       required:
+      - created
       - identifier
       - pk
-      - plex_token
       - source
       - user
       type: object
@@ -56755,6 +56784,7 @@ components:
         plex_token:
           minLength: 1
           type: string
+          writeOnly: true
       required:
       - identifier
       - plex_token
@@ -62672,6 +62702,7 @@ components:
       description: OAuth Source Serializer
       example:
         identifier: identifier
+        created: 2000-01-23T04:56:07.000+00:00
         pk: 0
         source: ""
         user: 6
@@ -62681,15 +62712,21 @@ components:
           title: ID
           type: integer
         user:
+          readOnly: true
           type: integer
         source:
           allOf:
           - $ref: '#/components/schemas/Source'
           readOnly: true
+        created:
+          format: date-time
+          readOnly: true
+          type: string
         identifier:
           maxLength: 255
           type: string
       required:
+      - created
       - identifier
       - pk
       - source
@@ -62700,10 +62737,7 @@ components:
       example:
         access_token: access_token
         identifier: identifier
-        user: 0
       properties:
-        user:
-          type: integer
         identifier:
           maxLength: 255
           minLength: 1
@@ -62714,7 +62748,6 @@ components:
           writeOnly: true
       required:
       - identifier
-      - user
       type: object
     UserObjectPermission:
       description: User-bound object level permission
@@ -62836,6 +62869,7 @@ components:
       description: SAML Source Serializer
       example:
         identifier: identifier
+        created: 2000-01-23T04:56:07.000+00:00
         pk: 0
         source: ""
         user: 6
@@ -62845,14 +62879,20 @@ components:
           title: ID
           type: integer
         user:
+          readOnly: true
           type: integer
         source:
           allOf:
           - $ref: '#/components/schemas/Source'
           readOnly: true
+        created:
+          format: date-time
+          readOnly: true
+          type: string
         identifier:
           type: string
       required:
+      - created
       - identifier
       - pk
       - source
@@ -62862,16 +62902,12 @@ components:
       description: SAML Source Serializer
       example:
         identifier: identifier
-        user: 0
       properties:
-        user:
-          type: integer
         identifier:
           minLength: 1
           type: string
       required:
       - identifier
-      - user
       type: object
     UserSelf:
       description: User Serializer for information a user can retrieve about themselves

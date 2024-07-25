@@ -8969,6 +8969,7 @@ type ApiSourcesUserConnectionsAllListRequest struct {
 	page       *int32
 	pageSize   *int32
 	search     *string
+	sourceSlug *string
 	user       *int32
 }
 
@@ -8993,6 +8994,11 @@ func (r ApiSourcesUserConnectionsAllListRequest) PageSize(pageSize int32) ApiSou
 // A search term.
 func (r ApiSourcesUserConnectionsAllListRequest) Search(search string) ApiSourcesUserConnectionsAllListRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiSourcesUserConnectionsAllListRequest) SourceSlug(sourceSlug string) ApiSourcesUserConnectionsAllListRequest {
+	r.sourceSlug = &sourceSlug
 	return r
 }
 
@@ -9053,6 +9059,9 @@ func (a *SourcesApiService) SourcesUserConnectionsAllListExecute(r ApiSourcesUse
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	if r.sourceSlug != nil {
+		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
 	}
 	if r.user != nil {
 		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
@@ -9871,6 +9880,7 @@ type ApiSourcesUserConnectionsOauthListRequest struct {
 	pageSize   *int32
 	search     *string
 	sourceSlug *string
+	user       *int32
 }
 
 // Which field to use when ordering the results.
@@ -9899,6 +9909,11 @@ func (r ApiSourcesUserConnectionsOauthListRequest) Search(search string) ApiSour
 
 func (r ApiSourcesUserConnectionsOauthListRequest) SourceSlug(sourceSlug string) ApiSourcesUserConnectionsOauthListRequest {
 	r.sourceSlug = &sourceSlug
+	return r
+}
+
+func (r ApiSourcesUserConnectionsOauthListRequest) User(user int32) ApiSourcesUserConnectionsOauthListRequest {
+	r.user = &user
 	return r
 }
 
@@ -9957,6 +9972,9 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthListExecute(r ApiSourcesU
 	}
 	if r.sourceSlug != nil {
 		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+	}
+	if r.user != nil {
+		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -10791,6 +10809,7 @@ type ApiSourcesUserConnectionsPlexListRequest struct {
 	pageSize   *int32
 	search     *string
 	sourceSlug *string
+	user       *int32
 }
 
 // Which field to use when ordering the results.
@@ -10819,6 +10838,11 @@ func (r ApiSourcesUserConnectionsPlexListRequest) Search(search string) ApiSourc
 
 func (r ApiSourcesUserConnectionsPlexListRequest) SourceSlug(sourceSlug string) ApiSourcesUserConnectionsPlexListRequest {
 	r.sourceSlug = &sourceSlug
+	return r
+}
+
+func (r ApiSourcesUserConnectionsPlexListRequest) User(user int32) ApiSourcesUserConnectionsPlexListRequest {
+	r.user = &user
 	return r
 }
 
@@ -10877,6 +10901,9 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexListExecute(r ApiSourcesUs
 	}
 	if r.sourceSlug != nil {
 		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+	}
+	if r.user != nil {
+		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -11711,6 +11738,7 @@ type ApiSourcesUserConnectionsSamlListRequest struct {
 	pageSize   *int32
 	search     *string
 	sourceSlug *string
+	user       *int32
 }
 
 // Which field to use when ordering the results.
@@ -11739,6 +11767,11 @@ func (r ApiSourcesUserConnectionsSamlListRequest) Search(search string) ApiSourc
 
 func (r ApiSourcesUserConnectionsSamlListRequest) SourceSlug(sourceSlug string) ApiSourcesUserConnectionsSamlListRequest {
 	r.sourceSlug = &sourceSlug
+	return r
+}
+
+func (r ApiSourcesUserConnectionsSamlListRequest) User(user int32) ApiSourcesUserConnectionsSamlListRequest {
+	r.user = &user
 	return r
 }
 
@@ -11797,6 +11830,9 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlListExecute(r ApiSourcesUs
 	}
 	if r.sourceSlug != nil {
 		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+	}
+	if r.user != nil {
+		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

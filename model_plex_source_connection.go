@@ -13,28 +13,29 @@ package api
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // PlexSourceConnection Plex Source connection Serializer
 type PlexSourceConnection struct {
-	Pk         int32  `json:"pk"`
-	User       int32  `json:"user"`
-	Source     Source `json:"source"`
-	Identifier string `json:"identifier"`
-	PlexToken  string `json:"plex_token"`
+	Pk         int32     `json:"pk"`
+	User       int32     `json:"user"`
+	Source     Source    `json:"source"`
+	Created    time.Time `json:"created"`
+	Identifier string    `json:"identifier"`
 }
 
 // NewPlexSourceConnection instantiates a new PlexSourceConnection object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlexSourceConnection(pk int32, user int32, source Source, identifier string, plexToken string) *PlexSourceConnection {
+func NewPlexSourceConnection(pk int32, user int32, source Source, created time.Time, identifier string) *PlexSourceConnection {
 	this := PlexSourceConnection{}
 	this.Pk = pk
 	this.User = user
 	this.Source = source
+	this.Created = created
 	this.Identifier = identifier
-	this.PlexToken = plexToken
 	return &this
 }
 
@@ -118,6 +119,30 @@ func (o *PlexSourceConnection) SetSource(v Source) {
 	o.Source = v
 }
 
+// GetCreated returns the Created field value
+func (o *PlexSourceConnection) GetCreated() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.Created
+}
+
+// GetCreatedOk returns a tuple with the Created field value
+// and a boolean to check if the value has been set.
+func (o *PlexSourceConnection) GetCreatedOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Created, true
+}
+
+// SetCreated sets field value
+func (o *PlexSourceConnection) SetCreated(v time.Time) {
+	o.Created = v
+}
+
 // GetIdentifier returns the Identifier field value
 func (o *PlexSourceConnection) GetIdentifier() string {
 	if o == nil {
@@ -142,30 +167,6 @@ func (o *PlexSourceConnection) SetIdentifier(v string) {
 	o.Identifier = v
 }
 
-// GetPlexToken returns the PlexToken field value
-func (o *PlexSourceConnection) GetPlexToken() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.PlexToken
-}
-
-// GetPlexTokenOk returns a tuple with the PlexToken field value
-// and a boolean to check if the value has been set.
-func (o *PlexSourceConnection) GetPlexTokenOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.PlexToken, true
-}
-
-// SetPlexToken sets field value
-func (o *PlexSourceConnection) SetPlexToken(v string) {
-	o.PlexToken = v
-}
-
 func (o PlexSourceConnection) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -178,10 +179,10 @@ func (o PlexSourceConnection) MarshalJSON() ([]byte, error) {
 		toSerialize["source"] = o.Source
 	}
 	if true {
-		toSerialize["identifier"] = o.Identifier
+		toSerialize["created"] = o.Created
 	}
 	if true {
-		toSerialize["plex_token"] = o.PlexToken
+		toSerialize["identifier"] = o.Identifier
 	}
 	return json.Marshal(toSerialize)
 }
