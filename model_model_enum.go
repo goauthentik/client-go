@@ -40,6 +40,7 @@ const (
 	MODELENUM_PROVIDERS_OAUTH2_OAUTH2PROVIDER                           ModelEnum = "authentik_providers_oauth2.oauth2provider"
 	MODELENUM_PROVIDERS_PROXY_PROXYPROVIDER                             ModelEnum = "authentik_providers_proxy.proxyprovider"
 	MODELENUM_PROVIDERS_RADIUS_RADIUSPROVIDER                           ModelEnum = "authentik_providers_radius.radiusprovider"
+	MODELENUM_PROVIDERS_RADIUS_RADIUSPROVIDERPROPERTYMAPPING            ModelEnum = "authentik_providers_radius.radiusproviderpropertymapping"
 	MODELENUM_PROVIDERS_SAML_SAMLPROVIDER                               ModelEnum = "authentik_providers_saml.samlprovider"
 	MODELENUM_PROVIDERS_SAML_SAMLPROPERTYMAPPING                        ModelEnum = "authentik_providers_saml.samlpropertymapping"
 	MODELENUM_PROVIDERS_SCIM_SCIMPROVIDER                               ModelEnum = "authentik_providers_scim.scimprovider"
@@ -124,6 +125,7 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_providers_oauth2.oauth2provider",
 	"authentik_providers_proxy.proxyprovider",
 	"authentik_providers_radius.radiusprovider",
+	"authentik_providers_radius.radiusproviderpropertymapping",
 	"authentik_providers_saml.samlprovider",
 	"authentik_providers_saml.samlpropertymapping",
 	"authentik_providers_scim.scimprovider",

@@ -1525,129 +1525,6 @@ func (a *OutpostsApiService) OutpostsLdapListExecute(r ApiOutpostsLdapListReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiOutpostsLdapRetrieveRequest struct {
-	ctx        context.Context
-	ApiService *OutpostsApiService
-	id         int32
-}
-
-func (r ApiOutpostsLdapRetrieveRequest) Execute() (*LDAPOutpostConfig, *http.Response, error) {
-	return r.ApiService.OutpostsLdapRetrieveExecute(r)
-}
-
-/*
-OutpostsLdapRetrieve Method for OutpostsLdapRetrieve
-
-LDAPProvider Viewset
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this LDAP Provider.
-	@return ApiOutpostsLdapRetrieveRequest
-*/
-func (a *OutpostsApiService) OutpostsLdapRetrieve(ctx context.Context, id int32) ApiOutpostsLdapRetrieveRequest {
-	return ApiOutpostsLdapRetrieveRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-//
-//	@return LDAPOutpostConfig
-func (a *OutpostsApiService) OutpostsLdapRetrieveExecute(r ApiOutpostsLdapRetrieveRequest) (*LDAPOutpostConfig, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *LDAPOutpostConfig
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsLdapRetrieve")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/outposts/ldap/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiOutpostsProxyListRequest struct {
 	ctx        context.Context
 	ApiService *OutpostsApiService
@@ -1816,27 +1693,33 @@ func (a *OutpostsApiService) OutpostsProxyListExecute(r ApiOutpostsProxyListRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiOutpostsProxyRetrieveRequest struct {
+type ApiOutpostsRadiusCheckAccessRetrieveRequest struct {
 	ctx        context.Context
 	ApiService *OutpostsApiService
 	id         int32
+	appSlug    *string
 }
 
-func (r ApiOutpostsProxyRetrieveRequest) Execute() (*ProxyOutpostConfig, *http.Response, error) {
-	return r.ApiService.OutpostsProxyRetrieveExecute(r)
+func (r ApiOutpostsRadiusCheckAccessRetrieveRequest) AppSlug(appSlug string) ApiOutpostsRadiusCheckAccessRetrieveRequest {
+	r.appSlug = &appSlug
+	return r
+}
+
+func (r ApiOutpostsRadiusCheckAccessRetrieveRequest) Execute() (*RadiusCheckAccess, *http.Response, error) {
+	return r.ApiService.OutpostsRadiusCheckAccessRetrieveExecute(r)
 }
 
 /*
-OutpostsProxyRetrieve Method for OutpostsProxyRetrieve
+OutpostsRadiusCheckAccessRetrieve Method for OutpostsRadiusCheckAccessRetrieve
 
-ProxyProvider Viewset
+Check access to a single application by slug
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this Proxy Provider.
-	@return ApiOutpostsProxyRetrieveRequest
+	@param id A unique integer value identifying this Radius Provider.
+	@return ApiOutpostsRadiusCheckAccessRetrieveRequest
 */
-func (a *OutpostsApiService) OutpostsProxyRetrieve(ctx context.Context, id int32) ApiOutpostsProxyRetrieveRequest {
-	return ApiOutpostsProxyRetrieveRequest{
+func (a *OutpostsApiService) OutpostsRadiusCheckAccessRetrieve(ctx context.Context, id int32) ApiOutpostsRadiusCheckAccessRetrieveRequest {
+	return ApiOutpostsRadiusCheckAccessRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -1845,27 +1728,30 @@ func (a *OutpostsApiService) OutpostsProxyRetrieve(ctx context.Context, id int32
 
 // Execute executes the request
 //
-//	@return ProxyOutpostConfig
-func (a *OutpostsApiService) OutpostsProxyRetrieveExecute(r ApiOutpostsProxyRetrieveRequest) (*ProxyOutpostConfig, *http.Response, error) {
+//	@return RadiusCheckAccess
+func (a *OutpostsApiService) OutpostsRadiusCheckAccessRetrieveExecute(r ApiOutpostsRadiusCheckAccessRetrieveRequest) (*RadiusCheckAccess, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ProxyOutpostConfig
+		localVarReturnValue *RadiusCheckAccess
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsProxyRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsRadiusCheckAccessRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/outposts/proxy/{id}/"
+	localVarPath := localBasePath + "/outposts/radius/{id}/check_access/"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.appSlug != nil {
+		localVarQueryParams.Add("app_slug", parameterToString(*r.appSlug, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2034,129 +1920,6 @@ func (a *OutpostsApiService) OutpostsRadiusListExecute(r ApiOutpostsRadiusListRe
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiOutpostsRadiusRetrieveRequest struct {
-	ctx        context.Context
-	ApiService *OutpostsApiService
-	id         int32
-}
-
-func (r ApiOutpostsRadiusRetrieveRequest) Execute() (*RadiusOutpostConfig, *http.Response, error) {
-	return r.ApiService.OutpostsRadiusRetrieveExecute(r)
-}
-
-/*
-OutpostsRadiusRetrieve Method for OutpostsRadiusRetrieve
-
-RadiusProvider Viewset
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this Radius Provider.
-	@return ApiOutpostsRadiusRetrieveRequest
-*/
-func (a *OutpostsApiService) OutpostsRadiusRetrieve(ctx context.Context, id int32) ApiOutpostsRadiusRetrieveRequest {
-	return ApiOutpostsRadiusRetrieveRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-//
-//	@return RadiusOutpostConfig
-func (a *OutpostsApiService) OutpostsRadiusRetrieveExecute(r ApiOutpostsRadiusRetrieveRequest) (*RadiusOutpostConfig, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *RadiusOutpostConfig
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsRadiusRetrieve")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/outposts/radius/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

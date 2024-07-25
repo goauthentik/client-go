@@ -41,6 +41,8 @@
 
 * `PROVIDERS_RADIUS_RADIUSPROVIDER` (value: `"authentik_providers_radius.radiusprovider"`)
 
+* `PROVIDERS_RADIUS_RADIUSPROVIDERPROPERTYMAPPING` (value: `"authentik_providers_radius.radiusproviderpropertymapping"`)
+
 * `PROVIDERS_SAML_SAMLPROVIDER` (value: `"authentik_providers_saml.samlprovider"`)
 
 * `PROVIDERS_SAML_SAMLPROPERTYMAPPING` (value: `"authentik_providers_saml.samlpropertymapping"`)

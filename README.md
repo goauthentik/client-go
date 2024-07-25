@@ -282,11 +282,9 @@ Class | Method | HTTP request | Description
 *OutpostsApi* | [**OutpostsInstancesUpdate**](docs/OutpostsApi.md#outpostsinstancesupdate) | **Put** /outposts/instances/{uuid}/ | 
 *OutpostsApi* | [**OutpostsInstancesUsedByList**](docs/OutpostsApi.md#outpostsinstancesusedbylist) | **Get** /outposts/instances/{uuid}/used_by/ | 
 *OutpostsApi* | [**OutpostsLdapList**](docs/OutpostsApi.md#outpostsldaplist) | **Get** /outposts/ldap/ | 
-*OutpostsApi* | [**OutpostsLdapRetrieve**](docs/OutpostsApi.md#outpostsldapretrieve) | **Get** /outposts/ldap/{id}/ | 
 *OutpostsApi* | [**OutpostsProxyList**](docs/OutpostsApi.md#outpostsproxylist) | **Get** /outposts/proxy/ | 
-*OutpostsApi* | [**OutpostsProxyRetrieve**](docs/OutpostsApi.md#outpostsproxyretrieve) | **Get** /outposts/proxy/{id}/ | 
+*OutpostsApi* | [**OutpostsRadiusCheckAccessRetrieve**](docs/OutpostsApi.md#outpostsradiuscheckaccessretrieve) | **Get** /outposts/radius/{id}/check_access/ | 
 *OutpostsApi* | [**OutpostsRadiusList**](docs/OutpostsApi.md#outpostsradiuslist) | **Get** /outposts/radius/ | 
-*OutpostsApi* | [**OutpostsRadiusRetrieve**](docs/OutpostsApi.md#outpostsradiusretrieve) | **Get** /outposts/radius/{id}/ | 
 *OutpostsApi* | [**OutpostsServiceConnectionsAllDestroy**](docs/OutpostsApi.md#outpostsserviceconnectionsalldestroy) | **Delete** /outposts/service_connections/all/{uuid}/ | 
 *OutpostsApi* | [**OutpostsServiceConnectionsAllList**](docs/OutpostsApi.md#outpostsserviceconnectionsalllist) | **Get** /outposts/service_connections/all/ | 
 *OutpostsApi* | [**OutpostsServiceConnectionsAllRetrieve**](docs/OutpostsApi.md#outpostsserviceconnectionsallretrieve) | **Get** /outposts/service_connections/all/{uuid}/ | 
@@ -402,6 +400,13 @@ Class | Method | HTTP request | Description
 *PropertymappingsApi* | [**PropertymappingsRacRetrieve**](docs/PropertymappingsApi.md#propertymappingsracretrieve) | **Get** /propertymappings/rac/{pm_uuid}/ | 
 *PropertymappingsApi* | [**PropertymappingsRacUpdate**](docs/PropertymappingsApi.md#propertymappingsracupdate) | **Put** /propertymappings/rac/{pm_uuid}/ | 
 *PropertymappingsApi* | [**PropertymappingsRacUsedByList**](docs/PropertymappingsApi.md#propertymappingsracusedbylist) | **Get** /propertymappings/rac/{pm_uuid}/used_by/ | 
+*PropertymappingsApi* | [**PropertymappingsRadiusCreate**](docs/PropertymappingsApi.md#propertymappingsradiuscreate) | **Post** /propertymappings/radius/ | 
+*PropertymappingsApi* | [**PropertymappingsRadiusDestroy**](docs/PropertymappingsApi.md#propertymappingsradiusdestroy) | **Delete** /propertymappings/radius/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsRadiusList**](docs/PropertymappingsApi.md#propertymappingsradiuslist) | **Get** /propertymappings/radius/ | 
+*PropertymappingsApi* | [**PropertymappingsRadiusPartialUpdate**](docs/PropertymappingsApi.md#propertymappingsradiuspartialupdate) | **Patch** /propertymappings/radius/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsRadiusRetrieve**](docs/PropertymappingsApi.md#propertymappingsradiusretrieve) | **Get** /propertymappings/radius/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsRadiusUpdate**](docs/PropertymappingsApi.md#propertymappingsradiusupdate) | **Put** /propertymappings/radius/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsRadiusUsedByList**](docs/PropertymappingsApi.md#propertymappingsradiususedbylist) | **Get** /propertymappings/radius/{pm_uuid}/used_by/ | 
 *PropertymappingsApi* | [**PropertymappingsSamlCreate**](docs/PropertymappingsApi.md#propertymappingssamlcreate) | **Post** /propertymappings/saml/ | 
 *PropertymappingsApi* | [**PropertymappingsSamlDestroy**](docs/PropertymappingsApi.md#propertymappingssamldestroy) | **Delete** /propertymappings/saml/{pm_uuid}/ | 
 *PropertymappingsApi* | [**PropertymappingsSamlList**](docs/PropertymappingsApi.md#propertymappingssamllist) | **Get** /propertymappings/saml/ | 
@@ -1141,6 +1146,7 @@ Class | Method | HTTP request | Description
  - [PaginatedRACProviderList](docs/PaginatedRACProviderList.md)
  - [PaginatedRadiusOutpostConfigList](docs/PaginatedRadiusOutpostConfigList.md)
  - [PaginatedRadiusProviderList](docs/PaginatedRadiusProviderList.md)
+ - [PaginatedRadiusProviderPropertyMappingList](docs/PaginatedRadiusProviderPropertyMappingList.md)
  - [PaginatedReputationList](docs/PaginatedReputationList.md)
  - [PaginatedReputationPolicyList](docs/PaginatedReputationPolicyList.md)
  - [PaginatedRoleAssignedObjectPermissionList](docs/PaginatedRoleAssignedObjectPermissionList.md)
@@ -1246,6 +1252,7 @@ Class | Method | HTTP request | Description
  - [PatchedProxyProviderRequest](docs/PatchedProxyProviderRequest.md)
  - [PatchedRACPropertyMappingRequest](docs/PatchedRACPropertyMappingRequest.md)
  - [PatchedRACProviderRequest](docs/PatchedRACProviderRequest.md)
+ - [PatchedRadiusProviderPropertyMappingRequest](docs/PatchedRadiusProviderPropertyMappingRequest.md)
  - [PatchedRadiusProviderRequest](docs/PatchedRadiusProviderRequest.md)
  - [PatchedReputationPolicyRequest](docs/PatchedReputationPolicyRequest.md)
  - [PatchedRoleRequest](docs/PatchedRoleRequest.md)
@@ -1314,8 +1321,11 @@ Class | Method | HTTP request | Description
  - [RACPropertyMappingRequest](docs/RACPropertyMappingRequest.md)
  - [RACProvider](docs/RACProvider.md)
  - [RACProviderRequest](docs/RACProviderRequest.md)
+ - [RadiusCheckAccess](docs/RadiusCheckAccess.md)
  - [RadiusOutpostConfig](docs/RadiusOutpostConfig.md)
  - [RadiusProvider](docs/RadiusProvider.md)
+ - [RadiusProviderPropertyMapping](docs/RadiusProviderPropertyMapping.md)
+ - [RadiusProviderPropertyMappingRequest](docs/RadiusProviderPropertyMappingRequest.md)
  - [RadiusProviderRequest](docs/RadiusProviderRequest.md)
  - [RedirectChallenge](docs/RedirectChallenge.md)
  - [Reputation](docs/Reputation.md)

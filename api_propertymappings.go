@@ -4565,6 +4565,961 @@ func (a *PropertymappingsApiService) PropertymappingsRacUsedByListExecute(r ApiP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiPropertymappingsRadiusCreateRequest struct {
+	ctx                                  context.Context
+	ApiService                           *PropertymappingsApiService
+	radiusProviderPropertyMappingRequest *RadiusProviderPropertyMappingRequest
+}
+
+func (r ApiPropertymappingsRadiusCreateRequest) RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest RadiusProviderPropertyMappingRequest) ApiPropertymappingsRadiusCreateRequest {
+	r.radiusProviderPropertyMappingRequest = &radiusProviderPropertyMappingRequest
+	return r
+}
+
+func (r ApiPropertymappingsRadiusCreateRequest) Execute() (*RadiusProviderPropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsRadiusCreateExecute(r)
+}
+
+/*
+PropertymappingsRadiusCreate Method for PropertymappingsRadiusCreate
+
+RadiusProviderPropertyMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPropertymappingsRadiusCreateRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsRadiusCreate(ctx context.Context) ApiPropertymappingsRadiusCreateRequest {
+	return ApiPropertymappingsRadiusCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return RadiusProviderPropertyMapping
+func (a *PropertymappingsApiService) PropertymappingsRadiusCreateExecute(r ApiPropertymappingsRadiusCreateRequest) (*RadiusProviderPropertyMapping, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RadiusProviderPropertyMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRadiusCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/radius/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.radiusProviderPropertyMappingRequest == nil {
+		return localVarReturnValue, nil, reportError("radiusProviderPropertyMappingRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.radiusProviderPropertyMappingRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsRadiusDestroyRequest struct {
+	ctx        context.Context
+	ApiService *PropertymappingsApiService
+	pmUuid     string
+}
+
+func (r ApiPropertymappingsRadiusDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PropertymappingsRadiusDestroyExecute(r)
+}
+
+/*
+PropertymappingsRadiusDestroy Method for PropertymappingsRadiusDestroy
+
+RadiusProviderPropertyMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this Radius Property Mapping.
+	@return ApiPropertymappingsRadiusDestroyRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsRadiusDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsRadiusDestroyRequest {
+	return ApiPropertymappingsRadiusDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+func (a *PropertymappingsApiService) PropertymappingsRadiusDestroyExecute(r ApiPropertymappingsRadiusDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRadiusDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/radius/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsRadiusListRequest struct {
+	ctx        context.Context
+	ApiService *PropertymappingsApiService
+	expression *string
+	managed    *[]string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	pmUuid     *string
+	search     *string
+}
+
+func (r ApiPropertymappingsRadiusListRequest) Expression(expression string) ApiPropertymappingsRadiusListRequest {
+	r.expression = &expression
+	return r
+}
+
+func (r ApiPropertymappingsRadiusListRequest) Managed(managed []string) ApiPropertymappingsRadiusListRequest {
+	r.managed = &managed
+	return r
+}
+
+func (r ApiPropertymappingsRadiusListRequest) Name(name string) ApiPropertymappingsRadiusListRequest {
+	r.name = &name
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiPropertymappingsRadiusListRequest) Ordering(ordering string) ApiPropertymappingsRadiusListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiPropertymappingsRadiusListRequest) Page(page int32) ApiPropertymappingsRadiusListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiPropertymappingsRadiusListRequest) PageSize(pageSize int32) ApiPropertymappingsRadiusListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiPropertymappingsRadiusListRequest) PmUuid(pmUuid string) ApiPropertymappingsRadiusListRequest {
+	r.pmUuid = &pmUuid
+	return r
+}
+
+// A search term.
+func (r ApiPropertymappingsRadiusListRequest) Search(search string) ApiPropertymappingsRadiusListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiPropertymappingsRadiusListRequest) Execute() (*PaginatedRadiusProviderPropertyMappingList, *http.Response, error) {
+	return r.ApiService.PropertymappingsRadiusListExecute(r)
+}
+
+/*
+PropertymappingsRadiusList Method for PropertymappingsRadiusList
+
+RadiusProviderPropertyMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPropertymappingsRadiusListRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsRadiusList(ctx context.Context) ApiPropertymappingsRadiusListRequest {
+	return ApiPropertymappingsRadiusListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedRadiusProviderPropertyMappingList
+func (a *PropertymappingsApiService) PropertymappingsRadiusListExecute(r ApiPropertymappingsRadiusListRequest) (*PaginatedRadiusProviderPropertyMappingList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedRadiusProviderPropertyMappingList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRadiusList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/radius/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.expression != nil {
+		localVarQueryParams.Add("expression", parameterToString(*r.expression, ""))
+	}
+	if r.managed != nil {
+		t := *r.managed
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("managed", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("managed", parameterToString(t, "multi"))
+		}
+	}
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.pmUuid != nil {
+		localVarQueryParams.Add("pm_uuid", parameterToString(*r.pmUuid, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsRadiusPartialUpdateRequest struct {
+	ctx                                         context.Context
+	ApiService                                  *PropertymappingsApiService
+	pmUuid                                      string
+	patchedRadiusProviderPropertyMappingRequest *PatchedRadiusProviderPropertyMappingRequest
+}
+
+func (r ApiPropertymappingsRadiusPartialUpdateRequest) PatchedRadiusProviderPropertyMappingRequest(patchedRadiusProviderPropertyMappingRequest PatchedRadiusProviderPropertyMappingRequest) ApiPropertymappingsRadiusPartialUpdateRequest {
+	r.patchedRadiusProviderPropertyMappingRequest = &patchedRadiusProviderPropertyMappingRequest
+	return r
+}
+
+func (r ApiPropertymappingsRadiusPartialUpdateRequest) Execute() (*RadiusProviderPropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsRadiusPartialUpdateExecute(r)
+}
+
+/*
+PropertymappingsRadiusPartialUpdate Method for PropertymappingsRadiusPartialUpdate
+
+RadiusProviderPropertyMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this Radius Property Mapping.
+	@return ApiPropertymappingsRadiusPartialUpdateRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsRadiusPartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsRadiusPartialUpdateRequest {
+	return ApiPropertymappingsRadiusPartialUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return RadiusProviderPropertyMapping
+func (a *PropertymappingsApiService) PropertymappingsRadiusPartialUpdateExecute(r ApiPropertymappingsRadiusPartialUpdateRequest) (*RadiusProviderPropertyMapping, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RadiusProviderPropertyMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRadiusPartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/radius/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedRadiusProviderPropertyMappingRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsRadiusRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *PropertymappingsApiService
+	pmUuid     string
+}
+
+func (r ApiPropertymappingsRadiusRetrieveRequest) Execute() (*RadiusProviderPropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsRadiusRetrieveExecute(r)
+}
+
+/*
+PropertymappingsRadiusRetrieve Method for PropertymappingsRadiusRetrieve
+
+RadiusProviderPropertyMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this Radius Property Mapping.
+	@return ApiPropertymappingsRadiusRetrieveRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsRadiusRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsRadiusRetrieveRequest {
+	return ApiPropertymappingsRadiusRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return RadiusProviderPropertyMapping
+func (a *PropertymappingsApiService) PropertymappingsRadiusRetrieveExecute(r ApiPropertymappingsRadiusRetrieveRequest) (*RadiusProviderPropertyMapping, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RadiusProviderPropertyMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRadiusRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/radius/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsRadiusUpdateRequest struct {
+	ctx                                  context.Context
+	ApiService                           *PropertymappingsApiService
+	pmUuid                               string
+	radiusProviderPropertyMappingRequest *RadiusProviderPropertyMappingRequest
+}
+
+func (r ApiPropertymappingsRadiusUpdateRequest) RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest RadiusProviderPropertyMappingRequest) ApiPropertymappingsRadiusUpdateRequest {
+	r.radiusProviderPropertyMappingRequest = &radiusProviderPropertyMappingRequest
+	return r
+}
+
+func (r ApiPropertymappingsRadiusUpdateRequest) Execute() (*RadiusProviderPropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsRadiusUpdateExecute(r)
+}
+
+/*
+PropertymappingsRadiusUpdate Method for PropertymappingsRadiusUpdate
+
+RadiusProviderPropertyMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this Radius Property Mapping.
+	@return ApiPropertymappingsRadiusUpdateRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsRadiusUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsRadiusUpdateRequest {
+	return ApiPropertymappingsRadiusUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return RadiusProviderPropertyMapping
+func (a *PropertymappingsApiService) PropertymappingsRadiusUpdateExecute(r ApiPropertymappingsRadiusUpdateRequest) (*RadiusProviderPropertyMapping, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RadiusProviderPropertyMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRadiusUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/radius/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.radiusProviderPropertyMappingRequest == nil {
+		return localVarReturnValue, nil, reportError("radiusProviderPropertyMappingRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.radiusProviderPropertyMappingRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsRadiusUsedByListRequest struct {
+	ctx        context.Context
+	ApiService *PropertymappingsApiService
+	pmUuid     string
+}
+
+func (r ApiPropertymappingsRadiusUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.PropertymappingsRadiusUsedByListExecute(r)
+}
+
+/*
+PropertymappingsRadiusUsedByList Method for PropertymappingsRadiusUsedByList
+
+Get a list of all objects that use this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this Radius Property Mapping.
+	@return ApiPropertymappingsRadiusUsedByListRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsRadiusUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsRadiusUsedByListRequest {
+	return ApiPropertymappingsRadiusUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []UsedBy
+func (a *PropertymappingsApiService) PropertymappingsRadiusUsedByListExecute(r ApiPropertymappingsRadiusUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRadiusUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/radius/{pm_uuid}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiPropertymappingsSamlCreateRequest struct {
 	ctx                        context.Context
 	ApiService                 *PropertymappingsApiService

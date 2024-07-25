@@ -14,11 +14,9 @@ Method | HTTP request | Description
 [**OutpostsInstancesUpdate**](OutpostsApi.md#OutpostsInstancesUpdate) | **Put** /outposts/instances/{uuid}/ | 
 [**OutpostsInstancesUsedByList**](OutpostsApi.md#OutpostsInstancesUsedByList) | **Get** /outposts/instances/{uuid}/used_by/ | 
 [**OutpostsLdapList**](OutpostsApi.md#OutpostsLdapList) | **Get** /outposts/ldap/ | 
-[**OutpostsLdapRetrieve**](OutpostsApi.md#OutpostsLdapRetrieve) | **Get** /outposts/ldap/{id}/ | 
 [**OutpostsProxyList**](OutpostsApi.md#OutpostsProxyList) | **Get** /outposts/proxy/ | 
-[**OutpostsProxyRetrieve**](OutpostsApi.md#OutpostsProxyRetrieve) | **Get** /outposts/proxy/{id}/ | 
+[**OutpostsRadiusCheckAccessRetrieve**](OutpostsApi.md#OutpostsRadiusCheckAccessRetrieve) | **Get** /outposts/radius/{id}/check_access/ | 
 [**OutpostsRadiusList**](OutpostsApi.md#OutpostsRadiusList) | **Get** /outposts/radius/ | 
-[**OutpostsRadiusRetrieve**](OutpostsApi.md#OutpostsRadiusRetrieve) | **Get** /outposts/radius/{id}/ | 
 [**OutpostsServiceConnectionsAllDestroy**](OutpostsApi.md#OutpostsServiceConnectionsAllDestroy) | **Delete** /outposts/service_connections/all/{uuid}/ | 
 [**OutpostsServiceConnectionsAllList**](OutpostsApi.md#OutpostsServiceConnectionsAllList) | **Get** /outposts/service_connections/all/ | 
 [**OutpostsServiceConnectionsAllRetrieve**](OutpostsApi.md#OutpostsServiceConnectionsAllRetrieve) | **Get** /outposts/service_connections/all/{uuid}/ | 
@@ -773,76 +771,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OutpostsLdapRetrieve
-
-> LDAPOutpostConfig OutpostsLdapRetrieve(ctx, id).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := int32(56) // int32 | A unique integer value identifying this LDAP Provider.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OutpostsApi.OutpostsLdapRetrieve(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsLdapRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OutpostsLdapRetrieve`: LDAPOutpostConfig
-    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsLdapRetrieve`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this LDAP Provider. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiOutpostsLdapRetrieveRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**LDAPOutpostConfig**](LDAPOutpostConfig.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## OutpostsProxyList
 
 > PaginatedProxyOutpostConfigList OutpostsProxyList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
@@ -917,9 +845,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OutpostsProxyRetrieve
+## OutpostsRadiusCheckAccessRetrieve
 
-> ProxyOutpostConfig OutpostsProxyRetrieve(ctx, id).Execute()
+> RadiusCheckAccess OutpostsRadiusCheckAccessRetrieve(ctx, id).AppSlug(appSlug).Execute()
 
 
 
@@ -938,17 +866,18 @@ import (
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Proxy Provider.
+    id := int32(56) // int32 | A unique integer value identifying this Radius Provider.
+    appSlug := "appSlug_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OutpostsApi.OutpostsProxyRetrieve(context.Background(), id).Execute()
+    resp, r, err := apiClient.OutpostsApi.OutpostsRadiusCheckAccessRetrieve(context.Background(), id).AppSlug(appSlug).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsProxyRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsRadiusCheckAccessRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `OutpostsProxyRetrieve`: ProxyOutpostConfig
-    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsProxyRetrieve`: %v\n", resp)
+    // response from `OutpostsRadiusCheckAccessRetrieve`: RadiusCheckAccess
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsRadiusCheckAccessRetrieve`: %v\n", resp)
 }
 ```
 
@@ -958,20 +887,21 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this Proxy Provider. | 
+**id** | **int32** | A unique integer value identifying this Radius Provider. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOutpostsProxyRetrieveRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiOutpostsRadiusCheckAccessRetrieveRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **appSlug** | **string** |  | 
 
 ### Return type
 
-[**ProxyOutpostConfig**](ProxyOutpostConfig.md)
+[**RadiusCheckAccess**](RadiusCheckAccess.md)
 
 ### Authorization
 
@@ -1046,76 +976,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PaginatedRadiusOutpostConfigList**](PaginatedRadiusOutpostConfigList.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## OutpostsRadiusRetrieve
-
-> RadiusOutpostConfig OutpostsRadiusRetrieve(ctx, id).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Radius Provider.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OutpostsApi.OutpostsRadiusRetrieve(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsRadiusRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OutpostsRadiusRetrieve`: RadiusOutpostConfig
-    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsRadiusRetrieve`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this Radius Provider. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiOutpostsRadiusRetrieveRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**RadiusOutpostConfig**](RadiusOutpostConfig.md)
 
 ### Authorization
 

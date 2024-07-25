@@ -38,6 +38,13 @@ Method | HTTP request | Description
 [**PropertymappingsRacRetrieve**](PropertymappingsApi.md#PropertymappingsRacRetrieve) | **Get** /propertymappings/rac/{pm_uuid}/ | 
 [**PropertymappingsRacUpdate**](PropertymappingsApi.md#PropertymappingsRacUpdate) | **Put** /propertymappings/rac/{pm_uuid}/ | 
 [**PropertymappingsRacUsedByList**](PropertymappingsApi.md#PropertymappingsRacUsedByList) | **Get** /propertymappings/rac/{pm_uuid}/used_by/ | 
+[**PropertymappingsRadiusCreate**](PropertymappingsApi.md#PropertymappingsRadiusCreate) | **Post** /propertymappings/radius/ | 
+[**PropertymappingsRadiusDestroy**](PropertymappingsApi.md#PropertymappingsRadiusDestroy) | **Delete** /propertymappings/radius/{pm_uuid}/ | 
+[**PropertymappingsRadiusList**](PropertymappingsApi.md#PropertymappingsRadiusList) | **Get** /propertymappings/radius/ | 
+[**PropertymappingsRadiusPartialUpdate**](PropertymappingsApi.md#PropertymappingsRadiusPartialUpdate) | **Patch** /propertymappings/radius/{pm_uuid}/ | 
+[**PropertymappingsRadiusRetrieve**](PropertymappingsApi.md#PropertymappingsRadiusRetrieve) | **Get** /propertymappings/radius/{pm_uuid}/ | 
+[**PropertymappingsRadiusUpdate**](PropertymappingsApi.md#PropertymappingsRadiusUpdate) | **Put** /propertymappings/radius/{pm_uuid}/ | 
+[**PropertymappingsRadiusUsedByList**](PropertymappingsApi.md#PropertymappingsRadiusUsedByList) | **Get** /propertymappings/radius/{pm_uuid}/used_by/ | 
 [**PropertymappingsSamlCreate**](PropertymappingsApi.md#PropertymappingsSamlCreate) | **Post** /propertymappings/saml/ | 
 [**PropertymappingsSamlDestroy**](PropertymappingsApi.md#PropertymappingsSamlDestroy) | **Delete** /propertymappings/saml/{pm_uuid}/ | 
 [**PropertymappingsSamlList**](PropertymappingsApi.md#PropertymappingsSamlList) | **Get** /propertymappings/saml/ | 
@@ -2444,6 +2451,504 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPropertymappingsRacUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsRadiusCreate
+
+> RadiusProviderPropertyMapping PropertymappingsRadiusCreate(ctx).RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    radiusProviderPropertyMappingRequest := *openapiclient.NewRadiusProviderPropertyMappingRequest("Name_example", "Expression_example") // RadiusProviderPropertyMappingRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRadiusCreate(context.Background()).RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRadiusCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsRadiusCreate`: RadiusProviderPropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsRadiusCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsRadiusCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **radiusProviderPropertyMappingRequest** | [**RadiusProviderPropertyMappingRequest**](RadiusProviderPropertyMappingRequest.md) |  | 
+
+### Return type
+
+[**RadiusProviderPropertyMapping**](RadiusProviderPropertyMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsRadiusDestroy
+
+> PropertymappingsRadiusDestroy(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Property Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRadiusDestroy(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRadiusDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this Radius Property Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsRadiusDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsRadiusList
+
+> PaginatedRadiusProviderPropertyMappingList PropertymappingsRadiusList(ctx).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    expression := "expression_example" // string |  (optional)
+    managed := []string{"Inner_example"} // []string |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRadiusList(context.Background()).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRadiusList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsRadiusList`: PaginatedRadiusProviderPropertyMappingList
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsRadiusList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsRadiusListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expression** | **string** |  | 
+ **managed** | **[]string** |  | 
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **pmUuid** | **string** |  | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedRadiusProviderPropertyMappingList**](PaginatedRadiusProviderPropertyMappingList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsRadiusPartialUpdate
+
+> RadiusProviderPropertyMapping PropertymappingsRadiusPartialUpdate(ctx, pmUuid).PatchedRadiusProviderPropertyMappingRequest(patchedRadiusProviderPropertyMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Property Mapping.
+    patchedRadiusProviderPropertyMappingRequest := *openapiclient.NewPatchedRadiusProviderPropertyMappingRequest() // PatchedRadiusProviderPropertyMappingRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRadiusPartialUpdate(context.Background(), pmUuid).PatchedRadiusProviderPropertyMappingRequest(patchedRadiusProviderPropertyMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRadiusPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsRadiusPartialUpdate`: RadiusProviderPropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsRadiusPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this Radius Property Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsRadiusPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedRadiusProviderPropertyMappingRequest** | [**PatchedRadiusProviderPropertyMappingRequest**](PatchedRadiusProviderPropertyMappingRequest.md) |  | 
+
+### Return type
+
+[**RadiusProviderPropertyMapping**](RadiusProviderPropertyMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsRadiusRetrieve
+
+> RadiusProviderPropertyMapping PropertymappingsRadiusRetrieve(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Property Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRadiusRetrieve(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRadiusRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsRadiusRetrieve`: RadiusProviderPropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsRadiusRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this Radius Property Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsRadiusRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**RadiusProviderPropertyMapping**](RadiusProviderPropertyMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsRadiusUpdate
+
+> RadiusProviderPropertyMapping PropertymappingsRadiusUpdate(ctx, pmUuid).RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Property Mapping.
+    radiusProviderPropertyMappingRequest := *openapiclient.NewRadiusProviderPropertyMappingRequest("Name_example", "Expression_example") // RadiusProviderPropertyMappingRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRadiusUpdate(context.Background(), pmUuid).RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRadiusUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsRadiusUpdate`: RadiusProviderPropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsRadiusUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this Radius Property Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsRadiusUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **radiusProviderPropertyMappingRequest** | [**RadiusProviderPropertyMappingRequest**](RadiusProviderPropertyMappingRequest.md) |  | 
+
+### Return type
+
+[**RadiusProviderPropertyMapping**](RadiusProviderPropertyMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsRadiusUsedByList
+
+> []UsedBy PropertymappingsRadiusUsedByList(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Property Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRadiusUsedByList(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRadiusUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsRadiusUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsRadiusUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this Radius Property Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsRadiusUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
