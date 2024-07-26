@@ -14678,10 +14678,26 @@ paths:
       parameters:
       - explode: true
         in: query
+        name: managed
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
         name: managed__isnull
         required: false
         schema:
           type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
         style: form
       - description: Which field to use when ordering the results.
         explode: true
@@ -16144,19 +16160,19 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: expression
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
         name: managed
         required: false
         schema:
           items:
             type: string
           type: array
+        style: form
+      - explode: true
+        in: query
+        name: managed__isnull
+        required: false
+        schema:
+          type: boolean
         style: form
       - explode: true
         in: query
@@ -16188,14 +16204,6 @@ paths:
         required: false
         schema:
           type: integer
-        style: form
-      - explode: true
-        in: query
-        name: pm_uuid
-        required: false
-        schema:
-          format: uuid
-          type: string
         style: form
       - description: A search term.
         explode: true
@@ -16458,26 +16466,19 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: expression
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: friendly_name
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
         name: managed
         required: false
         schema:
           items:
             type: string
           type: array
+        style: form
+      - explode: true
+        in: query
+        name: managed__isnull
+        required: false
+        schema:
+          type: boolean
         style: form
       - explode: true
         in: query
@@ -16509,21 +16510,6 @@ paths:
         required: false
         schema:
           type: integer
-        style: form
-      - explode: true
-        in: query
-        name: pm_uuid
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: saml_name
-        required: false
-        schema:
-          type: string
         style: form
       - description: A search term.
         explode: true
@@ -16786,19 +16772,19 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: expression
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
         name: managed
         required: false
         schema:
           items:
             type: string
           type: array
+        style: form
+      - explode: true
+        in: query
+        name: managed__isnull
+        required: false
+        schema:
+          type: boolean
         style: form
       - explode: true
         in: query
@@ -16830,14 +16816,6 @@ paths:
         required: false
         schema:
           type: integer
-        style: form
-      - explode: true
-        in: query
-        name: pm_uuid
-        required: false
-        schema:
-          format: uuid
-          type: string
         style: form
       - description: A search term.
         explode: true
@@ -17106,6 +17084,13 @@ paths:
           items:
             type: string
           type: array
+        style: form
+      - explode: true
+        in: query
+        name: managed__isnull
+        required: false
+        schema:
+          type: boolean
         style: form
       - explode: true
         in: query
@@ -17406,19 +17391,19 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: expression
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
         name: managed
         required: false
         schema:
           items:
             type: string
           type: array
+        style: form
+      - explode: true
+        in: query
+        name: managed__isnull
+        required: false
+        schema:
+          type: boolean
         style: form
       - explode: true
         in: query
@@ -17450,14 +17435,6 @@ paths:
         required: false
         schema:
           type: integer
-        style: form
-      - explode: true
-        in: query
-        name: pm_uuid
-        required: false
-        schema:
-          format: uuid
-          type: string
         style: form
       - description: A search term.
         explode: true
