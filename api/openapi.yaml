@@ -17690,6 +17690,320 @@ paths:
       - authentik: []
       tags:
       - propertymappings
+  /propertymappings/source/scim/:
+    get:
+      description: SCIMSourcePropertyMapping Viewset
+      operationId: propertymappings_source_scim_list
+      parameters:
+      - explode: true
+        in: query
+        name: expression
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: managed
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: pm_uuid
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSCIMSourcePropertyMappingList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    post:
+      description: SCIMSourcePropertyMapping Viewset
+      operationId: propertymappings_source_scim_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SCIMSourcePropertyMappingRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMSourcePropertyMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+  /propertymappings/source/scim/{pm_uuid}/:
+    delete:
+      description: SCIMSourcePropertyMapping Viewset
+      operationId: propertymappings_source_scim_destroy
+      parameters:
+      - description: A UUID string identifying this SCIM Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    get:
+      description: SCIMSourcePropertyMapping Viewset
+      operationId: propertymappings_source_scim_retrieve
+      parameters:
+      - description: A UUID string identifying this SCIM Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMSourcePropertyMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    patch:
+      description: SCIMSourcePropertyMapping Viewset
+      operationId: propertymappings_source_scim_partial_update
+      parameters:
+      - description: A UUID string identifying this SCIM Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSCIMSourcePropertyMappingRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMSourcePropertyMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    put:
+      description: SCIMSourcePropertyMapping Viewset
+      operationId: propertymappings_source_scim_update
+      parameters:
+      - description: A UUID string identifying this SCIM Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SCIMSourcePropertyMappingRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SCIMSourcePropertyMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+  /propertymappings/source/scim/{pm_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: propertymappings_source_scim_used_by_list
+      parameters:
+      - description: A UUID string identifying this SCIM Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
   /providers/all/:
     get:
       description: Provider Viewset
@@ -23417,6 +23731,7 @@ paths:
           - authentik_sources_saml.samlsource
           - authentik_sources_saml.usersamlsourceconnection
           - authentik_sources_scim.scimsource
+          - authentik_sources_scim.scimsourcepropertymapping
           - authentik_stages_authenticator_duo.authenticatorduostage
           - authentik_stages_authenticator_duo.duodevice
           - authentik_stages_authenticator_sms.authenticatorsmsstage
@@ -23654,6 +23969,7 @@ paths:
           - authentik_sources_saml.samlsource
           - authentik_sources_saml.usersamlsourceconnection
           - authentik_sources_scim.scimsource
+          - authentik_sources_scim.scimsourcepropertymapping
           - authentik_stages_authenticator_duo.authenticatorduostage
           - authentik_stages_authenticator_duo.duodevice
           - authentik_stages_authenticator_sms.authenticatorsmsstage
@@ -44377,6 +44693,7 @@ components:
       - authentik_sources_saml.samlsource
       - authentik_sources_saml.usersamlsourceconnection
       - authentik_sources_scim.scimsource
+      - authentik_sources_scim.scimsourcepropertymapping
       - authentik_stages_authenticator_duo.authenticatorduostage
       - authentik_stages_authenticator_duo.duodevice
       - authentik_stages_authenticator_sms.authenticatorsmsstage
@@ -50986,28 +51303,38 @@ components:
         results:
         - root_url: root_url
           token_obj: ""
-          user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           user_path_template: user_path_template
+          group_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enabled: true
           component: component
           verbose_name: verbose_name
           meta_model_name: meta_model_name
           managed: managed
           name: name
+          user_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           slug: slug
         - root_url: root_url
           token_obj: ""
-          user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           user_path_template: user_path_template
+          group_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enabled: true
           component: component
           verbose_name: verbose_name
           meta_model_name: meta_model_name
           managed: managed
           name: name
+          user_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           slug: slug
       properties:
@@ -51016,6 +51343,44 @@ components:
         results:
           items:
             $ref: '#/components/schemas/SCIMSource'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedSCIMSourcePropertyMappingList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - component: component
+          verbose_name: verbose_name
+          expression: expression
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          managed: managed
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - component: component
+          verbose_name: verbose_name
+          expression: expression
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          managed: managed
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/SCIMSourcePropertyMapping'
           type: array
       required:
       - pagination
@@ -56291,12 +56656,40 @@ components:
           type: string
         attributes: {}
       type: object
+    PatchedSCIMSourcePropertyMappingRequest:
+      description: SCIMSourcePropertyMapping Serializer
+      example:
+        expression: expression
+        managed: managed
+        name: name
+      properties:
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          minLength: 1
+          nullable: true
+          title: Managed by authentik
+          type: string
+        name:
+          minLength: 1
+          type: string
+        expression:
+          minLength: 1
+          type: string
+      type: object
     PatchedSCIMSourceRequest:
       description: SCIMSource Serializer
       example:
-        user_matching_mode: ""
         user_path_template: user_path_template
+        group_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         slug: slug
         enabled: true
       properties:
@@ -56312,11 +56705,16 @@ components:
           type: string
         enabled:
           type: boolean
-        user_matching_mode:
-          allOf:
-          - $ref: '#/components/schemas/UserMatchingModeEnum'
-          description: How the source determines if an existing user should be authenticated
-            or a new user enrolled.
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
         user_path_template:
           minLength: 1
           type: string
@@ -60418,15 +60816,20 @@ components:
       example:
         root_url: root_url
         token_obj: ""
-        user_matching_mode: ""
         verbose_name_plural: verbose_name_plural
         user_path_template: user_path_template
+        group_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enabled: true
         component: component
         verbose_name: verbose_name
         meta_model_name: meta_model_name
         managed: managed
         name: name
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         slug: slug
       properties:
@@ -60445,6 +60848,16 @@ components:
           type: string
         enabled:
           type: boolean
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
         component:
           description: Get object component so that we know how to edit the object
           readOnly: true
@@ -60461,11 +60874,6 @@ components:
           description: Return internal model name
           readOnly: true
           type: string
-        user_matching_mode:
-          allOf:
-          - $ref: '#/components/schemas/UserMatchingModeEnum'
-          description: How the source determines if an existing user should be authenticated
-            or a new user enrolled.
         managed:
           description: "Objects that are managed by authentik. These objects are created\
             \ and updated automatically. This flag only indicates that an object can\
@@ -60548,12 +60956,97 @@ components:
       - id
       - source
       type: object
+    SCIMSourcePropertyMapping:
+      description: SCIMSourcePropertyMapping Serializer
+      example:
+        component: component
+        verbose_name: verbose_name
+        expression: expression
+        verbose_name_plural: verbose_name_plural
+        meta_model_name: meta_model_name
+        managed: managed
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Pm uuid
+          type: string
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          nullable: true
+          title: Managed by authentik
+          type: string
+        name:
+          type: string
+        expression:
+          type: string
+        component:
+          description: Get object's component so that we know how to edit the object
+          readOnly: true
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+      required:
+      - component
+      - expression
+      - meta_model_name
+      - name
+      - pk
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    SCIMSourcePropertyMappingRequest:
+      description: SCIMSourcePropertyMapping Serializer
+      example:
+        expression: expression
+        managed: managed
+        name: name
+      properties:
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          minLength: 1
+          nullable: true
+          title: Managed by authentik
+          type: string
+        name:
+          minLength: 1
+          type: string
+        expression:
+          minLength: 1
+          type: string
+      required:
+      - expression
+      - name
+      type: object
     SCIMSourceRequest:
       description: SCIMSource Serializer
       example:
-        user_matching_mode: ""
         user_path_template: user_path_template
+        group_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         slug: slug
         enabled: true
       properties:
@@ -60569,11 +61062,16 @@ components:
           type: string
         enabled:
           type: boolean
-        user_matching_mode:
-          allOf:
-          - $ref: '#/components/schemas/UserMatchingModeEnum'
-          description: How the source determines if an existing user should be authenticated
-            or a new user enrolled.
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
         user_path_template:
           minLength: 1
           type: string

@@ -73,6 +73,13 @@ Method | HTTP request | Description
 [**PropertymappingsSourceLdapRetrieve**](PropertymappingsApi.md#PropertymappingsSourceLdapRetrieve) | **Get** /propertymappings/source/ldap/{pm_uuid}/ | 
 [**PropertymappingsSourceLdapUpdate**](PropertymappingsApi.md#PropertymappingsSourceLdapUpdate) | **Put** /propertymappings/source/ldap/{pm_uuid}/ | 
 [**PropertymappingsSourceLdapUsedByList**](PropertymappingsApi.md#PropertymappingsSourceLdapUsedByList) | **Get** /propertymappings/source/ldap/{pm_uuid}/used_by/ | 
+[**PropertymappingsSourceScimCreate**](PropertymappingsApi.md#PropertymappingsSourceScimCreate) | **Post** /propertymappings/source/scim/ | 
+[**PropertymappingsSourceScimDestroy**](PropertymappingsApi.md#PropertymappingsSourceScimDestroy) | **Delete** /propertymappings/source/scim/{pm_uuid}/ | 
+[**PropertymappingsSourceScimList**](PropertymappingsApi.md#PropertymappingsSourceScimList) | **Get** /propertymappings/source/scim/ | 
+[**PropertymappingsSourceScimPartialUpdate**](PropertymappingsApi.md#PropertymappingsSourceScimPartialUpdate) | **Patch** /propertymappings/source/scim/{pm_uuid}/ | 
+[**PropertymappingsSourceScimRetrieve**](PropertymappingsApi.md#PropertymappingsSourceScimRetrieve) | **Get** /propertymappings/source/scim/{pm_uuid}/ | 
+[**PropertymappingsSourceScimUpdate**](PropertymappingsApi.md#PropertymappingsSourceScimUpdate) | **Put** /propertymappings/source/scim/{pm_uuid}/ | 
+[**PropertymappingsSourceScimUsedByList**](PropertymappingsApi.md#PropertymappingsSourceScimUsedByList) | **Get** /propertymappings/source/scim/{pm_uuid}/used_by/ | 
 
 
 
@@ -4937,6 +4944,504 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPropertymappingsSourceLdapUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceScimCreate
+
+> SCIMSourcePropertyMapping PropertymappingsSourceScimCreate(ctx).SCIMSourcePropertyMappingRequest(sCIMSourcePropertyMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    sCIMSourcePropertyMappingRequest := *openapiclient.NewSCIMSourcePropertyMappingRequest("Name_example", "Expression_example") // SCIMSourcePropertyMappingRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceScimCreate(context.Background()).SCIMSourcePropertyMappingRequest(sCIMSourcePropertyMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceScimCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsSourceScimCreate`: SCIMSourcePropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceScimCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceScimCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sCIMSourcePropertyMappingRequest** | [**SCIMSourcePropertyMappingRequest**](SCIMSourcePropertyMappingRequest.md) |  | 
+
+### Return type
+
+[**SCIMSourcePropertyMapping**](SCIMSourcePropertyMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceScimDestroy
+
+> PropertymappingsSourceScimDestroy(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Source Property Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceScimDestroy(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceScimDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this SCIM Source Property Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceScimDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceScimList
+
+> PaginatedSCIMSourcePropertyMappingList PropertymappingsSourceScimList(ctx).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    expression := "expression_example" // string |  (optional)
+    managed := []string{"Inner_example"} // []string |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceScimList(context.Background()).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceScimList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsSourceScimList`: PaginatedSCIMSourcePropertyMappingList
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceScimList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceScimListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expression** | **string** |  | 
+ **managed** | **[]string** |  | 
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **pmUuid** | **string** |  | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedSCIMSourcePropertyMappingList**](PaginatedSCIMSourcePropertyMappingList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceScimPartialUpdate
+
+> SCIMSourcePropertyMapping PropertymappingsSourceScimPartialUpdate(ctx, pmUuid).PatchedSCIMSourcePropertyMappingRequest(patchedSCIMSourcePropertyMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Source Property Mapping.
+    patchedSCIMSourcePropertyMappingRequest := *openapiclient.NewPatchedSCIMSourcePropertyMappingRequest() // PatchedSCIMSourcePropertyMappingRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceScimPartialUpdate(context.Background(), pmUuid).PatchedSCIMSourcePropertyMappingRequest(patchedSCIMSourcePropertyMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceScimPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsSourceScimPartialUpdate`: SCIMSourcePropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceScimPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this SCIM Source Property Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceScimPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedSCIMSourcePropertyMappingRequest** | [**PatchedSCIMSourcePropertyMappingRequest**](PatchedSCIMSourcePropertyMappingRequest.md) |  | 
+
+### Return type
+
+[**SCIMSourcePropertyMapping**](SCIMSourcePropertyMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceScimRetrieve
+
+> SCIMSourcePropertyMapping PropertymappingsSourceScimRetrieve(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Source Property Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceScimRetrieve(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceScimRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsSourceScimRetrieve`: SCIMSourcePropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceScimRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this SCIM Source Property Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceScimRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SCIMSourcePropertyMapping**](SCIMSourcePropertyMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceScimUpdate
+
+> SCIMSourcePropertyMapping PropertymappingsSourceScimUpdate(ctx, pmUuid).SCIMSourcePropertyMappingRequest(sCIMSourcePropertyMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Source Property Mapping.
+    sCIMSourcePropertyMappingRequest := *openapiclient.NewSCIMSourcePropertyMappingRequest("Name_example", "Expression_example") // SCIMSourcePropertyMappingRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceScimUpdate(context.Background(), pmUuid).SCIMSourcePropertyMappingRequest(sCIMSourcePropertyMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceScimUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsSourceScimUpdate`: SCIMSourcePropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceScimUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this SCIM Source Property Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceScimUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **sCIMSourcePropertyMappingRequest** | [**SCIMSourcePropertyMappingRequest**](SCIMSourcePropertyMappingRequest.md) |  | 
+
+### Return type
+
+[**SCIMSourcePropertyMapping**](SCIMSourcePropertyMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceScimUsedByList
+
+> []UsedBy PropertymappingsSourceScimUsedByList(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Source Property Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceScimUsedByList(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceScimUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsSourceScimUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceScimUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this SCIM Source Property Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceScimUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

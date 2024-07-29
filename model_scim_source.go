@@ -21,8 +21,10 @@ type SCIMSource struct {
 	// Source's display Name.
 	Name string `json:"name"`
 	// Internal source name, used in URLs.
-	Slug    string `json:"slug"`
-	Enabled *bool  `json:"enabled,omitempty"`
+	Slug                  string   `json:"slug"`
+	Enabled               *bool    `json:"enabled,omitempty"`
+	UserPropertyMappings  []string `json:"user_property_mappings,omitempty"`
+	GroupPropertyMappings []string `json:"group_property_mappings,omitempty"`
 	// Get object component so that we know how to edit the object
 	Component string `json:"component"`
 	// Return object's verbose_name
@@ -31,8 +33,6 @@ type SCIMSource struct {
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
 	MetaModelName string `json:"meta_model_name"`
-	// How the source determines if an existing user should be authenticated or a new user enrolled.
-	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed          NullableString `json:"managed"`
 	UserPathTemplate *string        `json:"user_path_template,omitempty"`
@@ -172,6 +172,70 @@ func (o *SCIMSource) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
+// GetUserPropertyMappings returns the UserPropertyMappings field value if set, zero value otherwise.
+func (o *SCIMSource) GetUserPropertyMappings() []string {
+	if o == nil || o.UserPropertyMappings == nil {
+		var ret []string
+		return ret
+	}
+	return o.UserPropertyMappings
+}
+
+// GetUserPropertyMappingsOk returns a tuple with the UserPropertyMappings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SCIMSource) GetUserPropertyMappingsOk() ([]string, bool) {
+	if o == nil || o.UserPropertyMappings == nil {
+		return nil, false
+	}
+	return o.UserPropertyMappings, true
+}
+
+// HasUserPropertyMappings returns a boolean if a field has been set.
+func (o *SCIMSource) HasUserPropertyMappings() bool {
+	if o != nil && o.UserPropertyMappings != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserPropertyMappings gets a reference to the given []string and assigns it to the UserPropertyMappings field.
+func (o *SCIMSource) SetUserPropertyMappings(v []string) {
+	o.UserPropertyMappings = v
+}
+
+// GetGroupPropertyMappings returns the GroupPropertyMappings field value if set, zero value otherwise.
+func (o *SCIMSource) GetGroupPropertyMappings() []string {
+	if o == nil || o.GroupPropertyMappings == nil {
+		var ret []string
+		return ret
+	}
+	return o.GroupPropertyMappings
+}
+
+// GetGroupPropertyMappingsOk returns a tuple with the GroupPropertyMappings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SCIMSource) GetGroupPropertyMappingsOk() ([]string, bool) {
+	if o == nil || o.GroupPropertyMappings == nil {
+		return nil, false
+	}
+	return o.GroupPropertyMappings, true
+}
+
+// HasGroupPropertyMappings returns a boolean if a field has been set.
+func (o *SCIMSource) HasGroupPropertyMappings() bool {
+	if o != nil && o.GroupPropertyMappings != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupPropertyMappings gets a reference to the given []string and assigns it to the GroupPropertyMappings field.
+func (o *SCIMSource) SetGroupPropertyMappings(v []string) {
+	o.GroupPropertyMappings = v
+}
+
 // GetComponent returns the Component field value
 func (o *SCIMSource) GetComponent() string {
 	if o == nil {
@@ -266,38 +330,6 @@ func (o *SCIMSource) GetMetaModelNameOk() (*string, bool) {
 // SetMetaModelName sets field value
 func (o *SCIMSource) SetMetaModelName(v string) {
 	o.MetaModelName = v
-}
-
-// GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise.
-func (o *SCIMSource) GetUserMatchingMode() UserMatchingModeEnum {
-	if o == nil || o.UserMatchingMode == nil {
-		var ret UserMatchingModeEnum
-		return ret
-	}
-	return *o.UserMatchingMode
-}
-
-// GetUserMatchingModeOk returns a tuple with the UserMatchingMode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SCIMSource) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool) {
-	if o == nil || o.UserMatchingMode == nil {
-		return nil, false
-	}
-	return o.UserMatchingMode, true
-}
-
-// HasUserMatchingMode returns a boolean if a field has been set.
-func (o *SCIMSource) HasUserMatchingMode() bool {
-	if o != nil && o.UserMatchingMode != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUserMatchingMode gets a reference to the given UserMatchingModeEnum and assigns it to the UserMatchingMode field.
-func (o *SCIMSource) SetUserMatchingMode(v UserMatchingModeEnum) {
-	o.UserMatchingMode = &v
 }
 
 // GetManaged returns the Managed field value
@@ -420,6 +452,12 @@ func (o SCIMSource) MarshalJSON() ([]byte, error) {
 	if o.Enabled != nil {
 		toSerialize["enabled"] = o.Enabled
 	}
+	if o.UserPropertyMappings != nil {
+		toSerialize["user_property_mappings"] = o.UserPropertyMappings
+	}
+	if o.GroupPropertyMappings != nil {
+		toSerialize["group_property_mappings"] = o.GroupPropertyMappings
+	}
 	if true {
 		toSerialize["component"] = o.Component
 	}
@@ -431,9 +469,6 @@ func (o SCIMSource) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if o.UserMatchingMode != nil {
-		toSerialize["user_matching_mode"] = o.UserMatchingMode
 	}
 	if true {
 		toSerialize["managed"] = o.Managed.Get()

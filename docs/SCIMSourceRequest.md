@@ -7,7 +7,8 @@ Name | Type | Description | Notes
 **Name** | **string** | Source&#39;s display Name. | 
 **Slug** | **string** | Internal source name, used in URLs. | 
 **Enabled** | Pointer to **bool** |  | [optional] 
-**UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
+**UserPropertyMappings** | Pointer to **[]string** |  | [optional] 
+**GroupPropertyMappings** | Pointer to **[]string** |  | [optional] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -94,30 +95,55 @@ SetEnabled sets Enabled field to given value.
 
 HasEnabled returns a boolean if a field has been set.
 
-### GetUserMatchingMode
+### GetUserPropertyMappings
 
-`func (o *SCIMSourceRequest) GetUserMatchingMode() UserMatchingModeEnum`
+`func (o *SCIMSourceRequest) GetUserPropertyMappings() []string`
 
-GetUserMatchingMode returns the UserMatchingMode field if non-nil, zero value otherwise.
+GetUserPropertyMappings returns the UserPropertyMappings field if non-nil, zero value otherwise.
 
-### GetUserMatchingModeOk
+### GetUserPropertyMappingsOk
 
-`func (o *SCIMSourceRequest) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool)`
+`func (o *SCIMSourceRequest) GetUserPropertyMappingsOk() (*[]string, bool)`
 
-GetUserMatchingModeOk returns a tuple with the UserMatchingMode field if it's non-nil, zero value otherwise
+GetUserPropertyMappingsOk returns a tuple with the UserPropertyMappings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUserMatchingMode
+### SetUserPropertyMappings
 
-`func (o *SCIMSourceRequest) SetUserMatchingMode(v UserMatchingModeEnum)`
+`func (o *SCIMSourceRequest) SetUserPropertyMappings(v []string)`
 
-SetUserMatchingMode sets UserMatchingMode field to given value.
+SetUserPropertyMappings sets UserPropertyMappings field to given value.
 
-### HasUserMatchingMode
+### HasUserPropertyMappings
 
-`func (o *SCIMSourceRequest) HasUserMatchingMode() bool`
+`func (o *SCIMSourceRequest) HasUserPropertyMappings() bool`
 
-HasUserMatchingMode returns a boolean if a field has been set.
+HasUserPropertyMappings returns a boolean if a field has been set.
+
+### GetGroupPropertyMappings
+
+`func (o *SCIMSourceRequest) GetGroupPropertyMappings() []string`
+
+GetGroupPropertyMappings returns the GroupPropertyMappings field if non-nil, zero value otherwise.
+
+### GetGroupPropertyMappingsOk
+
+`func (o *SCIMSourceRequest) GetGroupPropertyMappingsOk() (*[]string, bool)`
+
+GetGroupPropertyMappingsOk returns a tuple with the GroupPropertyMappings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupPropertyMappings
+
+`func (o *SCIMSourceRequest) SetGroupPropertyMappings(v []string)`
+
+SetGroupPropertyMappings sets GroupPropertyMappings field to given value.
+
+### HasGroupPropertyMappings
+
+`func (o *SCIMSourceRequest) HasGroupPropertyMappings() bool`
+
+HasGroupPropertyMappings returns a boolean if a field has been set.
 
 ### GetUserPathTemplate
 

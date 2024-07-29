@@ -346,6 +346,7 @@ docs/PaginatedSCIMProviderList.md
 docs/PaginatedSCIMProviderUserList.md
 docs/PaginatedSCIMSourceGroupList.md
 docs/PaginatedSCIMSourceList.md
+docs/PaginatedSCIMSourcePropertyMappingList.md
 docs/PaginatedSCIMSourceUserList.md
 docs/PaginatedSMSDeviceList.md
 docs/PaginatedScopeMappingList.md
@@ -448,6 +449,7 @@ docs/PatchedSAMLSourceRequest.md
 docs/PatchedSCIMMappingRequest.md
 docs/PatchedSCIMProviderRequest.md
 docs/PatchedSCIMSourceGroupRequest.md
+docs/PatchedSCIMSourcePropertyMappingRequest.md
 docs/PatchedSCIMSourceRequest.md
 docs/PatchedSCIMSourceUserRequest.md
 docs/PatchedSMSDeviceRequest.md
@@ -546,6 +548,8 @@ docs/SCIMProviderUserRequest.md
 docs/SCIMSource.md
 docs/SCIMSourceGroup.md
 docs/SCIMSourceGroupRequest.md
+docs/SCIMSourcePropertyMapping.md
+docs/SCIMSourcePropertyMappingRequest.md
 docs/SCIMSourceRequest.md
 docs/SCIMSourceUser.md
 docs/SCIMSourceUserRequest.md
@@ -963,6 +967,7 @@ model_paginated_scim_provider_list.go
 model_paginated_scim_provider_user_list.go
 model_paginated_scim_source_group_list.go
 model_paginated_scim_source_list.go
+model_paginated_scim_source_property_mapping_list.go
 model_paginated_scim_source_user_list.go
 model_paginated_scope_mapping_list.go
 model_paginated_service_connection_list.go
@@ -1065,6 +1070,7 @@ model_patched_saml_source_request.go
 model_patched_scim_mapping_request.go
 model_patched_scim_provider_request.go
 model_patched_scim_source_group_request.go
+model_patched_scim_source_property_mapping_request.go
 model_patched_scim_source_request.go
 model_patched_scim_source_user_request.go
 model_patched_scope_mapping_request.go
@@ -1157,6 +1163,8 @@ model_scim_provider_user_request.go
 model_scim_source.go
 model_scim_source_group.go
 model_scim_source_group_request.go
+model_scim_source_property_mapping.go
+model_scim_source_property_mapping_request.go
 model_scim_source_request.go
 model_scim_source_user.go
 model_scim_source_user_request.go

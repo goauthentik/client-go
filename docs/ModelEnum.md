@@ -71,6 +71,8 @@
 
 * `SOURCES_SCIM_SCIMSOURCE` (value: `"authentik_sources_scim.scimsource"`)
 
+* `SOURCES_SCIM_SCIMSOURCEPROPERTYMAPPING` (value: `"authentik_sources_scim.scimsourcepropertymapping"`)
+
 * `STAGES_AUTHENTICATOR_DUO_AUTHENTICATORDUOSTAGE` (value: `"authentik_stages_authenticator_duo.authenticatorduostage"`)
 
 * `STAGES_AUTHENTICATOR_DUO_DUODEVICE` (value: `"authentik_stages_authenticator_duo.duodevice"`)

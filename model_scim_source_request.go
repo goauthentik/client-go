@@ -20,11 +20,11 @@ type SCIMSourceRequest struct {
 	// Source's display Name.
 	Name string `json:"name"`
 	// Internal source name, used in URLs.
-	Slug    string `json:"slug"`
-	Enabled *bool  `json:"enabled,omitempty"`
-	// How the source determines if an existing user should be authenticated or a new user enrolled.
-	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
-	UserPathTemplate *string               `json:"user_path_template,omitempty"`
+	Slug                  string   `json:"slug"`
+	Enabled               *bool    `json:"enabled,omitempty"`
+	UserPropertyMappings  []string `json:"user_property_mappings,omitempty"`
+	GroupPropertyMappings []string `json:"group_property_mappings,omitempty"`
+	UserPathTemplate      *string  `json:"user_path_template,omitempty"`
 }
 
 // NewSCIMSourceRequest instantiates a new SCIMSourceRequest object
@@ -126,36 +126,68 @@ func (o *SCIMSourceRequest) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise.
-func (o *SCIMSourceRequest) GetUserMatchingMode() UserMatchingModeEnum {
-	if o == nil || o.UserMatchingMode == nil {
-		var ret UserMatchingModeEnum
+// GetUserPropertyMappings returns the UserPropertyMappings field value if set, zero value otherwise.
+func (o *SCIMSourceRequest) GetUserPropertyMappings() []string {
+	if o == nil || o.UserPropertyMappings == nil {
+		var ret []string
 		return ret
 	}
-	return *o.UserMatchingMode
+	return o.UserPropertyMappings
 }
 
-// GetUserMatchingModeOk returns a tuple with the UserMatchingMode field value if set, nil otherwise
+// GetUserPropertyMappingsOk returns a tuple with the UserPropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SCIMSourceRequest) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool) {
-	if o == nil || o.UserMatchingMode == nil {
+func (o *SCIMSourceRequest) GetUserPropertyMappingsOk() ([]string, bool) {
+	if o == nil || o.UserPropertyMappings == nil {
 		return nil, false
 	}
-	return o.UserMatchingMode, true
+	return o.UserPropertyMappings, true
 }
 
-// HasUserMatchingMode returns a boolean if a field has been set.
-func (o *SCIMSourceRequest) HasUserMatchingMode() bool {
-	if o != nil && o.UserMatchingMode != nil {
+// HasUserPropertyMappings returns a boolean if a field has been set.
+func (o *SCIMSourceRequest) HasUserPropertyMappings() bool {
+	if o != nil && o.UserPropertyMappings != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetUserMatchingMode gets a reference to the given UserMatchingModeEnum and assigns it to the UserMatchingMode field.
-func (o *SCIMSourceRequest) SetUserMatchingMode(v UserMatchingModeEnum) {
-	o.UserMatchingMode = &v
+// SetUserPropertyMappings gets a reference to the given []string and assigns it to the UserPropertyMappings field.
+func (o *SCIMSourceRequest) SetUserPropertyMappings(v []string) {
+	o.UserPropertyMappings = v
+}
+
+// GetGroupPropertyMappings returns the GroupPropertyMappings field value if set, zero value otherwise.
+func (o *SCIMSourceRequest) GetGroupPropertyMappings() []string {
+	if o == nil || o.GroupPropertyMappings == nil {
+		var ret []string
+		return ret
+	}
+	return o.GroupPropertyMappings
+}
+
+// GetGroupPropertyMappingsOk returns a tuple with the GroupPropertyMappings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SCIMSourceRequest) GetGroupPropertyMappingsOk() ([]string, bool) {
+	if o == nil || o.GroupPropertyMappings == nil {
+		return nil, false
+	}
+	return o.GroupPropertyMappings, true
+}
+
+// HasGroupPropertyMappings returns a boolean if a field has been set.
+func (o *SCIMSourceRequest) HasGroupPropertyMappings() bool {
+	if o != nil && o.GroupPropertyMappings != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupPropertyMappings gets a reference to the given []string and assigns it to the GroupPropertyMappings field.
+func (o *SCIMSourceRequest) SetGroupPropertyMappings(v []string) {
+	o.GroupPropertyMappings = v
 }
 
 // GetUserPathTemplate returns the UserPathTemplate field value if set, zero value otherwise.
@@ -201,8 +233,11 @@ func (o SCIMSourceRequest) MarshalJSON() ([]byte, error) {
 	if o.Enabled != nil {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if o.UserMatchingMode != nil {
-		toSerialize["user_matching_mode"] = o.UserMatchingMode
+	if o.UserPropertyMappings != nil {
+		toSerialize["user_property_mappings"] = o.UserPropertyMappings
+	}
+	if o.GroupPropertyMappings != nil {
+		toSerialize["group_property_mappings"] = o.GroupPropertyMappings
 	}
 	if o.UserPathTemplate != nil {
 		toSerialize["user_path_template"] = o.UserPathTemplate

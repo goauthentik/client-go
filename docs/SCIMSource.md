@@ -8,11 +8,12 @@ Name | Type | Description | Notes
 **Name** | **string** | Source&#39;s display Name. | 
 **Slug** | **string** | Internal source name, used in URLs. | 
 **Enabled** | Pointer to **bool** |  | [optional] 
+**UserPropertyMappings** | Pointer to **[]string** |  | [optional] 
+**GroupPropertyMappings** | Pointer to **[]string** |  | [optional] 
 **Component** | **string** | Get object component so that we know how to edit the object | [readonly] 
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **Managed** | **NullableString** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
 **RootUrl** | **string** | Get Root URL | [readonly] 
@@ -122,6 +123,56 @@ SetEnabled sets Enabled field to given value.
 
 HasEnabled returns a boolean if a field has been set.
 
+### GetUserPropertyMappings
+
+`func (o *SCIMSource) GetUserPropertyMappings() []string`
+
+GetUserPropertyMappings returns the UserPropertyMappings field if non-nil, zero value otherwise.
+
+### GetUserPropertyMappingsOk
+
+`func (o *SCIMSource) GetUserPropertyMappingsOk() (*[]string, bool)`
+
+GetUserPropertyMappingsOk returns a tuple with the UserPropertyMappings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserPropertyMappings
+
+`func (o *SCIMSource) SetUserPropertyMappings(v []string)`
+
+SetUserPropertyMappings sets UserPropertyMappings field to given value.
+
+### HasUserPropertyMappings
+
+`func (o *SCIMSource) HasUserPropertyMappings() bool`
+
+HasUserPropertyMappings returns a boolean if a field has been set.
+
+### GetGroupPropertyMappings
+
+`func (o *SCIMSource) GetGroupPropertyMappings() []string`
+
+GetGroupPropertyMappings returns the GroupPropertyMappings field if non-nil, zero value otherwise.
+
+### GetGroupPropertyMappingsOk
+
+`func (o *SCIMSource) GetGroupPropertyMappingsOk() (*[]string, bool)`
+
+GetGroupPropertyMappingsOk returns a tuple with the GroupPropertyMappings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupPropertyMappings
+
+`func (o *SCIMSource) SetGroupPropertyMappings(v []string)`
+
+SetGroupPropertyMappings sets GroupPropertyMappings field to given value.
+
+### HasGroupPropertyMappings
+
+`func (o *SCIMSource) HasGroupPropertyMappings() bool`
+
+HasGroupPropertyMappings returns a boolean if a field has been set.
+
 ### GetComponent
 
 `func (o *SCIMSource) GetComponent() string`
@@ -201,31 +252,6 @@ and a boolean to check if the value has been set.
 
 SetMetaModelName sets MetaModelName field to given value.
 
-
-### GetUserMatchingMode
-
-`func (o *SCIMSource) GetUserMatchingMode() UserMatchingModeEnum`
-
-GetUserMatchingMode returns the UserMatchingMode field if non-nil, zero value otherwise.
-
-### GetUserMatchingModeOk
-
-`func (o *SCIMSource) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool)`
-
-GetUserMatchingModeOk returns a tuple with the UserMatchingMode field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUserMatchingMode
-
-`func (o *SCIMSource) SetUserMatchingMode(v UserMatchingModeEnum)`
-
-SetUserMatchingMode sets UserMatchingMode field to given value.
-
-### HasUserMatchingMode
-
-`func (o *SCIMSource) HasUserMatchingMode() bool`
-
-HasUserMatchingMode returns a boolean if a field has been set.
 
 ### GetManaged
 

@@ -9329,3 +9329,958 @@ func (a *PropertymappingsApiService) PropertymappingsSourceLdapUsedByListExecute
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
+type ApiPropertymappingsSourceScimCreateRequest struct {
+	ctx                              context.Context
+	ApiService                       *PropertymappingsApiService
+	sCIMSourcePropertyMappingRequest *SCIMSourcePropertyMappingRequest
+}
+
+func (r ApiPropertymappingsSourceScimCreateRequest) SCIMSourcePropertyMappingRequest(sCIMSourcePropertyMappingRequest SCIMSourcePropertyMappingRequest) ApiPropertymappingsSourceScimCreateRequest {
+	r.sCIMSourcePropertyMappingRequest = &sCIMSourcePropertyMappingRequest
+	return r
+}
+
+func (r ApiPropertymappingsSourceScimCreateRequest) Execute() (*SCIMSourcePropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsSourceScimCreateExecute(r)
+}
+
+/*
+PropertymappingsSourceScimCreate Method for PropertymappingsSourceScimCreate
+
+SCIMSourcePropertyMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPropertymappingsSourceScimCreateRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsSourceScimCreate(ctx context.Context) ApiPropertymappingsSourceScimCreateRequest {
+	return ApiPropertymappingsSourceScimCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return SCIMSourcePropertyMapping
+func (a *PropertymappingsApiService) PropertymappingsSourceScimCreateExecute(r ApiPropertymappingsSourceScimCreateRequest) (*SCIMSourcePropertyMapping, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SCIMSourcePropertyMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSourceScimCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/source/scim/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.sCIMSourcePropertyMappingRequest == nil {
+		return localVarReturnValue, nil, reportError("sCIMSourcePropertyMappingRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.sCIMSourcePropertyMappingRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsSourceScimDestroyRequest struct {
+	ctx        context.Context
+	ApiService *PropertymappingsApiService
+	pmUuid     string
+}
+
+func (r ApiPropertymappingsSourceScimDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PropertymappingsSourceScimDestroyExecute(r)
+}
+
+/*
+PropertymappingsSourceScimDestroy Method for PropertymappingsSourceScimDestroy
+
+SCIMSourcePropertyMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this SCIM Source Property Mapping.
+	@return ApiPropertymappingsSourceScimDestroyRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsSourceScimDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsSourceScimDestroyRequest {
+	return ApiPropertymappingsSourceScimDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+func (a *PropertymappingsApiService) PropertymappingsSourceScimDestroyExecute(r ApiPropertymappingsSourceScimDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSourceScimDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/source/scim/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsSourceScimListRequest struct {
+	ctx        context.Context
+	ApiService *PropertymappingsApiService
+	expression *string
+	managed    *[]string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	pmUuid     *string
+	search     *string
+}
+
+func (r ApiPropertymappingsSourceScimListRequest) Expression(expression string) ApiPropertymappingsSourceScimListRequest {
+	r.expression = &expression
+	return r
+}
+
+func (r ApiPropertymappingsSourceScimListRequest) Managed(managed []string) ApiPropertymappingsSourceScimListRequest {
+	r.managed = &managed
+	return r
+}
+
+func (r ApiPropertymappingsSourceScimListRequest) Name(name string) ApiPropertymappingsSourceScimListRequest {
+	r.name = &name
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiPropertymappingsSourceScimListRequest) Ordering(ordering string) ApiPropertymappingsSourceScimListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiPropertymappingsSourceScimListRequest) Page(page int32) ApiPropertymappingsSourceScimListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiPropertymappingsSourceScimListRequest) PageSize(pageSize int32) ApiPropertymappingsSourceScimListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiPropertymappingsSourceScimListRequest) PmUuid(pmUuid string) ApiPropertymappingsSourceScimListRequest {
+	r.pmUuid = &pmUuid
+	return r
+}
+
+// A search term.
+func (r ApiPropertymappingsSourceScimListRequest) Search(search string) ApiPropertymappingsSourceScimListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiPropertymappingsSourceScimListRequest) Execute() (*PaginatedSCIMSourcePropertyMappingList, *http.Response, error) {
+	return r.ApiService.PropertymappingsSourceScimListExecute(r)
+}
+
+/*
+PropertymappingsSourceScimList Method for PropertymappingsSourceScimList
+
+SCIMSourcePropertyMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPropertymappingsSourceScimListRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsSourceScimList(ctx context.Context) ApiPropertymappingsSourceScimListRequest {
+	return ApiPropertymappingsSourceScimListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedSCIMSourcePropertyMappingList
+func (a *PropertymappingsApiService) PropertymappingsSourceScimListExecute(r ApiPropertymappingsSourceScimListRequest) (*PaginatedSCIMSourcePropertyMappingList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedSCIMSourcePropertyMappingList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSourceScimList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/source/scim/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.expression != nil {
+		localVarQueryParams.Add("expression", parameterToString(*r.expression, ""))
+	}
+	if r.managed != nil {
+		t := *r.managed
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("managed", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("managed", parameterToString(t, "multi"))
+		}
+	}
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.pmUuid != nil {
+		localVarQueryParams.Add("pm_uuid", parameterToString(*r.pmUuid, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsSourceScimPartialUpdateRequest struct {
+	ctx                                     context.Context
+	ApiService                              *PropertymappingsApiService
+	pmUuid                                  string
+	patchedSCIMSourcePropertyMappingRequest *PatchedSCIMSourcePropertyMappingRequest
+}
+
+func (r ApiPropertymappingsSourceScimPartialUpdateRequest) PatchedSCIMSourcePropertyMappingRequest(patchedSCIMSourcePropertyMappingRequest PatchedSCIMSourcePropertyMappingRequest) ApiPropertymappingsSourceScimPartialUpdateRequest {
+	r.patchedSCIMSourcePropertyMappingRequest = &patchedSCIMSourcePropertyMappingRequest
+	return r
+}
+
+func (r ApiPropertymappingsSourceScimPartialUpdateRequest) Execute() (*SCIMSourcePropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsSourceScimPartialUpdateExecute(r)
+}
+
+/*
+PropertymappingsSourceScimPartialUpdate Method for PropertymappingsSourceScimPartialUpdate
+
+SCIMSourcePropertyMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this SCIM Source Property Mapping.
+	@return ApiPropertymappingsSourceScimPartialUpdateRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsSourceScimPartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsSourceScimPartialUpdateRequest {
+	return ApiPropertymappingsSourceScimPartialUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return SCIMSourcePropertyMapping
+func (a *PropertymappingsApiService) PropertymappingsSourceScimPartialUpdateExecute(r ApiPropertymappingsSourceScimPartialUpdateRequest) (*SCIMSourcePropertyMapping, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SCIMSourcePropertyMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSourceScimPartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/source/scim/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedSCIMSourcePropertyMappingRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsSourceScimRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *PropertymappingsApiService
+	pmUuid     string
+}
+
+func (r ApiPropertymappingsSourceScimRetrieveRequest) Execute() (*SCIMSourcePropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsSourceScimRetrieveExecute(r)
+}
+
+/*
+PropertymappingsSourceScimRetrieve Method for PropertymappingsSourceScimRetrieve
+
+SCIMSourcePropertyMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this SCIM Source Property Mapping.
+	@return ApiPropertymappingsSourceScimRetrieveRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsSourceScimRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsSourceScimRetrieveRequest {
+	return ApiPropertymappingsSourceScimRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return SCIMSourcePropertyMapping
+func (a *PropertymappingsApiService) PropertymappingsSourceScimRetrieveExecute(r ApiPropertymappingsSourceScimRetrieveRequest) (*SCIMSourcePropertyMapping, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SCIMSourcePropertyMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSourceScimRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/source/scim/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsSourceScimUpdateRequest struct {
+	ctx                              context.Context
+	ApiService                       *PropertymappingsApiService
+	pmUuid                           string
+	sCIMSourcePropertyMappingRequest *SCIMSourcePropertyMappingRequest
+}
+
+func (r ApiPropertymappingsSourceScimUpdateRequest) SCIMSourcePropertyMappingRequest(sCIMSourcePropertyMappingRequest SCIMSourcePropertyMappingRequest) ApiPropertymappingsSourceScimUpdateRequest {
+	r.sCIMSourcePropertyMappingRequest = &sCIMSourcePropertyMappingRequest
+	return r
+}
+
+func (r ApiPropertymappingsSourceScimUpdateRequest) Execute() (*SCIMSourcePropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsSourceScimUpdateExecute(r)
+}
+
+/*
+PropertymappingsSourceScimUpdate Method for PropertymappingsSourceScimUpdate
+
+SCIMSourcePropertyMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this SCIM Source Property Mapping.
+	@return ApiPropertymappingsSourceScimUpdateRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsSourceScimUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsSourceScimUpdateRequest {
+	return ApiPropertymappingsSourceScimUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return SCIMSourcePropertyMapping
+func (a *PropertymappingsApiService) PropertymappingsSourceScimUpdateExecute(r ApiPropertymappingsSourceScimUpdateRequest) (*SCIMSourcePropertyMapping, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SCIMSourcePropertyMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSourceScimUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/source/scim/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.sCIMSourcePropertyMappingRequest == nil {
+		return localVarReturnValue, nil, reportError("sCIMSourcePropertyMappingRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.sCIMSourcePropertyMappingRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsSourceScimUsedByListRequest struct {
+	ctx        context.Context
+	ApiService *PropertymappingsApiService
+	pmUuid     string
+}
+
+func (r ApiPropertymappingsSourceScimUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.PropertymappingsSourceScimUsedByListExecute(r)
+}
+
+/*
+PropertymappingsSourceScimUsedByList Method for PropertymappingsSourceScimUsedByList
+
+Get a list of all objects that use this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this SCIM Source Property Mapping.
+	@return ApiPropertymappingsSourceScimUsedByListRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsSourceScimUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsSourceScimUsedByListRequest {
+	return ApiPropertymappingsSourceScimUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []UsedBy
+func (a *PropertymappingsApiService) PropertymappingsSourceScimUsedByListExecute(r ApiPropertymappingsSourceScimUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSourceScimUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/source/scim/{pm_uuid}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
