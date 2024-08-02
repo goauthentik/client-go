@@ -151,7 +151,9 @@ docs/ExpiringBaseGrantModel.md
 docs/ExpressionPolicy.md
 docs/ExpressionPolicyRequest.md
 docs/ExtraRoleObjectPermission.md
+docs/ExtraRoleObjectPermissionRequest.md
 docs/ExtraUserObjectPermission.md
+docs/ExtraUserObjectPermissionRequest.md
 docs/FilePathRequest.md
 docs/Flow.md
 docs/FlowChallengeResponseRequest.md
@@ -405,6 +407,8 @@ docs/PatchedEndpointRequest.md
 docs/PatchedEventMatcherPolicyRequest.md
 docs/PatchedEventRequest.md
 docs/PatchedExpressionPolicyRequest.md
+docs/PatchedExtraRoleObjectPermissionRequest.md
+docs/PatchedExtraUserObjectPermissionRequest.md
 docs/PatchedFlowRequest.md
 docs/PatchedFlowStageBindingRequest.md
 docs/PatchedGoogleWorkspaceProviderMappingRequest.md
@@ -470,6 +474,7 @@ docs/PatchedUserWriteStageRequest.md
 docs/PatchedWebAuthnDeviceRequest.md
 docs/Permission.md
 docs/PermissionAssignRequest.md
+docs/PermissionAssignResult.md
 docs/PlexAuthenticationChallenge.md
 docs/PlexAuthenticationChallengeResponseRequest.md
 docs/PlexSource.md
@@ -776,7 +781,9 @@ model_expiring_base_grant_model.go
 model_expression_policy.go
 model_expression_policy_request.go
 model_extra_role_object_permission.go
+model_extra_role_object_permission_request.go
 model_extra_user_object_permission.go
+model_extra_user_object_permission_request.go
 model_file_path_request.go
 model_flow.go
 model_flow_challenge_response_request.go
@@ -1026,6 +1033,8 @@ model_patched_endpoint_request.go
 model_patched_event_matcher_policy_request.go
 model_patched_event_request.go
 model_patched_expression_policy_request.go
+model_patched_extra_role_object_permission_request.go
+model_patched_extra_user_object_permission_request.go
 model_patched_flow_request.go
 model_patched_flow_stage_binding_request.go
 model_patched_google_workspace_provider_mapping_request.go
@@ -1091,6 +1100,7 @@ model_patched_user_write_stage_request.go
 model_patched_web_authn_device_request.go
 model_permission.go
 model_permission_assign_request.go
+model_permission_assign_result.go
 model_plex_authentication_challenge.go
 model_plex_authentication_challenge_response_request.go
 model_plex_source.go

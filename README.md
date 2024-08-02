@@ -561,16 +561,24 @@ Class | Method | HTTP request | Description
 *RacApi* | [**RacEndpointsRetrieve**](docs/RacApi.md#racendpointsretrieve) | **Get** /rac/endpoints/{pbm_uuid}/ | 
 *RacApi* | [**RacEndpointsUpdate**](docs/RacApi.md#racendpointsupdate) | **Put** /rac/endpoints/{pbm_uuid}/ | 
 *RacApi* | [**RacEndpointsUsedByList**](docs/RacApi.md#racendpointsusedbylist) | **Get** /rac/endpoints/{pbm_uuid}/used_by/ | 
-*RbacApi* | [**RbacPermissionsAssignedByRolesAssignCreate**](docs/RbacApi.md#rbacpermissionsassignedbyrolesassigncreate) | **Post** /rbac/permissions/assigned_by_roles/{uuid}/assign/ | 
+*RbacApi* | [**RbacPermissionsAssignedByRolesAssign**](docs/RbacApi.md#rbacpermissionsassignedbyrolesassign) | **Post** /rbac/permissions/assigned_by_roles/{uuid}/assign/ | 
 *RbacApi* | [**RbacPermissionsAssignedByRolesList**](docs/RbacApi.md#rbacpermissionsassignedbyroleslist) | **Get** /rbac/permissions/assigned_by_roles/ | 
 *RbacApi* | [**RbacPermissionsAssignedByRolesUnassignPartialUpdate**](docs/RbacApi.md#rbacpermissionsassignedbyrolesunassignpartialupdate) | **Patch** /rbac/permissions/assigned_by_roles/{uuid}/unassign/ | 
-*RbacApi* | [**RbacPermissionsAssignedByUsersAssignCreate**](docs/RbacApi.md#rbacpermissionsassignedbyusersassigncreate) | **Post** /rbac/permissions/assigned_by_users/{id}/assign/ | 
+*RbacApi* | [**RbacPermissionsAssignedByUsersAssign**](docs/RbacApi.md#rbacpermissionsassignedbyusersassign) | **Post** /rbac/permissions/assigned_by_users/{id}/assign/ | 
 *RbacApi* | [**RbacPermissionsAssignedByUsersList**](docs/RbacApi.md#rbacpermissionsassignedbyuserslist) | **Get** /rbac/permissions/assigned_by_users/ | 
 *RbacApi* | [**RbacPermissionsAssignedByUsersUnassignPartialUpdate**](docs/RbacApi.md#rbacpermissionsassignedbyusersunassignpartialupdate) | **Patch** /rbac/permissions/assigned_by_users/{id}/unassign/ | 
 *RbacApi* | [**RbacPermissionsList**](docs/RbacApi.md#rbacpermissionslist) | **Get** /rbac/permissions/ | 
 *RbacApi* | [**RbacPermissionsRetrieve**](docs/RbacApi.md#rbacpermissionsretrieve) | **Get** /rbac/permissions/{id}/ | 
+*RbacApi* | [**RbacPermissionsRolesDestroy**](docs/RbacApi.md#rbacpermissionsrolesdestroy) | **Delete** /rbac/permissions/roles/{id}/ | 
 *RbacApi* | [**RbacPermissionsRolesList**](docs/RbacApi.md#rbacpermissionsroleslist) | **Get** /rbac/permissions/roles/ | 
+*RbacApi* | [**RbacPermissionsRolesPartialUpdate**](docs/RbacApi.md#rbacpermissionsrolespartialupdate) | **Patch** /rbac/permissions/roles/{id}/ | 
+*RbacApi* | [**RbacPermissionsRolesRetrieve**](docs/RbacApi.md#rbacpermissionsrolesretrieve) | **Get** /rbac/permissions/roles/{id}/ | 
+*RbacApi* | [**RbacPermissionsRolesUpdate**](docs/RbacApi.md#rbacpermissionsrolesupdate) | **Put** /rbac/permissions/roles/{id}/ | 
+*RbacApi* | [**RbacPermissionsUsersDestroy**](docs/RbacApi.md#rbacpermissionsusersdestroy) | **Delete** /rbac/permissions/users/{id}/ | 
 *RbacApi* | [**RbacPermissionsUsersList**](docs/RbacApi.md#rbacpermissionsuserslist) | **Get** /rbac/permissions/users/ | 
+*RbacApi* | [**RbacPermissionsUsersPartialUpdate**](docs/RbacApi.md#rbacpermissionsuserspartialupdate) | **Patch** /rbac/permissions/users/{id}/ | 
+*RbacApi* | [**RbacPermissionsUsersRetrieve**](docs/RbacApi.md#rbacpermissionsusersretrieve) | **Get** /rbac/permissions/users/{id}/ | 
+*RbacApi* | [**RbacPermissionsUsersUpdate**](docs/RbacApi.md#rbacpermissionsusersupdate) | **Put** /rbac/permissions/users/{id}/ | 
 *RbacApi* | [**RbacRolesCreate**](docs/RbacApi.md#rbacrolescreate) | **Post** /rbac/roles/ | 
 *RbacApi* | [**RbacRolesDestroy**](docs/RbacApi.md#rbacrolesdestroy) | **Delete** /rbac/roles/{uuid}/ | 
 *RbacApi* | [**RbacRolesList**](docs/RbacApi.md#rbacroleslist) | **Get** /rbac/roles/ | 
@@ -976,7 +984,9 @@ Class | Method | HTTP request | Description
  - [ExpressionPolicy](docs/ExpressionPolicy.md)
  - [ExpressionPolicyRequest](docs/ExpressionPolicyRequest.md)
  - [ExtraRoleObjectPermission](docs/ExtraRoleObjectPermission.md)
+ - [ExtraRoleObjectPermissionRequest](docs/ExtraRoleObjectPermissionRequest.md)
  - [ExtraUserObjectPermission](docs/ExtraUserObjectPermission.md)
+ - [ExtraUserObjectPermissionRequest](docs/ExtraUserObjectPermissionRequest.md)
  - [FilePathRequest](docs/FilePathRequest.md)
  - [Flow](docs/Flow.md)
  - [FlowChallengeResponseRequest](docs/FlowChallengeResponseRequest.md)
@@ -1226,6 +1236,8 @@ Class | Method | HTTP request | Description
  - [PatchedEventMatcherPolicyRequest](docs/PatchedEventMatcherPolicyRequest.md)
  - [PatchedEventRequest](docs/PatchedEventRequest.md)
  - [PatchedExpressionPolicyRequest](docs/PatchedExpressionPolicyRequest.md)
+ - [PatchedExtraRoleObjectPermissionRequest](docs/PatchedExtraRoleObjectPermissionRequest.md)
+ - [PatchedExtraUserObjectPermissionRequest](docs/PatchedExtraUserObjectPermissionRequest.md)
  - [PatchedFlowRequest](docs/PatchedFlowRequest.md)
  - [PatchedFlowStageBindingRequest](docs/PatchedFlowStageBindingRequest.md)
  - [PatchedGoogleWorkspaceProviderMappingRequest](docs/PatchedGoogleWorkspaceProviderMappingRequest.md)
@@ -1291,6 +1303,7 @@ Class | Method | HTTP request | Description
  - [PatchedWebAuthnDeviceRequest](docs/PatchedWebAuthnDeviceRequest.md)
  - [Permission](docs/Permission.md)
  - [PermissionAssignRequest](docs/PermissionAssignRequest.md)
+ - [PermissionAssignResult](docs/PermissionAssignResult.md)
  - [PlexAuthenticationChallenge](docs/PlexAuthenticationChallenge.md)
  - [PlexAuthenticationChallengeResponseRequest](docs/PlexAuthenticationChallengeResponseRequest.md)
  - [PlexSource](docs/PlexSource.md)

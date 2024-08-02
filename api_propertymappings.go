@@ -5781,13 +5781,20 @@ func (a *PropertymappingsApiService) PropertymappingsSamlDestroyExecute(r ApiPro
 type ApiPropertymappingsSamlListRequest struct {
 	ctx           context.Context
 	ApiService    *PropertymappingsApiService
+	friendlyName  *string
 	managed       *[]string
 	managedIsnull *bool
 	name          *string
 	ordering      *string
 	page          *int32
 	pageSize      *int32
+	samlName      *string
 	search        *string
+}
+
+func (r ApiPropertymappingsSamlListRequest) FriendlyName(friendlyName string) ApiPropertymappingsSamlListRequest {
+	r.friendlyName = &friendlyName
+	return r
 }
 
 func (r ApiPropertymappingsSamlListRequest) Managed(managed []string) ApiPropertymappingsSamlListRequest {
@@ -5820,6 +5827,11 @@ func (r ApiPropertymappingsSamlListRequest) Page(page int32) ApiPropertymappings
 // Number of results to return per page.
 func (r ApiPropertymappingsSamlListRequest) PageSize(pageSize int32) ApiPropertymappingsSamlListRequest {
 	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiPropertymappingsSamlListRequest) SamlName(samlName string) ApiPropertymappingsSamlListRequest {
+	r.samlName = &samlName
 	return r
 }
 
@@ -5870,6 +5882,9 @@ func (a *PropertymappingsApiService) PropertymappingsSamlListExecute(r ApiProper
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.friendlyName != nil {
+		localVarQueryParams.Add("friendly_name", parameterToString(*r.friendlyName, ""))
+	}
 	if r.managed != nil {
 		t := *r.managed
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
@@ -5895,6 +5910,9 @@ func (a *PropertymappingsApiService) PropertymappingsSamlListExecute(r ApiProper
 	}
 	if r.pageSize != nil {
 		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.samlName != nil {
+		localVarQueryParams.Add("saml_name", parameterToString(*r.samlName, ""))
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
@@ -9572,25 +9590,24 @@ func (a *PropertymappingsApiService) PropertymappingsSourceScimDestroyExecute(r 
 }
 
 type ApiPropertymappingsSourceScimListRequest struct {
-	ctx        context.Context
-	ApiService *PropertymappingsApiService
-	expression *string
-	managed    *[]string
-	name       *string
-	ordering   *string
-	page       *int32
-	pageSize   *int32
-	pmUuid     *string
-	search     *string
-}
-
-func (r ApiPropertymappingsSourceScimListRequest) Expression(expression string) ApiPropertymappingsSourceScimListRequest {
-	r.expression = &expression
-	return r
+	ctx           context.Context
+	ApiService    *PropertymappingsApiService
+	managed       *[]string
+	managedIsnull *bool
+	name          *string
+	ordering      *string
+	page          *int32
+	pageSize      *int32
+	search        *string
 }
 
 func (r ApiPropertymappingsSourceScimListRequest) Managed(managed []string) ApiPropertymappingsSourceScimListRequest {
 	r.managed = &managed
+	return r
+}
+
+func (r ApiPropertymappingsSourceScimListRequest) ManagedIsnull(managedIsnull bool) ApiPropertymappingsSourceScimListRequest {
+	r.managedIsnull = &managedIsnull
 	return r
 }
 
@@ -9614,11 +9631,6 @@ func (r ApiPropertymappingsSourceScimListRequest) Page(page int32) ApiPropertyma
 // Number of results to return per page.
 func (r ApiPropertymappingsSourceScimListRequest) PageSize(pageSize int32) ApiPropertymappingsSourceScimListRequest {
 	r.pageSize = &pageSize
-	return r
-}
-
-func (r ApiPropertymappingsSourceScimListRequest) PmUuid(pmUuid string) ApiPropertymappingsSourceScimListRequest {
-	r.pmUuid = &pmUuid
 	return r
 }
 
@@ -9669,9 +9681,6 @@ func (a *PropertymappingsApiService) PropertymappingsSourceScimListExecute(r Api
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.expression != nil {
-		localVarQueryParams.Add("expression", parameterToString(*r.expression, ""))
-	}
 	if r.managed != nil {
 		t := *r.managed
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
@@ -9682,6 +9691,9 @@ func (a *PropertymappingsApiService) PropertymappingsSourceScimListExecute(r Api
 		} else {
 			localVarQueryParams.Add("managed", parameterToString(t, "multi"))
 		}
+	}
+	if r.managedIsnull != nil {
+		localVarQueryParams.Add("managed__isnull", parameterToString(*r.managedIsnull, ""))
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -9694,9 +9706,6 @@ func (a *PropertymappingsApiService) PropertymappingsSourceScimListExecute(r Api
 	}
 	if r.pageSize != nil {
 		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
-	}
-	if r.pmUuid != nil {
-		localVarQueryParams.Add("pm_uuid", parameterToString(*r.pmUuid, ""))
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))

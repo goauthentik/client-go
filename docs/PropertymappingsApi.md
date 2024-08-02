@@ -3118,7 +3118,7 @@ Name | Type | Description  | Notes
 
 ## PropertymappingsSamlList
 
-> PaginatedSAMLPropertyMappingList PropertymappingsSamlList(ctx).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedSAMLPropertyMappingList PropertymappingsSamlList(ctx).FriendlyName(friendlyName).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).SamlName(samlName).Search(search).Execute()
 
 
 
@@ -3137,17 +3137,19 @@ import (
 )
 
 func main() {
+    friendlyName := "friendlyName_example" // string |  (optional)
     managed := []string{"Inner_example"} // []string |  (optional)
     managedIsnull := true // bool |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    samlName := "samlName_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSamlList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSamlList(context.Background()).FriendlyName(friendlyName).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).SamlName(samlName).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSamlList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3168,12 +3170,14 @@ Other parameters are passed through a pointer to a apiPropertymappingsSamlListRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **friendlyName** | **string** |  | 
  **managed** | **[]string** |  | 
  **managedIsnull** | **bool** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
+ **samlName** | **string** |  | 
  **search** | **string** | A search term. | 
 
 ### Return type
@@ -5104,7 +5108,7 @@ Name | Type | Description  | Notes
 
 ## PropertymappingsSourceScimList
 
-> PaginatedSCIMSourcePropertyMappingList PropertymappingsSourceScimList(ctx).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
+> PaginatedSCIMSourcePropertyMappingList PropertymappingsSourceScimList(ctx).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -5123,18 +5127,17 @@ import (
 )
 
 func main() {
-    expression := "expression_example" // string |  (optional)
     managed := []string{"Inner_example"} // []string |  (optional)
+    managedIsnull := true // bool |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceScimList(context.Background()).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceScimList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceScimList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5155,13 +5158,12 @@ Other parameters are passed through a pointer to a apiPropertymappingsSourceScim
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expression** | **string** |  | 
  **managed** | **[]string** |  | 
+ **managedIsnull** | **bool** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
- **pmUuid** | **string** |  | 
  **search** | **string** | A search term. | 
 
 ### Return type

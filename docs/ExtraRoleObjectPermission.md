@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Codename** | **string** |  | [readonly] 
 **Model** | **string** |  | [readonly] 
 **AppLabel** | **string** |  | [readonly] 
-**ObjectPk** | **string** |  | [readonly] 
+**ObjectPk** | **string** |  | 
 **Name** | **string** |  | [readonly] 
 **AppLabelVerbose** | **string** | Get app label from permission&#39;s model | [readonly] 
 **ModelVerbose** | **string** | Get model label from permission&#39;s model | [readonly] 
