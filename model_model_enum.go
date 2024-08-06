@@ -32,6 +32,7 @@ const (
 	MODELENUM_POLICIES_EVENT_MATCHER_EVENTMATCHERPOLICY                 ModelEnum = "authentik_policies_event_matcher.eventmatcherpolicy"
 	MODELENUM_POLICIES_EXPIRY_PASSWORDEXPIRYPOLICY                      ModelEnum = "authentik_policies_expiry.passwordexpirypolicy"
 	MODELENUM_POLICIES_EXPRESSION_EXPRESSIONPOLICY                      ModelEnum = "authentik_policies_expression.expressionpolicy"
+	MODELENUM_POLICIES_GEOIP_GEOIPPOLICY                                ModelEnum = "authentik_policies_geoip.geoippolicy"
 	MODELENUM_POLICIES_PASSWORD_PASSWORDPOLICY                          ModelEnum = "authentik_policies_password.passwordpolicy"
 	MODELENUM_POLICIES_REPUTATION_REPUTATIONPOLICY                      ModelEnum = "authentik_policies_reputation.reputationpolicy"
 	MODELENUM_POLICIES_POLICYBINDING                                    ModelEnum = "authentik_policies.policybinding"
@@ -118,6 +119,7 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_policies_event_matcher.eventmatcherpolicy",
 	"authentik_policies_expiry.passwordexpirypolicy",
 	"authentik_policies_expression.expressionpolicy",
+	"authentik_policies_geoip.geoippolicy",
 	"authentik_policies_password.passwordpolicy",
 	"authentik_policies_reputation.reputationpolicy",
 	"authentik_policies.policybinding",

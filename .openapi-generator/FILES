@@ -106,11 +106,15 @@ docs/ContextualFlowInfo.md
 docs/ContextualFlowInfoLayoutEnum.md
 docs/Coordinate.md
 docs/CoreApi.md
+docs/CountryCodeEnum.md
 docs/CryptoApi.md
 docs/CurrentBrand.md
 docs/DeniedActionEnum.md
 docs/DenyStage.md
 docs/DenyStageRequest.md
+docs/DetailedCountry.md
+docs/DetailedCountryField.md
+docs/DetailedCountryFieldRequest.md
 docs/Device.md
 docs/DeviceChallenge.md
 docs/DeviceChallengeRequest.md
@@ -172,6 +176,8 @@ docs/FlowStageBindingRequest.md
 docs/FlowsApi.md
 docs/FooterLink.md
 docs/GenericError.md
+docs/GeoIPPolicy.md
+docs/GeoIPPolicyRequest.md
 docs/GeoipBindingEnum.md
 docs/GoogleWorkspaceProvider.md
 docs/GoogleWorkspaceProviderGroup.md
@@ -291,6 +297,7 @@ docs/PaginatedExtraRoleObjectPermissionList.md
 docs/PaginatedExtraUserObjectPermissionList.md
 docs/PaginatedFlowList.md
 docs/PaginatedFlowStageBindingList.md
+docs/PaginatedGeoIPPolicyList.md
 docs/PaginatedGoogleWorkspaceProviderGroupList.md
 docs/PaginatedGoogleWorkspaceProviderList.md
 docs/PaginatedGoogleWorkspaceProviderMappingList.md
@@ -411,6 +418,7 @@ docs/PatchedExtraRoleObjectPermissionRequest.md
 docs/PatchedExtraUserObjectPermissionRequest.md
 docs/PatchedFlowRequest.md
 docs/PatchedFlowStageBindingRequest.md
+docs/PatchedGeoIPPolicyRequest.md
 docs/PatchedGoogleWorkspaceProviderMappingRequest.md
 docs/PatchedGoogleWorkspaceProviderRequest.md
 docs/PatchedGroupRequest.md
@@ -739,10 +747,14 @@ model_consent_stage_request.go
 model_contextual_flow_info.go
 model_contextual_flow_info_layout_enum.go
 model_coordinate.go
+model_country_code_enum.go
 model_current_brand.go
 model_denied_action_enum.go
 model_deny_stage.go
 model_deny_stage_request.go
+model_detailed_country.go
+model_detailed_country_field.go
+model_detailed_country_field_request.go
 model_device.go
 model_device_challenge.go
 model_device_challenge_request.go
@@ -801,6 +813,8 @@ model_flow_stage_binding.go
 model_flow_stage_binding_request.go
 model_footer_link.go
 model_generic_error.go
+model_geo_ip_policy.go
+model_geo_ip_policy_request.go
 model_geoip_binding_enum.go
 model_google_workspace_provider.go
 model_google_workspace_provider_group.go
@@ -917,6 +931,7 @@ model_paginated_extra_role_object_permission_list.go
 model_paginated_extra_user_object_permission_list.go
 model_paginated_flow_list.go
 model_paginated_flow_stage_binding_list.go
+model_paginated_geo_ip_policy_list.go
 model_paginated_google_workspace_provider_group_list.go
 model_paginated_google_workspace_provider_list.go
 model_paginated_google_workspace_provider_mapping_list.go
@@ -1037,6 +1052,7 @@ model_patched_extra_role_object_permission_request.go
 model_patched_extra_user_object_permission_request.go
 model_patched_flow_request.go
 model_patched_flow_stage_binding_request.go
+model_patched_geo_ip_policy_request.go
 model_patched_google_workspace_provider_mapping_request.go
 model_patched_google_workspace_provider_request.go
 model_patched_group_request.go

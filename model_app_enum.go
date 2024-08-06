@@ -31,6 +31,7 @@ const (
 	APPENUM_POLICIES_EVENT_MATCHER                AppEnum = "authentik.policies.event_matcher"
 	APPENUM_POLICIES_EXPIRY                       AppEnum = "authentik.policies.expiry"
 	APPENUM_POLICIES_EXPRESSION                   AppEnum = "authentik.policies.expression"
+	APPENUM_POLICIES_GEOIP                        AppEnum = "authentik.policies.geoip"
 	APPENUM_POLICIES_PASSWORD                     AppEnum = "authentik.policies.password"
 	APPENUM_POLICIES_REPUTATION                   AppEnum = "authentik.policies.reputation"
 	APPENUM_POLICIES                              AppEnum = "authentik.policies"
@@ -91,6 +92,7 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.policies.event_matcher",
 	"authentik.policies.expiry",
 	"authentik.policies.expression",
+	"authentik.policies.geoip",
 	"authentik.policies.password",
 	"authentik.policies.reputation",
 	"authentik.policies",

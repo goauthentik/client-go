@@ -40,6 +40,14 @@ Method | HTTP request | Description
 [**PoliciesExpressionRetrieve**](PoliciesApi.md#PoliciesExpressionRetrieve) | **Get** /policies/expression/{policy_uuid}/ | 
 [**PoliciesExpressionUpdate**](PoliciesApi.md#PoliciesExpressionUpdate) | **Put** /policies/expression/{policy_uuid}/ | 
 [**PoliciesExpressionUsedByList**](PoliciesApi.md#PoliciesExpressionUsedByList) | **Get** /policies/expression/{policy_uuid}/used_by/ | 
+[**PoliciesGeoipCreate**](PoliciesApi.md#PoliciesGeoipCreate) | **Post** /policies/geoip/ | 
+[**PoliciesGeoipDestroy**](PoliciesApi.md#PoliciesGeoipDestroy) | **Delete** /policies/geoip/{policy_uuid}/ | 
+[**PoliciesGeoipIso3166List**](PoliciesApi.md#PoliciesGeoipIso3166List) | **Get** /policies/geoip_iso3166/ | 
+[**PoliciesGeoipList**](PoliciesApi.md#PoliciesGeoipList) | **Get** /policies/geoip/ | 
+[**PoliciesGeoipPartialUpdate**](PoliciesApi.md#PoliciesGeoipPartialUpdate) | **Patch** /policies/geoip/{policy_uuid}/ | 
+[**PoliciesGeoipRetrieve**](PoliciesApi.md#PoliciesGeoipRetrieve) | **Get** /policies/geoip/{policy_uuid}/ | 
+[**PoliciesGeoipUpdate**](PoliciesApi.md#PoliciesGeoipUpdate) | **Put** /policies/geoip/{policy_uuid}/ | 
+[**PoliciesGeoipUsedByList**](PoliciesApi.md#PoliciesGeoipUsedByList) | **Get** /policies/geoip/{policy_uuid}/used_by/ | 
 [**PoliciesPasswordCreate**](PoliciesApi.md#PoliciesPasswordCreate) | **Post** /policies/password/ | 
 [**PoliciesPasswordDestroy**](PoliciesApi.md#PoliciesPasswordDestroy) | **Delete** /policies/password/{policy_uuid}/ | 
 [**PoliciesPasswordExpiryCreate**](PoliciesApi.md#PoliciesPasswordExpiryCreate) | **Post** /policies/password_expiry/ | 
@@ -2604,6 +2612,559 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPoliciesExpressionUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PoliciesGeoipCreate
+
+> GeoIPPolicy PoliciesGeoipCreate(ctx).GeoIPPolicyRequest(geoIPPolicyRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    geoIPPolicyRequest := *openapiclient.NewGeoIPPolicyRequest("Name_example", []openapiclient.CountryCodeEnum{openapiclient.CountryCodeEnum("AF")}) // GeoIPPolicyRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesGeoipCreate(context.Background()).GeoIPPolicyRequest(geoIPPolicyRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesGeoipCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PoliciesGeoipCreate`: GeoIPPolicy
+    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesGeoipCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesGeoipCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **geoIPPolicyRequest** | [**GeoIPPolicyRequest**](GeoIPPolicyRequest.md) |  | 
+
+### Return type
+
+[**GeoIPPolicy**](GeoIPPolicy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PoliciesGeoipDestroy
+
+> PoliciesGeoipDestroy(ctx, policyUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this GeoIP Policy.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesGeoipDestroy(context.Background(), policyUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesGeoipDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**policyUuid** | **string** | A UUID string identifying this GeoIP Policy. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesGeoipDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PoliciesGeoipIso3166List
+
+> []DetailedCountry PoliciesGeoipIso3166List(ctx).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesGeoipIso3166List(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesGeoipIso3166List``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PoliciesGeoipIso3166List`: []DetailedCountry
+    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesGeoipIso3166List`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesGeoipIso3166ListRequest struct via the builder pattern
+
+
+### Return type
+
+[**[]DetailedCountry**](DetailedCountry.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PoliciesGeoipList
+
+> PaginatedGeoIPPolicyList PoliciesGeoipList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesGeoipList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesGeoipList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PoliciesGeoipList`: PaginatedGeoIPPolicyList
+    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesGeoipList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesGeoipListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedGeoIPPolicyList**](PaginatedGeoIPPolicyList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PoliciesGeoipPartialUpdate
+
+> GeoIPPolicy PoliciesGeoipPartialUpdate(ctx, policyUuid).PatchedGeoIPPolicyRequest(patchedGeoIPPolicyRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this GeoIP Policy.
+    patchedGeoIPPolicyRequest := *openapiclient.NewPatchedGeoIPPolicyRequest() // PatchedGeoIPPolicyRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesGeoipPartialUpdate(context.Background(), policyUuid).PatchedGeoIPPolicyRequest(patchedGeoIPPolicyRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesGeoipPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PoliciesGeoipPartialUpdate`: GeoIPPolicy
+    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesGeoipPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**policyUuid** | **string** | A UUID string identifying this GeoIP Policy. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesGeoipPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedGeoIPPolicyRequest** | [**PatchedGeoIPPolicyRequest**](PatchedGeoIPPolicyRequest.md) |  | 
+
+### Return type
+
+[**GeoIPPolicy**](GeoIPPolicy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PoliciesGeoipRetrieve
+
+> GeoIPPolicy PoliciesGeoipRetrieve(ctx, policyUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this GeoIP Policy.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesGeoipRetrieve(context.Background(), policyUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesGeoipRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PoliciesGeoipRetrieve`: GeoIPPolicy
+    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesGeoipRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**policyUuid** | **string** | A UUID string identifying this GeoIP Policy. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesGeoipRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**GeoIPPolicy**](GeoIPPolicy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PoliciesGeoipUpdate
+
+> GeoIPPolicy PoliciesGeoipUpdate(ctx, policyUuid).GeoIPPolicyRequest(geoIPPolicyRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this GeoIP Policy.
+    geoIPPolicyRequest := *openapiclient.NewGeoIPPolicyRequest("Name_example", []openapiclient.CountryCodeEnum{openapiclient.CountryCodeEnum("AF")}) // GeoIPPolicyRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesGeoipUpdate(context.Background(), policyUuid).GeoIPPolicyRequest(geoIPPolicyRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesGeoipUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PoliciesGeoipUpdate`: GeoIPPolicy
+    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesGeoipUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**policyUuid** | **string** | A UUID string identifying this GeoIP Policy. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesGeoipUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **geoIPPolicyRequest** | [**GeoIPPolicyRequest**](GeoIPPolicyRequest.md) |  | 
+
+### Return type
+
+[**GeoIPPolicy**](GeoIPPolicy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PoliciesGeoipUsedByList
+
+> []UsedBy PoliciesGeoipUsedByList(ctx, policyUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this GeoIP Policy.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesGeoipUsedByList(context.Background(), policyUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesGeoipUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PoliciesGeoipUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesGeoipUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**policyUuid** | **string** | A UUID string identifying this GeoIP Policy. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesGeoipUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

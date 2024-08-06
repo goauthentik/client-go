@@ -25,6 +25,8 @@
 
 * `POLICIES_EXPRESSION_EXPRESSIONPOLICY` (value: `"authentik_policies_expression.expressionpolicy"`)
 
+* `POLICIES_GEOIP_GEOIPPOLICY` (value: `"authentik_policies_geoip.geoippolicy"`)
+
 * `POLICIES_PASSWORD_PASSWORDPOLICY` (value: `"authentik_policies_password.passwordpolicy"`)
 
 * `POLICIES_REPUTATION_REPUTATIONPOLICY` (value: `"authentik_policies_reputation.reputationpolicy"`)

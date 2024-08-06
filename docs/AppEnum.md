@@ -23,6 +23,8 @@
 
 * `POLICIES_EXPRESSION` (value: `"authentik.policies.expression"`)
 
+* `POLICIES_GEOIP` (value: `"authentik.policies.geoip"`)
+
 * `POLICIES_PASSWORD` (value: `"authentik.policies.password"`)
 
 * `POLICIES_REPUTATION` (value: `"authentik.policies.reputation"`)

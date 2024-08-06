@@ -341,6 +341,14 @@ Class | Method | HTTP request | Description
 *PoliciesApi* | [**PoliciesExpressionRetrieve**](docs/PoliciesApi.md#policiesexpressionretrieve) | **Get** /policies/expression/{policy_uuid}/ | 
 *PoliciesApi* | [**PoliciesExpressionUpdate**](docs/PoliciesApi.md#policiesexpressionupdate) | **Put** /policies/expression/{policy_uuid}/ | 
 *PoliciesApi* | [**PoliciesExpressionUsedByList**](docs/PoliciesApi.md#policiesexpressionusedbylist) | **Get** /policies/expression/{policy_uuid}/used_by/ | 
+*PoliciesApi* | [**PoliciesGeoipCreate**](docs/PoliciesApi.md#policiesgeoipcreate) | **Post** /policies/geoip/ | 
+*PoliciesApi* | [**PoliciesGeoipDestroy**](docs/PoliciesApi.md#policiesgeoipdestroy) | **Delete** /policies/geoip/{policy_uuid}/ | 
+*PoliciesApi* | [**PoliciesGeoipIso3166List**](docs/PoliciesApi.md#policiesgeoipiso3166list) | **Get** /policies/geoip_iso3166/ | 
+*PoliciesApi* | [**PoliciesGeoipList**](docs/PoliciesApi.md#policiesgeoiplist) | **Get** /policies/geoip/ | 
+*PoliciesApi* | [**PoliciesGeoipPartialUpdate**](docs/PoliciesApi.md#policiesgeoippartialupdate) | **Patch** /policies/geoip/{policy_uuid}/ | 
+*PoliciesApi* | [**PoliciesGeoipRetrieve**](docs/PoliciesApi.md#policiesgeoipretrieve) | **Get** /policies/geoip/{policy_uuid}/ | 
+*PoliciesApi* | [**PoliciesGeoipUpdate**](docs/PoliciesApi.md#policiesgeoipupdate) | **Put** /policies/geoip/{policy_uuid}/ | 
+*PoliciesApi* | [**PoliciesGeoipUsedByList**](docs/PoliciesApi.md#policiesgeoipusedbylist) | **Get** /policies/geoip/{policy_uuid}/used_by/ | 
 *PoliciesApi* | [**PoliciesPasswordCreate**](docs/PoliciesApi.md#policiespasswordcreate) | **Post** /policies/password/ | 
 *PoliciesApi* | [**PoliciesPasswordDestroy**](docs/PoliciesApi.md#policiespassworddestroy) | **Delete** /policies/password/{policy_uuid}/ | 
 *PoliciesApi* | [**PoliciesPasswordExpiryCreate**](docs/PoliciesApi.md#policiespasswordexpirycreate) | **Post** /policies/password_expiry/ | 
@@ -942,10 +950,14 @@ Class | Method | HTTP request | Description
  - [ContextualFlowInfo](docs/ContextualFlowInfo.md)
  - [ContextualFlowInfoLayoutEnum](docs/ContextualFlowInfoLayoutEnum.md)
  - [Coordinate](docs/Coordinate.md)
+ - [CountryCodeEnum](docs/CountryCodeEnum.md)
  - [CurrentBrand](docs/CurrentBrand.md)
  - [DeniedActionEnum](docs/DeniedActionEnum.md)
  - [DenyStage](docs/DenyStage.md)
  - [DenyStageRequest](docs/DenyStageRequest.md)
+ - [DetailedCountry](docs/DetailedCountry.md)
+ - [DetailedCountryField](docs/DetailedCountryField.md)
+ - [DetailedCountryFieldRequest](docs/DetailedCountryFieldRequest.md)
  - [Device](docs/Device.md)
  - [DeviceChallenge](docs/DeviceChallenge.md)
  - [DeviceChallengeRequest](docs/DeviceChallengeRequest.md)
@@ -1004,6 +1016,8 @@ Class | Method | HTTP request | Description
  - [FlowStageBindingRequest](docs/FlowStageBindingRequest.md)
  - [FooterLink](docs/FooterLink.md)
  - [GenericError](docs/GenericError.md)
+ - [GeoIPPolicy](docs/GeoIPPolicy.md)
+ - [GeoIPPolicyRequest](docs/GeoIPPolicyRequest.md)
  - [GeoipBindingEnum](docs/GeoipBindingEnum.md)
  - [GoogleWorkspaceProvider](docs/GoogleWorkspaceProvider.md)
  - [GoogleWorkspaceProviderGroup](docs/GoogleWorkspaceProviderGroup.md)
@@ -1120,6 +1134,7 @@ Class | Method | HTTP request | Description
  - [PaginatedExtraUserObjectPermissionList](docs/PaginatedExtraUserObjectPermissionList.md)
  - [PaginatedFlowList](docs/PaginatedFlowList.md)
  - [PaginatedFlowStageBindingList](docs/PaginatedFlowStageBindingList.md)
+ - [PaginatedGeoIPPolicyList](docs/PaginatedGeoIPPolicyList.md)
  - [PaginatedGoogleWorkspaceProviderGroupList](docs/PaginatedGoogleWorkspaceProviderGroupList.md)
  - [PaginatedGoogleWorkspaceProviderList](docs/PaginatedGoogleWorkspaceProviderList.md)
  - [PaginatedGoogleWorkspaceProviderMappingList](docs/PaginatedGoogleWorkspaceProviderMappingList.md)
@@ -1240,6 +1255,7 @@ Class | Method | HTTP request | Description
  - [PatchedExtraUserObjectPermissionRequest](docs/PatchedExtraUserObjectPermissionRequest.md)
  - [PatchedFlowRequest](docs/PatchedFlowRequest.md)
  - [PatchedFlowStageBindingRequest](docs/PatchedFlowStageBindingRequest.md)
+ - [PatchedGeoIPPolicyRequest](docs/PatchedGeoIPPolicyRequest.md)
  - [PatchedGoogleWorkspaceProviderMappingRequest](docs/PatchedGoogleWorkspaceProviderMappingRequest.md)
  - [PatchedGoogleWorkspaceProviderRequest](docs/PatchedGoogleWorkspaceProviderRequest.md)
  - [PatchedGroupRequest](docs/PatchedGroupRequest.md)
