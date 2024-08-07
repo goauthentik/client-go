@@ -40993,8 +40993,11 @@ components:
       description: Serializer for Duo authenticator devices
       example:
         verbose_name: verbose_name
+        last_updated: 2000-01-23T04:56:07.000+00:00
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
+        created: 2000-01-23T04:56:07.000+00:00
+        last_used: 2000-01-23T04:56:07.000+00:00
         name: name
         pk: 0
         type: type
@@ -41022,8 +41025,24 @@ components:
           type: string
         confirmed:
           type: boolean
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+        last_updated:
+          format: date-time
+          readOnly: true
+          type: string
+        last_used:
+          format: date-time
+          nullable: true
+          readOnly: true
+          type: string
       required:
       - confirmed
+      - created
+      - last_updated
+      - last_used
       - meta_model_name
       - name
       - pk

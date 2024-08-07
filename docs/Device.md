@@ -11,12 +11,15 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Type** | **string** | Get type of device | [readonly] 
 **Confirmed** | **bool** |  | 
+**Created** | **time.Time** |  | [readonly] 
+**LastUpdated** | **time.Time** |  | [readonly] 
+**LastUsed** | **NullableTime** |  | [readonly] 
 
 ## Methods
 
 ### NewDevice
 
-`func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk int32, name string, type_ string, confirmed bool, ) *Device`
+`func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk int32, name string, type_ string, confirmed bool, created time.Time, lastUpdated time.Time, lastUsed NullableTime, ) *Device`
 
 NewDevice instantiates a new Device object
 This constructor will assign default values to properties that have it defined,
@@ -171,6 +174,76 @@ and a boolean to check if the value has been set.
 SetConfirmed sets Confirmed field to given value.
 
 
+### GetCreated
+
+`func (o *Device) GetCreated() time.Time`
+
+GetCreated returns the Created field if non-nil, zero value otherwise.
+
+### GetCreatedOk
+
+`func (o *Device) GetCreatedOk() (*time.Time, bool)`
+
+GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreated
+
+`func (o *Device) SetCreated(v time.Time)`
+
+SetCreated sets Created field to given value.
+
+
+### GetLastUpdated
+
+`func (o *Device) GetLastUpdated() time.Time`
+
+GetLastUpdated returns the LastUpdated field if non-nil, zero value otherwise.
+
+### GetLastUpdatedOk
+
+`func (o *Device) GetLastUpdatedOk() (*time.Time, bool)`
+
+GetLastUpdatedOk returns a tuple with the LastUpdated field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastUpdated
+
+`func (o *Device) SetLastUpdated(v time.Time)`
+
+SetLastUpdated sets LastUpdated field to given value.
+
+
+### GetLastUsed
+
+`func (o *Device) GetLastUsed() time.Time`
+
+GetLastUsed returns the LastUsed field if non-nil, zero value otherwise.
+
+### GetLastUsedOk
+
+`func (o *Device) GetLastUsedOk() (*time.Time, bool)`
+
+GetLastUsedOk returns a tuple with the LastUsed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastUsed
+
+`func (o *Device) SetLastUsed(v time.Time)`
+
+SetLastUsed sets LastUsed field to given value.
+
+
+### SetLastUsedNil
+
+`func (o *Device) SetLastUsedNil(b bool)`
+
+ SetLastUsedNil sets the value for LastUsed to be an explicit nil
+
+### UnsetLastUsed
+`func (o *Device) UnsetLastUsed()`
+
+UnsetLastUsed ensures that no value is present for LastUsed, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

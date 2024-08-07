@@ -13,6 +13,7 @@ package api
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // Device Serializer for Duo authenticator devices
@@ -26,15 +27,18 @@ type Device struct {
 	Pk            int32  `json:"pk"`
 	Name          string `json:"name"`
 	// Get type of device
-	Type      string `json:"type"`
-	Confirmed bool   `json:"confirmed"`
+	Type        string       `json:"type"`
+	Confirmed   bool         `json:"confirmed"`
+	Created     time.Time    `json:"created"`
+	LastUpdated time.Time    `json:"last_updated"`
+	LastUsed    NullableTime `json:"last_used"`
 }
 
 // NewDevice instantiates a new Device object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk int32, name string, type_ string, confirmed bool) *Device {
+func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk int32, name string, type_ string, confirmed bool, created time.Time, lastUpdated time.Time, lastUsed NullableTime) *Device {
 	this := Device{}
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
@@ -43,6 +47,9 @@ func NewDevice(verboseName string, verboseNamePlural string, metaModelName strin
 	this.Name = name
 	this.Type = type_
 	this.Confirmed = confirmed
+	this.Created = created
+	this.LastUpdated = lastUpdated
+	this.LastUsed = lastUsed
 	return &this
 }
 
@@ -222,6 +229,80 @@ func (o *Device) SetConfirmed(v bool) {
 	o.Confirmed = v
 }
 
+// GetCreated returns the Created field value
+func (o *Device) GetCreated() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.Created
+}
+
+// GetCreatedOk returns a tuple with the Created field value
+// and a boolean to check if the value has been set.
+func (o *Device) GetCreatedOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Created, true
+}
+
+// SetCreated sets field value
+func (o *Device) SetCreated(v time.Time) {
+	o.Created = v
+}
+
+// GetLastUpdated returns the LastUpdated field value
+func (o *Device) GetLastUpdated() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.LastUpdated
+}
+
+// GetLastUpdatedOk returns a tuple with the LastUpdated field value
+// and a boolean to check if the value has been set.
+func (o *Device) GetLastUpdatedOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LastUpdated, true
+}
+
+// SetLastUpdated sets field value
+func (o *Device) SetLastUpdated(v time.Time) {
+	o.LastUpdated = v
+}
+
+// GetLastUsed returns the LastUsed field value
+// If the value is explicit nil, the zero value for time.Time will be returned
+func (o *Device) GetLastUsed() time.Time {
+	if o == nil || o.LastUsed.Get() == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return *o.LastUsed.Get()
+}
+
+// GetLastUsedOk returns a tuple with the LastUsed field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Device) GetLastUsedOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastUsed.Get(), o.LastUsed.IsSet()
+}
+
+// SetLastUsed sets field value
+func (o *Device) SetLastUsed(v time.Time) {
+	o.LastUsed.Set(&v)
+}
+
 func (o Device) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -244,6 +325,15 @@ func (o Device) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["confirmed"] = o.Confirmed
+	}
+	if true {
+		toSerialize["created"] = o.Created
+	}
+	if true {
+		toSerialize["last_updated"] = o.LastUpdated
+	}
+	if true {
+		toSerialize["last_used"] = o.LastUsed.Get()
 	}
 	return json.Marshal(toSerialize)
 }
