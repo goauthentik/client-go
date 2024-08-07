@@ -55,6 +55,8 @@ type PatchedSAMLSourceRequest struct {
 	SignatureAlgorithm *SignatureAlgorithmEnum `json:"signature_algorithm,omitempty"`
 	// Time offset when temporary users should be deleted. This only applies if your IDP uses the NameID Format 'transient', and the user doesn't log out manually. (Format: hours=1;minutes=2;seconds=3).
 	TemporaryUserDeleteAfter *string `json:"temporary_user_delete_after,omitempty"`
+	// When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key.
+	EncryptionKp NullableString `json:"encryption_kp,omitempty"`
 }
 
 // NewPatchedSAMLSourceRequest instantiates a new PatchedSAMLSourceRequest object
@@ -865,6 +867,49 @@ func (o *PatchedSAMLSourceRequest) SetTemporaryUserDeleteAfter(v string) {
 	o.TemporaryUserDeleteAfter = &v
 }
 
+// GetEncryptionKp returns the EncryptionKp field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedSAMLSourceRequest) GetEncryptionKp() string {
+	if o == nil || o.EncryptionKp.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.EncryptionKp.Get()
+}
+
+// GetEncryptionKpOk returns a tuple with the EncryptionKp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedSAMLSourceRequest) GetEncryptionKpOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.EncryptionKp.Get(), o.EncryptionKp.IsSet()
+}
+
+// HasEncryptionKp returns a boolean if a field has been set.
+func (o *PatchedSAMLSourceRequest) HasEncryptionKp() bool {
+	if o != nil && o.EncryptionKp.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEncryptionKp gets a reference to the given NullableString and assigns it to the EncryptionKp field.
+func (o *PatchedSAMLSourceRequest) SetEncryptionKp(v string) {
+	o.EncryptionKp.Set(&v)
+}
+
+// SetEncryptionKpNil sets the value for EncryptionKp to be an explicit nil
+func (o *PatchedSAMLSourceRequest) SetEncryptionKpNil() {
+	o.EncryptionKp.Set(nil)
+}
+
+// UnsetEncryptionKp ensures that no value is present for EncryptionKp, not even an explicit nil
+func (o *PatchedSAMLSourceRequest) UnsetEncryptionKp() {
+	o.EncryptionKp.Unset()
+}
+
 func (o PatchedSAMLSourceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -935,6 +980,9 @@ func (o PatchedSAMLSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.TemporaryUserDeleteAfter != nil {
 		toSerialize["temporary_user_delete_after"] = o.TemporaryUserDeleteAfter
+	}
+	if o.EncryptionKp.IsSet() {
+		toSerialize["encryption_kp"] = o.EncryptionKp.Get()
 	}
 	return json.Marshal(toSerialize)
 }

@@ -34,6 +34,7 @@ Name | Type | Description | Notes
 **DigestAlgorithm** | Pointer to [**DigestAlgorithmEnum**](DigestAlgorithmEnum.md) |  | [optional] 
 **SignatureAlgorithm** | Pointer to [**SignatureAlgorithmEnum**](SignatureAlgorithmEnum.md) |  | [optional] 
 **TemporaryUserDeleteAfter** | Pointer to **string** | Time offset when temporary users should be deleted. This only applies if your IDP uses the NameID Format &#39;transient&#39;, and the user doesn&#39;t log out manually. (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
+**EncryptionKp** | Pointer to **NullableString** | When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key. | [optional] 
 
 ## Methods
 
@@ -809,6 +810,41 @@ SetTemporaryUserDeleteAfter sets TemporaryUserDeleteAfter field to given value.
 
 HasTemporaryUserDeleteAfter returns a boolean if a field has been set.
 
+### GetEncryptionKp
+
+`func (o *SAMLSource) GetEncryptionKp() string`
+
+GetEncryptionKp returns the EncryptionKp field if non-nil, zero value otherwise.
+
+### GetEncryptionKpOk
+
+`func (o *SAMLSource) GetEncryptionKpOk() (*string, bool)`
+
+GetEncryptionKpOk returns a tuple with the EncryptionKp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEncryptionKp
+
+`func (o *SAMLSource) SetEncryptionKp(v string)`
+
+SetEncryptionKp sets EncryptionKp field to given value.
+
+### HasEncryptionKp
+
+`func (o *SAMLSource) HasEncryptionKp() bool`
+
+HasEncryptionKp returns a boolean if a field has been set.
+
+### SetEncryptionKpNil
+
+`func (o *SAMLSource) SetEncryptionKpNil(b bool)`
+
+ SetEncryptionKpNil sets the value for EncryptionKp to be an explicit nil
+
+### UnsetEncryptionKp
+`func (o *SAMLSource) UnsetEncryptionKp()`
+
+UnsetEncryptionKp ensures that no value is present for EncryptionKp, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

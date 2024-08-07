@@ -53643,6 +53643,7 @@ components:
           digest_algorithm: null
           meta_model_name: meta_model_name
           pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          encryption_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           verification_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -53677,6 +53678,7 @@ components:
           digest_algorithm: null
           meta_model_name: meta_model_name
           pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          encryption_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           verification_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -59197,6 +59199,7 @@ components:
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         digest_algorithm: null
         pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        encryption_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name_id_policy: ""
         name: name
         user_property_mappings:
@@ -59309,6 +59312,14 @@ components:
             \ doesn't log out manually. (Format: hours=1;minutes=2;seconds=3)."
           minLength: 1
           title: Delete temporary users after
+          type: string
+        encryption_kp:
+          description: "When selected, incoming assertions are encrypted by the IdP\
+            \ using the public key of the encryption keypair. The assertion is decrypted\
+            \ by the SP using the the private key."
+          format: uuid
+          nullable: true
+          title: Encryption Keypair
           type: string
       type: object
     PatchedSCIMMappingRequest:
@@ -62970,6 +62981,7 @@ components:
         digest_algorithm: null
         meta_model_name: meta_model_name
         pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        encryption_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         verification_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -63105,6 +63117,14 @@ components:
             \ doesn't log out manually. (Format: hours=1;minutes=2;seconds=3)."
           title: Delete temporary users after
           type: string
+        encryption_kp:
+          description: "When selected, incoming assertions are encrypted by the IdP\
+            \ using the public key of the encryption keypair. The assertion is decrypted\
+            \ by the SP using the the private key."
+          format: uuid
+          nullable: true
+          title: Encryption Keypair
+          type: string
       required:
       - component
       - icon
@@ -63218,6 +63238,7 @@ components:
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         digest_algorithm: null
         pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        encryption_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name_id_policy: ""
         name: name
         user_property_mappings:
@@ -63330,6 +63351,14 @@ components:
             \ doesn't log out manually. (Format: hours=1;minutes=2;seconds=3)."
           minLength: 1
           title: Delete temporary users after
+          type: string
+        encryption_kp:
+          description: "When selected, incoming assertions are encrypted by the IdP\
+            \ using the public key of the encryption keypair. The assertion is decrypted\
+            \ by the SP using the the private key."
+          format: uuid
+          nullable: true
+          title: Encryption Keypair
           type: string
       required:
       - name
