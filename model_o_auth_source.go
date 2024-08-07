@@ -41,10 +41,12 @@ type OAuthSource struct {
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed          NullableString   `json:"managed"`
-	UserPathTemplate *string          `json:"user_path_template,omitempty"`
-	Icon             NullableString   `json:"icon"`
-	ProviderType     ProviderTypeEnum `json:"provider_type"`
+	Managed          NullableString `json:"managed"`
+	UserPathTemplate *string        `json:"user_path_template,omitempty"`
+	Icon             NullableString `json:"icon"`
+	// How the source determines if an existing group should be used or a new group created.
+	GroupMatchingMode *GroupMatchingModeEnum `json:"group_matching_mode,omitempty"`
+	ProviderType      ProviderTypeEnum       `json:"provider_type"`
 	// URL used to request the initial token. This URL is only required for OAuth 1.
 	RequestTokenUrl NullableString `json:"request_token_url,omitempty"`
 	// URL the user is redirect to to conest the flow.
@@ -591,6 +593,38 @@ func (o *OAuthSource) SetIcon(v string) {
 	o.Icon.Set(&v)
 }
 
+// GetGroupMatchingMode returns the GroupMatchingMode field value if set, zero value otherwise.
+func (o *OAuthSource) GetGroupMatchingMode() GroupMatchingModeEnum {
+	if o == nil || o.GroupMatchingMode == nil {
+		var ret GroupMatchingModeEnum
+		return ret
+	}
+	return *o.GroupMatchingMode
+}
+
+// GetGroupMatchingModeOk returns a tuple with the GroupMatchingMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthSource) GetGroupMatchingModeOk() (*GroupMatchingModeEnum, bool) {
+	if o == nil || o.GroupMatchingMode == nil {
+		return nil, false
+	}
+	return o.GroupMatchingMode, true
+}
+
+// HasGroupMatchingMode returns a boolean if a field has been set.
+func (o *OAuthSource) HasGroupMatchingMode() bool {
+	if o != nil && o.GroupMatchingMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupMatchingMode gets a reference to the given GroupMatchingModeEnum and assigns it to the GroupMatchingMode field.
+func (o *OAuthSource) SetGroupMatchingMode(v GroupMatchingModeEnum) {
+	o.GroupMatchingMode = &v
+}
+
 // GetProviderType returns the ProviderType field value
 func (o *OAuthSource) GetProviderType() ProviderTypeEnum {
 	if o == nil {
@@ -1040,6 +1074,9 @@ func (o OAuthSource) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["icon"] = o.Icon.Get()
+	}
+	if o.GroupMatchingMode != nil {
+		toSerialize["group_matching_mode"] = o.GroupMatchingMode
 	}
 	if true {
 		toSerialize["provider_type"] = o.ProviderType

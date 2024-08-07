@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
+**GroupMatchingMode** | Pointer to [**GroupMatchingModeEnum**](GroupMatchingModeEnum.md) | How the source determines if an existing group should be used or a new group created. | [optional] 
 **PreAuthenticationFlow** | Pointer to **string** | Flow used before authentication. | [optional] 
 **Issuer** | Pointer to **string** | Also known as Entity ID. Defaults the Metadata URL. | [optional] 
 **SsoUrl** | Pointer to **string** | URL that the initial Login request is sent to. | [optional] 
@@ -315,6 +316,31 @@ SetUserPathTemplate sets UserPathTemplate field to given value.
 `func (o *PatchedSAMLSourceRequest) HasUserPathTemplate() bool`
 
 HasUserPathTemplate returns a boolean if a field has been set.
+
+### GetGroupMatchingMode
+
+`func (o *PatchedSAMLSourceRequest) GetGroupMatchingMode() GroupMatchingModeEnum`
+
+GetGroupMatchingMode returns the GroupMatchingMode field if non-nil, zero value otherwise.
+
+### GetGroupMatchingModeOk
+
+`func (o *PatchedSAMLSourceRequest) GetGroupMatchingModeOk() (*GroupMatchingModeEnum, bool)`
+
+GetGroupMatchingModeOk returns a tuple with the GroupMatchingMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupMatchingMode
+
+`func (o *PatchedSAMLSourceRequest) SetGroupMatchingMode(v GroupMatchingModeEnum)`
+
+SetGroupMatchingMode sets GroupMatchingMode field to given value.
+
+### HasGroupMatchingMode
+
+`func (o *PatchedSAMLSourceRequest) HasGroupMatchingMode() bool`
+
+HasGroupMatchingMode returns a boolean if a field has been set.
 
 ### GetPreAuthenticationFlow
 

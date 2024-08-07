@@ -50,11 +50,15 @@ const (
 	MODELENUM_SOURCES_LDAP_LDAPSOURCE                                   ModelEnum = "authentik_sources_ldap.ldapsource"
 	MODELENUM_SOURCES_LDAP_LDAPSOURCEPROPERTYMAPPING                    ModelEnum = "authentik_sources_ldap.ldapsourcepropertymapping"
 	MODELENUM_SOURCES_OAUTH_OAUTHSOURCE                                 ModelEnum = "authentik_sources_oauth.oauthsource"
+	MODELENUM_SOURCES_OAUTH_OAUTHSOURCEPROPERTYMAPPING                  ModelEnum = "authentik_sources_oauth.oauthsourcepropertymapping"
 	MODELENUM_SOURCES_OAUTH_USEROAUTHSOURCECONNECTION                   ModelEnum = "authentik_sources_oauth.useroauthsourceconnection"
+	MODELENUM_SOURCES_OAUTH_GROUPOAUTHSOURCECONNECTION                  ModelEnum = "authentik_sources_oauth.groupoauthsourceconnection"
 	MODELENUM_SOURCES_PLEX_PLEXSOURCE                                   ModelEnum = "authentik_sources_plex.plexsource"
 	MODELENUM_SOURCES_PLEX_PLEXSOURCECONNECTION                         ModelEnum = "authentik_sources_plex.plexsourceconnection"
 	MODELENUM_SOURCES_SAML_SAMLSOURCE                                   ModelEnum = "authentik_sources_saml.samlsource"
+	MODELENUM_SOURCES_SAML_SAMLSOURCEPROPERTYMAPPING                    ModelEnum = "authentik_sources_saml.samlsourcepropertymapping"
 	MODELENUM_SOURCES_SAML_USERSAMLSOURCECONNECTION                     ModelEnum = "authentik_sources_saml.usersamlsourceconnection"
+	MODELENUM_SOURCES_SAML_GROUPSAMLSOURCECONNECTION                    ModelEnum = "authentik_sources_saml.groupsamlsourceconnection"
 	MODELENUM_SOURCES_SCIM_SCIMSOURCE                                   ModelEnum = "authentik_sources_scim.scimsource"
 	MODELENUM_SOURCES_SCIM_SCIMSOURCEPROPERTYMAPPING                    ModelEnum = "authentik_sources_scim.scimsourcepropertymapping"
 	MODELENUM_STAGES_AUTHENTICATOR_DUO_AUTHENTICATORDUOSTAGE            ModelEnum = "authentik_stages_authenticator_duo.authenticatorduostage"
@@ -137,11 +141,15 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_sources_ldap.ldapsource",
 	"authentik_sources_ldap.ldapsourcepropertymapping",
 	"authentik_sources_oauth.oauthsource",
+	"authentik_sources_oauth.oauthsourcepropertymapping",
 	"authentik_sources_oauth.useroauthsourceconnection",
+	"authentik_sources_oauth.groupoauthsourceconnection",
 	"authentik_sources_plex.plexsource",
 	"authentik_sources_plex.plexsourceconnection",
 	"authentik_sources_saml.samlsource",
+	"authentik_sources_saml.samlsourcepropertymapping",
 	"authentik_sources_saml.usersamlsourceconnection",
+	"authentik_sources_saml.groupsamlsourceconnection",
 	"authentik_sources_scim.scimsource",
 	"authentik_sources_scim.scimsourcepropertymapping",
 	"authentik_stages_authenticator_duo.authenticatorduostage",

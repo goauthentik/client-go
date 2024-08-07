@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **Managed** | **NullableString** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
 **Icon** | **NullableString** |  | [readonly] 
+**GroupMatchingMode** | Pointer to [**GroupMatchingModeEnum**](GroupMatchingModeEnum.md) | How the source determines if an existing group should be used or a new group created. | [optional] 
 **ProviderType** | [**ProviderTypeEnum**](ProviderTypeEnum.md) |  | 
 **RequestTokenUrl** | Pointer to **NullableString** | URL used to request the initial token. This URL is only required for OAuth 1. | [optional] 
 **AuthorizationUrl** | Pointer to **NullableString** | URL the user is redirect to to conest the flow. | [optional] 
@@ -473,6 +474,31 @@ SetIcon sets Icon field to given value.
 `func (o *OAuthSource) UnsetIcon()`
 
 UnsetIcon ensures that no value is present for Icon, not even an explicit nil
+### GetGroupMatchingMode
+
+`func (o *OAuthSource) GetGroupMatchingMode() GroupMatchingModeEnum`
+
+GetGroupMatchingMode returns the GroupMatchingMode field if non-nil, zero value otherwise.
+
+### GetGroupMatchingModeOk
+
+`func (o *OAuthSource) GetGroupMatchingModeOk() (*GroupMatchingModeEnum, bool)`
+
+GetGroupMatchingModeOk returns a tuple with the GroupMatchingMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupMatchingMode
+
+`func (o *OAuthSource) SetGroupMatchingMode(v GroupMatchingModeEnum)`
+
+SetGroupMatchingMode sets GroupMatchingMode field to given value.
+
+### HasGroupMatchingMode
+
+`func (o *OAuthSource) HasGroupMatchingMode() bool`
+
+HasGroupMatchingMode returns a boolean if a field has been set.
+
 ### GetProviderType
 
 `func (o *OAuthSource) GetProviderType() ProviderTypeEnum`

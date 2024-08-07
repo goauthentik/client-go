@@ -443,6 +443,20 @@ Class | Method | HTTP request | Description
 *PropertymappingsApi* | [**PropertymappingsSourceLdapRetrieve**](docs/PropertymappingsApi.md#propertymappingssourceldapretrieve) | **Get** /propertymappings/source/ldap/{pm_uuid}/ | 
 *PropertymappingsApi* | [**PropertymappingsSourceLdapUpdate**](docs/PropertymappingsApi.md#propertymappingssourceldapupdate) | **Put** /propertymappings/source/ldap/{pm_uuid}/ | 
 *PropertymappingsApi* | [**PropertymappingsSourceLdapUsedByList**](docs/PropertymappingsApi.md#propertymappingssourceldapusedbylist) | **Get** /propertymappings/source/ldap/{pm_uuid}/used_by/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceOauthCreate**](docs/PropertymappingsApi.md#propertymappingssourceoauthcreate) | **Post** /propertymappings/source/oauth/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceOauthDestroy**](docs/PropertymappingsApi.md#propertymappingssourceoauthdestroy) | **Delete** /propertymappings/source/oauth/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceOauthList**](docs/PropertymappingsApi.md#propertymappingssourceoauthlist) | **Get** /propertymappings/source/oauth/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceOauthPartialUpdate**](docs/PropertymappingsApi.md#propertymappingssourceoauthpartialupdate) | **Patch** /propertymappings/source/oauth/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceOauthRetrieve**](docs/PropertymappingsApi.md#propertymappingssourceoauthretrieve) | **Get** /propertymappings/source/oauth/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceOauthUpdate**](docs/PropertymappingsApi.md#propertymappingssourceoauthupdate) | **Put** /propertymappings/source/oauth/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceOauthUsedByList**](docs/PropertymappingsApi.md#propertymappingssourceoauthusedbylist) | **Get** /propertymappings/source/oauth/{pm_uuid}/used_by/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceSamlCreate**](docs/PropertymappingsApi.md#propertymappingssourcesamlcreate) | **Post** /propertymappings/source/saml/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceSamlDestroy**](docs/PropertymappingsApi.md#propertymappingssourcesamldestroy) | **Delete** /propertymappings/source/saml/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceSamlList**](docs/PropertymappingsApi.md#propertymappingssourcesamllist) | **Get** /propertymappings/source/saml/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceSamlPartialUpdate**](docs/PropertymappingsApi.md#propertymappingssourcesamlpartialupdate) | **Patch** /propertymappings/source/saml/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceSamlRetrieve**](docs/PropertymappingsApi.md#propertymappingssourcesamlretrieve) | **Get** /propertymappings/source/saml/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceSamlUpdate**](docs/PropertymappingsApi.md#propertymappingssourcesamlupdate) | **Put** /propertymappings/source/saml/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsSourceSamlUsedByList**](docs/PropertymappingsApi.md#propertymappingssourcesamlusedbylist) | **Get** /propertymappings/source/saml/{pm_uuid}/used_by/ | 
 *PropertymappingsApi* | [**PropertymappingsSourceScimCreate**](docs/PropertymappingsApi.md#propertymappingssourcescimcreate) | **Post** /propertymappings/source/scim/ | 
 *PropertymappingsApi* | [**PropertymappingsSourceScimDestroy**](docs/PropertymappingsApi.md#propertymappingssourcescimdestroy) | **Delete** /propertymappings/source/scim/{pm_uuid}/ | 
 *PropertymappingsApi* | [**PropertymappingsSourceScimList**](docs/PropertymappingsApi.md#propertymappingssourcescimlist) | **Get** /propertymappings/source/scim/ | 
@@ -604,6 +618,19 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**SourcesAllTypesList**](docs/SourcesApi.md#sourcesalltypeslist) | **Get** /sources/all/types/ | 
 *SourcesApi* | [**SourcesAllUsedByList**](docs/SourcesApi.md#sourcesallusedbylist) | **Get** /sources/all/{slug}/used_by/ | 
 *SourcesApi* | [**SourcesAllUserSettingsList**](docs/SourcesApi.md#sourcesallusersettingslist) | **Get** /sources/all/user_settings/ | 
+*SourcesApi* | [**SourcesGroupConnectionsOauthCreate**](docs/SourcesApi.md#sourcesgroupconnectionsoauthcreate) | **Post** /sources/group_connections/oauth/ | 
+*SourcesApi* | [**SourcesGroupConnectionsOauthDestroy**](docs/SourcesApi.md#sourcesgroupconnectionsoauthdestroy) | **Delete** /sources/group_connections/oauth/{id}/ | 
+*SourcesApi* | [**SourcesGroupConnectionsOauthList**](docs/SourcesApi.md#sourcesgroupconnectionsoauthlist) | **Get** /sources/group_connections/oauth/ | 
+*SourcesApi* | [**SourcesGroupConnectionsOauthPartialUpdate**](docs/SourcesApi.md#sourcesgroupconnectionsoauthpartialupdate) | **Patch** /sources/group_connections/oauth/{id}/ | 
+*SourcesApi* | [**SourcesGroupConnectionsOauthRetrieve**](docs/SourcesApi.md#sourcesgroupconnectionsoauthretrieve) | **Get** /sources/group_connections/oauth/{id}/ | 
+*SourcesApi* | [**SourcesGroupConnectionsOauthUpdate**](docs/SourcesApi.md#sourcesgroupconnectionsoauthupdate) | **Put** /sources/group_connections/oauth/{id}/ | 
+*SourcesApi* | [**SourcesGroupConnectionsOauthUsedByList**](docs/SourcesApi.md#sourcesgroupconnectionsoauthusedbylist) | **Get** /sources/group_connections/oauth/{id}/used_by/ | 
+*SourcesApi* | [**SourcesGroupConnectionsSamlDestroy**](docs/SourcesApi.md#sourcesgroupconnectionssamldestroy) | **Delete** /sources/group_connections/saml/{id}/ | 
+*SourcesApi* | [**SourcesGroupConnectionsSamlList**](docs/SourcesApi.md#sourcesgroupconnectionssamllist) | **Get** /sources/group_connections/saml/ | 
+*SourcesApi* | [**SourcesGroupConnectionsSamlPartialUpdate**](docs/SourcesApi.md#sourcesgroupconnectionssamlpartialupdate) | **Patch** /sources/group_connections/saml/{id}/ | 
+*SourcesApi* | [**SourcesGroupConnectionsSamlRetrieve**](docs/SourcesApi.md#sourcesgroupconnectionssamlretrieve) | **Get** /sources/group_connections/saml/{id}/ | 
+*SourcesApi* | [**SourcesGroupConnectionsSamlUpdate**](docs/SourcesApi.md#sourcesgroupconnectionssamlupdate) | **Put** /sources/group_connections/saml/{id}/ | 
+*SourcesApi* | [**SourcesGroupConnectionsSamlUsedByList**](docs/SourcesApi.md#sourcesgroupconnectionssamlusedbylist) | **Get** /sources/group_connections/saml/{id}/used_by/ | 
 *SourcesApi* | [**SourcesLdapCreate**](docs/SourcesApi.md#sourcesldapcreate) | **Post** /sources/ldap/ | 
 *SourcesApi* | [**SourcesLdapDebugRetrieve**](docs/SourcesApi.md#sourcesldapdebugretrieve) | **Get** /sources/ldap/{slug}/debug/ | 
 *SourcesApi* | [**SourcesLdapDestroy**](docs/SourcesApi.md#sourcesldapdestroy) | **Delete** /sources/ldap/{slug}/ | 
@@ -1028,9 +1055,12 @@ Class | Method | HTTP request | Description
  - [GoogleWorkspaceProviderUser](docs/GoogleWorkspaceProviderUser.md)
  - [GoogleWorkspaceProviderUserRequest](docs/GoogleWorkspaceProviderUserRequest.md)
  - [Group](docs/Group.md)
+ - [GroupMatchingModeEnum](docs/GroupMatchingModeEnum.md)
  - [GroupMember](docs/GroupMember.md)
  - [GroupMemberRequest](docs/GroupMemberRequest.md)
+ - [GroupOAuthSourceConnection](docs/GroupOAuthSourceConnection.md)
  - [GroupRequest](docs/GroupRequest.md)
+ - [GroupSAMLSourceConnection](docs/GroupSAMLSourceConnection.md)
  - [IdentificationChallenge](docs/IdentificationChallenge.md)
  - [IdentificationChallengeResponseRequest](docs/IdentificationChallengeResponseRequest.md)
  - [IdentificationStage](docs/IdentificationStage.md)
@@ -1096,6 +1126,8 @@ Class | Method | HTTP request | Description
  - [OAuthDeviceCodeFinishChallenge](docs/OAuthDeviceCodeFinishChallenge.md)
  - [OAuthDeviceCodeFinishChallengeResponseRequest](docs/OAuthDeviceCodeFinishChallengeResponseRequest.md)
  - [OAuthSource](docs/OAuthSource.md)
+ - [OAuthSourcePropertyMapping](docs/OAuthSourcePropertyMapping.md)
+ - [OAuthSourcePropertyMappingRequest](docs/OAuthSourcePropertyMappingRequest.md)
  - [OAuthSourceRequest](docs/OAuthSourceRequest.md)
  - [OpenIDConnectConfiguration](docs/OpenIDConnectConfiguration.md)
  - [OutgoingSyncDeleteAction](docs/OutgoingSyncDeleteAction.md)
@@ -1140,6 +1172,8 @@ Class | Method | HTTP request | Description
  - [PaginatedGoogleWorkspaceProviderMappingList](docs/PaginatedGoogleWorkspaceProviderMappingList.md)
  - [PaginatedGoogleWorkspaceProviderUserList](docs/PaginatedGoogleWorkspaceProviderUserList.md)
  - [PaginatedGroupList](docs/PaginatedGroupList.md)
+ - [PaginatedGroupOAuthSourceConnectionList](docs/PaginatedGroupOAuthSourceConnectionList.md)
+ - [PaginatedGroupSAMLSourceConnectionList](docs/PaginatedGroupSAMLSourceConnectionList.md)
  - [PaginatedIdentificationStageList](docs/PaginatedIdentificationStageList.md)
  - [PaginatedInvitationList](docs/PaginatedInvitationList.md)
  - [PaginatedInvitationStageList](docs/PaginatedInvitationStageList.md)
@@ -1159,6 +1193,7 @@ Class | Method | HTTP request | Description
  - [PaginatedNotificationWebhookMappingList](docs/PaginatedNotificationWebhookMappingList.md)
  - [PaginatedOAuth2ProviderList](docs/PaginatedOAuth2ProviderList.md)
  - [PaginatedOAuthSourceList](docs/PaginatedOAuthSourceList.md)
+ - [PaginatedOAuthSourcePropertyMappingList](docs/PaginatedOAuthSourcePropertyMappingList.md)
  - [PaginatedOutpostList](docs/PaginatedOutpostList.md)
  - [PaginatedPasswordExpiryPolicyList](docs/PaginatedPasswordExpiryPolicyList.md)
  - [PaginatedPasswordPolicyList](docs/PaginatedPasswordPolicyList.md)
@@ -1186,6 +1221,7 @@ Class | Method | HTTP request | Description
  - [PaginatedSAMLPropertyMappingList](docs/PaginatedSAMLPropertyMappingList.md)
  - [PaginatedSAMLProviderList](docs/PaginatedSAMLProviderList.md)
  - [PaginatedSAMLSourceList](docs/PaginatedSAMLSourceList.md)
+ - [PaginatedSAMLSourcePropertyMappingList](docs/PaginatedSAMLSourcePropertyMappingList.md)
  - [PaginatedSCIMMappingList](docs/PaginatedSCIMMappingList.md)
  - [PaginatedSCIMProviderGroupList](docs/PaginatedSCIMProviderGroupList.md)
  - [PaginatedSCIMProviderList](docs/PaginatedSCIMProviderList.md)
@@ -1274,6 +1310,7 @@ Class | Method | HTTP request | Description
  - [PatchedNotificationTransportRequest](docs/PatchedNotificationTransportRequest.md)
  - [PatchedNotificationWebhookMappingRequest](docs/PatchedNotificationWebhookMappingRequest.md)
  - [PatchedOAuth2ProviderRequest](docs/PatchedOAuth2ProviderRequest.md)
+ - [PatchedOAuthSourcePropertyMappingRequest](docs/PatchedOAuthSourcePropertyMappingRequest.md)
  - [PatchedOAuthSourceRequest](docs/PatchedOAuthSourceRequest.md)
  - [PatchedOutpostRequest](docs/PatchedOutpostRequest.md)
  - [PatchedPasswordExpiryPolicyRequest](docs/PatchedPasswordExpiryPolicyRequest.md)
@@ -1294,6 +1331,7 @@ Class | Method | HTTP request | Description
  - [PatchedRoleRequest](docs/PatchedRoleRequest.md)
  - [PatchedSAMLPropertyMappingRequest](docs/PatchedSAMLPropertyMappingRequest.md)
  - [PatchedSAMLProviderRequest](docs/PatchedSAMLProviderRequest.md)
+ - [PatchedSAMLSourcePropertyMappingRequest](docs/PatchedSAMLSourcePropertyMappingRequest.md)
  - [PatchedSAMLSourceRequest](docs/PatchedSAMLSourceRequest.md)
  - [PatchedSCIMMappingRequest](docs/PatchedSCIMMappingRequest.md)
  - [PatchedSCIMProviderRequest](docs/PatchedSCIMProviderRequest.md)
@@ -1380,6 +1418,8 @@ Class | Method | HTTP request | Description
  - [SAMLProvider](docs/SAMLProvider.md)
  - [SAMLProviderRequest](docs/SAMLProviderRequest.md)
  - [SAMLSource](docs/SAMLSource.md)
+ - [SAMLSourcePropertyMapping](docs/SAMLSourcePropertyMapping.md)
+ - [SAMLSourcePropertyMappingRequest](docs/SAMLSourcePropertyMappingRequest.md)
  - [SAMLSourceRequest](docs/SAMLSourceRequest.md)
  - [SCIMMapping](docs/SCIMMapping.md)
  - [SCIMMappingRequest](docs/SCIMMappingRequest.md)

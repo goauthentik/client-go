@@ -44,6 +44,8 @@ type SAMLSource struct {
 	Managed          NullableString `json:"managed"`
 	UserPathTemplate *string        `json:"user_path_template,omitempty"`
 	Icon             string         `json:"icon"`
+	// How the source determines if an existing group should be used or a new group created.
+	GroupMatchingMode *GroupMatchingModeEnum `json:"group_matching_mode,omitempty"`
 	// Flow used before authentication.
 	PreAuthenticationFlow string `json:"pre_authentication_flow"`
 	// Also known as Entity ID. Defaults the Metadata URL.
@@ -591,6 +593,38 @@ func (o *SAMLSource) SetIcon(v string) {
 	o.Icon = v
 }
 
+// GetGroupMatchingMode returns the GroupMatchingMode field value if set, zero value otherwise.
+func (o *SAMLSource) GetGroupMatchingMode() GroupMatchingModeEnum {
+	if o == nil || o.GroupMatchingMode == nil {
+		var ret GroupMatchingModeEnum
+		return ret
+	}
+	return *o.GroupMatchingMode
+}
+
+// GetGroupMatchingModeOk returns a tuple with the GroupMatchingMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SAMLSource) GetGroupMatchingModeOk() (*GroupMatchingModeEnum, bool) {
+	if o == nil || o.GroupMatchingMode == nil {
+		return nil, false
+	}
+	return o.GroupMatchingMode, true
+}
+
+// HasGroupMatchingMode returns a boolean if a field has been set.
+func (o *SAMLSource) HasGroupMatchingMode() bool {
+	if o != nil && o.GroupMatchingMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupMatchingMode gets a reference to the given GroupMatchingModeEnum and assigns it to the GroupMatchingMode field.
+func (o *SAMLSource) SetGroupMatchingMode(v GroupMatchingModeEnum) {
+	o.GroupMatchingMode = &v
+}
+
 // GetPreAuthenticationFlow returns the PreAuthenticationFlow field value
 func (o *SAMLSource) GetPreAuthenticationFlow() string {
 	if o == nil {
@@ -1044,6 +1078,9 @@ func (o SAMLSource) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["icon"] = o.Icon
+	}
+	if o.GroupMatchingMode != nil {
+		toSerialize["group_matching_mode"] = o.GroupMatchingMode
 	}
 	if true {
 		toSerialize["pre_authentication_flow"] = o.PreAuthenticationFlow

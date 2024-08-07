@@ -61,7 +61,11 @@
 
 * `SOURCES_OAUTH_OAUTHSOURCE` (value: `"authentik_sources_oauth.oauthsource"`)
 
+* `SOURCES_OAUTH_OAUTHSOURCEPROPERTYMAPPING` (value: `"authentik_sources_oauth.oauthsourcepropertymapping"`)
+
 * `SOURCES_OAUTH_USEROAUTHSOURCECONNECTION` (value: `"authentik_sources_oauth.useroauthsourceconnection"`)
+
+* `SOURCES_OAUTH_GROUPOAUTHSOURCECONNECTION` (value: `"authentik_sources_oauth.groupoauthsourceconnection"`)
 
 * `SOURCES_PLEX_PLEXSOURCE` (value: `"authentik_sources_plex.plexsource"`)
 
@@ -69,7 +73,11 @@
 
 * `SOURCES_SAML_SAMLSOURCE` (value: `"authentik_sources_saml.samlsource"`)
 
+* `SOURCES_SAML_SAMLSOURCEPROPERTYMAPPING` (value: `"authentik_sources_saml.samlsourcepropertymapping"`)
+
 * `SOURCES_SAML_USERSAMLSOURCECONNECTION` (value: `"authentik_sources_saml.usersamlsourceconnection"`)
+
+* `SOURCES_SAML_GROUPSAMLSOURCECONNECTION` (value: `"authentik_sources_saml.groupsamlsourceconnection"`)
 
 * `SOURCES_SCIM_SCIMSOURCE` (value: `"authentik_sources_scim.scimsource"`)
 

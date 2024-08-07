@@ -32,7 +32,9 @@ type OAuthSourceRequest struct {
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	UserPathTemplate *string               `json:"user_path_template,omitempty"`
-	ProviderType     ProviderTypeEnum      `json:"provider_type"`
+	// How the source determines if an existing group should be used or a new group created.
+	GroupMatchingMode *GroupMatchingModeEnum `json:"group_matching_mode,omitempty"`
+	ProviderType      ProviderTypeEnum       `json:"provider_type"`
 	// URL used to request the initial token. This URL is only required for OAuth 1.
 	RequestTokenUrl NullableString `json:"request_token_url,omitempty"`
 	// URL the user is redirect to to conest the flow.
@@ -395,6 +397,38 @@ func (o *OAuthSourceRequest) HasUserPathTemplate() bool {
 // SetUserPathTemplate gets a reference to the given string and assigns it to the UserPathTemplate field.
 func (o *OAuthSourceRequest) SetUserPathTemplate(v string) {
 	o.UserPathTemplate = &v
+}
+
+// GetGroupMatchingMode returns the GroupMatchingMode field value if set, zero value otherwise.
+func (o *OAuthSourceRequest) GetGroupMatchingMode() GroupMatchingModeEnum {
+	if o == nil || o.GroupMatchingMode == nil {
+		var ret GroupMatchingModeEnum
+		return ret
+	}
+	return *o.GroupMatchingMode
+}
+
+// GetGroupMatchingModeOk returns a tuple with the GroupMatchingMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthSourceRequest) GetGroupMatchingModeOk() (*GroupMatchingModeEnum, bool) {
+	if o == nil || o.GroupMatchingMode == nil {
+		return nil, false
+	}
+	return o.GroupMatchingMode, true
+}
+
+// HasGroupMatchingMode returns a boolean if a field has been set.
+func (o *OAuthSourceRequest) HasGroupMatchingMode() bool {
+	if o != nil && o.GroupMatchingMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupMatchingMode gets a reference to the given GroupMatchingModeEnum and assigns it to the GroupMatchingMode field.
+func (o *OAuthSourceRequest) SetGroupMatchingMode(v GroupMatchingModeEnum) {
+	o.GroupMatchingMode = &v
 }
 
 // GetProviderType returns the ProviderType field value
@@ -801,6 +835,9 @@ func (o OAuthSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserPathTemplate != nil {
 		toSerialize["user_path_template"] = o.UserPathTemplate
+	}
+	if o.GroupMatchingMode != nil {
+		toSerialize["group_matching_mode"] = o.GroupMatchingMode
 	}
 	if true {
 		toSerialize["provider_type"] = o.ProviderType

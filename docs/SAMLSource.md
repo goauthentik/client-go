@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **Managed** | **NullableString** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
 **Icon** | **string** |  | [readonly] 
+**GroupMatchingMode** | Pointer to [**GroupMatchingModeEnum**](GroupMatchingModeEnum.md) | How the source determines if an existing group should be used or a new group created. | [optional] 
 **PreAuthenticationFlow** | **string** | Flow used before authentication. | 
 **Issuer** | Pointer to **string** | Also known as Entity ID. Defaults the Metadata URL. | [optional] 
 **SsoUrl** | **string** | URL that the initial Login request is sent to. | 
@@ -462,6 +463,31 @@ and a boolean to check if the value has been set.
 
 SetIcon sets Icon field to given value.
 
+
+### GetGroupMatchingMode
+
+`func (o *SAMLSource) GetGroupMatchingMode() GroupMatchingModeEnum`
+
+GetGroupMatchingMode returns the GroupMatchingMode field if non-nil, zero value otherwise.
+
+### GetGroupMatchingModeOk
+
+`func (o *SAMLSource) GetGroupMatchingModeOk() (*GroupMatchingModeEnum, bool)`
+
+GetGroupMatchingModeOk returns a tuple with the GroupMatchingMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupMatchingMode
+
+`func (o *SAMLSource) SetGroupMatchingMode(v GroupMatchingModeEnum)`
+
+SetGroupMatchingMode sets GroupMatchingMode field to given value.
+
+### HasGroupMatchingMode
+
+`func (o *SAMLSource) HasGroupMatchingMode() bool`
+
+HasGroupMatchingMode returns a boolean if a field has been set.
 
 ### GetPreAuthenticationFlow
 

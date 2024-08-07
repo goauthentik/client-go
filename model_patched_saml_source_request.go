@@ -32,6 +32,8 @@ type PatchedSAMLSourceRequest struct {
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	UserPathTemplate *string               `json:"user_path_template,omitempty"`
+	// How the source determines if an existing group should be used or a new group created.
+	GroupMatchingMode *GroupMatchingModeEnum `json:"group_matching_mode,omitempty"`
 	// Flow used before authentication.
 	PreAuthenticationFlow *string `json:"pre_authentication_flow,omitempty"`
 	// Also known as Entity ID. Defaults the Metadata URL.
@@ -412,6 +414,38 @@ func (o *PatchedSAMLSourceRequest) HasUserPathTemplate() bool {
 // SetUserPathTemplate gets a reference to the given string and assigns it to the UserPathTemplate field.
 func (o *PatchedSAMLSourceRequest) SetUserPathTemplate(v string) {
 	o.UserPathTemplate = &v
+}
+
+// GetGroupMatchingMode returns the GroupMatchingMode field value if set, zero value otherwise.
+func (o *PatchedSAMLSourceRequest) GetGroupMatchingMode() GroupMatchingModeEnum {
+	if o == nil || o.GroupMatchingMode == nil {
+		var ret GroupMatchingModeEnum
+		return ret
+	}
+	return *o.GroupMatchingMode
+}
+
+// GetGroupMatchingModeOk returns a tuple with the GroupMatchingMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedSAMLSourceRequest) GetGroupMatchingModeOk() (*GroupMatchingModeEnum, bool) {
+	if o == nil || o.GroupMatchingMode == nil {
+		return nil, false
+	}
+	return o.GroupMatchingMode, true
+}
+
+// HasGroupMatchingMode returns a boolean if a field has been set.
+func (o *PatchedSAMLSourceRequest) HasGroupMatchingMode() bool {
+	if o != nil && o.GroupMatchingMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupMatchingMode gets a reference to the given GroupMatchingModeEnum and assigns it to the GroupMatchingMode field.
+func (o *PatchedSAMLSourceRequest) SetGroupMatchingMode(v GroupMatchingModeEnum) {
+	o.GroupMatchingMode = &v
 }
 
 // GetPreAuthenticationFlow returns the PreAuthenticationFlow field value if set, zero value otherwise.
@@ -862,6 +896,9 @@ func (o PatchedSAMLSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserPathTemplate != nil {
 		toSerialize["user_path_template"] = o.UserPathTemplate
+	}
+	if o.GroupMatchingMode != nil {
+		toSerialize["group_matching_mode"] = o.GroupMatchingMode
 	}
 	if o.PreAuthenticationFlow != nil {
 		toSerialize["pre_authentication_flow"] = o.PreAuthenticationFlow
