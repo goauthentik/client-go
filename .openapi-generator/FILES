@@ -192,6 +192,7 @@ docs/GroupMatchingModeEnum.md
 docs/GroupMember.md
 docs/GroupMemberRequest.md
 docs/GroupOAuthSourceConnection.md
+docs/GroupPlexSourceConnection.md
 docs/GroupRequest.md
 docs/GroupSAMLSourceConnection.md
 docs/IdentificationChallenge.md
@@ -309,6 +310,7 @@ docs/PaginatedGoogleWorkspaceProviderMappingList.md
 docs/PaginatedGoogleWorkspaceProviderUserList.md
 docs/PaginatedGroupList.md
 docs/PaginatedGroupOAuthSourceConnectionList.md
+docs/PaginatedGroupPlexSourceConnectionList.md
 docs/PaginatedGroupSAMLSourceConnectionList.md
 docs/PaginatedIdentificationStageList.md
 docs/PaginatedInvitationList.md
@@ -335,8 +337,8 @@ docs/PaginatedPasswordExpiryPolicyList.md
 docs/PaginatedPasswordPolicyList.md
 docs/PaginatedPasswordStageList.md
 docs/PaginatedPermissionList.md
-docs/PaginatedPlexSourceConnectionList.md
 docs/PaginatedPlexSourceList.md
+docs/PaginatedPlexSourcePropertyMappingList.md
 docs/PaginatedPolicyBindingList.md
 docs/PaginatedPolicyList.md
 docs/PaginatedPromptList.md
@@ -385,6 +387,7 @@ docs/PaginatedUserList.md
 docs/PaginatedUserLoginStageList.md
 docs/PaginatedUserLogoutStageList.md
 docs/PaginatedUserOAuthSourceConnectionList.md
+docs/PaginatedUserPlexSourceConnectionList.md
 docs/PaginatedUserSAMLSourceConnectionList.md
 docs/PaginatedUserSourceConnectionList.md
 docs/PaginatedUserWriteStageList.md
@@ -453,7 +456,7 @@ docs/PatchedPasswordExpiryPolicyRequest.md
 docs/PatchedPasswordPolicyRequest.md
 docs/PatchedPasswordStageRequest.md
 docs/PatchedPermissionAssignRequest.md
-docs/PatchedPlexSourceConnectionRequest.md
+docs/PatchedPlexSourcePropertyMappingRequest.md
 docs/PatchedPlexSourceRequest.md
 docs/PatchedPolicyBindingRequest.md
 docs/PatchedPromptRequest.md
@@ -487,6 +490,7 @@ docs/PatchedUserDeleteStageRequest.md
 docs/PatchedUserLoginStageRequest.md
 docs/PatchedUserLogoutStageRequest.md
 docs/PatchedUserOAuthSourceConnectionRequest.md
+docs/PatchedUserPlexSourceConnectionRequest.md
 docs/PatchedUserRequest.md
 docs/PatchedUserSAMLSourceConnectionRequest.md
 docs/PatchedUserWriteStageRequest.md
@@ -497,8 +501,8 @@ docs/PermissionAssignResult.md
 docs/PlexAuthenticationChallenge.md
 docs/PlexAuthenticationChallengeResponseRequest.md
 docs/PlexSource.md
-docs/PlexSourceConnection.md
-docs/PlexSourceConnectionRequest.md
+docs/PlexSourcePropertyMapping.md
+docs/PlexSourcePropertyMappingRequest.md
 docs/PlexSourceRequest.md
 docs/PlexTokenRedeemRequest.md
 docs/PoliciesApi.md
@@ -657,6 +661,8 @@ docs/UserOAuthSourceConnectionRequest.md
 docs/UserObjectPermission.md
 docs/UserPasswordSetRequest.md
 docs/UserPath.md
+docs/UserPlexSourceConnection.md
+docs/UserPlexSourceConnectionRequest.md
 docs/UserRequest.md
 docs/UserSAMLSourceConnection.md
 docs/UserSAMLSourceConnectionRequest.md
@@ -842,6 +848,7 @@ model_group_matching_mode_enum.go
 model_group_member.go
 model_group_member_request.go
 model_group_o_auth_source_connection.go
+model_group_plex_source_connection.go
 model_group_request.go
 model_group_saml_source_connection.go
 model_identification_challenge.go
@@ -956,6 +963,7 @@ model_paginated_google_workspace_provider_mapping_list.go
 model_paginated_google_workspace_provider_user_list.go
 model_paginated_group_list.go
 model_paginated_group_o_auth_source_connection_list.go
+model_paginated_group_plex_source_connection_list.go
 model_paginated_group_saml_source_connection_list.go
 model_paginated_identification_stage_list.go
 model_paginated_invitation_list.go
@@ -982,8 +990,8 @@ model_paginated_password_expiry_policy_list.go
 model_paginated_password_policy_list.go
 model_paginated_password_stage_list.go
 model_paginated_permission_list.go
-model_paginated_plex_source_connection_list.go
 model_paginated_plex_source_list.go
+model_paginated_plex_source_property_mapping_list.go
 model_paginated_policy_binding_list.go
 model_paginated_policy_list.go
 model_paginated_prompt_list.go
@@ -1032,6 +1040,7 @@ model_paginated_user_list.go
 model_paginated_user_login_stage_list.go
 model_paginated_user_logout_stage_list.go
 model_paginated_user_o_auth_source_connection_list.go
+model_paginated_user_plex_source_connection_list.go
 model_paginated_user_saml_source_connection_list.go
 model_paginated_user_source_connection_list.go
 model_paginated_user_write_stage_list.go
@@ -1100,7 +1109,7 @@ model_patched_password_expiry_policy_request.go
 model_patched_password_policy_request.go
 model_patched_password_stage_request.go
 model_patched_permission_assign_request.go
-model_patched_plex_source_connection_request.go
+model_patched_plex_source_property_mapping_request.go
 model_patched_plex_source_request.go
 model_patched_policy_binding_request.go
 model_patched_prompt_request.go
@@ -1134,6 +1143,7 @@ model_patched_user_delete_stage_request.go
 model_patched_user_login_stage_request.go
 model_patched_user_logout_stage_request.go
 model_patched_user_o_auth_source_connection_request.go
+model_patched_user_plex_source_connection_request.go
 model_patched_user_request.go
 model_patched_user_saml_source_connection_request.go
 model_patched_user_write_stage_request.go
@@ -1144,8 +1154,8 @@ model_permission_assign_result.go
 model_plex_authentication_challenge.go
 model_plex_authentication_challenge_response_request.go
 model_plex_source.go
-model_plex_source_connection.go
-model_plex_source_connection_request.go
+model_plex_source_property_mapping.go
+model_plex_source_property_mapping_request.go
 model_plex_source_request.go
 model_plex_token_redeem_request.go
 model_policy.go
@@ -1294,6 +1304,8 @@ model_user_o_auth_source_connection_request.go
 model_user_object_permission.go
 model_user_password_set_request.go
 model_user_path.go
+model_user_plex_source_connection.go
+model_user_plex_source_connection_request.go
 model_user_request.go
 model_user_saml_source_connection.go
 model_user_saml_source_connection_request.go

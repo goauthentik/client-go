@@ -18337,6 +18337,312 @@ paths:
       - authentik: []
       tags:
       - propertymappings
+  /propertymappings/source/plex/:
+    get:
+      description: PlexSourcePropertyMapping Viewset
+      operationId: propertymappings_source_plex_list
+      parameters:
+      - explode: true
+        in: query
+        name: managed
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: managed__isnull
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPlexSourcePropertyMappingList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    post:
+      description: PlexSourcePropertyMapping Viewset
+      operationId: propertymappings_source_plex_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlexSourcePropertyMappingRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlexSourcePropertyMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+  /propertymappings/source/plex/{pm_uuid}/:
+    delete:
+      description: PlexSourcePropertyMapping Viewset
+      operationId: propertymappings_source_plex_destroy
+      parameters:
+      - description: A UUID string identifying this Plex Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    get:
+      description: PlexSourcePropertyMapping Viewset
+      operationId: propertymappings_source_plex_retrieve
+      parameters:
+      - description: A UUID string identifying this Plex Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlexSourcePropertyMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    patch:
+      description: PlexSourcePropertyMapping Viewset
+      operationId: propertymappings_source_plex_partial_update
+      parameters:
+      - description: A UUID string identifying this Plex Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPlexSourcePropertyMappingRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlexSourcePropertyMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    put:
+      description: PlexSourcePropertyMapping Viewset
+      operationId: propertymappings_source_plex_update
+      parameters:
+      - description: A UUID string identifying this Plex Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlexSourcePropertyMappingRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlexSourcePropertyMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+  /propertymappings/source/plex/{pm_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: propertymappings_source_plex_used_by_list
+      parameters:
+      - description: A UUID string identifying this Plex Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
   /propertymappings/source/saml/:
     get:
       description: SAMLSourcePropertyMapping Viewset
@@ -24674,8 +24980,10 @@ paths:
           - authentik_sources_oauth.oauthsource
           - authentik_sources_oauth.oauthsourcepropertymapping
           - authentik_sources_oauth.useroauthsourceconnection
+          - authentik_sources_plex.groupplexsourceconnection
           - authentik_sources_plex.plexsource
-          - authentik_sources_plex.plexsourceconnection
+          - authentik_sources_plex.plexsourcepropertymapping
+          - authentik_sources_plex.userplexsourceconnection
           - authentik_sources_saml.groupsamlsourceconnection
           - authentik_sources_saml.samlsource
           - authentik_sources_saml.samlsourcepropertymapping
@@ -24923,8 +25231,10 @@ paths:
           - authentik_sources_oauth.oauthsource
           - authentik_sources_oauth.oauthsourcepropertymapping
           - authentik_sources_oauth.useroauthsourceconnection
+          - authentik_sources_plex.groupplexsourceconnection
           - authentik_sources_plex.plexsource
-          - authentik_sources_plex.plexsourceconnection
+          - authentik_sources_plex.plexsourcepropertymapping
+          - authentik_sources_plex.userplexsourceconnection
           - authentik_sources_saml.groupsamlsourceconnection
           - authentik_sources_saml.samlsource
           - authentik_sources_saml.samlsourcepropertymapping
@@ -26606,6 +26916,282 @@ paths:
       - authentik: []
       tags:
       - sources
+  /sources/group_connections/plex/:
+    get:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_plex_list
+      parameters:
+      - explode: true
+        in: query
+        name: group
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: source__slug
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedGroupPlexSourceConnectionList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    post:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_plex_create
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupPlexSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/group_connections/plex/{id}/:
+    delete:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_plex_destroy
+      parameters:
+      - description: A unique integer value identifying this Group Plex Source Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    get:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_plex_retrieve
+      parameters:
+      - description: A unique integer value identifying this Group Plex Source Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupPlexSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    patch:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_plex_partial_update
+      parameters:
+      - description: A unique integer value identifying this Group Plex Source Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupPlexSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    put:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_plex_update
+      parameters:
+      - description: A unique integer value identifying this Group Plex Source Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupPlexSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/group_connections/plex/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: sources_group_connections_plex_used_by_list
+      parameters:
+      - description: A unique integer value identifying this Group Plex Source Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
   /sources/group_connections/saml/:
     get:
       description: Group-source connection Viewset
@@ -27867,6 +28453,20 @@ paths:
         required: false
         schema:
           format: uuid
+          type: string
+        style: form
+      - description: |+
+          How the source determines if an existing group should be used or a new group created.
+
+        explode: true
+        in: query
+        name: group_matching_mode
+        required: false
+        schema:
+          enum:
+          - identifier
+          - name_deny
+          - name_link
           type: string
         style: form
       - explode: true
@@ -30234,7 +30834,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedPlexSourceConnectionList'
+                $ref: '#/components/schemas/PaginatedUserPlexSourceConnectionList'
           description: ""
         "400":
           content:
@@ -30259,14 +30859,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PlexSourceConnectionRequest'
+              $ref: '#/components/schemas/UserPlexSourceConnectionRequest'
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PlexSourceConnection'
+                $ref: '#/components/schemas/UserPlexSourceConnection'
           description: ""
         "400":
           content:
@@ -30333,7 +30933,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PlexSourceConnection'
+                $ref: '#/components/schemas/UserPlexSourceConnection'
           description: ""
         "400":
           content:
@@ -30367,13 +30967,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedPlexSourceConnectionRequest'
+              $ref: '#/components/schemas/PatchedUserPlexSourceConnectionRequest'
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PlexSourceConnection'
+                $ref: '#/components/schemas/UserPlexSourceConnection'
           description: ""
         "400":
           content:
@@ -30407,14 +31007,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PlexSourceConnectionRequest'
+              $ref: '#/components/schemas/UserPlexSourceConnectionRequest'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PlexSourceConnection'
+                $ref: '#/components/schemas/UserPlexSourceConnection'
           description: ""
         "400":
           content:
@@ -44953,6 +45553,41 @@ components:
       - pk
       - source
       type: object
+    GroupPlexSourceConnection:
+      description: Plex Group-Source connection Serializer
+      example:
+        identifier: identifier
+        created: 2000-01-23T04:56:07.000+00:00
+        pk: 0
+        source: ""
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          readOnly: true
+          title: ID
+          type: integer
+        group:
+          format: uuid
+          readOnly: true
+          type: string
+        source:
+          allOf:
+          - $ref: '#/components/schemas/Source'
+          readOnly: true
+        identifier:
+          readOnly: true
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - created
+      - group
+      - identifier
+      - pk
+      - source
+      type: object
     GroupRequest:
       description: Group Serializer
       example:
@@ -47017,7 +47652,9 @@ components:
       - authentik_sources_oauth.useroauthsourceconnection
       - authentik_sources_oauth.groupoauthsourceconnection
       - authentik_sources_plex.plexsource
-      - authentik_sources_plex.plexsourceconnection
+      - authentik_sources_plex.plexsourcepropertymapping
+      - authentik_sources_plex.userplexsourceconnection
+      - authentik_sources_plex.groupplexsourceconnection
       - authentik_sources_saml.samlsource
       - authentik_sources_saml.samlsourcepropertymapping
       - authentik_sources_saml.usersamlsourceconnection
@@ -50862,6 +51499,38 @@ components:
       - pagination
       - results
       type: object
+    PaginatedGroupPlexSourceConnectionList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - identifier: identifier
+          created: 2000-01-23T04:56:07.000+00:00
+          pk: 0
+          source: ""
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - identifier: identifier
+          created: 2000-01-23T04:56:07.000+00:00
+          pk: 0
+          source: ""
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/GroupPlexSourceConnection'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedGroupSAMLSourceConnectionList:
       example:
         pagination:
@@ -52354,38 +53023,6 @@ components:
       - pagination
       - results
       type: object
-    PaginatedPlexSourceConnectionList:
-      example:
-        pagination:
-          next: 0.8008281904610115
-          current: 5.962133916683182
-          previous: 6.027456183070403
-          start_index: 2.3021358869347655
-          count: 1.4658129805029452
-          end_index: 7.061401241503109
-          total_pages: 5.637376656633329
-        results:
-        - identifier: identifier
-          created: 2000-01-23T04:56:07.000+00:00
-          pk: 0
-          source: ""
-          user: 6
-        - identifier: identifier
-          created: 2000-01-23T04:56:07.000+00:00
-          pk: 0
-          source: ""
-          user: 6
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        results:
-          items:
-            $ref: '#/components/schemas/PlexSourceConnection'
-          type: array
-      required:
-      - pagination
-      - results
-      type: object
     PaginatedPlexSourceList:
       example:
         pagination:
@@ -52409,6 +53046,7 @@ components:
           icon: icon
           enabled: true
           client_id: client_id
+          group_matching_mode: ""
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
           enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -52436,6 +53074,7 @@ components:
           icon: icon
           enabled: true
           client_id: client_id
+          group_matching_mode: ""
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
           enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -52457,6 +53096,44 @@ components:
         results:
           items:
             $ref: '#/components/schemas/PlexSource'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedPlexSourcePropertyMappingList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - component: component
+          verbose_name: verbose_name
+          expression: expression
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          managed: managed
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - component: component
+          verbose_name: verbose_name
+          expression: expression
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          managed: managed
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/PlexSourcePropertyMapping'
           type: array
       required:
       - pagination
@@ -55403,6 +56080,38 @@ components:
         results:
           items:
             $ref: '#/components/schemas/UserOAuthSourceConnection'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedUserPlexSourceConnectionList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - identifier: identifier
+          created: 2000-01-23T04:56:07.000+00:00
+          pk: 0
+          source: ""
+          user: 6
+        - identifier: identifier
+          created: 2000-01-23T04:56:07.000+00:00
+          pk: 0
+          source: ""
+          user: 6
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/UserPlexSourceConnection'
           type: array
       required:
       - pagination
@@ -58458,19 +59167,28 @@ components:
           minLength: 1
           type: string
       type: object
-    PatchedPlexSourceConnectionRequest:
-      description: Plex Source connection Serializer
+    PatchedPlexSourcePropertyMappingRequest:
+      description: PlexSourcePropertyMapping Serializer
       example:
-        identifier: identifier
-        plex_token: plex_token
+        expression: expression
+        managed: managed
+        name: name
       properties:
-        identifier:
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          minLength: 1
+          nullable: true
+          title: Managed by authentik
+          type: string
+        name:
           minLength: 1
           type: string
-        plex_token:
+        expression:
           minLength: 1
           type: string
-          writeOnly: true
       type: object
     PatchedPlexSourceRequest:
       description: Plex Source Serializer
@@ -58485,6 +59203,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enabled: true
         client_id: client_id
+        group_matching_mode: ""
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -58538,6 +59257,11 @@ components:
         user_path_template:
           minLength: 1
           type: string
+        group_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/GroupMatchingModeEnum'
+          description: How the source determines if an existing group should be used
+            or a new group created.
         client_id:
           description: Client identifier used to talk to Plex.
           minLength: 1
@@ -59834,6 +60558,20 @@ components:
           type: string
           writeOnly: true
       type: object
+    PatchedUserPlexSourceConnectionRequest:
+      description: Plex Source connection Serializer
+      example:
+        identifier: identifier
+        plex_token: plex_token
+      properties:
+        identifier:
+          minLength: 1
+          type: string
+        plex_token:
+          minLength: 1
+          type: string
+          writeOnly: true
+      type: object
     PatchedUserRequest:
       description: User Serializer
       example:
@@ -60074,6 +60812,7 @@ components:
         icon: icon
         enabled: true
         client_id: client_id
+        group_matching_mode: ""
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -60162,6 +60901,11 @@ components:
         icon:
           readOnly: true
           type: string
+        group_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/GroupMatchingModeEnum'
+          description: How the source determines if an existing group should be used
+            or a new group created.
         client_id:
           description: Client identifier used to talk to Plex.
           type: string
@@ -60189,55 +60933,85 @@ components:
       - verbose_name
       - verbose_name_plural
       type: object
-    PlexSourceConnection:
-      description: Plex Source connection Serializer
+    PlexSourcePropertyMapping:
+      description: PlexSourcePropertyMapping Serializer
       example:
-        identifier: identifier
-        created: 2000-01-23T04:56:07.000+00:00
-        pk: 0
-        source: ""
-        user: 6
+        component: component
+        verbose_name: verbose_name
+        expression: expression
+        verbose_name_plural: verbose_name_plural
+        meta_model_name: meta_model_name
+        managed: managed
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pk:
+          format: uuid
           readOnly: true
-          title: ID
-          type: integer
-        user:
-          readOnly: true
-          type: integer
-        source:
-          allOf:
-          - $ref: '#/components/schemas/Source'
-          readOnly: true
-        created:
-          format: date-time
+          title: Pm uuid
+          type: string
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          nullable: true
+          title: Managed by authentik
+          type: string
+        name:
+          type: string
+        expression:
+          type: string
+        component:
+          description: Get object's component so that we know how to edit the object
           readOnly: true
           type: string
-        identifier:
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
           type: string
       required:
-      - created
-      - identifier
+      - component
+      - expression
+      - meta_model_name
+      - name
       - pk
-      - source
-      - user
+      - verbose_name
+      - verbose_name_plural
       type: object
-    PlexSourceConnectionRequest:
-      description: Plex Source connection Serializer
+    PlexSourcePropertyMappingRequest:
+      description: PlexSourcePropertyMapping Serializer
       example:
-        identifier: identifier
-        plex_token: plex_token
+        expression: expression
+        managed: managed
+        name: name
       properties:
-        identifier:
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          minLength: 1
+          nullable: true
+          title: Managed by authentik
+          type: string
+        name:
           minLength: 1
           type: string
-        plex_token:
+        expression:
           minLength: 1
           type: string
-          writeOnly: true
       required:
-      - identifier
-      - plex_token
+      - expression
+      - name
       type: object
     PlexSourceRequest:
       description: Plex Source Serializer
@@ -60252,6 +61026,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enabled: true
         client_id: client_id
+        group_matching_mode: ""
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -60305,6 +61080,11 @@ components:
         user_path_template:
           minLength: 1
           type: string
+        group_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/GroupMatchingModeEnum'
+          description: How the source determines if an existing group should be used
+            or a new group created.
         client_id:
           description: Client identifier used to talk to Plex.
           minLength: 1
@@ -66574,6 +67354,56 @@ components:
           type: array
       required:
       - paths
+      type: object
+    UserPlexSourceConnection:
+      description: Plex Source connection Serializer
+      example:
+        identifier: identifier
+        created: 2000-01-23T04:56:07.000+00:00
+        pk: 0
+        source: ""
+        user: 6
+      properties:
+        pk:
+          readOnly: true
+          title: ID
+          type: integer
+        user:
+          readOnly: true
+          type: integer
+        source:
+          allOf:
+          - $ref: '#/components/schemas/Source'
+          readOnly: true
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+        identifier:
+          type: string
+      required:
+      - created
+      - identifier
+      - pk
+      - source
+      - user
+      type: object
+    UserPlexSourceConnectionRequest:
+      description: Plex Source connection Serializer
+      example:
+        identifier: identifier
+        plex_token: plex_token
+      properties:
+        identifier:
+          minLength: 1
+          type: string
+        plex_token:
+          minLength: 1
+          type: string
+          writeOnly: true
+      required:
+      - identifier
+      - plex_token
       type: object
     UserRequest:
       description: User Serializer

@@ -69,7 +69,11 @@
 
 * `SOURCES_PLEX_PLEXSOURCE` (value: `"authentik_sources_plex.plexsource"`)
 
-* `SOURCES_PLEX_PLEXSOURCECONNECTION` (value: `"authentik_sources_plex.plexsourceconnection"`)
+* `SOURCES_PLEX_PLEXSOURCEPROPERTYMAPPING` (value: `"authentik_sources_plex.plexsourcepropertymapping"`)
+
+* `SOURCES_PLEX_USERPLEXSOURCECONNECTION` (value: `"authentik_sources_plex.userplexsourceconnection"`)
+
+* `SOURCES_PLEX_GROUPPLEXSOURCECONNECTION` (value: `"authentik_sources_plex.groupplexsourceconnection"`)
 
 * `SOURCES_SAML_SAMLSOURCE` (value: `"authentik_sources_saml.samlsource"`)
 

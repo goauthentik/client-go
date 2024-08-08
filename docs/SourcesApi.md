@@ -19,6 +19,13 @@ Method | HTTP request | Description
 [**SourcesGroupConnectionsOauthRetrieve**](SourcesApi.md#SourcesGroupConnectionsOauthRetrieve) | **Get** /sources/group_connections/oauth/{id}/ | 
 [**SourcesGroupConnectionsOauthUpdate**](SourcesApi.md#SourcesGroupConnectionsOauthUpdate) | **Put** /sources/group_connections/oauth/{id}/ | 
 [**SourcesGroupConnectionsOauthUsedByList**](SourcesApi.md#SourcesGroupConnectionsOauthUsedByList) | **Get** /sources/group_connections/oauth/{id}/used_by/ | 
+[**SourcesGroupConnectionsPlexCreate**](SourcesApi.md#SourcesGroupConnectionsPlexCreate) | **Post** /sources/group_connections/plex/ | 
+[**SourcesGroupConnectionsPlexDestroy**](SourcesApi.md#SourcesGroupConnectionsPlexDestroy) | **Delete** /sources/group_connections/plex/{id}/ | 
+[**SourcesGroupConnectionsPlexList**](SourcesApi.md#SourcesGroupConnectionsPlexList) | **Get** /sources/group_connections/plex/ | 
+[**SourcesGroupConnectionsPlexPartialUpdate**](SourcesApi.md#SourcesGroupConnectionsPlexPartialUpdate) | **Patch** /sources/group_connections/plex/{id}/ | 
+[**SourcesGroupConnectionsPlexRetrieve**](SourcesApi.md#SourcesGroupConnectionsPlexRetrieve) | **Get** /sources/group_connections/plex/{id}/ | 
+[**SourcesGroupConnectionsPlexUpdate**](SourcesApi.md#SourcesGroupConnectionsPlexUpdate) | **Put** /sources/group_connections/plex/{id}/ | 
+[**SourcesGroupConnectionsPlexUsedByList**](SourcesApi.md#SourcesGroupConnectionsPlexUsedByList) | **Get** /sources/group_connections/plex/{id}/used_by/ | 
 [**SourcesGroupConnectionsSamlDestroy**](SourcesApi.md#SourcesGroupConnectionsSamlDestroy) | **Delete** /sources/group_connections/saml/{id}/ | 
 [**SourcesGroupConnectionsSamlList**](SourcesApi.md#SourcesGroupConnectionsSamlList) | **Get** /sources/group_connections/saml/ | 
 [**SourcesGroupConnectionsSamlPartialUpdate**](SourcesApi.md#SourcesGroupConnectionsSamlPartialUpdate) | **Patch** /sources/group_connections/saml/{id}/ | 
@@ -1121,6 +1128,491 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSourcesGroupConnectionsOauthUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsPlexCreate
+
+> GroupPlexSourceConnection SourcesGroupConnectionsPlexCreate(ctx).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsPlexCreate(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsPlexCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsPlexCreate`: GroupPlexSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsPlexCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsPlexCreateRequest struct via the builder pattern
+
+
+### Return type
+
+[**GroupPlexSourceConnection**](GroupPlexSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsPlexDestroy
+
+> SourcesGroupConnectionsPlexDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Group Plex Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsPlexDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsPlexDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Group Plex Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsPlexDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsPlexList
+
+> PaginatedGroupPlexSourceConnectionList SourcesGroupConnectionsPlexList(ctx).Group(group).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    group := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsPlexList(context.Background()).Group(group).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsPlexList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsPlexList`: PaginatedGroupPlexSourceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsPlexList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsPlexListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+ **sourceSlug** | **string** |  | 
+
+### Return type
+
+[**PaginatedGroupPlexSourceConnectionList**](PaginatedGroupPlexSourceConnectionList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsPlexPartialUpdate
+
+> GroupPlexSourceConnection SourcesGroupConnectionsPlexPartialUpdate(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Group Plex Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsPlexPartialUpdate(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsPlexPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsPlexPartialUpdate`: GroupPlexSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsPlexPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Group Plex Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsPlexPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**GroupPlexSourceConnection**](GroupPlexSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsPlexRetrieve
+
+> GroupPlexSourceConnection SourcesGroupConnectionsPlexRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Group Plex Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsPlexRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsPlexRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsPlexRetrieve`: GroupPlexSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsPlexRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Group Plex Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsPlexRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**GroupPlexSourceConnection**](GroupPlexSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsPlexUpdate
+
+> GroupPlexSourceConnection SourcesGroupConnectionsPlexUpdate(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Group Plex Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsPlexUpdate(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsPlexUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsPlexUpdate`: GroupPlexSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsPlexUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Group Plex Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsPlexUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**GroupPlexSourceConnection**](GroupPlexSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsPlexUsedByList
+
+> []UsedBy SourcesGroupConnectionsPlexUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Group Plex Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsPlexUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsPlexUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsPlexUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsPlexUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Group Plex Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsPlexUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -2969,7 +3461,7 @@ Name | Type | Description  | Notes
 
 ## SourcesPlexList
 
-> PaginatedPlexSourceList SourcesPlexList(ctx).AllowFriends(allowFriends).AuthenticationFlow(authenticationFlow).ClientId(clientId).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
+> PaginatedPlexSourceList SourcesPlexList(ctx).AllowFriends(allowFriends).AuthenticationFlow(authenticationFlow).ClientId(clientId).Enabled(enabled).EnrollmentFlow(enrollmentFlow).GroupMatchingMode(groupMatchingMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
 
 
 
@@ -2993,6 +3485,7 @@ func main() {
     clientId := "clientId_example" // string |  (optional)
     enabled := true // bool |  (optional)
     enrollmentFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    groupMatchingMode := "groupMatchingMode_example" // string | How the source determines if an existing group should be used or a new group created.   (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -3004,7 +3497,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesPlexList(context.Background()).AllowFriends(allowFriends).AuthenticationFlow(authenticationFlow).ClientId(clientId).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesPlexList(context.Background()).AllowFriends(allowFriends).AuthenticationFlow(authenticationFlow).ClientId(clientId).Enabled(enabled).EnrollmentFlow(enrollmentFlow).GroupMatchingMode(groupMatchingMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3030,6 +3523,7 @@ Name | Type | Description  | Notes
  **clientId** | **string** |  | 
  **enabled** | **bool** |  | 
  **enrollmentFlow** | **string** |  | 
+ **groupMatchingMode** | **string** | How the source determines if an existing group should be used or a new group created.   | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
@@ -6481,7 +6975,7 @@ Name | Type | Description  | Notes
 
 ## SourcesUserConnectionsPlexCreate
 
-> PlexSourceConnection SourcesUserConnectionsPlexCreate(ctx).PlexSourceConnectionRequest(plexSourceConnectionRequest).Execute()
+> UserPlexSourceConnection SourcesUserConnectionsPlexCreate(ctx).UserPlexSourceConnectionRequest(userPlexSourceConnectionRequest).Execute()
 
 
 
@@ -6500,16 +6994,16 @@ import (
 )
 
 func main() {
-    plexSourceConnectionRequest := *openapiclient.NewPlexSourceConnectionRequest("Identifier_example", "PlexToken_example") // PlexSourceConnectionRequest | 
+    userPlexSourceConnectionRequest := *openapiclient.NewUserPlexSourceConnectionRequest("Identifier_example", "PlexToken_example") // UserPlexSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsPlexCreate(context.Background()).PlexSourceConnectionRequest(plexSourceConnectionRequest).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsPlexCreate(context.Background()).UserPlexSourceConnectionRequest(userPlexSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsPlexCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SourcesUserConnectionsPlexCreate`: PlexSourceConnection
+    // response from `SourcesUserConnectionsPlexCreate`: UserPlexSourceConnection
     fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsPlexCreate`: %v\n", resp)
 }
 ```
@@ -6525,11 +7019,11 @@ Other parameters are passed through a pointer to a apiSourcesUserConnectionsPlex
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **plexSourceConnectionRequest** | [**PlexSourceConnectionRequest**](PlexSourceConnectionRequest.md) |  | 
+ **userPlexSourceConnectionRequest** | [**UserPlexSourceConnectionRequest**](UserPlexSourceConnectionRequest.md) |  | 
 
 ### Return type
 
-[**PlexSourceConnection**](PlexSourceConnection.md)
+[**UserPlexSourceConnection**](UserPlexSourceConnection.md)
 
 ### Authorization
 
@@ -6615,7 +7109,7 @@ Name | Type | Description  | Notes
 
 ## SourcesUserConnectionsPlexList
 
-> PaginatedPlexSourceConnectionList SourcesUserConnectionsPlexList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).User(user).Execute()
+> PaginatedUserPlexSourceConnectionList SourcesUserConnectionsPlexList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).User(user).Execute()
 
 
 
@@ -6648,7 +7142,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsPlexList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SourcesUserConnectionsPlexList`: PaginatedPlexSourceConnectionList
+    // response from `SourcesUserConnectionsPlexList`: PaginatedUserPlexSourceConnectionList
     fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsPlexList`: %v\n", resp)
 }
 ```
@@ -6673,7 +7167,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginatedPlexSourceConnectionList**](PaginatedPlexSourceConnectionList.md)
+[**PaginatedUserPlexSourceConnectionList**](PaginatedUserPlexSourceConnectionList.md)
 
 ### Authorization
 
@@ -6691,7 +7185,7 @@ Name | Type | Description  | Notes
 
 ## SourcesUserConnectionsPlexPartialUpdate
 
-> PlexSourceConnection SourcesUserConnectionsPlexPartialUpdate(ctx, id).PatchedPlexSourceConnectionRequest(patchedPlexSourceConnectionRequest).Execute()
+> UserPlexSourceConnection SourcesUserConnectionsPlexPartialUpdate(ctx, id).PatchedUserPlexSourceConnectionRequest(patchedUserPlexSourceConnectionRequest).Execute()
 
 
 
@@ -6711,16 +7205,16 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this User Plex Source Connection.
-    patchedPlexSourceConnectionRequest := *openapiclient.NewPatchedPlexSourceConnectionRequest() // PatchedPlexSourceConnectionRequest |  (optional)
+    patchedUserPlexSourceConnectionRequest := *openapiclient.NewPatchedUserPlexSourceConnectionRequest() // PatchedUserPlexSourceConnectionRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsPlexPartialUpdate(context.Background(), id).PatchedPlexSourceConnectionRequest(patchedPlexSourceConnectionRequest).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsPlexPartialUpdate(context.Background(), id).PatchedUserPlexSourceConnectionRequest(patchedUserPlexSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsPlexPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SourcesUserConnectionsPlexPartialUpdate`: PlexSourceConnection
+    // response from `SourcesUserConnectionsPlexPartialUpdate`: UserPlexSourceConnection
     fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsPlexPartialUpdate`: %v\n", resp)
 }
 ```
@@ -6741,11 +7235,11 @@ Other parameters are passed through a pointer to a apiSourcesUserConnectionsPlex
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **patchedPlexSourceConnectionRequest** | [**PatchedPlexSourceConnectionRequest**](PatchedPlexSourceConnectionRequest.md) |  | 
+ **patchedUserPlexSourceConnectionRequest** | [**PatchedUserPlexSourceConnectionRequest**](PatchedUserPlexSourceConnectionRequest.md) |  | 
 
 ### Return type
 
-[**PlexSourceConnection**](PlexSourceConnection.md)
+[**UserPlexSourceConnection**](UserPlexSourceConnection.md)
 
 ### Authorization
 
@@ -6763,7 +7257,7 @@ Name | Type | Description  | Notes
 
 ## SourcesUserConnectionsPlexRetrieve
 
-> PlexSourceConnection SourcesUserConnectionsPlexRetrieve(ctx, id).Execute()
+> UserPlexSourceConnection SourcesUserConnectionsPlexRetrieve(ctx, id).Execute()
 
 
 
@@ -6791,7 +7285,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsPlexRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SourcesUserConnectionsPlexRetrieve`: PlexSourceConnection
+    // response from `SourcesUserConnectionsPlexRetrieve`: UserPlexSourceConnection
     fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsPlexRetrieve`: %v\n", resp)
 }
 ```
@@ -6815,7 +7309,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PlexSourceConnection**](PlexSourceConnection.md)
+[**UserPlexSourceConnection**](UserPlexSourceConnection.md)
 
 ### Authorization
 
@@ -6833,7 +7327,7 @@ Name | Type | Description  | Notes
 
 ## SourcesUserConnectionsPlexUpdate
 
-> PlexSourceConnection SourcesUserConnectionsPlexUpdate(ctx, id).PlexSourceConnectionRequest(plexSourceConnectionRequest).Execute()
+> UserPlexSourceConnection SourcesUserConnectionsPlexUpdate(ctx, id).UserPlexSourceConnectionRequest(userPlexSourceConnectionRequest).Execute()
 
 
 
@@ -6853,16 +7347,16 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this User Plex Source Connection.
-    plexSourceConnectionRequest := *openapiclient.NewPlexSourceConnectionRequest("Identifier_example", "PlexToken_example") // PlexSourceConnectionRequest | 
+    userPlexSourceConnectionRequest := *openapiclient.NewUserPlexSourceConnectionRequest("Identifier_example", "PlexToken_example") // UserPlexSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsPlexUpdate(context.Background(), id).PlexSourceConnectionRequest(plexSourceConnectionRequest).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsPlexUpdate(context.Background(), id).UserPlexSourceConnectionRequest(userPlexSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsPlexUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SourcesUserConnectionsPlexUpdate`: PlexSourceConnection
+    // response from `SourcesUserConnectionsPlexUpdate`: UserPlexSourceConnection
     fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsPlexUpdate`: %v\n", resp)
 }
 ```
@@ -6883,11 +7377,11 @@ Other parameters are passed through a pointer to a apiSourcesUserConnectionsPlex
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **plexSourceConnectionRequest** | [**PlexSourceConnectionRequest**](PlexSourceConnectionRequest.md) |  | 
+ **userPlexSourceConnectionRequest** | [**UserPlexSourceConnectionRequest**](UserPlexSourceConnectionRequest.md) |  | 
 
 ### Return type
 
-[**PlexSourceConnection**](PlexSourceConnection.md)
+[**UserPlexSourceConnection**](UserPlexSourceConnection.md)
 
 ### Authorization
 

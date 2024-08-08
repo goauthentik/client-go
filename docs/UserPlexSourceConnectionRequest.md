@@ -1,4 +1,4 @@
-# PlexSourceConnectionRequest
+# UserPlexSourceConnectionRequest
 
 ## Properties
 
@@ -9,59 +9,59 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewPlexSourceConnectionRequest
+### NewUserPlexSourceConnectionRequest
 
-`func NewPlexSourceConnectionRequest(identifier string, plexToken string, ) *PlexSourceConnectionRequest`
+`func NewUserPlexSourceConnectionRequest(identifier string, plexToken string, ) *UserPlexSourceConnectionRequest`
 
-NewPlexSourceConnectionRequest instantiates a new PlexSourceConnectionRequest object
+NewUserPlexSourceConnectionRequest instantiates a new UserPlexSourceConnectionRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewPlexSourceConnectionRequestWithDefaults
+### NewUserPlexSourceConnectionRequestWithDefaults
 
-`func NewPlexSourceConnectionRequestWithDefaults() *PlexSourceConnectionRequest`
+`func NewUserPlexSourceConnectionRequestWithDefaults() *UserPlexSourceConnectionRequest`
 
-NewPlexSourceConnectionRequestWithDefaults instantiates a new PlexSourceConnectionRequest object
+NewUserPlexSourceConnectionRequestWithDefaults instantiates a new UserPlexSourceConnectionRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetIdentifier
 
-`func (o *PlexSourceConnectionRequest) GetIdentifier() string`
+`func (o *UserPlexSourceConnectionRequest) GetIdentifier() string`
 
 GetIdentifier returns the Identifier field if non-nil, zero value otherwise.
 
 ### GetIdentifierOk
 
-`func (o *PlexSourceConnectionRequest) GetIdentifierOk() (*string, bool)`
+`func (o *UserPlexSourceConnectionRequest) GetIdentifierOk() (*string, bool)`
 
 GetIdentifierOk returns a tuple with the Identifier field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdentifier
 
-`func (o *PlexSourceConnectionRequest) SetIdentifier(v string)`
+`func (o *UserPlexSourceConnectionRequest) SetIdentifier(v string)`
 
 SetIdentifier sets Identifier field to given value.
 
 
 ### GetPlexToken
 
-`func (o *PlexSourceConnectionRequest) GetPlexToken() string`
+`func (o *UserPlexSourceConnectionRequest) GetPlexToken() string`
 
 GetPlexToken returns the PlexToken field if non-nil, zero value otherwise.
 
 ### GetPlexTokenOk
 
-`func (o *PlexSourceConnectionRequest) GetPlexTokenOk() (*string, bool)`
+`func (o *UserPlexSourceConnectionRequest) GetPlexTokenOk() (*string, bool)`
 
 GetPlexTokenOk returns a tuple with the PlexToken field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPlexToken
 
-`func (o *PlexSourceConnectionRequest) SetPlexToken(v string)`
+`func (o *UserPlexSourceConnectionRequest) SetPlexToken(v string)`
 
 SetPlexToken sets PlexToken field to given value.
 

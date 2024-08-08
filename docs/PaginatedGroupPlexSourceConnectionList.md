@@ -1,67 +1,67 @@
-# PaginatedPlexSourceConnectionList
+# PaginatedGroupPlexSourceConnectionList
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
-**Results** | [**[]PlexSourceConnection**](PlexSourceConnection.md) |  | 
+**Results** | [**[]GroupPlexSourceConnection**](GroupPlexSourceConnection.md) |  | 
 
 ## Methods
 
-### NewPaginatedPlexSourceConnectionList
+### NewPaginatedGroupPlexSourceConnectionList
 
-`func NewPaginatedPlexSourceConnectionList(pagination Pagination, results []PlexSourceConnection, ) *PaginatedPlexSourceConnectionList`
+`func NewPaginatedGroupPlexSourceConnectionList(pagination Pagination, results []GroupPlexSourceConnection, ) *PaginatedGroupPlexSourceConnectionList`
 
-NewPaginatedPlexSourceConnectionList instantiates a new PaginatedPlexSourceConnectionList object
+NewPaginatedGroupPlexSourceConnectionList instantiates a new PaginatedGroupPlexSourceConnectionList object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewPaginatedPlexSourceConnectionListWithDefaults
+### NewPaginatedGroupPlexSourceConnectionListWithDefaults
 
-`func NewPaginatedPlexSourceConnectionListWithDefaults() *PaginatedPlexSourceConnectionList`
+`func NewPaginatedGroupPlexSourceConnectionListWithDefaults() *PaginatedGroupPlexSourceConnectionList`
 
-NewPaginatedPlexSourceConnectionListWithDefaults instantiates a new PaginatedPlexSourceConnectionList object
+NewPaginatedGroupPlexSourceConnectionListWithDefaults instantiates a new PaginatedGroupPlexSourceConnectionList object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedPlexSourceConnectionList) GetPagination() Pagination`
+`func (o *PaginatedGroupPlexSourceConnectionList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedPlexSourceConnectionList) GetPaginationOk() (*Pagination, bool)`
+`func (o *PaginatedGroupPlexSourceConnectionList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedPlexSourceConnectionList) SetPagination(v Pagination)`
+`func (o *PaginatedGroupPlexSourceConnectionList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 
 
 ### GetResults
 
-`func (o *PaginatedPlexSourceConnectionList) GetResults() []PlexSourceConnection`
+`func (o *PaginatedGroupPlexSourceConnectionList) GetResults() []GroupPlexSourceConnection`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *PaginatedPlexSourceConnectionList) GetResultsOk() (*[]PlexSourceConnection, bool)`
+`func (o *PaginatedGroupPlexSourceConnectionList) GetResultsOk() (*[]GroupPlexSourceConnection, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *PaginatedPlexSourceConnectionList) SetResults(v []PlexSourceConnection)`
+`func (o *PaginatedGroupPlexSourceConnectionList) SetResults(v []GroupPlexSourceConnection)`
 
 SetResults sets Results field to given value.
 

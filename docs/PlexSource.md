@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **Managed** | **NullableString** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
 **Icon** | **string** |  | [readonly] 
+**GroupMatchingMode** | Pointer to [**GroupMatchingModeEnum**](GroupMatchingModeEnum.md) | How the source determines if an existing group should be used or a new group created. | [optional] 
 **ClientId** | Pointer to **string** | Client identifier used to talk to Plex. | [optional] 
 **AllowedServers** | Pointer to **[]string** | Which servers a user has to be a member of to be granted access. Empty list allows every server. | [optional] 
 **AllowFriends** | Pointer to **bool** | Allow friends to authenticate, even if you don&#39;t share a server. | [optional] 
@@ -454,6 +455,31 @@ and a boolean to check if the value has been set.
 
 SetIcon sets Icon field to given value.
 
+
+### GetGroupMatchingMode
+
+`func (o *PlexSource) GetGroupMatchingMode() GroupMatchingModeEnum`
+
+GetGroupMatchingMode returns the GroupMatchingMode field if non-nil, zero value otherwise.
+
+### GetGroupMatchingModeOk
+
+`func (o *PlexSource) GetGroupMatchingModeOk() (*GroupMatchingModeEnum, bool)`
+
+GetGroupMatchingModeOk returns a tuple with the GroupMatchingMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupMatchingMode
+
+`func (o *PlexSource) SetGroupMatchingMode(v GroupMatchingModeEnum)`
+
+SetGroupMatchingMode sets GroupMatchingMode field to given value.
+
+### HasGroupMatchingMode
+
+`func (o *PlexSource) HasGroupMatchingMode() bool`
+
+HasGroupMatchingMode returns a boolean if a field has been set.
 
 ### GetClientId
 

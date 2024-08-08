@@ -15,33 +15,33 @@ import (
 	"encoding/json"
 )
 
-// PlexSourceConnectionRequest Plex Source connection Serializer
-type PlexSourceConnectionRequest struct {
+// UserPlexSourceConnectionRequest Plex Source connection Serializer
+type UserPlexSourceConnectionRequest struct {
 	Identifier string `json:"identifier"`
 	PlexToken  string `json:"plex_token"`
 }
 
-// NewPlexSourceConnectionRequest instantiates a new PlexSourceConnectionRequest object
+// NewUserPlexSourceConnectionRequest instantiates a new UserPlexSourceConnectionRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlexSourceConnectionRequest(identifier string, plexToken string) *PlexSourceConnectionRequest {
-	this := PlexSourceConnectionRequest{}
+func NewUserPlexSourceConnectionRequest(identifier string, plexToken string) *UserPlexSourceConnectionRequest {
+	this := UserPlexSourceConnectionRequest{}
 	this.Identifier = identifier
 	this.PlexToken = plexToken
 	return &this
 }
 
-// NewPlexSourceConnectionRequestWithDefaults instantiates a new PlexSourceConnectionRequest object
+// NewUserPlexSourceConnectionRequestWithDefaults instantiates a new UserPlexSourceConnectionRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPlexSourceConnectionRequestWithDefaults() *PlexSourceConnectionRequest {
-	this := PlexSourceConnectionRequest{}
+func NewUserPlexSourceConnectionRequestWithDefaults() *UserPlexSourceConnectionRequest {
+	this := UserPlexSourceConnectionRequest{}
 	return &this
 }
 
 // GetIdentifier returns the Identifier field value
-func (o *PlexSourceConnectionRequest) GetIdentifier() string {
+func (o *UserPlexSourceConnectionRequest) GetIdentifier() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -52,7 +52,7 @@ func (o *PlexSourceConnectionRequest) GetIdentifier() string {
 
 // GetIdentifierOk returns a tuple with the Identifier field value
 // and a boolean to check if the value has been set.
-func (o *PlexSourceConnectionRequest) GetIdentifierOk() (*string, bool) {
+func (o *UserPlexSourceConnectionRequest) GetIdentifierOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,12 +60,12 @@ func (o *PlexSourceConnectionRequest) GetIdentifierOk() (*string, bool) {
 }
 
 // SetIdentifier sets field value
-func (o *PlexSourceConnectionRequest) SetIdentifier(v string) {
+func (o *UserPlexSourceConnectionRequest) SetIdentifier(v string) {
 	o.Identifier = v
 }
 
 // GetPlexToken returns the PlexToken field value
-func (o *PlexSourceConnectionRequest) GetPlexToken() string {
+func (o *UserPlexSourceConnectionRequest) GetPlexToken() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -76,7 +76,7 @@ func (o *PlexSourceConnectionRequest) GetPlexToken() string {
 
 // GetPlexTokenOk returns a tuple with the PlexToken field value
 // and a boolean to check if the value has been set.
-func (o *PlexSourceConnectionRequest) GetPlexTokenOk() (*string, bool) {
+func (o *UserPlexSourceConnectionRequest) GetPlexTokenOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -84,11 +84,11 @@ func (o *PlexSourceConnectionRequest) GetPlexTokenOk() (*string, bool) {
 }
 
 // SetPlexToken sets field value
-func (o *PlexSourceConnectionRequest) SetPlexToken(v string) {
+func (o *UserPlexSourceConnectionRequest) SetPlexToken(v string) {
 	o.PlexToken = v
 }
 
-func (o PlexSourceConnectionRequest) MarshalJSON() ([]byte, error) {
+func (o UserPlexSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["identifier"] = o.Identifier
@@ -99,38 +99,38 @@ func (o PlexSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullablePlexSourceConnectionRequest struct {
-	value *PlexSourceConnectionRequest
+type NullableUserPlexSourceConnectionRequest struct {
+	value *UserPlexSourceConnectionRequest
 	isSet bool
 }
 
-func (v NullablePlexSourceConnectionRequest) Get() *PlexSourceConnectionRequest {
+func (v NullableUserPlexSourceConnectionRequest) Get() *UserPlexSourceConnectionRequest {
 	return v.value
 }
 
-func (v *NullablePlexSourceConnectionRequest) Set(val *PlexSourceConnectionRequest) {
+func (v *NullableUserPlexSourceConnectionRequest) Set(val *UserPlexSourceConnectionRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePlexSourceConnectionRequest) IsSet() bool {
+func (v NullableUserPlexSourceConnectionRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePlexSourceConnectionRequest) Unset() {
+func (v *NullableUserPlexSourceConnectionRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePlexSourceConnectionRequest(val *PlexSourceConnectionRequest) *NullablePlexSourceConnectionRequest {
-	return &NullablePlexSourceConnectionRequest{value: val, isSet: true}
+func NewNullableUserPlexSourceConnectionRequest(val *UserPlexSourceConnectionRequest) *NullableUserPlexSourceConnectionRequest {
+	return &NullableUserPlexSourceConnectionRequest{value: val, isSet: true}
 }
 
-func (v NullablePlexSourceConnectionRequest) MarshalJSON() ([]byte, error) {
+func (v NullableUserPlexSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePlexSourceConnectionRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableUserPlexSourceConnectionRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -1950,6 +1950,905 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthUsedByListExecute(r ApiS
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiSourcesGroupConnectionsPlexCreateRequest struct {
+	ctx        context.Context
+	ApiService *SourcesApiService
+}
+
+func (r ApiSourcesGroupConnectionsPlexCreateRequest) Execute() (*GroupPlexSourceConnection, *http.Response, error) {
+	return r.ApiService.SourcesGroupConnectionsPlexCreateExecute(r)
+}
+
+/*
+SourcesGroupConnectionsPlexCreate Method for SourcesGroupConnectionsPlexCreate
+
+Group-source connection Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesGroupConnectionsPlexCreateRequest
+*/
+func (a *SourcesApiService) SourcesGroupConnectionsPlexCreate(ctx context.Context) ApiSourcesGroupConnectionsPlexCreateRequest {
+	return ApiSourcesGroupConnectionsPlexCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GroupPlexSourceConnection
+func (a *SourcesApiService) SourcesGroupConnectionsPlexCreateExecute(r ApiSourcesGroupConnectionsPlexCreateRequest) (*GroupPlexSourceConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GroupPlexSourceConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsPlexCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/group_connections/plex/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSourcesGroupConnectionsPlexDestroyRequest struct {
+	ctx        context.Context
+	ApiService *SourcesApiService
+	id         int32
+}
+
+func (r ApiSourcesGroupConnectionsPlexDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.SourcesGroupConnectionsPlexDestroyExecute(r)
+}
+
+/*
+SourcesGroupConnectionsPlexDestroy Method for SourcesGroupConnectionsPlexDestroy
+
+Group-source connection Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Group Plex Source Connection.
+	@return ApiSourcesGroupConnectionsPlexDestroyRequest
+*/
+func (a *SourcesApiService) SourcesGroupConnectionsPlexDestroy(ctx context.Context, id int32) ApiSourcesGroupConnectionsPlexDestroyRequest {
+	return ApiSourcesGroupConnectionsPlexDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+func (a *SourcesApiService) SourcesGroupConnectionsPlexDestroyExecute(r ApiSourcesGroupConnectionsPlexDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsPlexDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/group_connections/plex/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSourcesGroupConnectionsPlexListRequest struct {
+	ctx        context.Context
+	ApiService *SourcesApiService
+	group      *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
+	sourceSlug *string
+}
+
+func (r ApiSourcesGroupConnectionsPlexListRequest) Group(group string) ApiSourcesGroupConnectionsPlexListRequest {
+	r.group = &group
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiSourcesGroupConnectionsPlexListRequest) Ordering(ordering string) ApiSourcesGroupConnectionsPlexListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiSourcesGroupConnectionsPlexListRequest) Page(page int32) ApiSourcesGroupConnectionsPlexListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiSourcesGroupConnectionsPlexListRequest) PageSize(pageSize int32) ApiSourcesGroupConnectionsPlexListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// A search term.
+func (r ApiSourcesGroupConnectionsPlexListRequest) Search(search string) ApiSourcesGroupConnectionsPlexListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiSourcesGroupConnectionsPlexListRequest) SourceSlug(sourceSlug string) ApiSourcesGroupConnectionsPlexListRequest {
+	r.sourceSlug = &sourceSlug
+	return r
+}
+
+func (r ApiSourcesGroupConnectionsPlexListRequest) Execute() (*PaginatedGroupPlexSourceConnectionList, *http.Response, error) {
+	return r.ApiService.SourcesGroupConnectionsPlexListExecute(r)
+}
+
+/*
+SourcesGroupConnectionsPlexList Method for SourcesGroupConnectionsPlexList
+
+Group-source connection Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesGroupConnectionsPlexListRequest
+*/
+func (a *SourcesApiService) SourcesGroupConnectionsPlexList(ctx context.Context) ApiSourcesGroupConnectionsPlexListRequest {
+	return ApiSourcesGroupConnectionsPlexListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedGroupPlexSourceConnectionList
+func (a *SourcesApiService) SourcesGroupConnectionsPlexListExecute(r ApiSourcesGroupConnectionsPlexListRequest) (*PaginatedGroupPlexSourceConnectionList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedGroupPlexSourceConnectionList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsPlexList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/group_connections/plex/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.group != nil {
+		localVarQueryParams.Add("group", parameterToString(*r.group, ""))
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	if r.sourceSlug != nil {
+		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSourcesGroupConnectionsPlexPartialUpdateRequest struct {
+	ctx        context.Context
+	ApiService *SourcesApiService
+	id         int32
+}
+
+func (r ApiSourcesGroupConnectionsPlexPartialUpdateRequest) Execute() (*GroupPlexSourceConnection, *http.Response, error) {
+	return r.ApiService.SourcesGroupConnectionsPlexPartialUpdateExecute(r)
+}
+
+/*
+SourcesGroupConnectionsPlexPartialUpdate Method for SourcesGroupConnectionsPlexPartialUpdate
+
+Group-source connection Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Group Plex Source Connection.
+	@return ApiSourcesGroupConnectionsPlexPartialUpdateRequest
+*/
+func (a *SourcesApiService) SourcesGroupConnectionsPlexPartialUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsPlexPartialUpdateRequest {
+	return ApiSourcesGroupConnectionsPlexPartialUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GroupPlexSourceConnection
+func (a *SourcesApiService) SourcesGroupConnectionsPlexPartialUpdateExecute(r ApiSourcesGroupConnectionsPlexPartialUpdateRequest) (*GroupPlexSourceConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GroupPlexSourceConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsPlexPartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/group_connections/plex/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSourcesGroupConnectionsPlexRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *SourcesApiService
+	id         int32
+}
+
+func (r ApiSourcesGroupConnectionsPlexRetrieveRequest) Execute() (*GroupPlexSourceConnection, *http.Response, error) {
+	return r.ApiService.SourcesGroupConnectionsPlexRetrieveExecute(r)
+}
+
+/*
+SourcesGroupConnectionsPlexRetrieve Method for SourcesGroupConnectionsPlexRetrieve
+
+Group-source connection Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Group Plex Source Connection.
+	@return ApiSourcesGroupConnectionsPlexRetrieveRequest
+*/
+func (a *SourcesApiService) SourcesGroupConnectionsPlexRetrieve(ctx context.Context, id int32) ApiSourcesGroupConnectionsPlexRetrieveRequest {
+	return ApiSourcesGroupConnectionsPlexRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GroupPlexSourceConnection
+func (a *SourcesApiService) SourcesGroupConnectionsPlexRetrieveExecute(r ApiSourcesGroupConnectionsPlexRetrieveRequest) (*GroupPlexSourceConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GroupPlexSourceConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsPlexRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/group_connections/plex/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSourcesGroupConnectionsPlexUpdateRequest struct {
+	ctx        context.Context
+	ApiService *SourcesApiService
+	id         int32
+}
+
+func (r ApiSourcesGroupConnectionsPlexUpdateRequest) Execute() (*GroupPlexSourceConnection, *http.Response, error) {
+	return r.ApiService.SourcesGroupConnectionsPlexUpdateExecute(r)
+}
+
+/*
+SourcesGroupConnectionsPlexUpdate Method for SourcesGroupConnectionsPlexUpdate
+
+Group-source connection Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Group Plex Source Connection.
+	@return ApiSourcesGroupConnectionsPlexUpdateRequest
+*/
+func (a *SourcesApiService) SourcesGroupConnectionsPlexUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsPlexUpdateRequest {
+	return ApiSourcesGroupConnectionsPlexUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GroupPlexSourceConnection
+func (a *SourcesApiService) SourcesGroupConnectionsPlexUpdateExecute(r ApiSourcesGroupConnectionsPlexUpdateRequest) (*GroupPlexSourceConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GroupPlexSourceConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsPlexUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/group_connections/plex/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSourcesGroupConnectionsPlexUsedByListRequest struct {
+	ctx        context.Context
+	ApiService *SourcesApiService
+	id         int32
+}
+
+func (r ApiSourcesGroupConnectionsPlexUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.SourcesGroupConnectionsPlexUsedByListExecute(r)
+}
+
+/*
+SourcesGroupConnectionsPlexUsedByList Method for SourcesGroupConnectionsPlexUsedByList
+
+Get a list of all objects that use this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this Group Plex Source Connection.
+	@return ApiSourcesGroupConnectionsPlexUsedByListRequest
+*/
+func (a *SourcesApiService) SourcesGroupConnectionsPlexUsedByList(ctx context.Context, id int32) ApiSourcesGroupConnectionsPlexUsedByListRequest {
+	return ApiSourcesGroupConnectionsPlexUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []UsedBy
+func (a *SourcesApiService) SourcesGroupConnectionsPlexUsedByListExecute(r ApiSourcesGroupConnectionsPlexUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsPlexUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/group_connections/plex/{id}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiSourcesGroupConnectionsSamlDestroyRequest struct {
 	ctx        context.Context
 	ApiService *SourcesApiService
@@ -5546,6 +6445,7 @@ type ApiSourcesPlexListRequest struct {
 	clientId           *string
 	enabled            *bool
 	enrollmentFlow     *string
+	groupMatchingMode  *string
 	name               *string
 	ordering           *string
 	page               *int32
@@ -5578,6 +6478,12 @@ func (r ApiSourcesPlexListRequest) Enabled(enabled bool) ApiSourcesPlexListReque
 
 func (r ApiSourcesPlexListRequest) EnrollmentFlow(enrollmentFlow string) ApiSourcesPlexListRequest {
 	r.enrollmentFlow = &enrollmentFlow
+	return r
+}
+
+// How the source determines if an existing group should be used or a new group created.
+func (r ApiSourcesPlexListRequest) GroupMatchingMode(groupMatchingMode string) ApiSourcesPlexListRequest {
+	r.groupMatchingMode = &groupMatchingMode
 	return r
 }
 
@@ -5681,6 +6587,9 @@ func (a *SourcesApiService) SourcesPlexListExecute(r ApiSourcesPlexListRequest) 
 	}
 	if r.enrollmentFlow != nil {
 		localVarQueryParams.Add("enrollment_flow", parameterToString(*r.enrollmentFlow, ""))
+	}
+	if r.groupMatchingMode != nil {
+		localVarQueryParams.Add("group_matching_mode", parameterToString(*r.groupMatchingMode, ""))
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -12250,17 +13159,17 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUsedByListExecute(r ApiSo
 }
 
 type ApiSourcesUserConnectionsPlexCreateRequest struct {
-	ctx                         context.Context
-	ApiService                  *SourcesApiService
-	plexSourceConnectionRequest *PlexSourceConnectionRequest
+	ctx                             context.Context
+	ApiService                      *SourcesApiService
+	userPlexSourceConnectionRequest *UserPlexSourceConnectionRequest
 }
 
-func (r ApiSourcesUserConnectionsPlexCreateRequest) PlexSourceConnectionRequest(plexSourceConnectionRequest PlexSourceConnectionRequest) ApiSourcesUserConnectionsPlexCreateRequest {
-	r.plexSourceConnectionRequest = &plexSourceConnectionRequest
+func (r ApiSourcesUserConnectionsPlexCreateRequest) UserPlexSourceConnectionRequest(userPlexSourceConnectionRequest UserPlexSourceConnectionRequest) ApiSourcesUserConnectionsPlexCreateRequest {
+	r.userPlexSourceConnectionRequest = &userPlexSourceConnectionRequest
 	return r
 }
 
-func (r ApiSourcesUserConnectionsPlexCreateRequest) Execute() (*PlexSourceConnection, *http.Response, error) {
+func (r ApiSourcesUserConnectionsPlexCreateRequest) Execute() (*UserPlexSourceConnection, *http.Response, error) {
 	return r.ApiService.SourcesUserConnectionsPlexCreateExecute(r)
 }
 
@@ -12281,13 +13190,13 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexCreate(ctx context.Context
 
 // Execute executes the request
 //
-//	@return PlexSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsPlexCreateExecute(r ApiSourcesUserConnectionsPlexCreateRequest) (*PlexSourceConnection, *http.Response, error) {
+//	@return UserPlexSourceConnection
+func (a *SourcesApiService) SourcesUserConnectionsPlexCreateExecute(r ApiSourcesUserConnectionsPlexCreateRequest) (*UserPlexSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PlexSourceConnection
+		localVarReturnValue *UserPlexSourceConnection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsPlexCreate")
@@ -12300,8 +13209,8 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexCreateExecute(r ApiSources
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.plexSourceConnectionRequest == nil {
-		return localVarReturnValue, nil, reportError("plexSourceConnectionRequest is required and must be specified")
+	if r.userPlexSourceConnectionRequest == nil {
+		return localVarReturnValue, nil, reportError("userPlexSourceConnectionRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -12322,7 +13231,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexCreateExecute(r ApiSources
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.plexSourceConnectionRequest
+	localVarPostBody = r.userPlexSourceConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -12535,7 +13444,7 @@ func (r ApiSourcesUserConnectionsPlexListRequest) User(user int32) ApiSourcesUse
 	return r
 }
 
-func (r ApiSourcesUserConnectionsPlexListRequest) Execute() (*PaginatedPlexSourceConnectionList, *http.Response, error) {
+func (r ApiSourcesUserConnectionsPlexListRequest) Execute() (*PaginatedUserPlexSourceConnectionList, *http.Response, error) {
 	return r.ApiService.SourcesUserConnectionsPlexListExecute(r)
 }
 
@@ -12556,13 +13465,13 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexList(ctx context.Context) 
 
 // Execute executes the request
 //
-//	@return PaginatedPlexSourceConnectionList
-func (a *SourcesApiService) SourcesUserConnectionsPlexListExecute(r ApiSourcesUserConnectionsPlexListRequest) (*PaginatedPlexSourceConnectionList, *http.Response, error) {
+//	@return PaginatedUserPlexSourceConnectionList
+func (a *SourcesApiService) SourcesUserConnectionsPlexListExecute(r ApiSourcesUserConnectionsPlexListRequest) (*PaginatedUserPlexSourceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PaginatedPlexSourceConnectionList
+		localVarReturnValue *PaginatedUserPlexSourceConnectionList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsPlexList")
@@ -12668,18 +13577,18 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexListExecute(r ApiSourcesUs
 }
 
 type ApiSourcesUserConnectionsPlexPartialUpdateRequest struct {
-	ctx                                context.Context
-	ApiService                         *SourcesApiService
-	id                                 int32
-	patchedPlexSourceConnectionRequest *PatchedPlexSourceConnectionRequest
+	ctx                                    context.Context
+	ApiService                             *SourcesApiService
+	id                                     int32
+	patchedUserPlexSourceConnectionRequest *PatchedUserPlexSourceConnectionRequest
 }
 
-func (r ApiSourcesUserConnectionsPlexPartialUpdateRequest) PatchedPlexSourceConnectionRequest(patchedPlexSourceConnectionRequest PatchedPlexSourceConnectionRequest) ApiSourcesUserConnectionsPlexPartialUpdateRequest {
-	r.patchedPlexSourceConnectionRequest = &patchedPlexSourceConnectionRequest
+func (r ApiSourcesUserConnectionsPlexPartialUpdateRequest) PatchedUserPlexSourceConnectionRequest(patchedUserPlexSourceConnectionRequest PatchedUserPlexSourceConnectionRequest) ApiSourcesUserConnectionsPlexPartialUpdateRequest {
+	r.patchedUserPlexSourceConnectionRequest = &patchedUserPlexSourceConnectionRequest
 	return r
 }
 
-func (r ApiSourcesUserConnectionsPlexPartialUpdateRequest) Execute() (*PlexSourceConnection, *http.Response, error) {
+func (r ApiSourcesUserConnectionsPlexPartialUpdateRequest) Execute() (*UserPlexSourceConnection, *http.Response, error) {
 	return r.ApiService.SourcesUserConnectionsPlexPartialUpdateExecute(r)
 }
 
@@ -12702,13 +13611,13 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdate(ctx context.
 
 // Execute executes the request
 //
-//	@return PlexSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdateExecute(r ApiSourcesUserConnectionsPlexPartialUpdateRequest) (*PlexSourceConnection, *http.Response, error) {
+//	@return UserPlexSourceConnection
+func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdateExecute(r ApiSourcesUserConnectionsPlexPartialUpdateRequest) (*UserPlexSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PlexSourceConnection
+		localVarReturnValue *UserPlexSourceConnection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsPlexPartialUpdate")
@@ -12741,7 +13650,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdateExecute(r Api
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.patchedPlexSourceConnectionRequest
+	localVarPostBody = r.patchedUserPlexSourceConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -12804,7 +13713,7 @@ type ApiSourcesUserConnectionsPlexRetrieveRequest struct {
 	id         int32
 }
 
-func (r ApiSourcesUserConnectionsPlexRetrieveRequest) Execute() (*PlexSourceConnection, *http.Response, error) {
+func (r ApiSourcesUserConnectionsPlexRetrieveRequest) Execute() (*UserPlexSourceConnection, *http.Response, error) {
 	return r.ApiService.SourcesUserConnectionsPlexRetrieveExecute(r)
 }
 
@@ -12827,13 +13736,13 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieve(ctx context.Conte
 
 // Execute executes the request
 //
-//	@return PlexSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieveExecute(r ApiSourcesUserConnectionsPlexRetrieveRequest) (*PlexSourceConnection, *http.Response, error) {
+//	@return UserPlexSourceConnection
+func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieveExecute(r ApiSourcesUserConnectionsPlexRetrieveRequest) (*UserPlexSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PlexSourceConnection
+		localVarReturnValue *UserPlexSourceConnection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsPlexRetrieve")
@@ -12922,18 +13831,18 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieveExecute(r ApiSourc
 }
 
 type ApiSourcesUserConnectionsPlexUpdateRequest struct {
-	ctx                         context.Context
-	ApiService                  *SourcesApiService
-	id                          int32
-	plexSourceConnectionRequest *PlexSourceConnectionRequest
+	ctx                             context.Context
+	ApiService                      *SourcesApiService
+	id                              int32
+	userPlexSourceConnectionRequest *UserPlexSourceConnectionRequest
 }
 
-func (r ApiSourcesUserConnectionsPlexUpdateRequest) PlexSourceConnectionRequest(plexSourceConnectionRequest PlexSourceConnectionRequest) ApiSourcesUserConnectionsPlexUpdateRequest {
-	r.plexSourceConnectionRequest = &plexSourceConnectionRequest
+func (r ApiSourcesUserConnectionsPlexUpdateRequest) UserPlexSourceConnectionRequest(userPlexSourceConnectionRequest UserPlexSourceConnectionRequest) ApiSourcesUserConnectionsPlexUpdateRequest {
+	r.userPlexSourceConnectionRequest = &userPlexSourceConnectionRequest
 	return r
 }
 
-func (r ApiSourcesUserConnectionsPlexUpdateRequest) Execute() (*PlexSourceConnection, *http.Response, error) {
+func (r ApiSourcesUserConnectionsPlexUpdateRequest) Execute() (*UserPlexSourceConnection, *http.Response, error) {
 	return r.ApiService.SourcesUserConnectionsPlexUpdateExecute(r)
 }
 
@@ -12956,13 +13865,13 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUpdate(ctx context.Context
 
 // Execute executes the request
 //
-//	@return PlexSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsPlexUpdateExecute(r ApiSourcesUserConnectionsPlexUpdateRequest) (*PlexSourceConnection, *http.Response, error) {
+//	@return UserPlexSourceConnection
+func (a *SourcesApiService) SourcesUserConnectionsPlexUpdateExecute(r ApiSourcesUserConnectionsPlexUpdateRequest) (*UserPlexSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PlexSourceConnection
+		localVarReturnValue *UserPlexSourceConnection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsPlexUpdate")
@@ -12976,8 +13885,8 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUpdateExecute(r ApiSources
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.plexSourceConnectionRequest == nil {
-		return localVarReturnValue, nil, reportError("plexSourceConnectionRequest is required and must be specified")
+	if r.userPlexSourceConnectionRequest == nil {
+		return localVarReturnValue, nil, reportError("userPlexSourceConnectionRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -12998,7 +13907,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUpdateExecute(r ApiSources
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.plexSourceConnectionRequest
+	localVarPostBody = r.userPlexSourceConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

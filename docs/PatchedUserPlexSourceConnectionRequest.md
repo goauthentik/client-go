@@ -1,4 +1,4 @@
-# PatchedPlexSourceConnectionRequest
+# PatchedUserPlexSourceConnectionRequest
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewPatchedPlexSourceConnectionRequest
+### NewPatchedUserPlexSourceConnectionRequest
 
-`func NewPatchedPlexSourceConnectionRequest() *PatchedPlexSourceConnectionRequest`
+`func NewPatchedUserPlexSourceConnectionRequest() *PatchedUserPlexSourceConnectionRequest`
 
-NewPatchedPlexSourceConnectionRequest instantiates a new PatchedPlexSourceConnectionRequest object
+NewPatchedUserPlexSourceConnectionRequest instantiates a new PatchedUserPlexSourceConnectionRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewPatchedPlexSourceConnectionRequestWithDefaults
+### NewPatchedUserPlexSourceConnectionRequestWithDefaults
 
-`func NewPatchedPlexSourceConnectionRequestWithDefaults() *PatchedPlexSourceConnectionRequest`
+`func NewPatchedUserPlexSourceConnectionRequestWithDefaults() *PatchedUserPlexSourceConnectionRequest`
 
-NewPatchedPlexSourceConnectionRequestWithDefaults instantiates a new PatchedPlexSourceConnectionRequest object
+NewPatchedUserPlexSourceConnectionRequestWithDefaults instantiates a new PatchedUserPlexSourceConnectionRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetIdentifier
 
-`func (o *PatchedPlexSourceConnectionRequest) GetIdentifier() string`
+`func (o *PatchedUserPlexSourceConnectionRequest) GetIdentifier() string`
 
 GetIdentifier returns the Identifier field if non-nil, zero value otherwise.
 
 ### GetIdentifierOk
 
-`func (o *PatchedPlexSourceConnectionRequest) GetIdentifierOk() (*string, bool)`
+`func (o *PatchedUserPlexSourceConnectionRequest) GetIdentifierOk() (*string, bool)`
 
 GetIdentifierOk returns a tuple with the Identifier field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdentifier
 
-`func (o *PatchedPlexSourceConnectionRequest) SetIdentifier(v string)`
+`func (o *PatchedUserPlexSourceConnectionRequest) SetIdentifier(v string)`
 
 SetIdentifier sets Identifier field to given value.
 
 ### HasIdentifier
 
-`func (o *PatchedPlexSourceConnectionRequest) HasIdentifier() bool`
+`func (o *PatchedUserPlexSourceConnectionRequest) HasIdentifier() bool`
 
 HasIdentifier returns a boolean if a field has been set.
 
 ### GetPlexToken
 
-`func (o *PatchedPlexSourceConnectionRequest) GetPlexToken() string`
+`func (o *PatchedUserPlexSourceConnectionRequest) GetPlexToken() string`
 
 GetPlexToken returns the PlexToken field if non-nil, zero value otherwise.
 
 ### GetPlexTokenOk
 
-`func (o *PatchedPlexSourceConnectionRequest) GetPlexTokenOk() (*string, bool)`
+`func (o *PatchedUserPlexSourceConnectionRequest) GetPlexTokenOk() (*string, bool)`
 
 GetPlexTokenOk returns a tuple with the PlexToken field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPlexToken
 
-`func (o *PatchedPlexSourceConnectionRequest) SetPlexToken(v string)`
+`func (o *PatchedUserPlexSourceConnectionRequest) SetPlexToken(v string)`
 
 SetPlexToken sets PlexToken field to given value.
 
 ### HasPlexToken
 
-`func (o *PatchedPlexSourceConnectionRequest) HasPlexToken() bool`
+`func (o *PatchedUserPlexSourceConnectionRequest) HasPlexToken() bool`
 
 HasPlexToken returns a boolean if a field has been set.
 

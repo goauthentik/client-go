@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
+**GroupMatchingMode** | Pointer to [**GroupMatchingModeEnum**](GroupMatchingModeEnum.md) | How the source determines if an existing group should be used or a new group created. | [optional] 
 **ClientId** | Pointer to **string** | Client identifier used to talk to Plex. | [optional] 
 **AllowedServers** | Pointer to **[]string** | Which servers a user has to be a member of to be granted access. Empty list allows every server. | [optional] 
 **AllowFriends** | Pointer to **bool** | Allow friends to authenticate, even if you don&#39;t share a server. | [optional] 
@@ -297,6 +298,31 @@ SetUserPathTemplate sets UserPathTemplate field to given value.
 `func (o *PlexSourceRequest) HasUserPathTemplate() bool`
 
 HasUserPathTemplate returns a boolean if a field has been set.
+
+### GetGroupMatchingMode
+
+`func (o *PlexSourceRequest) GetGroupMatchingMode() GroupMatchingModeEnum`
+
+GetGroupMatchingMode returns the GroupMatchingMode field if non-nil, zero value otherwise.
+
+### GetGroupMatchingModeOk
+
+`func (o *PlexSourceRequest) GetGroupMatchingModeOk() (*GroupMatchingModeEnum, bool)`
+
+GetGroupMatchingModeOk returns a tuple with the GroupMatchingMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupMatchingMode
+
+`func (o *PlexSourceRequest) SetGroupMatchingMode(v GroupMatchingModeEnum)`
+
+SetGroupMatchingMode sets GroupMatchingMode field to given value.
+
+### HasGroupMatchingMode
+
+`func (o *PlexSourceRequest) HasGroupMatchingMode() bool`
+
+HasGroupMatchingMode returns a boolean if a field has been set.
 
 ### GetClientId
 

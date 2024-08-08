@@ -450,6 +450,13 @@ Class | Method | HTTP request | Description
 *PropertymappingsApi* | [**PropertymappingsSourceOauthRetrieve**](docs/PropertymappingsApi.md#propertymappingssourceoauthretrieve) | **Get** /propertymappings/source/oauth/{pm_uuid}/ | 
 *PropertymappingsApi* | [**PropertymappingsSourceOauthUpdate**](docs/PropertymappingsApi.md#propertymappingssourceoauthupdate) | **Put** /propertymappings/source/oauth/{pm_uuid}/ | 
 *PropertymappingsApi* | [**PropertymappingsSourceOauthUsedByList**](docs/PropertymappingsApi.md#propertymappingssourceoauthusedbylist) | **Get** /propertymappings/source/oauth/{pm_uuid}/used_by/ | 
+*PropertymappingsApi* | [**PropertymappingsSourcePlexCreate**](docs/PropertymappingsApi.md#propertymappingssourceplexcreate) | **Post** /propertymappings/source/plex/ | 
+*PropertymappingsApi* | [**PropertymappingsSourcePlexDestroy**](docs/PropertymappingsApi.md#propertymappingssourceplexdestroy) | **Delete** /propertymappings/source/plex/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsSourcePlexList**](docs/PropertymappingsApi.md#propertymappingssourceplexlist) | **Get** /propertymappings/source/plex/ | 
+*PropertymappingsApi* | [**PropertymappingsSourcePlexPartialUpdate**](docs/PropertymappingsApi.md#propertymappingssourceplexpartialupdate) | **Patch** /propertymappings/source/plex/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsSourcePlexRetrieve**](docs/PropertymappingsApi.md#propertymappingssourceplexretrieve) | **Get** /propertymappings/source/plex/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsSourcePlexUpdate**](docs/PropertymappingsApi.md#propertymappingssourceplexupdate) | **Put** /propertymappings/source/plex/{pm_uuid}/ | 
+*PropertymappingsApi* | [**PropertymappingsSourcePlexUsedByList**](docs/PropertymappingsApi.md#propertymappingssourceplexusedbylist) | **Get** /propertymappings/source/plex/{pm_uuid}/used_by/ | 
 *PropertymappingsApi* | [**PropertymappingsSourceSamlCreate**](docs/PropertymappingsApi.md#propertymappingssourcesamlcreate) | **Post** /propertymappings/source/saml/ | 
 *PropertymappingsApi* | [**PropertymappingsSourceSamlDestroy**](docs/PropertymappingsApi.md#propertymappingssourcesamldestroy) | **Delete** /propertymappings/source/saml/{pm_uuid}/ | 
 *PropertymappingsApi* | [**PropertymappingsSourceSamlList**](docs/PropertymappingsApi.md#propertymappingssourcesamllist) | **Get** /propertymappings/source/saml/ | 
@@ -625,6 +632,13 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**SourcesGroupConnectionsOauthRetrieve**](docs/SourcesApi.md#sourcesgroupconnectionsoauthretrieve) | **Get** /sources/group_connections/oauth/{id}/ | 
 *SourcesApi* | [**SourcesGroupConnectionsOauthUpdate**](docs/SourcesApi.md#sourcesgroupconnectionsoauthupdate) | **Put** /sources/group_connections/oauth/{id}/ | 
 *SourcesApi* | [**SourcesGroupConnectionsOauthUsedByList**](docs/SourcesApi.md#sourcesgroupconnectionsoauthusedbylist) | **Get** /sources/group_connections/oauth/{id}/used_by/ | 
+*SourcesApi* | [**SourcesGroupConnectionsPlexCreate**](docs/SourcesApi.md#sourcesgroupconnectionsplexcreate) | **Post** /sources/group_connections/plex/ | 
+*SourcesApi* | [**SourcesGroupConnectionsPlexDestroy**](docs/SourcesApi.md#sourcesgroupconnectionsplexdestroy) | **Delete** /sources/group_connections/plex/{id}/ | 
+*SourcesApi* | [**SourcesGroupConnectionsPlexList**](docs/SourcesApi.md#sourcesgroupconnectionsplexlist) | **Get** /sources/group_connections/plex/ | 
+*SourcesApi* | [**SourcesGroupConnectionsPlexPartialUpdate**](docs/SourcesApi.md#sourcesgroupconnectionsplexpartialupdate) | **Patch** /sources/group_connections/plex/{id}/ | 
+*SourcesApi* | [**SourcesGroupConnectionsPlexRetrieve**](docs/SourcesApi.md#sourcesgroupconnectionsplexretrieve) | **Get** /sources/group_connections/plex/{id}/ | 
+*SourcesApi* | [**SourcesGroupConnectionsPlexUpdate**](docs/SourcesApi.md#sourcesgroupconnectionsplexupdate) | **Put** /sources/group_connections/plex/{id}/ | 
+*SourcesApi* | [**SourcesGroupConnectionsPlexUsedByList**](docs/SourcesApi.md#sourcesgroupconnectionsplexusedbylist) | **Get** /sources/group_connections/plex/{id}/used_by/ | 
 *SourcesApi* | [**SourcesGroupConnectionsSamlDestroy**](docs/SourcesApi.md#sourcesgroupconnectionssamldestroy) | **Delete** /sources/group_connections/saml/{id}/ | 
 *SourcesApi* | [**SourcesGroupConnectionsSamlList**](docs/SourcesApi.md#sourcesgroupconnectionssamllist) | **Get** /sources/group_connections/saml/ | 
 *SourcesApi* | [**SourcesGroupConnectionsSamlPartialUpdate**](docs/SourcesApi.md#sourcesgroupconnectionssamlpartialupdate) | **Patch** /sources/group_connections/saml/{id}/ | 
@@ -1059,6 +1073,7 @@ Class | Method | HTTP request | Description
  - [GroupMember](docs/GroupMember.md)
  - [GroupMemberRequest](docs/GroupMemberRequest.md)
  - [GroupOAuthSourceConnection](docs/GroupOAuthSourceConnection.md)
+ - [GroupPlexSourceConnection](docs/GroupPlexSourceConnection.md)
  - [GroupRequest](docs/GroupRequest.md)
  - [GroupSAMLSourceConnection](docs/GroupSAMLSourceConnection.md)
  - [IdentificationChallenge](docs/IdentificationChallenge.md)
@@ -1173,6 +1188,7 @@ Class | Method | HTTP request | Description
  - [PaginatedGoogleWorkspaceProviderUserList](docs/PaginatedGoogleWorkspaceProviderUserList.md)
  - [PaginatedGroupList](docs/PaginatedGroupList.md)
  - [PaginatedGroupOAuthSourceConnectionList](docs/PaginatedGroupOAuthSourceConnectionList.md)
+ - [PaginatedGroupPlexSourceConnectionList](docs/PaginatedGroupPlexSourceConnectionList.md)
  - [PaginatedGroupSAMLSourceConnectionList](docs/PaginatedGroupSAMLSourceConnectionList.md)
  - [PaginatedIdentificationStageList](docs/PaginatedIdentificationStageList.md)
  - [PaginatedInvitationList](docs/PaginatedInvitationList.md)
@@ -1199,8 +1215,8 @@ Class | Method | HTTP request | Description
  - [PaginatedPasswordPolicyList](docs/PaginatedPasswordPolicyList.md)
  - [PaginatedPasswordStageList](docs/PaginatedPasswordStageList.md)
  - [PaginatedPermissionList](docs/PaginatedPermissionList.md)
- - [PaginatedPlexSourceConnectionList](docs/PaginatedPlexSourceConnectionList.md)
  - [PaginatedPlexSourceList](docs/PaginatedPlexSourceList.md)
+ - [PaginatedPlexSourcePropertyMappingList](docs/PaginatedPlexSourcePropertyMappingList.md)
  - [PaginatedPolicyBindingList](docs/PaginatedPolicyBindingList.md)
  - [PaginatedPolicyList](docs/PaginatedPolicyList.md)
  - [PaginatedPromptList](docs/PaginatedPromptList.md)
@@ -1249,6 +1265,7 @@ Class | Method | HTTP request | Description
  - [PaginatedUserLoginStageList](docs/PaginatedUserLoginStageList.md)
  - [PaginatedUserLogoutStageList](docs/PaginatedUserLogoutStageList.md)
  - [PaginatedUserOAuthSourceConnectionList](docs/PaginatedUserOAuthSourceConnectionList.md)
+ - [PaginatedUserPlexSourceConnectionList](docs/PaginatedUserPlexSourceConnectionList.md)
  - [PaginatedUserSAMLSourceConnectionList](docs/PaginatedUserSAMLSourceConnectionList.md)
  - [PaginatedUserSourceConnectionList](docs/PaginatedUserSourceConnectionList.md)
  - [PaginatedUserWriteStageList](docs/PaginatedUserWriteStageList.md)
@@ -1317,7 +1334,7 @@ Class | Method | HTTP request | Description
  - [PatchedPasswordPolicyRequest](docs/PatchedPasswordPolicyRequest.md)
  - [PatchedPasswordStageRequest](docs/PatchedPasswordStageRequest.md)
  - [PatchedPermissionAssignRequest](docs/PatchedPermissionAssignRequest.md)
- - [PatchedPlexSourceConnectionRequest](docs/PatchedPlexSourceConnectionRequest.md)
+ - [PatchedPlexSourcePropertyMappingRequest](docs/PatchedPlexSourcePropertyMappingRequest.md)
  - [PatchedPlexSourceRequest](docs/PatchedPlexSourceRequest.md)
  - [PatchedPolicyBindingRequest](docs/PatchedPolicyBindingRequest.md)
  - [PatchedPromptRequest](docs/PatchedPromptRequest.md)
@@ -1351,6 +1368,7 @@ Class | Method | HTTP request | Description
  - [PatchedUserLoginStageRequest](docs/PatchedUserLoginStageRequest.md)
  - [PatchedUserLogoutStageRequest](docs/PatchedUserLogoutStageRequest.md)
  - [PatchedUserOAuthSourceConnectionRequest](docs/PatchedUserOAuthSourceConnectionRequest.md)
+ - [PatchedUserPlexSourceConnectionRequest](docs/PatchedUserPlexSourceConnectionRequest.md)
  - [PatchedUserRequest](docs/PatchedUserRequest.md)
  - [PatchedUserSAMLSourceConnectionRequest](docs/PatchedUserSAMLSourceConnectionRequest.md)
  - [PatchedUserWriteStageRequest](docs/PatchedUserWriteStageRequest.md)
@@ -1361,8 +1379,8 @@ Class | Method | HTTP request | Description
  - [PlexAuthenticationChallenge](docs/PlexAuthenticationChallenge.md)
  - [PlexAuthenticationChallengeResponseRequest](docs/PlexAuthenticationChallengeResponseRequest.md)
  - [PlexSource](docs/PlexSource.md)
- - [PlexSourceConnection](docs/PlexSourceConnection.md)
- - [PlexSourceConnectionRequest](docs/PlexSourceConnectionRequest.md)
+ - [PlexSourcePropertyMapping](docs/PlexSourcePropertyMapping.md)
+ - [PlexSourcePropertyMappingRequest](docs/PlexSourcePropertyMappingRequest.md)
  - [PlexSourceRequest](docs/PlexSourceRequest.md)
  - [PlexTokenRedeemRequest](docs/PlexTokenRedeemRequest.md)
  - [Policy](docs/Policy.md)
@@ -1511,6 +1529,8 @@ Class | Method | HTTP request | Description
  - [UserObjectPermission](docs/UserObjectPermission.md)
  - [UserPasswordSetRequest](docs/UserPasswordSetRequest.md)
  - [UserPath](docs/UserPath.md)
+ - [UserPlexSourceConnection](docs/UserPlexSourceConnection.md)
+ - [UserPlexSourceConnectionRequest](docs/UserPlexSourceConnectionRequest.md)
  - [UserRequest](docs/UserRequest.md)
  - [UserSAMLSourceConnection](docs/UserSAMLSourceConnection.md)
  - [UserSAMLSourceConnectionRequest](docs/UserSAMLSourceConnectionRequest.md)

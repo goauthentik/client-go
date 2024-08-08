@@ -54,7 +54,9 @@ const (
 	MODELENUM_SOURCES_OAUTH_USEROAUTHSOURCECONNECTION                   ModelEnum = "authentik_sources_oauth.useroauthsourceconnection"
 	MODELENUM_SOURCES_OAUTH_GROUPOAUTHSOURCECONNECTION                  ModelEnum = "authentik_sources_oauth.groupoauthsourceconnection"
 	MODELENUM_SOURCES_PLEX_PLEXSOURCE                                   ModelEnum = "authentik_sources_plex.plexsource"
-	MODELENUM_SOURCES_PLEX_PLEXSOURCECONNECTION                         ModelEnum = "authentik_sources_plex.plexsourceconnection"
+	MODELENUM_SOURCES_PLEX_PLEXSOURCEPROPERTYMAPPING                    ModelEnum = "authentik_sources_plex.plexsourcepropertymapping"
+	MODELENUM_SOURCES_PLEX_USERPLEXSOURCECONNECTION                     ModelEnum = "authentik_sources_plex.userplexsourceconnection"
+	MODELENUM_SOURCES_PLEX_GROUPPLEXSOURCECONNECTION                    ModelEnum = "authentik_sources_plex.groupplexsourceconnection"
 	MODELENUM_SOURCES_SAML_SAMLSOURCE                                   ModelEnum = "authentik_sources_saml.samlsource"
 	MODELENUM_SOURCES_SAML_SAMLSOURCEPROPERTYMAPPING                    ModelEnum = "authentik_sources_saml.samlsourcepropertymapping"
 	MODELENUM_SOURCES_SAML_USERSAMLSOURCECONNECTION                     ModelEnum = "authentik_sources_saml.usersamlsourceconnection"
@@ -145,7 +147,9 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_sources_oauth.useroauthsourceconnection",
 	"authentik_sources_oauth.groupoauthsourceconnection",
 	"authentik_sources_plex.plexsource",
-	"authentik_sources_plex.plexsourceconnection",
+	"authentik_sources_plex.plexsourcepropertymapping",
+	"authentik_sources_plex.userplexsourceconnection",
+	"authentik_sources_plex.groupplexsourceconnection",
 	"authentik_sources_saml.samlsource",
 	"authentik_sources_saml.samlsourcepropertymapping",
 	"authentik_sources_saml.usersamlsourceconnection",
