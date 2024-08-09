@@ -47079,6 +47079,11 @@ components:
       - license_uuid
       - name
       type: object
+    LicenseFlagsEnum:
+      enum:
+      - trial
+      - non_production
+      type: string
     LicenseForecast:
       description: Serializer for license forecast
       example:
@@ -47117,6 +47122,9 @@ components:
       example:
         external_users: 6
         latest_valid: 2000-01-23T04:56:07.000+00:00
+        license_flags:
+        - null
+        - null
         internal_users: 0
         status: null
       properties:
@@ -47129,10 +47137,15 @@ components:
         latest_valid:
           format: date-time
           type: string
+        license_flags:
+          items:
+            $ref: '#/components/schemas/LicenseFlagsEnum'
+          type: array
       required:
       - external_users
       - internal_users
       - latest_valid
+      - license_flags
       - status
       type: object
     LicenseSummaryStatusEnum:

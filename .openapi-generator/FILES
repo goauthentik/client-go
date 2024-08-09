@@ -219,6 +219,7 @@ docs/LDAPSourcePropertyMapping.md
 docs/LDAPSourcePropertyMappingRequest.md
 docs/LDAPSourceRequest.md
 docs/License.md
+docs/LicenseFlagsEnum.md
 docs/LicenseForecast.md
 docs/LicenseRequest.md
 docs/LicenseSummary.md
@@ -876,6 +877,7 @@ model_ldap_source_property_mapping_request.go
 model_ldap_source_request.go
 model_ldapapi_access_mode.go
 model_license.go
+model_license_flags_enum.go
 model_license_forecast.go
 model_license_request.go
 model_license_summary.go

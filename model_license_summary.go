@@ -22,18 +22,20 @@ type LicenseSummary struct {
 	ExternalUsers int32                    `json:"external_users"`
 	Status        LicenseSummaryStatusEnum `json:"status"`
 	LatestValid   time.Time                `json:"latest_valid"`
+	LicenseFlags  []LicenseFlagsEnum       `json:"license_flags"`
 }
 
 // NewLicenseSummary instantiates a new LicenseSummary object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLicenseSummary(internalUsers int32, externalUsers int32, status LicenseSummaryStatusEnum, latestValid time.Time) *LicenseSummary {
+func NewLicenseSummary(internalUsers int32, externalUsers int32, status LicenseSummaryStatusEnum, latestValid time.Time, licenseFlags []LicenseFlagsEnum) *LicenseSummary {
 	this := LicenseSummary{}
 	this.InternalUsers = internalUsers
 	this.ExternalUsers = externalUsers
 	this.Status = status
 	this.LatestValid = latestValid
+	this.LicenseFlags = licenseFlags
 	return &this
 }
 
@@ -141,6 +143,30 @@ func (o *LicenseSummary) SetLatestValid(v time.Time) {
 	o.LatestValid = v
 }
 
+// GetLicenseFlags returns the LicenseFlags field value
+func (o *LicenseSummary) GetLicenseFlags() []LicenseFlagsEnum {
+	if o == nil {
+		var ret []LicenseFlagsEnum
+		return ret
+	}
+
+	return o.LicenseFlags
+}
+
+// GetLicenseFlagsOk returns a tuple with the LicenseFlags field value
+// and a boolean to check if the value has been set.
+func (o *LicenseSummary) GetLicenseFlagsOk() ([]LicenseFlagsEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LicenseFlags, true
+}
+
+// SetLicenseFlags sets field value
+func (o *LicenseSummary) SetLicenseFlags(v []LicenseFlagsEnum) {
+	o.LicenseFlags = v
+}
+
 func (o LicenseSummary) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -154,6 +180,9 @@ func (o LicenseSummary) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["latest_valid"] = o.LatestValid
+	}
+	if true {
+		toSerialize["license_flags"] = o.LicenseFlags
 	}
 	return json.Marshal(toSerialize)
 }

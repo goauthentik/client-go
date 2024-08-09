@@ -8,12 +8,13 @@ Name | Type | Description | Notes
 **ExternalUsers** | **int32** |  | 
 **Status** | [**LicenseSummaryStatusEnum**](LicenseSummaryStatusEnum.md) |  | 
 **LatestValid** | **time.Time** |  | 
+**LicenseFlags** | [**[]LicenseFlagsEnum**](LicenseFlagsEnum.md) |  | 
 
 ## Methods
 
 ### NewLicenseSummary
 
-`func NewLicenseSummary(internalUsers int32, externalUsers int32, status LicenseSummaryStatusEnum, latestValid time.Time, ) *LicenseSummary`
+`func NewLicenseSummary(internalUsers int32, externalUsers int32, status LicenseSummaryStatusEnum, latestValid time.Time, licenseFlags []LicenseFlagsEnum, ) *LicenseSummary`
 
 NewLicenseSummary instantiates a new LicenseSummary object
 This constructor will assign default values to properties that have it defined,
@@ -106,6 +107,26 @@ and a boolean to check if the value has been set.
 `func (o *LicenseSummary) SetLatestValid(v time.Time)`
 
 SetLatestValid sets LatestValid field to given value.
+
+
+### GetLicenseFlags
+
+`func (o *LicenseSummary) GetLicenseFlags() []LicenseFlagsEnum`
+
+GetLicenseFlags returns the LicenseFlags field if non-nil, zero value otherwise.
+
+### GetLicenseFlagsOk
+
+`func (o *LicenseSummary) GetLicenseFlagsOk() (*[]LicenseFlagsEnum, bool)`
+
+GetLicenseFlagsOk returns a tuple with the LicenseFlags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLicenseFlags
+
+`func (o *LicenseSummary) SetLicenseFlags(v []LicenseFlagsEnum)`
+
+SetLicenseFlags sets LicenseFlags field to given value.
 
 
 

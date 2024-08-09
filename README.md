@@ -1100,6 +1100,7 @@ Class | Method | HTTP request | Description
  - [LDAPSourcePropertyMappingRequest](docs/LDAPSourcePropertyMappingRequest.md)
  - [LDAPSourceRequest](docs/LDAPSourceRequest.md)
  - [License](docs/License.md)
+ - [LicenseFlagsEnum](docs/LicenseFlagsEnum.md)
  - [LicenseForecast](docs/LicenseForecast.md)
  - [LicenseRequest](docs/LicenseRequest.md)
  - [LicenseSummary](docs/LicenseSummary.md)
