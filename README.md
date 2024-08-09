@@ -1103,6 +1103,7 @@ Class | Method | HTTP request | Description
  - [LicenseForecast](docs/LicenseForecast.md)
  - [LicenseRequest](docs/LicenseRequest.md)
  - [LicenseSummary](docs/LicenseSummary.md)
+ - [LicenseSummaryStatusEnum](docs/LicenseSummaryStatusEnum.md)
  - [Link](docs/Link.md)
  - [LogEvent](docs/LogEvent.md)
  - [LogLevelEnum](docs/LogLevelEnum.md)

@@ -222,6 +222,7 @@ docs/License.md
 docs/LicenseForecast.md
 docs/LicenseRequest.md
 docs/LicenseSummary.md
+docs/LicenseSummaryStatusEnum.md
 docs/Link.md
 docs/LogEvent.md
 docs/LogLevelEnum.md
@@ -878,6 +879,7 @@ model_license.go
 model_license_forecast.go
 model_license_request.go
 model_license_summary.go
+model_license_summary_status_enum.go
 model_link.go
 model_log_event.go
 model_log_level_enum.go

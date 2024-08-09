@@ -47115,42 +47115,36 @@ components:
     LicenseSummary:
       description: Serializer for license status
       example:
-        valid: true
         external_users: 6
-        read_only: true
-        show_admin_warning: true
-        has_license: true
         latest_valid: 2000-01-23T04:56:07.000+00:00
         internal_users: 0
-        show_user_warning: true
+        status: null
       properties:
         internal_users:
           type: integer
         external_users:
           type: integer
-        valid:
-          type: boolean
-        show_admin_warning:
-          type: boolean
-        show_user_warning:
-          type: boolean
-        read_only:
-          type: boolean
+        status:
+          $ref: '#/components/schemas/LicenseSummaryStatusEnum'
         latest_valid:
           format: date-time
           type: string
-        has_license:
-          type: boolean
       required:
       - external_users
-      - has_license
       - internal_users
       - latest_valid
-      - read_only
-      - show_admin_warning
-      - show_user_warning
-      - valid
+      - status
       type: object
+    LicenseSummaryStatusEnum:
+      enum:
+      - unlicensed
+      - valid
+      - expired
+      - expiry_soon
+      - limit_exceeded_admin
+      - limit_exceeded_user
+      - read_only
+      type: string
     Link:
       description: Returns a single link
       example:

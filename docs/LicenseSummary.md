@@ -6,18 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **InternalUsers** | **int32** |  | 
 **ExternalUsers** | **int32** |  | 
-**Valid** | **bool** |  | 
-**ShowAdminWarning** | **bool** |  | 
-**ShowUserWarning** | **bool** |  | 
-**ReadOnly** | **bool** |  | 
+**Status** | [**LicenseSummaryStatusEnum**](LicenseSummaryStatusEnum.md) |  | 
 **LatestValid** | **time.Time** |  | 
-**HasLicense** | **bool** |  | 
 
 ## Methods
 
 ### NewLicenseSummary
 
-`func NewLicenseSummary(internalUsers int32, externalUsers int32, valid bool, showAdminWarning bool, showUserWarning bool, readOnly bool, latestValid time.Time, hasLicense bool, ) *LicenseSummary`
+`func NewLicenseSummary(internalUsers int32, externalUsers int32, status LicenseSummaryStatusEnum, latestValid time.Time, ) *LicenseSummary`
 
 NewLicenseSummary instantiates a new LicenseSummary object
 This constructor will assign default values to properties that have it defined,
@@ -72,84 +68,24 @@ and a boolean to check if the value has been set.
 SetExternalUsers sets ExternalUsers field to given value.
 
 
-### GetValid
+### GetStatus
 
-`func (o *LicenseSummary) GetValid() bool`
+`func (o *LicenseSummary) GetStatus() LicenseSummaryStatusEnum`
 
-GetValid returns the Valid field if non-nil, zero value otherwise.
+GetStatus returns the Status field if non-nil, zero value otherwise.
 
-### GetValidOk
+### GetStatusOk
 
-`func (o *LicenseSummary) GetValidOk() (*bool, bool)`
+`func (o *LicenseSummary) GetStatusOk() (*LicenseSummaryStatusEnum, bool)`
 
-GetValidOk returns a tuple with the Valid field if it's non-nil, zero value otherwise
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetValid
+### SetStatus
 
-`func (o *LicenseSummary) SetValid(v bool)`
+`func (o *LicenseSummary) SetStatus(v LicenseSummaryStatusEnum)`
 
-SetValid sets Valid field to given value.
-
-
-### GetShowAdminWarning
-
-`func (o *LicenseSummary) GetShowAdminWarning() bool`
-
-GetShowAdminWarning returns the ShowAdminWarning field if non-nil, zero value otherwise.
-
-### GetShowAdminWarningOk
-
-`func (o *LicenseSummary) GetShowAdminWarningOk() (*bool, bool)`
-
-GetShowAdminWarningOk returns a tuple with the ShowAdminWarning field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetShowAdminWarning
-
-`func (o *LicenseSummary) SetShowAdminWarning(v bool)`
-
-SetShowAdminWarning sets ShowAdminWarning field to given value.
-
-
-### GetShowUserWarning
-
-`func (o *LicenseSummary) GetShowUserWarning() bool`
-
-GetShowUserWarning returns the ShowUserWarning field if non-nil, zero value otherwise.
-
-### GetShowUserWarningOk
-
-`func (o *LicenseSummary) GetShowUserWarningOk() (*bool, bool)`
-
-GetShowUserWarningOk returns a tuple with the ShowUserWarning field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetShowUserWarning
-
-`func (o *LicenseSummary) SetShowUserWarning(v bool)`
-
-SetShowUserWarning sets ShowUserWarning field to given value.
-
-
-### GetReadOnly
-
-`func (o *LicenseSummary) GetReadOnly() bool`
-
-GetReadOnly returns the ReadOnly field if non-nil, zero value otherwise.
-
-### GetReadOnlyOk
-
-`func (o *LicenseSummary) GetReadOnlyOk() (*bool, bool)`
-
-GetReadOnlyOk returns a tuple with the ReadOnly field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReadOnly
-
-`func (o *LicenseSummary) SetReadOnly(v bool)`
-
-SetReadOnly sets ReadOnly field to given value.
+SetStatus sets Status field to given value.
 
 
 ### GetLatestValid
@@ -170,26 +106,6 @@ and a boolean to check if the value has been set.
 `func (o *LicenseSummary) SetLatestValid(v time.Time)`
 
 SetLatestValid sets LatestValid field to given value.
-
-
-### GetHasLicense
-
-`func (o *LicenseSummary) GetHasLicense() bool`
-
-GetHasLicense returns the HasLicense field if non-nil, zero value otherwise.
-
-### GetHasLicenseOk
-
-`func (o *LicenseSummary) GetHasLicenseOk() (*bool, bool)`
-
-GetHasLicenseOk returns a tuple with the HasLicense field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHasLicense
-
-`func (o *LicenseSummary) SetHasLicense(v bool)`
-
-SetHasLicense sets HasLicense field to given value.
 
 
 
