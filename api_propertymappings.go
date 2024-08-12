@@ -3654,31 +3654,31 @@ func (a *PropertymappingsApiService) PropertymappingsProviderMicrosoftEntraUsedB
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsRacCreateRequest struct {
+type ApiPropertymappingsProviderRacCreateRequest struct {
 	ctx                       context.Context
 	ApiService                *PropertymappingsApiService
 	rACPropertyMappingRequest *RACPropertyMappingRequest
 }
 
-func (r ApiPropertymappingsRacCreateRequest) RACPropertyMappingRequest(rACPropertyMappingRequest RACPropertyMappingRequest) ApiPropertymappingsRacCreateRequest {
+func (r ApiPropertymappingsProviderRacCreateRequest) RACPropertyMappingRequest(rACPropertyMappingRequest RACPropertyMappingRequest) ApiPropertymappingsProviderRacCreateRequest {
 	r.rACPropertyMappingRequest = &rACPropertyMappingRequest
 	return r
 }
 
-func (r ApiPropertymappingsRacCreateRequest) Execute() (*RACPropertyMapping, *http.Response, error) {
-	return r.ApiService.PropertymappingsRacCreateExecute(r)
+func (r ApiPropertymappingsProviderRacCreateRequest) Execute() (*RACPropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderRacCreateExecute(r)
 }
 
 /*
-PropertymappingsRacCreate Method for PropertymappingsRacCreate
+PropertymappingsProviderRacCreate Method for PropertymappingsProviderRacCreate
 
 RACPropertyMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPropertymappingsRacCreateRequest
+	@return ApiPropertymappingsProviderRacCreateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsRacCreate(ctx context.Context) ApiPropertymappingsRacCreateRequest {
-	return ApiPropertymappingsRacCreateRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderRacCreate(ctx context.Context) ApiPropertymappingsProviderRacCreateRequest {
+	return ApiPropertymappingsProviderRacCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -3687,7 +3687,7 @@ func (a *PropertymappingsApiService) PropertymappingsRacCreate(ctx context.Conte
 // Execute executes the request
 //
 //	@return RACPropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsRacCreateExecute(r ApiPropertymappingsRacCreateRequest) (*RACPropertyMapping, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderRacCreateExecute(r ApiPropertymappingsProviderRacCreateRequest) (*RACPropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -3695,12 +3695,12 @@ func (a *PropertymappingsApiService) PropertymappingsRacCreateExecute(r ApiPrope
 		localVarReturnValue *RACPropertyMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRacCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderRacCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/rac/"
+	localVarPath := localBasePath + "/propertymappings/provider/rac/"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3784,27 +3784,27 @@ func (a *PropertymappingsApiService) PropertymappingsRacCreateExecute(r ApiPrope
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsRacDestroyRequest struct {
+type ApiPropertymappingsProviderRacDestroyRequest struct {
 	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsRacDestroyRequest) Execute() (*http.Response, error) {
-	return r.ApiService.PropertymappingsRacDestroyExecute(r)
+func (r ApiPropertymappingsProviderRacDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PropertymappingsProviderRacDestroyExecute(r)
 }
 
 /*
-PropertymappingsRacDestroy Method for PropertymappingsRacDestroy
+PropertymappingsProviderRacDestroy Method for PropertymappingsProviderRacDestroy
 
 RACPropertyMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this RAC Property Mapping.
-	@return ApiPropertymappingsRacDestroyRequest
+	@param pmUuid A UUID string identifying this RAC Provider Property Mapping.
+	@return ApiPropertymappingsProviderRacDestroyRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsRacDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsRacDestroyRequest {
-	return ApiPropertymappingsRacDestroyRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderRacDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsProviderRacDestroyRequest {
+	return ApiPropertymappingsProviderRacDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -3812,19 +3812,19 @@ func (a *PropertymappingsApiService) PropertymappingsRacDestroy(ctx context.Cont
 }
 
 // Execute executes the request
-func (a *PropertymappingsApiService) PropertymappingsRacDestroyExecute(r ApiPropertymappingsRacDestroyRequest) (*http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderRacDestroyExecute(r ApiPropertymappingsProviderRacDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRacDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderRacDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/rac/{pm_uuid}/"
+	localVarPath := localBasePath + "/propertymappings/provider/rac/{pm_uuid}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3895,7 +3895,7 @@ func (a *PropertymappingsApiService) PropertymappingsRacDestroyExecute(r ApiProp
 	return localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsRacListRequest struct {
+type ApiPropertymappingsProviderRacListRequest struct {
 	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	managed    *[]string
@@ -3906,54 +3906,54 @@ type ApiPropertymappingsRacListRequest struct {
 	search     *string
 }
 
-func (r ApiPropertymappingsRacListRequest) Managed(managed []string) ApiPropertymappingsRacListRequest {
+func (r ApiPropertymappingsProviderRacListRequest) Managed(managed []string) ApiPropertymappingsProviderRacListRequest {
 	r.managed = &managed
 	return r
 }
 
-func (r ApiPropertymappingsRacListRequest) Name(name string) ApiPropertymappingsRacListRequest {
+func (r ApiPropertymappingsProviderRacListRequest) Name(name string) ApiPropertymappingsProviderRacListRequest {
 	r.name = &name
 	return r
 }
 
 // Which field to use when ordering the results.
-func (r ApiPropertymappingsRacListRequest) Ordering(ordering string) ApiPropertymappingsRacListRequest {
+func (r ApiPropertymappingsProviderRacListRequest) Ordering(ordering string) ApiPropertymappingsProviderRacListRequest {
 	r.ordering = &ordering
 	return r
 }
 
 // A page number within the paginated result set.
-func (r ApiPropertymappingsRacListRequest) Page(page int32) ApiPropertymappingsRacListRequest {
+func (r ApiPropertymappingsProviderRacListRequest) Page(page int32) ApiPropertymappingsProviderRacListRequest {
 	r.page = &page
 	return r
 }
 
 // Number of results to return per page.
-func (r ApiPropertymappingsRacListRequest) PageSize(pageSize int32) ApiPropertymappingsRacListRequest {
+func (r ApiPropertymappingsProviderRacListRequest) PageSize(pageSize int32) ApiPropertymappingsProviderRacListRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // A search term.
-func (r ApiPropertymappingsRacListRequest) Search(search string) ApiPropertymappingsRacListRequest {
+func (r ApiPropertymappingsProviderRacListRequest) Search(search string) ApiPropertymappingsProviderRacListRequest {
 	r.search = &search
 	return r
 }
 
-func (r ApiPropertymappingsRacListRequest) Execute() (*PaginatedRACPropertyMappingList, *http.Response, error) {
-	return r.ApiService.PropertymappingsRacListExecute(r)
+func (r ApiPropertymappingsProviderRacListRequest) Execute() (*PaginatedRACPropertyMappingList, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderRacListExecute(r)
 }
 
 /*
-PropertymappingsRacList Method for PropertymappingsRacList
+PropertymappingsProviderRacList Method for PropertymappingsProviderRacList
 
 RACPropertyMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPropertymappingsRacListRequest
+	@return ApiPropertymappingsProviderRacListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsRacList(ctx context.Context) ApiPropertymappingsRacListRequest {
-	return ApiPropertymappingsRacListRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderRacList(ctx context.Context) ApiPropertymappingsProviderRacListRequest {
+	return ApiPropertymappingsProviderRacListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -3962,7 +3962,7 @@ func (a *PropertymappingsApiService) PropertymappingsRacList(ctx context.Context
 // Execute executes the request
 //
 //	@return PaginatedRACPropertyMappingList
-func (a *PropertymappingsApiService) PropertymappingsRacListExecute(r ApiPropertymappingsRacListRequest) (*PaginatedRACPropertyMappingList, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderRacListExecute(r ApiPropertymappingsProviderRacListRequest) (*PaginatedRACPropertyMappingList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3970,12 +3970,12 @@ func (a *PropertymappingsApiService) PropertymappingsRacListExecute(r ApiPropert
 		localVarReturnValue *PaginatedRACPropertyMappingList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRacList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderRacList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/rac/"
+	localVarPath := localBasePath + "/propertymappings/provider/rac/"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4080,33 +4080,33 @@ func (a *PropertymappingsApiService) PropertymappingsRacListExecute(r ApiPropert
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsRacPartialUpdateRequest struct {
+type ApiPropertymappingsProviderRacPartialUpdateRequest struct {
 	ctx                              context.Context
 	ApiService                       *PropertymappingsApiService
 	pmUuid                           string
 	patchedRACPropertyMappingRequest *PatchedRACPropertyMappingRequest
 }
 
-func (r ApiPropertymappingsRacPartialUpdateRequest) PatchedRACPropertyMappingRequest(patchedRACPropertyMappingRequest PatchedRACPropertyMappingRequest) ApiPropertymappingsRacPartialUpdateRequest {
+func (r ApiPropertymappingsProviderRacPartialUpdateRequest) PatchedRACPropertyMappingRequest(patchedRACPropertyMappingRequest PatchedRACPropertyMappingRequest) ApiPropertymappingsProviderRacPartialUpdateRequest {
 	r.patchedRACPropertyMappingRequest = &patchedRACPropertyMappingRequest
 	return r
 }
 
-func (r ApiPropertymappingsRacPartialUpdateRequest) Execute() (*RACPropertyMapping, *http.Response, error) {
-	return r.ApiService.PropertymappingsRacPartialUpdateExecute(r)
+func (r ApiPropertymappingsProviderRacPartialUpdateRequest) Execute() (*RACPropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderRacPartialUpdateExecute(r)
 }
 
 /*
-PropertymappingsRacPartialUpdate Method for PropertymappingsRacPartialUpdate
+PropertymappingsProviderRacPartialUpdate Method for PropertymappingsProviderRacPartialUpdate
 
 RACPropertyMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this RAC Property Mapping.
-	@return ApiPropertymappingsRacPartialUpdateRequest
+	@param pmUuid A UUID string identifying this RAC Provider Property Mapping.
+	@return ApiPropertymappingsProviderRacPartialUpdateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsRacPartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsRacPartialUpdateRequest {
-	return ApiPropertymappingsRacPartialUpdateRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderRacPartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsProviderRacPartialUpdateRequest {
+	return ApiPropertymappingsProviderRacPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -4116,7 +4116,7 @@ func (a *PropertymappingsApiService) PropertymappingsRacPartialUpdate(ctx contex
 // Execute executes the request
 //
 //	@return RACPropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsRacPartialUpdateExecute(r ApiPropertymappingsRacPartialUpdateRequest) (*RACPropertyMapping, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderRacPartialUpdateExecute(r ApiPropertymappingsProviderRacPartialUpdateRequest) (*RACPropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -4124,12 +4124,12 @@ func (a *PropertymappingsApiService) PropertymappingsRacPartialUpdateExecute(r A
 		localVarReturnValue *RACPropertyMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRacPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderRacPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/rac/{pm_uuid}/"
+	localVarPath := localBasePath + "/propertymappings/provider/rac/{pm_uuid}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -4211,27 +4211,27 @@ func (a *PropertymappingsApiService) PropertymappingsRacPartialUpdateExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsRacRetrieveRequest struct {
+type ApiPropertymappingsProviderRacRetrieveRequest struct {
 	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsRacRetrieveRequest) Execute() (*RACPropertyMapping, *http.Response, error) {
-	return r.ApiService.PropertymappingsRacRetrieveExecute(r)
+func (r ApiPropertymappingsProviderRacRetrieveRequest) Execute() (*RACPropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderRacRetrieveExecute(r)
 }
 
 /*
-PropertymappingsRacRetrieve Method for PropertymappingsRacRetrieve
+PropertymappingsProviderRacRetrieve Method for PropertymappingsProviderRacRetrieve
 
 RACPropertyMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this RAC Property Mapping.
-	@return ApiPropertymappingsRacRetrieveRequest
+	@param pmUuid A UUID string identifying this RAC Provider Property Mapping.
+	@return ApiPropertymappingsProviderRacRetrieveRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsRacRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsRacRetrieveRequest {
-	return ApiPropertymappingsRacRetrieveRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderRacRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsProviderRacRetrieveRequest {
+	return ApiPropertymappingsProviderRacRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -4241,7 +4241,7 @@ func (a *PropertymappingsApiService) PropertymappingsRacRetrieve(ctx context.Con
 // Execute executes the request
 //
 //	@return RACPropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsRacRetrieveExecute(r ApiPropertymappingsRacRetrieveRequest) (*RACPropertyMapping, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderRacRetrieveExecute(r ApiPropertymappingsProviderRacRetrieveRequest) (*RACPropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4249,12 +4249,12 @@ func (a *PropertymappingsApiService) PropertymappingsRacRetrieveExecute(r ApiPro
 		localVarReturnValue *RACPropertyMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRacRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderRacRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/rac/{pm_uuid}/"
+	localVarPath := localBasePath + "/propertymappings/provider/rac/{pm_uuid}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -4334,33 +4334,33 @@ func (a *PropertymappingsApiService) PropertymappingsRacRetrieveExecute(r ApiPro
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsRacUpdateRequest struct {
+type ApiPropertymappingsProviderRacUpdateRequest struct {
 	ctx                       context.Context
 	ApiService                *PropertymappingsApiService
 	pmUuid                    string
 	rACPropertyMappingRequest *RACPropertyMappingRequest
 }
 
-func (r ApiPropertymappingsRacUpdateRequest) RACPropertyMappingRequest(rACPropertyMappingRequest RACPropertyMappingRequest) ApiPropertymappingsRacUpdateRequest {
+func (r ApiPropertymappingsProviderRacUpdateRequest) RACPropertyMappingRequest(rACPropertyMappingRequest RACPropertyMappingRequest) ApiPropertymappingsProviderRacUpdateRequest {
 	r.rACPropertyMappingRequest = &rACPropertyMappingRequest
 	return r
 }
 
-func (r ApiPropertymappingsRacUpdateRequest) Execute() (*RACPropertyMapping, *http.Response, error) {
-	return r.ApiService.PropertymappingsRacUpdateExecute(r)
+func (r ApiPropertymappingsProviderRacUpdateRequest) Execute() (*RACPropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderRacUpdateExecute(r)
 }
 
 /*
-PropertymappingsRacUpdate Method for PropertymappingsRacUpdate
+PropertymappingsProviderRacUpdate Method for PropertymappingsProviderRacUpdate
 
 RACPropertyMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this RAC Property Mapping.
-	@return ApiPropertymappingsRacUpdateRequest
+	@param pmUuid A UUID string identifying this RAC Provider Property Mapping.
+	@return ApiPropertymappingsProviderRacUpdateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsRacUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsRacUpdateRequest {
-	return ApiPropertymappingsRacUpdateRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderRacUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsProviderRacUpdateRequest {
+	return ApiPropertymappingsProviderRacUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -4370,7 +4370,7 @@ func (a *PropertymappingsApiService) PropertymappingsRacUpdate(ctx context.Conte
 // Execute executes the request
 //
 //	@return RACPropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsRacUpdateExecute(r ApiPropertymappingsRacUpdateRequest) (*RACPropertyMapping, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderRacUpdateExecute(r ApiPropertymappingsProviderRacUpdateRequest) (*RACPropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -4378,12 +4378,12 @@ func (a *PropertymappingsApiService) PropertymappingsRacUpdateExecute(r ApiPrope
 		localVarReturnValue *RACPropertyMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRacUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderRacUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/rac/{pm_uuid}/"
+	localVarPath := localBasePath + "/propertymappings/provider/rac/{pm_uuid}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -4468,27 +4468,27 @@ func (a *PropertymappingsApiService) PropertymappingsRacUpdateExecute(r ApiPrope
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsRacUsedByListRequest struct {
+type ApiPropertymappingsProviderRacUsedByListRequest struct {
 	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsRacUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
-	return r.ApiService.PropertymappingsRacUsedByListExecute(r)
+func (r ApiPropertymappingsProviderRacUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderRacUsedByListExecute(r)
 }
 
 /*
-PropertymappingsRacUsedByList Method for PropertymappingsRacUsedByList
+PropertymappingsProviderRacUsedByList Method for PropertymappingsProviderRacUsedByList
 
 Get a list of all objects that use this object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this RAC Property Mapping.
-	@return ApiPropertymappingsRacUsedByListRequest
+	@param pmUuid A UUID string identifying this RAC Provider Property Mapping.
+	@return ApiPropertymappingsProviderRacUsedByListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsRacUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsRacUsedByListRequest {
-	return ApiPropertymappingsRacUsedByListRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderRacUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsProviderRacUsedByListRequest {
+	return ApiPropertymappingsProviderRacUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -4498,7 +4498,7 @@ func (a *PropertymappingsApiService) PropertymappingsRacUsedByList(ctx context.C
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *PropertymappingsApiService) PropertymappingsRacUsedByListExecute(r ApiPropertymappingsRacUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderRacUsedByListExecute(r ApiPropertymappingsProviderRacUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4506,12 +4506,12 @@ func (a *PropertymappingsApiService) PropertymappingsRacUsedByListExecute(r ApiP
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRacUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderRacUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/rac/{pm_uuid}/used_by/"
+	localVarPath := localBasePath + "/propertymappings/provider/rac/{pm_uuid}/used_by/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -4591,31 +4591,31 @@ func (a *PropertymappingsApiService) PropertymappingsRacUsedByListExecute(r ApiP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsRadiusCreateRequest struct {
+type ApiPropertymappingsProviderRadiusCreateRequest struct {
 	ctx                                  context.Context
 	ApiService                           *PropertymappingsApiService
 	radiusProviderPropertyMappingRequest *RadiusProviderPropertyMappingRequest
 }
 
-func (r ApiPropertymappingsRadiusCreateRequest) RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest RadiusProviderPropertyMappingRequest) ApiPropertymappingsRadiusCreateRequest {
+func (r ApiPropertymappingsProviderRadiusCreateRequest) RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest RadiusProviderPropertyMappingRequest) ApiPropertymappingsProviderRadiusCreateRequest {
 	r.radiusProviderPropertyMappingRequest = &radiusProviderPropertyMappingRequest
 	return r
 }
 
-func (r ApiPropertymappingsRadiusCreateRequest) Execute() (*RadiusProviderPropertyMapping, *http.Response, error) {
-	return r.ApiService.PropertymappingsRadiusCreateExecute(r)
+func (r ApiPropertymappingsProviderRadiusCreateRequest) Execute() (*RadiusProviderPropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderRadiusCreateExecute(r)
 }
 
 /*
-PropertymappingsRadiusCreate Method for PropertymappingsRadiusCreate
+PropertymappingsProviderRadiusCreate Method for PropertymappingsProviderRadiusCreate
 
 RadiusProviderPropertyMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPropertymappingsRadiusCreateRequest
+	@return ApiPropertymappingsProviderRadiusCreateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsRadiusCreate(ctx context.Context) ApiPropertymappingsRadiusCreateRequest {
-	return ApiPropertymappingsRadiusCreateRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderRadiusCreate(ctx context.Context) ApiPropertymappingsProviderRadiusCreateRequest {
+	return ApiPropertymappingsProviderRadiusCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -4624,7 +4624,7 @@ func (a *PropertymappingsApiService) PropertymappingsRadiusCreate(ctx context.Co
 // Execute executes the request
 //
 //	@return RadiusProviderPropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsRadiusCreateExecute(r ApiPropertymappingsRadiusCreateRequest) (*RadiusProviderPropertyMapping, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderRadiusCreateExecute(r ApiPropertymappingsProviderRadiusCreateRequest) (*RadiusProviderPropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -4632,12 +4632,12 @@ func (a *PropertymappingsApiService) PropertymappingsRadiusCreateExecute(r ApiPr
 		localVarReturnValue *RadiusProviderPropertyMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRadiusCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderRadiusCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/radius/"
+	localVarPath := localBasePath + "/propertymappings/provider/radius/"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4721,27 +4721,27 @@ func (a *PropertymappingsApiService) PropertymappingsRadiusCreateExecute(r ApiPr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsRadiusDestroyRequest struct {
+type ApiPropertymappingsProviderRadiusDestroyRequest struct {
 	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsRadiusDestroyRequest) Execute() (*http.Response, error) {
-	return r.ApiService.PropertymappingsRadiusDestroyExecute(r)
+func (r ApiPropertymappingsProviderRadiusDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PropertymappingsProviderRadiusDestroyExecute(r)
 }
 
 /*
-PropertymappingsRadiusDestroy Method for PropertymappingsRadiusDestroy
+PropertymappingsProviderRadiusDestroy Method for PropertymappingsProviderRadiusDestroy
 
 RadiusProviderPropertyMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this Radius Property Mapping.
-	@return ApiPropertymappingsRadiusDestroyRequest
+	@param pmUuid A UUID string identifying this Radius Provider Property Mapping.
+	@return ApiPropertymappingsProviderRadiusDestroyRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsRadiusDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsRadiusDestroyRequest {
-	return ApiPropertymappingsRadiusDestroyRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderRadiusDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsProviderRadiusDestroyRequest {
+	return ApiPropertymappingsProviderRadiusDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -4749,19 +4749,19 @@ func (a *PropertymappingsApiService) PropertymappingsRadiusDestroy(ctx context.C
 }
 
 // Execute executes the request
-func (a *PropertymappingsApiService) PropertymappingsRadiusDestroyExecute(r ApiPropertymappingsRadiusDestroyRequest) (*http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderRadiusDestroyExecute(r ApiPropertymappingsProviderRadiusDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRadiusDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderRadiusDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/radius/{pm_uuid}/"
+	localVarPath := localBasePath + "/propertymappings/provider/radius/{pm_uuid}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -4832,7 +4832,7 @@ func (a *PropertymappingsApiService) PropertymappingsRadiusDestroyExecute(r ApiP
 	return localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsRadiusListRequest struct {
+type ApiPropertymappingsProviderRadiusListRequest struct {
 	ctx           context.Context
 	ApiService    *PropertymappingsApiService
 	managed       *[]string
@@ -4844,59 +4844,59 @@ type ApiPropertymappingsRadiusListRequest struct {
 	search        *string
 }
 
-func (r ApiPropertymappingsRadiusListRequest) Managed(managed []string) ApiPropertymappingsRadiusListRequest {
+func (r ApiPropertymappingsProviderRadiusListRequest) Managed(managed []string) ApiPropertymappingsProviderRadiusListRequest {
 	r.managed = &managed
 	return r
 }
 
-func (r ApiPropertymappingsRadiusListRequest) ManagedIsnull(managedIsnull bool) ApiPropertymappingsRadiusListRequest {
+func (r ApiPropertymappingsProviderRadiusListRequest) ManagedIsnull(managedIsnull bool) ApiPropertymappingsProviderRadiusListRequest {
 	r.managedIsnull = &managedIsnull
 	return r
 }
 
-func (r ApiPropertymappingsRadiusListRequest) Name(name string) ApiPropertymappingsRadiusListRequest {
+func (r ApiPropertymappingsProviderRadiusListRequest) Name(name string) ApiPropertymappingsProviderRadiusListRequest {
 	r.name = &name
 	return r
 }
 
 // Which field to use when ordering the results.
-func (r ApiPropertymappingsRadiusListRequest) Ordering(ordering string) ApiPropertymappingsRadiusListRequest {
+func (r ApiPropertymappingsProviderRadiusListRequest) Ordering(ordering string) ApiPropertymappingsProviderRadiusListRequest {
 	r.ordering = &ordering
 	return r
 }
 
 // A page number within the paginated result set.
-func (r ApiPropertymappingsRadiusListRequest) Page(page int32) ApiPropertymappingsRadiusListRequest {
+func (r ApiPropertymappingsProviderRadiusListRequest) Page(page int32) ApiPropertymappingsProviderRadiusListRequest {
 	r.page = &page
 	return r
 }
 
 // Number of results to return per page.
-func (r ApiPropertymappingsRadiusListRequest) PageSize(pageSize int32) ApiPropertymappingsRadiusListRequest {
+func (r ApiPropertymappingsProviderRadiusListRequest) PageSize(pageSize int32) ApiPropertymappingsProviderRadiusListRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // A search term.
-func (r ApiPropertymappingsRadiusListRequest) Search(search string) ApiPropertymappingsRadiusListRequest {
+func (r ApiPropertymappingsProviderRadiusListRequest) Search(search string) ApiPropertymappingsProviderRadiusListRequest {
 	r.search = &search
 	return r
 }
 
-func (r ApiPropertymappingsRadiusListRequest) Execute() (*PaginatedRadiusProviderPropertyMappingList, *http.Response, error) {
-	return r.ApiService.PropertymappingsRadiusListExecute(r)
+func (r ApiPropertymappingsProviderRadiusListRequest) Execute() (*PaginatedRadiusProviderPropertyMappingList, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderRadiusListExecute(r)
 }
 
 /*
-PropertymappingsRadiusList Method for PropertymappingsRadiusList
+PropertymappingsProviderRadiusList Method for PropertymappingsProviderRadiusList
 
 RadiusProviderPropertyMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPropertymappingsRadiusListRequest
+	@return ApiPropertymappingsProviderRadiusListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsRadiusList(ctx context.Context) ApiPropertymappingsRadiusListRequest {
-	return ApiPropertymappingsRadiusListRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderRadiusList(ctx context.Context) ApiPropertymappingsProviderRadiusListRequest {
+	return ApiPropertymappingsProviderRadiusListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -4905,7 +4905,7 @@ func (a *PropertymappingsApiService) PropertymappingsRadiusList(ctx context.Cont
 // Execute executes the request
 //
 //	@return PaginatedRadiusProviderPropertyMappingList
-func (a *PropertymappingsApiService) PropertymappingsRadiusListExecute(r ApiPropertymappingsRadiusListRequest) (*PaginatedRadiusProviderPropertyMappingList, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderRadiusListExecute(r ApiPropertymappingsProviderRadiusListRequest) (*PaginatedRadiusProviderPropertyMappingList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4913,12 +4913,12 @@ func (a *PropertymappingsApiService) PropertymappingsRadiusListExecute(r ApiProp
 		localVarReturnValue *PaginatedRadiusProviderPropertyMappingList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRadiusList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderRadiusList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/radius/"
+	localVarPath := localBasePath + "/propertymappings/provider/radius/"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5026,33 +5026,33 @@ func (a *PropertymappingsApiService) PropertymappingsRadiusListExecute(r ApiProp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsRadiusPartialUpdateRequest struct {
+type ApiPropertymappingsProviderRadiusPartialUpdateRequest struct {
 	ctx                                         context.Context
 	ApiService                                  *PropertymappingsApiService
 	pmUuid                                      string
 	patchedRadiusProviderPropertyMappingRequest *PatchedRadiusProviderPropertyMappingRequest
 }
 
-func (r ApiPropertymappingsRadiusPartialUpdateRequest) PatchedRadiusProviderPropertyMappingRequest(patchedRadiusProviderPropertyMappingRequest PatchedRadiusProviderPropertyMappingRequest) ApiPropertymappingsRadiusPartialUpdateRequest {
+func (r ApiPropertymappingsProviderRadiusPartialUpdateRequest) PatchedRadiusProviderPropertyMappingRequest(patchedRadiusProviderPropertyMappingRequest PatchedRadiusProviderPropertyMappingRequest) ApiPropertymappingsProviderRadiusPartialUpdateRequest {
 	r.patchedRadiusProviderPropertyMappingRequest = &patchedRadiusProviderPropertyMappingRequest
 	return r
 }
 
-func (r ApiPropertymappingsRadiusPartialUpdateRequest) Execute() (*RadiusProviderPropertyMapping, *http.Response, error) {
-	return r.ApiService.PropertymappingsRadiusPartialUpdateExecute(r)
+func (r ApiPropertymappingsProviderRadiusPartialUpdateRequest) Execute() (*RadiusProviderPropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderRadiusPartialUpdateExecute(r)
 }
 
 /*
-PropertymappingsRadiusPartialUpdate Method for PropertymappingsRadiusPartialUpdate
+PropertymappingsProviderRadiusPartialUpdate Method for PropertymappingsProviderRadiusPartialUpdate
 
 RadiusProviderPropertyMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this Radius Property Mapping.
-	@return ApiPropertymappingsRadiusPartialUpdateRequest
+	@param pmUuid A UUID string identifying this Radius Provider Property Mapping.
+	@return ApiPropertymappingsProviderRadiusPartialUpdateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsRadiusPartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsRadiusPartialUpdateRequest {
-	return ApiPropertymappingsRadiusPartialUpdateRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderRadiusPartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsProviderRadiusPartialUpdateRequest {
+	return ApiPropertymappingsProviderRadiusPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -5062,7 +5062,7 @@ func (a *PropertymappingsApiService) PropertymappingsRadiusPartialUpdate(ctx con
 // Execute executes the request
 //
 //	@return RadiusProviderPropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsRadiusPartialUpdateExecute(r ApiPropertymappingsRadiusPartialUpdateRequest) (*RadiusProviderPropertyMapping, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderRadiusPartialUpdateExecute(r ApiPropertymappingsProviderRadiusPartialUpdateRequest) (*RadiusProviderPropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -5070,12 +5070,12 @@ func (a *PropertymappingsApiService) PropertymappingsRadiusPartialUpdateExecute(
 		localVarReturnValue *RadiusProviderPropertyMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRadiusPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderRadiusPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/radius/{pm_uuid}/"
+	localVarPath := localBasePath + "/propertymappings/provider/radius/{pm_uuid}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -5157,27 +5157,27 @@ func (a *PropertymappingsApiService) PropertymappingsRadiusPartialUpdateExecute(
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsRadiusRetrieveRequest struct {
+type ApiPropertymappingsProviderRadiusRetrieveRequest struct {
 	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsRadiusRetrieveRequest) Execute() (*RadiusProviderPropertyMapping, *http.Response, error) {
-	return r.ApiService.PropertymappingsRadiusRetrieveExecute(r)
+func (r ApiPropertymappingsProviderRadiusRetrieveRequest) Execute() (*RadiusProviderPropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderRadiusRetrieveExecute(r)
 }
 
 /*
-PropertymappingsRadiusRetrieve Method for PropertymappingsRadiusRetrieve
+PropertymappingsProviderRadiusRetrieve Method for PropertymappingsProviderRadiusRetrieve
 
 RadiusProviderPropertyMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this Radius Property Mapping.
-	@return ApiPropertymappingsRadiusRetrieveRequest
+	@param pmUuid A UUID string identifying this Radius Provider Property Mapping.
+	@return ApiPropertymappingsProviderRadiusRetrieveRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsRadiusRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsRadiusRetrieveRequest {
-	return ApiPropertymappingsRadiusRetrieveRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderRadiusRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsProviderRadiusRetrieveRequest {
+	return ApiPropertymappingsProviderRadiusRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -5187,7 +5187,7 @@ func (a *PropertymappingsApiService) PropertymappingsRadiusRetrieve(ctx context.
 // Execute executes the request
 //
 //	@return RadiusProviderPropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsRadiusRetrieveExecute(r ApiPropertymappingsRadiusRetrieveRequest) (*RadiusProviderPropertyMapping, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderRadiusRetrieveExecute(r ApiPropertymappingsProviderRadiusRetrieveRequest) (*RadiusProviderPropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -5195,12 +5195,12 @@ func (a *PropertymappingsApiService) PropertymappingsRadiusRetrieveExecute(r Api
 		localVarReturnValue *RadiusProviderPropertyMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRadiusRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderRadiusRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/radius/{pm_uuid}/"
+	localVarPath := localBasePath + "/propertymappings/provider/radius/{pm_uuid}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -5280,33 +5280,33 @@ func (a *PropertymappingsApiService) PropertymappingsRadiusRetrieveExecute(r Api
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsRadiusUpdateRequest struct {
+type ApiPropertymappingsProviderRadiusUpdateRequest struct {
 	ctx                                  context.Context
 	ApiService                           *PropertymappingsApiService
 	pmUuid                               string
 	radiusProviderPropertyMappingRequest *RadiusProviderPropertyMappingRequest
 }
 
-func (r ApiPropertymappingsRadiusUpdateRequest) RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest RadiusProviderPropertyMappingRequest) ApiPropertymappingsRadiusUpdateRequest {
+func (r ApiPropertymappingsProviderRadiusUpdateRequest) RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest RadiusProviderPropertyMappingRequest) ApiPropertymappingsProviderRadiusUpdateRequest {
 	r.radiusProviderPropertyMappingRequest = &radiusProviderPropertyMappingRequest
 	return r
 }
 
-func (r ApiPropertymappingsRadiusUpdateRequest) Execute() (*RadiusProviderPropertyMapping, *http.Response, error) {
-	return r.ApiService.PropertymappingsRadiusUpdateExecute(r)
+func (r ApiPropertymappingsProviderRadiusUpdateRequest) Execute() (*RadiusProviderPropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderRadiusUpdateExecute(r)
 }
 
 /*
-PropertymappingsRadiusUpdate Method for PropertymappingsRadiusUpdate
+PropertymappingsProviderRadiusUpdate Method for PropertymappingsProviderRadiusUpdate
 
 RadiusProviderPropertyMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this Radius Property Mapping.
-	@return ApiPropertymappingsRadiusUpdateRequest
+	@param pmUuid A UUID string identifying this Radius Provider Property Mapping.
+	@return ApiPropertymappingsProviderRadiusUpdateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsRadiusUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsRadiusUpdateRequest {
-	return ApiPropertymappingsRadiusUpdateRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderRadiusUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsProviderRadiusUpdateRequest {
+	return ApiPropertymappingsProviderRadiusUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -5316,7 +5316,7 @@ func (a *PropertymappingsApiService) PropertymappingsRadiusUpdate(ctx context.Co
 // Execute executes the request
 //
 //	@return RadiusProviderPropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsRadiusUpdateExecute(r ApiPropertymappingsRadiusUpdateRequest) (*RadiusProviderPropertyMapping, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderRadiusUpdateExecute(r ApiPropertymappingsProviderRadiusUpdateRequest) (*RadiusProviderPropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -5324,12 +5324,12 @@ func (a *PropertymappingsApiService) PropertymappingsRadiusUpdateExecute(r ApiPr
 		localVarReturnValue *RadiusProviderPropertyMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRadiusUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderRadiusUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/radius/{pm_uuid}/"
+	localVarPath := localBasePath + "/propertymappings/provider/radius/{pm_uuid}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -5414,27 +5414,27 @@ func (a *PropertymappingsApiService) PropertymappingsRadiusUpdateExecute(r ApiPr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsRadiusUsedByListRequest struct {
+type ApiPropertymappingsProviderRadiusUsedByListRequest struct {
 	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsRadiusUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
-	return r.ApiService.PropertymappingsRadiusUsedByListExecute(r)
+func (r ApiPropertymappingsProviderRadiusUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderRadiusUsedByListExecute(r)
 }
 
 /*
-PropertymappingsRadiusUsedByList Method for PropertymappingsRadiusUsedByList
+PropertymappingsProviderRadiusUsedByList Method for PropertymappingsProviderRadiusUsedByList
 
 Get a list of all objects that use this object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this Radius Property Mapping.
-	@return ApiPropertymappingsRadiusUsedByListRequest
+	@param pmUuid A UUID string identifying this Radius Provider Property Mapping.
+	@return ApiPropertymappingsProviderRadiusUsedByListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsRadiusUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsRadiusUsedByListRequest {
-	return ApiPropertymappingsRadiusUsedByListRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderRadiusUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsProviderRadiusUsedByListRequest {
+	return ApiPropertymappingsProviderRadiusUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -5444,7 +5444,7 @@ func (a *PropertymappingsApiService) PropertymappingsRadiusUsedByList(ctx contex
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *PropertymappingsApiService) PropertymappingsRadiusUsedByListExecute(r ApiPropertymappingsRadiusUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderRadiusUsedByListExecute(r ApiPropertymappingsProviderRadiusUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -5452,12 +5452,12 @@ func (a *PropertymappingsApiService) PropertymappingsRadiusUsedByListExecute(r A
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsRadiusUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderRadiusUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/radius/{pm_uuid}/used_by/"
+	localVarPath := localBasePath + "/propertymappings/provider/radius/{pm_uuid}/used_by/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -5537,31 +5537,31 @@ func (a *PropertymappingsApiService) PropertymappingsRadiusUsedByListExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsSamlCreateRequest struct {
+type ApiPropertymappingsProviderSamlCreateRequest struct {
 	ctx                        context.Context
 	ApiService                 *PropertymappingsApiService
 	sAMLPropertyMappingRequest *SAMLPropertyMappingRequest
 }
 
-func (r ApiPropertymappingsSamlCreateRequest) SAMLPropertyMappingRequest(sAMLPropertyMappingRequest SAMLPropertyMappingRequest) ApiPropertymappingsSamlCreateRequest {
+func (r ApiPropertymappingsProviderSamlCreateRequest) SAMLPropertyMappingRequest(sAMLPropertyMappingRequest SAMLPropertyMappingRequest) ApiPropertymappingsProviderSamlCreateRequest {
 	r.sAMLPropertyMappingRequest = &sAMLPropertyMappingRequest
 	return r
 }
 
-func (r ApiPropertymappingsSamlCreateRequest) Execute() (*SAMLPropertyMapping, *http.Response, error) {
-	return r.ApiService.PropertymappingsSamlCreateExecute(r)
+func (r ApiPropertymappingsProviderSamlCreateRequest) Execute() (*SAMLPropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderSamlCreateExecute(r)
 }
 
 /*
-PropertymappingsSamlCreate Method for PropertymappingsSamlCreate
+PropertymappingsProviderSamlCreate Method for PropertymappingsProviderSamlCreate
 
 SAMLPropertyMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPropertymappingsSamlCreateRequest
+	@return ApiPropertymappingsProviderSamlCreateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsSamlCreate(ctx context.Context) ApiPropertymappingsSamlCreateRequest {
-	return ApiPropertymappingsSamlCreateRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderSamlCreate(ctx context.Context) ApiPropertymappingsProviderSamlCreateRequest {
+	return ApiPropertymappingsProviderSamlCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -5570,7 +5570,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlCreate(ctx context.Cont
 // Execute executes the request
 //
 //	@return SAMLPropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsSamlCreateExecute(r ApiPropertymappingsSamlCreateRequest) (*SAMLPropertyMapping, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderSamlCreateExecute(r ApiPropertymappingsProviderSamlCreateRequest) (*SAMLPropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -5578,12 +5578,12 @@ func (a *PropertymappingsApiService) PropertymappingsSamlCreateExecute(r ApiProp
 		localVarReturnValue *SAMLPropertyMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSamlCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderSamlCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/saml/"
+	localVarPath := localBasePath + "/propertymappings/provider/saml/"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5667,27 +5667,27 @@ func (a *PropertymappingsApiService) PropertymappingsSamlCreateExecute(r ApiProp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsSamlDestroyRequest struct {
+type ApiPropertymappingsProviderSamlDestroyRequest struct {
 	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsSamlDestroyRequest) Execute() (*http.Response, error) {
-	return r.ApiService.PropertymappingsSamlDestroyExecute(r)
+func (r ApiPropertymappingsProviderSamlDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PropertymappingsProviderSamlDestroyExecute(r)
 }
 
 /*
-PropertymappingsSamlDestroy Method for PropertymappingsSamlDestroy
+PropertymappingsProviderSamlDestroy Method for PropertymappingsProviderSamlDestroy
 
 SAMLPropertyMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this SAML Property Mapping.
-	@return ApiPropertymappingsSamlDestroyRequest
+	@param pmUuid A UUID string identifying this SAML Provider Property Mapping.
+	@return ApiPropertymappingsProviderSamlDestroyRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsSamlDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsSamlDestroyRequest {
-	return ApiPropertymappingsSamlDestroyRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderSamlDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsProviderSamlDestroyRequest {
+	return ApiPropertymappingsProviderSamlDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -5695,19 +5695,19 @@ func (a *PropertymappingsApiService) PropertymappingsSamlDestroy(ctx context.Con
 }
 
 // Execute executes the request
-func (a *PropertymappingsApiService) PropertymappingsSamlDestroyExecute(r ApiPropertymappingsSamlDestroyRequest) (*http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderSamlDestroyExecute(r ApiPropertymappingsProviderSamlDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSamlDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderSamlDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/saml/{pm_uuid}/"
+	localVarPath := localBasePath + "/propertymappings/provider/saml/{pm_uuid}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -5778,7 +5778,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlDestroyExecute(r ApiPro
 	return localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsSamlListRequest struct {
+type ApiPropertymappingsProviderSamlListRequest struct {
 	ctx           context.Context
 	ApiService    *PropertymappingsApiService
 	friendlyName  *string
@@ -5792,69 +5792,69 @@ type ApiPropertymappingsSamlListRequest struct {
 	search        *string
 }
 
-func (r ApiPropertymappingsSamlListRequest) FriendlyName(friendlyName string) ApiPropertymappingsSamlListRequest {
+func (r ApiPropertymappingsProviderSamlListRequest) FriendlyName(friendlyName string) ApiPropertymappingsProviderSamlListRequest {
 	r.friendlyName = &friendlyName
 	return r
 }
 
-func (r ApiPropertymappingsSamlListRequest) Managed(managed []string) ApiPropertymappingsSamlListRequest {
+func (r ApiPropertymappingsProviderSamlListRequest) Managed(managed []string) ApiPropertymappingsProviderSamlListRequest {
 	r.managed = &managed
 	return r
 }
 
-func (r ApiPropertymappingsSamlListRequest) ManagedIsnull(managedIsnull bool) ApiPropertymappingsSamlListRequest {
+func (r ApiPropertymappingsProviderSamlListRequest) ManagedIsnull(managedIsnull bool) ApiPropertymappingsProviderSamlListRequest {
 	r.managedIsnull = &managedIsnull
 	return r
 }
 
-func (r ApiPropertymappingsSamlListRequest) Name(name string) ApiPropertymappingsSamlListRequest {
+func (r ApiPropertymappingsProviderSamlListRequest) Name(name string) ApiPropertymappingsProviderSamlListRequest {
 	r.name = &name
 	return r
 }
 
 // Which field to use when ordering the results.
-func (r ApiPropertymappingsSamlListRequest) Ordering(ordering string) ApiPropertymappingsSamlListRequest {
+func (r ApiPropertymappingsProviderSamlListRequest) Ordering(ordering string) ApiPropertymappingsProviderSamlListRequest {
 	r.ordering = &ordering
 	return r
 }
 
 // A page number within the paginated result set.
-func (r ApiPropertymappingsSamlListRequest) Page(page int32) ApiPropertymappingsSamlListRequest {
+func (r ApiPropertymappingsProviderSamlListRequest) Page(page int32) ApiPropertymappingsProviderSamlListRequest {
 	r.page = &page
 	return r
 }
 
 // Number of results to return per page.
-func (r ApiPropertymappingsSamlListRequest) PageSize(pageSize int32) ApiPropertymappingsSamlListRequest {
+func (r ApiPropertymappingsProviderSamlListRequest) PageSize(pageSize int32) ApiPropertymappingsProviderSamlListRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
-func (r ApiPropertymappingsSamlListRequest) SamlName(samlName string) ApiPropertymappingsSamlListRequest {
+func (r ApiPropertymappingsProviderSamlListRequest) SamlName(samlName string) ApiPropertymappingsProviderSamlListRequest {
 	r.samlName = &samlName
 	return r
 }
 
 // A search term.
-func (r ApiPropertymappingsSamlListRequest) Search(search string) ApiPropertymappingsSamlListRequest {
+func (r ApiPropertymappingsProviderSamlListRequest) Search(search string) ApiPropertymappingsProviderSamlListRequest {
 	r.search = &search
 	return r
 }
 
-func (r ApiPropertymappingsSamlListRequest) Execute() (*PaginatedSAMLPropertyMappingList, *http.Response, error) {
-	return r.ApiService.PropertymappingsSamlListExecute(r)
+func (r ApiPropertymappingsProviderSamlListRequest) Execute() (*PaginatedSAMLPropertyMappingList, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderSamlListExecute(r)
 }
 
 /*
-PropertymappingsSamlList Method for PropertymappingsSamlList
+PropertymappingsProviderSamlList Method for PropertymappingsProviderSamlList
 
 SAMLPropertyMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPropertymappingsSamlListRequest
+	@return ApiPropertymappingsProviderSamlListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsSamlList(ctx context.Context) ApiPropertymappingsSamlListRequest {
-	return ApiPropertymappingsSamlListRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderSamlList(ctx context.Context) ApiPropertymappingsProviderSamlListRequest {
+	return ApiPropertymappingsProviderSamlListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -5863,7 +5863,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlList(ctx context.Contex
 // Execute executes the request
 //
 //	@return PaginatedSAMLPropertyMappingList
-func (a *PropertymappingsApiService) PropertymappingsSamlListExecute(r ApiPropertymappingsSamlListRequest) (*PaginatedSAMLPropertyMappingList, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderSamlListExecute(r ApiPropertymappingsProviderSamlListRequest) (*PaginatedSAMLPropertyMappingList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -5871,12 +5871,12 @@ func (a *PropertymappingsApiService) PropertymappingsSamlListExecute(r ApiProper
 		localVarReturnValue *PaginatedSAMLPropertyMappingList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSamlList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderSamlList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/saml/"
+	localVarPath := localBasePath + "/propertymappings/provider/saml/"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5990,33 +5990,33 @@ func (a *PropertymappingsApiService) PropertymappingsSamlListExecute(r ApiProper
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsSamlPartialUpdateRequest struct {
+type ApiPropertymappingsProviderSamlPartialUpdateRequest struct {
 	ctx                               context.Context
 	ApiService                        *PropertymappingsApiService
 	pmUuid                            string
 	patchedSAMLPropertyMappingRequest *PatchedSAMLPropertyMappingRequest
 }
 
-func (r ApiPropertymappingsSamlPartialUpdateRequest) PatchedSAMLPropertyMappingRequest(patchedSAMLPropertyMappingRequest PatchedSAMLPropertyMappingRequest) ApiPropertymappingsSamlPartialUpdateRequest {
+func (r ApiPropertymappingsProviderSamlPartialUpdateRequest) PatchedSAMLPropertyMappingRequest(patchedSAMLPropertyMappingRequest PatchedSAMLPropertyMappingRequest) ApiPropertymappingsProviderSamlPartialUpdateRequest {
 	r.patchedSAMLPropertyMappingRequest = &patchedSAMLPropertyMappingRequest
 	return r
 }
 
-func (r ApiPropertymappingsSamlPartialUpdateRequest) Execute() (*SAMLPropertyMapping, *http.Response, error) {
-	return r.ApiService.PropertymappingsSamlPartialUpdateExecute(r)
+func (r ApiPropertymappingsProviderSamlPartialUpdateRequest) Execute() (*SAMLPropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderSamlPartialUpdateExecute(r)
 }
 
 /*
-PropertymappingsSamlPartialUpdate Method for PropertymappingsSamlPartialUpdate
+PropertymappingsProviderSamlPartialUpdate Method for PropertymappingsProviderSamlPartialUpdate
 
 SAMLPropertyMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this SAML Property Mapping.
-	@return ApiPropertymappingsSamlPartialUpdateRequest
+	@param pmUuid A UUID string identifying this SAML Provider Property Mapping.
+	@return ApiPropertymappingsProviderSamlPartialUpdateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsSamlPartialUpdateRequest {
-	return ApiPropertymappingsSamlPartialUpdateRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderSamlPartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsProviderSamlPartialUpdateRequest {
+	return ApiPropertymappingsProviderSamlPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -6026,7 +6026,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdate(ctx conte
 // Execute executes the request
 //
 //	@return SAMLPropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdateExecute(r ApiPropertymappingsSamlPartialUpdateRequest) (*SAMLPropertyMapping, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderSamlPartialUpdateExecute(r ApiPropertymappingsProviderSamlPartialUpdateRequest) (*SAMLPropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -6034,12 +6034,12 @@ func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdateExecute(r 
 		localVarReturnValue *SAMLPropertyMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSamlPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderSamlPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/saml/{pm_uuid}/"
+	localVarPath := localBasePath + "/propertymappings/provider/saml/{pm_uuid}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -6121,27 +6121,27 @@ func (a *PropertymappingsApiService) PropertymappingsSamlPartialUpdateExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsSamlRetrieveRequest struct {
+type ApiPropertymappingsProviderSamlRetrieveRequest struct {
 	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsSamlRetrieveRequest) Execute() (*SAMLPropertyMapping, *http.Response, error) {
-	return r.ApiService.PropertymappingsSamlRetrieveExecute(r)
+func (r ApiPropertymappingsProviderSamlRetrieveRequest) Execute() (*SAMLPropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderSamlRetrieveExecute(r)
 }
 
 /*
-PropertymappingsSamlRetrieve Method for PropertymappingsSamlRetrieve
+PropertymappingsProviderSamlRetrieve Method for PropertymappingsProviderSamlRetrieve
 
 SAMLPropertyMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this SAML Property Mapping.
-	@return ApiPropertymappingsSamlRetrieveRequest
+	@param pmUuid A UUID string identifying this SAML Provider Property Mapping.
+	@return ApiPropertymappingsProviderSamlRetrieveRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsSamlRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsSamlRetrieveRequest {
-	return ApiPropertymappingsSamlRetrieveRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderSamlRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsProviderSamlRetrieveRequest {
+	return ApiPropertymappingsProviderSamlRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -6151,7 +6151,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlRetrieve(ctx context.Co
 // Execute executes the request
 //
 //	@return SAMLPropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsSamlRetrieveExecute(r ApiPropertymappingsSamlRetrieveRequest) (*SAMLPropertyMapping, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderSamlRetrieveExecute(r ApiPropertymappingsProviderSamlRetrieveRequest) (*SAMLPropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6159,12 +6159,12 @@ func (a *PropertymappingsApiService) PropertymappingsSamlRetrieveExecute(r ApiPr
 		localVarReturnValue *SAMLPropertyMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSamlRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderSamlRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/saml/{pm_uuid}/"
+	localVarPath := localBasePath + "/propertymappings/provider/saml/{pm_uuid}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -6244,33 +6244,33 @@ func (a *PropertymappingsApiService) PropertymappingsSamlRetrieveExecute(r ApiPr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsSamlUpdateRequest struct {
+type ApiPropertymappingsProviderSamlUpdateRequest struct {
 	ctx                        context.Context
 	ApiService                 *PropertymappingsApiService
 	pmUuid                     string
 	sAMLPropertyMappingRequest *SAMLPropertyMappingRequest
 }
 
-func (r ApiPropertymappingsSamlUpdateRequest) SAMLPropertyMappingRequest(sAMLPropertyMappingRequest SAMLPropertyMappingRequest) ApiPropertymappingsSamlUpdateRequest {
+func (r ApiPropertymappingsProviderSamlUpdateRequest) SAMLPropertyMappingRequest(sAMLPropertyMappingRequest SAMLPropertyMappingRequest) ApiPropertymappingsProviderSamlUpdateRequest {
 	r.sAMLPropertyMappingRequest = &sAMLPropertyMappingRequest
 	return r
 }
 
-func (r ApiPropertymappingsSamlUpdateRequest) Execute() (*SAMLPropertyMapping, *http.Response, error) {
-	return r.ApiService.PropertymappingsSamlUpdateExecute(r)
+func (r ApiPropertymappingsProviderSamlUpdateRequest) Execute() (*SAMLPropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderSamlUpdateExecute(r)
 }
 
 /*
-PropertymappingsSamlUpdate Method for PropertymappingsSamlUpdate
+PropertymappingsProviderSamlUpdate Method for PropertymappingsProviderSamlUpdate
 
 SAMLPropertyMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this SAML Property Mapping.
-	@return ApiPropertymappingsSamlUpdateRequest
+	@param pmUuid A UUID string identifying this SAML Provider Property Mapping.
+	@return ApiPropertymappingsProviderSamlUpdateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsSamlUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsSamlUpdateRequest {
-	return ApiPropertymappingsSamlUpdateRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderSamlUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsProviderSamlUpdateRequest {
+	return ApiPropertymappingsProviderSamlUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -6280,7 +6280,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUpdate(ctx context.Cont
 // Execute executes the request
 //
 //	@return SAMLPropertyMapping
-func (a *PropertymappingsApiService) PropertymappingsSamlUpdateExecute(r ApiPropertymappingsSamlUpdateRequest) (*SAMLPropertyMapping, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderSamlUpdateExecute(r ApiPropertymappingsProviderSamlUpdateRequest) (*SAMLPropertyMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -6288,12 +6288,12 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUpdateExecute(r ApiProp
 		localVarReturnValue *SAMLPropertyMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSamlUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderSamlUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/saml/{pm_uuid}/"
+	localVarPath := localBasePath + "/propertymappings/provider/saml/{pm_uuid}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -6378,27 +6378,27 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUpdateExecute(r ApiProp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsSamlUsedByListRequest struct {
+type ApiPropertymappingsProviderSamlUsedByListRequest struct {
 	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsSamlUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
-	return r.ApiService.PropertymappingsSamlUsedByListExecute(r)
+func (r ApiPropertymappingsProviderSamlUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderSamlUsedByListExecute(r)
 }
 
 /*
-PropertymappingsSamlUsedByList Method for PropertymappingsSamlUsedByList
+PropertymappingsProviderSamlUsedByList Method for PropertymappingsProviderSamlUsedByList
 
 Get a list of all objects that use this object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this SAML Property Mapping.
-	@return ApiPropertymappingsSamlUsedByListRequest
+	@param pmUuid A UUID string identifying this SAML Provider Property Mapping.
+	@return ApiPropertymappingsProviderSamlUsedByListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsSamlUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsSamlUsedByListRequest {
-	return ApiPropertymappingsSamlUsedByListRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderSamlUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsProviderSamlUsedByListRequest {
+	return ApiPropertymappingsProviderSamlUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -6408,7 +6408,7 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUsedByList(ctx context.
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *PropertymappingsApiService) PropertymappingsSamlUsedByListExecute(r ApiPropertymappingsSamlUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderSamlUsedByListExecute(r ApiPropertymappingsProviderSamlUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6416,12 +6416,12 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUsedByListExecute(r Api
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSamlUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderSamlUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/saml/{pm_uuid}/used_by/"
+	localVarPath := localBasePath + "/propertymappings/provider/saml/{pm_uuid}/used_by/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -6501,31 +6501,31 @@ func (a *PropertymappingsApiService) PropertymappingsSamlUsedByListExecute(r Api
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsScimCreateRequest struct {
+type ApiPropertymappingsProviderScimCreateRequest struct {
 	ctx                context.Context
 	ApiService         *PropertymappingsApiService
 	sCIMMappingRequest *SCIMMappingRequest
 }
 
-func (r ApiPropertymappingsScimCreateRequest) SCIMMappingRequest(sCIMMappingRequest SCIMMappingRequest) ApiPropertymappingsScimCreateRequest {
+func (r ApiPropertymappingsProviderScimCreateRequest) SCIMMappingRequest(sCIMMappingRequest SCIMMappingRequest) ApiPropertymappingsProviderScimCreateRequest {
 	r.sCIMMappingRequest = &sCIMMappingRequest
 	return r
 }
 
-func (r ApiPropertymappingsScimCreateRequest) Execute() (*SCIMMapping, *http.Response, error) {
-	return r.ApiService.PropertymappingsScimCreateExecute(r)
+func (r ApiPropertymappingsProviderScimCreateRequest) Execute() (*SCIMMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderScimCreateExecute(r)
 }
 
 /*
-PropertymappingsScimCreate Method for PropertymappingsScimCreate
+PropertymappingsProviderScimCreate Method for PropertymappingsProviderScimCreate
 
 SCIMMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPropertymappingsScimCreateRequest
+	@return ApiPropertymappingsProviderScimCreateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScimCreate(ctx context.Context) ApiPropertymappingsScimCreateRequest {
-	return ApiPropertymappingsScimCreateRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderScimCreate(ctx context.Context) ApiPropertymappingsProviderScimCreateRequest {
+	return ApiPropertymappingsProviderScimCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -6534,7 +6534,7 @@ func (a *PropertymappingsApiService) PropertymappingsScimCreate(ctx context.Cont
 // Execute executes the request
 //
 //	@return SCIMMapping
-func (a *PropertymappingsApiService) PropertymappingsScimCreateExecute(r ApiPropertymappingsScimCreateRequest) (*SCIMMapping, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderScimCreateExecute(r ApiPropertymappingsProviderScimCreateRequest) (*SCIMMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -6542,12 +6542,12 @@ func (a *PropertymappingsApiService) PropertymappingsScimCreateExecute(r ApiProp
 		localVarReturnValue *SCIMMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScimCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderScimCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/scim/"
+	localVarPath := localBasePath + "/propertymappings/provider/scim/"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6631,27 +6631,27 @@ func (a *PropertymappingsApiService) PropertymappingsScimCreateExecute(r ApiProp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsScimDestroyRequest struct {
+type ApiPropertymappingsProviderScimDestroyRequest struct {
 	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsScimDestroyRequest) Execute() (*http.Response, error) {
-	return r.ApiService.PropertymappingsScimDestroyExecute(r)
+func (r ApiPropertymappingsProviderScimDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PropertymappingsProviderScimDestroyExecute(r)
 }
 
 /*
-PropertymappingsScimDestroy Method for PropertymappingsScimDestroy
+PropertymappingsProviderScimDestroy Method for PropertymappingsProviderScimDestroy
 
 SCIMMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this SCIM Mapping.
-	@return ApiPropertymappingsScimDestroyRequest
+	@param pmUuid A UUID string identifying this SCIM Provider Mapping.
+	@return ApiPropertymappingsProviderScimDestroyRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScimDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsScimDestroyRequest {
-	return ApiPropertymappingsScimDestroyRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderScimDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsProviderScimDestroyRequest {
+	return ApiPropertymappingsProviderScimDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -6659,19 +6659,19 @@ func (a *PropertymappingsApiService) PropertymappingsScimDestroy(ctx context.Con
 }
 
 // Execute executes the request
-func (a *PropertymappingsApiService) PropertymappingsScimDestroyExecute(r ApiPropertymappingsScimDestroyRequest) (*http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderScimDestroyExecute(r ApiPropertymappingsProviderScimDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScimDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderScimDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/scim/{pm_uuid}/"
+	localVarPath := localBasePath + "/propertymappings/provider/scim/{pm_uuid}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -6742,7 +6742,7 @@ func (a *PropertymappingsApiService) PropertymappingsScimDestroyExecute(r ApiPro
 	return localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsScimListRequest struct {
+type ApiPropertymappingsProviderScimListRequest struct {
 	ctx           context.Context
 	ApiService    *PropertymappingsApiService
 	managed       *[]string
@@ -6754,59 +6754,59 @@ type ApiPropertymappingsScimListRequest struct {
 	search        *string
 }
 
-func (r ApiPropertymappingsScimListRequest) Managed(managed []string) ApiPropertymappingsScimListRequest {
+func (r ApiPropertymappingsProviderScimListRequest) Managed(managed []string) ApiPropertymappingsProviderScimListRequest {
 	r.managed = &managed
 	return r
 }
 
-func (r ApiPropertymappingsScimListRequest) ManagedIsnull(managedIsnull bool) ApiPropertymappingsScimListRequest {
+func (r ApiPropertymappingsProviderScimListRequest) ManagedIsnull(managedIsnull bool) ApiPropertymappingsProviderScimListRequest {
 	r.managedIsnull = &managedIsnull
 	return r
 }
 
-func (r ApiPropertymappingsScimListRequest) Name(name string) ApiPropertymappingsScimListRequest {
+func (r ApiPropertymappingsProviderScimListRequest) Name(name string) ApiPropertymappingsProviderScimListRequest {
 	r.name = &name
 	return r
 }
 
 // Which field to use when ordering the results.
-func (r ApiPropertymappingsScimListRequest) Ordering(ordering string) ApiPropertymappingsScimListRequest {
+func (r ApiPropertymappingsProviderScimListRequest) Ordering(ordering string) ApiPropertymappingsProviderScimListRequest {
 	r.ordering = &ordering
 	return r
 }
 
 // A page number within the paginated result set.
-func (r ApiPropertymappingsScimListRequest) Page(page int32) ApiPropertymappingsScimListRequest {
+func (r ApiPropertymappingsProviderScimListRequest) Page(page int32) ApiPropertymappingsProviderScimListRequest {
 	r.page = &page
 	return r
 }
 
 // Number of results to return per page.
-func (r ApiPropertymappingsScimListRequest) PageSize(pageSize int32) ApiPropertymappingsScimListRequest {
+func (r ApiPropertymappingsProviderScimListRequest) PageSize(pageSize int32) ApiPropertymappingsProviderScimListRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // A search term.
-func (r ApiPropertymappingsScimListRequest) Search(search string) ApiPropertymappingsScimListRequest {
+func (r ApiPropertymappingsProviderScimListRequest) Search(search string) ApiPropertymappingsProviderScimListRequest {
 	r.search = &search
 	return r
 }
 
-func (r ApiPropertymappingsScimListRequest) Execute() (*PaginatedSCIMMappingList, *http.Response, error) {
-	return r.ApiService.PropertymappingsScimListExecute(r)
+func (r ApiPropertymappingsProviderScimListRequest) Execute() (*PaginatedSCIMMappingList, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderScimListExecute(r)
 }
 
 /*
-PropertymappingsScimList Method for PropertymappingsScimList
+PropertymappingsProviderScimList Method for PropertymappingsProviderScimList
 
 SCIMMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPropertymappingsScimListRequest
+	@return ApiPropertymappingsProviderScimListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScimList(ctx context.Context) ApiPropertymappingsScimListRequest {
-	return ApiPropertymappingsScimListRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderScimList(ctx context.Context) ApiPropertymappingsProviderScimListRequest {
+	return ApiPropertymappingsProviderScimListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -6815,7 +6815,7 @@ func (a *PropertymappingsApiService) PropertymappingsScimList(ctx context.Contex
 // Execute executes the request
 //
 //	@return PaginatedSCIMMappingList
-func (a *PropertymappingsApiService) PropertymappingsScimListExecute(r ApiPropertymappingsScimListRequest) (*PaginatedSCIMMappingList, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderScimListExecute(r ApiPropertymappingsProviderScimListRequest) (*PaginatedSCIMMappingList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6823,12 +6823,12 @@ func (a *PropertymappingsApiService) PropertymappingsScimListExecute(r ApiProper
 		localVarReturnValue *PaginatedSCIMMappingList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScimList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderScimList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/scim/"
+	localVarPath := localBasePath + "/propertymappings/provider/scim/"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6936,33 +6936,33 @@ func (a *PropertymappingsApiService) PropertymappingsScimListExecute(r ApiProper
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsScimPartialUpdateRequest struct {
+type ApiPropertymappingsProviderScimPartialUpdateRequest struct {
 	ctx                       context.Context
 	ApiService                *PropertymappingsApiService
 	pmUuid                    string
 	patchedSCIMMappingRequest *PatchedSCIMMappingRequest
 }
 
-func (r ApiPropertymappingsScimPartialUpdateRequest) PatchedSCIMMappingRequest(patchedSCIMMappingRequest PatchedSCIMMappingRequest) ApiPropertymappingsScimPartialUpdateRequest {
+func (r ApiPropertymappingsProviderScimPartialUpdateRequest) PatchedSCIMMappingRequest(patchedSCIMMappingRequest PatchedSCIMMappingRequest) ApiPropertymappingsProviderScimPartialUpdateRequest {
 	r.patchedSCIMMappingRequest = &patchedSCIMMappingRequest
 	return r
 }
 
-func (r ApiPropertymappingsScimPartialUpdateRequest) Execute() (*SCIMMapping, *http.Response, error) {
-	return r.ApiService.PropertymappingsScimPartialUpdateExecute(r)
+func (r ApiPropertymappingsProviderScimPartialUpdateRequest) Execute() (*SCIMMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderScimPartialUpdateExecute(r)
 }
 
 /*
-PropertymappingsScimPartialUpdate Method for PropertymappingsScimPartialUpdate
+PropertymappingsProviderScimPartialUpdate Method for PropertymappingsProviderScimPartialUpdate
 
 SCIMMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this SCIM Mapping.
-	@return ApiPropertymappingsScimPartialUpdateRequest
+	@param pmUuid A UUID string identifying this SCIM Provider Mapping.
+	@return ApiPropertymappingsProviderScimPartialUpdateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScimPartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsScimPartialUpdateRequest {
-	return ApiPropertymappingsScimPartialUpdateRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderScimPartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsProviderScimPartialUpdateRequest {
+	return ApiPropertymappingsProviderScimPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -6972,7 +6972,7 @@ func (a *PropertymappingsApiService) PropertymappingsScimPartialUpdate(ctx conte
 // Execute executes the request
 //
 //	@return SCIMMapping
-func (a *PropertymappingsApiService) PropertymappingsScimPartialUpdateExecute(r ApiPropertymappingsScimPartialUpdateRequest) (*SCIMMapping, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderScimPartialUpdateExecute(r ApiPropertymappingsProviderScimPartialUpdateRequest) (*SCIMMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -6980,12 +6980,12 @@ func (a *PropertymappingsApiService) PropertymappingsScimPartialUpdateExecute(r 
 		localVarReturnValue *SCIMMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScimPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderScimPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/scim/{pm_uuid}/"
+	localVarPath := localBasePath + "/propertymappings/provider/scim/{pm_uuid}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -7067,27 +7067,27 @@ func (a *PropertymappingsApiService) PropertymappingsScimPartialUpdateExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsScimRetrieveRequest struct {
+type ApiPropertymappingsProviderScimRetrieveRequest struct {
 	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsScimRetrieveRequest) Execute() (*SCIMMapping, *http.Response, error) {
-	return r.ApiService.PropertymappingsScimRetrieveExecute(r)
+func (r ApiPropertymappingsProviderScimRetrieveRequest) Execute() (*SCIMMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderScimRetrieveExecute(r)
 }
 
 /*
-PropertymappingsScimRetrieve Method for PropertymappingsScimRetrieve
+PropertymappingsProviderScimRetrieve Method for PropertymappingsProviderScimRetrieve
 
 SCIMMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this SCIM Mapping.
-	@return ApiPropertymappingsScimRetrieveRequest
+	@param pmUuid A UUID string identifying this SCIM Provider Mapping.
+	@return ApiPropertymappingsProviderScimRetrieveRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScimRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsScimRetrieveRequest {
-	return ApiPropertymappingsScimRetrieveRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderScimRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsProviderScimRetrieveRequest {
+	return ApiPropertymappingsProviderScimRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -7097,7 +7097,7 @@ func (a *PropertymappingsApiService) PropertymappingsScimRetrieve(ctx context.Co
 // Execute executes the request
 //
 //	@return SCIMMapping
-func (a *PropertymappingsApiService) PropertymappingsScimRetrieveExecute(r ApiPropertymappingsScimRetrieveRequest) (*SCIMMapping, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderScimRetrieveExecute(r ApiPropertymappingsProviderScimRetrieveRequest) (*SCIMMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -7105,12 +7105,12 @@ func (a *PropertymappingsApiService) PropertymappingsScimRetrieveExecute(r ApiPr
 		localVarReturnValue *SCIMMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScimRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderScimRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/scim/{pm_uuid}/"
+	localVarPath := localBasePath + "/propertymappings/provider/scim/{pm_uuid}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -7190,33 +7190,33 @@ func (a *PropertymappingsApiService) PropertymappingsScimRetrieveExecute(r ApiPr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsScimUpdateRequest struct {
+type ApiPropertymappingsProviderScimUpdateRequest struct {
 	ctx                context.Context
 	ApiService         *PropertymappingsApiService
 	pmUuid             string
 	sCIMMappingRequest *SCIMMappingRequest
 }
 
-func (r ApiPropertymappingsScimUpdateRequest) SCIMMappingRequest(sCIMMappingRequest SCIMMappingRequest) ApiPropertymappingsScimUpdateRequest {
+func (r ApiPropertymappingsProviderScimUpdateRequest) SCIMMappingRequest(sCIMMappingRequest SCIMMappingRequest) ApiPropertymappingsProviderScimUpdateRequest {
 	r.sCIMMappingRequest = &sCIMMappingRequest
 	return r
 }
 
-func (r ApiPropertymappingsScimUpdateRequest) Execute() (*SCIMMapping, *http.Response, error) {
-	return r.ApiService.PropertymappingsScimUpdateExecute(r)
+func (r ApiPropertymappingsProviderScimUpdateRequest) Execute() (*SCIMMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderScimUpdateExecute(r)
 }
 
 /*
-PropertymappingsScimUpdate Method for PropertymappingsScimUpdate
+PropertymappingsProviderScimUpdate Method for PropertymappingsProviderScimUpdate
 
 SCIMMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this SCIM Mapping.
-	@return ApiPropertymappingsScimUpdateRequest
+	@param pmUuid A UUID string identifying this SCIM Provider Mapping.
+	@return ApiPropertymappingsProviderScimUpdateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScimUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsScimUpdateRequest {
-	return ApiPropertymappingsScimUpdateRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderScimUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsProviderScimUpdateRequest {
+	return ApiPropertymappingsProviderScimUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -7226,7 +7226,7 @@ func (a *PropertymappingsApiService) PropertymappingsScimUpdate(ctx context.Cont
 // Execute executes the request
 //
 //	@return SCIMMapping
-func (a *PropertymappingsApiService) PropertymappingsScimUpdateExecute(r ApiPropertymappingsScimUpdateRequest) (*SCIMMapping, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderScimUpdateExecute(r ApiPropertymappingsProviderScimUpdateRequest) (*SCIMMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -7234,12 +7234,12 @@ func (a *PropertymappingsApiService) PropertymappingsScimUpdateExecute(r ApiProp
 		localVarReturnValue *SCIMMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScimUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderScimUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/scim/{pm_uuid}/"
+	localVarPath := localBasePath + "/propertymappings/provider/scim/{pm_uuid}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -7324,27 +7324,27 @@ func (a *PropertymappingsApiService) PropertymappingsScimUpdateExecute(r ApiProp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsScimUsedByListRequest struct {
+type ApiPropertymappingsProviderScimUsedByListRequest struct {
 	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsScimUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
-	return r.ApiService.PropertymappingsScimUsedByListExecute(r)
+func (r ApiPropertymappingsProviderScimUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderScimUsedByListExecute(r)
 }
 
 /*
-PropertymappingsScimUsedByList Method for PropertymappingsScimUsedByList
+PropertymappingsProviderScimUsedByList Method for PropertymappingsProviderScimUsedByList
 
 Get a list of all objects that use this object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pmUuid A UUID string identifying this SCIM Mapping.
-	@return ApiPropertymappingsScimUsedByListRequest
+	@param pmUuid A UUID string identifying this SCIM Provider Mapping.
+	@return ApiPropertymappingsProviderScimUsedByListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScimUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsScimUsedByListRequest {
-	return ApiPropertymappingsScimUsedByListRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderScimUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsProviderScimUsedByListRequest {
+	return ApiPropertymappingsProviderScimUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -7354,7 +7354,7 @@ func (a *PropertymappingsApiService) PropertymappingsScimUsedByList(ctx context.
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *PropertymappingsApiService) PropertymappingsScimUsedByListExecute(r ApiPropertymappingsScimUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderScimUsedByListExecute(r ApiPropertymappingsProviderScimUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -7362,12 +7362,12 @@ func (a *PropertymappingsApiService) PropertymappingsScimUsedByListExecute(r Api
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScimUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderScimUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/scim/{pm_uuid}/used_by/"
+	localVarPath := localBasePath + "/propertymappings/provider/scim/{pm_uuid}/used_by/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -7447,31 +7447,31 @@ func (a *PropertymappingsApiService) PropertymappingsScimUsedByListExecute(r Api
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsScopeCreateRequest struct {
+type ApiPropertymappingsProviderScopeCreateRequest struct {
 	ctx                 context.Context
 	ApiService          *PropertymappingsApiService
 	scopeMappingRequest *ScopeMappingRequest
 }
 
-func (r ApiPropertymappingsScopeCreateRequest) ScopeMappingRequest(scopeMappingRequest ScopeMappingRequest) ApiPropertymappingsScopeCreateRequest {
+func (r ApiPropertymappingsProviderScopeCreateRequest) ScopeMappingRequest(scopeMappingRequest ScopeMappingRequest) ApiPropertymappingsProviderScopeCreateRequest {
 	r.scopeMappingRequest = &scopeMappingRequest
 	return r
 }
 
-func (r ApiPropertymappingsScopeCreateRequest) Execute() (*ScopeMapping, *http.Response, error) {
-	return r.ApiService.PropertymappingsScopeCreateExecute(r)
+func (r ApiPropertymappingsProviderScopeCreateRequest) Execute() (*ScopeMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderScopeCreateExecute(r)
 }
 
 /*
-PropertymappingsScopeCreate Method for PropertymappingsScopeCreate
+PropertymappingsProviderScopeCreate Method for PropertymappingsProviderScopeCreate
 
 ScopeMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPropertymappingsScopeCreateRequest
+	@return ApiPropertymappingsProviderScopeCreateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScopeCreate(ctx context.Context) ApiPropertymappingsScopeCreateRequest {
-	return ApiPropertymappingsScopeCreateRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderScopeCreate(ctx context.Context) ApiPropertymappingsProviderScopeCreateRequest {
+	return ApiPropertymappingsProviderScopeCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -7480,7 +7480,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeCreate(ctx context.Con
 // Execute executes the request
 //
 //	@return ScopeMapping
-func (a *PropertymappingsApiService) PropertymappingsScopeCreateExecute(r ApiPropertymappingsScopeCreateRequest) (*ScopeMapping, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderScopeCreateExecute(r ApiPropertymappingsProviderScopeCreateRequest) (*ScopeMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -7488,12 +7488,12 @@ func (a *PropertymappingsApiService) PropertymappingsScopeCreateExecute(r ApiPro
 		localVarReturnValue *ScopeMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScopeCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderScopeCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/scope/"
+	localVarPath := localBasePath + "/propertymappings/provider/scope/"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7577,27 +7577,27 @@ func (a *PropertymappingsApiService) PropertymappingsScopeCreateExecute(r ApiPro
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsScopeDestroyRequest struct {
+type ApiPropertymappingsProviderScopeDestroyRequest struct {
 	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsScopeDestroyRequest) Execute() (*http.Response, error) {
-	return r.ApiService.PropertymappingsScopeDestroyExecute(r)
+func (r ApiPropertymappingsProviderScopeDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PropertymappingsProviderScopeDestroyExecute(r)
 }
 
 /*
-PropertymappingsScopeDestroy Method for PropertymappingsScopeDestroy
+PropertymappingsProviderScopeDestroy Method for PropertymappingsProviderScopeDestroy
 
 ScopeMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param pmUuid A UUID string identifying this Scope Mapping.
-	@return ApiPropertymappingsScopeDestroyRequest
+	@return ApiPropertymappingsProviderScopeDestroyRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScopeDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsScopeDestroyRequest {
-	return ApiPropertymappingsScopeDestroyRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderScopeDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsProviderScopeDestroyRequest {
+	return ApiPropertymappingsProviderScopeDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -7605,19 +7605,19 @@ func (a *PropertymappingsApiService) PropertymappingsScopeDestroy(ctx context.Co
 }
 
 // Execute executes the request
-func (a *PropertymappingsApiService) PropertymappingsScopeDestroyExecute(r ApiPropertymappingsScopeDestroyRequest) (*http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderScopeDestroyExecute(r ApiPropertymappingsProviderScopeDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScopeDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderScopeDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/scope/{pm_uuid}/"
+	localVarPath := localBasePath + "/propertymappings/provider/scope/{pm_uuid}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -7688,7 +7688,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeDestroyExecute(r ApiPr
 	return localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsScopeListRequest struct {
+type ApiPropertymappingsProviderScopeListRequest struct {
 	ctx           context.Context
 	ApiService    *PropertymappingsApiService
 	managed       *[]string
@@ -7701,64 +7701,64 @@ type ApiPropertymappingsScopeListRequest struct {
 	search        *string
 }
 
-func (r ApiPropertymappingsScopeListRequest) Managed(managed []string) ApiPropertymappingsScopeListRequest {
+func (r ApiPropertymappingsProviderScopeListRequest) Managed(managed []string) ApiPropertymappingsProviderScopeListRequest {
 	r.managed = &managed
 	return r
 }
 
-func (r ApiPropertymappingsScopeListRequest) ManagedIsnull(managedIsnull bool) ApiPropertymappingsScopeListRequest {
+func (r ApiPropertymappingsProviderScopeListRequest) ManagedIsnull(managedIsnull bool) ApiPropertymappingsProviderScopeListRequest {
 	r.managedIsnull = &managedIsnull
 	return r
 }
 
-func (r ApiPropertymappingsScopeListRequest) Name(name string) ApiPropertymappingsScopeListRequest {
+func (r ApiPropertymappingsProviderScopeListRequest) Name(name string) ApiPropertymappingsProviderScopeListRequest {
 	r.name = &name
 	return r
 }
 
 // Which field to use when ordering the results.
-func (r ApiPropertymappingsScopeListRequest) Ordering(ordering string) ApiPropertymappingsScopeListRequest {
+func (r ApiPropertymappingsProviderScopeListRequest) Ordering(ordering string) ApiPropertymappingsProviderScopeListRequest {
 	r.ordering = &ordering
 	return r
 }
 
 // A page number within the paginated result set.
-func (r ApiPropertymappingsScopeListRequest) Page(page int32) ApiPropertymappingsScopeListRequest {
+func (r ApiPropertymappingsProviderScopeListRequest) Page(page int32) ApiPropertymappingsProviderScopeListRequest {
 	r.page = &page
 	return r
 }
 
 // Number of results to return per page.
-func (r ApiPropertymappingsScopeListRequest) PageSize(pageSize int32) ApiPropertymappingsScopeListRequest {
+func (r ApiPropertymappingsProviderScopeListRequest) PageSize(pageSize int32) ApiPropertymappingsProviderScopeListRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
-func (r ApiPropertymappingsScopeListRequest) ScopeName(scopeName string) ApiPropertymappingsScopeListRequest {
+func (r ApiPropertymappingsProviderScopeListRequest) ScopeName(scopeName string) ApiPropertymappingsProviderScopeListRequest {
 	r.scopeName = &scopeName
 	return r
 }
 
 // A search term.
-func (r ApiPropertymappingsScopeListRequest) Search(search string) ApiPropertymappingsScopeListRequest {
+func (r ApiPropertymappingsProviderScopeListRequest) Search(search string) ApiPropertymappingsProviderScopeListRequest {
 	r.search = &search
 	return r
 }
 
-func (r ApiPropertymappingsScopeListRequest) Execute() (*PaginatedScopeMappingList, *http.Response, error) {
-	return r.ApiService.PropertymappingsScopeListExecute(r)
+func (r ApiPropertymappingsProviderScopeListRequest) Execute() (*PaginatedScopeMappingList, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderScopeListExecute(r)
 }
 
 /*
-PropertymappingsScopeList Method for PropertymappingsScopeList
+PropertymappingsProviderScopeList Method for PropertymappingsProviderScopeList
 
 ScopeMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPropertymappingsScopeListRequest
+	@return ApiPropertymappingsProviderScopeListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScopeList(ctx context.Context) ApiPropertymappingsScopeListRequest {
-	return ApiPropertymappingsScopeListRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderScopeList(ctx context.Context) ApiPropertymappingsProviderScopeListRequest {
+	return ApiPropertymappingsProviderScopeListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -7767,7 +7767,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeList(ctx context.Conte
 // Execute executes the request
 //
 //	@return PaginatedScopeMappingList
-func (a *PropertymappingsApiService) PropertymappingsScopeListExecute(r ApiPropertymappingsScopeListRequest) (*PaginatedScopeMappingList, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderScopeListExecute(r ApiPropertymappingsProviderScopeListRequest) (*PaginatedScopeMappingList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -7775,12 +7775,12 @@ func (a *PropertymappingsApiService) PropertymappingsScopeListExecute(r ApiPrope
 		localVarReturnValue *PaginatedScopeMappingList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScopeList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderScopeList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/scope/"
+	localVarPath := localBasePath + "/propertymappings/provider/scope/"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7891,33 +7891,33 @@ func (a *PropertymappingsApiService) PropertymappingsScopeListExecute(r ApiPrope
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsScopePartialUpdateRequest struct {
+type ApiPropertymappingsProviderScopePartialUpdateRequest struct {
 	ctx                        context.Context
 	ApiService                 *PropertymappingsApiService
 	pmUuid                     string
 	patchedScopeMappingRequest *PatchedScopeMappingRequest
 }
 
-func (r ApiPropertymappingsScopePartialUpdateRequest) PatchedScopeMappingRequest(patchedScopeMappingRequest PatchedScopeMappingRequest) ApiPropertymappingsScopePartialUpdateRequest {
+func (r ApiPropertymappingsProviderScopePartialUpdateRequest) PatchedScopeMappingRequest(patchedScopeMappingRequest PatchedScopeMappingRequest) ApiPropertymappingsProviderScopePartialUpdateRequest {
 	r.patchedScopeMappingRequest = &patchedScopeMappingRequest
 	return r
 }
 
-func (r ApiPropertymappingsScopePartialUpdateRequest) Execute() (*ScopeMapping, *http.Response, error) {
-	return r.ApiService.PropertymappingsScopePartialUpdateExecute(r)
+func (r ApiPropertymappingsProviderScopePartialUpdateRequest) Execute() (*ScopeMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderScopePartialUpdateExecute(r)
 }
 
 /*
-PropertymappingsScopePartialUpdate Method for PropertymappingsScopePartialUpdate
+PropertymappingsProviderScopePartialUpdate Method for PropertymappingsProviderScopePartialUpdate
 
 ScopeMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param pmUuid A UUID string identifying this Scope Mapping.
-	@return ApiPropertymappingsScopePartialUpdateRequest
+	@return ApiPropertymappingsProviderScopePartialUpdateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsScopePartialUpdateRequest {
-	return ApiPropertymappingsScopePartialUpdateRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderScopePartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsProviderScopePartialUpdateRequest {
+	return ApiPropertymappingsProviderScopePartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -7927,7 +7927,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdate(ctx cont
 // Execute executes the request
 //
 //	@return ScopeMapping
-func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdateExecute(r ApiPropertymappingsScopePartialUpdateRequest) (*ScopeMapping, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderScopePartialUpdateExecute(r ApiPropertymappingsProviderScopePartialUpdateRequest) (*ScopeMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -7935,12 +7935,12 @@ func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdateExecute(r
 		localVarReturnValue *ScopeMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScopePartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderScopePartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/scope/{pm_uuid}/"
+	localVarPath := localBasePath + "/propertymappings/provider/scope/{pm_uuid}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -8022,27 +8022,27 @@ func (a *PropertymappingsApiService) PropertymappingsScopePartialUpdateExecute(r
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsScopeRetrieveRequest struct {
+type ApiPropertymappingsProviderScopeRetrieveRequest struct {
 	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsScopeRetrieveRequest) Execute() (*ScopeMapping, *http.Response, error) {
-	return r.ApiService.PropertymappingsScopeRetrieveExecute(r)
+func (r ApiPropertymappingsProviderScopeRetrieveRequest) Execute() (*ScopeMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderScopeRetrieveExecute(r)
 }
 
 /*
-PropertymappingsScopeRetrieve Method for PropertymappingsScopeRetrieve
+PropertymappingsProviderScopeRetrieve Method for PropertymappingsProviderScopeRetrieve
 
 ScopeMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param pmUuid A UUID string identifying this Scope Mapping.
-	@return ApiPropertymappingsScopeRetrieveRequest
+	@return ApiPropertymappingsProviderScopeRetrieveRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScopeRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsScopeRetrieveRequest {
-	return ApiPropertymappingsScopeRetrieveRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderScopeRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsProviderScopeRetrieveRequest {
+	return ApiPropertymappingsProviderScopeRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -8052,7 +8052,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeRetrieve(ctx context.C
 // Execute executes the request
 //
 //	@return ScopeMapping
-func (a *PropertymappingsApiService) PropertymappingsScopeRetrieveExecute(r ApiPropertymappingsScopeRetrieveRequest) (*ScopeMapping, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderScopeRetrieveExecute(r ApiPropertymappingsProviderScopeRetrieveRequest) (*ScopeMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -8060,12 +8060,12 @@ func (a *PropertymappingsApiService) PropertymappingsScopeRetrieveExecute(r ApiP
 		localVarReturnValue *ScopeMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScopeRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderScopeRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/scope/{pm_uuid}/"
+	localVarPath := localBasePath + "/propertymappings/provider/scope/{pm_uuid}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -8145,33 +8145,33 @@ func (a *PropertymappingsApiService) PropertymappingsScopeRetrieveExecute(r ApiP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsScopeUpdateRequest struct {
+type ApiPropertymappingsProviderScopeUpdateRequest struct {
 	ctx                 context.Context
 	ApiService          *PropertymappingsApiService
 	pmUuid              string
 	scopeMappingRequest *ScopeMappingRequest
 }
 
-func (r ApiPropertymappingsScopeUpdateRequest) ScopeMappingRequest(scopeMappingRequest ScopeMappingRequest) ApiPropertymappingsScopeUpdateRequest {
+func (r ApiPropertymappingsProviderScopeUpdateRequest) ScopeMappingRequest(scopeMappingRequest ScopeMappingRequest) ApiPropertymappingsProviderScopeUpdateRequest {
 	r.scopeMappingRequest = &scopeMappingRequest
 	return r
 }
 
-func (r ApiPropertymappingsScopeUpdateRequest) Execute() (*ScopeMapping, *http.Response, error) {
-	return r.ApiService.PropertymappingsScopeUpdateExecute(r)
+func (r ApiPropertymappingsProviderScopeUpdateRequest) Execute() (*ScopeMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderScopeUpdateExecute(r)
 }
 
 /*
-PropertymappingsScopeUpdate Method for PropertymappingsScopeUpdate
+PropertymappingsProviderScopeUpdate Method for PropertymappingsProviderScopeUpdate
 
 ScopeMapping Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param pmUuid A UUID string identifying this Scope Mapping.
-	@return ApiPropertymappingsScopeUpdateRequest
+	@return ApiPropertymappingsProviderScopeUpdateRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScopeUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsScopeUpdateRequest {
-	return ApiPropertymappingsScopeUpdateRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderScopeUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsProviderScopeUpdateRequest {
+	return ApiPropertymappingsProviderScopeUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -8181,7 +8181,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUpdate(ctx context.Con
 // Execute executes the request
 //
 //	@return ScopeMapping
-func (a *PropertymappingsApiService) PropertymappingsScopeUpdateExecute(r ApiPropertymappingsScopeUpdateRequest) (*ScopeMapping, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderScopeUpdateExecute(r ApiPropertymappingsProviderScopeUpdateRequest) (*ScopeMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -8189,12 +8189,12 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUpdateExecute(r ApiPro
 		localVarReturnValue *ScopeMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScopeUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderScopeUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/scope/{pm_uuid}/"
+	localVarPath := localBasePath + "/propertymappings/provider/scope/{pm_uuid}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -8279,27 +8279,27 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUpdateExecute(r ApiPro
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPropertymappingsScopeUsedByListRequest struct {
+type ApiPropertymappingsProviderScopeUsedByListRequest struct {
 	ctx        context.Context
 	ApiService *PropertymappingsApiService
 	pmUuid     string
 }
 
-func (r ApiPropertymappingsScopeUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
-	return r.ApiService.PropertymappingsScopeUsedByListExecute(r)
+func (r ApiPropertymappingsProviderScopeUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.PropertymappingsProviderScopeUsedByListExecute(r)
 }
 
 /*
-PropertymappingsScopeUsedByList Method for PropertymappingsScopeUsedByList
+PropertymappingsProviderScopeUsedByList Method for PropertymappingsProviderScopeUsedByList
 
 Get a list of all objects that use this object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param pmUuid A UUID string identifying this Scope Mapping.
-	@return ApiPropertymappingsScopeUsedByListRequest
+	@return ApiPropertymappingsProviderScopeUsedByListRequest
 */
-func (a *PropertymappingsApiService) PropertymappingsScopeUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsScopeUsedByListRequest {
-	return ApiPropertymappingsScopeUsedByListRequest{
+func (a *PropertymappingsApiService) PropertymappingsProviderScopeUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsProviderScopeUsedByListRequest {
+	return ApiPropertymappingsProviderScopeUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
 		pmUuid:     pmUuid,
@@ -8309,7 +8309,7 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUsedByList(ctx context
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *PropertymappingsApiService) PropertymappingsScopeUsedByListExecute(r ApiPropertymappingsScopeUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *PropertymappingsApiService) PropertymappingsProviderScopeUsedByListExecute(r ApiPropertymappingsProviderScopeUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -8317,12 +8317,12 @@ func (a *PropertymappingsApiService) PropertymappingsScopeUsedByListExecute(r Ap
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsScopeUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsProviderScopeUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/propertymappings/scope/{pm_uuid}/used_by/"
+	localVarPath := localBasePath + "/propertymappings/provider/scope/{pm_uuid}/used_by/"
 	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)

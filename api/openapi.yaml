@@ -16181,10 +16181,10 @@ paths:
       - authentik: []
       tags:
       - propertymappings
-  /propertymappings/rac/:
+  /propertymappings/provider/rac/:
     get:
       description: RACPropertyMapping Viewset
-      operationId: propertymappings_rac_list
+      operationId: propertymappings_provider_rac_list
       parameters:
       - explode: true
         in: query
@@ -16259,7 +16259,7 @@ paths:
       - propertymappings
     post:
       description: RACPropertyMapping Viewset
-      operationId: propertymappings_rac_create
+      operationId: propertymappings_provider_rac_create
       requestBody:
         content:
           application/json:
@@ -16289,12 +16289,12 @@ paths:
       - authentik: []
       tags:
       - propertymappings
-  /propertymappings/rac/{pm_uuid}/:
+  /propertymappings/provider/rac/{pm_uuid}/:
     delete:
       description: RACPropertyMapping Viewset
-      operationId: propertymappings_rac_destroy
+      operationId: propertymappings_provider_rac_destroy
       parameters:
-      - description: A UUID string identifying this RAC Property Mapping.
+      - description: A UUID string identifying this RAC Provider Property Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -16324,9 +16324,9 @@ paths:
       - propertymappings
     get:
       description: RACPropertyMapping Viewset
-      operationId: propertymappings_rac_retrieve
+      operationId: propertymappings_provider_rac_retrieve
       parameters:
-      - description: A UUID string identifying this RAC Property Mapping.
+      - description: A UUID string identifying this RAC Provider Property Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -16360,9 +16360,9 @@ paths:
       - propertymappings
     patch:
       description: RACPropertyMapping Viewset
-      operationId: propertymappings_rac_partial_update
+      operationId: propertymappings_provider_rac_partial_update
       parameters:
-      - description: A UUID string identifying this RAC Property Mapping.
+      - description: A UUID string identifying this RAC Provider Property Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -16401,9 +16401,9 @@ paths:
       - propertymappings
     put:
       description: RACPropertyMapping Viewset
-      operationId: propertymappings_rac_update
+      operationId: propertymappings_provider_rac_update
       parameters:
-      - description: A UUID string identifying this RAC Property Mapping.
+      - description: A UUID string identifying this RAC Provider Property Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -16441,12 +16441,12 @@ paths:
       - authentik: []
       tags:
       - propertymappings
-  /propertymappings/rac/{pm_uuid}/used_by/:
+  /propertymappings/provider/rac/{pm_uuid}/used_by/:
     get:
       description: Get a list of all objects that use this object
-      operationId: propertymappings_rac_used_by_list
+      operationId: propertymappings_provider_rac_used_by_list
       parameters:
-      - description: A UUID string identifying this RAC Property Mapping.
+      - description: A UUID string identifying this RAC Provider Property Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -16480,10 +16480,10 @@ paths:
       - authentik: []
       tags:
       - propertymappings
-  /propertymappings/radius/:
+  /propertymappings/provider/radius/:
     get:
       description: RadiusProviderPropertyMapping Viewset
-      operationId: propertymappings_radius_list
+      operationId: propertymappings_provider_radius_list
       parameters:
       - explode: true
         in: query
@@ -16565,7 +16565,7 @@ paths:
       - propertymappings
     post:
       description: RadiusProviderPropertyMapping Viewset
-      operationId: propertymappings_radius_create
+      operationId: propertymappings_provider_radius_create
       requestBody:
         content:
           application/json:
@@ -16595,12 +16595,12 @@ paths:
       - authentik: []
       tags:
       - propertymappings
-  /propertymappings/radius/{pm_uuid}/:
+  /propertymappings/provider/radius/{pm_uuid}/:
     delete:
       description: RadiusProviderPropertyMapping Viewset
-      operationId: propertymappings_radius_destroy
+      operationId: propertymappings_provider_radius_destroy
       parameters:
-      - description: A UUID string identifying this Radius Property Mapping.
+      - description: A UUID string identifying this Radius Provider Property Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -16630,9 +16630,9 @@ paths:
       - propertymappings
     get:
       description: RadiusProviderPropertyMapping Viewset
-      operationId: propertymappings_radius_retrieve
+      operationId: propertymappings_provider_radius_retrieve
       parameters:
-      - description: A UUID string identifying this Radius Property Mapping.
+      - description: A UUID string identifying this Radius Provider Property Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -16666,9 +16666,9 @@ paths:
       - propertymappings
     patch:
       description: RadiusProviderPropertyMapping Viewset
-      operationId: propertymappings_radius_partial_update
+      operationId: propertymappings_provider_radius_partial_update
       parameters:
-      - description: A UUID string identifying this Radius Property Mapping.
+      - description: A UUID string identifying this Radius Provider Property Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -16707,9 +16707,9 @@ paths:
       - propertymappings
     put:
       description: RadiusProviderPropertyMapping Viewset
-      operationId: propertymappings_radius_update
+      operationId: propertymappings_provider_radius_update
       parameters:
-      - description: A UUID string identifying this Radius Property Mapping.
+      - description: A UUID string identifying this Radius Provider Property Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -16747,12 +16747,12 @@ paths:
       - authentik: []
       tags:
       - propertymappings
-  /propertymappings/radius/{pm_uuid}/used_by/:
+  /propertymappings/provider/radius/{pm_uuid}/used_by/:
     get:
       description: Get a list of all objects that use this object
-      operationId: propertymappings_radius_used_by_list
+      operationId: propertymappings_provider_radius_used_by_list
       parameters:
-      - description: A UUID string identifying this Radius Property Mapping.
+      - description: A UUID string identifying this Radius Provider Property Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -16786,10 +16786,10 @@ paths:
       - authentik: []
       tags:
       - propertymappings
-  /propertymappings/saml/:
+  /propertymappings/provider/saml/:
     get:
       description: SAMLPropertyMapping Viewset
-      operationId: propertymappings_saml_list
+      operationId: propertymappings_provider_saml_list
       parameters:
       - explode: true
         in: query
@@ -16885,7 +16885,7 @@ paths:
       - propertymappings
     post:
       description: SAMLPropertyMapping Viewset
-      operationId: propertymappings_saml_create
+      operationId: propertymappings_provider_saml_create
       requestBody:
         content:
           application/json:
@@ -16915,12 +16915,12 @@ paths:
       - authentik: []
       tags:
       - propertymappings
-  /propertymappings/saml/{pm_uuid}/:
+  /propertymappings/provider/saml/{pm_uuid}/:
     delete:
       description: SAMLPropertyMapping Viewset
-      operationId: propertymappings_saml_destroy
+      operationId: propertymappings_provider_saml_destroy
       parameters:
-      - description: A UUID string identifying this SAML Property Mapping.
+      - description: A UUID string identifying this SAML Provider Property Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -16950,9 +16950,9 @@ paths:
       - propertymappings
     get:
       description: SAMLPropertyMapping Viewset
-      operationId: propertymappings_saml_retrieve
+      operationId: propertymappings_provider_saml_retrieve
       parameters:
-      - description: A UUID string identifying this SAML Property Mapping.
+      - description: A UUID string identifying this SAML Provider Property Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -16986,9 +16986,9 @@ paths:
       - propertymappings
     patch:
       description: SAMLPropertyMapping Viewset
-      operationId: propertymappings_saml_partial_update
+      operationId: propertymappings_provider_saml_partial_update
       parameters:
-      - description: A UUID string identifying this SAML Property Mapping.
+      - description: A UUID string identifying this SAML Provider Property Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -17027,9 +17027,9 @@ paths:
       - propertymappings
     put:
       description: SAMLPropertyMapping Viewset
-      operationId: propertymappings_saml_update
+      operationId: propertymappings_provider_saml_update
       parameters:
-      - description: A UUID string identifying this SAML Property Mapping.
+      - description: A UUID string identifying this SAML Provider Property Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -17067,12 +17067,12 @@ paths:
       - authentik: []
       tags:
       - propertymappings
-  /propertymappings/saml/{pm_uuid}/used_by/:
+  /propertymappings/provider/saml/{pm_uuid}/used_by/:
     get:
       description: Get a list of all objects that use this object
-      operationId: propertymappings_saml_used_by_list
+      operationId: propertymappings_provider_saml_used_by_list
       parameters:
-      - description: A UUID string identifying this SAML Property Mapping.
+      - description: A UUID string identifying this SAML Provider Property Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -17106,10 +17106,10 @@ paths:
       - authentik: []
       tags:
       - propertymappings
-  /propertymappings/scim/:
+  /propertymappings/provider/scim/:
     get:
       description: SCIMMapping Viewset
-      operationId: propertymappings_scim_list
+      operationId: propertymappings_provider_scim_list
       parameters:
       - explode: true
         in: query
@@ -17191,7 +17191,7 @@ paths:
       - propertymappings
     post:
       description: SCIMMapping Viewset
-      operationId: propertymappings_scim_create
+      operationId: propertymappings_provider_scim_create
       requestBody:
         content:
           application/json:
@@ -17221,12 +17221,12 @@ paths:
       - authentik: []
       tags:
       - propertymappings
-  /propertymappings/scim/{pm_uuid}/:
+  /propertymappings/provider/scim/{pm_uuid}/:
     delete:
       description: SCIMMapping Viewset
-      operationId: propertymappings_scim_destroy
+      operationId: propertymappings_provider_scim_destroy
       parameters:
-      - description: A UUID string identifying this SCIM Mapping.
+      - description: A UUID string identifying this SCIM Provider Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -17256,9 +17256,9 @@ paths:
       - propertymappings
     get:
       description: SCIMMapping Viewset
-      operationId: propertymappings_scim_retrieve
+      operationId: propertymappings_provider_scim_retrieve
       parameters:
-      - description: A UUID string identifying this SCIM Mapping.
+      - description: A UUID string identifying this SCIM Provider Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -17292,9 +17292,9 @@ paths:
       - propertymappings
     patch:
       description: SCIMMapping Viewset
-      operationId: propertymappings_scim_partial_update
+      operationId: propertymappings_provider_scim_partial_update
       parameters:
-      - description: A UUID string identifying this SCIM Mapping.
+      - description: A UUID string identifying this SCIM Provider Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -17333,9 +17333,9 @@ paths:
       - propertymappings
     put:
       description: SCIMMapping Viewset
-      operationId: propertymappings_scim_update
+      operationId: propertymappings_provider_scim_update
       parameters:
-      - description: A UUID string identifying this SCIM Mapping.
+      - description: A UUID string identifying this SCIM Provider Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -17373,12 +17373,12 @@ paths:
       - authentik: []
       tags:
       - propertymappings
-  /propertymappings/scim/{pm_uuid}/used_by/:
+  /propertymappings/provider/scim/{pm_uuid}/used_by/:
     get:
       description: Get a list of all objects that use this object
-      operationId: propertymappings_scim_used_by_list
+      operationId: propertymappings_provider_scim_used_by_list
       parameters:
-      - description: A UUID string identifying this SCIM Mapping.
+      - description: A UUID string identifying this SCIM Provider Mapping.
         explode: false
         in: path
         name: pm_uuid
@@ -17412,10 +17412,10 @@ paths:
       - authentik: []
       tags:
       - propertymappings
-  /propertymappings/scope/:
+  /propertymappings/provider/scope/:
     get:
       description: ScopeMapping Viewset
-      operationId: propertymappings_scope_list
+      operationId: propertymappings_provider_scope_list
       parameters:
       - explode: true
         in: query
@@ -17504,7 +17504,7 @@ paths:
       - propertymappings
     post:
       description: ScopeMapping Viewset
-      operationId: propertymappings_scope_create
+      operationId: propertymappings_provider_scope_create
       requestBody:
         content:
           application/json:
@@ -17534,10 +17534,10 @@ paths:
       - authentik: []
       tags:
       - propertymappings
-  /propertymappings/scope/{pm_uuid}/:
+  /propertymappings/provider/scope/{pm_uuid}/:
     delete:
       description: ScopeMapping Viewset
-      operationId: propertymappings_scope_destroy
+      operationId: propertymappings_provider_scope_destroy
       parameters:
       - description: A UUID string identifying this Scope Mapping.
         explode: false
@@ -17569,7 +17569,7 @@ paths:
       - propertymappings
     get:
       description: ScopeMapping Viewset
-      operationId: propertymappings_scope_retrieve
+      operationId: propertymappings_provider_scope_retrieve
       parameters:
       - description: A UUID string identifying this Scope Mapping.
         explode: false
@@ -17605,7 +17605,7 @@ paths:
       - propertymappings
     patch:
       description: ScopeMapping Viewset
-      operationId: propertymappings_scope_partial_update
+      operationId: propertymappings_provider_scope_partial_update
       parameters:
       - description: A UUID string identifying this Scope Mapping.
         explode: false
@@ -17646,7 +17646,7 @@ paths:
       - propertymappings
     put:
       description: ScopeMapping Viewset
-      operationId: propertymappings_scope_update
+      operationId: propertymappings_provider_scope_update
       parameters:
       - description: A UUID string identifying this Scope Mapping.
         explode: false
@@ -17686,10 +17686,10 @@ paths:
       - authentik: []
       tags:
       - propertymappings
-  /propertymappings/scope/{pm_uuid}/used_by/:
+  /propertymappings/provider/scope/{pm_uuid}/used_by/:
     get:
       description: Get a list of all objects that use this object
-      operationId: propertymappings_scope_used_by_list
+      operationId: propertymappings_provider_scope_used_by_list
       parameters:
       - description: A UUID string identifying this Scope Mapping.
         explode: false

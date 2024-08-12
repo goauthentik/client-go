@@ -31,41 +31,41 @@ Method | HTTP request | Description
 [**PropertymappingsProviderMicrosoftEntraRetrieve**](PropertymappingsApi.md#PropertymappingsProviderMicrosoftEntraRetrieve) | **Get** /propertymappings/provider/microsoft_entra/{pm_uuid}/ | 
 [**PropertymappingsProviderMicrosoftEntraUpdate**](PropertymappingsApi.md#PropertymappingsProviderMicrosoftEntraUpdate) | **Put** /propertymappings/provider/microsoft_entra/{pm_uuid}/ | 
 [**PropertymappingsProviderMicrosoftEntraUsedByList**](PropertymappingsApi.md#PropertymappingsProviderMicrosoftEntraUsedByList) | **Get** /propertymappings/provider/microsoft_entra/{pm_uuid}/used_by/ | 
-[**PropertymappingsRacCreate**](PropertymappingsApi.md#PropertymappingsRacCreate) | **Post** /propertymappings/rac/ | 
-[**PropertymappingsRacDestroy**](PropertymappingsApi.md#PropertymappingsRacDestroy) | **Delete** /propertymappings/rac/{pm_uuid}/ | 
-[**PropertymappingsRacList**](PropertymappingsApi.md#PropertymappingsRacList) | **Get** /propertymappings/rac/ | 
-[**PropertymappingsRacPartialUpdate**](PropertymappingsApi.md#PropertymappingsRacPartialUpdate) | **Patch** /propertymappings/rac/{pm_uuid}/ | 
-[**PropertymappingsRacRetrieve**](PropertymappingsApi.md#PropertymappingsRacRetrieve) | **Get** /propertymappings/rac/{pm_uuid}/ | 
-[**PropertymappingsRacUpdate**](PropertymappingsApi.md#PropertymappingsRacUpdate) | **Put** /propertymappings/rac/{pm_uuid}/ | 
-[**PropertymappingsRacUsedByList**](PropertymappingsApi.md#PropertymappingsRacUsedByList) | **Get** /propertymappings/rac/{pm_uuid}/used_by/ | 
-[**PropertymappingsRadiusCreate**](PropertymappingsApi.md#PropertymappingsRadiusCreate) | **Post** /propertymappings/radius/ | 
-[**PropertymappingsRadiusDestroy**](PropertymappingsApi.md#PropertymappingsRadiusDestroy) | **Delete** /propertymappings/radius/{pm_uuid}/ | 
-[**PropertymappingsRadiusList**](PropertymappingsApi.md#PropertymappingsRadiusList) | **Get** /propertymappings/radius/ | 
-[**PropertymappingsRadiusPartialUpdate**](PropertymappingsApi.md#PropertymappingsRadiusPartialUpdate) | **Patch** /propertymappings/radius/{pm_uuid}/ | 
-[**PropertymappingsRadiusRetrieve**](PropertymappingsApi.md#PropertymappingsRadiusRetrieve) | **Get** /propertymappings/radius/{pm_uuid}/ | 
-[**PropertymappingsRadiusUpdate**](PropertymappingsApi.md#PropertymappingsRadiusUpdate) | **Put** /propertymappings/radius/{pm_uuid}/ | 
-[**PropertymappingsRadiusUsedByList**](PropertymappingsApi.md#PropertymappingsRadiusUsedByList) | **Get** /propertymappings/radius/{pm_uuid}/used_by/ | 
-[**PropertymappingsSamlCreate**](PropertymappingsApi.md#PropertymappingsSamlCreate) | **Post** /propertymappings/saml/ | 
-[**PropertymappingsSamlDestroy**](PropertymappingsApi.md#PropertymappingsSamlDestroy) | **Delete** /propertymappings/saml/{pm_uuid}/ | 
-[**PropertymappingsSamlList**](PropertymappingsApi.md#PropertymappingsSamlList) | **Get** /propertymappings/saml/ | 
-[**PropertymappingsSamlPartialUpdate**](PropertymappingsApi.md#PropertymappingsSamlPartialUpdate) | **Patch** /propertymappings/saml/{pm_uuid}/ | 
-[**PropertymappingsSamlRetrieve**](PropertymappingsApi.md#PropertymappingsSamlRetrieve) | **Get** /propertymappings/saml/{pm_uuid}/ | 
-[**PropertymappingsSamlUpdate**](PropertymappingsApi.md#PropertymappingsSamlUpdate) | **Put** /propertymappings/saml/{pm_uuid}/ | 
-[**PropertymappingsSamlUsedByList**](PropertymappingsApi.md#PropertymappingsSamlUsedByList) | **Get** /propertymappings/saml/{pm_uuid}/used_by/ | 
-[**PropertymappingsScimCreate**](PropertymappingsApi.md#PropertymappingsScimCreate) | **Post** /propertymappings/scim/ | 
-[**PropertymappingsScimDestroy**](PropertymappingsApi.md#PropertymappingsScimDestroy) | **Delete** /propertymappings/scim/{pm_uuid}/ | 
-[**PropertymappingsScimList**](PropertymappingsApi.md#PropertymappingsScimList) | **Get** /propertymappings/scim/ | 
-[**PropertymappingsScimPartialUpdate**](PropertymappingsApi.md#PropertymappingsScimPartialUpdate) | **Patch** /propertymappings/scim/{pm_uuid}/ | 
-[**PropertymappingsScimRetrieve**](PropertymappingsApi.md#PropertymappingsScimRetrieve) | **Get** /propertymappings/scim/{pm_uuid}/ | 
-[**PropertymappingsScimUpdate**](PropertymappingsApi.md#PropertymappingsScimUpdate) | **Put** /propertymappings/scim/{pm_uuid}/ | 
-[**PropertymappingsScimUsedByList**](PropertymappingsApi.md#PropertymappingsScimUsedByList) | **Get** /propertymappings/scim/{pm_uuid}/used_by/ | 
-[**PropertymappingsScopeCreate**](PropertymappingsApi.md#PropertymappingsScopeCreate) | **Post** /propertymappings/scope/ | 
-[**PropertymappingsScopeDestroy**](PropertymappingsApi.md#PropertymappingsScopeDestroy) | **Delete** /propertymappings/scope/{pm_uuid}/ | 
-[**PropertymappingsScopeList**](PropertymappingsApi.md#PropertymappingsScopeList) | **Get** /propertymappings/scope/ | 
-[**PropertymappingsScopePartialUpdate**](PropertymappingsApi.md#PropertymappingsScopePartialUpdate) | **Patch** /propertymappings/scope/{pm_uuid}/ | 
-[**PropertymappingsScopeRetrieve**](PropertymappingsApi.md#PropertymappingsScopeRetrieve) | **Get** /propertymappings/scope/{pm_uuid}/ | 
-[**PropertymappingsScopeUpdate**](PropertymappingsApi.md#PropertymappingsScopeUpdate) | **Put** /propertymappings/scope/{pm_uuid}/ | 
-[**PropertymappingsScopeUsedByList**](PropertymappingsApi.md#PropertymappingsScopeUsedByList) | **Get** /propertymappings/scope/{pm_uuid}/used_by/ | 
+[**PropertymappingsProviderRacCreate**](PropertymappingsApi.md#PropertymappingsProviderRacCreate) | **Post** /propertymappings/provider/rac/ | 
+[**PropertymappingsProviderRacDestroy**](PropertymappingsApi.md#PropertymappingsProviderRacDestroy) | **Delete** /propertymappings/provider/rac/{pm_uuid}/ | 
+[**PropertymappingsProviderRacList**](PropertymappingsApi.md#PropertymappingsProviderRacList) | **Get** /propertymappings/provider/rac/ | 
+[**PropertymappingsProviderRacPartialUpdate**](PropertymappingsApi.md#PropertymappingsProviderRacPartialUpdate) | **Patch** /propertymappings/provider/rac/{pm_uuid}/ | 
+[**PropertymappingsProviderRacRetrieve**](PropertymappingsApi.md#PropertymappingsProviderRacRetrieve) | **Get** /propertymappings/provider/rac/{pm_uuid}/ | 
+[**PropertymappingsProviderRacUpdate**](PropertymappingsApi.md#PropertymappingsProviderRacUpdate) | **Put** /propertymappings/provider/rac/{pm_uuid}/ | 
+[**PropertymappingsProviderRacUsedByList**](PropertymappingsApi.md#PropertymappingsProviderRacUsedByList) | **Get** /propertymappings/provider/rac/{pm_uuid}/used_by/ | 
+[**PropertymappingsProviderRadiusCreate**](PropertymappingsApi.md#PropertymappingsProviderRadiusCreate) | **Post** /propertymappings/provider/radius/ | 
+[**PropertymappingsProviderRadiusDestroy**](PropertymappingsApi.md#PropertymappingsProviderRadiusDestroy) | **Delete** /propertymappings/provider/radius/{pm_uuid}/ | 
+[**PropertymappingsProviderRadiusList**](PropertymappingsApi.md#PropertymappingsProviderRadiusList) | **Get** /propertymappings/provider/radius/ | 
+[**PropertymappingsProviderRadiusPartialUpdate**](PropertymappingsApi.md#PropertymappingsProviderRadiusPartialUpdate) | **Patch** /propertymappings/provider/radius/{pm_uuid}/ | 
+[**PropertymappingsProviderRadiusRetrieve**](PropertymappingsApi.md#PropertymappingsProviderRadiusRetrieve) | **Get** /propertymappings/provider/radius/{pm_uuid}/ | 
+[**PropertymappingsProviderRadiusUpdate**](PropertymappingsApi.md#PropertymappingsProviderRadiusUpdate) | **Put** /propertymappings/provider/radius/{pm_uuid}/ | 
+[**PropertymappingsProviderRadiusUsedByList**](PropertymappingsApi.md#PropertymappingsProviderRadiusUsedByList) | **Get** /propertymappings/provider/radius/{pm_uuid}/used_by/ | 
+[**PropertymappingsProviderSamlCreate**](PropertymappingsApi.md#PropertymappingsProviderSamlCreate) | **Post** /propertymappings/provider/saml/ | 
+[**PropertymappingsProviderSamlDestroy**](PropertymappingsApi.md#PropertymappingsProviderSamlDestroy) | **Delete** /propertymappings/provider/saml/{pm_uuid}/ | 
+[**PropertymappingsProviderSamlList**](PropertymappingsApi.md#PropertymappingsProviderSamlList) | **Get** /propertymappings/provider/saml/ | 
+[**PropertymappingsProviderSamlPartialUpdate**](PropertymappingsApi.md#PropertymappingsProviderSamlPartialUpdate) | **Patch** /propertymappings/provider/saml/{pm_uuid}/ | 
+[**PropertymappingsProviderSamlRetrieve**](PropertymappingsApi.md#PropertymappingsProviderSamlRetrieve) | **Get** /propertymappings/provider/saml/{pm_uuid}/ | 
+[**PropertymappingsProviderSamlUpdate**](PropertymappingsApi.md#PropertymappingsProviderSamlUpdate) | **Put** /propertymappings/provider/saml/{pm_uuid}/ | 
+[**PropertymappingsProviderSamlUsedByList**](PropertymappingsApi.md#PropertymappingsProviderSamlUsedByList) | **Get** /propertymappings/provider/saml/{pm_uuid}/used_by/ | 
+[**PropertymappingsProviderScimCreate**](PropertymappingsApi.md#PropertymappingsProviderScimCreate) | **Post** /propertymappings/provider/scim/ | 
+[**PropertymappingsProviderScimDestroy**](PropertymappingsApi.md#PropertymappingsProviderScimDestroy) | **Delete** /propertymappings/provider/scim/{pm_uuid}/ | 
+[**PropertymappingsProviderScimList**](PropertymappingsApi.md#PropertymappingsProviderScimList) | **Get** /propertymappings/provider/scim/ | 
+[**PropertymappingsProviderScimPartialUpdate**](PropertymappingsApi.md#PropertymappingsProviderScimPartialUpdate) | **Patch** /propertymappings/provider/scim/{pm_uuid}/ | 
+[**PropertymappingsProviderScimRetrieve**](PropertymappingsApi.md#PropertymappingsProviderScimRetrieve) | **Get** /propertymappings/provider/scim/{pm_uuid}/ | 
+[**PropertymappingsProviderScimUpdate**](PropertymappingsApi.md#PropertymappingsProviderScimUpdate) | **Put** /propertymappings/provider/scim/{pm_uuid}/ | 
+[**PropertymappingsProviderScimUsedByList**](PropertymappingsApi.md#PropertymappingsProviderScimUsedByList) | **Get** /propertymappings/provider/scim/{pm_uuid}/used_by/ | 
+[**PropertymappingsProviderScopeCreate**](PropertymappingsApi.md#PropertymappingsProviderScopeCreate) | **Post** /propertymappings/provider/scope/ | 
+[**PropertymappingsProviderScopeDestroy**](PropertymappingsApi.md#PropertymappingsProviderScopeDestroy) | **Delete** /propertymappings/provider/scope/{pm_uuid}/ | 
+[**PropertymappingsProviderScopeList**](PropertymappingsApi.md#PropertymappingsProviderScopeList) | **Get** /propertymappings/provider/scope/ | 
+[**PropertymappingsProviderScopePartialUpdate**](PropertymappingsApi.md#PropertymappingsProviderScopePartialUpdate) | **Patch** /propertymappings/provider/scope/{pm_uuid}/ | 
+[**PropertymappingsProviderScopeRetrieve**](PropertymappingsApi.md#PropertymappingsProviderScopeRetrieve) | **Get** /propertymappings/provider/scope/{pm_uuid}/ | 
+[**PropertymappingsProviderScopeUpdate**](PropertymappingsApi.md#PropertymappingsProviderScopeUpdate) | **Put** /propertymappings/provider/scope/{pm_uuid}/ | 
+[**PropertymappingsProviderScopeUsedByList**](PropertymappingsApi.md#PropertymappingsProviderScopeUsedByList) | **Get** /propertymappings/provider/scope/{pm_uuid}/used_by/ | 
 [**PropertymappingsSourceLdapCreate**](PropertymappingsApi.md#PropertymappingsSourceLdapCreate) | **Post** /propertymappings/source/ldap/ | 
 [**PropertymappingsSourceLdapDestroy**](PropertymappingsApi.md#PropertymappingsSourceLdapDestroy) | **Delete** /propertymappings/source/ldap/{pm_uuid}/ | 
 [**PropertymappingsSourceLdapList**](PropertymappingsApi.md#PropertymappingsSourceLdapList) | **Get** /propertymappings/source/ldap/ | 
@@ -2013,9 +2013,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsRacCreate
+## PropertymappingsProviderRacCreate
 
-> RACPropertyMapping PropertymappingsRacCreate(ctx).RACPropertyMappingRequest(rACPropertyMappingRequest).Execute()
+> RACPropertyMapping PropertymappingsProviderRacCreate(ctx).RACPropertyMappingRequest(rACPropertyMappingRequest).Execute()
 
 
 
@@ -2038,13 +2038,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRacCreate(context.Background()).RACPropertyMappingRequest(rACPropertyMappingRequest).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRacCreate(context.Background()).RACPropertyMappingRequest(rACPropertyMappingRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRacCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRacCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsRacCreate`: RACPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsRacCreate`: %v\n", resp)
+    // response from `PropertymappingsProviderRacCreate`: RACPropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRacCreate`: %v\n", resp)
 }
 ```
 
@@ -2054,7 +2054,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsRacCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderRacCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -2079,9 +2079,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsRacDestroy
+## PropertymappingsProviderRacDestroy
 
-> PropertymappingsRacDestroy(ctx, pmUuid).Execute()
+> PropertymappingsProviderRacDestroy(ctx, pmUuid).Execute()
 
 
 
@@ -2100,13 +2100,13 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Provider Property Mapping.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRacDestroy(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRacDestroy(context.Background(), pmUuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRacDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRacDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -2118,11 +2118,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this RAC Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this RAC Provider Property Mapping. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsRacDestroyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderRacDestroyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -2147,9 +2147,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsRacList
+## PropertymappingsProviderRacList
 
-> PaginatedRACPropertyMappingList PropertymappingsRacList(ctx).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedRACPropertyMappingList PropertymappingsProviderRacList(ctx).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -2177,13 +2177,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRacList(context.Background()).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRacList(context.Background()).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRacList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRacList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsRacList`: PaginatedRACPropertyMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsRacList`: %v\n", resp)
+    // response from `PropertymappingsProviderRacList`: PaginatedRACPropertyMappingList
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRacList`: %v\n", resp)
 }
 ```
 
@@ -2193,7 +2193,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsRacListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderRacListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -2223,9 +2223,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsRacPartialUpdate
+## PropertymappingsProviderRacPartialUpdate
 
-> RACPropertyMapping PropertymappingsRacPartialUpdate(ctx, pmUuid).PatchedRACPropertyMappingRequest(patchedRACPropertyMappingRequest).Execute()
+> RACPropertyMapping PropertymappingsProviderRacPartialUpdate(ctx, pmUuid).PatchedRACPropertyMappingRequest(patchedRACPropertyMappingRequest).Execute()
 
 
 
@@ -2244,18 +2244,18 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Provider Property Mapping.
     patchedRACPropertyMappingRequest := *openapiclient.NewPatchedRACPropertyMappingRequest() // PatchedRACPropertyMappingRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRacPartialUpdate(context.Background(), pmUuid).PatchedRACPropertyMappingRequest(patchedRACPropertyMappingRequest).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRacPartialUpdate(context.Background(), pmUuid).PatchedRACPropertyMappingRequest(patchedRACPropertyMappingRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRacPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRacPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsRacPartialUpdate`: RACPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsRacPartialUpdate`: %v\n", resp)
+    // response from `PropertymappingsProviderRacPartialUpdate`: RACPropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRacPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -2265,11 +2265,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this RAC Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this RAC Provider Property Mapping. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsRacPartialUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderRacPartialUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -2295,9 +2295,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsRacRetrieve
+## PropertymappingsProviderRacRetrieve
 
-> RACPropertyMapping PropertymappingsRacRetrieve(ctx, pmUuid).Execute()
+> RACPropertyMapping PropertymappingsProviderRacRetrieve(ctx, pmUuid).Execute()
 
 
 
@@ -2316,17 +2316,17 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Provider Property Mapping.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRacRetrieve(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRacRetrieve(context.Background(), pmUuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRacRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRacRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsRacRetrieve`: RACPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsRacRetrieve`: %v\n", resp)
+    // response from `PropertymappingsProviderRacRetrieve`: RACPropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRacRetrieve`: %v\n", resp)
 }
 ```
 
@@ -2336,11 +2336,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this RAC Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this RAC Provider Property Mapping. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsRacRetrieveRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderRacRetrieveRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -2365,9 +2365,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsRacUpdate
+## PropertymappingsProviderRacUpdate
 
-> RACPropertyMapping PropertymappingsRacUpdate(ctx, pmUuid).RACPropertyMappingRequest(rACPropertyMappingRequest).Execute()
+> RACPropertyMapping PropertymappingsProviderRacUpdate(ctx, pmUuid).RACPropertyMappingRequest(rACPropertyMappingRequest).Execute()
 
 
 
@@ -2386,18 +2386,18 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Provider Property Mapping.
     rACPropertyMappingRequest := *openapiclient.NewRACPropertyMappingRequest("Name_example", map[string]interface{}{"key": interface{}(123)}) // RACPropertyMappingRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRacUpdate(context.Background(), pmUuid).RACPropertyMappingRequest(rACPropertyMappingRequest).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRacUpdate(context.Background(), pmUuid).RACPropertyMappingRequest(rACPropertyMappingRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRacUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRacUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsRacUpdate`: RACPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsRacUpdate`: %v\n", resp)
+    // response from `PropertymappingsProviderRacUpdate`: RACPropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRacUpdate`: %v\n", resp)
 }
 ```
 
@@ -2407,11 +2407,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this RAC Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this RAC Provider Property Mapping. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsRacUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderRacUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -2437,9 +2437,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsRacUsedByList
+## PropertymappingsProviderRacUsedByList
 
-> []UsedBy PropertymappingsRacUsedByList(ctx, pmUuid).Execute()
+> []UsedBy PropertymappingsProviderRacUsedByList(ctx, pmUuid).Execute()
 
 
 
@@ -2458,17 +2458,17 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Provider Property Mapping.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRacUsedByList(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRacUsedByList(context.Background(), pmUuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRacUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRacUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsRacUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsRacUsedByList`: %v\n", resp)
+    // response from `PropertymappingsProviderRacUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRacUsedByList`: %v\n", resp)
 }
 ```
 
@@ -2478,11 +2478,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this RAC Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this RAC Provider Property Mapping. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsRacUsedByListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderRacUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -2507,9 +2507,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsRadiusCreate
+## PropertymappingsProviderRadiusCreate
 
-> RadiusProviderPropertyMapping PropertymappingsRadiusCreate(ctx).RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest).Execute()
+> RadiusProviderPropertyMapping PropertymappingsProviderRadiusCreate(ctx).RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest).Execute()
 
 
 
@@ -2532,13 +2532,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRadiusCreate(context.Background()).RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRadiusCreate(context.Background()).RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRadiusCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRadiusCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsRadiusCreate`: RadiusProviderPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsRadiusCreate`: %v\n", resp)
+    // response from `PropertymappingsProviderRadiusCreate`: RadiusProviderPropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRadiusCreate`: %v\n", resp)
 }
 ```
 
@@ -2548,7 +2548,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsRadiusCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderRadiusCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -2573,9 +2573,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsRadiusDestroy
+## PropertymappingsProviderRadiusDestroy
 
-> PropertymappingsRadiusDestroy(ctx, pmUuid).Execute()
+> PropertymappingsProviderRadiusDestroy(ctx, pmUuid).Execute()
 
 
 
@@ -2594,13 +2594,13 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Provider Property Mapping.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRadiusDestroy(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRadiusDestroy(context.Background(), pmUuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRadiusDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRadiusDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -2612,11 +2612,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this Radius Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Radius Provider Property Mapping. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsRadiusDestroyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderRadiusDestroyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -2641,9 +2641,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsRadiusList
+## PropertymappingsProviderRadiusList
 
-> PaginatedRadiusProviderPropertyMappingList PropertymappingsRadiusList(ctx).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedRadiusProviderPropertyMappingList PropertymappingsProviderRadiusList(ctx).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -2672,13 +2672,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRadiusList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRadiusList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRadiusList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRadiusList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsRadiusList`: PaginatedRadiusProviderPropertyMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsRadiusList`: %v\n", resp)
+    // response from `PropertymappingsProviderRadiusList`: PaginatedRadiusProviderPropertyMappingList
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRadiusList`: %v\n", resp)
 }
 ```
 
@@ -2688,7 +2688,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsRadiusListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderRadiusListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -2719,9 +2719,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsRadiusPartialUpdate
+## PropertymappingsProviderRadiusPartialUpdate
 
-> RadiusProviderPropertyMapping PropertymappingsRadiusPartialUpdate(ctx, pmUuid).PatchedRadiusProviderPropertyMappingRequest(patchedRadiusProviderPropertyMappingRequest).Execute()
+> RadiusProviderPropertyMapping PropertymappingsProviderRadiusPartialUpdate(ctx, pmUuid).PatchedRadiusProviderPropertyMappingRequest(patchedRadiusProviderPropertyMappingRequest).Execute()
 
 
 
@@ -2740,18 +2740,18 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Provider Property Mapping.
     patchedRadiusProviderPropertyMappingRequest := *openapiclient.NewPatchedRadiusProviderPropertyMappingRequest() // PatchedRadiusProviderPropertyMappingRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRadiusPartialUpdate(context.Background(), pmUuid).PatchedRadiusProviderPropertyMappingRequest(patchedRadiusProviderPropertyMappingRequest).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRadiusPartialUpdate(context.Background(), pmUuid).PatchedRadiusProviderPropertyMappingRequest(patchedRadiusProviderPropertyMappingRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRadiusPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRadiusPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsRadiusPartialUpdate`: RadiusProviderPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsRadiusPartialUpdate`: %v\n", resp)
+    // response from `PropertymappingsProviderRadiusPartialUpdate`: RadiusProviderPropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRadiusPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -2761,11 +2761,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this Radius Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Radius Provider Property Mapping. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsRadiusPartialUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderRadiusPartialUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -2791,9 +2791,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsRadiusRetrieve
+## PropertymappingsProviderRadiusRetrieve
 
-> RadiusProviderPropertyMapping PropertymappingsRadiusRetrieve(ctx, pmUuid).Execute()
+> RadiusProviderPropertyMapping PropertymappingsProviderRadiusRetrieve(ctx, pmUuid).Execute()
 
 
 
@@ -2812,17 +2812,17 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Provider Property Mapping.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRadiusRetrieve(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRadiusRetrieve(context.Background(), pmUuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRadiusRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRadiusRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsRadiusRetrieve`: RadiusProviderPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsRadiusRetrieve`: %v\n", resp)
+    // response from `PropertymappingsProviderRadiusRetrieve`: RadiusProviderPropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRadiusRetrieve`: %v\n", resp)
 }
 ```
 
@@ -2832,11 +2832,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this Radius Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Radius Provider Property Mapping. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsRadiusRetrieveRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderRadiusRetrieveRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -2861,9 +2861,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsRadiusUpdate
+## PropertymappingsProviderRadiusUpdate
 
-> RadiusProviderPropertyMapping PropertymappingsRadiusUpdate(ctx, pmUuid).RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest).Execute()
+> RadiusProviderPropertyMapping PropertymappingsProviderRadiusUpdate(ctx, pmUuid).RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest).Execute()
 
 
 
@@ -2882,18 +2882,18 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Provider Property Mapping.
     radiusProviderPropertyMappingRequest := *openapiclient.NewRadiusProviderPropertyMappingRequest("Name_example", "Expression_example") // RadiusProviderPropertyMappingRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRadiusUpdate(context.Background(), pmUuid).RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRadiusUpdate(context.Background(), pmUuid).RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRadiusUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRadiusUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsRadiusUpdate`: RadiusProviderPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsRadiusUpdate`: %v\n", resp)
+    // response from `PropertymappingsProviderRadiusUpdate`: RadiusProviderPropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRadiusUpdate`: %v\n", resp)
 }
 ```
 
@@ -2903,11 +2903,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this Radius Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Radius Provider Property Mapping. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsRadiusUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderRadiusUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -2933,9 +2933,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsRadiusUsedByList
+## PropertymappingsProviderRadiusUsedByList
 
-> []UsedBy PropertymappingsRadiusUsedByList(ctx, pmUuid).Execute()
+> []UsedBy PropertymappingsProviderRadiusUsedByList(ctx, pmUuid).Execute()
 
 
 
@@ -2954,17 +2954,17 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Provider Property Mapping.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsRadiusUsedByList(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRadiusUsedByList(context.Background(), pmUuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsRadiusUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRadiusUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsRadiusUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsRadiusUsedByList`: %v\n", resp)
+    // response from `PropertymappingsProviderRadiusUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRadiusUsedByList`: %v\n", resp)
 }
 ```
 
@@ -2974,11 +2974,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this Radius Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this Radius Provider Property Mapping. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsRadiusUsedByListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderRadiusUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3003,9 +3003,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsSamlCreate
+## PropertymappingsProviderSamlCreate
 
-> SAMLPropertyMapping PropertymappingsSamlCreate(ctx).SAMLPropertyMappingRequest(sAMLPropertyMappingRequest).Execute()
+> SAMLPropertyMapping PropertymappingsProviderSamlCreate(ctx).SAMLPropertyMappingRequest(sAMLPropertyMappingRequest).Execute()
 
 
 
@@ -3028,13 +3028,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSamlCreate(context.Background()).SAMLPropertyMappingRequest(sAMLPropertyMappingRequest).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderSamlCreate(context.Background()).SAMLPropertyMappingRequest(sAMLPropertyMappingRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSamlCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderSamlCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsSamlCreate`: SAMLPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSamlCreate`: %v\n", resp)
+    // response from `PropertymappingsProviderSamlCreate`: SAMLPropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderSamlCreate`: %v\n", resp)
 }
 ```
 
@@ -3044,7 +3044,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsSamlCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderSamlCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3069,9 +3069,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsSamlDestroy
+## PropertymappingsProviderSamlDestroy
 
-> PropertymappingsSamlDestroy(ctx, pmUuid).Execute()
+> PropertymappingsProviderSamlDestroy(ctx, pmUuid).Execute()
 
 
 
@@ -3090,13 +3090,13 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Provider Property Mapping.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSamlDestroy(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderSamlDestroy(context.Background(), pmUuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSamlDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderSamlDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -3108,11 +3108,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this SAML Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this SAML Provider Property Mapping. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsSamlDestroyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderSamlDestroyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3137,9 +3137,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsSamlList
+## PropertymappingsProviderSamlList
 
-> PaginatedSAMLPropertyMappingList PropertymappingsSamlList(ctx).FriendlyName(friendlyName).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).SamlName(samlName).Search(search).Execute()
+> PaginatedSAMLPropertyMappingList PropertymappingsProviderSamlList(ctx).FriendlyName(friendlyName).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).SamlName(samlName).Search(search).Execute()
 
 
 
@@ -3170,13 +3170,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSamlList(context.Background()).FriendlyName(friendlyName).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).SamlName(samlName).Search(search).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderSamlList(context.Background()).FriendlyName(friendlyName).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).SamlName(samlName).Search(search).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSamlList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderSamlList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsSamlList`: PaginatedSAMLPropertyMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSamlList`: %v\n", resp)
+    // response from `PropertymappingsProviderSamlList`: PaginatedSAMLPropertyMappingList
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderSamlList`: %v\n", resp)
 }
 ```
 
@@ -3186,7 +3186,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsSamlListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderSamlListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3219,9 +3219,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsSamlPartialUpdate
+## PropertymappingsProviderSamlPartialUpdate
 
-> SAMLPropertyMapping PropertymappingsSamlPartialUpdate(ctx, pmUuid).PatchedSAMLPropertyMappingRequest(patchedSAMLPropertyMappingRequest).Execute()
+> SAMLPropertyMapping PropertymappingsProviderSamlPartialUpdate(ctx, pmUuid).PatchedSAMLPropertyMappingRequest(patchedSAMLPropertyMappingRequest).Execute()
 
 
 
@@ -3240,18 +3240,18 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Provider Property Mapping.
     patchedSAMLPropertyMappingRequest := *openapiclient.NewPatchedSAMLPropertyMappingRequest() // PatchedSAMLPropertyMappingRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSamlPartialUpdate(context.Background(), pmUuid).PatchedSAMLPropertyMappingRequest(patchedSAMLPropertyMappingRequest).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderSamlPartialUpdate(context.Background(), pmUuid).PatchedSAMLPropertyMappingRequest(patchedSAMLPropertyMappingRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSamlPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderSamlPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsSamlPartialUpdate`: SAMLPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSamlPartialUpdate`: %v\n", resp)
+    // response from `PropertymappingsProviderSamlPartialUpdate`: SAMLPropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderSamlPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -3261,11 +3261,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this SAML Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this SAML Provider Property Mapping. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsSamlPartialUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderSamlPartialUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3291,9 +3291,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsSamlRetrieve
+## PropertymappingsProviderSamlRetrieve
 
-> SAMLPropertyMapping PropertymappingsSamlRetrieve(ctx, pmUuid).Execute()
+> SAMLPropertyMapping PropertymappingsProviderSamlRetrieve(ctx, pmUuid).Execute()
 
 
 
@@ -3312,17 +3312,17 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Provider Property Mapping.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSamlRetrieve(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderSamlRetrieve(context.Background(), pmUuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSamlRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderSamlRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsSamlRetrieve`: SAMLPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSamlRetrieve`: %v\n", resp)
+    // response from `PropertymappingsProviderSamlRetrieve`: SAMLPropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderSamlRetrieve`: %v\n", resp)
 }
 ```
 
@@ -3332,11 +3332,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this SAML Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this SAML Provider Property Mapping. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsSamlRetrieveRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderSamlRetrieveRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3361,9 +3361,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsSamlUpdate
+## PropertymappingsProviderSamlUpdate
 
-> SAMLPropertyMapping PropertymappingsSamlUpdate(ctx, pmUuid).SAMLPropertyMappingRequest(sAMLPropertyMappingRequest).Execute()
+> SAMLPropertyMapping PropertymappingsProviderSamlUpdate(ctx, pmUuid).SAMLPropertyMappingRequest(sAMLPropertyMappingRequest).Execute()
 
 
 
@@ -3382,18 +3382,18 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Provider Property Mapping.
     sAMLPropertyMappingRequest := *openapiclient.NewSAMLPropertyMappingRequest("Name_example", "Expression_example", "SamlName_example") // SAMLPropertyMappingRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSamlUpdate(context.Background(), pmUuid).SAMLPropertyMappingRequest(sAMLPropertyMappingRequest).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderSamlUpdate(context.Background(), pmUuid).SAMLPropertyMappingRequest(sAMLPropertyMappingRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSamlUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderSamlUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsSamlUpdate`: SAMLPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSamlUpdate`: %v\n", resp)
+    // response from `PropertymappingsProviderSamlUpdate`: SAMLPropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderSamlUpdate`: %v\n", resp)
 }
 ```
 
@@ -3403,11 +3403,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this SAML Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this SAML Provider Property Mapping. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsSamlUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderSamlUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3433,9 +3433,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsSamlUsedByList
+## PropertymappingsProviderSamlUsedByList
 
-> []UsedBy PropertymappingsSamlUsedByList(ctx, pmUuid).Execute()
+> []UsedBy PropertymappingsProviderSamlUsedByList(ctx, pmUuid).Execute()
 
 
 
@@ -3454,17 +3454,17 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Property Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Provider Property Mapping.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSamlUsedByList(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderSamlUsedByList(context.Background(), pmUuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSamlUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderSamlUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsSamlUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSamlUsedByList`: %v\n", resp)
+    // response from `PropertymappingsProviderSamlUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderSamlUsedByList`: %v\n", resp)
 }
 ```
 
@@ -3474,11 +3474,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this SAML Property Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this SAML Provider Property Mapping. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsSamlUsedByListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderSamlUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3503,9 +3503,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsScimCreate
+## PropertymappingsProviderScimCreate
 
-> SCIMMapping PropertymappingsScimCreate(ctx).SCIMMappingRequest(sCIMMappingRequest).Execute()
+> SCIMMapping PropertymappingsProviderScimCreate(ctx).SCIMMappingRequest(sCIMMappingRequest).Execute()
 
 
 
@@ -3528,13 +3528,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScimCreate(context.Background()).SCIMMappingRequest(sCIMMappingRequest).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScimCreate(context.Background()).SCIMMappingRequest(sCIMMappingRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScimCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScimCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsScimCreate`: SCIMMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsScimCreate`: %v\n", resp)
+    // response from `PropertymappingsProviderScimCreate`: SCIMMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScimCreate`: %v\n", resp)
 }
 ```
 
@@ -3544,7 +3544,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsScimCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderScimCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3569,9 +3569,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsScimDestroy
+## PropertymappingsProviderScimDestroy
 
-> PropertymappingsScimDestroy(ctx, pmUuid).Execute()
+> PropertymappingsProviderScimDestroy(ctx, pmUuid).Execute()
 
 
 
@@ -3590,13 +3590,13 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Provider Mapping.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScimDestroy(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScimDestroy(context.Background(), pmUuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScimDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScimDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -3608,11 +3608,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this SCIM Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this SCIM Provider Mapping. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsScimDestroyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderScimDestroyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3637,9 +3637,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsScimList
+## PropertymappingsProviderScimList
 
-> PaginatedSCIMMappingList PropertymappingsScimList(ctx).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedSCIMMappingList PropertymappingsProviderScimList(ctx).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -3668,13 +3668,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScimList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScimList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScimList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScimList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsScimList`: PaginatedSCIMMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsScimList`: %v\n", resp)
+    // response from `PropertymappingsProviderScimList`: PaginatedSCIMMappingList
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScimList`: %v\n", resp)
 }
 ```
 
@@ -3684,7 +3684,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsScimListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderScimListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3715,9 +3715,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsScimPartialUpdate
+## PropertymappingsProviderScimPartialUpdate
 
-> SCIMMapping PropertymappingsScimPartialUpdate(ctx, pmUuid).PatchedSCIMMappingRequest(patchedSCIMMappingRequest).Execute()
+> SCIMMapping PropertymappingsProviderScimPartialUpdate(ctx, pmUuid).PatchedSCIMMappingRequest(patchedSCIMMappingRequest).Execute()
 
 
 
@@ -3736,18 +3736,18 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Provider Mapping.
     patchedSCIMMappingRequest := *openapiclient.NewPatchedSCIMMappingRequest() // PatchedSCIMMappingRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScimPartialUpdate(context.Background(), pmUuid).PatchedSCIMMappingRequest(patchedSCIMMappingRequest).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScimPartialUpdate(context.Background(), pmUuid).PatchedSCIMMappingRequest(patchedSCIMMappingRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScimPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScimPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsScimPartialUpdate`: SCIMMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsScimPartialUpdate`: %v\n", resp)
+    // response from `PropertymappingsProviderScimPartialUpdate`: SCIMMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScimPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -3757,11 +3757,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this SCIM Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this SCIM Provider Mapping. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsScimPartialUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderScimPartialUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3787,9 +3787,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsScimRetrieve
+## PropertymappingsProviderScimRetrieve
 
-> SCIMMapping PropertymappingsScimRetrieve(ctx, pmUuid).Execute()
+> SCIMMapping PropertymappingsProviderScimRetrieve(ctx, pmUuid).Execute()
 
 
 
@@ -3808,17 +3808,17 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Provider Mapping.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScimRetrieve(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScimRetrieve(context.Background(), pmUuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScimRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScimRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsScimRetrieve`: SCIMMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsScimRetrieve`: %v\n", resp)
+    // response from `PropertymappingsProviderScimRetrieve`: SCIMMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScimRetrieve`: %v\n", resp)
 }
 ```
 
@@ -3828,11 +3828,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this SCIM Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this SCIM Provider Mapping. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsScimRetrieveRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderScimRetrieveRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3857,9 +3857,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsScimUpdate
+## PropertymappingsProviderScimUpdate
 
-> SCIMMapping PropertymappingsScimUpdate(ctx, pmUuid).SCIMMappingRequest(sCIMMappingRequest).Execute()
+> SCIMMapping PropertymappingsProviderScimUpdate(ctx, pmUuid).SCIMMappingRequest(sCIMMappingRequest).Execute()
 
 
 
@@ -3878,18 +3878,18 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Provider Mapping.
     sCIMMappingRequest := *openapiclient.NewSCIMMappingRequest("Name_example", "Expression_example") // SCIMMappingRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScimUpdate(context.Background(), pmUuid).SCIMMappingRequest(sCIMMappingRequest).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScimUpdate(context.Background(), pmUuid).SCIMMappingRequest(sCIMMappingRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScimUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScimUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsScimUpdate`: SCIMMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsScimUpdate`: %v\n", resp)
+    // response from `PropertymappingsProviderScimUpdate`: SCIMMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScimUpdate`: %v\n", resp)
 }
 ```
 
@@ -3899,11 +3899,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this SCIM Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this SCIM Provider Mapping. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsScimUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderScimUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3929,9 +3929,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsScimUsedByList
+## PropertymappingsProviderScimUsedByList
 
-> []UsedBy PropertymappingsScimUsedByList(ctx, pmUuid).Execute()
+> []UsedBy PropertymappingsProviderScimUsedByList(ctx, pmUuid).Execute()
 
 
 
@@ -3950,17 +3950,17 @@ import (
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Mapping.
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Provider Mapping.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScimUsedByList(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScimUsedByList(context.Background(), pmUuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScimUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScimUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsScimUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsScimUsedByList`: %v\n", resp)
+    // response from `PropertymappingsProviderScimUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScimUsedByList`: %v\n", resp)
 }
 ```
 
@@ -3970,11 +3970,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pmUuid** | **string** | A UUID string identifying this SCIM Mapping. | 
+**pmUuid** | **string** | A UUID string identifying this SCIM Provider Mapping. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsScimUsedByListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderScimUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3999,9 +3999,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsScopeCreate
+## PropertymappingsProviderScopeCreate
 
-> ScopeMapping PropertymappingsScopeCreate(ctx).ScopeMappingRequest(scopeMappingRequest).Execute()
+> ScopeMapping PropertymappingsProviderScopeCreate(ctx).ScopeMappingRequest(scopeMappingRequest).Execute()
 
 
 
@@ -4024,13 +4024,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScopeCreate(context.Background()).ScopeMappingRequest(scopeMappingRequest).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScopeCreate(context.Background()).ScopeMappingRequest(scopeMappingRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScopeCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScopeCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsScopeCreate`: ScopeMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsScopeCreate`: %v\n", resp)
+    // response from `PropertymappingsProviderScopeCreate`: ScopeMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScopeCreate`: %v\n", resp)
 }
 ```
 
@@ -4040,7 +4040,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsScopeCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderScopeCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -4065,9 +4065,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsScopeDestroy
+## PropertymappingsProviderScopeDestroy
 
-> PropertymappingsScopeDestroy(ctx, pmUuid).Execute()
+> PropertymappingsProviderScopeDestroy(ctx, pmUuid).Execute()
 
 
 
@@ -4090,9 +4090,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScopeDestroy(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScopeDestroy(context.Background(), pmUuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScopeDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScopeDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -4108,7 +4108,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsScopeDestroyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderScopeDestroyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -4133,9 +4133,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsScopeList
+## PropertymappingsProviderScopeList
 
-> PaginatedScopeMappingList PropertymappingsScopeList(ctx).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ScopeName(scopeName).Search(search).Execute()
+> PaginatedScopeMappingList PropertymappingsProviderScopeList(ctx).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ScopeName(scopeName).Search(search).Execute()
 
 
 
@@ -4165,13 +4165,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScopeList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ScopeName(scopeName).Search(search).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScopeList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ScopeName(scopeName).Search(search).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScopeList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScopeList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsScopeList`: PaginatedScopeMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsScopeList`: %v\n", resp)
+    // response from `PropertymappingsProviderScopeList`: PaginatedScopeMappingList
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScopeList`: %v\n", resp)
 }
 ```
 
@@ -4181,7 +4181,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsScopeListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderScopeListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -4213,9 +4213,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsScopePartialUpdate
+## PropertymappingsProviderScopePartialUpdate
 
-> ScopeMapping PropertymappingsScopePartialUpdate(ctx, pmUuid).PatchedScopeMappingRequest(patchedScopeMappingRequest).Execute()
+> ScopeMapping PropertymappingsProviderScopePartialUpdate(ctx, pmUuid).PatchedScopeMappingRequest(patchedScopeMappingRequest).Execute()
 
 
 
@@ -4239,13 +4239,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScopePartialUpdate(context.Background(), pmUuid).PatchedScopeMappingRequest(patchedScopeMappingRequest).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScopePartialUpdate(context.Background(), pmUuid).PatchedScopeMappingRequest(patchedScopeMappingRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScopePartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScopePartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsScopePartialUpdate`: ScopeMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsScopePartialUpdate`: %v\n", resp)
+    // response from `PropertymappingsProviderScopePartialUpdate`: ScopeMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScopePartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -4259,7 +4259,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsScopePartialUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderScopePartialUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -4285,9 +4285,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsScopeRetrieve
+## PropertymappingsProviderScopeRetrieve
 
-> ScopeMapping PropertymappingsScopeRetrieve(ctx, pmUuid).Execute()
+> ScopeMapping PropertymappingsProviderScopeRetrieve(ctx, pmUuid).Execute()
 
 
 
@@ -4310,13 +4310,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScopeRetrieve(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScopeRetrieve(context.Background(), pmUuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScopeRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScopeRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsScopeRetrieve`: ScopeMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsScopeRetrieve`: %v\n", resp)
+    // response from `PropertymappingsProviderScopeRetrieve`: ScopeMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScopeRetrieve`: %v\n", resp)
 }
 ```
 
@@ -4330,7 +4330,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsScopeRetrieveRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderScopeRetrieveRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -4355,9 +4355,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsScopeUpdate
+## PropertymappingsProviderScopeUpdate
 
-> ScopeMapping PropertymappingsScopeUpdate(ctx, pmUuid).ScopeMappingRequest(scopeMappingRequest).Execute()
+> ScopeMapping PropertymappingsProviderScopeUpdate(ctx, pmUuid).ScopeMappingRequest(scopeMappingRequest).Execute()
 
 
 
@@ -4381,13 +4381,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScopeUpdate(context.Background(), pmUuid).ScopeMappingRequest(scopeMappingRequest).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScopeUpdate(context.Background(), pmUuid).ScopeMappingRequest(scopeMappingRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScopeUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScopeUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsScopeUpdate`: ScopeMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsScopeUpdate`: %v\n", resp)
+    // response from `PropertymappingsProviderScopeUpdate`: ScopeMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScopeUpdate`: %v\n", resp)
 }
 ```
 
@@ -4401,7 +4401,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsScopeUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderScopeUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -4427,9 +4427,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PropertymappingsScopeUsedByList
+## PropertymappingsProviderScopeUsedByList
 
-> []UsedBy PropertymappingsScopeUsedByList(ctx, pmUuid).Execute()
+> []UsedBy PropertymappingsProviderScopeUsedByList(ctx, pmUuid).Execute()
 
 
 
@@ -4452,13 +4452,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsScopeUsedByList(context.Background(), pmUuid).Execute()
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScopeUsedByList(context.Background(), pmUuid).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsScopeUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScopeUsedByList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PropertymappingsScopeUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsScopeUsedByList`: %v\n", resp)
+    // response from `PropertymappingsProviderScopeUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScopeUsedByList`: %v\n", resp)
 }
 ```
 
@@ -4472,7 +4472,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPropertymappingsScopeUsedByListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPropertymappingsProviderScopeUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
