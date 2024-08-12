@@ -67883,6 +67883,7 @@ components:
         outdated: true
         version_latest_valid: true
         version_latest: version_latest
+        outpost_outdated: true
         build_hash: build_hash
       properties:
         version_current:
@@ -67905,9 +67906,14 @@ components:
           description: Check if we're running the latest version
           readOnly: true
           type: boolean
+        outpost_outdated:
+          description: Check if any outpost is outdated/has a version mismatch
+          readOnly: true
+          type: boolean
       required:
       - build_hash
       - outdated
+      - outpost_outdated
       - version_current
       - version_latest
       - version_latest_valid

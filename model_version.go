@@ -27,19 +27,22 @@ type Version struct {
 	BuildHash string `json:"build_hash"`
 	// Check if we're running the latest version
 	Outdated bool `json:"outdated"`
+	// Check if any outpost is outdated/has a version mismatch
+	OutpostOutdated bool `json:"outpost_outdated"`
 }
 
 // NewVersion instantiates a new Version object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVersion(versionCurrent string, versionLatest string, versionLatestValid bool, buildHash string, outdated bool) *Version {
+func NewVersion(versionCurrent string, versionLatest string, versionLatestValid bool, buildHash string, outdated bool, outpostOutdated bool) *Version {
 	this := Version{}
 	this.VersionCurrent = versionCurrent
 	this.VersionLatest = versionLatest
 	this.VersionLatestValid = versionLatestValid
 	this.BuildHash = buildHash
 	this.Outdated = outdated
+	this.OutpostOutdated = outpostOutdated
 	return &this
 }
 
@@ -171,6 +174,30 @@ func (o *Version) SetOutdated(v bool) {
 	o.Outdated = v
 }
 
+// GetOutpostOutdated returns the OutpostOutdated field value
+func (o *Version) GetOutpostOutdated() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.OutpostOutdated
+}
+
+// GetOutpostOutdatedOk returns a tuple with the OutpostOutdated field value
+// and a boolean to check if the value has been set.
+func (o *Version) GetOutpostOutdatedOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.OutpostOutdated, true
+}
+
+// SetOutpostOutdated sets field value
+func (o *Version) SetOutpostOutdated(v bool) {
+	o.OutpostOutdated = v
+}
+
 func (o Version) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -187,6 +214,9 @@ func (o Version) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["outdated"] = o.Outdated
+	}
+	if true {
+		toSerialize["outpost_outdated"] = o.OutpostOutdated
 	}
 	return json.Marshal(toSerialize)
 }

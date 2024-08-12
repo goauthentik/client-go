@@ -9,12 +9,13 @@ Name | Type | Description | Notes
 **VersionLatestValid** | **bool** | Check if latest version is valid | [readonly] 
 **BuildHash** | **string** | Get build hash, if version is not latest or released | [readonly] 
 **Outdated** | **bool** | Check if we&#39;re running the latest version | [readonly] 
+**OutpostOutdated** | **bool** | Check if any outpost is outdated/has a version mismatch | [readonly] 
 
 ## Methods
 
 ### NewVersion
 
-`func NewVersion(versionCurrent string, versionLatest string, versionLatestValid bool, buildHash string, outdated bool, ) *Version`
+`func NewVersion(versionCurrent string, versionLatest string, versionLatestValid bool, buildHash string, outdated bool, outpostOutdated bool, ) *Version`
 
 NewVersion instantiates a new Version object
 This constructor will assign default values to properties that have it defined,
@@ -127,6 +128,26 @@ and a boolean to check if the value has been set.
 `func (o *Version) SetOutdated(v bool)`
 
 SetOutdated sets Outdated field to given value.
+
+
+### GetOutpostOutdated
+
+`func (o *Version) GetOutpostOutdated() bool`
+
+GetOutpostOutdated returns the OutpostOutdated field if non-nil, zero value otherwise.
+
+### GetOutpostOutdatedOk
+
+`func (o *Version) GetOutpostOutdatedOk() (*bool, bool)`
+
+GetOutpostOutdatedOk returns a tuple with the OutpostOutdated field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutpostOutdated
+
+`func (o *Version) SetOutpostOutdated(v bool)`
+
+SetOutpostOutdated sets OutpostOutdated field to given value.
 
 
 
