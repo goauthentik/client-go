@@ -24,9 +24,7 @@ type LDAPProviderRequest struct {
 	AuthorizationFlow string   `json:"authorization_flow"`
 	PropertyMappings  []string `json:"property_mappings,omitempty"`
 	// DN under which objects are accessible.
-	BaseDn *string `json:"base_dn,omitempty"`
-	// Users in this group can do search queries. If not set, every user can execute search queries.
-	SearchGroup   NullableString `json:"search_group,omitempty"`
+	BaseDn        *string        `json:"base_dn,omitempty"`
 	Certificate   NullableString `json:"certificate,omitempty"`
 	TlsServerName *string        `json:"tls_server_name,omitempty"`
 	// The start for uidNumbers, this number is added to the user.pk to make sure that the numbers aren't too low for POSIX users. Default is 2000 to ensure that we don't collide with local users uidNumber
@@ -211,49 +209,6 @@ func (o *LDAPProviderRequest) HasBaseDn() bool {
 // SetBaseDn gets a reference to the given string and assigns it to the BaseDn field.
 func (o *LDAPProviderRequest) SetBaseDn(v string) {
 	o.BaseDn = &v
-}
-
-// GetSearchGroup returns the SearchGroup field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *LDAPProviderRequest) GetSearchGroup() string {
-	if o == nil || o.SearchGroup.Get() == nil {
-		var ret string
-		return ret
-	}
-	return *o.SearchGroup.Get()
-}
-
-// GetSearchGroupOk returns a tuple with the SearchGroup field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *LDAPProviderRequest) GetSearchGroupOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.SearchGroup.Get(), o.SearchGroup.IsSet()
-}
-
-// HasSearchGroup returns a boolean if a field has been set.
-func (o *LDAPProviderRequest) HasSearchGroup() bool {
-	if o != nil && o.SearchGroup.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSearchGroup gets a reference to the given NullableString and assigns it to the SearchGroup field.
-func (o *LDAPProviderRequest) SetSearchGroup(v string) {
-	o.SearchGroup.Set(&v)
-}
-
-// SetSearchGroupNil sets the value for SearchGroup to be an explicit nil
-func (o *LDAPProviderRequest) SetSearchGroupNil() {
-	o.SearchGroup.Set(nil)
-}
-
-// UnsetSearchGroup ensures that no value is present for SearchGroup, not even an explicit nil
-func (o *LDAPProviderRequest) UnsetSearchGroup() {
-	o.SearchGroup.Unset()
 }
 
 // GetCertificate returns the Certificate field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -507,9 +462,6 @@ func (o LDAPProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.BaseDn != nil {
 		toSerialize["base_dn"] = o.BaseDn
-	}
-	if o.SearchGroup.IsSet() {
-		toSerialize["search_group"] = o.SearchGroup.Get()
 	}
 	if o.Certificate.IsSet() {
 		toSerialize["certificate"] = o.Certificate.Get()

@@ -1866,7 +1866,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersLdapList
 
-> PaginatedLDAPProviderList ProvidersLdapList(ctx).ApplicationIsnull(applicationIsnull).AuthorizationFlowSlugIexact(authorizationFlowSlugIexact).BaseDnIexact(baseDnIexact).CertificateKpUuidIexact(certificateKpUuidIexact).CertificateNameIexact(certificateNameIexact).GidStartNumberIexact(gidStartNumberIexact).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SearchGroupGroupUuidIexact(searchGroupGroupUuidIexact).SearchGroupNameIexact(searchGroupNameIexact).TlsServerNameIexact(tlsServerNameIexact).UidStartNumberIexact(uidStartNumberIexact).Execute()
+> PaginatedLDAPProviderList ProvidersLdapList(ctx).ApplicationIsnull(applicationIsnull).AuthorizationFlowSlugIexact(authorizationFlowSlugIexact).BaseDnIexact(baseDnIexact).CertificateKpUuidIexact(certificateKpUuidIexact).CertificateNameIexact(certificateNameIexact).GidStartNumberIexact(gidStartNumberIexact).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TlsServerNameIexact(tlsServerNameIexact).UidStartNumberIexact(uidStartNumberIexact).Execute()
 
 
 
@@ -1896,14 +1896,12 @@ func main() {
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     search := "search_example" // string | A search term. (optional)
-    searchGroupGroupUuidIexact := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    searchGroupNameIexact := "searchGroupNameIexact_example" // string |  (optional)
     tlsServerNameIexact := "tlsServerNameIexact_example" // string |  (optional)
     uidStartNumberIexact := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProvidersApi.ProvidersLdapList(context.Background()).ApplicationIsnull(applicationIsnull).AuthorizationFlowSlugIexact(authorizationFlowSlugIexact).BaseDnIexact(baseDnIexact).CertificateKpUuidIexact(certificateKpUuidIexact).CertificateNameIexact(certificateNameIexact).GidStartNumberIexact(gidStartNumberIexact).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SearchGroupGroupUuidIexact(searchGroupGroupUuidIexact).SearchGroupNameIexact(searchGroupNameIexact).TlsServerNameIexact(tlsServerNameIexact).UidStartNumberIexact(uidStartNumberIexact).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersLdapList(context.Background()).ApplicationIsnull(applicationIsnull).AuthorizationFlowSlugIexact(authorizationFlowSlugIexact).BaseDnIexact(baseDnIexact).CertificateKpUuidIexact(certificateKpUuidIexact).CertificateNameIexact(certificateNameIexact).GidStartNumberIexact(gidStartNumberIexact).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TlsServerNameIexact(tlsServerNameIexact).UidStartNumberIexact(uidStartNumberIexact).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersLdapList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1935,8 +1933,6 @@ Name | Type | Description  | Notes
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **search** | **string** | A search term. | 
- **searchGroupGroupUuidIexact** | **string** |  | 
- **searchGroupNameIexact** | **string** |  | 
  **tlsServerNameIexact** | **string** |  | 
  **uidStartNumberIexact** | **int32** |  | 
 

@@ -10671,6 +10671,49 @@ paths:
       - authentik: []
       tags:
       - outposts
+  /outposts/ldap/{id}/check_access/:
+    get:
+      description: Check access to a single application by slug
+      operationId: outposts_ldap_access_check
+      parameters:
+      - explode: true
+        in: query
+        name: app_slug
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A unique integer value identifying this LDAP Provider.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LDAPCheckAccess'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - outposts
   /outposts/proxy/:
     get:
       description: ProxyProvider Viewset
@@ -10808,7 +10851,7 @@ paths:
   /outposts/radius/{id}/check_access/:
     get:
       description: Check access to a single application by slug
-      operationId: outposts_radius_check_access_retrieve
+      operationId: outposts_radius_access_check
       parameters:
       - explode: true
         in: query
@@ -20337,21 +20380,6 @@ paths:
         explode: true
         in: query
         name: search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: search_group__group_uuid__iexact
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: search_group__name__iexact
         required: false
         schema:
           type: string
@@ -46267,6 +46295,36 @@ components:
       - direct
       - cached
       type: string
+    LDAPCheckAccess:
+      description: Base serializer class which doesn't implement create/update methods
+      example:
+        access:
+          log_messages:
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          messages:
+          - messages
+          - messages
+          passing: true
+        has_search_permission: true
+      properties:
+        has_search_permission:
+          type: boolean
+        access:
+          $ref: '#/components/schemas/PolicyTestResult'
+      required:
+      - access
+      type: object
     LDAPDebug:
       example:
         membership:
@@ -46305,18 +46363,17 @@ components:
     LDAPOutpostConfig:
       description: LDAPProvider Serializer
       example:
+        application_slug: application_slug
+        bind_flow_slug: bind_flow_slug
         uid_start_number: 441289069
         search_mode: null
-        search_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        base_dn: base_dn
+        name: name
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         tls_server_name: tls_server_name
         bind_mode: null
-        mfa_support: true
-        application_slug: application_slug
-        bind_flow_slug: bind_flow_slug
-        base_dn: base_dn
-        name: name
         pk: 0
+        mfa_support: true
         gid_start_number: -1517921766
       properties:
         pk:
@@ -46333,12 +46390,6 @@ components:
         application_slug:
           description: Prioritise backchannel slug over direct application slug
           readOnly: true
-          type: string
-        search_group:
-          description: "Users in this group can do search queries. If not set, every\
-            \ user can execute search queries."
-          format: uuid
-          nullable: true
           type: string
         certificate:
           format: uuid
@@ -46384,7 +46435,6 @@ components:
         uid_start_number: 441289069
         search_mode: null
         verbose_name_plural: verbose_name_plural
-        search_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         tls_server_name: tls_server_name
         bind_mode: null
@@ -46465,12 +46515,6 @@ components:
         base_dn:
           description: DN under which objects are accessible.
           type: string
-        search_group:
-          description: "Users in this group can do search queries. If not set, every\
-            \ user can execute search queries."
-          format: uuid
-          nullable: true
-          type: string
         certificate:
           format: uuid
           nullable: true
@@ -46525,17 +46569,16 @@ components:
     LDAPProviderRequest:
       description: LDAPProvider Serializer
       example:
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         uid_start_number: -1803530559
         search_mode: null
-        search_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        base_dn: base_dn
+        name: name
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         tls_server_name: tls_server_name
         bind_mode: null
         mfa_support: true
-        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        base_dn: base_dn
-        name: name
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -46562,12 +46605,6 @@ components:
         base_dn:
           description: DN under which objects are accessible.
           minLength: 1
-          type: string
-        search_group:
-          description: "Users in this group can do search queries. If not set, every\
-            \ user can execute search queries."
-          format: uuid
-          nullable: true
           type: string
         certificate:
           format: uuid
@@ -51859,31 +51896,29 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - uid_start_number: 441289069
+        - application_slug: application_slug
+          bind_flow_slug: bind_flow_slug
+          uid_start_number: 441289069
           search_mode: null
-          search_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          base_dn: base_dn
+          name: name
           certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tls_server_name: tls_server_name
           bind_mode: null
-          mfa_support: true
-          application_slug: application_slug
-          bind_flow_slug: bind_flow_slug
-          base_dn: base_dn
-          name: name
           pk: 0
+          mfa_support: true
           gid_start_number: -1517921766
-        - uid_start_number: 441289069
+        - application_slug: application_slug
+          bind_flow_slug: bind_flow_slug
+          uid_start_number: 441289069
           search_mode: null
-          search_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          base_dn: base_dn
+          name: name
           certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tls_server_name: tls_server_name
           bind_mode: null
-          mfa_support: true
-          application_slug: application_slug
-          bind_flow_slug: bind_flow_slug
-          base_dn: base_dn
-          name: name
           pk: 0
+          mfa_support: true
           gid_start_number: -1517921766
       properties:
         pagination:
@@ -51910,7 +51945,6 @@ components:
         - uid_start_number: 441289069
           search_mode: null
           verbose_name_plural: verbose_name_plural
-          search_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tls_server_name: tls_server_name
           bind_mode: null
@@ -51937,7 +51971,6 @@ components:
         - uid_start_number: 441289069
           search_mode: null
           verbose_name_plural: verbose_name_plural
-          search_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tls_server_name: tls_server_name
           bind_mode: null
@@ -58298,17 +58331,16 @@ components:
     PatchedLDAPProviderRequest:
       description: LDAPProvider Serializer
       example:
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         uid_start_number: -1803530559
         search_mode: null
-        search_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        base_dn: base_dn
+        name: name
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         tls_server_name: tls_server_name
         bind_mode: null
         mfa_support: true
-        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        base_dn: base_dn
-        name: name
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -58335,12 +58367,6 @@ components:
         base_dn:
           description: DN under which objects are accessible.
           minLength: 1
-          type: string
-        search_group:
-          description: "Users in this group can do search queries. If not set, every\
-            \ user can execute search queries."
-          format: uuid
-          nullable: true
           type: string
         certificate:
           format: uuid

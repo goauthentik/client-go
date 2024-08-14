@@ -210,6 +210,7 @@ docs/IssuerModeEnum.md
 docs/KubernetesServiceConnection.md
 docs/KubernetesServiceConnectionRequest.md
 docs/LDAPAPIAccessMode.md
+docs/LDAPCheckAccess.md
 docs/LDAPDebug.md
 docs/LDAPOutpostConfig.md
 docs/LDAPProvider.md
@@ -867,6 +868,7 @@ model_invitation_stage_request.go
 model_issuer_mode_enum.go
 model_kubernetes_service_connection.go
 model_kubernetes_service_connection_request.go
+model_ldap_check_access.go
 model_ldap_debug.go
 model_ldap_outpost_config.go
 model_ldap_provider.go

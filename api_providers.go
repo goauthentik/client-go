@@ -3350,8 +3350,6 @@ type ApiProvidersLdapListRequest struct {
 	page                        *int32
 	pageSize                    *int32
 	search                      *string
-	searchGroupGroupUuidIexact  *string
-	searchGroupNameIexact       *string
 	tlsServerNameIexact         *string
 	uidStartNumberIexact        *int32
 }
@@ -3412,16 +3410,6 @@ func (r ApiProvidersLdapListRequest) PageSize(pageSize int32) ApiProvidersLdapLi
 // A search term.
 func (r ApiProvidersLdapListRequest) Search(search string) ApiProvidersLdapListRequest {
 	r.search = &search
-	return r
-}
-
-func (r ApiProvidersLdapListRequest) SearchGroupGroupUuidIexact(searchGroupGroupUuidIexact string) ApiProvidersLdapListRequest {
-	r.searchGroupGroupUuidIexact = &searchGroupGroupUuidIexact
-	return r
-}
-
-func (r ApiProvidersLdapListRequest) SearchGroupNameIexact(searchGroupNameIexact string) ApiProvidersLdapListRequest {
-	r.searchGroupNameIexact = &searchGroupNameIexact
 	return r
 }
 
@@ -3508,12 +3496,6 @@ func (a *ProvidersApiService) ProvidersLdapListExecute(r ApiProvidersLdapListReq
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
-	}
-	if r.searchGroupGroupUuidIexact != nil {
-		localVarQueryParams.Add("search_group__group_uuid__iexact", parameterToString(*r.searchGroupGroupUuidIexact, ""))
-	}
-	if r.searchGroupNameIexact != nil {
-		localVarQueryParams.Add("search_group__name__iexact", parameterToString(*r.searchGroupNameIexact, ""))
 	}
 	if r.tlsServerNameIexact != nil {
 		localVarQueryParams.Add("tls_server_name__iexact", parameterToString(*r.tlsServerNameIexact, ""))

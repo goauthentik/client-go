@@ -18,7 +18,6 @@ Name | Type | Description | Notes
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
 **BaseDn** | Pointer to **string** | DN under which objects are accessible. | [optional] 
-**SearchGroup** | Pointer to **NullableString** | Users in this group can do search queries. If not set, every user can execute search queries. | [optional] 
 **Certificate** | Pointer to **NullableString** |  | [optional] 
 **TlsServerName** | Pointer to **string** |  | [optional] 
 **UidStartNumber** | Pointer to **int32** | The start for uidNumbers, this number is added to the user.pk to make sure that the numbers aren&#39;t too low for POSIX users. Default is 2000 to ensure that we don&#39;t collide with local users uidNumber | [optional] 
@@ -352,41 +351,6 @@ SetBaseDn sets BaseDn field to given value.
 
 HasBaseDn returns a boolean if a field has been set.
 
-### GetSearchGroup
-
-`func (o *LDAPProvider) GetSearchGroup() string`
-
-GetSearchGroup returns the SearchGroup field if non-nil, zero value otherwise.
-
-### GetSearchGroupOk
-
-`func (o *LDAPProvider) GetSearchGroupOk() (*string, bool)`
-
-GetSearchGroupOk returns a tuple with the SearchGroup field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSearchGroup
-
-`func (o *LDAPProvider) SetSearchGroup(v string)`
-
-SetSearchGroup sets SearchGroup field to given value.
-
-### HasSearchGroup
-
-`func (o *LDAPProvider) HasSearchGroup() bool`
-
-HasSearchGroup returns a boolean if a field has been set.
-
-### SetSearchGroupNil
-
-`func (o *LDAPProvider) SetSearchGroupNil(b bool)`
-
- SetSearchGroupNil sets the value for SearchGroup to be an explicit nil
-
-### UnsetSearchGroup
-`func (o *LDAPProvider) UnsetSearchGroup()`
-
-UnsetSearchGroup ensures that no value is present for SearchGroup, not even an explicit nil
 ### GetCertificate
 
 `func (o *LDAPProvider) GetCertificate() string`

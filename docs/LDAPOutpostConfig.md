@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **BaseDn** | Pointer to **string** | DN under which objects are accessible. | [optional] 
 **BindFlowSlug** | **string** |  | 
 **ApplicationSlug** | **string** | Prioritise backchannel slug over direct application slug | [readonly] 
-**SearchGroup** | Pointer to **NullableString** | Users in this group can do search queries. If not set, every user can execute search queries. | [optional] 
 **Certificate** | Pointer to **NullableString** |  | [optional] 
 **TlsServerName** | Pointer to **string** |  | [optional] 
 **UidStartNumber** | Pointer to **int32** | The start for uidNumbers, this number is added to the user.pk to make sure that the numbers aren&#39;t too low for POSIX users. Default is 2000 to ensure that we don&#39;t collide with local users uidNumber | [optional] 
@@ -142,41 +141,6 @@ and a boolean to check if the value has been set.
 SetApplicationSlug sets ApplicationSlug field to given value.
 
 
-### GetSearchGroup
-
-`func (o *LDAPOutpostConfig) GetSearchGroup() string`
-
-GetSearchGroup returns the SearchGroup field if non-nil, zero value otherwise.
-
-### GetSearchGroupOk
-
-`func (o *LDAPOutpostConfig) GetSearchGroupOk() (*string, bool)`
-
-GetSearchGroupOk returns a tuple with the SearchGroup field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSearchGroup
-
-`func (o *LDAPOutpostConfig) SetSearchGroup(v string)`
-
-SetSearchGroup sets SearchGroup field to given value.
-
-### HasSearchGroup
-
-`func (o *LDAPOutpostConfig) HasSearchGroup() bool`
-
-HasSearchGroup returns a boolean if a field has been set.
-
-### SetSearchGroupNil
-
-`func (o *LDAPOutpostConfig) SetSearchGroupNil(b bool)`
-
- SetSearchGroupNil sets the value for SearchGroup to be an explicit nil
-
-### UnsetSearchGroup
-`func (o *LDAPOutpostConfig) UnsetSearchGroup()`
-
-UnsetSearchGroup ensures that no value is present for SearchGroup, not even an explicit nil
 ### GetCertificate
 
 `func (o *LDAPOutpostConfig) GetCertificate() string`

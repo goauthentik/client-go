@@ -23,11 +23,9 @@ type LDAPOutpostConfig struct {
 	BaseDn       *string `json:"base_dn,omitempty"`
 	BindFlowSlug string  `json:"bind_flow_slug"`
 	// Prioritise backchannel slug over direct application slug
-	ApplicationSlug string `json:"application_slug"`
-	// Users in this group can do search queries. If not set, every user can execute search queries.
-	SearchGroup   NullableString `json:"search_group,omitempty"`
-	Certificate   NullableString `json:"certificate,omitempty"`
-	TlsServerName *string        `json:"tls_server_name,omitempty"`
+	ApplicationSlug string         `json:"application_slug"`
+	Certificate     NullableString `json:"certificate,omitempty"`
+	TlsServerName   *string        `json:"tls_server_name,omitempty"`
 	// The start for uidNumbers, this number is added to the user.pk to make sure that the numbers aren't too low for POSIX users. Default is 2000 to ensure that we don't collide with local users uidNumber
 	UidStartNumber *int32 `json:"uid_start_number,omitempty"`
 	// The start for gidNumbers, this number is added to a number generated from the group.pk to make sure that the numbers aren't too low for POSIX groups. Default is 4000 to ensure that we don't collide with local groups or users primary groups gidNumber
@@ -185,49 +183,6 @@ func (o *LDAPOutpostConfig) GetApplicationSlugOk() (*string, bool) {
 // SetApplicationSlug sets field value
 func (o *LDAPOutpostConfig) SetApplicationSlug(v string) {
 	o.ApplicationSlug = v
-}
-
-// GetSearchGroup returns the SearchGroup field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *LDAPOutpostConfig) GetSearchGroup() string {
-	if o == nil || o.SearchGroup.Get() == nil {
-		var ret string
-		return ret
-	}
-	return *o.SearchGroup.Get()
-}
-
-// GetSearchGroupOk returns a tuple with the SearchGroup field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *LDAPOutpostConfig) GetSearchGroupOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.SearchGroup.Get(), o.SearchGroup.IsSet()
-}
-
-// HasSearchGroup returns a boolean if a field has been set.
-func (o *LDAPOutpostConfig) HasSearchGroup() bool {
-	if o != nil && o.SearchGroup.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSearchGroup gets a reference to the given NullableString and assigns it to the SearchGroup field.
-func (o *LDAPOutpostConfig) SetSearchGroup(v string) {
-	o.SearchGroup.Set(&v)
-}
-
-// SetSearchGroupNil sets the value for SearchGroup to be an explicit nil
-func (o *LDAPOutpostConfig) SetSearchGroupNil() {
-	o.SearchGroup.Set(nil)
-}
-
-// UnsetSearchGroup ensures that no value is present for SearchGroup, not even an explicit nil
-func (o *LDAPOutpostConfig) UnsetSearchGroup() {
-	o.SearchGroup.Unset()
 }
 
 // GetCertificate returns the Certificate field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -481,9 +436,6 @@ func (o LDAPOutpostConfig) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["application_slug"] = o.ApplicationSlug
-	}
-	if o.SearchGroup.IsSet() {
-		toSerialize["search_group"] = o.SearchGroup.Get()
 	}
 	if o.Certificate.IsSet() {
 		toSerialize["certificate"] = o.Certificate.Get()

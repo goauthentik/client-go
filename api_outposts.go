@@ -1357,6 +1357,138 @@ func (a *OutpostsApiService) OutpostsInstancesUsedByListExecute(r ApiOutpostsIns
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiOutpostsLdapAccessCheckRequest struct {
+	ctx        context.Context
+	ApiService *OutpostsApiService
+	id         int32
+	appSlug    *string
+}
+
+func (r ApiOutpostsLdapAccessCheckRequest) AppSlug(appSlug string) ApiOutpostsLdapAccessCheckRequest {
+	r.appSlug = &appSlug
+	return r
+}
+
+func (r ApiOutpostsLdapAccessCheckRequest) Execute() (*LDAPCheckAccess, *http.Response, error) {
+	return r.ApiService.OutpostsLdapAccessCheckExecute(r)
+}
+
+/*
+OutpostsLdapAccessCheck Method for OutpostsLdapAccessCheck
+
+Check access to a single application by slug
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this LDAP Provider.
+	@return ApiOutpostsLdapAccessCheckRequest
+*/
+func (a *OutpostsApiService) OutpostsLdapAccessCheck(ctx context.Context, id int32) ApiOutpostsLdapAccessCheckRequest {
+	return ApiOutpostsLdapAccessCheckRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return LDAPCheckAccess
+func (a *OutpostsApiService) OutpostsLdapAccessCheckExecute(r ApiOutpostsLdapAccessCheckRequest) (*LDAPCheckAccess, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *LDAPCheckAccess
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsLdapAccessCheck")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/outposts/ldap/{id}/check_access/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.appSlug != nil {
+		localVarQueryParams.Add("app_slug", parameterToString(*r.appSlug, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiOutpostsLdapListRequest struct {
 	ctx        context.Context
 	ApiService *OutpostsApiService
@@ -1693,33 +1825,33 @@ func (a *OutpostsApiService) OutpostsProxyListExecute(r ApiOutpostsProxyListRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiOutpostsRadiusCheckAccessRetrieveRequest struct {
+type ApiOutpostsRadiusAccessCheckRequest struct {
 	ctx        context.Context
 	ApiService *OutpostsApiService
 	id         int32
 	appSlug    *string
 }
 
-func (r ApiOutpostsRadiusCheckAccessRetrieveRequest) AppSlug(appSlug string) ApiOutpostsRadiusCheckAccessRetrieveRequest {
+func (r ApiOutpostsRadiusAccessCheckRequest) AppSlug(appSlug string) ApiOutpostsRadiusAccessCheckRequest {
 	r.appSlug = &appSlug
 	return r
 }
 
-func (r ApiOutpostsRadiusCheckAccessRetrieveRequest) Execute() (*RadiusCheckAccess, *http.Response, error) {
-	return r.ApiService.OutpostsRadiusCheckAccessRetrieveExecute(r)
+func (r ApiOutpostsRadiusAccessCheckRequest) Execute() (*RadiusCheckAccess, *http.Response, error) {
+	return r.ApiService.OutpostsRadiusAccessCheckExecute(r)
 }
 
 /*
-OutpostsRadiusCheckAccessRetrieve Method for OutpostsRadiusCheckAccessRetrieve
+OutpostsRadiusAccessCheck Method for OutpostsRadiusAccessCheck
 
 Check access to a single application by slug
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this Radius Provider.
-	@return ApiOutpostsRadiusCheckAccessRetrieveRequest
+	@return ApiOutpostsRadiusAccessCheckRequest
 */
-func (a *OutpostsApiService) OutpostsRadiusCheckAccessRetrieve(ctx context.Context, id int32) ApiOutpostsRadiusCheckAccessRetrieveRequest {
-	return ApiOutpostsRadiusCheckAccessRetrieveRequest{
+func (a *OutpostsApiService) OutpostsRadiusAccessCheck(ctx context.Context, id int32) ApiOutpostsRadiusAccessCheckRequest {
+	return ApiOutpostsRadiusAccessCheckRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -1729,7 +1861,7 @@ func (a *OutpostsApiService) OutpostsRadiusCheckAccessRetrieve(ctx context.Conte
 // Execute executes the request
 //
 //	@return RadiusCheckAccess
-func (a *OutpostsApiService) OutpostsRadiusCheckAccessRetrieveExecute(r ApiOutpostsRadiusCheckAccessRetrieveRequest) (*RadiusCheckAccess, *http.Response, error) {
+func (a *OutpostsApiService) OutpostsRadiusAccessCheckExecute(r ApiOutpostsRadiusAccessCheckRequest) (*RadiusCheckAccess, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1737,7 +1869,7 @@ func (a *OutpostsApiService) OutpostsRadiusCheckAccessRetrieveExecute(r ApiOutpo
 		localVarReturnValue *RadiusCheckAccess
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsRadiusCheckAccessRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsRadiusAccessCheck")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

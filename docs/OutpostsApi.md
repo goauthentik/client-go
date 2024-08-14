@@ -13,9 +13,10 @@ Method | HTTP request | Description
 [**OutpostsInstancesRetrieve**](OutpostsApi.md#OutpostsInstancesRetrieve) | **Get** /outposts/instances/{uuid}/ | 
 [**OutpostsInstancesUpdate**](OutpostsApi.md#OutpostsInstancesUpdate) | **Put** /outposts/instances/{uuid}/ | 
 [**OutpostsInstancesUsedByList**](OutpostsApi.md#OutpostsInstancesUsedByList) | **Get** /outposts/instances/{uuid}/used_by/ | 
+[**OutpostsLdapAccessCheck**](OutpostsApi.md#OutpostsLdapAccessCheck) | **Get** /outposts/ldap/{id}/check_access/ | 
 [**OutpostsLdapList**](OutpostsApi.md#OutpostsLdapList) | **Get** /outposts/ldap/ | 
 [**OutpostsProxyList**](OutpostsApi.md#OutpostsProxyList) | **Get** /outposts/proxy/ | 
-[**OutpostsRadiusCheckAccessRetrieve**](OutpostsApi.md#OutpostsRadiusCheckAccessRetrieve) | **Get** /outposts/radius/{id}/check_access/ | 
+[**OutpostsRadiusAccessCheck**](OutpostsApi.md#OutpostsRadiusAccessCheck) | **Get** /outposts/radius/{id}/check_access/ | 
 [**OutpostsRadiusList**](OutpostsApi.md#OutpostsRadiusList) | **Get** /outposts/radius/ | 
 [**OutpostsServiceConnectionsAllDestroy**](OutpostsApi.md#OutpostsServiceConnectionsAllDestroy) | **Delete** /outposts/service_connections/all/{uuid}/ | 
 [**OutpostsServiceConnectionsAllList**](OutpostsApi.md#OutpostsServiceConnectionsAllList) | **Get** /outposts/service_connections/all/ | 
@@ -697,6 +698,78 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## OutpostsLdapAccessCheck
+
+> LDAPCheckAccess OutpostsLdapAccessCheck(ctx, id).AppSlug(appSlug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this LDAP Provider.
+    appSlug := "appSlug_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsLdapAccessCheck(context.Background(), id).AppSlug(appSlug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsLdapAccessCheck``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsLdapAccessCheck`: LDAPCheckAccess
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsLdapAccessCheck`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this LDAP Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiOutpostsLdapAccessCheckRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **appSlug** | **string** |  | 
+
+### Return type
+
+[**LDAPCheckAccess**](LDAPCheckAccess.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## OutpostsLdapList
 
 > PaginatedLDAPOutpostConfigList OutpostsLdapList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
@@ -845,9 +918,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OutpostsRadiusCheckAccessRetrieve
+## OutpostsRadiusAccessCheck
 
-> RadiusCheckAccess OutpostsRadiusCheckAccessRetrieve(ctx, id).AppSlug(appSlug).Execute()
+> RadiusCheckAccess OutpostsRadiusAccessCheck(ctx, id).AppSlug(appSlug).Execute()
 
 
 
@@ -871,13 +944,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OutpostsApi.OutpostsRadiusCheckAccessRetrieve(context.Background(), id).AppSlug(appSlug).Execute()
+    resp, r, err := apiClient.OutpostsApi.OutpostsRadiusAccessCheck(context.Background(), id).AppSlug(appSlug).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsRadiusCheckAccessRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsRadiusAccessCheck``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `OutpostsRadiusCheckAccessRetrieve`: RadiusCheckAccess
-    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsRadiusCheckAccessRetrieve`: %v\n", resp)
+    // response from `OutpostsRadiusAccessCheck`: RadiusCheckAccess
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsRadiusAccessCheck`: %v\n", resp)
 }
 ```
 
@@ -891,7 +964,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiOutpostsRadiusCheckAccessRetrieveRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiOutpostsRadiusAccessCheckRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

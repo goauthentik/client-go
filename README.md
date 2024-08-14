@@ -281,9 +281,10 @@ Class | Method | HTTP request | Description
 *OutpostsApi* | [**OutpostsInstancesRetrieve**](docs/OutpostsApi.md#outpostsinstancesretrieve) | **Get** /outposts/instances/{uuid}/ | 
 *OutpostsApi* | [**OutpostsInstancesUpdate**](docs/OutpostsApi.md#outpostsinstancesupdate) | **Put** /outposts/instances/{uuid}/ | 
 *OutpostsApi* | [**OutpostsInstancesUsedByList**](docs/OutpostsApi.md#outpostsinstancesusedbylist) | **Get** /outposts/instances/{uuid}/used_by/ | 
+*OutpostsApi* | [**OutpostsLdapAccessCheck**](docs/OutpostsApi.md#outpostsldapaccesscheck) | **Get** /outposts/ldap/{id}/check_access/ | 
 *OutpostsApi* | [**OutpostsLdapList**](docs/OutpostsApi.md#outpostsldaplist) | **Get** /outposts/ldap/ | 
 *OutpostsApi* | [**OutpostsProxyList**](docs/OutpostsApi.md#outpostsproxylist) | **Get** /outposts/proxy/ | 
-*OutpostsApi* | [**OutpostsRadiusCheckAccessRetrieve**](docs/OutpostsApi.md#outpostsradiuscheckaccessretrieve) | **Get** /outposts/radius/{id}/check_access/ | 
+*OutpostsApi* | [**OutpostsRadiusAccessCheck**](docs/OutpostsApi.md#outpostsradiusaccesscheck) | **Get** /outposts/radius/{id}/check_access/ | 
 *OutpostsApi* | [**OutpostsRadiusList**](docs/OutpostsApi.md#outpostsradiuslist) | **Get** /outposts/radius/ | 
 *OutpostsApi* | [**OutpostsServiceConnectionsAllDestroy**](docs/OutpostsApi.md#outpostsserviceconnectionsalldestroy) | **Delete** /outposts/service_connections/all/{uuid}/ | 
 *OutpostsApi* | [**OutpostsServiceConnectionsAllList**](docs/OutpostsApi.md#outpostsserviceconnectionsalllist) | **Get** /outposts/service_connections/all/ | 
@@ -1091,6 +1092,7 @@ Class | Method | HTTP request | Description
  - [KubernetesServiceConnection](docs/KubernetesServiceConnection.md)
  - [KubernetesServiceConnectionRequest](docs/KubernetesServiceConnectionRequest.md)
  - [LDAPAPIAccessMode](docs/LDAPAPIAccessMode.md)
+ - [LDAPCheckAccess](docs/LDAPCheckAccess.md)
  - [LDAPDebug](docs/LDAPDebug.md)
  - [LDAPOutpostConfig](docs/LDAPOutpostConfig.md)
  - [LDAPProvider](docs/LDAPProvider.md)
