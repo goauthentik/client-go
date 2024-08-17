@@ -28,6 +28,9 @@ Name | Type | Description | Notes
 **SignatureAlgorithm** | Pointer to [**SignatureAlgorithmEnum**](SignatureAlgorithmEnum.md) |  | [optional] 
 **SigningKp** | Pointer to **NullableString** | Keypair used to sign outgoing Responses going to the Service Provider. | [optional] 
 **VerificationKp** | Pointer to **NullableString** | When selected, incoming assertion&#39;s Signatures will be validated against this certificate. To allow unsigned Requests, leave on default. | [optional] 
+**EncryptionKp** | Pointer to **NullableString** | When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key. | [optional] 
+**SignAssertion** | Pointer to **bool** |  | [optional] 
+**SignResponse** | Pointer to **bool** |  | [optional] 
 **SpBinding** | Pointer to [**SpBindingEnum**](SpBindingEnum.md) | This determines how authentik sends the response back to the Service Provider. | [optional] 
 **DefaultRelayState** | Pointer to **string** | Default relay_state value for IDP-initiated logins | [optional] 
 **UrlDownloadMetadata** | **string** | Get metadata download URL | [readonly] 
@@ -636,6 +639,91 @@ HasVerificationKp returns a boolean if a field has been set.
 `func (o *SAMLProvider) UnsetVerificationKp()`
 
 UnsetVerificationKp ensures that no value is present for VerificationKp, not even an explicit nil
+### GetEncryptionKp
+
+`func (o *SAMLProvider) GetEncryptionKp() string`
+
+GetEncryptionKp returns the EncryptionKp field if non-nil, zero value otherwise.
+
+### GetEncryptionKpOk
+
+`func (o *SAMLProvider) GetEncryptionKpOk() (*string, bool)`
+
+GetEncryptionKpOk returns a tuple with the EncryptionKp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEncryptionKp
+
+`func (o *SAMLProvider) SetEncryptionKp(v string)`
+
+SetEncryptionKp sets EncryptionKp field to given value.
+
+### HasEncryptionKp
+
+`func (o *SAMLProvider) HasEncryptionKp() bool`
+
+HasEncryptionKp returns a boolean if a field has been set.
+
+### SetEncryptionKpNil
+
+`func (o *SAMLProvider) SetEncryptionKpNil(b bool)`
+
+ SetEncryptionKpNil sets the value for EncryptionKp to be an explicit nil
+
+### UnsetEncryptionKp
+`func (o *SAMLProvider) UnsetEncryptionKp()`
+
+UnsetEncryptionKp ensures that no value is present for EncryptionKp, not even an explicit nil
+### GetSignAssertion
+
+`func (o *SAMLProvider) GetSignAssertion() bool`
+
+GetSignAssertion returns the SignAssertion field if non-nil, zero value otherwise.
+
+### GetSignAssertionOk
+
+`func (o *SAMLProvider) GetSignAssertionOk() (*bool, bool)`
+
+GetSignAssertionOk returns a tuple with the SignAssertion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSignAssertion
+
+`func (o *SAMLProvider) SetSignAssertion(v bool)`
+
+SetSignAssertion sets SignAssertion field to given value.
+
+### HasSignAssertion
+
+`func (o *SAMLProvider) HasSignAssertion() bool`
+
+HasSignAssertion returns a boolean if a field has been set.
+
+### GetSignResponse
+
+`func (o *SAMLProvider) GetSignResponse() bool`
+
+GetSignResponse returns the SignResponse field if non-nil, zero value otherwise.
+
+### GetSignResponseOk
+
+`func (o *SAMLProvider) GetSignResponseOk() (*bool, bool)`
+
+GetSignResponseOk returns a tuple with the SignResponse field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSignResponse
+
+`func (o *SAMLProvider) SetSignResponse(v bool)`
+
+SetSignResponse sets SignResponse field to given value.
+
+### HasSignResponse
+
+`func (o *SAMLProvider) HasSignResponse() bool`
+
+HasSignResponse returns a boolean if a field has been set.
+
 ### GetSpBinding
 
 `func (o *SAMLProvider) GetSpBinding() SpBindingEnum`

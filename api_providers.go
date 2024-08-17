@@ -11122,6 +11122,7 @@ type ApiProvidersSamlListRequest struct {
 	backchannelApplication     *string
 	defaultRelayState          *string
 	digestAlgorithm            *string
+	encryptionKp               *string
 	isBackchannel              *bool
 	issuer                     *string
 	name                       *string
@@ -11132,6 +11133,8 @@ type ApiProvidersSamlListRequest struct {
 	propertyMappings           *[]string
 	search                     *string
 	sessionValidNotOnOrAfter   *string
+	signAssertion              *bool
+	signResponse               *bool
 	signatureAlgorithm         *string
 	signingKp                  *string
 	spBinding                  *string
@@ -11180,6 +11183,11 @@ func (r ApiProvidersSamlListRequest) DefaultRelayState(defaultRelayState string)
 
 func (r ApiProvidersSamlListRequest) DigestAlgorithm(digestAlgorithm string) ApiProvidersSamlListRequest {
 	r.digestAlgorithm = &digestAlgorithm
+	return r
+}
+
+func (r ApiProvidersSamlListRequest) EncryptionKp(encryptionKp string) ApiProvidersSamlListRequest {
+	r.encryptionKp = &encryptionKp
 	return r
 }
 
@@ -11234,6 +11242,16 @@ func (r ApiProvidersSamlListRequest) Search(search string) ApiProvidersSamlListR
 
 func (r ApiProvidersSamlListRequest) SessionValidNotOnOrAfter(sessionValidNotOnOrAfter string) ApiProvidersSamlListRequest {
 	r.sessionValidNotOnOrAfter = &sessionValidNotOnOrAfter
+	return r
+}
+
+func (r ApiProvidersSamlListRequest) SignAssertion(signAssertion bool) ApiProvidersSamlListRequest {
+	r.signAssertion = &signAssertion
+	return r
+}
+
+func (r ApiProvidersSamlListRequest) SignResponse(signResponse bool) ApiProvidersSamlListRequest {
+	r.signResponse = &signResponse
 	return r
 }
 
@@ -11326,6 +11344,9 @@ func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 	if r.digestAlgorithm != nil {
 		localVarQueryParams.Add("digest_algorithm", parameterToString(*r.digestAlgorithm, ""))
 	}
+	if r.encryptionKp != nil {
+		localVarQueryParams.Add("encryption_kp", parameterToString(*r.encryptionKp, ""))
+	}
 	if r.isBackchannel != nil {
 		localVarQueryParams.Add("is_backchannel", parameterToString(*r.isBackchannel, ""))
 	}
@@ -11363,6 +11384,12 @@ func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 	}
 	if r.sessionValidNotOnOrAfter != nil {
 		localVarQueryParams.Add("session_valid_not_on_or_after", parameterToString(*r.sessionValidNotOnOrAfter, ""))
+	}
+	if r.signAssertion != nil {
+		localVarQueryParams.Add("sign_assertion", parameterToString(*r.signAssertion, ""))
+	}
+	if r.signResponse != nil {
+		localVarQueryParams.Add("sign_response", parameterToString(*r.signResponse, ""))
 	}
 	if r.signatureAlgorithm != nil {
 		localVarQueryParams.Add("signature_algorithm", parameterToString(*r.signatureAlgorithm, ""))

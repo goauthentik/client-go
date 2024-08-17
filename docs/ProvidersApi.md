@@ -5886,7 +5886,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersSamlList
 
-> PaginatedSAMLProviderList ProvidersSamlList(ctx).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthorizationFlow(authorizationFlow).BackchannelApplication(backchannelApplication).DefaultRelayState(defaultRelayState).DigestAlgorithm(digestAlgorithm).IsBackchannel(isBackchannel).Issuer(issuer).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
+> PaginatedSAMLProviderList ProvidersSamlList(ctx).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthorizationFlow(authorizationFlow).BackchannelApplication(backchannelApplication).DefaultRelayState(defaultRelayState).DigestAlgorithm(digestAlgorithm).EncryptionKp(encryptionKp).IsBackchannel(isBackchannel).Issuer(issuer).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignAssertion(signAssertion).SignResponse(signResponse).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
 
 
 
@@ -5914,6 +5914,7 @@ func main() {
     backchannelApplication := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     defaultRelayState := "defaultRelayState_example" // string |  (optional)
     digestAlgorithm := "digestAlgorithm_example" // string |  (optional)
+    encryptionKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     isBackchannel := true // bool |  (optional)
     issuer := "issuer_example" // string |  (optional)
     name := "name_example" // string |  (optional)
@@ -5924,6 +5925,8 @@ func main() {
     propertyMappings := []string{"Inner_example"} // []string |  (optional)
     search := "search_example" // string | A search term. (optional)
     sessionValidNotOnOrAfter := "sessionValidNotOnOrAfter_example" // string |  (optional)
+    signAssertion := true // bool |  (optional)
+    signResponse := true // bool |  (optional)
     signatureAlgorithm := "signatureAlgorithm_example" // string |  (optional)
     signingKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     spBinding := "spBinding_example" // string | This determines how authentik sends the response back to the Service Provider.   (optional)
@@ -5931,7 +5934,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProvidersApi.ProvidersSamlList(context.Background()).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthorizationFlow(authorizationFlow).BackchannelApplication(backchannelApplication).DefaultRelayState(defaultRelayState).DigestAlgorithm(digestAlgorithm).IsBackchannel(isBackchannel).Issuer(issuer).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersSamlList(context.Background()).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthorizationFlow(authorizationFlow).BackchannelApplication(backchannelApplication).DefaultRelayState(defaultRelayState).DigestAlgorithm(digestAlgorithm).EncryptionKp(encryptionKp).IsBackchannel(isBackchannel).Issuer(issuer).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignAssertion(signAssertion).SignResponse(signResponse).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSamlList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5961,6 +5964,7 @@ Name | Type | Description  | Notes
  **backchannelApplication** | **string** |  | 
  **defaultRelayState** | **string** |  | 
  **digestAlgorithm** | **string** |  | 
+ **encryptionKp** | **string** |  | 
  **isBackchannel** | **bool** |  | 
  **issuer** | **string** |  | 
  **name** | **string** |  | 
@@ -5971,6 +5975,8 @@ Name | Type | Description  | Notes
  **propertyMappings** | **[]string** |  | 
  **search** | **string** | A search term. | 
  **sessionValidNotOnOrAfter** | **string** |  | 
+ **signAssertion** | **bool** |  | 
+ **signResponse** | **bool** |  | 
  **signatureAlgorithm** | **string** |  | 
  **signingKp** | **string** |  | 
  **spBinding** | **string** | This determines how authentik sends the response back to the Service Provider.   | 

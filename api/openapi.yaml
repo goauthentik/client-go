@@ -22971,6 +22971,14 @@ paths:
         style: form
       - explode: true
         in: query
+        name: encryption_kp
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: is_backchannel
         required: false
         schema:
@@ -23046,6 +23054,20 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: sign_assertion
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: sign_response
+        required: false
+        schema:
+          type: boolean
         style: form
       - explode: true
         in: query
@@ -54258,6 +54280,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           audience: audience
+          sign_response: true
           sp_binding: ""
           acs_url: https://openapi-generator.tech
           url_download_metadata: url_download_metadata
@@ -54268,6 +54291,8 @@ components:
           digest_algorithm: null
           meta_model_name: meta_model_name
           assigned_backchannel_application_slug: assigned_backchannel_application_slug
+          encryption_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          sign_assertion: true
           url_sso_post: url_sso_post
           name: name
           assertion_valid_not_on_or_after: assertion_valid_not_on_or_after
@@ -54292,6 +54317,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           audience: audience
+          sign_response: true
           sp_binding: ""
           acs_url: https://openapi-generator.tech
           url_download_metadata: url_download_metadata
@@ -54302,6 +54328,8 @@ components:
           digest_algorithm: null
           meta_model_name: meta_model_name
           assigned_backchannel_application_slug: assigned_backchannel_application_slug
+          encryption_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          sign_assertion: true
           url_sso_post: url_sso_post
           name: name
           assertion_valid_not_on_or_after: assertion_valid_not_on_or_after
@@ -59813,6 +59841,7 @@ components:
       description: SAMLProvider Serializer
       example:
         audience: audience
+        sign_response: true
         session_valid_not_on_or_after: session_valid_not_on_or_after
         sp_binding: ""
         default_relay_state: default_relay_state
@@ -59822,6 +59851,8 @@ components:
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         digest_algorithm: null
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        encryption_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        sign_assertion: true
         name: name
         assertion_valid_not_on_or_after: assertion_valid_not_on_or_after
         signature_algorithm: null
@@ -59903,6 +59934,18 @@ components:
           nullable: true
           title: Verification Certificate
           type: string
+        encryption_kp:
+          description: "When selected, incoming assertions are encrypted by the IdP\
+            \ using the public key of the encryption keypair. The assertion is decrypted\
+            \ by the SP using the the private key."
+          format: uuid
+          nullable: true
+          title: Encryption Keypair
+          type: string
+        sign_assertion:
+          type: boolean
+        sign_response:
+          type: boolean
         sp_binding:
           allOf:
           - $ref: '#/components/schemas/SpBindingEnum'
@@ -63465,6 +63508,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         audience: audience
+        sign_response: true
         sp_binding: ""
         acs_url: https://openapi-generator.tech
         url_download_metadata: url_download_metadata
@@ -63475,6 +63519,8 @@ components:
         digest_algorithm: null
         meta_model_name: meta_model_name
         assigned_backchannel_application_slug: assigned_backchannel_application_slug
+        encryption_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        sign_assertion: true
         url_sso_post: url_sso_post
         name: name
         assertion_valid_not_on_or_after: assertion_valid_not_on_or_after
@@ -63583,6 +63629,18 @@ components:
           nullable: true
           title: Verification Certificate
           type: string
+        encryption_kp:
+          description: "When selected, incoming assertions are encrypted by the IdP\
+            \ using the public key of the encryption keypair. The assertion is decrypted\
+            \ by the SP using the the private key."
+          format: uuid
+          nullable: true
+          title: Encryption Keypair
+          type: string
+        sign_assertion:
+          type: boolean
+        sign_response:
+          type: boolean
         sp_binding:
           allOf:
           - $ref: '#/components/schemas/SpBindingEnum'
@@ -63657,6 +63715,7 @@ components:
       description: SAMLProvider Serializer
       example:
         audience: audience
+        sign_response: true
         session_valid_not_on_or_after: session_valid_not_on_or_after
         sp_binding: ""
         default_relay_state: default_relay_state
@@ -63666,6 +63725,8 @@ components:
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         digest_algorithm: null
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        encryption_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        sign_assertion: true
         name: name
         assertion_valid_not_on_or_after: assertion_valid_not_on_or_after
         signature_algorithm: null
@@ -63747,6 +63808,18 @@ components:
           nullable: true
           title: Verification Certificate
           type: string
+        encryption_kp:
+          description: "When selected, incoming assertions are encrypted by the IdP\
+            \ using the public key of the encryption keypair. The assertion is decrypted\
+            \ by the SP using the the private key."
+          format: uuid
+          nullable: true
+          title: Encryption Keypair
+          type: string
+        sign_assertion:
+          type: boolean
+        sign_response:
+          type: boolean
         sp_binding:
           allOf:
           - $ref: '#/components/schemas/SpBindingEnum'

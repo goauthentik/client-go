@@ -42,6 +42,10 @@ type PatchedSAMLProviderRequest struct {
 	SigningKp NullableString `json:"signing_kp,omitempty"`
 	// When selected, incoming assertion's Signatures will be validated against this certificate. To allow unsigned Requests, leave on default.
 	VerificationKp NullableString `json:"verification_kp,omitempty"`
+	// When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key.
+	EncryptionKp  NullableString `json:"encryption_kp,omitempty"`
+	SignAssertion *bool          `json:"sign_assertion,omitempty"`
+	SignResponse  *bool          `json:"sign_response,omitempty"`
 	// This determines how authentik sends the response back to the Service Provider.
 	SpBinding *SpBindingEnum `json:"sp_binding,omitempty"`
 	// Default relay_state value for IDP-initiated logins
@@ -589,6 +593,113 @@ func (o *PatchedSAMLProviderRequest) UnsetVerificationKp() {
 	o.VerificationKp.Unset()
 }
 
+// GetEncryptionKp returns the EncryptionKp field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedSAMLProviderRequest) GetEncryptionKp() string {
+	if o == nil || o.EncryptionKp.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.EncryptionKp.Get()
+}
+
+// GetEncryptionKpOk returns a tuple with the EncryptionKp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedSAMLProviderRequest) GetEncryptionKpOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.EncryptionKp.Get(), o.EncryptionKp.IsSet()
+}
+
+// HasEncryptionKp returns a boolean if a field has been set.
+func (o *PatchedSAMLProviderRequest) HasEncryptionKp() bool {
+	if o != nil && o.EncryptionKp.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEncryptionKp gets a reference to the given NullableString and assigns it to the EncryptionKp field.
+func (o *PatchedSAMLProviderRequest) SetEncryptionKp(v string) {
+	o.EncryptionKp.Set(&v)
+}
+
+// SetEncryptionKpNil sets the value for EncryptionKp to be an explicit nil
+func (o *PatchedSAMLProviderRequest) SetEncryptionKpNil() {
+	o.EncryptionKp.Set(nil)
+}
+
+// UnsetEncryptionKp ensures that no value is present for EncryptionKp, not even an explicit nil
+func (o *PatchedSAMLProviderRequest) UnsetEncryptionKp() {
+	o.EncryptionKp.Unset()
+}
+
+// GetSignAssertion returns the SignAssertion field value if set, zero value otherwise.
+func (o *PatchedSAMLProviderRequest) GetSignAssertion() bool {
+	if o == nil || o.SignAssertion == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SignAssertion
+}
+
+// GetSignAssertionOk returns a tuple with the SignAssertion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedSAMLProviderRequest) GetSignAssertionOk() (*bool, bool) {
+	if o == nil || o.SignAssertion == nil {
+		return nil, false
+	}
+	return o.SignAssertion, true
+}
+
+// HasSignAssertion returns a boolean if a field has been set.
+func (o *PatchedSAMLProviderRequest) HasSignAssertion() bool {
+	if o != nil && o.SignAssertion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSignAssertion gets a reference to the given bool and assigns it to the SignAssertion field.
+func (o *PatchedSAMLProviderRequest) SetSignAssertion(v bool) {
+	o.SignAssertion = &v
+}
+
+// GetSignResponse returns the SignResponse field value if set, zero value otherwise.
+func (o *PatchedSAMLProviderRequest) GetSignResponse() bool {
+	if o == nil || o.SignResponse == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SignResponse
+}
+
+// GetSignResponseOk returns a tuple with the SignResponse field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedSAMLProviderRequest) GetSignResponseOk() (*bool, bool) {
+	if o == nil || o.SignResponse == nil {
+		return nil, false
+	}
+	return o.SignResponse, true
+}
+
+// HasSignResponse returns a boolean if a field has been set.
+func (o *PatchedSAMLProviderRequest) HasSignResponse() bool {
+	if o != nil && o.SignResponse != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSignResponse gets a reference to the given bool and assigns it to the SignResponse field.
+func (o *PatchedSAMLProviderRequest) SetSignResponse(v bool) {
+	o.SignResponse = &v
+}
+
 // GetSpBinding returns the SpBinding field value if set, zero value otherwise.
 func (o *PatchedSAMLProviderRequest) GetSpBinding() SpBindingEnum {
 	if o == nil || o.SpBinding == nil {
@@ -699,6 +810,15 @@ func (o PatchedSAMLProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.VerificationKp.IsSet() {
 		toSerialize["verification_kp"] = o.VerificationKp.Get()
+	}
+	if o.EncryptionKp.IsSet() {
+		toSerialize["encryption_kp"] = o.EncryptionKp.Get()
+	}
+	if o.SignAssertion != nil {
+		toSerialize["sign_assertion"] = o.SignAssertion
+	}
+	if o.SignResponse != nil {
+		toSerialize["sign_response"] = o.SignResponse
 	}
 	if o.SpBinding != nil {
 		toSerialize["sp_binding"] = o.SpBinding
