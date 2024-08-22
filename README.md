@@ -487,6 +487,7 @@ Class | Method | HTTP request | Description
 *ProvidersApi* | [**ProvidersGoogleWorkspaceList**](docs/ProvidersApi.md#providersgoogleworkspacelist) | **Get** /providers/google_workspace/ | 
 *ProvidersApi* | [**ProvidersGoogleWorkspacePartialUpdate**](docs/ProvidersApi.md#providersgoogleworkspacepartialupdate) | **Patch** /providers/google_workspace/{id}/ | 
 *ProvidersApi* | [**ProvidersGoogleWorkspaceRetrieve**](docs/ProvidersApi.md#providersgoogleworkspaceretrieve) | **Get** /providers/google_workspace/{id}/ | 
+*ProvidersApi* | [**ProvidersGoogleWorkspaceSyncObjectCreate**](docs/ProvidersApi.md#providersgoogleworkspacesyncobjectcreate) | **Post** /providers/google_workspace/{id}/sync/object/ | 
 *ProvidersApi* | [**ProvidersGoogleWorkspaceSyncStatusRetrieve**](docs/ProvidersApi.md#providersgoogleworkspacesyncstatusretrieve) | **Get** /providers/google_workspace/{id}/sync/status/ | 
 *ProvidersApi* | [**ProvidersGoogleWorkspaceUpdate**](docs/ProvidersApi.md#providersgoogleworkspaceupdate) | **Put** /providers/google_workspace/{id}/ | 
 *ProvidersApi* | [**ProvidersGoogleWorkspaceUsedByList**](docs/ProvidersApi.md#providersgoogleworkspaceusedbylist) | **Get** /providers/google_workspace/{id}/used_by/ | 
@@ -512,6 +513,7 @@ Class | Method | HTTP request | Description
 *ProvidersApi* | [**ProvidersMicrosoftEntraList**](docs/ProvidersApi.md#providersmicrosoftentralist) | **Get** /providers/microsoft_entra/ | 
 *ProvidersApi* | [**ProvidersMicrosoftEntraPartialUpdate**](docs/ProvidersApi.md#providersmicrosoftentrapartialupdate) | **Patch** /providers/microsoft_entra/{id}/ | 
 *ProvidersApi* | [**ProvidersMicrosoftEntraRetrieve**](docs/ProvidersApi.md#providersmicrosoftentraretrieve) | **Get** /providers/microsoft_entra/{id}/ | 
+*ProvidersApi* | [**ProvidersMicrosoftEntraSyncObjectCreate**](docs/ProvidersApi.md#providersmicrosoftentrasyncobjectcreate) | **Post** /providers/microsoft_entra/{id}/sync/object/ | 
 *ProvidersApi* | [**ProvidersMicrosoftEntraSyncStatusRetrieve**](docs/ProvidersApi.md#providersmicrosoftentrasyncstatusretrieve) | **Get** /providers/microsoft_entra/{id}/sync/status/ | 
 *ProvidersApi* | [**ProvidersMicrosoftEntraUpdate**](docs/ProvidersApi.md#providersmicrosoftentraupdate) | **Put** /providers/microsoft_entra/{id}/ | 
 *ProvidersApi* | [**ProvidersMicrosoftEntraUsedByList**](docs/ProvidersApi.md#providersmicrosoftentrausedbylist) | **Get** /providers/microsoft_entra/{id}/used_by/ | 
@@ -570,6 +572,7 @@ Class | Method | HTTP request | Description
 *ProvidersApi* | [**ProvidersScimList**](docs/ProvidersApi.md#providersscimlist) | **Get** /providers/scim/ | 
 *ProvidersApi* | [**ProvidersScimPartialUpdate**](docs/ProvidersApi.md#providersscimpartialupdate) | **Patch** /providers/scim/{id}/ | 
 *ProvidersApi* | [**ProvidersScimRetrieve**](docs/ProvidersApi.md#providersscimretrieve) | **Get** /providers/scim/{id}/ | 
+*ProvidersApi* | [**ProvidersScimSyncObjectCreate**](docs/ProvidersApi.md#providersscimsyncobjectcreate) | **Post** /providers/scim/{id}/sync/object/ | 
 *ProvidersApi* | [**ProvidersScimSyncStatusRetrieve**](docs/ProvidersApi.md#providersscimsyncstatusretrieve) | **Get** /providers/scim/{id}/sync/status/ | 
 *ProvidersApi* | [**ProvidersScimUpdate**](docs/ProvidersApi.md#providersscimupdate) | **Put** /providers/scim/{id}/ | 
 *ProvidersApi* | [**ProvidersScimUsedByList**](docs/ProvidersApi.md#providersscimusedbylist) | **Get** /providers/scim/{id}/used_by/ | 
@@ -1487,6 +1490,9 @@ Class | Method | HTTP request | Description
  - [StaticDeviceToken](docs/StaticDeviceToken.md)
  - [StaticDeviceTokenRequest](docs/StaticDeviceTokenRequest.md)
  - [SubModeEnum](docs/SubModeEnum.md)
+ - [SyncObjectModelEnum](docs/SyncObjectModelEnum.md)
+ - [SyncObjectRequest](docs/SyncObjectRequest.md)
+ - [SyncObjectResult](docs/SyncObjectResult.md)
  - [SyncStatus](docs/SyncStatus.md)
  - [SystemInfo](docs/SystemInfo.md)
  - [SystemInfoRuntime](docs/SystemInfoRuntime.md)

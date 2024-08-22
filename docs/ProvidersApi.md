@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**ProvidersGoogleWorkspaceList**](ProvidersApi.md#ProvidersGoogleWorkspaceList) | **Get** /providers/google_workspace/ | 
 [**ProvidersGoogleWorkspacePartialUpdate**](ProvidersApi.md#ProvidersGoogleWorkspacePartialUpdate) | **Patch** /providers/google_workspace/{id}/ | 
 [**ProvidersGoogleWorkspaceRetrieve**](ProvidersApi.md#ProvidersGoogleWorkspaceRetrieve) | **Get** /providers/google_workspace/{id}/ | 
+[**ProvidersGoogleWorkspaceSyncObjectCreate**](ProvidersApi.md#ProvidersGoogleWorkspaceSyncObjectCreate) | **Post** /providers/google_workspace/{id}/sync/object/ | 
 [**ProvidersGoogleWorkspaceSyncStatusRetrieve**](ProvidersApi.md#ProvidersGoogleWorkspaceSyncStatusRetrieve) | **Get** /providers/google_workspace/{id}/sync/status/ | 
 [**ProvidersGoogleWorkspaceUpdate**](ProvidersApi.md#ProvidersGoogleWorkspaceUpdate) | **Put** /providers/google_workspace/{id}/ | 
 [**ProvidersGoogleWorkspaceUsedByList**](ProvidersApi.md#ProvidersGoogleWorkspaceUsedByList) | **Get** /providers/google_workspace/{id}/used_by/ | 
@@ -44,6 +45,7 @@ Method | HTTP request | Description
 [**ProvidersMicrosoftEntraList**](ProvidersApi.md#ProvidersMicrosoftEntraList) | **Get** /providers/microsoft_entra/ | 
 [**ProvidersMicrosoftEntraPartialUpdate**](ProvidersApi.md#ProvidersMicrosoftEntraPartialUpdate) | **Patch** /providers/microsoft_entra/{id}/ | 
 [**ProvidersMicrosoftEntraRetrieve**](ProvidersApi.md#ProvidersMicrosoftEntraRetrieve) | **Get** /providers/microsoft_entra/{id}/ | 
+[**ProvidersMicrosoftEntraSyncObjectCreate**](ProvidersApi.md#ProvidersMicrosoftEntraSyncObjectCreate) | **Post** /providers/microsoft_entra/{id}/sync/object/ | 
 [**ProvidersMicrosoftEntraSyncStatusRetrieve**](ProvidersApi.md#ProvidersMicrosoftEntraSyncStatusRetrieve) | **Get** /providers/microsoft_entra/{id}/sync/status/ | 
 [**ProvidersMicrosoftEntraUpdate**](ProvidersApi.md#ProvidersMicrosoftEntraUpdate) | **Put** /providers/microsoft_entra/{id}/ | 
 [**ProvidersMicrosoftEntraUsedByList**](ProvidersApi.md#ProvidersMicrosoftEntraUsedByList) | **Get** /providers/microsoft_entra/{id}/used_by/ | 
@@ -102,6 +104,7 @@ Method | HTTP request | Description
 [**ProvidersScimList**](ProvidersApi.md#ProvidersScimList) | **Get** /providers/scim/ | 
 [**ProvidersScimPartialUpdate**](ProvidersApi.md#ProvidersScimPartialUpdate) | **Patch** /providers/scim/{id}/ | 
 [**ProvidersScimRetrieve**](ProvidersApi.md#ProvidersScimRetrieve) | **Get** /providers/scim/{id}/ | 
+[**ProvidersScimSyncObjectCreate**](ProvidersApi.md#ProvidersScimSyncObjectCreate) | **Post** /providers/scim/{id}/sync/object/ | 
 [**ProvidersScimSyncStatusRetrieve**](ProvidersApi.md#ProvidersScimSyncStatusRetrieve) | **Get** /providers/scim/{id}/sync/status/ | 
 [**ProvidersScimUpdate**](ProvidersApi.md#ProvidersScimUpdate) | **Put** /providers/scim/{id}/ | 
 [**ProvidersScimUsedByList**](ProvidersApi.md#ProvidersScimUsedByList) | **Get** /providers/scim/{id}/used_by/ | 
@@ -1159,6 +1162,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersGoogleWorkspaceSyncObjectCreate
+
+> SyncObjectResult ProvidersGoogleWorkspaceSyncObjectCreate(ctx, id).SyncObjectRequest(syncObjectRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Google Workspace Provider.
+    syncObjectRequest := *openapiclient.NewSyncObjectRequest(openapiclient.SyncObjectModelEnum("authentik.core.models.User"), "SyncObjectId_example") // SyncObjectRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersGoogleWorkspaceSyncObjectCreate(context.Background(), id).SyncObjectRequest(syncObjectRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersGoogleWorkspaceSyncObjectCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersGoogleWorkspaceSyncObjectCreate`: SyncObjectResult
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersGoogleWorkspaceSyncObjectCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Google Workspace Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersGoogleWorkspaceSyncObjectCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **syncObjectRequest** | [**SyncObjectRequest**](SyncObjectRequest.md) |  | 
+
+### Return type
+
+[**SyncObjectResult**](SyncObjectResult.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2937,6 +3012,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersMicrosoftEntraSyncObjectCreate
+
+> SyncObjectResult ProvidersMicrosoftEntraSyncObjectCreate(ctx, id).SyncObjectRequest(syncObjectRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Microsoft Entra Provider.
+    syncObjectRequest := *openapiclient.NewSyncObjectRequest(openapiclient.SyncObjectModelEnum("authentik.core.models.User"), "SyncObjectId_example") // SyncObjectRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersMicrosoftEntraSyncObjectCreate(context.Background(), id).SyncObjectRequest(syncObjectRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersMicrosoftEntraSyncObjectCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersMicrosoftEntraSyncObjectCreate`: SyncObjectResult
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersMicrosoftEntraSyncObjectCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Microsoft Entra Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersMicrosoftEntraSyncObjectCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **syncObjectRequest** | [**SyncObjectRequest**](SyncObjectRequest.md) |  | 
+
+### Return type
+
+[**SyncObjectResult**](SyncObjectResult.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -7131,6 +7278,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersScimSyncObjectCreate
+
+> SyncObjectResult ProvidersScimSyncObjectCreate(ctx, id).SyncObjectRequest(syncObjectRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this SCIM Provider.
+    syncObjectRequest := *openapiclient.NewSyncObjectRequest(openapiclient.SyncObjectModelEnum("authentik.core.models.User"), "SyncObjectId_example") // SyncObjectRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersScimSyncObjectCreate(context.Background(), id).SyncObjectRequest(syncObjectRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersScimSyncObjectCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersScimSyncObjectCreate`: SyncObjectResult
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersScimSyncObjectCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this SCIM Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersScimSyncObjectCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **syncObjectRequest** | [**SyncObjectRequest**](SyncObjectRequest.md) |  | 
+
+### Return type
+
+[**SyncObjectResult**](SyncObjectResult.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

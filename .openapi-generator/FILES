@@ -617,6 +617,9 @@ docs/StaticDeviceRequest.md
 docs/StaticDeviceToken.md
 docs/StaticDeviceTokenRequest.md
 docs/SubModeEnum.md
+docs/SyncObjectModelEnum.md
+docs/SyncObjectRequest.md
+docs/SyncObjectResult.md
 docs/SyncStatus.md
 docs/SystemInfo.md
 docs/SystemInfoRuntime.md
@@ -1264,6 +1267,9 @@ model_static_device_request.go
 model_static_device_token.go
 model_static_device_token_request.go
 model_sub_mode_enum.go
+model_sync_object_model_enum.go
+model_sync_object_request.go
+model_sync_object_result.go
 model_sync_status.go
 model_system_info.go
 model_system_info_runtime.go
