@@ -184,7 +184,7 @@ Class | Method | HTTP request | Description
 *EnterpriseApi* | [**EnterpriseLicenseCreate**](docs/EnterpriseApi.md#enterpriselicensecreate) | **Post** /enterprise/license/ | 
 *EnterpriseApi* | [**EnterpriseLicenseDestroy**](docs/EnterpriseApi.md#enterpriselicensedestroy) | **Delete** /enterprise/license/{license_uuid}/ | 
 *EnterpriseApi* | [**EnterpriseLicenseForecastRetrieve**](docs/EnterpriseApi.md#enterpriselicenseforecastretrieve) | **Get** /enterprise/license/forecast/ | 
-*EnterpriseApi* | [**EnterpriseLicenseGetInstallIdRetrieve**](docs/EnterpriseApi.md#enterpriselicensegetinstallidretrieve) | **Get** /enterprise/license/get_install_id/ | 
+*EnterpriseApi* | [**EnterpriseLicenseInstallIdRetrieve**](docs/EnterpriseApi.md#enterpriselicenseinstallidretrieve) | **Get** /enterprise/license/install_id/ | 
 *EnterpriseApi* | [**EnterpriseLicenseList**](docs/EnterpriseApi.md#enterpriselicenselist) | **Get** /enterprise/license/ | 
 *EnterpriseApi* | [**EnterpriseLicensePartialUpdate**](docs/EnterpriseApi.md#enterpriselicensepartialupdate) | **Patch** /enterprise/license/{license_uuid}/ | 
 *EnterpriseApi* | [**EnterpriseLicenseRetrieve**](docs/EnterpriseApi.md#enterpriselicenseretrieve) | **Get** /enterprise/license/{license_uuid}/ | 

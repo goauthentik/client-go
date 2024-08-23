@@ -6412,10 +6412,10 @@ paths:
       - authentik: []
       tags:
       - enterprise
-  /enterprise/license/get_install_id/:
+  /enterprise/license/install_id/:
     get:
       description: Get install_id
-      operationId: enterprise_license_get_install_id_retrieve
+      operationId: enterprise_license_install_id_retrieve
       responses:
         "200":
           content:
@@ -6443,6 +6443,15 @@ paths:
     get:
       description: Get the total license status
       operationId: enterprise_license_summary_retrieve
+      parameters:
+      - explode: true
+        in: query
+        name: cached
+        required: false
+        schema:
+          default: true
+          type: boolean
+        style: form
       responses:
         "200":
           content:

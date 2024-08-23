@@ -383,25 +383,25 @@ func (a *EnterpriseApiService) EnterpriseLicenseForecastRetrieveExecute(r ApiEnt
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiEnterpriseLicenseGetInstallIdRetrieveRequest struct {
+type ApiEnterpriseLicenseInstallIdRetrieveRequest struct {
 	ctx        context.Context
 	ApiService *EnterpriseApiService
 }
 
-func (r ApiEnterpriseLicenseGetInstallIdRetrieveRequest) Execute() (*InstallID, *http.Response, error) {
-	return r.ApiService.EnterpriseLicenseGetInstallIdRetrieveExecute(r)
+func (r ApiEnterpriseLicenseInstallIdRetrieveRequest) Execute() (*InstallID, *http.Response, error) {
+	return r.ApiService.EnterpriseLicenseInstallIdRetrieveExecute(r)
 }
 
 /*
-EnterpriseLicenseGetInstallIdRetrieve Method for EnterpriseLicenseGetInstallIdRetrieve
+EnterpriseLicenseInstallIdRetrieve Method for EnterpriseLicenseInstallIdRetrieve
 
 Get install_id
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiEnterpriseLicenseGetInstallIdRetrieveRequest
+	@return ApiEnterpriseLicenseInstallIdRetrieveRequest
 */
-func (a *EnterpriseApiService) EnterpriseLicenseGetInstallIdRetrieve(ctx context.Context) ApiEnterpriseLicenseGetInstallIdRetrieveRequest {
-	return ApiEnterpriseLicenseGetInstallIdRetrieveRequest{
+func (a *EnterpriseApiService) EnterpriseLicenseInstallIdRetrieve(ctx context.Context) ApiEnterpriseLicenseInstallIdRetrieveRequest {
+	return ApiEnterpriseLicenseInstallIdRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -410,7 +410,7 @@ func (a *EnterpriseApiService) EnterpriseLicenseGetInstallIdRetrieve(ctx context
 // Execute executes the request
 //
 //	@return InstallID
-func (a *EnterpriseApiService) EnterpriseLicenseGetInstallIdRetrieveExecute(r ApiEnterpriseLicenseGetInstallIdRetrieveRequest) (*InstallID, *http.Response, error) {
+func (a *EnterpriseApiService) EnterpriseLicenseInstallIdRetrieveExecute(r ApiEnterpriseLicenseInstallIdRetrieveRequest) (*InstallID, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -418,12 +418,12 @@ func (a *EnterpriseApiService) EnterpriseLicenseGetInstallIdRetrieveExecute(r Ap
 		localVarReturnValue *InstallID
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.EnterpriseLicenseGetInstallIdRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.EnterpriseLicenseInstallIdRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/enterprise/license/get_install_id/"
+	localVarPath := localBasePath + "/enterprise/license/install_id/"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -927,6 +927,12 @@ func (a *EnterpriseApiService) EnterpriseLicenseRetrieveExecute(r ApiEnterpriseL
 type ApiEnterpriseLicenseSummaryRetrieveRequest struct {
 	ctx        context.Context
 	ApiService *EnterpriseApiService
+	cached     *bool
+}
+
+func (r ApiEnterpriseLicenseSummaryRetrieveRequest) Cached(cached bool) ApiEnterpriseLicenseSummaryRetrieveRequest {
+	r.cached = &cached
+	return r
 }
 
 func (r ApiEnterpriseLicenseSummaryRetrieveRequest) Execute() (*LicenseSummary, *http.Response, error) {
@@ -970,6 +976,9 @@ func (a *EnterpriseApiService) EnterpriseLicenseSummaryRetrieveExecute(r ApiEnte
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.cached != nil {
+		localVarQueryParams.Add("cached", parameterToString(*r.cached, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

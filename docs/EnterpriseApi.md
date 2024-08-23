@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**EnterpriseLicenseCreate**](EnterpriseApi.md#EnterpriseLicenseCreate) | **Post** /enterprise/license/ | 
 [**EnterpriseLicenseDestroy**](EnterpriseApi.md#EnterpriseLicenseDestroy) | **Delete** /enterprise/license/{license_uuid}/ | 
 [**EnterpriseLicenseForecastRetrieve**](EnterpriseApi.md#EnterpriseLicenseForecastRetrieve) | **Get** /enterprise/license/forecast/ | 
-[**EnterpriseLicenseGetInstallIdRetrieve**](EnterpriseApi.md#EnterpriseLicenseGetInstallIdRetrieve) | **Get** /enterprise/license/get_install_id/ | 
+[**EnterpriseLicenseInstallIdRetrieve**](EnterpriseApi.md#EnterpriseLicenseInstallIdRetrieve) | **Get** /enterprise/license/install_id/ | 
 [**EnterpriseLicenseList**](EnterpriseApi.md#EnterpriseLicenseList) | **Get** /enterprise/license/ | 
 [**EnterpriseLicensePartialUpdate**](EnterpriseApi.md#EnterpriseLicensePartialUpdate) | **Patch** /enterprise/license/{license_uuid}/ | 
 [**EnterpriseLicenseRetrieve**](EnterpriseApi.md#EnterpriseLicenseRetrieve) | **Get** /enterprise/license/{license_uuid}/ | 
@@ -212,9 +212,9 @@ Other parameters are passed through a pointer to a apiEnterpriseLicenseForecastR
 [[Back to README]](../README.md)
 
 
-## EnterpriseLicenseGetInstallIdRetrieve
+## EnterpriseLicenseInstallIdRetrieve
 
-> InstallID EnterpriseLicenseGetInstallIdRetrieve(ctx).Execute()
+> InstallID EnterpriseLicenseInstallIdRetrieve(ctx).Execute()
 
 
 
@@ -236,13 +236,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnterpriseApi.EnterpriseLicenseGetInstallIdRetrieve(context.Background()).Execute()
+    resp, r, err := apiClient.EnterpriseApi.EnterpriseLicenseInstallIdRetrieve(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseApi.EnterpriseLicenseGetInstallIdRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseApi.EnterpriseLicenseInstallIdRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EnterpriseLicenseGetInstallIdRetrieve`: InstallID
-    fmt.Fprintf(os.Stdout, "Response from `EnterpriseApi.EnterpriseLicenseGetInstallIdRetrieve`: %v\n", resp)
+    // response from `EnterpriseLicenseInstallIdRetrieve`: InstallID
+    fmt.Fprintf(os.Stdout, "Response from `EnterpriseApi.EnterpriseLicenseInstallIdRetrieve`: %v\n", resp)
 }
 ```
 
@@ -252,7 +252,7 @@ This endpoint does not need any parameter.
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiEnterpriseLicenseGetInstallIdRetrieveRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnterpriseLicenseInstallIdRetrieveRequest struct via the builder pattern
 
 
 ### Return type
@@ -491,7 +491,7 @@ Name | Type | Description  | Notes
 
 ## EnterpriseLicenseSummaryRetrieve
 
-> LicenseSummary EnterpriseLicenseSummaryRetrieve(ctx).Execute()
+> LicenseSummary EnterpriseLicenseSummaryRetrieve(ctx).Cached(cached).Execute()
 
 
 
@@ -510,10 +510,11 @@ import (
 )
 
 func main() {
+    cached := true // bool |  (optional) (default to true)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnterpriseApi.EnterpriseLicenseSummaryRetrieve(context.Background()).Execute()
+    resp, r, err := apiClient.EnterpriseApi.EnterpriseLicenseSummaryRetrieve(context.Background()).Cached(cached).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseApi.EnterpriseLicenseSummaryRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -525,12 +526,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiEnterpriseLicenseSummaryRetrieveRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cached** | **bool** |  | [default to true]
 
 ### Return type
 
