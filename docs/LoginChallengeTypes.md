@@ -5,20 +5,20 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
-**Component** | Pointer to **string** |  | [optional] [default to "ak-source-oauth-apple"]
+**Component** | Pointer to **string** |  | [optional] [default to "ak-source-plex"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **To** | **string** |  | 
 **ClientId** | **string** |  | 
-**Slug** | **string** |  | 
 **Scope** | **string** |  | 
 **RedirectUri** | **string** |  | 
 **State** | **string** |  | 
+**Slug** | **string** |  | 
 
 ## Methods
 
 ### NewLoginChallengeTypes
 
-`func NewLoginChallengeTypes(to string, clientId string, slug string, scope string, redirectUri string, state string, ) *LoginChallengeTypes`
+`func NewLoginChallengeTypes(to string, clientId string, scope string, redirectUri string, state string, slug string, ) *LoginChallengeTypes`
 
 NewLoginChallengeTypes instantiates a new LoginChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -148,26 +148,6 @@ and a boolean to check if the value has been set.
 SetClientId sets ClientId field to given value.
 
 
-### GetSlug
-
-`func (o *LoginChallengeTypes) GetSlug() string`
-
-GetSlug returns the Slug field if non-nil, zero value otherwise.
-
-### GetSlugOk
-
-`func (o *LoginChallengeTypes) GetSlugOk() (*string, bool)`
-
-GetSlugOk returns a tuple with the Slug field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSlug
-
-`func (o *LoginChallengeTypes) SetSlug(v string)`
-
-SetSlug sets Slug field to given value.
-
-
 ### GetScope
 
 `func (o *LoginChallengeTypes) GetScope() string`
@@ -226,6 +206,26 @@ and a boolean to check if the value has been set.
 `func (o *LoginChallengeTypes) SetState(v string)`
 
 SetState sets State field to given value.
+
+
+### GetSlug
+
+`func (o *LoginChallengeTypes) GetSlug() string`
+
+GetSlug returns the Slug field if non-nil, zero value otherwise.
+
+### GetSlugOk
+
+`func (o *LoginChallengeTypes) GetSlugOk() (*string, bool)`
+
+GetSlugOk returns a tuple with the Slug field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSlug
+
+`func (o *LoginChallengeTypes) SetSlug(v string)`
+
+SetSlug sets Slug field to given value.
 
 
 

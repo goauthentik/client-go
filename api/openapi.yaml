@@ -47406,13 +47406,13 @@ components:
       discriminator:
         mapping:
           xak-flow-redirect: '#/components/schemas/RedirectChallenge'
-          ak-source-plex: '#/components/schemas/PlexAuthenticationChallenge'
           ak-source-oauth-apple: '#/components/schemas/AppleLoginChallenge'
+          ak-source-plex: '#/components/schemas/PlexAuthenticationChallenge'
         propertyName: component
       oneOf:
       - $ref: '#/components/schemas/RedirectChallenge'
-      - $ref: '#/components/schemas/PlexAuthenticationChallenge'
       - $ref: '#/components/schemas/AppleLoginChallenge'
+      - $ref: '#/components/schemas/PlexAuthenticationChallenge'
     LoginMetrics:
       description: Login Metrics per 1h
       example:
