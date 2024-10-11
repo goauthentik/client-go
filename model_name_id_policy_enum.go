@@ -23,7 +23,7 @@ type NameIdPolicyEnum string
 const (
 	NAMEIDPOLICYENUM__1_1NAMEID_FORMATEMAIL_ADDRESS                 NameIdPolicyEnum = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
 	NAMEIDPOLICYENUM__2_0NAMEID_FORMATPERSISTENT                    NameIdPolicyEnum = "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"
-	NAMEIDPOLICYENUM__2_0NAMEID_FORMATX509_SUBJECT_NAME             NameIdPolicyEnum = "urn:oasis:names:tc:SAML:2.0:nameid-format:X509SubjectName"
+	NAMEIDPOLICYENUM__1_1NAMEID_FORMATX509_SUBJECT_NAME             NameIdPolicyEnum = "urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName"
 	NAMEIDPOLICYENUM__2_0NAMEID_FORMATWINDOWS_DOMAIN_QUALIFIED_NAME NameIdPolicyEnum = "urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName"
 	NAMEIDPOLICYENUM__2_0NAMEID_FORMATTRANSIENT                     NameIdPolicyEnum = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
 )
@@ -32,7 +32,7 @@ const (
 var AllowedNameIdPolicyEnumEnumValues = []NameIdPolicyEnum{
 	"urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress",
 	"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
-	"urn:oasis:names:tc:SAML:2.0:nameid-format:X509SubjectName",
+	"urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName",
 	"urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName",
 	"urn:oasis:names:tc:SAML:2.0:nameid-format:transient",
 }

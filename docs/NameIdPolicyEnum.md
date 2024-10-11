@@ -7,7 +7,7 @@
 
 * `_2_0NAMEID_FORMATPERSISTENT` (value: `"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"`)
 
-* `_2_0NAMEID_FORMATX509_SUBJECT_NAME` (value: `"urn:oasis:names:tc:SAML:2.0:nameid-format:X509SubjectName"`)
+* `_1_1NAMEID_FORMATX509_SUBJECT_NAME` (value: `"urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName"`)
 
 * `_2_0NAMEID_FORMATWINDOWS_DOMAIN_QUALIFIED_NAME` (value: `"urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName"`)
 
