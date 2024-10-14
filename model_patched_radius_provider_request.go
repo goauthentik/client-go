@@ -21,8 +21,10 @@ type PatchedRadiusProviderRequest struct {
 	// Flow used for authentication when the associated application is accessed by an un-authenticated user.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow *string  `json:"authorization_flow,omitempty"`
-	PropertyMappings  []string `json:"property_mappings,omitempty"`
+	AuthorizationFlow *string `json:"authorization_flow,omitempty"`
+	// Flow used ending the session from a provider.
+	InvalidationFlow *string  `json:"invalidation_flow,omitempty"`
+	PropertyMappings []string `json:"property_mappings,omitempty"`
 	// List of CIDRs (comma-separated) that clients can connect from. A more specific CIDR will match before a looser one. Clients connecting from a non-specified CIDR will be dropped.
 	ClientNetworks *string `json:"client_networks,omitempty"`
 	// Shared secret between clients and server to hash packets.
@@ -153,6 +155,38 @@ func (o *PatchedRadiusProviderRequest) HasAuthorizationFlow() bool {
 // SetAuthorizationFlow gets a reference to the given string and assigns it to the AuthorizationFlow field.
 func (o *PatchedRadiusProviderRequest) SetAuthorizationFlow(v string) {
 	o.AuthorizationFlow = &v
+}
+
+// GetInvalidationFlow returns the InvalidationFlow field value if set, zero value otherwise.
+func (o *PatchedRadiusProviderRequest) GetInvalidationFlow() string {
+	if o == nil || o.InvalidationFlow == nil {
+		var ret string
+		return ret
+	}
+	return *o.InvalidationFlow
+}
+
+// GetInvalidationFlowOk returns a tuple with the InvalidationFlow field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedRadiusProviderRequest) GetInvalidationFlowOk() (*string, bool) {
+	if o == nil || o.InvalidationFlow == nil {
+		return nil, false
+	}
+	return o.InvalidationFlow, true
+}
+
+// HasInvalidationFlow returns a boolean if a field has been set.
+func (o *PatchedRadiusProviderRequest) HasInvalidationFlow() bool {
+	if o != nil && o.InvalidationFlow != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInvalidationFlow gets a reference to the given string and assigns it to the InvalidationFlow field.
+func (o *PatchedRadiusProviderRequest) SetInvalidationFlow(v string) {
+	o.InvalidationFlow = &v
 }
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
@@ -293,6 +327,9 @@ func (o PatchedRadiusProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.AuthorizationFlow != nil {
 		toSerialize["authorization_flow"] = o.AuthorizationFlow
+	}
+	if o.InvalidationFlow != nil {
+		toSerialize["invalidation_flow"] = o.InvalidationFlow
 	}
 	if o.PropertyMappings != nil {
 		toSerialize["property_mappings"] = o.PropertyMappings

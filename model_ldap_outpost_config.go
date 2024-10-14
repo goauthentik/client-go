@@ -22,6 +22,8 @@ type LDAPOutpostConfig struct {
 	// DN under which objects are accessible.
 	BaseDn       *string `json:"base_dn,omitempty"`
 	BindFlowSlug string  `json:"bind_flow_slug"`
+	// Get slug for unbind flow, defaulting to brand's default flow.
+	UnbindFlowSlug NullableString `json:"unbind_flow_slug"`
 	// Prioritise backchannel slug over direct application slug
 	ApplicationSlug string         `json:"application_slug"`
 	Certificate     NullableString `json:"certificate,omitempty"`
@@ -40,11 +42,12 @@ type LDAPOutpostConfig struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLDAPOutpostConfig(pk int32, name string, bindFlowSlug string, applicationSlug string) *LDAPOutpostConfig {
+func NewLDAPOutpostConfig(pk int32, name string, bindFlowSlug string, unbindFlowSlug NullableString, applicationSlug string) *LDAPOutpostConfig {
 	this := LDAPOutpostConfig{}
 	this.Pk = pk
 	this.Name = name
 	this.BindFlowSlug = bindFlowSlug
+	this.UnbindFlowSlug = unbindFlowSlug
 	this.ApplicationSlug = applicationSlug
 	return &this
 }
@@ -159,6 +162,32 @@ func (o *LDAPOutpostConfig) GetBindFlowSlugOk() (*string, bool) {
 // SetBindFlowSlug sets field value
 func (o *LDAPOutpostConfig) SetBindFlowSlug(v string) {
 	o.BindFlowSlug = v
+}
+
+// GetUnbindFlowSlug returns the UnbindFlowSlug field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *LDAPOutpostConfig) GetUnbindFlowSlug() string {
+	if o == nil || o.UnbindFlowSlug.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.UnbindFlowSlug.Get()
+}
+
+// GetUnbindFlowSlugOk returns a tuple with the UnbindFlowSlug field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *LDAPOutpostConfig) GetUnbindFlowSlugOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.UnbindFlowSlug.Get(), o.UnbindFlowSlug.IsSet()
+}
+
+// SetUnbindFlowSlug sets field value
+func (o *LDAPOutpostConfig) SetUnbindFlowSlug(v string) {
+	o.UnbindFlowSlug.Set(&v)
 }
 
 // GetApplicationSlug returns the ApplicationSlug field value
@@ -433,6 +462,9 @@ func (o LDAPOutpostConfig) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["bind_flow_slug"] = o.BindFlowSlug
+	}
+	if true {
+		toSerialize["unbind_flow_slug"] = o.UnbindFlowSlug.Get()
 	}
 	if true {
 		toSerialize["application_slug"] = o.ApplicationSlug

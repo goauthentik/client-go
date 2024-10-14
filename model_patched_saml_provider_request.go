@@ -21,9 +21,11 @@ type PatchedSAMLProviderRequest struct {
 	// Flow used for authentication when the associated application is accessed by an un-authenticated user.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow *string  `json:"authorization_flow,omitempty"`
-	PropertyMappings  []string `json:"property_mappings,omitempty"`
-	AcsUrl            *string  `json:"acs_url,omitempty"`
+	AuthorizationFlow *string `json:"authorization_flow,omitempty"`
+	// Flow used ending the session from a provider.
+	InvalidationFlow *string  `json:"invalidation_flow,omitempty"`
+	PropertyMappings []string `json:"property_mappings,omitempty"`
+	AcsUrl           *string  `json:"acs_url,omitempty"`
 	// Value of the audience restriction field of the assertion. When left empty, no audience restriction will be added.
 	Audience *string `json:"audience,omitempty"`
 	// Also known as EntityID
@@ -174,6 +176,38 @@ func (o *PatchedSAMLProviderRequest) HasAuthorizationFlow() bool {
 // SetAuthorizationFlow gets a reference to the given string and assigns it to the AuthorizationFlow field.
 func (o *PatchedSAMLProviderRequest) SetAuthorizationFlow(v string) {
 	o.AuthorizationFlow = &v
+}
+
+// GetInvalidationFlow returns the InvalidationFlow field value if set, zero value otherwise.
+func (o *PatchedSAMLProviderRequest) GetInvalidationFlow() string {
+	if o == nil || o.InvalidationFlow == nil {
+		var ret string
+		return ret
+	}
+	return *o.InvalidationFlow
+}
+
+// GetInvalidationFlowOk returns a tuple with the InvalidationFlow field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedSAMLProviderRequest) GetInvalidationFlowOk() (*string, bool) {
+	if o == nil || o.InvalidationFlow == nil {
+		return nil, false
+	}
+	return o.InvalidationFlow, true
+}
+
+// HasInvalidationFlow returns a boolean if a field has been set.
+func (o *PatchedSAMLProviderRequest) HasInvalidationFlow() bool {
+	if o != nil && o.InvalidationFlow != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInvalidationFlow gets a reference to the given string and assigns it to the InvalidationFlow field.
+func (o *PatchedSAMLProviderRequest) SetInvalidationFlow(v string) {
+	o.InvalidationFlow = &v
 }
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
@@ -774,6 +808,9 @@ func (o PatchedSAMLProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.AuthorizationFlow != nil {
 		toSerialize["authorization_flow"] = o.AuthorizationFlow
+	}
+	if o.InvalidationFlow != nil {
+		toSerialize["invalidation_flow"] = o.InvalidationFlow
 	}
 	if o.PropertyMappings != nil {
 		toSerialize["property_mappings"] = o.PropertyMappings

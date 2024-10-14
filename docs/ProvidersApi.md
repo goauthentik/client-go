@@ -1826,7 +1826,7 @@ import (
 )
 
 func main() {
-    lDAPProviderRequest := *openapiclient.NewLDAPProviderRequest("Name_example", "AuthorizationFlow_example") // LDAPProviderRequest | 
+    lDAPProviderRequest := *openapiclient.NewLDAPProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example") // LDAPProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2193,7 +2193,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this LDAP Provider.
-    lDAPProviderRequest := *openapiclient.NewLDAPProviderRequest("Name_example", "AuthorizationFlow_example") // LDAPProviderRequest | 
+    lDAPProviderRequest := *openapiclient.NewLDAPProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example") // LDAPProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -3676,7 +3676,7 @@ import (
 )
 
 func main() {
-    oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example", "AuthorizationFlow_example") // OAuth2ProviderRequest | 
+    oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example") // OAuth2ProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -4195,7 +4195,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this OAuth2/OpenID Provider.
-    oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example", "AuthorizationFlow_example") // OAuth2ProviderRequest | 
+    oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example") // OAuth2ProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -4336,7 +4336,7 @@ import (
 )
 
 func main() {
-    proxyProviderRequest := *openapiclient.NewProxyProviderRequest("Name_example", "AuthorizationFlow_example", "ExternalHost_example") // ProxyProviderRequest | 
+    proxyProviderRequest := *openapiclient.NewProxyProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example", "ExternalHost_example") // ProxyProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -4717,7 +4717,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this Proxy Provider.
-    proxyProviderRequest := *openapiclient.NewProxyProviderRequest("Name_example", "AuthorizationFlow_example", "ExternalHost_example") // ProxyProviderRequest | 
+    proxyProviderRequest := *openapiclient.NewProxyProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example", "ExternalHost_example") // ProxyProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -4858,7 +4858,7 @@ import (
 )
 
 func main() {
-    rACProviderRequest := *openapiclient.NewRACProviderRequest("Name_example", "AuthorizationFlow_example") // RACProviderRequest | 
+    rACProviderRequest := *openapiclient.NewRACProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example") // RACProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -5211,7 +5211,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this RAC Provider.
-    rACProviderRequest := *openapiclient.NewRACProviderRequest("Name_example", "AuthorizationFlow_example") // RACProviderRequest | 
+    rACProviderRequest := *openapiclient.NewRACProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example") // RACProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -5352,7 +5352,7 @@ import (
 )
 
 func main() {
-    radiusProviderRequest := *openapiclient.NewRadiusProviderRequest("Name_example", "AuthorizationFlow_example") // RadiusProviderRequest | 
+    radiusProviderRequest := *openapiclient.NewRadiusProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example") // RadiusProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -5709,7 +5709,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this Radius Provider.
-    radiusProviderRequest := *openapiclient.NewRadiusProviderRequest("Name_example", "AuthorizationFlow_example") // RadiusProviderRequest | 
+    radiusProviderRequest := *openapiclient.NewRadiusProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example") // RadiusProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -5850,7 +5850,7 @@ import (
 )
 
 func main() {
-    sAMLProviderRequest := *openapiclient.NewSAMLProviderRequest("Name_example", "AuthorizationFlow_example", "AcsUrl_example") // SAMLProviderRequest | 
+    sAMLProviderRequest := *openapiclient.NewSAMLProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example", "AcsUrl_example") // SAMLProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -5965,7 +5965,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersSamlImportMetadataCreate
 
-> ProvidersSamlImportMetadataCreate(ctx).Name(name).AuthorizationFlow(authorizationFlow).File(file).Execute()
+> ProvidersSamlImportMetadataCreate(ctx).Name(name).AuthorizationFlow(authorizationFlow).InvalidationFlow(invalidationFlow).File(file).Execute()
 
 
 
@@ -5986,11 +5986,12 @@ import (
 func main() {
     name := "name_example" // string | 
     authorizationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    invalidationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     file := os.NewFile(1234, "some_file") // *os.File | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProvidersApi.ProvidersSamlImportMetadataCreate(context.Background()).Name(name).AuthorizationFlow(authorizationFlow).File(file).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersSamlImportMetadataCreate(context.Background()).Name(name).AuthorizationFlow(authorizationFlow).InvalidationFlow(invalidationFlow).File(file).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSamlImportMetadataCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6011,6 +6012,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string** |  | 
  **authorizationFlow** | **string** |  | 
+ **invalidationFlow** | **string** |  | 
  **file** | ***os.File** |  | 
 
 ### Return type
@@ -6033,7 +6035,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersSamlList
 
-> PaginatedSAMLProviderList ProvidersSamlList(ctx).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthorizationFlow(authorizationFlow).BackchannelApplication(backchannelApplication).DefaultRelayState(defaultRelayState).DigestAlgorithm(digestAlgorithm).EncryptionKp(encryptionKp).IsBackchannel(isBackchannel).Issuer(issuer).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignAssertion(signAssertion).SignResponse(signResponse).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
+> PaginatedSAMLProviderList ProvidersSamlList(ctx).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthorizationFlow(authorizationFlow).BackchannelApplication(backchannelApplication).DefaultRelayState(defaultRelayState).DigestAlgorithm(digestAlgorithm).EncryptionKp(encryptionKp).InvalidationFlow(invalidationFlow).IsBackchannel(isBackchannel).Issuer(issuer).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignAssertion(signAssertion).SignResponse(signResponse).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
 
 
 
@@ -6062,6 +6064,7 @@ func main() {
     defaultRelayState := "defaultRelayState_example" // string |  (optional)
     digestAlgorithm := "digestAlgorithm_example" // string |  (optional)
     encryptionKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    invalidationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     isBackchannel := true // bool |  (optional)
     issuer := "issuer_example" // string |  (optional)
     name := "name_example" // string |  (optional)
@@ -6081,7 +6084,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProvidersApi.ProvidersSamlList(context.Background()).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthorizationFlow(authorizationFlow).BackchannelApplication(backchannelApplication).DefaultRelayState(defaultRelayState).DigestAlgorithm(digestAlgorithm).EncryptionKp(encryptionKp).IsBackchannel(isBackchannel).Issuer(issuer).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignAssertion(signAssertion).SignResponse(signResponse).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersSamlList(context.Background()).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthorizationFlow(authorizationFlow).BackchannelApplication(backchannelApplication).DefaultRelayState(defaultRelayState).DigestAlgorithm(digestAlgorithm).EncryptionKp(encryptionKp).InvalidationFlow(invalidationFlow).IsBackchannel(isBackchannel).Issuer(issuer).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignAssertion(signAssertion).SignResponse(signResponse).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSamlList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6112,6 +6115,7 @@ Name | Type | Description  | Notes
  **defaultRelayState** | **string** |  | 
  **digestAlgorithm** | **string** |  | 
  **encryptionKp** | **string** |  | 
+ **invalidationFlow** | **string** |  | 
  **isBackchannel** | **bool** |  | 
  **issuer** | **string** |  | 
  **name** | **string** |  | 
@@ -6457,7 +6461,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this SAML Provider.
-    sAMLProviderRequest := *openapiclient.NewSAMLProviderRequest("Name_example", "AuthorizationFlow_example", "AcsUrl_example") // SAMLProviderRequest | 
+    sAMLProviderRequest := *openapiclient.NewSAMLProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example", "AcsUrl_example") // SAMLProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

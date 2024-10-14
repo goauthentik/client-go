@@ -11240,6 +11240,7 @@ type ApiProvidersSamlImportMetadataCreateRequest struct {
 	ApiService        *ProvidersApiService
 	name              *string
 	authorizationFlow *string
+	invalidationFlow  *string
 	file              **os.File
 }
 
@@ -11250,6 +11251,11 @@ func (r ApiProvidersSamlImportMetadataCreateRequest) Name(name string) ApiProvid
 
 func (r ApiProvidersSamlImportMetadataCreateRequest) AuthorizationFlow(authorizationFlow string) ApiProvidersSamlImportMetadataCreateRequest {
 	r.authorizationFlow = &authorizationFlow
+	return r
+}
+
+func (r ApiProvidersSamlImportMetadataCreateRequest) InvalidationFlow(invalidationFlow string) ApiProvidersSamlImportMetadataCreateRequest {
+	r.invalidationFlow = &invalidationFlow
 	return r
 }
 
@@ -11304,6 +11310,9 @@ func (a *ProvidersApiService) ProvidersSamlImportMetadataCreateExecute(r ApiProv
 	if r.authorizationFlow == nil {
 		return nil, reportError("authorizationFlow is required and must be specified")
 	}
+	if r.invalidationFlow == nil {
+		return nil, reportError("invalidationFlow is required and must be specified")
+	}
 	if r.file == nil {
 		return nil, reportError("file is required and must be specified")
 	}
@@ -11327,6 +11336,7 @@ func (a *ProvidersApiService) ProvidersSamlImportMetadataCreateExecute(r ApiProv
 	}
 	localVarFormParams.Add("name", parameterToString(*r.name, ""))
 	localVarFormParams.Add("authorization_flow", parameterToString(*r.authorizationFlow, ""))
+	localVarFormParams.Add("invalidation_flow", parameterToString(*r.invalidationFlow, ""))
 	var fileLocalVarFormFileName string
 	var fileLocalVarFileName string
 	var fileLocalVarFileBytes []byte
@@ -11391,6 +11401,7 @@ type ApiProvidersSamlListRequest struct {
 	defaultRelayState          *string
 	digestAlgorithm            *string
 	encryptionKp               *string
+	invalidationFlow           *string
 	isBackchannel              *bool
 	issuer                     *string
 	name                       *string
@@ -11456,6 +11467,11 @@ func (r ApiProvidersSamlListRequest) DigestAlgorithm(digestAlgorithm string) Api
 
 func (r ApiProvidersSamlListRequest) EncryptionKp(encryptionKp string) ApiProvidersSamlListRequest {
 	r.encryptionKp = &encryptionKp
+	return r
+}
+
+func (r ApiProvidersSamlListRequest) InvalidationFlow(invalidationFlow string) ApiProvidersSamlListRequest {
+	r.invalidationFlow = &invalidationFlow
 	return r
 }
 
@@ -11614,6 +11630,9 @@ func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 	}
 	if r.encryptionKp != nil {
 		localVarQueryParams.Add("encryption_kp", parameterToString(*r.encryptionKp, ""))
+	}
+	if r.invalidationFlow != nil {
+		localVarQueryParams.Add("invalidation_flow", parameterToString(*r.invalidationFlow, ""))
 	}
 	if r.isBackchannel != nil {
 		localVarQueryParams.Add("is_backchannel", parameterToString(*r.isBackchannel, ""))

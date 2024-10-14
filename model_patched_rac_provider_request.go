@@ -21,9 +21,11 @@ type PatchedRACProviderRequest struct {
 	// Flow used for authentication when the associated application is accessed by an un-authenticated user.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow *string     `json:"authorization_flow,omitempty"`
-	PropertyMappings  []string    `json:"property_mappings,omitempty"`
-	Settings          interface{} `json:"settings,omitempty"`
+	AuthorizationFlow *string `json:"authorization_flow,omitempty"`
+	// Flow used ending the session from a provider.
+	InvalidationFlow *string     `json:"invalidation_flow,omitempty"`
+	PropertyMappings []string    `json:"property_mappings,omitempty"`
+	Settings         interface{} `json:"settings,omitempty"`
 	// Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)
 	ConnectionExpiry *string `json:"connection_expiry,omitempty"`
 	// When set to true, connection tokens will be deleted upon disconnect.
@@ -152,6 +154,38 @@ func (o *PatchedRACProviderRequest) HasAuthorizationFlow() bool {
 // SetAuthorizationFlow gets a reference to the given string and assigns it to the AuthorizationFlow field.
 func (o *PatchedRACProviderRequest) SetAuthorizationFlow(v string) {
 	o.AuthorizationFlow = &v
+}
+
+// GetInvalidationFlow returns the InvalidationFlow field value if set, zero value otherwise.
+func (o *PatchedRACProviderRequest) GetInvalidationFlow() string {
+	if o == nil || o.InvalidationFlow == nil {
+		var ret string
+		return ret
+	}
+	return *o.InvalidationFlow
+}
+
+// GetInvalidationFlowOk returns a tuple with the InvalidationFlow field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedRACProviderRequest) GetInvalidationFlowOk() (*string, bool) {
+	if o == nil || o.InvalidationFlow == nil {
+		return nil, false
+	}
+	return o.InvalidationFlow, true
+}
+
+// HasInvalidationFlow returns a boolean if a field has been set.
+func (o *PatchedRACProviderRequest) HasInvalidationFlow() bool {
+	if o != nil && o.InvalidationFlow != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInvalidationFlow gets a reference to the given string and assigns it to the InvalidationFlow field.
+func (o *PatchedRACProviderRequest) SetInvalidationFlow(v string) {
+	o.InvalidationFlow = &v
 }
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
@@ -293,6 +327,9 @@ func (o PatchedRACProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.AuthorizationFlow != nil {
 		toSerialize["authorization_flow"] = o.AuthorizationFlow
+	}
+	if o.InvalidationFlow != nil {
+		toSerialize["invalidation_flow"] = o.InvalidationFlow
 	}
 	if o.PropertyMappings != nil {
 		toSerialize["property_mappings"] = o.PropertyMappings

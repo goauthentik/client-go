@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
+**InvalidationFlow** | **string** | Flow used ending the session from a provider. | 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **InternalHost** | Pointer to **string** |  | [optional] 
 **ExternalHost** | **string** |  | 
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewProxyProviderRequest
 
-`func NewProxyProviderRequest(name string, authorizationFlow string, externalHost string, ) *ProxyProviderRequest`
+`func NewProxyProviderRequest(name string, authorizationFlow string, invalidationFlow string, externalHost string, ) *ProxyProviderRequest`
 
 NewProxyProviderRequest instantiates a new ProxyProviderRequest object
 This constructor will assign default values to properties that have it defined,
@@ -115,6 +116,26 @@ and a boolean to check if the value has been set.
 `func (o *ProxyProviderRequest) SetAuthorizationFlow(v string)`
 
 SetAuthorizationFlow sets AuthorizationFlow field to given value.
+
+
+### GetInvalidationFlow
+
+`func (o *ProxyProviderRequest) GetInvalidationFlow() string`
+
+GetInvalidationFlow returns the InvalidationFlow field if non-nil, zero value otherwise.
+
+### GetInvalidationFlowOk
+
+`func (o *ProxyProviderRequest) GetInvalidationFlowOk() (*string, bool)`
+
+GetInvalidationFlowOk returns a tuple with the InvalidationFlow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInvalidationFlow
+
+`func (o *ProxyProviderRequest) SetInvalidationFlow(v string)`
+
+SetInvalidationFlow sets InvalidationFlow field to given value.
 
 
 ### GetPropertyMappings

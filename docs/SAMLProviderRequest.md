@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
+**InvalidationFlow** | **string** | Flow used ending the session from a provider. | 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **AcsUrl** | **string** |  | 
 **Audience** | Pointer to **string** | Value of the audience restriction field of the assertion. When left empty, no audience restriction will be added. | [optional] 
@@ -29,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewSAMLProviderRequest
 
-`func NewSAMLProviderRequest(name string, authorizationFlow string, acsUrl string, ) *SAMLProviderRequest`
+`func NewSAMLProviderRequest(name string, authorizationFlow string, invalidationFlow string, acsUrl string, ) *SAMLProviderRequest`
 
 NewSAMLProviderRequest instantiates a new SAMLProviderRequest object
 This constructor will assign default values to properties that have it defined,
@@ -117,6 +118,26 @@ and a boolean to check if the value has been set.
 `func (o *SAMLProviderRequest) SetAuthorizationFlow(v string)`
 
 SetAuthorizationFlow sets AuthorizationFlow field to given value.
+
+
+### GetInvalidationFlow
+
+`func (o *SAMLProviderRequest) GetInvalidationFlow() string`
+
+GetInvalidationFlow returns the InvalidationFlow field if non-nil, zero value otherwise.
+
+### GetInvalidationFlowOk
+
+`func (o *SAMLProviderRequest) GetInvalidationFlowOk() (*string, bool)`
+
+GetInvalidationFlowOk returns a tuple with the InvalidationFlow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInvalidationFlow
+
+`func (o *SAMLProviderRequest) SetInvalidationFlow(v string)`
+
+SetInvalidationFlow sets InvalidationFlow field to given value.
 
 
 ### GetPropertyMappings

@@ -39,6 +39,7 @@ type ChallengeTypes struct {
 	PlexAuthenticationChallenge      *PlexAuthenticationChallenge
 	PromptChallenge                  *PromptChallenge
 	RedirectChallenge                *RedirectChallenge
+	SessionEndChallenge              *SessionEndChallenge
 	ShellChallenge                   *ShellChallenge
 	UserLoginChallenge               *UserLoginChallenge
 }
@@ -187,6 +188,13 @@ func PromptChallengeAsChallengeTypes(v *PromptChallenge) ChallengeTypes {
 func RedirectChallengeAsChallengeTypes(v *RedirectChallenge) ChallengeTypes {
 	return ChallengeTypes{
 		RedirectChallenge: v,
+	}
+}
+
+// SessionEndChallengeAsChallengeTypes is a convenience function that returns SessionEndChallenge wrapped in ChallengeTypes
+func SessionEndChallengeAsChallengeTypes(v *SessionEndChallenge) ChallengeTypes {
+	return ChallengeTypes{
+		SessionEndChallenge: v,
 	}
 }
 
@@ -466,6 +474,18 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'SessionEndChallenge'
+	if jsonDict["component"] == "SessionEndChallenge" {
+		// try to unmarshal JSON data into SessionEndChallenge
+		err = json.Unmarshal(data, &dst.SessionEndChallenge)
+		if err == nil {
+			return nil // data stored in dst.SessionEndChallenge, return on the first match
+		} else {
+			dst.SessionEndChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as SessionEndChallenge: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'ShellChallenge'
 	if jsonDict["component"] == "ShellChallenge" {
 		// try to unmarshal JSON data into ShellChallenge
@@ -730,6 +750,18 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'ak-stage-session-end'
+	if jsonDict["component"] == "ak-stage-session-end" {
+		// try to unmarshal JSON data into SessionEndChallenge
+		err = json.Unmarshal(data, &dst.SessionEndChallenge)
+		if err == nil {
+			return nil // data stored in dst.SessionEndChallenge, return on the first match
+		} else {
+			dst.SessionEndChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as SessionEndChallenge: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'ak-stage-user-login'
 	if jsonDict["component"] == "ak-stage-user-login" {
 		// try to unmarshal JSON data into UserLoginChallenge
@@ -855,6 +887,10 @@ func (src ChallengeTypes) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.RedirectChallenge)
 	}
 
+	if src.SessionEndChallenge != nil {
+		return json.Marshal(&src.SessionEndChallenge)
+	}
+
 	if src.ShellChallenge != nil {
 		return json.Marshal(&src.ShellChallenge)
 	}
@@ -953,6 +989,10 @@ func (obj *ChallengeTypes) GetActualInstance() interface{} {
 
 	if obj.RedirectChallenge != nil {
 		return obj.RedirectChallenge
+	}
+
+	if obj.SessionEndChallenge != nil {
+		return obj.SessionEndChallenge
 	}
 
 	if obj.ShellChallenge != nil {

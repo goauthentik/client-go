@@ -21,10 +21,12 @@ type PatchedProxyProviderRequest struct {
 	// Flow used for authentication when the associated application is accessed by an un-authenticated user.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow *string  `json:"authorization_flow,omitempty"`
-	PropertyMappings  []string `json:"property_mappings,omitempty"`
-	InternalHost      *string  `json:"internal_host,omitempty"`
-	ExternalHost      *string  `json:"external_host,omitempty"`
+	AuthorizationFlow *string `json:"authorization_flow,omitempty"`
+	// Flow used ending the session from a provider.
+	InvalidationFlow *string  `json:"invalidation_flow,omitempty"`
+	PropertyMappings []string `json:"property_mappings,omitempty"`
+	InternalHost     *string  `json:"internal_host,omitempty"`
+	ExternalHost     *string  `json:"external_host,omitempty"`
 	// Validate SSL Certificates of upstream servers
 	InternalHostSslValidation *bool          `json:"internal_host_ssl_validation,omitempty"`
 	Certificate               NullableString `json:"certificate,omitempty"`
@@ -170,6 +172,38 @@ func (o *PatchedProxyProviderRequest) HasAuthorizationFlow() bool {
 // SetAuthorizationFlow gets a reference to the given string and assigns it to the AuthorizationFlow field.
 func (o *PatchedProxyProviderRequest) SetAuthorizationFlow(v string) {
 	o.AuthorizationFlow = &v
+}
+
+// GetInvalidationFlow returns the InvalidationFlow field value if set, zero value otherwise.
+func (o *PatchedProxyProviderRequest) GetInvalidationFlow() string {
+	if o == nil || o.InvalidationFlow == nil {
+		var ret string
+		return ret
+	}
+	return *o.InvalidationFlow
+}
+
+// GetInvalidationFlowOk returns a tuple with the InvalidationFlow field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedProxyProviderRequest) GetInvalidationFlowOk() (*string, bool) {
+	if o == nil || o.InvalidationFlow == nil {
+		return nil, false
+	}
+	return o.InvalidationFlow, true
+}
+
+// HasInvalidationFlow returns a boolean if a field has been set.
+func (o *PatchedProxyProviderRequest) HasInvalidationFlow() bool {
+	if o != nil && o.InvalidationFlow != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInvalidationFlow gets a reference to the given string and assigns it to the InvalidationFlow field.
+func (o *PatchedProxyProviderRequest) SetInvalidationFlow(v string) {
+	o.InvalidationFlow = &v
 }
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
@@ -673,6 +707,9 @@ func (o PatchedProxyProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.AuthorizationFlow != nil {
 		toSerialize["authorization_flow"] = o.AuthorizationFlow
+	}
+	if o.InvalidationFlow != nil {
+		toSerialize["invalidation_flow"] = o.InvalidationFlow
 	}
 	if o.PropertyMappings != nil {
 		toSerialize["property_mappings"] = o.PropertyMappings

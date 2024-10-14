@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | Pointer to **string** | Flow used when authorizing this provider. | [optional] 
+**InvalidationFlow** | Pointer to **string** | Flow used ending the session from a provider. | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **ClientNetworks** | Pointer to **string** | List of CIDRs (comma-separated) that clients can connect from. A more specific CIDR will match before a looser one. Clients connecting from a non-specified CIDR will be dropped. | [optional] 
 **SharedSecret** | Pointer to **string** | Shared secret between clients and server to hash packets. | [optional] 
@@ -115,6 +116,31 @@ SetAuthorizationFlow sets AuthorizationFlow field to given value.
 `func (o *PatchedRadiusProviderRequest) HasAuthorizationFlow() bool`
 
 HasAuthorizationFlow returns a boolean if a field has been set.
+
+### GetInvalidationFlow
+
+`func (o *PatchedRadiusProviderRequest) GetInvalidationFlow() string`
+
+GetInvalidationFlow returns the InvalidationFlow field if non-nil, zero value otherwise.
+
+### GetInvalidationFlowOk
+
+`func (o *PatchedRadiusProviderRequest) GetInvalidationFlowOk() (*string, bool)`
+
+GetInvalidationFlowOk returns a tuple with the InvalidationFlow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInvalidationFlow
+
+`func (o *PatchedRadiusProviderRequest) SetInvalidationFlow(v string)`
+
+SetInvalidationFlow sets InvalidationFlow field to given value.
+
+### HasInvalidationFlow
+
+`func (o *PatchedRadiusProviderRequest) HasInvalidationFlow() bool`
+
+HasInvalidationFlow returns a boolean if a field has been set.
 
 ### GetPropertyMappings
 

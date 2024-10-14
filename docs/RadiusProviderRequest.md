@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
+**InvalidationFlow** | **string** | Flow used ending the session from a provider. | 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **ClientNetworks** | Pointer to **string** | List of CIDRs (comma-separated) that clients can connect from. A more specific CIDR will match before a looser one. Clients connecting from a non-specified CIDR will be dropped. | [optional] 
 **SharedSecret** | Pointer to **string** | Shared secret between clients and server to hash packets. | [optional] 
@@ -16,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewRadiusProviderRequest
 
-`func NewRadiusProviderRequest(name string, authorizationFlow string, ) *RadiusProviderRequest`
+`func NewRadiusProviderRequest(name string, authorizationFlow string, invalidationFlow string, ) *RadiusProviderRequest`
 
 NewRadiusProviderRequest instantiates a new RadiusProviderRequest object
 This constructor will assign default values to properties that have it defined,
@@ -104,6 +105,26 @@ and a boolean to check if the value has been set.
 `func (o *RadiusProviderRequest) SetAuthorizationFlow(v string)`
 
 SetAuthorizationFlow sets AuthorizationFlow field to given value.
+
+
+### GetInvalidationFlow
+
+`func (o *RadiusProviderRequest) GetInvalidationFlow() string`
+
+GetInvalidationFlow returns the InvalidationFlow field if non-nil, zero value otherwise.
+
+### GetInvalidationFlowOk
+
+`func (o *RadiusProviderRequest) GetInvalidationFlowOk() (*string, bool)`
+
+GetInvalidationFlowOk returns a tuple with the InvalidationFlow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInvalidationFlow
+
+`func (o *RadiusProviderRequest) SetInvalidationFlow(v string)`
+
+SetInvalidationFlow sets InvalidationFlow field to given value.
 
 
 ### GetPropertyMappings

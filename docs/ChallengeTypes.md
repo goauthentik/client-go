@@ -50,13 +50,17 @@ Name | Type | Description | Notes
 **Slug** | **string** |  | 
 **Fields** | [**[]StagePrompt**](StagePrompt.md) |  | 
 **To** | **string** |  | 
+**ApplicationName** | Pointer to **string** |  | [optional] 
+**ApplicationLaunchUrl** | Pointer to **string** |  | [optional] 
+**InvalidationFlowUrl** | Pointer to **string** |  | [optional] 
+**BrandName** | **string** |  | 
 **Body** | **string** |  | 
 
 ## Methods
 
 ### NewChallengeTypes
 
-`func NewChallengeTypes(pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, name string, requestId string, userFields []string, passwordFields bool, flowDesignation FlowDesignationEnum, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, body string, ) *ChallengeTypes`
+`func NewChallengeTypes(pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, name string, requestId string, userFields []string, passwordFields bool, flowDesignation FlowDesignationEnum, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, brandName string, body string, ) *ChallengeTypes`
 
 NewChallengeTypes instantiates a new ChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -1074,6 +1078,101 @@ and a boolean to check if the value has been set.
 `func (o *ChallengeTypes) SetTo(v string)`
 
 SetTo sets To field to given value.
+
+
+### GetApplicationName
+
+`func (o *ChallengeTypes) GetApplicationName() string`
+
+GetApplicationName returns the ApplicationName field if non-nil, zero value otherwise.
+
+### GetApplicationNameOk
+
+`func (o *ChallengeTypes) GetApplicationNameOk() (*string, bool)`
+
+GetApplicationNameOk returns a tuple with the ApplicationName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApplicationName
+
+`func (o *ChallengeTypes) SetApplicationName(v string)`
+
+SetApplicationName sets ApplicationName field to given value.
+
+### HasApplicationName
+
+`func (o *ChallengeTypes) HasApplicationName() bool`
+
+HasApplicationName returns a boolean if a field has been set.
+
+### GetApplicationLaunchUrl
+
+`func (o *ChallengeTypes) GetApplicationLaunchUrl() string`
+
+GetApplicationLaunchUrl returns the ApplicationLaunchUrl field if non-nil, zero value otherwise.
+
+### GetApplicationLaunchUrlOk
+
+`func (o *ChallengeTypes) GetApplicationLaunchUrlOk() (*string, bool)`
+
+GetApplicationLaunchUrlOk returns a tuple with the ApplicationLaunchUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApplicationLaunchUrl
+
+`func (o *ChallengeTypes) SetApplicationLaunchUrl(v string)`
+
+SetApplicationLaunchUrl sets ApplicationLaunchUrl field to given value.
+
+### HasApplicationLaunchUrl
+
+`func (o *ChallengeTypes) HasApplicationLaunchUrl() bool`
+
+HasApplicationLaunchUrl returns a boolean if a field has been set.
+
+### GetInvalidationFlowUrl
+
+`func (o *ChallengeTypes) GetInvalidationFlowUrl() string`
+
+GetInvalidationFlowUrl returns the InvalidationFlowUrl field if non-nil, zero value otherwise.
+
+### GetInvalidationFlowUrlOk
+
+`func (o *ChallengeTypes) GetInvalidationFlowUrlOk() (*string, bool)`
+
+GetInvalidationFlowUrlOk returns a tuple with the InvalidationFlowUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInvalidationFlowUrl
+
+`func (o *ChallengeTypes) SetInvalidationFlowUrl(v string)`
+
+SetInvalidationFlowUrl sets InvalidationFlowUrl field to given value.
+
+### HasInvalidationFlowUrl
+
+`func (o *ChallengeTypes) HasInvalidationFlowUrl() bool`
+
+HasInvalidationFlowUrl returns a boolean if a field has been set.
+
+### GetBrandName
+
+`func (o *ChallengeTypes) GetBrandName() string`
+
+GetBrandName returns the BrandName field if non-nil, zero value otherwise.
+
+### GetBrandNameOk
+
+`func (o *ChallengeTypes) GetBrandNameOk() (*string, bool)`
+
+GetBrandNameOk returns a tuple with the BrandName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBrandName
+
+`func (o *ChallengeTypes) SetBrandName(v string)`
+
+SetBrandName sets BrandName field to given value.
 
 
 ### GetBody

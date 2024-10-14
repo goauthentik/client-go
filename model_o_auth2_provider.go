@@ -22,8 +22,10 @@ type OAuth2Provider struct {
 	// Flow used for authentication when the associated application is accessed by an un-authenticated user.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow string   `json:"authorization_flow"`
-	PropertyMappings  []string `json:"property_mappings,omitempty"`
+	AuthorizationFlow string `json:"authorization_flow"`
+	// Flow used ending the session from a provider.
+	InvalidationFlow string   `json:"invalidation_flow"`
+	PropertyMappings []string `json:"property_mappings,omitempty"`
 	// Get object component so that we know how to edit the object
 	Component string `json:"component"`
 	// Internal application name, used in URLs.
@@ -67,11 +69,12 @@ type OAuth2Provider struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuth2Provider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string) *OAuth2Provider {
+func NewOAuth2Provider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string) *OAuth2Provider {
 	this := OAuth2Provider{}
 	this.Pk = pk
 	this.Name = name
 	this.AuthorizationFlow = authorizationFlow
+	this.InvalidationFlow = invalidationFlow
 	this.Component = component
 	this.AssignedApplicationSlug = assignedApplicationSlug
 	this.AssignedApplicationName = assignedApplicationName
@@ -204,6 +207,30 @@ func (o *OAuth2Provider) GetAuthorizationFlowOk() (*string, bool) {
 // SetAuthorizationFlow sets field value
 func (o *OAuth2Provider) SetAuthorizationFlow(v string) {
 	o.AuthorizationFlow = v
+}
+
+// GetInvalidationFlow returns the InvalidationFlow field value
+func (o *OAuth2Provider) GetInvalidationFlow() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.InvalidationFlow
+}
+
+// GetInvalidationFlowOk returns a tuple with the InvalidationFlow field value
+// and a boolean to check if the value has been set.
+func (o *OAuth2Provider) GetInvalidationFlowOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.InvalidationFlow, true
+}
+
+// SetInvalidationFlow sets field value
+func (o *OAuth2Provider) SetInvalidationFlow(v string) {
+	o.InvalidationFlow = v
 }
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
@@ -838,6 +865,9 @@ func (o OAuth2Provider) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["authorization_flow"] = o.AuthorizationFlow
+	}
+	if true {
+		toSerialize["invalidation_flow"] = o.InvalidationFlow
 	}
 	if o.PropertyMappings != nil {
 		toSerialize["property_mappings"] = o.PropertyMappings

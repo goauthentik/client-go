@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
+**InvalidationFlow** | **string** | Flow used ending the session from a provider. | 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **Component** | **string** | Get object component so that we know how to edit the object | [readonly] 
 **AssignedApplicationSlug** | **string** | Internal application name, used in URLs. | [readonly] 
@@ -39,7 +40,7 @@ Name | Type | Description | Notes
 
 ### NewProxyProvider
 
-`func NewProxyProvider(pk int32, name string, authorizationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, clientId string, externalHost string, redirectUris string, outpostSet []string, ) *ProxyProvider`
+`func NewProxyProvider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, clientId string, externalHost string, redirectUris string, outpostSet []string, ) *ProxyProvider`
 
 NewProxyProvider instantiates a new ProxyProvider object
 This constructor will assign default values to properties that have it defined,
@@ -147,6 +148,26 @@ and a boolean to check if the value has been set.
 `func (o *ProxyProvider) SetAuthorizationFlow(v string)`
 
 SetAuthorizationFlow sets AuthorizationFlow field to given value.
+
+
+### GetInvalidationFlow
+
+`func (o *ProxyProvider) GetInvalidationFlow() string`
+
+GetInvalidationFlow returns the InvalidationFlow field if non-nil, zero value otherwise.
+
+### GetInvalidationFlowOk
+
+`func (o *ProxyProvider) GetInvalidationFlowOk() (*string, bool)`
+
+GetInvalidationFlowOk returns a tuple with the InvalidationFlow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInvalidationFlow
+
+`func (o *ProxyProvider) SetInvalidationFlow(v string)`
+
+SetInvalidationFlow sets InvalidationFlow field to given value.
 
 
 ### GetPropertyMappings

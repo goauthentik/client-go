@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **BaseDn** | Pointer to **string** | DN under which objects are accessible. | [optional] 
 **BindFlowSlug** | **string** |  | 
+**UnbindFlowSlug** | **NullableString** | Get slug for unbind flow, defaulting to brand&#39;s default flow. | [readonly] 
 **ApplicationSlug** | **string** | Prioritise backchannel slug over direct application slug | [readonly] 
 **Certificate** | Pointer to **NullableString** |  | [optional] 
 **TlsServerName** | Pointer to **string** |  | [optional] 
@@ -21,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewLDAPOutpostConfig
 
-`func NewLDAPOutpostConfig(pk int32, name string, bindFlowSlug string, applicationSlug string, ) *LDAPOutpostConfig`
+`func NewLDAPOutpostConfig(pk int32, name string, bindFlowSlug string, unbindFlowSlug NullableString, applicationSlug string, ) *LDAPOutpostConfig`
 
 NewLDAPOutpostConfig instantiates a new LDAPOutpostConfig object
 This constructor will assign default values to properties that have it defined,
@@ -121,6 +122,36 @@ and a boolean to check if the value has been set.
 SetBindFlowSlug sets BindFlowSlug field to given value.
 
 
+### GetUnbindFlowSlug
+
+`func (o *LDAPOutpostConfig) GetUnbindFlowSlug() string`
+
+GetUnbindFlowSlug returns the UnbindFlowSlug field if non-nil, zero value otherwise.
+
+### GetUnbindFlowSlugOk
+
+`func (o *LDAPOutpostConfig) GetUnbindFlowSlugOk() (*string, bool)`
+
+GetUnbindFlowSlugOk returns a tuple with the UnbindFlowSlug field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUnbindFlowSlug
+
+`func (o *LDAPOutpostConfig) SetUnbindFlowSlug(v string)`
+
+SetUnbindFlowSlug sets UnbindFlowSlug field to given value.
+
+
+### SetUnbindFlowSlugNil
+
+`func (o *LDAPOutpostConfig) SetUnbindFlowSlugNil(b bool)`
+
+ SetUnbindFlowSlugNil sets the value for UnbindFlowSlug to be an explicit nil
+
+### UnsetUnbindFlowSlug
+`func (o *LDAPOutpostConfig) UnsetUnbindFlowSlug()`
+
+UnsetUnbindFlowSlug ensures that no value is present for UnbindFlowSlug, not even an explicit nil
 ### GetApplicationSlug
 
 `func (o *LDAPOutpostConfig) GetApplicationSlug() string`

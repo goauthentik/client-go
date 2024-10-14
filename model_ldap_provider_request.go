@@ -21,8 +21,10 @@ type LDAPProviderRequest struct {
 	// Flow used for authentication when the associated application is accessed by an un-authenticated user.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow string   `json:"authorization_flow"`
-	PropertyMappings  []string `json:"property_mappings,omitempty"`
+	AuthorizationFlow string `json:"authorization_flow"`
+	// Flow used ending the session from a provider.
+	InvalidationFlow string   `json:"invalidation_flow"`
+	PropertyMappings []string `json:"property_mappings,omitempty"`
 	// DN under which objects are accessible.
 	BaseDn        *string        `json:"base_dn,omitempty"`
 	Certificate   NullableString `json:"certificate,omitempty"`
@@ -41,10 +43,11 @@ type LDAPProviderRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLDAPProviderRequest(name string, authorizationFlow string) *LDAPProviderRequest {
+func NewLDAPProviderRequest(name string, authorizationFlow string, invalidationFlow string) *LDAPProviderRequest {
 	this := LDAPProviderRequest{}
 	this.Name = name
 	this.AuthorizationFlow = authorizationFlow
+	this.InvalidationFlow = invalidationFlow
 	return &this
 }
 
@@ -145,6 +148,30 @@ func (o *LDAPProviderRequest) GetAuthorizationFlowOk() (*string, bool) {
 // SetAuthorizationFlow sets field value
 func (o *LDAPProviderRequest) SetAuthorizationFlow(v string) {
 	o.AuthorizationFlow = v
+}
+
+// GetInvalidationFlow returns the InvalidationFlow field value
+func (o *LDAPProviderRequest) GetInvalidationFlow() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.InvalidationFlow
+}
+
+// GetInvalidationFlowOk returns a tuple with the InvalidationFlow field value
+// and a boolean to check if the value has been set.
+func (o *LDAPProviderRequest) GetInvalidationFlowOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.InvalidationFlow, true
+}
+
+// SetInvalidationFlow sets field value
+func (o *LDAPProviderRequest) SetInvalidationFlow(v string) {
+	o.InvalidationFlow = v
 }
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
@@ -456,6 +483,9 @@ func (o LDAPProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["authorization_flow"] = o.AuthorizationFlow
+	}
+	if true {
+		toSerialize["invalidation_flow"] = o.InvalidationFlow
 	}
 	if o.PropertyMappings != nil {
 		toSerialize["property_mappings"] = o.PropertyMappings

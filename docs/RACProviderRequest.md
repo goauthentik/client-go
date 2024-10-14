@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
+**InvalidationFlow** | **string** | Flow used ending the session from a provider. | 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **Settings** | Pointer to **interface{}** |  | [optional] 
 **ConnectionExpiry** | Pointer to **string** | Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] 
@@ -16,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewRACProviderRequest
 
-`func NewRACProviderRequest(name string, authorizationFlow string, ) *RACProviderRequest`
+`func NewRACProviderRequest(name string, authorizationFlow string, invalidationFlow string, ) *RACProviderRequest`
 
 NewRACProviderRequest instantiates a new RACProviderRequest object
 This constructor will assign default values to properties that have it defined,
@@ -104,6 +105,26 @@ and a boolean to check if the value has been set.
 `func (o *RACProviderRequest) SetAuthorizationFlow(v string)`
 
 SetAuthorizationFlow sets AuthorizationFlow field to given value.
+
+
+### GetInvalidationFlow
+
+`func (o *RACProviderRequest) GetInvalidationFlow() string`
+
+GetInvalidationFlow returns the InvalidationFlow field if non-nil, zero value otherwise.
+
+### GetInvalidationFlowOk
+
+`func (o *RACProviderRequest) GetInvalidationFlowOk() (*string, bool)`
+
+GetInvalidationFlowOk returns a tuple with the InvalidationFlow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInvalidationFlow
+
+`func (o *RACProviderRequest) SetInvalidationFlow(v string)`
+
+SetInvalidationFlow sets InvalidationFlow field to given value.
 
 
 ### GetPropertyMappings

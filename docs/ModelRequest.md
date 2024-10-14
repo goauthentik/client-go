@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **DefaultGroupEmailDomain** | **string** |  | 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
+**InvalidationFlow** | **string** | Flow used ending the session from a provider. | 
 **BaseDn** | Pointer to **string** | DN under which objects are accessible. | [optional] 
 **Certificate** | Pointer to **NullableString** |  | [optional] 
 **TlsServerName** | Pointer to **string** |  | [optional] 
@@ -76,7 +77,7 @@ Name | Type | Description | Notes
 
 ### NewModelRequest
 
-`func NewModelRequest(name string, delegatedSubject string, credentials interface{}, defaultGroupEmailDomain string, authorizationFlow string, clientId string, clientSecret string, tenantId string, externalHost string, acsUrl string, url string, token string, ) *ModelRequest`
+`func NewModelRequest(name string, delegatedSubject string, credentials interface{}, defaultGroupEmailDomain string, authorizationFlow string, invalidationFlow string, clientId string, clientSecret string, tenantId string, externalHost string, acsUrl string, url string, token string, ) *ModelRequest`
 
 NewModelRequest instantiates a new ModelRequest object
 This constructor will assign default values to properties that have it defined,
@@ -419,6 +420,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelRequest) SetAuthorizationFlow(v string)`
 
 SetAuthorizationFlow sets AuthorizationFlow field to given value.
+
+
+### GetInvalidationFlow
+
+`func (o *ModelRequest) GetInvalidationFlow() string`
+
+GetInvalidationFlow returns the InvalidationFlow field if non-nil, zero value otherwise.
+
+### GetInvalidationFlowOk
+
+`func (o *ModelRequest) GetInvalidationFlowOk() (*string, bool)`
+
+GetInvalidationFlowOk returns a tuple with the InvalidationFlow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInvalidationFlow
+
+`func (o *ModelRequest) SetInvalidationFlow(v string)`
+
+SetInvalidationFlow sets InvalidationFlow field to given value.
 
 
 ### GetBaseDn

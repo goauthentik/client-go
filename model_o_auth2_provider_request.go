@@ -21,8 +21,10 @@ type OAuth2ProviderRequest struct {
 	// Flow used for authentication when the associated application is accessed by an un-authenticated user.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow string   `json:"authorization_flow"`
-	PropertyMappings  []string `json:"property_mappings,omitempty"`
+	AuthorizationFlow string `json:"authorization_flow"`
+	// Flow used ending the session from a provider.
+	InvalidationFlow string   `json:"invalidation_flow"`
+	PropertyMappings []string `json:"property_mappings,omitempty"`
 	// Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable
 	ClientType   *ClientTypeEnum `json:"client_type,omitempty"`
 	ClientId     *string         `json:"client_id,omitempty"`
@@ -50,10 +52,11 @@ type OAuth2ProviderRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuth2ProviderRequest(name string, authorizationFlow string) *OAuth2ProviderRequest {
+func NewOAuth2ProviderRequest(name string, authorizationFlow string, invalidationFlow string) *OAuth2ProviderRequest {
 	this := OAuth2ProviderRequest{}
 	this.Name = name
 	this.AuthorizationFlow = authorizationFlow
+	this.InvalidationFlow = invalidationFlow
 	return &this
 }
 
@@ -154,6 +157,30 @@ func (o *OAuth2ProviderRequest) GetAuthorizationFlowOk() (*string, bool) {
 // SetAuthorizationFlow sets field value
 func (o *OAuth2ProviderRequest) SetAuthorizationFlow(v string) {
 	o.AuthorizationFlow = v
+}
+
+// GetInvalidationFlow returns the InvalidationFlow field value
+func (o *OAuth2ProviderRequest) GetInvalidationFlow() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.InvalidationFlow
+}
+
+// GetInvalidationFlowOk returns a tuple with the InvalidationFlow field value
+// and a boolean to check if the value has been set.
+func (o *OAuth2ProviderRequest) GetInvalidationFlowOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.InvalidationFlow, true
+}
+
+// SetInvalidationFlow sets field value
+func (o *OAuth2ProviderRequest) SetInvalidationFlow(v string) {
+	o.InvalidationFlow = v
 }
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
@@ -593,6 +620,9 @@ func (o OAuth2ProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["authorization_flow"] = o.AuthorizationFlow
+	}
+	if true {
+		toSerialize["invalidation_flow"] = o.InvalidationFlow
 	}
 	if o.PropertyMappings != nil {
 		toSerialize["property_mappings"] = o.PropertyMappings

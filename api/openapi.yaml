@@ -23072,6 +23072,14 @@ paths:
         style: form
       - explode: true
         in: query
+        name: invalidation_flow
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: is_backchannel
         required: false
         schema:
@@ -39897,6 +39905,7 @@ components:
         name: name
         backchannel_providers_obj:
         - verbose_name_plural: verbose_name_plural
+          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
@@ -39912,6 +39921,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - verbose_name_plural: verbose_name_plural
+          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
@@ -42110,6 +42120,7 @@ components:
           ak-source-plex: '#/components/schemas/PlexAuthenticationChallenge'
           ak-stage-prompt: '#/components/schemas/PromptChallenge'
           xak-flow-redirect: '#/components/schemas/RedirectChallenge'
+          ak-stage-session-end: '#/components/schemas/SessionEndChallenge'
           xak-flow-shell: '#/components/schemas/ShellChallenge'
           ak-stage-user-login: '#/components/schemas/UserLoginChallenge'
         propertyName: component
@@ -42135,6 +42146,7 @@ components:
       - $ref: '#/components/schemas/PlexAuthenticationChallenge'
       - $ref: '#/components/schemas/PromptChallenge'
       - $ref: '#/components/schemas/RedirectChallenge'
+      - $ref: '#/components/schemas/SessionEndChallenge'
       - $ref: '#/components/schemas/ShellChallenge'
       - $ref: '#/components/schemas/UserLoginChallenge'
     ClientTypeEnum:
@@ -44107,6 +44119,7 @@ components:
         provider:
           verbose_name_plural: verbose_name_plural
           signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           client_type: ""
           sub_mode: ""
@@ -46520,17 +46533,18 @@ components:
     LDAPOutpostConfig:
       description: LDAPProvider Serializer
       example:
-        application_slug: application_slug
-        bind_flow_slug: bind_flow_slug
         uid_start_number: 441289069
         search_mode: null
-        base_dn: base_dn
-        name: name
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         tls_server_name: tls_server_name
         bind_mode: null
-        pk: 0
+        unbind_flow_slug: unbind_flow_slug
         mfa_support: true
+        application_slug: application_slug
+        bind_flow_slug: bind_flow_slug
+        base_dn: base_dn
+        name: name
+        pk: 0
         gid_start_number: -1517921766
       properties:
         pk:
@@ -46543,6 +46557,11 @@ components:
           description: DN under which objects are accessible.
           type: string
         bind_flow_slug:
+          type: string
+        unbind_flow_slug:
+          description: "Get slug for unbind flow, defaulting to brand's default flow."
+          nullable: true
+          readOnly: true
           type: string
         application_slug:
           description: Prioritise backchannel slug over direct application slug
@@ -46585,6 +46604,7 @@ components:
       - bind_flow_slug
       - name
       - pk
+      - unbind_flow_slug
       type: object
     LDAPProvider:
       description: LDAPProvider Serializer
@@ -46595,6 +46615,7 @@ components:
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         tls_server_name: tls_server_name
         bind_mode: null
+        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         assigned_application_slug: assigned_application_slug
         mfa_support: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -46630,6 +46651,10 @@ components:
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        invalidation_flow:
+          description: Flow used ending the session from a provider.
           format: uuid
           type: string
         property_mappings:
@@ -46716,6 +46741,7 @@ components:
       - assigned_backchannel_application_slug
       - authorization_flow
       - component
+      - invalidation_flow
       - meta_model_name
       - name
       - outpost_set
@@ -46726,16 +46752,17 @@ components:
     LDAPProviderRequest:
       description: LDAPProvider Serializer
       example:
-        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         uid_start_number: -1803530559
         search_mode: null
-        authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        base_dn: base_dn
-        name: name
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         tls_server_name: tls_server_name
         bind_mode: null
+        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mfa_support: true
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        base_dn: base_dn
+        name: name
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -46752,6 +46779,10 @@ components:
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        invalidation_flow:
+          description: Flow used ending the session from a provider.
           format: uuid
           type: string
         property_mappings:
@@ -46797,6 +46828,7 @@ components:
           type: boolean
       required:
       - authorization_flow
+      - invalidation_flow
       - name
       type: object
     LDAPSource:
@@ -48207,6 +48239,7 @@ components:
       example:
         verbose_name_plural: verbose_name_plural
         signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         assigned_application_slug: assigned_application_slug
         client_type: ""
         sub_mode: ""
@@ -48249,6 +48282,10 @@ components:
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        invalidation_flow:
+          description: Flow used ending the session from a provider.
           format: uuid
           type: string
         property_mappings:
@@ -48348,6 +48385,7 @@ components:
       - assigned_backchannel_application_slug
       - authorization_flow
       - component
+      - invalidation_flow
       - meta_model_name
       - name
       - pk
@@ -48358,6 +48396,7 @@ components:
       description: OAuth2Provider Serializer
       example:
         signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         client_type: ""
         redirect_uris: redirect_uris
         sub_mode: ""
@@ -48389,6 +48428,10 @@ components:
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        invalidation_flow:
+          description: Flow used ending the session from a provider.
           format: uuid
           type: string
         property_mappings:
@@ -48455,6 +48498,7 @@ components:
           type: array
       required:
       - authorization_flow
+      - invalidation_flow
       - name
       type: object
     OAuth2ProviderSetupURLs:
@@ -48978,6 +49022,7 @@ components:
         service_connection_obj: ""
         providers_obj:
         - verbose_name_plural: verbose_name_plural
+          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
@@ -48993,6 +49038,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - verbose_name_plural: verbose_name_plural
+          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
@@ -49238,6 +49284,7 @@ components:
           name: name
           backchannel_providers_obj:
           - verbose_name_plural: verbose_name_plural
+            invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
@@ -49253,6 +49300,7 @@ components:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - verbose_name_plural: verbose_name_plural
+            invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
@@ -49285,6 +49333,7 @@ components:
           name: name
           backchannel_providers_obj:
           - verbose_name_plural: verbose_name_plural
+            invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
@@ -49300,6 +49349,7 @@ components:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - verbose_name_plural: verbose_name_plural
+            invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
@@ -50960,6 +51010,7 @@ components:
           provider:
             verbose_name_plural: verbose_name_plural
             signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             client_type: ""
             sub_mode: ""
@@ -51031,6 +51082,7 @@ components:
           provider:
             verbose_name_plural: verbose_name_plural
             signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             client_type: ""
             sub_mode: ""
@@ -52053,29 +52105,31 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - application_slug: application_slug
-          bind_flow_slug: bind_flow_slug
-          uid_start_number: 441289069
+        - uid_start_number: 441289069
           search_mode: null
-          base_dn: base_dn
-          name: name
           certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tls_server_name: tls_server_name
           bind_mode: null
-          pk: 0
+          unbind_flow_slug: unbind_flow_slug
           mfa_support: true
+          application_slug: application_slug
+          bind_flow_slug: bind_flow_slug
+          base_dn: base_dn
+          name: name
+          pk: 0
           gid_start_number: -1517921766
-        - application_slug: application_slug
-          bind_flow_slug: bind_flow_slug
-          uid_start_number: 441289069
+        - uid_start_number: 441289069
           search_mode: null
-          base_dn: base_dn
-          name: name
           certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tls_server_name: tls_server_name
           bind_mode: null
-          pk: 0
+          unbind_flow_slug: unbind_flow_slug
           mfa_support: true
+          application_slug: application_slug
+          bind_flow_slug: bind_flow_slug
+          base_dn: base_dn
+          name: name
+          pk: 0
           gid_start_number: -1517921766
       properties:
         pagination:
@@ -52105,6 +52159,7 @@ components:
           certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tls_server_name: tls_server_name
           bind_mode: null
+          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           mfa_support: true
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -52131,6 +52186,7 @@ components:
           certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tls_server_name: tls_server_name
           bind_mode: null
+          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           mfa_support: true
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -52677,6 +52733,7 @@ components:
         results:
         - verbose_name_plural: verbose_name_plural
           signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           client_type: ""
           sub_mode: ""
@@ -52706,6 +52763,7 @@ components:
           pk: 6
         - verbose_name_plural: verbose_name_plural
           signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           client_type: ""
           sub_mode: ""
@@ -52886,6 +52944,7 @@ components:
         - service_connection_obj: ""
           providers_obj:
           - verbose_name_plural: verbose_name_plural
+            invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
@@ -52901,6 +52960,7 @@ components:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - verbose_name_plural: verbose_name_plural
+            invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
@@ -52930,6 +52990,7 @@ components:
         - service_connection_obj: ""
           providers_obj:
           - verbose_name_plural: verbose_name_plural
+            invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
@@ -52945,6 +53006,7 @@ components:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - verbose_name_plural: verbose_name_plural
+            invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
@@ -53740,6 +53802,7 @@ components:
           total_pages: 5.637376656633329
         results:
         - verbose_name_plural: verbose_name_plural
+          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
@@ -53755,6 +53818,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - verbose_name_plural: verbose_name_plural
+          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
@@ -53861,6 +53925,7 @@ components:
         results:
         - verbose_name_plural: verbose_name_plural
           certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           client_id: client_id
           refresh_token_validity: refresh_token_validity
@@ -53897,6 +53962,7 @@ components:
           pk: 0
         - verbose_name_plural: verbose_name_plural
           certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           client_id: client_id
           refresh_token_validity: refresh_token_validity
@@ -53998,6 +54064,7 @@ components:
         - settings: ""
           verbose_name_plural: verbose_name_plural
           delete_token_on_disconnect: true
+          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           outpost_set:
@@ -54019,6 +54086,7 @@ components:
         - settings: ""
           verbose_name_plural: verbose_name_plural
           delete_token_on_disconnect: true
+          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           outpost_set:
@@ -54098,6 +54166,7 @@ components:
         - client_networks: client_networks
           verbose_name_plural: verbose_name_plural
           shared_secret: shared_secret
+          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           mfa_support: true
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -54119,6 +54188,7 @@ components:
         - client_networks: client_networks
           verbose_name_plural: verbose_name_plural
           shared_secret: shared_secret
+          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           mfa_support: true
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -54402,6 +54472,7 @@ components:
           url_slo_redirect: url_slo_redirect
           session_valid_not_on_or_after: session_valid_not_on_or_after
           default_relay_state: default_relay_state
+          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           issuer: issuer
           url_sso_redirect: url_sso_redirect
@@ -54439,6 +54510,7 @@ components:
           url_slo_redirect: url_slo_redirect
           session_valid_not_on_or_after: session_valid_not_on_or_after
           default_relay_state: default_relay_state
+          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           issuer: issuer
           url_sso_redirect: url_sso_redirect
@@ -55488,6 +55560,7 @@ components:
           provider:
             verbose_name_plural: verbose_name_plural
             signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             client_type: ""
             sub_mode: ""
@@ -55561,6 +55634,7 @@ components:
           provider:
             verbose_name_plural: verbose_name_plural
             signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             client_type: ""
             sub_mode: ""
@@ -55737,6 +55811,7 @@ components:
             name: name
             backchannel_providers_obj:
             - verbose_name_plural: verbose_name_plural
+              invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               assigned_application_slug: assigned_application_slug
               authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               component: component
@@ -55752,6 +55827,7 @@ components:
               - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - verbose_name_plural: verbose_name_plural
+              invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               assigned_application_slug: assigned_application_slug
               authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               component: component
@@ -55824,6 +55900,7 @@ components:
             name: name
             backchannel_providers_obj:
             - verbose_name_plural: verbose_name_plural
+              invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               assigned_application_slug: assigned_application_slug
               authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               component: component
@@ -55839,6 +55916,7 @@ components:
               - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - verbose_name_plural: verbose_name_plural
+              invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               assigned_application_slug: assigned_application_slug
               authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               component: component
@@ -58494,16 +58572,17 @@ components:
     PatchedLDAPProviderRequest:
       description: LDAPProvider Serializer
       example:
-        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         uid_start_number: -1803530559
         search_mode: null
-        authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        base_dn: base_dn
-        name: name
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         tls_server_name: tls_server_name
         bind_mode: null
+        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mfa_support: true
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        base_dn: base_dn
+        name: name
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -58520,6 +58599,10 @@ components:
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        invalidation_flow:
+          description: Flow used ending the session from a provider.
           format: uuid
           type: string
         property_mappings:
@@ -58915,6 +58998,7 @@ components:
       description: OAuth2Provider Serializer
       example:
         signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         client_type: ""
         redirect_uris: redirect_uris
         sub_mode: ""
@@ -58946,6 +59030,10 @@ components:
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        invalidation_flow:
+          description: Flow used ending the session from a provider.
           format: uuid
           type: string
         property_mappings:
@@ -59667,6 +59755,7 @@ components:
         skip_path_regex: skip_path_regex
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         basic_auth_password_attribute: basic_auth_password_attribute
+        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         refresh_token_validity: refresh_token_validity
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mode: ""
@@ -59696,6 +59785,10 @@ components:
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        invalidation_flow:
+          description: Flow used ending the session from a provider.
           format: uuid
           type: string
         property_mappings:
@@ -59801,6 +59894,7 @@ components:
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         delete_token_on_disconnect: true
         name: name
+        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         connection_expiry: connection_expiry
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -59817,6 +59911,10 @@ components:
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        invalidation_flow:
+          description: Flow used ending the session from a provider.
           format: uuid
           type: string
         property_mappings:
@@ -59865,6 +59963,7 @@ components:
         client_networks: client_networks
         name: name
         shared_secret: shared_secret
+        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mfa_support: true
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -59881,6 +59980,10 @@ components:
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        invalidation_flow:
+          description: Flow used ending the session from a provider.
           format: uuid
           type: string
         property_mappings:
@@ -59980,6 +60083,7 @@ components:
         session_valid_not_on_or_after: session_valid_not_on_or_after
         sp_binding: ""
         default_relay_state: default_relay_state
+        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         acs_url: https://openapi-generator.tech
         issuer: issuer
         assertion_valid_not_before: assertion_valid_not_before
@@ -60009,6 +60113,10 @@ components:
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        invalidation_flow:
+          description: Flow used ending the session from a provider.
           format: uuid
           type: string
         property_mappings:
@@ -62134,6 +62242,7 @@ components:
       description: Provider Serializer
       example:
         verbose_name_plural: verbose_name_plural
+        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         assigned_application_slug: assigned_application_slug
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         component: component
@@ -62163,6 +62272,10 @@ components:
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        invalidation_flow:
+          description: Flow used ending the session from a provider.
           format: uuid
           type: string
         property_mappings:
@@ -62209,6 +62322,7 @@ components:
       - assigned_backchannel_application_slug
       - authorization_flow
       - component
+      - invalidation_flow
       - meta_model_name
       - name
       - pk
@@ -62248,6 +62362,10 @@ components:
           description: Flow used when authorizing this provider.
           format: uuid
           type: string
+        invalidation_flow:
+          description: Flow used ending the session from a provider.
+          format: uuid
+          type: string
         property_mappings:
           items:
             format: uuid
@@ -62255,6 +62373,7 @@ components:
           type: array
       required:
       - authorization_flow
+      - invalidation_flow
       - name
       type: object
     ProviderTypeEnum:
@@ -62405,6 +62524,7 @@ components:
       example:
         verbose_name_plural: verbose_name_plural
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         assigned_application_slug: assigned_application_slug
         client_id: client_id
         refresh_token_validity: refresh_token_validity
@@ -62454,6 +62574,10 @@ components:
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        invalidation_flow:
+          description: Flow used ending the session from a provider.
           format: uuid
           type: string
         property_mappings:
@@ -62572,6 +62696,7 @@ components:
       - client_id
       - component
       - external_host
+      - invalidation_flow
       - meta_model_name
       - name
       - outpost_set
@@ -62588,6 +62713,7 @@ components:
         skip_path_regex: skip_path_regex
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         basic_auth_password_attribute: basic_auth_password_attribute
+        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         refresh_token_validity: refresh_token_validity
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mode: ""
@@ -62617,6 +62743,10 @@ components:
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        invalidation_flow:
+          description: Flow used ending the session from a provider.
           format: uuid
           type: string
         property_mappings:
@@ -62689,6 +62819,7 @@ components:
       required:
       - authorization_flow
       - external_host
+      - invalidation_flow
       - name
       type: object
     RACPropertyMapping:
@@ -62786,6 +62917,7 @@ components:
         settings: ""
         verbose_name_plural: verbose_name_plural
         delete_token_on_disconnect: true
+        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         assigned_application_slug: assigned_application_slug
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         outpost_set:
@@ -62819,6 +62951,10 @@ components:
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        invalidation_flow:
+          description: Flow used ending the session from a provider.
           format: uuid
           type: string
         property_mappings:
@@ -62878,6 +63014,7 @@ components:
       - assigned_backchannel_application_slug
       - authorization_flow
       - component
+      - invalidation_flow
       - meta_model_name
       - name
       - outpost_set
@@ -62893,6 +63030,7 @@ components:
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         delete_token_on_disconnect: true
         name: name
+        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         connection_expiry: connection_expiry
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -62911,6 +63049,10 @@ components:
           description: Flow used when authorizing this provider.
           format: uuid
           type: string
+        invalidation_flow:
+          description: Flow used ending the session from a provider.
+          format: uuid
+          type: string
         property_mappings:
           items:
             format: uuid
@@ -62927,6 +63069,7 @@ components:
           type: boolean
       required:
       - authorization_flow
+      - invalidation_flow
       - name
       type: object
     RadiusCheckAccess:
@@ -63007,6 +63150,7 @@ components:
         client_networks: client_networks
         verbose_name_plural: verbose_name_plural
         shared_secret: shared_secret
+        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         assigned_application_slug: assigned_application_slug
         mfa_support: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -63040,6 +63184,10 @@ components:
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        invalidation_flow:
+          description: Flow used ending the session from a provider.
           format: uuid
           type: string
         property_mappings:
@@ -63106,6 +63254,7 @@ components:
       - assigned_backchannel_application_slug
       - authorization_flow
       - component
+      - invalidation_flow
       - meta_model_name
       - name
       - outpost_set
@@ -63201,6 +63350,7 @@ components:
         client_networks: client_networks
         name: name
         shared_secret: shared_secret
+        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mfa_support: true
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -63217,6 +63367,10 @@ components:
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        invalidation_flow:
+          description: Flow used ending the session from a provider.
           format: uuid
           type: string
         property_mappings:
@@ -63243,6 +63397,7 @@ components:
           type: boolean
       required:
       - authorization_flow
+      - invalidation_flow
       - name
       type: object
     RedirectChallenge:
@@ -63630,6 +63785,7 @@ components:
         url_slo_redirect: url_slo_redirect
         session_valid_not_on_or_after: session_valid_not_on_or_after
         default_relay_state: default_relay_state
+        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         assigned_application_slug: assigned_application_slug
         issuer: issuer
         url_sso_redirect: url_sso_redirect
@@ -63677,6 +63833,10 @@ components:
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        invalidation_flow:
+          description: Flow used ending the session from a provider.
           format: uuid
           type: string
         property_mappings:
@@ -63817,6 +63977,7 @@ components:
       - assigned_backchannel_application_slug
       - authorization_flow
       - component
+      - invalidation_flow
       - meta_model_name
       - name
       - pk
@@ -63838,12 +63999,16 @@ components:
         authorization_flow:
           format: uuid
           type: string
+        invalidation_flow:
+          format: uuid
+          type: string
         file:
           format: binary
           type: string
       required:
       - authorization_flow
       - file
+      - invalidation_flow
       - name
       type: object
     SAMLProviderRequest:
@@ -63854,6 +64019,7 @@ components:
         session_valid_not_on_or_after: session_valid_not_on_or_after
         sp_binding: ""
         default_relay_state: default_relay_state
+        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         acs_url: https://openapi-generator.tech
         issuer: issuer
         assertion_valid_not_before: assertion_valid_not_before
@@ -63883,6 +64049,10 @@ components:
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
+          format: uuid
+          type: string
+        invalidation_flow:
+          description: Flow used ending the session from a provider.
           format: uuid
           type: string
         property_mappings:
@@ -63967,6 +64137,7 @@ components:
       required:
       - acs_url
       - authorization_flow
+      - invalidation_flow
       - name
       type: object
     SAMLSource:
@@ -65249,6 +65420,37 @@ components:
       - healthy
       - version
       type: object
+    SessionEndChallenge:
+      description: Challenge for ending a session
+      properties:
+        flow_info:
+          $ref: '#/components/schemas/ContextualFlowInfo'
+        component:
+          default: ak-stage-session-end
+          type: string
+        response_errors:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/ErrorDetail'
+            type: array
+          type: object
+        pending_user:
+          type: string
+        pending_user_avatar:
+          type: string
+        application_name:
+          type: string
+        application_launch_url:
+          type: string
+        invalidation_flow_url:
+          type: string
+        brand_name:
+          type: string
+      required:
+      - brand_name
+      - pending_user
+      - pending_user_avatar
+      type: object
     SessionUser:
       description: |-
         Response for the /user/me endpoint, returns the currently active user (as `user` property)
@@ -66434,6 +66636,7 @@ components:
         provider:
           verbose_name_plural: verbose_name_plural
           signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           client_type: ""
           sub_mode: ""
@@ -66923,6 +67126,7 @@ components:
           name: name
           backchannel_providers_obj:
           - verbose_name_plural: verbose_name_plural
+            invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
@@ -66938,6 +67142,7 @@ components:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - verbose_name_plural: verbose_name_plural
+            invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component

@@ -1470,6 +1470,7 @@ Class | Method | HTTP request | Description
  - [ServiceConnection](docs/ServiceConnection.md)
  - [ServiceConnectionRequest](docs/ServiceConnectionRequest.md)
  - [ServiceConnectionState](docs/ServiceConnectionState.md)
+ - [SessionEndChallenge](docs/SessionEndChallenge.md)
  - [SessionUser](docs/SessionUser.md)
  - [Settings](docs/Settings.md)
  - [SettingsRequest](docs/SettingsRequest.md)

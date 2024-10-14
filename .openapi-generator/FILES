@@ -595,6 +595,7 @@ docs/SelectableStage.md
 docs/ServiceConnection.md
 docs/ServiceConnectionRequest.md
 docs/ServiceConnectionState.md
+docs/SessionEndChallenge.md
 docs/SessionUser.md
 docs/Settings.md
 docs/SettingsRequest.md
@@ -1245,6 +1246,7 @@ model_selectable_stage.go
 model_service_connection.go
 model_service_connection_request.go
 model_service_connection_state.go
+model_session_end_challenge.go
 model_session_user.go
 model_settings.go
 model_settings_request.go

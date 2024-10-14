@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | Pointer to **string** | Flow used when authorizing this provider. | [optional] 
+**InvalidationFlow** | Pointer to **string** | Flow used ending the session from a provider. | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **InternalHost** | Pointer to **string** |  | [optional] 
 **ExternalHost** | Pointer to **string** |  | [optional] 
@@ -126,6 +127,31 @@ SetAuthorizationFlow sets AuthorizationFlow field to given value.
 `func (o *PatchedProxyProviderRequest) HasAuthorizationFlow() bool`
 
 HasAuthorizationFlow returns a boolean if a field has been set.
+
+### GetInvalidationFlow
+
+`func (o *PatchedProxyProviderRequest) GetInvalidationFlow() string`
+
+GetInvalidationFlow returns the InvalidationFlow field if non-nil, zero value otherwise.
+
+### GetInvalidationFlowOk
+
+`func (o *PatchedProxyProviderRequest) GetInvalidationFlowOk() (*string, bool)`
+
+GetInvalidationFlowOk returns a tuple with the InvalidationFlow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInvalidationFlow
+
+`func (o *PatchedProxyProviderRequest) SetInvalidationFlow(v string)`
+
+SetInvalidationFlow sets InvalidationFlow field to given value.
+
+### HasInvalidationFlow
+
+`func (o *PatchedProxyProviderRequest) HasInvalidationFlow() bool`
+
+HasInvalidationFlow returns a boolean if a field has been set.
 
 ### GetPropertyMappings
 
