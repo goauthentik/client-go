@@ -71,6 +71,7 @@ Name | Type | Description | Notes
 **SpBinding** | Pointer to [**SpBindingEnum**](SpBindingEnum.md) | This determines how authentik sends the response back to the Service Provider. | [optional] 
 **DefaultRelayState** | Pointer to **string** | Default relay_state value for IDP-initiated logins | [optional] 
 **Url** | **string** | Base URL to SCIM requests, usually ends in /v2 | 
+**VerifyCertificates** | Pointer to **bool** |  | [optional] 
 **Token** | **string** | Authentication token | 
 
 ## Methods
@@ -1806,6 +1807,31 @@ and a boolean to check if the value has been set.
 
 SetUrl sets Url field to given value.
 
+
+### GetVerifyCertificates
+
+`func (o *ModelRequest) GetVerifyCertificates() bool`
+
+GetVerifyCertificates returns the VerifyCertificates field if non-nil, zero value otherwise.
+
+### GetVerifyCertificatesOk
+
+`func (o *ModelRequest) GetVerifyCertificatesOk() (*bool, bool)`
+
+GetVerifyCertificatesOk returns a tuple with the VerifyCertificates field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerifyCertificates
+
+`func (o *ModelRequest) SetVerifyCertificates(v bool)`
+
+SetVerifyCertificates sets VerifyCertificates field to given value.
+
+### HasVerifyCertificates
+
+`func (o *ModelRequest) HasVerifyCertificates() bool`
+
+HasVerifyCertificates returns a boolean if a field has been set.
 
 ### GetToken
 

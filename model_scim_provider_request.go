@@ -22,7 +22,8 @@ type SCIMProviderRequest struct {
 	// Property mappings used for group creation/updating.
 	PropertyMappingsGroup []string `json:"property_mappings_group,omitempty"`
 	// Base URL to SCIM requests, usually ends in /v2
-	Url string `json:"url"`
+	Url                string `json:"url"`
+	VerifyCertificates *bool  `json:"verify_certificates,omitempty"`
 	// Authentication token
 	Token                      string         `json:"token"`
 	ExcludeUsersServiceAccount *bool          `json:"exclude_users_service_account,omitempty"`
@@ -161,6 +162,38 @@ func (o *SCIMProviderRequest) SetUrl(v string) {
 	o.Url = v
 }
 
+// GetVerifyCertificates returns the VerifyCertificates field value if set, zero value otherwise.
+func (o *SCIMProviderRequest) GetVerifyCertificates() bool {
+	if o == nil || o.VerifyCertificates == nil {
+		var ret bool
+		return ret
+	}
+	return *o.VerifyCertificates
+}
+
+// GetVerifyCertificatesOk returns a tuple with the VerifyCertificates field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SCIMProviderRequest) GetVerifyCertificatesOk() (*bool, bool) {
+	if o == nil || o.VerifyCertificates == nil {
+		return nil, false
+	}
+	return o.VerifyCertificates, true
+}
+
+// HasVerifyCertificates returns a boolean if a field has been set.
+func (o *SCIMProviderRequest) HasVerifyCertificates() bool {
+	if o != nil && o.VerifyCertificates != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVerifyCertificates gets a reference to the given bool and assigns it to the VerifyCertificates field.
+func (o *SCIMProviderRequest) SetVerifyCertificates(v bool) {
+	o.VerifyCertificates = &v
+}
+
 // GetToken returns the Token field value
 func (o *SCIMProviderRequest) GetToken() string {
 	if o == nil {
@@ -273,6 +306,9 @@ func (o SCIMProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["url"] = o.Url
+	}
+	if o.VerifyCertificates != nil {
+		toSerialize["verify_certificates"] = o.VerifyCertificates
 	}
 	if true {
 		toSerialize["token"] = o.Token

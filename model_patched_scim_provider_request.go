@@ -22,7 +22,8 @@ type PatchedSCIMProviderRequest struct {
 	// Property mappings used for group creation/updating.
 	PropertyMappingsGroup []string `json:"property_mappings_group,omitempty"`
 	// Base URL to SCIM requests, usually ends in /v2
-	Url *string `json:"url,omitempty"`
+	Url                *string `json:"url,omitempty"`
+	VerifyCertificates *bool   `json:"verify_certificates,omitempty"`
 	// Authentication token
 	Token                      *string        `json:"token,omitempty"`
 	ExcludeUsersServiceAccount *bool          `json:"exclude_users_service_account,omitempty"`
@@ -174,6 +175,38 @@ func (o *PatchedSCIMProviderRequest) SetUrl(v string) {
 	o.Url = &v
 }
 
+// GetVerifyCertificates returns the VerifyCertificates field value if set, zero value otherwise.
+func (o *PatchedSCIMProviderRequest) GetVerifyCertificates() bool {
+	if o == nil || o.VerifyCertificates == nil {
+		var ret bool
+		return ret
+	}
+	return *o.VerifyCertificates
+}
+
+// GetVerifyCertificatesOk returns a tuple with the VerifyCertificates field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedSCIMProviderRequest) GetVerifyCertificatesOk() (*bool, bool) {
+	if o == nil || o.VerifyCertificates == nil {
+		return nil, false
+	}
+	return o.VerifyCertificates, true
+}
+
+// HasVerifyCertificates returns a boolean if a field has been set.
+func (o *PatchedSCIMProviderRequest) HasVerifyCertificates() bool {
+	if o != nil && o.VerifyCertificates != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVerifyCertificates gets a reference to the given bool and assigns it to the VerifyCertificates field.
+func (o *PatchedSCIMProviderRequest) SetVerifyCertificates(v bool) {
+	o.VerifyCertificates = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *PatchedSCIMProviderRequest) GetToken() string {
 	if o == nil || o.Token == nil {
@@ -294,6 +327,9 @@ func (o PatchedSCIMProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Url != nil {
 		toSerialize["url"] = o.Url
+	}
+	if o.VerifyCertificates != nil {
+		toSerialize["verify_certificates"] = o.VerifyCertificates
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token

@@ -35,7 +35,8 @@ type SCIMProvider struct {
 	// Return internal model name
 	MetaModelName string `json:"meta_model_name"`
 	// Base URL to SCIM requests, usually ends in /v2
-	Url string `json:"url"`
+	Url                string `json:"url"`
+	VerifyCertificates *bool  `json:"verify_certificates,omitempty"`
 	// Authentication token
 	Token                      string         `json:"token"`
 	ExcludeUsersServiceAccount *bool          `json:"exclude_users_service_account,omitempty"`
@@ -349,6 +350,38 @@ func (o *SCIMProvider) SetUrl(v string) {
 	o.Url = v
 }
 
+// GetVerifyCertificates returns the VerifyCertificates field value if set, zero value otherwise.
+func (o *SCIMProvider) GetVerifyCertificates() bool {
+	if o == nil || o.VerifyCertificates == nil {
+		var ret bool
+		return ret
+	}
+	return *o.VerifyCertificates
+}
+
+// GetVerifyCertificatesOk returns a tuple with the VerifyCertificates field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SCIMProvider) GetVerifyCertificatesOk() (*bool, bool) {
+	if o == nil || o.VerifyCertificates == nil {
+		return nil, false
+	}
+	return o.VerifyCertificates, true
+}
+
+// HasVerifyCertificates returns a boolean if a field has been set.
+func (o *SCIMProvider) HasVerifyCertificates() bool {
+	if o != nil && o.VerifyCertificates != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVerifyCertificates gets a reference to the given bool and assigns it to the VerifyCertificates field.
+func (o *SCIMProvider) SetVerifyCertificates(v bool) {
+	o.VerifyCertificates = &v
+}
+
 // GetToken returns the Token field value
 func (o *SCIMProvider) GetToken() string {
 	if o == nil {
@@ -482,6 +515,9 @@ func (o SCIMProvider) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["url"] = o.Url
+	}
+	if o.VerifyCertificates != nil {
+		toSerialize["verify_certificates"] = o.VerifyCertificates
 	}
 	if true {
 		toSerialize["token"] = o.Token

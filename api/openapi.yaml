@@ -54780,6 +54780,7 @@ components:
           assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
           pk: 0
+          verify_certificates: true
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -54798,6 +54799,7 @@ components:
           assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
           pk: 0
+          verify_certificates: true
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -60396,6 +60398,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        verify_certificates: true
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -60421,6 +60424,8 @@ components:
           description: "Base URL to SCIM requests, usually ends in /v2"
           minLength: 1
           type: string
+        verify_certificates:
+          type: boolean
         token:
           description: Authentication token
           minLength: 1
@@ -64656,6 +64661,7 @@ components:
         assigned_backchannel_application_name: assigned_backchannel_application_name
         name: name
         pk: 0
+        verify_certificates: true
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -64704,6 +64710,8 @@ components:
         url:
           description: "Base URL to SCIM requests, usually ends in /v2"
           type: string
+        verify_certificates:
+          type: boolean
         token:
           description: Authentication token
           type: string
@@ -64784,6 +64792,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        verify_certificates: true
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -64809,6 +64818,8 @@ components:
           description: "Base URL to SCIM requests, usually ends in /v2"
           minLength: 1
           type: string
+        verify_certificates:
+          type: boolean
         token:
           description: Authentication token
           minLength: 1

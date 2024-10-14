@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **PropertyMappingsGroup** | Pointer to **[]string** | Property mappings used for group creation/updating. | [optional] 
 **Url** | Pointer to **string** | Base URL to SCIM requests, usually ends in /v2 | [optional] 
+**VerifyCertificates** | Pointer to **bool** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token | [optional] 
 **ExcludeUsersServiceAccount** | Pointer to **bool** |  | [optional] 
 **FilterGroup** | Pointer to **NullableString** |  | [optional] 
@@ -130,6 +131,31 @@ SetUrl sets Url field to given value.
 `func (o *PatchedSCIMProviderRequest) HasUrl() bool`
 
 HasUrl returns a boolean if a field has been set.
+
+### GetVerifyCertificates
+
+`func (o *PatchedSCIMProviderRequest) GetVerifyCertificates() bool`
+
+GetVerifyCertificates returns the VerifyCertificates field if non-nil, zero value otherwise.
+
+### GetVerifyCertificatesOk
+
+`func (o *PatchedSCIMProviderRequest) GetVerifyCertificatesOk() (*bool, bool)`
+
+GetVerifyCertificatesOk returns a tuple with the VerifyCertificates field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerifyCertificates
+
+`func (o *PatchedSCIMProviderRequest) SetVerifyCertificates(v bool)`
+
+SetVerifyCertificates sets VerifyCertificates field to given value.
+
+### HasVerifyCertificates
+
+`func (o *PatchedSCIMProviderRequest) HasVerifyCertificates() bool`
+
+HasVerifyCertificates returns a boolean if a field has been set.
 
 ### GetToken
 
