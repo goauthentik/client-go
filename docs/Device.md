@@ -14,12 +14,13 @@ Name | Type | Description | Notes
 **Created** | **time.Time** |  | [readonly] 
 **LastUpdated** | **time.Time** |  | [readonly] 
 **LastUsed** | **NullableTime** |  | [readonly] 
+**ExtraDescription** | **string** | Get extra description | [readonly] 
 
 ## Methods
 
 ### NewDevice
 
-`func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk int32, name string, type_ string, confirmed bool, created time.Time, lastUpdated time.Time, lastUsed NullableTime, ) *Device`
+`func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk int32, name string, type_ string, confirmed bool, created time.Time, lastUpdated time.Time, lastUsed NullableTime, extraDescription string, ) *Device`
 
 NewDevice instantiates a new Device object
 This constructor will assign default values to properties that have it defined,
@@ -244,6 +245,26 @@ SetLastUsed sets LastUsed field to given value.
 `func (o *Device) UnsetLastUsed()`
 
 UnsetLastUsed ensures that no value is present for LastUsed, not even an explicit nil
+### GetExtraDescription
+
+`func (o *Device) GetExtraDescription() string`
+
+GetExtraDescription returns the ExtraDescription field if non-nil, zero value otherwise.
+
+### GetExtraDescriptionOk
+
+`func (o *Device) GetExtraDescriptionOk() (*string, bool)`
+
+GetExtraDescriptionOk returns a tuple with the ExtraDescription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtraDescription
+
+`func (o *Device) SetExtraDescription(v string)`
+
+SetExtraDescription sets ExtraDescription field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

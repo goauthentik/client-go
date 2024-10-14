@@ -32,13 +32,15 @@ type Device struct {
 	Created     time.Time    `json:"created"`
 	LastUpdated time.Time    `json:"last_updated"`
 	LastUsed    NullableTime `json:"last_used"`
+	// Get extra description
+	ExtraDescription string `json:"extra_description"`
 }
 
 // NewDevice instantiates a new Device object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk int32, name string, type_ string, confirmed bool, created time.Time, lastUpdated time.Time, lastUsed NullableTime) *Device {
+func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk int32, name string, type_ string, confirmed bool, created time.Time, lastUpdated time.Time, lastUsed NullableTime, extraDescription string) *Device {
 	this := Device{}
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
@@ -50,6 +52,7 @@ func NewDevice(verboseName string, verboseNamePlural string, metaModelName strin
 	this.Created = created
 	this.LastUpdated = lastUpdated
 	this.LastUsed = lastUsed
+	this.ExtraDescription = extraDescription
 	return &this
 }
 
@@ -303,6 +306,30 @@ func (o *Device) SetLastUsed(v time.Time) {
 	o.LastUsed.Set(&v)
 }
 
+// GetExtraDescription returns the ExtraDescription field value
+func (o *Device) GetExtraDescription() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ExtraDescription
+}
+
+// GetExtraDescriptionOk returns a tuple with the ExtraDescription field value
+// and a boolean to check if the value has been set.
+func (o *Device) GetExtraDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ExtraDescription, true
+}
+
+// SetExtraDescription sets field value
+func (o *Device) SetExtraDescription(v string) {
+	o.ExtraDescription = v
+}
+
 func (o Device) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -334,6 +361,9 @@ func (o Device) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["last_used"] = o.LastUsed.Get()
+	}
+	if true {
+		toSerialize["extra_description"] = o.ExtraDescription
 	}
 	return json.Marshal(toSerialize)
 }

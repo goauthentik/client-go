@@ -42954,6 +42954,7 @@ components:
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
         created: 2000-01-23T04:56:07.000+00:00
+        extra_description: extra_description
         last_used: 2000-01-23T04:56:07.000+00:00
         name: name
         pk: 0
@@ -42995,9 +42996,14 @@ components:
           nullable: true
           readOnly: true
           type: string
+        extra_description:
+          description: Get extra description
+          readOnly: true
+          type: string
       required:
       - confirmed
       - created
+      - extra_description
       - last_updated
       - last_used
       - meta_model_name
