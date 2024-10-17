@@ -45,6 +45,8 @@ Class | Method | HTTP request | Description
 *AdminApi* | [**AdminSettingsUpdate**](docs/AdminApi.md#adminsettingsupdate) | **Put** /admin/settings/ | 
 *AdminApi* | [**AdminSystemCreate**](docs/AdminApi.md#adminsystemcreate) | **Post** /admin/system/ | 
 *AdminApi* | [**AdminSystemRetrieve**](docs/AdminApi.md#adminsystemretrieve) | **Get** /admin/system/ | 
+*AdminApi* | [**AdminVersionHistoryList**](docs/AdminApi.md#adminversionhistorylist) | **Get** /admin/version/history/ | 
+*AdminApi* | [**AdminVersionHistoryRetrieve**](docs/AdminApi.md#adminversionhistoryretrieve) | **Get** /admin/version/history/{id}/ | 
 *AdminApi* | [**AdminVersionRetrieve**](docs/AdminApi.md#adminversionretrieve) | **Get** /admin/version/ | 
 *AdminApi* | [**AdminWorkersRetrieve**](docs/AdminApi.md#adminworkersretrieve) | **Get** /admin/workers/ | 
 *AuthenticatorsApi* | [**AuthenticatorsAdminAllList**](docs/AuthenticatorsApi.md#authenticatorsadminalllist) | **Get** /authenticators/admin/all/ | 
@@ -1557,6 +1559,7 @@ Class | Method | HTTP request | Description
  - [UserWriteStageRequest](docs/UserWriteStageRequest.md)
  - [ValidationError](docs/ValidationError.md)
  - [Version](docs/Version.md)
+ - [VersionHistory](docs/VersionHistory.md)
  - [WebAuthnDevice](docs/WebAuthnDevice.md)
  - [WebAuthnDeviceDeviceType](docs/WebAuthnDeviceDeviceType.md)
  - [WebAuthnDeviceRequest](docs/WebAuthnDeviceRequest.md)

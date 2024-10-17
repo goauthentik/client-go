@@ -265,6 +265,102 @@ paths:
       - authentik: []
       tags:
       - admin
+  /admin/version/history/:
+    get:
+      description: VersionHistory Viewset
+      operationId: admin_version_history_list
+      parameters:
+      - explode: true
+        in: query
+        name: build
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: version
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/VersionHistory'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - admin
+  /admin/version/history/{id}/:
+    get:
+      description: VersionHistory Viewset
+      operationId: admin_version_history_retrieve
+      parameters:
+      - description: A unique integer value identifying this Version history.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VersionHistory'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - admin
   /admin/workers/:
     get:
       description: Get currently connected worker count.
@@ -68444,6 +68540,30 @@ components:
       - version_current
       - version_latest
       - version_latest_valid
+      type: object
+    VersionHistory:
+      description: VersionHistory Serializer
+      example:
+        build: build
+        id: 0
+        version: version
+        timestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        timestamp:
+          format: date-time
+          type: string
+        version:
+          type: string
+        build:
+          type: string
+      required:
+      - build
+      - id
+      - timestamp
+      - version
       type: object
     WebAuthnDevice:
       description: Serializer for WebAuthn authenticator devices

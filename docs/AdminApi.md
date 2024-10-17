@@ -12,6 +12,8 @@ Method | HTTP request | Description
 [**AdminSettingsUpdate**](AdminApi.md#AdminSettingsUpdate) | **Put** /admin/settings/ | 
 [**AdminSystemCreate**](AdminApi.md#AdminSystemCreate) | **Post** /admin/system/ | 
 [**AdminSystemRetrieve**](AdminApi.md#AdminSystemRetrieve) | **Get** /admin/system/ | 
+[**AdminVersionHistoryList**](AdminApi.md#AdminVersionHistoryList) | **Get** /admin/version/history/ | 
+[**AdminVersionHistoryRetrieve**](AdminApi.md#AdminVersionHistoryRetrieve) | **Get** /admin/version/history/{id}/ | 
 [**AdminVersionRetrieve**](AdminApi.md#AdminVersionRetrieve) | **Get** /admin/version/ | 
 [**AdminWorkersRetrieve**](AdminApi.md#AdminWorkersRetrieve) | **Get** /admin/workers/ | 
 
@@ -500,6 +502,148 @@ Other parameters are passed through a pointer to a apiAdminSystemRetrieveRequest
 ### Return type
 
 [**SystemInfo**](SystemInfo.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AdminVersionHistoryList
+
+> []VersionHistory AdminVersionHistoryList(ctx).Build(build).Ordering(ordering).Search(search).Version(version).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    build := "build_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    search := "search_example" // string | A search term. (optional)
+    version := "version_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AdminApi.AdminVersionHistoryList(context.Background()).Build(build).Ordering(ordering).Search(search).Version(version).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminVersionHistoryList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AdminVersionHistoryList`: []VersionHistory
+    fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminVersionHistoryList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAdminVersionHistoryListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **build** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **search** | **string** | A search term. | 
+ **version** | **string** |  | 
+
+### Return type
+
+[**[]VersionHistory**](VersionHistory.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AdminVersionHistoryRetrieve
+
+> VersionHistory AdminVersionHistoryRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Version history.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AdminApi.AdminVersionHistoryRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminVersionHistoryRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AdminVersionHistoryRetrieve`: VersionHistory
+    fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminVersionHistoryRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Version history. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAdminVersionHistoryRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**VersionHistory**](VersionHistory.md)
 
 ### Authorization
 
