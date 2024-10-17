@@ -37,8 +37,10 @@ type PatchedOAuth2ProviderRequest struct {
 	RefreshTokenValidity *string `json:"refresh_token_validity,omitempty"`
 	// Include User claims from scopes in the id_token, for applications that don't access the userinfo endpoint.
 	IncludeClaimsInIdToken *bool `json:"include_claims_in_id_token,omitempty"`
-	// Key used to sign the tokens. Only required when JWT Algorithm is set to RS256.
+	// Key used to sign the tokens.
 	SigningKey NullableString `json:"signing_key,omitempty"`
+	// Key used to encrypt the tokens. When set, tokens will be encrypted and returned as JWEs.
+	EncryptionKey NullableString `json:"encryption_key,omitempty"`
 	// Enter each URI on a new line.
 	RedirectUris *string `json:"redirect_uris,omitempty"`
 	// Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
@@ -503,6 +505,49 @@ func (o *PatchedOAuth2ProviderRequest) UnsetSigningKey() {
 	o.SigningKey.Unset()
 }
 
+// GetEncryptionKey returns the EncryptionKey field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedOAuth2ProviderRequest) GetEncryptionKey() string {
+	if o == nil || o.EncryptionKey.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.EncryptionKey.Get()
+}
+
+// GetEncryptionKeyOk returns a tuple with the EncryptionKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedOAuth2ProviderRequest) GetEncryptionKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.EncryptionKey.Get(), o.EncryptionKey.IsSet()
+}
+
+// HasEncryptionKey returns a boolean if a field has been set.
+func (o *PatchedOAuth2ProviderRequest) HasEncryptionKey() bool {
+	if o != nil && o.EncryptionKey.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEncryptionKey gets a reference to the given NullableString and assigns it to the EncryptionKey field.
+func (o *PatchedOAuth2ProviderRequest) SetEncryptionKey(v string) {
+	o.EncryptionKey.Set(&v)
+}
+
+// SetEncryptionKeyNil sets the value for EncryptionKey to be an explicit nil
+func (o *PatchedOAuth2ProviderRequest) SetEncryptionKeyNil() {
+	o.EncryptionKey.Set(nil)
+}
+
+// UnsetEncryptionKey ensures that no value is present for EncryptionKey, not even an explicit nil
+func (o *PatchedOAuth2ProviderRequest) UnsetEncryptionKey() {
+	o.EncryptionKey.Unset()
+}
+
 // GetRedirectUris returns the RedirectUris field value if set, zero value otherwise.
 func (o *PatchedOAuth2ProviderRequest) GetRedirectUris() string {
 	if o == nil || o.RedirectUris == nil {
@@ -671,6 +716,9 @@ func (o PatchedOAuth2ProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.SigningKey.IsSet() {
 		toSerialize["signing_key"] = o.SigningKey.Get()
+	}
+	if o.EncryptionKey.IsSet() {
+		toSerialize["encryption_key"] = o.EncryptionKey.Get()
 	}
 	if o.RedirectUris != nil {
 		toSerialize["redirect_uris"] = o.RedirectUris

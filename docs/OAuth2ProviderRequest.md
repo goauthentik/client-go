@@ -16,7 +16,8 @@ Name | Type | Description | Notes
 **AccessTokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **RefreshTokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **IncludeClaimsInIdToken** | Pointer to **bool** | Include User claims from scopes in the id_token, for applications that don&#39;t access the userinfo endpoint. | [optional] 
-**SigningKey** | Pointer to **NullableString** | Key used to sign the tokens. Only required when JWT Algorithm is set to RS256. | [optional] 
+**SigningKey** | Pointer to **NullableString** | Key used to sign the tokens. | [optional] 
+**EncryptionKey** | Pointer to **NullableString** | Key used to encrypt the tokens. When set, tokens will be encrypted and returned as JWEs. | [optional] 
 **RedirectUris** | Pointer to **string** | Enter each URI on a new line. | [optional] 
 **SubMode** | Pointer to [**SubModeEnum**](SubModeEnum.md) | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. | [optional] 
 **IssuerMode** | Pointer to [**IssuerModeEnum**](IssuerModeEnum.md) | Configure how the issuer field of the ID Token should be filled. | [optional] 
@@ -371,6 +372,41 @@ HasSigningKey returns a boolean if a field has been set.
 `func (o *OAuth2ProviderRequest) UnsetSigningKey()`
 
 UnsetSigningKey ensures that no value is present for SigningKey, not even an explicit nil
+### GetEncryptionKey
+
+`func (o *OAuth2ProviderRequest) GetEncryptionKey() string`
+
+GetEncryptionKey returns the EncryptionKey field if non-nil, zero value otherwise.
+
+### GetEncryptionKeyOk
+
+`func (o *OAuth2ProviderRequest) GetEncryptionKeyOk() (*string, bool)`
+
+GetEncryptionKeyOk returns a tuple with the EncryptionKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEncryptionKey
+
+`func (o *OAuth2ProviderRequest) SetEncryptionKey(v string)`
+
+SetEncryptionKey sets EncryptionKey field to given value.
+
+### HasEncryptionKey
+
+`func (o *OAuth2ProviderRequest) HasEncryptionKey() bool`
+
+HasEncryptionKey returns a boolean if a field has been set.
+
+### SetEncryptionKeyNil
+
+`func (o *OAuth2ProviderRequest) SetEncryptionKeyNil(b bool)`
+
+ SetEncryptionKeyNil sets the value for EncryptionKey to be an explicit nil
+
+### UnsetEncryptionKey
+`func (o *OAuth2ProviderRequest) UnsetEncryptionKey()`
+
+UnsetEncryptionKey ensures that no value is present for EncryptionKey, not even an explicit nil
 ### GetRedirectUris
 
 `func (o *OAuth2ProviderRequest) GetRedirectUris() string`

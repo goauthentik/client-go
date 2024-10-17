@@ -44152,6 +44152,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
+          encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 6
         scope:
         - scope
@@ -48272,6 +48273,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         pk: 6
       properties:
         pk:
@@ -48359,8 +48361,13 @@ components:
             \ that don't access the userinfo endpoint."
           type: boolean
         signing_key:
-          description: Key used to sign the tokens. Only required when JWT Algorithm
-            is set to RS256.
+          description: Key used to sign the tokens.
+          format: uuid
+          nullable: true
+          type: string
+        encryption_key:
+          description: "Key used to encrypt the tokens. When set, tokens will be encrypted\
+            \ and returned as JWEs."
           format: uuid
           nullable: true
           type: string
@@ -48418,6 +48425,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         client_secret: client_secret
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -48477,8 +48485,13 @@ components:
             \ that don't access the userinfo endpoint."
           type: boolean
         signing_key:
-          description: Key used to sign the tokens. Only required when JWT Algorithm
-            is set to RS256.
+          description: Key used to sign the tokens.
+          format: uuid
+          nullable: true
+          type: string
+        encryption_key:
+          description: "Key used to encrypt the tokens. When set, tokens will be encrypted\
+            \ and returned as JWEs."
           format: uuid
           nullable: true
           type: string
@@ -51043,6 +51056,7 @@ components:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
+            encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             pk: 6
           scope:
           - scope
@@ -51115,6 +51129,7 @@ components:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
+            encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             pk: 6
           scope:
           - scope
@@ -52766,6 +52781,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
+          encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 6
         - verbose_name_plural: verbose_name_plural
           signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -52796,6 +52812,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
+          encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 6
       properties:
         pagination:
@@ -55595,6 +55612,7 @@ components:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
+            encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             pk: 6
           scope:
           - scope
@@ -55669,6 +55687,7 @@ components:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
+            encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             pk: 6
           scope:
           - scope
@@ -59022,6 +59041,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         client_secret: client_secret
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -59081,8 +59101,13 @@ components:
             \ that don't access the userinfo endpoint."
           type: boolean
         signing_key:
-          description: Key used to sign the tokens. Only required when JWT Algorithm
-            is set to RS256.
+          description: Key used to sign the tokens.
+          format: uuid
+          nullable: true
+          type: string
+        encryption_key:
+          description: "Key used to encrypt the tokens. When set, tokens will be encrypted\
+            \ and returned as JWEs."
           format: uuid
           nullable: true
           type: string
@@ -66680,6 +66705,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
+          encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 6
         scope:
         - scope
