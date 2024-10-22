@@ -30,6 +30,7 @@ type FlowChallengeResponseRequest struct {
 	ConsentChallengeResponseRequest                 *ConsentChallengeResponseRequest
 	DummyChallengeResponseRequest                   *DummyChallengeResponseRequest
 	EmailChallengeResponseRequest                   *EmailChallengeResponseRequest
+	FrameChallengeResponseRequest                   *FrameChallengeResponseRequest
 	IdentificationChallengeResponseRequest          *IdentificationChallengeResponseRequest
 	OAuthDeviceCodeChallengeResponseRequest         *OAuthDeviceCodeChallengeResponseRequest
 	OAuthDeviceCodeFinishChallengeResponseRequest   *OAuthDeviceCodeFinishChallengeResponseRequest
@@ -120,6 +121,13 @@ func DummyChallengeResponseRequestAsFlowChallengeResponseRequest(v *DummyChallen
 func EmailChallengeResponseRequestAsFlowChallengeResponseRequest(v *EmailChallengeResponseRequest) FlowChallengeResponseRequest {
 	return FlowChallengeResponseRequest{
 		EmailChallengeResponseRequest: v,
+	}
+}
+
+// FrameChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns FrameChallengeResponseRequest wrapped in FlowChallengeResponseRequest
+func FrameChallengeResponseRequestAsFlowChallengeResponseRequest(v *FrameChallengeResponseRequest) FlowChallengeResponseRequest {
+	return FlowChallengeResponseRequest{
+		FrameChallengeResponseRequest: v,
 	}
 }
 
@@ -323,6 +331,18 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.EmailChallengeResponseRequest = nil
 			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as EmailChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'FrameChallengeResponseRequest'
+	if jsonDict["component"] == "FrameChallengeResponseRequest" {
+		// try to unmarshal JSON data into FrameChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.FrameChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.FrameChallengeResponseRequest, return on the first match
+		} else {
+			dst.FrameChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as FrameChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -638,6 +658,18 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'xak-flow-frame'
+	if jsonDict["component"] == "xak-flow-frame" {
+		// try to unmarshal JSON data into FrameChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.FrameChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.FrameChallengeResponseRequest, return on the first match
+		} else {
+			dst.FrameChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as FrameChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
 	return nil
 }
 
@@ -689,6 +721,10 @@ func (src FlowChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 
 	if src.EmailChallengeResponseRequest != nil {
 		return json.Marshal(&src.EmailChallengeResponseRequest)
+	}
+
+	if src.FrameChallengeResponseRequest != nil {
+		return json.Marshal(&src.FrameChallengeResponseRequest)
 	}
 
 	if src.IdentificationChallengeResponseRequest != nil {
@@ -773,6 +809,10 @@ func (obj *FlowChallengeResponseRequest) GetActualInstance() interface{} {
 
 	if obj.EmailChallengeResponseRequest != nil {
 		return obj.EmailChallengeResponseRequest
+	}
+
+	if obj.FrameChallengeResponseRequest != nil {
+		return obj.FrameChallengeResponseRequest
 	}
 
 	if obj.IdentificationChallengeResponseRequest != nil {

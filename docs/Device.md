@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**Pk** | **int32** |  | 
+**Pk** | **string** |  | 
 **Name** | **string** |  | 
 **Type** | **string** | Get type of device | [readonly] 
 **Confirmed** | **bool** |  | 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewDevice
 
-`func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk int32, name string, type_ string, confirmed bool, created time.Time, lastUpdated time.Time, lastUsed NullableTime, extraDescription string, ) *Device`
+`func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk string, name string, type_ string, confirmed bool, created time.Time, lastUpdated time.Time, lastUsed NullableTime, extraDescription string, ) *Device`
 
 NewDevice instantiates a new Device object
 This constructor will assign default values to properties that have it defined,
@@ -97,20 +97,20 @@ SetMetaModelName sets MetaModelName field to given value.
 
 ### GetPk
 
-`func (o *Device) GetPk() int32`
+`func (o *Device) GetPk() string`
 
 GetPk returns the Pk field if non-nil, zero value otherwise.
 
 ### GetPkOk
 
-`func (o *Device) GetPkOk() (*int32, bool)`
+`func (o *Device) GetPkOk() (*string, bool)`
 
 GetPkOk returns a tuple with the Pk field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPk
 
-`func (o *Device) SetPk(v int32)`
+`func (o *Device) SetPk(v string)`
 
 SetPk sets Pk field to given value.
 

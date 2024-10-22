@@ -11,6 +11,12 @@ Method | HTTP request | Description
 [**AuthenticatorsAdminDuoPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminDuoPartialUpdate) | **Patch** /authenticators/admin/duo/{id}/ | 
 [**AuthenticatorsAdminDuoRetrieve**](AuthenticatorsApi.md#AuthenticatorsAdminDuoRetrieve) | **Get** /authenticators/admin/duo/{id}/ | 
 [**AuthenticatorsAdminDuoUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminDuoUpdate) | **Put** /authenticators/admin/duo/{id}/ | 
+[**AuthenticatorsAdminEndpointCreate**](AuthenticatorsApi.md#AuthenticatorsAdminEndpointCreate) | **Post** /authenticators/admin/endpoint/ | 
+[**AuthenticatorsAdminEndpointDestroy**](AuthenticatorsApi.md#AuthenticatorsAdminEndpointDestroy) | **Delete** /authenticators/admin/endpoint/{uuid}/ | 
+[**AuthenticatorsAdminEndpointList**](AuthenticatorsApi.md#AuthenticatorsAdminEndpointList) | **Get** /authenticators/admin/endpoint/ | 
+[**AuthenticatorsAdminEndpointPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminEndpointPartialUpdate) | **Patch** /authenticators/admin/endpoint/{uuid}/ | 
+[**AuthenticatorsAdminEndpointRetrieve**](AuthenticatorsApi.md#AuthenticatorsAdminEndpointRetrieve) | **Get** /authenticators/admin/endpoint/{uuid}/ | 
+[**AuthenticatorsAdminEndpointUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminEndpointUpdate) | **Put** /authenticators/admin/endpoint/{uuid}/ | 
 [**AuthenticatorsAdminSmsCreate**](AuthenticatorsApi.md#AuthenticatorsAdminSmsCreate) | **Post** /authenticators/admin/sms/ | 
 [**AuthenticatorsAdminSmsDestroy**](AuthenticatorsApi.md#AuthenticatorsAdminSmsDestroy) | **Delete** /authenticators/admin/sms/{id}/ | 
 [**AuthenticatorsAdminSmsList**](AuthenticatorsApi.md#AuthenticatorsAdminSmsList) | **Get** /authenticators/admin/sms/ | 
@@ -42,6 +48,9 @@ Method | HTTP request | Description
 [**AuthenticatorsDuoRetrieve**](AuthenticatorsApi.md#AuthenticatorsDuoRetrieve) | **Get** /authenticators/duo/{id}/ | 
 [**AuthenticatorsDuoUpdate**](AuthenticatorsApi.md#AuthenticatorsDuoUpdate) | **Put** /authenticators/duo/{id}/ | 
 [**AuthenticatorsDuoUsedByList**](AuthenticatorsApi.md#AuthenticatorsDuoUsedByList) | **Get** /authenticators/duo/{id}/used_by/ | 
+[**AuthenticatorsEndpointList**](AuthenticatorsApi.md#AuthenticatorsEndpointList) | **Get** /authenticators/endpoint/ | 
+[**AuthenticatorsEndpointRetrieve**](AuthenticatorsApi.md#AuthenticatorsEndpointRetrieve) | **Get** /authenticators/endpoint/{uuid}/ | 
+[**AuthenticatorsEndpointUsedByList**](AuthenticatorsApi.md#AuthenticatorsEndpointUsedByList) | **Get** /authenticators/endpoint/{uuid}/used_by/ | 
 [**AuthenticatorsSmsDestroy**](AuthenticatorsApi.md#AuthenticatorsSmsDestroy) | **Delete** /authenticators/sms/{id}/ | 
 [**AuthenticatorsSmsList**](AuthenticatorsApi.md#AuthenticatorsSmsList) | **Get** /authenticators/sms/ | 
 [**AuthenticatorsSmsPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsSmsPartialUpdate) | **Patch** /authenticators/sms/{id}/ | 
@@ -542,6 +551,428 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DuoDevice**](DuoDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminEndpointCreate
+
+> EndpointDevice AuthenticatorsAdminEndpointCreate(ctx).EndpointDeviceRequest(endpointDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    endpointDeviceRequest := *openapiclient.NewEndpointDeviceRequest("Name_example") // EndpointDeviceRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEndpointCreate(context.Background()).EndpointDeviceRequest(endpointDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEndpointCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminEndpointCreate`: EndpointDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminEndpointCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminEndpointCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **endpointDeviceRequest** | [**EndpointDeviceRequest**](EndpointDeviceRequest.md) |  | 
+
+### Return type
+
+[**EndpointDevice**](EndpointDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminEndpointDestroy
+
+> AuthenticatorsAdminEndpointDestroy(ctx, uuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Device.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEndpointDestroy(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEndpointDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uuid** | **string** | A UUID string identifying this Endpoint Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminEndpointDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminEndpointList
+
+> PaginatedEndpointDeviceList AuthenticatorsAdminEndpointList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEndpointList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEndpointList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminEndpointList`: PaginatedEndpointDeviceList
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminEndpointList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminEndpointListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedEndpointDeviceList**](PaginatedEndpointDeviceList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminEndpointPartialUpdate
+
+> EndpointDevice AuthenticatorsAdminEndpointPartialUpdate(ctx, uuid).PatchedEndpointDeviceRequest(patchedEndpointDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Device.
+    patchedEndpointDeviceRequest := *openapiclient.NewPatchedEndpointDeviceRequest() // PatchedEndpointDeviceRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEndpointPartialUpdate(context.Background(), uuid).PatchedEndpointDeviceRequest(patchedEndpointDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEndpointPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminEndpointPartialUpdate`: EndpointDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminEndpointPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uuid** | **string** | A UUID string identifying this Endpoint Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminEndpointPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedEndpointDeviceRequest** | [**PatchedEndpointDeviceRequest**](PatchedEndpointDeviceRequest.md) |  | 
+
+### Return type
+
+[**EndpointDevice**](EndpointDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminEndpointRetrieve
+
+> EndpointDevice AuthenticatorsAdminEndpointRetrieve(ctx, uuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Device.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEndpointRetrieve(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEndpointRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminEndpointRetrieve`: EndpointDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminEndpointRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uuid** | **string** | A UUID string identifying this Endpoint Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminEndpointRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**EndpointDevice**](EndpointDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminEndpointUpdate
+
+> EndpointDevice AuthenticatorsAdminEndpointUpdate(ctx, uuid).EndpointDeviceRequest(endpointDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Device.
+    endpointDeviceRequest := *openapiclient.NewEndpointDeviceRequest("Name_example") // EndpointDeviceRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEndpointUpdate(context.Background(), uuid).EndpointDeviceRequest(endpointDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEndpointUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminEndpointUpdate`: EndpointDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminEndpointUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uuid** | **string** | A UUID string identifying this Endpoint Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminEndpointUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **endpointDeviceRequest** | [**EndpointDeviceRequest**](EndpointDeviceRequest.md) |  | 
+
+### Return type
+
+[**EndpointDevice**](EndpointDevice.md)
 
 ### Authorization
 
@@ -2708,6 +3139,220 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiAuthenticatorsDuoUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsEndpointList
+
+> PaginatedEndpointDeviceList AuthenticatorsEndpointList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsEndpointList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsEndpointList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsEndpointList`: PaginatedEndpointDeviceList
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsEndpointList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsEndpointListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedEndpointDeviceList**](PaginatedEndpointDeviceList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsEndpointRetrieve
+
+> EndpointDevice AuthenticatorsEndpointRetrieve(ctx, uuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Device.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsEndpointRetrieve(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsEndpointRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsEndpointRetrieve`: EndpointDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsEndpointRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uuid** | **string** | A UUID string identifying this Endpoint Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsEndpointRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**EndpointDevice**](EndpointDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsEndpointUsedByList
+
+> []UsedBy AuthenticatorsEndpointUsedByList(ctx, uuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Device.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsEndpointUsedByList(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsEndpointUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsEndpointUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsEndpointUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uuid** | **string** | A UUID string identifying this Endpoint Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsEndpointUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

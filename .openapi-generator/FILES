@@ -50,6 +50,8 @@ docs/AuthenticatorDuoStage.md
 docs/AuthenticatorDuoStageDeviceImportResponse.md
 docs/AuthenticatorDuoStageManualDeviceImportRequest.md
 docs/AuthenticatorDuoStageRequest.md
+docs/AuthenticatorEndpointGDTCStage.md
+docs/AuthenticatorEndpointGDTCStageRequest.md
 docs/AuthenticatorSMSChallenge.md
 docs/AuthenticatorSMSChallengeResponseRequest.md
 docs/AuthenticatorSMSStage.md
@@ -140,6 +142,8 @@ docs/EmailChallengeResponseRequest.md
 docs/EmailStage.md
 docs/EmailStageRequest.md
 docs/Endpoint.md
+docs/EndpointDevice.md
+docs/EndpointDeviceRequest.md
 docs/EndpointRequest.md
 docs/EnterpriseApi.md
 docs/ErrorDetail.md
@@ -175,6 +179,8 @@ docs/FlowStageBinding.md
 docs/FlowStageBindingRequest.md
 docs/FlowsApi.md
 docs/FooterLink.md
+docs/FrameChallenge.md
+docs/FrameChallengeResponseRequest.md
 docs/GenericError.md
 docs/GeoIPPolicy.md
 docs/GeoIPPolicyRequest.md
@@ -279,6 +285,7 @@ docs/OutpostsApi.md
 docs/PaginatedApplicationList.md
 docs/PaginatedAuthenticatedSessionList.md
 docs/PaginatedAuthenticatorDuoStageList.md
+docs/PaginatedAuthenticatorEndpointGDTCStageList.md
 docs/PaginatedAuthenticatorSMSStageList.md
 docs/PaginatedAuthenticatorStaticStageList.md
 docs/PaginatedAuthenticatorTOTPStageList.md
@@ -297,6 +304,7 @@ docs/PaginatedDummyPolicyList.md
 docs/PaginatedDummyStageList.md
 docs/PaginatedDuoDeviceList.md
 docs/PaginatedEmailStageList.md
+docs/PaginatedEndpointDeviceList.md
 docs/PaginatedEndpointList.md
 docs/PaginatedEventList.md
 docs/PaginatedEventMatcherPolicyList.md
@@ -407,6 +415,7 @@ docs/PasswordStage.md
 docs/PasswordStageRequest.md
 docs/PatchedApplicationRequest.md
 docs/PatchedAuthenticatorDuoStageRequest.md
+docs/PatchedAuthenticatorEndpointGDTCStageRequest.md
 docs/PatchedAuthenticatorSMSStageRequest.md
 docs/PatchedAuthenticatorStaticStageRequest.md
 docs/PatchedAuthenticatorTOTPStageRequest.md
@@ -425,6 +434,7 @@ docs/PatchedDummyPolicyRequest.md
 docs/PatchedDummyStageRequest.md
 docs/PatchedDuoDeviceRequest.md
 docs/PatchedEmailStageRequest.md
+docs/PatchedEndpointDeviceRequest.md
 docs/PatchedEndpointRequest.md
 docs/PatchedEventMatcherPolicyRequest.md
 docs/PatchedEventRequest.md
@@ -720,6 +730,8 @@ model_authenticator_duo_stage.go
 model_authenticator_duo_stage_device_import_response.go
 model_authenticator_duo_stage_manual_device_import_request.go
 model_authenticator_duo_stage_request.go
+model_authenticator_endpoint_gdtc_stage.go
+model_authenticator_endpoint_gdtc_stage_request.go
 model_authenticator_sms_challenge.go
 model_authenticator_sms_challenge_response_request.go
 model_authenticator_sms_stage.go
@@ -807,6 +819,8 @@ model_email_challenge_response_request.go
 model_email_stage.go
 model_email_stage_request.go
 model_endpoint.go
+model_endpoint_device.go
+model_endpoint_device_request.go
 model_endpoint_request.go
 model_error_detail.go
 model_error_reporting_config.go
@@ -839,6 +853,8 @@ model_flow_set_request.go
 model_flow_stage_binding.go
 model_flow_stage_binding_request.go
 model_footer_link.go
+model_frame_challenge.go
+model_frame_challenge_response_request.go
 model_generic_error.go
 model_geo_ip_policy.go
 model_geo_ip_policy_request.go
@@ -940,6 +956,7 @@ model_outpost_type_enum.go
 model_paginated_application_list.go
 model_paginated_authenticated_session_list.go
 model_paginated_authenticator_duo_stage_list.go
+model_paginated_authenticator_endpoint_gdtc_stage_list.go
 model_paginated_authenticator_sms_stage_list.go
 model_paginated_authenticator_static_stage_list.go
 model_paginated_authenticator_totp_stage_list.go
@@ -958,6 +975,7 @@ model_paginated_dummy_policy_list.go
 model_paginated_dummy_stage_list.go
 model_paginated_duo_device_list.go
 model_paginated_email_stage_list.go
+model_paginated_endpoint_device_list.go
 model_paginated_endpoint_list.go
 model_paginated_event_list.go
 model_paginated_event_matcher_policy_list.go
@@ -1068,6 +1086,7 @@ model_password_stage.go
 model_password_stage_request.go
 model_patched_application_request.go
 model_patched_authenticator_duo_stage_request.go
+model_patched_authenticator_endpoint_gdtc_stage_request.go
 model_patched_authenticator_sms_stage_request.go
 model_patched_authenticator_static_stage_request.go
 model_patched_authenticator_totp_stage_request.go
@@ -1086,6 +1105,7 @@ model_patched_dummy_policy_request.go
 model_patched_dummy_stage_request.go
 model_patched_duo_device_request.go
 model_patched_email_stage_request.go
+model_patched_endpoint_device_request.go
 model_patched_endpoint_request.go
 model_patched_event_matcher_policy_request.go
 model_patched_event_request.go

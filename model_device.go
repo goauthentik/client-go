@@ -24,7 +24,7 @@ type Device struct {
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
 	MetaModelName string `json:"meta_model_name"`
-	Pk            int32  `json:"pk"`
+	Pk            string `json:"pk"`
 	Name          string `json:"name"`
 	// Get type of device
 	Type        string       `json:"type"`
@@ -40,7 +40,7 @@ type Device struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk int32, name string, type_ string, confirmed bool, created time.Time, lastUpdated time.Time, lastUsed NullableTime, extraDescription string) *Device {
+func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk string, name string, type_ string, confirmed bool, created time.Time, lastUpdated time.Time, lastUsed NullableTime, extraDescription string) *Device {
 	this := Device{}
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
@@ -137,9 +137,9 @@ func (o *Device) SetMetaModelName(v string) {
 }
 
 // GetPk returns the Pk field value
-func (o *Device) GetPk() int32 {
+func (o *Device) GetPk() string {
 	if o == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 
@@ -148,7 +148,7 @@ func (o *Device) GetPk() int32 {
 
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
-func (o *Device) GetPkOk() (*int32, bool) {
+func (o *Device) GetPkOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -156,7 +156,7 @@ func (o *Device) GetPkOk() (*int32, bool) {
 }
 
 // SetPk sets field value
-func (o *Device) SetPk(v int32) {
+func (o *Device) SetPk(v string) {
 	o.Pk = v
 }
 

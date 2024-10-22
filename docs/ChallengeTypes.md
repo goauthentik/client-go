@@ -36,6 +36,8 @@ Name | Type | Description | Notes
 **RequestId** | **string** |  | 
 **Error** | Pointer to **string** |  | [optional] 
 **Traceback** | Pointer to **string** |  | [optional] 
+**LoadingOverlay** | Pointer to **bool** |  | [optional] [default to false]
+**LoadingText** | **string** |  | 
 **UserFields** | **[]string** |  | 
 **PasswordFields** | **bool** |  | 
 **AllowShowPassword** | Pointer to **bool** |  | [optional] [default to false]
@@ -60,7 +62,7 @@ Name | Type | Description | Notes
 
 ### NewChallengeTypes
 
-`func NewChallengeTypes(pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, name string, requestId string, userFields []string, passwordFields bool, flowDesignation FlowDesignationEnum, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, brandName string, body string, ) *ChallengeTypes`
+`func NewChallengeTypes(pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, name string, requestId string, loadingText string, userFields []string, passwordFields bool, flowDesignation FlowDesignationEnum, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, brandName string, body string, ) *ChallengeTypes`
 
 NewChallengeTypes instantiates a new ChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -759,6 +761,51 @@ SetTraceback sets Traceback field to given value.
 `func (o *ChallengeTypes) HasTraceback() bool`
 
 HasTraceback returns a boolean if a field has been set.
+
+### GetLoadingOverlay
+
+`func (o *ChallengeTypes) GetLoadingOverlay() bool`
+
+GetLoadingOverlay returns the LoadingOverlay field if non-nil, zero value otherwise.
+
+### GetLoadingOverlayOk
+
+`func (o *ChallengeTypes) GetLoadingOverlayOk() (*bool, bool)`
+
+GetLoadingOverlayOk returns a tuple with the LoadingOverlay field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLoadingOverlay
+
+`func (o *ChallengeTypes) SetLoadingOverlay(v bool)`
+
+SetLoadingOverlay sets LoadingOverlay field to given value.
+
+### HasLoadingOverlay
+
+`func (o *ChallengeTypes) HasLoadingOverlay() bool`
+
+HasLoadingOverlay returns a boolean if a field has been set.
+
+### GetLoadingText
+
+`func (o *ChallengeTypes) GetLoadingText() string`
+
+GetLoadingText returns the LoadingText field if non-nil, zero value otherwise.
+
+### GetLoadingTextOk
+
+`func (o *ChallengeTypes) GetLoadingTextOk() (*string, bool)`
+
+GetLoadingTextOk returns a tuple with the LoadingText field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLoadingText
+
+`func (o *ChallengeTypes) SetLoadingText(v string)`
+
+SetLoadingText sets LoadingText field to given value.
+
 
 ### GetUserFields
 

@@ -20,6 +20,13 @@ Method | HTTP request | Description
 [**StagesAuthenticatorDuoRetrieve**](StagesApi.md#StagesAuthenticatorDuoRetrieve) | **Get** /stages/authenticator/duo/{stage_uuid}/ | 
 [**StagesAuthenticatorDuoUpdate**](StagesApi.md#StagesAuthenticatorDuoUpdate) | **Put** /stages/authenticator/duo/{stage_uuid}/ | 
 [**StagesAuthenticatorDuoUsedByList**](StagesApi.md#StagesAuthenticatorDuoUsedByList) | **Get** /stages/authenticator/duo/{stage_uuid}/used_by/ | 
+[**StagesAuthenticatorEndpointGdtcCreate**](StagesApi.md#StagesAuthenticatorEndpointGdtcCreate) | **Post** /stages/authenticator/endpoint_gdtc/ | 
+[**StagesAuthenticatorEndpointGdtcDestroy**](StagesApi.md#StagesAuthenticatorEndpointGdtcDestroy) | **Delete** /stages/authenticator/endpoint_gdtc/{stage_uuid}/ | 
+[**StagesAuthenticatorEndpointGdtcList**](StagesApi.md#StagesAuthenticatorEndpointGdtcList) | **Get** /stages/authenticator/endpoint_gdtc/ | 
+[**StagesAuthenticatorEndpointGdtcPartialUpdate**](StagesApi.md#StagesAuthenticatorEndpointGdtcPartialUpdate) | **Patch** /stages/authenticator/endpoint_gdtc/{stage_uuid}/ | 
+[**StagesAuthenticatorEndpointGdtcRetrieve**](StagesApi.md#StagesAuthenticatorEndpointGdtcRetrieve) | **Get** /stages/authenticator/endpoint_gdtc/{stage_uuid}/ | 
+[**StagesAuthenticatorEndpointGdtcUpdate**](StagesApi.md#StagesAuthenticatorEndpointGdtcUpdate) | **Put** /stages/authenticator/endpoint_gdtc/{stage_uuid}/ | 
+[**StagesAuthenticatorEndpointGdtcUsedByList**](StagesApi.md#StagesAuthenticatorEndpointGdtcUsedByList) | **Get** /stages/authenticator/endpoint_gdtc/{stage_uuid}/used_by/ | 
 [**StagesAuthenticatorSmsCreate**](StagesApi.md#StagesAuthenticatorSmsCreate) | **Post** /stages/authenticator/sms/ | 
 [**StagesAuthenticatorSmsDestroy**](StagesApi.md#StagesAuthenticatorSmsDestroy) | **Delete** /stages/authenticator/sms/{stage_uuid}/ | 
 [**StagesAuthenticatorSmsList**](StagesApi.md#StagesAuthenticatorSmsList) | **Get** /stages/authenticator/sms/ | 
@@ -1262,6 +1269,500 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStagesAuthenticatorDuoUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorEndpointGdtcCreate
+
+> AuthenticatorEndpointGDTCStage StagesAuthenticatorEndpointGdtcCreate(ctx).AuthenticatorEndpointGDTCStageRequest(authenticatorEndpointGDTCStageRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    authenticatorEndpointGDTCStageRequest := *openapiclient.NewAuthenticatorEndpointGDTCStageRequest("Name_example", interface{}(123)) // AuthenticatorEndpointGDTCStageRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEndpointGdtcCreate(context.Background()).AuthenticatorEndpointGDTCStageRequest(authenticatorEndpointGDTCStageRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEndpointGdtcCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorEndpointGdtcCreate`: AuthenticatorEndpointGDTCStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorEndpointGdtcCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorEndpointGdtcCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authenticatorEndpointGDTCStageRequest** | [**AuthenticatorEndpointGDTCStageRequest**](AuthenticatorEndpointGDTCStageRequest.md) |  | 
+
+### Return type
+
+[**AuthenticatorEndpointGDTCStage**](AuthenticatorEndpointGDTCStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorEndpointGdtcDestroy
+
+> StagesAuthenticatorEndpointGdtcDestroy(ctx, stageUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEndpointGdtcDestroy(context.Background(), stageUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEndpointGdtcDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorEndpointGdtcDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorEndpointGdtcList
+
+> PaginatedAuthenticatorEndpointGDTCStageList StagesAuthenticatorEndpointGdtcList(ctx).ConfigureFlow(configureFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEndpointGdtcList(context.Background()).ConfigureFlow(configureFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEndpointGdtcList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorEndpointGdtcList`: PaginatedAuthenticatorEndpointGDTCStageList
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorEndpointGdtcList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorEndpointGdtcListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **configureFlow** | **string** |  | 
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedAuthenticatorEndpointGDTCStageList**](PaginatedAuthenticatorEndpointGDTCStageList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorEndpointGdtcPartialUpdate
+
+> AuthenticatorEndpointGDTCStage StagesAuthenticatorEndpointGdtcPartialUpdate(ctx, stageUuid).PatchedAuthenticatorEndpointGDTCStageRequest(patchedAuthenticatorEndpointGDTCStageRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage.
+    patchedAuthenticatorEndpointGDTCStageRequest := *openapiclient.NewPatchedAuthenticatorEndpointGDTCStageRequest() // PatchedAuthenticatorEndpointGDTCStageRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEndpointGdtcPartialUpdate(context.Background(), stageUuid).PatchedAuthenticatorEndpointGDTCStageRequest(patchedAuthenticatorEndpointGDTCStageRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEndpointGdtcPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorEndpointGdtcPartialUpdate`: AuthenticatorEndpointGDTCStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorEndpointGdtcPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorEndpointGdtcPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedAuthenticatorEndpointGDTCStageRequest** | [**PatchedAuthenticatorEndpointGDTCStageRequest**](PatchedAuthenticatorEndpointGDTCStageRequest.md) |  | 
+
+### Return type
+
+[**AuthenticatorEndpointGDTCStage**](AuthenticatorEndpointGDTCStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorEndpointGdtcRetrieve
+
+> AuthenticatorEndpointGDTCStage StagesAuthenticatorEndpointGdtcRetrieve(ctx, stageUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEndpointGdtcRetrieve(context.Background(), stageUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEndpointGdtcRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorEndpointGdtcRetrieve`: AuthenticatorEndpointGDTCStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorEndpointGdtcRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorEndpointGdtcRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**AuthenticatorEndpointGDTCStage**](AuthenticatorEndpointGDTCStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorEndpointGdtcUpdate
+
+> AuthenticatorEndpointGDTCStage StagesAuthenticatorEndpointGdtcUpdate(ctx, stageUuid).AuthenticatorEndpointGDTCStageRequest(authenticatorEndpointGDTCStageRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage.
+    authenticatorEndpointGDTCStageRequest := *openapiclient.NewAuthenticatorEndpointGDTCStageRequest("Name_example", interface{}(123)) // AuthenticatorEndpointGDTCStageRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEndpointGdtcUpdate(context.Background(), stageUuid).AuthenticatorEndpointGDTCStageRequest(authenticatorEndpointGDTCStageRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEndpointGdtcUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorEndpointGdtcUpdate`: AuthenticatorEndpointGDTCStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorEndpointGdtcUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorEndpointGdtcUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authenticatorEndpointGDTCStageRequest** | [**AuthenticatorEndpointGDTCStageRequest**](AuthenticatorEndpointGDTCStageRequest.md) |  | 
+
+### Return type
+
+[**AuthenticatorEndpointGDTCStage**](AuthenticatorEndpointGDTCStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorEndpointGdtcUsedByList
+
+> []UsedBy StagesAuthenticatorEndpointGdtcUsedByList(ctx, stageUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEndpointGdtcUsedByList(context.Background(), stageUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEndpointGdtcUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorEndpointGdtcUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorEndpointGdtcUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorEndpointGdtcUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

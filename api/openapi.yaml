@@ -672,6 +672,257 @@ paths:
       - authentik: []
       tags:
       - authenticators
+  /authenticators/admin/endpoint/:
+    get:
+      description: Viewset for Endpoint authenticator devices (for admins)
+      operationId: authenticators_admin_endpoint_list
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedEndpointDeviceList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    post:
+      description: Viewset for Endpoint authenticator devices (for admins)
+      operationId: authenticators_admin_endpoint_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EndpointDeviceRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointDevice'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+  /authenticators/admin/endpoint/{uuid}/:
+    delete:
+      description: Viewset for Endpoint authenticator devices (for admins)
+      operationId: authenticators_admin_endpoint_destroy
+      parameters:
+      - description: A UUID string identifying this Endpoint Device.
+        explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    get:
+      description: Viewset for Endpoint authenticator devices (for admins)
+      operationId: authenticators_admin_endpoint_retrieve
+      parameters:
+      - description: A UUID string identifying this Endpoint Device.
+        explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointDevice'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    patch:
+      description: Viewset for Endpoint authenticator devices (for admins)
+      operationId: authenticators_admin_endpoint_partial_update
+      parameters:
+      - description: A UUID string identifying this Endpoint Device.
+        explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedEndpointDeviceRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointDevice'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    put:
+      description: Viewset for Endpoint authenticator devices (for admins)
+      operationId: authenticators_admin_endpoint_update
+      parameters:
+      - description: A UUID string identifying this Endpoint Device.
+        explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EndpointDeviceRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointDevice'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
   /authenticators/admin/sms/:
     get:
       description: Viewset for sms authenticator devices (for admins)
@@ -1916,6 +2167,149 @@ paths:
         required: true
         schema:
           type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+  /authenticators/endpoint/:
+    get:
+      description: Viewset for Endpoint authenticator devices
+      operationId: authenticators_endpoint_list
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedEndpointDeviceList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+  /authenticators/endpoint/{uuid}/:
+    get:
+      description: Viewset for Endpoint authenticator devices
+      operationId: authenticators_endpoint_retrieve
+      parameters:
+      - description: A UUID string identifying this Endpoint Device.
+        explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointDevice'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+  /authenticators/endpoint/{uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: authenticators_endpoint_used_by_list
+      parameters:
+      - description: A UUID string identifying this Endpoint Device.
+        explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
         style: simple
       responses:
         "200":
@@ -25281,6 +25675,7 @@ paths:
           - authentik_sources_scim.scimsourcepropertymapping
           - authentik_stages_authenticator_duo.authenticatorduostage
           - authentik_stages_authenticator_duo.duodevice
+          - authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage
           - authentik_stages_authenticator_sms.authenticatorsmsstage
           - authentik_stages_authenticator_sms.smsdevice
           - authentik_stages_authenticator_static.authenticatorstaticstage
@@ -25532,6 +25927,7 @@ paths:
           - authentik_sources_scim.scimsourcepropertymapping
           - authentik_stages_authenticator_duo.authenticatorduostage
           - authentik_stages_authenticator_duo.duodevice
+          - authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage
           - authentik_stages_authenticator_sms.authenticatorsmsstage
           - authentik_stages_authenticator_sms.smsdevice
           - authentik_stages_authenticator_static.authenticatorstaticstage
@@ -32268,6 +32664,309 @@ paths:
       operationId: stages_authenticator_duo_used_by_list
       parameters:
       - description: A UUID string identifying this Duo Authenticator Setup Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+  /stages/authenticator/endpoint_gdtc/:
+    get:
+      description: AuthenticatorEndpointGDTCStage Viewset
+      operationId: stages_authenticator_endpoint_gdtc_list
+      parameters:
+      - explode: true
+        in: query
+        name: configure_flow
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAuthenticatorEndpointGDTCStageList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    post:
+      description: AuthenticatorEndpointGDTCStage Viewset
+      operationId: stages_authenticator_endpoint_gdtc_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthenticatorEndpointGDTCStageRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticatorEndpointGDTCStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+  /stages/authenticator/endpoint_gdtc/{stage_uuid}/:
+    delete:
+      description: AuthenticatorEndpointGDTCStage Viewset
+      operationId: stages_authenticator_endpoint_gdtc_destroy
+      parameters:
+      - description: A UUID string identifying this Endpoint Authenticator Google
+          Device Trust Connector Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    get:
+      description: AuthenticatorEndpointGDTCStage Viewset
+      operationId: stages_authenticator_endpoint_gdtc_retrieve
+      parameters:
+      - description: A UUID string identifying this Endpoint Authenticator Google
+          Device Trust Connector Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticatorEndpointGDTCStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    patch:
+      description: AuthenticatorEndpointGDTCStage Viewset
+      operationId: stages_authenticator_endpoint_gdtc_partial_update
+      parameters:
+      - description: A UUID string identifying this Endpoint Authenticator Google
+          Device Trust Connector Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAuthenticatorEndpointGDTCStageRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticatorEndpointGDTCStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    put:
+      description: AuthenticatorEndpointGDTCStage Viewset
+      operationId: stages_authenticator_endpoint_gdtc_update
+      parameters:
+      - description: A UUID string identifying this Endpoint Authenticator Google
+          Device Trust Connector Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthenticatorEndpointGDTCStageRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticatorEndpointGDTCStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+  /stages/authenticator/endpoint_gdtc/{stage_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: stages_authenticator_endpoint_gdtc_used_by_list
+      parameters:
+      - description: A UUID string identifying this Endpoint Authenticator Google
+          Device Trust Connector Stage.
         explode: false
         in: path
         name: stage_uuid
@@ -39943,6 +40642,7 @@ components:
       - authentik.enterprise.providers.google_workspace
       - authentik.enterprise.providers.microsoft_entra
       - authentik.enterprise.providers.rac
+      - authentik.enterprise.stages.authenticator_endpoint_gdtc
       - authentik.enterprise.stages.source
       - authentik.events
       type: string
@@ -40474,6 +41174,137 @@ components:
       - api_hostname
       - client_id
       - client_secret
+      - name
+      type: object
+    AuthenticatorEndpointGDTCStage:
+      description: AuthenticatorEndpointGDTCStage Serializer
+      example:
+        component: component
+        verbose_name: verbose_name
+        configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
+        verbose_name_plural: verbose_name_plural
+        meta_model_name: meta_model_name
+        credentials: ""
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        flow_set:
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          background: background
+          denied_action: ""
+          name: name
+          export_url: export_url
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          designation: ""
+          title: title
+          slug: slug
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          background: background
+          denied_action: ""
+          name: name
+          export_url: export_url
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          designation: ""
+          title: title
+          slug: slug
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Stage uuid
+          type: string
+        name:
+          type: string
+        component:
+          description: Get object type so that we know how to edit the object
+          readOnly: true
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/FlowSet'
+          type: array
+        configure_flow:
+          description: "Flow used by an authenticated user to configure this Stage.\
+            \ If empty, user will not be able to configure this stage."
+          format: uuid
+          nullable: true
+          type: string
+        friendly_name:
+          nullable: true
+          type: string
+        credentials: {}
+      required:
+      - component
+      - credentials
+      - meta_model_name
+      - name
+      - pk
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    AuthenticatorEndpointGDTCStageRequest:
+      description: AuthenticatorEndpointGDTCStage Serializer
+      example:
+        configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
+        credentials: ""
+        name: name
+        flow_set:
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+      properties:
+        name:
+          minLength: 1
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/FlowSetRequest'
+          type: array
+        configure_flow:
+          description: "Flow used by an authenticated user to configure this Stage.\
+            \ If empty, user will not be able to configure this stage."
+          format: uuid
+          nullable: true
+          type: string
+        friendly_name:
+          minLength: 1
+          nullable: true
+          type: string
+        credentials: {}
+      required:
+      - credentials
       - name
       type: object
     AuthenticatorSMSChallenge:
@@ -42209,6 +43040,7 @@ components:
           ak-stage-dummy: '#/components/schemas/DummyChallenge'
           ak-stage-email: '#/components/schemas/EmailChallenge'
           ak-stage-flow-error: '#/components/schemas/FlowErrorChallenge'
+          xak-flow-frame: '#/components/schemas/FrameChallenge'
           ak-stage-identification: '#/components/schemas/IdentificationChallenge'
           ak-provider-oauth2-device-code: '#/components/schemas/OAuthDeviceCodeChallenge'
           ak-provider-oauth2-device-code-finish: '#/components/schemas/OAuthDeviceCodeFinishChallenge'
@@ -42235,6 +43067,7 @@ components:
       - $ref: '#/components/schemas/DummyChallenge'
       - $ref: '#/components/schemas/EmailChallenge'
       - $ref: '#/components/schemas/FlowErrorChallenge'
+      - $ref: '#/components/schemas/FrameChallenge'
       - $ref: '#/components/schemas/IdentificationChallenge'
       - $ref: '#/components/schemas/OAuthDeviceCodeChallenge'
       - $ref: '#/components/schemas/OAuthDeviceCodeFinishChallenge'
@@ -43053,7 +43886,7 @@ components:
         extra_description: extra_description
         last_used: 2000-01-23T04:56:07.000+00:00
         name: name
-        pk: 0
+        pk: pk
         type: type
         confirmed: true
       properties:
@@ -43070,7 +43903,7 @@ components:
           readOnly: true
           type: string
         pk:
-          type: integer
+          type: string
         name:
           type: string
         type:
@@ -43878,6 +44711,41 @@ components:
       - provider
       - provider_obj
       type: object
+    EndpointDevice:
+      description: Serializer for Endpoint authenticator devices
+      example:
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          format: uuid
+          title: Uuid
+          type: string
+        name:
+          description: The human-readable name of this device.
+          maxLength: 64
+          type: string
+      required:
+      - name
+      type: object
+    EndpointDeviceRequest:
+      description: Serializer for Endpoint authenticator devices
+      example:
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          format: uuid
+          title: Uuid
+          type: string
+        name:
+          description: The human-readable name of this device.
+          maxLength: 64
+          minLength: 1
+          type: string
+      required:
+      - name
+      type: object
     EndpointRequest:
       description: Endpoint Serializer
       example:
@@ -44673,6 +45541,7 @@ components:
           ak-stage-consent: '#/components/schemas/ConsentChallengeResponseRequest'
           ak-stage-dummy: '#/components/schemas/DummyChallengeResponseRequest'
           ak-stage-email: '#/components/schemas/EmailChallengeResponseRequest'
+          xak-flow-frame: '#/components/schemas/FrameChallengeResponseRequest'
           ak-stage-identification: '#/components/schemas/IdentificationChallengeResponseRequest'
           ak-provider-oauth2-device-code: '#/components/schemas/OAuthDeviceCodeChallengeResponseRequest'
           ak-provider-oauth2-device-code-finish: '#/components/schemas/OAuthDeviceCodeFinishChallengeResponseRequest'
@@ -44694,6 +45563,7 @@ components:
       - $ref: '#/components/schemas/ConsentChallengeResponseRequest'
       - $ref: '#/components/schemas/DummyChallengeResponseRequest'
       - $ref: '#/components/schemas/EmailChallengeResponseRequest'
+      - $ref: '#/components/schemas/FrameChallengeResponseRequest'
       - $ref: '#/components/schemas/IdentificationChallengeResponseRequest'
       - $ref: '#/components/schemas/OAuthDeviceCodeChallengeResponseRequest'
       - $ref: '#/components/schemas/OAuthDeviceCodeFinishChallengeResponseRequest'
@@ -45145,6 +46015,39 @@ components:
       required:
       - href
       - name
+      type: object
+    FrameChallenge:
+      description: Challenge type to render a frame
+      properties:
+        flow_info:
+          $ref: '#/components/schemas/ContextualFlowInfo'
+        component:
+          default: xak-flow-frame
+          type: string
+        response_errors:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/ErrorDetail'
+            type: array
+          type: object
+        url:
+          type: string
+        loading_overlay:
+          default: false
+          type: boolean
+        loading_text:
+          type: string
+      required:
+      - loading_text
+      - url
+      type: object
+    FrameChallengeResponseRequest:
+      description: Base class for all challenge responses
+      properties:
+        component:
+          default: xak-flow-frame
+          minLength: 1
+          type: string
       type: object
     GenericError:
       description: Generic API Error
@@ -48038,6 +48941,7 @@ components:
       - authentik_providers_rac.racprovider
       - authentik_providers_rac.endpoint
       - authentik_providers_rac.racpropertymapping
+      - authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage
       - authentik_stages_source.sourcestage
       - authentik_events.event
       - authentik_events.notificationtransport
@@ -49677,6 +50581,96 @@ components:
       - pagination
       - results
       type: object
+    PaginatedAuthenticatorEndpointGDTCStageList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - component: component
+          verbose_name: verbose_name
+          configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          friendly_name: friendly_name
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          credentials: ""
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          flow_set:
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+        - component: component
+          verbose_name: verbose_name
+          configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          friendly_name: friendly_name
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          credentials: ""
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          flow_set:
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/AuthenticatorEndpointGDTCStage'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedAuthenticatorSMSStageList:
       example:
         pagination:
@@ -50970,6 +51964,32 @@ components:
         results:
           items:
             $ref: '#/components/schemas/EmailStage'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedEndpointDeviceList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/EndpointDevice'
           type: array
       required:
       - pagination
@@ -57348,6 +58368,50 @@ components:
           type: string
           writeOnly: true
       type: object
+    PatchedAuthenticatorEndpointGDTCStageRequest:
+      description: AuthenticatorEndpointGDTCStage Serializer
+      example:
+        configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
+        credentials: ""
+        name: name
+        flow_set:
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+      properties:
+        name:
+          minLength: 1
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/FlowSetRequest'
+          type: array
+        configure_flow:
+          description: "Flow used by an authenticated user to configure this Stage.\
+            \ If empty, user will not be able to configure this stage."
+          format: uuid
+          nullable: true
+          type: string
+        friendly_name:
+          minLength: 1
+          nullable: true
+          type: string
+        credentials: {}
+      type: object
     PatchedAuthenticatorSMSStageRequest:
       description: AuthenticatorSMSStage Serializer
       example:
@@ -58126,6 +59190,22 @@ components:
         activate_user_on_success:
           description: Activate users upon completion of stage.
           type: boolean
+      type: object
+    PatchedEndpointDeviceRequest:
+      description: Serializer for Endpoint authenticator devices
+      example:
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          format: uuid
+          title: Uuid
+          type: string
+        name:
+          description: The human-readable name of this device.
+          maxLength: 64
+          minLength: 1
+          type: string
       type: object
     PatchedEndpointRequest:
       description: Endpoint Serializer

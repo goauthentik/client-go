@@ -113,6 +113,8 @@
 
 * `ENTERPRISE_PROVIDERS_RAC` (value: `"authentik.enterprise.providers.rac"`)
 
+* `ENTERPRISE_STAGES_AUTHENTICATOR_ENDPOINT_GDTC` (value: `"authentik.enterprise.stages.authenticator_endpoint_gdtc"`)
+
 * `ENTERPRISE_STAGES_SOURCE` (value: `"authentik.enterprise.stages.source"`)
 
 * `EVENTS` (value: `"authentik.events"`)

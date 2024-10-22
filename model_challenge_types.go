@@ -32,6 +32,7 @@ type ChallengeTypes struct {
 	DummyChallenge                   *DummyChallenge
 	EmailChallenge                   *EmailChallenge
 	FlowErrorChallenge               *FlowErrorChallenge
+	FrameChallenge                   *FrameChallenge
 	IdentificationChallenge          *IdentificationChallenge
 	OAuthDeviceCodeChallenge         *OAuthDeviceCodeChallenge
 	OAuthDeviceCodeFinishChallenge   *OAuthDeviceCodeFinishChallenge
@@ -139,6 +140,13 @@ func EmailChallengeAsChallengeTypes(v *EmailChallenge) ChallengeTypes {
 func FlowErrorChallengeAsChallengeTypes(v *FlowErrorChallenge) ChallengeTypes {
 	return ChallengeTypes{
 		FlowErrorChallenge: v,
+	}
+}
+
+// FrameChallengeAsChallengeTypes is a convenience function that returns FrameChallenge wrapped in ChallengeTypes
+func FrameChallengeAsChallengeTypes(v *FrameChallenge) ChallengeTypes {
+	return ChallengeTypes{
+		FrameChallenge: v,
 	}
 }
 
@@ -387,6 +395,18 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.FlowErrorChallenge = nil
 			return fmt.Errorf("Failed to unmarshal ChallengeTypes as FlowErrorChallenge: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'FrameChallenge'
+	if jsonDict["component"] == "FrameChallenge" {
+		// try to unmarshal JSON data into FrameChallenge
+		err = json.Unmarshal(data, &dst.FrameChallenge)
+		if err == nil {
+			return nil // data stored in dst.FrameChallenge, return on the first match
+		} else {
+			dst.FrameChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as FrameChallenge: %s", err.Error())
 		}
 	}
 
@@ -774,6 +794,18 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'xak-flow-frame'
+	if jsonDict["component"] == "xak-flow-frame" {
+		// try to unmarshal JSON data into FrameChallenge
+		err = json.Unmarshal(data, &dst.FrameChallenge)
+		if err == nil {
+			return nil // data stored in dst.FrameChallenge, return on the first match
+		} else {
+			dst.FrameChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as FrameChallenge: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'xak-flow-redirect'
 	if jsonDict["component"] == "xak-flow-redirect" {
 		// try to unmarshal JSON data into RedirectChallenge
@@ -857,6 +889,10 @@ func (src ChallengeTypes) MarshalJSON() ([]byte, error) {
 
 	if src.FlowErrorChallenge != nil {
 		return json.Marshal(&src.FlowErrorChallenge)
+	}
+
+	if src.FrameChallenge != nil {
+		return json.Marshal(&src.FrameChallenge)
 	}
 
 	if src.IdentificationChallenge != nil {
@@ -961,6 +997,10 @@ func (obj *ChallengeTypes) GetActualInstance() interface{} {
 
 	if obj.FlowErrorChallenge != nil {
 		return obj.FlowErrorChallenge
+	}
+
+	if obj.FrameChallenge != nil {
+		return obj.FrameChallenge
 	}
 
 	if obj.IdentificationChallenge != nil {
