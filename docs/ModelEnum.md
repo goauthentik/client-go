@@ -55,6 +55,14 @@
 
 * `RBAC_ROLE` (value: `"authentik_rbac.role"`)
 
+* `SOURCES_KERBEROS_KERBEROSSOURCE` (value: `"authentik_sources_kerberos.kerberossource"`)
+
+* `SOURCES_KERBEROS_KERBEROSSOURCEPROPERTYMAPPING` (value: `"authentik_sources_kerberos.kerberossourcepropertymapping"`)
+
+* `SOURCES_KERBEROS_USERKERBEROSSOURCECONNECTION` (value: `"authentik_sources_kerberos.userkerberossourceconnection"`)
+
+* `SOURCES_KERBEROS_GROUPKERBEROSSOURCECONNECTION` (value: `"authentik_sources_kerberos.groupkerberossourceconnection"`)
+
 * `SOURCES_LDAP_LDAPSOURCE` (value: `"authentik_sources_ldap.ldapsource"`)
 
 * `SOURCES_LDAP_LDAPSOURCEPROPERTYMAPPING` (value: `"authentik_sources_ldap.ldapsourcepropertymapping"`)

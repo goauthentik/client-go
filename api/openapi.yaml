@@ -18267,6 +18267,312 @@ paths:
       - authentik: []
       tags:
       - propertymappings
+  /propertymappings/source/kerberos/:
+    get:
+      description: KerberosSource PropertyMapping Viewset
+      operationId: propertymappings_source_kerberos_list
+      parameters:
+      - explode: true
+        in: query
+        name: managed
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: managed__isnull
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedKerberosSourcePropertyMappingList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    post:
+      description: KerberosSource PropertyMapping Viewset
+      operationId: propertymappings_source_kerberos_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KerberosSourcePropertyMappingRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KerberosSourcePropertyMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+  /propertymappings/source/kerberos/{pm_uuid}/:
+    delete:
+      description: KerberosSource PropertyMapping Viewset
+      operationId: propertymappings_source_kerberos_destroy
+      parameters:
+      - description: A UUID string identifying this Kerberos Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    get:
+      description: KerberosSource PropertyMapping Viewset
+      operationId: propertymappings_source_kerberos_retrieve
+      parameters:
+      - description: A UUID string identifying this Kerberos Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KerberosSourcePropertyMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    patch:
+      description: KerberosSource PropertyMapping Viewset
+      operationId: propertymappings_source_kerberos_partial_update
+      parameters:
+      - description: A UUID string identifying this Kerberos Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedKerberosSourcePropertyMappingRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KerberosSourcePropertyMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    put:
+      description: KerberosSource PropertyMapping Viewset
+      operationId: propertymappings_source_kerberos_update
+      parameters:
+      - description: A UUID string identifying this Kerberos Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KerberosSourcePropertyMappingRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KerberosSourcePropertyMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+  /propertymappings/source/kerberos/{pm_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: propertymappings_source_kerberos_used_by_list
+      parameters:
+      - description: A UUID string identifying this Kerberos Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
   /propertymappings/source/ldap/:
     get:
       description: LDAP PropertyMapping Viewset
@@ -25657,6 +25963,10 @@ paths:
           - authentik_providers_scim.scimmapping
           - authentik_providers_scim.scimprovider
           - authentik_rbac.role
+          - authentik_sources_kerberos.groupkerberossourceconnection
+          - authentik_sources_kerberos.kerberossource
+          - authentik_sources_kerberos.kerberossourcepropertymapping
+          - authentik_sources_kerberos.userkerberossourceconnection
           - authentik_sources_ldap.ldapsource
           - authentik_sources_ldap.ldapsourcepropertymapping
           - authentik_sources_oauth.groupoauthsourceconnection
@@ -25909,6 +26219,10 @@ paths:
           - authentik_providers_scim.scimmapping
           - authentik_providers_scim.scimprovider
           - authentik_rbac.role
+          - authentik_sources_kerberos.groupkerberossourceconnection
+          - authentik_sources_kerberos.kerberossource
+          - authentik_sources_kerberos.kerberossourcepropertymapping
+          - authentik_sources_kerberos.userkerberossourceconnection
           - authentik_sources_ldap.ldapsource
           - authentik_sources_ldap.ldapsourcepropertymapping
           - authentik_sources_oauth.groupoauthsourceconnection
@@ -27325,6 +27639,261 @@ paths:
       - authentik: []
       tags:
       - sources
+  /sources/group_connections/kerberos/:
+    get:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_kerberos_list
+      parameters:
+      - explode: true
+        in: query
+        name: group
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: source__slug
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedGroupKerberosSourceConnectionList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/group_connections/kerberos/{id}/:
+    delete:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_kerberos_destroy
+      parameters:
+      - description: A unique integer value identifying this Group Kerberos Source
+          Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    get:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_kerberos_retrieve
+      parameters:
+      - description: A unique integer value identifying this Group Kerberos Source
+          Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupKerberosSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    patch:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_kerberos_partial_update
+      parameters:
+      - description: A unique integer value identifying this Group Kerberos Source
+          Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupKerberosSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    put:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_kerberos_update
+      parameters:
+      - description: A unique integer value identifying this Group Kerberos Source
+          Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupKerberosSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/group_connections/kerberos/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: sources_group_connections_kerberos_used_by_list
+      parameters:
+      - description: A unique integer value identifying this Group Kerberos Source
+          Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
   /sources/group_connections/oauth/:
     get:
       description: Group-source connection Viewset
@@ -28101,6 +28670,383 @@ paths:
         required: true
         schema:
           type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/kerberos/:
+    get:
+      description: Kerberos Source Viewset
+      operationId: sources_kerberos_list
+      parameters:
+      - explode: true
+        in: query
+        name: enabled
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: password_login_update_internal_password
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: realm
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: slug
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: spnego_server_name
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: sync_principal
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: sync_users
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: sync_users_password
+        required: false
+        schema:
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedKerberosSourceList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    post:
+      description: Kerberos Source Viewset
+      operationId: sources_kerberos_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KerberosSourceRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KerberosSource'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/kerberos/{slug}/:
+    delete:
+      description: Kerberos Source Viewset
+      operationId: sources_kerberos_destroy
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          description: "Internal source name, used in URLs."
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    get:
+      description: Kerberos Source Viewset
+      operationId: sources_kerberos_retrieve
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          description: "Internal source name, used in URLs."
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KerberosSource'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    patch:
+      description: Kerberos Source Viewset
+      operationId: sources_kerberos_partial_update
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          description: "Internal source name, used in URLs."
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedKerberosSourceRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KerberosSource'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    put:
+      description: Kerberos Source Viewset
+      operationId: sources_kerberos_update
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          description: "Internal source name, used in URLs."
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KerberosSourceRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KerberosSource'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/kerberos/{slug}/sync/status/:
+    get:
+      description: Get source's sync status
+      operationId: sources_kerberos_sync_status_retrieve
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          description: "Internal source name, used in URLs."
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KerberosSyncStatus'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/kerberos/{slug}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: sources_kerberos_used_by_list
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          description: "Internal source name, used in URLs."
+          type: string
         style: simple
       responses:
         "200":
@@ -31139,6 +32085,296 @@ paths:
       operationId: sources_user_connections_all_used_by_list
       parameters:
       - description: A unique integer value identifying this user source connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/user_connections/kerberos/:
+    get:
+      description: Source Viewset
+      operationId: sources_user_connections_kerberos_list
+      parameters:
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: source__slug
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedUserKerberosSourceConnectionList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    post:
+      description: Source Viewset
+      operationId: sources_user_connections_kerberos_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserKerberosSourceConnectionRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserKerberosSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/user_connections/kerberos/{id}/:
+    delete:
+      description: Source Viewset
+      operationId: sources_user_connections_kerberos_destroy
+      parameters:
+      - description: A unique integer value identifying this User Kerberos Source
+          Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    get:
+      description: Source Viewset
+      operationId: sources_user_connections_kerberos_retrieve
+      parameters:
+      - description: A unique integer value identifying this User Kerberos Source
+          Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserKerberosSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    patch:
+      description: Source Viewset
+      operationId: sources_user_connections_kerberos_partial_update
+      parameters:
+      - description: A unique integer value identifying this User Kerberos Source
+          Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUserKerberosSourceConnectionRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserKerberosSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    put:
+      description: Source Viewset
+      operationId: sources_user_connections_kerberos_update
+      parameters:
+      - description: A unique integer value identifying this User Kerberos Source
+          Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserKerberosSourceConnectionRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserKerberosSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/user_connections/kerberos/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: sources_user_connections_kerberos_used_by_list
+      parameters:
+      - description: A unique integer value identifying this User Kerberos Source
+          Connection.
         explode: false
         in: path
         name: id
@@ -40609,6 +41845,7 @@ components:
       - authentik.providers.scim
       - authentik.rbac
       - authentik.recovery
+      - authentik.sources.kerberos
       - authentik.sources.ldap
       - authentik.sources.oauth
       - authentik.sources.plex
@@ -42390,6 +43627,7 @@ components:
       - authentik.core.auth.InbuiltBackend
       - authentik.core.auth.TokenBackend
       - authentik.sources.ldap.auth.LDAPBackend
+      - authentik.sources.kerberos.auth.KerberosBackend
       type: string
     BindingTypeEnum:
       enum:
@@ -46629,6 +47867,41 @@ components:
       - roles_obj
       - users_obj
       type: object
+    GroupKerberosSourceConnection:
+      description: OAuth Group-Source connection Serializer
+      example:
+        identifier: identifier
+        created: 2000-01-23T04:56:07.000+00:00
+        pk: 0
+        source: ""
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          readOnly: true
+          title: ID
+          type: integer
+        group:
+          format: uuid
+          readOnly: true
+          type: string
+        source:
+          allOf:
+          - $ref: '#/components/schemas/Source'
+          readOnly: true
+        identifier:
+          readOnly: true
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - created
+      - group
+      - identifier
+      - pk
+      - source
+      type: object
     GroupMatchingModeEnum:
       enum:
       - identifier
@@ -47389,6 +48662,442 @@ components:
       - global
       - per_provider
       type: string
+    KerberosSource:
+      description: Kerberos Source Serializer
+      example:
+        user_matching_mode: ""
+        verbose_name_plural: verbose_name_plural
+        group_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        sync_users: true
+        icon: icon
+        sync_ccache: sync_ccache
+        enabled: true
+        spnego_server_name: spnego_server_name
+        krb5_conf: krb5_conf
+        connectivity:
+          key: connectivity
+        managed: managed
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        spnego_ccache: spnego_ccache
+        slug: slug
+        sync_principal: sync_principal
+        user_path_template: user_path_template
+        group_matching_mode: ""
+        password_login_update_internal_password: true
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        policy_engine_mode: null
+        enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        component: component
+        verbose_name: verbose_name
+        sync_users_password: true
+        meta_model_name: meta_model_name
+        name: name
+        realm: realm
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Pbm uuid
+          type: string
+        name:
+          description: Source's display Name.
+          type: string
+        slug:
+          description: "Internal source name, used in URLs."
+          maxLength: 50
+          pattern: "^[-a-zA-Z0-9_]+$"
+          type: string
+        enabled:
+          type: boolean
+        authentication_flow:
+          description: Flow to use when authenticating existing users.
+          format: uuid
+          nullable: true
+          type: string
+        enrollment_flow:
+          description: Flow to use when enrolling new users.
+          format: uuid
+          nullable: true
+          type: string
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        component:
+          description: Get object component so that we know how to edit the object
+          readOnly: true
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+        policy_engine_mode:
+          $ref: '#/components/schemas/PolicyEngineMode'
+        user_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/UserMatchingModeEnum'
+          description: How the source determines if an existing user should be authenticated
+            or a new user enrolled.
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          nullable: true
+          readOnly: true
+          title: Managed by authentik
+          type: string
+        user_path_template:
+          type: string
+        icon:
+          readOnly: true
+          type: string
+        group_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/GroupMatchingModeEnum'
+          description: How the source determines if an existing group should be used
+            or a new group created.
+        realm:
+          description: Kerberos realm
+          type: string
+        krb5_conf:
+          description: Custom krb5.conf to use. Uses the system one by default
+          type: string
+        sync_users:
+          description: Sync users from Kerberos into authentik
+          type: boolean
+        sync_users_password:
+          description: "When a user changes their password, sync it back to Kerberos"
+          type: boolean
+        sync_principal:
+          description: Principal to authenticate to kadmin for sync.
+          type: string
+        sync_ccache:
+          description: Credentials cache to authenticate to kadmin for sync. Must
+            be in the form TYPE:residual
+          type: string
+        connectivity:
+          additionalProperties:
+            type: string
+          description: Get cached source connectivity
+          nullable: true
+          readOnly: true
+          type: object
+        spnego_server_name:
+          description: Force the use of a specific server name for SPNEGO
+          type: string
+        spnego_ccache:
+          description: Credential cache to use for SPNEGO in form type:residual
+          type: string
+        password_login_update_internal_password:
+          description: "If enabled, the authentik-stored password will be updated\
+            \ upon login with the Kerberos password backend"
+          type: boolean
+      required:
+      - component
+      - connectivity
+      - icon
+      - managed
+      - meta_model_name
+      - name
+      - pk
+      - realm
+      - slug
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    KerberosSourcePropertyMapping:
+      description: Kerberos PropertyMapping Serializer
+      example:
+        component: component
+        verbose_name: verbose_name
+        expression: expression
+        verbose_name_plural: verbose_name_plural
+        meta_model_name: meta_model_name
+        managed: managed
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Pm uuid
+          type: string
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          nullable: true
+          title: Managed by authentik
+          type: string
+        name:
+          type: string
+        expression:
+          type: string
+        component:
+          description: Get object's component so that we know how to edit the object
+          readOnly: true
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+      required:
+      - component
+      - expression
+      - meta_model_name
+      - name
+      - pk
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    KerberosSourcePropertyMappingRequest:
+      description: Kerberos PropertyMapping Serializer
+      example:
+        expression: expression
+        managed: managed
+        name: name
+      properties:
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          minLength: 1
+          nullable: true
+          title: Managed by authentik
+          type: string
+        name:
+          minLength: 1
+          type: string
+        expression:
+          minLength: 1
+          type: string
+      required:
+      - expression
+      - name
+      type: object
+    KerberosSourceRequest:
+      description: Kerberos Source Serializer
+      example:
+        user_matching_mode: ""
+        user_path_template: user_path_template
+        group_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        sync_users: true
+        sync_keytab: sync_keytab
+        sync_ccache: sync_ccache
+        enabled: true
+        group_matching_mode: ""
+        password_login_update_internal_password: true
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        policy_engine_mode: null
+        enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        sync_users_password: true
+        sync_password: sync_password
+        spnego_server_name: spnego_server_name
+        krb5_conf: krb5_conf
+        spnego_keytab: spnego_keytab
+        name: name
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        realm: realm
+        spnego_ccache: spnego_ccache
+        slug: slug
+        sync_principal: sync_principal
+      properties:
+        name:
+          description: Source's display Name.
+          minLength: 1
+          type: string
+        slug:
+          description: "Internal source name, used in URLs."
+          maxLength: 50
+          minLength: 1
+          pattern: "^[-a-zA-Z0-9_]+$"
+          type: string
+        enabled:
+          type: boolean
+        authentication_flow:
+          description: Flow to use when authenticating existing users.
+          format: uuid
+          nullable: true
+          type: string
+        enrollment_flow:
+          description: Flow to use when enrolling new users.
+          format: uuid
+          nullable: true
+          type: string
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        policy_engine_mode:
+          $ref: '#/components/schemas/PolicyEngineMode'
+        user_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/UserMatchingModeEnum'
+          description: How the source determines if an existing user should be authenticated
+            or a new user enrolled.
+        user_path_template:
+          minLength: 1
+          type: string
+        group_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/GroupMatchingModeEnum'
+          description: How the source determines if an existing group should be used
+            or a new group created.
+        realm:
+          description: Kerberos realm
+          minLength: 1
+          type: string
+        krb5_conf:
+          description: Custom krb5.conf to use. Uses the system one by default
+          type: string
+        sync_users:
+          description: Sync users from Kerberos into authentik
+          type: boolean
+        sync_users_password:
+          description: "When a user changes their password, sync it back to Kerberos"
+          type: boolean
+        sync_principal:
+          description: Principal to authenticate to kadmin for sync.
+          type: string
+        sync_password:
+          description: Password to authenticate to kadmin for sync
+          type: string
+          writeOnly: true
+        sync_keytab:
+          description: Keytab to authenticate to kadmin for sync. Must be base64-encoded
+            or in the form TYPE:residual
+          type: string
+          writeOnly: true
+        sync_ccache:
+          description: Credentials cache to authenticate to kadmin for sync. Must
+            be in the form TYPE:residual
+          type: string
+        spnego_server_name:
+          description: Force the use of a specific server name for SPNEGO
+          type: string
+        spnego_keytab:
+          description: SPNEGO keytab base64-encoded or path to keytab in the form
+            FILE:path
+          type: string
+          writeOnly: true
+        spnego_ccache:
+          description: Credential cache to use for SPNEGO in form type:residual
+          type: string
+        password_login_update_internal_password:
+          description: "If enabled, the authentik-stored password will be updated\
+            \ upon login with the Kerberos password backend"
+          type: boolean
+      required:
+      - name
+      - realm
+      - slug
+      type: object
+    KerberosSyncStatus:
+      description: Kerberos Source sync status
+      example:
+        is_running: true
+        tasks:
+        - duration: 0.8008281904610115
+          uid: uid
+          expires: 2000-01-23T04:56:07.000+00:00
+          expiring: true
+          full_name: full_name
+          start_timestamp: 2000-01-23T04:56:07.000+00:00
+          name: name
+          description: description
+          messages:
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          finish_timestamp: 2000-01-23T04:56:07.000+00:00
+          status: null
+        - duration: 0.8008281904610115
+          uid: uid
+          expires: 2000-01-23T04:56:07.000+00:00
+          expiring: true
+          full_name: full_name
+          start_timestamp: 2000-01-23T04:56:07.000+00:00
+          name: name
+          description: description
+          messages:
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          finish_timestamp: 2000-01-23T04:56:07.000+00:00
+          status: null
+      properties:
+        is_running:
+          readOnly: true
+          type: boolean
+        tasks:
+          items:
+            $ref: '#/components/schemas/SystemTask'
+          readOnly: true
+          type: array
+      required:
+      - is_running
+      - tasks
+      type: object
     KubernetesServiceConnection:
       description: KubernetesServiceConnection Serializer
       example:
@@ -48884,6 +50593,10 @@ components:
       - authentik_providers_scim.scimprovider
       - authentik_providers_scim.scimmapping
       - authentik_rbac.role
+      - authentik_sources_kerberos.kerberossource
+      - authentik_sources_kerberos.kerberossourcepropertymapping
+      - authentik_sources_kerberos.userkerberossourceconnection
+      - authentik_sources_kerberos.groupkerberossourceconnection
       - authentik_sources_ldap.ldapsource
       - authentik_sources_ldap.ldapsourcepropertymapping
       - authentik_sources_oauth.oauthsource
@@ -52759,6 +54472,38 @@ components:
       - pagination
       - results
       type: object
+    PaginatedGroupKerberosSourceConnectionList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - identifier: identifier
+          created: 2000-01-23T04:56:07.000+00:00
+          pk: 0
+          source: ""
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - identifier: identifier
+          created: 2000-01-23T04:56:07.000+00:00
+          pk: 0
+          source: ""
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/GroupKerberosSourceConnection'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedGroupList:
       example:
         pagination:
@@ -53186,6 +54931,132 @@ components:
         results:
           items:
             $ref: '#/components/schemas/InvitationStage'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedKerberosSourceList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - user_matching_mode: ""
+          verbose_name_plural: verbose_name_plural
+          group_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          sync_users: true
+          icon: icon
+          sync_ccache: sync_ccache
+          enabled: true
+          spnego_server_name: spnego_server_name
+          krb5_conf: krb5_conf
+          connectivity:
+            key: connectivity
+          managed: managed
+          user_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          spnego_ccache: spnego_ccache
+          slug: slug
+          sync_principal: sync_principal
+          user_path_template: user_path_template
+          group_matching_mode: ""
+          password_login_update_internal_password: true
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          policy_engine_mode: null
+          enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          component: component
+          verbose_name: verbose_name
+          sync_users_password: true
+          meta_model_name: meta_model_name
+          name: name
+          realm: realm
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - user_matching_mode: ""
+          verbose_name_plural: verbose_name_plural
+          group_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          sync_users: true
+          icon: icon
+          sync_ccache: sync_ccache
+          enabled: true
+          spnego_server_name: spnego_server_name
+          krb5_conf: krb5_conf
+          connectivity:
+            key: connectivity
+          managed: managed
+          user_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          spnego_ccache: spnego_ccache
+          slug: slug
+          sync_principal: sync_principal
+          user_path_template: user_path_template
+          group_matching_mode: ""
+          password_login_update_internal_password: true
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          policy_engine_mode: null
+          enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          component: component
+          verbose_name: verbose_name
+          sync_users_password: true
+          meta_model_name: meta_model_name
+          name: name
+          realm: realm
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/KerberosSource'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedKerberosSourcePropertyMappingList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - component: component
+          verbose_name: verbose_name
+          expression: expression
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          managed: managed
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - component: component
+          verbose_name: verbose_name
+          expression: expression
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          managed: managed
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/KerberosSourcePropertyMapping'
           type: array
       required:
       - pagination
@@ -57209,6 +59080,38 @@ components:
       - pagination
       - results
       type: object
+    PaginatedUserKerberosSourceConnectionList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - identifier: identifier
+          created: 2000-01-23T04:56:07.000+00:00
+          pk: 0
+          source: ""
+          user: 6
+        - identifier: identifier
+          created: 2000-01-23T04:56:07.000+00:00
+          pk: 0
+          source: ""
+          user: 6
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/UserKerberosSourceConnection'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedUserList:
       example:
         pagination:
@@ -59750,6 +61653,152 @@ components:
             \ when no invitation is given."
           type: boolean
       type: object
+    PatchedKerberosSourcePropertyMappingRequest:
+      description: Kerberos PropertyMapping Serializer
+      example:
+        expression: expression
+        managed: managed
+        name: name
+      properties:
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          minLength: 1
+          nullable: true
+          title: Managed by authentik
+          type: string
+        name:
+          minLength: 1
+          type: string
+        expression:
+          minLength: 1
+          type: string
+      type: object
+    PatchedKerberosSourceRequest:
+      description: Kerberos Source Serializer
+      example:
+        user_matching_mode: ""
+        user_path_template: user_path_template
+        group_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        sync_users: true
+        sync_keytab: sync_keytab
+        sync_ccache: sync_ccache
+        enabled: true
+        group_matching_mode: ""
+        password_login_update_internal_password: true
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        policy_engine_mode: null
+        enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        sync_users_password: true
+        sync_password: sync_password
+        spnego_server_name: spnego_server_name
+        krb5_conf: krb5_conf
+        spnego_keytab: spnego_keytab
+        name: name
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        realm: realm
+        spnego_ccache: spnego_ccache
+        slug: slug
+        sync_principal: sync_principal
+      properties:
+        name:
+          description: Source's display Name.
+          minLength: 1
+          type: string
+        slug:
+          description: "Internal source name, used in URLs."
+          maxLength: 50
+          minLength: 1
+          pattern: "^[-a-zA-Z0-9_]+$"
+          type: string
+        enabled:
+          type: boolean
+        authentication_flow:
+          description: Flow to use when authenticating existing users.
+          format: uuid
+          nullable: true
+          type: string
+        enrollment_flow:
+          description: Flow to use when enrolling new users.
+          format: uuid
+          nullable: true
+          type: string
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        policy_engine_mode:
+          $ref: '#/components/schemas/PolicyEngineMode'
+        user_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/UserMatchingModeEnum'
+          description: How the source determines if an existing user should be authenticated
+            or a new user enrolled.
+        user_path_template:
+          minLength: 1
+          type: string
+        group_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/GroupMatchingModeEnum'
+          description: How the source determines if an existing group should be used
+            or a new group created.
+        realm:
+          description: Kerberos realm
+          minLength: 1
+          type: string
+        krb5_conf:
+          description: Custom krb5.conf to use. Uses the system one by default
+          type: string
+        sync_users:
+          description: Sync users from Kerberos into authentik
+          type: boolean
+        sync_users_password:
+          description: "When a user changes their password, sync it back to Kerberos"
+          type: boolean
+        sync_principal:
+          description: Principal to authenticate to kadmin for sync.
+          type: string
+        sync_password:
+          description: Password to authenticate to kadmin for sync
+          type: string
+          writeOnly: true
+        sync_keytab:
+          description: Keytab to authenticate to kadmin for sync. Must be base64-encoded
+            or in the form TYPE:residual
+          type: string
+          writeOnly: true
+        sync_ccache:
+          description: Credentials cache to authenticate to kadmin for sync. Must
+            be in the form TYPE:residual
+          type: string
+        spnego_server_name:
+          description: Force the use of a specific server name for SPNEGO
+          type: string
+        spnego_keytab:
+          description: SPNEGO keytab base64-encoded or path to keytab in the form
+            FILE:path
+          type: string
+          writeOnly: true
+        spnego_ccache:
+          description: Credential cache to use for SPNEGO in form type:residual
+          type: string
+        password_login_update_internal_password:
+          description: "If enabled, the authentik-stored password will be updated\
+            \ upon login with the Kerberos password backend"
+          type: boolean
+      type: object
     PatchedKubernetesServiceConnectionRequest:
       description: KubernetesServiceConnection Serializer
       example:
@@ -61985,6 +64034,18 @@ components:
           items:
             $ref: '#/components/schemas/FlowSetRequest'
           type: array
+      type: object
+    PatchedUserKerberosSourceConnectionRequest:
+      description: Kerberos Source Serializer
+      example:
+        identifier: identifier
+        user: 0
+      properties:
+        user:
+          type: integer
+        identifier:
+          minLength: 1
+          type: string
       type: object
     PatchedUserLoginStageRequest:
       description: UserLoginStage Serializer
@@ -68614,6 +70675,53 @@ components:
           type: object
       required:
       - name
+      type: object
+    UserKerberosSourceConnection:
+      description: Kerberos Source Serializer
+      example:
+        identifier: identifier
+        created: 2000-01-23T04:56:07.000+00:00
+        pk: 0
+        source: ""
+        user: 6
+      properties:
+        pk:
+          readOnly: true
+          title: ID
+          type: integer
+        user:
+          type: integer
+        source:
+          allOf:
+          - $ref: '#/components/schemas/Source'
+          readOnly: true
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+        identifier:
+          type: string
+      required:
+      - created
+      - identifier
+      - pk
+      - source
+      - user
+      type: object
+    UserKerberosSourceConnectionRequest:
+      description: Kerberos Source Serializer
+      example:
+        identifier: identifier
+        user: 0
+      properties:
+        user:
+          type: integer
+        identifier:
+          minLength: 1
+          type: string
+      required:
+      - identifier
+      - user
       type: object
     UserLoginChallenge:
       description: Empty challenge

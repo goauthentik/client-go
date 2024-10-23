@@ -66,6 +66,13 @@ Method | HTTP request | Description
 [**PropertymappingsProviderScopeRetrieve**](PropertymappingsApi.md#PropertymappingsProviderScopeRetrieve) | **Get** /propertymappings/provider/scope/{pm_uuid}/ | 
 [**PropertymappingsProviderScopeUpdate**](PropertymappingsApi.md#PropertymappingsProviderScopeUpdate) | **Put** /propertymappings/provider/scope/{pm_uuid}/ | 
 [**PropertymappingsProviderScopeUsedByList**](PropertymappingsApi.md#PropertymappingsProviderScopeUsedByList) | **Get** /propertymappings/provider/scope/{pm_uuid}/used_by/ | 
+[**PropertymappingsSourceKerberosCreate**](PropertymappingsApi.md#PropertymappingsSourceKerberosCreate) | **Post** /propertymappings/source/kerberos/ | 
+[**PropertymappingsSourceKerberosDestroy**](PropertymappingsApi.md#PropertymappingsSourceKerberosDestroy) | **Delete** /propertymappings/source/kerberos/{pm_uuid}/ | 
+[**PropertymappingsSourceKerberosList**](PropertymappingsApi.md#PropertymappingsSourceKerberosList) | **Get** /propertymappings/source/kerberos/ | 
+[**PropertymappingsSourceKerberosPartialUpdate**](PropertymappingsApi.md#PropertymappingsSourceKerberosPartialUpdate) | **Patch** /propertymappings/source/kerberos/{pm_uuid}/ | 
+[**PropertymappingsSourceKerberosRetrieve**](PropertymappingsApi.md#PropertymappingsSourceKerberosRetrieve) | **Get** /propertymappings/source/kerberos/{pm_uuid}/ | 
+[**PropertymappingsSourceKerberosUpdate**](PropertymappingsApi.md#PropertymappingsSourceKerberosUpdate) | **Put** /propertymappings/source/kerberos/{pm_uuid}/ | 
+[**PropertymappingsSourceKerberosUsedByList**](PropertymappingsApi.md#PropertymappingsSourceKerberosUsedByList) | **Get** /propertymappings/source/kerberos/{pm_uuid}/used_by/ | 
 [**PropertymappingsSourceLdapCreate**](PropertymappingsApi.md#PropertymappingsSourceLdapCreate) | **Post** /propertymappings/source/ldap/ | 
 [**PropertymappingsSourceLdapDestroy**](PropertymappingsApi.md#PropertymappingsSourceLdapDestroy) | **Delete** /propertymappings/source/ldap/{pm_uuid}/ | 
 [**PropertymappingsSourceLdapList**](PropertymappingsApi.md#PropertymappingsSourceLdapList) | **Get** /propertymappings/source/ldap/ | 
@@ -4473,6 +4480,502 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPropertymappingsProviderScopeUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceKerberosCreate
+
+> KerberosSourcePropertyMapping PropertymappingsSourceKerberosCreate(ctx).KerberosSourcePropertyMappingRequest(kerberosSourcePropertyMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    kerberosSourcePropertyMappingRequest := *openapiclient.NewKerberosSourcePropertyMappingRequest("Name_example", "Expression_example") // KerberosSourcePropertyMappingRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceKerberosCreate(context.Background()).KerberosSourcePropertyMappingRequest(kerberosSourcePropertyMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceKerberosCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsSourceKerberosCreate`: KerberosSourcePropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceKerberosCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceKerberosCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **kerberosSourcePropertyMappingRequest** | [**KerberosSourcePropertyMappingRequest**](KerberosSourcePropertyMappingRequest.md) |  | 
+
+### Return type
+
+[**KerberosSourcePropertyMapping**](KerberosSourcePropertyMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceKerberosDestroy
+
+> PropertymappingsSourceKerberosDestroy(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kerberos Source Property Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceKerberosDestroy(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceKerberosDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this Kerberos Source Property Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceKerberosDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceKerberosList
+
+> PaginatedKerberosSourcePropertyMappingList PropertymappingsSourceKerberosList(ctx).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    managed := []string{"Inner_example"} // []string |  (optional)
+    managedIsnull := true // bool |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceKerberosList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceKerberosList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsSourceKerberosList`: PaginatedKerberosSourcePropertyMappingList
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceKerberosList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceKerberosListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **managed** | **[]string** |  | 
+ **managedIsnull** | **bool** |  | 
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedKerberosSourcePropertyMappingList**](PaginatedKerberosSourcePropertyMappingList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceKerberosPartialUpdate
+
+> KerberosSourcePropertyMapping PropertymappingsSourceKerberosPartialUpdate(ctx, pmUuid).PatchedKerberosSourcePropertyMappingRequest(patchedKerberosSourcePropertyMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kerberos Source Property Mapping.
+    patchedKerberosSourcePropertyMappingRequest := *openapiclient.NewPatchedKerberosSourcePropertyMappingRequest() // PatchedKerberosSourcePropertyMappingRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceKerberosPartialUpdate(context.Background(), pmUuid).PatchedKerberosSourcePropertyMappingRequest(patchedKerberosSourcePropertyMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceKerberosPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsSourceKerberosPartialUpdate`: KerberosSourcePropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceKerberosPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this Kerberos Source Property Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceKerberosPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedKerberosSourcePropertyMappingRequest** | [**PatchedKerberosSourcePropertyMappingRequest**](PatchedKerberosSourcePropertyMappingRequest.md) |  | 
+
+### Return type
+
+[**KerberosSourcePropertyMapping**](KerberosSourcePropertyMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceKerberosRetrieve
+
+> KerberosSourcePropertyMapping PropertymappingsSourceKerberosRetrieve(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kerberos Source Property Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceKerberosRetrieve(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceKerberosRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsSourceKerberosRetrieve`: KerberosSourcePropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceKerberosRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this Kerberos Source Property Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceKerberosRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**KerberosSourcePropertyMapping**](KerberosSourcePropertyMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceKerberosUpdate
+
+> KerberosSourcePropertyMapping PropertymappingsSourceKerberosUpdate(ctx, pmUuid).KerberosSourcePropertyMappingRequest(kerberosSourcePropertyMappingRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kerberos Source Property Mapping.
+    kerberosSourcePropertyMappingRequest := *openapiclient.NewKerberosSourcePropertyMappingRequest("Name_example", "Expression_example") // KerberosSourcePropertyMappingRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceKerberosUpdate(context.Background(), pmUuid).KerberosSourcePropertyMappingRequest(kerberosSourcePropertyMappingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceKerberosUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsSourceKerberosUpdate`: KerberosSourcePropertyMapping
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceKerberosUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this Kerberos Source Property Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceKerberosUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **kerberosSourcePropertyMappingRequest** | [**KerberosSourcePropertyMappingRequest**](KerberosSourcePropertyMappingRequest.md) |  | 
+
+### Return type
+
+[**KerberosSourcePropertyMapping**](KerberosSourcePropertyMapping.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PropertymappingsSourceKerberosUsedByList
+
+> []UsedBy PropertymappingsSourceKerberosUsedByList(ctx, pmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kerberos Source Property Mapping.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceKerberosUsedByList(context.Background(), pmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceKerberosUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PropertymappingsSourceKerberosUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceKerberosUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pmUuid** | **string** | A UUID string identifying this Kerberos Source Property Mapping. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPropertymappingsSourceKerberosUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

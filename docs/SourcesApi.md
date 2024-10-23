@@ -12,6 +12,12 @@ Method | HTTP request | Description
 [**SourcesAllTypesList**](SourcesApi.md#SourcesAllTypesList) | **Get** /sources/all/types/ | 
 [**SourcesAllUsedByList**](SourcesApi.md#SourcesAllUsedByList) | **Get** /sources/all/{slug}/used_by/ | 
 [**SourcesAllUserSettingsList**](SourcesApi.md#SourcesAllUserSettingsList) | **Get** /sources/all/user_settings/ | 
+[**SourcesGroupConnectionsKerberosDestroy**](SourcesApi.md#SourcesGroupConnectionsKerberosDestroy) | **Delete** /sources/group_connections/kerberos/{id}/ | 
+[**SourcesGroupConnectionsKerberosList**](SourcesApi.md#SourcesGroupConnectionsKerberosList) | **Get** /sources/group_connections/kerberos/ | 
+[**SourcesGroupConnectionsKerberosPartialUpdate**](SourcesApi.md#SourcesGroupConnectionsKerberosPartialUpdate) | **Patch** /sources/group_connections/kerberos/{id}/ | 
+[**SourcesGroupConnectionsKerberosRetrieve**](SourcesApi.md#SourcesGroupConnectionsKerberosRetrieve) | **Get** /sources/group_connections/kerberos/{id}/ | 
+[**SourcesGroupConnectionsKerberosUpdate**](SourcesApi.md#SourcesGroupConnectionsKerberosUpdate) | **Put** /sources/group_connections/kerberos/{id}/ | 
+[**SourcesGroupConnectionsKerberosUsedByList**](SourcesApi.md#SourcesGroupConnectionsKerberosUsedByList) | **Get** /sources/group_connections/kerberos/{id}/used_by/ | 
 [**SourcesGroupConnectionsOauthCreate**](SourcesApi.md#SourcesGroupConnectionsOauthCreate) | **Post** /sources/group_connections/oauth/ | 
 [**SourcesGroupConnectionsOauthDestroy**](SourcesApi.md#SourcesGroupConnectionsOauthDestroy) | **Delete** /sources/group_connections/oauth/{id}/ | 
 [**SourcesGroupConnectionsOauthList**](SourcesApi.md#SourcesGroupConnectionsOauthList) | **Get** /sources/group_connections/oauth/ | 
@@ -32,6 +38,14 @@ Method | HTTP request | Description
 [**SourcesGroupConnectionsSamlRetrieve**](SourcesApi.md#SourcesGroupConnectionsSamlRetrieve) | **Get** /sources/group_connections/saml/{id}/ | 
 [**SourcesGroupConnectionsSamlUpdate**](SourcesApi.md#SourcesGroupConnectionsSamlUpdate) | **Put** /sources/group_connections/saml/{id}/ | 
 [**SourcesGroupConnectionsSamlUsedByList**](SourcesApi.md#SourcesGroupConnectionsSamlUsedByList) | **Get** /sources/group_connections/saml/{id}/used_by/ | 
+[**SourcesKerberosCreate**](SourcesApi.md#SourcesKerberosCreate) | **Post** /sources/kerberos/ | 
+[**SourcesKerberosDestroy**](SourcesApi.md#SourcesKerberosDestroy) | **Delete** /sources/kerberos/{slug}/ | 
+[**SourcesKerberosList**](SourcesApi.md#SourcesKerberosList) | **Get** /sources/kerberos/ | 
+[**SourcesKerberosPartialUpdate**](SourcesApi.md#SourcesKerberosPartialUpdate) | **Patch** /sources/kerberos/{slug}/ | 
+[**SourcesKerberosRetrieve**](SourcesApi.md#SourcesKerberosRetrieve) | **Get** /sources/kerberos/{slug}/ | 
+[**SourcesKerberosSyncStatusRetrieve**](SourcesApi.md#SourcesKerberosSyncStatusRetrieve) | **Get** /sources/kerberos/{slug}/sync/status/ | 
+[**SourcesKerberosUpdate**](SourcesApi.md#SourcesKerberosUpdate) | **Put** /sources/kerberos/{slug}/ | 
+[**SourcesKerberosUsedByList**](SourcesApi.md#SourcesKerberosUsedByList) | **Get** /sources/kerberos/{slug}/used_by/ | 
 [**SourcesLdapCreate**](SourcesApi.md#SourcesLdapCreate) | **Post** /sources/ldap/ | 
 [**SourcesLdapDebugRetrieve**](SourcesApi.md#SourcesLdapDebugRetrieve) | **Get** /sources/ldap/{slug}/debug/ | 
 [**SourcesLdapDestroy**](SourcesApi.md#SourcesLdapDestroy) | **Delete** /sources/ldap/{slug}/ | 
@@ -93,6 +107,13 @@ Method | HTTP request | Description
 [**SourcesUserConnectionsAllRetrieve**](SourcesApi.md#SourcesUserConnectionsAllRetrieve) | **Get** /sources/user_connections/all/{id}/ | 
 [**SourcesUserConnectionsAllUpdate**](SourcesApi.md#SourcesUserConnectionsAllUpdate) | **Put** /sources/user_connections/all/{id}/ | 
 [**SourcesUserConnectionsAllUsedByList**](SourcesApi.md#SourcesUserConnectionsAllUsedByList) | **Get** /sources/user_connections/all/{id}/used_by/ | 
+[**SourcesUserConnectionsKerberosCreate**](SourcesApi.md#SourcesUserConnectionsKerberosCreate) | **Post** /sources/user_connections/kerberos/ | 
+[**SourcesUserConnectionsKerberosDestroy**](SourcesApi.md#SourcesUserConnectionsKerberosDestroy) | **Delete** /sources/user_connections/kerberos/{id}/ | 
+[**SourcesUserConnectionsKerberosList**](SourcesApi.md#SourcesUserConnectionsKerberosList) | **Get** /sources/user_connections/kerberos/ | 
+[**SourcesUserConnectionsKerberosPartialUpdate**](SourcesApi.md#SourcesUserConnectionsKerberosPartialUpdate) | **Patch** /sources/user_connections/kerberos/{id}/ | 
+[**SourcesUserConnectionsKerberosRetrieve**](SourcesApi.md#SourcesUserConnectionsKerberosRetrieve) | **Get** /sources/user_connections/kerberos/{id}/ | 
+[**SourcesUserConnectionsKerberosUpdate**](SourcesApi.md#SourcesUserConnectionsKerberosUpdate) | **Put** /sources/user_connections/kerberos/{id}/ | 
+[**SourcesUserConnectionsKerberosUsedByList**](SourcesApi.md#SourcesUserConnectionsKerberosUsedByList) | **Get** /sources/user_connections/kerberos/{id}/used_by/ | 
 [**SourcesUserConnectionsOauthCreate**](SourcesApi.md#SourcesUserConnectionsOauthCreate) | **Post** /sources/user_connections/oauth/ | 
 [**SourcesUserConnectionsOauthDestroy**](SourcesApi.md#SourcesUserConnectionsOauthDestroy) | **Delete** /sources/user_connections/oauth/{id}/ | 
 [**SourcesUserConnectionsOauthList**](SourcesApi.md#SourcesUserConnectionsOauthList) | **Get** /sources/user_connections/oauth/ | 
@@ -652,6 +673,430 @@ Other parameters are passed through a pointer to a apiSourcesAllUserSettingsList
 ### Return type
 
 [**[]UserSetting**](UserSetting.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsKerberosDestroy
+
+> SourcesGroupConnectionsKerberosDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Group Kerberos Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsKerberosDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsKerberosDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Group Kerberos Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsKerberosDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsKerberosList
+
+> PaginatedGroupKerberosSourceConnectionList SourcesGroupConnectionsKerberosList(ctx).Group(group).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    group := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsKerberosList(context.Background()).Group(group).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsKerberosList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsKerberosList`: PaginatedGroupKerberosSourceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsKerberosList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsKerberosListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+ **sourceSlug** | **string** |  | 
+
+### Return type
+
+[**PaginatedGroupKerberosSourceConnectionList**](PaginatedGroupKerberosSourceConnectionList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsKerberosPartialUpdate
+
+> GroupKerberosSourceConnection SourcesGroupConnectionsKerberosPartialUpdate(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Group Kerberos Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsKerberosPartialUpdate(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsKerberosPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsKerberosPartialUpdate`: GroupKerberosSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsKerberosPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Group Kerberos Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsKerberosPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**GroupKerberosSourceConnection**](GroupKerberosSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsKerberosRetrieve
+
+> GroupKerberosSourceConnection SourcesGroupConnectionsKerberosRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Group Kerberos Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsKerberosRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsKerberosRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsKerberosRetrieve`: GroupKerberosSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsKerberosRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Group Kerberos Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsKerberosRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**GroupKerberosSourceConnection**](GroupKerberosSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsKerberosUpdate
+
+> GroupKerberosSourceConnection SourcesGroupConnectionsKerberosUpdate(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Group Kerberos Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsKerberosUpdate(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsKerberosUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsKerberosUpdate`: GroupKerberosSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsKerberosUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Group Kerberos Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsKerberosUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**GroupKerberosSourceConnection**](GroupKerberosSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsKerberosUsedByList
+
+> []UsedBy SourcesGroupConnectionsKerberosUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Group Kerberos Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsKerberosUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsKerberosUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsKerberosUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsKerberosUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Group Kerberos Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsKerberosUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
 
 ### Authorization
 
@@ -2037,6 +2482,584 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSourcesGroupConnectionsSamlUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesKerberosCreate
+
+> KerberosSource SourcesKerberosCreate(ctx).KerberosSourceRequest(kerberosSourceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    kerberosSourceRequest := *openapiclient.NewKerberosSourceRequest("Name_example", "Slug_example", "Realm_example") // KerberosSourceRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesKerberosCreate(context.Background()).KerberosSourceRequest(kerberosSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesKerberosCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesKerberosCreate`: KerberosSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesKerberosCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesKerberosCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **kerberosSourceRequest** | [**KerberosSourceRequest**](KerberosSourceRequest.md) |  | 
+
+### Return type
+
+[**KerberosSource**](KerberosSource.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesKerberosDestroy
+
+> SourcesKerberosDestroy(ctx, slug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    slug := "slug_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesKerberosDestroy(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesKerberosDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesKerberosDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesKerberosList
+
+> PaginatedKerberosSourceList SourcesKerberosList(ctx).Enabled(enabled).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).Realm(realm).Search(search).Slug(slug).SpnegoServerName(spnegoServerName).SyncPrincipal(syncPrincipal).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    enabled := true // bool |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    passwordLoginUpdateInternalPassword := true // bool |  (optional)
+    realm := "realm_example" // string |  (optional)
+    search := "search_example" // string | A search term. (optional)
+    slug := "slug_example" // string |  (optional)
+    spnegoServerName := "spnegoServerName_example" // string |  (optional)
+    syncPrincipal := "syncPrincipal_example" // string |  (optional)
+    syncUsers := true // bool |  (optional)
+    syncUsersPassword := true // bool |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesKerberosList(context.Background()).Enabled(enabled).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).Realm(realm).Search(search).Slug(slug).SpnegoServerName(spnegoServerName).SyncPrincipal(syncPrincipal).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesKerberosList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesKerberosList`: PaginatedKerberosSourceList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesKerberosList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesKerberosListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **enabled** | **bool** |  | 
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **passwordLoginUpdateInternalPassword** | **bool** |  | 
+ **realm** | **string** |  | 
+ **search** | **string** | A search term. | 
+ **slug** | **string** |  | 
+ **spnegoServerName** | **string** |  | 
+ **syncPrincipal** | **string** |  | 
+ **syncUsers** | **bool** |  | 
+ **syncUsersPassword** | **bool** |  | 
+
+### Return type
+
+[**PaginatedKerberosSourceList**](PaginatedKerberosSourceList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesKerberosPartialUpdate
+
+> KerberosSource SourcesKerberosPartialUpdate(ctx, slug).PatchedKerberosSourceRequest(patchedKerberosSourceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    slug := "slug_example" // string | 
+    patchedKerberosSourceRequest := *openapiclient.NewPatchedKerberosSourceRequest() // PatchedKerberosSourceRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesKerberosPartialUpdate(context.Background(), slug).PatchedKerberosSourceRequest(patchedKerberosSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesKerberosPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesKerberosPartialUpdate`: KerberosSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesKerberosPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesKerberosPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedKerberosSourceRequest** | [**PatchedKerberosSourceRequest**](PatchedKerberosSourceRequest.md) |  | 
+
+### Return type
+
+[**KerberosSource**](KerberosSource.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesKerberosRetrieve
+
+> KerberosSource SourcesKerberosRetrieve(ctx, slug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    slug := "slug_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesKerberosRetrieve(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesKerberosRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesKerberosRetrieve`: KerberosSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesKerberosRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesKerberosRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**KerberosSource**](KerberosSource.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesKerberosSyncStatusRetrieve
+
+> KerberosSyncStatus SourcesKerberosSyncStatusRetrieve(ctx, slug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    slug := "slug_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesKerberosSyncStatusRetrieve(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesKerberosSyncStatusRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesKerberosSyncStatusRetrieve`: KerberosSyncStatus
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesKerberosSyncStatusRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesKerberosSyncStatusRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**KerberosSyncStatus**](KerberosSyncStatus.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesKerberosUpdate
+
+> KerberosSource SourcesKerberosUpdate(ctx, slug).KerberosSourceRequest(kerberosSourceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    slug := "slug_example" // string | 
+    kerberosSourceRequest := *openapiclient.NewKerberosSourceRequest("Name_example", "Slug_example", "Realm_example") // KerberosSourceRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesKerberosUpdate(context.Background(), slug).KerberosSourceRequest(kerberosSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesKerberosUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesKerberosUpdate`: KerberosSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesKerberosUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesKerberosUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **kerberosSourceRequest** | [**KerberosSourceRequest**](KerberosSourceRequest.md) |  | 
+
+### Return type
+
+[**KerberosSource**](KerberosSource.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesKerberosUsedByList
+
+> []UsedBy SourcesKerberosUsedByList(ctx, slug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    slug := "slug_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesKerberosUsedByList(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesKerberosUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesKerberosUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesKerberosUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesKerberosUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -6455,6 +7478,498 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSourcesUserConnectionsAllUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsKerberosCreate
+
+> UserKerberosSourceConnection SourcesUserConnectionsKerberosCreate(ctx).UserKerberosSourceConnectionRequest(userKerberosSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userKerberosSourceConnectionRequest := *openapiclient.NewUserKerberosSourceConnectionRequest(int32(123), "Identifier_example") // UserKerberosSourceConnectionRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsKerberosCreate(context.Background()).UserKerberosSourceConnectionRequest(userKerberosSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsKerberosCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsKerberosCreate`: UserKerberosSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsKerberosCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsKerberosCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userKerberosSourceConnectionRequest** | [**UserKerberosSourceConnectionRequest**](UserKerberosSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**UserKerberosSourceConnection**](UserKerberosSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsKerberosDestroy
+
+> SourcesUserConnectionsKerberosDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User Kerberos Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsKerberosDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsKerberosDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User Kerberos Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsKerberosDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsKerberosList
+
+> PaginatedUserKerberosSourceConnectionList SourcesUserConnectionsKerberosList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsKerberosList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsKerberosList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsKerberosList`: PaginatedUserKerberosSourceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsKerberosList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsKerberosListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+ **sourceSlug** | **string** |  | 
+
+### Return type
+
+[**PaginatedUserKerberosSourceConnectionList**](PaginatedUserKerberosSourceConnectionList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsKerberosPartialUpdate
+
+> UserKerberosSourceConnection SourcesUserConnectionsKerberosPartialUpdate(ctx, id).PatchedUserKerberosSourceConnectionRequest(patchedUserKerberosSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User Kerberos Source Connection.
+    patchedUserKerberosSourceConnectionRequest := *openapiclient.NewPatchedUserKerberosSourceConnectionRequest() // PatchedUserKerberosSourceConnectionRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsKerberosPartialUpdate(context.Background(), id).PatchedUserKerberosSourceConnectionRequest(patchedUserKerberosSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsKerberosPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsKerberosPartialUpdate`: UserKerberosSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsKerberosPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User Kerberos Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsKerberosPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedUserKerberosSourceConnectionRequest** | [**PatchedUserKerberosSourceConnectionRequest**](PatchedUserKerberosSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**UserKerberosSourceConnection**](UserKerberosSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsKerberosRetrieve
+
+> UserKerberosSourceConnection SourcesUserConnectionsKerberosRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User Kerberos Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsKerberosRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsKerberosRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsKerberosRetrieve`: UserKerberosSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsKerberosRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User Kerberos Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsKerberosRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**UserKerberosSourceConnection**](UserKerberosSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsKerberosUpdate
+
+> UserKerberosSourceConnection SourcesUserConnectionsKerberosUpdate(ctx, id).UserKerberosSourceConnectionRequest(userKerberosSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User Kerberos Source Connection.
+    userKerberosSourceConnectionRequest := *openapiclient.NewUserKerberosSourceConnectionRequest(int32(123), "Identifier_example") // UserKerberosSourceConnectionRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsKerberosUpdate(context.Background(), id).UserKerberosSourceConnectionRequest(userKerberosSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsKerberosUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsKerberosUpdate`: UserKerberosSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsKerberosUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User Kerberos Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsKerberosUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **userKerberosSourceConnectionRequest** | [**UserKerberosSourceConnectionRequest**](UserKerberosSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**UserKerberosSourceConnection**](UserKerberosSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsKerberosUsedByList
+
+> []UsedBy SourcesUserConnectionsKerberosUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User Kerberos Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsKerberosUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsKerberosUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsKerberosUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsKerberosUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User Kerberos Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsKerberosUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

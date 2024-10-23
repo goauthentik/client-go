@@ -8402,6 +8402,952 @@ func (a *PropertymappingsApiService) PropertymappingsProviderScopeUsedByListExec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiPropertymappingsSourceKerberosCreateRequest struct {
+	ctx                                  context.Context
+	ApiService                           *PropertymappingsApiService
+	kerberosSourcePropertyMappingRequest *KerberosSourcePropertyMappingRequest
+}
+
+func (r ApiPropertymappingsSourceKerberosCreateRequest) KerberosSourcePropertyMappingRequest(kerberosSourcePropertyMappingRequest KerberosSourcePropertyMappingRequest) ApiPropertymappingsSourceKerberosCreateRequest {
+	r.kerberosSourcePropertyMappingRequest = &kerberosSourcePropertyMappingRequest
+	return r
+}
+
+func (r ApiPropertymappingsSourceKerberosCreateRequest) Execute() (*KerberosSourcePropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsSourceKerberosCreateExecute(r)
+}
+
+/*
+PropertymappingsSourceKerberosCreate Method for PropertymappingsSourceKerberosCreate
+
+KerberosSource PropertyMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPropertymappingsSourceKerberosCreateRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsSourceKerberosCreate(ctx context.Context) ApiPropertymappingsSourceKerberosCreateRequest {
+	return ApiPropertymappingsSourceKerberosCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return KerberosSourcePropertyMapping
+func (a *PropertymappingsApiService) PropertymappingsSourceKerberosCreateExecute(r ApiPropertymappingsSourceKerberosCreateRequest) (*KerberosSourcePropertyMapping, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *KerberosSourcePropertyMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSourceKerberosCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/source/kerberos/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.kerberosSourcePropertyMappingRequest == nil {
+		return localVarReturnValue, nil, reportError("kerberosSourcePropertyMappingRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.kerberosSourcePropertyMappingRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsSourceKerberosDestroyRequest struct {
+	ctx        context.Context
+	ApiService *PropertymappingsApiService
+	pmUuid     string
+}
+
+func (r ApiPropertymappingsSourceKerberosDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PropertymappingsSourceKerberosDestroyExecute(r)
+}
+
+/*
+PropertymappingsSourceKerberosDestroy Method for PropertymappingsSourceKerberosDestroy
+
+KerberosSource PropertyMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this Kerberos Source Property Mapping.
+	@return ApiPropertymappingsSourceKerberosDestroyRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsSourceKerberosDestroy(ctx context.Context, pmUuid string) ApiPropertymappingsSourceKerberosDestroyRequest {
+	return ApiPropertymappingsSourceKerberosDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+func (a *PropertymappingsApiService) PropertymappingsSourceKerberosDestroyExecute(r ApiPropertymappingsSourceKerberosDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSourceKerberosDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/source/kerberos/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsSourceKerberosListRequest struct {
+	ctx           context.Context
+	ApiService    *PropertymappingsApiService
+	managed       *[]string
+	managedIsnull *bool
+	name          *string
+	ordering      *string
+	page          *int32
+	pageSize      *int32
+	search        *string
+}
+
+func (r ApiPropertymappingsSourceKerberosListRequest) Managed(managed []string) ApiPropertymappingsSourceKerberosListRequest {
+	r.managed = &managed
+	return r
+}
+
+func (r ApiPropertymappingsSourceKerberosListRequest) ManagedIsnull(managedIsnull bool) ApiPropertymappingsSourceKerberosListRequest {
+	r.managedIsnull = &managedIsnull
+	return r
+}
+
+func (r ApiPropertymappingsSourceKerberosListRequest) Name(name string) ApiPropertymappingsSourceKerberosListRequest {
+	r.name = &name
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiPropertymappingsSourceKerberosListRequest) Ordering(ordering string) ApiPropertymappingsSourceKerberosListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiPropertymappingsSourceKerberosListRequest) Page(page int32) ApiPropertymappingsSourceKerberosListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiPropertymappingsSourceKerberosListRequest) PageSize(pageSize int32) ApiPropertymappingsSourceKerberosListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// A search term.
+func (r ApiPropertymappingsSourceKerberosListRequest) Search(search string) ApiPropertymappingsSourceKerberosListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiPropertymappingsSourceKerberosListRequest) Execute() (*PaginatedKerberosSourcePropertyMappingList, *http.Response, error) {
+	return r.ApiService.PropertymappingsSourceKerberosListExecute(r)
+}
+
+/*
+PropertymappingsSourceKerberosList Method for PropertymappingsSourceKerberosList
+
+KerberosSource PropertyMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPropertymappingsSourceKerberosListRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsSourceKerberosList(ctx context.Context) ApiPropertymappingsSourceKerberosListRequest {
+	return ApiPropertymappingsSourceKerberosListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedKerberosSourcePropertyMappingList
+func (a *PropertymappingsApiService) PropertymappingsSourceKerberosListExecute(r ApiPropertymappingsSourceKerberosListRequest) (*PaginatedKerberosSourcePropertyMappingList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedKerberosSourcePropertyMappingList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSourceKerberosList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/source/kerberos/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.managed != nil {
+		t := *r.managed
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("managed", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("managed", parameterToString(t, "multi"))
+		}
+	}
+	if r.managedIsnull != nil {
+		localVarQueryParams.Add("managed__isnull", parameterToString(*r.managedIsnull, ""))
+	}
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsSourceKerberosPartialUpdateRequest struct {
+	ctx                                         context.Context
+	ApiService                                  *PropertymappingsApiService
+	pmUuid                                      string
+	patchedKerberosSourcePropertyMappingRequest *PatchedKerberosSourcePropertyMappingRequest
+}
+
+func (r ApiPropertymappingsSourceKerberosPartialUpdateRequest) PatchedKerberosSourcePropertyMappingRequest(patchedKerberosSourcePropertyMappingRequest PatchedKerberosSourcePropertyMappingRequest) ApiPropertymappingsSourceKerberosPartialUpdateRequest {
+	r.patchedKerberosSourcePropertyMappingRequest = &patchedKerberosSourcePropertyMappingRequest
+	return r
+}
+
+func (r ApiPropertymappingsSourceKerberosPartialUpdateRequest) Execute() (*KerberosSourcePropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsSourceKerberosPartialUpdateExecute(r)
+}
+
+/*
+PropertymappingsSourceKerberosPartialUpdate Method for PropertymappingsSourceKerberosPartialUpdate
+
+KerberosSource PropertyMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this Kerberos Source Property Mapping.
+	@return ApiPropertymappingsSourceKerberosPartialUpdateRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsSourceKerberosPartialUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsSourceKerberosPartialUpdateRequest {
+	return ApiPropertymappingsSourceKerberosPartialUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return KerberosSourcePropertyMapping
+func (a *PropertymappingsApiService) PropertymappingsSourceKerberosPartialUpdateExecute(r ApiPropertymappingsSourceKerberosPartialUpdateRequest) (*KerberosSourcePropertyMapping, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *KerberosSourcePropertyMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSourceKerberosPartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/source/kerberos/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedKerberosSourcePropertyMappingRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsSourceKerberosRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *PropertymappingsApiService
+	pmUuid     string
+}
+
+func (r ApiPropertymappingsSourceKerberosRetrieveRequest) Execute() (*KerberosSourcePropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsSourceKerberosRetrieveExecute(r)
+}
+
+/*
+PropertymappingsSourceKerberosRetrieve Method for PropertymappingsSourceKerberosRetrieve
+
+KerberosSource PropertyMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this Kerberos Source Property Mapping.
+	@return ApiPropertymappingsSourceKerberosRetrieveRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsSourceKerberosRetrieve(ctx context.Context, pmUuid string) ApiPropertymappingsSourceKerberosRetrieveRequest {
+	return ApiPropertymappingsSourceKerberosRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return KerberosSourcePropertyMapping
+func (a *PropertymappingsApiService) PropertymappingsSourceKerberosRetrieveExecute(r ApiPropertymappingsSourceKerberosRetrieveRequest) (*KerberosSourcePropertyMapping, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *KerberosSourcePropertyMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSourceKerberosRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/source/kerberos/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsSourceKerberosUpdateRequest struct {
+	ctx                                  context.Context
+	ApiService                           *PropertymappingsApiService
+	pmUuid                               string
+	kerberosSourcePropertyMappingRequest *KerberosSourcePropertyMappingRequest
+}
+
+func (r ApiPropertymappingsSourceKerberosUpdateRequest) KerberosSourcePropertyMappingRequest(kerberosSourcePropertyMappingRequest KerberosSourcePropertyMappingRequest) ApiPropertymappingsSourceKerberosUpdateRequest {
+	r.kerberosSourcePropertyMappingRequest = &kerberosSourcePropertyMappingRequest
+	return r
+}
+
+func (r ApiPropertymappingsSourceKerberosUpdateRequest) Execute() (*KerberosSourcePropertyMapping, *http.Response, error) {
+	return r.ApiService.PropertymappingsSourceKerberosUpdateExecute(r)
+}
+
+/*
+PropertymappingsSourceKerberosUpdate Method for PropertymappingsSourceKerberosUpdate
+
+KerberosSource PropertyMapping Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this Kerberos Source Property Mapping.
+	@return ApiPropertymappingsSourceKerberosUpdateRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsSourceKerberosUpdate(ctx context.Context, pmUuid string) ApiPropertymappingsSourceKerberosUpdateRequest {
+	return ApiPropertymappingsSourceKerberosUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return KerberosSourcePropertyMapping
+func (a *PropertymappingsApiService) PropertymappingsSourceKerberosUpdateExecute(r ApiPropertymappingsSourceKerberosUpdateRequest) (*KerberosSourcePropertyMapping, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *KerberosSourcePropertyMapping
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSourceKerberosUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/source/kerberos/{pm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.kerberosSourcePropertyMappingRequest == nil {
+		return localVarReturnValue, nil, reportError("kerberosSourcePropertyMappingRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.kerberosSourcePropertyMappingRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPropertymappingsSourceKerberosUsedByListRequest struct {
+	ctx        context.Context
+	ApiService *PropertymappingsApiService
+	pmUuid     string
+}
+
+func (r ApiPropertymappingsSourceKerberosUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.PropertymappingsSourceKerberosUsedByListExecute(r)
+}
+
+/*
+PropertymappingsSourceKerberosUsedByList Method for PropertymappingsSourceKerberosUsedByList
+
+Get a list of all objects that use this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pmUuid A UUID string identifying this Kerberos Source Property Mapping.
+	@return ApiPropertymappingsSourceKerberosUsedByListRequest
+*/
+func (a *PropertymappingsApiService) PropertymappingsSourceKerberosUsedByList(ctx context.Context, pmUuid string) ApiPropertymappingsSourceKerberosUsedByListRequest {
+	return ApiPropertymappingsSourceKerberosUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pmUuid:     pmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []UsedBy
+func (a *PropertymappingsApiService) PropertymappingsSourceKerberosUsedByListExecute(r ApiPropertymappingsSourceKerberosUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PropertymappingsApiService.PropertymappingsSourceKerberosUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/propertymappings/source/kerberos/{pm_uuid}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pm_uuid"+"}", url.PathEscape(parameterToString(r.pmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiPropertymappingsSourceLdapCreateRequest struct {
 	ctx                              context.Context
 	ApiService                       *PropertymappingsApiService

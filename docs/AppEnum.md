@@ -47,6 +47,8 @@
 
 * `RECOVERY` (value: `"authentik.recovery"`)
 
+* `SOURCES_KERBEROS` (value: `"authentik.sources.kerberos"`)
+
 * `SOURCES_LDAP` (value: `"authentik.sources.ldap"`)
 
 * `SOURCES_OAUTH` (value: `"authentik.sources.oauth"`)

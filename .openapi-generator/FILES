@@ -194,6 +194,7 @@ docs/GoogleWorkspaceProviderRequest.md
 docs/GoogleWorkspaceProviderUser.md
 docs/GoogleWorkspaceProviderUserRequest.md
 docs/Group.md
+docs/GroupKerberosSourceConnection.md
 docs/GroupMatchingModeEnum.md
 docs/GroupMember.md
 docs/GroupMemberRequest.md
@@ -213,6 +214,11 @@ docs/InvitationRequest.md
 docs/InvitationStage.md
 docs/InvitationStageRequest.md
 docs/IssuerModeEnum.md
+docs/KerberosSource.md
+docs/KerberosSourcePropertyMapping.md
+docs/KerberosSourcePropertyMappingRequest.md
+docs/KerberosSourceRequest.md
+docs/KerberosSyncStatus.md
 docs/KubernetesServiceConnection.md
 docs/KubernetesServiceConnectionRequest.md
 docs/LDAPAPIAccessMode.md
@@ -319,6 +325,7 @@ docs/PaginatedGoogleWorkspaceProviderGroupList.md
 docs/PaginatedGoogleWorkspaceProviderList.md
 docs/PaginatedGoogleWorkspaceProviderMappingList.md
 docs/PaginatedGoogleWorkspaceProviderUserList.md
+docs/PaginatedGroupKerberosSourceConnectionList.md
 docs/PaginatedGroupList.md
 docs/PaginatedGroupOAuthSourceConnectionList.md
 docs/PaginatedGroupPlexSourceConnectionList.md
@@ -326,6 +333,8 @@ docs/PaginatedGroupSAMLSourceConnectionList.md
 docs/PaginatedIdentificationStageList.md
 docs/PaginatedInvitationList.md
 docs/PaginatedInvitationStageList.md
+docs/PaginatedKerberosSourceList.md
+docs/PaginatedKerberosSourcePropertyMappingList.md
 docs/PaginatedKubernetesServiceConnectionList.md
 docs/PaginatedLDAPOutpostConfigList.md
 docs/PaginatedLDAPProviderList.md
@@ -394,6 +403,7 @@ docs/PaginatedTokenModelList.md
 docs/PaginatedUserAssignedObjectPermissionList.md
 docs/PaginatedUserConsentList.md
 docs/PaginatedUserDeleteStageList.md
+docs/PaginatedUserKerberosSourceConnectionList.md
 docs/PaginatedUserList.md
 docs/PaginatedUserLoginStageList.md
 docs/PaginatedUserLogoutStageList.md
@@ -450,6 +460,8 @@ docs/PatchedGroupRequest.md
 docs/PatchedIdentificationStageRequest.md
 docs/PatchedInvitationRequest.md
 docs/PatchedInvitationStageRequest.md
+docs/PatchedKerberosSourcePropertyMappingRequest.md
+docs/PatchedKerberosSourceRequest.md
 docs/PatchedKubernetesServiceConnectionRequest.md
 docs/PatchedLDAPProviderRequest.md
 docs/PatchedLDAPSourcePropertyMappingRequest.md
@@ -500,6 +512,7 @@ docs/PatchedTOTPDeviceRequest.md
 docs/PatchedTenantRequest.md
 docs/PatchedTokenRequest.md
 docs/PatchedUserDeleteStageRequest.md
+docs/PatchedUserKerberosSourceConnectionRequest.md
 docs/PatchedUserLoginStageRequest.md
 docs/PatchedUserLogoutStageRequest.md
 docs/PatchedUserOAuthSourceConnectionRequest.md
@@ -665,6 +678,8 @@ docs/UserDeleteStageRequest.md
 docs/UserFieldsEnum.md
 docs/UserGroup.md
 docs/UserGroupRequest.md
+docs/UserKerberosSourceConnection.md
+docs/UserKerberosSourceConnectionRequest.md
 docs/UserLoginChallenge.md
 docs/UserLoginChallengeResponseRequest.md
 docs/UserLoginStage.md
@@ -868,6 +883,7 @@ model_google_workspace_provider_request.go
 model_google_workspace_provider_user.go
 model_google_workspace_provider_user_request.go
 model_group.go
+model_group_kerberos_source_connection.go
 model_group_matching_mode_enum.go
 model_group_member.go
 model_group_member_request.go
@@ -887,6 +903,11 @@ model_invitation_request.go
 model_invitation_stage.go
 model_invitation_stage_request.go
 model_issuer_mode_enum.go
+model_kerberos_source.go
+model_kerberos_source_property_mapping.go
+model_kerberos_source_property_mapping_request.go
+model_kerberos_source_request.go
+model_kerberos_sync_status.go
 model_kubernetes_service_connection.go
 model_kubernetes_service_connection_request.go
 model_ldap_check_access.go
@@ -990,6 +1011,7 @@ model_paginated_google_workspace_provider_group_list.go
 model_paginated_google_workspace_provider_list.go
 model_paginated_google_workspace_provider_mapping_list.go
 model_paginated_google_workspace_provider_user_list.go
+model_paginated_group_kerberos_source_connection_list.go
 model_paginated_group_list.go
 model_paginated_group_o_auth_source_connection_list.go
 model_paginated_group_plex_source_connection_list.go
@@ -997,6 +1019,8 @@ model_paginated_group_saml_source_connection_list.go
 model_paginated_identification_stage_list.go
 model_paginated_invitation_list.go
 model_paginated_invitation_stage_list.go
+model_paginated_kerberos_source_list.go
+model_paginated_kerberos_source_property_mapping_list.go
 model_paginated_kubernetes_service_connection_list.go
 model_paginated_ldap_outpost_config_list.go
 model_paginated_ldap_provider_list.go
@@ -1065,6 +1089,7 @@ model_paginated_totp_device_list.go
 model_paginated_user_assigned_object_permission_list.go
 model_paginated_user_consent_list.go
 model_paginated_user_delete_stage_list.go
+model_paginated_user_kerberos_source_connection_list.go
 model_paginated_user_list.go
 model_paginated_user_login_stage_list.go
 model_paginated_user_logout_stage_list.go
@@ -1121,6 +1146,8 @@ model_patched_group_request.go
 model_patched_identification_stage_request.go
 model_patched_invitation_request.go
 model_patched_invitation_stage_request.go
+model_patched_kerberos_source_property_mapping_request.go
+model_patched_kerberos_source_request.go
 model_patched_kubernetes_service_connection_request.go
 model_patched_ldap_provider_request.go
 model_patched_ldap_source_property_mapping_request.go
@@ -1171,6 +1198,7 @@ model_patched_tenant_request.go
 model_patched_token_request.go
 model_patched_totp_device_request.go
 model_patched_user_delete_stage_request.go
+model_patched_user_kerberos_source_connection_request.go
 model_patched_user_login_stage_request.go
 model_patched_user_logout_stage_request.go
 model_patched_user_o_auth_source_connection_request.go
@@ -1326,6 +1354,8 @@ model_user_delete_stage_request.go
 model_user_fields_enum.go
 model_user_group.go
 model_user_group_request.go
+model_user_kerberos_source_connection.go
+model_user_kerberos_source_connection_request.go
 model_user_login_challenge.go
 model_user_login_challenge_response_request.go
 model_user_login_stage.go

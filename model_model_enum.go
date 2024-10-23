@@ -47,6 +47,10 @@ const (
 	MODELENUM_PROVIDERS_SCIM_SCIMPROVIDER                                       ModelEnum = "authentik_providers_scim.scimprovider"
 	MODELENUM_PROVIDERS_SCIM_SCIMMAPPING                                        ModelEnum = "authentik_providers_scim.scimmapping"
 	MODELENUM_RBAC_ROLE                                                         ModelEnum = "authentik_rbac.role"
+	MODELENUM_SOURCES_KERBEROS_KERBEROSSOURCE                                   ModelEnum = "authentik_sources_kerberos.kerberossource"
+	MODELENUM_SOURCES_KERBEROS_KERBEROSSOURCEPROPERTYMAPPING                    ModelEnum = "authentik_sources_kerberos.kerberossourcepropertymapping"
+	MODELENUM_SOURCES_KERBEROS_USERKERBEROSSOURCECONNECTION                     ModelEnum = "authentik_sources_kerberos.userkerberossourceconnection"
+	MODELENUM_SOURCES_KERBEROS_GROUPKERBEROSSOURCECONNECTION                    ModelEnum = "authentik_sources_kerberos.groupkerberossourceconnection"
 	MODELENUM_SOURCES_LDAP_LDAPSOURCE                                           ModelEnum = "authentik_sources_ldap.ldapsource"
 	MODELENUM_SOURCES_LDAP_LDAPSOURCEPROPERTYMAPPING                            ModelEnum = "authentik_sources_ldap.ldapsourcepropertymapping"
 	MODELENUM_SOURCES_OAUTH_OAUTHSOURCE                                         ModelEnum = "authentik_sources_oauth.oauthsource"
@@ -141,6 +145,10 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_providers_scim.scimprovider",
 	"authentik_providers_scim.scimmapping",
 	"authentik_rbac.role",
+	"authentik_sources_kerberos.kerberossource",
+	"authentik_sources_kerberos.kerberossourcepropertymapping",
+	"authentik_sources_kerberos.userkerberossourceconnection",
+	"authentik_sources_kerberos.groupkerberossourceconnection",
 	"authentik_sources_ldap.ldapsource",
 	"authentik_sources_ldap.ldapsourcepropertymapping",
 	"authentik_sources_oauth.oauthsource",

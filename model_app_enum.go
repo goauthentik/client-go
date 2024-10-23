@@ -43,6 +43,7 @@ const (
 	APPENUM_PROVIDERS_SCIM                                AppEnum = "authentik.providers.scim"
 	APPENUM_RBAC                                          AppEnum = "authentik.rbac"
 	APPENUM_RECOVERY                                      AppEnum = "authentik.recovery"
+	APPENUM_SOURCES_KERBEROS                              AppEnum = "authentik.sources.kerberos"
 	APPENUM_SOURCES_LDAP                                  AppEnum = "authentik.sources.ldap"
 	APPENUM_SOURCES_OAUTH                                 AppEnum = "authentik.sources.oauth"
 	APPENUM_SOURCES_PLEX                                  AppEnum = "authentik.sources.plex"
@@ -105,6 +106,7 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.providers.scim",
 	"authentik.rbac",
 	"authentik.recovery",
+	"authentik.sources.kerberos",
 	"authentik.sources.ldap",
 	"authentik.sources.oauth",
 	"authentik.sources.plex",
