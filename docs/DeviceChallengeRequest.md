@@ -7,12 +7,13 @@ Name | Type | Description | Notes
 **DeviceClass** | **string** |  | 
 **DeviceUid** | **string** |  | 
 **Challenge** | **map[string]interface{}** |  | 
+**LastUsed** | **NullableTime** |  | 
 
 ## Methods
 
 ### NewDeviceChallengeRequest
 
-`func NewDeviceChallengeRequest(deviceClass string, deviceUid string, challenge map[string]interface{}, ) *DeviceChallengeRequest`
+`func NewDeviceChallengeRequest(deviceClass string, deviceUid string, challenge map[string]interface{}, lastUsed NullableTime, ) *DeviceChallengeRequest`
 
 NewDeviceChallengeRequest instantiates a new DeviceChallengeRequest object
 This constructor will assign default values to properties that have it defined,
@@ -87,6 +88,36 @@ and a boolean to check if the value has been set.
 SetChallenge sets Challenge field to given value.
 
 
+### GetLastUsed
+
+`func (o *DeviceChallengeRequest) GetLastUsed() time.Time`
+
+GetLastUsed returns the LastUsed field if non-nil, zero value otherwise.
+
+### GetLastUsedOk
+
+`func (o *DeviceChallengeRequest) GetLastUsedOk() (*time.Time, bool)`
+
+GetLastUsedOk returns a tuple with the LastUsed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastUsed
+
+`func (o *DeviceChallengeRequest) SetLastUsed(v time.Time)`
+
+SetLastUsed sets LastUsed field to given value.
+
+
+### SetLastUsedNil
+
+`func (o *DeviceChallengeRequest) SetLastUsedNil(b bool)`
+
+ SetLastUsedNil sets the value for LastUsed to be an explicit nil
+
+### UnsetLastUsed
+`func (o *DeviceChallengeRequest) UnsetLastUsed()`
+
+UnsetLastUsed ensures that no value is present for LastUsed, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

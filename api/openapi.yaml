@@ -45190,10 +45190,15 @@ components:
         challenge:
           additionalProperties: {}
           type: object
+        last_used:
+          format: date-time
+          nullable: true
+          type: string
       required:
       - challenge
       - device_class
       - device_uid
+      - last_used
       type: object
     DeviceChallengeRequest:
       description: Single device challenge
@@ -45207,10 +45212,15 @@ components:
         challenge:
           additionalProperties: {}
           type: object
+        last_used:
+          format: date-time
+          nullable: true
+          type: string
       required:
       - challenge
       - device_class
       - device_uid
+      - last_used
       type: object
     DeviceClassesEnum:
       enum:

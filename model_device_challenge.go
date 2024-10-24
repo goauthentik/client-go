@@ -13,6 +13,7 @@ package api
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // DeviceChallenge Single device challenge
@@ -20,17 +21,19 @@ type DeviceChallenge struct {
 	DeviceClass string                 `json:"device_class"`
 	DeviceUid   string                 `json:"device_uid"`
 	Challenge   map[string]interface{} `json:"challenge"`
+	LastUsed    NullableTime           `json:"last_used"`
 }
 
 // NewDeviceChallenge instantiates a new DeviceChallenge object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceChallenge(deviceClass string, deviceUid string, challenge map[string]interface{}) *DeviceChallenge {
+func NewDeviceChallenge(deviceClass string, deviceUid string, challenge map[string]interface{}, lastUsed NullableTime) *DeviceChallenge {
 	this := DeviceChallenge{}
 	this.DeviceClass = deviceClass
 	this.DeviceUid = deviceUid
 	this.Challenge = challenge
+	this.LastUsed = lastUsed
 	return &this
 }
 
@@ -114,6 +117,32 @@ func (o *DeviceChallenge) SetChallenge(v map[string]interface{}) {
 	o.Challenge = v
 }
 
+// GetLastUsed returns the LastUsed field value
+// If the value is explicit nil, the zero value for time.Time will be returned
+func (o *DeviceChallenge) GetLastUsed() time.Time {
+	if o == nil || o.LastUsed.Get() == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return *o.LastUsed.Get()
+}
+
+// GetLastUsedOk returns a tuple with the LastUsed field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DeviceChallenge) GetLastUsedOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastUsed.Get(), o.LastUsed.IsSet()
+}
+
+// SetLastUsed sets field value
+func (o *DeviceChallenge) SetLastUsed(v time.Time) {
+	o.LastUsed.Set(&v)
+}
+
 func (o DeviceChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -124,6 +153,9 @@ func (o DeviceChallenge) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["challenge"] = o.Challenge
+	}
+	if true {
+		toSerialize["last_used"] = o.LastUsed.Get()
 	}
 	return json.Marshal(toSerialize)
 }
