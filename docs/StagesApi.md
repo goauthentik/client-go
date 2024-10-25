@@ -7150,7 +7150,7 @@ Name | Type | Description  | Notes
 
 ## StagesIdentificationList
 
-> PaginatedIdentificationStageList StagesIdentificationList(ctx).CaseInsensitiveMatching(caseInsensitiveMatching).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordStage(passwordStage).PasswordlessFlow(passwordlessFlow).RecoveryFlow(recoveryFlow).Search(search).ShowMatchedUser(showMatchedUser).ShowSourceLabels(showSourceLabels).Execute()
+> PaginatedIdentificationStageList StagesIdentificationList(ctx).CaptchaStage(captchaStage).CaseInsensitiveMatching(caseInsensitiveMatching).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordStage(passwordStage).PasswordlessFlow(passwordlessFlow).RecoveryFlow(recoveryFlow).Search(search).ShowMatchedUser(showMatchedUser).ShowSourceLabels(showSourceLabels).Execute()
 
 
 
@@ -7169,6 +7169,7 @@ import (
 )
 
 func main() {
+    captchaStage := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     caseInsensitiveMatching := true // bool |  (optional)
     enrollmentFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     name := "name_example" // string |  (optional)
@@ -7184,7 +7185,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesIdentificationList(context.Background()).CaseInsensitiveMatching(caseInsensitiveMatching).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordStage(passwordStage).PasswordlessFlow(passwordlessFlow).RecoveryFlow(recoveryFlow).Search(search).ShowMatchedUser(showMatchedUser).ShowSourceLabels(showSourceLabels).Execute()
+    resp, r, err := apiClient.StagesApi.StagesIdentificationList(context.Background()).CaptchaStage(captchaStage).CaseInsensitiveMatching(caseInsensitiveMatching).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordStage(passwordStage).PasswordlessFlow(passwordlessFlow).RecoveryFlow(recoveryFlow).Search(search).ShowMatchedUser(showMatchedUser).ShowSourceLabels(showSourceLabels).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesIdentificationList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7205,6 +7206,7 @@ Other parameters are passed through a pointer to a apiStagesIdentificationListRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **captchaStage** | **string** |  | 
  **caseInsensitiveMatching** | **bool** |  | 
  **enrollmentFlow** | **string** |  | 
  **name** | **string** |  | 

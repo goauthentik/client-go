@@ -37681,6 +37681,14 @@ paths:
       parameters:
       - explode: true
         in: query
+        name: captcha_stage
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: case_insensitive_matching
         required: false
         schema:
@@ -48178,6 +48186,8 @@ components:
           type: string
         flow_designation:
           $ref: '#/components/schemas/FlowDesignationEnum'
+        captcha_stage:
+          $ref: '#/components/schemas/CaptchaChallenge'
         enroll_url:
           type: string
         recovery_url:
@@ -48210,6 +48220,9 @@ components:
           minLength: 1
           type: string
         password:
+          nullable: true
+          type: string
+        captcha_token:
           nullable: true
           type: string
       required:
@@ -48261,6 +48274,7 @@ components:
         name: name
         password_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        captcha_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         recovery_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         case_insensitive_matching: true
       properties:
@@ -48300,6 +48314,12 @@ components:
         password_stage:
           description: "When set, shows a password field, instead of showing the password\
             \ field as separate step."
+          format: uuid
+          nullable: true
+          type: string
+        captcha_stage:
+          description: "When set, adds functionality exactly like a Captcha stage,\
+            \ but baked into the Identification stage."
           format: uuid
           nullable: true
           type: string
@@ -48353,18 +48373,10 @@ components:
     IdentificationStageRequest:
       description: IdentificationStage Serializer
       example:
-        passwordless_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         show_source_labels: true
-        user_fields:
-        - null
-        - null
-        show_matched_user: true
         sources:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
-        password_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
         - policy_engine_mode: null
           compatibility_mode: true
@@ -48382,8 +48394,17 @@ components:
           designation: ""
           title: title
           slug: slug
-        recovery_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         pretend_user_exists: true
+        passwordless_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user_fields:
+        - null
+        - null
+        show_matched_user: true
+        name: name
+        password_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        captcha_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        recovery_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         case_insensitive_matching: true
       properties:
         name:
@@ -48402,6 +48423,12 @@ components:
         password_stage:
           description: "When set, shows a password field, instead of showing the password\
             \ field as separate step."
+          format: uuid
+          nullable: true
+          type: string
+        captcha_stage:
+          description: "When set, adds functionality exactly like a Captcha stage,\
+            \ but baked into the Identification stage."
           format: uuid
           nullable: true
           type: string
@@ -54762,6 +54789,7 @@ components:
           name: name
           password_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          captcha_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           recovery_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           case_insensitive_matching: true
         - show_source_labels: true
@@ -54807,6 +54835,7 @@ components:
           name: name
           password_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          captcha_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           recovery_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           case_insensitive_matching: true
       properties:
@@ -61504,18 +61533,10 @@ components:
     PatchedIdentificationStageRequest:
       description: IdentificationStage Serializer
       example:
-        passwordless_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         show_source_labels: true
-        user_fields:
-        - null
-        - null
-        show_matched_user: true
         sources:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
-        password_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
         - policy_engine_mode: null
           compatibility_mode: true
@@ -61533,8 +61554,17 @@ components:
           designation: ""
           title: title
           slug: slug
-        recovery_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         pretend_user_exists: true
+        passwordless_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user_fields:
+        - null
+        - null
+        show_matched_user: true
+        name: name
+        password_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        captcha_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        recovery_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         case_insensitive_matching: true
       properties:
         name:
@@ -61553,6 +61583,12 @@ components:
         password_stage:
           description: "When set, shows a password field, instead of showing the password\
             \ field as separate step."
+          format: uuid
+          nullable: true
+          type: string
+        captcha_stage:
+          description: "When set, adds functionality exactly like a Captcha stage,\
+            \ but baked into the Identification stage."
           format: uuid
           nullable: true
           type: string

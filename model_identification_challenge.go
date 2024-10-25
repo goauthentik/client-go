@@ -25,6 +25,7 @@ type IdentificationChallenge struct {
 	AllowShowPassword *bool                     `json:"allow_show_password,omitempty"`
 	ApplicationPre    *string                   `json:"application_pre,omitempty"`
 	FlowDesignation   FlowDesignationEnum       `json:"flow_designation"`
+	CaptchaStage      *CaptchaChallenge         `json:"captcha_stage,omitempty"`
 	EnrollUrl         *string                   `json:"enroll_url,omitempty"`
 	RecoveryUrl       *string                   `json:"recovery_url,omitempty"`
 	PasswordlessUrl   *string                   `json:"passwordless_url,omitempty"`
@@ -297,6 +298,38 @@ func (o *IdentificationChallenge) SetFlowDesignation(v FlowDesignationEnum) {
 	o.FlowDesignation = v
 }
 
+// GetCaptchaStage returns the CaptchaStage field value if set, zero value otherwise.
+func (o *IdentificationChallenge) GetCaptchaStage() CaptchaChallenge {
+	if o == nil || o.CaptchaStage == nil {
+		var ret CaptchaChallenge
+		return ret
+	}
+	return *o.CaptchaStage
+}
+
+// GetCaptchaStageOk returns a tuple with the CaptchaStage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentificationChallenge) GetCaptchaStageOk() (*CaptchaChallenge, bool) {
+	if o == nil || o.CaptchaStage == nil {
+		return nil, false
+	}
+	return o.CaptchaStage, true
+}
+
+// HasCaptchaStage returns a boolean if a field has been set.
+func (o *IdentificationChallenge) HasCaptchaStage() bool {
+	if o != nil && o.CaptchaStage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCaptchaStage gets a reference to the given CaptchaChallenge and assigns it to the CaptchaStage field.
+func (o *IdentificationChallenge) SetCaptchaStage(v CaptchaChallenge) {
+	o.CaptchaStage = &v
+}
+
 // GetEnrollUrl returns the EnrollUrl field value if set, zero value otherwise.
 func (o *IdentificationChallenge) GetEnrollUrl() string {
 	if o == nil || o.EnrollUrl == nil {
@@ -498,6 +531,9 @@ func (o IdentificationChallenge) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["flow_designation"] = o.FlowDesignation
+	}
+	if o.CaptchaStage != nil {
+		toSerialize["captcha_stage"] = o.CaptchaStage
 	}
 	if o.EnrollUrl != nil {
 		toSerialize["enroll_url"] = o.EnrollUrl

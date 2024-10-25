@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **UserFields** | Pointer to [**[]UserFieldsEnum**](UserFieldsEnum.md) | Fields of the user object to match against. (Hold shift to select multiple options) | [optional] 
 **PasswordStage** | Pointer to **NullableString** | When set, shows a password field, instead of showing the password field as separate step. | [optional] 
+**CaptchaStage** | Pointer to **NullableString** | When set, adds functionality exactly like a Captcha stage, but baked into the Identification stage. | [optional] 
 **CaseInsensitiveMatching** | Pointer to **bool** | When enabled, user fields are matched regardless of their casing. | [optional] 
 **ShowMatchedUser** | Pointer to **bool** | When a valid username/email has been entered, and this option is enabled, the user&#39;s username and avatar will be shown. Otherwise, the text that the user entered will be shown | [optional] 
 **EnrollmentFlow** | Pointer to **NullableString** | Optional enrollment flow, which is linked at the bottom of the page. | [optional] 
@@ -141,6 +142,41 @@ HasPasswordStage returns a boolean if a field has been set.
 `func (o *IdentificationStageRequest) UnsetPasswordStage()`
 
 UnsetPasswordStage ensures that no value is present for PasswordStage, not even an explicit nil
+### GetCaptchaStage
+
+`func (o *IdentificationStageRequest) GetCaptchaStage() string`
+
+GetCaptchaStage returns the CaptchaStage field if non-nil, zero value otherwise.
+
+### GetCaptchaStageOk
+
+`func (o *IdentificationStageRequest) GetCaptchaStageOk() (*string, bool)`
+
+GetCaptchaStageOk returns a tuple with the CaptchaStage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCaptchaStage
+
+`func (o *IdentificationStageRequest) SetCaptchaStage(v string)`
+
+SetCaptchaStage sets CaptchaStage field to given value.
+
+### HasCaptchaStage
+
+`func (o *IdentificationStageRequest) HasCaptchaStage() bool`
+
+HasCaptchaStage returns a boolean if a field has been set.
+
+### SetCaptchaStageNil
+
+`func (o *IdentificationStageRequest) SetCaptchaStageNil(b bool)`
+
+ SetCaptchaStageNil sets the value for CaptchaStage to be an explicit nil
+
+### UnsetCaptchaStage
+`func (o *IdentificationStageRequest) UnsetCaptchaStage()`
+
+UnsetCaptchaStage ensures that no value is present for CaptchaStage, not even an explicit nil
 ### GetCaseInsensitiveMatching
 
 `func (o *IdentificationStageRequest) GetCaseInsensitiveMatching() bool`

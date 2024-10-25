@@ -13341,6 +13341,7 @@ func (a *StagesApiService) StagesIdentificationDestroyExecute(r ApiStagesIdentif
 type ApiStagesIdentificationListRequest struct {
 	ctx                     context.Context
 	ApiService              *StagesApiService
+	captchaStage            *string
 	caseInsensitiveMatching *bool
 	enrollmentFlow          *string
 	name                    *string
@@ -13353,6 +13354,11 @@ type ApiStagesIdentificationListRequest struct {
 	search                  *string
 	showMatchedUser         *bool
 	showSourceLabels        *bool
+}
+
+func (r ApiStagesIdentificationListRequest) CaptchaStage(captchaStage string) ApiStagesIdentificationListRequest {
+	r.captchaStage = &captchaStage
+	return r
 }
 
 func (r ApiStagesIdentificationListRequest) CaseInsensitiveMatching(caseInsensitiveMatching bool) ApiStagesIdentificationListRequest {
@@ -13460,6 +13466,9 @@ func (a *StagesApiService) StagesIdentificationListExecute(r ApiStagesIdentifica
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.captchaStage != nil {
+		localVarQueryParams.Add("captcha_stage", parameterToString(*r.captchaStage, ""))
+	}
 	if r.caseInsensitiveMatching != nil {
 		localVarQueryParams.Add("case_insensitive_matching", parameterToString(*r.caseInsensitiveMatching, ""))
 	}

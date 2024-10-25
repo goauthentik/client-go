@@ -23,6 +23,8 @@ type PatchedIdentificationStageRequest struct {
 	UserFields []UserFieldsEnum `json:"user_fields,omitempty"`
 	// When set, shows a password field, instead of showing the password field as separate step.
 	PasswordStage NullableString `json:"password_stage,omitempty"`
+	// When set, adds functionality exactly like a Captcha stage, but baked into the Identification stage.
+	CaptchaStage NullableString `json:"captcha_stage,omitempty"`
 	// When enabled, user fields are matched regardless of their casing.
 	CaseInsensitiveMatching *bool `json:"case_insensitive_matching,omitempty"`
 	// When a valid username/email has been entered, and this option is enabled, the user's username and avatar will be shown. Otherwise, the text that the user entered will be shown
@@ -194,6 +196,49 @@ func (o *PatchedIdentificationStageRequest) SetPasswordStageNil() {
 // UnsetPasswordStage ensures that no value is present for PasswordStage, not even an explicit nil
 func (o *PatchedIdentificationStageRequest) UnsetPasswordStage() {
 	o.PasswordStage.Unset()
+}
+
+// GetCaptchaStage returns the CaptchaStage field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedIdentificationStageRequest) GetCaptchaStage() string {
+	if o == nil || o.CaptchaStage.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.CaptchaStage.Get()
+}
+
+// GetCaptchaStageOk returns a tuple with the CaptchaStage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedIdentificationStageRequest) GetCaptchaStageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CaptchaStage.Get(), o.CaptchaStage.IsSet()
+}
+
+// HasCaptchaStage returns a boolean if a field has been set.
+func (o *PatchedIdentificationStageRequest) HasCaptchaStage() bool {
+	if o != nil && o.CaptchaStage.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCaptchaStage gets a reference to the given NullableString and assigns it to the CaptchaStage field.
+func (o *PatchedIdentificationStageRequest) SetCaptchaStage(v string) {
+	o.CaptchaStage.Set(&v)
+}
+
+// SetCaptchaStageNil sets the value for CaptchaStage to be an explicit nil
+func (o *PatchedIdentificationStageRequest) SetCaptchaStageNil() {
+	o.CaptchaStage.Set(nil)
+}
+
+// UnsetCaptchaStage ensures that no value is present for CaptchaStage, not even an explicit nil
+func (o *PatchedIdentificationStageRequest) UnsetCaptchaStage() {
+	o.CaptchaStage.Unset()
 }
 
 // GetCaseInsensitiveMatching returns the CaseInsensitiveMatching field value if set, zero value otherwise.
@@ -498,6 +543,9 @@ func (o PatchedIdentificationStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.PasswordStage.IsSet() {
 		toSerialize["password_stage"] = o.PasswordStage.Get()
+	}
+	if o.CaptchaStage.IsSet() {
+		toSerialize["captcha_stage"] = o.CaptchaStage.Get()
 	}
 	if o.CaseInsensitiveMatching != nil {
 		toSerialize["case_insensitive_matching"] = o.CaseInsensitiveMatching

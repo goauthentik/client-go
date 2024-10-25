@@ -17,9 +17,10 @@ import (
 
 // IdentificationChallengeResponseRequest Identification challenge
 type IdentificationChallengeResponseRequest struct {
-	Component *string        `json:"component,omitempty"`
-	UidField  string         `json:"uid_field"`
-	Password  NullableString `json:"password,omitempty"`
+	Component    *string        `json:"component,omitempty"`
+	UidField     string         `json:"uid_field"`
+	Password     NullableString `json:"password,omitempty"`
+	CaptchaToken NullableString `json:"captcha_token,omitempty"`
 }
 
 // NewIdentificationChallengeResponseRequest instantiates a new IdentificationChallengeResponseRequest object
@@ -143,6 +144,49 @@ func (o *IdentificationChallengeResponseRequest) UnsetPassword() {
 	o.Password.Unset()
 }
 
+// GetCaptchaToken returns the CaptchaToken field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IdentificationChallengeResponseRequest) GetCaptchaToken() string {
+	if o == nil || o.CaptchaToken.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.CaptchaToken.Get()
+}
+
+// GetCaptchaTokenOk returns a tuple with the CaptchaToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *IdentificationChallengeResponseRequest) GetCaptchaTokenOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CaptchaToken.Get(), o.CaptchaToken.IsSet()
+}
+
+// HasCaptchaToken returns a boolean if a field has been set.
+func (o *IdentificationChallengeResponseRequest) HasCaptchaToken() bool {
+	if o != nil && o.CaptchaToken.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCaptchaToken gets a reference to the given NullableString and assigns it to the CaptchaToken field.
+func (o *IdentificationChallengeResponseRequest) SetCaptchaToken(v string) {
+	o.CaptchaToken.Set(&v)
+}
+
+// SetCaptchaTokenNil sets the value for CaptchaToken to be an explicit nil
+func (o *IdentificationChallengeResponseRequest) SetCaptchaTokenNil() {
+	o.CaptchaToken.Set(nil)
+}
+
+// UnsetCaptchaToken ensures that no value is present for CaptchaToken, not even an explicit nil
+func (o *IdentificationChallengeResponseRequest) UnsetCaptchaToken() {
+	o.CaptchaToken.Unset()
+}
+
 func (o IdentificationChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Component != nil {
@@ -153,6 +197,9 @@ func (o IdentificationChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Password.IsSet() {
 		toSerialize["password"] = o.Password.Get()
+	}
+	if o.CaptchaToken.IsSet() {
+		toSerialize["captcha_token"] = o.CaptchaToken.Get()
 	}
 	return json.Marshal(toSerialize)
 }

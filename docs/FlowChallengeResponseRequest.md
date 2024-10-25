@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Token** | **string** |  | 
 **UidField** | **string** |  | 
 **Password** | **string** |  | 
+**CaptchaToken** | Pointer to **NullableString** |  | [optional] 
 **RememberMe** | **bool** |  | 
 
 ## Methods
@@ -286,6 +287,41 @@ and a boolean to check if the value has been set.
 SetPassword sets Password field to given value.
 
 
+### GetCaptchaToken
+
+`func (o *FlowChallengeResponseRequest) GetCaptchaToken() string`
+
+GetCaptchaToken returns the CaptchaToken field if non-nil, zero value otherwise.
+
+### GetCaptchaTokenOk
+
+`func (o *FlowChallengeResponseRequest) GetCaptchaTokenOk() (*string, bool)`
+
+GetCaptchaTokenOk returns a tuple with the CaptchaToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCaptchaToken
+
+`func (o *FlowChallengeResponseRequest) SetCaptchaToken(v string)`
+
+SetCaptchaToken sets CaptchaToken field to given value.
+
+### HasCaptchaToken
+
+`func (o *FlowChallengeResponseRequest) HasCaptchaToken() bool`
+
+HasCaptchaToken returns a boolean if a field has been set.
+
+### SetCaptchaTokenNil
+
+`func (o *FlowChallengeResponseRequest) SetCaptchaTokenNil(b bool)`
+
+ SetCaptchaTokenNil sets the value for CaptchaToken to be an explicit nil
+
+### UnsetCaptchaToken
+`func (o *FlowChallengeResponseRequest) UnsetCaptchaToken()`
+
+UnsetCaptchaToken ensures that no value is present for CaptchaToken, not even an explicit nil
 ### GetRememberMe
 
 `func (o *FlowChallengeResponseRequest) GetRememberMe() bool`

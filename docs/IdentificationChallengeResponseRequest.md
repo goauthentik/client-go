@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Component** | Pointer to **string** |  | [optional] [default to "ak-stage-identification"]
 **UidField** | **string** |  | 
 **Password** | Pointer to **NullableString** |  | [optional] 
+**CaptchaToken** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -107,6 +108,41 @@ HasPassword returns a boolean if a field has been set.
 `func (o *IdentificationChallengeResponseRequest) UnsetPassword()`
 
 UnsetPassword ensures that no value is present for Password, not even an explicit nil
+### GetCaptchaToken
+
+`func (o *IdentificationChallengeResponseRequest) GetCaptchaToken() string`
+
+GetCaptchaToken returns the CaptchaToken field if non-nil, zero value otherwise.
+
+### GetCaptchaTokenOk
+
+`func (o *IdentificationChallengeResponseRequest) GetCaptchaTokenOk() (*string, bool)`
+
+GetCaptchaTokenOk returns a tuple with the CaptchaToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCaptchaToken
+
+`func (o *IdentificationChallengeResponseRequest) SetCaptchaToken(v string)`
+
+SetCaptchaToken sets CaptchaToken field to given value.
+
+### HasCaptchaToken
+
+`func (o *IdentificationChallengeResponseRequest) HasCaptchaToken() bool`
+
+HasCaptchaToken returns a boolean if a field has been set.
+
+### SetCaptchaTokenNil
+
+`func (o *IdentificationChallengeResponseRequest) SetCaptchaTokenNil(b bool)`
+
+ SetCaptchaTokenNil sets the value for CaptchaToken to be an explicit nil
+
+### UnsetCaptchaToken
+`func (o *IdentificationChallengeResponseRequest) UnsetCaptchaToken()`
+
+UnsetCaptchaToken ensures that no value is present for CaptchaToken, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
