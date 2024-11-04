@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **SyncPassword** | Pointer to **string** | Password to authenticate to kadmin for sync | [optional] 
 **SyncKeytab** | Pointer to **string** | Keytab to authenticate to kadmin for sync. Must be base64-encoded or in the form TYPE:residual | [optional] 
 **SyncCcache** | Pointer to **string** | Credentials cache to authenticate to kadmin for sync. Must be in the form TYPE:residual | [optional] 
-**SpnegoServerName** | Pointer to **string** | Force the use of a specific server name for SPNEGO | [optional] 
+**SpnegoServerName** | Pointer to **string** | Force the use of a specific server name for SPNEGO. Must be in the form HTTP@hostname | [optional] 
 **SpnegoKeytab** | Pointer to **string** | SPNEGO keytab base64-encoded or path to keytab in the form FILE:path | [optional] 
 **SpnegoCcache** | Pointer to **string** | Credential cache to use for SPNEGO in form type:residual | [optional] 
 **PasswordLoginUpdateInternalPassword** | Pointer to **bool** | If enabled, the authentik-stored password will be updated upon login with the Kerberos password backend | [optional] 

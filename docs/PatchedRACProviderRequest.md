@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | Pointer to **string** | Flow used when authorizing this provider. | [optional] 
-**InvalidationFlow** | Pointer to **string** | Flow used ending the session from a provider. | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **Settings** | Pointer to **interface{}** |  | [optional] 
 **ConnectionExpiry** | Pointer to **string** | Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] 
@@ -116,31 +115,6 @@ SetAuthorizationFlow sets AuthorizationFlow field to given value.
 `func (o *PatchedRACProviderRequest) HasAuthorizationFlow() bool`
 
 HasAuthorizationFlow returns a boolean if a field has been set.
-
-### GetInvalidationFlow
-
-`func (o *PatchedRACProviderRequest) GetInvalidationFlow() string`
-
-GetInvalidationFlow returns the InvalidationFlow field if non-nil, zero value otherwise.
-
-### GetInvalidationFlowOk
-
-`func (o *PatchedRACProviderRequest) GetInvalidationFlowOk() (*string, bool)`
-
-GetInvalidationFlowOk returns a tuple with the InvalidationFlow field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInvalidationFlow
-
-`func (o *PatchedRACProviderRequest) SetInvalidationFlow(v string)`
-
-SetInvalidationFlow sets InvalidationFlow field to given value.
-
-### HasInvalidationFlow
-
-`func (o *PatchedRACProviderRequest) HasInvalidationFlow() bool`
-
-HasInvalidationFlow returns a boolean if a field has been set.
 
 ### GetPropertyMappings
 

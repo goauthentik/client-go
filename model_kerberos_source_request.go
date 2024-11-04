@@ -50,7 +50,7 @@ type KerberosSourceRequest struct {
 	SyncKeytab *string `json:"sync_keytab,omitempty"`
 	// Credentials cache to authenticate to kadmin for sync. Must be in the form TYPE:residual
 	SyncCcache *string `json:"sync_ccache,omitempty"`
-	// Force the use of a specific server name for SPNEGO
+	// Force the use of a specific server name for SPNEGO. Must be in the form HTTP@hostname
 	SpnegoServerName *string `json:"spnego_server_name,omitempty"`
 	// SPNEGO keytab base64-encoded or path to keytab in the form FILE:path
 	SpnegoKeytab *string `json:"spnego_keytab,omitempty"`

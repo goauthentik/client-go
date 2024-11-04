@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **SyncPrincipal** | Pointer to **string** | Principal to authenticate to kadmin for sync. | [optional] 
 **SyncCcache** | Pointer to **string** | Credentials cache to authenticate to kadmin for sync. Must be in the form TYPE:residual | [optional] 
 **Connectivity** | **map[string]string** | Get cached source connectivity | [readonly] 
-**SpnegoServerName** | Pointer to **string** | Force the use of a specific server name for SPNEGO | [optional] 
+**SpnegoServerName** | Pointer to **string** | Force the use of a specific server name for SPNEGO. Must be in the form HTTP@hostname | [optional] 
 **SpnegoCcache** | Pointer to **string** | Credential cache to use for SPNEGO in form type:residual | [optional] 
 **PasswordLoginUpdateInternalPassword** | Pointer to **bool** | If enabled, the authentik-stored password will be updated upon login with the Kerberos password backend | [optional] 
 

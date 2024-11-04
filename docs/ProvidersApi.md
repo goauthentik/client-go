@@ -4858,7 +4858,7 @@ import (
 )
 
 func main() {
-    rACProviderRequest := *openapiclient.NewRACProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example") // RACProviderRequest | 
+    rACProviderRequest := *openapiclient.NewRACProviderRequest("Name_example", "AuthorizationFlow_example") // RACProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -5211,7 +5211,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this RAC Provider.
-    rACProviderRequest := *openapiclient.NewRACProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example") // RACProviderRequest | 
+    rACProviderRequest := *openapiclient.NewRACProviderRequest("Name_example", "AuthorizationFlow_example") // RACProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

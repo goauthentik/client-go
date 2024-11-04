@@ -60,7 +60,7 @@ type KerberosSource struct {
 	SyncCcache *string `json:"sync_ccache,omitempty"`
 	// Get cached source connectivity
 	Connectivity map[string]string `json:"connectivity"`
-	// Force the use of a specific server name for SPNEGO
+	// Force the use of a specific server name for SPNEGO. Must be in the form HTTP@hostname
 	SpnegoServerName *string `json:"spnego_server_name,omitempty"`
 	// Credential cache to use for SPNEGO in form type:residual
 	SpnegoCcache *string `json:"spnego_ccache,omitempty"`

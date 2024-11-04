@@ -48840,7 +48840,8 @@ components:
           readOnly: true
           type: object
         spnego_server_name:
-          description: Force the use of a specific server name for SPNEGO
+          description: Force the use of a specific server name for SPNEGO. Must be
+            in the form HTTP@hostname
           type: string
         spnego_ccache:
           description: Credential cache to use for SPNEGO in form type:residual
@@ -49050,7 +49051,8 @@ components:
             be in the form TYPE:residual
           type: string
         spnego_server_name:
-          description: Force the use of a specific server name for SPNEGO
+          description: Force the use of a specific server name for SPNEGO. Must be
+            in the form HTTP@hostname
           type: string
         spnego_keytab:
           description: SPNEGO keytab base64-encoded or path to keytab in the form
@@ -57113,7 +57115,6 @@ components:
         - settings: ""
           verbose_name_plural: verbose_name_plural
           delete_token_on_disconnect: true
-          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           outpost_set:
@@ -57135,7 +57136,6 @@ components:
         - settings: ""
           verbose_name_plural: verbose_name_plural
           delete_token_on_disconnect: true
-          invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           outpost_set:
@@ -61830,7 +61830,8 @@ components:
             be in the form TYPE:residual
           type: string
         spnego_server_name:
-          description: Force the use of a specific server name for SPNEGO
+          description: Force the use of a specific server name for SPNEGO. Must be
+            in the form HTTP@hostname
           type: string
         spnego_keytab:
           description: SPNEGO keytab base64-encoded or path to keytab in the form
@@ -63198,7 +63199,6 @@ components:
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         delete_token_on_disconnect: true
         name: name
-        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         connection_expiry: connection_expiry
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -63215,10 +63215,6 @@ components:
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
-          format: uuid
-          type: string
-        invalidation_flow:
-          description: Flow used ending the session from a provider.
           format: uuid
           type: string
         property_mappings:
@@ -66236,7 +66232,6 @@ components:
         settings: ""
         verbose_name_plural: verbose_name_plural
         delete_token_on_disconnect: true
-        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         assigned_application_slug: assigned_application_slug
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         outpost_set:
@@ -66270,10 +66265,6 @@ components:
           type: string
         authorization_flow:
           description: Flow used when authorizing this provider.
-          format: uuid
-          type: string
-        invalidation_flow:
-          description: Flow used ending the session from a provider.
           format: uuid
           type: string
         property_mappings:
@@ -66333,7 +66324,6 @@ components:
       - assigned_backchannel_application_slug
       - authorization_flow
       - component
-      - invalidation_flow
       - meta_model_name
       - name
       - outpost_set
@@ -66349,7 +66339,6 @@ components:
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         delete_token_on_disconnect: true
         name: name
-        invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         connection_expiry: connection_expiry
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -66368,10 +66357,6 @@ components:
           description: Flow used when authorizing this provider.
           format: uuid
           type: string
-        invalidation_flow:
-          description: Flow used ending the session from a provider.
-          format: uuid
-          type: string
         property_mappings:
           items:
             format: uuid
@@ -66388,7 +66373,6 @@ components:
           type: boolean
       required:
       - authorization_flow
-      - invalidation_flow
       - name
       type: object
     RadiusCheckAccess:
