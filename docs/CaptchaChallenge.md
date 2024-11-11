@@ -11,12 +11,13 @@ Name | Type | Description | Notes
 **PendingUserAvatar** | **string** |  | 
 **SiteKey** | **string** |  | 
 **JsUrl** | **string** |  | 
+**Interactive** | **bool** |  | 
 
 ## Methods
 
 ### NewCaptchaChallenge
 
-`func NewCaptchaChallenge(pendingUser string, pendingUserAvatar string, siteKey string, jsUrl string, ) *CaptchaChallenge`
+`func NewCaptchaChallenge(pendingUser string, pendingUserAvatar string, siteKey string, jsUrl string, interactive bool, ) *CaptchaChallenge`
 
 NewCaptchaChallenge instantiates a new CaptchaChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -184,6 +185,26 @@ and a boolean to check if the value has been set.
 `func (o *CaptchaChallenge) SetJsUrl(v string)`
 
 SetJsUrl sets JsUrl field to given value.
+
+
+### GetInteractive
+
+`func (o *CaptchaChallenge) GetInteractive() bool`
+
+GetInteractive returns the Interactive field if non-nil, zero value otherwise.
+
+### GetInteractiveOk
+
+`func (o *CaptchaChallenge) GetInteractiveOk() (*bool, bool)`
+
+GetInteractiveOk returns a tuple with the Interactive field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInteractive
+
+`func (o *CaptchaChallenge) SetInteractive(v bool)`
+
+SetInteractive sets Interactive field to given value.
 
 
 

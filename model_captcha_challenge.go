@@ -24,13 +24,14 @@ type CaptchaChallenge struct {
 	PendingUserAvatar string                    `json:"pending_user_avatar"`
 	SiteKey           string                    `json:"site_key"`
 	JsUrl             string                    `json:"js_url"`
+	Interactive       bool                      `json:"interactive"`
 }
 
 // NewCaptchaChallenge instantiates a new CaptchaChallenge object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCaptchaChallenge(pendingUser string, pendingUserAvatar string, siteKey string, jsUrl string) *CaptchaChallenge {
+func NewCaptchaChallenge(pendingUser string, pendingUserAvatar string, siteKey string, jsUrl string, interactive bool) *CaptchaChallenge {
 	this := CaptchaChallenge{}
 	var component string = "ak-stage-captcha"
 	this.Component = &component
@@ -38,6 +39,7 @@ func NewCaptchaChallenge(pendingUser string, pendingUserAvatar string, siteKey s
 	this.PendingUserAvatar = pendingUserAvatar
 	this.SiteKey = siteKey
 	this.JsUrl = jsUrl
+	this.Interactive = interactive
 	return &this
 }
 
@@ -243,6 +245,30 @@ func (o *CaptchaChallenge) SetJsUrl(v string) {
 	o.JsUrl = v
 }
 
+// GetInteractive returns the Interactive field value
+func (o *CaptchaChallenge) GetInteractive() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Interactive
+}
+
+// GetInteractiveOk returns a tuple with the Interactive field value
+// and a boolean to check if the value has been set.
+func (o *CaptchaChallenge) GetInteractiveOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Interactive, true
+}
+
+// SetInteractive sets field value
+func (o *CaptchaChallenge) SetInteractive(v bool) {
+	o.Interactive = v
+}
+
 func (o CaptchaChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.FlowInfo != nil {
@@ -265,6 +291,9 @@ func (o CaptchaChallenge) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["js_url"] = o.JsUrl
+	}
+	if true {
+		toSerialize["interactive"] = o.Interactive
 	}
 	return json.Marshal(toSerialize)
 }

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **PrivateKey** | Pointer to **string** | Private key, acquired your captcha Provider. | [optional] 
 **JsUrl** | Pointer to **string** |  | [optional] 
 **ApiUrl** | Pointer to **string** |  | [optional] 
+**Interactive** | Pointer to **bool** |  | [optional] 
 **ScoreMinThreshold** | Pointer to **float64** |  | [optional] 
 **ScoreMaxThreshold** | Pointer to **float64** |  | [optional] 
 **ErrorOnInvalidScore** | Pointer to **bool** | When enabled and the received captcha score is outside of the given threshold, the stage will show an error message. When not enabled, the flow will continue, but the data from the captcha will be available in the context for policy decisions | [optional] 
@@ -182,6 +183,31 @@ SetApiUrl sets ApiUrl field to given value.
 `func (o *PatchedCaptchaStageRequest) HasApiUrl() bool`
 
 HasApiUrl returns a boolean if a field has been set.
+
+### GetInteractive
+
+`func (o *PatchedCaptchaStageRequest) GetInteractive() bool`
+
+GetInteractive returns the Interactive field if non-nil, zero value otherwise.
+
+### GetInteractiveOk
+
+`func (o *PatchedCaptchaStageRequest) GetInteractiveOk() (*bool, bool)`
+
+GetInteractiveOk returns a tuple with the Interactive field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInteractive
+
+`func (o *PatchedCaptchaStageRequest) SetInteractive(v bool)`
+
+SetInteractive sets Interactive field to given value.
+
+### HasInteractive
+
+`func (o *PatchedCaptchaStageRequest) HasInteractive() bool`
+
+HasInteractive returns a boolean if a field has been set.
 
 ### GetScoreMinThreshold
 

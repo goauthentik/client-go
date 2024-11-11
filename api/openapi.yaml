@@ -43947,7 +43947,10 @@ components:
           type: string
         js_url:
           type: string
+        interactive:
+          type: boolean
       required:
+      - interactive
       - js_url
       - pending_user
       - pending_user_avatar
@@ -43973,6 +43976,7 @@ components:
         error_on_invalid_score: true
         verbose_name_plural: verbose_name_plural
         api_url: api_url
+        interactive: true
         score_min_threshold: 0.8008281904610115
         flow_set:
         - policy_engine_mode: null
@@ -44041,6 +44045,8 @@ components:
           type: string
         api_url:
           type: string
+        interactive:
+          type: boolean
         score_min_threshold:
           format: double
           type: number
@@ -44069,6 +44075,7 @@ components:
         error_on_invalid_score: true
         api_url: api_url
         name: name
+        interactive: true
         private_key: private_key
         js_url: js_url
         score_min_threshold: 0.8008281904610115
@@ -44113,6 +44120,8 @@ components:
         api_url:
           minLength: 1
           type: string
+        interactive:
+          type: boolean
         score_min_threshold:
           format: double
           type: number
@@ -53052,6 +53061,7 @@ components:
           error_on_invalid_score: true
           verbose_name_plural: verbose_name_plural
           api_url: api_url
+          interactive: true
           score_min_threshold: 0.8008281904610115
           flow_set:
           - policy_engine_mode: null
@@ -53089,6 +53099,7 @@ components:
           error_on_invalid_score: true
           verbose_name_plural: verbose_name_plural
           api_url: api_url
+          interactive: true
           score_min_threshold: 0.8008281904610115
           flow_set:
           - policy_engine_mode: null
@@ -60757,6 +60768,7 @@ components:
         error_on_invalid_score: true
         api_url: api_url
         name: name
+        interactive: true
         private_key: private_key
         js_url: js_url
         score_min_threshold: 0.8008281904610115
@@ -60801,6 +60813,8 @@ components:
         api_url:
           minLength: 1
           type: string
+        interactive:
+          type: boolean
         score_min_threshold:
           format: double
           type: number

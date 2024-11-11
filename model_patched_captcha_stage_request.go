@@ -25,6 +25,7 @@ type PatchedCaptchaStageRequest struct {
 	PrivateKey        *string  `json:"private_key,omitempty"`
 	JsUrl             *string  `json:"js_url,omitempty"`
 	ApiUrl            *string  `json:"api_url,omitempty"`
+	Interactive       *bool    `json:"interactive,omitempty"`
 	ScoreMinThreshold *float64 `json:"score_min_threshold,omitempty"`
 	ScoreMaxThreshold *float64 `json:"score_max_threshold,omitempty"`
 	// When enabled and the received captcha score is outside of the given threshold, the stage will show an error message. When not enabled, the flow will continue, but the data from the captcha will be available in the context for policy decisions
@@ -240,6 +241,38 @@ func (o *PatchedCaptchaStageRequest) SetApiUrl(v string) {
 	o.ApiUrl = &v
 }
 
+// GetInteractive returns the Interactive field value if set, zero value otherwise.
+func (o *PatchedCaptchaStageRequest) GetInteractive() bool {
+	if o == nil || o.Interactive == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Interactive
+}
+
+// GetInteractiveOk returns a tuple with the Interactive field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedCaptchaStageRequest) GetInteractiveOk() (*bool, bool) {
+	if o == nil || o.Interactive == nil {
+		return nil, false
+	}
+	return o.Interactive, true
+}
+
+// HasInteractive returns a boolean if a field has been set.
+func (o *PatchedCaptchaStageRequest) HasInteractive() bool {
+	if o != nil && o.Interactive != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInteractive gets a reference to the given bool and assigns it to the Interactive field.
+func (o *PatchedCaptchaStageRequest) SetInteractive(v bool) {
+	o.Interactive = &v
+}
+
 // GetScoreMinThreshold returns the ScoreMinThreshold field value if set, zero value otherwise.
 func (o *PatchedCaptchaStageRequest) GetScoreMinThreshold() float64 {
 	if o == nil || o.ScoreMinThreshold == nil {
@@ -355,6 +388,9 @@ func (o PatchedCaptchaStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.ApiUrl != nil {
 		toSerialize["api_url"] = o.ApiUrl
+	}
+	if o.Interactive != nil {
+		toSerialize["interactive"] = o.Interactive
 	}
 	if o.ScoreMinThreshold != nil {
 		toSerialize["score_min_threshold"] = o.ScoreMinThreshold
