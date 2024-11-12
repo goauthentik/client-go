@@ -3499,7 +3499,7 @@ Name | Type | Description  | Notes
 
 ## CoreUsersImpersonateCreate
 
-> CoreUsersImpersonateCreate(ctx, id).Execute()
+> CoreUsersImpersonateCreate(ctx, id).ImpersonationRequest(impersonationRequest).Execute()
 
 
 
@@ -3519,10 +3519,11 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this User.
+    impersonationRequest := *openapiclient.NewImpersonationRequest("Reason_example") // ImpersonationRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreUsersImpersonateCreate(context.Background(), id).Execute()
+    resp, r, err := apiClient.CoreApi.CoreUsersImpersonateCreate(context.Background(), id).ImpersonationRequest(impersonationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersImpersonateCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3546,6 +3547,7 @@ Other parameters are passed through a pointer to a apiCoreUsersImpersonateCreate
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **impersonationRequest** | [**ImpersonationRequest**](ImpersonationRequest.md) |  | 
 
 ### Return type
 
@@ -3557,7 +3559,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

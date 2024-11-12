@@ -5833,6 +5833,12 @@ paths:
         schema:
           type: integer
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImpersonationRequest'
+        required: true
       responses:
         "204":
           description: Successfully started impersonation
@@ -48483,6 +48489,16 @@ components:
       required:
       - name
       type: object
+    ImpersonationRequest:
+      example:
+        reason: reason
+      properties:
+        reason:
+          minLength: 1
+          type: string
+      required:
+      - reason
+      type: object
     InstallID:
       example:
         install_id: install_id
@@ -63900,6 +63916,7 @@ components:
         default_user_change_name: true
         impersonation: true
         default_token_duration: default_token_duration
+        impersonation_require_reason: true
         default_user_change_username: true
         default_token_length: 171976545
         event_retention: event_retention
@@ -63933,6 +63950,10 @@ components:
           type: boolean
         impersonation:
           description: Globally enable/disable impersonation.
+          type: boolean
+        impersonation_require_reason:
+          description: Require administrators to provide a reason for impersonating
+            a user.
           type: boolean
         default_token_duration:
           description: Default token duration
@@ -68834,6 +68855,7 @@ components:
         default_user_change_name: true
         impersonation: true
         default_token_duration: default_token_duration
+        impersonation_require_reason: true
         default_user_change_username: true
         default_token_length: 171976545
         event_retention: event_retention
@@ -68865,6 +68887,10 @@ components:
           type: boolean
         impersonation:
           description: Globally enable/disable impersonation.
+          type: boolean
+        impersonation_require_reason:
+          description: Require administrators to provide a reason for impersonating
+            a user.
           type: boolean
         default_token_duration:
           description: Default token duration
@@ -68882,6 +68908,7 @@ components:
         default_user_change_name: true
         impersonation: true
         default_token_duration: default_token_duration
+        impersonation_require_reason: true
         default_user_change_username: true
         default_token_length: 171976545
         event_retention: event_retention
@@ -68915,6 +68942,10 @@ components:
           type: boolean
         impersonation:
           description: Globally enable/disable impersonation.
+          type: boolean
+        impersonation_require_reason:
+          description: Require administrators to provide a reason for impersonating
+            a user.
           type: boolean
         default_token_duration:
           description: Default token duration

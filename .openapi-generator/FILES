@@ -206,6 +206,7 @@ docs/IdentificationChallenge.md
 docs/IdentificationChallengeResponseRequest.md
 docs/IdentificationStage.md
 docs/IdentificationStageRequest.md
+docs/ImpersonationRequest.md
 docs/InstallID.md
 docs/IntentEnum.md
 docs/InvalidResponseActionEnum.md
@@ -895,6 +896,7 @@ model_identification_challenge.go
 model_identification_challenge_response_request.go
 model_identification_stage.go
 model_identification_stage_request.go
+model_impersonation_request.go
 model_install_id.go
 model_intent_enum.go
 model_invalid_response_action_enum.go

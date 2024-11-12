@@ -6560,9 +6560,15 @@ func (a *CoreApiService) CoreUsersDestroyExecute(r ApiCoreUsersDestroyRequest) (
 }
 
 type ApiCoreUsersImpersonateCreateRequest struct {
-	ctx        context.Context
-	ApiService *CoreApiService
-	id         int32
+	ctx                  context.Context
+	ApiService           *CoreApiService
+	id                   int32
+	impersonationRequest *ImpersonationRequest
+}
+
+func (r ApiCoreUsersImpersonateCreateRequest) ImpersonationRequest(impersonationRequest ImpersonationRequest) ApiCoreUsersImpersonateCreateRequest {
+	r.impersonationRequest = &impersonationRequest
+	return r
 }
 
 func (r ApiCoreUsersImpersonateCreateRequest) Execute() (*http.Response, error) {
@@ -6605,9 +6611,12 @@ func (a *CoreApiService) CoreUsersImpersonateCreateExecute(r ApiCoreUsersImperso
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.impersonationRequest == nil {
+		return nil, reportError("impersonationRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -6623,6 +6632,8 @@ func (a *CoreApiService) CoreUsersImpersonateCreateExecute(r ApiCoreUsersImperso
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.impersonationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

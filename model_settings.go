@@ -33,6 +33,8 @@ type Settings struct {
 	GdprCompliance *bool `json:"gdpr_compliance,omitempty"`
 	// Globally enable/disable impersonation.
 	Impersonation *bool `json:"impersonation,omitempty"`
+	// Require administrators to provide a reason for impersonating a user.
+	ImpersonationRequireReason *bool `json:"impersonation_require_reason,omitempty"`
 	// Default token duration
 	DefaultTokenDuration *string `json:"default_token_duration,omitempty"`
 	// Default token length
@@ -313,6 +315,38 @@ func (o *Settings) SetImpersonation(v bool) {
 	o.Impersonation = &v
 }
 
+// GetImpersonationRequireReason returns the ImpersonationRequireReason field value if set, zero value otherwise.
+func (o *Settings) GetImpersonationRequireReason() bool {
+	if o == nil || o.ImpersonationRequireReason == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ImpersonationRequireReason
+}
+
+// GetImpersonationRequireReasonOk returns a tuple with the ImpersonationRequireReason field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Settings) GetImpersonationRequireReasonOk() (*bool, bool) {
+	if o == nil || o.ImpersonationRequireReason == nil {
+		return nil, false
+	}
+	return o.ImpersonationRequireReason, true
+}
+
+// HasImpersonationRequireReason returns a boolean if a field has been set.
+func (o *Settings) HasImpersonationRequireReason() bool {
+	if o != nil && o.ImpersonationRequireReason != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetImpersonationRequireReason gets a reference to the given bool and assigns it to the ImpersonationRequireReason field.
+func (o *Settings) SetImpersonationRequireReason(v bool) {
+	o.ImpersonationRequireReason = &v
+}
+
 // GetDefaultTokenDuration returns the DefaultTokenDuration field value if set, zero value otherwise.
 func (o *Settings) GetDefaultTokenDuration() string {
 	if o == nil || o.DefaultTokenDuration == nil {
@@ -402,6 +436,9 @@ func (o Settings) MarshalJSON() ([]byte, error) {
 	}
 	if o.Impersonation != nil {
 		toSerialize["impersonation"] = o.Impersonation
+	}
+	if o.ImpersonationRequireReason != nil {
+		toSerialize["impersonation_require_reason"] = o.ImpersonationRequireReason
 	}
 	if o.DefaultTokenDuration != nil {
 		toSerialize["default_token_duration"] = o.DefaultTokenDuration

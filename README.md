@@ -1137,6 +1137,7 @@ Class | Method | HTTP request | Description
  - [IdentificationChallengeResponseRequest](docs/IdentificationChallengeResponseRequest.md)
  - [IdentificationStage](docs/IdentificationStage.md)
  - [IdentificationStageRequest](docs/IdentificationStageRequest.md)
+ - [ImpersonationRequest](docs/ImpersonationRequest.md)
  - [InstallID](docs/InstallID.md)
  - [IntentEnum](docs/IntentEnum.md)
  - [InvalidResponseActionEnum](docs/InvalidResponseActionEnum.md)

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **FooterLinks** | Pointer to **interface{}** | The option configures the footer links on the flow executor pages. | [optional] 
 **GdprCompliance** | Pointer to **bool** | When enabled, all the events caused by a user will be deleted upon the user&#39;s deletion. | [optional] 
 **Impersonation** | Pointer to **bool** | Globally enable/disable impersonation. | [optional] 
+**ImpersonationRequireReason** | Pointer to **bool** | Require administrators to provide a reason for impersonating a user. | [optional] 
 **DefaultTokenDuration** | Pointer to **string** | Default token duration | [optional] 
 **DefaultTokenLength** | Pointer to **int32** | Default token length | [optional] 
 
@@ -243,6 +244,31 @@ SetImpersonation sets Impersonation field to given value.
 `func (o *SettingsRequest) HasImpersonation() bool`
 
 HasImpersonation returns a boolean if a field has been set.
+
+### GetImpersonationRequireReason
+
+`func (o *SettingsRequest) GetImpersonationRequireReason() bool`
+
+GetImpersonationRequireReason returns the ImpersonationRequireReason field if non-nil, zero value otherwise.
+
+### GetImpersonationRequireReasonOk
+
+`func (o *SettingsRequest) GetImpersonationRequireReasonOk() (*bool, bool)`
+
+GetImpersonationRequireReasonOk returns a tuple with the ImpersonationRequireReason field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImpersonationRequireReason
+
+`func (o *SettingsRequest) SetImpersonationRequireReason(v bool)`
+
+SetImpersonationRequireReason sets ImpersonationRequireReason field to given value.
+
+### HasImpersonationRequireReason
+
+`func (o *SettingsRequest) HasImpersonationRequireReason() bool`
+
+HasImpersonationRequireReason returns a boolean if a field has been set.
 
 ### GetDefaultTokenDuration
 
