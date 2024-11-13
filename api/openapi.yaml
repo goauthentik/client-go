@@ -51361,7 +51361,8 @@ components:
           minLength: 1
           type: string
         code:
-          type: integer
+          minLength: 1
+          type: string
       required:
       - code
       type: object

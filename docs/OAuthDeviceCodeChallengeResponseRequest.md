@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Component** | Pointer to **string** |  | [optional] [default to "ak-provider-oauth2-device-code"]
-**Code** | **int32** |  | 
+**Code** | **string** |  | 
 
 ## Methods
 
 ### NewOAuthDeviceCodeChallengeResponseRequest
 
-`func NewOAuthDeviceCodeChallengeResponseRequest(code int32, ) *OAuthDeviceCodeChallengeResponseRequest`
+`func NewOAuthDeviceCodeChallengeResponseRequest(code string, ) *OAuthDeviceCodeChallengeResponseRequest`
 
 NewOAuthDeviceCodeChallengeResponseRequest instantiates a new OAuthDeviceCodeChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -53,20 +53,20 @@ HasComponent returns a boolean if a field has been set.
 
 ### GetCode
 
-`func (o *OAuthDeviceCodeChallengeResponseRequest) GetCode() int32`
+`func (o *OAuthDeviceCodeChallengeResponseRequest) GetCode() string`
 
 GetCode returns the Code field if non-nil, zero value otherwise.
 
 ### GetCodeOk
 
-`func (o *OAuthDeviceCodeChallengeResponseRequest) GetCodeOk() (*int32, bool)`
+`func (o *OAuthDeviceCodeChallengeResponseRequest) GetCodeOk() (*string, bool)`
 
 GetCodeOk returns a tuple with the Code field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCode
 
-`func (o *OAuthDeviceCodeChallengeResponseRequest) SetCode(v int32)`
+`func (o *OAuthDeviceCodeChallengeResponseRequest) SetCode(v string)`
 
 SetCode sets Code field to given value.
 

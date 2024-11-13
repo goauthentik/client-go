@@ -18,14 +18,14 @@ import (
 // OAuthDeviceCodeChallengeResponseRequest Response that includes the user-entered device code
 type OAuthDeviceCodeChallengeResponseRequest struct {
 	Component *string `json:"component,omitempty"`
-	Code      int32   `json:"code"`
+	Code      string  `json:"code"`
 }
 
 // NewOAuthDeviceCodeChallengeResponseRequest instantiates a new OAuthDeviceCodeChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuthDeviceCodeChallengeResponseRequest(code int32) *OAuthDeviceCodeChallengeResponseRequest {
+func NewOAuthDeviceCodeChallengeResponseRequest(code string) *OAuthDeviceCodeChallengeResponseRequest {
 	this := OAuthDeviceCodeChallengeResponseRequest{}
 	var component string = "ak-provider-oauth2-device-code"
 	this.Component = &component
@@ -76,9 +76,9 @@ func (o *OAuthDeviceCodeChallengeResponseRequest) SetComponent(v string) {
 }
 
 // GetCode returns the Code field value
-func (o *OAuthDeviceCodeChallengeResponseRequest) GetCode() int32 {
+func (o *OAuthDeviceCodeChallengeResponseRequest) GetCode() string {
 	if o == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 
@@ -87,7 +87,7 @@ func (o *OAuthDeviceCodeChallengeResponseRequest) GetCode() int32 {
 
 // GetCodeOk returns a tuple with the Code field value
 // and a boolean to check if the value has been set.
-func (o *OAuthDeviceCodeChallengeResponseRequest) GetCodeOk() (*int32, bool) {
+func (o *OAuthDeviceCodeChallengeResponseRequest) GetCodeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -95,7 +95,7 @@ func (o *OAuthDeviceCodeChallengeResponseRequest) GetCodeOk() (*int32, bool) {
 }
 
 // SetCode sets field value
-func (o *OAuthDeviceCodeChallengeResponseRequest) SetCode(v int32) {
+func (o *OAuthDeviceCodeChallengeResponseRequest) SetCode(v string) {
 	o.Code = v
 }
 
