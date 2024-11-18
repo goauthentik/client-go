@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **App** | [**ApplicationRequest**](ApplicationRequest.md) |  | 
 **ProviderModel** | [**ProviderModelEnum**](ProviderModelEnum.md) |  | 
 **Provider** | [**ModelRequest**](ModelRequest.md) |  | 
+**PolicyBindings** | Pointer to [**[]TransactionPolicyBindingRequest**](TransactionPolicyBindingRequest.md) |  | [optional] 
 
 ## Methods
 
@@ -86,6 +87,31 @@ and a boolean to check if the value has been set.
 
 SetProvider sets Provider field to given value.
 
+
+### GetPolicyBindings
+
+`func (o *TransactionApplicationRequest) GetPolicyBindings() []TransactionPolicyBindingRequest`
+
+GetPolicyBindings returns the PolicyBindings field if non-nil, zero value otherwise.
+
+### GetPolicyBindingsOk
+
+`func (o *TransactionApplicationRequest) GetPolicyBindingsOk() (*[]TransactionPolicyBindingRequest, bool)`
+
+GetPolicyBindingsOk returns a tuple with the PolicyBindings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPolicyBindings
+
+`func (o *TransactionApplicationRequest) SetPolicyBindings(v []TransactionPolicyBindingRequest)`
+
+SetPolicyBindings sets PolicyBindings field to given value.
+
+### HasPolicyBindings
+
+`func (o *TransactionApplicationRequest) HasPolicyBindings() bool`
+
+HasPolicyBindings returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

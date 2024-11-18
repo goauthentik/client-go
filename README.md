@@ -1583,6 +1583,7 @@ Class | Method | HTTP request | Description
  - [TokenView](docs/TokenView.md)
  - [TransactionApplicationRequest](docs/TransactionApplicationRequest.md)
  - [TransactionApplicationResponse](docs/TransactionApplicationResponse.md)
+ - [TransactionPolicyBindingRequest](docs/TransactionPolicyBindingRequest.md)
  - [TypeCreate](docs/TypeCreate.md)
  - [UiThemeEnum](docs/UiThemeEnum.md)
  - [UsedBy](docs/UsedBy.md)

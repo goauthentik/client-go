@@ -665,6 +665,7 @@ docs/TokenSetKeyRequest.md
 docs/TokenView.md
 docs/TransactionApplicationRequest.md
 docs/TransactionApplicationResponse.md
+docs/TransactionPolicyBindingRequest.md
 docs/TypeCreate.md
 docs/UiThemeEnum.md
 docs/UsedBy.md
@@ -1342,6 +1343,7 @@ model_totp_device.go
 model_totp_device_request.go
 model_transaction_application_request.go
 model_transaction_application_response.go
+model_transaction_policy_binding_request.go
 model_type_create.go
 model_ui_theme_enum.go
 model_used_by.go

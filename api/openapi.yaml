@@ -70175,6 +70175,23 @@ components:
           group: group
         provider_model: null
         provider: null
+        policy_bindings:
+        - negate: true
+          failure_result: true
+          user: 0
+          enabled: true
+          timeout: 314780940
+          policy: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          order: 441289069
+        - negate: true
+          failure_result: true
+          user: 0
+          enabled: true
+          timeout: 314780940
+          policy: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          order: 441289069
       properties:
         app:
           $ref: '#/components/schemas/ApplicationRequest'
@@ -70182,6 +70199,10 @@ components:
           $ref: '#/components/schemas/ProviderModelEnum'
         provider:
           $ref: '#/components/schemas/modelRequest'
+        policy_bindings:
+          items:
+            $ref: '#/components/schemas/TransactionPolicyBindingRequest'
+          type: array
       required:
       - app
       - provider
@@ -70204,6 +70225,50 @@ components:
       required:
       - applied
       - logs
+      type: object
+    TransactionPolicyBindingRequest:
+      description: PolicyBindingSerializer which does not require target as target
+        is set implicitly
+      example:
+        negate: true
+        failure_result: true
+        user: 0
+        enabled: true
+        timeout: 314780940
+        policy: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        order: 441289069
+      properties:
+        policy:
+          format: uuid
+          nullable: true
+          type: string
+        group:
+          format: uuid
+          nullable: true
+          type: string
+        user:
+          nullable: true
+          type: integer
+        negate:
+          description: Negates the outcome of the policy. Messages are unaffected.
+          type: boolean
+        enabled:
+          type: boolean
+        order:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        timeout:
+          description: Timeout after which Policy execution is terminated.
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        failure_result:
+          description: Result if the Policy execution fails.
+          type: boolean
+      required:
+      - order
       type: object
     TypeCreate:
       description: Types of an object that can be created

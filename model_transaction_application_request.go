@@ -17,9 +17,10 @@ import (
 
 // TransactionApplicationRequest Serializer for creating a provider and an application in one transaction
 type TransactionApplicationRequest struct {
-	App           ApplicationRequest `json:"app"`
-	ProviderModel ProviderModelEnum  `json:"provider_model"`
-	Provider      ModelRequest       `json:"provider"`
+	App            ApplicationRequest                `json:"app"`
+	ProviderModel  ProviderModelEnum                 `json:"provider_model"`
+	Provider       ModelRequest                      `json:"provider"`
+	PolicyBindings []TransactionPolicyBindingRequest `json:"policy_bindings,omitempty"`
 }
 
 // NewTransactionApplicationRequest instantiates a new TransactionApplicationRequest object
@@ -114,6 +115,38 @@ func (o *TransactionApplicationRequest) SetProvider(v ModelRequest) {
 	o.Provider = v
 }
 
+// GetPolicyBindings returns the PolicyBindings field value if set, zero value otherwise.
+func (o *TransactionApplicationRequest) GetPolicyBindings() []TransactionPolicyBindingRequest {
+	if o == nil || o.PolicyBindings == nil {
+		var ret []TransactionPolicyBindingRequest
+		return ret
+	}
+	return o.PolicyBindings
+}
+
+// GetPolicyBindingsOk returns a tuple with the PolicyBindings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransactionApplicationRequest) GetPolicyBindingsOk() ([]TransactionPolicyBindingRequest, bool) {
+	if o == nil || o.PolicyBindings == nil {
+		return nil, false
+	}
+	return o.PolicyBindings, true
+}
+
+// HasPolicyBindings returns a boolean if a field has been set.
+func (o *TransactionApplicationRequest) HasPolicyBindings() bool {
+	if o != nil && o.PolicyBindings != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPolicyBindings gets a reference to the given []TransactionPolicyBindingRequest and assigns it to the PolicyBindings field.
+func (o *TransactionApplicationRequest) SetPolicyBindings(v []TransactionPolicyBindingRequest) {
+	o.PolicyBindings = v
+}
+
 func (o TransactionApplicationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -124,6 +157,9 @@ func (o TransactionApplicationRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["provider"] = o.Provider
+	}
+	if o.PolicyBindings != nil {
+		toSerialize["policy_bindings"] = o.PolicyBindings
 	}
 	return json.Marshal(toSerialize)
 }
