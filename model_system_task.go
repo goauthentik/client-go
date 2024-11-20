@@ -12,9 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the SystemTask type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SystemTask{}
 
 // SystemTask Serialize TaskInfo and TaskResult
 type SystemTask struct {
@@ -32,6 +37,8 @@ type SystemTask struct {
 	Expires         NullableTime         `json:"expires,omitempty"`
 	Expiring        *bool                `json:"expiring,omitempty"`
 }
+
+type _SystemTask SystemTask
 
 // NewSystemTask instantiates a new SystemTask object
 // This constructor will assign default values to properties that have it defined,
@@ -133,7 +140,7 @@ func (o *SystemTask) SetFullName(v string) {
 
 // GetUid returns the Uid field value if set, zero value otherwise.
 func (o *SystemTask) GetUid() string {
-	if o == nil || o.Uid == nil {
+	if o == nil || IsNil(o.Uid) {
 		var ret string
 		return ret
 	}
@@ -143,7 +150,7 @@ func (o *SystemTask) GetUid() string {
 // GetUidOk returns a tuple with the Uid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SystemTask) GetUidOk() (*string, bool) {
-	if o == nil || o.Uid == nil {
+	if o == nil || IsNil(o.Uid) {
 		return nil, false
 	}
 	return o.Uid, true
@@ -151,7 +158,7 @@ func (o *SystemTask) GetUidOk() (*string, bool) {
 
 // HasUid returns a boolean if a field has been set.
 func (o *SystemTask) HasUid() bool {
-	if o != nil && o.Uid != nil {
+	if o != nil && !IsNil(o.Uid) {
 		return true
 	}
 
@@ -309,7 +316,7 @@ func (o *SystemTask) SetMessages(v []LogEvent) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SystemTask) GetExpires() time.Time {
-	if o == nil || o.Expires.Get() == nil {
+	if o == nil || IsNil(o.Expires.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -352,7 +359,7 @@ func (o *SystemTask) UnsetExpires() {
 
 // GetExpiring returns the Expiring field value if set, zero value otherwise.
 func (o *SystemTask) GetExpiring() bool {
-	if o == nil || o.Expiring == nil {
+	if o == nil || IsNil(o.Expiring) {
 		var ret bool
 		return ret
 	}
@@ -362,7 +369,7 @@ func (o *SystemTask) GetExpiring() bool {
 // GetExpiringOk returns a tuple with the Expiring field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SystemTask) GetExpiringOk() (*bool, bool) {
-	if o == nil || o.Expiring == nil {
+	if o == nil || IsNil(o.Expiring) {
 		return nil, false
 	}
 	return o.Expiring, true
@@ -370,7 +377,7 @@ func (o *SystemTask) GetExpiringOk() (*bool, bool) {
 
 // HasExpiring returns a boolean if a field has been set.
 func (o *SystemTask) HasExpiring() bool {
-	if o != nil && o.Expiring != nil {
+	if o != nil && !IsNil(o.Expiring) {
 		return true
 	}
 
@@ -383,44 +390,79 @@ func (o *SystemTask) SetExpiring(v bool) {
 }
 
 func (o SystemTask) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SystemTask) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["uuid"] = o.Uuid
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["full_name"] = o.FullName
-	}
-	if o.Uid != nil {
+	toSerialize["uuid"] = o.Uuid
+	toSerialize["name"] = o.Name
+	toSerialize["full_name"] = o.FullName
+	if !IsNil(o.Uid) {
 		toSerialize["uid"] = o.Uid
 	}
-	if true {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["start_timestamp"] = o.StartTimestamp
-	}
-	if true {
-		toSerialize["finish_timestamp"] = o.FinishTimestamp
-	}
-	if true {
-		toSerialize["duration"] = o.Duration
-	}
-	if true {
-		toSerialize["status"] = o.Status
-	}
-	if true {
-		toSerialize["messages"] = o.Messages
-	}
+	toSerialize["description"] = o.Description
+	toSerialize["start_timestamp"] = o.StartTimestamp
+	toSerialize["finish_timestamp"] = o.FinishTimestamp
+	toSerialize["duration"] = o.Duration
+	toSerialize["status"] = o.Status
+	toSerialize["messages"] = o.Messages
 	if o.Expires.IsSet() {
 		toSerialize["expires"] = o.Expires.Get()
 	}
-	if o.Expiring != nil {
+	if !IsNil(o.Expiring) {
 		toSerialize["expiring"] = o.Expiring
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *SystemTask) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"uuid",
+		"name",
+		"full_name",
+		"description",
+		"start_timestamp",
+		"finish_timestamp",
+		"duration",
+		"status",
+		"messages",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSystemTask := _SystemTask{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSystemTask)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SystemTask(varSystemTask)
+
+	return err
 }
 
 type NullableSystemTask struct {

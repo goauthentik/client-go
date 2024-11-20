@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the StaticDevice type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &StaticDevice{}
 
 // StaticDevice Serializer for static authenticator devices
 type StaticDevice struct {
@@ -22,6 +27,8 @@ type StaticDevice struct {
 	TokenSet []StaticDeviceToken `json:"token_set"`
 	Pk       int32               `json:"pk"`
 }
+
+type _StaticDevice StaticDevice
 
 // NewStaticDevice instantiates a new StaticDevice object
 // This constructor will assign default values to properties that have it defined,
@@ -116,17 +123,58 @@ func (o *StaticDevice) SetPk(v int32) {
 }
 
 func (o StaticDevice) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["token_set"] = o.TokenSet
-	}
-	if true {
-		toSerialize["pk"] = o.Pk
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o StaticDevice) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["token_set"] = o.TokenSet
+	toSerialize["pk"] = o.Pk
+	return toSerialize, nil
+}
+
+func (o *StaticDevice) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"token_set",
+		"pk",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varStaticDevice := _StaticDevice{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varStaticDevice)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StaticDevice(varStaticDevice)
+
+	return err
 }
 
 type NullableStaticDevice struct {

@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the DenyStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DenyStageRequest{}
 
 // DenyStageRequest DenyStage Serializer
 type DenyStageRequest struct {
@@ -21,6 +26,8 @@ type DenyStageRequest struct {
 	FlowSet     []FlowSetRequest `json:"flow_set,omitempty"`
 	DenyMessage *string          `json:"deny_message,omitempty"`
 }
+
+type _DenyStageRequest DenyStageRequest
 
 // NewDenyStageRequest instantiates a new DenyStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -66,7 +73,7 @@ func (o *DenyStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *DenyStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -76,7 +83,7 @@ func (o *DenyStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DenyStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -84,7 +91,7 @@ func (o *DenyStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *DenyStageRequest) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
+	if o != nil && !IsNil(o.FlowSet) {
 		return true
 	}
 
@@ -98,7 +105,7 @@ func (o *DenyStageRequest) SetFlowSet(v []FlowSetRequest) {
 
 // GetDenyMessage returns the DenyMessage field value if set, zero value otherwise.
 func (o *DenyStageRequest) GetDenyMessage() string {
-	if o == nil || o.DenyMessage == nil {
+	if o == nil || IsNil(o.DenyMessage) {
 		var ret string
 		return ret
 	}
@@ -108,7 +115,7 @@ func (o *DenyStageRequest) GetDenyMessage() string {
 // GetDenyMessageOk returns a tuple with the DenyMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DenyStageRequest) GetDenyMessageOk() (*string, bool) {
-	if o == nil || o.DenyMessage == nil {
+	if o == nil || IsNil(o.DenyMessage) {
 		return nil, false
 	}
 	return o.DenyMessage, true
@@ -116,7 +123,7 @@ func (o *DenyStageRequest) GetDenyMessageOk() (*string, bool) {
 
 // HasDenyMessage returns a boolean if a field has been set.
 func (o *DenyStageRequest) HasDenyMessage() bool {
-	if o != nil && o.DenyMessage != nil {
+	if o != nil && !IsNil(o.DenyMessage) {
 		return true
 	}
 
@@ -129,17 +136,60 @@ func (o *DenyStageRequest) SetDenyMessage(v string) {
 }
 
 func (o DenyStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.FlowSet != nil {
-		toSerialize["flow_set"] = o.FlowSet
-	}
-	if o.DenyMessage != nil {
-		toSerialize["deny_message"] = o.DenyMessage
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DenyStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
+	if !IsNil(o.DenyMessage) {
+		toSerialize["deny_message"] = o.DenyMessage
+	}
+	return toSerialize, nil
+}
+
+func (o *DenyStageRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDenyStageRequest := _DenyStageRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDenyStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DenyStageRequest(varDenyStageRequest)
+
+	return err
 }
 
 type NullableDenyStageRequest struct {

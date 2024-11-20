@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the AuthenticatorDuoStage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatorDuoStage{}
 
 // AuthenticatorDuoStage AuthenticatorDuoStage Serializer
 type AuthenticatorDuoStage struct {
@@ -35,6 +40,8 @@ type AuthenticatorDuoStage struct {
 	ApiHostname         string         `json:"api_hostname"`
 	AdminIntegrationKey *string        `json:"admin_integration_key,omitempty"`
 }
+
+type _AuthenticatorDuoStage AuthenticatorDuoStage
 
 // NewAuthenticatorDuoStage instantiates a new AuthenticatorDuoStage object
 // This constructor will assign default values to properties that have it defined,
@@ -207,7 +214,7 @@ func (o *AuthenticatorDuoStage) SetMetaModelName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *AuthenticatorDuoStage) GetFlowSet() []FlowSet {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSet
 		return ret
 	}
@@ -217,7 +224,7 @@ func (o *AuthenticatorDuoStage) GetFlowSet() []FlowSet {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -225,7 +232,7 @@ func (o *AuthenticatorDuoStage) GetFlowSetOk() ([]FlowSet, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *AuthenticatorDuoStage) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
+	if o != nil && !IsNil(o.FlowSet) {
 		return true
 	}
 
@@ -239,7 +246,7 @@ func (o *AuthenticatorDuoStage) SetFlowSet(v []FlowSet) {
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorDuoStage) GetConfigureFlow() string {
-	if o == nil || o.ConfigureFlow.Get() == nil {
+	if o == nil || IsNil(o.ConfigureFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -282,7 +289,7 @@ func (o *AuthenticatorDuoStage) UnsetConfigureFlow() {
 
 // GetFriendlyName returns the FriendlyName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorDuoStage) GetFriendlyName() string {
-	if o == nil || o.FriendlyName.Get() == nil {
+	if o == nil || IsNil(o.FriendlyName.Get()) {
 		var ret string
 		return ret
 	}
@@ -373,7 +380,7 @@ func (o *AuthenticatorDuoStage) SetApiHostname(v string) {
 
 // GetAdminIntegrationKey returns the AdminIntegrationKey field value if set, zero value otherwise.
 func (o *AuthenticatorDuoStage) GetAdminIntegrationKey() string {
-	if o == nil || o.AdminIntegrationKey == nil {
+	if o == nil || IsNil(o.AdminIntegrationKey) {
 		var ret string
 		return ret
 	}
@@ -383,7 +390,7 @@ func (o *AuthenticatorDuoStage) GetAdminIntegrationKey() string {
 // GetAdminIntegrationKeyOk returns a tuple with the AdminIntegrationKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoStage) GetAdminIntegrationKeyOk() (*string, bool) {
-	if o == nil || o.AdminIntegrationKey == nil {
+	if o == nil || IsNil(o.AdminIntegrationKey) {
 		return nil, false
 	}
 	return o.AdminIntegrationKey, true
@@ -391,7 +398,7 @@ func (o *AuthenticatorDuoStage) GetAdminIntegrationKeyOk() (*string, bool) {
 
 // HasAdminIntegrationKey returns a boolean if a field has been set.
 func (o *AuthenticatorDuoStage) HasAdminIntegrationKey() bool {
-	if o != nil && o.AdminIntegrationKey != nil {
+	if o != nil && !IsNil(o.AdminIntegrationKey) {
 		return true
 	}
 
@@ -404,26 +411,22 @@ func (o *AuthenticatorDuoStage) SetAdminIntegrationKey(v string) {
 }
 
 func (o AuthenticatorDuoStage) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatorDuoStage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if o.FlowSet != nil {
+	toSerialize["pk"] = o.Pk
+	toSerialize["name"] = o.Name
+	toSerialize["component"] = o.Component
+	toSerialize["verbose_name"] = o.VerboseName
+	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	toSerialize["meta_model_name"] = o.MetaModelName
+	if !IsNil(o.FlowSet) {
 		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.ConfigureFlow.IsSet() {
@@ -432,16 +435,56 @@ func (o AuthenticatorDuoStage) MarshalJSON() ([]byte, error) {
 	if o.FriendlyName.IsSet() {
 		toSerialize["friendly_name"] = o.FriendlyName.Get()
 	}
-	if true {
-		toSerialize["client_id"] = o.ClientId
-	}
-	if true {
-		toSerialize["api_hostname"] = o.ApiHostname
-	}
-	if o.AdminIntegrationKey != nil {
+	toSerialize["client_id"] = o.ClientId
+	toSerialize["api_hostname"] = o.ApiHostname
+	if !IsNil(o.AdminIntegrationKey) {
 		toSerialize["admin_integration_key"] = o.AdminIntegrationKey
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *AuthenticatorDuoStage) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"name",
+		"component",
+		"verbose_name",
+		"verbose_name_plural",
+		"meta_model_name",
+		"client_id",
+		"api_hostname",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAuthenticatorDuoStage := _AuthenticatorDuoStage{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAuthenticatorDuoStage)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AuthenticatorDuoStage(varAuthenticatorDuoStage)
+
+	return err
 }
 
 type NullableAuthenticatorDuoStage struct {

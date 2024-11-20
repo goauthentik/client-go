@@ -12,14 +12,21 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the UserOAuthSourceConnectionRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserOAuthSourceConnectionRequest{}
 
 // UserOAuthSourceConnectionRequest OAuth Source Serializer
 type UserOAuthSourceConnectionRequest struct {
 	Identifier  string         `json:"identifier"`
 	AccessToken NullableString `json:"access_token,omitempty"`
 }
+
+type _UserOAuthSourceConnectionRequest UserOAuthSourceConnectionRequest
 
 // NewUserOAuthSourceConnectionRequest instantiates a new UserOAuthSourceConnectionRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -65,7 +72,7 @@ func (o *UserOAuthSourceConnectionRequest) SetIdentifier(v string) {
 
 // GetAccessToken returns the AccessToken field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserOAuthSourceConnectionRequest) GetAccessToken() string {
-	if o == nil || o.AccessToken.Get() == nil {
+	if o == nil || IsNil(o.AccessToken.Get()) {
 		var ret string
 		return ret
 	}
@@ -107,14 +114,57 @@ func (o *UserOAuthSourceConnectionRequest) UnsetAccessToken() {
 }
 
 func (o UserOAuthSourceConnectionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["identifier"] = o.Identifier
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o UserOAuthSourceConnectionRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["identifier"] = o.Identifier
 	if o.AccessToken.IsSet() {
 		toSerialize["access_token"] = o.AccessToken.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *UserOAuthSourceConnectionRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"identifier",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUserOAuthSourceConnectionRequest := _UserOAuthSourceConnectionRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUserOAuthSourceConnectionRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserOAuthSourceConnectionRequest(varUserOAuthSourceConnectionRequest)
+
+	return err
 }
 
 type NullableUserOAuthSourceConnectionRequest struct {

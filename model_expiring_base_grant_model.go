@@ -12,9 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the ExpiringBaseGrantModel type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ExpiringBaseGrantModel{}
 
 // ExpiringBaseGrantModel Serializer for BaseGrantModel and ExpiringBaseGrant
 type ExpiringBaseGrantModel struct {
@@ -26,6 +31,8 @@ type ExpiringBaseGrantModel struct {
 	Expires   NullableTime `json:"expires,omitempty"`
 	Scope     []string     `json:"scope"`
 }
+
+type _ExpiringBaseGrantModel ExpiringBaseGrantModel
 
 // NewExpiringBaseGrantModel instantiates a new ExpiringBaseGrantModel object
 // This constructor will assign default values to properties that have it defined,
@@ -147,7 +154,7 @@ func (o *ExpiringBaseGrantModel) SetIsExpired(v bool) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ExpiringBaseGrantModel) GetExpires() time.Time {
-	if o == nil || o.Expires.Get() == nil {
+	if o == nil || IsNil(o.Expires.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -213,26 +220,65 @@ func (o *ExpiringBaseGrantModel) SetScope(v []string) {
 }
 
 func (o ExpiringBaseGrantModel) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ExpiringBaseGrantModel) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["provider"] = o.Provider
-	}
-	if true {
-		toSerialize["user"] = o.User
-	}
-	if true {
-		toSerialize["is_expired"] = o.IsExpired
-	}
+	toSerialize["pk"] = o.Pk
+	toSerialize["provider"] = o.Provider
+	toSerialize["user"] = o.User
+	toSerialize["is_expired"] = o.IsExpired
 	if o.Expires.IsSet() {
 		toSerialize["expires"] = o.Expires.Get()
 	}
-	if true {
-		toSerialize["scope"] = o.Scope
+	toSerialize["scope"] = o.Scope
+	return toSerialize, nil
+}
+
+func (o *ExpiringBaseGrantModel) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"provider",
+		"user",
+		"is_expired",
+		"scope",
 	}
-	return json.Marshal(toSerialize)
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varExpiringBaseGrantModel := _ExpiringBaseGrantModel{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varExpiringBaseGrantModel)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ExpiringBaseGrantModel(varExpiringBaseGrantModel)
+
+	return err
 }
 
 type NullableExpiringBaseGrantModel struct {

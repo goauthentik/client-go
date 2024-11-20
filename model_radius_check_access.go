@@ -12,14 +12,21 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the RadiusCheckAccess type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RadiusCheckAccess{}
 
 // RadiusCheckAccess Base serializer class which doesn't implement create/update methods
 type RadiusCheckAccess struct {
 	Attributes *string          `json:"attributes,omitempty"`
 	Access     PolicyTestResult `json:"access"`
 }
+
+type _RadiusCheckAccess RadiusCheckAccess
 
 // NewRadiusCheckAccess instantiates a new RadiusCheckAccess object
 // This constructor will assign default values to properties that have it defined,
@@ -41,7 +48,7 @@ func NewRadiusCheckAccessWithDefaults() *RadiusCheckAccess {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *RadiusCheckAccess) GetAttributes() string {
-	if o == nil || o.Attributes == nil {
+	if o == nil || IsNil(o.Attributes) {
 		var ret string
 		return ret
 	}
@@ -51,7 +58,7 @@ func (o *RadiusCheckAccess) GetAttributes() string {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RadiusCheckAccess) GetAttributesOk() (*string, bool) {
-	if o == nil || o.Attributes == nil {
+	if o == nil || IsNil(o.Attributes) {
 		return nil, false
 	}
 	return o.Attributes, true
@@ -59,7 +66,7 @@ func (o *RadiusCheckAccess) GetAttributesOk() (*string, bool) {
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *RadiusCheckAccess) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -96,14 +103,57 @@ func (o *RadiusCheckAccess) SetAccess(v PolicyTestResult) {
 }
 
 func (o RadiusCheckAccess) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Attributes != nil {
-		toSerialize["attributes"] = o.Attributes
-	}
-	if true {
-		toSerialize["access"] = o.Access
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RadiusCheckAccess) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
+	}
+	toSerialize["access"] = o.Access
+	return toSerialize, nil
+}
+
+func (o *RadiusCheckAccess) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"access",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRadiusCheckAccess := _RadiusCheckAccess{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRadiusCheckAccess)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RadiusCheckAccess(varRadiusCheckAccess)
+
+	return err
 }
 
 type NullableRadiusCheckAccess struct {

@@ -12,13 +12,18 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
+// checks if the InvitationRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InvitationRequest{}
+
 // InvitationRequest Invitation Serializer
 type InvitationRequest struct {
-	Name      string                 `json:"name"`
+	Name      string                 `json:"name" validate:"regexp=^[-a-zA-Z0-9_]+$"`
 	Expires   NullableTime           `json:"expires,omitempty"`
 	FixedData map[string]interface{} `json:"fixed_data,omitempty"`
 	// When enabled, the invitation will be deleted after usage.
@@ -26,6 +31,8 @@ type InvitationRequest struct {
 	// When set, only the configured flow can use this invitation.
 	Flow NullableString `json:"flow,omitempty"`
 }
+
+type _InvitationRequest InvitationRequest
 
 // NewInvitationRequest instantiates a new InvitationRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -71,7 +78,7 @@ func (o *InvitationRequest) SetName(v string) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InvitationRequest) GetExpires() time.Time {
-	if o == nil || o.Expires.Get() == nil {
+	if o == nil || IsNil(o.Expires.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -114,7 +121,7 @@ func (o *InvitationRequest) UnsetExpires() {
 
 // GetFixedData returns the FixedData field value if set, zero value otherwise.
 func (o *InvitationRequest) GetFixedData() map[string]interface{} {
-	if o == nil || o.FixedData == nil {
+	if o == nil || IsNil(o.FixedData) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -124,15 +131,15 @@ func (o *InvitationRequest) GetFixedData() map[string]interface{} {
 // GetFixedDataOk returns a tuple with the FixedData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InvitationRequest) GetFixedDataOk() (map[string]interface{}, bool) {
-	if o == nil || o.FixedData == nil {
-		return nil, false
+	if o == nil || IsNil(o.FixedData) {
+		return map[string]interface{}{}, false
 	}
 	return o.FixedData, true
 }
 
 // HasFixedData returns a boolean if a field has been set.
 func (o *InvitationRequest) HasFixedData() bool {
-	if o != nil && o.FixedData != nil {
+	if o != nil && !IsNil(o.FixedData) {
 		return true
 	}
 
@@ -146,7 +153,7 @@ func (o *InvitationRequest) SetFixedData(v map[string]interface{}) {
 
 // GetSingleUse returns the SingleUse field value if set, zero value otherwise.
 func (o *InvitationRequest) GetSingleUse() bool {
-	if o == nil || o.SingleUse == nil {
+	if o == nil || IsNil(o.SingleUse) {
 		var ret bool
 		return ret
 	}
@@ -156,7 +163,7 @@ func (o *InvitationRequest) GetSingleUse() bool {
 // GetSingleUseOk returns a tuple with the SingleUse field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InvitationRequest) GetSingleUseOk() (*bool, bool) {
-	if o == nil || o.SingleUse == nil {
+	if o == nil || IsNil(o.SingleUse) {
 		return nil, false
 	}
 	return o.SingleUse, true
@@ -164,7 +171,7 @@ func (o *InvitationRequest) GetSingleUseOk() (*bool, bool) {
 
 // HasSingleUse returns a boolean if a field has been set.
 func (o *InvitationRequest) HasSingleUse() bool {
-	if o != nil && o.SingleUse != nil {
+	if o != nil && !IsNil(o.SingleUse) {
 		return true
 	}
 
@@ -178,7 +185,7 @@ func (o *InvitationRequest) SetSingleUse(v bool) {
 
 // GetFlow returns the Flow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InvitationRequest) GetFlow() string {
-	if o == nil || o.Flow.Get() == nil {
+	if o == nil || IsNil(o.Flow.Get()) {
 		var ret string
 		return ret
 	}
@@ -220,23 +227,66 @@ func (o *InvitationRequest) UnsetFlow() {
 }
 
 func (o InvitationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o InvitationRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
 	if o.Expires.IsSet() {
 		toSerialize["expires"] = o.Expires.Get()
 	}
-	if o.FixedData != nil {
+	if !IsNil(o.FixedData) {
 		toSerialize["fixed_data"] = o.FixedData
 	}
-	if o.SingleUse != nil {
+	if !IsNil(o.SingleUse) {
 		toSerialize["single_use"] = o.SingleUse
 	}
 	if o.Flow.IsSet() {
 		toSerialize["flow"] = o.Flow.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *InvitationRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varInvitationRequest := _InvitationRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varInvitationRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InvitationRequest(varInvitationRequest)
+
+	return err
 }
 
 type NullableInvitationRequest struct {

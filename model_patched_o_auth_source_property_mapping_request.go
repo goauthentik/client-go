@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedOAuthSourcePropertyMappingRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedOAuthSourcePropertyMappingRequest{}
+
 // PatchedOAuthSourcePropertyMappingRequest OAuthSourcePropertyMapping Serializer
 type PatchedOAuthSourcePropertyMappingRequest struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
@@ -42,7 +45,7 @@ func NewPatchedOAuthSourcePropertyMappingRequestWithDefaults() *PatchedOAuthSour
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedOAuthSourcePropertyMappingRequest) GetManaged() string {
-	if o == nil || o.Managed.Get() == nil {
+	if o == nil || IsNil(o.Managed.Get()) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *PatchedOAuthSourcePropertyMappingRequest) UnsetManaged() {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedOAuthSourcePropertyMappingRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -95,7 +98,7 @@ func (o *PatchedOAuthSourcePropertyMappingRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedOAuthSourcePropertyMappingRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -103,7 +106,7 @@ func (o *PatchedOAuthSourcePropertyMappingRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedOAuthSourcePropertyMappingRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -117,7 +120,7 @@ func (o *PatchedOAuthSourcePropertyMappingRequest) SetName(v string) {
 
 // GetExpression returns the Expression field value if set, zero value otherwise.
 func (o *PatchedOAuthSourcePropertyMappingRequest) GetExpression() string {
-	if o == nil || o.Expression == nil {
+	if o == nil || IsNil(o.Expression) {
 		var ret string
 		return ret
 	}
@@ -127,7 +130,7 @@ func (o *PatchedOAuthSourcePropertyMappingRequest) GetExpression() string {
 // GetExpressionOk returns a tuple with the Expression field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedOAuthSourcePropertyMappingRequest) GetExpressionOk() (*string, bool) {
-	if o == nil || o.Expression == nil {
+	if o == nil || IsNil(o.Expression) {
 		return nil, false
 	}
 	return o.Expression, true
@@ -135,7 +138,7 @@ func (o *PatchedOAuthSourcePropertyMappingRequest) GetExpressionOk() (*string, b
 
 // HasExpression returns a boolean if a field has been set.
 func (o *PatchedOAuthSourcePropertyMappingRequest) HasExpression() bool {
-	if o != nil && o.Expression != nil {
+	if o != nil && !IsNil(o.Expression) {
 		return true
 	}
 
@@ -148,17 +151,25 @@ func (o *PatchedOAuthSourcePropertyMappingRequest) SetExpression(v string) {
 }
 
 func (o PatchedOAuthSourcePropertyMappingRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedOAuthSourcePropertyMappingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Expression != nil {
+	if !IsNil(o.Expression) {
 		toSerialize["expression"] = o.Expression
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedOAuthSourcePropertyMappingRequest struct {

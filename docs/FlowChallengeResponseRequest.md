@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **PhoneNumber** | Pointer to **string** |  | [optional] 
 **SelectedChallenge** | Pointer to [**DeviceChallengeRequest**](DeviceChallengeRequest.md) |  | [optional] 
 **SelectedStage** | Pointer to **string** |  | [optional] 
-**Webauthn** | Pointer to **map[string]interface{}** |  | [optional] 
+**Webauthn** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
 **Duo** | Pointer to **int32** |  | [optional] 
-**Response** | **map[string]interface{}** |  | 
+**Response** | **map[string]map[string]interface{}** |  | 
 **Token** | **string** |  | 
 **UidField** | **string** |  | 
 **Password** | **string** |  | 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewFlowChallengeResponseRequest
 
-`func NewFlowChallengeResponseRequest(code string, response map[string]interface{}, token string, uidField string, password string, rememberMe bool, ) *FlowChallengeResponseRequest`
+`func NewFlowChallengeResponseRequest(code string, response map[string]map[string]interface{}, token string, uidField string, password string, rememberMe bool, ) *FlowChallengeResponseRequest`
 
 NewFlowChallengeResponseRequest instantiates a new FlowChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -159,20 +159,20 @@ HasSelectedStage returns a boolean if a field has been set.
 
 ### GetWebauthn
 
-`func (o *FlowChallengeResponseRequest) GetWebauthn() map[string]interface{}`
+`func (o *FlowChallengeResponseRequest) GetWebauthn() map[string]map[string]interface{}`
 
 GetWebauthn returns the Webauthn field if non-nil, zero value otherwise.
 
 ### GetWebauthnOk
 
-`func (o *FlowChallengeResponseRequest) GetWebauthnOk() (*map[string]interface{}, bool)`
+`func (o *FlowChallengeResponseRequest) GetWebauthnOk() (*map[string]map[string]interface{}, bool)`
 
 GetWebauthnOk returns a tuple with the Webauthn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWebauthn
 
-`func (o *FlowChallengeResponseRequest) SetWebauthn(v map[string]interface{})`
+`func (o *FlowChallengeResponseRequest) SetWebauthn(v map[string]map[string]interface{})`
 
 SetWebauthn sets Webauthn field to given value.
 
@@ -209,20 +209,20 @@ HasDuo returns a boolean if a field has been set.
 
 ### GetResponse
 
-`func (o *FlowChallengeResponseRequest) GetResponse() map[string]interface{}`
+`func (o *FlowChallengeResponseRequest) GetResponse() map[string]map[string]interface{}`
 
 GetResponse returns the Response field if non-nil, zero value otherwise.
 
 ### GetResponseOk
 
-`func (o *FlowChallengeResponseRequest) GetResponseOk() (*map[string]interface{}, bool)`
+`func (o *FlowChallengeResponseRequest) GetResponseOk() (*map[string]map[string]interface{}, bool)`
 
 GetResponseOk returns a tuple with the Response field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResponse
 
-`func (o *FlowChallengeResponseRequest) SetResponse(v map[string]interface{})`
+`func (o *FlowChallengeResponseRequest) SetResponse(v map[string]map[string]interface{})`
 
 SetResponse sets Response field to given value.
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **CommonName** | **string** |  | 
 **SubjectAltName** | Pointer to **string** |  | [optional] 
 **ValidityDays** | **int32** |  | 
-**Alg** | Pointer to [**AlgEnum**](AlgEnum.md) |  | [optional] 
+**Alg** | Pointer to [**AlgEnum**](AlgEnum.md) |  | [optional] [default to ALGENUM_RSA]
 
 ## Methods
 

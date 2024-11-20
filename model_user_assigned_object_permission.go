@@ -12,15 +12,20 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the UserAssignedObjectPermission type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserAssignedObjectPermission{}
 
 // UserAssignedObjectPermission Users assigned object permission serializer
 type UserAssignedObjectPermission struct {
 	Pk int32 `json:"pk"`
 	// Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
-	Username string `json:"username"`
+	Username string `json:"username" validate:"regexp=^[\\\\w.@+-]+$"`
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
@@ -32,6 +37,8 @@ type UserAssignedObjectPermission struct {
 	Permissions []UserObjectPermission `json:"permissions"`
 	IsSuperuser bool                   `json:"is_superuser"`
 }
+
+type _UserAssignedObjectPermission UserAssignedObjectPermission
 
 // NewUserAssignedObjectPermission instantiates a new UserAssignedObjectPermission object
 // This constructor will assign default values to properties that have it defined,
@@ -130,7 +137,7 @@ func (o *UserAssignedObjectPermission) SetName(v string) {
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise.
 func (o *UserAssignedObjectPermission) GetIsActive() bool {
-	if o == nil || o.IsActive == nil {
+	if o == nil || IsNil(o.IsActive) {
 		var ret bool
 		return ret
 	}
@@ -140,7 +147,7 @@ func (o *UserAssignedObjectPermission) GetIsActive() bool {
 // GetIsActiveOk returns a tuple with the IsActive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserAssignedObjectPermission) GetIsActiveOk() (*bool, bool) {
-	if o == nil || o.IsActive == nil {
+	if o == nil || IsNil(o.IsActive) {
 		return nil, false
 	}
 	return o.IsActive, true
@@ -148,7 +155,7 @@ func (o *UserAssignedObjectPermission) GetIsActiveOk() (*bool, bool) {
 
 // HasIsActive returns a boolean if a field has been set.
 func (o *UserAssignedObjectPermission) HasIsActive() bool {
-	if o != nil && o.IsActive != nil {
+	if o != nil && !IsNil(o.IsActive) {
 		return true
 	}
 
@@ -162,7 +169,7 @@ func (o *UserAssignedObjectPermission) SetIsActive(v bool) {
 
 // GetLastLogin returns the LastLogin field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserAssignedObjectPermission) GetLastLogin() time.Time {
-	if o == nil || o.LastLogin.Get() == nil {
+	if o == nil || IsNil(o.LastLogin.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -205,7 +212,7 @@ func (o *UserAssignedObjectPermission) UnsetLastLogin() {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *UserAssignedObjectPermission) GetEmail() string {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -215,7 +222,7 @@ func (o *UserAssignedObjectPermission) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserAssignedObjectPermission) GetEmailOk() (*string, bool) {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -223,7 +230,7 @@ func (o *UserAssignedObjectPermission) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *UserAssignedObjectPermission) HasEmail() bool {
-	if o != nil && o.Email != nil {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
@@ -237,7 +244,7 @@ func (o *UserAssignedObjectPermission) SetEmail(v string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *UserAssignedObjectPermission) GetAttributes() map[string]interface{} {
-	if o == nil || o.Attributes == nil {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -247,15 +254,15 @@ func (o *UserAssignedObjectPermission) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserAssignedObjectPermission) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || o.Attributes == nil {
-		return nil, false
+	if o == nil || IsNil(o.Attributes) {
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *UserAssignedObjectPermission) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -340,38 +347,76 @@ func (o *UserAssignedObjectPermission) SetIsSuperuser(v bool) {
 }
 
 func (o UserAssignedObjectPermission) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o UserAssignedObjectPermission) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["username"] = o.Username
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.IsActive != nil {
+	toSerialize["pk"] = o.Pk
+	toSerialize["username"] = o.Username
+	toSerialize["name"] = o.Name
+	if !IsNil(o.IsActive) {
 		toSerialize["is_active"] = o.IsActive
 	}
 	if o.LastLogin.IsSet() {
 		toSerialize["last_login"] = o.LastLogin.Get()
 	}
-	if o.Email != nil {
+	if !IsNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
-	if o.Attributes != nil {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	if true {
-		toSerialize["uid"] = o.Uid
+	toSerialize["uid"] = o.Uid
+	toSerialize["permissions"] = o.Permissions
+	toSerialize["is_superuser"] = o.IsSuperuser
+	return toSerialize, nil
+}
+
+func (o *UserAssignedObjectPermission) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"username",
+		"name",
+		"uid",
+		"permissions",
+		"is_superuser",
 	}
-	if true {
-		toSerialize["permissions"] = o.Permissions
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
 	}
-	if true {
-		toSerialize["is_superuser"] = o.IsSuperuser
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
 	}
-	return json.Marshal(toSerialize)
+
+	varUserAssignedObjectPermission := _UserAssignedObjectPermission{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUserAssignedObjectPermission)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserAssignedObjectPermission(varUserAssignedObjectPermission)
+
+	return err
 }
 
 type NullableUserAssignedObjectPermission struct {

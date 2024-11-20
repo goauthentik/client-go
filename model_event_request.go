@@ -12,9 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the EventRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EventRequest{}
 
 // EventRequest Event Serializer
 type EventRequest struct {
@@ -26,6 +31,8 @@ type EventRequest struct {
 	Expires  *time.Time     `json:"expires,omitempty"`
 	Brand    interface{}    `json:"brand,omitempty"`
 }
+
+type _EventRequest EventRequest
 
 // NewEventRequest instantiates a new EventRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -59,7 +66,7 @@ func (o *EventRequest) GetUser() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EventRequest) GetUserOk() (*interface{}, bool) {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		return nil, false
 	}
 	return &o.User, true
@@ -67,7 +74,7 @@ func (o *EventRequest) GetUserOk() (*interface{}, bool) {
 
 // HasUser returns a boolean if a field has been set.
 func (o *EventRequest) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && !IsNil(o.User) {
 		return true
 	}
 
@@ -140,7 +147,7 @@ func (o *EventRequest) GetContext() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EventRequest) GetContextOk() (*interface{}, bool) {
-	if o == nil || o.Context == nil {
+	if o == nil || IsNil(o.Context) {
 		return nil, false
 	}
 	return &o.Context, true
@@ -148,7 +155,7 @@ func (o *EventRequest) GetContextOk() (*interface{}, bool) {
 
 // HasContext returns a boolean if a field has been set.
 func (o *EventRequest) HasContext() bool {
-	if o != nil && o.Context != nil {
+	if o != nil && !IsNil(o.Context) {
 		return true
 	}
 
@@ -162,7 +169,7 @@ func (o *EventRequest) SetContext(v interface{}) {
 
 // GetClientIp returns the ClientIp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EventRequest) GetClientIp() string {
-	if o == nil || o.ClientIp.Get() == nil {
+	if o == nil || IsNil(o.ClientIp.Get()) {
 		var ret string
 		return ret
 	}
@@ -205,7 +212,7 @@ func (o *EventRequest) UnsetClientIp() {
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
 func (o *EventRequest) GetExpires() time.Time {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		var ret time.Time
 		return ret
 	}
@@ -215,7 +222,7 @@ func (o *EventRequest) GetExpires() time.Time {
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventRequest) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		return nil, false
 	}
 	return o.Expires, true
@@ -223,7 +230,7 @@ func (o *EventRequest) GetExpiresOk() (*time.Time, bool) {
 
 // HasExpires returns a boolean if a field has been set.
 func (o *EventRequest) HasExpires() bool {
-	if o != nil && o.Expires != nil {
+	if o != nil && !IsNil(o.Expires) {
 		return true
 	}
 
@@ -248,7 +255,7 @@ func (o *EventRequest) GetBrand() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EventRequest) GetBrandOk() (*interface{}, bool) {
-	if o == nil || o.Brand == nil {
+	if o == nil || IsNil(o.Brand) {
 		return nil, false
 	}
 	return &o.Brand, true
@@ -256,7 +263,7 @@ func (o *EventRequest) GetBrandOk() (*interface{}, bool) {
 
 // HasBrand returns a boolean if a field has been set.
 func (o *EventRequest) HasBrand() bool {
-	if o != nil && o.Brand != nil {
+	if o != nil && !IsNil(o.Brand) {
 		return true
 	}
 
@@ -269,29 +276,71 @@ func (o *EventRequest) SetBrand(v interface{}) {
 }
 
 func (o EventRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EventRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.User != nil {
 		toSerialize["user"] = o.User
 	}
-	if true {
-		toSerialize["action"] = o.Action
-	}
-	if true {
-		toSerialize["app"] = o.App
-	}
+	toSerialize["action"] = o.Action
+	toSerialize["app"] = o.App
 	if o.Context != nil {
 		toSerialize["context"] = o.Context
 	}
 	if o.ClientIp.IsSet() {
 		toSerialize["client_ip"] = o.ClientIp.Get()
 	}
-	if o.Expires != nil {
+	if !IsNil(o.Expires) {
 		toSerialize["expires"] = o.Expires
 	}
 	if o.Brand != nil {
 		toSerialize["brand"] = o.Brand
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *EventRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"action",
+		"app",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEventRequest := _EventRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEventRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EventRequest(varEventRequest)
+
+	return err
 }
 
 type NullableEventRequest struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedUserLogoutStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedUserLogoutStageRequest{}
+
 // PatchedUserLogoutStageRequest UserLogoutStage Serializer
 type PatchedUserLogoutStageRequest struct {
 	Name    *string          `json:"name,omitempty"`
@@ -40,7 +43,7 @@ func NewPatchedUserLogoutStageRequestWithDefaults() *PatchedUserLogoutStageReque
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedUserLogoutStageRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *PatchedUserLogoutStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserLogoutStageRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -58,7 +61,7 @@ func (o *PatchedUserLogoutStageRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedUserLogoutStageRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *PatchedUserLogoutStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *PatchedUserLogoutStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *PatchedUserLogoutStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserLogoutStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -90,7 +93,7 @@ func (o *PatchedUserLogoutStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) 
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *PatchedUserLogoutStageRequest) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
+	if o != nil && !IsNil(o.FlowSet) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *PatchedUserLogoutStageRequest) SetFlowSet(v []FlowSetRequest) {
 }
 
 func (o PatchedUserLogoutStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.FlowSet != nil {
-		toSerialize["flow_set"] = o.FlowSet
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedUserLogoutStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedUserLogoutStageRequest struct {

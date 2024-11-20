@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the Version type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Version{}
 
 // Version Get running and latest version.
 type Version struct {
@@ -30,6 +35,8 @@ type Version struct {
 	// Check if any outpost is outdated/has a version mismatch
 	OutpostOutdated bool `json:"outpost_outdated"`
 }
+
+type _Version Version
 
 // NewVersion instantiates a new Version object
 // This constructor will assign default values to properties that have it defined,
@@ -199,26 +206,64 @@ func (o *Version) SetOutpostOutdated(v bool) {
 }
 
 func (o Version) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["version_current"] = o.VersionCurrent
-	}
-	if true {
-		toSerialize["version_latest"] = o.VersionLatest
-	}
-	if true {
-		toSerialize["version_latest_valid"] = o.VersionLatestValid
-	}
-	if true {
-		toSerialize["build_hash"] = o.BuildHash
-	}
-	if true {
-		toSerialize["outdated"] = o.Outdated
-	}
-	if true {
-		toSerialize["outpost_outdated"] = o.OutpostOutdated
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Version) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["version_current"] = o.VersionCurrent
+	toSerialize["version_latest"] = o.VersionLatest
+	toSerialize["version_latest_valid"] = o.VersionLatestValid
+	toSerialize["build_hash"] = o.BuildHash
+	toSerialize["outdated"] = o.Outdated
+	toSerialize["outpost_outdated"] = o.OutpostOutdated
+	return toSerialize, nil
+}
+
+func (o *Version) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"version_current",
+		"version_latest",
+		"version_latest_valid",
+		"build_hash",
+		"outdated",
+		"outpost_outdated",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varVersion := _Version{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVersion)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Version(varVersion)
+
+	return err
 }
 
 type NullableVersion struct {

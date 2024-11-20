@@ -12,14 +12,21 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the ConsentChallengeResponseRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConsentChallengeResponseRequest{}
 
 // ConsentChallengeResponseRequest Consent challenge response, any valid response request is valid
 type ConsentChallengeResponseRequest struct {
 	Component *string `json:"component,omitempty"`
 	Token     string  `json:"token"`
 }
+
+type _ConsentChallengeResponseRequest ConsentChallengeResponseRequest
 
 // NewConsentChallengeResponseRequest instantiates a new ConsentChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -45,7 +52,7 @@ func NewConsentChallengeResponseRequestWithDefaults() *ConsentChallengeResponseR
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *ConsentChallengeResponseRequest) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -55,7 +62,7 @@ func (o *ConsentChallengeResponseRequest) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConsentChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -63,7 +70,7 @@ func (o *ConsentChallengeResponseRequest) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *ConsentChallengeResponseRequest) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -100,14 +107,57 @@ func (o *ConsentChallengeResponseRequest) SetToken(v string) {
 }
 
 func (o ConsentChallengeResponseRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["token"] = o.Token
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ConsentChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	toSerialize["token"] = o.Token
+	return toSerialize, nil
+}
+
+func (o *ConsentChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"token",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConsentChallengeResponseRequest := _ConsentChallengeResponseRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varConsentChallengeResponseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConsentChallengeResponseRequest(varConsentChallengeResponseRequest)
+
+	return err
 }
 
 type NullableConsentChallengeResponseRequest struct {

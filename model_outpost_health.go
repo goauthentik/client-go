@@ -12,9 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the OutpostHealth type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OutpostHealth{}
 
 // OutpostHealth Outpost health status
 type OutpostHealth struct {
@@ -32,6 +37,8 @@ type OutpostHealth struct {
 	BuildHashShould string       `json:"build_hash_should"`
 	Hostname        string       `json:"hostname"`
 }
+
+type _OutpostHealth OutpostHealth
 
 // NewOutpostHealth instantiates a new OutpostHealth object
 // This constructor will assign default values to properties that have it defined,
@@ -353,44 +360,76 @@ func (o *OutpostHealth) SetHostname(v string) {
 }
 
 func (o OutpostHealth) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["uid"] = o.Uid
-	}
-	if true {
-		toSerialize["last_seen"] = o.LastSeen
-	}
-	if true {
-		toSerialize["version"] = o.Version
-	}
-	if true {
-		toSerialize["golang_version"] = o.GolangVersion
-	}
-	if true {
-		toSerialize["openssl_enabled"] = o.OpensslEnabled
-	}
-	if true {
-		toSerialize["openssl_version"] = o.OpensslVersion
-	}
-	if true {
-		toSerialize["fips_enabled"] = o.FipsEnabled.Get()
-	}
-	if true {
-		toSerialize["version_should"] = o.VersionShould
-	}
-	if true {
-		toSerialize["version_outdated"] = o.VersionOutdated
-	}
-	if true {
-		toSerialize["build_hash"] = o.BuildHash
-	}
-	if true {
-		toSerialize["build_hash_should"] = o.BuildHashShould
-	}
-	if true {
-		toSerialize["hostname"] = o.Hostname
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OutpostHealth) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["uid"] = o.Uid
+	toSerialize["last_seen"] = o.LastSeen
+	toSerialize["version"] = o.Version
+	toSerialize["golang_version"] = o.GolangVersion
+	toSerialize["openssl_enabled"] = o.OpensslEnabled
+	toSerialize["openssl_version"] = o.OpensslVersion
+	toSerialize["fips_enabled"] = o.FipsEnabled.Get()
+	toSerialize["version_should"] = o.VersionShould
+	toSerialize["version_outdated"] = o.VersionOutdated
+	toSerialize["build_hash"] = o.BuildHash
+	toSerialize["build_hash_should"] = o.BuildHashShould
+	toSerialize["hostname"] = o.Hostname
+	return toSerialize, nil
+}
+
+func (o *OutpostHealth) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"uid",
+		"last_seen",
+		"version",
+		"golang_version",
+		"openssl_enabled",
+		"openssl_version",
+		"fips_enabled",
+		"version_should",
+		"version_outdated",
+		"build_hash",
+		"build_hash_should",
+		"hostname",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOutpostHealth := _OutpostHealth{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOutpostHealth)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OutpostHealth(varOutpostHealth)
+
+	return err
 }
 
 type NullableOutpostHealth struct {

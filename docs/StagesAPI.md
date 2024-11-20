@@ -1,183 +1,183 @@
-# \StagesApi
+# \StagesAPI
 
 All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**StagesAllDestroy**](StagesApi.md#StagesAllDestroy) | **Delete** /stages/all/{stage_uuid}/ | 
-[**StagesAllList**](StagesApi.md#StagesAllList) | **Get** /stages/all/ | 
-[**StagesAllRetrieve**](StagesApi.md#StagesAllRetrieve) | **Get** /stages/all/{stage_uuid}/ | 
-[**StagesAllTypesList**](StagesApi.md#StagesAllTypesList) | **Get** /stages/all/types/ | 
-[**StagesAllUsedByList**](StagesApi.md#StagesAllUsedByList) | **Get** /stages/all/{stage_uuid}/used_by/ | 
-[**StagesAllUserSettingsList**](StagesApi.md#StagesAllUserSettingsList) | **Get** /stages/all/user_settings/ | 
-[**StagesAuthenticatorDuoCreate**](StagesApi.md#StagesAuthenticatorDuoCreate) | **Post** /stages/authenticator/duo/ | 
-[**StagesAuthenticatorDuoDestroy**](StagesApi.md#StagesAuthenticatorDuoDestroy) | **Delete** /stages/authenticator/duo/{stage_uuid}/ | 
-[**StagesAuthenticatorDuoEnrollmentStatusCreate**](StagesApi.md#StagesAuthenticatorDuoEnrollmentStatusCreate) | **Post** /stages/authenticator/duo/{stage_uuid}/enrollment_status/ | 
-[**StagesAuthenticatorDuoImportDeviceManualCreate**](StagesApi.md#StagesAuthenticatorDuoImportDeviceManualCreate) | **Post** /stages/authenticator/duo/{stage_uuid}/import_device_manual/ | 
-[**StagesAuthenticatorDuoImportDevicesAutomaticCreate**](StagesApi.md#StagesAuthenticatorDuoImportDevicesAutomaticCreate) | **Post** /stages/authenticator/duo/{stage_uuid}/import_devices_automatic/ | 
-[**StagesAuthenticatorDuoList**](StagesApi.md#StagesAuthenticatorDuoList) | **Get** /stages/authenticator/duo/ | 
-[**StagesAuthenticatorDuoPartialUpdate**](StagesApi.md#StagesAuthenticatorDuoPartialUpdate) | **Patch** /stages/authenticator/duo/{stage_uuid}/ | 
-[**StagesAuthenticatorDuoRetrieve**](StagesApi.md#StagesAuthenticatorDuoRetrieve) | **Get** /stages/authenticator/duo/{stage_uuid}/ | 
-[**StagesAuthenticatorDuoUpdate**](StagesApi.md#StagesAuthenticatorDuoUpdate) | **Put** /stages/authenticator/duo/{stage_uuid}/ | 
-[**StagesAuthenticatorDuoUsedByList**](StagesApi.md#StagesAuthenticatorDuoUsedByList) | **Get** /stages/authenticator/duo/{stage_uuid}/used_by/ | 
-[**StagesAuthenticatorEndpointGdtcCreate**](StagesApi.md#StagesAuthenticatorEndpointGdtcCreate) | **Post** /stages/authenticator/endpoint_gdtc/ | 
-[**StagesAuthenticatorEndpointGdtcDestroy**](StagesApi.md#StagesAuthenticatorEndpointGdtcDestroy) | **Delete** /stages/authenticator/endpoint_gdtc/{stage_uuid}/ | 
-[**StagesAuthenticatorEndpointGdtcList**](StagesApi.md#StagesAuthenticatorEndpointGdtcList) | **Get** /stages/authenticator/endpoint_gdtc/ | 
-[**StagesAuthenticatorEndpointGdtcPartialUpdate**](StagesApi.md#StagesAuthenticatorEndpointGdtcPartialUpdate) | **Patch** /stages/authenticator/endpoint_gdtc/{stage_uuid}/ | 
-[**StagesAuthenticatorEndpointGdtcRetrieve**](StagesApi.md#StagesAuthenticatorEndpointGdtcRetrieve) | **Get** /stages/authenticator/endpoint_gdtc/{stage_uuid}/ | 
-[**StagesAuthenticatorEndpointGdtcUpdate**](StagesApi.md#StagesAuthenticatorEndpointGdtcUpdate) | **Put** /stages/authenticator/endpoint_gdtc/{stage_uuid}/ | 
-[**StagesAuthenticatorEndpointGdtcUsedByList**](StagesApi.md#StagesAuthenticatorEndpointGdtcUsedByList) | **Get** /stages/authenticator/endpoint_gdtc/{stage_uuid}/used_by/ | 
-[**StagesAuthenticatorSmsCreate**](StagesApi.md#StagesAuthenticatorSmsCreate) | **Post** /stages/authenticator/sms/ | 
-[**StagesAuthenticatorSmsDestroy**](StagesApi.md#StagesAuthenticatorSmsDestroy) | **Delete** /stages/authenticator/sms/{stage_uuid}/ | 
-[**StagesAuthenticatorSmsList**](StagesApi.md#StagesAuthenticatorSmsList) | **Get** /stages/authenticator/sms/ | 
-[**StagesAuthenticatorSmsPartialUpdate**](StagesApi.md#StagesAuthenticatorSmsPartialUpdate) | **Patch** /stages/authenticator/sms/{stage_uuid}/ | 
-[**StagesAuthenticatorSmsRetrieve**](StagesApi.md#StagesAuthenticatorSmsRetrieve) | **Get** /stages/authenticator/sms/{stage_uuid}/ | 
-[**StagesAuthenticatorSmsUpdate**](StagesApi.md#StagesAuthenticatorSmsUpdate) | **Put** /stages/authenticator/sms/{stage_uuid}/ | 
-[**StagesAuthenticatorSmsUsedByList**](StagesApi.md#StagesAuthenticatorSmsUsedByList) | **Get** /stages/authenticator/sms/{stage_uuid}/used_by/ | 
-[**StagesAuthenticatorStaticCreate**](StagesApi.md#StagesAuthenticatorStaticCreate) | **Post** /stages/authenticator/static/ | 
-[**StagesAuthenticatorStaticDestroy**](StagesApi.md#StagesAuthenticatorStaticDestroy) | **Delete** /stages/authenticator/static/{stage_uuid}/ | 
-[**StagesAuthenticatorStaticList**](StagesApi.md#StagesAuthenticatorStaticList) | **Get** /stages/authenticator/static/ | 
-[**StagesAuthenticatorStaticPartialUpdate**](StagesApi.md#StagesAuthenticatorStaticPartialUpdate) | **Patch** /stages/authenticator/static/{stage_uuid}/ | 
-[**StagesAuthenticatorStaticRetrieve**](StagesApi.md#StagesAuthenticatorStaticRetrieve) | **Get** /stages/authenticator/static/{stage_uuid}/ | 
-[**StagesAuthenticatorStaticUpdate**](StagesApi.md#StagesAuthenticatorStaticUpdate) | **Put** /stages/authenticator/static/{stage_uuid}/ | 
-[**StagesAuthenticatorStaticUsedByList**](StagesApi.md#StagesAuthenticatorStaticUsedByList) | **Get** /stages/authenticator/static/{stage_uuid}/used_by/ | 
-[**StagesAuthenticatorTotpCreate**](StagesApi.md#StagesAuthenticatorTotpCreate) | **Post** /stages/authenticator/totp/ | 
-[**StagesAuthenticatorTotpDestroy**](StagesApi.md#StagesAuthenticatorTotpDestroy) | **Delete** /stages/authenticator/totp/{stage_uuid}/ | 
-[**StagesAuthenticatorTotpList**](StagesApi.md#StagesAuthenticatorTotpList) | **Get** /stages/authenticator/totp/ | 
-[**StagesAuthenticatorTotpPartialUpdate**](StagesApi.md#StagesAuthenticatorTotpPartialUpdate) | **Patch** /stages/authenticator/totp/{stage_uuid}/ | 
-[**StagesAuthenticatorTotpRetrieve**](StagesApi.md#StagesAuthenticatorTotpRetrieve) | **Get** /stages/authenticator/totp/{stage_uuid}/ | 
-[**StagesAuthenticatorTotpUpdate**](StagesApi.md#StagesAuthenticatorTotpUpdate) | **Put** /stages/authenticator/totp/{stage_uuid}/ | 
-[**StagesAuthenticatorTotpUsedByList**](StagesApi.md#StagesAuthenticatorTotpUsedByList) | **Get** /stages/authenticator/totp/{stage_uuid}/used_by/ | 
-[**StagesAuthenticatorValidateCreate**](StagesApi.md#StagesAuthenticatorValidateCreate) | **Post** /stages/authenticator/validate/ | 
-[**StagesAuthenticatorValidateDestroy**](StagesApi.md#StagesAuthenticatorValidateDestroy) | **Delete** /stages/authenticator/validate/{stage_uuid}/ | 
-[**StagesAuthenticatorValidateList**](StagesApi.md#StagesAuthenticatorValidateList) | **Get** /stages/authenticator/validate/ | 
-[**StagesAuthenticatorValidatePartialUpdate**](StagesApi.md#StagesAuthenticatorValidatePartialUpdate) | **Patch** /stages/authenticator/validate/{stage_uuid}/ | 
-[**StagesAuthenticatorValidateRetrieve**](StagesApi.md#StagesAuthenticatorValidateRetrieve) | **Get** /stages/authenticator/validate/{stage_uuid}/ | 
-[**StagesAuthenticatorValidateUpdate**](StagesApi.md#StagesAuthenticatorValidateUpdate) | **Put** /stages/authenticator/validate/{stage_uuid}/ | 
-[**StagesAuthenticatorValidateUsedByList**](StagesApi.md#StagesAuthenticatorValidateUsedByList) | **Get** /stages/authenticator/validate/{stage_uuid}/used_by/ | 
-[**StagesAuthenticatorWebauthnCreate**](StagesApi.md#StagesAuthenticatorWebauthnCreate) | **Post** /stages/authenticator/webauthn/ | 
-[**StagesAuthenticatorWebauthnDestroy**](StagesApi.md#StagesAuthenticatorWebauthnDestroy) | **Delete** /stages/authenticator/webauthn/{stage_uuid}/ | 
-[**StagesAuthenticatorWebauthnDeviceTypesList**](StagesApi.md#StagesAuthenticatorWebauthnDeviceTypesList) | **Get** /stages/authenticator/webauthn_device_types/ | 
-[**StagesAuthenticatorWebauthnDeviceTypesRetrieve**](StagesApi.md#StagesAuthenticatorWebauthnDeviceTypesRetrieve) | **Get** /stages/authenticator/webauthn_device_types/{aaguid}/ | 
-[**StagesAuthenticatorWebauthnList**](StagesApi.md#StagesAuthenticatorWebauthnList) | **Get** /stages/authenticator/webauthn/ | 
-[**StagesAuthenticatorWebauthnPartialUpdate**](StagesApi.md#StagesAuthenticatorWebauthnPartialUpdate) | **Patch** /stages/authenticator/webauthn/{stage_uuid}/ | 
-[**StagesAuthenticatorWebauthnRetrieve**](StagesApi.md#StagesAuthenticatorWebauthnRetrieve) | **Get** /stages/authenticator/webauthn/{stage_uuid}/ | 
-[**StagesAuthenticatorWebauthnUpdate**](StagesApi.md#StagesAuthenticatorWebauthnUpdate) | **Put** /stages/authenticator/webauthn/{stage_uuid}/ | 
-[**StagesAuthenticatorWebauthnUsedByList**](StagesApi.md#StagesAuthenticatorWebauthnUsedByList) | **Get** /stages/authenticator/webauthn/{stage_uuid}/used_by/ | 
-[**StagesCaptchaCreate**](StagesApi.md#StagesCaptchaCreate) | **Post** /stages/captcha/ | 
-[**StagesCaptchaDestroy**](StagesApi.md#StagesCaptchaDestroy) | **Delete** /stages/captcha/{stage_uuid}/ | 
-[**StagesCaptchaList**](StagesApi.md#StagesCaptchaList) | **Get** /stages/captcha/ | 
-[**StagesCaptchaPartialUpdate**](StagesApi.md#StagesCaptchaPartialUpdate) | **Patch** /stages/captcha/{stage_uuid}/ | 
-[**StagesCaptchaRetrieve**](StagesApi.md#StagesCaptchaRetrieve) | **Get** /stages/captcha/{stage_uuid}/ | 
-[**StagesCaptchaUpdate**](StagesApi.md#StagesCaptchaUpdate) | **Put** /stages/captcha/{stage_uuid}/ | 
-[**StagesCaptchaUsedByList**](StagesApi.md#StagesCaptchaUsedByList) | **Get** /stages/captcha/{stage_uuid}/used_by/ | 
-[**StagesConsentCreate**](StagesApi.md#StagesConsentCreate) | **Post** /stages/consent/ | 
-[**StagesConsentDestroy**](StagesApi.md#StagesConsentDestroy) | **Delete** /stages/consent/{stage_uuid}/ | 
-[**StagesConsentList**](StagesApi.md#StagesConsentList) | **Get** /stages/consent/ | 
-[**StagesConsentPartialUpdate**](StagesApi.md#StagesConsentPartialUpdate) | **Patch** /stages/consent/{stage_uuid}/ | 
-[**StagesConsentRetrieve**](StagesApi.md#StagesConsentRetrieve) | **Get** /stages/consent/{stage_uuid}/ | 
-[**StagesConsentUpdate**](StagesApi.md#StagesConsentUpdate) | **Put** /stages/consent/{stage_uuid}/ | 
-[**StagesConsentUsedByList**](StagesApi.md#StagesConsentUsedByList) | **Get** /stages/consent/{stage_uuid}/used_by/ | 
-[**StagesDenyCreate**](StagesApi.md#StagesDenyCreate) | **Post** /stages/deny/ | 
-[**StagesDenyDestroy**](StagesApi.md#StagesDenyDestroy) | **Delete** /stages/deny/{stage_uuid}/ | 
-[**StagesDenyList**](StagesApi.md#StagesDenyList) | **Get** /stages/deny/ | 
-[**StagesDenyPartialUpdate**](StagesApi.md#StagesDenyPartialUpdate) | **Patch** /stages/deny/{stage_uuid}/ | 
-[**StagesDenyRetrieve**](StagesApi.md#StagesDenyRetrieve) | **Get** /stages/deny/{stage_uuid}/ | 
-[**StagesDenyUpdate**](StagesApi.md#StagesDenyUpdate) | **Put** /stages/deny/{stage_uuid}/ | 
-[**StagesDenyUsedByList**](StagesApi.md#StagesDenyUsedByList) | **Get** /stages/deny/{stage_uuid}/used_by/ | 
-[**StagesDummyCreate**](StagesApi.md#StagesDummyCreate) | **Post** /stages/dummy/ | 
-[**StagesDummyDestroy**](StagesApi.md#StagesDummyDestroy) | **Delete** /stages/dummy/{stage_uuid}/ | 
-[**StagesDummyList**](StagesApi.md#StagesDummyList) | **Get** /stages/dummy/ | 
-[**StagesDummyPartialUpdate**](StagesApi.md#StagesDummyPartialUpdate) | **Patch** /stages/dummy/{stage_uuid}/ | 
-[**StagesDummyRetrieve**](StagesApi.md#StagesDummyRetrieve) | **Get** /stages/dummy/{stage_uuid}/ | 
-[**StagesDummyUpdate**](StagesApi.md#StagesDummyUpdate) | **Put** /stages/dummy/{stage_uuid}/ | 
-[**StagesDummyUsedByList**](StagesApi.md#StagesDummyUsedByList) | **Get** /stages/dummy/{stage_uuid}/used_by/ | 
-[**StagesEmailCreate**](StagesApi.md#StagesEmailCreate) | **Post** /stages/email/ | 
-[**StagesEmailDestroy**](StagesApi.md#StagesEmailDestroy) | **Delete** /stages/email/{stage_uuid}/ | 
-[**StagesEmailList**](StagesApi.md#StagesEmailList) | **Get** /stages/email/ | 
-[**StagesEmailPartialUpdate**](StagesApi.md#StagesEmailPartialUpdate) | **Patch** /stages/email/{stage_uuid}/ | 
-[**StagesEmailRetrieve**](StagesApi.md#StagesEmailRetrieve) | **Get** /stages/email/{stage_uuid}/ | 
-[**StagesEmailTemplatesList**](StagesApi.md#StagesEmailTemplatesList) | **Get** /stages/email/templates/ | 
-[**StagesEmailUpdate**](StagesApi.md#StagesEmailUpdate) | **Put** /stages/email/{stage_uuid}/ | 
-[**StagesEmailUsedByList**](StagesApi.md#StagesEmailUsedByList) | **Get** /stages/email/{stage_uuid}/used_by/ | 
-[**StagesIdentificationCreate**](StagesApi.md#StagesIdentificationCreate) | **Post** /stages/identification/ | 
-[**StagesIdentificationDestroy**](StagesApi.md#StagesIdentificationDestroy) | **Delete** /stages/identification/{stage_uuid}/ | 
-[**StagesIdentificationList**](StagesApi.md#StagesIdentificationList) | **Get** /stages/identification/ | 
-[**StagesIdentificationPartialUpdate**](StagesApi.md#StagesIdentificationPartialUpdate) | **Patch** /stages/identification/{stage_uuid}/ | 
-[**StagesIdentificationRetrieve**](StagesApi.md#StagesIdentificationRetrieve) | **Get** /stages/identification/{stage_uuid}/ | 
-[**StagesIdentificationUpdate**](StagesApi.md#StagesIdentificationUpdate) | **Put** /stages/identification/{stage_uuid}/ | 
-[**StagesIdentificationUsedByList**](StagesApi.md#StagesIdentificationUsedByList) | **Get** /stages/identification/{stage_uuid}/used_by/ | 
-[**StagesInvitationInvitationsCreate**](StagesApi.md#StagesInvitationInvitationsCreate) | **Post** /stages/invitation/invitations/ | 
-[**StagesInvitationInvitationsDestroy**](StagesApi.md#StagesInvitationInvitationsDestroy) | **Delete** /stages/invitation/invitations/{invite_uuid}/ | 
-[**StagesInvitationInvitationsList**](StagesApi.md#StagesInvitationInvitationsList) | **Get** /stages/invitation/invitations/ | 
-[**StagesInvitationInvitationsPartialUpdate**](StagesApi.md#StagesInvitationInvitationsPartialUpdate) | **Patch** /stages/invitation/invitations/{invite_uuid}/ | 
-[**StagesInvitationInvitationsRetrieve**](StagesApi.md#StagesInvitationInvitationsRetrieve) | **Get** /stages/invitation/invitations/{invite_uuid}/ | 
-[**StagesInvitationInvitationsUpdate**](StagesApi.md#StagesInvitationInvitationsUpdate) | **Put** /stages/invitation/invitations/{invite_uuid}/ | 
-[**StagesInvitationInvitationsUsedByList**](StagesApi.md#StagesInvitationInvitationsUsedByList) | **Get** /stages/invitation/invitations/{invite_uuid}/used_by/ | 
-[**StagesInvitationStagesCreate**](StagesApi.md#StagesInvitationStagesCreate) | **Post** /stages/invitation/stages/ | 
-[**StagesInvitationStagesDestroy**](StagesApi.md#StagesInvitationStagesDestroy) | **Delete** /stages/invitation/stages/{stage_uuid}/ | 
-[**StagesInvitationStagesList**](StagesApi.md#StagesInvitationStagesList) | **Get** /stages/invitation/stages/ | 
-[**StagesInvitationStagesPartialUpdate**](StagesApi.md#StagesInvitationStagesPartialUpdate) | **Patch** /stages/invitation/stages/{stage_uuid}/ | 
-[**StagesInvitationStagesRetrieve**](StagesApi.md#StagesInvitationStagesRetrieve) | **Get** /stages/invitation/stages/{stage_uuid}/ | 
-[**StagesInvitationStagesUpdate**](StagesApi.md#StagesInvitationStagesUpdate) | **Put** /stages/invitation/stages/{stage_uuid}/ | 
-[**StagesInvitationStagesUsedByList**](StagesApi.md#StagesInvitationStagesUsedByList) | **Get** /stages/invitation/stages/{stage_uuid}/used_by/ | 
-[**StagesPasswordCreate**](StagesApi.md#StagesPasswordCreate) | **Post** /stages/password/ | 
-[**StagesPasswordDestroy**](StagesApi.md#StagesPasswordDestroy) | **Delete** /stages/password/{stage_uuid}/ | 
-[**StagesPasswordList**](StagesApi.md#StagesPasswordList) | **Get** /stages/password/ | 
-[**StagesPasswordPartialUpdate**](StagesApi.md#StagesPasswordPartialUpdate) | **Patch** /stages/password/{stage_uuid}/ | 
-[**StagesPasswordRetrieve**](StagesApi.md#StagesPasswordRetrieve) | **Get** /stages/password/{stage_uuid}/ | 
-[**StagesPasswordUpdate**](StagesApi.md#StagesPasswordUpdate) | **Put** /stages/password/{stage_uuid}/ | 
-[**StagesPasswordUsedByList**](StagesApi.md#StagesPasswordUsedByList) | **Get** /stages/password/{stage_uuid}/used_by/ | 
-[**StagesPromptPromptsCreate**](StagesApi.md#StagesPromptPromptsCreate) | **Post** /stages/prompt/prompts/ | 
-[**StagesPromptPromptsDestroy**](StagesApi.md#StagesPromptPromptsDestroy) | **Delete** /stages/prompt/prompts/{prompt_uuid}/ | 
-[**StagesPromptPromptsList**](StagesApi.md#StagesPromptPromptsList) | **Get** /stages/prompt/prompts/ | 
-[**StagesPromptPromptsPartialUpdate**](StagesApi.md#StagesPromptPromptsPartialUpdate) | **Patch** /stages/prompt/prompts/{prompt_uuid}/ | 
-[**StagesPromptPromptsPreviewCreate**](StagesApi.md#StagesPromptPromptsPreviewCreate) | **Post** /stages/prompt/prompts/preview/ | 
-[**StagesPromptPromptsRetrieve**](StagesApi.md#StagesPromptPromptsRetrieve) | **Get** /stages/prompt/prompts/{prompt_uuid}/ | 
-[**StagesPromptPromptsUpdate**](StagesApi.md#StagesPromptPromptsUpdate) | **Put** /stages/prompt/prompts/{prompt_uuid}/ | 
-[**StagesPromptPromptsUsedByList**](StagesApi.md#StagesPromptPromptsUsedByList) | **Get** /stages/prompt/prompts/{prompt_uuid}/used_by/ | 
-[**StagesPromptStagesCreate**](StagesApi.md#StagesPromptStagesCreate) | **Post** /stages/prompt/stages/ | 
-[**StagesPromptStagesDestroy**](StagesApi.md#StagesPromptStagesDestroy) | **Delete** /stages/prompt/stages/{stage_uuid}/ | 
-[**StagesPromptStagesList**](StagesApi.md#StagesPromptStagesList) | **Get** /stages/prompt/stages/ | 
-[**StagesPromptStagesPartialUpdate**](StagesApi.md#StagesPromptStagesPartialUpdate) | **Patch** /stages/prompt/stages/{stage_uuid}/ | 
-[**StagesPromptStagesRetrieve**](StagesApi.md#StagesPromptStagesRetrieve) | **Get** /stages/prompt/stages/{stage_uuid}/ | 
-[**StagesPromptStagesUpdate**](StagesApi.md#StagesPromptStagesUpdate) | **Put** /stages/prompt/stages/{stage_uuid}/ | 
-[**StagesPromptStagesUsedByList**](StagesApi.md#StagesPromptStagesUsedByList) | **Get** /stages/prompt/stages/{stage_uuid}/used_by/ | 
-[**StagesSourceCreate**](StagesApi.md#StagesSourceCreate) | **Post** /stages/source/ | 
-[**StagesSourceDestroy**](StagesApi.md#StagesSourceDestroy) | **Delete** /stages/source/{stage_uuid}/ | 
-[**StagesSourceList**](StagesApi.md#StagesSourceList) | **Get** /stages/source/ | 
-[**StagesSourcePartialUpdate**](StagesApi.md#StagesSourcePartialUpdate) | **Patch** /stages/source/{stage_uuid}/ | 
-[**StagesSourceRetrieve**](StagesApi.md#StagesSourceRetrieve) | **Get** /stages/source/{stage_uuid}/ | 
-[**StagesSourceUpdate**](StagesApi.md#StagesSourceUpdate) | **Put** /stages/source/{stage_uuid}/ | 
-[**StagesSourceUsedByList**](StagesApi.md#StagesSourceUsedByList) | **Get** /stages/source/{stage_uuid}/used_by/ | 
-[**StagesUserDeleteCreate**](StagesApi.md#StagesUserDeleteCreate) | **Post** /stages/user_delete/ | 
-[**StagesUserDeleteDestroy**](StagesApi.md#StagesUserDeleteDestroy) | **Delete** /stages/user_delete/{stage_uuid}/ | 
-[**StagesUserDeleteList**](StagesApi.md#StagesUserDeleteList) | **Get** /stages/user_delete/ | 
-[**StagesUserDeletePartialUpdate**](StagesApi.md#StagesUserDeletePartialUpdate) | **Patch** /stages/user_delete/{stage_uuid}/ | 
-[**StagesUserDeleteRetrieve**](StagesApi.md#StagesUserDeleteRetrieve) | **Get** /stages/user_delete/{stage_uuid}/ | 
-[**StagesUserDeleteUpdate**](StagesApi.md#StagesUserDeleteUpdate) | **Put** /stages/user_delete/{stage_uuid}/ | 
-[**StagesUserDeleteUsedByList**](StagesApi.md#StagesUserDeleteUsedByList) | **Get** /stages/user_delete/{stage_uuid}/used_by/ | 
-[**StagesUserLoginCreate**](StagesApi.md#StagesUserLoginCreate) | **Post** /stages/user_login/ | 
-[**StagesUserLoginDestroy**](StagesApi.md#StagesUserLoginDestroy) | **Delete** /stages/user_login/{stage_uuid}/ | 
-[**StagesUserLoginList**](StagesApi.md#StagesUserLoginList) | **Get** /stages/user_login/ | 
-[**StagesUserLoginPartialUpdate**](StagesApi.md#StagesUserLoginPartialUpdate) | **Patch** /stages/user_login/{stage_uuid}/ | 
-[**StagesUserLoginRetrieve**](StagesApi.md#StagesUserLoginRetrieve) | **Get** /stages/user_login/{stage_uuid}/ | 
-[**StagesUserLoginUpdate**](StagesApi.md#StagesUserLoginUpdate) | **Put** /stages/user_login/{stage_uuid}/ | 
-[**StagesUserLoginUsedByList**](StagesApi.md#StagesUserLoginUsedByList) | **Get** /stages/user_login/{stage_uuid}/used_by/ | 
-[**StagesUserLogoutCreate**](StagesApi.md#StagesUserLogoutCreate) | **Post** /stages/user_logout/ | 
-[**StagesUserLogoutDestroy**](StagesApi.md#StagesUserLogoutDestroy) | **Delete** /stages/user_logout/{stage_uuid}/ | 
-[**StagesUserLogoutList**](StagesApi.md#StagesUserLogoutList) | **Get** /stages/user_logout/ | 
-[**StagesUserLogoutPartialUpdate**](StagesApi.md#StagesUserLogoutPartialUpdate) | **Patch** /stages/user_logout/{stage_uuid}/ | 
-[**StagesUserLogoutRetrieve**](StagesApi.md#StagesUserLogoutRetrieve) | **Get** /stages/user_logout/{stage_uuid}/ | 
-[**StagesUserLogoutUpdate**](StagesApi.md#StagesUserLogoutUpdate) | **Put** /stages/user_logout/{stage_uuid}/ | 
-[**StagesUserLogoutUsedByList**](StagesApi.md#StagesUserLogoutUsedByList) | **Get** /stages/user_logout/{stage_uuid}/used_by/ | 
-[**StagesUserWriteCreate**](StagesApi.md#StagesUserWriteCreate) | **Post** /stages/user_write/ | 
-[**StagesUserWriteDestroy**](StagesApi.md#StagesUserWriteDestroy) | **Delete** /stages/user_write/{stage_uuid}/ | 
-[**StagesUserWriteList**](StagesApi.md#StagesUserWriteList) | **Get** /stages/user_write/ | 
-[**StagesUserWritePartialUpdate**](StagesApi.md#StagesUserWritePartialUpdate) | **Patch** /stages/user_write/{stage_uuid}/ | 
-[**StagesUserWriteRetrieve**](StagesApi.md#StagesUserWriteRetrieve) | **Get** /stages/user_write/{stage_uuid}/ | 
-[**StagesUserWriteUpdate**](StagesApi.md#StagesUserWriteUpdate) | **Put** /stages/user_write/{stage_uuid}/ | 
-[**StagesUserWriteUsedByList**](StagesApi.md#StagesUserWriteUsedByList) | **Get** /stages/user_write/{stage_uuid}/used_by/ | 
+[**StagesAllDestroy**](StagesAPI.md#StagesAllDestroy) | **Delete** /stages/all/{stage_uuid}/ | 
+[**StagesAllList**](StagesAPI.md#StagesAllList) | **Get** /stages/all/ | 
+[**StagesAllRetrieve**](StagesAPI.md#StagesAllRetrieve) | **Get** /stages/all/{stage_uuid}/ | 
+[**StagesAllTypesList**](StagesAPI.md#StagesAllTypesList) | **Get** /stages/all/types/ | 
+[**StagesAllUsedByList**](StagesAPI.md#StagesAllUsedByList) | **Get** /stages/all/{stage_uuid}/used_by/ | 
+[**StagesAllUserSettingsList**](StagesAPI.md#StagesAllUserSettingsList) | **Get** /stages/all/user_settings/ | 
+[**StagesAuthenticatorDuoCreate**](StagesAPI.md#StagesAuthenticatorDuoCreate) | **Post** /stages/authenticator/duo/ | 
+[**StagesAuthenticatorDuoDestroy**](StagesAPI.md#StagesAuthenticatorDuoDestroy) | **Delete** /stages/authenticator/duo/{stage_uuid}/ | 
+[**StagesAuthenticatorDuoEnrollmentStatusCreate**](StagesAPI.md#StagesAuthenticatorDuoEnrollmentStatusCreate) | **Post** /stages/authenticator/duo/{stage_uuid}/enrollment_status/ | 
+[**StagesAuthenticatorDuoImportDeviceManualCreate**](StagesAPI.md#StagesAuthenticatorDuoImportDeviceManualCreate) | **Post** /stages/authenticator/duo/{stage_uuid}/import_device_manual/ | 
+[**StagesAuthenticatorDuoImportDevicesAutomaticCreate**](StagesAPI.md#StagesAuthenticatorDuoImportDevicesAutomaticCreate) | **Post** /stages/authenticator/duo/{stage_uuid}/import_devices_automatic/ | 
+[**StagesAuthenticatorDuoList**](StagesAPI.md#StagesAuthenticatorDuoList) | **Get** /stages/authenticator/duo/ | 
+[**StagesAuthenticatorDuoPartialUpdate**](StagesAPI.md#StagesAuthenticatorDuoPartialUpdate) | **Patch** /stages/authenticator/duo/{stage_uuid}/ | 
+[**StagesAuthenticatorDuoRetrieve**](StagesAPI.md#StagesAuthenticatorDuoRetrieve) | **Get** /stages/authenticator/duo/{stage_uuid}/ | 
+[**StagesAuthenticatorDuoUpdate**](StagesAPI.md#StagesAuthenticatorDuoUpdate) | **Put** /stages/authenticator/duo/{stage_uuid}/ | 
+[**StagesAuthenticatorDuoUsedByList**](StagesAPI.md#StagesAuthenticatorDuoUsedByList) | **Get** /stages/authenticator/duo/{stage_uuid}/used_by/ | 
+[**StagesAuthenticatorEndpointGdtcCreate**](StagesAPI.md#StagesAuthenticatorEndpointGdtcCreate) | **Post** /stages/authenticator/endpoint_gdtc/ | 
+[**StagesAuthenticatorEndpointGdtcDestroy**](StagesAPI.md#StagesAuthenticatorEndpointGdtcDestroy) | **Delete** /stages/authenticator/endpoint_gdtc/{stage_uuid}/ | 
+[**StagesAuthenticatorEndpointGdtcList**](StagesAPI.md#StagesAuthenticatorEndpointGdtcList) | **Get** /stages/authenticator/endpoint_gdtc/ | 
+[**StagesAuthenticatorEndpointGdtcPartialUpdate**](StagesAPI.md#StagesAuthenticatorEndpointGdtcPartialUpdate) | **Patch** /stages/authenticator/endpoint_gdtc/{stage_uuid}/ | 
+[**StagesAuthenticatorEndpointGdtcRetrieve**](StagesAPI.md#StagesAuthenticatorEndpointGdtcRetrieve) | **Get** /stages/authenticator/endpoint_gdtc/{stage_uuid}/ | 
+[**StagesAuthenticatorEndpointGdtcUpdate**](StagesAPI.md#StagesAuthenticatorEndpointGdtcUpdate) | **Put** /stages/authenticator/endpoint_gdtc/{stage_uuid}/ | 
+[**StagesAuthenticatorEndpointGdtcUsedByList**](StagesAPI.md#StagesAuthenticatorEndpointGdtcUsedByList) | **Get** /stages/authenticator/endpoint_gdtc/{stage_uuid}/used_by/ | 
+[**StagesAuthenticatorSmsCreate**](StagesAPI.md#StagesAuthenticatorSmsCreate) | **Post** /stages/authenticator/sms/ | 
+[**StagesAuthenticatorSmsDestroy**](StagesAPI.md#StagesAuthenticatorSmsDestroy) | **Delete** /stages/authenticator/sms/{stage_uuid}/ | 
+[**StagesAuthenticatorSmsList**](StagesAPI.md#StagesAuthenticatorSmsList) | **Get** /stages/authenticator/sms/ | 
+[**StagesAuthenticatorSmsPartialUpdate**](StagesAPI.md#StagesAuthenticatorSmsPartialUpdate) | **Patch** /stages/authenticator/sms/{stage_uuid}/ | 
+[**StagesAuthenticatorSmsRetrieve**](StagesAPI.md#StagesAuthenticatorSmsRetrieve) | **Get** /stages/authenticator/sms/{stage_uuid}/ | 
+[**StagesAuthenticatorSmsUpdate**](StagesAPI.md#StagesAuthenticatorSmsUpdate) | **Put** /stages/authenticator/sms/{stage_uuid}/ | 
+[**StagesAuthenticatorSmsUsedByList**](StagesAPI.md#StagesAuthenticatorSmsUsedByList) | **Get** /stages/authenticator/sms/{stage_uuid}/used_by/ | 
+[**StagesAuthenticatorStaticCreate**](StagesAPI.md#StagesAuthenticatorStaticCreate) | **Post** /stages/authenticator/static/ | 
+[**StagesAuthenticatorStaticDestroy**](StagesAPI.md#StagesAuthenticatorStaticDestroy) | **Delete** /stages/authenticator/static/{stage_uuid}/ | 
+[**StagesAuthenticatorStaticList**](StagesAPI.md#StagesAuthenticatorStaticList) | **Get** /stages/authenticator/static/ | 
+[**StagesAuthenticatorStaticPartialUpdate**](StagesAPI.md#StagesAuthenticatorStaticPartialUpdate) | **Patch** /stages/authenticator/static/{stage_uuid}/ | 
+[**StagesAuthenticatorStaticRetrieve**](StagesAPI.md#StagesAuthenticatorStaticRetrieve) | **Get** /stages/authenticator/static/{stage_uuid}/ | 
+[**StagesAuthenticatorStaticUpdate**](StagesAPI.md#StagesAuthenticatorStaticUpdate) | **Put** /stages/authenticator/static/{stage_uuid}/ | 
+[**StagesAuthenticatorStaticUsedByList**](StagesAPI.md#StagesAuthenticatorStaticUsedByList) | **Get** /stages/authenticator/static/{stage_uuid}/used_by/ | 
+[**StagesAuthenticatorTotpCreate**](StagesAPI.md#StagesAuthenticatorTotpCreate) | **Post** /stages/authenticator/totp/ | 
+[**StagesAuthenticatorTotpDestroy**](StagesAPI.md#StagesAuthenticatorTotpDestroy) | **Delete** /stages/authenticator/totp/{stage_uuid}/ | 
+[**StagesAuthenticatorTotpList**](StagesAPI.md#StagesAuthenticatorTotpList) | **Get** /stages/authenticator/totp/ | 
+[**StagesAuthenticatorTotpPartialUpdate**](StagesAPI.md#StagesAuthenticatorTotpPartialUpdate) | **Patch** /stages/authenticator/totp/{stage_uuid}/ | 
+[**StagesAuthenticatorTotpRetrieve**](StagesAPI.md#StagesAuthenticatorTotpRetrieve) | **Get** /stages/authenticator/totp/{stage_uuid}/ | 
+[**StagesAuthenticatorTotpUpdate**](StagesAPI.md#StagesAuthenticatorTotpUpdate) | **Put** /stages/authenticator/totp/{stage_uuid}/ | 
+[**StagesAuthenticatorTotpUsedByList**](StagesAPI.md#StagesAuthenticatorTotpUsedByList) | **Get** /stages/authenticator/totp/{stage_uuid}/used_by/ | 
+[**StagesAuthenticatorValidateCreate**](StagesAPI.md#StagesAuthenticatorValidateCreate) | **Post** /stages/authenticator/validate/ | 
+[**StagesAuthenticatorValidateDestroy**](StagesAPI.md#StagesAuthenticatorValidateDestroy) | **Delete** /stages/authenticator/validate/{stage_uuid}/ | 
+[**StagesAuthenticatorValidateList**](StagesAPI.md#StagesAuthenticatorValidateList) | **Get** /stages/authenticator/validate/ | 
+[**StagesAuthenticatorValidatePartialUpdate**](StagesAPI.md#StagesAuthenticatorValidatePartialUpdate) | **Patch** /stages/authenticator/validate/{stage_uuid}/ | 
+[**StagesAuthenticatorValidateRetrieve**](StagesAPI.md#StagesAuthenticatorValidateRetrieve) | **Get** /stages/authenticator/validate/{stage_uuid}/ | 
+[**StagesAuthenticatorValidateUpdate**](StagesAPI.md#StagesAuthenticatorValidateUpdate) | **Put** /stages/authenticator/validate/{stage_uuid}/ | 
+[**StagesAuthenticatorValidateUsedByList**](StagesAPI.md#StagesAuthenticatorValidateUsedByList) | **Get** /stages/authenticator/validate/{stage_uuid}/used_by/ | 
+[**StagesAuthenticatorWebauthnCreate**](StagesAPI.md#StagesAuthenticatorWebauthnCreate) | **Post** /stages/authenticator/webauthn/ | 
+[**StagesAuthenticatorWebauthnDestroy**](StagesAPI.md#StagesAuthenticatorWebauthnDestroy) | **Delete** /stages/authenticator/webauthn/{stage_uuid}/ | 
+[**StagesAuthenticatorWebauthnDeviceTypesList**](StagesAPI.md#StagesAuthenticatorWebauthnDeviceTypesList) | **Get** /stages/authenticator/webauthn_device_types/ | 
+[**StagesAuthenticatorWebauthnDeviceTypesRetrieve**](StagesAPI.md#StagesAuthenticatorWebauthnDeviceTypesRetrieve) | **Get** /stages/authenticator/webauthn_device_types/{aaguid}/ | 
+[**StagesAuthenticatorWebauthnList**](StagesAPI.md#StagesAuthenticatorWebauthnList) | **Get** /stages/authenticator/webauthn/ | 
+[**StagesAuthenticatorWebauthnPartialUpdate**](StagesAPI.md#StagesAuthenticatorWebauthnPartialUpdate) | **Patch** /stages/authenticator/webauthn/{stage_uuid}/ | 
+[**StagesAuthenticatorWebauthnRetrieve**](StagesAPI.md#StagesAuthenticatorWebauthnRetrieve) | **Get** /stages/authenticator/webauthn/{stage_uuid}/ | 
+[**StagesAuthenticatorWebauthnUpdate**](StagesAPI.md#StagesAuthenticatorWebauthnUpdate) | **Put** /stages/authenticator/webauthn/{stage_uuid}/ | 
+[**StagesAuthenticatorWebauthnUsedByList**](StagesAPI.md#StagesAuthenticatorWebauthnUsedByList) | **Get** /stages/authenticator/webauthn/{stage_uuid}/used_by/ | 
+[**StagesCaptchaCreate**](StagesAPI.md#StagesCaptchaCreate) | **Post** /stages/captcha/ | 
+[**StagesCaptchaDestroy**](StagesAPI.md#StagesCaptchaDestroy) | **Delete** /stages/captcha/{stage_uuid}/ | 
+[**StagesCaptchaList**](StagesAPI.md#StagesCaptchaList) | **Get** /stages/captcha/ | 
+[**StagesCaptchaPartialUpdate**](StagesAPI.md#StagesCaptchaPartialUpdate) | **Patch** /stages/captcha/{stage_uuid}/ | 
+[**StagesCaptchaRetrieve**](StagesAPI.md#StagesCaptchaRetrieve) | **Get** /stages/captcha/{stage_uuid}/ | 
+[**StagesCaptchaUpdate**](StagesAPI.md#StagesCaptchaUpdate) | **Put** /stages/captcha/{stage_uuid}/ | 
+[**StagesCaptchaUsedByList**](StagesAPI.md#StagesCaptchaUsedByList) | **Get** /stages/captcha/{stage_uuid}/used_by/ | 
+[**StagesConsentCreate**](StagesAPI.md#StagesConsentCreate) | **Post** /stages/consent/ | 
+[**StagesConsentDestroy**](StagesAPI.md#StagesConsentDestroy) | **Delete** /stages/consent/{stage_uuid}/ | 
+[**StagesConsentList**](StagesAPI.md#StagesConsentList) | **Get** /stages/consent/ | 
+[**StagesConsentPartialUpdate**](StagesAPI.md#StagesConsentPartialUpdate) | **Patch** /stages/consent/{stage_uuid}/ | 
+[**StagesConsentRetrieve**](StagesAPI.md#StagesConsentRetrieve) | **Get** /stages/consent/{stage_uuid}/ | 
+[**StagesConsentUpdate**](StagesAPI.md#StagesConsentUpdate) | **Put** /stages/consent/{stage_uuid}/ | 
+[**StagesConsentUsedByList**](StagesAPI.md#StagesConsentUsedByList) | **Get** /stages/consent/{stage_uuid}/used_by/ | 
+[**StagesDenyCreate**](StagesAPI.md#StagesDenyCreate) | **Post** /stages/deny/ | 
+[**StagesDenyDestroy**](StagesAPI.md#StagesDenyDestroy) | **Delete** /stages/deny/{stage_uuid}/ | 
+[**StagesDenyList**](StagesAPI.md#StagesDenyList) | **Get** /stages/deny/ | 
+[**StagesDenyPartialUpdate**](StagesAPI.md#StagesDenyPartialUpdate) | **Patch** /stages/deny/{stage_uuid}/ | 
+[**StagesDenyRetrieve**](StagesAPI.md#StagesDenyRetrieve) | **Get** /stages/deny/{stage_uuid}/ | 
+[**StagesDenyUpdate**](StagesAPI.md#StagesDenyUpdate) | **Put** /stages/deny/{stage_uuid}/ | 
+[**StagesDenyUsedByList**](StagesAPI.md#StagesDenyUsedByList) | **Get** /stages/deny/{stage_uuid}/used_by/ | 
+[**StagesDummyCreate**](StagesAPI.md#StagesDummyCreate) | **Post** /stages/dummy/ | 
+[**StagesDummyDestroy**](StagesAPI.md#StagesDummyDestroy) | **Delete** /stages/dummy/{stage_uuid}/ | 
+[**StagesDummyList**](StagesAPI.md#StagesDummyList) | **Get** /stages/dummy/ | 
+[**StagesDummyPartialUpdate**](StagesAPI.md#StagesDummyPartialUpdate) | **Patch** /stages/dummy/{stage_uuid}/ | 
+[**StagesDummyRetrieve**](StagesAPI.md#StagesDummyRetrieve) | **Get** /stages/dummy/{stage_uuid}/ | 
+[**StagesDummyUpdate**](StagesAPI.md#StagesDummyUpdate) | **Put** /stages/dummy/{stage_uuid}/ | 
+[**StagesDummyUsedByList**](StagesAPI.md#StagesDummyUsedByList) | **Get** /stages/dummy/{stage_uuid}/used_by/ | 
+[**StagesEmailCreate**](StagesAPI.md#StagesEmailCreate) | **Post** /stages/email/ | 
+[**StagesEmailDestroy**](StagesAPI.md#StagesEmailDestroy) | **Delete** /stages/email/{stage_uuid}/ | 
+[**StagesEmailList**](StagesAPI.md#StagesEmailList) | **Get** /stages/email/ | 
+[**StagesEmailPartialUpdate**](StagesAPI.md#StagesEmailPartialUpdate) | **Patch** /stages/email/{stage_uuid}/ | 
+[**StagesEmailRetrieve**](StagesAPI.md#StagesEmailRetrieve) | **Get** /stages/email/{stage_uuid}/ | 
+[**StagesEmailTemplatesList**](StagesAPI.md#StagesEmailTemplatesList) | **Get** /stages/email/templates/ | 
+[**StagesEmailUpdate**](StagesAPI.md#StagesEmailUpdate) | **Put** /stages/email/{stage_uuid}/ | 
+[**StagesEmailUsedByList**](StagesAPI.md#StagesEmailUsedByList) | **Get** /stages/email/{stage_uuid}/used_by/ | 
+[**StagesIdentificationCreate**](StagesAPI.md#StagesIdentificationCreate) | **Post** /stages/identification/ | 
+[**StagesIdentificationDestroy**](StagesAPI.md#StagesIdentificationDestroy) | **Delete** /stages/identification/{stage_uuid}/ | 
+[**StagesIdentificationList**](StagesAPI.md#StagesIdentificationList) | **Get** /stages/identification/ | 
+[**StagesIdentificationPartialUpdate**](StagesAPI.md#StagesIdentificationPartialUpdate) | **Patch** /stages/identification/{stage_uuid}/ | 
+[**StagesIdentificationRetrieve**](StagesAPI.md#StagesIdentificationRetrieve) | **Get** /stages/identification/{stage_uuid}/ | 
+[**StagesIdentificationUpdate**](StagesAPI.md#StagesIdentificationUpdate) | **Put** /stages/identification/{stage_uuid}/ | 
+[**StagesIdentificationUsedByList**](StagesAPI.md#StagesIdentificationUsedByList) | **Get** /stages/identification/{stage_uuid}/used_by/ | 
+[**StagesInvitationInvitationsCreate**](StagesAPI.md#StagesInvitationInvitationsCreate) | **Post** /stages/invitation/invitations/ | 
+[**StagesInvitationInvitationsDestroy**](StagesAPI.md#StagesInvitationInvitationsDestroy) | **Delete** /stages/invitation/invitations/{invite_uuid}/ | 
+[**StagesInvitationInvitationsList**](StagesAPI.md#StagesInvitationInvitationsList) | **Get** /stages/invitation/invitations/ | 
+[**StagesInvitationInvitationsPartialUpdate**](StagesAPI.md#StagesInvitationInvitationsPartialUpdate) | **Patch** /stages/invitation/invitations/{invite_uuid}/ | 
+[**StagesInvitationInvitationsRetrieve**](StagesAPI.md#StagesInvitationInvitationsRetrieve) | **Get** /stages/invitation/invitations/{invite_uuid}/ | 
+[**StagesInvitationInvitationsUpdate**](StagesAPI.md#StagesInvitationInvitationsUpdate) | **Put** /stages/invitation/invitations/{invite_uuid}/ | 
+[**StagesInvitationInvitationsUsedByList**](StagesAPI.md#StagesInvitationInvitationsUsedByList) | **Get** /stages/invitation/invitations/{invite_uuid}/used_by/ | 
+[**StagesInvitationStagesCreate**](StagesAPI.md#StagesInvitationStagesCreate) | **Post** /stages/invitation/stages/ | 
+[**StagesInvitationStagesDestroy**](StagesAPI.md#StagesInvitationStagesDestroy) | **Delete** /stages/invitation/stages/{stage_uuid}/ | 
+[**StagesInvitationStagesList**](StagesAPI.md#StagesInvitationStagesList) | **Get** /stages/invitation/stages/ | 
+[**StagesInvitationStagesPartialUpdate**](StagesAPI.md#StagesInvitationStagesPartialUpdate) | **Patch** /stages/invitation/stages/{stage_uuid}/ | 
+[**StagesInvitationStagesRetrieve**](StagesAPI.md#StagesInvitationStagesRetrieve) | **Get** /stages/invitation/stages/{stage_uuid}/ | 
+[**StagesInvitationStagesUpdate**](StagesAPI.md#StagesInvitationStagesUpdate) | **Put** /stages/invitation/stages/{stage_uuid}/ | 
+[**StagesInvitationStagesUsedByList**](StagesAPI.md#StagesInvitationStagesUsedByList) | **Get** /stages/invitation/stages/{stage_uuid}/used_by/ | 
+[**StagesPasswordCreate**](StagesAPI.md#StagesPasswordCreate) | **Post** /stages/password/ | 
+[**StagesPasswordDestroy**](StagesAPI.md#StagesPasswordDestroy) | **Delete** /stages/password/{stage_uuid}/ | 
+[**StagesPasswordList**](StagesAPI.md#StagesPasswordList) | **Get** /stages/password/ | 
+[**StagesPasswordPartialUpdate**](StagesAPI.md#StagesPasswordPartialUpdate) | **Patch** /stages/password/{stage_uuid}/ | 
+[**StagesPasswordRetrieve**](StagesAPI.md#StagesPasswordRetrieve) | **Get** /stages/password/{stage_uuid}/ | 
+[**StagesPasswordUpdate**](StagesAPI.md#StagesPasswordUpdate) | **Put** /stages/password/{stage_uuid}/ | 
+[**StagesPasswordUsedByList**](StagesAPI.md#StagesPasswordUsedByList) | **Get** /stages/password/{stage_uuid}/used_by/ | 
+[**StagesPromptPromptsCreate**](StagesAPI.md#StagesPromptPromptsCreate) | **Post** /stages/prompt/prompts/ | 
+[**StagesPromptPromptsDestroy**](StagesAPI.md#StagesPromptPromptsDestroy) | **Delete** /stages/prompt/prompts/{prompt_uuid}/ | 
+[**StagesPromptPromptsList**](StagesAPI.md#StagesPromptPromptsList) | **Get** /stages/prompt/prompts/ | 
+[**StagesPromptPromptsPartialUpdate**](StagesAPI.md#StagesPromptPromptsPartialUpdate) | **Patch** /stages/prompt/prompts/{prompt_uuid}/ | 
+[**StagesPromptPromptsPreviewCreate**](StagesAPI.md#StagesPromptPromptsPreviewCreate) | **Post** /stages/prompt/prompts/preview/ | 
+[**StagesPromptPromptsRetrieve**](StagesAPI.md#StagesPromptPromptsRetrieve) | **Get** /stages/prompt/prompts/{prompt_uuid}/ | 
+[**StagesPromptPromptsUpdate**](StagesAPI.md#StagesPromptPromptsUpdate) | **Put** /stages/prompt/prompts/{prompt_uuid}/ | 
+[**StagesPromptPromptsUsedByList**](StagesAPI.md#StagesPromptPromptsUsedByList) | **Get** /stages/prompt/prompts/{prompt_uuid}/used_by/ | 
+[**StagesPromptStagesCreate**](StagesAPI.md#StagesPromptStagesCreate) | **Post** /stages/prompt/stages/ | 
+[**StagesPromptStagesDestroy**](StagesAPI.md#StagesPromptStagesDestroy) | **Delete** /stages/prompt/stages/{stage_uuid}/ | 
+[**StagesPromptStagesList**](StagesAPI.md#StagesPromptStagesList) | **Get** /stages/prompt/stages/ | 
+[**StagesPromptStagesPartialUpdate**](StagesAPI.md#StagesPromptStagesPartialUpdate) | **Patch** /stages/prompt/stages/{stage_uuid}/ | 
+[**StagesPromptStagesRetrieve**](StagesAPI.md#StagesPromptStagesRetrieve) | **Get** /stages/prompt/stages/{stage_uuid}/ | 
+[**StagesPromptStagesUpdate**](StagesAPI.md#StagesPromptStagesUpdate) | **Put** /stages/prompt/stages/{stage_uuid}/ | 
+[**StagesPromptStagesUsedByList**](StagesAPI.md#StagesPromptStagesUsedByList) | **Get** /stages/prompt/stages/{stage_uuid}/used_by/ | 
+[**StagesSourceCreate**](StagesAPI.md#StagesSourceCreate) | **Post** /stages/source/ | 
+[**StagesSourceDestroy**](StagesAPI.md#StagesSourceDestroy) | **Delete** /stages/source/{stage_uuid}/ | 
+[**StagesSourceList**](StagesAPI.md#StagesSourceList) | **Get** /stages/source/ | 
+[**StagesSourcePartialUpdate**](StagesAPI.md#StagesSourcePartialUpdate) | **Patch** /stages/source/{stage_uuid}/ | 
+[**StagesSourceRetrieve**](StagesAPI.md#StagesSourceRetrieve) | **Get** /stages/source/{stage_uuid}/ | 
+[**StagesSourceUpdate**](StagesAPI.md#StagesSourceUpdate) | **Put** /stages/source/{stage_uuid}/ | 
+[**StagesSourceUsedByList**](StagesAPI.md#StagesSourceUsedByList) | **Get** /stages/source/{stage_uuid}/used_by/ | 
+[**StagesUserDeleteCreate**](StagesAPI.md#StagesUserDeleteCreate) | **Post** /stages/user_delete/ | 
+[**StagesUserDeleteDestroy**](StagesAPI.md#StagesUserDeleteDestroy) | **Delete** /stages/user_delete/{stage_uuid}/ | 
+[**StagesUserDeleteList**](StagesAPI.md#StagesUserDeleteList) | **Get** /stages/user_delete/ | 
+[**StagesUserDeletePartialUpdate**](StagesAPI.md#StagesUserDeletePartialUpdate) | **Patch** /stages/user_delete/{stage_uuid}/ | 
+[**StagesUserDeleteRetrieve**](StagesAPI.md#StagesUserDeleteRetrieve) | **Get** /stages/user_delete/{stage_uuid}/ | 
+[**StagesUserDeleteUpdate**](StagesAPI.md#StagesUserDeleteUpdate) | **Put** /stages/user_delete/{stage_uuid}/ | 
+[**StagesUserDeleteUsedByList**](StagesAPI.md#StagesUserDeleteUsedByList) | **Get** /stages/user_delete/{stage_uuid}/used_by/ | 
+[**StagesUserLoginCreate**](StagesAPI.md#StagesUserLoginCreate) | **Post** /stages/user_login/ | 
+[**StagesUserLoginDestroy**](StagesAPI.md#StagesUserLoginDestroy) | **Delete** /stages/user_login/{stage_uuid}/ | 
+[**StagesUserLoginList**](StagesAPI.md#StagesUserLoginList) | **Get** /stages/user_login/ | 
+[**StagesUserLoginPartialUpdate**](StagesAPI.md#StagesUserLoginPartialUpdate) | **Patch** /stages/user_login/{stage_uuid}/ | 
+[**StagesUserLoginRetrieve**](StagesAPI.md#StagesUserLoginRetrieve) | **Get** /stages/user_login/{stage_uuid}/ | 
+[**StagesUserLoginUpdate**](StagesAPI.md#StagesUserLoginUpdate) | **Put** /stages/user_login/{stage_uuid}/ | 
+[**StagesUserLoginUsedByList**](StagesAPI.md#StagesUserLoginUsedByList) | **Get** /stages/user_login/{stage_uuid}/used_by/ | 
+[**StagesUserLogoutCreate**](StagesAPI.md#StagesUserLogoutCreate) | **Post** /stages/user_logout/ | 
+[**StagesUserLogoutDestroy**](StagesAPI.md#StagesUserLogoutDestroy) | **Delete** /stages/user_logout/{stage_uuid}/ | 
+[**StagesUserLogoutList**](StagesAPI.md#StagesUserLogoutList) | **Get** /stages/user_logout/ | 
+[**StagesUserLogoutPartialUpdate**](StagesAPI.md#StagesUserLogoutPartialUpdate) | **Patch** /stages/user_logout/{stage_uuid}/ | 
+[**StagesUserLogoutRetrieve**](StagesAPI.md#StagesUserLogoutRetrieve) | **Get** /stages/user_logout/{stage_uuid}/ | 
+[**StagesUserLogoutUpdate**](StagesAPI.md#StagesUserLogoutUpdate) | **Put** /stages/user_logout/{stage_uuid}/ | 
+[**StagesUserLogoutUsedByList**](StagesAPI.md#StagesUserLogoutUsedByList) | **Get** /stages/user_logout/{stage_uuid}/used_by/ | 
+[**StagesUserWriteCreate**](StagesAPI.md#StagesUserWriteCreate) | **Post** /stages/user_write/ | 
+[**StagesUserWriteDestroy**](StagesAPI.md#StagesUserWriteDestroy) | **Delete** /stages/user_write/{stage_uuid}/ | 
+[**StagesUserWriteList**](StagesAPI.md#StagesUserWriteList) | **Get** /stages/user_write/ | 
+[**StagesUserWritePartialUpdate**](StagesAPI.md#StagesUserWritePartialUpdate) | **Patch** /stages/user_write/{stage_uuid}/ | 
+[**StagesUserWriteRetrieve**](StagesAPI.md#StagesUserWriteRetrieve) | **Get** /stages/user_write/{stage_uuid}/ | 
+[**StagesUserWriteUpdate**](StagesAPI.md#StagesUserWriteUpdate) | **Put** /stages/user_write/{stage_uuid}/ | 
+[**StagesUserWriteUsedByList**](StagesAPI.md#StagesUserWriteUsedByList) | **Get** /stages/user_write/{stage_uuid}/used_by/ | 
 
 
 
@@ -195,22 +195,22 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAllDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAllDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesAllDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAllDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -263,28 +263,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAllList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAllList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAllList`: PaginatedStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAllList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAllList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAllList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAllList`: PaginatedStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAllList`: %v\n", resp)
 }
 ```
 
@@ -337,24 +337,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAllRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAllRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAllRetrieve`: Stage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAllRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAllRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAllRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAllRetrieve`: Stage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAllRetrieve`: %v\n", resp)
 }
 ```
 
@@ -407,23 +407,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAllTypesList(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAllTypesList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAllTypesList`: []TypeCreate
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAllTypesList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAllTypesList(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAllTypesList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAllTypesList`: []TypeCreate
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAllTypesList`: %v\n", resp)
 }
 ```
 
@@ -468,24 +468,24 @@ Other parameters are passed through a pointer to a apiStagesAllTypesListRequest 
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAllUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAllUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAllUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAllUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAllUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAllUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAllUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAllUsedByList`: %v\n", resp)
 }
 ```
 
@@ -538,23 +538,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAllUserSettingsList(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAllUserSettingsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAllUserSettingsList`: []UserSetting
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAllUserSettingsList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAllUserSettingsList(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAllUserSettingsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAllUserSettingsList`: []UserSetting
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAllUserSettingsList`: %v\n", resp)
 }
 ```
 
@@ -599,24 +599,24 @@ Other parameters are passed through a pointer to a apiStagesAllUserSettingsListR
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    authenticatorDuoStageRequest := *openapiclient.NewAuthenticatorDuoStageRequest("Name_example", "ClientId_example", "ClientSecret_example", "ApiHostname_example") // AuthenticatorDuoStageRequest | 
+	authenticatorDuoStageRequest := *openapiclient.NewAuthenticatorDuoStageRequest("Name_example", "ClientId_example", "ClientSecret_example", "ApiHostname_example") // AuthenticatorDuoStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorDuoCreate(context.Background()).AuthenticatorDuoStageRequest(authenticatorDuoStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorDuoCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorDuoCreate`: AuthenticatorDuoStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorDuoCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorDuoCreate(context.Background()).AuthenticatorDuoStageRequest(authenticatorDuoStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorDuoCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorDuoCreate`: AuthenticatorDuoStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorDuoCreate`: %v\n", resp)
 }
 ```
 
@@ -665,22 +665,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Duo Authenticator Setup Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Duo Authenticator Setup Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorDuoDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorDuoDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesAuthenticatorDuoDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorDuoDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -733,24 +733,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Duo Authenticator Setup Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Duo Authenticator Setup Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorDuoEnrollmentStatusCreate(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorDuoEnrollmentStatusCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorDuoEnrollmentStatusCreate`: DuoDeviceEnrollmentStatus
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorDuoEnrollmentStatusCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorDuoEnrollmentStatusCreate(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorDuoEnrollmentStatusCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorDuoEnrollmentStatusCreate`: DuoDeviceEnrollmentStatus
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorDuoEnrollmentStatusCreate`: %v\n", resp)
 }
 ```
 
@@ -803,23 +803,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Duo Authenticator Setup Stage.
-    authenticatorDuoStageManualDeviceImportRequest := *openapiclient.NewAuthenticatorDuoStageManualDeviceImportRequest("DuoUserId_example", "Username_example") // AuthenticatorDuoStageManualDeviceImportRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Duo Authenticator Setup Stage.
+	authenticatorDuoStageManualDeviceImportRequest := *openapiclient.NewAuthenticatorDuoStageManualDeviceImportRequest("DuoUserId_example", "Username_example") // AuthenticatorDuoStageManualDeviceImportRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorDuoImportDeviceManualCreate(context.Background(), stageUuid).AuthenticatorDuoStageManualDeviceImportRequest(authenticatorDuoStageManualDeviceImportRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorDuoImportDeviceManualCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesAuthenticatorDuoImportDeviceManualCreate(context.Background(), stageUuid).AuthenticatorDuoStageManualDeviceImportRequest(authenticatorDuoStageManualDeviceImportRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorDuoImportDeviceManualCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -873,24 +873,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Duo Authenticator Setup Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Duo Authenticator Setup Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorDuoImportDevicesAutomaticCreate(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorDuoImportDevicesAutomaticCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorDuoImportDevicesAutomaticCreate`: AuthenticatorDuoStageDeviceImportResponse
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorDuoImportDevicesAutomaticCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorDuoImportDevicesAutomaticCreate(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorDuoImportDevicesAutomaticCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorDuoImportDevicesAutomaticCreate`: AuthenticatorDuoStageDeviceImportResponse
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorDuoImportDevicesAutomaticCreate`: %v\n", resp)
 }
 ```
 
@@ -943,31 +943,31 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    apiHostname := "apiHostname_example" // string |  (optional)
-    clientId := "clientId_example" // string |  (optional)
-    configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	apiHostname := "apiHostname_example" // string |  (optional)
+	clientId := "clientId_example" // string |  (optional)
+	configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorDuoList(context.Background()).ApiHostname(apiHostname).ClientId(clientId).ConfigureFlow(configureFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorDuoList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorDuoList`: PaginatedAuthenticatorDuoStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorDuoList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorDuoList(context.Background()).ApiHostname(apiHostname).ClientId(clientId).ConfigureFlow(configureFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorDuoList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorDuoList`: PaginatedAuthenticatorDuoStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorDuoList`: %v\n", resp)
 }
 ```
 
@@ -1023,25 +1023,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Duo Authenticator Setup Stage.
-    patchedAuthenticatorDuoStageRequest := *openapiclient.NewPatchedAuthenticatorDuoStageRequest() // PatchedAuthenticatorDuoStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Duo Authenticator Setup Stage.
+	patchedAuthenticatorDuoStageRequest := *openapiclient.NewPatchedAuthenticatorDuoStageRequest() // PatchedAuthenticatorDuoStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorDuoPartialUpdate(context.Background(), stageUuid).PatchedAuthenticatorDuoStageRequest(patchedAuthenticatorDuoStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorDuoPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorDuoPartialUpdate`: AuthenticatorDuoStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorDuoPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorDuoPartialUpdate(context.Background(), stageUuid).PatchedAuthenticatorDuoStageRequest(patchedAuthenticatorDuoStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorDuoPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorDuoPartialUpdate`: AuthenticatorDuoStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorDuoPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -1095,24 +1095,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Duo Authenticator Setup Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Duo Authenticator Setup Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorDuoRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorDuoRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorDuoRetrieve`: AuthenticatorDuoStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorDuoRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorDuoRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorDuoRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorDuoRetrieve`: AuthenticatorDuoStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorDuoRetrieve`: %v\n", resp)
 }
 ```
 
@@ -1165,25 +1165,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Duo Authenticator Setup Stage.
-    authenticatorDuoStageRequest := *openapiclient.NewAuthenticatorDuoStageRequest("Name_example", "ClientId_example", "ClientSecret_example", "ApiHostname_example") // AuthenticatorDuoStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Duo Authenticator Setup Stage.
+	authenticatorDuoStageRequest := *openapiclient.NewAuthenticatorDuoStageRequest("Name_example", "ClientId_example", "ClientSecret_example", "ApiHostname_example") // AuthenticatorDuoStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorDuoUpdate(context.Background(), stageUuid).AuthenticatorDuoStageRequest(authenticatorDuoStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorDuoUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorDuoUpdate`: AuthenticatorDuoStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorDuoUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorDuoUpdate(context.Background(), stageUuid).AuthenticatorDuoStageRequest(authenticatorDuoStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorDuoUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorDuoUpdate`: AuthenticatorDuoStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorDuoUpdate`: %v\n", resp)
 }
 ```
 
@@ -1237,24 +1237,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Duo Authenticator Setup Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Duo Authenticator Setup Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorDuoUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorDuoUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorDuoUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorDuoUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorDuoUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorDuoUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorDuoUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorDuoUsedByList`: %v\n", resp)
 }
 ```
 
@@ -1307,24 +1307,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    authenticatorEndpointGDTCStageRequest := *openapiclient.NewAuthenticatorEndpointGDTCStageRequest("Name_example", interface{}(123)) // AuthenticatorEndpointGDTCStageRequest | 
+	authenticatorEndpointGDTCStageRequest := *openapiclient.NewAuthenticatorEndpointGDTCStageRequest("Name_example", interface{}(123)) // AuthenticatorEndpointGDTCStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEndpointGdtcCreate(context.Background()).AuthenticatorEndpointGDTCStageRequest(authenticatorEndpointGDTCStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEndpointGdtcCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorEndpointGdtcCreate`: AuthenticatorEndpointGDTCStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorEndpointGdtcCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorEndpointGdtcCreate(context.Background()).AuthenticatorEndpointGDTCStageRequest(authenticatorEndpointGDTCStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorEndpointGdtcCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorEndpointGdtcCreate`: AuthenticatorEndpointGDTCStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorEndpointGdtcCreate`: %v\n", resp)
 }
 ```
 
@@ -1373,22 +1373,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEndpointGdtcDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEndpointGdtcDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesAuthenticatorEndpointGdtcDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorEndpointGdtcDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -1441,29 +1441,29 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEndpointGdtcList(context.Background()).ConfigureFlow(configureFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEndpointGdtcList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorEndpointGdtcList`: PaginatedAuthenticatorEndpointGDTCStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorEndpointGdtcList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorEndpointGdtcList(context.Background()).ConfigureFlow(configureFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorEndpointGdtcList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorEndpointGdtcList`: PaginatedAuthenticatorEndpointGDTCStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorEndpointGdtcList`: %v\n", resp)
 }
 ```
 
@@ -1517,25 +1517,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage.
-    patchedAuthenticatorEndpointGDTCStageRequest := *openapiclient.NewPatchedAuthenticatorEndpointGDTCStageRequest() // PatchedAuthenticatorEndpointGDTCStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage.
+	patchedAuthenticatorEndpointGDTCStageRequest := *openapiclient.NewPatchedAuthenticatorEndpointGDTCStageRequest() // PatchedAuthenticatorEndpointGDTCStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEndpointGdtcPartialUpdate(context.Background(), stageUuid).PatchedAuthenticatorEndpointGDTCStageRequest(patchedAuthenticatorEndpointGDTCStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEndpointGdtcPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorEndpointGdtcPartialUpdate`: AuthenticatorEndpointGDTCStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorEndpointGdtcPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorEndpointGdtcPartialUpdate(context.Background(), stageUuid).PatchedAuthenticatorEndpointGDTCStageRequest(patchedAuthenticatorEndpointGDTCStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorEndpointGdtcPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorEndpointGdtcPartialUpdate`: AuthenticatorEndpointGDTCStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorEndpointGdtcPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -1589,24 +1589,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEndpointGdtcRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEndpointGdtcRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorEndpointGdtcRetrieve`: AuthenticatorEndpointGDTCStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorEndpointGdtcRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorEndpointGdtcRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorEndpointGdtcRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorEndpointGdtcRetrieve`: AuthenticatorEndpointGDTCStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorEndpointGdtcRetrieve`: %v\n", resp)
 }
 ```
 
@@ -1659,25 +1659,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage.
-    authenticatorEndpointGDTCStageRequest := *openapiclient.NewAuthenticatorEndpointGDTCStageRequest("Name_example", interface{}(123)) // AuthenticatorEndpointGDTCStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage.
+	authenticatorEndpointGDTCStageRequest := *openapiclient.NewAuthenticatorEndpointGDTCStageRequest("Name_example", interface{}(123)) // AuthenticatorEndpointGDTCStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEndpointGdtcUpdate(context.Background(), stageUuid).AuthenticatorEndpointGDTCStageRequest(authenticatorEndpointGDTCStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEndpointGdtcUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorEndpointGdtcUpdate`: AuthenticatorEndpointGDTCStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorEndpointGdtcUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorEndpointGdtcUpdate(context.Background(), stageUuid).AuthenticatorEndpointGDTCStageRequest(authenticatorEndpointGDTCStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorEndpointGdtcUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorEndpointGdtcUpdate`: AuthenticatorEndpointGDTCStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorEndpointGdtcUpdate`: %v\n", resp)
 }
 ```
 
@@ -1731,24 +1731,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEndpointGdtcUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEndpointGdtcUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorEndpointGdtcUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorEndpointGdtcUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorEndpointGdtcUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorEndpointGdtcUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorEndpointGdtcUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorEndpointGdtcUsedByList`: %v\n", resp)
 }
 ```
 
@@ -1801,24 +1801,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    authenticatorSMSStageRequest := *openapiclient.NewAuthenticatorSMSStageRequest("Name_example", openapiclient.ProviderEnum("twilio"), "FromNumber_example", "AccountSid_example", "Auth_example") // AuthenticatorSMSStageRequest | 
+	authenticatorSMSStageRequest := *openapiclient.NewAuthenticatorSMSStageRequest("Name_example", openapiclient.ProviderEnum("twilio"), "FromNumber_example", "AccountSid_example", "Auth_example") // AuthenticatorSMSStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorSmsCreate(context.Background()).AuthenticatorSMSStageRequest(authenticatorSMSStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorSmsCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorSmsCreate`: AuthenticatorSMSStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorSmsCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorSmsCreate(context.Background()).AuthenticatorSMSStageRequest(authenticatorSMSStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorSmsCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorSmsCreate`: AuthenticatorSMSStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorSmsCreate`: %v\n", resp)
 }
 ```
 
@@ -1867,22 +1867,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SMS Authenticator Setup Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SMS Authenticator Setup Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorSmsDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorSmsDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesAuthenticatorSmsDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorSmsDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -1935,39 +1935,39 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    accountSid := "accountSid_example" // string |  (optional)
-    auth := "auth_example" // string |  (optional)
-    authPassword := "authPassword_example" // string |  (optional)
-    authType := "authType_example" // string |  (optional)
-    configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    friendlyName := "friendlyName_example" // string |  (optional)
-    fromNumber := "fromNumber_example" // string |  (optional)
-    mapping := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    provider := "provider_example" // string |  (optional)
-    search := "search_example" // string | A search term. (optional)
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    verifyOnly := true // bool |  (optional)
+	accountSid := "accountSid_example" // string |  (optional)
+	auth := "auth_example" // string |  (optional)
+	authPassword := "authPassword_example" // string |  (optional)
+	authType := "authType_example" // string |  (optional)
+	configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	friendlyName := "friendlyName_example" // string |  (optional)
+	fromNumber := "fromNumber_example" // string |  (optional)
+	mapping := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	provider := "provider_example" // string |  (optional)
+	search := "search_example" // string | A search term. (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	verifyOnly := true // bool |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorSmsList(context.Background()).AccountSid(accountSid).Auth(auth).AuthPassword(authPassword).AuthType(authType).ConfigureFlow(configureFlow).FriendlyName(friendlyName).FromNumber(fromNumber).Mapping(mapping).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).StageUuid(stageUuid).VerifyOnly(verifyOnly).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorSmsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorSmsList`: PaginatedAuthenticatorSMSStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorSmsList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorSmsList(context.Background()).AccountSid(accountSid).Auth(auth).AuthPassword(authPassword).AuthType(authType).ConfigureFlow(configureFlow).FriendlyName(friendlyName).FromNumber(fromNumber).Mapping(mapping).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).StageUuid(stageUuid).VerifyOnly(verifyOnly).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorSmsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorSmsList`: PaginatedAuthenticatorSMSStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorSmsList`: %v\n", resp)
 }
 ```
 
@@ -2031,25 +2031,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SMS Authenticator Setup Stage.
-    patchedAuthenticatorSMSStageRequest := *openapiclient.NewPatchedAuthenticatorSMSStageRequest() // PatchedAuthenticatorSMSStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SMS Authenticator Setup Stage.
+	patchedAuthenticatorSMSStageRequest := *openapiclient.NewPatchedAuthenticatorSMSStageRequest() // PatchedAuthenticatorSMSStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorSmsPartialUpdate(context.Background(), stageUuid).PatchedAuthenticatorSMSStageRequest(patchedAuthenticatorSMSStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorSmsPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorSmsPartialUpdate`: AuthenticatorSMSStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorSmsPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorSmsPartialUpdate(context.Background(), stageUuid).PatchedAuthenticatorSMSStageRequest(patchedAuthenticatorSMSStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorSmsPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorSmsPartialUpdate`: AuthenticatorSMSStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorSmsPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -2103,24 +2103,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SMS Authenticator Setup Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SMS Authenticator Setup Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorSmsRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorSmsRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorSmsRetrieve`: AuthenticatorSMSStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorSmsRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorSmsRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorSmsRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorSmsRetrieve`: AuthenticatorSMSStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorSmsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -2173,25 +2173,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SMS Authenticator Setup Stage.
-    authenticatorSMSStageRequest := *openapiclient.NewAuthenticatorSMSStageRequest("Name_example", openapiclient.ProviderEnum("twilio"), "FromNumber_example", "AccountSid_example", "Auth_example") // AuthenticatorSMSStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SMS Authenticator Setup Stage.
+	authenticatorSMSStageRequest := *openapiclient.NewAuthenticatorSMSStageRequest("Name_example", openapiclient.ProviderEnum("twilio"), "FromNumber_example", "AccountSid_example", "Auth_example") // AuthenticatorSMSStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorSmsUpdate(context.Background(), stageUuid).AuthenticatorSMSStageRequest(authenticatorSMSStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorSmsUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorSmsUpdate`: AuthenticatorSMSStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorSmsUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorSmsUpdate(context.Background(), stageUuid).AuthenticatorSMSStageRequest(authenticatorSMSStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorSmsUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorSmsUpdate`: AuthenticatorSMSStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorSmsUpdate`: %v\n", resp)
 }
 ```
 
@@ -2245,24 +2245,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SMS Authenticator Setup Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SMS Authenticator Setup Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorSmsUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorSmsUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorSmsUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorSmsUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorSmsUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorSmsUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorSmsUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorSmsUsedByList`: %v\n", resp)
 }
 ```
 
@@ -2315,24 +2315,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    authenticatorStaticStageRequest := *openapiclient.NewAuthenticatorStaticStageRequest("Name_example") // AuthenticatorStaticStageRequest | 
+	authenticatorStaticStageRequest := *openapiclient.NewAuthenticatorStaticStageRequest("Name_example") // AuthenticatorStaticStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorStaticCreate(context.Background()).AuthenticatorStaticStageRequest(authenticatorStaticStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorStaticCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorStaticCreate`: AuthenticatorStaticStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorStaticCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorStaticCreate(context.Background()).AuthenticatorStaticStageRequest(authenticatorStaticStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorStaticCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorStaticCreate`: AuthenticatorStaticStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorStaticCreate`: %v\n", resp)
 }
 ```
 
@@ -2381,22 +2381,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Static Authenticator Setup Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Static Authenticator Setup Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorStaticDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorStaticDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesAuthenticatorStaticDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorStaticDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -2449,33 +2449,33 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    friendlyName := "friendlyName_example" // string |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    tokenCount := int32(56) // int32 |  (optional)
-    tokenLength := int32(56) // int32 |  (optional)
+	configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	friendlyName := "friendlyName_example" // string |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	tokenCount := int32(56) // int32 |  (optional)
+	tokenLength := int32(56) // int32 |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorStaticList(context.Background()).ConfigureFlow(configureFlow).FriendlyName(friendlyName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).TokenCount(tokenCount).TokenLength(tokenLength).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorStaticList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorStaticList`: PaginatedAuthenticatorStaticStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorStaticList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorStaticList(context.Background()).ConfigureFlow(configureFlow).FriendlyName(friendlyName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).TokenCount(tokenCount).TokenLength(tokenLength).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorStaticList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorStaticList`: PaginatedAuthenticatorStaticStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorStaticList`: %v\n", resp)
 }
 ```
 
@@ -2533,25 +2533,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Static Authenticator Setup Stage.
-    patchedAuthenticatorStaticStageRequest := *openapiclient.NewPatchedAuthenticatorStaticStageRequest() // PatchedAuthenticatorStaticStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Static Authenticator Setup Stage.
+	patchedAuthenticatorStaticStageRequest := *openapiclient.NewPatchedAuthenticatorStaticStageRequest() // PatchedAuthenticatorStaticStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorStaticPartialUpdate(context.Background(), stageUuid).PatchedAuthenticatorStaticStageRequest(patchedAuthenticatorStaticStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorStaticPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorStaticPartialUpdate`: AuthenticatorStaticStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorStaticPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorStaticPartialUpdate(context.Background(), stageUuid).PatchedAuthenticatorStaticStageRequest(patchedAuthenticatorStaticStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorStaticPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorStaticPartialUpdate`: AuthenticatorStaticStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorStaticPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -2605,24 +2605,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Static Authenticator Setup Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Static Authenticator Setup Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorStaticRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorStaticRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorStaticRetrieve`: AuthenticatorStaticStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorStaticRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorStaticRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorStaticRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorStaticRetrieve`: AuthenticatorStaticStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorStaticRetrieve`: %v\n", resp)
 }
 ```
 
@@ -2675,25 +2675,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Static Authenticator Setup Stage.
-    authenticatorStaticStageRequest := *openapiclient.NewAuthenticatorStaticStageRequest("Name_example") // AuthenticatorStaticStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Static Authenticator Setup Stage.
+	authenticatorStaticStageRequest := *openapiclient.NewAuthenticatorStaticStageRequest("Name_example") // AuthenticatorStaticStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorStaticUpdate(context.Background(), stageUuid).AuthenticatorStaticStageRequest(authenticatorStaticStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorStaticUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorStaticUpdate`: AuthenticatorStaticStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorStaticUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorStaticUpdate(context.Background(), stageUuid).AuthenticatorStaticStageRequest(authenticatorStaticStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorStaticUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorStaticUpdate`: AuthenticatorStaticStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorStaticUpdate`: %v\n", resp)
 }
 ```
 
@@ -2747,24 +2747,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Static Authenticator Setup Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Static Authenticator Setup Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorStaticUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorStaticUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorStaticUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorStaticUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorStaticUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorStaticUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorStaticUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorStaticUsedByList`: %v\n", resp)
 }
 ```
 
@@ -2817,24 +2817,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    authenticatorTOTPStageRequest := *openapiclient.NewAuthenticatorTOTPStageRequest("Name_example", openapiclient.DigitsEnum("6")) // AuthenticatorTOTPStageRequest | 
+	authenticatorTOTPStageRequest := *openapiclient.NewAuthenticatorTOTPStageRequest("Name_example", openapiclient.DigitsEnum("6")) // AuthenticatorTOTPStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorTotpCreate(context.Background()).AuthenticatorTOTPStageRequest(authenticatorTOTPStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorTotpCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorTotpCreate`: AuthenticatorTOTPStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorTotpCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorTotpCreate(context.Background()).AuthenticatorTOTPStageRequest(authenticatorTOTPStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorTotpCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorTotpCreate`: AuthenticatorTOTPStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorTotpCreate`: %v\n", resp)
 }
 ```
 
@@ -2883,22 +2883,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this TOTP Authenticator Setup Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this TOTP Authenticator Setup Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorTotpDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorTotpDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesAuthenticatorTotpDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorTotpDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -2951,32 +2951,32 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    digits := "digits_example" // string |  (optional)
-    friendlyName := "friendlyName_example" // string |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	digits := "digits_example" // string |  (optional)
+	friendlyName := "friendlyName_example" // string |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorTotpList(context.Background()).ConfigureFlow(configureFlow).Digits(digits).FriendlyName(friendlyName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorTotpList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorTotpList`: PaginatedAuthenticatorTOTPStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorTotpList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorTotpList(context.Background()).ConfigureFlow(configureFlow).Digits(digits).FriendlyName(friendlyName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorTotpList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorTotpList`: PaginatedAuthenticatorTOTPStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorTotpList`: %v\n", resp)
 }
 ```
 
@@ -3033,25 +3033,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this TOTP Authenticator Setup Stage.
-    patchedAuthenticatorTOTPStageRequest := *openapiclient.NewPatchedAuthenticatorTOTPStageRequest() // PatchedAuthenticatorTOTPStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this TOTP Authenticator Setup Stage.
+	patchedAuthenticatorTOTPStageRequest := *openapiclient.NewPatchedAuthenticatorTOTPStageRequest() // PatchedAuthenticatorTOTPStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorTotpPartialUpdate(context.Background(), stageUuid).PatchedAuthenticatorTOTPStageRequest(patchedAuthenticatorTOTPStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorTotpPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorTotpPartialUpdate`: AuthenticatorTOTPStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorTotpPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorTotpPartialUpdate(context.Background(), stageUuid).PatchedAuthenticatorTOTPStageRequest(patchedAuthenticatorTOTPStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorTotpPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorTotpPartialUpdate`: AuthenticatorTOTPStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorTotpPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -3105,24 +3105,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this TOTP Authenticator Setup Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this TOTP Authenticator Setup Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorTotpRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorTotpRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorTotpRetrieve`: AuthenticatorTOTPStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorTotpRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorTotpRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorTotpRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorTotpRetrieve`: AuthenticatorTOTPStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorTotpRetrieve`: %v\n", resp)
 }
 ```
 
@@ -3175,25 +3175,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this TOTP Authenticator Setup Stage.
-    authenticatorTOTPStageRequest := *openapiclient.NewAuthenticatorTOTPStageRequest("Name_example", openapiclient.DigitsEnum("6")) // AuthenticatorTOTPStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this TOTP Authenticator Setup Stage.
+	authenticatorTOTPStageRequest := *openapiclient.NewAuthenticatorTOTPStageRequest("Name_example", openapiclient.DigitsEnum("6")) // AuthenticatorTOTPStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorTotpUpdate(context.Background(), stageUuid).AuthenticatorTOTPStageRequest(authenticatorTOTPStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorTotpUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorTotpUpdate`: AuthenticatorTOTPStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorTotpUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorTotpUpdate(context.Background(), stageUuid).AuthenticatorTOTPStageRequest(authenticatorTOTPStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorTotpUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorTotpUpdate`: AuthenticatorTOTPStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorTotpUpdate`: %v\n", resp)
 }
 ```
 
@@ -3247,24 +3247,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this TOTP Authenticator Setup Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this TOTP Authenticator Setup Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorTotpUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorTotpUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorTotpUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorTotpUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorTotpUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorTotpUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorTotpUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorTotpUsedByList`: %v\n", resp)
 }
 ```
 
@@ -3317,24 +3317,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    authenticatorValidateStageRequest := *openapiclient.NewAuthenticatorValidateStageRequest("Name_example") // AuthenticatorValidateStageRequest | 
+	authenticatorValidateStageRequest := *openapiclient.NewAuthenticatorValidateStageRequest("Name_example") // AuthenticatorValidateStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorValidateCreate(context.Background()).AuthenticatorValidateStageRequest(authenticatorValidateStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorValidateCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorValidateCreate`: AuthenticatorValidateStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorValidateCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorValidateCreate(context.Background()).AuthenticatorValidateStageRequest(authenticatorValidateStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorValidateCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorValidateCreate`: AuthenticatorValidateStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorValidateCreate`: %v\n", resp)
 }
 ```
 
@@ -3383,22 +3383,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Authenticator Validation Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Authenticator Validation Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorValidateDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorValidateDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesAuthenticatorValidateDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorValidateDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -3451,30 +3451,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    configurationStages := []string{"Inner_example"} // []string |  (optional)
-    name := "name_example" // string |  (optional)
-    notConfiguredAction := "notConfiguredAction_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	configurationStages := []string{"Inner_example"} // []string |  (optional)
+	name := "name_example" // string |  (optional)
+	notConfiguredAction := "notConfiguredAction_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorValidateList(context.Background()).ConfigurationStages(configurationStages).Name(name).NotConfiguredAction(notConfiguredAction).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorValidateList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorValidateList`: PaginatedAuthenticatorValidateStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorValidateList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorValidateList(context.Background()).ConfigurationStages(configurationStages).Name(name).NotConfiguredAction(notConfiguredAction).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorValidateList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorValidateList`: PaginatedAuthenticatorValidateStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorValidateList`: %v\n", resp)
 }
 ```
 
@@ -3529,25 +3529,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Authenticator Validation Stage.
-    patchedAuthenticatorValidateStageRequest := *openapiclient.NewPatchedAuthenticatorValidateStageRequest() // PatchedAuthenticatorValidateStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Authenticator Validation Stage.
+	patchedAuthenticatorValidateStageRequest := *openapiclient.NewPatchedAuthenticatorValidateStageRequest() // PatchedAuthenticatorValidateStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorValidatePartialUpdate(context.Background(), stageUuid).PatchedAuthenticatorValidateStageRequest(patchedAuthenticatorValidateStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorValidatePartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorValidatePartialUpdate`: AuthenticatorValidateStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorValidatePartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorValidatePartialUpdate(context.Background(), stageUuid).PatchedAuthenticatorValidateStageRequest(patchedAuthenticatorValidateStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorValidatePartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorValidatePartialUpdate`: AuthenticatorValidateStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorValidatePartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -3601,24 +3601,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Authenticator Validation Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Authenticator Validation Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorValidateRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorValidateRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorValidateRetrieve`: AuthenticatorValidateStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorValidateRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorValidateRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorValidateRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorValidateRetrieve`: AuthenticatorValidateStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorValidateRetrieve`: %v\n", resp)
 }
 ```
 
@@ -3671,25 +3671,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Authenticator Validation Stage.
-    authenticatorValidateStageRequest := *openapiclient.NewAuthenticatorValidateStageRequest("Name_example") // AuthenticatorValidateStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Authenticator Validation Stage.
+	authenticatorValidateStageRequest := *openapiclient.NewAuthenticatorValidateStageRequest("Name_example") // AuthenticatorValidateStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorValidateUpdate(context.Background(), stageUuid).AuthenticatorValidateStageRequest(authenticatorValidateStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorValidateUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorValidateUpdate`: AuthenticatorValidateStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorValidateUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorValidateUpdate(context.Background(), stageUuid).AuthenticatorValidateStageRequest(authenticatorValidateStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorValidateUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorValidateUpdate`: AuthenticatorValidateStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorValidateUpdate`: %v\n", resp)
 }
 ```
 
@@ -3743,24 +3743,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Authenticator Validation Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Authenticator Validation Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorValidateUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorValidateUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorValidateUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorValidateUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorValidateUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorValidateUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorValidateUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorValidateUsedByList`: %v\n", resp)
 }
 ```
 
@@ -3813,24 +3813,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    authenticatorWebAuthnStageRequest := *openapiclient.NewAuthenticatorWebAuthnStageRequest("Name_example") // AuthenticatorWebAuthnStageRequest | 
+	authenticatorWebAuthnStageRequest := *openapiclient.NewAuthenticatorWebAuthnStageRequest("Name_example") // AuthenticatorWebAuthnStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnCreate(context.Background()).AuthenticatorWebAuthnStageRequest(authenticatorWebAuthnStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorWebauthnCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorWebauthnCreate`: AuthenticatorWebAuthnStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorWebauthnCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorWebauthnCreate(context.Background()).AuthenticatorWebAuthnStageRequest(authenticatorWebAuthnStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorWebauthnCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorWebauthnCreate`: AuthenticatorWebAuthnStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorWebauthnCreate`: %v\n", resp)
 }
 ```
 
@@ -3879,22 +3879,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this WebAuthn Authenticator Setup Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this WebAuthn Authenticator Setup Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorWebauthnDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesAuthenticatorWebauthnDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorWebauthnDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -3947,30 +3947,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    aaguid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    description := "description_example" // string |  (optional)
-    icon := "icon_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	aaguid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	description := "description_example" // string |  (optional)
+	icon := "icon_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnDeviceTypesList(context.Background()).Aaguid(aaguid).Description(description).Icon(icon).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorWebauthnDeviceTypesList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorWebauthnDeviceTypesList`: PaginatedWebAuthnDeviceTypeList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorWebauthnDeviceTypesList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorWebauthnDeviceTypesList(context.Background()).Aaguid(aaguid).Description(description).Icon(icon).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorWebauthnDeviceTypesList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorWebauthnDeviceTypesList`: PaginatedWebAuthnDeviceTypeList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorWebauthnDeviceTypesList`: %v\n", resp)
 }
 ```
 
@@ -4025,24 +4025,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    aaguid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this WebAuthn Device type.
+	aaguid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this WebAuthn Device type.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnDeviceTypesRetrieve(context.Background(), aaguid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorWebauthnDeviceTypesRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorWebauthnDeviceTypesRetrieve`: WebAuthnDeviceType
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorWebauthnDeviceTypesRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorWebauthnDeviceTypesRetrieve(context.Background(), aaguid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorWebauthnDeviceTypesRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorWebauthnDeviceTypesRetrieve`: WebAuthnDeviceType
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorWebauthnDeviceTypesRetrieve`: %v\n", resp)
 }
 ```
 
@@ -4095,35 +4095,35 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    authenticatorAttachment := "authenticatorAttachment_example" // string |  (optional)
-    configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    deviceTypeRestrictions := []string{"Inner_example"} // []string |  (optional)
-    friendlyName := "friendlyName_example" // string |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    residentKeyRequirement := "residentKeyRequirement_example" // string |  (optional)
-    search := "search_example" // string | A search term. (optional)
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    userVerification := "userVerification_example" // string |  (optional)
+	authenticatorAttachment := "authenticatorAttachment_example" // string |  (optional)
+	configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	deviceTypeRestrictions := []string{"Inner_example"} // []string |  (optional)
+	friendlyName := "friendlyName_example" // string |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	residentKeyRequirement := "residentKeyRequirement_example" // string |  (optional)
+	search := "search_example" // string | A search term. (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	userVerification := "userVerification_example" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnList(context.Background()).AuthenticatorAttachment(authenticatorAttachment).ConfigureFlow(configureFlow).DeviceTypeRestrictions(deviceTypeRestrictions).FriendlyName(friendlyName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ResidentKeyRequirement(residentKeyRequirement).Search(search).StageUuid(stageUuid).UserVerification(userVerification).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorWebauthnList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorWebauthnList`: PaginatedAuthenticatorWebAuthnStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorWebauthnList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorWebauthnList(context.Background()).AuthenticatorAttachment(authenticatorAttachment).ConfigureFlow(configureFlow).DeviceTypeRestrictions(deviceTypeRestrictions).FriendlyName(friendlyName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ResidentKeyRequirement(residentKeyRequirement).Search(search).StageUuid(stageUuid).UserVerification(userVerification).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorWebauthnList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorWebauthnList`: PaginatedAuthenticatorWebAuthnStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorWebauthnList`: %v\n", resp)
 }
 ```
 
@@ -4183,25 +4183,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this WebAuthn Authenticator Setup Stage.
-    patchedAuthenticatorWebAuthnStageRequest := *openapiclient.NewPatchedAuthenticatorWebAuthnStageRequest() // PatchedAuthenticatorWebAuthnStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this WebAuthn Authenticator Setup Stage.
+	patchedAuthenticatorWebAuthnStageRequest := *openapiclient.NewPatchedAuthenticatorWebAuthnStageRequest() // PatchedAuthenticatorWebAuthnStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnPartialUpdate(context.Background(), stageUuid).PatchedAuthenticatorWebAuthnStageRequest(patchedAuthenticatorWebAuthnStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorWebauthnPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorWebauthnPartialUpdate`: AuthenticatorWebAuthnStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorWebauthnPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorWebauthnPartialUpdate(context.Background(), stageUuid).PatchedAuthenticatorWebAuthnStageRequest(patchedAuthenticatorWebAuthnStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorWebauthnPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorWebauthnPartialUpdate`: AuthenticatorWebAuthnStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorWebauthnPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -4255,24 +4255,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this WebAuthn Authenticator Setup Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this WebAuthn Authenticator Setup Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorWebauthnRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorWebauthnRetrieve`: AuthenticatorWebAuthnStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorWebauthnRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorWebauthnRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorWebauthnRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorWebauthnRetrieve`: AuthenticatorWebAuthnStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorWebauthnRetrieve`: %v\n", resp)
 }
 ```
 
@@ -4325,25 +4325,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this WebAuthn Authenticator Setup Stage.
-    authenticatorWebAuthnStageRequest := *openapiclient.NewAuthenticatorWebAuthnStageRequest("Name_example") // AuthenticatorWebAuthnStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this WebAuthn Authenticator Setup Stage.
+	authenticatorWebAuthnStageRequest := *openapiclient.NewAuthenticatorWebAuthnStageRequest("Name_example") // AuthenticatorWebAuthnStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnUpdate(context.Background(), stageUuid).AuthenticatorWebAuthnStageRequest(authenticatorWebAuthnStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorWebauthnUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorWebauthnUpdate`: AuthenticatorWebAuthnStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorWebauthnUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorWebauthnUpdate(context.Background(), stageUuid).AuthenticatorWebAuthnStageRequest(authenticatorWebAuthnStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorWebauthnUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorWebauthnUpdate`: AuthenticatorWebAuthnStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorWebauthnUpdate`: %v\n", resp)
 }
 ```
 
@@ -4397,24 +4397,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this WebAuthn Authenticator Setup Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this WebAuthn Authenticator Setup Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesAuthenticatorWebauthnUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorWebauthnUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesAuthenticatorWebauthnUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorWebauthnUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesAuthenticatorWebauthnUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesAuthenticatorWebauthnUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesAuthenticatorWebauthnUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesAuthenticatorWebauthnUsedByList`: %v\n", resp)
 }
 ```
 
@@ -4467,24 +4467,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    captchaStageRequest := *openapiclient.NewCaptchaStageRequest("Name_example", "PublicKey_example", "PrivateKey_example") // CaptchaStageRequest | 
+	captchaStageRequest := *openapiclient.NewCaptchaStageRequest("Name_example", "PublicKey_example", "PrivateKey_example") // CaptchaStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesCaptchaCreate(context.Background()).CaptchaStageRequest(captchaStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesCaptchaCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesCaptchaCreate`: CaptchaStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesCaptchaCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesCaptchaCreate(context.Background()).CaptchaStageRequest(captchaStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesCaptchaCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesCaptchaCreate`: CaptchaStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesCaptchaCreate`: %v\n", resp)
 }
 ```
 
@@ -4533,22 +4533,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Captcha Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Captcha Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesCaptchaDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesCaptchaDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesCaptchaDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesCaptchaDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -4601,29 +4601,29 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    publicKey := "publicKey_example" // string |  (optional)
-    search := "search_example" // string | A search term. (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	publicKey := "publicKey_example" // string |  (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesCaptchaList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PublicKey(publicKey).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesCaptchaList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesCaptchaList`: PaginatedCaptchaStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesCaptchaList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesCaptchaList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PublicKey(publicKey).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesCaptchaList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesCaptchaList`: PaginatedCaptchaStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesCaptchaList`: %v\n", resp)
 }
 ```
 
@@ -4677,25 +4677,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Captcha Stage.
-    patchedCaptchaStageRequest := *openapiclient.NewPatchedCaptchaStageRequest() // PatchedCaptchaStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Captcha Stage.
+	patchedCaptchaStageRequest := *openapiclient.NewPatchedCaptchaStageRequest() // PatchedCaptchaStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesCaptchaPartialUpdate(context.Background(), stageUuid).PatchedCaptchaStageRequest(patchedCaptchaStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesCaptchaPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesCaptchaPartialUpdate`: CaptchaStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesCaptchaPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesCaptchaPartialUpdate(context.Background(), stageUuid).PatchedCaptchaStageRequest(patchedCaptchaStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesCaptchaPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesCaptchaPartialUpdate`: CaptchaStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesCaptchaPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -4749,24 +4749,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Captcha Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Captcha Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesCaptchaRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesCaptchaRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesCaptchaRetrieve`: CaptchaStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesCaptchaRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesCaptchaRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesCaptchaRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesCaptchaRetrieve`: CaptchaStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesCaptchaRetrieve`: %v\n", resp)
 }
 ```
 
@@ -4819,25 +4819,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Captcha Stage.
-    captchaStageRequest := *openapiclient.NewCaptchaStageRequest("Name_example", "PublicKey_example", "PrivateKey_example") // CaptchaStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Captcha Stage.
+	captchaStageRequest := *openapiclient.NewCaptchaStageRequest("Name_example", "PublicKey_example", "PrivateKey_example") // CaptchaStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesCaptchaUpdate(context.Background(), stageUuid).CaptchaStageRequest(captchaStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesCaptchaUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesCaptchaUpdate`: CaptchaStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesCaptchaUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesCaptchaUpdate(context.Background(), stageUuid).CaptchaStageRequest(captchaStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesCaptchaUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesCaptchaUpdate`: CaptchaStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesCaptchaUpdate`: %v\n", resp)
 }
 ```
 
@@ -4891,24 +4891,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Captcha Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Captcha Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesCaptchaUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesCaptchaUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesCaptchaUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesCaptchaUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesCaptchaUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesCaptchaUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesCaptchaUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesCaptchaUsedByList`: %v\n", resp)
 }
 ```
 
@@ -4961,24 +4961,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    consentStageRequest := *openapiclient.NewConsentStageRequest("Name_example") // ConsentStageRequest | 
+	consentStageRequest := *openapiclient.NewConsentStageRequest("Name_example") // ConsentStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesConsentCreate(context.Background()).ConsentStageRequest(consentStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesConsentCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesConsentCreate`: ConsentStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesConsentCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesConsentCreate(context.Background()).ConsentStageRequest(consentStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesConsentCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesConsentCreate`: ConsentStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesConsentCreate`: %v\n", resp)
 }
 ```
 
@@ -5027,22 +5027,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Consent Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Consent Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesConsentDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesConsentDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesConsentDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesConsentDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -5095,31 +5095,31 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    consentExpireIn := "consentExpireIn_example" // string |  (optional)
-    mode := "mode_example" // string |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	consentExpireIn := "consentExpireIn_example" // string |  (optional)
+	mode := "mode_example" // string |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesConsentList(context.Background()).ConsentExpireIn(consentExpireIn).Mode(mode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesConsentList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesConsentList`: PaginatedConsentStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesConsentList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesConsentList(context.Background()).ConsentExpireIn(consentExpireIn).Mode(mode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesConsentList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesConsentList`: PaginatedConsentStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesConsentList`: %v\n", resp)
 }
 ```
 
@@ -5175,25 +5175,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Consent Stage.
-    patchedConsentStageRequest := *openapiclient.NewPatchedConsentStageRequest() // PatchedConsentStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Consent Stage.
+	patchedConsentStageRequest := *openapiclient.NewPatchedConsentStageRequest() // PatchedConsentStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesConsentPartialUpdate(context.Background(), stageUuid).PatchedConsentStageRequest(patchedConsentStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesConsentPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesConsentPartialUpdate`: ConsentStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesConsentPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesConsentPartialUpdate(context.Background(), stageUuid).PatchedConsentStageRequest(patchedConsentStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesConsentPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesConsentPartialUpdate`: ConsentStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesConsentPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -5247,24 +5247,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Consent Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Consent Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesConsentRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesConsentRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesConsentRetrieve`: ConsentStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesConsentRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesConsentRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesConsentRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesConsentRetrieve`: ConsentStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesConsentRetrieve`: %v\n", resp)
 }
 ```
 
@@ -5317,25 +5317,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Consent Stage.
-    consentStageRequest := *openapiclient.NewConsentStageRequest("Name_example") // ConsentStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Consent Stage.
+	consentStageRequest := *openapiclient.NewConsentStageRequest("Name_example") // ConsentStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesConsentUpdate(context.Background(), stageUuid).ConsentStageRequest(consentStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesConsentUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesConsentUpdate`: ConsentStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesConsentUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesConsentUpdate(context.Background(), stageUuid).ConsentStageRequest(consentStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesConsentUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesConsentUpdate`: ConsentStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesConsentUpdate`: %v\n", resp)
 }
 ```
 
@@ -5389,24 +5389,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Consent Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Consent Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesConsentUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesConsentUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesConsentUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesConsentUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesConsentUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesConsentUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesConsentUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesConsentUsedByList`: %v\n", resp)
 }
 ```
 
@@ -5459,24 +5459,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    denyStageRequest := *openapiclient.NewDenyStageRequest("Name_example") // DenyStageRequest | 
+	denyStageRequest := *openapiclient.NewDenyStageRequest("Name_example") // DenyStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesDenyCreate(context.Background()).DenyStageRequest(denyStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesDenyCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesDenyCreate`: DenyStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesDenyCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesDenyCreate(context.Background()).DenyStageRequest(denyStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesDenyCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesDenyCreate`: DenyStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesDenyCreate`: %v\n", resp)
 }
 ```
 
@@ -5525,22 +5525,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Deny Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Deny Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesDenyDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesDenyDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesDenyDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesDenyDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -5593,30 +5593,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    denyMessage := "denyMessage_example" // string |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	denyMessage := "denyMessage_example" // string |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesDenyList(context.Background()).DenyMessage(denyMessage).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesDenyList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesDenyList`: PaginatedDenyStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesDenyList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesDenyList(context.Background()).DenyMessage(denyMessage).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesDenyList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesDenyList`: PaginatedDenyStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesDenyList`: %v\n", resp)
 }
 ```
 
@@ -5671,25 +5671,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Deny Stage.
-    patchedDenyStageRequest := *openapiclient.NewPatchedDenyStageRequest() // PatchedDenyStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Deny Stage.
+	patchedDenyStageRequest := *openapiclient.NewPatchedDenyStageRequest() // PatchedDenyStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesDenyPartialUpdate(context.Background(), stageUuid).PatchedDenyStageRequest(patchedDenyStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesDenyPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesDenyPartialUpdate`: DenyStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesDenyPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesDenyPartialUpdate(context.Background(), stageUuid).PatchedDenyStageRequest(patchedDenyStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesDenyPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesDenyPartialUpdate`: DenyStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesDenyPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -5743,24 +5743,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Deny Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Deny Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesDenyRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesDenyRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesDenyRetrieve`: DenyStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesDenyRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesDenyRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesDenyRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesDenyRetrieve`: DenyStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesDenyRetrieve`: %v\n", resp)
 }
 ```
 
@@ -5813,25 +5813,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Deny Stage.
-    denyStageRequest := *openapiclient.NewDenyStageRequest("Name_example") // DenyStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Deny Stage.
+	denyStageRequest := *openapiclient.NewDenyStageRequest("Name_example") // DenyStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesDenyUpdate(context.Background(), stageUuid).DenyStageRequest(denyStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesDenyUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesDenyUpdate`: DenyStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesDenyUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesDenyUpdate(context.Background(), stageUuid).DenyStageRequest(denyStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesDenyUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesDenyUpdate`: DenyStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesDenyUpdate`: %v\n", resp)
 }
 ```
 
@@ -5885,24 +5885,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Deny Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Deny Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesDenyUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesDenyUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesDenyUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesDenyUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesDenyUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesDenyUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesDenyUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesDenyUsedByList`: %v\n", resp)
 }
 ```
 
@@ -5955,24 +5955,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    dummyStageRequest := *openapiclient.NewDummyStageRequest("Name_example") // DummyStageRequest | 
+	dummyStageRequest := *openapiclient.NewDummyStageRequest("Name_example") // DummyStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesDummyCreate(context.Background()).DummyStageRequest(dummyStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesDummyCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesDummyCreate`: DummyStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesDummyCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesDummyCreate(context.Background()).DummyStageRequest(dummyStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesDummyCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesDummyCreate`: DummyStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesDummyCreate`: %v\n", resp)
 }
 ```
 
@@ -6021,22 +6021,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Dummy Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Dummy Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesDummyDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesDummyDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesDummyDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesDummyDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -6089,30 +6089,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    throwError := true // bool |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	throwError := true // bool |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesDummyList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).ThrowError(throwError).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesDummyList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesDummyList`: PaginatedDummyStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesDummyList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesDummyList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).ThrowError(throwError).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesDummyList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesDummyList`: PaginatedDummyStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesDummyList`: %v\n", resp)
 }
 ```
 
@@ -6167,25 +6167,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Dummy Stage.
-    patchedDummyStageRequest := *openapiclient.NewPatchedDummyStageRequest() // PatchedDummyStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Dummy Stage.
+	patchedDummyStageRequest := *openapiclient.NewPatchedDummyStageRequest() // PatchedDummyStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesDummyPartialUpdate(context.Background(), stageUuid).PatchedDummyStageRequest(patchedDummyStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesDummyPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesDummyPartialUpdate`: DummyStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesDummyPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesDummyPartialUpdate(context.Background(), stageUuid).PatchedDummyStageRequest(patchedDummyStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesDummyPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesDummyPartialUpdate`: DummyStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesDummyPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -6239,24 +6239,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Dummy Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Dummy Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesDummyRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesDummyRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesDummyRetrieve`: DummyStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesDummyRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesDummyRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesDummyRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesDummyRetrieve`: DummyStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesDummyRetrieve`: %v\n", resp)
 }
 ```
 
@@ -6309,25 +6309,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Dummy Stage.
-    dummyStageRequest := *openapiclient.NewDummyStageRequest("Name_example") // DummyStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Dummy Stage.
+	dummyStageRequest := *openapiclient.NewDummyStageRequest("Name_example") // DummyStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesDummyUpdate(context.Background(), stageUuid).DummyStageRequest(dummyStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesDummyUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesDummyUpdate`: DummyStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesDummyUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesDummyUpdate(context.Background(), stageUuid).DummyStageRequest(dummyStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesDummyUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesDummyUpdate`: DummyStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesDummyUpdate`: %v\n", resp)
 }
 ```
 
@@ -6381,24 +6381,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Dummy Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Dummy Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesDummyUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesDummyUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesDummyUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesDummyUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesDummyUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesDummyUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesDummyUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesDummyUsedByList`: %v\n", resp)
 }
 ```
 
@@ -6451,24 +6451,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    emailStageRequest := *openapiclient.NewEmailStageRequest("Name_example") // EmailStageRequest | 
+	emailStageRequest := *openapiclient.NewEmailStageRequest("Name_example") // EmailStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesEmailCreate(context.Background()).EmailStageRequest(emailStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesEmailCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesEmailCreate`: EmailStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesEmailCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesEmailCreate(context.Background()).EmailStageRequest(emailStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesEmailCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesEmailCreate`: EmailStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesEmailCreate`: %v\n", resp)
 }
 ```
 
@@ -6517,22 +6517,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Email Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Email Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesEmailDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesEmailDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesEmailDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesEmailDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -6585,40 +6585,40 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    activateUserOnSuccess := true // bool |  (optional)
-    fromAddress := "fromAddress_example" // string |  (optional)
-    host := "host_example" // string |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    port := int32(56) // int32 |  (optional)
-    search := "search_example" // string | A search term. (optional)
-    subject := "subject_example" // string |  (optional)
-    template := "template_example" // string |  (optional)
-    timeout := int32(56) // int32 |  (optional)
-    tokenExpiry := int32(56) // int32 |  (optional)
-    useGlobalSettings := true // bool |  (optional)
-    useSsl := true // bool |  (optional)
-    useTls := true // bool |  (optional)
-    username := "username_example" // string |  (optional)
+	activateUserOnSuccess := true // bool |  (optional)
+	fromAddress := "fromAddress_example" // string |  (optional)
+	host := "host_example" // string |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	port := int32(56) // int32 |  (optional)
+	search := "search_example" // string | A search term. (optional)
+	subject := "subject_example" // string |  (optional)
+	template := "template_example" // string |  (optional)
+	timeout := int32(56) // int32 |  (optional)
+	tokenExpiry := int32(56) // int32 |  (optional)
+	useGlobalSettings := true // bool |  (optional)
+	useSsl := true // bool |  (optional)
+	useTls := true // bool |  (optional)
+	username := "username_example" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesEmailList(context.Background()).ActivateUserOnSuccess(activateUserOnSuccess).FromAddress(fromAddress).Host(host).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Port(port).Search(search).Subject(subject).Template(template).Timeout(timeout).TokenExpiry(tokenExpiry).UseGlobalSettings(useGlobalSettings).UseSsl(useSsl).UseTls(useTls).Username(username).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesEmailList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesEmailList`: PaginatedEmailStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesEmailList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesEmailList(context.Background()).ActivateUserOnSuccess(activateUserOnSuccess).FromAddress(fromAddress).Host(host).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Port(port).Search(search).Subject(subject).Template(template).Timeout(timeout).TokenExpiry(tokenExpiry).UseGlobalSettings(useGlobalSettings).UseSsl(useSsl).UseTls(useTls).Username(username).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesEmailList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesEmailList`: PaginatedEmailStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesEmailList`: %v\n", resp)
 }
 ```
 
@@ -6683,25 +6683,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Email Stage.
-    patchedEmailStageRequest := *openapiclient.NewPatchedEmailStageRequest() // PatchedEmailStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Email Stage.
+	patchedEmailStageRequest := *openapiclient.NewPatchedEmailStageRequest() // PatchedEmailStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesEmailPartialUpdate(context.Background(), stageUuid).PatchedEmailStageRequest(patchedEmailStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesEmailPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesEmailPartialUpdate`: EmailStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesEmailPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesEmailPartialUpdate(context.Background(), stageUuid).PatchedEmailStageRequest(patchedEmailStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesEmailPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesEmailPartialUpdate`: EmailStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesEmailPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -6755,24 +6755,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Email Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Email Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesEmailRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesEmailRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesEmailRetrieve`: EmailStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesEmailRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesEmailRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesEmailRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesEmailRetrieve`: EmailStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesEmailRetrieve`: %v\n", resp)
 }
 ```
 
@@ -6825,23 +6825,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesEmailTemplatesList(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesEmailTemplatesList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesEmailTemplatesList`: []TypeCreate
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesEmailTemplatesList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesEmailTemplatesList(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesEmailTemplatesList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesEmailTemplatesList`: []TypeCreate
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesEmailTemplatesList`: %v\n", resp)
 }
 ```
 
@@ -6886,25 +6886,25 @@ Other parameters are passed through a pointer to a apiStagesEmailTemplatesListRe
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Email Stage.
-    emailStageRequest := *openapiclient.NewEmailStageRequest("Name_example") // EmailStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Email Stage.
+	emailStageRequest := *openapiclient.NewEmailStageRequest("Name_example") // EmailStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesEmailUpdate(context.Background(), stageUuid).EmailStageRequest(emailStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesEmailUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesEmailUpdate`: EmailStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesEmailUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesEmailUpdate(context.Background(), stageUuid).EmailStageRequest(emailStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesEmailUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesEmailUpdate`: EmailStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesEmailUpdate`: %v\n", resp)
 }
 ```
 
@@ -6958,24 +6958,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Email Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Email Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesEmailUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesEmailUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesEmailUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesEmailUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesEmailUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesEmailUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesEmailUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesEmailUsedByList`: %v\n", resp)
 }
 ```
 
@@ -7028,24 +7028,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    identificationStageRequest := *openapiclient.NewIdentificationStageRequest("Name_example") // IdentificationStageRequest | 
+	identificationStageRequest := *openapiclient.NewIdentificationStageRequest("Name_example") // IdentificationStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesIdentificationCreate(context.Background()).IdentificationStageRequest(identificationStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesIdentificationCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesIdentificationCreate`: IdentificationStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesIdentificationCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesIdentificationCreate(context.Background()).IdentificationStageRequest(identificationStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesIdentificationCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesIdentificationCreate`: IdentificationStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesIdentificationCreate`: %v\n", resp)
 }
 ```
 
@@ -7094,22 +7094,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Identification Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Identification Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesIdentificationDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesIdentificationDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesIdentificationDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesIdentificationDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -7162,36 +7162,36 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    captchaStage := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    caseInsensitiveMatching := true // bool |  (optional)
-    enrollmentFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    passwordStage := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    passwordlessFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    recoveryFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    search := "search_example" // string | A search term. (optional)
-    showMatchedUser := true // bool |  (optional)
-    showSourceLabels := true // bool |  (optional)
+	captchaStage := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	caseInsensitiveMatching := true // bool |  (optional)
+	enrollmentFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	passwordStage := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	passwordlessFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	recoveryFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	search := "search_example" // string | A search term. (optional)
+	showMatchedUser := true // bool |  (optional)
+	showSourceLabels := true // bool |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesIdentificationList(context.Background()).CaptchaStage(captchaStage).CaseInsensitiveMatching(caseInsensitiveMatching).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordStage(passwordStage).PasswordlessFlow(passwordlessFlow).RecoveryFlow(recoveryFlow).Search(search).ShowMatchedUser(showMatchedUser).ShowSourceLabels(showSourceLabels).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesIdentificationList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesIdentificationList`: PaginatedIdentificationStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesIdentificationList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesIdentificationList(context.Background()).CaptchaStage(captchaStage).CaseInsensitiveMatching(caseInsensitiveMatching).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordStage(passwordStage).PasswordlessFlow(passwordlessFlow).RecoveryFlow(recoveryFlow).Search(search).ShowMatchedUser(showMatchedUser).ShowSourceLabels(showSourceLabels).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesIdentificationList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesIdentificationList`: PaginatedIdentificationStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesIdentificationList`: %v\n", resp)
 }
 ```
 
@@ -7252,25 +7252,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Identification Stage.
-    patchedIdentificationStageRequest := *openapiclient.NewPatchedIdentificationStageRequest() // PatchedIdentificationStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Identification Stage.
+	patchedIdentificationStageRequest := *openapiclient.NewPatchedIdentificationStageRequest() // PatchedIdentificationStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesIdentificationPartialUpdate(context.Background(), stageUuid).PatchedIdentificationStageRequest(patchedIdentificationStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesIdentificationPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesIdentificationPartialUpdate`: IdentificationStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesIdentificationPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesIdentificationPartialUpdate(context.Background(), stageUuid).PatchedIdentificationStageRequest(patchedIdentificationStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesIdentificationPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesIdentificationPartialUpdate`: IdentificationStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesIdentificationPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -7324,24 +7324,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Identification Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Identification Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesIdentificationRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesIdentificationRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesIdentificationRetrieve`: IdentificationStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesIdentificationRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesIdentificationRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesIdentificationRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesIdentificationRetrieve`: IdentificationStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesIdentificationRetrieve`: %v\n", resp)
 }
 ```
 
@@ -7394,25 +7394,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Identification Stage.
-    identificationStageRequest := *openapiclient.NewIdentificationStageRequest("Name_example") // IdentificationStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Identification Stage.
+	identificationStageRequest := *openapiclient.NewIdentificationStageRequest("Name_example") // IdentificationStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesIdentificationUpdate(context.Background(), stageUuid).IdentificationStageRequest(identificationStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesIdentificationUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesIdentificationUpdate`: IdentificationStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesIdentificationUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesIdentificationUpdate(context.Background(), stageUuid).IdentificationStageRequest(identificationStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesIdentificationUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesIdentificationUpdate`: IdentificationStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesIdentificationUpdate`: %v\n", resp)
 }
 ```
 
@@ -7466,24 +7466,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Identification Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Identification Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesIdentificationUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesIdentificationUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesIdentificationUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesIdentificationUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesIdentificationUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesIdentificationUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesIdentificationUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesIdentificationUsedByList`: %v\n", resp)
 }
 ```
 
@@ -7536,24 +7536,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    invitationRequest := *openapiclient.NewInvitationRequest("Name_example") // InvitationRequest | 
+	invitationRequest := *openapiclient.NewInvitationRequest("Name_example") // InvitationRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesInvitationInvitationsCreate(context.Background()).InvitationRequest(invitationRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesInvitationInvitationsCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesInvitationInvitationsCreate`: Invitation
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesInvitationInvitationsCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesInvitationInvitationsCreate(context.Background()).InvitationRequest(invitationRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesInvitationInvitationsCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesInvitationInvitationsCreate`: Invitation
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesInvitationInvitationsCreate`: %v\n", resp)
 }
 ```
 
@@ -7602,22 +7602,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    inviteUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation.
+	inviteUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesInvitationInvitationsDestroy(context.Background(), inviteUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesInvitationInvitationsDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesInvitationInvitationsDestroy(context.Background(), inviteUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesInvitationInvitationsDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -7670,32 +7670,32 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
+	"context"
+	"fmt"
+	"os"
     "time"
-    openapiclient "./openapi"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    createdByUsername := "createdByUsername_example" // string |  (optional)
-    expires := time.Now() // time.Time |  (optional)
-    flowSlug := "flowSlug_example" // string |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	createdByUsername := "createdByUsername_example" // string |  (optional)
+	expires := time.Now() // time.Time |  (optional)
+	flowSlug := "flowSlug_example" // string |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesInvitationInvitationsList(context.Background()).CreatedByUsername(createdByUsername).Expires(expires).FlowSlug(flowSlug).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesInvitationInvitationsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesInvitationInvitationsList`: PaginatedInvitationList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesInvitationInvitationsList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesInvitationInvitationsList(context.Background()).CreatedByUsername(createdByUsername).Expires(expires).FlowSlug(flowSlug).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesInvitationInvitationsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesInvitationInvitationsList`: PaginatedInvitationList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesInvitationInvitationsList`: %v\n", resp)
 }
 ```
 
@@ -7751,25 +7751,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    inviteUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation.
-    patchedInvitationRequest := *openapiclient.NewPatchedInvitationRequest() // PatchedInvitationRequest |  (optional)
+	inviteUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation.
+	patchedInvitationRequest := *openapiclient.NewPatchedInvitationRequest() // PatchedInvitationRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesInvitationInvitationsPartialUpdate(context.Background(), inviteUuid).PatchedInvitationRequest(patchedInvitationRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesInvitationInvitationsPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesInvitationInvitationsPartialUpdate`: Invitation
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesInvitationInvitationsPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesInvitationInvitationsPartialUpdate(context.Background(), inviteUuid).PatchedInvitationRequest(patchedInvitationRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesInvitationInvitationsPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesInvitationInvitationsPartialUpdate`: Invitation
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesInvitationInvitationsPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -7823,24 +7823,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    inviteUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation.
+	inviteUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesInvitationInvitationsRetrieve(context.Background(), inviteUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesInvitationInvitationsRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesInvitationInvitationsRetrieve`: Invitation
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesInvitationInvitationsRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesInvitationInvitationsRetrieve(context.Background(), inviteUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesInvitationInvitationsRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesInvitationInvitationsRetrieve`: Invitation
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesInvitationInvitationsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -7893,25 +7893,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    inviteUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation.
-    invitationRequest := *openapiclient.NewInvitationRequest("Name_example") // InvitationRequest | 
+	inviteUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation.
+	invitationRequest := *openapiclient.NewInvitationRequest("Name_example") // InvitationRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesInvitationInvitationsUpdate(context.Background(), inviteUuid).InvitationRequest(invitationRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesInvitationInvitationsUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesInvitationInvitationsUpdate`: Invitation
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesInvitationInvitationsUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesInvitationInvitationsUpdate(context.Background(), inviteUuid).InvitationRequest(invitationRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesInvitationInvitationsUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesInvitationInvitationsUpdate`: Invitation
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesInvitationInvitationsUpdate`: %v\n", resp)
 }
 ```
 
@@ -7965,24 +7965,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    inviteUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation.
+	inviteUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesInvitationInvitationsUsedByList(context.Background(), inviteUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesInvitationInvitationsUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesInvitationInvitationsUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesInvitationInvitationsUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesInvitationInvitationsUsedByList(context.Background(), inviteUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesInvitationInvitationsUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesInvitationInvitationsUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesInvitationInvitationsUsedByList`: %v\n", resp)
 }
 ```
 
@@ -8035,24 +8035,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    invitationStageRequest := *openapiclient.NewInvitationStageRequest("Name_example") // InvitationStageRequest | 
+	invitationStageRequest := *openapiclient.NewInvitationStageRequest("Name_example") // InvitationStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesInvitationStagesCreate(context.Background()).InvitationStageRequest(invitationStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesInvitationStagesCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesInvitationStagesCreate`: InvitationStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesInvitationStagesCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesInvitationStagesCreate(context.Background()).InvitationStageRequest(invitationStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesInvitationStagesCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesInvitationStagesCreate`: InvitationStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesInvitationStagesCreate`: %v\n", resp)
 }
 ```
 
@@ -8101,22 +8101,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesInvitationStagesDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesInvitationStagesDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesInvitationStagesDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesInvitationStagesDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -8169,31 +8169,31 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    continueFlowWithoutInvitation := true // bool |  (optional)
-    name := "name_example" // string |  (optional)
-    noFlows := true // bool |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	continueFlowWithoutInvitation := true // bool |  (optional)
+	name := "name_example" // string |  (optional)
+	noFlows := true // bool |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesInvitationStagesList(context.Background()).ContinueFlowWithoutInvitation(continueFlowWithoutInvitation).Name(name).NoFlows(noFlows).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesInvitationStagesList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesInvitationStagesList`: PaginatedInvitationStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesInvitationStagesList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesInvitationStagesList(context.Background()).ContinueFlowWithoutInvitation(continueFlowWithoutInvitation).Name(name).NoFlows(noFlows).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesInvitationStagesList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesInvitationStagesList`: PaginatedInvitationStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesInvitationStagesList`: %v\n", resp)
 }
 ```
 
@@ -8249,25 +8249,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation Stage.
-    patchedInvitationStageRequest := *openapiclient.NewPatchedInvitationStageRequest() // PatchedInvitationStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation Stage.
+	patchedInvitationStageRequest := *openapiclient.NewPatchedInvitationStageRequest() // PatchedInvitationStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesInvitationStagesPartialUpdate(context.Background(), stageUuid).PatchedInvitationStageRequest(patchedInvitationStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesInvitationStagesPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesInvitationStagesPartialUpdate`: InvitationStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesInvitationStagesPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesInvitationStagesPartialUpdate(context.Background(), stageUuid).PatchedInvitationStageRequest(patchedInvitationStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesInvitationStagesPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesInvitationStagesPartialUpdate`: InvitationStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesInvitationStagesPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -8321,24 +8321,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesInvitationStagesRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesInvitationStagesRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesInvitationStagesRetrieve`: InvitationStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesInvitationStagesRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesInvitationStagesRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesInvitationStagesRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesInvitationStagesRetrieve`: InvitationStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesInvitationStagesRetrieve`: %v\n", resp)
 }
 ```
 
@@ -8391,25 +8391,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation Stage.
-    invitationStageRequest := *openapiclient.NewInvitationStageRequest("Name_example") // InvitationStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation Stage.
+	invitationStageRequest := *openapiclient.NewInvitationStageRequest("Name_example") // InvitationStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesInvitationStagesUpdate(context.Background(), stageUuid).InvitationStageRequest(invitationStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesInvitationStagesUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesInvitationStagesUpdate`: InvitationStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesInvitationStagesUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesInvitationStagesUpdate(context.Background(), stageUuid).InvitationStageRequest(invitationStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesInvitationStagesUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesInvitationStagesUpdate`: InvitationStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesInvitationStagesUpdate`: %v\n", resp)
 }
 ```
 
@@ -8463,24 +8463,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesInvitationStagesUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesInvitationStagesUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesInvitationStagesUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesInvitationStagesUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesInvitationStagesUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesInvitationStagesUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesInvitationStagesUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesInvitationStagesUsedByList`: %v\n", resp)
 }
 ```
 
@@ -8533,24 +8533,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    passwordStageRequest := *openapiclient.NewPasswordStageRequest("Name_example", []openapiclient.BackendsEnum{openapiclient.BackendsEnum("authentik.core.auth.InbuiltBackend")}) // PasswordStageRequest | 
+	passwordStageRequest := *openapiclient.NewPasswordStageRequest("Name_example", []openapiclient.BackendsEnum{openapiclient.BackendsEnum("authentik.core.auth.InbuiltBackend")}) // PasswordStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPasswordCreate(context.Background()).PasswordStageRequest(passwordStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPasswordCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesPasswordCreate`: PasswordStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesPasswordCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesPasswordCreate(context.Background()).PasswordStageRequest(passwordStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPasswordCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesPasswordCreate`: PasswordStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesPasswordCreate`: %v\n", resp)
 }
 ```
 
@@ -8599,22 +8599,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPasswordDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPasswordDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesPasswordDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPasswordDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -8667,31 +8667,31 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    allowShowPassword := true // bool |  (optional)
-    configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    failedAttemptsBeforeCancel := int32(56) // int32 |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	allowShowPassword := true // bool |  (optional)
+	configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	failedAttemptsBeforeCancel := int32(56) // int32 |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPasswordList(context.Background()).AllowShowPassword(allowShowPassword).ConfigureFlow(configureFlow).FailedAttemptsBeforeCancel(failedAttemptsBeforeCancel).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPasswordList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesPasswordList`: PaginatedPasswordStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesPasswordList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesPasswordList(context.Background()).AllowShowPassword(allowShowPassword).ConfigureFlow(configureFlow).FailedAttemptsBeforeCancel(failedAttemptsBeforeCancel).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPasswordList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesPasswordList`: PaginatedPasswordStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesPasswordList`: %v\n", resp)
 }
 ```
 
@@ -8747,25 +8747,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Stage.
-    patchedPasswordStageRequest := *openapiclient.NewPatchedPasswordStageRequest() // PatchedPasswordStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Stage.
+	patchedPasswordStageRequest := *openapiclient.NewPatchedPasswordStageRequest() // PatchedPasswordStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPasswordPartialUpdate(context.Background(), stageUuid).PatchedPasswordStageRequest(patchedPasswordStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPasswordPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesPasswordPartialUpdate`: PasswordStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesPasswordPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesPasswordPartialUpdate(context.Background(), stageUuid).PatchedPasswordStageRequest(patchedPasswordStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPasswordPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesPasswordPartialUpdate`: PasswordStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesPasswordPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -8819,24 +8819,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPasswordRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPasswordRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesPasswordRetrieve`: PasswordStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesPasswordRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesPasswordRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPasswordRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesPasswordRetrieve`: PasswordStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesPasswordRetrieve`: %v\n", resp)
 }
 ```
 
@@ -8889,25 +8889,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Stage.
-    passwordStageRequest := *openapiclient.NewPasswordStageRequest("Name_example", []openapiclient.BackendsEnum{openapiclient.BackendsEnum("authentik.core.auth.InbuiltBackend")}) // PasswordStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Stage.
+	passwordStageRequest := *openapiclient.NewPasswordStageRequest("Name_example", []openapiclient.BackendsEnum{openapiclient.BackendsEnum("authentik.core.auth.InbuiltBackend")}) // PasswordStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPasswordUpdate(context.Background(), stageUuid).PasswordStageRequest(passwordStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPasswordUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesPasswordUpdate`: PasswordStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesPasswordUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesPasswordUpdate(context.Background(), stageUuid).PasswordStageRequest(passwordStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPasswordUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesPasswordUpdate`: PasswordStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesPasswordUpdate`: %v\n", resp)
 }
 ```
 
@@ -8961,24 +8961,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPasswordUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPasswordUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesPasswordUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesPasswordUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesPasswordUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPasswordUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesPasswordUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesPasswordUsedByList`: %v\n", resp)
 }
 ```
 
@@ -9031,24 +9031,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    promptRequest := *openapiclient.NewPromptRequest("Name_example", "FieldKey_example", "Label_example", openapiclient.PromptTypeEnum("text")) // PromptRequest | 
+	promptRequest := *openapiclient.NewPromptRequest("Name_example", "FieldKey_example", "Label_example", openapiclient.PromptTypeEnum("text")) // PromptRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPromptPromptsCreate(context.Background()).PromptRequest(promptRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPromptPromptsCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesPromptPromptsCreate`: Prompt
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesPromptPromptsCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesPromptPromptsCreate(context.Background()).PromptRequest(promptRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPromptPromptsCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesPromptPromptsCreate`: Prompt
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesPromptPromptsCreate`: %v\n", resp)
 }
 ```
 
@@ -9097,22 +9097,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    promptUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt.
+	promptUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPromptPromptsDestroy(context.Background(), promptUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPromptPromptsDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesPromptPromptsDestroy(context.Background(), promptUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPromptPromptsDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -9165,32 +9165,32 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    fieldKey := "fieldKey_example" // string |  (optional)
-    label := "label_example" // string |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    placeholder := "placeholder_example" // string |  (optional)
-    search := "search_example" // string | A search term. (optional)
-    type_ := "type__example" // string |  (optional)
+	fieldKey := "fieldKey_example" // string |  (optional)
+	label := "label_example" // string |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	placeholder := "placeholder_example" // string |  (optional)
+	search := "search_example" // string | A search term. (optional)
+	type_ := "type__example" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPromptPromptsList(context.Background()).FieldKey(fieldKey).Label(label).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Placeholder(placeholder).Search(search).Type_(type_).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPromptPromptsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesPromptPromptsList`: PaginatedPromptList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesPromptPromptsList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesPromptPromptsList(context.Background()).FieldKey(fieldKey).Label(label).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Placeholder(placeholder).Search(search).Type_(type_).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPromptPromptsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesPromptPromptsList`: PaginatedPromptList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesPromptPromptsList`: %v\n", resp)
 }
 ```
 
@@ -9247,25 +9247,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    promptUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt.
-    patchedPromptRequest := *openapiclient.NewPatchedPromptRequest() // PatchedPromptRequest |  (optional)
+	promptUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt.
+	patchedPromptRequest := *openapiclient.NewPatchedPromptRequest() // PatchedPromptRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPromptPromptsPartialUpdate(context.Background(), promptUuid).PatchedPromptRequest(patchedPromptRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPromptPromptsPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesPromptPromptsPartialUpdate`: Prompt
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesPromptPromptsPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesPromptPromptsPartialUpdate(context.Background(), promptUuid).PatchedPromptRequest(patchedPromptRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPromptPromptsPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesPromptPromptsPartialUpdate`: Prompt
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesPromptPromptsPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -9319,24 +9319,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    promptRequest := *openapiclient.NewPromptRequest("Name_example", "FieldKey_example", "Label_example", openapiclient.PromptTypeEnum("text")) // PromptRequest | 
+	promptRequest := *openapiclient.NewPromptRequest("Name_example", "FieldKey_example", "Label_example", openapiclient.PromptTypeEnum("text")) // PromptRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPromptPromptsPreviewCreate(context.Background()).PromptRequest(promptRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPromptPromptsPreviewCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesPromptPromptsPreviewCreate`: PromptChallenge
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesPromptPromptsPreviewCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesPromptPromptsPreviewCreate(context.Background()).PromptRequest(promptRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPromptPromptsPreviewCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesPromptPromptsPreviewCreate`: PromptChallenge
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesPromptPromptsPreviewCreate`: %v\n", resp)
 }
 ```
 
@@ -9385,24 +9385,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    promptUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt.
+	promptUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPromptPromptsRetrieve(context.Background(), promptUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPromptPromptsRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesPromptPromptsRetrieve`: Prompt
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesPromptPromptsRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesPromptPromptsRetrieve(context.Background(), promptUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPromptPromptsRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesPromptPromptsRetrieve`: Prompt
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesPromptPromptsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -9455,25 +9455,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    promptUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt.
-    promptRequest := *openapiclient.NewPromptRequest("Name_example", "FieldKey_example", "Label_example", openapiclient.PromptTypeEnum("text")) // PromptRequest | 
+	promptUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt.
+	promptRequest := *openapiclient.NewPromptRequest("Name_example", "FieldKey_example", "Label_example", openapiclient.PromptTypeEnum("text")) // PromptRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPromptPromptsUpdate(context.Background(), promptUuid).PromptRequest(promptRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPromptPromptsUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesPromptPromptsUpdate`: Prompt
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesPromptPromptsUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesPromptPromptsUpdate(context.Background(), promptUuid).PromptRequest(promptRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPromptPromptsUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesPromptPromptsUpdate`: Prompt
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesPromptPromptsUpdate`: %v\n", resp)
 }
 ```
 
@@ -9527,24 +9527,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    promptUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt.
+	promptUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPromptPromptsUsedByList(context.Background(), promptUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPromptPromptsUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesPromptPromptsUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesPromptPromptsUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesPromptPromptsUsedByList(context.Background(), promptUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPromptPromptsUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesPromptPromptsUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesPromptPromptsUsedByList`: %v\n", resp)
 }
 ```
 
@@ -9597,24 +9597,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    promptStageRequest := *openapiclient.NewPromptStageRequest("Name_example", []string{"Fields_example"}) // PromptStageRequest | 
+	promptStageRequest := *openapiclient.NewPromptStageRequest("Name_example", []string{"Fields_example"}) // PromptStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPromptStagesCreate(context.Background()).PromptStageRequest(promptStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPromptStagesCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesPromptStagesCreate`: PromptStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesPromptStagesCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesPromptStagesCreate(context.Background()).PromptStageRequest(promptStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPromptStagesCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesPromptStagesCreate`: PromptStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesPromptStagesCreate`: %v\n", resp)
 }
 ```
 
@@ -9663,22 +9663,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPromptStagesDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPromptStagesDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesPromptStagesDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPromptStagesDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -9731,31 +9731,31 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    fields := []string{"Inner_example"} // []string |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    validationPolicies := []string{"Inner_example"} // []string |  (optional)
+	fields := []string{"Inner_example"} // []string |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	validationPolicies := []string{"Inner_example"} // []string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPromptStagesList(context.Background()).Fields(fields).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).ValidationPolicies(validationPolicies).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPromptStagesList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesPromptStagesList`: PaginatedPromptStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesPromptStagesList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesPromptStagesList(context.Background()).Fields(fields).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).ValidationPolicies(validationPolicies).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPromptStagesList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesPromptStagesList`: PaginatedPromptStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesPromptStagesList`: %v\n", resp)
 }
 ```
 
@@ -9811,25 +9811,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt Stage.
-    patchedPromptStageRequest := *openapiclient.NewPatchedPromptStageRequest() // PatchedPromptStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt Stage.
+	patchedPromptStageRequest := *openapiclient.NewPatchedPromptStageRequest() // PatchedPromptStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPromptStagesPartialUpdate(context.Background(), stageUuid).PatchedPromptStageRequest(patchedPromptStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPromptStagesPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesPromptStagesPartialUpdate`: PromptStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesPromptStagesPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesPromptStagesPartialUpdate(context.Background(), stageUuid).PatchedPromptStageRequest(patchedPromptStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPromptStagesPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesPromptStagesPartialUpdate`: PromptStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesPromptStagesPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -9883,24 +9883,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPromptStagesRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPromptStagesRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesPromptStagesRetrieve`: PromptStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesPromptStagesRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesPromptStagesRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPromptStagesRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesPromptStagesRetrieve`: PromptStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesPromptStagesRetrieve`: %v\n", resp)
 }
 ```
 
@@ -9953,25 +9953,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt Stage.
-    promptStageRequest := *openapiclient.NewPromptStageRequest("Name_example", []string{"Fields_example"}) // PromptStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt Stage.
+	promptStageRequest := *openapiclient.NewPromptStageRequest("Name_example", []string{"Fields_example"}) // PromptStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPromptStagesUpdate(context.Background(), stageUuid).PromptStageRequest(promptStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPromptStagesUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesPromptStagesUpdate`: PromptStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesPromptStagesUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesPromptStagesUpdate(context.Background(), stageUuid).PromptStageRequest(promptStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPromptStagesUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesPromptStagesUpdate`: PromptStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesPromptStagesUpdate`: %v\n", resp)
 }
 ```
 
@@ -10025,24 +10025,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Prompt Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesPromptStagesUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesPromptStagesUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesPromptStagesUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesPromptStagesUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesPromptStagesUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesPromptStagesUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesPromptStagesUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesPromptStagesUsedByList`: %v\n", resp)
 }
 ```
 
@@ -10095,24 +10095,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    sourceStageRequest := *openapiclient.NewSourceStageRequest("Name_example", "Source_example") // SourceStageRequest | 
+	sourceStageRequest := *openapiclient.NewSourceStageRequest("Name_example", "Source_example") // SourceStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesSourceCreate(context.Background()).SourceStageRequest(sourceStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesSourceCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesSourceCreate`: SourceStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesSourceCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesSourceCreate(context.Background()).SourceStageRequest(sourceStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesSourceCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesSourceCreate`: SourceStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesSourceCreate`: %v\n", resp)
 }
 ```
 
@@ -10161,22 +10161,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Source Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Source Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesSourceDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesSourceDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesSourceDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesSourceDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -10229,31 +10229,31 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    resumeTimeout := "resumeTimeout_example" // string |  (optional)
-    search := "search_example" // string | A search term. (optional)
-    source := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	resumeTimeout := "resumeTimeout_example" // string |  (optional)
+	search := "search_example" // string | A search term. (optional)
+	source := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesSourceList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ResumeTimeout(resumeTimeout).Search(search).Source(source).StageUuid(stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesSourceList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesSourceList`: PaginatedSourceStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesSourceList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesSourceList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ResumeTimeout(resumeTimeout).Search(search).Source(source).StageUuid(stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesSourceList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesSourceList`: PaginatedSourceStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesSourceList`: %v\n", resp)
 }
 ```
 
@@ -10309,25 +10309,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Source Stage.
-    patchedSourceStageRequest := *openapiclient.NewPatchedSourceStageRequest() // PatchedSourceStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Source Stage.
+	patchedSourceStageRequest := *openapiclient.NewPatchedSourceStageRequest() // PatchedSourceStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesSourcePartialUpdate(context.Background(), stageUuid).PatchedSourceStageRequest(patchedSourceStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesSourcePartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesSourcePartialUpdate`: SourceStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesSourcePartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesSourcePartialUpdate(context.Background(), stageUuid).PatchedSourceStageRequest(patchedSourceStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesSourcePartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesSourcePartialUpdate`: SourceStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesSourcePartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -10381,24 +10381,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Source Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Source Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesSourceRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesSourceRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesSourceRetrieve`: SourceStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesSourceRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesSourceRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesSourceRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesSourceRetrieve`: SourceStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesSourceRetrieve`: %v\n", resp)
 }
 ```
 
@@ -10451,25 +10451,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Source Stage.
-    sourceStageRequest := *openapiclient.NewSourceStageRequest("Name_example", "Source_example") // SourceStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Source Stage.
+	sourceStageRequest := *openapiclient.NewSourceStageRequest("Name_example", "Source_example") // SourceStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesSourceUpdate(context.Background(), stageUuid).SourceStageRequest(sourceStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesSourceUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesSourceUpdate`: SourceStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesSourceUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesSourceUpdate(context.Background(), stageUuid).SourceStageRequest(sourceStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesSourceUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesSourceUpdate`: SourceStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesSourceUpdate`: %v\n", resp)
 }
 ```
 
@@ -10523,24 +10523,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Source Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Source Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesSourceUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesSourceUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesSourceUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesSourceUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesSourceUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesSourceUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesSourceUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesSourceUsedByList`: %v\n", resp)
 }
 ```
 
@@ -10593,24 +10593,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    userDeleteStageRequest := *openapiclient.NewUserDeleteStageRequest("Name_example") // UserDeleteStageRequest | 
+	userDeleteStageRequest := *openapiclient.NewUserDeleteStageRequest("Name_example") // UserDeleteStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserDeleteCreate(context.Background()).UserDeleteStageRequest(userDeleteStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserDeleteCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserDeleteCreate`: UserDeleteStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserDeleteCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserDeleteCreate(context.Background()).UserDeleteStageRequest(userDeleteStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserDeleteCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserDeleteCreate`: UserDeleteStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserDeleteCreate`: %v\n", resp)
 }
 ```
 
@@ -10659,22 +10659,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Delete Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Delete Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserDeleteDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserDeleteDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesUserDeleteDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserDeleteDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -10727,29 +10727,29 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserDeleteList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserDeleteList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserDeleteList`: PaginatedUserDeleteStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserDeleteList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserDeleteList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserDeleteList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserDeleteList`: PaginatedUserDeleteStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserDeleteList`: %v\n", resp)
 }
 ```
 
@@ -10803,25 +10803,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Delete Stage.
-    patchedUserDeleteStageRequest := *openapiclient.NewPatchedUserDeleteStageRequest() // PatchedUserDeleteStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Delete Stage.
+	patchedUserDeleteStageRequest := *openapiclient.NewPatchedUserDeleteStageRequest() // PatchedUserDeleteStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserDeletePartialUpdate(context.Background(), stageUuid).PatchedUserDeleteStageRequest(patchedUserDeleteStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserDeletePartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserDeletePartialUpdate`: UserDeleteStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserDeletePartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserDeletePartialUpdate(context.Background(), stageUuid).PatchedUserDeleteStageRequest(patchedUserDeleteStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserDeletePartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserDeletePartialUpdate`: UserDeleteStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserDeletePartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -10875,24 +10875,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Delete Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Delete Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserDeleteRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserDeleteRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserDeleteRetrieve`: UserDeleteStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserDeleteRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserDeleteRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserDeleteRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserDeleteRetrieve`: UserDeleteStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserDeleteRetrieve`: %v\n", resp)
 }
 ```
 
@@ -10945,25 +10945,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Delete Stage.
-    userDeleteStageRequest := *openapiclient.NewUserDeleteStageRequest("Name_example") // UserDeleteStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Delete Stage.
+	userDeleteStageRequest := *openapiclient.NewUserDeleteStageRequest("Name_example") // UserDeleteStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserDeleteUpdate(context.Background(), stageUuid).UserDeleteStageRequest(userDeleteStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserDeleteUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserDeleteUpdate`: UserDeleteStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserDeleteUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserDeleteUpdate(context.Background(), stageUuid).UserDeleteStageRequest(userDeleteStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserDeleteUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserDeleteUpdate`: UserDeleteStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserDeleteUpdate`: %v\n", resp)
 }
 ```
 
@@ -11017,24 +11017,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Delete Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Delete Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserDeleteUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserDeleteUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserDeleteUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserDeleteUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserDeleteUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserDeleteUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserDeleteUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserDeleteUsedByList`: %v\n", resp)
 }
 ```
 
@@ -11087,24 +11087,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    userLoginStageRequest := *openapiclient.NewUserLoginStageRequest("Name_example") // UserLoginStageRequest | 
+	userLoginStageRequest := *openapiclient.NewUserLoginStageRequest("Name_example") // UserLoginStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserLoginCreate(context.Background()).UserLoginStageRequest(userLoginStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserLoginCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserLoginCreate`: UserLoginStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserLoginCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserLoginCreate(context.Background()).UserLoginStageRequest(userLoginStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserLoginCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserLoginCreate`: UserLoginStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserLoginCreate`: %v\n", resp)
 }
 ```
 
@@ -11153,22 +11153,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Login Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Login Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserLoginDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserLoginDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesUserLoginDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserLoginDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -11221,34 +11221,34 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    geoipBinding := "geoipBinding_example" // string | Bind sessions created by this stage to the configured GeoIP location   (optional)
-    name := "name_example" // string |  (optional)
-    networkBinding := "networkBinding_example" // string | Bind sessions created by this stage to the configured network   (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    rememberMeOffset := "rememberMeOffset_example" // string |  (optional)
-    search := "search_example" // string | A search term. (optional)
-    sessionDuration := "sessionDuration_example" // string |  (optional)
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    terminateOtherSessions := true // bool |  (optional)
+	geoipBinding := "geoipBinding_example" // string | Bind sessions created by this stage to the configured GeoIP location   (optional)
+	name := "name_example" // string |  (optional)
+	networkBinding := "networkBinding_example" // string | Bind sessions created by this stage to the configured network   (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	rememberMeOffset := "rememberMeOffset_example" // string |  (optional)
+	search := "search_example" // string | A search term. (optional)
+	sessionDuration := "sessionDuration_example" // string |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	terminateOtherSessions := true // bool |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserLoginList(context.Background()).GeoipBinding(geoipBinding).Name(name).NetworkBinding(networkBinding).Ordering(ordering).Page(page).PageSize(pageSize).RememberMeOffset(rememberMeOffset).Search(search).SessionDuration(sessionDuration).StageUuid(stageUuid).TerminateOtherSessions(terminateOtherSessions).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserLoginList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserLoginList`: PaginatedUserLoginStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserLoginList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserLoginList(context.Background()).GeoipBinding(geoipBinding).Name(name).NetworkBinding(networkBinding).Ordering(ordering).Page(page).PageSize(pageSize).RememberMeOffset(rememberMeOffset).Search(search).SessionDuration(sessionDuration).StageUuid(stageUuid).TerminateOtherSessions(terminateOtherSessions).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserLoginList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserLoginList`: PaginatedUserLoginStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserLoginList`: %v\n", resp)
 }
 ```
 
@@ -11307,25 +11307,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Login Stage.
-    patchedUserLoginStageRequest := *openapiclient.NewPatchedUserLoginStageRequest() // PatchedUserLoginStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Login Stage.
+	patchedUserLoginStageRequest := *openapiclient.NewPatchedUserLoginStageRequest() // PatchedUserLoginStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserLoginPartialUpdate(context.Background(), stageUuid).PatchedUserLoginStageRequest(patchedUserLoginStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserLoginPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserLoginPartialUpdate`: UserLoginStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserLoginPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserLoginPartialUpdate(context.Background(), stageUuid).PatchedUserLoginStageRequest(patchedUserLoginStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserLoginPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserLoginPartialUpdate`: UserLoginStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserLoginPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -11379,24 +11379,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Login Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Login Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserLoginRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserLoginRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserLoginRetrieve`: UserLoginStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserLoginRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserLoginRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserLoginRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserLoginRetrieve`: UserLoginStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserLoginRetrieve`: %v\n", resp)
 }
 ```
 
@@ -11449,25 +11449,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Login Stage.
-    userLoginStageRequest := *openapiclient.NewUserLoginStageRequest("Name_example") // UserLoginStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Login Stage.
+	userLoginStageRequest := *openapiclient.NewUserLoginStageRequest("Name_example") // UserLoginStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserLoginUpdate(context.Background(), stageUuid).UserLoginStageRequest(userLoginStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserLoginUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserLoginUpdate`: UserLoginStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserLoginUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserLoginUpdate(context.Background(), stageUuid).UserLoginStageRequest(userLoginStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserLoginUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserLoginUpdate`: UserLoginStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserLoginUpdate`: %v\n", resp)
 }
 ```
 
@@ -11521,24 +11521,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Login Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Login Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserLoginUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserLoginUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserLoginUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserLoginUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserLoginUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserLoginUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserLoginUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserLoginUsedByList`: %v\n", resp)
 }
 ```
 
@@ -11591,24 +11591,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    userLogoutStageRequest := *openapiclient.NewUserLogoutStageRequest("Name_example") // UserLogoutStageRequest | 
+	userLogoutStageRequest := *openapiclient.NewUserLogoutStageRequest("Name_example") // UserLogoutStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserLogoutCreate(context.Background()).UserLogoutStageRequest(userLogoutStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserLogoutCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserLogoutCreate`: UserLogoutStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserLogoutCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserLogoutCreate(context.Background()).UserLogoutStageRequest(userLogoutStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserLogoutCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserLogoutCreate`: UserLogoutStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserLogoutCreate`: %v\n", resp)
 }
 ```
 
@@ -11657,22 +11657,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Logout Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Logout Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserLogoutDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserLogoutDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesUserLogoutDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserLogoutDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -11725,29 +11725,29 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserLogoutList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserLogoutList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserLogoutList`: PaginatedUserLogoutStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserLogoutList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserLogoutList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserLogoutList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserLogoutList`: PaginatedUserLogoutStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserLogoutList`: %v\n", resp)
 }
 ```
 
@@ -11801,25 +11801,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Logout Stage.
-    patchedUserLogoutStageRequest := *openapiclient.NewPatchedUserLogoutStageRequest() // PatchedUserLogoutStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Logout Stage.
+	patchedUserLogoutStageRequest := *openapiclient.NewPatchedUserLogoutStageRequest() // PatchedUserLogoutStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserLogoutPartialUpdate(context.Background(), stageUuid).PatchedUserLogoutStageRequest(patchedUserLogoutStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserLogoutPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserLogoutPartialUpdate`: UserLogoutStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserLogoutPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserLogoutPartialUpdate(context.Background(), stageUuid).PatchedUserLogoutStageRequest(patchedUserLogoutStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserLogoutPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserLogoutPartialUpdate`: UserLogoutStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserLogoutPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -11873,24 +11873,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Logout Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Logout Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserLogoutRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserLogoutRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserLogoutRetrieve`: UserLogoutStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserLogoutRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserLogoutRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserLogoutRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserLogoutRetrieve`: UserLogoutStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserLogoutRetrieve`: %v\n", resp)
 }
 ```
 
@@ -11943,25 +11943,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Logout Stage.
-    userLogoutStageRequest := *openapiclient.NewUserLogoutStageRequest("Name_example") // UserLogoutStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Logout Stage.
+	userLogoutStageRequest := *openapiclient.NewUserLogoutStageRequest("Name_example") // UserLogoutStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserLogoutUpdate(context.Background(), stageUuid).UserLogoutStageRequest(userLogoutStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserLogoutUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserLogoutUpdate`: UserLogoutStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserLogoutUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserLogoutUpdate(context.Background(), stageUuid).UserLogoutStageRequest(userLogoutStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserLogoutUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserLogoutUpdate`: UserLogoutStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserLogoutUpdate`: %v\n", resp)
 }
 ```
 
@@ -12015,24 +12015,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Logout Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Logout Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserLogoutUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserLogoutUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserLogoutUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserLogoutUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserLogoutUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserLogoutUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserLogoutUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserLogoutUsedByList`: %v\n", resp)
 }
 ```
 
@@ -12085,24 +12085,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    userWriteStageRequest := *openapiclient.NewUserWriteStageRequest("Name_example") // UserWriteStageRequest | 
+	userWriteStageRequest := *openapiclient.NewUserWriteStageRequest("Name_example") // UserWriteStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserWriteCreate(context.Background()).UserWriteStageRequest(userWriteStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserWriteCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserWriteCreate`: UserWriteStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserWriteCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserWriteCreate(context.Background()).UserWriteStageRequest(userWriteStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserWriteCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserWriteCreate`: UserWriteStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserWriteCreate`: %v\n", resp)
 }
 ```
 
@@ -12151,22 +12151,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Write Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Write Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserWriteDestroy(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserWriteDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesUserWriteDestroy(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserWriteDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -12219,34 +12219,34 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    createUsersAsInactive := true // bool |  (optional)
-    createUsersGroup := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    userCreationMode := "userCreationMode_example" // string |  (optional)
-    userPathTemplate := "userPathTemplate_example" // string |  (optional)
-    userType := "userType_example" // string |  (optional)
+	createUsersAsInactive := true // bool |  (optional)
+	createUsersGroup := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	userCreationMode := "userCreationMode_example" // string |  (optional)
+	userPathTemplate := "userPathTemplate_example" // string |  (optional)
+	userType := "userType_example" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserWriteList(context.Background()).CreateUsersAsInactive(createUsersAsInactive).CreateUsersGroup(createUsersGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).UserCreationMode(userCreationMode).UserPathTemplate(userPathTemplate).UserType(userType).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserWriteList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserWriteList`: PaginatedUserWriteStageList
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserWriteList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserWriteList(context.Background()).CreateUsersAsInactive(createUsersAsInactive).CreateUsersGroup(createUsersGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).UserCreationMode(userCreationMode).UserPathTemplate(userPathTemplate).UserType(userType).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserWriteList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserWriteList`: PaginatedUserWriteStageList
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserWriteList`: %v\n", resp)
 }
 ```
 
@@ -12305,25 +12305,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Write Stage.
-    patchedUserWriteStageRequest := *openapiclient.NewPatchedUserWriteStageRequest() // PatchedUserWriteStageRequest |  (optional)
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Write Stage.
+	patchedUserWriteStageRequest := *openapiclient.NewPatchedUserWriteStageRequest() // PatchedUserWriteStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserWritePartialUpdate(context.Background(), stageUuid).PatchedUserWriteStageRequest(patchedUserWriteStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserWritePartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserWritePartialUpdate`: UserWriteStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserWritePartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserWritePartialUpdate(context.Background(), stageUuid).PatchedUserWriteStageRequest(patchedUserWriteStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserWritePartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserWritePartialUpdate`: UserWriteStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserWritePartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -12377,24 +12377,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Write Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Write Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserWriteRetrieve(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserWriteRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserWriteRetrieve`: UserWriteStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserWriteRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserWriteRetrieve(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserWriteRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserWriteRetrieve`: UserWriteStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserWriteRetrieve`: %v\n", resp)
 }
 ```
 
@@ -12447,25 +12447,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Write Stage.
-    userWriteStageRequest := *openapiclient.NewUserWriteStageRequest("Name_example") // UserWriteStageRequest | 
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Write Stage.
+	userWriteStageRequest := *openapiclient.NewUserWriteStageRequest("Name_example") // UserWriteStageRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserWriteUpdate(context.Background(), stageUuid).UserWriteStageRequest(userWriteStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserWriteUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserWriteUpdate`: UserWriteStage
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserWriteUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserWriteUpdate(context.Background(), stageUuid).UserWriteStageRequest(userWriteStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserWriteUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserWriteUpdate`: UserWriteStage
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserWriteUpdate`: %v\n", resp)
 }
 ```
 
@@ -12519,24 +12519,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Write Stage.
+	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this User Write Stage.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserWriteUsedByList(context.Background(), stageUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserWriteUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StagesUserWriteUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesUserWriteUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StagesAPI.StagesUserWriteUsedByList(context.Background(), stageUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesUserWriteUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StagesUserWriteUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesUserWriteUsedByList`: %v\n", resp)
 }
 ```
 

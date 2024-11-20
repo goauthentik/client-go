@@ -14,18 +14,18 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// AdminApiService AdminApi service
-type AdminApiService service
+// AdminAPIService AdminAPI service
+type AdminAPIService service
 
 type ApiAdminAppsListRequest struct {
 	ctx        context.Context
-	ApiService *AdminApiService
+	ApiService *AdminAPIService
 }
 
 func (r ApiAdminAppsListRequest) Execute() ([]App, *http.Response, error) {
@@ -40,7 +40,7 @@ Read-only view list all installed apps
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAdminAppsListRequest
 */
-func (a *AdminApiService) AdminAppsList(ctx context.Context) ApiAdminAppsListRequest {
+func (a *AdminAPIService) AdminAppsList(ctx context.Context) ApiAdminAppsListRequest {
 	return ApiAdminAppsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -50,7 +50,7 @@ func (a *AdminApiService) AdminAppsList(ctx context.Context) ApiAdminAppsListReq
 // Execute executes the request
 //
 //	@return []App
-func (a *AdminApiService) AdminAppsListExecute(r ApiAdminAppsListRequest) ([]App, *http.Response, error) {
+func (a *AdminAPIService) AdminAppsListExecute(r ApiAdminAppsListRequest) ([]App, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -58,7 +58,7 @@ func (a *AdminApiService) AdminAppsListExecute(r ApiAdminAppsListRequest) ([]App
 		localVarReturnValue []App
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminAppsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminAppsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -96,9 +96,9 @@ func (a *AdminApiService) AdminAppsListExecute(r ApiAdminAppsListRequest) ([]App
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -115,6 +115,7 @@ func (a *AdminApiService) AdminAppsListExecute(r ApiAdminAppsListRequest) ([]App
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -125,6 +126,7 @@ func (a *AdminApiService) AdminAppsListExecute(r ApiAdminAppsListRequest) ([]App
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -144,7 +146,7 @@ func (a *AdminApiService) AdminAppsListExecute(r ApiAdminAppsListRequest) ([]App
 
 type ApiAdminMetricsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *AdminApiService
+	ApiService *AdminAPIService
 }
 
 func (r ApiAdminMetricsRetrieveRequest) Execute() (*LoginMetrics, *http.Response, error) {
@@ -159,7 +161,7 @@ Login Metrics per 1h
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAdminMetricsRetrieveRequest
 */
-func (a *AdminApiService) AdminMetricsRetrieve(ctx context.Context) ApiAdminMetricsRetrieveRequest {
+func (a *AdminAPIService) AdminMetricsRetrieve(ctx context.Context) ApiAdminMetricsRetrieveRequest {
 	return ApiAdminMetricsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -169,7 +171,7 @@ func (a *AdminApiService) AdminMetricsRetrieve(ctx context.Context) ApiAdminMetr
 // Execute executes the request
 //
 //	@return LoginMetrics
-func (a *AdminApiService) AdminMetricsRetrieveExecute(r ApiAdminMetricsRetrieveRequest) (*LoginMetrics, *http.Response, error) {
+func (a *AdminAPIService) AdminMetricsRetrieveExecute(r ApiAdminMetricsRetrieveRequest) (*LoginMetrics, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -177,7 +179,7 @@ func (a *AdminApiService) AdminMetricsRetrieveExecute(r ApiAdminMetricsRetrieveR
 		localVarReturnValue *LoginMetrics
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminMetricsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminMetricsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -215,9 +217,9 @@ func (a *AdminApiService) AdminMetricsRetrieveExecute(r ApiAdminMetricsRetrieveR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -234,6 +236,7 @@ func (a *AdminApiService) AdminMetricsRetrieveExecute(r ApiAdminMetricsRetrieveR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -244,6 +247,7 @@ func (a *AdminApiService) AdminMetricsRetrieveExecute(r ApiAdminMetricsRetrieveR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -263,7 +267,7 @@ func (a *AdminApiService) AdminMetricsRetrieveExecute(r ApiAdminMetricsRetrieveR
 
 type ApiAdminModelsListRequest struct {
 	ctx        context.Context
-	ApiService *AdminApiService
+	ApiService *AdminAPIService
 }
 
 func (r ApiAdminModelsListRequest) Execute() ([]App, *http.Response, error) {
@@ -278,7 +282,7 @@ Read-only view list all installed models
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAdminModelsListRequest
 */
-func (a *AdminApiService) AdminModelsList(ctx context.Context) ApiAdminModelsListRequest {
+func (a *AdminAPIService) AdminModelsList(ctx context.Context) ApiAdminModelsListRequest {
 	return ApiAdminModelsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -288,7 +292,7 @@ func (a *AdminApiService) AdminModelsList(ctx context.Context) ApiAdminModelsLis
 // Execute executes the request
 //
 //	@return []App
-func (a *AdminApiService) AdminModelsListExecute(r ApiAdminModelsListRequest) ([]App, *http.Response, error) {
+func (a *AdminAPIService) AdminModelsListExecute(r ApiAdminModelsListRequest) ([]App, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -296,7 +300,7 @@ func (a *AdminApiService) AdminModelsListExecute(r ApiAdminModelsListRequest) ([
 		localVarReturnValue []App
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminModelsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminModelsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -334,9 +338,9 @@ func (a *AdminApiService) AdminModelsListExecute(r ApiAdminModelsListRequest) ([
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -353,6 +357,7 @@ func (a *AdminApiService) AdminModelsListExecute(r ApiAdminModelsListRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -363,6 +368,7 @@ func (a *AdminApiService) AdminModelsListExecute(r ApiAdminModelsListRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -382,7 +388,7 @@ func (a *AdminApiService) AdminModelsListExecute(r ApiAdminModelsListRequest) ([
 
 type ApiAdminSettingsPartialUpdateRequest struct {
 	ctx                    context.Context
-	ApiService             *AdminApiService
+	ApiService             *AdminAPIService
 	patchedSettingsRequest *PatchedSettingsRequest
 }
 
@@ -403,7 +409,7 @@ Settings view
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAdminSettingsPartialUpdateRequest
 */
-func (a *AdminApiService) AdminSettingsPartialUpdate(ctx context.Context) ApiAdminSettingsPartialUpdateRequest {
+func (a *AdminAPIService) AdminSettingsPartialUpdate(ctx context.Context) ApiAdminSettingsPartialUpdateRequest {
 	return ApiAdminSettingsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -413,7 +419,7 @@ func (a *AdminApiService) AdminSettingsPartialUpdate(ctx context.Context) ApiAdm
 // Execute executes the request
 //
 //	@return Settings
-func (a *AdminApiService) AdminSettingsPartialUpdateExecute(r ApiAdminSettingsPartialUpdateRequest) (*Settings, *http.Response, error) {
+func (a *AdminAPIService) AdminSettingsPartialUpdateExecute(r ApiAdminSettingsPartialUpdateRequest) (*Settings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -421,7 +427,7 @@ func (a *AdminApiService) AdminSettingsPartialUpdateExecute(r ApiAdminSettingsPa
 		localVarReturnValue *Settings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminSettingsPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminSettingsPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -461,9 +467,9 @@ func (a *AdminApiService) AdminSettingsPartialUpdateExecute(r ApiAdminSettingsPa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -480,6 +486,7 @@ func (a *AdminApiService) AdminSettingsPartialUpdateExecute(r ApiAdminSettingsPa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -490,6 +497,7 @@ func (a *AdminApiService) AdminSettingsPartialUpdateExecute(r ApiAdminSettingsPa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -509,7 +517,7 @@ func (a *AdminApiService) AdminSettingsPartialUpdateExecute(r ApiAdminSettingsPa
 
 type ApiAdminSettingsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *AdminApiService
+	ApiService *AdminAPIService
 }
 
 func (r ApiAdminSettingsRetrieveRequest) Execute() (*Settings, *http.Response, error) {
@@ -524,7 +532,7 @@ Settings view
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAdminSettingsRetrieveRequest
 */
-func (a *AdminApiService) AdminSettingsRetrieve(ctx context.Context) ApiAdminSettingsRetrieveRequest {
+func (a *AdminAPIService) AdminSettingsRetrieve(ctx context.Context) ApiAdminSettingsRetrieveRequest {
 	return ApiAdminSettingsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -534,7 +542,7 @@ func (a *AdminApiService) AdminSettingsRetrieve(ctx context.Context) ApiAdminSet
 // Execute executes the request
 //
 //	@return Settings
-func (a *AdminApiService) AdminSettingsRetrieveExecute(r ApiAdminSettingsRetrieveRequest) (*Settings, *http.Response, error) {
+func (a *AdminAPIService) AdminSettingsRetrieveExecute(r ApiAdminSettingsRetrieveRequest) (*Settings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -542,7 +550,7 @@ func (a *AdminApiService) AdminSettingsRetrieveExecute(r ApiAdminSettingsRetriev
 		localVarReturnValue *Settings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminSettingsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminSettingsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -580,9 +588,9 @@ func (a *AdminApiService) AdminSettingsRetrieveExecute(r ApiAdminSettingsRetriev
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -599,6 +607,7 @@ func (a *AdminApiService) AdminSettingsRetrieveExecute(r ApiAdminSettingsRetriev
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -609,6 +618,7 @@ func (a *AdminApiService) AdminSettingsRetrieveExecute(r ApiAdminSettingsRetriev
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -628,7 +638,7 @@ func (a *AdminApiService) AdminSettingsRetrieveExecute(r ApiAdminSettingsRetriev
 
 type ApiAdminSettingsUpdateRequest struct {
 	ctx             context.Context
-	ApiService      *AdminApiService
+	ApiService      *AdminAPIService
 	settingsRequest *SettingsRequest
 }
 
@@ -649,7 +659,7 @@ Settings view
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAdminSettingsUpdateRequest
 */
-func (a *AdminApiService) AdminSettingsUpdate(ctx context.Context) ApiAdminSettingsUpdateRequest {
+func (a *AdminAPIService) AdminSettingsUpdate(ctx context.Context) ApiAdminSettingsUpdateRequest {
 	return ApiAdminSettingsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -659,7 +669,7 @@ func (a *AdminApiService) AdminSettingsUpdate(ctx context.Context) ApiAdminSetti
 // Execute executes the request
 //
 //	@return Settings
-func (a *AdminApiService) AdminSettingsUpdateExecute(r ApiAdminSettingsUpdateRequest) (*Settings, *http.Response, error) {
+func (a *AdminAPIService) AdminSettingsUpdateExecute(r ApiAdminSettingsUpdateRequest) (*Settings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -667,7 +677,7 @@ func (a *AdminApiService) AdminSettingsUpdateExecute(r ApiAdminSettingsUpdateReq
 		localVarReturnValue *Settings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminSettingsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminSettingsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -707,9 +717,9 @@ func (a *AdminApiService) AdminSettingsUpdateExecute(r ApiAdminSettingsUpdateReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -726,6 +736,7 @@ func (a *AdminApiService) AdminSettingsUpdateExecute(r ApiAdminSettingsUpdateReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -736,6 +747,7 @@ func (a *AdminApiService) AdminSettingsUpdateExecute(r ApiAdminSettingsUpdateReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -755,7 +767,7 @@ func (a *AdminApiService) AdminSettingsUpdateExecute(r ApiAdminSettingsUpdateReq
 
 type ApiAdminSystemCreateRequest struct {
 	ctx        context.Context
-	ApiService *AdminApiService
+	ApiService *AdminAPIService
 }
 
 func (r ApiAdminSystemCreateRequest) Execute() (*SystemInfo, *http.Response, error) {
@@ -770,7 +782,7 @@ Get system information.
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAdminSystemCreateRequest
 */
-func (a *AdminApiService) AdminSystemCreate(ctx context.Context) ApiAdminSystemCreateRequest {
+func (a *AdminAPIService) AdminSystemCreate(ctx context.Context) ApiAdminSystemCreateRequest {
 	return ApiAdminSystemCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -780,7 +792,7 @@ func (a *AdminApiService) AdminSystemCreate(ctx context.Context) ApiAdminSystemC
 // Execute executes the request
 //
 //	@return SystemInfo
-func (a *AdminApiService) AdminSystemCreateExecute(r ApiAdminSystemCreateRequest) (*SystemInfo, *http.Response, error) {
+func (a *AdminAPIService) AdminSystemCreateExecute(r ApiAdminSystemCreateRequest) (*SystemInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -788,7 +800,7 @@ func (a *AdminApiService) AdminSystemCreateExecute(r ApiAdminSystemCreateRequest
 		localVarReturnValue *SystemInfo
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminSystemCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminSystemCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -826,9 +838,9 @@ func (a *AdminApiService) AdminSystemCreateExecute(r ApiAdminSystemCreateRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -845,6 +857,7 @@ func (a *AdminApiService) AdminSystemCreateExecute(r ApiAdminSystemCreateRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -855,6 +868,7 @@ func (a *AdminApiService) AdminSystemCreateExecute(r ApiAdminSystemCreateRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -874,7 +888,7 @@ func (a *AdminApiService) AdminSystemCreateExecute(r ApiAdminSystemCreateRequest
 
 type ApiAdminSystemRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *AdminApiService
+	ApiService *AdminAPIService
 }
 
 func (r ApiAdminSystemRetrieveRequest) Execute() (*SystemInfo, *http.Response, error) {
@@ -889,7 +903,7 @@ Get system information.
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAdminSystemRetrieveRequest
 */
-func (a *AdminApiService) AdminSystemRetrieve(ctx context.Context) ApiAdminSystemRetrieveRequest {
+func (a *AdminAPIService) AdminSystemRetrieve(ctx context.Context) ApiAdminSystemRetrieveRequest {
 	return ApiAdminSystemRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -899,7 +913,7 @@ func (a *AdminApiService) AdminSystemRetrieve(ctx context.Context) ApiAdminSyste
 // Execute executes the request
 //
 //	@return SystemInfo
-func (a *AdminApiService) AdminSystemRetrieveExecute(r ApiAdminSystemRetrieveRequest) (*SystemInfo, *http.Response, error) {
+func (a *AdminAPIService) AdminSystemRetrieveExecute(r ApiAdminSystemRetrieveRequest) (*SystemInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -907,7 +921,7 @@ func (a *AdminApiService) AdminSystemRetrieveExecute(r ApiAdminSystemRetrieveReq
 		localVarReturnValue *SystemInfo
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminSystemRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminSystemRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -945,9 +959,9 @@ func (a *AdminApiService) AdminSystemRetrieveExecute(r ApiAdminSystemRetrieveReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -964,6 +978,7 @@ func (a *AdminApiService) AdminSystemRetrieveExecute(r ApiAdminSystemRetrieveReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -974,6 +989,7 @@ func (a *AdminApiService) AdminSystemRetrieveExecute(r ApiAdminSystemRetrieveReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -993,7 +1009,7 @@ func (a *AdminApiService) AdminSystemRetrieveExecute(r ApiAdminSystemRetrieveReq
 
 type ApiAdminVersionHistoryListRequest struct {
 	ctx        context.Context
-	ApiService *AdminApiService
+	ApiService *AdminAPIService
 	build      *string
 	ordering   *string
 	search     *string
@@ -1034,7 +1050,7 @@ VersionHistory Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAdminVersionHistoryListRequest
 */
-func (a *AdminApiService) AdminVersionHistoryList(ctx context.Context) ApiAdminVersionHistoryListRequest {
+func (a *AdminAPIService) AdminVersionHistoryList(ctx context.Context) ApiAdminVersionHistoryListRequest {
 	return ApiAdminVersionHistoryListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1044,7 +1060,7 @@ func (a *AdminApiService) AdminVersionHistoryList(ctx context.Context) ApiAdminV
 // Execute executes the request
 //
 //	@return []VersionHistory
-func (a *AdminApiService) AdminVersionHistoryListExecute(r ApiAdminVersionHistoryListRequest) ([]VersionHistory, *http.Response, error) {
+func (a *AdminAPIService) AdminVersionHistoryListExecute(r ApiAdminVersionHistoryListRequest) ([]VersionHistory, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1052,7 +1068,7 @@ func (a *AdminApiService) AdminVersionHistoryListExecute(r ApiAdminVersionHistor
 		localVarReturnValue []VersionHistory
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminVersionHistoryList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminVersionHistoryList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1064,16 +1080,16 @@ func (a *AdminApiService) AdminVersionHistoryListExecute(r ApiAdminVersionHistor
 	localVarFormParams := url.Values{}
 
 	if r.build != nil {
-		localVarQueryParams.Add("build", parameterToString(*r.build, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "build", r.build, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.version != nil {
-		localVarQueryParams.Add("version", parameterToString(*r.version, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "version", r.version, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1102,9 +1118,9 @@ func (a *AdminApiService) AdminVersionHistoryListExecute(r ApiAdminVersionHistor
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1121,6 +1137,7 @@ func (a *AdminApiService) AdminVersionHistoryListExecute(r ApiAdminVersionHistor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1131,6 +1148,7 @@ func (a *AdminApiService) AdminVersionHistoryListExecute(r ApiAdminVersionHistor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1150,7 +1168,7 @@ func (a *AdminApiService) AdminVersionHistoryListExecute(r ApiAdminVersionHistor
 
 type ApiAdminVersionHistoryRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *AdminApiService
+	ApiService *AdminAPIService
 	id         int32
 }
 
@@ -1167,7 +1185,7 @@ VersionHistory Viewset
 	@param id A unique integer value identifying this Version history.
 	@return ApiAdminVersionHistoryRetrieveRequest
 */
-func (a *AdminApiService) AdminVersionHistoryRetrieve(ctx context.Context, id int32) ApiAdminVersionHistoryRetrieveRequest {
+func (a *AdminAPIService) AdminVersionHistoryRetrieve(ctx context.Context, id int32) ApiAdminVersionHistoryRetrieveRequest {
 	return ApiAdminVersionHistoryRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1178,7 +1196,7 @@ func (a *AdminApiService) AdminVersionHistoryRetrieve(ctx context.Context, id in
 // Execute executes the request
 //
 //	@return VersionHistory
-func (a *AdminApiService) AdminVersionHistoryRetrieveExecute(r ApiAdminVersionHistoryRetrieveRequest) (*VersionHistory, *http.Response, error) {
+func (a *AdminAPIService) AdminVersionHistoryRetrieveExecute(r ApiAdminVersionHistoryRetrieveRequest) (*VersionHistory, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1186,13 +1204,13 @@ func (a *AdminApiService) AdminVersionHistoryRetrieveExecute(r ApiAdminVersionHi
 		localVarReturnValue *VersionHistory
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminVersionHistoryRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminVersionHistoryRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/admin/version/history/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1225,9 +1243,9 @@ func (a *AdminApiService) AdminVersionHistoryRetrieveExecute(r ApiAdminVersionHi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1244,6 +1262,7 @@ func (a *AdminApiService) AdminVersionHistoryRetrieveExecute(r ApiAdminVersionHi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1254,6 +1273,7 @@ func (a *AdminApiService) AdminVersionHistoryRetrieveExecute(r ApiAdminVersionHi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1273,7 +1293,7 @@ func (a *AdminApiService) AdminVersionHistoryRetrieveExecute(r ApiAdminVersionHi
 
 type ApiAdminVersionRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *AdminApiService
+	ApiService *AdminAPIService
 }
 
 func (r ApiAdminVersionRetrieveRequest) Execute() (*Version, *http.Response, error) {
@@ -1288,7 +1308,7 @@ Get running and latest version.
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAdminVersionRetrieveRequest
 */
-func (a *AdminApiService) AdminVersionRetrieve(ctx context.Context) ApiAdminVersionRetrieveRequest {
+func (a *AdminAPIService) AdminVersionRetrieve(ctx context.Context) ApiAdminVersionRetrieveRequest {
 	return ApiAdminVersionRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1298,7 +1318,7 @@ func (a *AdminApiService) AdminVersionRetrieve(ctx context.Context) ApiAdminVers
 // Execute executes the request
 //
 //	@return Version
-func (a *AdminApiService) AdminVersionRetrieveExecute(r ApiAdminVersionRetrieveRequest) (*Version, *http.Response, error) {
+func (a *AdminAPIService) AdminVersionRetrieveExecute(r ApiAdminVersionRetrieveRequest) (*Version, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1306,7 +1326,7 @@ func (a *AdminApiService) AdminVersionRetrieveExecute(r ApiAdminVersionRetrieveR
 		localVarReturnValue *Version
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminVersionRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminVersionRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1344,9 +1364,9 @@ func (a *AdminApiService) AdminVersionRetrieveExecute(r ApiAdminVersionRetrieveR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1363,6 +1383,7 @@ func (a *AdminApiService) AdminVersionRetrieveExecute(r ApiAdminVersionRetrieveR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1373,6 +1394,7 @@ func (a *AdminApiService) AdminVersionRetrieveExecute(r ApiAdminVersionRetrieveR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1392,7 +1414,7 @@ func (a *AdminApiService) AdminVersionRetrieveExecute(r ApiAdminVersionRetrieveR
 
 type ApiAdminWorkersRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *AdminApiService
+	ApiService *AdminAPIService
 }
 
 func (r ApiAdminWorkersRetrieveRequest) Execute() (*Workers, *http.Response, error) {
@@ -1407,7 +1429,7 @@ Get currently connected worker count.
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAdminWorkersRetrieveRequest
 */
-func (a *AdminApiService) AdminWorkersRetrieve(ctx context.Context) ApiAdminWorkersRetrieveRequest {
+func (a *AdminAPIService) AdminWorkersRetrieve(ctx context.Context) ApiAdminWorkersRetrieveRequest {
 	return ApiAdminWorkersRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1417,7 +1439,7 @@ func (a *AdminApiService) AdminWorkersRetrieve(ctx context.Context) ApiAdminWork
 // Execute executes the request
 //
 //	@return Workers
-func (a *AdminApiService) AdminWorkersRetrieveExecute(r ApiAdminWorkersRetrieveRequest) (*Workers, *http.Response, error) {
+func (a *AdminAPIService) AdminWorkersRetrieveExecute(r ApiAdminWorkersRetrieveRequest) (*Workers, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1425,7 +1447,7 @@ func (a *AdminApiService) AdminWorkersRetrieveExecute(r ApiAdminWorkersRetrieveR
 		localVarReturnValue *Workers
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminWorkersRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminWorkersRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1463,9 +1485,9 @@ func (a *AdminApiService) AdminWorkersRetrieveExecute(r ApiAdminWorkersRetrieveR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1482,6 +1504,7 @@ func (a *AdminApiService) AdminWorkersRetrieveExecute(r ApiAdminWorkersRetrieveR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1492,6 +1515,7 @@ func (a *AdminApiService) AdminWorkersRetrieveExecute(r ApiAdminWorkersRetrieveR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

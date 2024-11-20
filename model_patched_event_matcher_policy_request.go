@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedEventMatcherPolicyRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedEventMatcherPolicyRequest{}
+
 // PatchedEventMatcherPolicyRequest Event Matcher Policy Serializer
 type PatchedEventMatcherPolicyRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -49,7 +52,7 @@ func NewPatchedEventMatcherPolicyRequestWithDefaults() *PatchedEventMatcherPolic
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedEventMatcherPolicyRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -59,7 +62,7 @@ func (o *PatchedEventMatcherPolicyRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEventMatcherPolicyRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -67,7 +70,7 @@ func (o *PatchedEventMatcherPolicyRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedEventMatcherPolicyRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *PatchedEventMatcherPolicyRequest) SetName(v string) {
 
 // GetExecutionLogging returns the ExecutionLogging field value if set, zero value otherwise.
 func (o *PatchedEventMatcherPolicyRequest) GetExecutionLogging() bool {
-	if o == nil || o.ExecutionLogging == nil {
+	if o == nil || IsNil(o.ExecutionLogging) {
 		var ret bool
 		return ret
 	}
@@ -91,7 +94,7 @@ func (o *PatchedEventMatcherPolicyRequest) GetExecutionLogging() bool {
 // GetExecutionLoggingOk returns a tuple with the ExecutionLogging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEventMatcherPolicyRequest) GetExecutionLoggingOk() (*bool, bool) {
-	if o == nil || o.ExecutionLogging == nil {
+	if o == nil || IsNil(o.ExecutionLogging) {
 		return nil, false
 	}
 	return o.ExecutionLogging, true
@@ -99,7 +102,7 @@ func (o *PatchedEventMatcherPolicyRequest) GetExecutionLoggingOk() (*bool, bool)
 
 // HasExecutionLogging returns a boolean if a field has been set.
 func (o *PatchedEventMatcherPolicyRequest) HasExecutionLogging() bool {
-	if o != nil && o.ExecutionLogging != nil {
+	if o != nil && !IsNil(o.ExecutionLogging) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *PatchedEventMatcherPolicyRequest) SetExecutionLogging(v bool) {
 
 // GetAction returns the Action field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedEventMatcherPolicyRequest) GetAction() EventActions {
-	if o == nil || o.Action.Get() == nil {
+	if o == nil || IsNil(o.Action.Get()) {
 		var ret EventActions
 		return ret
 	}
@@ -156,7 +159,7 @@ func (o *PatchedEventMatcherPolicyRequest) UnsetAction() {
 
 // GetClientIp returns the ClientIp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedEventMatcherPolicyRequest) GetClientIp() string {
-	if o == nil || o.ClientIp.Get() == nil {
+	if o == nil || IsNil(o.ClientIp.Get()) {
 		var ret string
 		return ret
 	}
@@ -199,7 +202,7 @@ func (o *PatchedEventMatcherPolicyRequest) UnsetClientIp() {
 
 // GetApp returns the App field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedEventMatcherPolicyRequest) GetApp() AppEnum {
-	if o == nil || o.App.Get() == nil {
+	if o == nil || IsNil(o.App.Get()) {
 		var ret AppEnum
 		return ret
 	}
@@ -242,7 +245,7 @@ func (o *PatchedEventMatcherPolicyRequest) UnsetApp() {
 
 // GetModel returns the Model field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedEventMatcherPolicyRequest) GetModel() ModelEnum {
-	if o == nil || o.Model.Get() == nil {
+	if o == nil || IsNil(o.Model.Get()) {
 		var ret ModelEnum
 		return ret
 	}
@@ -284,11 +287,19 @@ func (o *PatchedEventMatcherPolicyRequest) UnsetModel() {
 }
 
 func (o PatchedEventMatcherPolicyRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedEventMatcherPolicyRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.ExecutionLogging != nil {
+	if !IsNil(o.ExecutionLogging) {
 		toSerialize["execution_logging"] = o.ExecutionLogging
 	}
 	if o.Action.IsSet() {
@@ -303,7 +314,7 @@ func (o PatchedEventMatcherPolicyRequest) MarshalJSON() ([]byte, error) {
 	if o.Model.IsSet() {
 		toSerialize["model"] = o.Model.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedEventMatcherPolicyRequest struct {

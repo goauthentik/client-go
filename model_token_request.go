@@ -12,21 +12,28 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the TokenRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TokenRequest{}
 
 // TokenRequest Token Serializer
 type TokenRequest struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed     NullableString `json:"managed,omitempty"`
-	Identifier  string         `json:"identifier"`
+	Identifier  string         `json:"identifier" validate:"regexp=^[-a-zA-Z0-9_]+$"`
 	Intent      *IntentEnum    `json:"intent,omitempty"`
 	User        *int32         `json:"user,omitempty"`
 	Description *string        `json:"description,omitempty"`
 	Expires     NullableTime   `json:"expires,omitempty"`
 	Expiring    *bool          `json:"expiring,omitempty"`
 }
+
+type _TokenRequest TokenRequest
 
 // NewTokenRequest instantiates a new TokenRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -48,7 +55,7 @@ func NewTokenRequestWithDefaults() *TokenRequest {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TokenRequest) GetManaged() string {
-	if o == nil || o.Managed.Get() == nil {
+	if o == nil || IsNil(o.Managed.Get()) {
 		var ret string
 		return ret
 	}
@@ -115,7 +122,7 @@ func (o *TokenRequest) SetIdentifier(v string) {
 
 // GetIntent returns the Intent field value if set, zero value otherwise.
 func (o *TokenRequest) GetIntent() IntentEnum {
-	if o == nil || o.Intent == nil {
+	if o == nil || IsNil(o.Intent) {
 		var ret IntentEnum
 		return ret
 	}
@@ -125,7 +132,7 @@ func (o *TokenRequest) GetIntent() IntentEnum {
 // GetIntentOk returns a tuple with the Intent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenRequest) GetIntentOk() (*IntentEnum, bool) {
-	if o == nil || o.Intent == nil {
+	if o == nil || IsNil(o.Intent) {
 		return nil, false
 	}
 	return o.Intent, true
@@ -133,7 +140,7 @@ func (o *TokenRequest) GetIntentOk() (*IntentEnum, bool) {
 
 // HasIntent returns a boolean if a field has been set.
 func (o *TokenRequest) HasIntent() bool {
-	if o != nil && o.Intent != nil {
+	if o != nil && !IsNil(o.Intent) {
 		return true
 	}
 
@@ -147,7 +154,7 @@ func (o *TokenRequest) SetIntent(v IntentEnum) {
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *TokenRequest) GetUser() int32 {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		var ret int32
 		return ret
 	}
@@ -157,7 +164,7 @@ func (o *TokenRequest) GetUser() int32 {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenRequest) GetUserOk() (*int32, bool) {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		return nil, false
 	}
 	return o.User, true
@@ -165,7 +172,7 @@ func (o *TokenRequest) GetUserOk() (*int32, bool) {
 
 // HasUser returns a boolean if a field has been set.
 func (o *TokenRequest) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && !IsNil(o.User) {
 		return true
 	}
 
@@ -179,7 +186,7 @@ func (o *TokenRequest) SetUser(v int32) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *TokenRequest) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -189,7 +196,7 @@ func (o *TokenRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -197,7 +204,7 @@ func (o *TokenRequest) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *TokenRequest) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -211,7 +218,7 @@ func (o *TokenRequest) SetDescription(v string) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TokenRequest) GetExpires() time.Time {
-	if o == nil || o.Expires.Get() == nil {
+	if o == nil || IsNil(o.Expires.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -254,7 +261,7 @@ func (o *TokenRequest) UnsetExpires() {
 
 // GetExpiring returns the Expiring field value if set, zero value otherwise.
 func (o *TokenRequest) GetExpiring() bool {
-	if o == nil || o.Expiring == nil {
+	if o == nil || IsNil(o.Expiring) {
 		var ret bool
 		return ret
 	}
@@ -264,7 +271,7 @@ func (o *TokenRequest) GetExpiring() bool {
 // GetExpiringOk returns a tuple with the Expiring field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenRequest) GetExpiringOk() (*bool, bool) {
-	if o == nil || o.Expiring == nil {
+	if o == nil || IsNil(o.Expiring) {
 		return nil, false
 	}
 	return o.Expiring, true
@@ -272,7 +279,7 @@ func (o *TokenRequest) GetExpiringOk() (*bool, bool) {
 
 // HasExpiring returns a boolean if a field has been set.
 func (o *TokenRequest) HasExpiring() bool {
-	if o != nil && o.Expiring != nil {
+	if o != nil && !IsNil(o.Expiring) {
 		return true
 	}
 
@@ -285,29 +292,72 @@ func (o *TokenRequest) SetExpiring(v bool) {
 }
 
 func (o TokenRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TokenRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	if true {
-		toSerialize["identifier"] = o.Identifier
-	}
-	if o.Intent != nil {
+	toSerialize["identifier"] = o.Identifier
+	if !IsNil(o.Intent) {
 		toSerialize["intent"] = o.Intent
 	}
-	if o.User != nil {
+	if !IsNil(o.User) {
 		toSerialize["user"] = o.User
 	}
-	if o.Description != nil {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	if o.Expires.IsSet() {
 		toSerialize["expires"] = o.Expires.Get()
 	}
-	if o.Expiring != nil {
+	if !IsNil(o.Expiring) {
 		toSerialize["expiring"] = o.Expiring
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *TokenRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"identifier",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTokenRequest := _TokenRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTokenRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TokenRequest(varTokenRequest)
+
+	return err
 }
 
 type NullableTokenRequest struct {

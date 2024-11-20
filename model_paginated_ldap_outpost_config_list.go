@@ -12,14 +12,21 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the PaginatedLDAPOutpostConfigList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PaginatedLDAPOutpostConfigList{}
 
 // PaginatedLDAPOutpostConfigList struct for PaginatedLDAPOutpostConfigList
 type PaginatedLDAPOutpostConfigList struct {
 	Pagination Pagination          `json:"pagination"`
 	Results    []LDAPOutpostConfig `json:"results"`
 }
+
+type _PaginatedLDAPOutpostConfigList PaginatedLDAPOutpostConfigList
 
 // NewPaginatedLDAPOutpostConfigList instantiates a new PaginatedLDAPOutpostConfigList object
 // This constructor will assign default values to properties that have it defined,
@@ -89,14 +96,56 @@ func (o *PaginatedLDAPOutpostConfigList) SetResults(v []LDAPOutpostConfig) {
 }
 
 func (o PaginatedLDAPOutpostConfigList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pagination"] = o.Pagination
-	}
-	if true {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PaginatedLDAPOutpostConfigList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pagination"] = o.Pagination
+	toSerialize["results"] = o.Results
+	return toSerialize, nil
+}
+
+func (o *PaginatedLDAPOutpostConfigList) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pagination",
+		"results",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPaginatedLDAPOutpostConfigList := _PaginatedLDAPOutpostConfigList{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPaginatedLDAPOutpostConfigList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PaginatedLDAPOutpostConfigList(varPaginatedLDAPOutpostConfigList)
+
+	return err
 }
 
 type NullablePaginatedLDAPOutpostConfigList struct {

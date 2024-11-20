@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the RACPropertyMappingRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RACPropertyMappingRequest{}
 
 // RACPropertyMappingRequest RACPropertyMapping Serializer
 type RACPropertyMappingRequest struct {
@@ -23,6 +28,8 @@ type RACPropertyMappingRequest struct {
 	Expression     *string                `json:"expression,omitempty"`
 	StaticSettings map[string]interface{} `json:"static_settings"`
 }
+
+type _RACPropertyMappingRequest RACPropertyMappingRequest
 
 // NewRACPropertyMappingRequest instantiates a new RACPropertyMappingRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -45,7 +52,7 @@ func NewRACPropertyMappingRequestWithDefaults() *RACPropertyMappingRequest {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RACPropertyMappingRequest) GetManaged() string {
-	if o == nil || o.Managed.Get() == nil {
+	if o == nil || IsNil(o.Managed.Get()) {
 		var ret string
 		return ret
 	}
@@ -112,7 +119,7 @@ func (o *RACPropertyMappingRequest) SetName(v string) {
 
 // GetExpression returns the Expression field value if set, zero value otherwise.
 func (o *RACPropertyMappingRequest) GetExpression() string {
-	if o == nil || o.Expression == nil {
+	if o == nil || IsNil(o.Expression) {
 		var ret string
 		return ret
 	}
@@ -122,7 +129,7 @@ func (o *RACPropertyMappingRequest) GetExpression() string {
 // GetExpressionOk returns a tuple with the Expression field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RACPropertyMappingRequest) GetExpressionOk() (*string, bool) {
-	if o == nil || o.Expression == nil {
+	if o == nil || IsNil(o.Expression) {
 		return nil, false
 	}
 	return o.Expression, true
@@ -130,7 +137,7 @@ func (o *RACPropertyMappingRequest) GetExpressionOk() (*string, bool) {
 
 // HasExpression returns a boolean if a field has been set.
 func (o *RACPropertyMappingRequest) HasExpression() bool {
-	if o != nil && o.Expression != nil {
+	if o != nil && !IsNil(o.Expression) {
 		return true
 	}
 
@@ -156,7 +163,7 @@ func (o *RACPropertyMappingRequest) GetStaticSettings() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *RACPropertyMappingRequest) GetStaticSettingsOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.StaticSettings, true
 }
@@ -167,20 +174,62 @@ func (o *RACPropertyMappingRequest) SetStaticSettings(v map[string]interface{}) 
 }
 
 func (o RACPropertyMappingRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RACPropertyMappingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Expression != nil {
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Expression) {
 		toSerialize["expression"] = o.Expression
 	}
-	if true {
-		toSerialize["static_settings"] = o.StaticSettings
+	toSerialize["static_settings"] = o.StaticSettings
+	return toSerialize, nil
+}
+
+func (o *RACPropertyMappingRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"static_settings",
 	}
-	return json.Marshal(toSerialize)
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRACPropertyMappingRequest := _RACPropertyMappingRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRACPropertyMappingRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RACPropertyMappingRequest(varRACPropertyMappingRequest)
+
+	return err
 }
 
 type NullableRACPropertyMappingRequest struct {

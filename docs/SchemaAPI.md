@@ -1,10 +1,10 @@
-# \SchemaApi
+# \SchemaAPI
 
 All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SchemaRetrieve**](SchemaApi.md#SchemaRetrieve) | **Get** /schema/ | 
+[**SchemaRetrieve**](SchemaAPI.md#SchemaRetrieve) | **Get** /schema/ | 
 
 
 
@@ -22,25 +22,25 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    format := "format_example" // string |  (optional)
-    lang := "lang_example" // string |  (optional)
+	format := "format_example" // string |  (optional)
+	lang := "lang_example" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SchemaApi.SchemaRetrieve(context.Background()).Format(format).Lang(lang).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SchemaApi.SchemaRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SchemaRetrieve`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `SchemaApi.SchemaRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SchemaAPI.SchemaRetrieve(context.Background()).Format(format).Lang(lang).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SchemaAPI.SchemaRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SchemaRetrieve`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `SchemaAPI.SchemaRetrieve`: %v\n", resp)
 }
 ```
 

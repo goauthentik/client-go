@@ -12,9 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the UserKerberosSourceConnection type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserKerberosSourceConnection{}
 
 // UserKerberosSourceConnection Kerberos Source Serializer
 type UserKerberosSourceConnection struct {
@@ -24,6 +29,8 @@ type UserKerberosSourceConnection struct {
 	Created    time.Time `json:"created"`
 	Identifier string    `json:"identifier"`
 }
+
+type _UserKerberosSourceConnection UserKerberosSourceConnection
 
 // NewUserKerberosSourceConnection instantiates a new UserKerberosSourceConnection object
 // This constructor will assign default values to properties that have it defined,
@@ -168,23 +175,62 @@ func (o *UserKerberosSourceConnection) SetIdentifier(v string) {
 }
 
 func (o UserKerberosSourceConnection) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["user"] = o.User
-	}
-	if true {
-		toSerialize["source"] = o.Source
-	}
-	if true {
-		toSerialize["created"] = o.Created
-	}
-	if true {
-		toSerialize["identifier"] = o.Identifier
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserKerberosSourceConnection) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pk"] = o.Pk
+	toSerialize["user"] = o.User
+	toSerialize["source"] = o.Source
+	toSerialize["created"] = o.Created
+	toSerialize["identifier"] = o.Identifier
+	return toSerialize, nil
+}
+
+func (o *UserKerberosSourceConnection) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"user",
+		"source",
+		"created",
+		"identifier",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUserKerberosSourceConnection := _UserKerberosSourceConnection{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUserKerberosSourceConnection)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserKerberosSourceConnection(varUserKerberosSourceConnection)
+
+	return err
 }
 
 type NullableUserKerberosSourceConnection struct {

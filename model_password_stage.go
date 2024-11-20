@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the PasswordStage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PasswordStage{}
 
 // PasswordStage PasswordStage Serializer
 type PasswordStage struct {
@@ -37,6 +42,8 @@ type PasswordStage struct {
 	// When enabled, provides a 'show password' button with the password input field.
 	AllowShowPassword *bool `json:"allow_show_password,omitempty"`
 }
+
+type _PasswordStage PasswordStage
 
 // NewPasswordStage instantiates a new PasswordStage object
 // This constructor will assign default values to properties that have it defined,
@@ -208,7 +215,7 @@ func (o *PasswordStage) SetMetaModelName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *PasswordStage) GetFlowSet() []FlowSet {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSet
 		return ret
 	}
@@ -218,7 +225,7 @@ func (o *PasswordStage) GetFlowSet() []FlowSet {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -226,7 +233,7 @@ func (o *PasswordStage) GetFlowSetOk() ([]FlowSet, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *PasswordStage) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
+	if o != nil && !IsNil(o.FlowSet) {
 		return true
 	}
 
@@ -264,7 +271,7 @@ func (o *PasswordStage) SetBackends(v []BackendsEnum) {
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PasswordStage) GetConfigureFlow() string {
-	if o == nil || o.ConfigureFlow.Get() == nil {
+	if o == nil || IsNil(o.ConfigureFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -307,7 +314,7 @@ func (o *PasswordStage) UnsetConfigureFlow() {
 
 // GetFailedAttemptsBeforeCancel returns the FailedAttemptsBeforeCancel field value if set, zero value otherwise.
 func (o *PasswordStage) GetFailedAttemptsBeforeCancel() int32 {
-	if o == nil || o.FailedAttemptsBeforeCancel == nil {
+	if o == nil || IsNil(o.FailedAttemptsBeforeCancel) {
 		var ret int32
 		return ret
 	}
@@ -317,7 +324,7 @@ func (o *PasswordStage) GetFailedAttemptsBeforeCancel() int32 {
 // GetFailedAttemptsBeforeCancelOk returns a tuple with the FailedAttemptsBeforeCancel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordStage) GetFailedAttemptsBeforeCancelOk() (*int32, bool) {
-	if o == nil || o.FailedAttemptsBeforeCancel == nil {
+	if o == nil || IsNil(o.FailedAttemptsBeforeCancel) {
 		return nil, false
 	}
 	return o.FailedAttemptsBeforeCancel, true
@@ -325,7 +332,7 @@ func (o *PasswordStage) GetFailedAttemptsBeforeCancelOk() (*int32, bool) {
 
 // HasFailedAttemptsBeforeCancel returns a boolean if a field has been set.
 func (o *PasswordStage) HasFailedAttemptsBeforeCancel() bool {
-	if o != nil && o.FailedAttemptsBeforeCancel != nil {
+	if o != nil && !IsNil(o.FailedAttemptsBeforeCancel) {
 		return true
 	}
 
@@ -339,7 +346,7 @@ func (o *PasswordStage) SetFailedAttemptsBeforeCancel(v int32) {
 
 // GetAllowShowPassword returns the AllowShowPassword field value if set, zero value otherwise.
 func (o *PasswordStage) GetAllowShowPassword() bool {
-	if o == nil || o.AllowShowPassword == nil {
+	if o == nil || IsNil(o.AllowShowPassword) {
 		var ret bool
 		return ret
 	}
@@ -349,7 +356,7 @@ func (o *PasswordStage) GetAllowShowPassword() bool {
 // GetAllowShowPasswordOk returns a tuple with the AllowShowPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordStage) GetAllowShowPasswordOk() (*bool, bool) {
-	if o == nil || o.AllowShowPassword == nil {
+	if o == nil || IsNil(o.AllowShowPassword) {
 		return nil, false
 	}
 	return o.AllowShowPassword, true
@@ -357,7 +364,7 @@ func (o *PasswordStage) GetAllowShowPasswordOk() (*bool, bool) {
 
 // HasAllowShowPassword returns a boolean if a field has been set.
 func (o *PasswordStage) HasAllowShowPassword() bool {
-	if o != nil && o.AllowShowPassword != nil {
+	if o != nil && !IsNil(o.AllowShowPassword) {
 		return true
 	}
 
@@ -370,41 +377,78 @@ func (o *PasswordStage) SetAllowShowPassword(v bool) {
 }
 
 func (o PasswordStage) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PasswordStage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if o.FlowSet != nil {
+	toSerialize["pk"] = o.Pk
+	toSerialize["name"] = o.Name
+	toSerialize["component"] = o.Component
+	toSerialize["verbose_name"] = o.VerboseName
+	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	toSerialize["meta_model_name"] = o.MetaModelName
+	if !IsNil(o.FlowSet) {
 		toSerialize["flow_set"] = o.FlowSet
 	}
-	if true {
-		toSerialize["backends"] = o.Backends
-	}
+	toSerialize["backends"] = o.Backends
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
-	if o.FailedAttemptsBeforeCancel != nil {
+	if !IsNil(o.FailedAttemptsBeforeCancel) {
 		toSerialize["failed_attempts_before_cancel"] = o.FailedAttemptsBeforeCancel
 	}
-	if o.AllowShowPassword != nil {
+	if !IsNil(o.AllowShowPassword) {
 		toSerialize["allow_show_password"] = o.AllowShowPassword
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *PasswordStage) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"name",
+		"component",
+		"verbose_name",
+		"verbose_name_plural",
+		"meta_model_name",
+		"backends",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPasswordStage := _PasswordStage{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPasswordStage)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PasswordStage(varPasswordStage)
+
+	return err
 }
 
 type NullablePasswordStage struct {

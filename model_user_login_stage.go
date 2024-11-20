@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the UserLoginStage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserLoginStage{}
 
 // UserLoginStage UserLoginStage Serializer
 type UserLoginStage struct {
@@ -39,6 +44,8 @@ type UserLoginStage struct {
 	// Bind sessions created by this stage to the configured GeoIP location
 	GeoipBinding *GeoipBindingEnum `json:"geoip_binding,omitempty"`
 }
+
+type _UserLoginStage UserLoginStage
 
 // NewUserLoginStage instantiates a new UserLoginStage object
 // This constructor will assign default values to properties that have it defined,
@@ -209,7 +216,7 @@ func (o *UserLoginStage) SetMetaModelName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *UserLoginStage) GetFlowSet() []FlowSet {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSet
 		return ret
 	}
@@ -219,7 +226,7 @@ func (o *UserLoginStage) GetFlowSet() []FlowSet {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserLoginStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -227,7 +234,7 @@ func (o *UserLoginStage) GetFlowSetOk() ([]FlowSet, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *UserLoginStage) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
+	if o != nil && !IsNil(o.FlowSet) {
 		return true
 	}
 
@@ -241,7 +248,7 @@ func (o *UserLoginStage) SetFlowSet(v []FlowSet) {
 
 // GetSessionDuration returns the SessionDuration field value if set, zero value otherwise.
 func (o *UserLoginStage) GetSessionDuration() string {
-	if o == nil || o.SessionDuration == nil {
+	if o == nil || IsNil(o.SessionDuration) {
 		var ret string
 		return ret
 	}
@@ -251,7 +258,7 @@ func (o *UserLoginStage) GetSessionDuration() string {
 // GetSessionDurationOk returns a tuple with the SessionDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserLoginStage) GetSessionDurationOk() (*string, bool) {
-	if o == nil || o.SessionDuration == nil {
+	if o == nil || IsNil(o.SessionDuration) {
 		return nil, false
 	}
 	return o.SessionDuration, true
@@ -259,7 +266,7 @@ func (o *UserLoginStage) GetSessionDurationOk() (*string, bool) {
 
 // HasSessionDuration returns a boolean if a field has been set.
 func (o *UserLoginStage) HasSessionDuration() bool {
-	if o != nil && o.SessionDuration != nil {
+	if o != nil && !IsNil(o.SessionDuration) {
 		return true
 	}
 
@@ -273,7 +280,7 @@ func (o *UserLoginStage) SetSessionDuration(v string) {
 
 // GetTerminateOtherSessions returns the TerminateOtherSessions field value if set, zero value otherwise.
 func (o *UserLoginStage) GetTerminateOtherSessions() bool {
-	if o == nil || o.TerminateOtherSessions == nil {
+	if o == nil || IsNil(o.TerminateOtherSessions) {
 		var ret bool
 		return ret
 	}
@@ -283,7 +290,7 @@ func (o *UserLoginStage) GetTerminateOtherSessions() bool {
 // GetTerminateOtherSessionsOk returns a tuple with the TerminateOtherSessions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserLoginStage) GetTerminateOtherSessionsOk() (*bool, bool) {
-	if o == nil || o.TerminateOtherSessions == nil {
+	if o == nil || IsNil(o.TerminateOtherSessions) {
 		return nil, false
 	}
 	return o.TerminateOtherSessions, true
@@ -291,7 +298,7 @@ func (o *UserLoginStage) GetTerminateOtherSessionsOk() (*bool, bool) {
 
 // HasTerminateOtherSessions returns a boolean if a field has been set.
 func (o *UserLoginStage) HasTerminateOtherSessions() bool {
-	if o != nil && o.TerminateOtherSessions != nil {
+	if o != nil && !IsNil(o.TerminateOtherSessions) {
 		return true
 	}
 
@@ -305,7 +312,7 @@ func (o *UserLoginStage) SetTerminateOtherSessions(v bool) {
 
 // GetRememberMeOffset returns the RememberMeOffset field value if set, zero value otherwise.
 func (o *UserLoginStage) GetRememberMeOffset() string {
-	if o == nil || o.RememberMeOffset == nil {
+	if o == nil || IsNil(o.RememberMeOffset) {
 		var ret string
 		return ret
 	}
@@ -315,7 +322,7 @@ func (o *UserLoginStage) GetRememberMeOffset() string {
 // GetRememberMeOffsetOk returns a tuple with the RememberMeOffset field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserLoginStage) GetRememberMeOffsetOk() (*string, bool) {
-	if o == nil || o.RememberMeOffset == nil {
+	if o == nil || IsNil(o.RememberMeOffset) {
 		return nil, false
 	}
 	return o.RememberMeOffset, true
@@ -323,7 +330,7 @@ func (o *UserLoginStage) GetRememberMeOffsetOk() (*string, bool) {
 
 // HasRememberMeOffset returns a boolean if a field has been set.
 func (o *UserLoginStage) HasRememberMeOffset() bool {
-	if o != nil && o.RememberMeOffset != nil {
+	if o != nil && !IsNil(o.RememberMeOffset) {
 		return true
 	}
 
@@ -337,7 +344,7 @@ func (o *UserLoginStage) SetRememberMeOffset(v string) {
 
 // GetNetworkBinding returns the NetworkBinding field value if set, zero value otherwise.
 func (o *UserLoginStage) GetNetworkBinding() NetworkBindingEnum {
-	if o == nil || o.NetworkBinding == nil {
+	if o == nil || IsNil(o.NetworkBinding) {
 		var ret NetworkBindingEnum
 		return ret
 	}
@@ -347,7 +354,7 @@ func (o *UserLoginStage) GetNetworkBinding() NetworkBindingEnum {
 // GetNetworkBindingOk returns a tuple with the NetworkBinding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserLoginStage) GetNetworkBindingOk() (*NetworkBindingEnum, bool) {
-	if o == nil || o.NetworkBinding == nil {
+	if o == nil || IsNil(o.NetworkBinding) {
 		return nil, false
 	}
 	return o.NetworkBinding, true
@@ -355,7 +362,7 @@ func (o *UserLoginStage) GetNetworkBindingOk() (*NetworkBindingEnum, bool) {
 
 // HasNetworkBinding returns a boolean if a field has been set.
 func (o *UserLoginStage) HasNetworkBinding() bool {
-	if o != nil && o.NetworkBinding != nil {
+	if o != nil && !IsNil(o.NetworkBinding) {
 		return true
 	}
 
@@ -369,7 +376,7 @@ func (o *UserLoginStage) SetNetworkBinding(v NetworkBindingEnum) {
 
 // GetGeoipBinding returns the GeoipBinding field value if set, zero value otherwise.
 func (o *UserLoginStage) GetGeoipBinding() GeoipBindingEnum {
-	if o == nil || o.GeoipBinding == nil {
+	if o == nil || IsNil(o.GeoipBinding) {
 		var ret GeoipBindingEnum
 		return ret
 	}
@@ -379,7 +386,7 @@ func (o *UserLoginStage) GetGeoipBinding() GeoipBindingEnum {
 // GetGeoipBindingOk returns a tuple with the GeoipBinding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserLoginStage) GetGeoipBindingOk() (*GeoipBindingEnum, bool) {
-	if o == nil || o.GeoipBinding == nil {
+	if o == nil || IsNil(o.GeoipBinding) {
 		return nil, false
 	}
 	return o.GeoipBinding, true
@@ -387,7 +394,7 @@ func (o *UserLoginStage) GetGeoipBindingOk() (*GeoipBindingEnum, bool) {
 
 // HasGeoipBinding returns a boolean if a field has been set.
 func (o *UserLoginStage) HasGeoipBinding() bool {
-	if o != nil && o.GeoipBinding != nil {
+	if o != nil && !IsNil(o.GeoipBinding) {
 		return true
 	}
 
@@ -400,44 +407,82 @@ func (o *UserLoginStage) SetGeoipBinding(v GeoipBindingEnum) {
 }
 
 func (o UserLoginStage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if o.FlowSet != nil {
-		toSerialize["flow_set"] = o.FlowSet
-	}
-	if o.SessionDuration != nil {
-		toSerialize["session_duration"] = o.SessionDuration
-	}
-	if o.TerminateOtherSessions != nil {
-		toSerialize["terminate_other_sessions"] = o.TerminateOtherSessions
-	}
-	if o.RememberMeOffset != nil {
-		toSerialize["remember_me_offset"] = o.RememberMeOffset
-	}
-	if o.NetworkBinding != nil {
-		toSerialize["network_binding"] = o.NetworkBinding
-	}
-	if o.GeoipBinding != nil {
-		toSerialize["geoip_binding"] = o.GeoipBinding
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserLoginStage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pk"] = o.Pk
+	toSerialize["name"] = o.Name
+	toSerialize["component"] = o.Component
+	toSerialize["verbose_name"] = o.VerboseName
+	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	toSerialize["meta_model_name"] = o.MetaModelName
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
+	if !IsNil(o.SessionDuration) {
+		toSerialize["session_duration"] = o.SessionDuration
+	}
+	if !IsNil(o.TerminateOtherSessions) {
+		toSerialize["terminate_other_sessions"] = o.TerminateOtherSessions
+	}
+	if !IsNil(o.RememberMeOffset) {
+		toSerialize["remember_me_offset"] = o.RememberMeOffset
+	}
+	if !IsNil(o.NetworkBinding) {
+		toSerialize["network_binding"] = o.NetworkBinding
+	}
+	if !IsNil(o.GeoipBinding) {
+		toSerialize["geoip_binding"] = o.GeoipBinding
+	}
+	return toSerialize, nil
+}
+
+func (o *UserLoginStage) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"name",
+		"component",
+		"verbose_name",
+		"verbose_name_plural",
+		"meta_model_name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUserLoginStage := _UserLoginStage{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUserLoginStage)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserLoginStage(varUserLoginStage)
+
+	return err
 }
 
 type NullableUserLoginStage struct {

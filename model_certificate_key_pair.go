@@ -12,9 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the CertificateKeyPair type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CertificateKeyPair{}
 
 // CertificateKeyPair CertificateKeyPair Serializer
 type CertificateKeyPair struct {
@@ -39,6 +44,8 @@ type CertificateKeyPair struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed NullableString `json:"managed"`
 }
+
+type _CertificateKeyPair CertificateKeyPair
 
 // NewCertificateKeyPair instantiates a new CertificateKeyPair object
 // This constructor will assign default values to properties that have it defined,
@@ -345,41 +352,74 @@ func (o *CertificateKeyPair) SetManaged(v string) {
 }
 
 func (o CertificateKeyPair) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["fingerprint_sha256"] = o.FingerprintSha256.Get()
-	}
-	if true {
-		toSerialize["fingerprint_sha1"] = o.FingerprintSha1.Get()
-	}
-	if true {
-		toSerialize["cert_expiry"] = o.CertExpiry.Get()
-	}
-	if true {
-		toSerialize["cert_subject"] = o.CertSubject.Get()
-	}
-	if true {
-		toSerialize["private_key_available"] = o.PrivateKeyAvailable
-	}
-	if true {
-		toSerialize["private_key_type"] = o.PrivateKeyType.Get()
-	}
-	if true {
-		toSerialize["certificate_download_url"] = o.CertificateDownloadUrl
-	}
-	if true {
-		toSerialize["private_key_download_url"] = o.PrivateKeyDownloadUrl
-	}
-	if true {
-		toSerialize["managed"] = o.Managed.Get()
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CertificateKeyPair) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pk"] = o.Pk
+	toSerialize["name"] = o.Name
+	toSerialize["fingerprint_sha256"] = o.FingerprintSha256.Get()
+	toSerialize["fingerprint_sha1"] = o.FingerprintSha1.Get()
+	toSerialize["cert_expiry"] = o.CertExpiry.Get()
+	toSerialize["cert_subject"] = o.CertSubject.Get()
+	toSerialize["private_key_available"] = o.PrivateKeyAvailable
+	toSerialize["private_key_type"] = o.PrivateKeyType.Get()
+	toSerialize["certificate_download_url"] = o.CertificateDownloadUrl
+	toSerialize["private_key_download_url"] = o.PrivateKeyDownloadUrl
+	toSerialize["managed"] = o.Managed.Get()
+	return toSerialize, nil
+}
+
+func (o *CertificateKeyPair) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"name",
+		"fingerprint_sha256",
+		"fingerprint_sha1",
+		"cert_expiry",
+		"cert_subject",
+		"private_key_available",
+		"private_key_type",
+		"certificate_download_url",
+		"private_key_download_url",
+		"managed",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCertificateKeyPair := _CertificateKeyPair{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCertificateKeyPair)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CertificateKeyPair(varCertificateKeyPair)
+
+	return err
 }
 
 type NullableCertificateKeyPair struct {

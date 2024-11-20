@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the LoginMetrics type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LoginMetrics{}
 
 // LoginMetrics Login Metrics per 1h
 type LoginMetrics struct {
@@ -21,6 +26,8 @@ type LoginMetrics struct {
 	LoginsFailed   []Coordinate `json:"logins_failed"`
 	Authorizations []Coordinate `json:"authorizations"`
 }
+
+type _LoginMetrics LoginMetrics
 
 // NewLoginMetrics instantiates a new LoginMetrics object
 // This constructor will assign default values to properties that have it defined,
@@ -115,17 +122,58 @@ func (o *LoginMetrics) SetAuthorizations(v []Coordinate) {
 }
 
 func (o LoginMetrics) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["logins"] = o.Logins
-	}
-	if true {
-		toSerialize["logins_failed"] = o.LoginsFailed
-	}
-	if true {
-		toSerialize["authorizations"] = o.Authorizations
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LoginMetrics) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["logins"] = o.Logins
+	toSerialize["logins_failed"] = o.LoginsFailed
+	toSerialize["authorizations"] = o.Authorizations
+	return toSerialize, nil
+}
+
+func (o *LoginMetrics) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"logins",
+		"logins_failed",
+		"authorizations",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLoginMetrics := _LoginMetrics{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varLoginMetrics)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LoginMetrics(varLoginMetrics)
+
+	return err
 }
 
 type NullableLoginMetrics struct {

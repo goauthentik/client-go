@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the EventMatcherPolicyRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EventMatcherPolicyRequest{}
 
 // EventMatcherPolicyRequest Event Matcher Policy Serializer
 type EventMatcherPolicyRequest struct {
@@ -29,6 +34,8 @@ type EventMatcherPolicyRequest struct {
 	// Match events created by selected model. When left empty, all models are matched. When an app is selected, all the application's models are matched.
 	Model NullableModelEnum `json:"model,omitempty"`
 }
+
+type _EventMatcherPolicyRequest EventMatcherPolicyRequest
 
 // NewEventMatcherPolicyRequest instantiates a new EventMatcherPolicyRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -74,7 +81,7 @@ func (o *EventMatcherPolicyRequest) SetName(v string) {
 
 // GetExecutionLogging returns the ExecutionLogging field value if set, zero value otherwise.
 func (o *EventMatcherPolicyRequest) GetExecutionLogging() bool {
-	if o == nil || o.ExecutionLogging == nil {
+	if o == nil || IsNil(o.ExecutionLogging) {
 		var ret bool
 		return ret
 	}
@@ -84,7 +91,7 @@ func (o *EventMatcherPolicyRequest) GetExecutionLogging() bool {
 // GetExecutionLoggingOk returns a tuple with the ExecutionLogging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventMatcherPolicyRequest) GetExecutionLoggingOk() (*bool, bool) {
-	if o == nil || o.ExecutionLogging == nil {
+	if o == nil || IsNil(o.ExecutionLogging) {
 		return nil, false
 	}
 	return o.ExecutionLogging, true
@@ -92,7 +99,7 @@ func (o *EventMatcherPolicyRequest) GetExecutionLoggingOk() (*bool, bool) {
 
 // HasExecutionLogging returns a boolean if a field has been set.
 func (o *EventMatcherPolicyRequest) HasExecutionLogging() bool {
-	if o != nil && o.ExecutionLogging != nil {
+	if o != nil && !IsNil(o.ExecutionLogging) {
 		return true
 	}
 
@@ -106,7 +113,7 @@ func (o *EventMatcherPolicyRequest) SetExecutionLogging(v bool) {
 
 // GetAction returns the Action field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EventMatcherPolicyRequest) GetAction() EventActions {
-	if o == nil || o.Action.Get() == nil {
+	if o == nil || IsNil(o.Action.Get()) {
 		var ret EventActions
 		return ret
 	}
@@ -149,7 +156,7 @@ func (o *EventMatcherPolicyRequest) UnsetAction() {
 
 // GetClientIp returns the ClientIp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EventMatcherPolicyRequest) GetClientIp() string {
-	if o == nil || o.ClientIp.Get() == nil {
+	if o == nil || IsNil(o.ClientIp.Get()) {
 		var ret string
 		return ret
 	}
@@ -192,7 +199,7 @@ func (o *EventMatcherPolicyRequest) UnsetClientIp() {
 
 // GetApp returns the App field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EventMatcherPolicyRequest) GetApp() AppEnum {
-	if o == nil || o.App.Get() == nil {
+	if o == nil || IsNil(o.App.Get()) {
 		var ret AppEnum
 		return ret
 	}
@@ -235,7 +242,7 @@ func (o *EventMatcherPolicyRequest) UnsetApp() {
 
 // GetModel returns the Model field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EventMatcherPolicyRequest) GetModel() ModelEnum {
-	if o == nil || o.Model.Get() == nil {
+	if o == nil || IsNil(o.Model.Get()) {
 		var ret ModelEnum
 		return ret
 	}
@@ -277,11 +284,17 @@ func (o *EventMatcherPolicyRequest) UnsetModel() {
 }
 
 func (o EventMatcherPolicyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
-	if o.ExecutionLogging != nil {
+	return json.Marshal(toSerialize)
+}
+
+func (o EventMatcherPolicyRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.ExecutionLogging) {
 		toSerialize["execution_logging"] = o.ExecutionLogging
 	}
 	if o.Action.IsSet() {
@@ -296,7 +309,44 @@ func (o EventMatcherPolicyRequest) MarshalJSON() ([]byte, error) {
 	if o.Model.IsSet() {
 		toSerialize["model"] = o.Model.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *EventMatcherPolicyRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEventMatcherPolicyRequest := _EventMatcherPolicyRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEventMatcherPolicyRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EventMatcherPolicyRequest(varEventMatcherPolicyRequest)
+
+	return err
 }
 
 type NullableEventMatcherPolicyRequest struct {

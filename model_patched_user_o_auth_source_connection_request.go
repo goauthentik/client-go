@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedUserOAuthSourceConnectionRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedUserOAuthSourceConnectionRequest{}
+
 // PatchedUserOAuthSourceConnectionRequest OAuth Source Serializer
 type PatchedUserOAuthSourceConnectionRequest struct {
 	Identifier  *string        `json:"identifier,omitempty"`
@@ -40,7 +43,7 @@ func NewPatchedUserOAuthSourceConnectionRequestWithDefaults() *PatchedUserOAuthS
 
 // GetIdentifier returns the Identifier field value if set, zero value otherwise.
 func (o *PatchedUserOAuthSourceConnectionRequest) GetIdentifier() string {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *PatchedUserOAuthSourceConnectionRequest) GetIdentifier() string {
 // GetIdentifierOk returns a tuple with the Identifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserOAuthSourceConnectionRequest) GetIdentifierOk() (*string, bool) {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		return nil, false
 	}
 	return o.Identifier, true
@@ -58,7 +61,7 @@ func (o *PatchedUserOAuthSourceConnectionRequest) GetIdentifierOk() (*string, bo
 
 // HasIdentifier returns a boolean if a field has been set.
 func (o *PatchedUserOAuthSourceConnectionRequest) HasIdentifier() bool {
-	if o != nil && o.Identifier != nil {
+	if o != nil && !IsNil(o.Identifier) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *PatchedUserOAuthSourceConnectionRequest) SetIdentifier(v string) {
 
 // GetAccessToken returns the AccessToken field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedUserOAuthSourceConnectionRequest) GetAccessToken() string {
-	if o == nil || o.AccessToken.Get() == nil {
+	if o == nil || IsNil(o.AccessToken.Get()) {
 		var ret string
 		return ret
 	}
@@ -114,14 +117,22 @@ func (o *PatchedUserOAuthSourceConnectionRequest) UnsetAccessToken() {
 }
 
 func (o PatchedUserOAuthSourceConnectionRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedUserOAuthSourceConnectionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Identifier != nil {
+	if !IsNil(o.Identifier) {
 		toSerialize["identifier"] = o.Identifier
 	}
 	if o.AccessToken.IsSet() {
 		toSerialize["access_token"] = o.AccessToken.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedUserOAuthSourceConnectionRequest struct {

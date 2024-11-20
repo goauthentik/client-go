@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedRACPropertyMappingRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedRACPropertyMappingRequest{}
+
 // PatchedRACPropertyMappingRequest RACPropertyMapping Serializer
 type PatchedRACPropertyMappingRequest struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
@@ -43,7 +46,7 @@ func NewPatchedRACPropertyMappingRequestWithDefaults() *PatchedRACPropertyMappin
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedRACPropertyMappingRequest) GetManaged() string {
-	if o == nil || o.Managed.Get() == nil {
+	if o == nil || IsNil(o.Managed.Get()) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *PatchedRACPropertyMappingRequest) UnsetManaged() {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedRACPropertyMappingRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -96,7 +99,7 @@ func (o *PatchedRACPropertyMappingRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedRACPropertyMappingRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -104,7 +107,7 @@ func (o *PatchedRACPropertyMappingRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedRACPropertyMappingRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -118,7 +121,7 @@ func (o *PatchedRACPropertyMappingRequest) SetName(v string) {
 
 // GetExpression returns the Expression field value if set, zero value otherwise.
 func (o *PatchedRACPropertyMappingRequest) GetExpression() string {
-	if o == nil || o.Expression == nil {
+	if o == nil || IsNil(o.Expression) {
 		var ret string
 		return ret
 	}
@@ -128,7 +131,7 @@ func (o *PatchedRACPropertyMappingRequest) GetExpression() string {
 // GetExpressionOk returns a tuple with the Expression field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedRACPropertyMappingRequest) GetExpressionOk() (*string, bool) {
-	if o == nil || o.Expression == nil {
+	if o == nil || IsNil(o.Expression) {
 		return nil, false
 	}
 	return o.Expression, true
@@ -136,7 +139,7 @@ func (o *PatchedRACPropertyMappingRequest) GetExpressionOk() (*string, bool) {
 
 // HasExpression returns a boolean if a field has been set.
 func (o *PatchedRACPropertyMappingRequest) HasExpression() bool {
-	if o != nil && o.Expression != nil {
+	if o != nil && !IsNil(o.Expression) {
 		return true
 	}
 
@@ -150,7 +153,7 @@ func (o *PatchedRACPropertyMappingRequest) SetExpression(v string) {
 
 // GetStaticSettings returns the StaticSettings field value if set, zero value otherwise.
 func (o *PatchedRACPropertyMappingRequest) GetStaticSettings() map[string]interface{} {
-	if o == nil || o.StaticSettings == nil {
+	if o == nil || IsNil(o.StaticSettings) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -160,15 +163,15 @@ func (o *PatchedRACPropertyMappingRequest) GetStaticSettings() map[string]interf
 // GetStaticSettingsOk returns a tuple with the StaticSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedRACPropertyMappingRequest) GetStaticSettingsOk() (map[string]interface{}, bool) {
-	if o == nil || o.StaticSettings == nil {
-		return nil, false
+	if o == nil || IsNil(o.StaticSettings) {
+		return map[string]interface{}{}, false
 	}
 	return o.StaticSettings, true
 }
 
 // HasStaticSettings returns a boolean if a field has been set.
 func (o *PatchedRACPropertyMappingRequest) HasStaticSettings() bool {
-	if o != nil && o.StaticSettings != nil {
+	if o != nil && !IsNil(o.StaticSettings) {
 		return true
 	}
 
@@ -181,20 +184,28 @@ func (o *PatchedRACPropertyMappingRequest) SetStaticSettings(v map[string]interf
 }
 
 func (o PatchedRACPropertyMappingRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedRACPropertyMappingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Expression != nil {
+	if !IsNil(o.Expression) {
 		toSerialize["expression"] = o.Expression
 	}
-	if o.StaticSettings != nil {
+	if !IsNil(o.StaticSettings) {
 		toSerialize["static_settings"] = o.StaticSettings
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedRACPropertyMappingRequest struct {

@@ -12,14 +12,21 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the UserLoginChallengeResponseRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserLoginChallengeResponseRequest{}
 
 // UserLoginChallengeResponseRequest User login challenge
 type UserLoginChallengeResponseRequest struct {
 	Component  *string `json:"component,omitempty"`
 	RememberMe bool    `json:"remember_me"`
 }
+
+type _UserLoginChallengeResponseRequest UserLoginChallengeResponseRequest
 
 // NewUserLoginChallengeResponseRequest instantiates a new UserLoginChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -45,7 +52,7 @@ func NewUserLoginChallengeResponseRequestWithDefaults() *UserLoginChallengeRespo
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *UserLoginChallengeResponseRequest) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -55,7 +62,7 @@ func (o *UserLoginChallengeResponseRequest) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserLoginChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -63,7 +70,7 @@ func (o *UserLoginChallengeResponseRequest) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *UserLoginChallengeResponseRequest) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -100,14 +107,57 @@ func (o *UserLoginChallengeResponseRequest) SetRememberMe(v bool) {
 }
 
 func (o UserLoginChallengeResponseRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["remember_me"] = o.RememberMe
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserLoginChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	toSerialize["remember_me"] = o.RememberMe
+	return toSerialize, nil
+}
+
+func (o *UserLoginChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"remember_me",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUserLoginChallengeResponseRequest := _UserLoginChallengeResponseRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUserLoginChallengeResponseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserLoginChallengeResponseRequest(varUserLoginChallengeResponseRequest)
+
+	return err
 }
 
 type NullableUserLoginChallengeResponseRequest struct {

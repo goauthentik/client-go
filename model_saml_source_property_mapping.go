@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the SAMLSourcePropertyMapping type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SAMLSourcePropertyMapping{}
 
 // SAMLSourcePropertyMapping SAMLSourcePropertyMapping Serializer
 type SAMLSourcePropertyMapping struct {
@@ -31,6 +36,8 @@ type SAMLSourcePropertyMapping struct {
 	// Return internal model name
 	MetaModelName string `json:"meta_model_name"`
 }
+
+type _SAMLSourcePropertyMapping SAMLSourcePropertyMapping
 
 // NewSAMLSourcePropertyMapping instantiates a new SAMLSourcePropertyMapping object
 // This constructor will assign default values to properties that have it defined,
@@ -82,7 +89,7 @@ func (o *SAMLSourcePropertyMapping) SetPk(v string) {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SAMLSourcePropertyMapping) GetManaged() string {
-	if o == nil || o.Managed.Get() == nil {
+	if o == nil || IsNil(o.Managed.Get()) {
 		var ret string
 		return ret
 	}
@@ -268,32 +275,69 @@ func (o *SAMLSourcePropertyMapping) SetMetaModelName(v string) {
 }
 
 func (o SAMLSourcePropertyMapping) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SAMLSourcePropertyMapping) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pk"] = o.Pk
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize["name"] = o.Name
+	toSerialize["expression"] = o.Expression
+	toSerialize["component"] = o.Component
+	toSerialize["verbose_name"] = o.VerboseName
+	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	toSerialize["meta_model_name"] = o.MetaModelName
+	return toSerialize, nil
+}
+
+func (o *SAMLSourcePropertyMapping) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"name",
+		"expression",
+		"component",
+		"verbose_name",
+		"verbose_name_plural",
+		"meta_model_name",
 	}
-	if true {
-		toSerialize["expression"] = o.Expression
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
 	}
-	if true {
-		toSerialize["component"] = o.Component
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
 	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
+
+	varSAMLSourcePropertyMapping := _SAMLSourcePropertyMapping{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSAMLSourcePropertyMapping)
+
+	if err != nil {
+		return err
 	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	return json.Marshal(toSerialize)
+
+	*o = SAMLSourcePropertyMapping(varSAMLSourcePropertyMapping)
+
+	return err
 }
 
 type NullableSAMLSourcePropertyMapping struct {

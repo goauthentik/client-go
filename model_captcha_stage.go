@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the CaptchaStage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CaptchaStage{}
 
 // CaptchaStage CaptchaStage Serializer
 type CaptchaStage struct {
@@ -38,6 +43,8 @@ type CaptchaStage struct {
 	// When enabled and the received captcha score is outside of the given threshold, the stage will show an error message. When not enabled, the flow will continue, but the data from the captcha will be available in the context for policy decisions
 	ErrorOnInvalidScore *bool `json:"error_on_invalid_score,omitempty"`
 }
+
+type _CaptchaStage CaptchaStage
 
 // NewCaptchaStage instantiates a new CaptchaStage object
 // This constructor will assign default values to properties that have it defined,
@@ -209,7 +216,7 @@ func (o *CaptchaStage) SetMetaModelName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *CaptchaStage) GetFlowSet() []FlowSet {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSet
 		return ret
 	}
@@ -219,7 +226,7 @@ func (o *CaptchaStage) GetFlowSet() []FlowSet {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CaptchaStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -227,7 +234,7 @@ func (o *CaptchaStage) GetFlowSetOk() ([]FlowSet, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *CaptchaStage) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
+	if o != nil && !IsNil(o.FlowSet) {
 		return true
 	}
 
@@ -265,7 +272,7 @@ func (o *CaptchaStage) SetPublicKey(v string) {
 
 // GetJsUrl returns the JsUrl field value if set, zero value otherwise.
 func (o *CaptchaStage) GetJsUrl() string {
-	if o == nil || o.JsUrl == nil {
+	if o == nil || IsNil(o.JsUrl) {
 		var ret string
 		return ret
 	}
@@ -275,7 +282,7 @@ func (o *CaptchaStage) GetJsUrl() string {
 // GetJsUrlOk returns a tuple with the JsUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CaptchaStage) GetJsUrlOk() (*string, bool) {
-	if o == nil || o.JsUrl == nil {
+	if o == nil || IsNil(o.JsUrl) {
 		return nil, false
 	}
 	return o.JsUrl, true
@@ -283,7 +290,7 @@ func (o *CaptchaStage) GetJsUrlOk() (*string, bool) {
 
 // HasJsUrl returns a boolean if a field has been set.
 func (o *CaptchaStage) HasJsUrl() bool {
-	if o != nil && o.JsUrl != nil {
+	if o != nil && !IsNil(o.JsUrl) {
 		return true
 	}
 
@@ -297,7 +304,7 @@ func (o *CaptchaStage) SetJsUrl(v string) {
 
 // GetApiUrl returns the ApiUrl field value if set, zero value otherwise.
 func (o *CaptchaStage) GetApiUrl() string {
-	if o == nil || o.ApiUrl == nil {
+	if o == nil || IsNil(o.ApiUrl) {
 		var ret string
 		return ret
 	}
@@ -307,7 +314,7 @@ func (o *CaptchaStage) GetApiUrl() string {
 // GetApiUrlOk returns a tuple with the ApiUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CaptchaStage) GetApiUrlOk() (*string, bool) {
-	if o == nil || o.ApiUrl == nil {
+	if o == nil || IsNil(o.ApiUrl) {
 		return nil, false
 	}
 	return o.ApiUrl, true
@@ -315,7 +322,7 @@ func (o *CaptchaStage) GetApiUrlOk() (*string, bool) {
 
 // HasApiUrl returns a boolean if a field has been set.
 func (o *CaptchaStage) HasApiUrl() bool {
-	if o != nil && o.ApiUrl != nil {
+	if o != nil && !IsNil(o.ApiUrl) {
 		return true
 	}
 
@@ -329,7 +336,7 @@ func (o *CaptchaStage) SetApiUrl(v string) {
 
 // GetInteractive returns the Interactive field value if set, zero value otherwise.
 func (o *CaptchaStage) GetInteractive() bool {
-	if o == nil || o.Interactive == nil {
+	if o == nil || IsNil(o.Interactive) {
 		var ret bool
 		return ret
 	}
@@ -339,7 +346,7 @@ func (o *CaptchaStage) GetInteractive() bool {
 // GetInteractiveOk returns a tuple with the Interactive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CaptchaStage) GetInteractiveOk() (*bool, bool) {
-	if o == nil || o.Interactive == nil {
+	if o == nil || IsNil(o.Interactive) {
 		return nil, false
 	}
 	return o.Interactive, true
@@ -347,7 +354,7 @@ func (o *CaptchaStage) GetInteractiveOk() (*bool, bool) {
 
 // HasInteractive returns a boolean if a field has been set.
 func (o *CaptchaStage) HasInteractive() bool {
-	if o != nil && o.Interactive != nil {
+	if o != nil && !IsNil(o.Interactive) {
 		return true
 	}
 
@@ -361,7 +368,7 @@ func (o *CaptchaStage) SetInteractive(v bool) {
 
 // GetScoreMinThreshold returns the ScoreMinThreshold field value if set, zero value otherwise.
 func (o *CaptchaStage) GetScoreMinThreshold() float64 {
-	if o == nil || o.ScoreMinThreshold == nil {
+	if o == nil || IsNil(o.ScoreMinThreshold) {
 		var ret float64
 		return ret
 	}
@@ -371,7 +378,7 @@ func (o *CaptchaStage) GetScoreMinThreshold() float64 {
 // GetScoreMinThresholdOk returns a tuple with the ScoreMinThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CaptchaStage) GetScoreMinThresholdOk() (*float64, bool) {
-	if o == nil || o.ScoreMinThreshold == nil {
+	if o == nil || IsNil(o.ScoreMinThreshold) {
 		return nil, false
 	}
 	return o.ScoreMinThreshold, true
@@ -379,7 +386,7 @@ func (o *CaptchaStage) GetScoreMinThresholdOk() (*float64, bool) {
 
 // HasScoreMinThreshold returns a boolean if a field has been set.
 func (o *CaptchaStage) HasScoreMinThreshold() bool {
-	if o != nil && o.ScoreMinThreshold != nil {
+	if o != nil && !IsNil(o.ScoreMinThreshold) {
 		return true
 	}
 
@@ -393,7 +400,7 @@ func (o *CaptchaStage) SetScoreMinThreshold(v float64) {
 
 // GetScoreMaxThreshold returns the ScoreMaxThreshold field value if set, zero value otherwise.
 func (o *CaptchaStage) GetScoreMaxThreshold() float64 {
-	if o == nil || o.ScoreMaxThreshold == nil {
+	if o == nil || IsNil(o.ScoreMaxThreshold) {
 		var ret float64
 		return ret
 	}
@@ -403,7 +410,7 @@ func (o *CaptchaStage) GetScoreMaxThreshold() float64 {
 // GetScoreMaxThresholdOk returns a tuple with the ScoreMaxThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CaptchaStage) GetScoreMaxThresholdOk() (*float64, bool) {
-	if o == nil || o.ScoreMaxThreshold == nil {
+	if o == nil || IsNil(o.ScoreMaxThreshold) {
 		return nil, false
 	}
 	return o.ScoreMaxThreshold, true
@@ -411,7 +418,7 @@ func (o *CaptchaStage) GetScoreMaxThresholdOk() (*float64, bool) {
 
 // HasScoreMaxThreshold returns a boolean if a field has been set.
 func (o *CaptchaStage) HasScoreMaxThreshold() bool {
-	if o != nil && o.ScoreMaxThreshold != nil {
+	if o != nil && !IsNil(o.ScoreMaxThreshold) {
 		return true
 	}
 
@@ -425,7 +432,7 @@ func (o *CaptchaStage) SetScoreMaxThreshold(v float64) {
 
 // GetErrorOnInvalidScore returns the ErrorOnInvalidScore field value if set, zero value otherwise.
 func (o *CaptchaStage) GetErrorOnInvalidScore() bool {
-	if o == nil || o.ErrorOnInvalidScore == nil {
+	if o == nil || IsNil(o.ErrorOnInvalidScore) {
 		var ret bool
 		return ret
 	}
@@ -435,7 +442,7 @@ func (o *CaptchaStage) GetErrorOnInvalidScore() bool {
 // GetErrorOnInvalidScoreOk returns a tuple with the ErrorOnInvalidScore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CaptchaStage) GetErrorOnInvalidScoreOk() (*bool, bool) {
-	if o == nil || o.ErrorOnInvalidScore == nil {
+	if o == nil || IsNil(o.ErrorOnInvalidScore) {
 		return nil, false
 	}
 	return o.ErrorOnInvalidScore, true
@@ -443,7 +450,7 @@ func (o *CaptchaStage) GetErrorOnInvalidScoreOk() (*bool, bool) {
 
 // HasErrorOnInvalidScore returns a boolean if a field has been set.
 func (o *CaptchaStage) HasErrorOnInvalidScore() bool {
-	if o != nil && o.ErrorOnInvalidScore != nil {
+	if o != nil && !IsNil(o.ErrorOnInvalidScore) {
 		return true
 	}
 
@@ -456,50 +463,87 @@ func (o *CaptchaStage) SetErrorOnInvalidScore(v bool) {
 }
 
 func (o CaptchaStage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if o.FlowSet != nil {
-		toSerialize["flow_set"] = o.FlowSet
-	}
-	if true {
-		toSerialize["public_key"] = o.PublicKey
-	}
-	if o.JsUrl != nil {
-		toSerialize["js_url"] = o.JsUrl
-	}
-	if o.ApiUrl != nil {
-		toSerialize["api_url"] = o.ApiUrl
-	}
-	if o.Interactive != nil {
-		toSerialize["interactive"] = o.Interactive
-	}
-	if o.ScoreMinThreshold != nil {
-		toSerialize["score_min_threshold"] = o.ScoreMinThreshold
-	}
-	if o.ScoreMaxThreshold != nil {
-		toSerialize["score_max_threshold"] = o.ScoreMaxThreshold
-	}
-	if o.ErrorOnInvalidScore != nil {
-		toSerialize["error_on_invalid_score"] = o.ErrorOnInvalidScore
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CaptchaStage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pk"] = o.Pk
+	toSerialize["name"] = o.Name
+	toSerialize["component"] = o.Component
+	toSerialize["verbose_name"] = o.VerboseName
+	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	toSerialize["meta_model_name"] = o.MetaModelName
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
+	toSerialize["public_key"] = o.PublicKey
+	if !IsNil(o.JsUrl) {
+		toSerialize["js_url"] = o.JsUrl
+	}
+	if !IsNil(o.ApiUrl) {
+		toSerialize["api_url"] = o.ApiUrl
+	}
+	if !IsNil(o.Interactive) {
+		toSerialize["interactive"] = o.Interactive
+	}
+	if !IsNil(o.ScoreMinThreshold) {
+		toSerialize["score_min_threshold"] = o.ScoreMinThreshold
+	}
+	if !IsNil(o.ScoreMaxThreshold) {
+		toSerialize["score_max_threshold"] = o.ScoreMaxThreshold
+	}
+	if !IsNil(o.ErrorOnInvalidScore) {
+		toSerialize["error_on_invalid_score"] = o.ErrorOnInvalidScore
+	}
+	return toSerialize, nil
+}
+
+func (o *CaptchaStage) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"name",
+		"component",
+		"verbose_name",
+		"verbose_name_plural",
+		"meta_model_name",
+		"public_key",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCaptchaStage := _CaptchaStage{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCaptchaStage)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CaptchaStage(varCaptchaStage)
+
+	return err
 }
 
 type NullableCaptchaStage struct {

@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the AuthenticatorDuoChallenge type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatorDuoChallenge{}
 
 // AuthenticatorDuoChallenge Duo Challenge
 type AuthenticatorDuoChallenge struct {
@@ -26,6 +31,8 @@ type AuthenticatorDuoChallenge struct {
 	ActivationCode    string                    `json:"activation_code"`
 	StageUuid         string                    `json:"stage_uuid"`
 }
+
+type _AuthenticatorDuoChallenge AuthenticatorDuoChallenge
 
 // NewAuthenticatorDuoChallenge instantiates a new AuthenticatorDuoChallenge object
 // This constructor will assign default values to properties that have it defined,
@@ -55,7 +62,7 @@ func NewAuthenticatorDuoChallengeWithDefaults() *AuthenticatorDuoChallenge {
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
 func (o *AuthenticatorDuoChallenge) GetFlowInfo() ContextualFlowInfo {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		var ret ContextualFlowInfo
 		return ret
 	}
@@ -65,7 +72,7 @@ func (o *AuthenticatorDuoChallenge) GetFlowInfo() ContextualFlowInfo {
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		return nil, false
 	}
 	return o.FlowInfo, true
@@ -73,7 +80,7 @@ func (o *AuthenticatorDuoChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) 
 
 // HasFlowInfo returns a boolean if a field has been set.
 func (o *AuthenticatorDuoChallenge) HasFlowInfo() bool {
-	if o != nil && o.FlowInfo != nil {
+	if o != nil && !IsNil(o.FlowInfo) {
 		return true
 	}
 
@@ -87,7 +94,7 @@ func (o *AuthenticatorDuoChallenge) SetFlowInfo(v ContextualFlowInfo) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *AuthenticatorDuoChallenge) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -97,7 +104,7 @@ func (o *AuthenticatorDuoChallenge) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -105,7 +112,7 @@ func (o *AuthenticatorDuoChallenge) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *AuthenticatorDuoChallenge) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -119,7 +126,7 @@ func (o *AuthenticatorDuoChallenge) SetComponent(v string) {
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
 func (o *AuthenticatorDuoChallenge) GetResponseErrors() map[string][]ErrorDetail {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		var ret map[string][]ErrorDetail
 		return ret
 	}
@@ -129,7 +136,7 @@ func (o *AuthenticatorDuoChallenge) GetResponseErrors() map[string][]ErrorDetail
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorDuoChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		return nil, false
 	}
 	return o.ResponseErrors, true
@@ -137,7 +144,7 @@ func (o *AuthenticatorDuoChallenge) GetResponseErrorsOk() (*map[string][]ErrorDe
 
 // HasResponseErrors returns a boolean if a field has been set.
 func (o *AuthenticatorDuoChallenge) HasResponseErrors() bool {
-	if o != nil && o.ResponseErrors != nil {
+	if o != nil && !IsNil(o.ResponseErrors) {
 		return true
 	}
 
@@ -270,32 +277,71 @@ func (o *AuthenticatorDuoChallenge) SetStageUuid(v string) {
 }
 
 func (o AuthenticatorDuoChallenge) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.FlowInfo != nil {
-		toSerialize["flow_info"] = o.FlowInfo
-	}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
-	}
-	if o.ResponseErrors != nil {
-		toSerialize["response_errors"] = o.ResponseErrors
-	}
-	if true {
-		toSerialize["pending_user"] = o.PendingUser
-	}
-	if true {
-		toSerialize["pending_user_avatar"] = o.PendingUserAvatar
-	}
-	if true {
-		toSerialize["activation_barcode"] = o.ActivationBarcode
-	}
-	if true {
-		toSerialize["activation_code"] = o.ActivationCode
-	}
-	if true {
-		toSerialize["stage_uuid"] = o.StageUuid
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatorDuoChallenge) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.FlowInfo) {
+		toSerialize["flow_info"] = o.FlowInfo
+	}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	if !IsNil(o.ResponseErrors) {
+		toSerialize["response_errors"] = o.ResponseErrors
+	}
+	toSerialize["pending_user"] = o.PendingUser
+	toSerialize["pending_user_avatar"] = o.PendingUserAvatar
+	toSerialize["activation_barcode"] = o.ActivationBarcode
+	toSerialize["activation_code"] = o.ActivationCode
+	toSerialize["stage_uuid"] = o.StageUuid
+	return toSerialize, nil
+}
+
+func (o *AuthenticatorDuoChallenge) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pending_user",
+		"pending_user_avatar",
+		"activation_barcode",
+		"activation_code",
+		"stage_uuid",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAuthenticatorDuoChallenge := _AuthenticatorDuoChallenge{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAuthenticatorDuoChallenge)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AuthenticatorDuoChallenge(varAuthenticatorDuoChallenge)
+
+	return err
 }
 
 type NullableAuthenticatorDuoChallenge struct {

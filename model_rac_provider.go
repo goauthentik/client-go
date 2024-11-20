@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the RACProvider type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RACProvider{}
 
 // RACProvider RACProvider Serializer
 type RACProvider struct {
@@ -47,6 +52,8 @@ type RACProvider struct {
 	// When set to true, connection tokens will be deleted upon disconnect.
 	DeleteTokenOnDisconnect *bool `json:"delete_token_on_disconnect,omitempty"`
 }
+
+type _RACProvider RACProvider
 
 // NewRACProvider instantiates a new RACProvider object
 // This constructor will assign default values to properties that have it defined,
@@ -127,7 +134,7 @@ func (o *RACProvider) SetName(v string) {
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RACProvider) GetAuthenticationFlow() string {
-	if o == nil || o.AuthenticationFlow.Get() == nil {
+	if o == nil || IsNil(o.AuthenticationFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -194,7 +201,7 @@ func (o *RACProvider) SetAuthorizationFlow(v string) {
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
 func (o *RACProvider) GetPropertyMappings() []string {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		var ret []string
 		return ret
 	}
@@ -204,7 +211,7 @@ func (o *RACProvider) GetPropertyMappings() []string {
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RACProvider) GetPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		return nil, false
 	}
 	return o.PropertyMappings, true
@@ -212,7 +219,7 @@ func (o *RACProvider) GetPropertyMappingsOk() ([]string, bool) {
 
 // HasPropertyMappings returns a boolean if a field has been set.
 func (o *RACProvider) HasPropertyMappings() bool {
-	if o != nil && o.PropertyMappings != nil {
+	if o != nil && !IsNil(o.PropertyMappings) {
 		return true
 	}
 
@@ -429,7 +436,7 @@ func (o *RACProvider) GetSettings() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RACProvider) GetSettingsOk() (*interface{}, bool) {
-	if o == nil || o.Settings == nil {
+	if o == nil || IsNil(o.Settings) {
 		return nil, false
 	}
 	return &o.Settings, true
@@ -437,7 +444,7 @@ func (o *RACProvider) GetSettingsOk() (*interface{}, bool) {
 
 // HasSettings returns a boolean if a field has been set.
 func (o *RACProvider) HasSettings() bool {
-	if o != nil && o.Settings != nil {
+	if o != nil && !IsNil(o.Settings) {
 		return true
 	}
 
@@ -475,7 +482,7 @@ func (o *RACProvider) SetOutpostSet(v []string) {
 
 // GetConnectionExpiry returns the ConnectionExpiry field value if set, zero value otherwise.
 func (o *RACProvider) GetConnectionExpiry() string {
-	if o == nil || o.ConnectionExpiry == nil {
+	if o == nil || IsNil(o.ConnectionExpiry) {
 		var ret string
 		return ret
 	}
@@ -485,7 +492,7 @@ func (o *RACProvider) GetConnectionExpiry() string {
 // GetConnectionExpiryOk returns a tuple with the ConnectionExpiry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RACProvider) GetConnectionExpiryOk() (*string, bool) {
-	if o == nil || o.ConnectionExpiry == nil {
+	if o == nil || IsNil(o.ConnectionExpiry) {
 		return nil, false
 	}
 	return o.ConnectionExpiry, true
@@ -493,7 +500,7 @@ func (o *RACProvider) GetConnectionExpiryOk() (*string, bool) {
 
 // HasConnectionExpiry returns a boolean if a field has been set.
 func (o *RACProvider) HasConnectionExpiry() bool {
-	if o != nil && o.ConnectionExpiry != nil {
+	if o != nil && !IsNil(o.ConnectionExpiry) {
 		return true
 	}
 
@@ -507,7 +514,7 @@ func (o *RACProvider) SetConnectionExpiry(v string) {
 
 // GetDeleteTokenOnDisconnect returns the DeleteTokenOnDisconnect field value if set, zero value otherwise.
 func (o *RACProvider) GetDeleteTokenOnDisconnect() bool {
-	if o == nil || o.DeleteTokenOnDisconnect == nil {
+	if o == nil || IsNil(o.DeleteTokenOnDisconnect) {
 		var ret bool
 		return ret
 	}
@@ -517,7 +524,7 @@ func (o *RACProvider) GetDeleteTokenOnDisconnect() bool {
 // GetDeleteTokenOnDisconnectOk returns a tuple with the DeleteTokenOnDisconnect field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RACProvider) GetDeleteTokenOnDisconnectOk() (*bool, bool) {
-	if o == nil || o.DeleteTokenOnDisconnect == nil {
+	if o == nil || IsNil(o.DeleteTokenOnDisconnect) {
 		return nil, false
 	}
 	return o.DeleteTokenOnDisconnect, true
@@ -525,7 +532,7 @@ func (o *RACProvider) GetDeleteTokenOnDisconnectOk() (*bool, bool) {
 
 // HasDeleteTokenOnDisconnect returns a boolean if a field has been set.
 func (o *RACProvider) HasDeleteTokenOnDisconnect() bool {
-	if o != nil && o.DeleteTokenOnDisconnect != nil {
+	if o != nil && !IsNil(o.DeleteTokenOnDisconnect) {
 		return true
 	}
 
@@ -538,59 +545,91 @@ func (o *RACProvider) SetDeleteTokenOnDisconnect(v bool) {
 }
 
 func (o RACProvider) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RACProvider) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["pk"] = o.Pk
+	toSerialize["name"] = o.Name
 	if o.AuthenticationFlow.IsSet() {
 		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
 	}
-	if true {
-		toSerialize["authorization_flow"] = o.AuthorizationFlow
-	}
-	if o.PropertyMappings != nil {
+	toSerialize["authorization_flow"] = o.AuthorizationFlow
+	if !IsNil(o.PropertyMappings) {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["assigned_application_slug"] = o.AssignedApplicationSlug
-	}
-	if true {
-		toSerialize["assigned_application_name"] = o.AssignedApplicationName
-	}
-	if true {
-		toSerialize["assigned_backchannel_application_slug"] = o.AssignedBackchannelApplicationSlug
-	}
-	if true {
-		toSerialize["assigned_backchannel_application_name"] = o.AssignedBackchannelApplicationName
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
+	toSerialize["component"] = o.Component
+	toSerialize["assigned_application_slug"] = o.AssignedApplicationSlug
+	toSerialize["assigned_application_name"] = o.AssignedApplicationName
+	toSerialize["assigned_backchannel_application_slug"] = o.AssignedBackchannelApplicationSlug
+	toSerialize["assigned_backchannel_application_name"] = o.AssignedBackchannelApplicationName
+	toSerialize["verbose_name"] = o.VerboseName
+	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	toSerialize["meta_model_name"] = o.MetaModelName
 	if o.Settings != nil {
 		toSerialize["settings"] = o.Settings
 	}
-	if true {
-		toSerialize["outpost_set"] = o.OutpostSet
-	}
-	if o.ConnectionExpiry != nil {
+	toSerialize["outpost_set"] = o.OutpostSet
+	if !IsNil(o.ConnectionExpiry) {
 		toSerialize["connection_expiry"] = o.ConnectionExpiry
 	}
-	if o.DeleteTokenOnDisconnect != nil {
+	if !IsNil(o.DeleteTokenOnDisconnect) {
 		toSerialize["delete_token_on_disconnect"] = o.DeleteTokenOnDisconnect
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *RACProvider) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"name",
+		"authorization_flow",
+		"component",
+		"assigned_application_slug",
+		"assigned_application_name",
+		"assigned_backchannel_application_slug",
+		"assigned_backchannel_application_name",
+		"verbose_name",
+		"verbose_name_plural",
+		"meta_model_name",
+		"outpost_set",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRACProvider := _RACProvider{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRACProvider)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RACProvider(varRACProvider)
+
+	return err
 }
 
 type NullableRACProvider struct {

@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the MicrosoftEntraProviderUser type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MicrosoftEntraProviderUser{}
 
 // MicrosoftEntraProviderUser MicrosoftEntraProviderUser Serializer
 type MicrosoftEntraProviderUser struct {
@@ -24,6 +29,8 @@ type MicrosoftEntraProviderUser struct {
 	Provider    int32       `json:"provider"`
 	Attributes  interface{} `json:"attributes"`
 }
+
+type _MicrosoftEntraProviderUser MicrosoftEntraProviderUser
 
 // NewMicrosoftEntraProviderUser instantiates a new MicrosoftEntraProviderUser object
 // This constructor will assign default values to properties that have it defined,
@@ -183,7 +190,7 @@ func (o *MicrosoftEntraProviderUser) GetAttributes() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MicrosoftEntraProviderUser) GetAttributesOk() (*interface{}, bool) {
-	if o == nil || o.Attributes == nil {
+	if o == nil || IsNil(o.Attributes) {
 		return nil, false
 	}
 	return &o.Attributes, true
@@ -195,26 +202,66 @@ func (o *MicrosoftEntraProviderUser) SetAttributes(v interface{}) {
 }
 
 func (o MicrosoftEntraProviderUser) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o MicrosoftEntraProviderUser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["microsoft_id"] = o.MicrosoftId
-	}
-	if true {
-		toSerialize["user"] = o.User
-	}
-	if true {
-		toSerialize["user_obj"] = o.UserObj
-	}
-	if true {
-		toSerialize["provider"] = o.Provider
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["microsoft_id"] = o.MicrosoftId
+	toSerialize["user"] = o.User
+	toSerialize["user_obj"] = o.UserObj
+	toSerialize["provider"] = o.Provider
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *MicrosoftEntraProviderUser) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"microsoft_id",
+		"user",
+		"user_obj",
+		"provider",
+		"attributes",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varMicrosoftEntraProviderUser := _MicrosoftEntraProviderUser{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varMicrosoftEntraProviderUser)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MicrosoftEntraProviderUser(varMicrosoftEntraProviderUser)
+
+	return err
 }
 
 type NullableMicrosoftEntraProviderUser struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedPermissionAssignRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedPermissionAssignRequest{}
+
 // PatchedPermissionAssignRequest Request to assign a new permission
 type PatchedPermissionAssignRequest struct {
 	Permissions []string   `json:"permissions,omitempty"`
@@ -41,7 +44,7 @@ func NewPatchedPermissionAssignRequestWithDefaults() *PatchedPermissionAssignReq
 
 // GetPermissions returns the Permissions field value if set, zero value otherwise.
 func (o *PatchedPermissionAssignRequest) GetPermissions() []string {
-	if o == nil || o.Permissions == nil {
+	if o == nil || IsNil(o.Permissions) {
 		var ret []string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *PatchedPermissionAssignRequest) GetPermissions() []string {
 // GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPermissionAssignRequest) GetPermissionsOk() ([]string, bool) {
-	if o == nil || o.Permissions == nil {
+	if o == nil || IsNil(o.Permissions) {
 		return nil, false
 	}
 	return o.Permissions, true
@@ -59,7 +62,7 @@ func (o *PatchedPermissionAssignRequest) GetPermissionsOk() ([]string, bool) {
 
 // HasPermissions returns a boolean if a field has been set.
 func (o *PatchedPermissionAssignRequest) HasPermissions() bool {
-	if o != nil && o.Permissions != nil {
+	if o != nil && !IsNil(o.Permissions) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *PatchedPermissionAssignRequest) SetPermissions(v []string) {
 
 // GetModel returns the Model field value if set, zero value otherwise.
 func (o *PatchedPermissionAssignRequest) GetModel() ModelEnum {
-	if o == nil || o.Model == nil {
+	if o == nil || IsNil(o.Model) {
 		var ret ModelEnum
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *PatchedPermissionAssignRequest) GetModel() ModelEnum {
 // GetModelOk returns a tuple with the Model field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPermissionAssignRequest) GetModelOk() (*ModelEnum, bool) {
-	if o == nil || o.Model == nil {
+	if o == nil || IsNil(o.Model) {
 		return nil, false
 	}
 	return o.Model, true
@@ -91,7 +94,7 @@ func (o *PatchedPermissionAssignRequest) GetModelOk() (*ModelEnum, bool) {
 
 // HasModel returns a boolean if a field has been set.
 func (o *PatchedPermissionAssignRequest) HasModel() bool {
-	if o != nil && o.Model != nil {
+	if o != nil && !IsNil(o.Model) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *PatchedPermissionAssignRequest) SetModel(v ModelEnum) {
 
 // GetObjectPk returns the ObjectPk field value if set, zero value otherwise.
 func (o *PatchedPermissionAssignRequest) GetObjectPk() string {
-	if o == nil || o.ObjectPk == nil {
+	if o == nil || IsNil(o.ObjectPk) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *PatchedPermissionAssignRequest) GetObjectPk() string {
 // GetObjectPkOk returns a tuple with the ObjectPk field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPermissionAssignRequest) GetObjectPkOk() (*string, bool) {
-	if o == nil || o.ObjectPk == nil {
+	if o == nil || IsNil(o.ObjectPk) {
 		return nil, false
 	}
 	return o.ObjectPk, true
@@ -123,7 +126,7 @@ func (o *PatchedPermissionAssignRequest) GetObjectPkOk() (*string, bool) {
 
 // HasObjectPk returns a boolean if a field has been set.
 func (o *PatchedPermissionAssignRequest) HasObjectPk() bool {
-	if o != nil && o.ObjectPk != nil {
+	if o != nil && !IsNil(o.ObjectPk) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *PatchedPermissionAssignRequest) SetObjectPk(v string) {
 }
 
 func (o PatchedPermissionAssignRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Permissions != nil {
-		toSerialize["permissions"] = o.Permissions
-	}
-	if o.Model != nil {
-		toSerialize["model"] = o.Model
-	}
-	if o.ObjectPk != nil {
-		toSerialize["object_pk"] = o.ObjectPk
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedPermissionAssignRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Permissions) {
+		toSerialize["permissions"] = o.Permissions
+	}
+	if !IsNil(o.Model) {
+		toSerialize["model"] = o.Model
+	}
+	if !IsNil(o.ObjectPk) {
+		toSerialize["object_pk"] = o.ObjectPk
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedPermissionAssignRequest struct {

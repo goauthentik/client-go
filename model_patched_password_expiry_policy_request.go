@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedPasswordExpiryPolicyRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedPasswordExpiryPolicyRequest{}
+
 // PatchedPasswordExpiryPolicyRequest Password Expiry Policy Serializer
 type PatchedPasswordExpiryPolicyRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -43,7 +46,7 @@ func NewPatchedPasswordExpiryPolicyRequestWithDefaults() *PatchedPasswordExpiryP
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedPasswordExpiryPolicyRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *PatchedPasswordExpiryPolicyRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPasswordExpiryPolicyRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -61,7 +64,7 @@ func (o *PatchedPasswordExpiryPolicyRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedPasswordExpiryPolicyRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *PatchedPasswordExpiryPolicyRequest) SetName(v string) {
 
 // GetExecutionLogging returns the ExecutionLogging field value if set, zero value otherwise.
 func (o *PatchedPasswordExpiryPolicyRequest) GetExecutionLogging() bool {
-	if o == nil || o.ExecutionLogging == nil {
+	if o == nil || IsNil(o.ExecutionLogging) {
 		var ret bool
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *PatchedPasswordExpiryPolicyRequest) GetExecutionLogging() bool {
 // GetExecutionLoggingOk returns a tuple with the ExecutionLogging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPasswordExpiryPolicyRequest) GetExecutionLoggingOk() (*bool, bool) {
-	if o == nil || o.ExecutionLogging == nil {
+	if o == nil || IsNil(o.ExecutionLogging) {
 		return nil, false
 	}
 	return o.ExecutionLogging, true
@@ -93,7 +96,7 @@ func (o *PatchedPasswordExpiryPolicyRequest) GetExecutionLoggingOk() (*bool, boo
 
 // HasExecutionLogging returns a boolean if a field has been set.
 func (o *PatchedPasswordExpiryPolicyRequest) HasExecutionLogging() bool {
-	if o != nil && o.ExecutionLogging != nil {
+	if o != nil && !IsNil(o.ExecutionLogging) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *PatchedPasswordExpiryPolicyRequest) SetExecutionLogging(v bool) {
 
 // GetDays returns the Days field value if set, zero value otherwise.
 func (o *PatchedPasswordExpiryPolicyRequest) GetDays() int32 {
-	if o == nil || o.Days == nil {
+	if o == nil || IsNil(o.Days) {
 		var ret int32
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *PatchedPasswordExpiryPolicyRequest) GetDays() int32 {
 // GetDaysOk returns a tuple with the Days field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPasswordExpiryPolicyRequest) GetDaysOk() (*int32, bool) {
-	if o == nil || o.Days == nil {
+	if o == nil || IsNil(o.Days) {
 		return nil, false
 	}
 	return o.Days, true
@@ -125,7 +128,7 @@ func (o *PatchedPasswordExpiryPolicyRequest) GetDaysOk() (*int32, bool) {
 
 // HasDays returns a boolean if a field has been set.
 func (o *PatchedPasswordExpiryPolicyRequest) HasDays() bool {
-	if o != nil && o.Days != nil {
+	if o != nil && !IsNil(o.Days) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *PatchedPasswordExpiryPolicyRequest) SetDays(v int32) {
 
 // GetDenyOnly returns the DenyOnly field value if set, zero value otherwise.
 func (o *PatchedPasswordExpiryPolicyRequest) GetDenyOnly() bool {
-	if o == nil || o.DenyOnly == nil {
+	if o == nil || IsNil(o.DenyOnly) {
 		var ret bool
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *PatchedPasswordExpiryPolicyRequest) GetDenyOnly() bool {
 // GetDenyOnlyOk returns a tuple with the DenyOnly field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPasswordExpiryPolicyRequest) GetDenyOnlyOk() (*bool, bool) {
-	if o == nil || o.DenyOnly == nil {
+	if o == nil || IsNil(o.DenyOnly) {
 		return nil, false
 	}
 	return o.DenyOnly, true
@@ -157,7 +160,7 @@ func (o *PatchedPasswordExpiryPolicyRequest) GetDenyOnlyOk() (*bool, bool) {
 
 // HasDenyOnly returns a boolean if a field has been set.
 func (o *PatchedPasswordExpiryPolicyRequest) HasDenyOnly() bool {
-	if o != nil && o.DenyOnly != nil {
+	if o != nil && !IsNil(o.DenyOnly) {
 		return true
 	}
 
@@ -170,20 +173,28 @@ func (o *PatchedPasswordExpiryPolicyRequest) SetDenyOnly(v bool) {
 }
 
 func (o PatchedPasswordExpiryPolicyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.ExecutionLogging != nil {
-		toSerialize["execution_logging"] = o.ExecutionLogging
-	}
-	if o.Days != nil {
-		toSerialize["days"] = o.Days
-	}
-	if o.DenyOnly != nil {
-		toSerialize["deny_only"] = o.DenyOnly
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedPasswordExpiryPolicyRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.ExecutionLogging) {
+		toSerialize["execution_logging"] = o.ExecutionLogging
+	}
+	if !IsNil(o.Days) {
+		toSerialize["days"] = o.Days
+	}
+	if !IsNil(o.DenyOnly) {
+		toSerialize["deny_only"] = o.DenyOnly
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedPasswordExpiryPolicyRequest struct {

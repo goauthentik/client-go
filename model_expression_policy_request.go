@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the ExpressionPolicyRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ExpressionPolicyRequest{}
 
 // ExpressionPolicyRequest Group Membership Policy Serializer
 type ExpressionPolicyRequest struct {
@@ -22,6 +27,8 @@ type ExpressionPolicyRequest struct {
 	ExecutionLogging *bool  `json:"execution_logging,omitempty"`
 	Expression       string `json:"expression"`
 }
+
+type _ExpressionPolicyRequest ExpressionPolicyRequest
 
 // NewExpressionPolicyRequest instantiates a new ExpressionPolicyRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -68,7 +75,7 @@ func (o *ExpressionPolicyRequest) SetName(v string) {
 
 // GetExecutionLogging returns the ExecutionLogging field value if set, zero value otherwise.
 func (o *ExpressionPolicyRequest) GetExecutionLogging() bool {
-	if o == nil || o.ExecutionLogging == nil {
+	if o == nil || IsNil(o.ExecutionLogging) {
 		var ret bool
 		return ret
 	}
@@ -78,7 +85,7 @@ func (o *ExpressionPolicyRequest) GetExecutionLogging() bool {
 // GetExecutionLoggingOk returns a tuple with the ExecutionLogging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExpressionPolicyRequest) GetExecutionLoggingOk() (*bool, bool) {
-	if o == nil || o.ExecutionLogging == nil {
+	if o == nil || IsNil(o.ExecutionLogging) {
 		return nil, false
 	}
 	return o.ExecutionLogging, true
@@ -86,7 +93,7 @@ func (o *ExpressionPolicyRequest) GetExecutionLoggingOk() (*bool, bool) {
 
 // HasExecutionLogging returns a boolean if a field has been set.
 func (o *ExpressionPolicyRequest) HasExecutionLogging() bool {
-	if o != nil && o.ExecutionLogging != nil {
+	if o != nil && !IsNil(o.ExecutionLogging) {
 		return true
 	}
 
@@ -123,17 +130,59 @@ func (o *ExpressionPolicyRequest) SetExpression(v string) {
 }
 
 func (o ExpressionPolicyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.ExecutionLogging != nil {
-		toSerialize["execution_logging"] = o.ExecutionLogging
-	}
-	if true {
-		toSerialize["expression"] = o.Expression
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ExpressionPolicyRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.ExecutionLogging) {
+		toSerialize["execution_logging"] = o.ExecutionLogging
+	}
+	toSerialize["expression"] = o.Expression
+	return toSerialize, nil
+}
+
+func (o *ExpressionPolicyRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"expression",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varExpressionPolicyRequest := _ExpressionPolicyRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varExpressionPolicyRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ExpressionPolicyRequest(varExpressionPolicyRequest)
+
+	return err
 }
 
 type NullableExpressionPolicyRequest struct {

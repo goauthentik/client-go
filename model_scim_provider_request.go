@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the SCIMProviderRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SCIMProviderRequest{}
 
 // SCIMProviderRequest SCIMProvider Serializer
 type SCIMProviderRequest struct {
@@ -29,6 +34,8 @@ type SCIMProviderRequest struct {
 	ExcludeUsersServiceAccount *bool          `json:"exclude_users_service_account,omitempty"`
 	FilterGroup                NullableString `json:"filter_group,omitempty"`
 }
+
+type _SCIMProviderRequest SCIMProviderRequest
 
 // NewSCIMProviderRequest instantiates a new SCIMProviderRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -76,7 +83,7 @@ func (o *SCIMProviderRequest) SetName(v string) {
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
 func (o *SCIMProviderRequest) GetPropertyMappings() []string {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		var ret []string
 		return ret
 	}
@@ -86,7 +93,7 @@ func (o *SCIMProviderRequest) GetPropertyMappings() []string {
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SCIMProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		return nil, false
 	}
 	return o.PropertyMappings, true
@@ -94,7 +101,7 @@ func (o *SCIMProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
 
 // HasPropertyMappings returns a boolean if a field has been set.
 func (o *SCIMProviderRequest) HasPropertyMappings() bool {
-	if o != nil && o.PropertyMappings != nil {
+	if o != nil && !IsNil(o.PropertyMappings) {
 		return true
 	}
 
@@ -108,7 +115,7 @@ func (o *SCIMProviderRequest) SetPropertyMappings(v []string) {
 
 // GetPropertyMappingsGroup returns the PropertyMappingsGroup field value if set, zero value otherwise.
 func (o *SCIMProviderRequest) GetPropertyMappingsGroup() []string {
-	if o == nil || o.PropertyMappingsGroup == nil {
+	if o == nil || IsNil(o.PropertyMappingsGroup) {
 		var ret []string
 		return ret
 	}
@@ -118,7 +125,7 @@ func (o *SCIMProviderRequest) GetPropertyMappingsGroup() []string {
 // GetPropertyMappingsGroupOk returns a tuple with the PropertyMappingsGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SCIMProviderRequest) GetPropertyMappingsGroupOk() ([]string, bool) {
-	if o == nil || o.PropertyMappingsGroup == nil {
+	if o == nil || IsNil(o.PropertyMappingsGroup) {
 		return nil, false
 	}
 	return o.PropertyMappingsGroup, true
@@ -126,7 +133,7 @@ func (o *SCIMProviderRequest) GetPropertyMappingsGroupOk() ([]string, bool) {
 
 // HasPropertyMappingsGroup returns a boolean if a field has been set.
 func (o *SCIMProviderRequest) HasPropertyMappingsGroup() bool {
-	if o != nil && o.PropertyMappingsGroup != nil {
+	if o != nil && !IsNil(o.PropertyMappingsGroup) {
 		return true
 	}
 
@@ -164,7 +171,7 @@ func (o *SCIMProviderRequest) SetUrl(v string) {
 
 // GetVerifyCertificates returns the VerifyCertificates field value if set, zero value otherwise.
 func (o *SCIMProviderRequest) GetVerifyCertificates() bool {
-	if o == nil || o.VerifyCertificates == nil {
+	if o == nil || IsNil(o.VerifyCertificates) {
 		var ret bool
 		return ret
 	}
@@ -174,7 +181,7 @@ func (o *SCIMProviderRequest) GetVerifyCertificates() bool {
 // GetVerifyCertificatesOk returns a tuple with the VerifyCertificates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SCIMProviderRequest) GetVerifyCertificatesOk() (*bool, bool) {
-	if o == nil || o.VerifyCertificates == nil {
+	if o == nil || IsNil(o.VerifyCertificates) {
 		return nil, false
 	}
 	return o.VerifyCertificates, true
@@ -182,7 +189,7 @@ func (o *SCIMProviderRequest) GetVerifyCertificatesOk() (*bool, bool) {
 
 // HasVerifyCertificates returns a boolean if a field has been set.
 func (o *SCIMProviderRequest) HasVerifyCertificates() bool {
-	if o != nil && o.VerifyCertificates != nil {
+	if o != nil && !IsNil(o.VerifyCertificates) {
 		return true
 	}
 
@@ -220,7 +227,7 @@ func (o *SCIMProviderRequest) SetToken(v string) {
 
 // GetExcludeUsersServiceAccount returns the ExcludeUsersServiceAccount field value if set, zero value otherwise.
 func (o *SCIMProviderRequest) GetExcludeUsersServiceAccount() bool {
-	if o == nil || o.ExcludeUsersServiceAccount == nil {
+	if o == nil || IsNil(o.ExcludeUsersServiceAccount) {
 		var ret bool
 		return ret
 	}
@@ -230,7 +237,7 @@ func (o *SCIMProviderRequest) GetExcludeUsersServiceAccount() bool {
 // GetExcludeUsersServiceAccountOk returns a tuple with the ExcludeUsersServiceAccount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SCIMProviderRequest) GetExcludeUsersServiceAccountOk() (*bool, bool) {
-	if o == nil || o.ExcludeUsersServiceAccount == nil {
+	if o == nil || IsNil(o.ExcludeUsersServiceAccount) {
 		return nil, false
 	}
 	return o.ExcludeUsersServiceAccount, true
@@ -238,7 +245,7 @@ func (o *SCIMProviderRequest) GetExcludeUsersServiceAccountOk() (*bool, bool) {
 
 // HasExcludeUsersServiceAccount returns a boolean if a field has been set.
 func (o *SCIMProviderRequest) HasExcludeUsersServiceAccount() bool {
-	if o != nil && o.ExcludeUsersServiceAccount != nil {
+	if o != nil && !IsNil(o.ExcludeUsersServiceAccount) {
 		return true
 	}
 
@@ -252,7 +259,7 @@ func (o *SCIMProviderRequest) SetExcludeUsersServiceAccount(v bool) {
 
 // GetFilterGroup returns the FilterGroup field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SCIMProviderRequest) GetFilterGroup() string {
-	if o == nil || o.FilterGroup.Get() == nil {
+	if o == nil || IsNil(o.FilterGroup.Get()) {
 		var ret string
 		return ret
 	}
@@ -294,32 +301,73 @@ func (o *SCIMProviderRequest) UnsetFilterGroup() {
 }
 
 func (o SCIMProviderRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
-	if o.PropertyMappings != nil {
+	return json.Marshal(toSerialize)
+}
+
+func (o SCIMProviderRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.PropertyMappings) {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
-	if o.PropertyMappingsGroup != nil {
+	if !IsNil(o.PropertyMappingsGroup) {
 		toSerialize["property_mappings_group"] = o.PropertyMappingsGroup
 	}
-	if true {
-		toSerialize["url"] = o.Url
-	}
-	if o.VerifyCertificates != nil {
+	toSerialize["url"] = o.Url
+	if !IsNil(o.VerifyCertificates) {
 		toSerialize["verify_certificates"] = o.VerifyCertificates
 	}
-	if true {
-		toSerialize["token"] = o.Token
-	}
-	if o.ExcludeUsersServiceAccount != nil {
+	toSerialize["token"] = o.Token
+	if !IsNil(o.ExcludeUsersServiceAccount) {
 		toSerialize["exclude_users_service_account"] = o.ExcludeUsersServiceAccount
 	}
 	if o.FilterGroup.IsSet() {
 		toSerialize["filter_group"] = o.FilterGroup.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *SCIMProviderRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"url",
+		"token",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSCIMProviderRequest := _SCIMProviderRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSCIMProviderRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SCIMProviderRequest(varSCIMProviderRequest)
+
+	return err
 }
 
 type NullableSCIMProviderRequest struct {

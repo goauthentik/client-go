@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the GeoIPPolicyRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GeoIPPolicyRequest{}
 
 // GeoIPPolicyRequest GeoIP Policy Serializer
 type GeoIPPolicyRequest struct {
@@ -23,6 +28,8 @@ type GeoIPPolicyRequest struct {
 	Asns             []int32           `json:"asns,omitempty"`
 	Countries        []CountryCodeEnum `json:"countries"`
 }
+
+type _GeoIPPolicyRequest GeoIPPolicyRequest
 
 // NewGeoIPPolicyRequest instantiates a new GeoIPPolicyRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -69,7 +76,7 @@ func (o *GeoIPPolicyRequest) SetName(v string) {
 
 // GetExecutionLogging returns the ExecutionLogging field value if set, zero value otherwise.
 func (o *GeoIPPolicyRequest) GetExecutionLogging() bool {
-	if o == nil || o.ExecutionLogging == nil {
+	if o == nil || IsNil(o.ExecutionLogging) {
 		var ret bool
 		return ret
 	}
@@ -79,7 +86,7 @@ func (o *GeoIPPolicyRequest) GetExecutionLogging() bool {
 // GetExecutionLoggingOk returns a tuple with the ExecutionLogging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GeoIPPolicyRequest) GetExecutionLoggingOk() (*bool, bool) {
-	if o == nil || o.ExecutionLogging == nil {
+	if o == nil || IsNil(o.ExecutionLogging) {
 		return nil, false
 	}
 	return o.ExecutionLogging, true
@@ -87,7 +94,7 @@ func (o *GeoIPPolicyRequest) GetExecutionLoggingOk() (*bool, bool) {
 
 // HasExecutionLogging returns a boolean if a field has been set.
 func (o *GeoIPPolicyRequest) HasExecutionLogging() bool {
-	if o != nil && o.ExecutionLogging != nil {
+	if o != nil && !IsNil(o.ExecutionLogging) {
 		return true
 	}
 
@@ -101,7 +108,7 @@ func (o *GeoIPPolicyRequest) SetExecutionLogging(v bool) {
 
 // GetAsns returns the Asns field value if set, zero value otherwise.
 func (o *GeoIPPolicyRequest) GetAsns() []int32 {
-	if o == nil || o.Asns == nil {
+	if o == nil || IsNil(o.Asns) {
 		var ret []int32
 		return ret
 	}
@@ -111,7 +118,7 @@ func (o *GeoIPPolicyRequest) GetAsns() []int32 {
 // GetAsnsOk returns a tuple with the Asns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GeoIPPolicyRequest) GetAsnsOk() ([]int32, bool) {
-	if o == nil || o.Asns == nil {
+	if o == nil || IsNil(o.Asns) {
 		return nil, false
 	}
 	return o.Asns, true
@@ -119,7 +126,7 @@ func (o *GeoIPPolicyRequest) GetAsnsOk() ([]int32, bool) {
 
 // HasAsns returns a boolean if a field has been set.
 func (o *GeoIPPolicyRequest) HasAsns() bool {
-	if o != nil && o.Asns != nil {
+	if o != nil && !IsNil(o.Asns) {
 		return true
 	}
 
@@ -156,20 +163,62 @@ func (o *GeoIPPolicyRequest) SetCountries(v []CountryCodeEnum) {
 }
 
 func (o GeoIPPolicyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.ExecutionLogging != nil {
-		toSerialize["execution_logging"] = o.ExecutionLogging
-	}
-	if o.Asns != nil {
-		toSerialize["asns"] = o.Asns
-	}
-	if true {
-		toSerialize["countries"] = o.Countries
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GeoIPPolicyRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.ExecutionLogging) {
+		toSerialize["execution_logging"] = o.ExecutionLogging
+	}
+	if !IsNil(o.Asns) {
+		toSerialize["asns"] = o.Asns
+	}
+	toSerialize["countries"] = o.Countries
+	return toSerialize, nil
+}
+
+func (o *GeoIPPolicyRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"countries",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varGeoIPPolicyRequest := _GeoIPPolicyRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varGeoIPPolicyRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GeoIPPolicyRequest(varGeoIPPolicyRequest)
+
+	return err
 }
 
 type NullableGeoIPPolicyRequest struct {

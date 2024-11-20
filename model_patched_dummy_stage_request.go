@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedDummyStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedDummyStageRequest{}
+
 // PatchedDummyStageRequest DummyStage Serializer
 type PatchedDummyStageRequest struct {
 	Name       *string          `json:"name,omitempty"`
@@ -41,7 +44,7 @@ func NewPatchedDummyStageRequestWithDefaults() *PatchedDummyStageRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedDummyStageRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *PatchedDummyStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedDummyStageRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -59,7 +62,7 @@ func (o *PatchedDummyStageRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedDummyStageRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *PatchedDummyStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *PatchedDummyStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *PatchedDummyStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedDummyStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -91,7 +94,7 @@ func (o *PatchedDummyStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *PatchedDummyStageRequest) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
+	if o != nil && !IsNil(o.FlowSet) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *PatchedDummyStageRequest) SetFlowSet(v []FlowSetRequest) {
 
 // GetThrowError returns the ThrowError field value if set, zero value otherwise.
 func (o *PatchedDummyStageRequest) GetThrowError() bool {
-	if o == nil || o.ThrowError == nil {
+	if o == nil || IsNil(o.ThrowError) {
 		var ret bool
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *PatchedDummyStageRequest) GetThrowError() bool {
 // GetThrowErrorOk returns a tuple with the ThrowError field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedDummyStageRequest) GetThrowErrorOk() (*bool, bool) {
-	if o == nil || o.ThrowError == nil {
+	if o == nil || IsNil(o.ThrowError) {
 		return nil, false
 	}
 	return o.ThrowError, true
@@ -123,7 +126,7 @@ func (o *PatchedDummyStageRequest) GetThrowErrorOk() (*bool, bool) {
 
 // HasThrowError returns a boolean if a field has been set.
 func (o *PatchedDummyStageRequest) HasThrowError() bool {
-	if o != nil && o.ThrowError != nil {
+	if o != nil && !IsNil(o.ThrowError) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *PatchedDummyStageRequest) SetThrowError(v bool) {
 }
 
 func (o PatchedDummyStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.FlowSet != nil {
-		toSerialize["flow_set"] = o.FlowSet
-	}
-	if o.ThrowError != nil {
-		toSerialize["throw_error"] = o.ThrowError
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedDummyStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
+	if !IsNil(o.ThrowError) {
+		toSerialize["throw_error"] = o.ThrowError
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedDummyStageRequest struct {

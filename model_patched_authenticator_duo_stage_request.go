@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedAuthenticatorDuoStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedAuthenticatorDuoStageRequest{}
+
 // PatchedAuthenticatorDuoStageRequest AuthenticatorDuoStage Serializer
 type PatchedAuthenticatorDuoStageRequest struct {
 	Name    *string          `json:"name,omitempty"`
@@ -48,7 +51,7 @@ func NewPatchedAuthenticatorDuoStageRequestWithDefaults() *PatchedAuthenticatorD
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorDuoStageRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -58,7 +61,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorDuoStageRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -66,7 +69,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorDuoStageRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorDuoStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -90,7 +93,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorDuoStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -98,7 +101,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) GetFlowSetOk() ([]FlowSetRequest, 
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorDuoStageRequest) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
+	if o != nil && !IsNil(o.FlowSet) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) SetFlowSet(v []FlowSetRequest) {
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedAuthenticatorDuoStageRequest) GetConfigureFlow() string {
-	if o == nil || o.ConfigureFlow.Get() == nil {
+	if o == nil || IsNil(o.ConfigureFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -155,7 +158,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) UnsetConfigureFlow() {
 
 // GetFriendlyName returns the FriendlyName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedAuthenticatorDuoStageRequest) GetFriendlyName() string {
-	if o == nil || o.FriendlyName.Get() == nil {
+	if o == nil || IsNil(o.FriendlyName.Get()) {
 		var ret string
 		return ret
 	}
@@ -198,7 +201,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) UnsetFriendlyName() {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorDuoStageRequest) GetClientId() string {
-	if o == nil || o.ClientId == nil {
+	if o == nil || IsNil(o.ClientId) {
 		var ret string
 		return ret
 	}
@@ -208,7 +211,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) GetClientId() string {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorDuoStageRequest) GetClientIdOk() (*string, bool) {
-	if o == nil || o.ClientId == nil {
+	if o == nil || IsNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -216,7 +219,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) GetClientIdOk() (*string, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorDuoStageRequest) HasClientId() bool {
-	if o != nil && o.ClientId != nil {
+	if o != nil && !IsNil(o.ClientId) {
 		return true
 	}
 
@@ -230,7 +233,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) SetClientId(v string) {
 
 // GetClientSecret returns the ClientSecret field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorDuoStageRequest) GetClientSecret() string {
-	if o == nil || o.ClientSecret == nil {
+	if o == nil || IsNil(o.ClientSecret) {
 		var ret string
 		return ret
 	}
@@ -240,7 +243,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) GetClientSecret() string {
 // GetClientSecretOk returns a tuple with the ClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorDuoStageRequest) GetClientSecretOk() (*string, bool) {
-	if o == nil || o.ClientSecret == nil {
+	if o == nil || IsNil(o.ClientSecret) {
 		return nil, false
 	}
 	return o.ClientSecret, true
@@ -248,7 +251,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) GetClientSecretOk() (*string, bool
 
 // HasClientSecret returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorDuoStageRequest) HasClientSecret() bool {
-	if o != nil && o.ClientSecret != nil {
+	if o != nil && !IsNil(o.ClientSecret) {
 		return true
 	}
 
@@ -262,7 +265,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) SetClientSecret(v string) {
 
 // GetApiHostname returns the ApiHostname field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorDuoStageRequest) GetApiHostname() string {
-	if o == nil || o.ApiHostname == nil {
+	if o == nil || IsNil(o.ApiHostname) {
 		var ret string
 		return ret
 	}
@@ -272,7 +275,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) GetApiHostname() string {
 // GetApiHostnameOk returns a tuple with the ApiHostname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorDuoStageRequest) GetApiHostnameOk() (*string, bool) {
-	if o == nil || o.ApiHostname == nil {
+	if o == nil || IsNil(o.ApiHostname) {
 		return nil, false
 	}
 	return o.ApiHostname, true
@@ -280,7 +283,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) GetApiHostnameOk() (*string, bool)
 
 // HasApiHostname returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorDuoStageRequest) HasApiHostname() bool {
-	if o != nil && o.ApiHostname != nil {
+	if o != nil && !IsNil(o.ApiHostname) {
 		return true
 	}
 
@@ -294,7 +297,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) SetApiHostname(v string) {
 
 // GetAdminIntegrationKey returns the AdminIntegrationKey field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorDuoStageRequest) GetAdminIntegrationKey() string {
-	if o == nil || o.AdminIntegrationKey == nil {
+	if o == nil || IsNil(o.AdminIntegrationKey) {
 		var ret string
 		return ret
 	}
@@ -304,7 +307,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) GetAdminIntegrationKey() string {
 // GetAdminIntegrationKeyOk returns a tuple with the AdminIntegrationKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorDuoStageRequest) GetAdminIntegrationKeyOk() (*string, bool) {
-	if o == nil || o.AdminIntegrationKey == nil {
+	if o == nil || IsNil(o.AdminIntegrationKey) {
 		return nil, false
 	}
 	return o.AdminIntegrationKey, true
@@ -312,7 +315,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) GetAdminIntegrationKeyOk() (*strin
 
 // HasAdminIntegrationKey returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorDuoStageRequest) HasAdminIntegrationKey() bool {
-	if o != nil && o.AdminIntegrationKey != nil {
+	if o != nil && !IsNil(o.AdminIntegrationKey) {
 		return true
 	}
 
@@ -326,7 +329,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) SetAdminIntegrationKey(v string) {
 
 // GetAdminSecretKey returns the AdminSecretKey field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorDuoStageRequest) GetAdminSecretKey() string {
-	if o == nil || o.AdminSecretKey == nil {
+	if o == nil || IsNil(o.AdminSecretKey) {
 		var ret string
 		return ret
 	}
@@ -336,7 +339,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) GetAdminSecretKey() string {
 // GetAdminSecretKeyOk returns a tuple with the AdminSecretKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorDuoStageRequest) GetAdminSecretKeyOk() (*string, bool) {
-	if o == nil || o.AdminSecretKey == nil {
+	if o == nil || IsNil(o.AdminSecretKey) {
 		return nil, false
 	}
 	return o.AdminSecretKey, true
@@ -344,7 +347,7 @@ func (o *PatchedAuthenticatorDuoStageRequest) GetAdminSecretKeyOk() (*string, bo
 
 // HasAdminSecretKey returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorDuoStageRequest) HasAdminSecretKey() bool {
-	if o != nil && o.AdminSecretKey != nil {
+	if o != nil && !IsNil(o.AdminSecretKey) {
 		return true
 	}
 
@@ -357,11 +360,19 @@ func (o *PatchedAuthenticatorDuoStageRequest) SetAdminSecretKey(v string) {
 }
 
 func (o PatchedAuthenticatorDuoStageRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedAuthenticatorDuoStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.FlowSet != nil {
+	if !IsNil(o.FlowSet) {
 		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.ConfigureFlow.IsSet() {
@@ -370,22 +381,22 @@ func (o PatchedAuthenticatorDuoStageRequest) MarshalJSON() ([]byte, error) {
 	if o.FriendlyName.IsSet() {
 		toSerialize["friendly_name"] = o.FriendlyName.Get()
 	}
-	if o.ClientId != nil {
+	if !IsNil(o.ClientId) {
 		toSerialize["client_id"] = o.ClientId
 	}
-	if o.ClientSecret != nil {
+	if !IsNil(o.ClientSecret) {
 		toSerialize["client_secret"] = o.ClientSecret
 	}
-	if o.ApiHostname != nil {
+	if !IsNil(o.ApiHostname) {
 		toSerialize["api_hostname"] = o.ApiHostname
 	}
-	if o.AdminIntegrationKey != nil {
+	if !IsNil(o.AdminIntegrationKey) {
 		toSerialize["admin_integration_key"] = o.AdminIntegrationKey
 	}
-	if o.AdminSecretKey != nil {
+	if !IsNil(o.AdminSecretKey) {
 		toSerialize["admin_secret_key"] = o.AdminSecretKey
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedAuthenticatorDuoStageRequest struct {

@@ -14,19 +14,19 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 	"time"
 )
 
-// EventsApiService EventsApi service
-type EventsApiService service
+// EventsAPIService EventsAPI service
+type EventsAPIService service
 
 type ApiEventsEventsActionsListRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 }
 
 func (r ApiEventsEventsActionsListRequest) Execute() ([]TypeCreate, *http.Response, error) {
@@ -41,7 +41,7 @@ Get all actions
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEventsEventsActionsListRequest
 */
-func (a *EventsApiService) EventsEventsActionsList(ctx context.Context) ApiEventsEventsActionsListRequest {
+func (a *EventsAPIService) EventsEventsActionsList(ctx context.Context) ApiEventsEventsActionsListRequest {
 	return ApiEventsEventsActionsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -51,7 +51,7 @@ func (a *EventsApiService) EventsEventsActionsList(ctx context.Context) ApiEvent
 // Execute executes the request
 //
 //	@return []TypeCreate
-func (a *EventsApiService) EventsEventsActionsListExecute(r ApiEventsEventsActionsListRequest) ([]TypeCreate, *http.Response, error) {
+func (a *EventsAPIService) EventsEventsActionsListExecute(r ApiEventsEventsActionsListRequest) ([]TypeCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -59,7 +59,7 @@ func (a *EventsApiService) EventsEventsActionsListExecute(r ApiEventsEventsActio
 		localVarReturnValue []TypeCreate
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsEventsActionsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsEventsActionsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -97,9 +97,9 @@ func (a *EventsApiService) EventsEventsActionsListExecute(r ApiEventsEventsActio
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -116,6 +116,7 @@ func (a *EventsApiService) EventsEventsActionsListExecute(r ApiEventsEventsActio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -126,6 +127,7 @@ func (a *EventsApiService) EventsEventsActionsListExecute(r ApiEventsEventsActio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -145,7 +147,7 @@ func (a *EventsApiService) EventsEventsActionsListExecute(r ApiEventsEventsActio
 
 type ApiEventsEventsCreateRequest struct {
 	ctx          context.Context
-	ApiService   *EventsApiService
+	ApiService   *EventsAPIService
 	eventRequest *EventRequest
 }
 
@@ -166,7 +168,7 @@ Event Read-Only Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEventsEventsCreateRequest
 */
-func (a *EventsApiService) EventsEventsCreate(ctx context.Context) ApiEventsEventsCreateRequest {
+func (a *EventsAPIService) EventsEventsCreate(ctx context.Context) ApiEventsEventsCreateRequest {
 	return ApiEventsEventsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -176,7 +178,7 @@ func (a *EventsApiService) EventsEventsCreate(ctx context.Context) ApiEventsEven
 // Execute executes the request
 //
 //	@return Event
-func (a *EventsApiService) EventsEventsCreateExecute(r ApiEventsEventsCreateRequest) (*Event, *http.Response, error) {
+func (a *EventsAPIService) EventsEventsCreateExecute(r ApiEventsEventsCreateRequest) (*Event, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -184,7 +186,7 @@ func (a *EventsApiService) EventsEventsCreateExecute(r ApiEventsEventsCreateRequ
 		localVarReturnValue *Event
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsEventsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsEventsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -227,9 +229,9 @@ func (a *EventsApiService) EventsEventsCreateExecute(r ApiEventsEventsCreateRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -246,6 +248,7 @@ func (a *EventsApiService) EventsEventsCreateExecute(r ApiEventsEventsCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -256,6 +259,7 @@ func (a *EventsApiService) EventsEventsCreateExecute(r ApiEventsEventsCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -275,7 +279,7 @@ func (a *EventsApiService) EventsEventsCreateExecute(r ApiEventsEventsCreateRequ
 
 type ApiEventsEventsDestroyRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 	eventUuid  string
 }
 
@@ -292,7 +296,7 @@ Event Read-Only Viewset
 	@param eventUuid A UUID string identifying this Event.
 	@return ApiEventsEventsDestroyRequest
 */
-func (a *EventsApiService) EventsEventsDestroy(ctx context.Context, eventUuid string) ApiEventsEventsDestroyRequest {
+func (a *EventsAPIService) EventsEventsDestroy(ctx context.Context, eventUuid string) ApiEventsEventsDestroyRequest {
 	return ApiEventsEventsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -301,20 +305,20 @@ func (a *EventsApiService) EventsEventsDestroy(ctx context.Context, eventUuid st
 }
 
 // Execute executes the request
-func (a *EventsApiService) EventsEventsDestroyExecute(r ApiEventsEventsDestroyRequest) (*http.Response, error) {
+func (a *EventsAPIService) EventsEventsDestroyExecute(r ApiEventsEventsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsEventsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsEventsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/events/{event_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"event_uuid"+"}", url.PathEscape(parameterToString(r.eventUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"event_uuid"+"}", url.PathEscape(parameterValueToString(r.eventUuid, "eventUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -347,9 +351,9 @@ func (a *EventsApiService) EventsEventsDestroyExecute(r ApiEventsEventsDestroyRe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -366,6 +370,7 @@ func (a *EventsApiService) EventsEventsDestroyExecute(r ApiEventsEventsDestroyRe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -376,6 +381,7 @@ func (a *EventsApiService) EventsEventsDestroyExecute(r ApiEventsEventsDestroyRe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -386,7 +392,7 @@ func (a *EventsApiService) EventsEventsDestroyExecute(r ApiEventsEventsDestroyRe
 
 type ApiEventsEventsListRequest struct {
 	ctx                  context.Context
-	ApiService           *EventsApiService
+	ApiService           *EventsAPIService
 	action               *string
 	brandName            *string
 	clientIp             *string
@@ -483,7 +489,7 @@ Event Read-Only Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEventsEventsListRequest
 */
-func (a *EventsApiService) EventsEventsList(ctx context.Context) ApiEventsEventsListRequest {
+func (a *EventsAPIService) EventsEventsList(ctx context.Context) ApiEventsEventsListRequest {
 	return ApiEventsEventsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -493,7 +499,7 @@ func (a *EventsApiService) EventsEventsList(ctx context.Context) ApiEventsEvents
 // Execute executes the request
 //
 //	@return PaginatedEventList
-func (a *EventsApiService) EventsEventsListExecute(r ApiEventsEventsListRequest) (*PaginatedEventList, *http.Response, error) {
+func (a *EventsAPIService) EventsEventsListExecute(r ApiEventsEventsListRequest) (*PaginatedEventList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -501,7 +507,7 @@ func (a *EventsApiService) EventsEventsListExecute(r ApiEventsEventsListRequest)
 		localVarReturnValue *PaginatedEventList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsEventsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsEventsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -513,40 +519,40 @@ func (a *EventsApiService) EventsEventsListExecute(r ApiEventsEventsListRequest)
 	localVarFormParams := url.Values{}
 
 	if r.action != nil {
-		localVarQueryParams.Add("action", parameterToString(*r.action, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "action", r.action, "form", "")
 	}
 	if r.brandName != nil {
-		localVarQueryParams.Add("brand_name", parameterToString(*r.brandName, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "brand_name", r.brandName, "form", "")
 	}
 	if r.clientIp != nil {
-		localVarQueryParams.Add("client_ip", parameterToString(*r.clientIp, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "client_ip", r.clientIp, "form", "")
 	}
 	if r.contextAuthorizedApp != nil {
-		localVarQueryParams.Add("context_authorized_app", parameterToString(*r.contextAuthorizedApp, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "context_authorized_app", r.contextAuthorizedApp, "form", "")
 	}
 	if r.contextModelApp != nil {
-		localVarQueryParams.Add("context_model_app", parameterToString(*r.contextModelApp, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "context_model_app", r.contextModelApp, "form", "")
 	}
 	if r.contextModelName != nil {
-		localVarQueryParams.Add("context_model_name", parameterToString(*r.contextModelName, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "context_model_name", r.contextModelName, "form", "")
 	}
 	if r.contextModelPk != nil {
-		localVarQueryParams.Add("context_model_pk", parameterToString(*r.contextModelPk, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "context_model_pk", r.contextModelPk, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.username != nil {
-		localVarQueryParams.Add("username", parameterToString(*r.username, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "username", r.username, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -575,9 +581,9 @@ func (a *EventsApiService) EventsEventsListExecute(r ApiEventsEventsListRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -594,6 +600,7 @@ func (a *EventsApiService) EventsEventsListExecute(r ApiEventsEventsListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -604,6 +611,7 @@ func (a *EventsApiService) EventsEventsListExecute(r ApiEventsEventsListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -623,7 +631,7 @@ func (a *EventsApiService) EventsEventsListExecute(r ApiEventsEventsListRequest)
 
 type ApiEventsEventsPartialUpdateRequest struct {
 	ctx                 context.Context
-	ApiService          *EventsApiService
+	ApiService          *EventsAPIService
 	eventUuid           string
 	patchedEventRequest *PatchedEventRequest
 }
@@ -646,7 +654,7 @@ Event Read-Only Viewset
 	@param eventUuid A UUID string identifying this Event.
 	@return ApiEventsEventsPartialUpdateRequest
 */
-func (a *EventsApiService) EventsEventsPartialUpdate(ctx context.Context, eventUuid string) ApiEventsEventsPartialUpdateRequest {
+func (a *EventsAPIService) EventsEventsPartialUpdate(ctx context.Context, eventUuid string) ApiEventsEventsPartialUpdateRequest {
 	return ApiEventsEventsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -657,7 +665,7 @@ func (a *EventsApiService) EventsEventsPartialUpdate(ctx context.Context, eventU
 // Execute executes the request
 //
 //	@return Event
-func (a *EventsApiService) EventsEventsPartialUpdateExecute(r ApiEventsEventsPartialUpdateRequest) (*Event, *http.Response, error) {
+func (a *EventsAPIService) EventsEventsPartialUpdateExecute(r ApiEventsEventsPartialUpdateRequest) (*Event, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -665,13 +673,13 @@ func (a *EventsApiService) EventsEventsPartialUpdateExecute(r ApiEventsEventsPar
 		localVarReturnValue *Event
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsEventsPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsEventsPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/events/{event_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"event_uuid"+"}", url.PathEscape(parameterToString(r.eventUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"event_uuid"+"}", url.PathEscape(parameterValueToString(r.eventUuid, "eventUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -706,9 +714,9 @@ func (a *EventsApiService) EventsEventsPartialUpdateExecute(r ApiEventsEventsPar
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -725,6 +733,7 @@ func (a *EventsApiService) EventsEventsPartialUpdateExecute(r ApiEventsEventsPar
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -735,6 +744,7 @@ func (a *EventsApiService) EventsEventsPartialUpdateExecute(r ApiEventsEventsPar
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -754,7 +764,7 @@ func (a *EventsApiService) EventsEventsPartialUpdateExecute(r ApiEventsEventsPar
 
 type ApiEventsEventsPerMonthListRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 	action     *string
 	query      *string
 }
@@ -781,7 +791,7 @@ Get the count of events per month
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEventsEventsPerMonthListRequest
 */
-func (a *EventsApiService) EventsEventsPerMonthList(ctx context.Context) ApiEventsEventsPerMonthListRequest {
+func (a *EventsAPIService) EventsEventsPerMonthList(ctx context.Context) ApiEventsEventsPerMonthListRequest {
 	return ApiEventsEventsPerMonthListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -791,7 +801,7 @@ func (a *EventsApiService) EventsEventsPerMonthList(ctx context.Context) ApiEven
 // Execute executes the request
 //
 //	@return []Coordinate
-func (a *EventsApiService) EventsEventsPerMonthListExecute(r ApiEventsEventsPerMonthListRequest) ([]Coordinate, *http.Response, error) {
+func (a *EventsAPIService) EventsEventsPerMonthListExecute(r ApiEventsEventsPerMonthListRequest) ([]Coordinate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -799,7 +809,7 @@ func (a *EventsApiService) EventsEventsPerMonthListExecute(r ApiEventsEventsPerM
 		localVarReturnValue []Coordinate
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsEventsPerMonthList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsEventsPerMonthList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -811,10 +821,10 @@ func (a *EventsApiService) EventsEventsPerMonthListExecute(r ApiEventsEventsPerM
 	localVarFormParams := url.Values{}
 
 	if r.action != nil {
-		localVarQueryParams.Add("action", parameterToString(*r.action, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "action", r.action, "form", "")
 	}
 	if r.query != nil {
-		localVarQueryParams.Add("query", parameterToString(*r.query, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "query", r.query, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -843,9 +853,9 @@ func (a *EventsApiService) EventsEventsPerMonthListExecute(r ApiEventsEventsPerM
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -862,6 +872,7 @@ func (a *EventsApiService) EventsEventsPerMonthListExecute(r ApiEventsEventsPerM
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -872,6 +883,7 @@ func (a *EventsApiService) EventsEventsPerMonthListExecute(r ApiEventsEventsPerM
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -891,7 +903,7 @@ func (a *EventsApiService) EventsEventsPerMonthListExecute(r ApiEventsEventsPerM
 
 type ApiEventsEventsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 	eventUuid  string
 }
 
@@ -908,7 +920,7 @@ Event Read-Only Viewset
 	@param eventUuid A UUID string identifying this Event.
 	@return ApiEventsEventsRetrieveRequest
 */
-func (a *EventsApiService) EventsEventsRetrieve(ctx context.Context, eventUuid string) ApiEventsEventsRetrieveRequest {
+func (a *EventsAPIService) EventsEventsRetrieve(ctx context.Context, eventUuid string) ApiEventsEventsRetrieveRequest {
 	return ApiEventsEventsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -919,7 +931,7 @@ func (a *EventsApiService) EventsEventsRetrieve(ctx context.Context, eventUuid s
 // Execute executes the request
 //
 //	@return Event
-func (a *EventsApiService) EventsEventsRetrieveExecute(r ApiEventsEventsRetrieveRequest) (*Event, *http.Response, error) {
+func (a *EventsAPIService) EventsEventsRetrieveExecute(r ApiEventsEventsRetrieveRequest) (*Event, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -927,13 +939,13 @@ func (a *EventsApiService) EventsEventsRetrieveExecute(r ApiEventsEventsRetrieve
 		localVarReturnValue *Event
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsEventsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsEventsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/events/{event_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"event_uuid"+"}", url.PathEscape(parameterToString(r.eventUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"event_uuid"+"}", url.PathEscape(parameterValueToString(r.eventUuid, "eventUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -966,9 +978,9 @@ func (a *EventsApiService) EventsEventsRetrieveExecute(r ApiEventsEventsRetrieve
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -985,6 +997,7 @@ func (a *EventsApiService) EventsEventsRetrieveExecute(r ApiEventsEventsRetrieve
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -995,6 +1008,7 @@ func (a *EventsApiService) EventsEventsRetrieveExecute(r ApiEventsEventsRetrieve
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1014,7 +1028,7 @@ func (a *EventsApiService) EventsEventsRetrieveExecute(r ApiEventsEventsRetrieve
 
 type ApiEventsEventsTopPerUserListRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 	action     *string
 	topN       *int32
 }
@@ -1041,7 +1055,7 @@ Get the top_n events grouped by user count
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEventsEventsTopPerUserListRequest
 */
-func (a *EventsApiService) EventsEventsTopPerUserList(ctx context.Context) ApiEventsEventsTopPerUserListRequest {
+func (a *EventsAPIService) EventsEventsTopPerUserList(ctx context.Context) ApiEventsEventsTopPerUserListRequest {
 	return ApiEventsEventsTopPerUserListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1051,7 +1065,7 @@ func (a *EventsApiService) EventsEventsTopPerUserList(ctx context.Context) ApiEv
 // Execute executes the request
 //
 //	@return []EventTopPerUser
-func (a *EventsApiService) EventsEventsTopPerUserListExecute(r ApiEventsEventsTopPerUserListRequest) ([]EventTopPerUser, *http.Response, error) {
+func (a *EventsAPIService) EventsEventsTopPerUserListExecute(r ApiEventsEventsTopPerUserListRequest) ([]EventTopPerUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1059,7 +1073,7 @@ func (a *EventsApiService) EventsEventsTopPerUserListExecute(r ApiEventsEventsTo
 		localVarReturnValue []EventTopPerUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsEventsTopPerUserList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsEventsTopPerUserList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1071,10 +1085,10 @@ func (a *EventsApiService) EventsEventsTopPerUserListExecute(r ApiEventsEventsTo
 	localVarFormParams := url.Values{}
 
 	if r.action != nil {
-		localVarQueryParams.Add("action", parameterToString(*r.action, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "action", r.action, "form", "")
 	}
 	if r.topN != nil {
-		localVarQueryParams.Add("top_n", parameterToString(*r.topN, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "top_n", r.topN, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1103,9 +1117,9 @@ func (a *EventsApiService) EventsEventsTopPerUserListExecute(r ApiEventsEventsTo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1122,6 +1136,7 @@ func (a *EventsApiService) EventsEventsTopPerUserListExecute(r ApiEventsEventsTo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1132,6 +1147,7 @@ func (a *EventsApiService) EventsEventsTopPerUserListExecute(r ApiEventsEventsTo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1151,7 +1167,7 @@ func (a *EventsApiService) EventsEventsTopPerUserListExecute(r ApiEventsEventsTo
 
 type ApiEventsEventsUpdateRequest struct {
 	ctx          context.Context
-	ApiService   *EventsApiService
+	ApiService   *EventsAPIService
 	eventUuid    string
 	eventRequest *EventRequest
 }
@@ -1174,7 +1190,7 @@ Event Read-Only Viewset
 	@param eventUuid A UUID string identifying this Event.
 	@return ApiEventsEventsUpdateRequest
 */
-func (a *EventsApiService) EventsEventsUpdate(ctx context.Context, eventUuid string) ApiEventsEventsUpdateRequest {
+func (a *EventsAPIService) EventsEventsUpdate(ctx context.Context, eventUuid string) ApiEventsEventsUpdateRequest {
 	return ApiEventsEventsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1185,7 +1201,7 @@ func (a *EventsApiService) EventsEventsUpdate(ctx context.Context, eventUuid str
 // Execute executes the request
 //
 //	@return Event
-func (a *EventsApiService) EventsEventsUpdateExecute(r ApiEventsEventsUpdateRequest) (*Event, *http.Response, error) {
+func (a *EventsAPIService) EventsEventsUpdateExecute(r ApiEventsEventsUpdateRequest) (*Event, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -1193,13 +1209,13 @@ func (a *EventsApiService) EventsEventsUpdateExecute(r ApiEventsEventsUpdateRequ
 		localVarReturnValue *Event
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsEventsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsEventsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/events/{event_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"event_uuid"+"}", url.PathEscape(parameterToString(r.eventUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"event_uuid"+"}", url.PathEscape(parameterValueToString(r.eventUuid, "eventUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1237,9 +1253,9 @@ func (a *EventsApiService) EventsEventsUpdateExecute(r ApiEventsEventsUpdateRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1256,6 +1272,7 @@ func (a *EventsApiService) EventsEventsUpdateExecute(r ApiEventsEventsUpdateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1266,6 +1283,7 @@ func (a *EventsApiService) EventsEventsUpdateExecute(r ApiEventsEventsUpdateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1285,7 +1303,7 @@ func (a *EventsApiService) EventsEventsUpdateExecute(r ApiEventsEventsUpdateRequ
 
 type ApiEventsEventsVolumeListRequest struct {
 	ctx                  context.Context
-	ApiService           *EventsApiService
+	ApiService           *EventsAPIService
 	action               *string
 	brandName            *string
 	clientIp             *string
@@ -1368,7 +1386,7 @@ Get event volume for specified filters and timeframe
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEventsEventsVolumeListRequest
 */
-func (a *EventsApiService) EventsEventsVolumeList(ctx context.Context) ApiEventsEventsVolumeListRequest {
+func (a *EventsAPIService) EventsEventsVolumeList(ctx context.Context) ApiEventsEventsVolumeListRequest {
 	return ApiEventsEventsVolumeListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1378,7 +1396,7 @@ func (a *EventsApiService) EventsEventsVolumeList(ctx context.Context) ApiEvents
 // Execute executes the request
 //
 //	@return []Coordinate
-func (a *EventsApiService) EventsEventsVolumeListExecute(r ApiEventsEventsVolumeListRequest) ([]Coordinate, *http.Response, error) {
+func (a *EventsAPIService) EventsEventsVolumeListExecute(r ApiEventsEventsVolumeListRequest) ([]Coordinate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1386,7 +1404,7 @@ func (a *EventsApiService) EventsEventsVolumeListExecute(r ApiEventsEventsVolume
 		localVarReturnValue []Coordinate
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsEventsVolumeList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsEventsVolumeList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1398,34 +1416,34 @@ func (a *EventsApiService) EventsEventsVolumeListExecute(r ApiEventsEventsVolume
 	localVarFormParams := url.Values{}
 
 	if r.action != nil {
-		localVarQueryParams.Add("action", parameterToString(*r.action, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "action", r.action, "form", "")
 	}
 	if r.brandName != nil {
-		localVarQueryParams.Add("brand_name", parameterToString(*r.brandName, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "brand_name", r.brandName, "form", "")
 	}
 	if r.clientIp != nil {
-		localVarQueryParams.Add("client_ip", parameterToString(*r.clientIp, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "client_ip", r.clientIp, "form", "")
 	}
 	if r.contextAuthorizedApp != nil {
-		localVarQueryParams.Add("context_authorized_app", parameterToString(*r.contextAuthorizedApp, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "context_authorized_app", r.contextAuthorizedApp, "form", "")
 	}
 	if r.contextModelApp != nil {
-		localVarQueryParams.Add("context_model_app", parameterToString(*r.contextModelApp, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "context_model_app", r.contextModelApp, "form", "")
 	}
 	if r.contextModelName != nil {
-		localVarQueryParams.Add("context_model_name", parameterToString(*r.contextModelName, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "context_model_name", r.contextModelName, "form", "")
 	}
 	if r.contextModelPk != nil {
-		localVarQueryParams.Add("context_model_pk", parameterToString(*r.contextModelPk, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "context_model_pk", r.contextModelPk, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.username != nil {
-		localVarQueryParams.Add("username", parameterToString(*r.username, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "username", r.username, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1454,9 +1472,9 @@ func (a *EventsApiService) EventsEventsVolumeListExecute(r ApiEventsEventsVolume
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1473,6 +1491,7 @@ func (a *EventsApiService) EventsEventsVolumeListExecute(r ApiEventsEventsVolume
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1483,6 +1502,7 @@ func (a *EventsApiService) EventsEventsVolumeListExecute(r ApiEventsEventsVolume
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1502,7 +1522,7 @@ func (a *EventsApiService) EventsEventsVolumeListExecute(r ApiEventsEventsVolume
 
 type ApiEventsNotificationsDestroyRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 	uuid       string
 }
 
@@ -1519,7 +1539,7 @@ Notification Viewset
 	@param uuid A UUID string identifying this Notification.
 	@return ApiEventsNotificationsDestroyRequest
 */
-func (a *EventsApiService) EventsNotificationsDestroy(ctx context.Context, uuid string) ApiEventsNotificationsDestroyRequest {
+func (a *EventsAPIService) EventsNotificationsDestroy(ctx context.Context, uuid string) ApiEventsNotificationsDestroyRequest {
 	return ApiEventsNotificationsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1528,20 +1548,20 @@ func (a *EventsApiService) EventsNotificationsDestroy(ctx context.Context, uuid 
 }
 
 // Execute executes the request
-func (a *EventsApiService) EventsNotificationsDestroyExecute(r ApiEventsNotificationsDestroyRequest) (*http.Response, error) {
+func (a *EventsAPIService) EventsNotificationsDestroyExecute(r ApiEventsNotificationsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsNotificationsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsNotificationsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/notifications/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1574,9 +1594,9 @@ func (a *EventsApiService) EventsNotificationsDestroyExecute(r ApiEventsNotifica
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1593,6 +1613,7 @@ func (a *EventsApiService) EventsNotificationsDestroyExecute(r ApiEventsNotifica
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -1603,6 +1624,7 @@ func (a *EventsApiService) EventsNotificationsDestroyExecute(r ApiEventsNotifica
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -1613,7 +1635,7 @@ func (a *EventsApiService) EventsNotificationsDestroyExecute(r ApiEventsNotifica
 
 type ApiEventsNotificationsListRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 	body       *string
 	created    *time.Time
 	event      *string
@@ -1692,7 +1714,7 @@ Notification Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEventsNotificationsListRequest
 */
-func (a *EventsApiService) EventsNotificationsList(ctx context.Context) ApiEventsNotificationsListRequest {
+func (a *EventsAPIService) EventsNotificationsList(ctx context.Context) ApiEventsNotificationsListRequest {
 	return ApiEventsNotificationsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1702,7 +1724,7 @@ func (a *EventsApiService) EventsNotificationsList(ctx context.Context) ApiEvent
 // Execute executes the request
 //
 //	@return PaginatedNotificationList
-func (a *EventsApiService) EventsNotificationsListExecute(r ApiEventsNotificationsListRequest) (*PaginatedNotificationList, *http.Response, error) {
+func (a *EventsAPIService) EventsNotificationsListExecute(r ApiEventsNotificationsListRequest) (*PaginatedNotificationList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1710,7 +1732,7 @@ func (a *EventsApiService) EventsNotificationsListExecute(r ApiEventsNotificatio
 		localVarReturnValue *PaginatedNotificationList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsNotificationsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsNotificationsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1722,34 +1744,34 @@ func (a *EventsApiService) EventsNotificationsListExecute(r ApiEventsNotificatio
 	localVarFormParams := url.Values{}
 
 	if r.body != nil {
-		localVarQueryParams.Add("body", parameterToString(*r.body, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "body", r.body, "form", "")
 	}
 	if r.created != nil {
-		localVarQueryParams.Add("created", parameterToString(*r.created, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created", r.created, "form", "")
 	}
 	if r.event != nil {
-		localVarQueryParams.Add("event", parameterToString(*r.event, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "event", r.event, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.seen != nil {
-		localVarQueryParams.Add("seen", parameterToString(*r.seen, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "seen", r.seen, "form", "")
 	}
 	if r.severity != nil {
-		localVarQueryParams.Add("severity", parameterToString(*r.severity, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "severity", r.severity, "form", "")
 	}
 	if r.user != nil {
-		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user", r.user, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1778,9 +1800,9 @@ func (a *EventsApiService) EventsNotificationsListExecute(r ApiEventsNotificatio
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1797,6 +1819,7 @@ func (a *EventsApiService) EventsNotificationsListExecute(r ApiEventsNotificatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1807,6 +1830,7 @@ func (a *EventsApiService) EventsNotificationsListExecute(r ApiEventsNotificatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1826,7 +1850,7 @@ func (a *EventsApiService) EventsNotificationsListExecute(r ApiEventsNotificatio
 
 type ApiEventsNotificationsMarkAllSeenCreateRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 }
 
 func (r ApiEventsNotificationsMarkAllSeenCreateRequest) Execute() (*http.Response, error) {
@@ -1841,7 +1865,7 @@ Mark all the user's notifications as seen
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEventsNotificationsMarkAllSeenCreateRequest
 */
-func (a *EventsApiService) EventsNotificationsMarkAllSeenCreate(ctx context.Context) ApiEventsNotificationsMarkAllSeenCreateRequest {
+func (a *EventsAPIService) EventsNotificationsMarkAllSeenCreate(ctx context.Context) ApiEventsNotificationsMarkAllSeenCreateRequest {
 	return ApiEventsNotificationsMarkAllSeenCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1849,14 +1873,14 @@ func (a *EventsApiService) EventsNotificationsMarkAllSeenCreate(ctx context.Cont
 }
 
 // Execute executes the request
-func (a *EventsApiService) EventsNotificationsMarkAllSeenCreateExecute(r ApiEventsNotificationsMarkAllSeenCreateRequest) (*http.Response, error) {
+func (a *EventsAPIService) EventsNotificationsMarkAllSeenCreateExecute(r ApiEventsNotificationsMarkAllSeenCreateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsNotificationsMarkAllSeenCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsNotificationsMarkAllSeenCreate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1894,9 +1918,9 @@ func (a *EventsApiService) EventsNotificationsMarkAllSeenCreateExecute(r ApiEven
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1913,6 +1937,7 @@ func (a *EventsApiService) EventsNotificationsMarkAllSeenCreateExecute(r ApiEven
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -1923,6 +1948,7 @@ func (a *EventsApiService) EventsNotificationsMarkAllSeenCreateExecute(r ApiEven
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -1933,7 +1959,7 @@ func (a *EventsApiService) EventsNotificationsMarkAllSeenCreateExecute(r ApiEven
 
 type ApiEventsNotificationsPartialUpdateRequest struct {
 	ctx                        context.Context
-	ApiService                 *EventsApiService
+	ApiService                 *EventsAPIService
 	uuid                       string
 	patchedNotificationRequest *PatchedNotificationRequest
 }
@@ -1956,7 +1982,7 @@ Notification Viewset
 	@param uuid A UUID string identifying this Notification.
 	@return ApiEventsNotificationsPartialUpdateRequest
 */
-func (a *EventsApiService) EventsNotificationsPartialUpdate(ctx context.Context, uuid string) ApiEventsNotificationsPartialUpdateRequest {
+func (a *EventsAPIService) EventsNotificationsPartialUpdate(ctx context.Context, uuid string) ApiEventsNotificationsPartialUpdateRequest {
 	return ApiEventsNotificationsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1967,7 +1993,7 @@ func (a *EventsApiService) EventsNotificationsPartialUpdate(ctx context.Context,
 // Execute executes the request
 //
 //	@return Notification
-func (a *EventsApiService) EventsNotificationsPartialUpdateExecute(r ApiEventsNotificationsPartialUpdateRequest) (*Notification, *http.Response, error) {
+func (a *EventsAPIService) EventsNotificationsPartialUpdateExecute(r ApiEventsNotificationsPartialUpdateRequest) (*Notification, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -1975,13 +2001,13 @@ func (a *EventsApiService) EventsNotificationsPartialUpdateExecute(r ApiEventsNo
 		localVarReturnValue *Notification
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsNotificationsPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsNotificationsPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/notifications/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2016,9 +2042,9 @@ func (a *EventsApiService) EventsNotificationsPartialUpdateExecute(r ApiEventsNo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2035,6 +2061,7 @@ func (a *EventsApiService) EventsNotificationsPartialUpdateExecute(r ApiEventsNo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2045,6 +2072,7 @@ func (a *EventsApiService) EventsNotificationsPartialUpdateExecute(r ApiEventsNo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2064,7 +2092,7 @@ func (a *EventsApiService) EventsNotificationsPartialUpdateExecute(r ApiEventsNo
 
 type ApiEventsNotificationsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 	uuid       string
 }
 
@@ -2081,7 +2109,7 @@ Notification Viewset
 	@param uuid A UUID string identifying this Notification.
 	@return ApiEventsNotificationsRetrieveRequest
 */
-func (a *EventsApiService) EventsNotificationsRetrieve(ctx context.Context, uuid string) ApiEventsNotificationsRetrieveRequest {
+func (a *EventsAPIService) EventsNotificationsRetrieve(ctx context.Context, uuid string) ApiEventsNotificationsRetrieveRequest {
 	return ApiEventsNotificationsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2092,7 +2120,7 @@ func (a *EventsApiService) EventsNotificationsRetrieve(ctx context.Context, uuid
 // Execute executes the request
 //
 //	@return Notification
-func (a *EventsApiService) EventsNotificationsRetrieveExecute(r ApiEventsNotificationsRetrieveRequest) (*Notification, *http.Response, error) {
+func (a *EventsAPIService) EventsNotificationsRetrieveExecute(r ApiEventsNotificationsRetrieveRequest) (*Notification, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2100,13 +2128,13 @@ func (a *EventsApiService) EventsNotificationsRetrieveExecute(r ApiEventsNotific
 		localVarReturnValue *Notification
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsNotificationsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsNotificationsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/notifications/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2139,9 +2167,9 @@ func (a *EventsApiService) EventsNotificationsRetrieveExecute(r ApiEventsNotific
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2158,6 +2186,7 @@ func (a *EventsApiService) EventsNotificationsRetrieveExecute(r ApiEventsNotific
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2168,6 +2197,7 @@ func (a *EventsApiService) EventsNotificationsRetrieveExecute(r ApiEventsNotific
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2187,7 +2217,7 @@ func (a *EventsApiService) EventsNotificationsRetrieveExecute(r ApiEventsNotific
 
 type ApiEventsNotificationsUpdateRequest struct {
 	ctx                 context.Context
-	ApiService          *EventsApiService
+	ApiService          *EventsAPIService
 	uuid                string
 	notificationRequest *NotificationRequest
 }
@@ -2210,7 +2240,7 @@ Notification Viewset
 	@param uuid A UUID string identifying this Notification.
 	@return ApiEventsNotificationsUpdateRequest
 */
-func (a *EventsApiService) EventsNotificationsUpdate(ctx context.Context, uuid string) ApiEventsNotificationsUpdateRequest {
+func (a *EventsAPIService) EventsNotificationsUpdate(ctx context.Context, uuid string) ApiEventsNotificationsUpdateRequest {
 	return ApiEventsNotificationsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2221,7 +2251,7 @@ func (a *EventsApiService) EventsNotificationsUpdate(ctx context.Context, uuid s
 // Execute executes the request
 //
 //	@return Notification
-func (a *EventsApiService) EventsNotificationsUpdateExecute(r ApiEventsNotificationsUpdateRequest) (*Notification, *http.Response, error) {
+func (a *EventsAPIService) EventsNotificationsUpdateExecute(r ApiEventsNotificationsUpdateRequest) (*Notification, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -2229,13 +2259,13 @@ func (a *EventsApiService) EventsNotificationsUpdateExecute(r ApiEventsNotificat
 		localVarReturnValue *Notification
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsNotificationsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsNotificationsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/notifications/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2270,9 +2300,9 @@ func (a *EventsApiService) EventsNotificationsUpdateExecute(r ApiEventsNotificat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2289,6 +2319,7 @@ func (a *EventsApiService) EventsNotificationsUpdateExecute(r ApiEventsNotificat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2299,6 +2330,7 @@ func (a *EventsApiService) EventsNotificationsUpdateExecute(r ApiEventsNotificat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2318,7 +2350,7 @@ func (a *EventsApiService) EventsNotificationsUpdateExecute(r ApiEventsNotificat
 
 type ApiEventsNotificationsUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 	uuid       string
 }
 
@@ -2335,7 +2367,7 @@ Get a list of all objects that use this object
 	@param uuid A UUID string identifying this Notification.
 	@return ApiEventsNotificationsUsedByListRequest
 */
-func (a *EventsApiService) EventsNotificationsUsedByList(ctx context.Context, uuid string) ApiEventsNotificationsUsedByListRequest {
+func (a *EventsAPIService) EventsNotificationsUsedByList(ctx context.Context, uuid string) ApiEventsNotificationsUsedByListRequest {
 	return ApiEventsNotificationsUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2346,7 +2378,7 @@ func (a *EventsApiService) EventsNotificationsUsedByList(ctx context.Context, uu
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *EventsApiService) EventsNotificationsUsedByListExecute(r ApiEventsNotificationsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *EventsAPIService) EventsNotificationsUsedByListExecute(r ApiEventsNotificationsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2354,13 +2386,13 @@ func (a *EventsApiService) EventsNotificationsUsedByListExecute(r ApiEventsNotif
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsNotificationsUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsNotificationsUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/notifications/{uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2393,9 +2425,9 @@ func (a *EventsApiService) EventsNotificationsUsedByListExecute(r ApiEventsNotif
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2412,6 +2444,7 @@ func (a *EventsApiService) EventsNotificationsUsedByListExecute(r ApiEventsNotif
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2422,6 +2455,7 @@ func (a *EventsApiService) EventsNotificationsUsedByListExecute(r ApiEventsNotif
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2441,7 +2475,7 @@ func (a *EventsApiService) EventsNotificationsUsedByListExecute(r ApiEventsNotif
 
 type ApiEventsRulesCreateRequest struct {
 	ctx                     context.Context
-	ApiService              *EventsApiService
+	ApiService              *EventsAPIService
 	notificationRuleRequest *NotificationRuleRequest
 }
 
@@ -2462,7 +2496,7 @@ NotificationRule Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEventsRulesCreateRequest
 */
-func (a *EventsApiService) EventsRulesCreate(ctx context.Context) ApiEventsRulesCreateRequest {
+func (a *EventsAPIService) EventsRulesCreate(ctx context.Context) ApiEventsRulesCreateRequest {
 	return ApiEventsRulesCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2472,7 +2506,7 @@ func (a *EventsApiService) EventsRulesCreate(ctx context.Context) ApiEventsRules
 // Execute executes the request
 //
 //	@return NotificationRule
-func (a *EventsApiService) EventsRulesCreateExecute(r ApiEventsRulesCreateRequest) (*NotificationRule, *http.Response, error) {
+func (a *EventsAPIService) EventsRulesCreateExecute(r ApiEventsRulesCreateRequest) (*NotificationRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -2480,7 +2514,7 @@ func (a *EventsApiService) EventsRulesCreateExecute(r ApiEventsRulesCreateReques
 		localVarReturnValue *NotificationRule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsRulesCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsRulesCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2523,9 +2557,9 @@ func (a *EventsApiService) EventsRulesCreateExecute(r ApiEventsRulesCreateReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2542,6 +2576,7 @@ func (a *EventsApiService) EventsRulesCreateExecute(r ApiEventsRulesCreateReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2552,6 +2587,7 @@ func (a *EventsApiService) EventsRulesCreateExecute(r ApiEventsRulesCreateReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2571,7 +2607,7 @@ func (a *EventsApiService) EventsRulesCreateExecute(r ApiEventsRulesCreateReques
 
 type ApiEventsRulesDestroyRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 	pbmUuid    string
 }
 
@@ -2588,7 +2624,7 @@ NotificationRule Viewset
 	@param pbmUuid A UUID string identifying this Notification Rule.
 	@return ApiEventsRulesDestroyRequest
 */
-func (a *EventsApiService) EventsRulesDestroy(ctx context.Context, pbmUuid string) ApiEventsRulesDestroyRequest {
+func (a *EventsAPIService) EventsRulesDestroy(ctx context.Context, pbmUuid string) ApiEventsRulesDestroyRequest {
 	return ApiEventsRulesDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2597,20 +2633,20 @@ func (a *EventsApiService) EventsRulesDestroy(ctx context.Context, pbmUuid strin
 }
 
 // Execute executes the request
-func (a *EventsApiService) EventsRulesDestroyExecute(r ApiEventsRulesDestroyRequest) (*http.Response, error) {
+func (a *EventsAPIService) EventsRulesDestroyExecute(r ApiEventsRulesDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsRulesDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsRulesDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/rules/{pbm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterValueToString(r.pbmUuid, "pbmUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2643,9 +2679,9 @@ func (a *EventsApiService) EventsRulesDestroyExecute(r ApiEventsRulesDestroyRequ
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -2662,6 +2698,7 @@ func (a *EventsApiService) EventsRulesDestroyExecute(r ApiEventsRulesDestroyRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -2672,6 +2709,7 @@ func (a *EventsApiService) EventsRulesDestroyExecute(r ApiEventsRulesDestroyRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -2682,7 +2720,7 @@ func (a *EventsApiService) EventsRulesDestroyExecute(r ApiEventsRulesDestroyRequ
 
 type ApiEventsRulesListRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 	groupName  *string
 	name       *string
 	ordering   *string
@@ -2744,7 +2782,7 @@ NotificationRule Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEventsRulesListRequest
 */
-func (a *EventsApiService) EventsRulesList(ctx context.Context) ApiEventsRulesListRequest {
+func (a *EventsAPIService) EventsRulesList(ctx context.Context) ApiEventsRulesListRequest {
 	return ApiEventsRulesListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2754,7 +2792,7 @@ func (a *EventsApiService) EventsRulesList(ctx context.Context) ApiEventsRulesLi
 // Execute executes the request
 //
 //	@return PaginatedNotificationRuleList
-func (a *EventsApiService) EventsRulesListExecute(r ApiEventsRulesListRequest) (*PaginatedNotificationRuleList, *http.Response, error) {
+func (a *EventsAPIService) EventsRulesListExecute(r ApiEventsRulesListRequest) (*PaginatedNotificationRuleList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2762,7 +2800,7 @@ func (a *EventsApiService) EventsRulesListExecute(r ApiEventsRulesListRequest) (
 		localVarReturnValue *PaginatedNotificationRuleList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsRulesList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsRulesList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2774,25 +2812,25 @@ func (a *EventsApiService) EventsRulesListExecute(r ApiEventsRulesListRequest) (
 	localVarFormParams := url.Values{}
 
 	if r.groupName != nil {
-		localVarQueryParams.Add("group__name", parameterToString(*r.groupName, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "group__name", r.groupName, "form", "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.severity != nil {
-		localVarQueryParams.Add("severity", parameterToString(*r.severity, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "severity", r.severity, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2821,9 +2859,9 @@ func (a *EventsApiService) EventsRulesListExecute(r ApiEventsRulesListRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2840,6 +2878,7 @@ func (a *EventsApiService) EventsRulesListExecute(r ApiEventsRulesListRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2850,6 +2889,7 @@ func (a *EventsApiService) EventsRulesListExecute(r ApiEventsRulesListRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2869,7 +2909,7 @@ func (a *EventsApiService) EventsRulesListExecute(r ApiEventsRulesListRequest) (
 
 type ApiEventsRulesPartialUpdateRequest struct {
 	ctx                            context.Context
-	ApiService                     *EventsApiService
+	ApiService                     *EventsAPIService
 	pbmUuid                        string
 	patchedNotificationRuleRequest *PatchedNotificationRuleRequest
 }
@@ -2892,7 +2932,7 @@ NotificationRule Viewset
 	@param pbmUuid A UUID string identifying this Notification Rule.
 	@return ApiEventsRulesPartialUpdateRequest
 */
-func (a *EventsApiService) EventsRulesPartialUpdate(ctx context.Context, pbmUuid string) ApiEventsRulesPartialUpdateRequest {
+func (a *EventsAPIService) EventsRulesPartialUpdate(ctx context.Context, pbmUuid string) ApiEventsRulesPartialUpdateRequest {
 	return ApiEventsRulesPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2903,7 +2943,7 @@ func (a *EventsApiService) EventsRulesPartialUpdate(ctx context.Context, pbmUuid
 // Execute executes the request
 //
 //	@return NotificationRule
-func (a *EventsApiService) EventsRulesPartialUpdateExecute(r ApiEventsRulesPartialUpdateRequest) (*NotificationRule, *http.Response, error) {
+func (a *EventsAPIService) EventsRulesPartialUpdateExecute(r ApiEventsRulesPartialUpdateRequest) (*NotificationRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -2911,13 +2951,13 @@ func (a *EventsApiService) EventsRulesPartialUpdateExecute(r ApiEventsRulesParti
 		localVarReturnValue *NotificationRule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsRulesPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsRulesPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/rules/{pbm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterValueToString(r.pbmUuid, "pbmUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2952,9 +2992,9 @@ func (a *EventsApiService) EventsRulesPartialUpdateExecute(r ApiEventsRulesParti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2971,6 +3011,7 @@ func (a *EventsApiService) EventsRulesPartialUpdateExecute(r ApiEventsRulesParti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2981,6 +3022,7 @@ func (a *EventsApiService) EventsRulesPartialUpdateExecute(r ApiEventsRulesParti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3000,7 +3042,7 @@ func (a *EventsApiService) EventsRulesPartialUpdateExecute(r ApiEventsRulesParti
 
 type ApiEventsRulesRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 	pbmUuid    string
 }
 
@@ -3017,7 +3059,7 @@ NotificationRule Viewset
 	@param pbmUuid A UUID string identifying this Notification Rule.
 	@return ApiEventsRulesRetrieveRequest
 */
-func (a *EventsApiService) EventsRulesRetrieve(ctx context.Context, pbmUuid string) ApiEventsRulesRetrieveRequest {
+func (a *EventsAPIService) EventsRulesRetrieve(ctx context.Context, pbmUuid string) ApiEventsRulesRetrieveRequest {
 	return ApiEventsRulesRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3028,7 +3070,7 @@ func (a *EventsApiService) EventsRulesRetrieve(ctx context.Context, pbmUuid stri
 // Execute executes the request
 //
 //	@return NotificationRule
-func (a *EventsApiService) EventsRulesRetrieveExecute(r ApiEventsRulesRetrieveRequest) (*NotificationRule, *http.Response, error) {
+func (a *EventsAPIService) EventsRulesRetrieveExecute(r ApiEventsRulesRetrieveRequest) (*NotificationRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3036,13 +3078,13 @@ func (a *EventsApiService) EventsRulesRetrieveExecute(r ApiEventsRulesRetrieveRe
 		localVarReturnValue *NotificationRule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsRulesRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsRulesRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/rules/{pbm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterValueToString(r.pbmUuid, "pbmUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3075,9 +3117,9 @@ func (a *EventsApiService) EventsRulesRetrieveExecute(r ApiEventsRulesRetrieveRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3094,6 +3136,7 @@ func (a *EventsApiService) EventsRulesRetrieveExecute(r ApiEventsRulesRetrieveRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3104,6 +3147,7 @@ func (a *EventsApiService) EventsRulesRetrieveExecute(r ApiEventsRulesRetrieveRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3123,7 +3167,7 @@ func (a *EventsApiService) EventsRulesRetrieveExecute(r ApiEventsRulesRetrieveRe
 
 type ApiEventsRulesUpdateRequest struct {
 	ctx                     context.Context
-	ApiService              *EventsApiService
+	ApiService              *EventsAPIService
 	pbmUuid                 string
 	notificationRuleRequest *NotificationRuleRequest
 }
@@ -3146,7 +3190,7 @@ NotificationRule Viewset
 	@param pbmUuid A UUID string identifying this Notification Rule.
 	@return ApiEventsRulesUpdateRequest
 */
-func (a *EventsApiService) EventsRulesUpdate(ctx context.Context, pbmUuid string) ApiEventsRulesUpdateRequest {
+func (a *EventsAPIService) EventsRulesUpdate(ctx context.Context, pbmUuid string) ApiEventsRulesUpdateRequest {
 	return ApiEventsRulesUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3157,7 +3201,7 @@ func (a *EventsApiService) EventsRulesUpdate(ctx context.Context, pbmUuid string
 // Execute executes the request
 //
 //	@return NotificationRule
-func (a *EventsApiService) EventsRulesUpdateExecute(r ApiEventsRulesUpdateRequest) (*NotificationRule, *http.Response, error) {
+func (a *EventsAPIService) EventsRulesUpdateExecute(r ApiEventsRulesUpdateRequest) (*NotificationRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -3165,13 +3209,13 @@ func (a *EventsApiService) EventsRulesUpdateExecute(r ApiEventsRulesUpdateReques
 		localVarReturnValue *NotificationRule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsRulesUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsRulesUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/rules/{pbm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterValueToString(r.pbmUuid, "pbmUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3209,9 +3253,9 @@ func (a *EventsApiService) EventsRulesUpdateExecute(r ApiEventsRulesUpdateReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3228,6 +3272,7 @@ func (a *EventsApiService) EventsRulesUpdateExecute(r ApiEventsRulesUpdateReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3238,6 +3283,7 @@ func (a *EventsApiService) EventsRulesUpdateExecute(r ApiEventsRulesUpdateReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3257,7 +3303,7 @@ func (a *EventsApiService) EventsRulesUpdateExecute(r ApiEventsRulesUpdateReques
 
 type ApiEventsRulesUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 	pbmUuid    string
 }
 
@@ -3274,7 +3320,7 @@ Get a list of all objects that use this object
 	@param pbmUuid A UUID string identifying this Notification Rule.
 	@return ApiEventsRulesUsedByListRequest
 */
-func (a *EventsApiService) EventsRulesUsedByList(ctx context.Context, pbmUuid string) ApiEventsRulesUsedByListRequest {
+func (a *EventsAPIService) EventsRulesUsedByList(ctx context.Context, pbmUuid string) ApiEventsRulesUsedByListRequest {
 	return ApiEventsRulesUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3285,7 +3331,7 @@ func (a *EventsApiService) EventsRulesUsedByList(ctx context.Context, pbmUuid st
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *EventsApiService) EventsRulesUsedByListExecute(r ApiEventsRulesUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *EventsAPIService) EventsRulesUsedByListExecute(r ApiEventsRulesUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3293,13 +3339,13 @@ func (a *EventsApiService) EventsRulesUsedByListExecute(r ApiEventsRulesUsedByLi
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsRulesUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsRulesUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/rules/{pbm_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterValueToString(r.pbmUuid, "pbmUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3332,9 +3378,9 @@ func (a *EventsApiService) EventsRulesUsedByListExecute(r ApiEventsRulesUsedByLi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3351,6 +3397,7 @@ func (a *EventsApiService) EventsRulesUsedByListExecute(r ApiEventsRulesUsedByLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3361,6 +3408,7 @@ func (a *EventsApiService) EventsRulesUsedByListExecute(r ApiEventsRulesUsedByLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3380,7 +3428,7 @@ func (a *EventsApiService) EventsRulesUsedByListExecute(r ApiEventsRulesUsedByLi
 
 type ApiEventsSystemTasksListRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -3441,7 +3489,7 @@ Read-only view set that returns all background tasks
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEventsSystemTasksListRequest
 */
-func (a *EventsApiService) EventsSystemTasksList(ctx context.Context) ApiEventsSystemTasksListRequest {
+func (a *EventsAPIService) EventsSystemTasksList(ctx context.Context) ApiEventsSystemTasksListRequest {
 	return ApiEventsSystemTasksListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3451,7 +3499,7 @@ func (a *EventsApiService) EventsSystemTasksList(ctx context.Context) ApiEventsS
 // Execute executes the request
 //
 //	@return PaginatedSystemTaskList
-func (a *EventsApiService) EventsSystemTasksListExecute(r ApiEventsSystemTasksListRequest) (*PaginatedSystemTaskList, *http.Response, error) {
+func (a *EventsAPIService) EventsSystemTasksListExecute(r ApiEventsSystemTasksListRequest) (*PaginatedSystemTaskList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3459,7 +3507,7 @@ func (a *EventsApiService) EventsSystemTasksListExecute(r ApiEventsSystemTasksLi
 		localVarReturnValue *PaginatedSystemTaskList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsSystemTasksList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsSystemTasksList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3471,25 +3519,25 @@ func (a *EventsApiService) EventsSystemTasksListExecute(r ApiEventsSystemTasksLi
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.status != nil {
-		localVarQueryParams.Add("status", parameterToString(*r.status, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
 	}
 	if r.uid != nil {
-		localVarQueryParams.Add("uid", parameterToString(*r.uid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "uid", r.uid, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3518,9 +3566,9 @@ func (a *EventsApiService) EventsSystemTasksListExecute(r ApiEventsSystemTasksLi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3537,6 +3585,7 @@ func (a *EventsApiService) EventsSystemTasksListExecute(r ApiEventsSystemTasksLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3547,6 +3596,7 @@ func (a *EventsApiService) EventsSystemTasksListExecute(r ApiEventsSystemTasksLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3566,7 +3616,7 @@ func (a *EventsApiService) EventsSystemTasksListExecute(r ApiEventsSystemTasksLi
 
 type ApiEventsSystemTasksRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 	uuid       string
 }
 
@@ -3583,7 +3633,7 @@ Read-only view set that returns all background tasks
 	@param uuid A UUID string identifying this System Task.
 	@return ApiEventsSystemTasksRetrieveRequest
 */
-func (a *EventsApiService) EventsSystemTasksRetrieve(ctx context.Context, uuid string) ApiEventsSystemTasksRetrieveRequest {
+func (a *EventsAPIService) EventsSystemTasksRetrieve(ctx context.Context, uuid string) ApiEventsSystemTasksRetrieveRequest {
 	return ApiEventsSystemTasksRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3594,7 +3644,7 @@ func (a *EventsApiService) EventsSystemTasksRetrieve(ctx context.Context, uuid s
 // Execute executes the request
 //
 //	@return SystemTask
-func (a *EventsApiService) EventsSystemTasksRetrieveExecute(r ApiEventsSystemTasksRetrieveRequest) (*SystemTask, *http.Response, error) {
+func (a *EventsAPIService) EventsSystemTasksRetrieveExecute(r ApiEventsSystemTasksRetrieveRequest) (*SystemTask, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3602,13 +3652,13 @@ func (a *EventsApiService) EventsSystemTasksRetrieveExecute(r ApiEventsSystemTas
 		localVarReturnValue *SystemTask
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsSystemTasksRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsSystemTasksRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/system_tasks/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3641,9 +3691,9 @@ func (a *EventsApiService) EventsSystemTasksRetrieveExecute(r ApiEventsSystemTas
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3660,6 +3710,7 @@ func (a *EventsApiService) EventsSystemTasksRetrieveExecute(r ApiEventsSystemTas
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3670,6 +3721,7 @@ func (a *EventsApiService) EventsSystemTasksRetrieveExecute(r ApiEventsSystemTas
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3689,7 +3741,7 @@ func (a *EventsApiService) EventsSystemTasksRetrieveExecute(r ApiEventsSystemTas
 
 type ApiEventsSystemTasksRunCreateRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 	uuid       string
 }
 
@@ -3706,7 +3758,7 @@ Run task
 	@param uuid A UUID string identifying this System Task.
 	@return ApiEventsSystemTasksRunCreateRequest
 */
-func (a *EventsApiService) EventsSystemTasksRunCreate(ctx context.Context, uuid string) ApiEventsSystemTasksRunCreateRequest {
+func (a *EventsAPIService) EventsSystemTasksRunCreate(ctx context.Context, uuid string) ApiEventsSystemTasksRunCreateRequest {
 	return ApiEventsSystemTasksRunCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3715,20 +3767,20 @@ func (a *EventsApiService) EventsSystemTasksRunCreate(ctx context.Context, uuid 
 }
 
 // Execute executes the request
-func (a *EventsApiService) EventsSystemTasksRunCreateExecute(r ApiEventsSystemTasksRunCreateRequest) (*http.Response, error) {
+func (a *EventsAPIService) EventsSystemTasksRunCreateExecute(r ApiEventsSystemTasksRunCreateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsSystemTasksRunCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsSystemTasksRunCreate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/system_tasks/{uuid}/run/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3761,9 +3813,9 @@ func (a *EventsApiService) EventsSystemTasksRunCreateExecute(r ApiEventsSystemTa
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -3780,6 +3832,7 @@ func (a *EventsApiService) EventsSystemTasksRunCreateExecute(r ApiEventsSystemTa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -3790,6 +3843,7 @@ func (a *EventsApiService) EventsSystemTasksRunCreateExecute(r ApiEventsSystemTa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -3800,7 +3854,7 @@ func (a *EventsApiService) EventsSystemTasksRunCreateExecute(r ApiEventsSystemTa
 
 type ApiEventsTransportsCreateRequest struct {
 	ctx                          context.Context
-	ApiService                   *EventsApiService
+	ApiService                   *EventsAPIService
 	notificationTransportRequest *NotificationTransportRequest
 }
 
@@ -3821,7 +3875,7 @@ NotificationTransport Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEventsTransportsCreateRequest
 */
-func (a *EventsApiService) EventsTransportsCreate(ctx context.Context) ApiEventsTransportsCreateRequest {
+func (a *EventsAPIService) EventsTransportsCreate(ctx context.Context) ApiEventsTransportsCreateRequest {
 	return ApiEventsTransportsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3831,7 +3885,7 @@ func (a *EventsApiService) EventsTransportsCreate(ctx context.Context) ApiEvents
 // Execute executes the request
 //
 //	@return NotificationTransport
-func (a *EventsApiService) EventsTransportsCreateExecute(r ApiEventsTransportsCreateRequest) (*NotificationTransport, *http.Response, error) {
+func (a *EventsAPIService) EventsTransportsCreateExecute(r ApiEventsTransportsCreateRequest) (*NotificationTransport, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -3839,7 +3893,7 @@ func (a *EventsApiService) EventsTransportsCreateExecute(r ApiEventsTransportsCr
 		localVarReturnValue *NotificationTransport
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsTransportsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsTransportsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3882,9 +3936,9 @@ func (a *EventsApiService) EventsTransportsCreateExecute(r ApiEventsTransportsCr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3901,6 +3955,7 @@ func (a *EventsApiService) EventsTransportsCreateExecute(r ApiEventsTransportsCr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3911,6 +3966,7 @@ func (a *EventsApiService) EventsTransportsCreateExecute(r ApiEventsTransportsCr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3930,7 +3986,7 @@ func (a *EventsApiService) EventsTransportsCreateExecute(r ApiEventsTransportsCr
 
 type ApiEventsTransportsDestroyRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 	uuid       string
 }
 
@@ -3947,7 +4003,7 @@ NotificationTransport Viewset
 	@param uuid A UUID string identifying this Notification Transport.
 	@return ApiEventsTransportsDestroyRequest
 */
-func (a *EventsApiService) EventsTransportsDestroy(ctx context.Context, uuid string) ApiEventsTransportsDestroyRequest {
+func (a *EventsAPIService) EventsTransportsDestroy(ctx context.Context, uuid string) ApiEventsTransportsDestroyRequest {
 	return ApiEventsTransportsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3956,20 +4012,20 @@ func (a *EventsApiService) EventsTransportsDestroy(ctx context.Context, uuid str
 }
 
 // Execute executes the request
-func (a *EventsApiService) EventsTransportsDestroyExecute(r ApiEventsTransportsDestroyRequest) (*http.Response, error) {
+func (a *EventsAPIService) EventsTransportsDestroyExecute(r ApiEventsTransportsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsTransportsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsTransportsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/transports/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4002,9 +4058,9 @@ func (a *EventsApiService) EventsTransportsDestroyExecute(r ApiEventsTransportsD
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -4021,6 +4077,7 @@ func (a *EventsApiService) EventsTransportsDestroyExecute(r ApiEventsTransportsD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -4031,6 +4088,7 @@ func (a *EventsApiService) EventsTransportsDestroyExecute(r ApiEventsTransportsD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -4041,7 +4099,7 @@ func (a *EventsApiService) EventsTransportsDestroyExecute(r ApiEventsTransportsD
 
 type ApiEventsTransportsListRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 	mode       *string
 	name       *string
 	ordering   *string
@@ -4108,7 +4166,7 @@ NotificationTransport Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEventsTransportsListRequest
 */
-func (a *EventsApiService) EventsTransportsList(ctx context.Context) ApiEventsTransportsListRequest {
+func (a *EventsAPIService) EventsTransportsList(ctx context.Context) ApiEventsTransportsListRequest {
 	return ApiEventsTransportsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4118,7 +4176,7 @@ func (a *EventsApiService) EventsTransportsList(ctx context.Context) ApiEventsTr
 // Execute executes the request
 //
 //	@return PaginatedNotificationTransportList
-func (a *EventsApiService) EventsTransportsListExecute(r ApiEventsTransportsListRequest) (*PaginatedNotificationTransportList, *http.Response, error) {
+func (a *EventsAPIService) EventsTransportsListExecute(r ApiEventsTransportsListRequest) (*PaginatedNotificationTransportList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4126,7 +4184,7 @@ func (a *EventsApiService) EventsTransportsListExecute(r ApiEventsTransportsList
 		localVarReturnValue *PaginatedNotificationTransportList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsTransportsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsTransportsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4138,28 +4196,28 @@ func (a *EventsApiService) EventsTransportsListExecute(r ApiEventsTransportsList
 	localVarFormParams := url.Values{}
 
 	if r.mode != nil {
-		localVarQueryParams.Add("mode", parameterToString(*r.mode, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "mode", r.mode, "form", "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.sendOnce != nil {
-		localVarQueryParams.Add("send_once", parameterToString(*r.sendOnce, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "send_once", r.sendOnce, "form", "")
 	}
 	if r.webhookUrl != nil {
-		localVarQueryParams.Add("webhook_url", parameterToString(*r.webhookUrl, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "webhook_url", r.webhookUrl, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4188,9 +4246,9 @@ func (a *EventsApiService) EventsTransportsListExecute(r ApiEventsTransportsList
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4207,6 +4265,7 @@ func (a *EventsApiService) EventsTransportsListExecute(r ApiEventsTransportsList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4217,6 +4276,7 @@ func (a *EventsApiService) EventsTransportsListExecute(r ApiEventsTransportsList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4236,7 +4296,7 @@ func (a *EventsApiService) EventsTransportsListExecute(r ApiEventsTransportsList
 
 type ApiEventsTransportsPartialUpdateRequest struct {
 	ctx                                 context.Context
-	ApiService                          *EventsApiService
+	ApiService                          *EventsAPIService
 	uuid                                string
 	patchedNotificationTransportRequest *PatchedNotificationTransportRequest
 }
@@ -4259,7 +4319,7 @@ NotificationTransport Viewset
 	@param uuid A UUID string identifying this Notification Transport.
 	@return ApiEventsTransportsPartialUpdateRequest
 */
-func (a *EventsApiService) EventsTransportsPartialUpdate(ctx context.Context, uuid string) ApiEventsTransportsPartialUpdateRequest {
+func (a *EventsAPIService) EventsTransportsPartialUpdate(ctx context.Context, uuid string) ApiEventsTransportsPartialUpdateRequest {
 	return ApiEventsTransportsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4270,7 +4330,7 @@ func (a *EventsApiService) EventsTransportsPartialUpdate(ctx context.Context, uu
 // Execute executes the request
 //
 //	@return NotificationTransport
-func (a *EventsApiService) EventsTransportsPartialUpdateExecute(r ApiEventsTransportsPartialUpdateRequest) (*NotificationTransport, *http.Response, error) {
+func (a *EventsAPIService) EventsTransportsPartialUpdateExecute(r ApiEventsTransportsPartialUpdateRequest) (*NotificationTransport, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -4278,13 +4338,13 @@ func (a *EventsApiService) EventsTransportsPartialUpdateExecute(r ApiEventsTrans
 		localVarReturnValue *NotificationTransport
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsTransportsPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsTransportsPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/transports/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4319,9 +4379,9 @@ func (a *EventsApiService) EventsTransportsPartialUpdateExecute(r ApiEventsTrans
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4338,6 +4398,7 @@ func (a *EventsApiService) EventsTransportsPartialUpdateExecute(r ApiEventsTrans
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4348,6 +4409,7 @@ func (a *EventsApiService) EventsTransportsPartialUpdateExecute(r ApiEventsTrans
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4367,7 +4429,7 @@ func (a *EventsApiService) EventsTransportsPartialUpdateExecute(r ApiEventsTrans
 
 type ApiEventsTransportsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 	uuid       string
 }
 
@@ -4384,7 +4446,7 @@ NotificationTransport Viewset
 	@param uuid A UUID string identifying this Notification Transport.
 	@return ApiEventsTransportsRetrieveRequest
 */
-func (a *EventsApiService) EventsTransportsRetrieve(ctx context.Context, uuid string) ApiEventsTransportsRetrieveRequest {
+func (a *EventsAPIService) EventsTransportsRetrieve(ctx context.Context, uuid string) ApiEventsTransportsRetrieveRequest {
 	return ApiEventsTransportsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4395,7 +4457,7 @@ func (a *EventsApiService) EventsTransportsRetrieve(ctx context.Context, uuid st
 // Execute executes the request
 //
 //	@return NotificationTransport
-func (a *EventsApiService) EventsTransportsRetrieveExecute(r ApiEventsTransportsRetrieveRequest) (*NotificationTransport, *http.Response, error) {
+func (a *EventsAPIService) EventsTransportsRetrieveExecute(r ApiEventsTransportsRetrieveRequest) (*NotificationTransport, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4403,13 +4465,13 @@ func (a *EventsApiService) EventsTransportsRetrieveExecute(r ApiEventsTransports
 		localVarReturnValue *NotificationTransport
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsTransportsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsTransportsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/transports/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4442,9 +4504,9 @@ func (a *EventsApiService) EventsTransportsRetrieveExecute(r ApiEventsTransports
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4461,6 +4523,7 @@ func (a *EventsApiService) EventsTransportsRetrieveExecute(r ApiEventsTransports
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4471,6 +4534,7 @@ func (a *EventsApiService) EventsTransportsRetrieveExecute(r ApiEventsTransports
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4490,7 +4554,7 @@ func (a *EventsApiService) EventsTransportsRetrieveExecute(r ApiEventsTransports
 
 type ApiEventsTransportsTestCreateRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 	uuid       string
 }
 
@@ -4508,7 +4572,7 @@ Modify permissions.
 	@param uuid A UUID string identifying this Notification Transport.
 	@return ApiEventsTransportsTestCreateRequest
 */
-func (a *EventsApiService) EventsTransportsTestCreate(ctx context.Context, uuid string) ApiEventsTransportsTestCreateRequest {
+func (a *EventsAPIService) EventsTransportsTestCreate(ctx context.Context, uuid string) ApiEventsTransportsTestCreateRequest {
 	return ApiEventsTransportsTestCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4519,7 +4583,7 @@ func (a *EventsApiService) EventsTransportsTestCreate(ctx context.Context, uuid 
 // Execute executes the request
 //
 //	@return NotificationTransportTest
-func (a *EventsApiService) EventsTransportsTestCreateExecute(r ApiEventsTransportsTestCreateRequest) (*NotificationTransportTest, *http.Response, error) {
+func (a *EventsAPIService) EventsTransportsTestCreateExecute(r ApiEventsTransportsTestCreateRequest) (*NotificationTransportTest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -4527,13 +4591,13 @@ func (a *EventsApiService) EventsTransportsTestCreateExecute(r ApiEventsTranspor
 		localVarReturnValue *NotificationTransportTest
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsTransportsTestCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsTransportsTestCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/transports/{uuid}/test/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4566,9 +4630,9 @@ func (a *EventsApiService) EventsTransportsTestCreateExecute(r ApiEventsTranspor
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4585,6 +4649,7 @@ func (a *EventsApiService) EventsTransportsTestCreateExecute(r ApiEventsTranspor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4595,6 +4660,7 @@ func (a *EventsApiService) EventsTransportsTestCreateExecute(r ApiEventsTranspor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4614,7 +4680,7 @@ func (a *EventsApiService) EventsTransportsTestCreateExecute(r ApiEventsTranspor
 
 type ApiEventsTransportsUpdateRequest struct {
 	ctx                          context.Context
-	ApiService                   *EventsApiService
+	ApiService                   *EventsAPIService
 	uuid                         string
 	notificationTransportRequest *NotificationTransportRequest
 }
@@ -4637,7 +4703,7 @@ NotificationTransport Viewset
 	@param uuid A UUID string identifying this Notification Transport.
 	@return ApiEventsTransportsUpdateRequest
 */
-func (a *EventsApiService) EventsTransportsUpdate(ctx context.Context, uuid string) ApiEventsTransportsUpdateRequest {
+func (a *EventsAPIService) EventsTransportsUpdate(ctx context.Context, uuid string) ApiEventsTransportsUpdateRequest {
 	return ApiEventsTransportsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4648,7 +4714,7 @@ func (a *EventsApiService) EventsTransportsUpdate(ctx context.Context, uuid stri
 // Execute executes the request
 //
 //	@return NotificationTransport
-func (a *EventsApiService) EventsTransportsUpdateExecute(r ApiEventsTransportsUpdateRequest) (*NotificationTransport, *http.Response, error) {
+func (a *EventsAPIService) EventsTransportsUpdateExecute(r ApiEventsTransportsUpdateRequest) (*NotificationTransport, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -4656,13 +4722,13 @@ func (a *EventsApiService) EventsTransportsUpdateExecute(r ApiEventsTransportsUp
 		localVarReturnValue *NotificationTransport
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsTransportsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsTransportsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/transports/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4700,9 +4766,9 @@ func (a *EventsApiService) EventsTransportsUpdateExecute(r ApiEventsTransportsUp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4719,6 +4785,7 @@ func (a *EventsApiService) EventsTransportsUpdateExecute(r ApiEventsTransportsUp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4729,6 +4796,7 @@ func (a *EventsApiService) EventsTransportsUpdateExecute(r ApiEventsTransportsUp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4748,7 +4816,7 @@ func (a *EventsApiService) EventsTransportsUpdateExecute(r ApiEventsTransportsUp
 
 type ApiEventsTransportsUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *EventsApiService
+	ApiService *EventsAPIService
 	uuid       string
 }
 
@@ -4765,7 +4833,7 @@ Get a list of all objects that use this object
 	@param uuid A UUID string identifying this Notification Transport.
 	@return ApiEventsTransportsUsedByListRequest
 */
-func (a *EventsApiService) EventsTransportsUsedByList(ctx context.Context, uuid string) ApiEventsTransportsUsedByListRequest {
+func (a *EventsAPIService) EventsTransportsUsedByList(ctx context.Context, uuid string) ApiEventsTransportsUsedByListRequest {
 	return ApiEventsTransportsUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4776,7 +4844,7 @@ func (a *EventsApiService) EventsTransportsUsedByList(ctx context.Context, uuid 
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *EventsApiService) EventsTransportsUsedByListExecute(r ApiEventsTransportsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *EventsAPIService) EventsTransportsUsedByListExecute(r ApiEventsTransportsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4784,13 +4852,13 @@ func (a *EventsApiService) EventsTransportsUsedByListExecute(r ApiEventsTranspor
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsTransportsUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.EventsTransportsUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/events/transports/{uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4823,9 +4891,9 @@ func (a *EventsApiService) EventsTransportsUsedByListExecute(r ApiEventsTranspor
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4842,6 +4910,7 @@ func (a *EventsApiService) EventsTransportsUsedByListExecute(r ApiEventsTranspor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4852,6 +4921,7 @@ func (a *EventsApiService) EventsTransportsUsedByListExecute(r ApiEventsTranspor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

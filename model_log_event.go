@@ -12,9 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the LogEvent type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LogEvent{}
 
 // LogEvent Single log message with all context logged.
 type LogEvent struct {
@@ -24,6 +29,8 @@ type LogEvent struct {
 	Event      string                 `json:"event"`
 	Attributes map[string]interface{} `json:"attributes"`
 }
+
+type _LogEvent LogEvent
 
 // NewLogEvent instantiates a new LogEvent object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +164,7 @@ func (o *LogEvent) GetAttributes() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *LogEvent) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
@@ -168,23 +175,62 @@ func (o *LogEvent) SetAttributes(v map[string]interface{}) {
 }
 
 func (o LogEvent) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["timestamp"] = o.Timestamp
-	}
-	if true {
-		toSerialize["log_level"] = o.LogLevel
-	}
-	if true {
-		toSerialize["logger"] = o.Logger
-	}
-	if true {
-		toSerialize["event"] = o.Event
-	}
-	if true {
-		toSerialize["attributes"] = o.Attributes
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LogEvent) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["timestamp"] = o.Timestamp
+	toSerialize["log_level"] = o.LogLevel
+	toSerialize["logger"] = o.Logger
+	toSerialize["event"] = o.Event
+	toSerialize["attributes"] = o.Attributes
+	return toSerialize, nil
+}
+
+func (o *LogEvent) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"timestamp",
+		"log_level",
+		"logger",
+		"event",
+		"attributes",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLogEvent := _LogEvent{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varLogEvent)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LogEvent(varLogEvent)
+
+	return err
 }
 
 type NullableLogEvent struct {

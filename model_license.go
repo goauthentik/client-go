@@ -12,9 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the License type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &License{}
 
 // License License Serializer
 type License struct {
@@ -25,6 +30,8 @@ type License struct {
 	InternalUsers int32     `json:"internal_users"`
 	ExternalUsers int32     `json:"external_users"`
 }
+
+type _License License
 
 // NewLicense instantiates a new License object
 // This constructor will assign default values to properties that have it defined,
@@ -194,26 +201,64 @@ func (o *License) SetExternalUsers(v int32) {
 }
 
 func (o License) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["license_uuid"] = o.LicenseUuid
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["key"] = o.Key
-	}
-	if true {
-		toSerialize["expiry"] = o.Expiry
-	}
-	if true {
-		toSerialize["internal_users"] = o.InternalUsers
-	}
-	if true {
-		toSerialize["external_users"] = o.ExternalUsers
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o License) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["license_uuid"] = o.LicenseUuid
+	toSerialize["name"] = o.Name
+	toSerialize["key"] = o.Key
+	toSerialize["expiry"] = o.Expiry
+	toSerialize["internal_users"] = o.InternalUsers
+	toSerialize["external_users"] = o.ExternalUsers
+	return toSerialize, nil
+}
+
+func (o *License) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"license_uuid",
+		"name",
+		"key",
+		"expiry",
+		"internal_users",
+		"external_users",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLicense := _License{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varLicense)
+
+	if err != nil {
+		return err
+	}
+
+	*o = License(varLicense)
+
+	return err
 }
 
 type NullableLicense struct {

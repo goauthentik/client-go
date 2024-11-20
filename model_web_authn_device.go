@@ -12,24 +12,31 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
+// checks if the WebAuthnDevice type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &WebAuthnDevice{}
+
 // WebAuthnDevice Serializer for WebAuthn authenticator devices
 type WebAuthnDevice struct {
-	Pk         int32                            `json:"pk"`
-	Name       string                           `json:"name"`
-	CreatedOn  time.Time                        `json:"created_on"`
-	DeviceType NullableWebAuthnDeviceDeviceType `json:"device_type"`
-	Aaguid     string                           `json:"aaguid"`
+	Pk         int32                      `json:"pk"`
+	Name       string                     `json:"name"`
+	CreatedOn  time.Time                  `json:"created_on"`
+	DeviceType NullableWebAuthnDeviceType `json:"device_type"`
+	Aaguid     string                     `json:"aaguid"`
 }
+
+type _WebAuthnDevice WebAuthnDevice
 
 // NewWebAuthnDevice instantiates a new WebAuthnDevice object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWebAuthnDevice(pk int32, name string, createdOn time.Time, deviceType NullableWebAuthnDeviceDeviceType, aaguid string) *WebAuthnDevice {
+func NewWebAuthnDevice(pk int32, name string, createdOn time.Time, deviceType NullableWebAuthnDeviceType, aaguid string) *WebAuthnDevice {
 	this := WebAuthnDevice{}
 	this.Pk = pk
 	this.Name = name
@@ -120,10 +127,10 @@ func (o *WebAuthnDevice) SetCreatedOn(v time.Time) {
 }
 
 // GetDeviceType returns the DeviceType field value
-// If the value is explicit nil, the zero value for WebAuthnDeviceDeviceType will be returned
-func (o *WebAuthnDevice) GetDeviceType() WebAuthnDeviceDeviceType {
+// If the value is explicit nil, the zero value for WebAuthnDeviceType will be returned
+func (o *WebAuthnDevice) GetDeviceType() WebAuthnDeviceType {
 	if o == nil || o.DeviceType.Get() == nil {
-		var ret WebAuthnDeviceDeviceType
+		var ret WebAuthnDeviceType
 		return ret
 	}
 
@@ -133,7 +140,7 @@ func (o *WebAuthnDevice) GetDeviceType() WebAuthnDeviceDeviceType {
 // GetDeviceTypeOk returns a tuple with the DeviceType field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *WebAuthnDevice) GetDeviceTypeOk() (*WebAuthnDeviceDeviceType, bool) {
+func (o *WebAuthnDevice) GetDeviceTypeOk() (*WebAuthnDeviceType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -141,7 +148,7 @@ func (o *WebAuthnDevice) GetDeviceTypeOk() (*WebAuthnDeviceDeviceType, bool) {
 }
 
 // SetDeviceType sets field value
-func (o *WebAuthnDevice) SetDeviceType(v WebAuthnDeviceDeviceType) {
+func (o *WebAuthnDevice) SetDeviceType(v WebAuthnDeviceType) {
 	o.DeviceType.Set(&v)
 }
 
@@ -170,23 +177,62 @@ func (o *WebAuthnDevice) SetAaguid(v string) {
 }
 
 func (o WebAuthnDevice) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["created_on"] = o.CreatedOn
-	}
-	if true {
-		toSerialize["device_type"] = o.DeviceType.Get()
-	}
-	if true {
-		toSerialize["aaguid"] = o.Aaguid
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o WebAuthnDevice) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pk"] = o.Pk
+	toSerialize["name"] = o.Name
+	toSerialize["created_on"] = o.CreatedOn
+	toSerialize["device_type"] = o.DeviceType.Get()
+	toSerialize["aaguid"] = o.Aaguid
+	return toSerialize, nil
+}
+
+func (o *WebAuthnDevice) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"name",
+		"created_on",
+		"device_type",
+		"aaguid",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varWebAuthnDevice := _WebAuthnDevice{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varWebAuthnDevice)
+
+	if err != nil {
+		return err
+	}
+
+	*o = WebAuthnDevice(varWebAuthnDevice)
+
+	return err
 }
 
 type NullableWebAuthnDevice struct {

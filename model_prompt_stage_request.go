@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the PromptStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PromptStageRequest{}
 
 // PromptStageRequest PromptStage Serializer
 type PromptStageRequest struct {
@@ -22,6 +27,8 @@ type PromptStageRequest struct {
 	Fields             []string         `json:"fields"`
 	ValidationPolicies []string         `json:"validation_policies,omitempty"`
 }
+
+type _PromptStageRequest PromptStageRequest
 
 // NewPromptStageRequest instantiates a new PromptStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -68,7 +75,7 @@ func (o *PromptStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *PromptStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -78,7 +85,7 @@ func (o *PromptStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PromptStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -86,7 +93,7 @@ func (o *PromptStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *PromptStageRequest) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
+	if o != nil && !IsNil(o.FlowSet) {
 		return true
 	}
 
@@ -124,7 +131,7 @@ func (o *PromptStageRequest) SetFields(v []string) {
 
 // GetValidationPolicies returns the ValidationPolicies field value if set, zero value otherwise.
 func (o *PromptStageRequest) GetValidationPolicies() []string {
-	if o == nil || o.ValidationPolicies == nil {
+	if o == nil || IsNil(o.ValidationPolicies) {
 		var ret []string
 		return ret
 	}
@@ -134,7 +141,7 @@ func (o *PromptStageRequest) GetValidationPolicies() []string {
 // GetValidationPoliciesOk returns a tuple with the ValidationPolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PromptStageRequest) GetValidationPoliciesOk() ([]string, bool) {
-	if o == nil || o.ValidationPolicies == nil {
+	if o == nil || IsNil(o.ValidationPolicies) {
 		return nil, false
 	}
 	return o.ValidationPolicies, true
@@ -142,7 +149,7 @@ func (o *PromptStageRequest) GetValidationPoliciesOk() ([]string, bool) {
 
 // HasValidationPolicies returns a boolean if a field has been set.
 func (o *PromptStageRequest) HasValidationPolicies() bool {
-	if o != nil && o.ValidationPolicies != nil {
+	if o != nil && !IsNil(o.ValidationPolicies) {
 		return true
 	}
 
@@ -155,20 +162,62 @@ func (o *PromptStageRequest) SetValidationPolicies(v []string) {
 }
 
 func (o PromptStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.FlowSet != nil {
-		toSerialize["flow_set"] = o.FlowSet
-	}
-	if true {
-		toSerialize["fields"] = o.Fields
-	}
-	if o.ValidationPolicies != nil {
-		toSerialize["validation_policies"] = o.ValidationPolicies
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PromptStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
+	toSerialize["fields"] = o.Fields
+	if !IsNil(o.ValidationPolicies) {
+		toSerialize["validation_policies"] = o.ValidationPolicies
+	}
+	return toSerialize, nil
+}
+
+func (o *PromptStageRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"fields",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPromptStageRequest := _PromptStageRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPromptStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PromptStageRequest(varPromptStageRequest)
+
+	return err
 }
 
 type NullablePromptStageRequest struct {

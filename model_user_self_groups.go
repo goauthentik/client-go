@@ -12,14 +12,21 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the UserSelfGroups type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserSelfGroups{}
 
 // UserSelfGroups struct for UserSelfGroups
 type UserSelfGroups struct {
 	Name string `json:"name"`
 	Pk   string `json:"pk"`
 }
+
+type _UserSelfGroups UserSelfGroups
 
 // NewUserSelfGroups instantiates a new UserSelfGroups object
 // This constructor will assign default values to properties that have it defined,
@@ -89,14 +96,56 @@ func (o *UserSelfGroups) SetPk(v string) {
 }
 
 func (o UserSelfGroups) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["pk"] = o.Pk
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserSelfGroups) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["pk"] = o.Pk
+	return toSerialize, nil
+}
+
+func (o *UserSelfGroups) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"pk",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUserSelfGroups := _UserSelfGroups{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUserSelfGroups)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserSelfGroups(varUserSelfGroups)
+
+	return err
 }
 
 type NullableUserSelfGroups struct {

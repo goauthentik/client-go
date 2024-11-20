@@ -12,14 +12,21 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the PaginatedOAuth2ProviderList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PaginatedOAuth2ProviderList{}
 
 // PaginatedOAuth2ProviderList struct for PaginatedOAuth2ProviderList
 type PaginatedOAuth2ProviderList struct {
 	Pagination Pagination       `json:"pagination"`
 	Results    []OAuth2Provider `json:"results"`
 }
+
+type _PaginatedOAuth2ProviderList PaginatedOAuth2ProviderList
 
 // NewPaginatedOAuth2ProviderList instantiates a new PaginatedOAuth2ProviderList object
 // This constructor will assign default values to properties that have it defined,
@@ -89,14 +96,56 @@ func (o *PaginatedOAuth2ProviderList) SetResults(v []OAuth2Provider) {
 }
 
 func (o PaginatedOAuth2ProviderList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pagination"] = o.Pagination
-	}
-	if true {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PaginatedOAuth2ProviderList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pagination"] = o.Pagination
+	toSerialize["results"] = o.Results
+	return toSerialize, nil
+}
+
+func (o *PaginatedOAuth2ProviderList) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pagination",
+		"results",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPaginatedOAuth2ProviderList := _PaginatedOAuth2ProviderList{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPaginatedOAuth2ProviderList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PaginatedOAuth2ProviderList(varPaginatedOAuth2ProviderList)
+
+	return err
 }
 
 type NullablePaginatedOAuth2ProviderList struct {

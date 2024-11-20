@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the AuthenticatorTOTPStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatorTOTPStageRequest{}
 
 // AuthenticatorTOTPStageRequest AuthenticatorTOTPStage Serializer
 type AuthenticatorTOTPStageRequest struct {
@@ -24,6 +29,8 @@ type AuthenticatorTOTPStageRequest struct {
 	FriendlyName  NullableString `json:"friendly_name,omitempty"`
 	Digits        DigitsEnum     `json:"digits"`
 }
+
+type _AuthenticatorTOTPStageRequest AuthenticatorTOTPStageRequest
 
 // NewAuthenticatorTOTPStageRequest instantiates a new AuthenticatorTOTPStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -70,7 +77,7 @@ func (o *AuthenticatorTOTPStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *AuthenticatorTOTPStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -80,7 +87,7 @@ func (o *AuthenticatorTOTPStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorTOTPStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -88,7 +95,7 @@ func (o *AuthenticatorTOTPStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) 
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *AuthenticatorTOTPStageRequest) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
+	if o != nil && !IsNil(o.FlowSet) {
 		return true
 	}
 
@@ -102,7 +109,7 @@ func (o *AuthenticatorTOTPStageRequest) SetFlowSet(v []FlowSetRequest) {
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorTOTPStageRequest) GetConfigureFlow() string {
-	if o == nil || o.ConfigureFlow.Get() == nil {
+	if o == nil || IsNil(o.ConfigureFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -145,7 +152,7 @@ func (o *AuthenticatorTOTPStageRequest) UnsetConfigureFlow() {
 
 // GetFriendlyName returns the FriendlyName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorTOTPStageRequest) GetFriendlyName() string {
-	if o == nil || o.FriendlyName.Get() == nil {
+	if o == nil || IsNil(o.FriendlyName.Get()) {
 		var ret string
 		return ret
 	}
@@ -211,11 +218,17 @@ func (o *AuthenticatorTOTPStageRequest) SetDigits(v DigitsEnum) {
 }
 
 func (o AuthenticatorTOTPStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
-	if o.FlowSet != nil {
+	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatorTOTPStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.FlowSet) {
 		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.ConfigureFlow.IsSet() {
@@ -224,10 +237,46 @@ func (o AuthenticatorTOTPStageRequest) MarshalJSON() ([]byte, error) {
 	if o.FriendlyName.IsSet() {
 		toSerialize["friendly_name"] = o.FriendlyName.Get()
 	}
-	if true {
-		toSerialize["digits"] = o.Digits
+	toSerialize["digits"] = o.Digits
+	return toSerialize, nil
+}
+
+func (o *AuthenticatorTOTPStageRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"digits",
 	}
-	return json.Marshal(toSerialize)
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAuthenticatorTOTPStageRequest := _AuthenticatorTOTPStageRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAuthenticatorTOTPStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AuthenticatorTOTPStageRequest(varAuthenticatorTOTPStageRequest)
+
+	return err
 }
 
 type NullableAuthenticatorTOTPStageRequest struct {

@@ -12,14 +12,21 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the PaginatedTokenList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PaginatedTokenList{}
 
 // PaginatedTokenList struct for PaginatedTokenList
 type PaginatedTokenList struct {
 	Pagination Pagination `json:"pagination"`
 	Results    []Token    `json:"results"`
 }
+
+type _PaginatedTokenList PaginatedTokenList
 
 // NewPaginatedTokenList instantiates a new PaginatedTokenList object
 // This constructor will assign default values to properties that have it defined,
@@ -89,14 +96,56 @@ func (o *PaginatedTokenList) SetResults(v []Token) {
 }
 
 func (o PaginatedTokenList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pagination"] = o.Pagination
-	}
-	if true {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PaginatedTokenList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pagination"] = o.Pagination
+	toSerialize["results"] = o.Results
+	return toSerialize, nil
+}
+
+func (o *PaginatedTokenList) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pagination",
+		"results",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPaginatedTokenList := _PaginatedTokenList{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPaginatedTokenList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PaginatedTokenList(varPaginatedTokenList)
+
+	return err
 }
 
 type NullablePaginatedTokenList struct {

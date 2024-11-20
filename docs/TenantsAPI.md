@@ -1,23 +1,23 @@
-# \TenantsApi
+# \TenantsAPI
 
 All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**TenantsDomainsCreate**](TenantsApi.md#TenantsDomainsCreate) | **Post** /tenants/domains/ | 
-[**TenantsDomainsDestroy**](TenantsApi.md#TenantsDomainsDestroy) | **Delete** /tenants/domains/{id}/ | 
-[**TenantsDomainsList**](TenantsApi.md#TenantsDomainsList) | **Get** /tenants/domains/ | 
-[**TenantsDomainsPartialUpdate**](TenantsApi.md#TenantsDomainsPartialUpdate) | **Patch** /tenants/domains/{id}/ | 
-[**TenantsDomainsRetrieve**](TenantsApi.md#TenantsDomainsRetrieve) | **Get** /tenants/domains/{id}/ | 
-[**TenantsDomainsUpdate**](TenantsApi.md#TenantsDomainsUpdate) | **Put** /tenants/domains/{id}/ | 
-[**TenantsTenantsCreate**](TenantsApi.md#TenantsTenantsCreate) | **Post** /tenants/tenants/ | 
-[**TenantsTenantsCreateAdminGroupCreate**](TenantsApi.md#TenantsTenantsCreateAdminGroupCreate) | **Post** /tenants/tenants/{tenant_uuid}/create_admin_group/ | 
-[**TenantsTenantsCreateRecoveryKeyCreate**](TenantsApi.md#TenantsTenantsCreateRecoveryKeyCreate) | **Post** /tenants/tenants/{tenant_uuid}/create_recovery_key/ | 
-[**TenantsTenantsDestroy**](TenantsApi.md#TenantsTenantsDestroy) | **Delete** /tenants/tenants/{tenant_uuid}/ | 
-[**TenantsTenantsList**](TenantsApi.md#TenantsTenantsList) | **Get** /tenants/tenants/ | 
-[**TenantsTenantsPartialUpdate**](TenantsApi.md#TenantsTenantsPartialUpdate) | **Patch** /tenants/tenants/{tenant_uuid}/ | 
-[**TenantsTenantsRetrieve**](TenantsApi.md#TenantsTenantsRetrieve) | **Get** /tenants/tenants/{tenant_uuid}/ | 
-[**TenantsTenantsUpdate**](TenantsApi.md#TenantsTenantsUpdate) | **Put** /tenants/tenants/{tenant_uuid}/ | 
+[**TenantsDomainsCreate**](TenantsAPI.md#TenantsDomainsCreate) | **Post** /tenants/domains/ | 
+[**TenantsDomainsDestroy**](TenantsAPI.md#TenantsDomainsDestroy) | **Delete** /tenants/domains/{id}/ | 
+[**TenantsDomainsList**](TenantsAPI.md#TenantsDomainsList) | **Get** /tenants/domains/ | 
+[**TenantsDomainsPartialUpdate**](TenantsAPI.md#TenantsDomainsPartialUpdate) | **Patch** /tenants/domains/{id}/ | 
+[**TenantsDomainsRetrieve**](TenantsAPI.md#TenantsDomainsRetrieve) | **Get** /tenants/domains/{id}/ | 
+[**TenantsDomainsUpdate**](TenantsAPI.md#TenantsDomainsUpdate) | **Put** /tenants/domains/{id}/ | 
+[**TenantsTenantsCreate**](TenantsAPI.md#TenantsTenantsCreate) | **Post** /tenants/tenants/ | 
+[**TenantsTenantsCreateAdminGroupCreate**](TenantsAPI.md#TenantsTenantsCreateAdminGroupCreate) | **Post** /tenants/tenants/{tenant_uuid}/create_admin_group/ | 
+[**TenantsTenantsCreateRecoveryKeyCreate**](TenantsAPI.md#TenantsTenantsCreateRecoveryKeyCreate) | **Post** /tenants/tenants/{tenant_uuid}/create_recovery_key/ | 
+[**TenantsTenantsDestroy**](TenantsAPI.md#TenantsTenantsDestroy) | **Delete** /tenants/tenants/{tenant_uuid}/ | 
+[**TenantsTenantsList**](TenantsAPI.md#TenantsTenantsList) | **Get** /tenants/tenants/ | 
+[**TenantsTenantsPartialUpdate**](TenantsAPI.md#TenantsTenantsPartialUpdate) | **Patch** /tenants/tenants/{tenant_uuid}/ | 
+[**TenantsTenantsRetrieve**](TenantsAPI.md#TenantsTenantsRetrieve) | **Get** /tenants/tenants/{tenant_uuid}/ | 
+[**TenantsTenantsUpdate**](TenantsAPI.md#TenantsTenantsUpdate) | **Put** /tenants/tenants/{tenant_uuid}/ | 
 
 
 
@@ -35,24 +35,24 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    domainRequest := *openapiclient.NewDomainRequest("Domain_example", "Tenant_example") // DomainRequest | 
+	domainRequest := *openapiclient.NewDomainRequest("Domain_example", "Tenant_example") // DomainRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TenantsApi.TenantsDomainsCreate(context.Background()).DomainRequest(domainRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.TenantsDomainsCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `TenantsDomainsCreate`: Domain
-    fmt.Fprintf(os.Stdout, "Response from `TenantsApi.TenantsDomainsCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TenantsAPI.TenantsDomainsCreate(context.Background()).DomainRequest(domainRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TenantsAPI.TenantsDomainsCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TenantsDomainsCreate`: Domain
+	fmt.Fprintf(os.Stdout, "Response from `TenantsAPI.TenantsDomainsCreate`: %v\n", resp)
 }
 ```
 
@@ -101,22 +101,22 @@ No authorization required
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Domain.
+	id := int32(56) // int32 | A unique integer value identifying this Domain.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TenantsApi.TenantsDomainsDestroy(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.TenantsDomainsDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.TenantsAPI.TenantsDomainsDestroy(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TenantsAPI.TenantsDomainsDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -169,27 +169,27 @@ No authorization required
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TenantsApi.TenantsDomainsList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.TenantsDomainsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `TenantsDomainsList`: PaginatedDomainList
-    fmt.Fprintf(os.Stdout, "Response from `TenantsApi.TenantsDomainsList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TenantsAPI.TenantsDomainsList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TenantsAPI.TenantsDomainsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TenantsDomainsList`: PaginatedDomainList
+	fmt.Fprintf(os.Stdout, "Response from `TenantsAPI.TenantsDomainsList`: %v\n", resp)
 }
 ```
 
@@ -241,25 +241,25 @@ No authorization required
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Domain.
-    patchedDomainRequest := *openapiclient.NewPatchedDomainRequest() // PatchedDomainRequest |  (optional)
+	id := int32(56) // int32 | A unique integer value identifying this Domain.
+	patchedDomainRequest := *openapiclient.NewPatchedDomainRequest() // PatchedDomainRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TenantsApi.TenantsDomainsPartialUpdate(context.Background(), id).PatchedDomainRequest(patchedDomainRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.TenantsDomainsPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `TenantsDomainsPartialUpdate`: Domain
-    fmt.Fprintf(os.Stdout, "Response from `TenantsApi.TenantsDomainsPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TenantsAPI.TenantsDomainsPartialUpdate(context.Background(), id).PatchedDomainRequest(patchedDomainRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TenantsAPI.TenantsDomainsPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TenantsDomainsPartialUpdate`: Domain
+	fmt.Fprintf(os.Stdout, "Response from `TenantsAPI.TenantsDomainsPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -313,24 +313,24 @@ No authorization required
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Domain.
+	id := int32(56) // int32 | A unique integer value identifying this Domain.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TenantsApi.TenantsDomainsRetrieve(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.TenantsDomainsRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `TenantsDomainsRetrieve`: Domain
-    fmt.Fprintf(os.Stdout, "Response from `TenantsApi.TenantsDomainsRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TenantsAPI.TenantsDomainsRetrieve(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TenantsAPI.TenantsDomainsRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TenantsDomainsRetrieve`: Domain
+	fmt.Fprintf(os.Stdout, "Response from `TenantsAPI.TenantsDomainsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -383,25 +383,25 @@ No authorization required
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Domain.
-    domainRequest := *openapiclient.NewDomainRequest("Domain_example", "Tenant_example") // DomainRequest | 
+	id := int32(56) // int32 | A unique integer value identifying this Domain.
+	domainRequest := *openapiclient.NewDomainRequest("Domain_example", "Tenant_example") // DomainRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TenantsApi.TenantsDomainsUpdate(context.Background(), id).DomainRequest(domainRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.TenantsDomainsUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `TenantsDomainsUpdate`: Domain
-    fmt.Fprintf(os.Stdout, "Response from `TenantsApi.TenantsDomainsUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TenantsAPI.TenantsDomainsUpdate(context.Background(), id).DomainRequest(domainRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TenantsAPI.TenantsDomainsUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TenantsDomainsUpdate`: Domain
+	fmt.Fprintf(os.Stdout, "Response from `TenantsAPI.TenantsDomainsUpdate`: %v\n", resp)
 }
 ```
 
@@ -455,24 +455,24 @@ No authorization required
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    tenantRequest := *openapiclient.NewTenantRequest("SchemaName_example", "Name_example") // TenantRequest | 
+	tenantRequest := *openapiclient.NewTenantRequest("SchemaName_example", "Name_example") // TenantRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TenantsApi.TenantsTenantsCreate(context.Background()).TenantRequest(tenantRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.TenantsTenantsCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `TenantsTenantsCreate`: Tenant
-    fmt.Fprintf(os.Stdout, "Response from `TenantsApi.TenantsTenantsCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TenantsAPI.TenantsTenantsCreate(context.Background()).TenantRequest(tenantRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TenantsAPI.TenantsTenantsCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TenantsTenantsCreate`: Tenant
+	fmt.Fprintf(os.Stdout, "Response from `TenantsAPI.TenantsTenantsCreate`: %v\n", resp)
 }
 ```
 
@@ -521,23 +521,23 @@ No authorization required
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
-    tenantAdminGroupRequestRequest := *openapiclient.NewTenantAdminGroupRequestRequest("User_example") // TenantAdminGroupRequestRequest | 
+	tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
+	tenantAdminGroupRequestRequest := *openapiclient.NewTenantAdminGroupRequestRequest("User_example") // TenantAdminGroupRequestRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TenantsApi.TenantsTenantsCreateAdminGroupCreate(context.Background(), tenantUuid).TenantAdminGroupRequestRequest(tenantAdminGroupRequestRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.TenantsTenantsCreateAdminGroupCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.TenantsAPI.TenantsTenantsCreateAdminGroupCreate(context.Background(), tenantUuid).TenantAdminGroupRequestRequest(tenantAdminGroupRequestRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TenantsAPI.TenantsTenantsCreateAdminGroupCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -591,25 +591,25 @@ No authorization required
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
-    tenantRecoveryKeyRequestRequest := *openapiclient.NewTenantRecoveryKeyRequestRequest("User_example", int32(123)) // TenantRecoveryKeyRequestRequest | 
+	tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
+	tenantRecoveryKeyRequestRequest := *openapiclient.NewTenantRecoveryKeyRequestRequest("User_example", int32(123)) // TenantRecoveryKeyRequestRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TenantsApi.TenantsTenantsCreateRecoveryKeyCreate(context.Background(), tenantUuid).TenantRecoveryKeyRequestRequest(tenantRecoveryKeyRequestRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.TenantsTenantsCreateRecoveryKeyCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `TenantsTenantsCreateRecoveryKeyCreate`: TenantRecoveryKeyResponse
-    fmt.Fprintf(os.Stdout, "Response from `TenantsApi.TenantsTenantsCreateRecoveryKeyCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TenantsAPI.TenantsTenantsCreateRecoveryKeyCreate(context.Background(), tenantUuid).TenantRecoveryKeyRequestRequest(tenantRecoveryKeyRequestRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TenantsAPI.TenantsTenantsCreateRecoveryKeyCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TenantsTenantsCreateRecoveryKeyCreate`: TenantRecoveryKeyResponse
+	fmt.Fprintf(os.Stdout, "Response from `TenantsAPI.TenantsTenantsCreateRecoveryKeyCreate`: %v\n", resp)
 }
 ```
 
@@ -663,22 +663,22 @@ No authorization required
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
+	tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TenantsApi.TenantsTenantsDestroy(context.Background(), tenantUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.TenantsTenantsDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.TenantsAPI.TenantsTenantsDestroy(context.Background(), tenantUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TenantsAPI.TenantsTenantsDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -731,27 +731,27 @@ No authorization required
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TenantsApi.TenantsTenantsList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.TenantsTenantsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `TenantsTenantsList`: PaginatedTenantList
-    fmt.Fprintf(os.Stdout, "Response from `TenantsApi.TenantsTenantsList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TenantsAPI.TenantsTenantsList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TenantsAPI.TenantsTenantsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TenantsTenantsList`: PaginatedTenantList
+	fmt.Fprintf(os.Stdout, "Response from `TenantsAPI.TenantsTenantsList`: %v\n", resp)
 }
 ```
 
@@ -803,25 +803,25 @@ No authorization required
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
-    patchedTenantRequest := *openapiclient.NewPatchedTenantRequest() // PatchedTenantRequest |  (optional)
+	tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
+	patchedTenantRequest := *openapiclient.NewPatchedTenantRequest() // PatchedTenantRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TenantsApi.TenantsTenantsPartialUpdate(context.Background(), tenantUuid).PatchedTenantRequest(patchedTenantRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.TenantsTenantsPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `TenantsTenantsPartialUpdate`: Tenant
-    fmt.Fprintf(os.Stdout, "Response from `TenantsApi.TenantsTenantsPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TenantsAPI.TenantsTenantsPartialUpdate(context.Background(), tenantUuid).PatchedTenantRequest(patchedTenantRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TenantsAPI.TenantsTenantsPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TenantsTenantsPartialUpdate`: Tenant
+	fmt.Fprintf(os.Stdout, "Response from `TenantsAPI.TenantsTenantsPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -875,24 +875,24 @@ No authorization required
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
+	tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TenantsApi.TenantsTenantsRetrieve(context.Background(), tenantUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.TenantsTenantsRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `TenantsTenantsRetrieve`: Tenant
-    fmt.Fprintf(os.Stdout, "Response from `TenantsApi.TenantsTenantsRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TenantsAPI.TenantsTenantsRetrieve(context.Background(), tenantUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TenantsAPI.TenantsTenantsRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TenantsTenantsRetrieve`: Tenant
+	fmt.Fprintf(os.Stdout, "Response from `TenantsAPI.TenantsTenantsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -945,25 +945,25 @@ No authorization required
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
-    tenantRequest := *openapiclient.NewTenantRequest("SchemaName_example", "Name_example") // TenantRequest | 
+	tenantUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Tenant.
+	tenantRequest := *openapiclient.NewTenantRequest("SchemaName_example", "Name_example") // TenantRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TenantsApi.TenantsTenantsUpdate(context.Background(), tenantUuid).TenantRequest(tenantRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.TenantsTenantsUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `TenantsTenantsUpdate`: Tenant
-    fmt.Fprintf(os.Stdout, "Response from `TenantsApi.TenantsTenantsUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TenantsAPI.TenantsTenantsUpdate(context.Background(), tenantUuid).TenantRequest(tenantRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TenantsAPI.TenantsTenantsUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TenantsTenantsUpdate`: Tenant
+	fmt.Fprintf(os.Stdout, "Response from `TenantsAPI.TenantsTenantsUpdate`: %v\n", resp)
 }
 ```
 

@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the ConsentChallenge type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConsentChallenge{}
 
 // ConsentChallenge Challenge info for consent screens
 type ConsentChallenge struct {
@@ -27,6 +32,8 @@ type ConsentChallenge struct {
 	AdditionalPermissions []ConsentPermission       `json:"additional_permissions"`
 	Token                 string                    `json:"token"`
 }
+
+type _ConsentChallenge ConsentChallenge
 
 // NewConsentChallenge instantiates a new ConsentChallenge object
 // This constructor will assign default values to properties that have it defined,
@@ -56,7 +63,7 @@ func NewConsentChallengeWithDefaults() *ConsentChallenge {
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
 func (o *ConsentChallenge) GetFlowInfo() ContextualFlowInfo {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		var ret ContextualFlowInfo
 		return ret
 	}
@@ -66,7 +73,7 @@ func (o *ConsentChallenge) GetFlowInfo() ContextualFlowInfo {
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConsentChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		return nil, false
 	}
 	return o.FlowInfo, true
@@ -74,7 +81,7 @@ func (o *ConsentChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
 
 // HasFlowInfo returns a boolean if a field has been set.
 func (o *ConsentChallenge) HasFlowInfo() bool {
-	if o != nil && o.FlowInfo != nil {
+	if o != nil && !IsNil(o.FlowInfo) {
 		return true
 	}
 
@@ -88,7 +95,7 @@ func (o *ConsentChallenge) SetFlowInfo(v ContextualFlowInfo) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *ConsentChallenge) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -98,7 +105,7 @@ func (o *ConsentChallenge) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConsentChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -106,7 +113,7 @@ func (o *ConsentChallenge) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *ConsentChallenge) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -120,7 +127,7 @@ func (o *ConsentChallenge) SetComponent(v string) {
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
 func (o *ConsentChallenge) GetResponseErrors() map[string][]ErrorDetail {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		var ret map[string][]ErrorDetail
 		return ret
 	}
@@ -130,7 +137,7 @@ func (o *ConsentChallenge) GetResponseErrors() map[string][]ErrorDetail {
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConsentChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		return nil, false
 	}
 	return o.ResponseErrors, true
@@ -138,7 +145,7 @@ func (o *ConsentChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, boo
 
 // HasResponseErrors returns a boolean if a field has been set.
 func (o *ConsentChallenge) HasResponseErrors() bool {
-	if o != nil && o.ResponseErrors != nil {
+	if o != nil && !IsNil(o.ResponseErrors) {
 		return true
 	}
 
@@ -200,7 +207,7 @@ func (o *ConsentChallenge) SetPendingUserAvatar(v string) {
 
 // GetHeaderText returns the HeaderText field value if set, zero value otherwise.
 func (o *ConsentChallenge) GetHeaderText() string {
-	if o == nil || o.HeaderText == nil {
+	if o == nil || IsNil(o.HeaderText) {
 		var ret string
 		return ret
 	}
@@ -210,7 +217,7 @@ func (o *ConsentChallenge) GetHeaderText() string {
 // GetHeaderTextOk returns a tuple with the HeaderText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConsentChallenge) GetHeaderTextOk() (*string, bool) {
-	if o == nil || o.HeaderText == nil {
+	if o == nil || IsNil(o.HeaderText) {
 		return nil, false
 	}
 	return o.HeaderText, true
@@ -218,7 +225,7 @@ func (o *ConsentChallenge) GetHeaderTextOk() (*string, bool) {
 
 // HasHeaderText returns a boolean if a field has been set.
 func (o *ConsentChallenge) HasHeaderText() bool {
-	if o != nil && o.HeaderText != nil {
+	if o != nil && !IsNil(o.HeaderText) {
 		return true
 	}
 
@@ -303,35 +310,74 @@ func (o *ConsentChallenge) SetToken(v string) {
 }
 
 func (o ConsentChallenge) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.FlowInfo != nil {
-		toSerialize["flow_info"] = o.FlowInfo
-	}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
-	}
-	if o.ResponseErrors != nil {
-		toSerialize["response_errors"] = o.ResponseErrors
-	}
-	if true {
-		toSerialize["pending_user"] = o.PendingUser
-	}
-	if true {
-		toSerialize["pending_user_avatar"] = o.PendingUserAvatar
-	}
-	if o.HeaderText != nil {
-		toSerialize["header_text"] = o.HeaderText
-	}
-	if true {
-		toSerialize["permissions"] = o.Permissions
-	}
-	if true {
-		toSerialize["additional_permissions"] = o.AdditionalPermissions
-	}
-	if true {
-		toSerialize["token"] = o.Token
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ConsentChallenge) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.FlowInfo) {
+		toSerialize["flow_info"] = o.FlowInfo
+	}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	if !IsNil(o.ResponseErrors) {
+		toSerialize["response_errors"] = o.ResponseErrors
+	}
+	toSerialize["pending_user"] = o.PendingUser
+	toSerialize["pending_user_avatar"] = o.PendingUserAvatar
+	if !IsNil(o.HeaderText) {
+		toSerialize["header_text"] = o.HeaderText
+	}
+	toSerialize["permissions"] = o.Permissions
+	toSerialize["additional_permissions"] = o.AdditionalPermissions
+	toSerialize["token"] = o.Token
+	return toSerialize, nil
+}
+
+func (o *ConsentChallenge) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pending_user",
+		"pending_user_avatar",
+		"permissions",
+		"additional_permissions",
+		"token",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConsentChallenge := _ConsentChallenge{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varConsentChallenge)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConsentChallenge(varConsentChallenge)
+
+	return err
 }
 
 type NullableConsentChallenge struct {

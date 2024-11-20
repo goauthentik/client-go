@@ -1,113 +1,113 @@
-# \PropertymappingsApi
+# \PropertymappingsAPI
 
 All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PropertymappingsAllDestroy**](PropertymappingsApi.md#PropertymappingsAllDestroy) | **Delete** /propertymappings/all/{pm_uuid}/ | 
-[**PropertymappingsAllList**](PropertymappingsApi.md#PropertymappingsAllList) | **Get** /propertymappings/all/ | 
-[**PropertymappingsAllRetrieve**](PropertymappingsApi.md#PropertymappingsAllRetrieve) | **Get** /propertymappings/all/{pm_uuid}/ | 
-[**PropertymappingsAllTestCreate**](PropertymappingsApi.md#PropertymappingsAllTestCreate) | **Post** /propertymappings/all/{pm_uuid}/test/ | 
-[**PropertymappingsAllTypesList**](PropertymappingsApi.md#PropertymappingsAllTypesList) | **Get** /propertymappings/all/types/ | 
-[**PropertymappingsAllUsedByList**](PropertymappingsApi.md#PropertymappingsAllUsedByList) | **Get** /propertymappings/all/{pm_uuid}/used_by/ | 
-[**PropertymappingsNotificationCreate**](PropertymappingsApi.md#PropertymappingsNotificationCreate) | **Post** /propertymappings/notification/ | 
-[**PropertymappingsNotificationDestroy**](PropertymappingsApi.md#PropertymappingsNotificationDestroy) | **Delete** /propertymappings/notification/{pm_uuid}/ | 
-[**PropertymappingsNotificationList**](PropertymappingsApi.md#PropertymappingsNotificationList) | **Get** /propertymappings/notification/ | 
-[**PropertymappingsNotificationPartialUpdate**](PropertymappingsApi.md#PropertymappingsNotificationPartialUpdate) | **Patch** /propertymappings/notification/{pm_uuid}/ | 
-[**PropertymappingsNotificationRetrieve**](PropertymappingsApi.md#PropertymappingsNotificationRetrieve) | **Get** /propertymappings/notification/{pm_uuid}/ | 
-[**PropertymappingsNotificationUpdate**](PropertymappingsApi.md#PropertymappingsNotificationUpdate) | **Put** /propertymappings/notification/{pm_uuid}/ | 
-[**PropertymappingsNotificationUsedByList**](PropertymappingsApi.md#PropertymappingsNotificationUsedByList) | **Get** /propertymappings/notification/{pm_uuid}/used_by/ | 
-[**PropertymappingsProviderGoogleWorkspaceCreate**](PropertymappingsApi.md#PropertymappingsProviderGoogleWorkspaceCreate) | **Post** /propertymappings/provider/google_workspace/ | 
-[**PropertymappingsProviderGoogleWorkspaceDestroy**](PropertymappingsApi.md#PropertymappingsProviderGoogleWorkspaceDestroy) | **Delete** /propertymappings/provider/google_workspace/{pm_uuid}/ | 
-[**PropertymappingsProviderGoogleWorkspaceList**](PropertymappingsApi.md#PropertymappingsProviderGoogleWorkspaceList) | **Get** /propertymappings/provider/google_workspace/ | 
-[**PropertymappingsProviderGoogleWorkspacePartialUpdate**](PropertymappingsApi.md#PropertymappingsProviderGoogleWorkspacePartialUpdate) | **Patch** /propertymappings/provider/google_workspace/{pm_uuid}/ | 
-[**PropertymappingsProviderGoogleWorkspaceRetrieve**](PropertymappingsApi.md#PropertymappingsProviderGoogleWorkspaceRetrieve) | **Get** /propertymappings/provider/google_workspace/{pm_uuid}/ | 
-[**PropertymappingsProviderGoogleWorkspaceUpdate**](PropertymappingsApi.md#PropertymappingsProviderGoogleWorkspaceUpdate) | **Put** /propertymappings/provider/google_workspace/{pm_uuid}/ | 
-[**PropertymappingsProviderGoogleWorkspaceUsedByList**](PropertymappingsApi.md#PropertymappingsProviderGoogleWorkspaceUsedByList) | **Get** /propertymappings/provider/google_workspace/{pm_uuid}/used_by/ | 
-[**PropertymappingsProviderMicrosoftEntraCreate**](PropertymappingsApi.md#PropertymappingsProviderMicrosoftEntraCreate) | **Post** /propertymappings/provider/microsoft_entra/ | 
-[**PropertymappingsProviderMicrosoftEntraDestroy**](PropertymappingsApi.md#PropertymappingsProviderMicrosoftEntraDestroy) | **Delete** /propertymappings/provider/microsoft_entra/{pm_uuid}/ | 
-[**PropertymappingsProviderMicrosoftEntraList**](PropertymappingsApi.md#PropertymappingsProviderMicrosoftEntraList) | **Get** /propertymappings/provider/microsoft_entra/ | 
-[**PropertymappingsProviderMicrosoftEntraPartialUpdate**](PropertymappingsApi.md#PropertymappingsProviderMicrosoftEntraPartialUpdate) | **Patch** /propertymappings/provider/microsoft_entra/{pm_uuid}/ | 
-[**PropertymappingsProviderMicrosoftEntraRetrieve**](PropertymappingsApi.md#PropertymappingsProviderMicrosoftEntraRetrieve) | **Get** /propertymappings/provider/microsoft_entra/{pm_uuid}/ | 
-[**PropertymappingsProviderMicrosoftEntraUpdate**](PropertymappingsApi.md#PropertymappingsProviderMicrosoftEntraUpdate) | **Put** /propertymappings/provider/microsoft_entra/{pm_uuid}/ | 
-[**PropertymappingsProviderMicrosoftEntraUsedByList**](PropertymappingsApi.md#PropertymappingsProviderMicrosoftEntraUsedByList) | **Get** /propertymappings/provider/microsoft_entra/{pm_uuid}/used_by/ | 
-[**PropertymappingsProviderRacCreate**](PropertymappingsApi.md#PropertymappingsProviderRacCreate) | **Post** /propertymappings/provider/rac/ | 
-[**PropertymappingsProviderRacDestroy**](PropertymappingsApi.md#PropertymappingsProviderRacDestroy) | **Delete** /propertymappings/provider/rac/{pm_uuid}/ | 
-[**PropertymappingsProviderRacList**](PropertymappingsApi.md#PropertymappingsProviderRacList) | **Get** /propertymappings/provider/rac/ | 
-[**PropertymappingsProviderRacPartialUpdate**](PropertymappingsApi.md#PropertymappingsProviderRacPartialUpdate) | **Patch** /propertymappings/provider/rac/{pm_uuid}/ | 
-[**PropertymappingsProviderRacRetrieve**](PropertymappingsApi.md#PropertymappingsProviderRacRetrieve) | **Get** /propertymappings/provider/rac/{pm_uuid}/ | 
-[**PropertymappingsProviderRacUpdate**](PropertymappingsApi.md#PropertymappingsProviderRacUpdate) | **Put** /propertymappings/provider/rac/{pm_uuid}/ | 
-[**PropertymappingsProviderRacUsedByList**](PropertymappingsApi.md#PropertymappingsProviderRacUsedByList) | **Get** /propertymappings/provider/rac/{pm_uuid}/used_by/ | 
-[**PropertymappingsProviderRadiusCreate**](PropertymappingsApi.md#PropertymappingsProviderRadiusCreate) | **Post** /propertymappings/provider/radius/ | 
-[**PropertymappingsProviderRadiusDestroy**](PropertymappingsApi.md#PropertymappingsProviderRadiusDestroy) | **Delete** /propertymappings/provider/radius/{pm_uuid}/ | 
-[**PropertymappingsProviderRadiusList**](PropertymappingsApi.md#PropertymappingsProviderRadiusList) | **Get** /propertymappings/provider/radius/ | 
-[**PropertymappingsProviderRadiusPartialUpdate**](PropertymappingsApi.md#PropertymappingsProviderRadiusPartialUpdate) | **Patch** /propertymappings/provider/radius/{pm_uuid}/ | 
-[**PropertymappingsProviderRadiusRetrieve**](PropertymappingsApi.md#PropertymappingsProviderRadiusRetrieve) | **Get** /propertymappings/provider/radius/{pm_uuid}/ | 
-[**PropertymappingsProviderRadiusUpdate**](PropertymappingsApi.md#PropertymappingsProviderRadiusUpdate) | **Put** /propertymappings/provider/radius/{pm_uuid}/ | 
-[**PropertymappingsProviderRadiusUsedByList**](PropertymappingsApi.md#PropertymappingsProviderRadiusUsedByList) | **Get** /propertymappings/provider/radius/{pm_uuid}/used_by/ | 
-[**PropertymappingsProviderSamlCreate**](PropertymappingsApi.md#PropertymappingsProviderSamlCreate) | **Post** /propertymappings/provider/saml/ | 
-[**PropertymappingsProviderSamlDestroy**](PropertymappingsApi.md#PropertymappingsProviderSamlDestroy) | **Delete** /propertymappings/provider/saml/{pm_uuid}/ | 
-[**PropertymappingsProviderSamlList**](PropertymappingsApi.md#PropertymappingsProviderSamlList) | **Get** /propertymappings/provider/saml/ | 
-[**PropertymappingsProviderSamlPartialUpdate**](PropertymappingsApi.md#PropertymappingsProviderSamlPartialUpdate) | **Patch** /propertymappings/provider/saml/{pm_uuid}/ | 
-[**PropertymappingsProviderSamlRetrieve**](PropertymappingsApi.md#PropertymappingsProviderSamlRetrieve) | **Get** /propertymappings/provider/saml/{pm_uuid}/ | 
-[**PropertymappingsProviderSamlUpdate**](PropertymappingsApi.md#PropertymappingsProviderSamlUpdate) | **Put** /propertymappings/provider/saml/{pm_uuid}/ | 
-[**PropertymappingsProviderSamlUsedByList**](PropertymappingsApi.md#PropertymappingsProviderSamlUsedByList) | **Get** /propertymappings/provider/saml/{pm_uuid}/used_by/ | 
-[**PropertymappingsProviderScimCreate**](PropertymappingsApi.md#PropertymappingsProviderScimCreate) | **Post** /propertymappings/provider/scim/ | 
-[**PropertymappingsProviderScimDestroy**](PropertymappingsApi.md#PropertymappingsProviderScimDestroy) | **Delete** /propertymappings/provider/scim/{pm_uuid}/ | 
-[**PropertymappingsProviderScimList**](PropertymappingsApi.md#PropertymappingsProviderScimList) | **Get** /propertymappings/provider/scim/ | 
-[**PropertymappingsProviderScimPartialUpdate**](PropertymappingsApi.md#PropertymappingsProviderScimPartialUpdate) | **Patch** /propertymappings/provider/scim/{pm_uuid}/ | 
-[**PropertymappingsProviderScimRetrieve**](PropertymappingsApi.md#PropertymappingsProviderScimRetrieve) | **Get** /propertymappings/provider/scim/{pm_uuid}/ | 
-[**PropertymappingsProviderScimUpdate**](PropertymappingsApi.md#PropertymappingsProviderScimUpdate) | **Put** /propertymappings/provider/scim/{pm_uuid}/ | 
-[**PropertymappingsProviderScimUsedByList**](PropertymappingsApi.md#PropertymappingsProviderScimUsedByList) | **Get** /propertymappings/provider/scim/{pm_uuid}/used_by/ | 
-[**PropertymappingsProviderScopeCreate**](PropertymappingsApi.md#PropertymappingsProviderScopeCreate) | **Post** /propertymappings/provider/scope/ | 
-[**PropertymappingsProviderScopeDestroy**](PropertymappingsApi.md#PropertymappingsProviderScopeDestroy) | **Delete** /propertymappings/provider/scope/{pm_uuid}/ | 
-[**PropertymappingsProviderScopeList**](PropertymappingsApi.md#PropertymappingsProviderScopeList) | **Get** /propertymappings/provider/scope/ | 
-[**PropertymappingsProviderScopePartialUpdate**](PropertymappingsApi.md#PropertymappingsProviderScopePartialUpdate) | **Patch** /propertymappings/provider/scope/{pm_uuid}/ | 
-[**PropertymappingsProviderScopeRetrieve**](PropertymappingsApi.md#PropertymappingsProviderScopeRetrieve) | **Get** /propertymappings/provider/scope/{pm_uuid}/ | 
-[**PropertymappingsProviderScopeUpdate**](PropertymappingsApi.md#PropertymappingsProviderScopeUpdate) | **Put** /propertymappings/provider/scope/{pm_uuid}/ | 
-[**PropertymappingsProviderScopeUsedByList**](PropertymappingsApi.md#PropertymappingsProviderScopeUsedByList) | **Get** /propertymappings/provider/scope/{pm_uuid}/used_by/ | 
-[**PropertymappingsSourceKerberosCreate**](PropertymappingsApi.md#PropertymappingsSourceKerberosCreate) | **Post** /propertymappings/source/kerberos/ | 
-[**PropertymappingsSourceKerberosDestroy**](PropertymappingsApi.md#PropertymappingsSourceKerberosDestroy) | **Delete** /propertymappings/source/kerberos/{pm_uuid}/ | 
-[**PropertymappingsSourceKerberosList**](PropertymappingsApi.md#PropertymappingsSourceKerberosList) | **Get** /propertymappings/source/kerberos/ | 
-[**PropertymappingsSourceKerberosPartialUpdate**](PropertymappingsApi.md#PropertymappingsSourceKerberosPartialUpdate) | **Patch** /propertymappings/source/kerberos/{pm_uuid}/ | 
-[**PropertymappingsSourceKerberosRetrieve**](PropertymappingsApi.md#PropertymappingsSourceKerberosRetrieve) | **Get** /propertymappings/source/kerberos/{pm_uuid}/ | 
-[**PropertymappingsSourceKerberosUpdate**](PropertymappingsApi.md#PropertymappingsSourceKerberosUpdate) | **Put** /propertymappings/source/kerberos/{pm_uuid}/ | 
-[**PropertymappingsSourceKerberosUsedByList**](PropertymappingsApi.md#PropertymappingsSourceKerberosUsedByList) | **Get** /propertymappings/source/kerberos/{pm_uuid}/used_by/ | 
-[**PropertymappingsSourceLdapCreate**](PropertymappingsApi.md#PropertymappingsSourceLdapCreate) | **Post** /propertymappings/source/ldap/ | 
-[**PropertymappingsSourceLdapDestroy**](PropertymappingsApi.md#PropertymappingsSourceLdapDestroy) | **Delete** /propertymappings/source/ldap/{pm_uuid}/ | 
-[**PropertymappingsSourceLdapList**](PropertymappingsApi.md#PropertymappingsSourceLdapList) | **Get** /propertymappings/source/ldap/ | 
-[**PropertymappingsSourceLdapPartialUpdate**](PropertymappingsApi.md#PropertymappingsSourceLdapPartialUpdate) | **Patch** /propertymappings/source/ldap/{pm_uuid}/ | 
-[**PropertymappingsSourceLdapRetrieve**](PropertymappingsApi.md#PropertymappingsSourceLdapRetrieve) | **Get** /propertymappings/source/ldap/{pm_uuid}/ | 
-[**PropertymappingsSourceLdapUpdate**](PropertymappingsApi.md#PropertymappingsSourceLdapUpdate) | **Put** /propertymappings/source/ldap/{pm_uuid}/ | 
-[**PropertymappingsSourceLdapUsedByList**](PropertymappingsApi.md#PropertymappingsSourceLdapUsedByList) | **Get** /propertymappings/source/ldap/{pm_uuid}/used_by/ | 
-[**PropertymappingsSourceOauthCreate**](PropertymappingsApi.md#PropertymappingsSourceOauthCreate) | **Post** /propertymappings/source/oauth/ | 
-[**PropertymappingsSourceOauthDestroy**](PropertymappingsApi.md#PropertymappingsSourceOauthDestroy) | **Delete** /propertymappings/source/oauth/{pm_uuid}/ | 
-[**PropertymappingsSourceOauthList**](PropertymappingsApi.md#PropertymappingsSourceOauthList) | **Get** /propertymappings/source/oauth/ | 
-[**PropertymappingsSourceOauthPartialUpdate**](PropertymappingsApi.md#PropertymappingsSourceOauthPartialUpdate) | **Patch** /propertymappings/source/oauth/{pm_uuid}/ | 
-[**PropertymappingsSourceOauthRetrieve**](PropertymappingsApi.md#PropertymappingsSourceOauthRetrieve) | **Get** /propertymappings/source/oauth/{pm_uuid}/ | 
-[**PropertymappingsSourceOauthUpdate**](PropertymappingsApi.md#PropertymappingsSourceOauthUpdate) | **Put** /propertymappings/source/oauth/{pm_uuid}/ | 
-[**PropertymappingsSourceOauthUsedByList**](PropertymappingsApi.md#PropertymappingsSourceOauthUsedByList) | **Get** /propertymappings/source/oauth/{pm_uuid}/used_by/ | 
-[**PropertymappingsSourcePlexCreate**](PropertymappingsApi.md#PropertymappingsSourcePlexCreate) | **Post** /propertymappings/source/plex/ | 
-[**PropertymappingsSourcePlexDestroy**](PropertymappingsApi.md#PropertymappingsSourcePlexDestroy) | **Delete** /propertymappings/source/plex/{pm_uuid}/ | 
-[**PropertymappingsSourcePlexList**](PropertymappingsApi.md#PropertymappingsSourcePlexList) | **Get** /propertymappings/source/plex/ | 
-[**PropertymappingsSourcePlexPartialUpdate**](PropertymappingsApi.md#PropertymappingsSourcePlexPartialUpdate) | **Patch** /propertymappings/source/plex/{pm_uuid}/ | 
-[**PropertymappingsSourcePlexRetrieve**](PropertymappingsApi.md#PropertymappingsSourcePlexRetrieve) | **Get** /propertymappings/source/plex/{pm_uuid}/ | 
-[**PropertymappingsSourcePlexUpdate**](PropertymappingsApi.md#PropertymappingsSourcePlexUpdate) | **Put** /propertymappings/source/plex/{pm_uuid}/ | 
-[**PropertymappingsSourcePlexUsedByList**](PropertymappingsApi.md#PropertymappingsSourcePlexUsedByList) | **Get** /propertymappings/source/plex/{pm_uuid}/used_by/ | 
-[**PropertymappingsSourceSamlCreate**](PropertymappingsApi.md#PropertymappingsSourceSamlCreate) | **Post** /propertymappings/source/saml/ | 
-[**PropertymappingsSourceSamlDestroy**](PropertymappingsApi.md#PropertymappingsSourceSamlDestroy) | **Delete** /propertymappings/source/saml/{pm_uuid}/ | 
-[**PropertymappingsSourceSamlList**](PropertymappingsApi.md#PropertymappingsSourceSamlList) | **Get** /propertymappings/source/saml/ | 
-[**PropertymappingsSourceSamlPartialUpdate**](PropertymappingsApi.md#PropertymappingsSourceSamlPartialUpdate) | **Patch** /propertymappings/source/saml/{pm_uuid}/ | 
-[**PropertymappingsSourceSamlRetrieve**](PropertymappingsApi.md#PropertymappingsSourceSamlRetrieve) | **Get** /propertymappings/source/saml/{pm_uuid}/ | 
-[**PropertymappingsSourceSamlUpdate**](PropertymappingsApi.md#PropertymappingsSourceSamlUpdate) | **Put** /propertymappings/source/saml/{pm_uuid}/ | 
-[**PropertymappingsSourceSamlUsedByList**](PropertymappingsApi.md#PropertymappingsSourceSamlUsedByList) | **Get** /propertymappings/source/saml/{pm_uuid}/used_by/ | 
-[**PropertymappingsSourceScimCreate**](PropertymappingsApi.md#PropertymappingsSourceScimCreate) | **Post** /propertymappings/source/scim/ | 
-[**PropertymappingsSourceScimDestroy**](PropertymappingsApi.md#PropertymappingsSourceScimDestroy) | **Delete** /propertymappings/source/scim/{pm_uuid}/ | 
-[**PropertymappingsSourceScimList**](PropertymappingsApi.md#PropertymappingsSourceScimList) | **Get** /propertymappings/source/scim/ | 
-[**PropertymappingsSourceScimPartialUpdate**](PropertymappingsApi.md#PropertymappingsSourceScimPartialUpdate) | **Patch** /propertymappings/source/scim/{pm_uuid}/ | 
-[**PropertymappingsSourceScimRetrieve**](PropertymappingsApi.md#PropertymappingsSourceScimRetrieve) | **Get** /propertymappings/source/scim/{pm_uuid}/ | 
-[**PropertymappingsSourceScimUpdate**](PropertymappingsApi.md#PropertymappingsSourceScimUpdate) | **Put** /propertymappings/source/scim/{pm_uuid}/ | 
-[**PropertymappingsSourceScimUsedByList**](PropertymappingsApi.md#PropertymappingsSourceScimUsedByList) | **Get** /propertymappings/source/scim/{pm_uuid}/used_by/ | 
+[**PropertymappingsAllDestroy**](PropertymappingsAPI.md#PropertymappingsAllDestroy) | **Delete** /propertymappings/all/{pm_uuid}/ | 
+[**PropertymappingsAllList**](PropertymappingsAPI.md#PropertymappingsAllList) | **Get** /propertymappings/all/ | 
+[**PropertymappingsAllRetrieve**](PropertymappingsAPI.md#PropertymappingsAllRetrieve) | **Get** /propertymappings/all/{pm_uuid}/ | 
+[**PropertymappingsAllTestCreate**](PropertymappingsAPI.md#PropertymappingsAllTestCreate) | **Post** /propertymappings/all/{pm_uuid}/test/ | 
+[**PropertymappingsAllTypesList**](PropertymappingsAPI.md#PropertymappingsAllTypesList) | **Get** /propertymappings/all/types/ | 
+[**PropertymappingsAllUsedByList**](PropertymappingsAPI.md#PropertymappingsAllUsedByList) | **Get** /propertymappings/all/{pm_uuid}/used_by/ | 
+[**PropertymappingsNotificationCreate**](PropertymappingsAPI.md#PropertymappingsNotificationCreate) | **Post** /propertymappings/notification/ | 
+[**PropertymappingsNotificationDestroy**](PropertymappingsAPI.md#PropertymappingsNotificationDestroy) | **Delete** /propertymappings/notification/{pm_uuid}/ | 
+[**PropertymappingsNotificationList**](PropertymappingsAPI.md#PropertymappingsNotificationList) | **Get** /propertymappings/notification/ | 
+[**PropertymappingsNotificationPartialUpdate**](PropertymappingsAPI.md#PropertymappingsNotificationPartialUpdate) | **Patch** /propertymappings/notification/{pm_uuid}/ | 
+[**PropertymappingsNotificationRetrieve**](PropertymappingsAPI.md#PropertymappingsNotificationRetrieve) | **Get** /propertymappings/notification/{pm_uuid}/ | 
+[**PropertymappingsNotificationUpdate**](PropertymappingsAPI.md#PropertymappingsNotificationUpdate) | **Put** /propertymappings/notification/{pm_uuid}/ | 
+[**PropertymappingsNotificationUsedByList**](PropertymappingsAPI.md#PropertymappingsNotificationUsedByList) | **Get** /propertymappings/notification/{pm_uuid}/used_by/ | 
+[**PropertymappingsProviderGoogleWorkspaceCreate**](PropertymappingsAPI.md#PropertymappingsProviderGoogleWorkspaceCreate) | **Post** /propertymappings/provider/google_workspace/ | 
+[**PropertymappingsProviderGoogleWorkspaceDestroy**](PropertymappingsAPI.md#PropertymappingsProviderGoogleWorkspaceDestroy) | **Delete** /propertymappings/provider/google_workspace/{pm_uuid}/ | 
+[**PropertymappingsProviderGoogleWorkspaceList**](PropertymappingsAPI.md#PropertymappingsProviderGoogleWorkspaceList) | **Get** /propertymappings/provider/google_workspace/ | 
+[**PropertymappingsProviderGoogleWorkspacePartialUpdate**](PropertymappingsAPI.md#PropertymappingsProviderGoogleWorkspacePartialUpdate) | **Patch** /propertymappings/provider/google_workspace/{pm_uuid}/ | 
+[**PropertymappingsProviderGoogleWorkspaceRetrieve**](PropertymappingsAPI.md#PropertymappingsProviderGoogleWorkspaceRetrieve) | **Get** /propertymappings/provider/google_workspace/{pm_uuid}/ | 
+[**PropertymappingsProviderGoogleWorkspaceUpdate**](PropertymappingsAPI.md#PropertymappingsProviderGoogleWorkspaceUpdate) | **Put** /propertymappings/provider/google_workspace/{pm_uuid}/ | 
+[**PropertymappingsProviderGoogleWorkspaceUsedByList**](PropertymappingsAPI.md#PropertymappingsProviderGoogleWorkspaceUsedByList) | **Get** /propertymappings/provider/google_workspace/{pm_uuid}/used_by/ | 
+[**PropertymappingsProviderMicrosoftEntraCreate**](PropertymappingsAPI.md#PropertymappingsProviderMicrosoftEntraCreate) | **Post** /propertymappings/provider/microsoft_entra/ | 
+[**PropertymappingsProviderMicrosoftEntraDestroy**](PropertymappingsAPI.md#PropertymappingsProviderMicrosoftEntraDestroy) | **Delete** /propertymappings/provider/microsoft_entra/{pm_uuid}/ | 
+[**PropertymappingsProviderMicrosoftEntraList**](PropertymappingsAPI.md#PropertymappingsProviderMicrosoftEntraList) | **Get** /propertymappings/provider/microsoft_entra/ | 
+[**PropertymappingsProviderMicrosoftEntraPartialUpdate**](PropertymappingsAPI.md#PropertymappingsProviderMicrosoftEntraPartialUpdate) | **Patch** /propertymappings/provider/microsoft_entra/{pm_uuid}/ | 
+[**PropertymappingsProviderMicrosoftEntraRetrieve**](PropertymappingsAPI.md#PropertymappingsProviderMicrosoftEntraRetrieve) | **Get** /propertymappings/provider/microsoft_entra/{pm_uuid}/ | 
+[**PropertymappingsProviderMicrosoftEntraUpdate**](PropertymappingsAPI.md#PropertymappingsProviderMicrosoftEntraUpdate) | **Put** /propertymappings/provider/microsoft_entra/{pm_uuid}/ | 
+[**PropertymappingsProviderMicrosoftEntraUsedByList**](PropertymappingsAPI.md#PropertymappingsProviderMicrosoftEntraUsedByList) | **Get** /propertymappings/provider/microsoft_entra/{pm_uuid}/used_by/ | 
+[**PropertymappingsProviderRacCreate**](PropertymappingsAPI.md#PropertymappingsProviderRacCreate) | **Post** /propertymappings/provider/rac/ | 
+[**PropertymappingsProviderRacDestroy**](PropertymappingsAPI.md#PropertymappingsProviderRacDestroy) | **Delete** /propertymappings/provider/rac/{pm_uuid}/ | 
+[**PropertymappingsProviderRacList**](PropertymappingsAPI.md#PropertymappingsProviderRacList) | **Get** /propertymappings/provider/rac/ | 
+[**PropertymappingsProviderRacPartialUpdate**](PropertymappingsAPI.md#PropertymappingsProviderRacPartialUpdate) | **Patch** /propertymappings/provider/rac/{pm_uuid}/ | 
+[**PropertymappingsProviderRacRetrieve**](PropertymappingsAPI.md#PropertymappingsProviderRacRetrieve) | **Get** /propertymappings/provider/rac/{pm_uuid}/ | 
+[**PropertymappingsProviderRacUpdate**](PropertymappingsAPI.md#PropertymappingsProviderRacUpdate) | **Put** /propertymappings/provider/rac/{pm_uuid}/ | 
+[**PropertymappingsProviderRacUsedByList**](PropertymappingsAPI.md#PropertymappingsProviderRacUsedByList) | **Get** /propertymappings/provider/rac/{pm_uuid}/used_by/ | 
+[**PropertymappingsProviderRadiusCreate**](PropertymappingsAPI.md#PropertymappingsProviderRadiusCreate) | **Post** /propertymappings/provider/radius/ | 
+[**PropertymappingsProviderRadiusDestroy**](PropertymappingsAPI.md#PropertymappingsProviderRadiusDestroy) | **Delete** /propertymappings/provider/radius/{pm_uuid}/ | 
+[**PropertymappingsProviderRadiusList**](PropertymappingsAPI.md#PropertymappingsProviderRadiusList) | **Get** /propertymappings/provider/radius/ | 
+[**PropertymappingsProviderRadiusPartialUpdate**](PropertymappingsAPI.md#PropertymappingsProviderRadiusPartialUpdate) | **Patch** /propertymappings/provider/radius/{pm_uuid}/ | 
+[**PropertymappingsProviderRadiusRetrieve**](PropertymappingsAPI.md#PropertymappingsProviderRadiusRetrieve) | **Get** /propertymappings/provider/radius/{pm_uuid}/ | 
+[**PropertymappingsProviderRadiusUpdate**](PropertymappingsAPI.md#PropertymappingsProviderRadiusUpdate) | **Put** /propertymappings/provider/radius/{pm_uuid}/ | 
+[**PropertymappingsProviderRadiusUsedByList**](PropertymappingsAPI.md#PropertymappingsProviderRadiusUsedByList) | **Get** /propertymappings/provider/radius/{pm_uuid}/used_by/ | 
+[**PropertymappingsProviderSamlCreate**](PropertymappingsAPI.md#PropertymappingsProviderSamlCreate) | **Post** /propertymappings/provider/saml/ | 
+[**PropertymappingsProviderSamlDestroy**](PropertymappingsAPI.md#PropertymappingsProviderSamlDestroy) | **Delete** /propertymappings/provider/saml/{pm_uuid}/ | 
+[**PropertymappingsProviderSamlList**](PropertymappingsAPI.md#PropertymappingsProviderSamlList) | **Get** /propertymappings/provider/saml/ | 
+[**PropertymappingsProviderSamlPartialUpdate**](PropertymappingsAPI.md#PropertymappingsProviderSamlPartialUpdate) | **Patch** /propertymappings/provider/saml/{pm_uuid}/ | 
+[**PropertymappingsProviderSamlRetrieve**](PropertymappingsAPI.md#PropertymappingsProviderSamlRetrieve) | **Get** /propertymappings/provider/saml/{pm_uuid}/ | 
+[**PropertymappingsProviderSamlUpdate**](PropertymappingsAPI.md#PropertymappingsProviderSamlUpdate) | **Put** /propertymappings/provider/saml/{pm_uuid}/ | 
+[**PropertymappingsProviderSamlUsedByList**](PropertymappingsAPI.md#PropertymappingsProviderSamlUsedByList) | **Get** /propertymappings/provider/saml/{pm_uuid}/used_by/ | 
+[**PropertymappingsProviderScimCreate**](PropertymappingsAPI.md#PropertymappingsProviderScimCreate) | **Post** /propertymappings/provider/scim/ | 
+[**PropertymappingsProviderScimDestroy**](PropertymappingsAPI.md#PropertymappingsProviderScimDestroy) | **Delete** /propertymappings/provider/scim/{pm_uuid}/ | 
+[**PropertymappingsProviderScimList**](PropertymappingsAPI.md#PropertymappingsProviderScimList) | **Get** /propertymappings/provider/scim/ | 
+[**PropertymappingsProviderScimPartialUpdate**](PropertymappingsAPI.md#PropertymappingsProviderScimPartialUpdate) | **Patch** /propertymappings/provider/scim/{pm_uuid}/ | 
+[**PropertymappingsProviderScimRetrieve**](PropertymappingsAPI.md#PropertymappingsProviderScimRetrieve) | **Get** /propertymappings/provider/scim/{pm_uuid}/ | 
+[**PropertymappingsProviderScimUpdate**](PropertymappingsAPI.md#PropertymappingsProviderScimUpdate) | **Put** /propertymappings/provider/scim/{pm_uuid}/ | 
+[**PropertymappingsProviderScimUsedByList**](PropertymappingsAPI.md#PropertymappingsProviderScimUsedByList) | **Get** /propertymappings/provider/scim/{pm_uuid}/used_by/ | 
+[**PropertymappingsProviderScopeCreate**](PropertymappingsAPI.md#PropertymappingsProviderScopeCreate) | **Post** /propertymappings/provider/scope/ | 
+[**PropertymappingsProviderScopeDestroy**](PropertymappingsAPI.md#PropertymappingsProviderScopeDestroy) | **Delete** /propertymappings/provider/scope/{pm_uuid}/ | 
+[**PropertymappingsProviderScopeList**](PropertymappingsAPI.md#PropertymappingsProviderScopeList) | **Get** /propertymappings/provider/scope/ | 
+[**PropertymappingsProviderScopePartialUpdate**](PropertymappingsAPI.md#PropertymappingsProviderScopePartialUpdate) | **Patch** /propertymappings/provider/scope/{pm_uuid}/ | 
+[**PropertymappingsProviderScopeRetrieve**](PropertymappingsAPI.md#PropertymappingsProviderScopeRetrieve) | **Get** /propertymappings/provider/scope/{pm_uuid}/ | 
+[**PropertymappingsProviderScopeUpdate**](PropertymappingsAPI.md#PropertymappingsProviderScopeUpdate) | **Put** /propertymappings/provider/scope/{pm_uuid}/ | 
+[**PropertymappingsProviderScopeUsedByList**](PropertymappingsAPI.md#PropertymappingsProviderScopeUsedByList) | **Get** /propertymappings/provider/scope/{pm_uuid}/used_by/ | 
+[**PropertymappingsSourceKerberosCreate**](PropertymappingsAPI.md#PropertymappingsSourceKerberosCreate) | **Post** /propertymappings/source/kerberos/ | 
+[**PropertymappingsSourceKerberosDestroy**](PropertymappingsAPI.md#PropertymappingsSourceKerberosDestroy) | **Delete** /propertymappings/source/kerberos/{pm_uuid}/ | 
+[**PropertymappingsSourceKerberosList**](PropertymappingsAPI.md#PropertymappingsSourceKerberosList) | **Get** /propertymappings/source/kerberos/ | 
+[**PropertymappingsSourceKerberosPartialUpdate**](PropertymappingsAPI.md#PropertymappingsSourceKerberosPartialUpdate) | **Patch** /propertymappings/source/kerberos/{pm_uuid}/ | 
+[**PropertymappingsSourceKerberosRetrieve**](PropertymappingsAPI.md#PropertymappingsSourceKerberosRetrieve) | **Get** /propertymappings/source/kerberos/{pm_uuid}/ | 
+[**PropertymappingsSourceKerberosUpdate**](PropertymappingsAPI.md#PropertymappingsSourceKerberosUpdate) | **Put** /propertymappings/source/kerberos/{pm_uuid}/ | 
+[**PropertymappingsSourceKerberosUsedByList**](PropertymappingsAPI.md#PropertymappingsSourceKerberosUsedByList) | **Get** /propertymappings/source/kerberos/{pm_uuid}/used_by/ | 
+[**PropertymappingsSourceLdapCreate**](PropertymappingsAPI.md#PropertymappingsSourceLdapCreate) | **Post** /propertymappings/source/ldap/ | 
+[**PropertymappingsSourceLdapDestroy**](PropertymappingsAPI.md#PropertymappingsSourceLdapDestroy) | **Delete** /propertymappings/source/ldap/{pm_uuid}/ | 
+[**PropertymappingsSourceLdapList**](PropertymappingsAPI.md#PropertymappingsSourceLdapList) | **Get** /propertymappings/source/ldap/ | 
+[**PropertymappingsSourceLdapPartialUpdate**](PropertymappingsAPI.md#PropertymappingsSourceLdapPartialUpdate) | **Patch** /propertymappings/source/ldap/{pm_uuid}/ | 
+[**PropertymappingsSourceLdapRetrieve**](PropertymappingsAPI.md#PropertymappingsSourceLdapRetrieve) | **Get** /propertymappings/source/ldap/{pm_uuid}/ | 
+[**PropertymappingsSourceLdapUpdate**](PropertymappingsAPI.md#PropertymappingsSourceLdapUpdate) | **Put** /propertymappings/source/ldap/{pm_uuid}/ | 
+[**PropertymappingsSourceLdapUsedByList**](PropertymappingsAPI.md#PropertymappingsSourceLdapUsedByList) | **Get** /propertymappings/source/ldap/{pm_uuid}/used_by/ | 
+[**PropertymappingsSourceOauthCreate**](PropertymappingsAPI.md#PropertymappingsSourceOauthCreate) | **Post** /propertymappings/source/oauth/ | 
+[**PropertymappingsSourceOauthDestroy**](PropertymappingsAPI.md#PropertymappingsSourceOauthDestroy) | **Delete** /propertymappings/source/oauth/{pm_uuid}/ | 
+[**PropertymappingsSourceOauthList**](PropertymappingsAPI.md#PropertymappingsSourceOauthList) | **Get** /propertymappings/source/oauth/ | 
+[**PropertymappingsSourceOauthPartialUpdate**](PropertymappingsAPI.md#PropertymappingsSourceOauthPartialUpdate) | **Patch** /propertymappings/source/oauth/{pm_uuid}/ | 
+[**PropertymappingsSourceOauthRetrieve**](PropertymappingsAPI.md#PropertymappingsSourceOauthRetrieve) | **Get** /propertymappings/source/oauth/{pm_uuid}/ | 
+[**PropertymappingsSourceOauthUpdate**](PropertymappingsAPI.md#PropertymappingsSourceOauthUpdate) | **Put** /propertymappings/source/oauth/{pm_uuid}/ | 
+[**PropertymappingsSourceOauthUsedByList**](PropertymappingsAPI.md#PropertymappingsSourceOauthUsedByList) | **Get** /propertymappings/source/oauth/{pm_uuid}/used_by/ | 
+[**PropertymappingsSourcePlexCreate**](PropertymappingsAPI.md#PropertymappingsSourcePlexCreate) | **Post** /propertymappings/source/plex/ | 
+[**PropertymappingsSourcePlexDestroy**](PropertymappingsAPI.md#PropertymappingsSourcePlexDestroy) | **Delete** /propertymappings/source/plex/{pm_uuid}/ | 
+[**PropertymappingsSourcePlexList**](PropertymappingsAPI.md#PropertymappingsSourcePlexList) | **Get** /propertymappings/source/plex/ | 
+[**PropertymappingsSourcePlexPartialUpdate**](PropertymappingsAPI.md#PropertymappingsSourcePlexPartialUpdate) | **Patch** /propertymappings/source/plex/{pm_uuid}/ | 
+[**PropertymappingsSourcePlexRetrieve**](PropertymappingsAPI.md#PropertymappingsSourcePlexRetrieve) | **Get** /propertymappings/source/plex/{pm_uuid}/ | 
+[**PropertymappingsSourcePlexUpdate**](PropertymappingsAPI.md#PropertymappingsSourcePlexUpdate) | **Put** /propertymappings/source/plex/{pm_uuid}/ | 
+[**PropertymappingsSourcePlexUsedByList**](PropertymappingsAPI.md#PropertymappingsSourcePlexUsedByList) | **Get** /propertymappings/source/plex/{pm_uuid}/used_by/ | 
+[**PropertymappingsSourceSamlCreate**](PropertymappingsAPI.md#PropertymappingsSourceSamlCreate) | **Post** /propertymappings/source/saml/ | 
+[**PropertymappingsSourceSamlDestroy**](PropertymappingsAPI.md#PropertymappingsSourceSamlDestroy) | **Delete** /propertymappings/source/saml/{pm_uuid}/ | 
+[**PropertymappingsSourceSamlList**](PropertymappingsAPI.md#PropertymappingsSourceSamlList) | **Get** /propertymappings/source/saml/ | 
+[**PropertymappingsSourceSamlPartialUpdate**](PropertymappingsAPI.md#PropertymappingsSourceSamlPartialUpdate) | **Patch** /propertymappings/source/saml/{pm_uuid}/ | 
+[**PropertymappingsSourceSamlRetrieve**](PropertymappingsAPI.md#PropertymappingsSourceSamlRetrieve) | **Get** /propertymappings/source/saml/{pm_uuid}/ | 
+[**PropertymappingsSourceSamlUpdate**](PropertymappingsAPI.md#PropertymappingsSourceSamlUpdate) | **Put** /propertymappings/source/saml/{pm_uuid}/ | 
+[**PropertymappingsSourceSamlUsedByList**](PropertymappingsAPI.md#PropertymappingsSourceSamlUsedByList) | **Get** /propertymappings/source/saml/{pm_uuid}/used_by/ | 
+[**PropertymappingsSourceScimCreate**](PropertymappingsAPI.md#PropertymappingsSourceScimCreate) | **Post** /propertymappings/source/scim/ | 
+[**PropertymappingsSourceScimDestroy**](PropertymappingsAPI.md#PropertymappingsSourceScimDestroy) | **Delete** /propertymappings/source/scim/{pm_uuid}/ | 
+[**PropertymappingsSourceScimList**](PropertymappingsAPI.md#PropertymappingsSourceScimList) | **Get** /propertymappings/source/scim/ | 
+[**PropertymappingsSourceScimPartialUpdate**](PropertymappingsAPI.md#PropertymappingsSourceScimPartialUpdate) | **Patch** /propertymappings/source/scim/{pm_uuid}/ | 
+[**PropertymappingsSourceScimRetrieve**](PropertymappingsAPI.md#PropertymappingsSourceScimRetrieve) | **Get** /propertymappings/source/scim/{pm_uuid}/ | 
+[**PropertymappingsSourceScimUpdate**](PropertymappingsAPI.md#PropertymappingsSourceScimUpdate) | **Put** /propertymappings/source/scim/{pm_uuid}/ | 
+[**PropertymappingsSourceScimUsedByList**](PropertymappingsAPI.md#PropertymappingsSourceScimUsedByList) | **Get** /propertymappings/source/scim/{pm_uuid}/used_by/ | 
 
 
 
@@ -125,22 +125,22 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsAllDestroy(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsAllDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PropertymappingsAPI.PropertymappingsAllDestroy(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsAllDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -193,30 +193,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    managed := []string{"Inner_example"} // []string |  (optional)
-    managedIsnull := true // bool |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	managed := []string{"Inner_example"} // []string |  (optional)
+	managedIsnull := true // bool |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsAllList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsAllList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsAllList`: PaginatedPropertyMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsAllList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsAllList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsAllList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsAllList`: PaginatedPropertyMappingList
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsAllList`: %v\n", resp)
 }
 ```
 
@@ -271,24 +271,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsAllRetrieve(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsAllRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsAllRetrieve`: PropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsAllRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsAllRetrieve(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsAllRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsAllRetrieve`: PropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsAllRetrieve`: %v\n", resp)
 }
 ```
 
@@ -341,26 +341,26 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Property Mapping.
-    formatResult := true // bool |  (optional)
-    propertyMappingTestRequest := *openapiclient.NewPropertyMappingTestRequest() // PropertyMappingTestRequest |  (optional)
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Property Mapping.
+	formatResult := true // bool |  (optional)
+	propertyMappingTestRequest := *openapiclient.NewPropertyMappingTestRequest() // PropertyMappingTestRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsAllTestCreate(context.Background(), pmUuid).FormatResult(formatResult).PropertyMappingTestRequest(propertyMappingTestRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsAllTestCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsAllTestCreate`: PropertyMappingTestResult
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsAllTestCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsAllTestCreate(context.Background(), pmUuid).FormatResult(formatResult).PropertyMappingTestRequest(propertyMappingTestRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsAllTestCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsAllTestCreate`: PropertyMappingTestResult
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsAllTestCreate`: %v\n", resp)
 }
 ```
 
@@ -415,23 +415,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsAllTypesList(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsAllTypesList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsAllTypesList`: []TypeCreate
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsAllTypesList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsAllTypesList(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsAllTypesList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsAllTypesList`: []TypeCreate
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsAllTypesList`: %v\n", resp)
 }
 ```
 
@@ -476,24 +476,24 @@ Other parameters are passed through a pointer to a apiPropertymappingsAllTypesLi
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsAllUsedByList(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsAllUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsAllUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsAllUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsAllUsedByList(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsAllUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsAllUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsAllUsedByList`: %v\n", resp)
 }
 ```
 
@@ -546,24 +546,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    notificationWebhookMappingRequest := *openapiclient.NewNotificationWebhookMappingRequest("Name_example", "Expression_example") // NotificationWebhookMappingRequest | 
+	notificationWebhookMappingRequest := *openapiclient.NewNotificationWebhookMappingRequest("Name_example", "Expression_example") // NotificationWebhookMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsNotificationCreate(context.Background()).NotificationWebhookMappingRequest(notificationWebhookMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsNotificationCreate`: NotificationWebhookMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsNotificationCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsNotificationCreate(context.Background()).NotificationWebhookMappingRequest(notificationWebhookMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsNotificationCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsNotificationCreate`: NotificationWebhookMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsNotificationCreate`: %v\n", resp)
 }
 ```
 
@@ -612,22 +612,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Webhook Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Webhook Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsNotificationDestroy(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PropertymappingsAPI.PropertymappingsNotificationDestroy(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsNotificationDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -680,28 +680,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsNotificationList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsNotificationList`: PaginatedNotificationWebhookMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsNotificationList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsNotificationList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsNotificationList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsNotificationList`: PaginatedNotificationWebhookMappingList
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsNotificationList`: %v\n", resp)
 }
 ```
 
@@ -754,25 +754,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Webhook Mapping.
-    patchedNotificationWebhookMappingRequest := *openapiclient.NewPatchedNotificationWebhookMappingRequest() // PatchedNotificationWebhookMappingRequest |  (optional)
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Webhook Mapping.
+	patchedNotificationWebhookMappingRequest := *openapiclient.NewPatchedNotificationWebhookMappingRequest() // PatchedNotificationWebhookMappingRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsNotificationPartialUpdate(context.Background(), pmUuid).PatchedNotificationWebhookMappingRequest(patchedNotificationWebhookMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsNotificationPartialUpdate`: NotificationWebhookMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsNotificationPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsNotificationPartialUpdate(context.Background(), pmUuid).PatchedNotificationWebhookMappingRequest(patchedNotificationWebhookMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsNotificationPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsNotificationPartialUpdate`: NotificationWebhookMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsNotificationPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -826,24 +826,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Webhook Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Webhook Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsNotificationRetrieve(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsNotificationRetrieve`: NotificationWebhookMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsNotificationRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsNotificationRetrieve(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsNotificationRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsNotificationRetrieve`: NotificationWebhookMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsNotificationRetrieve`: %v\n", resp)
 }
 ```
 
@@ -896,25 +896,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Webhook Mapping.
-    notificationWebhookMappingRequest := *openapiclient.NewNotificationWebhookMappingRequest("Name_example", "Expression_example") // NotificationWebhookMappingRequest | 
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Webhook Mapping.
+	notificationWebhookMappingRequest := *openapiclient.NewNotificationWebhookMappingRequest("Name_example", "Expression_example") // NotificationWebhookMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsNotificationUpdate(context.Background(), pmUuid).NotificationWebhookMappingRequest(notificationWebhookMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsNotificationUpdate`: NotificationWebhookMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsNotificationUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsNotificationUpdate(context.Background(), pmUuid).NotificationWebhookMappingRequest(notificationWebhookMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsNotificationUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsNotificationUpdate`: NotificationWebhookMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsNotificationUpdate`: %v\n", resp)
 }
 ```
 
@@ -968,24 +968,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Webhook Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Webhook Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsNotificationUsedByList(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsNotificationUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsNotificationUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsNotificationUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsNotificationUsedByList(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsNotificationUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsNotificationUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsNotificationUsedByList`: %v\n", resp)
 }
 ```
 
@@ -1038,24 +1038,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    googleWorkspaceProviderMappingRequest := *openapiclient.NewGoogleWorkspaceProviderMappingRequest("Name_example", "Expression_example") // GoogleWorkspaceProviderMappingRequest | 
+	googleWorkspaceProviderMappingRequest := *openapiclient.NewGoogleWorkspaceProviderMappingRequest("Name_example", "Expression_example") // GoogleWorkspaceProviderMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceCreate(context.Background()).GoogleWorkspaceProviderMappingRequest(googleWorkspaceProviderMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderGoogleWorkspaceCreate`: GoogleWorkspaceProviderMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderGoogleWorkspaceCreate(context.Background()).GoogleWorkspaceProviderMappingRequest(googleWorkspaceProviderMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderGoogleWorkspaceCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderGoogleWorkspaceCreate`: GoogleWorkspaceProviderMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderGoogleWorkspaceCreate`: %v\n", resp)
 }
 ```
 
@@ -1104,22 +1104,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceDestroy(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderGoogleWorkspaceDestroy(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderGoogleWorkspaceDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -1172,31 +1172,31 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    expression := "expression_example" // string |  (optional)
-    managed := []string{"Inner_example"} // []string |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    search := "search_example" // string | A search term. (optional)
+	expression := "expression_example" // string |  (optional)
+	managed := []string{"Inner_example"} // []string |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceList(context.Background()).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderGoogleWorkspaceList`: PaginatedGoogleWorkspaceProviderMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderGoogleWorkspaceList(context.Background()).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderGoogleWorkspaceList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderGoogleWorkspaceList`: PaginatedGoogleWorkspaceProviderMappingList
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderGoogleWorkspaceList`: %v\n", resp)
 }
 ```
 
@@ -1252,25 +1252,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Mapping.
-    patchedGoogleWorkspaceProviderMappingRequest := *openapiclient.NewPatchedGoogleWorkspaceProviderMappingRequest() // PatchedGoogleWorkspaceProviderMappingRequest |  (optional)
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Mapping.
+	patchedGoogleWorkspaceProviderMappingRequest := *openapiclient.NewPatchedGoogleWorkspaceProviderMappingRequest() // PatchedGoogleWorkspaceProviderMappingRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderGoogleWorkspacePartialUpdate(context.Background(), pmUuid).PatchedGoogleWorkspaceProviderMappingRequest(patchedGoogleWorkspaceProviderMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderGoogleWorkspacePartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderGoogleWorkspacePartialUpdate`: GoogleWorkspaceProviderMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderGoogleWorkspacePartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderGoogleWorkspacePartialUpdate(context.Background(), pmUuid).PatchedGoogleWorkspaceProviderMappingRequest(patchedGoogleWorkspaceProviderMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderGoogleWorkspacePartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderGoogleWorkspacePartialUpdate`: GoogleWorkspaceProviderMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderGoogleWorkspacePartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -1324,24 +1324,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceRetrieve(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderGoogleWorkspaceRetrieve`: GoogleWorkspaceProviderMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderGoogleWorkspaceRetrieve(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderGoogleWorkspaceRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderGoogleWorkspaceRetrieve`: GoogleWorkspaceProviderMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderGoogleWorkspaceRetrieve`: %v\n", resp)
 }
 ```
 
@@ -1394,25 +1394,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Mapping.
-    googleWorkspaceProviderMappingRequest := *openapiclient.NewGoogleWorkspaceProviderMappingRequest("Name_example", "Expression_example") // GoogleWorkspaceProviderMappingRequest | 
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Mapping.
+	googleWorkspaceProviderMappingRequest := *openapiclient.NewGoogleWorkspaceProviderMappingRequest("Name_example", "Expression_example") // GoogleWorkspaceProviderMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceUpdate(context.Background(), pmUuid).GoogleWorkspaceProviderMappingRequest(googleWorkspaceProviderMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderGoogleWorkspaceUpdate`: GoogleWorkspaceProviderMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderGoogleWorkspaceUpdate(context.Background(), pmUuid).GoogleWorkspaceProviderMappingRequest(googleWorkspaceProviderMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderGoogleWorkspaceUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderGoogleWorkspaceUpdate`: GoogleWorkspaceProviderMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderGoogleWorkspaceUpdate`: %v\n", resp)
 }
 ```
 
@@ -1466,24 +1466,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Workspace Provider Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceUsedByList(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderGoogleWorkspaceUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderGoogleWorkspaceUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderGoogleWorkspaceUsedByList(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderGoogleWorkspaceUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderGoogleWorkspaceUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderGoogleWorkspaceUsedByList`: %v\n", resp)
 }
 ```
 
@@ -1536,24 +1536,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    microsoftEntraProviderMappingRequest := *openapiclient.NewMicrosoftEntraProviderMappingRequest("Name_example", "Expression_example") // MicrosoftEntraProviderMappingRequest | 
+	microsoftEntraProviderMappingRequest := *openapiclient.NewMicrosoftEntraProviderMappingRequest("Name_example", "Expression_example") // MicrosoftEntraProviderMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderMicrosoftEntraCreate(context.Background()).MicrosoftEntraProviderMappingRequest(microsoftEntraProviderMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderMicrosoftEntraCreate`: MicrosoftEntraProviderMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderMicrosoftEntraCreate(context.Background()).MicrosoftEntraProviderMappingRequest(microsoftEntraProviderMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderMicrosoftEntraCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderMicrosoftEntraCreate`: MicrosoftEntraProviderMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderMicrosoftEntraCreate`: %v\n", resp)
 }
 ```
 
@@ -1602,22 +1602,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderMicrosoftEntraDestroy(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderMicrosoftEntraDestroy(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderMicrosoftEntraDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -1670,31 +1670,31 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    expression := "expression_example" // string |  (optional)
-    managed := []string{"Inner_example"} // []string |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    search := "search_example" // string | A search term. (optional)
+	expression := "expression_example" // string |  (optional)
+	managed := []string{"Inner_example"} // []string |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderMicrosoftEntraList(context.Background()).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderMicrosoftEntraList`: PaginatedMicrosoftEntraProviderMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderMicrosoftEntraList(context.Background()).Expression(expression).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PmUuid(pmUuid).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderMicrosoftEntraList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderMicrosoftEntraList`: PaginatedMicrosoftEntraProviderMappingList
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderMicrosoftEntraList`: %v\n", resp)
 }
 ```
 
@@ -1750,25 +1750,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider Mapping.
-    patchedMicrosoftEntraProviderMappingRequest := *openapiclient.NewPatchedMicrosoftEntraProviderMappingRequest() // PatchedMicrosoftEntraProviderMappingRequest |  (optional)
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider Mapping.
+	patchedMicrosoftEntraProviderMappingRequest := *openapiclient.NewPatchedMicrosoftEntraProviderMappingRequest() // PatchedMicrosoftEntraProviderMappingRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderMicrosoftEntraPartialUpdate(context.Background(), pmUuid).PatchedMicrosoftEntraProviderMappingRequest(patchedMicrosoftEntraProviderMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderMicrosoftEntraPartialUpdate`: MicrosoftEntraProviderMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderMicrosoftEntraPartialUpdate(context.Background(), pmUuid).PatchedMicrosoftEntraProviderMappingRequest(patchedMicrosoftEntraProviderMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderMicrosoftEntraPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderMicrosoftEntraPartialUpdate`: MicrosoftEntraProviderMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderMicrosoftEntraPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -1822,24 +1822,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderMicrosoftEntraRetrieve(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderMicrosoftEntraRetrieve`: MicrosoftEntraProviderMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderMicrosoftEntraRetrieve(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderMicrosoftEntraRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderMicrosoftEntraRetrieve`: MicrosoftEntraProviderMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderMicrosoftEntraRetrieve`: %v\n", resp)
 }
 ```
 
@@ -1892,25 +1892,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider Mapping.
-    microsoftEntraProviderMappingRequest := *openapiclient.NewMicrosoftEntraProviderMappingRequest("Name_example", "Expression_example") // MicrosoftEntraProviderMappingRequest | 
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider Mapping.
+	microsoftEntraProviderMappingRequest := *openapiclient.NewMicrosoftEntraProviderMappingRequest("Name_example", "Expression_example") // MicrosoftEntraProviderMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderMicrosoftEntraUpdate(context.Background(), pmUuid).MicrosoftEntraProviderMappingRequest(microsoftEntraProviderMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderMicrosoftEntraUpdate`: MicrosoftEntraProviderMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderMicrosoftEntraUpdate(context.Background(), pmUuid).MicrosoftEntraProviderMappingRequest(microsoftEntraProviderMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderMicrosoftEntraUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderMicrosoftEntraUpdate`: MicrosoftEntraProviderMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderMicrosoftEntraUpdate`: %v\n", resp)
 }
 ```
 
@@ -1964,24 +1964,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Microsoft Entra Provider Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderMicrosoftEntraUsedByList(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderMicrosoftEntraUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderMicrosoftEntraUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderMicrosoftEntraUsedByList(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderMicrosoftEntraUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderMicrosoftEntraUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderMicrosoftEntraUsedByList`: %v\n", resp)
 }
 ```
 
@@ -2034,24 +2034,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    rACPropertyMappingRequest := *openapiclient.NewRACPropertyMappingRequest("Name_example", map[string]interface{}{"key": interface{}(123)}) // RACPropertyMappingRequest | 
+	rACPropertyMappingRequest := *openapiclient.NewRACPropertyMappingRequest("Name_example", map[string]interface{}{"key": interface{}(123)}) // RACPropertyMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRacCreate(context.Background()).RACPropertyMappingRequest(rACPropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRacCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderRacCreate`: RACPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRacCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderRacCreate(context.Background()).RACPropertyMappingRequest(rACPropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderRacCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderRacCreate`: RACPropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderRacCreate`: %v\n", resp)
 }
 ```
 
@@ -2100,22 +2100,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Provider Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Provider Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRacDestroy(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRacDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderRacDestroy(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderRacDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -2168,29 +2168,29 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    managed := []string{"Inner_example"} // []string |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	managed := []string{"Inner_example"} // []string |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRacList(context.Background()).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRacList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderRacList`: PaginatedRACPropertyMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRacList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderRacList(context.Background()).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderRacList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderRacList`: PaginatedRACPropertyMappingList
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderRacList`: %v\n", resp)
 }
 ```
 
@@ -2244,25 +2244,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Provider Property Mapping.
-    patchedRACPropertyMappingRequest := *openapiclient.NewPatchedRACPropertyMappingRequest() // PatchedRACPropertyMappingRequest |  (optional)
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Provider Property Mapping.
+	patchedRACPropertyMappingRequest := *openapiclient.NewPatchedRACPropertyMappingRequest() // PatchedRACPropertyMappingRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRacPartialUpdate(context.Background(), pmUuid).PatchedRACPropertyMappingRequest(patchedRACPropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRacPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderRacPartialUpdate`: RACPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRacPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderRacPartialUpdate(context.Background(), pmUuid).PatchedRACPropertyMappingRequest(patchedRACPropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderRacPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderRacPartialUpdate`: RACPropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderRacPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -2316,24 +2316,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Provider Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Provider Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRacRetrieve(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRacRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderRacRetrieve`: RACPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRacRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderRacRetrieve(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderRacRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderRacRetrieve`: RACPropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderRacRetrieve`: %v\n", resp)
 }
 ```
 
@@ -2386,25 +2386,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Provider Property Mapping.
-    rACPropertyMappingRequest := *openapiclient.NewRACPropertyMappingRequest("Name_example", map[string]interface{}{"key": interface{}(123)}) // RACPropertyMappingRequest | 
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Provider Property Mapping.
+	rACPropertyMappingRequest := *openapiclient.NewRACPropertyMappingRequest("Name_example", map[string]interface{}{"key": interface{}(123)}) // RACPropertyMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRacUpdate(context.Background(), pmUuid).RACPropertyMappingRequest(rACPropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRacUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderRacUpdate`: RACPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRacUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderRacUpdate(context.Background(), pmUuid).RACPropertyMappingRequest(rACPropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderRacUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderRacUpdate`: RACPropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderRacUpdate`: %v\n", resp)
 }
 ```
 
@@ -2458,24 +2458,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Provider Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Provider Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRacUsedByList(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRacUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderRacUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRacUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderRacUsedByList(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderRacUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderRacUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderRacUsedByList`: %v\n", resp)
 }
 ```
 
@@ -2528,24 +2528,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    radiusProviderPropertyMappingRequest := *openapiclient.NewRadiusProviderPropertyMappingRequest("Name_example", "Expression_example") // RadiusProviderPropertyMappingRequest | 
+	radiusProviderPropertyMappingRequest := *openapiclient.NewRadiusProviderPropertyMappingRequest("Name_example", "Expression_example") // RadiusProviderPropertyMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRadiusCreate(context.Background()).RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRadiusCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderRadiusCreate`: RadiusProviderPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRadiusCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderRadiusCreate(context.Background()).RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderRadiusCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderRadiusCreate`: RadiusProviderPropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderRadiusCreate`: %v\n", resp)
 }
 ```
 
@@ -2594,22 +2594,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Provider Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Provider Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRadiusDestroy(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRadiusDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderRadiusDestroy(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderRadiusDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -2662,30 +2662,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    managed := []string{"Inner_example"} // []string |  (optional)
-    managedIsnull := true // bool |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	managed := []string{"Inner_example"} // []string |  (optional)
+	managedIsnull := true // bool |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRadiusList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRadiusList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderRadiusList`: PaginatedRadiusProviderPropertyMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRadiusList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderRadiusList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderRadiusList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderRadiusList`: PaginatedRadiusProviderPropertyMappingList
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderRadiusList`: %v\n", resp)
 }
 ```
 
@@ -2740,25 +2740,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Provider Property Mapping.
-    patchedRadiusProviderPropertyMappingRequest := *openapiclient.NewPatchedRadiusProviderPropertyMappingRequest() // PatchedRadiusProviderPropertyMappingRequest |  (optional)
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Provider Property Mapping.
+	patchedRadiusProviderPropertyMappingRequest := *openapiclient.NewPatchedRadiusProviderPropertyMappingRequest() // PatchedRadiusProviderPropertyMappingRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRadiusPartialUpdate(context.Background(), pmUuid).PatchedRadiusProviderPropertyMappingRequest(patchedRadiusProviderPropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRadiusPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderRadiusPartialUpdate`: RadiusProviderPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRadiusPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderRadiusPartialUpdate(context.Background(), pmUuid).PatchedRadiusProviderPropertyMappingRequest(patchedRadiusProviderPropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderRadiusPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderRadiusPartialUpdate`: RadiusProviderPropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderRadiusPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -2812,24 +2812,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Provider Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Provider Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRadiusRetrieve(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRadiusRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderRadiusRetrieve`: RadiusProviderPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRadiusRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderRadiusRetrieve(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderRadiusRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderRadiusRetrieve`: RadiusProviderPropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderRadiusRetrieve`: %v\n", resp)
 }
 ```
 
@@ -2882,25 +2882,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Provider Property Mapping.
-    radiusProviderPropertyMappingRequest := *openapiclient.NewRadiusProviderPropertyMappingRequest("Name_example", "Expression_example") // RadiusProviderPropertyMappingRequest | 
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Provider Property Mapping.
+	radiusProviderPropertyMappingRequest := *openapiclient.NewRadiusProviderPropertyMappingRequest("Name_example", "Expression_example") // RadiusProviderPropertyMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRadiusUpdate(context.Background(), pmUuid).RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRadiusUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderRadiusUpdate`: RadiusProviderPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRadiusUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderRadiusUpdate(context.Background(), pmUuid).RadiusProviderPropertyMappingRequest(radiusProviderPropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderRadiusUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderRadiusUpdate`: RadiusProviderPropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderRadiusUpdate`: %v\n", resp)
 }
 ```
 
@@ -2954,24 +2954,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Provider Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Radius Provider Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderRadiusUsedByList(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderRadiusUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderRadiusUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderRadiusUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderRadiusUsedByList(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderRadiusUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderRadiusUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderRadiusUsedByList`: %v\n", resp)
 }
 ```
 
@@ -3024,24 +3024,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    sAMLPropertyMappingRequest := *openapiclient.NewSAMLPropertyMappingRequest("Name_example", "Expression_example", "SamlName_example") // SAMLPropertyMappingRequest | 
+	sAMLPropertyMappingRequest := *openapiclient.NewSAMLPropertyMappingRequest("Name_example", "Expression_example", "SamlName_example") // SAMLPropertyMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderSamlCreate(context.Background()).SAMLPropertyMappingRequest(sAMLPropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderSamlCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderSamlCreate`: SAMLPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderSamlCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderSamlCreate(context.Background()).SAMLPropertyMappingRequest(sAMLPropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderSamlCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderSamlCreate`: SAMLPropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderSamlCreate`: %v\n", resp)
 }
 ```
 
@@ -3090,22 +3090,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Provider Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Provider Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderSamlDestroy(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderSamlDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderSamlDestroy(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderSamlDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -3158,32 +3158,32 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    friendlyName := "friendlyName_example" // string |  (optional)
-    managed := []string{"Inner_example"} // []string |  (optional)
-    managedIsnull := true // bool |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    samlName := "samlName_example" // string |  (optional)
-    search := "search_example" // string | A search term. (optional)
+	friendlyName := "friendlyName_example" // string |  (optional)
+	managed := []string{"Inner_example"} // []string |  (optional)
+	managedIsnull := true // bool |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	samlName := "samlName_example" // string |  (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderSamlList(context.Background()).FriendlyName(friendlyName).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).SamlName(samlName).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderSamlList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderSamlList`: PaginatedSAMLPropertyMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderSamlList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderSamlList(context.Background()).FriendlyName(friendlyName).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).SamlName(samlName).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderSamlList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderSamlList`: PaginatedSAMLPropertyMappingList
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderSamlList`: %v\n", resp)
 }
 ```
 
@@ -3240,25 +3240,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Provider Property Mapping.
-    patchedSAMLPropertyMappingRequest := *openapiclient.NewPatchedSAMLPropertyMappingRequest() // PatchedSAMLPropertyMappingRequest |  (optional)
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Provider Property Mapping.
+	patchedSAMLPropertyMappingRequest := *openapiclient.NewPatchedSAMLPropertyMappingRequest() // PatchedSAMLPropertyMappingRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderSamlPartialUpdate(context.Background(), pmUuid).PatchedSAMLPropertyMappingRequest(patchedSAMLPropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderSamlPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderSamlPartialUpdate`: SAMLPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderSamlPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderSamlPartialUpdate(context.Background(), pmUuid).PatchedSAMLPropertyMappingRequest(patchedSAMLPropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderSamlPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderSamlPartialUpdate`: SAMLPropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderSamlPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -3312,24 +3312,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Provider Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Provider Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderSamlRetrieve(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderSamlRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderSamlRetrieve`: SAMLPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderSamlRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderSamlRetrieve(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderSamlRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderSamlRetrieve`: SAMLPropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderSamlRetrieve`: %v\n", resp)
 }
 ```
 
@@ -3382,25 +3382,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Provider Property Mapping.
-    sAMLPropertyMappingRequest := *openapiclient.NewSAMLPropertyMappingRequest("Name_example", "Expression_example", "SamlName_example") // SAMLPropertyMappingRequest | 
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Provider Property Mapping.
+	sAMLPropertyMappingRequest := *openapiclient.NewSAMLPropertyMappingRequest("Name_example", "Expression_example", "SamlName_example") // SAMLPropertyMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderSamlUpdate(context.Background(), pmUuid).SAMLPropertyMappingRequest(sAMLPropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderSamlUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderSamlUpdate`: SAMLPropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderSamlUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderSamlUpdate(context.Background(), pmUuid).SAMLPropertyMappingRequest(sAMLPropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderSamlUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderSamlUpdate`: SAMLPropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderSamlUpdate`: %v\n", resp)
 }
 ```
 
@@ -3454,24 +3454,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Provider Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Provider Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderSamlUsedByList(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderSamlUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderSamlUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderSamlUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderSamlUsedByList(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderSamlUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderSamlUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderSamlUsedByList`: %v\n", resp)
 }
 ```
 
@@ -3524,24 +3524,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    sCIMMappingRequest := *openapiclient.NewSCIMMappingRequest("Name_example", "Expression_example") // SCIMMappingRequest | 
+	sCIMMappingRequest := *openapiclient.NewSCIMMappingRequest("Name_example", "Expression_example") // SCIMMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScimCreate(context.Background()).SCIMMappingRequest(sCIMMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScimCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderScimCreate`: SCIMMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScimCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderScimCreate(context.Background()).SCIMMappingRequest(sCIMMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderScimCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderScimCreate`: SCIMMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderScimCreate`: %v\n", resp)
 }
 ```
 
@@ -3590,22 +3590,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Provider Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Provider Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScimDestroy(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScimDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderScimDestroy(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderScimDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -3658,30 +3658,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    managed := []string{"Inner_example"} // []string |  (optional)
-    managedIsnull := true // bool |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	managed := []string{"Inner_example"} // []string |  (optional)
+	managedIsnull := true // bool |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScimList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScimList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderScimList`: PaginatedSCIMMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScimList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderScimList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderScimList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderScimList`: PaginatedSCIMMappingList
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderScimList`: %v\n", resp)
 }
 ```
 
@@ -3736,25 +3736,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Provider Mapping.
-    patchedSCIMMappingRequest := *openapiclient.NewPatchedSCIMMappingRequest() // PatchedSCIMMappingRequest |  (optional)
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Provider Mapping.
+	patchedSCIMMappingRequest := *openapiclient.NewPatchedSCIMMappingRequest() // PatchedSCIMMappingRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScimPartialUpdate(context.Background(), pmUuid).PatchedSCIMMappingRequest(patchedSCIMMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScimPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderScimPartialUpdate`: SCIMMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScimPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderScimPartialUpdate(context.Background(), pmUuid).PatchedSCIMMappingRequest(patchedSCIMMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderScimPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderScimPartialUpdate`: SCIMMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderScimPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -3808,24 +3808,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Provider Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Provider Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScimRetrieve(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScimRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderScimRetrieve`: SCIMMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScimRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderScimRetrieve(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderScimRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderScimRetrieve`: SCIMMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderScimRetrieve`: %v\n", resp)
 }
 ```
 
@@ -3878,25 +3878,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Provider Mapping.
-    sCIMMappingRequest := *openapiclient.NewSCIMMappingRequest("Name_example", "Expression_example") // SCIMMappingRequest | 
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Provider Mapping.
+	sCIMMappingRequest := *openapiclient.NewSCIMMappingRequest("Name_example", "Expression_example") // SCIMMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScimUpdate(context.Background(), pmUuid).SCIMMappingRequest(sCIMMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScimUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderScimUpdate`: SCIMMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScimUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderScimUpdate(context.Background(), pmUuid).SCIMMappingRequest(sCIMMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderScimUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderScimUpdate`: SCIMMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderScimUpdate`: %v\n", resp)
 }
 ```
 
@@ -3950,24 +3950,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Provider Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Provider Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScimUsedByList(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScimUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderScimUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScimUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderScimUsedByList(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderScimUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderScimUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderScimUsedByList`: %v\n", resp)
 }
 ```
 
@@ -4020,24 +4020,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    scopeMappingRequest := *openapiclient.NewScopeMappingRequest("Name_example", "Expression_example", "ScopeName_example") // ScopeMappingRequest | 
+	scopeMappingRequest := *openapiclient.NewScopeMappingRequest("Name_example", "Expression_example", "ScopeName_example") // ScopeMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScopeCreate(context.Background()).ScopeMappingRequest(scopeMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScopeCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderScopeCreate`: ScopeMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScopeCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderScopeCreate(context.Background()).ScopeMappingRequest(scopeMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderScopeCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderScopeCreate`: ScopeMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderScopeCreate`: %v\n", resp)
 }
 ```
 
@@ -4086,22 +4086,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Scope Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Scope Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScopeDestroy(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScopeDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderScopeDestroy(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderScopeDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -4154,31 +4154,31 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    managed := []string{"Inner_example"} // []string |  (optional)
-    managedIsnull := true // bool |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    scopeName := "scopeName_example" // string |  (optional)
-    search := "search_example" // string | A search term. (optional)
+	managed := []string{"Inner_example"} // []string |  (optional)
+	managedIsnull := true // bool |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	scopeName := "scopeName_example" // string |  (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScopeList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ScopeName(scopeName).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScopeList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderScopeList`: PaginatedScopeMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScopeList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderScopeList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).ScopeName(scopeName).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderScopeList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderScopeList`: PaginatedScopeMappingList
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderScopeList`: %v\n", resp)
 }
 ```
 
@@ -4234,25 +4234,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Scope Mapping.
-    patchedScopeMappingRequest := *openapiclient.NewPatchedScopeMappingRequest() // PatchedScopeMappingRequest |  (optional)
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Scope Mapping.
+	patchedScopeMappingRequest := *openapiclient.NewPatchedScopeMappingRequest() // PatchedScopeMappingRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScopePartialUpdate(context.Background(), pmUuid).PatchedScopeMappingRequest(patchedScopeMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScopePartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderScopePartialUpdate`: ScopeMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScopePartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderScopePartialUpdate(context.Background(), pmUuid).PatchedScopeMappingRequest(patchedScopeMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderScopePartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderScopePartialUpdate`: ScopeMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderScopePartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -4306,24 +4306,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Scope Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Scope Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScopeRetrieve(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScopeRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderScopeRetrieve`: ScopeMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScopeRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderScopeRetrieve(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderScopeRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderScopeRetrieve`: ScopeMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderScopeRetrieve`: %v\n", resp)
 }
 ```
 
@@ -4376,25 +4376,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Scope Mapping.
-    scopeMappingRequest := *openapiclient.NewScopeMappingRequest("Name_example", "Expression_example", "ScopeName_example") // ScopeMappingRequest | 
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Scope Mapping.
+	scopeMappingRequest := *openapiclient.NewScopeMappingRequest("Name_example", "Expression_example", "ScopeName_example") // ScopeMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScopeUpdate(context.Background(), pmUuid).ScopeMappingRequest(scopeMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScopeUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderScopeUpdate`: ScopeMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScopeUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderScopeUpdate(context.Background(), pmUuid).ScopeMappingRequest(scopeMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderScopeUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderScopeUpdate`: ScopeMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderScopeUpdate`: %v\n", resp)
 }
 ```
 
@@ -4448,24 +4448,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Scope Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Scope Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsProviderScopeUsedByList(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsProviderScopeUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsProviderScopeUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsProviderScopeUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsProviderScopeUsedByList(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsProviderScopeUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsProviderScopeUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsProviderScopeUsedByList`: %v\n", resp)
 }
 ```
 
@@ -4518,24 +4518,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    kerberosSourcePropertyMappingRequest := *openapiclient.NewKerberosSourcePropertyMappingRequest("Name_example", "Expression_example") // KerberosSourcePropertyMappingRequest | 
+	kerberosSourcePropertyMappingRequest := *openapiclient.NewKerberosSourcePropertyMappingRequest("Name_example", "Expression_example") // KerberosSourcePropertyMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceKerberosCreate(context.Background()).KerberosSourcePropertyMappingRequest(kerberosSourcePropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceKerberosCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceKerberosCreate`: KerberosSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceKerberosCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceKerberosCreate(context.Background()).KerberosSourcePropertyMappingRequest(kerberosSourcePropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceKerberosCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceKerberosCreate`: KerberosSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceKerberosCreate`: %v\n", resp)
 }
 ```
 
@@ -4584,22 +4584,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kerberos Source Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kerberos Source Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceKerberosDestroy(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceKerberosDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceKerberosDestroy(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceKerberosDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -4652,30 +4652,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    managed := []string{"Inner_example"} // []string |  (optional)
-    managedIsnull := true // bool |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	managed := []string{"Inner_example"} // []string |  (optional)
+	managedIsnull := true // bool |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceKerberosList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceKerberosList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceKerberosList`: PaginatedKerberosSourcePropertyMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceKerberosList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceKerberosList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceKerberosList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceKerberosList`: PaginatedKerberosSourcePropertyMappingList
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceKerberosList`: %v\n", resp)
 }
 ```
 
@@ -4730,25 +4730,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kerberos Source Property Mapping.
-    patchedKerberosSourcePropertyMappingRequest := *openapiclient.NewPatchedKerberosSourcePropertyMappingRequest() // PatchedKerberosSourcePropertyMappingRequest |  (optional)
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kerberos Source Property Mapping.
+	patchedKerberosSourcePropertyMappingRequest := *openapiclient.NewPatchedKerberosSourcePropertyMappingRequest() // PatchedKerberosSourcePropertyMappingRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceKerberosPartialUpdate(context.Background(), pmUuid).PatchedKerberosSourcePropertyMappingRequest(patchedKerberosSourcePropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceKerberosPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceKerberosPartialUpdate`: KerberosSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceKerberosPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceKerberosPartialUpdate(context.Background(), pmUuid).PatchedKerberosSourcePropertyMappingRequest(patchedKerberosSourcePropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceKerberosPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceKerberosPartialUpdate`: KerberosSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceKerberosPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -4802,24 +4802,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kerberos Source Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kerberos Source Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceKerberosRetrieve(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceKerberosRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceKerberosRetrieve`: KerberosSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceKerberosRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceKerberosRetrieve(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceKerberosRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceKerberosRetrieve`: KerberosSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceKerberosRetrieve`: %v\n", resp)
 }
 ```
 
@@ -4872,25 +4872,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kerberos Source Property Mapping.
-    kerberosSourcePropertyMappingRequest := *openapiclient.NewKerberosSourcePropertyMappingRequest("Name_example", "Expression_example") // KerberosSourcePropertyMappingRequest | 
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kerberos Source Property Mapping.
+	kerberosSourcePropertyMappingRequest := *openapiclient.NewKerberosSourcePropertyMappingRequest("Name_example", "Expression_example") // KerberosSourcePropertyMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceKerberosUpdate(context.Background(), pmUuid).KerberosSourcePropertyMappingRequest(kerberosSourcePropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceKerberosUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceKerberosUpdate`: KerberosSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceKerberosUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceKerberosUpdate(context.Background(), pmUuid).KerberosSourcePropertyMappingRequest(kerberosSourcePropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceKerberosUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceKerberosUpdate`: KerberosSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceKerberosUpdate`: %v\n", resp)
 }
 ```
 
@@ -4944,24 +4944,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kerberos Source Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kerberos Source Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceKerberosUsedByList(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceKerberosUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceKerberosUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceKerberosUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceKerberosUsedByList(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceKerberosUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceKerberosUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceKerberosUsedByList`: %v\n", resp)
 }
 ```
 
@@ -5014,24 +5014,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    lDAPSourcePropertyMappingRequest := *openapiclient.NewLDAPSourcePropertyMappingRequest("Name_example", "Expression_example") // LDAPSourcePropertyMappingRequest | 
+	lDAPSourcePropertyMappingRequest := *openapiclient.NewLDAPSourcePropertyMappingRequest("Name_example", "Expression_example") // LDAPSourcePropertyMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceLdapCreate(context.Background()).LDAPSourcePropertyMappingRequest(lDAPSourcePropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceLdapCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceLdapCreate`: LDAPSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceLdapCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceLdapCreate(context.Background()).LDAPSourcePropertyMappingRequest(lDAPSourcePropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceLdapCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceLdapCreate`: LDAPSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceLdapCreate`: %v\n", resp)
 }
 ```
 
@@ -5080,22 +5080,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Source Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Source Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceLdapDestroy(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceLdapDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceLdapDestroy(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceLdapDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -5148,30 +5148,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    managed := []string{"Inner_example"} // []string |  (optional)
-    managedIsnull := true // bool |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	managed := []string{"Inner_example"} // []string |  (optional)
+	managedIsnull := true // bool |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceLdapList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceLdapList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceLdapList`: PaginatedLDAPSourcePropertyMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceLdapList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceLdapList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceLdapList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceLdapList`: PaginatedLDAPSourcePropertyMappingList
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceLdapList`: %v\n", resp)
 }
 ```
 
@@ -5226,25 +5226,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Source Property Mapping.
-    patchedLDAPSourcePropertyMappingRequest := *openapiclient.NewPatchedLDAPSourcePropertyMappingRequest() // PatchedLDAPSourcePropertyMappingRequest |  (optional)
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Source Property Mapping.
+	patchedLDAPSourcePropertyMappingRequest := *openapiclient.NewPatchedLDAPSourcePropertyMappingRequest() // PatchedLDAPSourcePropertyMappingRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceLdapPartialUpdate(context.Background(), pmUuid).PatchedLDAPSourcePropertyMappingRequest(patchedLDAPSourcePropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceLdapPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceLdapPartialUpdate`: LDAPSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceLdapPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceLdapPartialUpdate(context.Background(), pmUuid).PatchedLDAPSourcePropertyMappingRequest(patchedLDAPSourcePropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceLdapPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceLdapPartialUpdate`: LDAPSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceLdapPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -5298,24 +5298,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Source Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Source Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceLdapRetrieve(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceLdapRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceLdapRetrieve`: LDAPSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceLdapRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceLdapRetrieve(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceLdapRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceLdapRetrieve`: LDAPSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceLdapRetrieve`: %v\n", resp)
 }
 ```
 
@@ -5368,25 +5368,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Source Property Mapping.
-    lDAPSourcePropertyMappingRequest := *openapiclient.NewLDAPSourcePropertyMappingRequest("Name_example", "Expression_example") // LDAPSourcePropertyMappingRequest | 
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Source Property Mapping.
+	lDAPSourcePropertyMappingRequest := *openapiclient.NewLDAPSourcePropertyMappingRequest("Name_example", "Expression_example") // LDAPSourcePropertyMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceLdapUpdate(context.Background(), pmUuid).LDAPSourcePropertyMappingRequest(lDAPSourcePropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceLdapUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceLdapUpdate`: LDAPSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceLdapUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceLdapUpdate(context.Background(), pmUuid).LDAPSourcePropertyMappingRequest(lDAPSourcePropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceLdapUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceLdapUpdate`: LDAPSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceLdapUpdate`: %v\n", resp)
 }
 ```
 
@@ -5440,24 +5440,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Source Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this LDAP Source Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceLdapUsedByList(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceLdapUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceLdapUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceLdapUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceLdapUsedByList(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceLdapUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceLdapUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceLdapUsedByList`: %v\n", resp)
 }
 ```
 
@@ -5510,24 +5510,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    oAuthSourcePropertyMappingRequest := *openapiclient.NewOAuthSourcePropertyMappingRequest("Name_example", "Expression_example") // OAuthSourcePropertyMappingRequest | 
+	oAuthSourcePropertyMappingRequest := *openapiclient.NewOAuthSourcePropertyMappingRequest("Name_example", "Expression_example") // OAuthSourcePropertyMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceOauthCreate(context.Background()).OAuthSourcePropertyMappingRequest(oAuthSourcePropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceOauthCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceOauthCreate`: OAuthSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceOauthCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceOauthCreate(context.Background()).OAuthSourcePropertyMappingRequest(oAuthSourcePropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceOauthCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceOauthCreate`: OAuthSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceOauthCreate`: %v\n", resp)
 }
 ```
 
@@ -5576,22 +5576,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this OAuth Source Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this OAuth Source Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceOauthDestroy(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceOauthDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceOauthDestroy(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceOauthDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -5644,30 +5644,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    managed := []string{"Inner_example"} // []string |  (optional)
-    managedIsnull := true // bool |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	managed := []string{"Inner_example"} // []string |  (optional)
+	managedIsnull := true // bool |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceOauthList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceOauthList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceOauthList`: PaginatedOAuthSourcePropertyMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceOauthList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceOauthList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceOauthList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceOauthList`: PaginatedOAuthSourcePropertyMappingList
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceOauthList`: %v\n", resp)
 }
 ```
 
@@ -5722,25 +5722,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this OAuth Source Property Mapping.
-    patchedOAuthSourcePropertyMappingRequest := *openapiclient.NewPatchedOAuthSourcePropertyMappingRequest() // PatchedOAuthSourcePropertyMappingRequest |  (optional)
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this OAuth Source Property Mapping.
+	patchedOAuthSourcePropertyMappingRequest := *openapiclient.NewPatchedOAuthSourcePropertyMappingRequest() // PatchedOAuthSourcePropertyMappingRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceOauthPartialUpdate(context.Background(), pmUuid).PatchedOAuthSourcePropertyMappingRequest(patchedOAuthSourcePropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceOauthPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceOauthPartialUpdate`: OAuthSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceOauthPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceOauthPartialUpdate(context.Background(), pmUuid).PatchedOAuthSourcePropertyMappingRequest(patchedOAuthSourcePropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceOauthPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceOauthPartialUpdate`: OAuthSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceOauthPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -5794,24 +5794,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this OAuth Source Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this OAuth Source Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceOauthRetrieve(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceOauthRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceOauthRetrieve`: OAuthSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceOauthRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceOauthRetrieve(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceOauthRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceOauthRetrieve`: OAuthSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceOauthRetrieve`: %v\n", resp)
 }
 ```
 
@@ -5864,25 +5864,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this OAuth Source Property Mapping.
-    oAuthSourcePropertyMappingRequest := *openapiclient.NewOAuthSourcePropertyMappingRequest("Name_example", "Expression_example") // OAuthSourcePropertyMappingRequest | 
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this OAuth Source Property Mapping.
+	oAuthSourcePropertyMappingRequest := *openapiclient.NewOAuthSourcePropertyMappingRequest("Name_example", "Expression_example") // OAuthSourcePropertyMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceOauthUpdate(context.Background(), pmUuid).OAuthSourcePropertyMappingRequest(oAuthSourcePropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceOauthUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceOauthUpdate`: OAuthSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceOauthUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceOauthUpdate(context.Background(), pmUuid).OAuthSourcePropertyMappingRequest(oAuthSourcePropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceOauthUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceOauthUpdate`: OAuthSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceOauthUpdate`: %v\n", resp)
 }
 ```
 
@@ -5936,24 +5936,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this OAuth Source Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this OAuth Source Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceOauthUsedByList(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceOauthUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceOauthUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceOauthUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceOauthUsedByList(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceOauthUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceOauthUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceOauthUsedByList`: %v\n", resp)
 }
 ```
 
@@ -6006,24 +6006,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    plexSourcePropertyMappingRequest := *openapiclient.NewPlexSourcePropertyMappingRequest("Name_example", "Expression_example") // PlexSourcePropertyMappingRequest | 
+	plexSourcePropertyMappingRequest := *openapiclient.NewPlexSourcePropertyMappingRequest("Name_example", "Expression_example") // PlexSourcePropertyMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourcePlexCreate(context.Background()).PlexSourcePropertyMappingRequest(plexSourcePropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourcePlexCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourcePlexCreate`: PlexSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourcePlexCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourcePlexCreate(context.Background()).PlexSourcePropertyMappingRequest(plexSourcePropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourcePlexCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourcePlexCreate`: PlexSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourcePlexCreate`: %v\n", resp)
 }
 ```
 
@@ -6072,22 +6072,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Plex Source Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Plex Source Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourcePlexDestroy(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourcePlexDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PropertymappingsAPI.PropertymappingsSourcePlexDestroy(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourcePlexDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -6140,30 +6140,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    managed := []string{"Inner_example"} // []string |  (optional)
-    managedIsnull := true // bool |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	managed := []string{"Inner_example"} // []string |  (optional)
+	managedIsnull := true // bool |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourcePlexList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourcePlexList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourcePlexList`: PaginatedPlexSourcePropertyMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourcePlexList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourcePlexList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourcePlexList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourcePlexList`: PaginatedPlexSourcePropertyMappingList
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourcePlexList`: %v\n", resp)
 }
 ```
 
@@ -6218,25 +6218,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Plex Source Property Mapping.
-    patchedPlexSourcePropertyMappingRequest := *openapiclient.NewPatchedPlexSourcePropertyMappingRequest() // PatchedPlexSourcePropertyMappingRequest |  (optional)
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Plex Source Property Mapping.
+	patchedPlexSourcePropertyMappingRequest := *openapiclient.NewPatchedPlexSourcePropertyMappingRequest() // PatchedPlexSourcePropertyMappingRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourcePlexPartialUpdate(context.Background(), pmUuid).PatchedPlexSourcePropertyMappingRequest(patchedPlexSourcePropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourcePlexPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourcePlexPartialUpdate`: PlexSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourcePlexPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourcePlexPartialUpdate(context.Background(), pmUuid).PatchedPlexSourcePropertyMappingRequest(patchedPlexSourcePropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourcePlexPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourcePlexPartialUpdate`: PlexSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourcePlexPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -6290,24 +6290,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Plex Source Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Plex Source Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourcePlexRetrieve(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourcePlexRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourcePlexRetrieve`: PlexSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourcePlexRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourcePlexRetrieve(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourcePlexRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourcePlexRetrieve`: PlexSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourcePlexRetrieve`: %v\n", resp)
 }
 ```
 
@@ -6360,25 +6360,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Plex Source Property Mapping.
-    plexSourcePropertyMappingRequest := *openapiclient.NewPlexSourcePropertyMappingRequest("Name_example", "Expression_example") // PlexSourcePropertyMappingRequest | 
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Plex Source Property Mapping.
+	plexSourcePropertyMappingRequest := *openapiclient.NewPlexSourcePropertyMappingRequest("Name_example", "Expression_example") // PlexSourcePropertyMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourcePlexUpdate(context.Background(), pmUuid).PlexSourcePropertyMappingRequest(plexSourcePropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourcePlexUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourcePlexUpdate`: PlexSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourcePlexUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourcePlexUpdate(context.Background(), pmUuid).PlexSourcePropertyMappingRequest(plexSourcePropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourcePlexUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourcePlexUpdate`: PlexSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourcePlexUpdate`: %v\n", resp)
 }
 ```
 
@@ -6432,24 +6432,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Plex Source Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Plex Source Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourcePlexUsedByList(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourcePlexUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourcePlexUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourcePlexUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourcePlexUsedByList(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourcePlexUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourcePlexUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourcePlexUsedByList`: %v\n", resp)
 }
 ```
 
@@ -6502,24 +6502,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    sAMLSourcePropertyMappingRequest := *openapiclient.NewSAMLSourcePropertyMappingRequest("Name_example", "Expression_example") // SAMLSourcePropertyMappingRequest | 
+	sAMLSourcePropertyMappingRequest := *openapiclient.NewSAMLSourcePropertyMappingRequest("Name_example", "Expression_example") // SAMLSourcePropertyMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceSamlCreate(context.Background()).SAMLSourcePropertyMappingRequest(sAMLSourcePropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceSamlCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceSamlCreate`: SAMLSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceSamlCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceSamlCreate(context.Background()).SAMLSourcePropertyMappingRequest(sAMLSourcePropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceSamlCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceSamlCreate`: SAMLSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceSamlCreate`: %v\n", resp)
 }
 ```
 
@@ -6568,22 +6568,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Source Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Source Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceSamlDestroy(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceSamlDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceSamlDestroy(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceSamlDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -6636,30 +6636,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    managed := []string{"Inner_example"} // []string |  (optional)
-    managedIsnull := true // bool |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	managed := []string{"Inner_example"} // []string |  (optional)
+	managedIsnull := true // bool |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceSamlList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceSamlList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceSamlList`: PaginatedSAMLSourcePropertyMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceSamlList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceSamlList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceSamlList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceSamlList`: PaginatedSAMLSourcePropertyMappingList
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceSamlList`: %v\n", resp)
 }
 ```
 
@@ -6714,25 +6714,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Source Property Mapping.
-    patchedSAMLSourcePropertyMappingRequest := *openapiclient.NewPatchedSAMLSourcePropertyMappingRequest() // PatchedSAMLSourcePropertyMappingRequest |  (optional)
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Source Property Mapping.
+	patchedSAMLSourcePropertyMappingRequest := *openapiclient.NewPatchedSAMLSourcePropertyMappingRequest() // PatchedSAMLSourcePropertyMappingRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceSamlPartialUpdate(context.Background(), pmUuid).PatchedSAMLSourcePropertyMappingRequest(patchedSAMLSourcePropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceSamlPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceSamlPartialUpdate`: SAMLSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceSamlPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceSamlPartialUpdate(context.Background(), pmUuid).PatchedSAMLSourcePropertyMappingRequest(patchedSAMLSourcePropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceSamlPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceSamlPartialUpdate`: SAMLSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceSamlPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -6786,24 +6786,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Source Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Source Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceSamlRetrieve(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceSamlRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceSamlRetrieve`: SAMLSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceSamlRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceSamlRetrieve(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceSamlRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceSamlRetrieve`: SAMLSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceSamlRetrieve`: %v\n", resp)
 }
 ```
 
@@ -6856,25 +6856,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Source Property Mapping.
-    sAMLSourcePropertyMappingRequest := *openapiclient.NewSAMLSourcePropertyMappingRequest("Name_example", "Expression_example") // SAMLSourcePropertyMappingRequest | 
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Source Property Mapping.
+	sAMLSourcePropertyMappingRequest := *openapiclient.NewSAMLSourcePropertyMappingRequest("Name_example", "Expression_example") // SAMLSourcePropertyMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceSamlUpdate(context.Background(), pmUuid).SAMLSourcePropertyMappingRequest(sAMLSourcePropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceSamlUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceSamlUpdate`: SAMLSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceSamlUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceSamlUpdate(context.Background(), pmUuid).SAMLSourcePropertyMappingRequest(sAMLSourcePropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceSamlUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceSamlUpdate`: SAMLSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceSamlUpdate`: %v\n", resp)
 }
 ```
 
@@ -6928,24 +6928,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Source Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SAML Source Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceSamlUsedByList(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceSamlUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceSamlUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceSamlUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceSamlUsedByList(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceSamlUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceSamlUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceSamlUsedByList`: %v\n", resp)
 }
 ```
 
@@ -6998,24 +6998,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    sCIMSourcePropertyMappingRequest := *openapiclient.NewSCIMSourcePropertyMappingRequest("Name_example", "Expression_example") // SCIMSourcePropertyMappingRequest | 
+	sCIMSourcePropertyMappingRequest := *openapiclient.NewSCIMSourcePropertyMappingRequest("Name_example", "Expression_example") // SCIMSourcePropertyMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceScimCreate(context.Background()).SCIMSourcePropertyMappingRequest(sCIMSourcePropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceScimCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceScimCreate`: SCIMSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceScimCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceScimCreate(context.Background()).SCIMSourcePropertyMappingRequest(sCIMSourcePropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceScimCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceScimCreate`: SCIMSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceScimCreate`: %v\n", resp)
 }
 ```
 
@@ -7064,22 +7064,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Source Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Source Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceScimDestroy(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceScimDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceScimDestroy(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceScimDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -7132,30 +7132,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    managed := []string{"Inner_example"} // []string |  (optional)
-    managedIsnull := true // bool |  (optional)
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	managed := []string{"Inner_example"} // []string |  (optional)
+	managedIsnull := true // bool |  (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceScimList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceScimList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceScimList`: PaginatedSCIMSourcePropertyMappingList
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceScimList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceScimList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceScimList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceScimList`: PaginatedSCIMSourcePropertyMappingList
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceScimList`: %v\n", resp)
 }
 ```
 
@@ -7210,25 +7210,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Source Property Mapping.
-    patchedSCIMSourcePropertyMappingRequest := *openapiclient.NewPatchedSCIMSourcePropertyMappingRequest() // PatchedSCIMSourcePropertyMappingRequest |  (optional)
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Source Property Mapping.
+	patchedSCIMSourcePropertyMappingRequest := *openapiclient.NewPatchedSCIMSourcePropertyMappingRequest() // PatchedSCIMSourcePropertyMappingRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceScimPartialUpdate(context.Background(), pmUuid).PatchedSCIMSourcePropertyMappingRequest(patchedSCIMSourcePropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceScimPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceScimPartialUpdate`: SCIMSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceScimPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceScimPartialUpdate(context.Background(), pmUuid).PatchedSCIMSourcePropertyMappingRequest(patchedSCIMSourcePropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceScimPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceScimPartialUpdate`: SCIMSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceScimPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -7282,24 +7282,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Source Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Source Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceScimRetrieve(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceScimRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceScimRetrieve`: SCIMSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceScimRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceScimRetrieve(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceScimRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceScimRetrieve`: SCIMSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceScimRetrieve`: %v\n", resp)
 }
 ```
 
@@ -7352,25 +7352,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Source Property Mapping.
-    sCIMSourcePropertyMappingRequest := *openapiclient.NewSCIMSourcePropertyMappingRequest("Name_example", "Expression_example") // SCIMSourcePropertyMappingRequest | 
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Source Property Mapping.
+	sCIMSourcePropertyMappingRequest := *openapiclient.NewSCIMSourcePropertyMappingRequest("Name_example", "Expression_example") // SCIMSourcePropertyMappingRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceScimUpdate(context.Background(), pmUuid).SCIMSourcePropertyMappingRequest(sCIMSourcePropertyMappingRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceScimUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceScimUpdate`: SCIMSourcePropertyMapping
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceScimUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceScimUpdate(context.Background(), pmUuid).SCIMSourcePropertyMappingRequest(sCIMSourcePropertyMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceScimUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceScimUpdate`: SCIMSourcePropertyMapping
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceScimUpdate`: %v\n", resp)
 }
 ```
 
@@ -7424,24 +7424,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Source Property Mapping.
+	pmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this SCIM Source Property Mapping.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropertymappingsApi.PropertymappingsSourceScimUsedByList(context.Background(), pmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsApi.PropertymappingsSourceScimUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PropertymappingsSourceScimUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `PropertymappingsApi.PropertymappingsSourceScimUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PropertymappingsAPI.PropertymappingsSourceScimUsedByList(context.Background(), pmUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PropertymappingsAPI.PropertymappingsSourceScimUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PropertymappingsSourceScimUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `PropertymappingsAPI.PropertymappingsSourceScimUsedByList`: %v\n", resp)
 }
 ```
 

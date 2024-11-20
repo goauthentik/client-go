@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the SourceStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SourceStageRequest{}
 
 // SourceStageRequest SourceStage Serializer
 type SourceStageRequest struct {
@@ -23,6 +28,8 @@ type SourceStageRequest struct {
 	// Amount of time a user can take to return from the source to continue the flow (Format: hours=-1;minutes=-2;seconds=-3)
 	ResumeTimeout *string `json:"resume_timeout,omitempty"`
 }
+
+type _SourceStageRequest SourceStageRequest
 
 // NewSourceStageRequest instantiates a new SourceStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -69,7 +76,7 @@ func (o *SourceStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *SourceStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -79,7 +86,7 @@ func (o *SourceStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -87,7 +94,7 @@ func (o *SourceStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *SourceStageRequest) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
+	if o != nil && !IsNil(o.FlowSet) {
 		return true
 	}
 
@@ -125,7 +132,7 @@ func (o *SourceStageRequest) SetSource(v string) {
 
 // GetResumeTimeout returns the ResumeTimeout field value if set, zero value otherwise.
 func (o *SourceStageRequest) GetResumeTimeout() string {
-	if o == nil || o.ResumeTimeout == nil {
+	if o == nil || IsNil(o.ResumeTimeout) {
 		var ret string
 		return ret
 	}
@@ -135,7 +142,7 @@ func (o *SourceStageRequest) GetResumeTimeout() string {
 // GetResumeTimeoutOk returns a tuple with the ResumeTimeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SourceStageRequest) GetResumeTimeoutOk() (*string, bool) {
-	if o == nil || o.ResumeTimeout == nil {
+	if o == nil || IsNil(o.ResumeTimeout) {
 		return nil, false
 	}
 	return o.ResumeTimeout, true
@@ -143,7 +150,7 @@ func (o *SourceStageRequest) GetResumeTimeoutOk() (*string, bool) {
 
 // HasResumeTimeout returns a boolean if a field has been set.
 func (o *SourceStageRequest) HasResumeTimeout() bool {
-	if o != nil && o.ResumeTimeout != nil {
+	if o != nil && !IsNil(o.ResumeTimeout) {
 		return true
 	}
 
@@ -156,20 +163,62 @@ func (o *SourceStageRequest) SetResumeTimeout(v string) {
 }
 
 func (o SourceStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.FlowSet != nil {
-		toSerialize["flow_set"] = o.FlowSet
-	}
-	if true {
-		toSerialize["source"] = o.Source
-	}
-	if o.ResumeTimeout != nil {
-		toSerialize["resume_timeout"] = o.ResumeTimeout
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SourceStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
+	toSerialize["source"] = o.Source
+	if !IsNil(o.ResumeTimeout) {
+		toSerialize["resume_timeout"] = o.ResumeTimeout
+	}
+	return toSerialize, nil
+}
+
+func (o *SourceStageRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"source",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSourceStageRequest := _SourceStageRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSourceStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SourceStageRequest(varSourceStageRequest)
+
+	return err
 }
 
 type NullableSourceStageRequest struct {

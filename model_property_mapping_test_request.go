@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PropertyMappingTestRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PropertyMappingTestRequest{}
+
 // PropertyMappingTestRequest Test property mapping execution for a user/group with context
 type PropertyMappingTestRequest struct {
 	User    NullableInt32          `json:"user,omitempty"`
@@ -41,7 +44,7 @@ func NewPropertyMappingTestRequestWithDefaults() *PropertyMappingTestRequest {
 
 // GetUser returns the User field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PropertyMappingTestRequest) GetUser() int32 {
-	if o == nil || o.User.Get() == nil {
+	if o == nil || IsNil(o.User.Get()) {
 		var ret int32
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *PropertyMappingTestRequest) UnsetUser() {
 
 // GetContext returns the Context field value if set, zero value otherwise.
 func (o *PropertyMappingTestRequest) GetContext() map[string]interface{} {
-	if o == nil || o.Context == nil {
+	if o == nil || IsNil(o.Context) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -94,15 +97,15 @@ func (o *PropertyMappingTestRequest) GetContext() map[string]interface{} {
 // GetContextOk returns a tuple with the Context field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PropertyMappingTestRequest) GetContextOk() (map[string]interface{}, bool) {
-	if o == nil || o.Context == nil {
-		return nil, false
+	if o == nil || IsNil(o.Context) {
+		return map[string]interface{}{}, false
 	}
 	return o.Context, true
 }
 
 // HasContext returns a boolean if a field has been set.
 func (o *PropertyMappingTestRequest) HasContext() bool {
-	if o != nil && o.Context != nil {
+	if o != nil && !IsNil(o.Context) {
 		return true
 	}
 
@@ -116,7 +119,7 @@ func (o *PropertyMappingTestRequest) SetContext(v map[string]interface{}) {
 
 // GetGroup returns the Group field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PropertyMappingTestRequest) GetGroup() string {
-	if o == nil || o.Group.Get() == nil {
+	if o == nil || IsNil(o.Group.Get()) {
 		var ret string
 		return ret
 	}
@@ -158,17 +161,25 @@ func (o *PropertyMappingTestRequest) UnsetGroup() {
 }
 
 func (o PropertyMappingTestRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PropertyMappingTestRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.User.IsSet() {
 		toSerialize["user"] = o.User.Get()
 	}
-	if o.Context != nil {
+	if !IsNil(o.Context) {
 		toSerialize["context"] = o.Context
 	}
 	if o.Group.IsSet() {
 		toSerialize["group"] = o.Group.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePropertyMappingTestRequest struct {

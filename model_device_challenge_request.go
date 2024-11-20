@@ -12,9 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the DeviceChallengeRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceChallengeRequest{}
 
 // DeviceChallengeRequest Single device challenge
 type DeviceChallengeRequest struct {
@@ -23,6 +28,8 @@ type DeviceChallengeRequest struct {
 	Challenge   map[string]interface{} `json:"challenge"`
 	LastUsed    NullableTime           `json:"last_used"`
 }
+
+type _DeviceChallengeRequest DeviceChallengeRequest
 
 // NewDeviceChallengeRequest instantiates a new DeviceChallengeRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -107,7 +114,7 @@ func (o *DeviceChallengeRequest) GetChallenge() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *DeviceChallengeRequest) GetChallengeOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Challenge, true
 }
@@ -144,20 +151,60 @@ func (o *DeviceChallengeRequest) SetLastUsed(v time.Time) {
 }
 
 func (o DeviceChallengeRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["device_class"] = o.DeviceClass
-	}
-	if true {
-		toSerialize["device_uid"] = o.DeviceUid
-	}
-	if true {
-		toSerialize["challenge"] = o.Challenge
-	}
-	if true {
-		toSerialize["last_used"] = o.LastUsed.Get()
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceChallengeRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["device_class"] = o.DeviceClass
+	toSerialize["device_uid"] = o.DeviceUid
+	toSerialize["challenge"] = o.Challenge
+	toSerialize["last_used"] = o.LastUsed.Get()
+	return toSerialize, nil
+}
+
+func (o *DeviceChallengeRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"device_class",
+		"device_uid",
+		"challenge",
+		"last_used",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDeviceChallengeRequest := _DeviceChallengeRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDeviceChallengeRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeviceChallengeRequest(varDeviceChallengeRequest)
+
+	return err
 }
 
 type NullableDeviceChallengeRequest struct {

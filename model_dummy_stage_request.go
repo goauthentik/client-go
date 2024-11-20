@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the DummyStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DummyStageRequest{}
 
 // DummyStageRequest DummyStage Serializer
 type DummyStageRequest struct {
@@ -21,6 +26,8 @@ type DummyStageRequest struct {
 	FlowSet    []FlowSetRequest `json:"flow_set,omitempty"`
 	ThrowError *bool            `json:"throw_error,omitempty"`
 }
+
+type _DummyStageRequest DummyStageRequest
 
 // NewDummyStageRequest instantiates a new DummyStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -66,7 +73,7 @@ func (o *DummyStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *DummyStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -76,7 +83,7 @@ func (o *DummyStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DummyStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -84,7 +91,7 @@ func (o *DummyStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *DummyStageRequest) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
+	if o != nil && !IsNil(o.FlowSet) {
 		return true
 	}
 
@@ -98,7 +105,7 @@ func (o *DummyStageRequest) SetFlowSet(v []FlowSetRequest) {
 
 // GetThrowError returns the ThrowError field value if set, zero value otherwise.
 func (o *DummyStageRequest) GetThrowError() bool {
-	if o == nil || o.ThrowError == nil {
+	if o == nil || IsNil(o.ThrowError) {
 		var ret bool
 		return ret
 	}
@@ -108,7 +115,7 @@ func (o *DummyStageRequest) GetThrowError() bool {
 // GetThrowErrorOk returns a tuple with the ThrowError field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DummyStageRequest) GetThrowErrorOk() (*bool, bool) {
-	if o == nil || o.ThrowError == nil {
+	if o == nil || IsNil(o.ThrowError) {
 		return nil, false
 	}
 	return o.ThrowError, true
@@ -116,7 +123,7 @@ func (o *DummyStageRequest) GetThrowErrorOk() (*bool, bool) {
 
 // HasThrowError returns a boolean if a field has been set.
 func (o *DummyStageRequest) HasThrowError() bool {
-	if o != nil && o.ThrowError != nil {
+	if o != nil && !IsNil(o.ThrowError) {
 		return true
 	}
 
@@ -129,17 +136,60 @@ func (o *DummyStageRequest) SetThrowError(v bool) {
 }
 
 func (o DummyStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.FlowSet != nil {
-		toSerialize["flow_set"] = o.FlowSet
-	}
-	if o.ThrowError != nil {
-		toSerialize["throw_error"] = o.ThrowError
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DummyStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
+	if !IsNil(o.ThrowError) {
+		toSerialize["throw_error"] = o.ThrowError
+	}
+	return toSerialize, nil
+}
+
+func (o *DummyStageRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDummyStageRequest := _DummyStageRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDummyStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DummyStageRequest(varDummyStageRequest)
+
+	return err
 }
 
 type NullableDummyStageRequest struct {

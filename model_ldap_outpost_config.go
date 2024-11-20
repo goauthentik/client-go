@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the LDAPOutpostConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LDAPOutpostConfig{}
 
 // LDAPOutpostConfig LDAPProvider Serializer
 type LDAPOutpostConfig struct {
@@ -37,6 +42,8 @@ type LDAPOutpostConfig struct {
 	// When enabled, code-based multi-factor authentication can be used by appending a semicolon and the TOTP code to the password. This should only be enabled if all users that will bind to this provider have a TOTP device configured, as otherwise a password may incorrectly be rejected if it contains a semicolon.
 	MfaSupport *bool `json:"mfa_support,omitempty"`
 }
+
+type _LDAPOutpostConfig LDAPOutpostConfig
 
 // NewLDAPOutpostConfig instantiates a new LDAPOutpostConfig object
 // This constructor will assign default values to properties that have it defined,
@@ -110,7 +117,7 @@ func (o *LDAPOutpostConfig) SetName(v string) {
 
 // GetBaseDn returns the BaseDn field value if set, zero value otherwise.
 func (o *LDAPOutpostConfig) GetBaseDn() string {
-	if o == nil || o.BaseDn == nil {
+	if o == nil || IsNil(o.BaseDn) {
 		var ret string
 		return ret
 	}
@@ -120,7 +127,7 @@ func (o *LDAPOutpostConfig) GetBaseDn() string {
 // GetBaseDnOk returns a tuple with the BaseDn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPOutpostConfig) GetBaseDnOk() (*string, bool) {
-	if o == nil || o.BaseDn == nil {
+	if o == nil || IsNil(o.BaseDn) {
 		return nil, false
 	}
 	return o.BaseDn, true
@@ -128,7 +135,7 @@ func (o *LDAPOutpostConfig) GetBaseDnOk() (*string, bool) {
 
 // HasBaseDn returns a boolean if a field has been set.
 func (o *LDAPOutpostConfig) HasBaseDn() bool {
-	if o != nil && o.BaseDn != nil {
+	if o != nil && !IsNil(o.BaseDn) {
 		return true
 	}
 
@@ -216,7 +223,7 @@ func (o *LDAPOutpostConfig) SetApplicationSlug(v string) {
 
 // GetCertificate returns the Certificate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LDAPOutpostConfig) GetCertificate() string {
-	if o == nil || o.Certificate.Get() == nil {
+	if o == nil || IsNil(o.Certificate.Get()) {
 		var ret string
 		return ret
 	}
@@ -259,7 +266,7 @@ func (o *LDAPOutpostConfig) UnsetCertificate() {
 
 // GetTlsServerName returns the TlsServerName field value if set, zero value otherwise.
 func (o *LDAPOutpostConfig) GetTlsServerName() string {
-	if o == nil || o.TlsServerName == nil {
+	if o == nil || IsNil(o.TlsServerName) {
 		var ret string
 		return ret
 	}
@@ -269,7 +276,7 @@ func (o *LDAPOutpostConfig) GetTlsServerName() string {
 // GetTlsServerNameOk returns a tuple with the TlsServerName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPOutpostConfig) GetTlsServerNameOk() (*string, bool) {
-	if o == nil || o.TlsServerName == nil {
+	if o == nil || IsNil(o.TlsServerName) {
 		return nil, false
 	}
 	return o.TlsServerName, true
@@ -277,7 +284,7 @@ func (o *LDAPOutpostConfig) GetTlsServerNameOk() (*string, bool) {
 
 // HasTlsServerName returns a boolean if a field has been set.
 func (o *LDAPOutpostConfig) HasTlsServerName() bool {
-	if o != nil && o.TlsServerName != nil {
+	if o != nil && !IsNil(o.TlsServerName) {
 		return true
 	}
 
@@ -291,7 +298,7 @@ func (o *LDAPOutpostConfig) SetTlsServerName(v string) {
 
 // GetUidStartNumber returns the UidStartNumber field value if set, zero value otherwise.
 func (o *LDAPOutpostConfig) GetUidStartNumber() int32 {
-	if o == nil || o.UidStartNumber == nil {
+	if o == nil || IsNil(o.UidStartNumber) {
 		var ret int32
 		return ret
 	}
@@ -301,7 +308,7 @@ func (o *LDAPOutpostConfig) GetUidStartNumber() int32 {
 // GetUidStartNumberOk returns a tuple with the UidStartNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPOutpostConfig) GetUidStartNumberOk() (*int32, bool) {
-	if o == nil || o.UidStartNumber == nil {
+	if o == nil || IsNil(o.UidStartNumber) {
 		return nil, false
 	}
 	return o.UidStartNumber, true
@@ -309,7 +316,7 @@ func (o *LDAPOutpostConfig) GetUidStartNumberOk() (*int32, bool) {
 
 // HasUidStartNumber returns a boolean if a field has been set.
 func (o *LDAPOutpostConfig) HasUidStartNumber() bool {
-	if o != nil && o.UidStartNumber != nil {
+	if o != nil && !IsNil(o.UidStartNumber) {
 		return true
 	}
 
@@ -323,7 +330,7 @@ func (o *LDAPOutpostConfig) SetUidStartNumber(v int32) {
 
 // GetGidStartNumber returns the GidStartNumber field value if set, zero value otherwise.
 func (o *LDAPOutpostConfig) GetGidStartNumber() int32 {
-	if o == nil || o.GidStartNumber == nil {
+	if o == nil || IsNil(o.GidStartNumber) {
 		var ret int32
 		return ret
 	}
@@ -333,7 +340,7 @@ func (o *LDAPOutpostConfig) GetGidStartNumber() int32 {
 // GetGidStartNumberOk returns a tuple with the GidStartNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPOutpostConfig) GetGidStartNumberOk() (*int32, bool) {
-	if o == nil || o.GidStartNumber == nil {
+	if o == nil || IsNil(o.GidStartNumber) {
 		return nil, false
 	}
 	return o.GidStartNumber, true
@@ -341,7 +348,7 @@ func (o *LDAPOutpostConfig) GetGidStartNumberOk() (*int32, bool) {
 
 // HasGidStartNumber returns a boolean if a field has been set.
 func (o *LDAPOutpostConfig) HasGidStartNumber() bool {
-	if o != nil && o.GidStartNumber != nil {
+	if o != nil && !IsNil(o.GidStartNumber) {
 		return true
 	}
 
@@ -355,7 +362,7 @@ func (o *LDAPOutpostConfig) SetGidStartNumber(v int32) {
 
 // GetSearchMode returns the SearchMode field value if set, zero value otherwise.
 func (o *LDAPOutpostConfig) GetSearchMode() LDAPAPIAccessMode {
-	if o == nil || o.SearchMode == nil {
+	if o == nil || IsNil(o.SearchMode) {
 		var ret LDAPAPIAccessMode
 		return ret
 	}
@@ -365,7 +372,7 @@ func (o *LDAPOutpostConfig) GetSearchMode() LDAPAPIAccessMode {
 // GetSearchModeOk returns a tuple with the SearchMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPOutpostConfig) GetSearchModeOk() (*LDAPAPIAccessMode, bool) {
-	if o == nil || o.SearchMode == nil {
+	if o == nil || IsNil(o.SearchMode) {
 		return nil, false
 	}
 	return o.SearchMode, true
@@ -373,7 +380,7 @@ func (o *LDAPOutpostConfig) GetSearchModeOk() (*LDAPAPIAccessMode, bool) {
 
 // HasSearchMode returns a boolean if a field has been set.
 func (o *LDAPOutpostConfig) HasSearchMode() bool {
-	if o != nil && o.SearchMode != nil {
+	if o != nil && !IsNil(o.SearchMode) {
 		return true
 	}
 
@@ -387,7 +394,7 @@ func (o *LDAPOutpostConfig) SetSearchMode(v LDAPAPIAccessMode) {
 
 // GetBindMode returns the BindMode field value if set, zero value otherwise.
 func (o *LDAPOutpostConfig) GetBindMode() LDAPAPIAccessMode {
-	if o == nil || o.BindMode == nil {
+	if o == nil || IsNil(o.BindMode) {
 		var ret LDAPAPIAccessMode
 		return ret
 	}
@@ -397,7 +404,7 @@ func (o *LDAPOutpostConfig) GetBindMode() LDAPAPIAccessMode {
 // GetBindModeOk returns a tuple with the BindMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPOutpostConfig) GetBindModeOk() (*LDAPAPIAccessMode, bool) {
-	if o == nil || o.BindMode == nil {
+	if o == nil || IsNil(o.BindMode) {
 		return nil, false
 	}
 	return o.BindMode, true
@@ -405,7 +412,7 @@ func (o *LDAPOutpostConfig) GetBindModeOk() (*LDAPAPIAccessMode, bool) {
 
 // HasBindMode returns a boolean if a field has been set.
 func (o *LDAPOutpostConfig) HasBindMode() bool {
-	if o != nil && o.BindMode != nil {
+	if o != nil && !IsNil(o.BindMode) {
 		return true
 	}
 
@@ -419,7 +426,7 @@ func (o *LDAPOutpostConfig) SetBindMode(v LDAPAPIAccessMode) {
 
 // GetMfaSupport returns the MfaSupport field value if set, zero value otherwise.
 func (o *LDAPOutpostConfig) GetMfaSupport() bool {
-	if o == nil || o.MfaSupport == nil {
+	if o == nil || IsNil(o.MfaSupport) {
 		var ret bool
 		return ret
 	}
@@ -429,7 +436,7 @@ func (o *LDAPOutpostConfig) GetMfaSupport() bool {
 // GetMfaSupportOk returns a tuple with the MfaSupport field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPOutpostConfig) GetMfaSupportOk() (*bool, bool) {
-	if o == nil || o.MfaSupport == nil {
+	if o == nil || IsNil(o.MfaSupport) {
 		return nil, false
 	}
 	return o.MfaSupport, true
@@ -437,7 +444,7 @@ func (o *LDAPOutpostConfig) GetMfaSupportOk() (*bool, bool) {
 
 // HasMfaSupport returns a boolean if a field has been set.
 func (o *LDAPOutpostConfig) HasMfaSupport() bool {
-	if o != nil && o.MfaSupport != nil {
+	if o != nil && !IsNil(o.MfaSupport) {
 		return true
 	}
 
@@ -450,47 +457,86 @@ func (o *LDAPOutpostConfig) SetMfaSupport(v bool) {
 }
 
 func (o LDAPOutpostConfig) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o LDAPOutpostConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.BaseDn != nil {
+	toSerialize["pk"] = o.Pk
+	toSerialize["name"] = o.Name
+	if !IsNil(o.BaseDn) {
 		toSerialize["base_dn"] = o.BaseDn
 	}
-	if true {
-		toSerialize["bind_flow_slug"] = o.BindFlowSlug
-	}
-	if true {
-		toSerialize["unbind_flow_slug"] = o.UnbindFlowSlug.Get()
-	}
-	if true {
-		toSerialize["application_slug"] = o.ApplicationSlug
-	}
+	toSerialize["bind_flow_slug"] = o.BindFlowSlug
+	toSerialize["unbind_flow_slug"] = o.UnbindFlowSlug.Get()
+	toSerialize["application_slug"] = o.ApplicationSlug
 	if o.Certificate.IsSet() {
 		toSerialize["certificate"] = o.Certificate.Get()
 	}
-	if o.TlsServerName != nil {
+	if !IsNil(o.TlsServerName) {
 		toSerialize["tls_server_name"] = o.TlsServerName
 	}
-	if o.UidStartNumber != nil {
+	if !IsNil(o.UidStartNumber) {
 		toSerialize["uid_start_number"] = o.UidStartNumber
 	}
-	if o.GidStartNumber != nil {
+	if !IsNil(o.GidStartNumber) {
 		toSerialize["gid_start_number"] = o.GidStartNumber
 	}
-	if o.SearchMode != nil {
+	if !IsNil(o.SearchMode) {
 		toSerialize["search_mode"] = o.SearchMode
 	}
-	if o.BindMode != nil {
+	if !IsNil(o.BindMode) {
 		toSerialize["bind_mode"] = o.BindMode
 	}
-	if o.MfaSupport != nil {
+	if !IsNil(o.MfaSupport) {
 		toSerialize["mfa_support"] = o.MfaSupport
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *LDAPOutpostConfig) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"name",
+		"bind_flow_slug",
+		"unbind_flow_slug",
+		"application_slug",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLDAPOutpostConfig := _LDAPOutpostConfig{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varLDAPOutpostConfig)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LDAPOutpostConfig(varLDAPOutpostConfig)
+
+	return err
 }
 
 type NullableLDAPOutpostConfig struct {

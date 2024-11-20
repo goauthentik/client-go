@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the AuthenticatedSessionGeoIp type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatedSessionGeoIp{}
 
 // AuthenticatedSessionGeoIp Get GeoIP Data
 type AuthenticatedSessionGeoIp struct {
@@ -23,6 +28,8 @@ type AuthenticatedSessionGeoIp struct {
 	Long      float64 `json:"long"`
 	City      string  `json:"city"`
 }
+
+type _AuthenticatedSessionGeoIp AuthenticatedSessionGeoIp
 
 // NewAuthenticatedSessionGeoIp instantiates a new AuthenticatedSessionGeoIp object
 // This constructor will assign default values to properties that have it defined,
@@ -167,23 +174,62 @@ func (o *AuthenticatedSessionGeoIp) SetCity(v string) {
 }
 
 func (o AuthenticatedSessionGeoIp) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["continent"] = o.Continent
-	}
-	if true {
-		toSerialize["country"] = o.Country
-	}
-	if true {
-		toSerialize["lat"] = o.Lat
-	}
-	if true {
-		toSerialize["long"] = o.Long
-	}
-	if true {
-		toSerialize["city"] = o.City
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatedSessionGeoIp) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["continent"] = o.Continent
+	toSerialize["country"] = o.Country
+	toSerialize["lat"] = o.Lat
+	toSerialize["long"] = o.Long
+	toSerialize["city"] = o.City
+	return toSerialize, nil
+}
+
+func (o *AuthenticatedSessionGeoIp) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"continent",
+		"country",
+		"lat",
+		"long",
+		"city",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAuthenticatedSessionGeoIp := _AuthenticatedSessionGeoIp{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAuthenticatedSessionGeoIp)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AuthenticatedSessionGeoIp(varAuthenticatedSessionGeoIp)
+
+	return err
 }
 
 type NullableAuthenticatedSessionGeoIp struct {

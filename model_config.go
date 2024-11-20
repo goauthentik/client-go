@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the Config type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Config{}
 
 // Config Serialize authentik Config into DRF Object
 type Config struct {
@@ -24,6 +29,8 @@ type Config struct {
 	CacheTimeoutPolicies   int32                `json:"cache_timeout_policies"`
 	CacheTimeoutReputation int32                `json:"cache_timeout_reputation"`
 }
+
+type _Config Config
 
 // NewConfig instantiates a new Config object
 // This constructor will assign default values to properties that have it defined,
@@ -193,26 +200,64 @@ func (o *Config) SetCacheTimeoutReputation(v int32) {
 }
 
 func (o Config) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["error_reporting"] = o.ErrorReporting
-	}
-	if true {
-		toSerialize["capabilities"] = o.Capabilities
-	}
-	if true {
-		toSerialize["cache_timeout"] = o.CacheTimeout
-	}
-	if true {
-		toSerialize["cache_timeout_flows"] = o.CacheTimeoutFlows
-	}
-	if true {
-		toSerialize["cache_timeout_policies"] = o.CacheTimeoutPolicies
-	}
-	if true {
-		toSerialize["cache_timeout_reputation"] = o.CacheTimeoutReputation
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Config) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["error_reporting"] = o.ErrorReporting
+	toSerialize["capabilities"] = o.Capabilities
+	toSerialize["cache_timeout"] = o.CacheTimeout
+	toSerialize["cache_timeout_flows"] = o.CacheTimeoutFlows
+	toSerialize["cache_timeout_policies"] = o.CacheTimeoutPolicies
+	toSerialize["cache_timeout_reputation"] = o.CacheTimeoutReputation
+	return toSerialize, nil
+}
+
+func (o *Config) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"error_reporting",
+		"capabilities",
+		"cache_timeout",
+		"cache_timeout_flows",
+		"cache_timeout_policies",
+		"cache_timeout_reputation",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConfig := _Config{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varConfig)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Config(varConfig)
+
+	return err
 }
 
 type NullableConfig struct {

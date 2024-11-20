@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the AuthenticatedSessionUserAgentUserAgent type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatedSessionUserAgentUserAgent{}
 
 // AuthenticatedSessionUserAgentUserAgent User agent browser
 type AuthenticatedSessionUserAgentUserAgent struct {
@@ -22,6 +27,8 @@ type AuthenticatedSessionUserAgentUserAgent struct {
 	Minor  string `json:"minor"`
 	Patch  string `json:"patch"`
 }
+
+type _AuthenticatedSessionUserAgentUserAgent AuthenticatedSessionUserAgentUserAgent
 
 // NewAuthenticatedSessionUserAgentUserAgent instantiates a new AuthenticatedSessionUserAgentUserAgent object
 // This constructor will assign default values to properties that have it defined,
@@ -141,20 +148,60 @@ func (o *AuthenticatedSessionUserAgentUserAgent) SetPatch(v string) {
 }
 
 func (o AuthenticatedSessionUserAgentUserAgent) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["family"] = o.Family
-	}
-	if true {
-		toSerialize["major"] = o.Major
-	}
-	if true {
-		toSerialize["minor"] = o.Minor
-	}
-	if true {
-		toSerialize["patch"] = o.Patch
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatedSessionUserAgentUserAgent) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["family"] = o.Family
+	toSerialize["major"] = o.Major
+	toSerialize["minor"] = o.Minor
+	toSerialize["patch"] = o.Patch
+	return toSerialize, nil
+}
+
+func (o *AuthenticatedSessionUserAgentUserAgent) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"family",
+		"major",
+		"minor",
+		"patch",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAuthenticatedSessionUserAgentUserAgent := _AuthenticatedSessionUserAgentUserAgent{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAuthenticatedSessionUserAgentUserAgent)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AuthenticatedSessionUserAgentUserAgent(varAuthenticatedSessionUserAgentUserAgent)
+
+	return err
 }
 
 type NullableAuthenticatedSessionUserAgentUserAgent struct {

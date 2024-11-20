@@ -1,80 +1,80 @@
-# \AuthenticatorsApi
+# \AuthenticatorsAPI
 
 All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthenticatorsAdminAllList**](AuthenticatorsApi.md#AuthenticatorsAdminAllList) | **Get** /authenticators/admin/all/ | 
-[**AuthenticatorsAdminDuoCreate**](AuthenticatorsApi.md#AuthenticatorsAdminDuoCreate) | **Post** /authenticators/admin/duo/ | 
-[**AuthenticatorsAdminDuoDestroy**](AuthenticatorsApi.md#AuthenticatorsAdminDuoDestroy) | **Delete** /authenticators/admin/duo/{id}/ | 
-[**AuthenticatorsAdminDuoList**](AuthenticatorsApi.md#AuthenticatorsAdminDuoList) | **Get** /authenticators/admin/duo/ | 
-[**AuthenticatorsAdminDuoPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminDuoPartialUpdate) | **Patch** /authenticators/admin/duo/{id}/ | 
-[**AuthenticatorsAdminDuoRetrieve**](AuthenticatorsApi.md#AuthenticatorsAdminDuoRetrieve) | **Get** /authenticators/admin/duo/{id}/ | 
-[**AuthenticatorsAdminDuoUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminDuoUpdate) | **Put** /authenticators/admin/duo/{id}/ | 
-[**AuthenticatorsAdminEndpointCreate**](AuthenticatorsApi.md#AuthenticatorsAdminEndpointCreate) | **Post** /authenticators/admin/endpoint/ | 
-[**AuthenticatorsAdminEndpointDestroy**](AuthenticatorsApi.md#AuthenticatorsAdminEndpointDestroy) | **Delete** /authenticators/admin/endpoint/{uuid}/ | 
-[**AuthenticatorsAdminEndpointList**](AuthenticatorsApi.md#AuthenticatorsAdminEndpointList) | **Get** /authenticators/admin/endpoint/ | 
-[**AuthenticatorsAdminEndpointPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminEndpointPartialUpdate) | **Patch** /authenticators/admin/endpoint/{uuid}/ | 
-[**AuthenticatorsAdminEndpointRetrieve**](AuthenticatorsApi.md#AuthenticatorsAdminEndpointRetrieve) | **Get** /authenticators/admin/endpoint/{uuid}/ | 
-[**AuthenticatorsAdminEndpointUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminEndpointUpdate) | **Put** /authenticators/admin/endpoint/{uuid}/ | 
-[**AuthenticatorsAdminSmsCreate**](AuthenticatorsApi.md#AuthenticatorsAdminSmsCreate) | **Post** /authenticators/admin/sms/ | 
-[**AuthenticatorsAdminSmsDestroy**](AuthenticatorsApi.md#AuthenticatorsAdminSmsDestroy) | **Delete** /authenticators/admin/sms/{id}/ | 
-[**AuthenticatorsAdminSmsList**](AuthenticatorsApi.md#AuthenticatorsAdminSmsList) | **Get** /authenticators/admin/sms/ | 
-[**AuthenticatorsAdminSmsPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminSmsPartialUpdate) | **Patch** /authenticators/admin/sms/{id}/ | 
-[**AuthenticatorsAdminSmsRetrieve**](AuthenticatorsApi.md#AuthenticatorsAdminSmsRetrieve) | **Get** /authenticators/admin/sms/{id}/ | 
-[**AuthenticatorsAdminSmsUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminSmsUpdate) | **Put** /authenticators/admin/sms/{id}/ | 
-[**AuthenticatorsAdminStaticCreate**](AuthenticatorsApi.md#AuthenticatorsAdminStaticCreate) | **Post** /authenticators/admin/static/ | 
-[**AuthenticatorsAdminStaticDestroy**](AuthenticatorsApi.md#AuthenticatorsAdminStaticDestroy) | **Delete** /authenticators/admin/static/{id}/ | 
-[**AuthenticatorsAdminStaticList**](AuthenticatorsApi.md#AuthenticatorsAdminStaticList) | **Get** /authenticators/admin/static/ | 
-[**AuthenticatorsAdminStaticPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminStaticPartialUpdate) | **Patch** /authenticators/admin/static/{id}/ | 
-[**AuthenticatorsAdminStaticRetrieve**](AuthenticatorsApi.md#AuthenticatorsAdminStaticRetrieve) | **Get** /authenticators/admin/static/{id}/ | 
-[**AuthenticatorsAdminStaticUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminStaticUpdate) | **Put** /authenticators/admin/static/{id}/ | 
-[**AuthenticatorsAdminTotpCreate**](AuthenticatorsApi.md#AuthenticatorsAdminTotpCreate) | **Post** /authenticators/admin/totp/ | 
-[**AuthenticatorsAdminTotpDestroy**](AuthenticatorsApi.md#AuthenticatorsAdminTotpDestroy) | **Delete** /authenticators/admin/totp/{id}/ | 
-[**AuthenticatorsAdminTotpList**](AuthenticatorsApi.md#AuthenticatorsAdminTotpList) | **Get** /authenticators/admin/totp/ | 
-[**AuthenticatorsAdminTotpPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminTotpPartialUpdate) | **Patch** /authenticators/admin/totp/{id}/ | 
-[**AuthenticatorsAdminTotpRetrieve**](AuthenticatorsApi.md#AuthenticatorsAdminTotpRetrieve) | **Get** /authenticators/admin/totp/{id}/ | 
-[**AuthenticatorsAdminTotpUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminTotpUpdate) | **Put** /authenticators/admin/totp/{id}/ | 
-[**AuthenticatorsAdminWebauthnCreate**](AuthenticatorsApi.md#AuthenticatorsAdminWebauthnCreate) | **Post** /authenticators/admin/webauthn/ | 
-[**AuthenticatorsAdminWebauthnDestroy**](AuthenticatorsApi.md#AuthenticatorsAdminWebauthnDestroy) | **Delete** /authenticators/admin/webauthn/{id}/ | 
-[**AuthenticatorsAdminWebauthnList**](AuthenticatorsApi.md#AuthenticatorsAdminWebauthnList) | **Get** /authenticators/admin/webauthn/ | 
-[**AuthenticatorsAdminWebauthnPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminWebauthnPartialUpdate) | **Patch** /authenticators/admin/webauthn/{id}/ | 
-[**AuthenticatorsAdminWebauthnRetrieve**](AuthenticatorsApi.md#AuthenticatorsAdminWebauthnRetrieve) | **Get** /authenticators/admin/webauthn/{id}/ | 
-[**AuthenticatorsAdminWebauthnUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminWebauthnUpdate) | **Put** /authenticators/admin/webauthn/{id}/ | 
-[**AuthenticatorsAllList**](AuthenticatorsApi.md#AuthenticatorsAllList) | **Get** /authenticators/all/ | 
-[**AuthenticatorsDuoDestroy**](AuthenticatorsApi.md#AuthenticatorsDuoDestroy) | **Delete** /authenticators/duo/{id}/ | 
-[**AuthenticatorsDuoList**](AuthenticatorsApi.md#AuthenticatorsDuoList) | **Get** /authenticators/duo/ | 
-[**AuthenticatorsDuoPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsDuoPartialUpdate) | **Patch** /authenticators/duo/{id}/ | 
-[**AuthenticatorsDuoRetrieve**](AuthenticatorsApi.md#AuthenticatorsDuoRetrieve) | **Get** /authenticators/duo/{id}/ | 
-[**AuthenticatorsDuoUpdate**](AuthenticatorsApi.md#AuthenticatorsDuoUpdate) | **Put** /authenticators/duo/{id}/ | 
-[**AuthenticatorsDuoUsedByList**](AuthenticatorsApi.md#AuthenticatorsDuoUsedByList) | **Get** /authenticators/duo/{id}/used_by/ | 
-[**AuthenticatorsEndpointList**](AuthenticatorsApi.md#AuthenticatorsEndpointList) | **Get** /authenticators/endpoint/ | 
-[**AuthenticatorsEndpointRetrieve**](AuthenticatorsApi.md#AuthenticatorsEndpointRetrieve) | **Get** /authenticators/endpoint/{uuid}/ | 
-[**AuthenticatorsEndpointUsedByList**](AuthenticatorsApi.md#AuthenticatorsEndpointUsedByList) | **Get** /authenticators/endpoint/{uuid}/used_by/ | 
-[**AuthenticatorsSmsDestroy**](AuthenticatorsApi.md#AuthenticatorsSmsDestroy) | **Delete** /authenticators/sms/{id}/ | 
-[**AuthenticatorsSmsList**](AuthenticatorsApi.md#AuthenticatorsSmsList) | **Get** /authenticators/sms/ | 
-[**AuthenticatorsSmsPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsSmsPartialUpdate) | **Patch** /authenticators/sms/{id}/ | 
-[**AuthenticatorsSmsRetrieve**](AuthenticatorsApi.md#AuthenticatorsSmsRetrieve) | **Get** /authenticators/sms/{id}/ | 
-[**AuthenticatorsSmsUpdate**](AuthenticatorsApi.md#AuthenticatorsSmsUpdate) | **Put** /authenticators/sms/{id}/ | 
-[**AuthenticatorsSmsUsedByList**](AuthenticatorsApi.md#AuthenticatorsSmsUsedByList) | **Get** /authenticators/sms/{id}/used_by/ | 
-[**AuthenticatorsStaticDestroy**](AuthenticatorsApi.md#AuthenticatorsStaticDestroy) | **Delete** /authenticators/static/{id}/ | 
-[**AuthenticatorsStaticList**](AuthenticatorsApi.md#AuthenticatorsStaticList) | **Get** /authenticators/static/ | 
-[**AuthenticatorsStaticPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsStaticPartialUpdate) | **Patch** /authenticators/static/{id}/ | 
-[**AuthenticatorsStaticRetrieve**](AuthenticatorsApi.md#AuthenticatorsStaticRetrieve) | **Get** /authenticators/static/{id}/ | 
-[**AuthenticatorsStaticUpdate**](AuthenticatorsApi.md#AuthenticatorsStaticUpdate) | **Put** /authenticators/static/{id}/ | 
-[**AuthenticatorsStaticUsedByList**](AuthenticatorsApi.md#AuthenticatorsStaticUsedByList) | **Get** /authenticators/static/{id}/used_by/ | 
-[**AuthenticatorsTotpDestroy**](AuthenticatorsApi.md#AuthenticatorsTotpDestroy) | **Delete** /authenticators/totp/{id}/ | 
-[**AuthenticatorsTotpList**](AuthenticatorsApi.md#AuthenticatorsTotpList) | **Get** /authenticators/totp/ | 
-[**AuthenticatorsTotpPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsTotpPartialUpdate) | **Patch** /authenticators/totp/{id}/ | 
-[**AuthenticatorsTotpRetrieve**](AuthenticatorsApi.md#AuthenticatorsTotpRetrieve) | **Get** /authenticators/totp/{id}/ | 
-[**AuthenticatorsTotpUpdate**](AuthenticatorsApi.md#AuthenticatorsTotpUpdate) | **Put** /authenticators/totp/{id}/ | 
-[**AuthenticatorsTotpUsedByList**](AuthenticatorsApi.md#AuthenticatorsTotpUsedByList) | **Get** /authenticators/totp/{id}/used_by/ | 
-[**AuthenticatorsWebauthnDestroy**](AuthenticatorsApi.md#AuthenticatorsWebauthnDestroy) | **Delete** /authenticators/webauthn/{id}/ | 
-[**AuthenticatorsWebauthnList**](AuthenticatorsApi.md#AuthenticatorsWebauthnList) | **Get** /authenticators/webauthn/ | 
-[**AuthenticatorsWebauthnPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsWebauthnPartialUpdate) | **Patch** /authenticators/webauthn/{id}/ | 
-[**AuthenticatorsWebauthnRetrieve**](AuthenticatorsApi.md#AuthenticatorsWebauthnRetrieve) | **Get** /authenticators/webauthn/{id}/ | 
-[**AuthenticatorsWebauthnUpdate**](AuthenticatorsApi.md#AuthenticatorsWebauthnUpdate) | **Put** /authenticators/webauthn/{id}/ | 
-[**AuthenticatorsWebauthnUsedByList**](AuthenticatorsApi.md#AuthenticatorsWebauthnUsedByList) | **Get** /authenticators/webauthn/{id}/used_by/ | 
+[**AuthenticatorsAdminAllList**](AuthenticatorsAPI.md#AuthenticatorsAdminAllList) | **Get** /authenticators/admin/all/ | 
+[**AuthenticatorsAdminDuoCreate**](AuthenticatorsAPI.md#AuthenticatorsAdminDuoCreate) | **Post** /authenticators/admin/duo/ | 
+[**AuthenticatorsAdminDuoDestroy**](AuthenticatorsAPI.md#AuthenticatorsAdminDuoDestroy) | **Delete** /authenticators/admin/duo/{id}/ | 
+[**AuthenticatorsAdminDuoList**](AuthenticatorsAPI.md#AuthenticatorsAdminDuoList) | **Get** /authenticators/admin/duo/ | 
+[**AuthenticatorsAdminDuoPartialUpdate**](AuthenticatorsAPI.md#AuthenticatorsAdminDuoPartialUpdate) | **Patch** /authenticators/admin/duo/{id}/ | 
+[**AuthenticatorsAdminDuoRetrieve**](AuthenticatorsAPI.md#AuthenticatorsAdminDuoRetrieve) | **Get** /authenticators/admin/duo/{id}/ | 
+[**AuthenticatorsAdminDuoUpdate**](AuthenticatorsAPI.md#AuthenticatorsAdminDuoUpdate) | **Put** /authenticators/admin/duo/{id}/ | 
+[**AuthenticatorsAdminEndpointCreate**](AuthenticatorsAPI.md#AuthenticatorsAdminEndpointCreate) | **Post** /authenticators/admin/endpoint/ | 
+[**AuthenticatorsAdminEndpointDestroy**](AuthenticatorsAPI.md#AuthenticatorsAdminEndpointDestroy) | **Delete** /authenticators/admin/endpoint/{uuid}/ | 
+[**AuthenticatorsAdminEndpointList**](AuthenticatorsAPI.md#AuthenticatorsAdminEndpointList) | **Get** /authenticators/admin/endpoint/ | 
+[**AuthenticatorsAdminEndpointPartialUpdate**](AuthenticatorsAPI.md#AuthenticatorsAdminEndpointPartialUpdate) | **Patch** /authenticators/admin/endpoint/{uuid}/ | 
+[**AuthenticatorsAdminEndpointRetrieve**](AuthenticatorsAPI.md#AuthenticatorsAdminEndpointRetrieve) | **Get** /authenticators/admin/endpoint/{uuid}/ | 
+[**AuthenticatorsAdminEndpointUpdate**](AuthenticatorsAPI.md#AuthenticatorsAdminEndpointUpdate) | **Put** /authenticators/admin/endpoint/{uuid}/ | 
+[**AuthenticatorsAdminSmsCreate**](AuthenticatorsAPI.md#AuthenticatorsAdminSmsCreate) | **Post** /authenticators/admin/sms/ | 
+[**AuthenticatorsAdminSmsDestroy**](AuthenticatorsAPI.md#AuthenticatorsAdminSmsDestroy) | **Delete** /authenticators/admin/sms/{id}/ | 
+[**AuthenticatorsAdminSmsList**](AuthenticatorsAPI.md#AuthenticatorsAdminSmsList) | **Get** /authenticators/admin/sms/ | 
+[**AuthenticatorsAdminSmsPartialUpdate**](AuthenticatorsAPI.md#AuthenticatorsAdminSmsPartialUpdate) | **Patch** /authenticators/admin/sms/{id}/ | 
+[**AuthenticatorsAdminSmsRetrieve**](AuthenticatorsAPI.md#AuthenticatorsAdminSmsRetrieve) | **Get** /authenticators/admin/sms/{id}/ | 
+[**AuthenticatorsAdminSmsUpdate**](AuthenticatorsAPI.md#AuthenticatorsAdminSmsUpdate) | **Put** /authenticators/admin/sms/{id}/ | 
+[**AuthenticatorsAdminStaticCreate**](AuthenticatorsAPI.md#AuthenticatorsAdminStaticCreate) | **Post** /authenticators/admin/static/ | 
+[**AuthenticatorsAdminStaticDestroy**](AuthenticatorsAPI.md#AuthenticatorsAdminStaticDestroy) | **Delete** /authenticators/admin/static/{id}/ | 
+[**AuthenticatorsAdminStaticList**](AuthenticatorsAPI.md#AuthenticatorsAdminStaticList) | **Get** /authenticators/admin/static/ | 
+[**AuthenticatorsAdminStaticPartialUpdate**](AuthenticatorsAPI.md#AuthenticatorsAdminStaticPartialUpdate) | **Patch** /authenticators/admin/static/{id}/ | 
+[**AuthenticatorsAdminStaticRetrieve**](AuthenticatorsAPI.md#AuthenticatorsAdminStaticRetrieve) | **Get** /authenticators/admin/static/{id}/ | 
+[**AuthenticatorsAdminStaticUpdate**](AuthenticatorsAPI.md#AuthenticatorsAdminStaticUpdate) | **Put** /authenticators/admin/static/{id}/ | 
+[**AuthenticatorsAdminTotpCreate**](AuthenticatorsAPI.md#AuthenticatorsAdminTotpCreate) | **Post** /authenticators/admin/totp/ | 
+[**AuthenticatorsAdminTotpDestroy**](AuthenticatorsAPI.md#AuthenticatorsAdminTotpDestroy) | **Delete** /authenticators/admin/totp/{id}/ | 
+[**AuthenticatorsAdminTotpList**](AuthenticatorsAPI.md#AuthenticatorsAdminTotpList) | **Get** /authenticators/admin/totp/ | 
+[**AuthenticatorsAdminTotpPartialUpdate**](AuthenticatorsAPI.md#AuthenticatorsAdminTotpPartialUpdate) | **Patch** /authenticators/admin/totp/{id}/ | 
+[**AuthenticatorsAdminTotpRetrieve**](AuthenticatorsAPI.md#AuthenticatorsAdminTotpRetrieve) | **Get** /authenticators/admin/totp/{id}/ | 
+[**AuthenticatorsAdminTotpUpdate**](AuthenticatorsAPI.md#AuthenticatorsAdminTotpUpdate) | **Put** /authenticators/admin/totp/{id}/ | 
+[**AuthenticatorsAdminWebauthnCreate**](AuthenticatorsAPI.md#AuthenticatorsAdminWebauthnCreate) | **Post** /authenticators/admin/webauthn/ | 
+[**AuthenticatorsAdminWebauthnDestroy**](AuthenticatorsAPI.md#AuthenticatorsAdminWebauthnDestroy) | **Delete** /authenticators/admin/webauthn/{id}/ | 
+[**AuthenticatorsAdminWebauthnList**](AuthenticatorsAPI.md#AuthenticatorsAdminWebauthnList) | **Get** /authenticators/admin/webauthn/ | 
+[**AuthenticatorsAdminWebauthnPartialUpdate**](AuthenticatorsAPI.md#AuthenticatorsAdminWebauthnPartialUpdate) | **Patch** /authenticators/admin/webauthn/{id}/ | 
+[**AuthenticatorsAdminWebauthnRetrieve**](AuthenticatorsAPI.md#AuthenticatorsAdminWebauthnRetrieve) | **Get** /authenticators/admin/webauthn/{id}/ | 
+[**AuthenticatorsAdminWebauthnUpdate**](AuthenticatorsAPI.md#AuthenticatorsAdminWebauthnUpdate) | **Put** /authenticators/admin/webauthn/{id}/ | 
+[**AuthenticatorsAllList**](AuthenticatorsAPI.md#AuthenticatorsAllList) | **Get** /authenticators/all/ | 
+[**AuthenticatorsDuoDestroy**](AuthenticatorsAPI.md#AuthenticatorsDuoDestroy) | **Delete** /authenticators/duo/{id}/ | 
+[**AuthenticatorsDuoList**](AuthenticatorsAPI.md#AuthenticatorsDuoList) | **Get** /authenticators/duo/ | 
+[**AuthenticatorsDuoPartialUpdate**](AuthenticatorsAPI.md#AuthenticatorsDuoPartialUpdate) | **Patch** /authenticators/duo/{id}/ | 
+[**AuthenticatorsDuoRetrieve**](AuthenticatorsAPI.md#AuthenticatorsDuoRetrieve) | **Get** /authenticators/duo/{id}/ | 
+[**AuthenticatorsDuoUpdate**](AuthenticatorsAPI.md#AuthenticatorsDuoUpdate) | **Put** /authenticators/duo/{id}/ | 
+[**AuthenticatorsDuoUsedByList**](AuthenticatorsAPI.md#AuthenticatorsDuoUsedByList) | **Get** /authenticators/duo/{id}/used_by/ | 
+[**AuthenticatorsEndpointList**](AuthenticatorsAPI.md#AuthenticatorsEndpointList) | **Get** /authenticators/endpoint/ | 
+[**AuthenticatorsEndpointRetrieve**](AuthenticatorsAPI.md#AuthenticatorsEndpointRetrieve) | **Get** /authenticators/endpoint/{uuid}/ | 
+[**AuthenticatorsEndpointUsedByList**](AuthenticatorsAPI.md#AuthenticatorsEndpointUsedByList) | **Get** /authenticators/endpoint/{uuid}/used_by/ | 
+[**AuthenticatorsSmsDestroy**](AuthenticatorsAPI.md#AuthenticatorsSmsDestroy) | **Delete** /authenticators/sms/{id}/ | 
+[**AuthenticatorsSmsList**](AuthenticatorsAPI.md#AuthenticatorsSmsList) | **Get** /authenticators/sms/ | 
+[**AuthenticatorsSmsPartialUpdate**](AuthenticatorsAPI.md#AuthenticatorsSmsPartialUpdate) | **Patch** /authenticators/sms/{id}/ | 
+[**AuthenticatorsSmsRetrieve**](AuthenticatorsAPI.md#AuthenticatorsSmsRetrieve) | **Get** /authenticators/sms/{id}/ | 
+[**AuthenticatorsSmsUpdate**](AuthenticatorsAPI.md#AuthenticatorsSmsUpdate) | **Put** /authenticators/sms/{id}/ | 
+[**AuthenticatorsSmsUsedByList**](AuthenticatorsAPI.md#AuthenticatorsSmsUsedByList) | **Get** /authenticators/sms/{id}/used_by/ | 
+[**AuthenticatorsStaticDestroy**](AuthenticatorsAPI.md#AuthenticatorsStaticDestroy) | **Delete** /authenticators/static/{id}/ | 
+[**AuthenticatorsStaticList**](AuthenticatorsAPI.md#AuthenticatorsStaticList) | **Get** /authenticators/static/ | 
+[**AuthenticatorsStaticPartialUpdate**](AuthenticatorsAPI.md#AuthenticatorsStaticPartialUpdate) | **Patch** /authenticators/static/{id}/ | 
+[**AuthenticatorsStaticRetrieve**](AuthenticatorsAPI.md#AuthenticatorsStaticRetrieve) | **Get** /authenticators/static/{id}/ | 
+[**AuthenticatorsStaticUpdate**](AuthenticatorsAPI.md#AuthenticatorsStaticUpdate) | **Put** /authenticators/static/{id}/ | 
+[**AuthenticatorsStaticUsedByList**](AuthenticatorsAPI.md#AuthenticatorsStaticUsedByList) | **Get** /authenticators/static/{id}/used_by/ | 
+[**AuthenticatorsTotpDestroy**](AuthenticatorsAPI.md#AuthenticatorsTotpDestroy) | **Delete** /authenticators/totp/{id}/ | 
+[**AuthenticatorsTotpList**](AuthenticatorsAPI.md#AuthenticatorsTotpList) | **Get** /authenticators/totp/ | 
+[**AuthenticatorsTotpPartialUpdate**](AuthenticatorsAPI.md#AuthenticatorsTotpPartialUpdate) | **Patch** /authenticators/totp/{id}/ | 
+[**AuthenticatorsTotpRetrieve**](AuthenticatorsAPI.md#AuthenticatorsTotpRetrieve) | **Get** /authenticators/totp/{id}/ | 
+[**AuthenticatorsTotpUpdate**](AuthenticatorsAPI.md#AuthenticatorsTotpUpdate) | **Put** /authenticators/totp/{id}/ | 
+[**AuthenticatorsTotpUsedByList**](AuthenticatorsAPI.md#AuthenticatorsTotpUsedByList) | **Get** /authenticators/totp/{id}/used_by/ | 
+[**AuthenticatorsWebauthnDestroy**](AuthenticatorsAPI.md#AuthenticatorsWebauthnDestroy) | **Delete** /authenticators/webauthn/{id}/ | 
+[**AuthenticatorsWebauthnList**](AuthenticatorsAPI.md#AuthenticatorsWebauthnList) | **Get** /authenticators/webauthn/ | 
+[**AuthenticatorsWebauthnPartialUpdate**](AuthenticatorsAPI.md#AuthenticatorsWebauthnPartialUpdate) | **Patch** /authenticators/webauthn/{id}/ | 
+[**AuthenticatorsWebauthnRetrieve**](AuthenticatorsAPI.md#AuthenticatorsWebauthnRetrieve) | **Get** /authenticators/webauthn/{id}/ | 
+[**AuthenticatorsWebauthnUpdate**](AuthenticatorsAPI.md#AuthenticatorsWebauthnUpdate) | **Put** /authenticators/webauthn/{id}/ | 
+[**AuthenticatorsWebauthnUsedByList**](AuthenticatorsAPI.md#AuthenticatorsWebauthnUsedByList) | **Get** /authenticators/webauthn/{id}/used_by/ | 
 
 
 
@@ -92,24 +92,24 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    user := int32(56) // int32 |  (optional)
+	user := int32(56) // int32 |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminAllList(context.Background()).User(user).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminAllList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminAllList`: []Device
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminAllList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminAllList(context.Background()).User(user).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminAllList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminAllList`: []Device
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminAllList`: %v\n", resp)
 }
 ```
 
@@ -158,24 +158,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    duoDeviceRequest := *openapiclient.NewDuoDeviceRequest("Name_example") // DuoDeviceRequest | 
+	duoDeviceRequest := *openapiclient.NewDuoDeviceRequest("Name_example") // DuoDeviceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminDuoCreate(context.Background()).DuoDeviceRequest(duoDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminDuoCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminDuoCreate`: DuoDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminDuoCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminDuoCreate(context.Background()).DuoDeviceRequest(duoDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminDuoCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminDuoCreate`: DuoDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminDuoCreate`: %v\n", resp)
 }
 ```
 
@@ -224,22 +224,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Duo Device.
+	id := int32(56) // int32 | A unique integer value identifying this Duo Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminDuoDestroy(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminDuoDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminDuoDestroy(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminDuoDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -292,28 +292,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminDuoList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminDuoList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminDuoList`: PaginatedDuoDeviceList
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminDuoList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminDuoList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminDuoList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminDuoList`: PaginatedDuoDeviceList
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminDuoList`: %v\n", resp)
 }
 ```
 
@@ -366,25 +366,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Duo Device.
-    patchedDuoDeviceRequest := *openapiclient.NewPatchedDuoDeviceRequest() // PatchedDuoDeviceRequest |  (optional)
+	id := int32(56) // int32 | A unique integer value identifying this Duo Device.
+	patchedDuoDeviceRequest := *openapiclient.NewPatchedDuoDeviceRequest() // PatchedDuoDeviceRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminDuoPartialUpdate(context.Background(), id).PatchedDuoDeviceRequest(patchedDuoDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminDuoPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminDuoPartialUpdate`: DuoDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminDuoPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminDuoPartialUpdate(context.Background(), id).PatchedDuoDeviceRequest(patchedDuoDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminDuoPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminDuoPartialUpdate`: DuoDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminDuoPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -438,24 +438,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Duo Device.
+	id := int32(56) // int32 | A unique integer value identifying this Duo Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminDuoRetrieve(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminDuoRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminDuoRetrieve`: DuoDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminDuoRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminDuoRetrieve(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminDuoRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminDuoRetrieve`: DuoDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminDuoRetrieve`: %v\n", resp)
 }
 ```
 
@@ -508,25 +508,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Duo Device.
-    duoDeviceRequest := *openapiclient.NewDuoDeviceRequest("Name_example") // DuoDeviceRequest | 
+	id := int32(56) // int32 | A unique integer value identifying this Duo Device.
+	duoDeviceRequest := *openapiclient.NewDuoDeviceRequest("Name_example") // DuoDeviceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminDuoUpdate(context.Background(), id).DuoDeviceRequest(duoDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminDuoUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminDuoUpdate`: DuoDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminDuoUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminDuoUpdate(context.Background(), id).DuoDeviceRequest(duoDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminDuoUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminDuoUpdate`: DuoDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminDuoUpdate`: %v\n", resp)
 }
 ```
 
@@ -580,24 +580,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    endpointDeviceRequest := *openapiclient.NewEndpointDeviceRequest("Name_example") // EndpointDeviceRequest | 
+	endpointDeviceRequest := *openapiclient.NewEndpointDeviceRequest("Name_example") // EndpointDeviceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEndpointCreate(context.Background()).EndpointDeviceRequest(endpointDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEndpointCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminEndpointCreate`: EndpointDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminEndpointCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminEndpointCreate(context.Background()).EndpointDeviceRequest(endpointDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminEndpointCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminEndpointCreate`: EndpointDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminEndpointCreate`: %v\n", resp)
 }
 ```
 
@@ -646,22 +646,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Device.
+	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEndpointDestroy(context.Background(), uuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEndpointDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminEndpointDestroy(context.Background(), uuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminEndpointDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -714,28 +714,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEndpointList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEndpointList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminEndpointList`: PaginatedEndpointDeviceList
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminEndpointList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminEndpointList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminEndpointList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminEndpointList`: PaginatedEndpointDeviceList
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminEndpointList`: %v\n", resp)
 }
 ```
 
@@ -788,25 +788,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Device.
-    patchedEndpointDeviceRequest := *openapiclient.NewPatchedEndpointDeviceRequest() // PatchedEndpointDeviceRequest |  (optional)
+	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Device.
+	patchedEndpointDeviceRequest := *openapiclient.NewPatchedEndpointDeviceRequest() // PatchedEndpointDeviceRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEndpointPartialUpdate(context.Background(), uuid).PatchedEndpointDeviceRequest(patchedEndpointDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEndpointPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminEndpointPartialUpdate`: EndpointDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminEndpointPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminEndpointPartialUpdate(context.Background(), uuid).PatchedEndpointDeviceRequest(patchedEndpointDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminEndpointPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminEndpointPartialUpdate`: EndpointDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminEndpointPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -860,24 +860,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Device.
+	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEndpointRetrieve(context.Background(), uuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEndpointRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminEndpointRetrieve`: EndpointDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminEndpointRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminEndpointRetrieve(context.Background(), uuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminEndpointRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminEndpointRetrieve`: EndpointDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminEndpointRetrieve`: %v\n", resp)
 }
 ```
 
@@ -930,25 +930,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Device.
-    endpointDeviceRequest := *openapiclient.NewEndpointDeviceRequest("Name_example") // EndpointDeviceRequest | 
+	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Device.
+	endpointDeviceRequest := *openapiclient.NewEndpointDeviceRequest("Name_example") // EndpointDeviceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEndpointUpdate(context.Background(), uuid).EndpointDeviceRequest(endpointDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEndpointUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminEndpointUpdate`: EndpointDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminEndpointUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminEndpointUpdate(context.Background(), uuid).EndpointDeviceRequest(endpointDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminEndpointUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminEndpointUpdate`: EndpointDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminEndpointUpdate`: %v\n", resp)
 }
 ```
 
@@ -1002,24 +1002,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    sMSDeviceRequest := *openapiclient.NewSMSDeviceRequest("Name_example") // SMSDeviceRequest | 
+	sMSDeviceRequest := *openapiclient.NewSMSDeviceRequest("Name_example") // SMSDeviceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminSmsCreate(context.Background()).SMSDeviceRequest(sMSDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminSmsCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminSmsCreate`: SMSDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminSmsCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminSmsCreate(context.Background()).SMSDeviceRequest(sMSDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminSmsCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminSmsCreate`: SMSDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminSmsCreate`: %v\n", resp)
 }
 ```
 
@@ -1068,22 +1068,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this SMS Device.
+	id := int32(56) // int32 | A unique integer value identifying this SMS Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminSmsDestroy(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminSmsDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminSmsDestroy(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminSmsDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -1136,28 +1136,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminSmsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminSmsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminSmsList`: PaginatedSMSDeviceList
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminSmsList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminSmsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminSmsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminSmsList`: PaginatedSMSDeviceList
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminSmsList`: %v\n", resp)
 }
 ```
 
@@ -1210,25 +1210,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this SMS Device.
-    patchedSMSDeviceRequest := *openapiclient.NewPatchedSMSDeviceRequest() // PatchedSMSDeviceRequest |  (optional)
+	id := int32(56) // int32 | A unique integer value identifying this SMS Device.
+	patchedSMSDeviceRequest := *openapiclient.NewPatchedSMSDeviceRequest() // PatchedSMSDeviceRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminSmsPartialUpdate(context.Background(), id).PatchedSMSDeviceRequest(patchedSMSDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminSmsPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminSmsPartialUpdate`: SMSDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminSmsPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminSmsPartialUpdate(context.Background(), id).PatchedSMSDeviceRequest(patchedSMSDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminSmsPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminSmsPartialUpdate`: SMSDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminSmsPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -1282,24 +1282,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this SMS Device.
+	id := int32(56) // int32 | A unique integer value identifying this SMS Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminSmsRetrieve(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminSmsRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminSmsRetrieve`: SMSDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminSmsRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminSmsRetrieve(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminSmsRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminSmsRetrieve`: SMSDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminSmsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -1352,25 +1352,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this SMS Device.
-    sMSDeviceRequest := *openapiclient.NewSMSDeviceRequest("Name_example") // SMSDeviceRequest | 
+	id := int32(56) // int32 | A unique integer value identifying this SMS Device.
+	sMSDeviceRequest := *openapiclient.NewSMSDeviceRequest("Name_example") // SMSDeviceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminSmsUpdate(context.Background(), id).SMSDeviceRequest(sMSDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminSmsUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminSmsUpdate`: SMSDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminSmsUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminSmsUpdate(context.Background(), id).SMSDeviceRequest(sMSDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminSmsUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminSmsUpdate`: SMSDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminSmsUpdate`: %v\n", resp)
 }
 ```
 
@@ -1424,24 +1424,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    staticDeviceRequest := *openapiclient.NewStaticDeviceRequest("Name_example") // StaticDeviceRequest | 
+	staticDeviceRequest := *openapiclient.NewStaticDeviceRequest("Name_example") // StaticDeviceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminStaticCreate(context.Background()).StaticDeviceRequest(staticDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminStaticCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminStaticCreate`: StaticDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminStaticCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminStaticCreate(context.Background()).StaticDeviceRequest(staticDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminStaticCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminStaticCreate`: StaticDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminStaticCreate`: %v\n", resp)
 }
 ```
 
@@ -1490,22 +1490,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Static Device.
+	id := int32(56) // int32 | A unique integer value identifying this Static Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminStaticDestroy(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminStaticDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminStaticDestroy(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminStaticDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -1558,28 +1558,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminStaticList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminStaticList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminStaticList`: PaginatedStaticDeviceList
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminStaticList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminStaticList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminStaticList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminStaticList`: PaginatedStaticDeviceList
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminStaticList`: %v\n", resp)
 }
 ```
 
@@ -1632,25 +1632,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Static Device.
-    patchedStaticDeviceRequest := *openapiclient.NewPatchedStaticDeviceRequest() // PatchedStaticDeviceRequest |  (optional)
+	id := int32(56) // int32 | A unique integer value identifying this Static Device.
+	patchedStaticDeviceRequest := *openapiclient.NewPatchedStaticDeviceRequest() // PatchedStaticDeviceRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminStaticPartialUpdate(context.Background(), id).PatchedStaticDeviceRequest(patchedStaticDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminStaticPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminStaticPartialUpdate`: StaticDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminStaticPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminStaticPartialUpdate(context.Background(), id).PatchedStaticDeviceRequest(patchedStaticDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminStaticPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminStaticPartialUpdate`: StaticDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminStaticPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -1704,24 +1704,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Static Device.
+	id := int32(56) // int32 | A unique integer value identifying this Static Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminStaticRetrieve(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminStaticRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminStaticRetrieve`: StaticDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminStaticRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminStaticRetrieve(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminStaticRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminStaticRetrieve`: StaticDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminStaticRetrieve`: %v\n", resp)
 }
 ```
 
@@ -1774,25 +1774,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Static Device.
-    staticDeviceRequest := *openapiclient.NewStaticDeviceRequest("Name_example") // StaticDeviceRequest | 
+	id := int32(56) // int32 | A unique integer value identifying this Static Device.
+	staticDeviceRequest := *openapiclient.NewStaticDeviceRequest("Name_example") // StaticDeviceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminStaticUpdate(context.Background(), id).StaticDeviceRequest(staticDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminStaticUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminStaticUpdate`: StaticDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminStaticUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminStaticUpdate(context.Background(), id).StaticDeviceRequest(staticDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminStaticUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminStaticUpdate`: StaticDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminStaticUpdate`: %v\n", resp)
 }
 ```
 
@@ -1846,24 +1846,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    tOTPDeviceRequest := *openapiclient.NewTOTPDeviceRequest("Name_example") // TOTPDeviceRequest | 
+	tOTPDeviceRequest := *openapiclient.NewTOTPDeviceRequest("Name_example") // TOTPDeviceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminTotpCreate(context.Background()).TOTPDeviceRequest(tOTPDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminTotpCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminTotpCreate`: TOTPDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminTotpCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminTotpCreate(context.Background()).TOTPDeviceRequest(tOTPDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminTotpCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminTotpCreate`: TOTPDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminTotpCreate`: %v\n", resp)
 }
 ```
 
@@ -1912,22 +1912,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
+	id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminTotpDestroy(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminTotpDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminTotpDestroy(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminTotpDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -1980,28 +1980,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminTotpList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminTotpList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminTotpList`: PaginatedTOTPDeviceList
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminTotpList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminTotpList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminTotpList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminTotpList`: PaginatedTOTPDeviceList
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminTotpList`: %v\n", resp)
 }
 ```
 
@@ -2054,25 +2054,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
-    patchedTOTPDeviceRequest := *openapiclient.NewPatchedTOTPDeviceRequest() // PatchedTOTPDeviceRequest |  (optional)
+	id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
+	patchedTOTPDeviceRequest := *openapiclient.NewPatchedTOTPDeviceRequest() // PatchedTOTPDeviceRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminTotpPartialUpdate(context.Background(), id).PatchedTOTPDeviceRequest(patchedTOTPDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminTotpPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminTotpPartialUpdate`: TOTPDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminTotpPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminTotpPartialUpdate(context.Background(), id).PatchedTOTPDeviceRequest(patchedTOTPDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminTotpPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminTotpPartialUpdate`: TOTPDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminTotpPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -2126,24 +2126,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
+	id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminTotpRetrieve(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminTotpRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminTotpRetrieve`: TOTPDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminTotpRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminTotpRetrieve(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminTotpRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminTotpRetrieve`: TOTPDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminTotpRetrieve`: %v\n", resp)
 }
 ```
 
@@ -2196,25 +2196,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
-    tOTPDeviceRequest := *openapiclient.NewTOTPDeviceRequest("Name_example") // TOTPDeviceRequest | 
+	id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
+	tOTPDeviceRequest := *openapiclient.NewTOTPDeviceRequest("Name_example") // TOTPDeviceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminTotpUpdate(context.Background(), id).TOTPDeviceRequest(tOTPDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminTotpUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminTotpUpdate`: TOTPDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminTotpUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminTotpUpdate(context.Background(), id).TOTPDeviceRequest(tOTPDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminTotpUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminTotpUpdate`: TOTPDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminTotpUpdate`: %v\n", resp)
 }
 ```
 
@@ -2268,24 +2268,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    webAuthnDeviceRequest := *openapiclient.NewWebAuthnDeviceRequest("Name_example") // WebAuthnDeviceRequest | 
+	webAuthnDeviceRequest := *openapiclient.NewWebAuthnDeviceRequest("Name_example") // WebAuthnDeviceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminWebauthnCreate(context.Background()).WebAuthnDeviceRequest(webAuthnDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminWebauthnCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminWebauthnCreate`: WebAuthnDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminWebauthnCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminWebauthnCreate(context.Background()).WebAuthnDeviceRequest(webAuthnDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminWebauthnCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminWebauthnCreate`: WebAuthnDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminWebauthnCreate`: %v\n", resp)
 }
 ```
 
@@ -2334,22 +2334,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
+	id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminWebauthnDestroy(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminWebauthnDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminWebauthnDestroy(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminWebauthnDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -2402,28 +2402,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminWebauthnList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminWebauthnList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminWebauthnList`: PaginatedWebAuthnDeviceList
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminWebauthnList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminWebauthnList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminWebauthnList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminWebauthnList`: PaginatedWebAuthnDeviceList
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminWebauthnList`: %v\n", resp)
 }
 ```
 
@@ -2476,25 +2476,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
-    patchedWebAuthnDeviceRequest := *openapiclient.NewPatchedWebAuthnDeviceRequest() // PatchedWebAuthnDeviceRequest |  (optional)
+	id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
+	patchedWebAuthnDeviceRequest := *openapiclient.NewPatchedWebAuthnDeviceRequest() // PatchedWebAuthnDeviceRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminWebauthnPartialUpdate(context.Background(), id).PatchedWebAuthnDeviceRequest(patchedWebAuthnDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminWebauthnPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminWebauthnPartialUpdate`: WebAuthnDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminWebauthnPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminWebauthnPartialUpdate(context.Background(), id).PatchedWebAuthnDeviceRequest(patchedWebAuthnDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminWebauthnPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminWebauthnPartialUpdate`: WebAuthnDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminWebauthnPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -2548,24 +2548,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
+	id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminWebauthnRetrieve(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminWebauthnRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminWebauthnRetrieve`: WebAuthnDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminWebauthnRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminWebauthnRetrieve(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminWebauthnRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminWebauthnRetrieve`: WebAuthnDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminWebauthnRetrieve`: %v\n", resp)
 }
 ```
 
@@ -2618,25 +2618,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
-    webAuthnDeviceRequest := *openapiclient.NewWebAuthnDeviceRequest("Name_example") // WebAuthnDeviceRequest | 
+	id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
+	webAuthnDeviceRequest := *openapiclient.NewWebAuthnDeviceRequest("Name_example") // WebAuthnDeviceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminWebauthnUpdate(context.Background(), id).WebAuthnDeviceRequest(webAuthnDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminWebauthnUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAdminWebauthnUpdate`: WebAuthnDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminWebauthnUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAdminWebauthnUpdate(context.Background(), id).WebAuthnDeviceRequest(webAuthnDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAdminWebauthnUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAdminWebauthnUpdate`: WebAuthnDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAdminWebauthnUpdate`: %v\n", resp)
 }
 ```
 
@@ -2690,23 +2690,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAllList(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAllList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsAllList`: []Device
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAllList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsAllList(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsAllList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsAllList`: []Device
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsAllList`: %v\n", resp)
 }
 ```
 
@@ -2751,22 +2751,22 @@ Other parameters are passed through a pointer to a apiAuthenticatorsAllListReque
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Duo Device.
+	id := int32(56) // int32 | A unique integer value identifying this Duo Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsDuoDestroy(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsDuoDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AuthenticatorsAPI.AuthenticatorsDuoDestroy(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsDuoDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -2819,28 +2819,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsDuoList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsDuoList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsDuoList`: PaginatedDuoDeviceList
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsDuoList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsDuoList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsDuoList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsDuoList`: PaginatedDuoDeviceList
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsDuoList`: %v\n", resp)
 }
 ```
 
@@ -2893,25 +2893,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Duo Device.
-    patchedDuoDeviceRequest := *openapiclient.NewPatchedDuoDeviceRequest() // PatchedDuoDeviceRequest |  (optional)
+	id := int32(56) // int32 | A unique integer value identifying this Duo Device.
+	patchedDuoDeviceRequest := *openapiclient.NewPatchedDuoDeviceRequest() // PatchedDuoDeviceRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsDuoPartialUpdate(context.Background(), id).PatchedDuoDeviceRequest(patchedDuoDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsDuoPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsDuoPartialUpdate`: DuoDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsDuoPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsDuoPartialUpdate(context.Background(), id).PatchedDuoDeviceRequest(patchedDuoDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsDuoPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsDuoPartialUpdate`: DuoDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsDuoPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -2965,24 +2965,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Duo Device.
+	id := int32(56) // int32 | A unique integer value identifying this Duo Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsDuoRetrieve(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsDuoRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsDuoRetrieve`: DuoDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsDuoRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsDuoRetrieve(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsDuoRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsDuoRetrieve`: DuoDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsDuoRetrieve`: %v\n", resp)
 }
 ```
 
@@ -3035,25 +3035,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Duo Device.
-    duoDeviceRequest := *openapiclient.NewDuoDeviceRequest("Name_example") // DuoDeviceRequest | 
+	id := int32(56) // int32 | A unique integer value identifying this Duo Device.
+	duoDeviceRequest := *openapiclient.NewDuoDeviceRequest("Name_example") // DuoDeviceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsDuoUpdate(context.Background(), id).DuoDeviceRequest(duoDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsDuoUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsDuoUpdate`: DuoDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsDuoUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsDuoUpdate(context.Background(), id).DuoDeviceRequest(duoDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsDuoUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsDuoUpdate`: DuoDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsDuoUpdate`: %v\n", resp)
 }
 ```
 
@@ -3107,24 +3107,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Duo Device.
+	id := int32(56) // int32 | A unique integer value identifying this Duo Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsDuoUsedByList(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsDuoUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsDuoUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsDuoUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsDuoUsedByList(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsDuoUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsDuoUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsDuoUsedByList`: %v\n", resp)
 }
 ```
 
@@ -3177,28 +3177,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsEndpointList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsEndpointList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsEndpointList`: PaginatedEndpointDeviceList
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsEndpointList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsEndpointList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsEndpointList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsEndpointList`: PaginatedEndpointDeviceList
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsEndpointList`: %v\n", resp)
 }
 ```
 
@@ -3251,24 +3251,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Device.
+	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsEndpointRetrieve(context.Background(), uuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsEndpointRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsEndpointRetrieve`: EndpointDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsEndpointRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsEndpointRetrieve(context.Background(), uuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsEndpointRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsEndpointRetrieve`: EndpointDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsEndpointRetrieve`: %v\n", resp)
 }
 ```
 
@@ -3321,24 +3321,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Device.
+	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsEndpointUsedByList(context.Background(), uuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsEndpointUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsEndpointUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsEndpointUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsEndpointUsedByList(context.Background(), uuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsEndpointUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsEndpointUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsEndpointUsedByList`: %v\n", resp)
 }
 ```
 
@@ -3391,22 +3391,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this SMS Device.
+	id := int32(56) // int32 | A unique integer value identifying this SMS Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsSmsDestroy(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsSmsDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AuthenticatorsAPI.AuthenticatorsSmsDestroy(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsSmsDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -3459,28 +3459,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsSmsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsSmsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsSmsList`: PaginatedSMSDeviceList
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsSmsList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsSmsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsSmsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsSmsList`: PaginatedSMSDeviceList
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsSmsList`: %v\n", resp)
 }
 ```
 
@@ -3533,25 +3533,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this SMS Device.
-    patchedSMSDeviceRequest := *openapiclient.NewPatchedSMSDeviceRequest() // PatchedSMSDeviceRequest |  (optional)
+	id := int32(56) // int32 | A unique integer value identifying this SMS Device.
+	patchedSMSDeviceRequest := *openapiclient.NewPatchedSMSDeviceRequest() // PatchedSMSDeviceRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsSmsPartialUpdate(context.Background(), id).PatchedSMSDeviceRequest(patchedSMSDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsSmsPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsSmsPartialUpdate`: SMSDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsSmsPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsSmsPartialUpdate(context.Background(), id).PatchedSMSDeviceRequest(patchedSMSDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsSmsPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsSmsPartialUpdate`: SMSDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsSmsPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -3605,24 +3605,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this SMS Device.
+	id := int32(56) // int32 | A unique integer value identifying this SMS Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsSmsRetrieve(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsSmsRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsSmsRetrieve`: SMSDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsSmsRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsSmsRetrieve(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsSmsRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsSmsRetrieve`: SMSDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsSmsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -3675,25 +3675,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this SMS Device.
-    sMSDeviceRequest := *openapiclient.NewSMSDeviceRequest("Name_example") // SMSDeviceRequest | 
+	id := int32(56) // int32 | A unique integer value identifying this SMS Device.
+	sMSDeviceRequest := *openapiclient.NewSMSDeviceRequest("Name_example") // SMSDeviceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsSmsUpdate(context.Background(), id).SMSDeviceRequest(sMSDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsSmsUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsSmsUpdate`: SMSDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsSmsUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsSmsUpdate(context.Background(), id).SMSDeviceRequest(sMSDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsSmsUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsSmsUpdate`: SMSDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsSmsUpdate`: %v\n", resp)
 }
 ```
 
@@ -3747,24 +3747,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this SMS Device.
+	id := int32(56) // int32 | A unique integer value identifying this SMS Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsSmsUsedByList(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsSmsUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsSmsUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsSmsUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsSmsUsedByList(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsSmsUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsSmsUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsSmsUsedByList`: %v\n", resp)
 }
 ```
 
@@ -3817,22 +3817,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Static Device.
+	id := int32(56) // int32 | A unique integer value identifying this Static Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsStaticDestroy(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsStaticDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AuthenticatorsAPI.AuthenticatorsStaticDestroy(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsStaticDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -3885,28 +3885,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsStaticList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsStaticList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsStaticList`: PaginatedStaticDeviceList
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsStaticList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsStaticList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsStaticList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsStaticList`: PaginatedStaticDeviceList
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsStaticList`: %v\n", resp)
 }
 ```
 
@@ -3959,25 +3959,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Static Device.
-    patchedStaticDeviceRequest := *openapiclient.NewPatchedStaticDeviceRequest() // PatchedStaticDeviceRequest |  (optional)
+	id := int32(56) // int32 | A unique integer value identifying this Static Device.
+	patchedStaticDeviceRequest := *openapiclient.NewPatchedStaticDeviceRequest() // PatchedStaticDeviceRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsStaticPartialUpdate(context.Background(), id).PatchedStaticDeviceRequest(patchedStaticDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsStaticPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsStaticPartialUpdate`: StaticDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsStaticPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsStaticPartialUpdate(context.Background(), id).PatchedStaticDeviceRequest(patchedStaticDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsStaticPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsStaticPartialUpdate`: StaticDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsStaticPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -4031,24 +4031,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Static Device.
+	id := int32(56) // int32 | A unique integer value identifying this Static Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsStaticRetrieve(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsStaticRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsStaticRetrieve`: StaticDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsStaticRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsStaticRetrieve(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsStaticRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsStaticRetrieve`: StaticDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsStaticRetrieve`: %v\n", resp)
 }
 ```
 
@@ -4101,25 +4101,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Static Device.
-    staticDeviceRequest := *openapiclient.NewStaticDeviceRequest("Name_example") // StaticDeviceRequest | 
+	id := int32(56) // int32 | A unique integer value identifying this Static Device.
+	staticDeviceRequest := *openapiclient.NewStaticDeviceRequest("Name_example") // StaticDeviceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsStaticUpdate(context.Background(), id).StaticDeviceRequest(staticDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsStaticUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsStaticUpdate`: StaticDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsStaticUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsStaticUpdate(context.Background(), id).StaticDeviceRequest(staticDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsStaticUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsStaticUpdate`: StaticDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsStaticUpdate`: %v\n", resp)
 }
 ```
 
@@ -4173,24 +4173,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this Static Device.
+	id := int32(56) // int32 | A unique integer value identifying this Static Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsStaticUsedByList(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsStaticUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsStaticUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsStaticUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsStaticUsedByList(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsStaticUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsStaticUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsStaticUsedByList`: %v\n", resp)
 }
 ```
 
@@ -4243,22 +4243,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
+	id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsTotpDestroy(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsTotpDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AuthenticatorsAPI.AuthenticatorsTotpDestroy(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsTotpDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -4311,28 +4311,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsTotpList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsTotpList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsTotpList`: PaginatedTOTPDeviceList
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsTotpList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsTotpList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsTotpList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsTotpList`: PaginatedTOTPDeviceList
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsTotpList`: %v\n", resp)
 }
 ```
 
@@ -4385,25 +4385,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
-    patchedTOTPDeviceRequest := *openapiclient.NewPatchedTOTPDeviceRequest() // PatchedTOTPDeviceRequest |  (optional)
+	id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
+	patchedTOTPDeviceRequest := *openapiclient.NewPatchedTOTPDeviceRequest() // PatchedTOTPDeviceRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsTotpPartialUpdate(context.Background(), id).PatchedTOTPDeviceRequest(patchedTOTPDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsTotpPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsTotpPartialUpdate`: TOTPDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsTotpPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsTotpPartialUpdate(context.Background(), id).PatchedTOTPDeviceRequest(patchedTOTPDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsTotpPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsTotpPartialUpdate`: TOTPDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsTotpPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -4457,24 +4457,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
+	id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsTotpRetrieve(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsTotpRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsTotpRetrieve`: TOTPDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsTotpRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsTotpRetrieve(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsTotpRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsTotpRetrieve`: TOTPDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsTotpRetrieve`: %v\n", resp)
 }
 ```
 
@@ -4527,25 +4527,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
-    tOTPDeviceRequest := *openapiclient.NewTOTPDeviceRequest("Name_example") // TOTPDeviceRequest | 
+	id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
+	tOTPDeviceRequest := *openapiclient.NewTOTPDeviceRequest("Name_example") // TOTPDeviceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsTotpUpdate(context.Background(), id).TOTPDeviceRequest(tOTPDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsTotpUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsTotpUpdate`: TOTPDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsTotpUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsTotpUpdate(context.Background(), id).TOTPDeviceRequest(tOTPDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsTotpUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsTotpUpdate`: TOTPDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsTotpUpdate`: %v\n", resp)
 }
 ```
 
@@ -4599,24 +4599,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
+	id := int32(56) // int32 | A unique integer value identifying this TOTP Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsTotpUsedByList(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsTotpUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsTotpUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsTotpUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsTotpUsedByList(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsTotpUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsTotpUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsTotpUsedByList`: %v\n", resp)
 }
 ```
 
@@ -4669,22 +4669,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
+	id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsWebauthnDestroy(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsWebauthnDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AuthenticatorsAPI.AuthenticatorsWebauthnDestroy(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsWebauthnDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -4737,28 +4737,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    search := "search_example" // string | A search term. (optional)
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsWebauthnList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsWebauthnList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsWebauthnList`: PaginatedWebAuthnDeviceList
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsWebauthnList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsWebauthnList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsWebauthnList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsWebauthnList`: PaginatedWebAuthnDeviceList
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsWebauthnList`: %v\n", resp)
 }
 ```
 
@@ -4811,25 +4811,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
-    patchedWebAuthnDeviceRequest := *openapiclient.NewPatchedWebAuthnDeviceRequest() // PatchedWebAuthnDeviceRequest |  (optional)
+	id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
+	patchedWebAuthnDeviceRequest := *openapiclient.NewPatchedWebAuthnDeviceRequest() // PatchedWebAuthnDeviceRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsWebauthnPartialUpdate(context.Background(), id).PatchedWebAuthnDeviceRequest(patchedWebAuthnDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsWebauthnPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsWebauthnPartialUpdate`: WebAuthnDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsWebauthnPartialUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsWebauthnPartialUpdate(context.Background(), id).PatchedWebAuthnDeviceRequest(patchedWebAuthnDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsWebauthnPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsWebauthnPartialUpdate`: WebAuthnDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsWebauthnPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -4883,24 +4883,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
+	id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsWebauthnRetrieve(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsWebauthnRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsWebauthnRetrieve`: WebAuthnDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsWebauthnRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsWebauthnRetrieve(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsWebauthnRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsWebauthnRetrieve`: WebAuthnDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsWebauthnRetrieve`: %v\n", resp)
 }
 ```
 
@@ -4953,25 +4953,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
-    webAuthnDeviceRequest := *openapiclient.NewWebAuthnDeviceRequest("Name_example") // WebAuthnDeviceRequest | 
+	id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
+	webAuthnDeviceRequest := *openapiclient.NewWebAuthnDeviceRequest("Name_example") // WebAuthnDeviceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsWebauthnUpdate(context.Background(), id).WebAuthnDeviceRequest(webAuthnDeviceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsWebauthnUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsWebauthnUpdate`: WebAuthnDevice
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsWebauthnUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsWebauthnUpdate(context.Background(), id).WebAuthnDeviceRequest(webAuthnDeviceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsWebauthnUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsWebauthnUpdate`: WebAuthnDevice
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsWebauthnUpdate`: %v\n", resp)
 }
 ```
 
@@ -5025,24 +5025,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
+	id := int32(56) // int32 | A unique integer value identifying this WebAuthn Device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsWebauthnUsedByList(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsWebauthnUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthenticatorsWebauthnUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsWebauthnUsedByList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthenticatorsAPI.AuthenticatorsWebauthnUsedByList(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsAPI.AuthenticatorsWebauthnUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthenticatorsWebauthnUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsAPI.AuthenticatorsWebauthnUsedByList`: %v\n", resp)
 }
 ```
 

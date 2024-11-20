@@ -12,13 +12,20 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the InstallID type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InstallID{}
 
 // InstallID struct for InstallID
 type InstallID struct {
 	InstallId string `json:"install_id"`
 }
+
+type _InstallID InstallID
 
 // NewInstallID instantiates a new InstallID object
 // This constructor will assign default values to properties that have it defined,
@@ -63,11 +70,54 @@ func (o *InstallID) SetInstallId(v string) {
 }
 
 func (o InstallID) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["install_id"] = o.InstallId
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InstallID) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["install_id"] = o.InstallId
+	return toSerialize, nil
+}
+
+func (o *InstallID) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"install_id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varInstallID := _InstallID{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varInstallID)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InstallID(varInstallID)
+
+	return err
 }
 
 type NullableInstallID struct {

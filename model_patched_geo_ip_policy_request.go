@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedGeoIPPolicyRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedGeoIPPolicyRequest{}
+
 // PatchedGeoIPPolicyRequest GeoIP Policy Serializer
 type PatchedGeoIPPolicyRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -43,7 +46,7 @@ func NewPatchedGeoIPPolicyRequestWithDefaults() *PatchedGeoIPPolicyRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedGeoIPPolicyRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *PatchedGeoIPPolicyRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedGeoIPPolicyRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -61,7 +64,7 @@ func (o *PatchedGeoIPPolicyRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedGeoIPPolicyRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *PatchedGeoIPPolicyRequest) SetName(v string) {
 
 // GetExecutionLogging returns the ExecutionLogging field value if set, zero value otherwise.
 func (o *PatchedGeoIPPolicyRequest) GetExecutionLogging() bool {
-	if o == nil || o.ExecutionLogging == nil {
+	if o == nil || IsNil(o.ExecutionLogging) {
 		var ret bool
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *PatchedGeoIPPolicyRequest) GetExecutionLogging() bool {
 // GetExecutionLoggingOk returns a tuple with the ExecutionLogging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedGeoIPPolicyRequest) GetExecutionLoggingOk() (*bool, bool) {
-	if o == nil || o.ExecutionLogging == nil {
+	if o == nil || IsNil(o.ExecutionLogging) {
 		return nil, false
 	}
 	return o.ExecutionLogging, true
@@ -93,7 +96,7 @@ func (o *PatchedGeoIPPolicyRequest) GetExecutionLoggingOk() (*bool, bool) {
 
 // HasExecutionLogging returns a boolean if a field has been set.
 func (o *PatchedGeoIPPolicyRequest) HasExecutionLogging() bool {
-	if o != nil && o.ExecutionLogging != nil {
+	if o != nil && !IsNil(o.ExecutionLogging) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *PatchedGeoIPPolicyRequest) SetExecutionLogging(v bool) {
 
 // GetAsns returns the Asns field value if set, zero value otherwise.
 func (o *PatchedGeoIPPolicyRequest) GetAsns() []int32 {
-	if o == nil || o.Asns == nil {
+	if o == nil || IsNil(o.Asns) {
 		var ret []int32
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *PatchedGeoIPPolicyRequest) GetAsns() []int32 {
 // GetAsnsOk returns a tuple with the Asns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedGeoIPPolicyRequest) GetAsnsOk() ([]int32, bool) {
-	if o == nil || o.Asns == nil {
+	if o == nil || IsNil(o.Asns) {
 		return nil, false
 	}
 	return o.Asns, true
@@ -125,7 +128,7 @@ func (o *PatchedGeoIPPolicyRequest) GetAsnsOk() ([]int32, bool) {
 
 // HasAsns returns a boolean if a field has been set.
 func (o *PatchedGeoIPPolicyRequest) HasAsns() bool {
-	if o != nil && o.Asns != nil {
+	if o != nil && !IsNil(o.Asns) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *PatchedGeoIPPolicyRequest) SetAsns(v []int32) {
 
 // GetCountries returns the Countries field value if set, zero value otherwise.
 func (o *PatchedGeoIPPolicyRequest) GetCountries() []CountryCodeEnum {
-	if o == nil || o.Countries == nil {
+	if o == nil || IsNil(o.Countries) {
 		var ret []CountryCodeEnum
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *PatchedGeoIPPolicyRequest) GetCountries() []CountryCodeEnum {
 // GetCountriesOk returns a tuple with the Countries field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedGeoIPPolicyRequest) GetCountriesOk() ([]CountryCodeEnum, bool) {
-	if o == nil || o.Countries == nil {
+	if o == nil || IsNil(o.Countries) {
 		return nil, false
 	}
 	return o.Countries, true
@@ -157,7 +160,7 @@ func (o *PatchedGeoIPPolicyRequest) GetCountriesOk() ([]CountryCodeEnum, bool) {
 
 // HasCountries returns a boolean if a field has been set.
 func (o *PatchedGeoIPPolicyRequest) HasCountries() bool {
-	if o != nil && o.Countries != nil {
+	if o != nil && !IsNil(o.Countries) {
 		return true
 	}
 
@@ -170,20 +173,28 @@ func (o *PatchedGeoIPPolicyRequest) SetCountries(v []CountryCodeEnum) {
 }
 
 func (o PatchedGeoIPPolicyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.ExecutionLogging != nil {
-		toSerialize["execution_logging"] = o.ExecutionLogging
-	}
-	if o.Asns != nil {
-		toSerialize["asns"] = o.Asns
-	}
-	if o.Countries != nil {
-		toSerialize["countries"] = o.Countries
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedGeoIPPolicyRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.ExecutionLogging) {
+		toSerialize["execution_logging"] = o.ExecutionLogging
+	}
+	if !IsNil(o.Asns) {
+		toSerialize["asns"] = o.Asns
+	}
+	if !IsNil(o.Countries) {
+		toSerialize["countries"] = o.Countries
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedGeoIPPolicyRequest struct {

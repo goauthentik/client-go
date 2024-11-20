@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the LDAPDebug type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LDAPDebug{}
 
 // LDAPDebug struct for LDAPDebug
 type LDAPDebug struct {
@@ -21,6 +26,8 @@ type LDAPDebug struct {
 	Group      []map[string]interface{} `json:"group"`
 	Membership []map[string]interface{} `json:"membership"`
 }
+
+type _LDAPDebug LDAPDebug
 
 // NewLDAPDebug instantiates a new LDAPDebug object
 // This constructor will assign default values to properties that have it defined,
@@ -115,17 +122,58 @@ func (o *LDAPDebug) SetMembership(v []map[string]interface{}) {
 }
 
 func (o LDAPDebug) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["user"] = o.User
-	}
-	if true {
-		toSerialize["group"] = o.Group
-	}
-	if true {
-		toSerialize["membership"] = o.Membership
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LDAPDebug) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["user"] = o.User
+	toSerialize["group"] = o.Group
+	toSerialize["membership"] = o.Membership
+	return toSerialize, nil
+}
+
+func (o *LDAPDebug) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"user",
+		"group",
+		"membership",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLDAPDebug := _LDAPDebug{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varLDAPDebug)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LDAPDebug(varLDAPDebug)
+
+	return err
 }
 
 type NullableLDAPDebug struct {

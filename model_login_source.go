@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the LoginSource type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LoginSource{}
 
 // LoginSource Serializer for Login buttons of sources
 type LoginSource struct {
@@ -21,6 +26,8 @@ type LoginSource struct {
 	IconUrl   NullableString      `json:"icon_url,omitempty"`
 	Challenge LoginChallengeTypes `json:"challenge"`
 }
+
+type _LoginSource LoginSource
 
 // NewLoginSource instantiates a new LoginSource object
 // This constructor will assign default values to properties that have it defined,
@@ -67,7 +74,7 @@ func (o *LoginSource) SetName(v string) {
 
 // GetIconUrl returns the IconUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LoginSource) GetIconUrl() string {
-	if o == nil || o.IconUrl.Get() == nil {
+	if o == nil || IsNil(o.IconUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -133,17 +140,59 @@ func (o *LoginSource) SetChallenge(v LoginChallengeTypes) {
 }
 
 func (o LoginSource) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o LoginSource) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
 	if o.IconUrl.IsSet() {
 		toSerialize["icon_url"] = o.IconUrl.Get()
 	}
-	if true {
-		toSerialize["challenge"] = o.Challenge
+	toSerialize["challenge"] = o.Challenge
+	return toSerialize, nil
+}
+
+func (o *LoginSource) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"challenge",
 	}
-	return json.Marshal(toSerialize)
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLoginSource := _LoginSource{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varLoginSource)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LoginSource(varLoginSource)
+
+	return err
 }
 
 type NullableLoginSource struct {

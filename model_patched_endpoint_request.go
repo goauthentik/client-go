@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedEndpointRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedEndpointRequest{}
+
 // PatchedEndpointRequest Endpoint Serializer
 type PatchedEndpointRequest struct {
 	Name               *string       `json:"name,omitempty"`
@@ -46,7 +49,7 @@ func NewPatchedEndpointRequestWithDefaults() *PatchedEndpointRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedEndpointRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *PatchedEndpointRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEndpointRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -64,7 +67,7 @@ func (o *PatchedEndpointRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedEndpointRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *PatchedEndpointRequest) SetName(v string) {
 
 // GetProvider returns the Provider field value if set, zero value otherwise.
 func (o *PatchedEndpointRequest) GetProvider() int32 {
-	if o == nil || o.Provider == nil {
+	if o == nil || IsNil(o.Provider) {
 		var ret int32
 		return ret
 	}
@@ -88,7 +91,7 @@ func (o *PatchedEndpointRequest) GetProvider() int32 {
 // GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEndpointRequest) GetProviderOk() (*int32, bool) {
-	if o == nil || o.Provider == nil {
+	if o == nil || IsNil(o.Provider) {
 		return nil, false
 	}
 	return o.Provider, true
@@ -96,7 +99,7 @@ func (o *PatchedEndpointRequest) GetProviderOk() (*int32, bool) {
 
 // HasProvider returns a boolean if a field has been set.
 func (o *PatchedEndpointRequest) HasProvider() bool {
-	if o != nil && o.Provider != nil {
+	if o != nil && !IsNil(o.Provider) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *PatchedEndpointRequest) SetProvider(v int32) {
 
 // GetProtocol returns the Protocol field value if set, zero value otherwise.
 func (o *PatchedEndpointRequest) GetProtocol() ProtocolEnum {
-	if o == nil || o.Protocol == nil {
+	if o == nil || IsNil(o.Protocol) {
 		var ret ProtocolEnum
 		return ret
 	}
@@ -120,7 +123,7 @@ func (o *PatchedEndpointRequest) GetProtocol() ProtocolEnum {
 // GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEndpointRequest) GetProtocolOk() (*ProtocolEnum, bool) {
-	if o == nil || o.Protocol == nil {
+	if o == nil || IsNil(o.Protocol) {
 		return nil, false
 	}
 	return o.Protocol, true
@@ -128,7 +131,7 @@ func (o *PatchedEndpointRequest) GetProtocolOk() (*ProtocolEnum, bool) {
 
 // HasProtocol returns a boolean if a field has been set.
 func (o *PatchedEndpointRequest) HasProtocol() bool {
-	if o != nil && o.Protocol != nil {
+	if o != nil && !IsNil(o.Protocol) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *PatchedEndpointRequest) SetProtocol(v ProtocolEnum) {
 
 // GetHost returns the Host field value if set, zero value otherwise.
 func (o *PatchedEndpointRequest) GetHost() string {
-	if o == nil || o.Host == nil {
+	if o == nil || IsNil(o.Host) {
 		var ret string
 		return ret
 	}
@@ -152,7 +155,7 @@ func (o *PatchedEndpointRequest) GetHost() string {
 // GetHostOk returns a tuple with the Host field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEndpointRequest) GetHostOk() (*string, bool) {
-	if o == nil || o.Host == nil {
+	if o == nil || IsNil(o.Host) {
 		return nil, false
 	}
 	return o.Host, true
@@ -160,7 +163,7 @@ func (o *PatchedEndpointRequest) GetHostOk() (*string, bool) {
 
 // HasHost returns a boolean if a field has been set.
 func (o *PatchedEndpointRequest) HasHost() bool {
-	if o != nil && o.Host != nil {
+	if o != nil && !IsNil(o.Host) {
 		return true
 	}
 
@@ -185,7 +188,7 @@ func (o *PatchedEndpointRequest) GetSettings() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedEndpointRequest) GetSettingsOk() (*interface{}, bool) {
-	if o == nil || o.Settings == nil {
+	if o == nil || IsNil(o.Settings) {
 		return nil, false
 	}
 	return &o.Settings, true
@@ -193,7 +196,7 @@ func (o *PatchedEndpointRequest) GetSettingsOk() (*interface{}, bool) {
 
 // HasSettings returns a boolean if a field has been set.
 func (o *PatchedEndpointRequest) HasSettings() bool {
-	if o != nil && o.Settings != nil {
+	if o != nil && !IsNil(o.Settings) {
 		return true
 	}
 
@@ -207,7 +210,7 @@ func (o *PatchedEndpointRequest) SetSettings(v interface{}) {
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
 func (o *PatchedEndpointRequest) GetPropertyMappings() []string {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		var ret []string
 		return ret
 	}
@@ -217,7 +220,7 @@ func (o *PatchedEndpointRequest) GetPropertyMappings() []string {
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEndpointRequest) GetPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		return nil, false
 	}
 	return o.PropertyMappings, true
@@ -225,7 +228,7 @@ func (o *PatchedEndpointRequest) GetPropertyMappingsOk() ([]string, bool) {
 
 // HasPropertyMappings returns a boolean if a field has been set.
 func (o *PatchedEndpointRequest) HasPropertyMappings() bool {
-	if o != nil && o.PropertyMappings != nil {
+	if o != nil && !IsNil(o.PropertyMappings) {
 		return true
 	}
 
@@ -239,7 +242,7 @@ func (o *PatchedEndpointRequest) SetPropertyMappings(v []string) {
 
 // GetAuthMode returns the AuthMode field value if set, zero value otherwise.
 func (o *PatchedEndpointRequest) GetAuthMode() AuthModeEnum {
-	if o == nil || o.AuthMode == nil {
+	if o == nil || IsNil(o.AuthMode) {
 		var ret AuthModeEnum
 		return ret
 	}
@@ -249,7 +252,7 @@ func (o *PatchedEndpointRequest) GetAuthMode() AuthModeEnum {
 // GetAuthModeOk returns a tuple with the AuthMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEndpointRequest) GetAuthModeOk() (*AuthModeEnum, bool) {
-	if o == nil || o.AuthMode == nil {
+	if o == nil || IsNil(o.AuthMode) {
 		return nil, false
 	}
 	return o.AuthMode, true
@@ -257,7 +260,7 @@ func (o *PatchedEndpointRequest) GetAuthModeOk() (*AuthModeEnum, bool) {
 
 // HasAuthMode returns a boolean if a field has been set.
 func (o *PatchedEndpointRequest) HasAuthMode() bool {
-	if o != nil && o.AuthMode != nil {
+	if o != nil && !IsNil(o.AuthMode) {
 		return true
 	}
 
@@ -271,7 +274,7 @@ func (o *PatchedEndpointRequest) SetAuthMode(v AuthModeEnum) {
 
 // GetMaximumConnections returns the MaximumConnections field value if set, zero value otherwise.
 func (o *PatchedEndpointRequest) GetMaximumConnections() int32 {
-	if o == nil || o.MaximumConnections == nil {
+	if o == nil || IsNil(o.MaximumConnections) {
 		var ret int32
 		return ret
 	}
@@ -281,7 +284,7 @@ func (o *PatchedEndpointRequest) GetMaximumConnections() int32 {
 // GetMaximumConnectionsOk returns a tuple with the MaximumConnections field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEndpointRequest) GetMaximumConnectionsOk() (*int32, bool) {
-	if o == nil || o.MaximumConnections == nil {
+	if o == nil || IsNil(o.MaximumConnections) {
 		return nil, false
 	}
 	return o.MaximumConnections, true
@@ -289,7 +292,7 @@ func (o *PatchedEndpointRequest) GetMaximumConnectionsOk() (*int32, bool) {
 
 // HasMaximumConnections returns a boolean if a field has been set.
 func (o *PatchedEndpointRequest) HasMaximumConnections() bool {
-	if o != nil && o.MaximumConnections != nil {
+	if o != nil && !IsNil(o.MaximumConnections) {
 		return true
 	}
 
@@ -302,32 +305,40 @@ func (o *PatchedEndpointRequest) SetMaximumConnections(v int32) {
 }
 
 func (o PatchedEndpointRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedEndpointRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Provider != nil {
+	if !IsNil(o.Provider) {
 		toSerialize["provider"] = o.Provider
 	}
-	if o.Protocol != nil {
+	if !IsNil(o.Protocol) {
 		toSerialize["protocol"] = o.Protocol
 	}
-	if o.Host != nil {
+	if !IsNil(o.Host) {
 		toSerialize["host"] = o.Host
 	}
 	if o.Settings != nil {
 		toSerialize["settings"] = o.Settings
 	}
-	if o.PropertyMappings != nil {
+	if !IsNil(o.PropertyMappings) {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
-	if o.AuthMode != nil {
+	if !IsNil(o.AuthMode) {
 		toSerialize["auth_mode"] = o.AuthMode
 	}
-	if o.MaximumConnections != nil {
+	if !IsNil(o.MaximumConnections) {
 		toSerialize["maximum_connections"] = o.MaximumConnections
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedEndpointRequest struct {

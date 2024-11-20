@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the EndpointDeviceRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EndpointDeviceRequest{}
 
 // EndpointDeviceRequest Serializer for Endpoint authenticator devices
 type EndpointDeviceRequest struct {
@@ -21,6 +26,8 @@ type EndpointDeviceRequest struct {
 	// The human-readable name of this device.
 	Name string `json:"name"`
 }
+
+type _EndpointDeviceRequest EndpointDeviceRequest
 
 // NewEndpointDeviceRequest instantiates a new EndpointDeviceRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -42,7 +49,7 @@ func NewEndpointDeviceRequestWithDefaults() *EndpointDeviceRequest {
 
 // GetPk returns the Pk field value if set, zero value otherwise.
 func (o *EndpointDeviceRequest) GetPk() string {
-	if o == nil || o.Pk == nil {
+	if o == nil || IsNil(o.Pk) {
 		var ret string
 		return ret
 	}
@@ -52,7 +59,7 @@ func (o *EndpointDeviceRequest) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EndpointDeviceRequest) GetPkOk() (*string, bool) {
-	if o == nil || o.Pk == nil {
+	if o == nil || IsNil(o.Pk) {
 		return nil, false
 	}
 	return o.Pk, true
@@ -60,7 +67,7 @@ func (o *EndpointDeviceRequest) GetPkOk() (*string, bool) {
 
 // HasPk returns a boolean if a field has been set.
 func (o *EndpointDeviceRequest) HasPk() bool {
-	if o != nil && o.Pk != nil {
+	if o != nil && !IsNil(o.Pk) {
 		return true
 	}
 
@@ -97,14 +104,57 @@ func (o *EndpointDeviceRequest) SetName(v string) {
 }
 
 func (o EndpointDeviceRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Pk != nil {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EndpointDeviceRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Pk) {
+		toSerialize["pk"] = o.Pk
+	}
+	toSerialize["name"] = o.Name
+	return toSerialize, nil
+}
+
+func (o *EndpointDeviceRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEndpointDeviceRequest := _EndpointDeviceRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEndpointDeviceRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EndpointDeviceRequest(varEndpointDeviceRequest)
+
+	return err
 }
 
 type NullableEndpointDeviceRequest struct {

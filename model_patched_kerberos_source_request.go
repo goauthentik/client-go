@@ -15,12 +15,15 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedKerberosSourceRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedKerberosSourceRequest{}
+
 // PatchedKerberosSourceRequest Kerberos Source Serializer
 type PatchedKerberosSourceRequest struct {
 	// Source's display Name.
 	Name *string `json:"name,omitempty"`
 	// Internal source name, used in URLs.
-	Slug    *string `json:"slug,omitempty"`
+	Slug    *string `json:"slug,omitempty" validate:"regexp=^[-a-zA-Z0-9_]+$"`
 	Enabled *bool   `json:"enabled,omitempty"`
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
@@ -79,7 +82,7 @@ func NewPatchedKerberosSourceRequestWithDefaults() *PatchedKerberosSourceRequest
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -89,7 +92,7 @@ func (o *PatchedKerberosSourceRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -97,7 +100,7 @@ func (o *PatchedKerberosSourceRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *PatchedKerberosSourceRequest) SetName(v string) {
 
 // GetSlug returns the Slug field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetSlug() string {
-	if o == nil || o.Slug == nil {
+	if o == nil || IsNil(o.Slug) {
 		var ret string
 		return ret
 	}
@@ -121,7 +124,7 @@ func (o *PatchedKerberosSourceRequest) GetSlug() string {
 // GetSlugOk returns a tuple with the Slug field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetSlugOk() (*string, bool) {
-	if o == nil || o.Slug == nil {
+	if o == nil || IsNil(o.Slug) {
 		return nil, false
 	}
 	return o.Slug, true
@@ -129,7 +132,7 @@ func (o *PatchedKerberosSourceRequest) GetSlugOk() (*string, bool) {
 
 // HasSlug returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasSlug() bool {
-	if o != nil && o.Slug != nil {
+	if o != nil && !IsNil(o.Slug) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *PatchedKerberosSourceRequest) SetSlug(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -153,7 +156,7 @@ func (o *PatchedKerberosSourceRequest) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -161,7 +164,7 @@ func (o *PatchedKerberosSourceRequest) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *PatchedKerberosSourceRequest) SetEnabled(v bool) {
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedKerberosSourceRequest) GetAuthenticationFlow() string {
-	if o == nil || o.AuthenticationFlow.Get() == nil {
+	if o == nil || IsNil(o.AuthenticationFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -218,7 +221,7 @@ func (o *PatchedKerberosSourceRequest) UnsetAuthenticationFlow() {
 
 // GetEnrollmentFlow returns the EnrollmentFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedKerberosSourceRequest) GetEnrollmentFlow() string {
-	if o == nil || o.EnrollmentFlow.Get() == nil {
+	if o == nil || IsNil(o.EnrollmentFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -261,7 +264,7 @@ func (o *PatchedKerberosSourceRequest) UnsetEnrollmentFlow() {
 
 // GetUserPropertyMappings returns the UserPropertyMappings field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetUserPropertyMappings() []string {
-	if o == nil || o.UserPropertyMappings == nil {
+	if o == nil || IsNil(o.UserPropertyMappings) {
 		var ret []string
 		return ret
 	}
@@ -271,7 +274,7 @@ func (o *PatchedKerberosSourceRequest) GetUserPropertyMappings() []string {
 // GetUserPropertyMappingsOk returns a tuple with the UserPropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetUserPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.UserPropertyMappings == nil {
+	if o == nil || IsNil(o.UserPropertyMappings) {
 		return nil, false
 	}
 	return o.UserPropertyMappings, true
@@ -279,7 +282,7 @@ func (o *PatchedKerberosSourceRequest) GetUserPropertyMappingsOk() ([]string, bo
 
 // HasUserPropertyMappings returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasUserPropertyMappings() bool {
-	if o != nil && o.UserPropertyMappings != nil {
+	if o != nil && !IsNil(o.UserPropertyMappings) {
 		return true
 	}
 
@@ -293,7 +296,7 @@ func (o *PatchedKerberosSourceRequest) SetUserPropertyMappings(v []string) {
 
 // GetGroupPropertyMappings returns the GroupPropertyMappings field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetGroupPropertyMappings() []string {
-	if o == nil || o.GroupPropertyMappings == nil {
+	if o == nil || IsNil(o.GroupPropertyMappings) {
 		var ret []string
 		return ret
 	}
@@ -303,7 +306,7 @@ func (o *PatchedKerberosSourceRequest) GetGroupPropertyMappings() []string {
 // GetGroupPropertyMappingsOk returns a tuple with the GroupPropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetGroupPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.GroupPropertyMappings == nil {
+	if o == nil || IsNil(o.GroupPropertyMappings) {
 		return nil, false
 	}
 	return o.GroupPropertyMappings, true
@@ -311,7 +314,7 @@ func (o *PatchedKerberosSourceRequest) GetGroupPropertyMappingsOk() ([]string, b
 
 // HasGroupPropertyMappings returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasGroupPropertyMappings() bool {
-	if o != nil && o.GroupPropertyMappings != nil {
+	if o != nil && !IsNil(o.GroupPropertyMappings) {
 		return true
 	}
 
@@ -325,7 +328,7 @@ func (o *PatchedKerberosSourceRequest) SetGroupPropertyMappings(v []string) {
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetPolicyEngineMode() PolicyEngineMode {
-	if o == nil || o.PolicyEngineMode == nil {
+	if o == nil || IsNil(o.PolicyEngineMode) {
 		var ret PolicyEngineMode
 		return ret
 	}
@@ -335,7 +338,7 @@ func (o *PatchedKerberosSourceRequest) GetPolicyEngineMode() PolicyEngineMode {
 // GetPolicyEngineModeOk returns a tuple with the PolicyEngineMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
-	if o == nil || o.PolicyEngineMode == nil {
+	if o == nil || IsNil(o.PolicyEngineMode) {
 		return nil, false
 	}
 	return o.PolicyEngineMode, true
@@ -343,7 +346,7 @@ func (o *PatchedKerberosSourceRequest) GetPolicyEngineModeOk() (*PolicyEngineMod
 
 // HasPolicyEngineMode returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasPolicyEngineMode() bool {
-	if o != nil && o.PolicyEngineMode != nil {
+	if o != nil && !IsNil(o.PolicyEngineMode) {
 		return true
 	}
 
@@ -357,7 +360,7 @@ func (o *PatchedKerberosSourceRequest) SetPolicyEngineMode(v PolicyEngineMode) {
 
 // GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetUserMatchingMode() UserMatchingModeEnum {
-	if o == nil || o.UserMatchingMode == nil {
+	if o == nil || IsNil(o.UserMatchingMode) {
 		var ret UserMatchingModeEnum
 		return ret
 	}
@@ -367,7 +370,7 @@ func (o *PatchedKerberosSourceRequest) GetUserMatchingMode() UserMatchingModeEnu
 // GetUserMatchingModeOk returns a tuple with the UserMatchingMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool) {
-	if o == nil || o.UserMatchingMode == nil {
+	if o == nil || IsNil(o.UserMatchingMode) {
 		return nil, false
 	}
 	return o.UserMatchingMode, true
@@ -375,7 +378,7 @@ func (o *PatchedKerberosSourceRequest) GetUserMatchingModeOk() (*UserMatchingMod
 
 // HasUserMatchingMode returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasUserMatchingMode() bool {
-	if o != nil && o.UserMatchingMode != nil {
+	if o != nil && !IsNil(o.UserMatchingMode) {
 		return true
 	}
 
@@ -389,7 +392,7 @@ func (o *PatchedKerberosSourceRequest) SetUserMatchingMode(v UserMatchingModeEnu
 
 // GetUserPathTemplate returns the UserPathTemplate field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetUserPathTemplate() string {
-	if o == nil || o.UserPathTemplate == nil {
+	if o == nil || IsNil(o.UserPathTemplate) {
 		var ret string
 		return ret
 	}
@@ -399,7 +402,7 @@ func (o *PatchedKerberosSourceRequest) GetUserPathTemplate() string {
 // GetUserPathTemplateOk returns a tuple with the UserPathTemplate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetUserPathTemplateOk() (*string, bool) {
-	if o == nil || o.UserPathTemplate == nil {
+	if o == nil || IsNil(o.UserPathTemplate) {
 		return nil, false
 	}
 	return o.UserPathTemplate, true
@@ -407,7 +410,7 @@ func (o *PatchedKerberosSourceRequest) GetUserPathTemplateOk() (*string, bool) {
 
 // HasUserPathTemplate returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasUserPathTemplate() bool {
-	if o != nil && o.UserPathTemplate != nil {
+	if o != nil && !IsNil(o.UserPathTemplate) {
 		return true
 	}
 
@@ -421,7 +424,7 @@ func (o *PatchedKerberosSourceRequest) SetUserPathTemplate(v string) {
 
 // GetGroupMatchingMode returns the GroupMatchingMode field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetGroupMatchingMode() GroupMatchingModeEnum {
-	if o == nil || o.GroupMatchingMode == nil {
+	if o == nil || IsNil(o.GroupMatchingMode) {
 		var ret GroupMatchingModeEnum
 		return ret
 	}
@@ -431,7 +434,7 @@ func (o *PatchedKerberosSourceRequest) GetGroupMatchingMode() GroupMatchingModeE
 // GetGroupMatchingModeOk returns a tuple with the GroupMatchingMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetGroupMatchingModeOk() (*GroupMatchingModeEnum, bool) {
-	if o == nil || o.GroupMatchingMode == nil {
+	if o == nil || IsNil(o.GroupMatchingMode) {
 		return nil, false
 	}
 	return o.GroupMatchingMode, true
@@ -439,7 +442,7 @@ func (o *PatchedKerberosSourceRequest) GetGroupMatchingModeOk() (*GroupMatchingM
 
 // HasGroupMatchingMode returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasGroupMatchingMode() bool {
-	if o != nil && o.GroupMatchingMode != nil {
+	if o != nil && !IsNil(o.GroupMatchingMode) {
 		return true
 	}
 
@@ -453,7 +456,7 @@ func (o *PatchedKerberosSourceRequest) SetGroupMatchingMode(v GroupMatchingModeE
 
 // GetRealm returns the Realm field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetRealm() string {
-	if o == nil || o.Realm == nil {
+	if o == nil || IsNil(o.Realm) {
 		var ret string
 		return ret
 	}
@@ -463,7 +466,7 @@ func (o *PatchedKerberosSourceRequest) GetRealm() string {
 // GetRealmOk returns a tuple with the Realm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetRealmOk() (*string, bool) {
-	if o == nil || o.Realm == nil {
+	if o == nil || IsNil(o.Realm) {
 		return nil, false
 	}
 	return o.Realm, true
@@ -471,7 +474,7 @@ func (o *PatchedKerberosSourceRequest) GetRealmOk() (*string, bool) {
 
 // HasRealm returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasRealm() bool {
-	if o != nil && o.Realm != nil {
+	if o != nil && !IsNil(o.Realm) {
 		return true
 	}
 
@@ -485,7 +488,7 @@ func (o *PatchedKerberosSourceRequest) SetRealm(v string) {
 
 // GetKrb5Conf returns the Krb5Conf field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetKrb5Conf() string {
-	if o == nil || o.Krb5Conf == nil {
+	if o == nil || IsNil(o.Krb5Conf) {
 		var ret string
 		return ret
 	}
@@ -495,7 +498,7 @@ func (o *PatchedKerberosSourceRequest) GetKrb5Conf() string {
 // GetKrb5ConfOk returns a tuple with the Krb5Conf field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetKrb5ConfOk() (*string, bool) {
-	if o == nil || o.Krb5Conf == nil {
+	if o == nil || IsNil(o.Krb5Conf) {
 		return nil, false
 	}
 	return o.Krb5Conf, true
@@ -503,7 +506,7 @@ func (o *PatchedKerberosSourceRequest) GetKrb5ConfOk() (*string, bool) {
 
 // HasKrb5Conf returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasKrb5Conf() bool {
-	if o != nil && o.Krb5Conf != nil {
+	if o != nil && !IsNil(o.Krb5Conf) {
 		return true
 	}
 
@@ -517,7 +520,7 @@ func (o *PatchedKerberosSourceRequest) SetKrb5Conf(v string) {
 
 // GetSyncUsers returns the SyncUsers field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetSyncUsers() bool {
-	if o == nil || o.SyncUsers == nil {
+	if o == nil || IsNil(o.SyncUsers) {
 		var ret bool
 		return ret
 	}
@@ -527,7 +530,7 @@ func (o *PatchedKerberosSourceRequest) GetSyncUsers() bool {
 // GetSyncUsersOk returns a tuple with the SyncUsers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetSyncUsersOk() (*bool, bool) {
-	if o == nil || o.SyncUsers == nil {
+	if o == nil || IsNil(o.SyncUsers) {
 		return nil, false
 	}
 	return o.SyncUsers, true
@@ -535,7 +538,7 @@ func (o *PatchedKerberosSourceRequest) GetSyncUsersOk() (*bool, bool) {
 
 // HasSyncUsers returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasSyncUsers() bool {
-	if o != nil && o.SyncUsers != nil {
+	if o != nil && !IsNil(o.SyncUsers) {
 		return true
 	}
 
@@ -549,7 +552,7 @@ func (o *PatchedKerberosSourceRequest) SetSyncUsers(v bool) {
 
 // GetSyncUsersPassword returns the SyncUsersPassword field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetSyncUsersPassword() bool {
-	if o == nil || o.SyncUsersPassword == nil {
+	if o == nil || IsNil(o.SyncUsersPassword) {
 		var ret bool
 		return ret
 	}
@@ -559,7 +562,7 @@ func (o *PatchedKerberosSourceRequest) GetSyncUsersPassword() bool {
 // GetSyncUsersPasswordOk returns a tuple with the SyncUsersPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetSyncUsersPasswordOk() (*bool, bool) {
-	if o == nil || o.SyncUsersPassword == nil {
+	if o == nil || IsNil(o.SyncUsersPassword) {
 		return nil, false
 	}
 	return o.SyncUsersPassword, true
@@ -567,7 +570,7 @@ func (o *PatchedKerberosSourceRequest) GetSyncUsersPasswordOk() (*bool, bool) {
 
 // HasSyncUsersPassword returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasSyncUsersPassword() bool {
-	if o != nil && o.SyncUsersPassword != nil {
+	if o != nil && !IsNil(o.SyncUsersPassword) {
 		return true
 	}
 
@@ -581,7 +584,7 @@ func (o *PatchedKerberosSourceRequest) SetSyncUsersPassword(v bool) {
 
 // GetSyncPrincipal returns the SyncPrincipal field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetSyncPrincipal() string {
-	if o == nil || o.SyncPrincipal == nil {
+	if o == nil || IsNil(o.SyncPrincipal) {
 		var ret string
 		return ret
 	}
@@ -591,7 +594,7 @@ func (o *PatchedKerberosSourceRequest) GetSyncPrincipal() string {
 // GetSyncPrincipalOk returns a tuple with the SyncPrincipal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetSyncPrincipalOk() (*string, bool) {
-	if o == nil || o.SyncPrincipal == nil {
+	if o == nil || IsNil(o.SyncPrincipal) {
 		return nil, false
 	}
 	return o.SyncPrincipal, true
@@ -599,7 +602,7 @@ func (o *PatchedKerberosSourceRequest) GetSyncPrincipalOk() (*string, bool) {
 
 // HasSyncPrincipal returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasSyncPrincipal() bool {
-	if o != nil && o.SyncPrincipal != nil {
+	if o != nil && !IsNil(o.SyncPrincipal) {
 		return true
 	}
 
@@ -613,7 +616,7 @@ func (o *PatchedKerberosSourceRequest) SetSyncPrincipal(v string) {
 
 // GetSyncPassword returns the SyncPassword field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetSyncPassword() string {
-	if o == nil || o.SyncPassword == nil {
+	if o == nil || IsNil(o.SyncPassword) {
 		var ret string
 		return ret
 	}
@@ -623,7 +626,7 @@ func (o *PatchedKerberosSourceRequest) GetSyncPassword() string {
 // GetSyncPasswordOk returns a tuple with the SyncPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetSyncPasswordOk() (*string, bool) {
-	if o == nil || o.SyncPassword == nil {
+	if o == nil || IsNil(o.SyncPassword) {
 		return nil, false
 	}
 	return o.SyncPassword, true
@@ -631,7 +634,7 @@ func (o *PatchedKerberosSourceRequest) GetSyncPasswordOk() (*string, bool) {
 
 // HasSyncPassword returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasSyncPassword() bool {
-	if o != nil && o.SyncPassword != nil {
+	if o != nil && !IsNil(o.SyncPassword) {
 		return true
 	}
 
@@ -645,7 +648,7 @@ func (o *PatchedKerberosSourceRequest) SetSyncPassword(v string) {
 
 // GetSyncKeytab returns the SyncKeytab field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetSyncKeytab() string {
-	if o == nil || o.SyncKeytab == nil {
+	if o == nil || IsNil(o.SyncKeytab) {
 		var ret string
 		return ret
 	}
@@ -655,7 +658,7 @@ func (o *PatchedKerberosSourceRequest) GetSyncKeytab() string {
 // GetSyncKeytabOk returns a tuple with the SyncKeytab field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetSyncKeytabOk() (*string, bool) {
-	if o == nil || o.SyncKeytab == nil {
+	if o == nil || IsNil(o.SyncKeytab) {
 		return nil, false
 	}
 	return o.SyncKeytab, true
@@ -663,7 +666,7 @@ func (o *PatchedKerberosSourceRequest) GetSyncKeytabOk() (*string, bool) {
 
 // HasSyncKeytab returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasSyncKeytab() bool {
-	if o != nil && o.SyncKeytab != nil {
+	if o != nil && !IsNil(o.SyncKeytab) {
 		return true
 	}
 
@@ -677,7 +680,7 @@ func (o *PatchedKerberosSourceRequest) SetSyncKeytab(v string) {
 
 // GetSyncCcache returns the SyncCcache field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetSyncCcache() string {
-	if o == nil || o.SyncCcache == nil {
+	if o == nil || IsNil(o.SyncCcache) {
 		var ret string
 		return ret
 	}
@@ -687,7 +690,7 @@ func (o *PatchedKerberosSourceRequest) GetSyncCcache() string {
 // GetSyncCcacheOk returns a tuple with the SyncCcache field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetSyncCcacheOk() (*string, bool) {
-	if o == nil || o.SyncCcache == nil {
+	if o == nil || IsNil(o.SyncCcache) {
 		return nil, false
 	}
 	return o.SyncCcache, true
@@ -695,7 +698,7 @@ func (o *PatchedKerberosSourceRequest) GetSyncCcacheOk() (*string, bool) {
 
 // HasSyncCcache returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasSyncCcache() bool {
-	if o != nil && o.SyncCcache != nil {
+	if o != nil && !IsNil(o.SyncCcache) {
 		return true
 	}
 
@@ -709,7 +712,7 @@ func (o *PatchedKerberosSourceRequest) SetSyncCcache(v string) {
 
 // GetSpnegoServerName returns the SpnegoServerName field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetSpnegoServerName() string {
-	if o == nil || o.SpnegoServerName == nil {
+	if o == nil || IsNil(o.SpnegoServerName) {
 		var ret string
 		return ret
 	}
@@ -719,7 +722,7 @@ func (o *PatchedKerberosSourceRequest) GetSpnegoServerName() string {
 // GetSpnegoServerNameOk returns a tuple with the SpnegoServerName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetSpnegoServerNameOk() (*string, bool) {
-	if o == nil || o.SpnegoServerName == nil {
+	if o == nil || IsNil(o.SpnegoServerName) {
 		return nil, false
 	}
 	return o.SpnegoServerName, true
@@ -727,7 +730,7 @@ func (o *PatchedKerberosSourceRequest) GetSpnegoServerNameOk() (*string, bool) {
 
 // HasSpnegoServerName returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasSpnegoServerName() bool {
-	if o != nil && o.SpnegoServerName != nil {
+	if o != nil && !IsNil(o.SpnegoServerName) {
 		return true
 	}
 
@@ -741,7 +744,7 @@ func (o *PatchedKerberosSourceRequest) SetSpnegoServerName(v string) {
 
 // GetSpnegoKeytab returns the SpnegoKeytab field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetSpnegoKeytab() string {
-	if o == nil || o.SpnegoKeytab == nil {
+	if o == nil || IsNil(o.SpnegoKeytab) {
 		var ret string
 		return ret
 	}
@@ -751,7 +754,7 @@ func (o *PatchedKerberosSourceRequest) GetSpnegoKeytab() string {
 // GetSpnegoKeytabOk returns a tuple with the SpnegoKeytab field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetSpnegoKeytabOk() (*string, bool) {
-	if o == nil || o.SpnegoKeytab == nil {
+	if o == nil || IsNil(o.SpnegoKeytab) {
 		return nil, false
 	}
 	return o.SpnegoKeytab, true
@@ -759,7 +762,7 @@ func (o *PatchedKerberosSourceRequest) GetSpnegoKeytabOk() (*string, bool) {
 
 // HasSpnegoKeytab returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasSpnegoKeytab() bool {
-	if o != nil && o.SpnegoKeytab != nil {
+	if o != nil && !IsNil(o.SpnegoKeytab) {
 		return true
 	}
 
@@ -773,7 +776,7 @@ func (o *PatchedKerberosSourceRequest) SetSpnegoKeytab(v string) {
 
 // GetSpnegoCcache returns the SpnegoCcache field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetSpnegoCcache() string {
-	if o == nil || o.SpnegoCcache == nil {
+	if o == nil || IsNil(o.SpnegoCcache) {
 		var ret string
 		return ret
 	}
@@ -783,7 +786,7 @@ func (o *PatchedKerberosSourceRequest) GetSpnegoCcache() string {
 // GetSpnegoCcacheOk returns a tuple with the SpnegoCcache field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetSpnegoCcacheOk() (*string, bool) {
-	if o == nil || o.SpnegoCcache == nil {
+	if o == nil || IsNil(o.SpnegoCcache) {
 		return nil, false
 	}
 	return o.SpnegoCcache, true
@@ -791,7 +794,7 @@ func (o *PatchedKerberosSourceRequest) GetSpnegoCcacheOk() (*string, bool) {
 
 // HasSpnegoCcache returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasSpnegoCcache() bool {
-	if o != nil && o.SpnegoCcache != nil {
+	if o != nil && !IsNil(o.SpnegoCcache) {
 		return true
 	}
 
@@ -805,7 +808,7 @@ func (o *PatchedKerberosSourceRequest) SetSpnegoCcache(v string) {
 
 // GetPasswordLoginUpdateInternalPassword returns the PasswordLoginUpdateInternalPassword field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetPasswordLoginUpdateInternalPassword() bool {
-	if o == nil || o.PasswordLoginUpdateInternalPassword == nil {
+	if o == nil || IsNil(o.PasswordLoginUpdateInternalPassword) {
 		var ret bool
 		return ret
 	}
@@ -815,7 +818,7 @@ func (o *PatchedKerberosSourceRequest) GetPasswordLoginUpdateInternalPassword() 
 // GetPasswordLoginUpdateInternalPasswordOk returns a tuple with the PasswordLoginUpdateInternalPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedKerberosSourceRequest) GetPasswordLoginUpdateInternalPasswordOk() (*bool, bool) {
-	if o == nil || o.PasswordLoginUpdateInternalPassword == nil {
+	if o == nil || IsNil(o.PasswordLoginUpdateInternalPassword) {
 		return nil, false
 	}
 	return o.PasswordLoginUpdateInternalPassword, true
@@ -823,7 +826,7 @@ func (o *PatchedKerberosSourceRequest) GetPasswordLoginUpdateInternalPasswordOk(
 
 // HasPasswordLoginUpdateInternalPassword returns a boolean if a field has been set.
 func (o *PatchedKerberosSourceRequest) HasPasswordLoginUpdateInternalPassword() bool {
-	if o != nil && o.PasswordLoginUpdateInternalPassword != nil {
+	if o != nil && !IsNil(o.PasswordLoginUpdateInternalPassword) {
 		return true
 	}
 
@@ -836,14 +839,22 @@ func (o *PatchedKerberosSourceRequest) SetPasswordLoginUpdateInternalPassword(v 
 }
 
 func (o PatchedKerberosSourceRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedKerberosSourceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Slug != nil {
+	if !IsNil(o.Slug) {
 		toSerialize["slug"] = o.Slug
 	}
-	if o.Enabled != nil {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
 	if o.AuthenticationFlow.IsSet() {
@@ -852,61 +863,61 @@ func (o PatchedKerberosSourceRequest) MarshalJSON() ([]byte, error) {
 	if o.EnrollmentFlow.IsSet() {
 		toSerialize["enrollment_flow"] = o.EnrollmentFlow.Get()
 	}
-	if o.UserPropertyMappings != nil {
+	if !IsNil(o.UserPropertyMappings) {
 		toSerialize["user_property_mappings"] = o.UserPropertyMappings
 	}
-	if o.GroupPropertyMappings != nil {
+	if !IsNil(o.GroupPropertyMappings) {
 		toSerialize["group_property_mappings"] = o.GroupPropertyMappings
 	}
-	if o.PolicyEngineMode != nil {
+	if !IsNil(o.PolicyEngineMode) {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
 	}
-	if o.UserMatchingMode != nil {
+	if !IsNil(o.UserMatchingMode) {
 		toSerialize["user_matching_mode"] = o.UserMatchingMode
 	}
-	if o.UserPathTemplate != nil {
+	if !IsNil(o.UserPathTemplate) {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
-	if o.GroupMatchingMode != nil {
+	if !IsNil(o.GroupMatchingMode) {
 		toSerialize["group_matching_mode"] = o.GroupMatchingMode
 	}
-	if o.Realm != nil {
+	if !IsNil(o.Realm) {
 		toSerialize["realm"] = o.Realm
 	}
-	if o.Krb5Conf != nil {
+	if !IsNil(o.Krb5Conf) {
 		toSerialize["krb5_conf"] = o.Krb5Conf
 	}
-	if o.SyncUsers != nil {
+	if !IsNil(o.SyncUsers) {
 		toSerialize["sync_users"] = o.SyncUsers
 	}
-	if o.SyncUsersPassword != nil {
+	if !IsNil(o.SyncUsersPassword) {
 		toSerialize["sync_users_password"] = o.SyncUsersPassword
 	}
-	if o.SyncPrincipal != nil {
+	if !IsNil(o.SyncPrincipal) {
 		toSerialize["sync_principal"] = o.SyncPrincipal
 	}
-	if o.SyncPassword != nil {
+	if !IsNil(o.SyncPassword) {
 		toSerialize["sync_password"] = o.SyncPassword
 	}
-	if o.SyncKeytab != nil {
+	if !IsNil(o.SyncKeytab) {
 		toSerialize["sync_keytab"] = o.SyncKeytab
 	}
-	if o.SyncCcache != nil {
+	if !IsNil(o.SyncCcache) {
 		toSerialize["sync_ccache"] = o.SyncCcache
 	}
-	if o.SpnegoServerName != nil {
+	if !IsNil(o.SpnegoServerName) {
 		toSerialize["spnego_server_name"] = o.SpnegoServerName
 	}
-	if o.SpnegoKeytab != nil {
+	if !IsNil(o.SpnegoKeytab) {
 		toSerialize["spnego_keytab"] = o.SpnegoKeytab
 	}
-	if o.SpnegoCcache != nil {
+	if !IsNil(o.SpnegoCcache) {
 		toSerialize["spnego_ccache"] = o.SpnegoCcache
 	}
-	if o.PasswordLoginUpdateInternalPassword != nil {
+	if !IsNil(o.PasswordLoginUpdateInternalPassword) {
 		toSerialize["password_login_update_internal_password"] = o.PasswordLoginUpdateInternalPassword
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedKerberosSourceRequest struct {
