@@ -45,9 +45,8 @@ type OAuth2ProviderRequest struct {
 	// Key used to sign the tokens.
 	SigningKey NullableString `json:"signing_key,omitempty"`
 	// Key used to encrypt the tokens. When set, tokens will be encrypted and returned as JWEs.
-	EncryptionKey NullableString `json:"encryption_key,omitempty"`
-	// Enter each URI on a new line.
-	RedirectUris *string `json:"redirect_uris,omitempty"`
+	EncryptionKey NullableString       `json:"encryption_key,omitempty"`
+	RedirectUris  []RedirectURIRequest `json:"redirect_uris"`
 	// Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
 	SubMode *SubModeEnum `json:"sub_mode,omitempty"`
 	// Configure how the issuer field of the ID Token should be filled.
@@ -61,11 +60,12 @@ type _OAuth2ProviderRequest OAuth2ProviderRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuth2ProviderRequest(name string, authorizationFlow string, invalidationFlow string) *OAuth2ProviderRequest {
+func NewOAuth2ProviderRequest(name string, authorizationFlow string, invalidationFlow string, redirectUris []RedirectURIRequest) *OAuth2ProviderRequest {
 	this := OAuth2ProviderRequest{}
 	this.Name = name
 	this.AuthorizationFlow = authorizationFlow
 	this.InvalidationFlow = invalidationFlow
+	this.RedirectUris = redirectUris
 	return &this
 }
 
@@ -534,36 +534,28 @@ func (o *OAuth2ProviderRequest) UnsetEncryptionKey() {
 	o.EncryptionKey.Unset()
 }
 
-// GetRedirectUris returns the RedirectUris field value if set, zero value otherwise.
-func (o *OAuth2ProviderRequest) GetRedirectUris() string {
-	if o == nil || IsNil(o.RedirectUris) {
-		var ret string
+// GetRedirectUris returns the RedirectUris field value
+func (o *OAuth2ProviderRequest) GetRedirectUris() []RedirectURIRequest {
+	if o == nil {
+		var ret []RedirectURIRequest
 		return ret
 	}
-	return *o.RedirectUris
+
+	return o.RedirectUris
 }
 
-// GetRedirectUrisOk returns a tuple with the RedirectUris field value if set, nil otherwise
+// GetRedirectUrisOk returns a tuple with the RedirectUris field value
 // and a boolean to check if the value has been set.
-func (o *OAuth2ProviderRequest) GetRedirectUrisOk() (*string, bool) {
-	if o == nil || IsNil(o.RedirectUris) {
+func (o *OAuth2ProviderRequest) GetRedirectUrisOk() ([]RedirectURIRequest, bool) {
+	if o == nil {
 		return nil, false
 	}
 	return o.RedirectUris, true
 }
 
-// HasRedirectUris returns a boolean if a field has been set.
-func (o *OAuth2ProviderRequest) HasRedirectUris() bool {
-	if o != nil && !IsNil(o.RedirectUris) {
-		return true
-	}
-
-	return false
-}
-
-// SetRedirectUris gets a reference to the given string and assigns it to the RedirectUris field.
-func (o *OAuth2ProviderRequest) SetRedirectUris(v string) {
-	o.RedirectUris = &v
+// SetRedirectUris sets field value
+func (o *OAuth2ProviderRequest) SetRedirectUris(v []RedirectURIRequest) {
+	o.RedirectUris = v
 }
 
 // GetSubMode returns the SubMode field value if set, zero value otherwise.
@@ -708,9 +700,7 @@ func (o OAuth2ProviderRequest) ToMap() (map[string]interface{}, error) {
 	if o.EncryptionKey.IsSet() {
 		toSerialize["encryption_key"] = o.EncryptionKey.Get()
 	}
-	if !IsNil(o.RedirectUris) {
-		toSerialize["redirect_uris"] = o.RedirectUris
-	}
+	toSerialize["redirect_uris"] = o.RedirectUris
 	if !IsNil(o.SubMode) {
 		toSerialize["sub_mode"] = o.SubMode
 	}
@@ -731,6 +721,7 @@ func (o *OAuth2ProviderRequest) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"authorization_flow",
 		"invalidation_flow",
+		"redirect_uris",
 	}
 
 	allProperties := make(map[string]interface{})

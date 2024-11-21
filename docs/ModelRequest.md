@@ -36,7 +36,7 @@ Name | Type | Description | Notes
 **IncludeClaimsInIdToken** | Pointer to **bool** | Include User claims from scopes in the id_token, for applications that don&#39;t access the userinfo endpoint. | [optional] 
 **SigningKey** | Pointer to **NullableString** | Key used to sign the tokens. | [optional] 
 **EncryptionKey** | Pointer to **NullableString** | Key used to encrypt the tokens. When set, tokens will be encrypted and returned as JWEs. | [optional] 
-**RedirectUris** | Pointer to **string** | Enter each URI on a new line. | [optional] 
+**RedirectUris** | [**[]RedirectURIRequest**](RedirectURIRequest.md) |  | 
 **SubMode** | Pointer to [**SubModeEnum**](SubModeEnum.md) | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. | [optional] 
 **IssuerMode** | Pointer to [**IssuerModeEnum**](IssuerModeEnum.md) | Configure how the issuer field of the ID Token should be filled. | [optional] 
 **JwksSources** | Pointer to **[]string** |  | [optional] 
@@ -79,7 +79,7 @@ Name | Type | Description | Notes
 
 ### NewModelRequest
 
-`func NewModelRequest(name string, delegatedSubject string, credentials interface{}, defaultGroupEmailDomain string, authorizationFlow string, invalidationFlow string, clientId string, clientSecret string, tenantId string, externalHost string, acsUrl string, url string, token string, ) *ModelRequest`
+`func NewModelRequest(name string, delegatedSubject string, credentials interface{}, defaultGroupEmailDomain string, authorizationFlow string, invalidationFlow string, clientId string, clientSecret string, tenantId string, redirectUris []RedirectURIRequest, externalHost string, acsUrl string, url string, token string, ) *ModelRequest`
 
 NewModelRequest instantiates a new ModelRequest object
 This constructor will assign default values to properties that have it defined,
@@ -911,28 +911,23 @@ HasEncryptionKey returns a boolean if a field has been set.
 UnsetEncryptionKey ensures that no value is present for EncryptionKey, not even an explicit nil
 ### GetRedirectUris
 
-`func (o *ModelRequest) GetRedirectUris() string`
+`func (o *ModelRequest) GetRedirectUris() []RedirectURIRequest`
 
 GetRedirectUris returns the RedirectUris field if non-nil, zero value otherwise.
 
 ### GetRedirectUrisOk
 
-`func (o *ModelRequest) GetRedirectUrisOk() (*string, bool)`
+`func (o *ModelRequest) GetRedirectUrisOk() (*[]RedirectURIRequest, bool)`
 
 GetRedirectUrisOk returns a tuple with the RedirectUris field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRedirectUris
 
-`func (o *ModelRequest) SetRedirectUris(v string)`
+`func (o *ModelRequest) SetRedirectUris(v []RedirectURIRequest)`
 
 SetRedirectUris sets RedirectUris field to given value.
 
-### HasRedirectUris
-
-`func (o *ModelRequest) HasRedirectUris() bool`
-
-HasRedirectUris returns a boolean if a field has been set.
 
 ### GetSubMode
 

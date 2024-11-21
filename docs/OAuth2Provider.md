@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **IncludeClaimsInIdToken** | Pointer to **bool** | Include User claims from scopes in the id_token, for applications that don&#39;t access the userinfo endpoint. | [optional] 
 **SigningKey** | Pointer to **NullableString** | Key used to sign the tokens. | [optional] 
 **EncryptionKey** | Pointer to **NullableString** | Key used to encrypt the tokens. When set, tokens will be encrypted and returned as JWEs. | [optional] 
-**RedirectUris** | Pointer to **string** | Enter each URI on a new line. | [optional] 
+**RedirectUris** | [**[]RedirectURI**](RedirectURI.md) |  | 
 **SubMode** | Pointer to [**SubModeEnum**](SubModeEnum.md) | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. | [optional] 
 **IssuerMode** | Pointer to [**IssuerModeEnum**](IssuerModeEnum.md) | Configure how the issuer field of the ID Token should be filled. | [optional] 
 **JwksSources** | Pointer to **[]string** |  | [optional] 
@@ -36,7 +36,7 @@ Name | Type | Description | Notes
 
 ### NewOAuth2Provider
 
-`func NewOAuth2Provider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, ) *OAuth2Provider`
+`func NewOAuth2Provider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, redirectUris []RedirectURI, ) *OAuth2Provider`
 
 NewOAuth2Provider instantiates a new OAuth2Provider object
 This constructor will assign default values to properties that have it defined,
@@ -598,28 +598,23 @@ HasEncryptionKey returns a boolean if a field has been set.
 UnsetEncryptionKey ensures that no value is present for EncryptionKey, not even an explicit nil
 ### GetRedirectUris
 
-`func (o *OAuth2Provider) GetRedirectUris() string`
+`func (o *OAuth2Provider) GetRedirectUris() []RedirectURI`
 
 GetRedirectUris returns the RedirectUris field if non-nil, zero value otherwise.
 
 ### GetRedirectUrisOk
 
-`func (o *OAuth2Provider) GetRedirectUrisOk() (*string, bool)`
+`func (o *OAuth2Provider) GetRedirectUrisOk() (*[]RedirectURI, bool)`
 
 GetRedirectUrisOk returns a tuple with the RedirectUris field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRedirectUris
 
-`func (o *OAuth2Provider) SetRedirectUris(v string)`
+`func (o *OAuth2Provider) SetRedirectUris(v []RedirectURI)`
 
 SetRedirectUris sets RedirectUris field to given value.
 
-### HasRedirectUris
-
-`func (o *OAuth2Provider) HasRedirectUris() bool`
-
-HasRedirectUris returns a boolean if a field has been set.
 
 ### GetSubMode
 

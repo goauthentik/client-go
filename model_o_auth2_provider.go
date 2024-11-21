@@ -63,8 +63,7 @@ type OAuth2Provider struct {
 	SigningKey NullableString `json:"signing_key,omitempty"`
 	// Key used to encrypt the tokens. When set, tokens will be encrypted and returned as JWEs.
 	EncryptionKey NullableString `json:"encryption_key,omitempty"`
-	// Enter each URI on a new line.
-	RedirectUris *string `json:"redirect_uris,omitempty"`
+	RedirectUris  []RedirectURI  `json:"redirect_uris"`
 	// Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
 	SubMode *SubModeEnum `json:"sub_mode,omitempty"`
 	// Configure how the issuer field of the ID Token should be filled.
@@ -78,7 +77,7 @@ type _OAuth2Provider OAuth2Provider
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuth2Provider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string) *OAuth2Provider {
+func NewOAuth2Provider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, redirectUris []RedirectURI) *OAuth2Provider {
 	this := OAuth2Provider{}
 	this.Pk = pk
 	this.Name = name
@@ -92,6 +91,7 @@ func NewOAuth2Provider(pk int32, name string, authorizationFlow string, invalida
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
+	this.RedirectUris = redirectUris
 	return &this
 }
 
@@ -776,36 +776,28 @@ func (o *OAuth2Provider) UnsetEncryptionKey() {
 	o.EncryptionKey.Unset()
 }
 
-// GetRedirectUris returns the RedirectUris field value if set, zero value otherwise.
-func (o *OAuth2Provider) GetRedirectUris() string {
-	if o == nil || IsNil(o.RedirectUris) {
-		var ret string
+// GetRedirectUris returns the RedirectUris field value
+func (o *OAuth2Provider) GetRedirectUris() []RedirectURI {
+	if o == nil {
+		var ret []RedirectURI
 		return ret
 	}
-	return *o.RedirectUris
+
+	return o.RedirectUris
 }
 
-// GetRedirectUrisOk returns a tuple with the RedirectUris field value if set, nil otherwise
+// GetRedirectUrisOk returns a tuple with the RedirectUris field value
 // and a boolean to check if the value has been set.
-func (o *OAuth2Provider) GetRedirectUrisOk() (*string, bool) {
-	if o == nil || IsNil(o.RedirectUris) {
+func (o *OAuth2Provider) GetRedirectUrisOk() ([]RedirectURI, bool) {
+	if o == nil {
 		return nil, false
 	}
 	return o.RedirectUris, true
 }
 
-// HasRedirectUris returns a boolean if a field has been set.
-func (o *OAuth2Provider) HasRedirectUris() bool {
-	if o != nil && !IsNil(o.RedirectUris) {
-		return true
-	}
-
-	return false
-}
-
-// SetRedirectUris gets a reference to the given string and assigns it to the RedirectUris field.
-func (o *OAuth2Provider) SetRedirectUris(v string) {
-	o.RedirectUris = &v
+// SetRedirectUris sets field value
+func (o *OAuth2Provider) SetRedirectUris(v []RedirectURI) {
+	o.RedirectUris = v
 }
 
 // GetSubMode returns the SubMode field value if set, zero value otherwise.
@@ -959,9 +951,7 @@ func (o OAuth2Provider) ToMap() (map[string]interface{}, error) {
 	if o.EncryptionKey.IsSet() {
 		toSerialize["encryption_key"] = o.EncryptionKey.Get()
 	}
-	if !IsNil(o.RedirectUris) {
-		toSerialize["redirect_uris"] = o.RedirectUris
-	}
+	toSerialize["redirect_uris"] = o.RedirectUris
 	if !IsNil(o.SubMode) {
 		toSerialize["sub_mode"] = o.SubMode
 	}
@@ -991,6 +981,7 @@ func (o *OAuth2Provider) UnmarshalJSON(data []byte) (err error) {
 		"verbose_name",
 		"verbose_name_plural",
 		"meta_model_name",
+		"redirect_uris",
 	}
 
 	allProperties := make(map[string]interface{})

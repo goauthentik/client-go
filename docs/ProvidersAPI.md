@@ -3676,7 +3676,7 @@ import (
 )
 
 func main() {
-	oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example") // OAuth2ProviderRequest | 
+	oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example", []openapiclient.RedirectURIRequest{*openapiclient.NewRedirectURIRequest(openapiclient.MatchingModeEnum("strict"), "Url_example")}) // OAuth2ProviderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -3791,7 +3791,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersOauth2List
 
-> PaginatedOAuth2ProviderList ProvidersOauth2List(ctx).AccessCodeValidity(accessCodeValidity).AccessTokenValidity(accessTokenValidity).Application(application).AuthorizationFlow(authorizationFlow).ClientId(clientId).ClientType(clientType).IncludeClaimsInIdToken(includeClaimsInIdToken).IssuerMode(issuerMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).RedirectUris(redirectUris).RefreshTokenValidity(refreshTokenValidity).Search(search).SigningKey(signingKey).SubMode(subMode).Execute()
+> PaginatedOAuth2ProviderList ProvidersOauth2List(ctx).AccessCodeValidity(accessCodeValidity).AccessTokenValidity(accessTokenValidity).Application(application).AuthorizationFlow(authorizationFlow).ClientId(clientId).ClientType(clientType).IncludeClaimsInIdToken(includeClaimsInIdToken).IssuerMode(issuerMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).RefreshTokenValidity(refreshTokenValidity).Search(search).SigningKey(signingKey).SubMode(subMode).Execute()
 
 
 
@@ -3823,7 +3823,6 @@ func main() {
 	page := int32(56) // int32 | A page number within the paginated result set. (optional)
 	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
 	propertyMappings := []string{"Inner_example"} // []string |  (optional)
-	redirectUris := "redirectUris_example" // string |  (optional)
 	refreshTokenValidity := "refreshTokenValidity_example" // string |  (optional)
 	search := "search_example" // string | A search term. (optional)
 	signingKey := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
@@ -3831,7 +3830,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProvidersAPI.ProvidersOauth2List(context.Background()).AccessCodeValidity(accessCodeValidity).AccessTokenValidity(accessTokenValidity).Application(application).AuthorizationFlow(authorizationFlow).ClientId(clientId).ClientType(clientType).IncludeClaimsInIdToken(includeClaimsInIdToken).IssuerMode(issuerMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).RedirectUris(redirectUris).RefreshTokenValidity(refreshTokenValidity).Search(search).SigningKey(signingKey).SubMode(subMode).Execute()
+	resp, r, err := apiClient.ProvidersAPI.ProvidersOauth2List(context.Background()).AccessCodeValidity(accessCodeValidity).AccessTokenValidity(accessTokenValidity).Application(application).AuthorizationFlow(authorizationFlow).ClientId(clientId).ClientType(clientType).IncludeClaimsInIdToken(includeClaimsInIdToken).IssuerMode(issuerMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).RefreshTokenValidity(refreshTokenValidity).Search(search).SigningKey(signingKey).SubMode(subMode).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.ProvidersOauth2List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3865,7 +3864,6 @@ Name | Type | Description  | Notes
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **propertyMappings** | **[]string** |  | 
- **redirectUris** | **string** |  | 
  **refreshTokenValidity** | **string** |  | 
  **search** | **string** | A search term. | 
  **signingKey** | **string** |  | 
@@ -4195,7 +4193,7 @@ import (
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this OAuth2/OpenID Provider.
-	oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example") // OAuth2ProviderRequest | 
+	oAuth2ProviderRequest := *openapiclient.NewOAuth2ProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example", []openapiclient.RedirectURIRequest{*openapiclient.NewRedirectURIRequest(openapiclient.MatchingModeEnum("strict"), "Url_example")}) // OAuth2ProviderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -4451,7 +4449,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersProxyList
 
-> PaginatedProxyProviderList ProvidersProxyList(ctx).ApplicationIsnull(applicationIsnull).AuthorizationFlowSlugIexact(authorizationFlowSlugIexact).BasicAuthEnabledIexact(basicAuthEnabledIexact).BasicAuthPasswordAttributeIexact(basicAuthPasswordAttributeIexact).BasicAuthUserAttributeIexact(basicAuthUserAttributeIexact).CertificateKpUuidIexact(certificateKpUuidIexact).CertificateNameIexact(certificateNameIexact).CookieDomainIexact(cookieDomainIexact).ExternalHostIexact(externalHostIexact).InternalHostIexact(internalHostIexact).InternalHostSslValidationIexact(internalHostSslValidationIexact).ModeIexact(modeIexact).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappingsIexact(propertyMappingsIexact).RedirectUrisIexact(redirectUrisIexact).Search(search).SkipPathRegexIexact(skipPathRegexIexact).Execute()
+> PaginatedProxyProviderList ProvidersProxyList(ctx).ApplicationIsnull(applicationIsnull).AuthorizationFlowSlugIexact(authorizationFlowSlugIexact).BasicAuthEnabledIexact(basicAuthEnabledIexact).BasicAuthPasswordAttributeIexact(basicAuthPasswordAttributeIexact).BasicAuthUserAttributeIexact(basicAuthUserAttributeIexact).CertificateKpUuidIexact(certificateKpUuidIexact).CertificateNameIexact(certificateNameIexact).CookieDomainIexact(cookieDomainIexact).ExternalHostIexact(externalHostIexact).InternalHostIexact(internalHostIexact).InternalHostSslValidationIexact(internalHostSslValidationIexact).ModeIexact(modeIexact).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappingsIexact(propertyMappingsIexact).Search(search).SkipPathRegexIexact(skipPathRegexIexact).Execute()
 
 
 
@@ -4487,13 +4485,12 @@ func main() {
 	page := int32(56) // int32 | A page number within the paginated result set. (optional)
 	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
 	propertyMappingsIexact := []string{"Inner_example"} // []string |  (optional)
-	redirectUrisIexact := "redirectUrisIexact_example" // string |  (optional)
 	search := "search_example" // string | A search term. (optional)
 	skipPathRegexIexact := "skipPathRegexIexact_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProvidersAPI.ProvidersProxyList(context.Background()).ApplicationIsnull(applicationIsnull).AuthorizationFlowSlugIexact(authorizationFlowSlugIexact).BasicAuthEnabledIexact(basicAuthEnabledIexact).BasicAuthPasswordAttributeIexact(basicAuthPasswordAttributeIexact).BasicAuthUserAttributeIexact(basicAuthUserAttributeIexact).CertificateKpUuidIexact(certificateKpUuidIexact).CertificateNameIexact(certificateNameIexact).CookieDomainIexact(cookieDomainIexact).ExternalHostIexact(externalHostIexact).InternalHostIexact(internalHostIexact).InternalHostSslValidationIexact(internalHostSslValidationIexact).ModeIexact(modeIexact).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappingsIexact(propertyMappingsIexact).RedirectUrisIexact(redirectUrisIexact).Search(search).SkipPathRegexIexact(skipPathRegexIexact).Execute()
+	resp, r, err := apiClient.ProvidersAPI.ProvidersProxyList(context.Background()).ApplicationIsnull(applicationIsnull).AuthorizationFlowSlugIexact(authorizationFlowSlugIexact).BasicAuthEnabledIexact(basicAuthEnabledIexact).BasicAuthPasswordAttributeIexact(basicAuthPasswordAttributeIexact).BasicAuthUserAttributeIexact(basicAuthUserAttributeIexact).CertificateKpUuidIexact(certificateKpUuidIexact).CertificateNameIexact(certificateNameIexact).CookieDomainIexact(cookieDomainIexact).ExternalHostIexact(externalHostIexact).InternalHostIexact(internalHostIexact).InternalHostSslValidationIexact(internalHostSslValidationIexact).ModeIexact(modeIexact).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappingsIexact(propertyMappingsIexact).Search(search).SkipPathRegexIexact(skipPathRegexIexact).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.ProvidersProxyList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4531,7 +4528,6 @@ Name | Type | Description  | Notes
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **propertyMappingsIexact** | **[]string** |  | 
- **redirectUrisIexact** | **string** |  | 
  **search** | **string** | A search term. | 
  **skipPathRegexIexact** | **string** |  | 
 

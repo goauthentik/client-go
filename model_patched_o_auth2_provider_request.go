@@ -43,9 +43,8 @@ type PatchedOAuth2ProviderRequest struct {
 	// Key used to sign the tokens.
 	SigningKey NullableString `json:"signing_key,omitempty"`
 	// Key used to encrypt the tokens. When set, tokens will be encrypted and returned as JWEs.
-	EncryptionKey NullableString `json:"encryption_key,omitempty"`
-	// Enter each URI on a new line.
-	RedirectUris *string `json:"redirect_uris,omitempty"`
+	EncryptionKey NullableString       `json:"encryption_key,omitempty"`
+	RedirectUris  []RedirectURIRequest `json:"redirect_uris,omitempty"`
 	// Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
 	SubMode *SubModeEnum `json:"sub_mode,omitempty"`
 	// Configure how the issuer field of the ID Token should be filled.
@@ -552,17 +551,17 @@ func (o *PatchedOAuth2ProviderRequest) UnsetEncryptionKey() {
 }
 
 // GetRedirectUris returns the RedirectUris field value if set, zero value otherwise.
-func (o *PatchedOAuth2ProviderRequest) GetRedirectUris() string {
+func (o *PatchedOAuth2ProviderRequest) GetRedirectUris() []RedirectURIRequest {
 	if o == nil || IsNil(o.RedirectUris) {
-		var ret string
+		var ret []RedirectURIRequest
 		return ret
 	}
-	return *o.RedirectUris
+	return o.RedirectUris
 }
 
 // GetRedirectUrisOk returns a tuple with the RedirectUris field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedOAuth2ProviderRequest) GetRedirectUrisOk() (*string, bool) {
+func (o *PatchedOAuth2ProviderRequest) GetRedirectUrisOk() ([]RedirectURIRequest, bool) {
 	if o == nil || IsNil(o.RedirectUris) {
 		return nil, false
 	}
@@ -578,9 +577,9 @@ func (o *PatchedOAuth2ProviderRequest) HasRedirectUris() bool {
 	return false
 }
 
-// SetRedirectUris gets a reference to the given string and assigns it to the RedirectUris field.
-func (o *PatchedOAuth2ProviderRequest) SetRedirectUris(v string) {
-	o.RedirectUris = &v
+// SetRedirectUris gets a reference to the given []RedirectURIRequest and assigns it to the RedirectUris field.
+func (o *PatchedOAuth2ProviderRequest) SetRedirectUris(v []RedirectURIRequest) {
+	o.RedirectUris = v
 }
 
 // GetSubMode returns the SubMode field value if set, zero value otherwise.

@@ -7123,7 +7123,6 @@ type ApiProvidersOauth2ListRequest struct {
 	page                   *int32
 	pageSize               *int32
 	propertyMappings       *[]string
-	redirectUris           *string
 	refreshTokenValidity   *string
 	search                 *string
 	signingKey             *string
@@ -7197,11 +7196,6 @@ func (r ApiProvidersOauth2ListRequest) PageSize(pageSize int32) ApiProvidersOaut
 
 func (r ApiProvidersOauth2ListRequest) PropertyMappings(propertyMappings []string) ApiProvidersOauth2ListRequest {
 	r.propertyMappings = &propertyMappings
-	return r
-}
-
-func (r ApiProvidersOauth2ListRequest) RedirectUris(redirectUris string) ApiProvidersOauth2ListRequest {
-	r.redirectUris = &redirectUris
 	return r
 }
 
@@ -7314,9 +7308,6 @@ func (a *ProvidersAPIService) ProvidersOauth2ListExecute(r ApiProvidersOauth2Lis
 		} else {
 			parameterAddToHeaderOrQuery(localVarQueryParams, "property_mappings", t, "form", "multi")
 		}
-	}
-	if r.redirectUris != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "redirect_uris", r.redirectUris, "form", "")
 	}
 	if r.refreshTokenValidity != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "refresh_token_validity", r.refreshTokenValidity, "form", "")
@@ -8437,7 +8428,6 @@ type ApiProvidersProxyListRequest struct {
 	page                             *int32
 	pageSize                         *int32
 	propertyMappingsIexact           *[]string
-	redirectUrisIexact               *string
 	search                           *string
 	skipPathRegexIexact              *string
 }
@@ -8527,11 +8517,6 @@ func (r ApiProvidersProxyListRequest) PageSize(pageSize int32) ApiProvidersProxy
 
 func (r ApiProvidersProxyListRequest) PropertyMappingsIexact(propertyMappingsIexact []string) ApiProvidersProxyListRequest {
 	r.propertyMappingsIexact = &propertyMappingsIexact
-	return r
-}
-
-func (r ApiProvidersProxyListRequest) RedirectUrisIexact(redirectUrisIexact string) ApiProvidersProxyListRequest {
-	r.redirectUrisIexact = &redirectUrisIexact
 	return r
 }
 
@@ -8645,9 +8630,6 @@ func (a *ProvidersAPIService) ProvidersProxyListExecute(r ApiProvidersProxyListR
 		} else {
 			parameterAddToHeaderOrQuery(localVarQueryParams, "property_mappings__iexact", t, "form", "multi")
 		}
-	}
-	if r.redirectUrisIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "redirect_uris__iexact", r.redirectUrisIexact, "form", "")
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")

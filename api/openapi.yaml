@@ -22433,13 +22433,6 @@ paths:
         style: form
       - explode: true
         in: query
-        name: redirect_uris
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
         name: refresh_token_validity
         required: false
         schema:
@@ -22926,13 +22919,6 @@ paths:
             format: uuid
             type: string
           type: array
-        style: form
-      - explode: true
-        in: query
-        name: redirect_uris__iexact
-        required: false
-        schema:
-          type: string
         style: form
       - description: A search term.
         explode: true
@@ -46395,7 +46381,11 @@ components:
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          redirect_uris: redirect_uris
+          redirect_uris:
+          - matching_mode: strict
+            url: url
+          - matching_mode: strict
+            url: url
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
@@ -50300,6 +50290,11 @@ components:
       - challenge
       - name
       type: object
+    MatchingModeEnum:
+      enum:
+      - strict
+      - regex
+      type: string
     Metadata:
       description: Serializer for blueprint metadata
       properties:
@@ -51061,7 +51056,11 @@ components:
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        redirect_uris: redirect_uris
+        redirect_uris:
+        - matching_mode: strict
+          url: url
+        - matching_mode: strict
+          url: url
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         component: component
         verbose_name: verbose_name
@@ -51172,8 +51171,9 @@ components:
           nullable: true
           type: string
         redirect_uris:
-          description: Enter each URI on a new line.
-          type: string
+          items:
+            $ref: '#/components/schemas/RedirectURI'
+          type: array
         sub_mode:
           allOf:
           - $ref: '#/components/schemas/SubModeEnum'
@@ -51202,6 +51202,7 @@ components:
       - meta_model_name
       - name
       - pk
+      - redirect_uris
       - verbose_name
       - verbose_name_plural
       type: object
@@ -51211,7 +51212,11 @@ components:
         signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         client_type: ""
-        redirect_uris: redirect_uris
+        redirect_uris:
+        - matching_mode: strict
+          url: url
+        - matching_mode: strict
+          url: url
         sub_mode: ""
         client_id: client_id
         refresh_token_validity: refresh_token_validity
@@ -51296,8 +51301,9 @@ components:
           nullable: true
           type: string
         redirect_uris:
-          description: Enter each URI on a new line.
-          type: string
+          items:
+            $ref: '#/components/schemas/RedirectURIRequest'
+          type: array
         sub_mode:
           allOf:
           - $ref: '#/components/schemas/SubModeEnum'
@@ -51319,6 +51325,7 @@ components:
       - authorization_flow
       - invalidation_flow
       - name
+      - redirect_uris
       type: object
     OAuth2ProviderSetupURLs:
       description: OAuth2 Provider Metadata serializer
@@ -53963,7 +53970,11 @@ components:
             property_mappings:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            redirect_uris: redirect_uris
+            redirect_uris:
+            - matching_mode: strict
+              url: url
+            - matching_mode: strict
+              url: url
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
             verbose_name: verbose_name
@@ -54036,7 +54047,11 @@ components:
             property_mappings:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            redirect_uris: redirect_uris
+            redirect_uris:
+            - matching_mode: strict
+              url: url
+            - matching_mode: strict
+              url: url
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
             verbose_name: verbose_name
@@ -55848,7 +55863,11 @@ components:
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          redirect_uris: redirect_uris
+          redirect_uris:
+          - matching_mode: strict
+            url: url
+          - matching_mode: strict
+            url: url
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
@@ -55879,7 +55898,11 @@ components:
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          redirect_uris: redirect_uris
+          redirect_uris:
+          - matching_mode: strict
+            url: url
+          - matching_mode: strict
+            url: url
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
@@ -58677,7 +58700,11 @@ components:
             property_mappings:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            redirect_uris: redirect_uris
+            redirect_uris:
+            - matching_mode: strict
+              url: url
+            - matching_mode: strict
+              url: url
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
             verbose_name: verbose_name
@@ -58752,7 +58779,11 @@ components:
             property_mappings:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            redirect_uris: redirect_uris
+            redirect_uris:
+            - matching_mode: strict
+              url: url
+            - matching_mode: strict
+              url: url
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
             verbose_name: verbose_name
@@ -62353,7 +62384,11 @@ components:
         signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         client_type: ""
-        redirect_uris: redirect_uris
+        redirect_uris:
+        - matching_mode: strict
+          url: url
+        - matching_mode: strict
+          url: url
         sub_mode: ""
         client_id: client_id
         refresh_token_validity: refresh_token_validity
@@ -62438,8 +62473,9 @@ components:
           nullable: true
           type: string
         redirect_uris:
-          description: Enter each URI on a new line.
-          type: string
+          items:
+            $ref: '#/components/schemas/RedirectURIRequest'
+          type: array
         sub_mode:
           allOf:
           - $ref: '#/components/schemas/SubModeEnum'
@@ -66795,6 +66831,35 @@ components:
       required:
       - to
       type: object
+    RedirectURI:
+      description: A single allowed redirect URI entry
+      example:
+        matching_mode: strict
+        url: url
+      properties:
+        matching_mode:
+          $ref: '#/components/schemas/MatchingModeEnum'
+        url:
+          type: string
+      required:
+      - matching_mode
+      - url
+      type: object
+    RedirectURIRequest:
+      description: A single allowed redirect URI entry
+      example:
+        matching_mode: strict
+        url: url
+      properties:
+        matching_mode:
+          $ref: '#/components/schemas/MatchingModeEnum'
+        url:
+          minLength: 1
+          type: string
+      required:
+      - matching_mode
+      - url
+      type: object
     Reputation:
       description: Reputation Serializer
       example:
@@ -70029,7 +70094,11 @@ components:
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          redirect_uris: redirect_uris
+          redirect_uris:
+          - matching_mode: strict
+            url: url
+          - matching_mode: strict
+            url: url
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
