@@ -15,22 +15,22 @@ build:
 	docker run \
 		--rm -v ${PWD}:/local \
 		--user ${UID}:${GID} \
-		docker.io/openapitools/openapi-diff:2.1.0-beta.11 \
+		docker.io/openapitools/openapi-diff:2.1.0-beta.6 \
 		--markdown /local/diff.test \
 		/local/schema-old.yml /local/schema.yml || echo > diff.test
 	rm schema-old.yml
 	docker run \
 		--rm -v ${PWD}:/local \
 		--user ${UID}:${GID} \
-		docker.io/openapitools/openapi-generator-cli:v7.10.0 generate \
+		docker.io/openapitools/openapi-generator-cli:v6.2.0 generate \
 		-i /local/schema.yml \
 		-g go \
 		-o /local \
 		-c /local/config.yaml
-	rm -rf ${PWD}/test ${PWD}/.travis.yml ${PWD}/git_push.sh
-	go run golang.org/x/tools/cmd/goimports@latest -w .
+	rm -rf ./test
+	rm -f .travis.yml git_push.sh
 	go get
 	go fmt .
-	mv ${PWD}/diff.test /tmp/diff.test
-	echo "Update API Client\n\n" > ${PWD}/diff.test
-	cat /tmp/diff.test >> ${PWD}/diff.test
+	mv diff.test /tmp/diff.test
+	echo "Update API Client\n\n" > diff.test
+	cat /tmp/diff.test >> diff.test
