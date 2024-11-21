@@ -12,20 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the UserPath type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UserPath{}
 
 // UserPath struct for UserPath
 type UserPath struct {
 	Paths []string `json:"paths"`
 }
-
-type _UserPath UserPath
 
 // NewUserPath instantiates a new UserPath object
 // This constructor will assign default values to properties that have it defined,
@@ -70,54 +63,11 @@ func (o *UserPath) SetPaths(v []string) {
 }
 
 func (o UserPath) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["paths"] = o.Paths
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o UserPath) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["paths"] = o.Paths
-	return toSerialize, nil
-}
-
-func (o *UserPath) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"paths",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varUserPath := _UserPath{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserPath)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UserPath(varUserPath)
-
-	return err
 }
 
 type NullableUserPath struct {

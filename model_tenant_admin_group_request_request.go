@@ -12,20 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the TenantAdminGroupRequestRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TenantAdminGroupRequestRequest{}
 
 // TenantAdminGroupRequestRequest Tenant admin group creation request serializer
 type TenantAdminGroupRequestRequest struct {
 	User string `json:"user"`
 }
-
-type _TenantAdminGroupRequestRequest TenantAdminGroupRequestRequest
 
 // NewTenantAdminGroupRequestRequest instantiates a new TenantAdminGroupRequestRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -70,54 +63,11 @@ func (o *TenantAdminGroupRequestRequest) SetUser(v string) {
 }
 
 func (o TenantAdminGroupRequestRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["user"] = o.User
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o TenantAdminGroupRequestRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["user"] = o.User
-	return toSerialize, nil
-}
-
-func (o *TenantAdminGroupRequestRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"user",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varTenantAdminGroupRequestRequest := _TenantAdminGroupRequestRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTenantAdminGroupRequestRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = TenantAdminGroupRequestRequest(varTenantAdminGroupRequestRequest)
-
-	return err
 }
 
 type NullableTenantAdminGroupRequestRequest struct {

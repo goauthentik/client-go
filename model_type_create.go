@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the TypeCreate type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TypeCreate{}
 
 // TypeCreate Types of an object that can be created
 type TypeCreate struct {
@@ -29,8 +24,6 @@ type TypeCreate struct {
 	IconUrl            *string `json:"icon_url,omitempty"`
 	RequiresEnterprise *bool   `json:"requires_enterprise,omitempty"`
 }
-
-type _TypeCreate TypeCreate
 
 // NewTypeCreate instantiates a new TypeCreate object
 // This constructor will assign default values to properties that have it defined,
@@ -155,7 +148,7 @@ func (o *TypeCreate) SetModelName(v string) {
 
 // GetIconUrl returns the IconUrl field value if set, zero value otherwise.
 func (o *TypeCreate) GetIconUrl() string {
-	if o == nil || IsNil(o.IconUrl) {
+	if o == nil || o.IconUrl == nil {
 		var ret string
 		return ret
 	}
@@ -165,7 +158,7 @@ func (o *TypeCreate) GetIconUrl() string {
 // GetIconUrlOk returns a tuple with the IconUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TypeCreate) GetIconUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.IconUrl) {
+	if o == nil || o.IconUrl == nil {
 		return nil, false
 	}
 	return o.IconUrl, true
@@ -173,7 +166,7 @@ func (o *TypeCreate) GetIconUrlOk() (*string, bool) {
 
 // HasIconUrl returns a boolean if a field has been set.
 func (o *TypeCreate) HasIconUrl() bool {
-	if o != nil && !IsNil(o.IconUrl) {
+	if o != nil && o.IconUrl != nil {
 		return true
 	}
 
@@ -187,7 +180,7 @@ func (o *TypeCreate) SetIconUrl(v string) {
 
 // GetRequiresEnterprise returns the RequiresEnterprise field value if set, zero value otherwise.
 func (o *TypeCreate) GetRequiresEnterprise() bool {
-	if o == nil || IsNil(o.RequiresEnterprise) {
+	if o == nil || o.RequiresEnterprise == nil {
 		var ret bool
 		return ret
 	}
@@ -197,7 +190,7 @@ func (o *TypeCreate) GetRequiresEnterprise() bool {
 // GetRequiresEnterpriseOk returns a tuple with the RequiresEnterprise field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TypeCreate) GetRequiresEnterpriseOk() (*bool, bool) {
-	if o == nil || IsNil(o.RequiresEnterprise) {
+	if o == nil || o.RequiresEnterprise == nil {
 		return nil, false
 	}
 	return o.RequiresEnterprise, true
@@ -205,7 +198,7 @@ func (o *TypeCreate) GetRequiresEnterpriseOk() (*bool, bool) {
 
 // HasRequiresEnterprise returns a boolean if a field has been set.
 func (o *TypeCreate) HasRequiresEnterprise() bool {
-	if o != nil && !IsNil(o.RequiresEnterprise) {
+	if o != nil && o.RequiresEnterprise != nil {
 		return true
 	}
 
@@ -218,66 +211,26 @@ func (o *TypeCreate) SetRequiresEnterprise(v bool) {
 }
 
 func (o TypeCreate) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o TypeCreate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["description"] = o.Description
-	toSerialize["component"] = o.Component
-	toSerialize["model_name"] = o.ModelName
-	if !IsNil(o.IconUrl) {
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["description"] = o.Description
+	}
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["model_name"] = o.ModelName
+	}
+	if o.IconUrl != nil {
 		toSerialize["icon_url"] = o.IconUrl
 	}
-	if !IsNil(o.RequiresEnterprise) {
+	if o.RequiresEnterprise != nil {
 		toSerialize["requires_enterprise"] = o.RequiresEnterprise
 	}
-	return toSerialize, nil
-}
-
-func (o *TypeCreate) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"description",
-		"component",
-		"model_name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varTypeCreate := _TypeCreate{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTypeCreate)
-
-	if err != nil {
-		return err
-	}
-
-	*o = TypeCreate(varTypeCreate)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableTypeCreate struct {

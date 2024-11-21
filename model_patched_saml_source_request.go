@@ -15,15 +15,12 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedSAMLSourceRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedSAMLSourceRequest{}
-
 // PatchedSAMLSourceRequest SAMLSource Serializer
 type PatchedSAMLSourceRequest struct {
 	// Source's display Name.
 	Name *string `json:"name,omitempty"`
 	// Internal source name, used in URLs.
-	Slug    *string `json:"slug,omitempty" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Slug    *string `json:"slug,omitempty"`
 	Enabled *bool   `json:"enabled,omitempty"`
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
@@ -81,7 +78,7 @@ func NewPatchedSAMLSourceRequestWithDefaults() *PatchedSAMLSourceRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedSAMLSourceRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -91,7 +88,7 @@ func (o *PatchedSAMLSourceRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSAMLSourceRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -99,7 +96,7 @@ func (o *PatchedSAMLSourceRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedSAMLSourceRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -113,7 +110,7 @@ func (o *PatchedSAMLSourceRequest) SetName(v string) {
 
 // GetSlug returns the Slug field value if set, zero value otherwise.
 func (o *PatchedSAMLSourceRequest) GetSlug() string {
-	if o == nil || IsNil(o.Slug) {
+	if o == nil || o.Slug == nil {
 		var ret string
 		return ret
 	}
@@ -123,7 +120,7 @@ func (o *PatchedSAMLSourceRequest) GetSlug() string {
 // GetSlugOk returns a tuple with the Slug field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSAMLSourceRequest) GetSlugOk() (*string, bool) {
-	if o == nil || IsNil(o.Slug) {
+	if o == nil || o.Slug == nil {
 		return nil, false
 	}
 	return o.Slug, true
@@ -131,7 +128,7 @@ func (o *PatchedSAMLSourceRequest) GetSlugOk() (*string, bool) {
 
 // HasSlug returns a boolean if a field has been set.
 func (o *PatchedSAMLSourceRequest) HasSlug() bool {
-	if o != nil && !IsNil(o.Slug) {
+	if o != nil && o.Slug != nil {
 		return true
 	}
 
@@ -145,7 +142,7 @@ func (o *PatchedSAMLSourceRequest) SetSlug(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *PatchedSAMLSourceRequest) GetEnabled() bool {
-	if o == nil || IsNil(o.Enabled) {
+	if o == nil || o.Enabled == nil {
 		var ret bool
 		return ret
 	}
@@ -155,7 +152,7 @@ func (o *PatchedSAMLSourceRequest) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSAMLSourceRequest) GetEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.Enabled) {
+	if o == nil || o.Enabled == nil {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -163,7 +160,7 @@ func (o *PatchedSAMLSourceRequest) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *PatchedSAMLSourceRequest) HasEnabled() bool {
-	if o != nil && !IsNil(o.Enabled) {
+	if o != nil && o.Enabled != nil {
 		return true
 	}
 
@@ -177,7 +174,7 @@ func (o *PatchedSAMLSourceRequest) SetEnabled(v bool) {
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedSAMLSourceRequest) GetAuthenticationFlow() string {
-	if o == nil || IsNil(o.AuthenticationFlow.Get()) {
+	if o == nil || o.AuthenticationFlow.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -220,7 +217,7 @@ func (o *PatchedSAMLSourceRequest) UnsetAuthenticationFlow() {
 
 // GetEnrollmentFlow returns the EnrollmentFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedSAMLSourceRequest) GetEnrollmentFlow() string {
-	if o == nil || IsNil(o.EnrollmentFlow.Get()) {
+	if o == nil || o.EnrollmentFlow.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -263,7 +260,7 @@ func (o *PatchedSAMLSourceRequest) UnsetEnrollmentFlow() {
 
 // GetUserPropertyMappings returns the UserPropertyMappings field value if set, zero value otherwise.
 func (o *PatchedSAMLSourceRequest) GetUserPropertyMappings() []string {
-	if o == nil || IsNil(o.UserPropertyMappings) {
+	if o == nil || o.UserPropertyMappings == nil {
 		var ret []string
 		return ret
 	}
@@ -273,7 +270,7 @@ func (o *PatchedSAMLSourceRequest) GetUserPropertyMappings() []string {
 // GetUserPropertyMappingsOk returns a tuple with the UserPropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSAMLSourceRequest) GetUserPropertyMappingsOk() ([]string, bool) {
-	if o == nil || IsNil(o.UserPropertyMappings) {
+	if o == nil || o.UserPropertyMappings == nil {
 		return nil, false
 	}
 	return o.UserPropertyMappings, true
@@ -281,7 +278,7 @@ func (o *PatchedSAMLSourceRequest) GetUserPropertyMappingsOk() ([]string, bool) 
 
 // HasUserPropertyMappings returns a boolean if a field has been set.
 func (o *PatchedSAMLSourceRequest) HasUserPropertyMappings() bool {
-	if o != nil && !IsNil(o.UserPropertyMappings) {
+	if o != nil && o.UserPropertyMappings != nil {
 		return true
 	}
 
@@ -295,7 +292,7 @@ func (o *PatchedSAMLSourceRequest) SetUserPropertyMappings(v []string) {
 
 // GetGroupPropertyMappings returns the GroupPropertyMappings field value if set, zero value otherwise.
 func (o *PatchedSAMLSourceRequest) GetGroupPropertyMappings() []string {
-	if o == nil || IsNil(o.GroupPropertyMappings) {
+	if o == nil || o.GroupPropertyMappings == nil {
 		var ret []string
 		return ret
 	}
@@ -305,7 +302,7 @@ func (o *PatchedSAMLSourceRequest) GetGroupPropertyMappings() []string {
 // GetGroupPropertyMappingsOk returns a tuple with the GroupPropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSAMLSourceRequest) GetGroupPropertyMappingsOk() ([]string, bool) {
-	if o == nil || IsNil(o.GroupPropertyMappings) {
+	if o == nil || o.GroupPropertyMappings == nil {
 		return nil, false
 	}
 	return o.GroupPropertyMappings, true
@@ -313,7 +310,7 @@ func (o *PatchedSAMLSourceRequest) GetGroupPropertyMappingsOk() ([]string, bool)
 
 // HasGroupPropertyMappings returns a boolean if a field has been set.
 func (o *PatchedSAMLSourceRequest) HasGroupPropertyMappings() bool {
-	if o != nil && !IsNil(o.GroupPropertyMappings) {
+	if o != nil && o.GroupPropertyMappings != nil {
 		return true
 	}
 
@@ -327,7 +324,7 @@ func (o *PatchedSAMLSourceRequest) SetGroupPropertyMappings(v []string) {
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
 func (o *PatchedSAMLSourceRequest) GetPolicyEngineMode() PolicyEngineMode {
-	if o == nil || IsNil(o.PolicyEngineMode) {
+	if o == nil || o.PolicyEngineMode == nil {
 		var ret PolicyEngineMode
 		return ret
 	}
@@ -337,7 +334,7 @@ func (o *PatchedSAMLSourceRequest) GetPolicyEngineMode() PolicyEngineMode {
 // GetPolicyEngineModeOk returns a tuple with the PolicyEngineMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSAMLSourceRequest) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
-	if o == nil || IsNil(o.PolicyEngineMode) {
+	if o == nil || o.PolicyEngineMode == nil {
 		return nil, false
 	}
 	return o.PolicyEngineMode, true
@@ -345,7 +342,7 @@ func (o *PatchedSAMLSourceRequest) GetPolicyEngineModeOk() (*PolicyEngineMode, b
 
 // HasPolicyEngineMode returns a boolean if a field has been set.
 func (o *PatchedSAMLSourceRequest) HasPolicyEngineMode() bool {
-	if o != nil && !IsNil(o.PolicyEngineMode) {
+	if o != nil && o.PolicyEngineMode != nil {
 		return true
 	}
 
@@ -359,7 +356,7 @@ func (o *PatchedSAMLSourceRequest) SetPolicyEngineMode(v PolicyEngineMode) {
 
 // GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise.
 func (o *PatchedSAMLSourceRequest) GetUserMatchingMode() UserMatchingModeEnum {
-	if o == nil || IsNil(o.UserMatchingMode) {
+	if o == nil || o.UserMatchingMode == nil {
 		var ret UserMatchingModeEnum
 		return ret
 	}
@@ -369,7 +366,7 @@ func (o *PatchedSAMLSourceRequest) GetUserMatchingMode() UserMatchingModeEnum {
 // GetUserMatchingModeOk returns a tuple with the UserMatchingMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSAMLSourceRequest) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool) {
-	if o == nil || IsNil(o.UserMatchingMode) {
+	if o == nil || o.UserMatchingMode == nil {
 		return nil, false
 	}
 	return o.UserMatchingMode, true
@@ -377,7 +374,7 @@ func (o *PatchedSAMLSourceRequest) GetUserMatchingModeOk() (*UserMatchingModeEnu
 
 // HasUserMatchingMode returns a boolean if a field has been set.
 func (o *PatchedSAMLSourceRequest) HasUserMatchingMode() bool {
-	if o != nil && !IsNil(o.UserMatchingMode) {
+	if o != nil && o.UserMatchingMode != nil {
 		return true
 	}
 
@@ -391,7 +388,7 @@ func (o *PatchedSAMLSourceRequest) SetUserMatchingMode(v UserMatchingModeEnum) {
 
 // GetUserPathTemplate returns the UserPathTemplate field value if set, zero value otherwise.
 func (o *PatchedSAMLSourceRequest) GetUserPathTemplate() string {
-	if o == nil || IsNil(o.UserPathTemplate) {
+	if o == nil || o.UserPathTemplate == nil {
 		var ret string
 		return ret
 	}
@@ -401,7 +398,7 @@ func (o *PatchedSAMLSourceRequest) GetUserPathTemplate() string {
 // GetUserPathTemplateOk returns a tuple with the UserPathTemplate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSAMLSourceRequest) GetUserPathTemplateOk() (*string, bool) {
-	if o == nil || IsNil(o.UserPathTemplate) {
+	if o == nil || o.UserPathTemplate == nil {
 		return nil, false
 	}
 	return o.UserPathTemplate, true
@@ -409,7 +406,7 @@ func (o *PatchedSAMLSourceRequest) GetUserPathTemplateOk() (*string, bool) {
 
 // HasUserPathTemplate returns a boolean if a field has been set.
 func (o *PatchedSAMLSourceRequest) HasUserPathTemplate() bool {
-	if o != nil && !IsNil(o.UserPathTemplate) {
+	if o != nil && o.UserPathTemplate != nil {
 		return true
 	}
 
@@ -423,7 +420,7 @@ func (o *PatchedSAMLSourceRequest) SetUserPathTemplate(v string) {
 
 // GetGroupMatchingMode returns the GroupMatchingMode field value if set, zero value otherwise.
 func (o *PatchedSAMLSourceRequest) GetGroupMatchingMode() GroupMatchingModeEnum {
-	if o == nil || IsNil(o.GroupMatchingMode) {
+	if o == nil || o.GroupMatchingMode == nil {
 		var ret GroupMatchingModeEnum
 		return ret
 	}
@@ -433,7 +430,7 @@ func (o *PatchedSAMLSourceRequest) GetGroupMatchingMode() GroupMatchingModeEnum 
 // GetGroupMatchingModeOk returns a tuple with the GroupMatchingMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSAMLSourceRequest) GetGroupMatchingModeOk() (*GroupMatchingModeEnum, bool) {
-	if o == nil || IsNil(o.GroupMatchingMode) {
+	if o == nil || o.GroupMatchingMode == nil {
 		return nil, false
 	}
 	return o.GroupMatchingMode, true
@@ -441,7 +438,7 @@ func (o *PatchedSAMLSourceRequest) GetGroupMatchingModeOk() (*GroupMatchingModeE
 
 // HasGroupMatchingMode returns a boolean if a field has been set.
 func (o *PatchedSAMLSourceRequest) HasGroupMatchingMode() bool {
-	if o != nil && !IsNil(o.GroupMatchingMode) {
+	if o != nil && o.GroupMatchingMode != nil {
 		return true
 	}
 
@@ -455,7 +452,7 @@ func (o *PatchedSAMLSourceRequest) SetGroupMatchingMode(v GroupMatchingModeEnum)
 
 // GetPreAuthenticationFlow returns the PreAuthenticationFlow field value if set, zero value otherwise.
 func (o *PatchedSAMLSourceRequest) GetPreAuthenticationFlow() string {
-	if o == nil || IsNil(o.PreAuthenticationFlow) {
+	if o == nil || o.PreAuthenticationFlow == nil {
 		var ret string
 		return ret
 	}
@@ -465,7 +462,7 @@ func (o *PatchedSAMLSourceRequest) GetPreAuthenticationFlow() string {
 // GetPreAuthenticationFlowOk returns a tuple with the PreAuthenticationFlow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSAMLSourceRequest) GetPreAuthenticationFlowOk() (*string, bool) {
-	if o == nil || IsNil(o.PreAuthenticationFlow) {
+	if o == nil || o.PreAuthenticationFlow == nil {
 		return nil, false
 	}
 	return o.PreAuthenticationFlow, true
@@ -473,7 +470,7 @@ func (o *PatchedSAMLSourceRequest) GetPreAuthenticationFlowOk() (*string, bool) 
 
 // HasPreAuthenticationFlow returns a boolean if a field has been set.
 func (o *PatchedSAMLSourceRequest) HasPreAuthenticationFlow() bool {
-	if o != nil && !IsNil(o.PreAuthenticationFlow) {
+	if o != nil && o.PreAuthenticationFlow != nil {
 		return true
 	}
 
@@ -487,7 +484,7 @@ func (o *PatchedSAMLSourceRequest) SetPreAuthenticationFlow(v string) {
 
 // GetIssuer returns the Issuer field value if set, zero value otherwise.
 func (o *PatchedSAMLSourceRequest) GetIssuer() string {
-	if o == nil || IsNil(o.Issuer) {
+	if o == nil || o.Issuer == nil {
 		var ret string
 		return ret
 	}
@@ -497,7 +494,7 @@ func (o *PatchedSAMLSourceRequest) GetIssuer() string {
 // GetIssuerOk returns a tuple with the Issuer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSAMLSourceRequest) GetIssuerOk() (*string, bool) {
-	if o == nil || IsNil(o.Issuer) {
+	if o == nil || o.Issuer == nil {
 		return nil, false
 	}
 	return o.Issuer, true
@@ -505,7 +502,7 @@ func (o *PatchedSAMLSourceRequest) GetIssuerOk() (*string, bool) {
 
 // HasIssuer returns a boolean if a field has been set.
 func (o *PatchedSAMLSourceRequest) HasIssuer() bool {
-	if o != nil && !IsNil(o.Issuer) {
+	if o != nil && o.Issuer != nil {
 		return true
 	}
 
@@ -519,7 +516,7 @@ func (o *PatchedSAMLSourceRequest) SetIssuer(v string) {
 
 // GetSsoUrl returns the SsoUrl field value if set, zero value otherwise.
 func (o *PatchedSAMLSourceRequest) GetSsoUrl() string {
-	if o == nil || IsNil(o.SsoUrl) {
+	if o == nil || o.SsoUrl == nil {
 		var ret string
 		return ret
 	}
@@ -529,7 +526,7 @@ func (o *PatchedSAMLSourceRequest) GetSsoUrl() string {
 // GetSsoUrlOk returns a tuple with the SsoUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSAMLSourceRequest) GetSsoUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.SsoUrl) {
+	if o == nil || o.SsoUrl == nil {
 		return nil, false
 	}
 	return o.SsoUrl, true
@@ -537,7 +534,7 @@ func (o *PatchedSAMLSourceRequest) GetSsoUrlOk() (*string, bool) {
 
 // HasSsoUrl returns a boolean if a field has been set.
 func (o *PatchedSAMLSourceRequest) HasSsoUrl() bool {
-	if o != nil && !IsNil(o.SsoUrl) {
+	if o != nil && o.SsoUrl != nil {
 		return true
 	}
 
@@ -551,7 +548,7 @@ func (o *PatchedSAMLSourceRequest) SetSsoUrl(v string) {
 
 // GetSloUrl returns the SloUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedSAMLSourceRequest) GetSloUrl() string {
-	if o == nil || IsNil(o.SloUrl.Get()) {
+	if o == nil || o.SloUrl.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -594,7 +591,7 @@ func (o *PatchedSAMLSourceRequest) UnsetSloUrl() {
 
 // GetAllowIdpInitiated returns the AllowIdpInitiated field value if set, zero value otherwise.
 func (o *PatchedSAMLSourceRequest) GetAllowIdpInitiated() bool {
-	if o == nil || IsNil(o.AllowIdpInitiated) {
+	if o == nil || o.AllowIdpInitiated == nil {
 		var ret bool
 		return ret
 	}
@@ -604,7 +601,7 @@ func (o *PatchedSAMLSourceRequest) GetAllowIdpInitiated() bool {
 // GetAllowIdpInitiatedOk returns a tuple with the AllowIdpInitiated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSAMLSourceRequest) GetAllowIdpInitiatedOk() (*bool, bool) {
-	if o == nil || IsNil(o.AllowIdpInitiated) {
+	if o == nil || o.AllowIdpInitiated == nil {
 		return nil, false
 	}
 	return o.AllowIdpInitiated, true
@@ -612,7 +609,7 @@ func (o *PatchedSAMLSourceRequest) GetAllowIdpInitiatedOk() (*bool, bool) {
 
 // HasAllowIdpInitiated returns a boolean if a field has been set.
 func (o *PatchedSAMLSourceRequest) HasAllowIdpInitiated() bool {
-	if o != nil && !IsNil(o.AllowIdpInitiated) {
+	if o != nil && o.AllowIdpInitiated != nil {
 		return true
 	}
 
@@ -626,7 +623,7 @@ func (o *PatchedSAMLSourceRequest) SetAllowIdpInitiated(v bool) {
 
 // GetNameIdPolicy returns the NameIdPolicy field value if set, zero value otherwise.
 func (o *PatchedSAMLSourceRequest) GetNameIdPolicy() NameIdPolicyEnum {
-	if o == nil || IsNil(o.NameIdPolicy) {
+	if o == nil || o.NameIdPolicy == nil {
 		var ret NameIdPolicyEnum
 		return ret
 	}
@@ -636,7 +633,7 @@ func (o *PatchedSAMLSourceRequest) GetNameIdPolicy() NameIdPolicyEnum {
 // GetNameIdPolicyOk returns a tuple with the NameIdPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSAMLSourceRequest) GetNameIdPolicyOk() (*NameIdPolicyEnum, bool) {
-	if o == nil || IsNil(o.NameIdPolicy) {
+	if o == nil || o.NameIdPolicy == nil {
 		return nil, false
 	}
 	return o.NameIdPolicy, true
@@ -644,7 +641,7 @@ func (o *PatchedSAMLSourceRequest) GetNameIdPolicyOk() (*NameIdPolicyEnum, bool)
 
 // HasNameIdPolicy returns a boolean if a field has been set.
 func (o *PatchedSAMLSourceRequest) HasNameIdPolicy() bool {
-	if o != nil && !IsNil(o.NameIdPolicy) {
+	if o != nil && o.NameIdPolicy != nil {
 		return true
 	}
 
@@ -658,7 +655,7 @@ func (o *PatchedSAMLSourceRequest) SetNameIdPolicy(v NameIdPolicyEnum) {
 
 // GetBindingType returns the BindingType field value if set, zero value otherwise.
 func (o *PatchedSAMLSourceRequest) GetBindingType() BindingTypeEnum {
-	if o == nil || IsNil(o.BindingType) {
+	if o == nil || o.BindingType == nil {
 		var ret BindingTypeEnum
 		return ret
 	}
@@ -668,7 +665,7 @@ func (o *PatchedSAMLSourceRequest) GetBindingType() BindingTypeEnum {
 // GetBindingTypeOk returns a tuple with the BindingType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSAMLSourceRequest) GetBindingTypeOk() (*BindingTypeEnum, bool) {
-	if o == nil || IsNil(o.BindingType) {
+	if o == nil || o.BindingType == nil {
 		return nil, false
 	}
 	return o.BindingType, true
@@ -676,7 +673,7 @@ func (o *PatchedSAMLSourceRequest) GetBindingTypeOk() (*BindingTypeEnum, bool) {
 
 // HasBindingType returns a boolean if a field has been set.
 func (o *PatchedSAMLSourceRequest) HasBindingType() bool {
-	if o != nil && !IsNil(o.BindingType) {
+	if o != nil && o.BindingType != nil {
 		return true
 	}
 
@@ -690,7 +687,7 @@ func (o *PatchedSAMLSourceRequest) SetBindingType(v BindingTypeEnum) {
 
 // GetVerificationKp returns the VerificationKp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedSAMLSourceRequest) GetVerificationKp() string {
-	if o == nil || IsNil(o.VerificationKp.Get()) {
+	if o == nil || o.VerificationKp.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -733,7 +730,7 @@ func (o *PatchedSAMLSourceRequest) UnsetVerificationKp() {
 
 // GetSigningKp returns the SigningKp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedSAMLSourceRequest) GetSigningKp() string {
-	if o == nil || IsNil(o.SigningKp.Get()) {
+	if o == nil || o.SigningKp.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -776,7 +773,7 @@ func (o *PatchedSAMLSourceRequest) UnsetSigningKp() {
 
 // GetDigestAlgorithm returns the DigestAlgorithm field value if set, zero value otherwise.
 func (o *PatchedSAMLSourceRequest) GetDigestAlgorithm() DigestAlgorithmEnum {
-	if o == nil || IsNil(o.DigestAlgorithm) {
+	if o == nil || o.DigestAlgorithm == nil {
 		var ret DigestAlgorithmEnum
 		return ret
 	}
@@ -786,7 +783,7 @@ func (o *PatchedSAMLSourceRequest) GetDigestAlgorithm() DigestAlgorithmEnum {
 // GetDigestAlgorithmOk returns a tuple with the DigestAlgorithm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSAMLSourceRequest) GetDigestAlgorithmOk() (*DigestAlgorithmEnum, bool) {
-	if o == nil || IsNil(o.DigestAlgorithm) {
+	if o == nil || o.DigestAlgorithm == nil {
 		return nil, false
 	}
 	return o.DigestAlgorithm, true
@@ -794,7 +791,7 @@ func (o *PatchedSAMLSourceRequest) GetDigestAlgorithmOk() (*DigestAlgorithmEnum,
 
 // HasDigestAlgorithm returns a boolean if a field has been set.
 func (o *PatchedSAMLSourceRequest) HasDigestAlgorithm() bool {
-	if o != nil && !IsNil(o.DigestAlgorithm) {
+	if o != nil && o.DigestAlgorithm != nil {
 		return true
 	}
 
@@ -808,7 +805,7 @@ func (o *PatchedSAMLSourceRequest) SetDigestAlgorithm(v DigestAlgorithmEnum) {
 
 // GetSignatureAlgorithm returns the SignatureAlgorithm field value if set, zero value otherwise.
 func (o *PatchedSAMLSourceRequest) GetSignatureAlgorithm() SignatureAlgorithmEnum {
-	if o == nil || IsNil(o.SignatureAlgorithm) {
+	if o == nil || o.SignatureAlgorithm == nil {
 		var ret SignatureAlgorithmEnum
 		return ret
 	}
@@ -818,7 +815,7 @@ func (o *PatchedSAMLSourceRequest) GetSignatureAlgorithm() SignatureAlgorithmEnu
 // GetSignatureAlgorithmOk returns a tuple with the SignatureAlgorithm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSAMLSourceRequest) GetSignatureAlgorithmOk() (*SignatureAlgorithmEnum, bool) {
-	if o == nil || IsNil(o.SignatureAlgorithm) {
+	if o == nil || o.SignatureAlgorithm == nil {
 		return nil, false
 	}
 	return o.SignatureAlgorithm, true
@@ -826,7 +823,7 @@ func (o *PatchedSAMLSourceRequest) GetSignatureAlgorithmOk() (*SignatureAlgorith
 
 // HasSignatureAlgorithm returns a boolean if a field has been set.
 func (o *PatchedSAMLSourceRequest) HasSignatureAlgorithm() bool {
-	if o != nil && !IsNil(o.SignatureAlgorithm) {
+	if o != nil && o.SignatureAlgorithm != nil {
 		return true
 	}
 
@@ -840,7 +837,7 @@ func (o *PatchedSAMLSourceRequest) SetSignatureAlgorithm(v SignatureAlgorithmEnu
 
 // GetTemporaryUserDeleteAfter returns the TemporaryUserDeleteAfter field value if set, zero value otherwise.
 func (o *PatchedSAMLSourceRequest) GetTemporaryUserDeleteAfter() string {
-	if o == nil || IsNil(o.TemporaryUserDeleteAfter) {
+	if o == nil || o.TemporaryUserDeleteAfter == nil {
 		var ret string
 		return ret
 	}
@@ -850,7 +847,7 @@ func (o *PatchedSAMLSourceRequest) GetTemporaryUserDeleteAfter() string {
 // GetTemporaryUserDeleteAfterOk returns a tuple with the TemporaryUserDeleteAfter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSAMLSourceRequest) GetTemporaryUserDeleteAfterOk() (*string, bool) {
-	if o == nil || IsNil(o.TemporaryUserDeleteAfter) {
+	if o == nil || o.TemporaryUserDeleteAfter == nil {
 		return nil, false
 	}
 	return o.TemporaryUserDeleteAfter, true
@@ -858,7 +855,7 @@ func (o *PatchedSAMLSourceRequest) GetTemporaryUserDeleteAfterOk() (*string, boo
 
 // HasTemporaryUserDeleteAfter returns a boolean if a field has been set.
 func (o *PatchedSAMLSourceRequest) HasTemporaryUserDeleteAfter() bool {
-	if o != nil && !IsNil(o.TemporaryUserDeleteAfter) {
+	if o != nil && o.TemporaryUserDeleteAfter != nil {
 		return true
 	}
 
@@ -872,7 +869,7 @@ func (o *PatchedSAMLSourceRequest) SetTemporaryUserDeleteAfter(v string) {
 
 // GetEncryptionKp returns the EncryptionKp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedSAMLSourceRequest) GetEncryptionKp() string {
-	if o == nil || IsNil(o.EncryptionKp.Get()) {
+	if o == nil || o.EncryptionKp.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -914,22 +911,14 @@ func (o *PatchedSAMLSourceRequest) UnsetEncryptionKp() {
 }
 
 func (o PatchedSAMLSourceRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedSAMLSourceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Slug) {
+	if o.Slug != nil {
 		toSerialize["slug"] = o.Slug
 	}
-	if !IsNil(o.Enabled) {
+	if o.Enabled != nil {
 		toSerialize["enabled"] = o.Enabled
 	}
 	if o.AuthenticationFlow.IsSet() {
@@ -938,43 +927,43 @@ func (o PatchedSAMLSourceRequest) ToMap() (map[string]interface{}, error) {
 	if o.EnrollmentFlow.IsSet() {
 		toSerialize["enrollment_flow"] = o.EnrollmentFlow.Get()
 	}
-	if !IsNil(o.UserPropertyMappings) {
+	if o.UserPropertyMappings != nil {
 		toSerialize["user_property_mappings"] = o.UserPropertyMappings
 	}
-	if !IsNil(o.GroupPropertyMappings) {
+	if o.GroupPropertyMappings != nil {
 		toSerialize["group_property_mappings"] = o.GroupPropertyMappings
 	}
-	if !IsNil(o.PolicyEngineMode) {
+	if o.PolicyEngineMode != nil {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
 	}
-	if !IsNil(o.UserMatchingMode) {
+	if o.UserMatchingMode != nil {
 		toSerialize["user_matching_mode"] = o.UserMatchingMode
 	}
-	if !IsNil(o.UserPathTemplate) {
+	if o.UserPathTemplate != nil {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
-	if !IsNil(o.GroupMatchingMode) {
+	if o.GroupMatchingMode != nil {
 		toSerialize["group_matching_mode"] = o.GroupMatchingMode
 	}
-	if !IsNil(o.PreAuthenticationFlow) {
+	if o.PreAuthenticationFlow != nil {
 		toSerialize["pre_authentication_flow"] = o.PreAuthenticationFlow
 	}
-	if !IsNil(o.Issuer) {
+	if o.Issuer != nil {
 		toSerialize["issuer"] = o.Issuer
 	}
-	if !IsNil(o.SsoUrl) {
+	if o.SsoUrl != nil {
 		toSerialize["sso_url"] = o.SsoUrl
 	}
 	if o.SloUrl.IsSet() {
 		toSerialize["slo_url"] = o.SloUrl.Get()
 	}
-	if !IsNil(o.AllowIdpInitiated) {
+	if o.AllowIdpInitiated != nil {
 		toSerialize["allow_idp_initiated"] = o.AllowIdpInitiated
 	}
-	if !IsNil(o.NameIdPolicy) {
+	if o.NameIdPolicy != nil {
 		toSerialize["name_id_policy"] = o.NameIdPolicy
 	}
-	if !IsNil(o.BindingType) {
+	if o.BindingType != nil {
 		toSerialize["binding_type"] = o.BindingType
 	}
 	if o.VerificationKp.IsSet() {
@@ -983,19 +972,19 @@ func (o PatchedSAMLSourceRequest) ToMap() (map[string]interface{}, error) {
 	if o.SigningKp.IsSet() {
 		toSerialize["signing_kp"] = o.SigningKp.Get()
 	}
-	if !IsNil(o.DigestAlgorithm) {
+	if o.DigestAlgorithm != nil {
 		toSerialize["digest_algorithm"] = o.DigestAlgorithm
 	}
-	if !IsNil(o.SignatureAlgorithm) {
+	if o.SignatureAlgorithm != nil {
 		toSerialize["signature_algorithm"] = o.SignatureAlgorithm
 	}
-	if !IsNil(o.TemporaryUserDeleteAfter) {
+	if o.TemporaryUserDeleteAfter != nil {
 		toSerialize["temporary_user_delete_after"] = o.TemporaryUserDeleteAfter
 	}
 	if o.EncryptionKp.IsSet() {
 		toSerialize["encryption_kp"] = o.EncryptionKp.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedSAMLSourceRequest struct {

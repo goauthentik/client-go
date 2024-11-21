@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the SCIMSourceGroupRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SCIMSourceGroupRequest{}
 
 // SCIMSourceGroupRequest SCIMSourceGroup Serializer
 type SCIMSourceGroupRequest struct {
@@ -27,8 +22,6 @@ type SCIMSourceGroupRequest struct {
 	Source     string      `json:"source"`
 	Attributes interface{} `json:"attributes,omitempty"`
 }
-
-type _SCIMSourceGroupRequest SCIMSourceGroupRequest
 
 // NewSCIMSourceGroupRequest instantiates a new SCIMSourceGroupRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -135,7 +128,7 @@ func (o *SCIMSourceGroupRequest) GetAttributes() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SCIMSourceGroupRequest) GetAttributesOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Attributes) {
+	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
 	return &o.Attributes, true
@@ -143,7 +136,7 @@ func (o *SCIMSourceGroupRequest) GetAttributesOk() (*interface{}, bool) {
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *SCIMSourceGroupRequest) HasAttributes() bool {
-	if o != nil && !IsNil(o.Attributes) {
+	if o != nil && o.Attributes != nil {
 		return true
 	}
 
@@ -156,61 +149,20 @@ func (o *SCIMSourceGroupRequest) SetAttributes(v interface{}) {
 }
 
 func (o SCIMSourceGroupRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o SCIMSourceGroupRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["group"] = o.Group
-	toSerialize["source"] = o.Source
+	if true {
+		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["group"] = o.Group
+	}
+	if true {
+		toSerialize["source"] = o.Source
+	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
-	return toSerialize, nil
-}
-
-func (o *SCIMSourceGroupRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"group",
-		"source",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSCIMSourceGroupRequest := _SCIMSourceGroupRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSCIMSourceGroupRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SCIMSourceGroupRequest(varSCIMSourceGroupRequest)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableSCIMSourceGroupRequest struct {

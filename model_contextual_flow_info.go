@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the ContextualFlowInfo type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ContextualFlowInfo{}
 
 // ContextualFlowInfo Contextual flow information for a challenge
 type ContextualFlowInfo struct {
@@ -27,8 +22,6 @@ type ContextualFlowInfo struct {
 	CancelUrl  string                       `json:"cancel_url"`
 	Layout     ContextualFlowInfoLayoutEnum `json:"layout"`
 }
-
-type _ContextualFlowInfo ContextualFlowInfo
 
 // NewContextualFlowInfo instantiates a new ContextualFlowInfo object
 // This constructor will assign default values to properties that have it defined,
@@ -51,7 +44,7 @@ func NewContextualFlowInfoWithDefaults() *ContextualFlowInfo {
 
 // GetTitle returns the Title field value if set, zero value otherwise.
 func (o *ContextualFlowInfo) GetTitle() string {
-	if o == nil || IsNil(o.Title) {
+	if o == nil || o.Title == nil {
 		var ret string
 		return ret
 	}
@@ -61,7 +54,7 @@ func (o *ContextualFlowInfo) GetTitle() string {
 // GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContextualFlowInfo) GetTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.Title) {
+	if o == nil || o.Title == nil {
 		return nil, false
 	}
 	return o.Title, true
@@ -69,7 +62,7 @@ func (o *ContextualFlowInfo) GetTitleOk() (*string, bool) {
 
 // HasTitle returns a boolean if a field has been set.
 func (o *ContextualFlowInfo) HasTitle() bool {
-	if o != nil && !IsNil(o.Title) {
+	if o != nil && o.Title != nil {
 		return true
 	}
 
@@ -83,7 +76,7 @@ func (o *ContextualFlowInfo) SetTitle(v string) {
 
 // GetBackground returns the Background field value if set, zero value otherwise.
 func (o *ContextualFlowInfo) GetBackground() string {
-	if o == nil || IsNil(o.Background) {
+	if o == nil || o.Background == nil {
 		var ret string
 		return ret
 	}
@@ -93,7 +86,7 @@ func (o *ContextualFlowInfo) GetBackground() string {
 // GetBackgroundOk returns a tuple with the Background field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContextualFlowInfo) GetBackgroundOk() (*string, bool) {
-	if o == nil || IsNil(o.Background) {
+	if o == nil || o.Background == nil {
 		return nil, false
 	}
 	return o.Background, true
@@ -101,7 +94,7 @@ func (o *ContextualFlowInfo) GetBackgroundOk() (*string, bool) {
 
 // HasBackground returns a boolean if a field has been set.
 func (o *ContextualFlowInfo) HasBackground() bool {
-	if o != nil && !IsNil(o.Background) {
+	if o != nil && o.Background != nil {
 		return true
 	}
 
@@ -162,62 +155,20 @@ func (o *ContextualFlowInfo) SetLayout(v ContextualFlowInfoLayoutEnum) {
 }
 
 func (o ContextualFlowInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ContextualFlowInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Title) {
+	if o.Title != nil {
 		toSerialize["title"] = o.Title
 	}
-	if !IsNil(o.Background) {
+	if o.Background != nil {
 		toSerialize["background"] = o.Background
 	}
-	toSerialize["cancel_url"] = o.CancelUrl
-	toSerialize["layout"] = o.Layout
-	return toSerialize, nil
-}
-
-func (o *ContextualFlowInfo) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"cancel_url",
-		"layout",
+	if true {
+		toSerialize["cancel_url"] = o.CancelUrl
 	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
+	if true {
+		toSerialize["layout"] = o.Layout
 	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varContextualFlowInfo := _ContextualFlowInfo{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varContextualFlowInfo)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ContextualFlowInfo(varContextualFlowInfo)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableContextualFlowInfo struct {

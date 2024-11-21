@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedAuthenticatorWebAuthnStageRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedAuthenticatorWebAuthnStageRequest{}
-
 // PatchedAuthenticatorWebAuthnStageRequest AuthenticatorWebAuthnStage Serializer
 type PatchedAuthenticatorWebAuthnStageRequest struct {
 	Name    *string          `json:"name,omitempty"`
@@ -50,7 +47,7 @@ func NewPatchedAuthenticatorWebAuthnStageRequestWithDefaults() *PatchedAuthentic
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorWebAuthnStageRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -60,7 +57,7 @@ func (o *PatchedAuthenticatorWebAuthnStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorWebAuthnStageRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -68,7 +65,7 @@ func (o *PatchedAuthenticatorWebAuthnStageRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorWebAuthnStageRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -82,7 +79,7 @@ func (o *PatchedAuthenticatorWebAuthnStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorWebAuthnStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -92,7 +89,7 @@ func (o *PatchedAuthenticatorWebAuthnStageRequest) GetFlowSet() []FlowSetRequest
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorWebAuthnStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -100,7 +97,7 @@ func (o *PatchedAuthenticatorWebAuthnStageRequest) GetFlowSetOk() ([]FlowSetRequ
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorWebAuthnStageRequest) HasFlowSet() bool {
-	if o != nil && !IsNil(o.FlowSet) {
+	if o != nil && o.FlowSet != nil {
 		return true
 	}
 
@@ -114,7 +111,7 @@ func (o *PatchedAuthenticatorWebAuthnStageRequest) SetFlowSet(v []FlowSetRequest
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedAuthenticatorWebAuthnStageRequest) GetConfigureFlow() string {
-	if o == nil || IsNil(o.ConfigureFlow.Get()) {
+	if o == nil || o.ConfigureFlow.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -157,7 +154,7 @@ func (o *PatchedAuthenticatorWebAuthnStageRequest) UnsetConfigureFlow() {
 
 // GetFriendlyName returns the FriendlyName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedAuthenticatorWebAuthnStageRequest) GetFriendlyName() string {
-	if o == nil || IsNil(o.FriendlyName.Get()) {
+	if o == nil || o.FriendlyName.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -200,7 +197,7 @@ func (o *PatchedAuthenticatorWebAuthnStageRequest) UnsetFriendlyName() {
 
 // GetUserVerification returns the UserVerification field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorWebAuthnStageRequest) GetUserVerification() UserVerificationEnum {
-	if o == nil || IsNil(o.UserVerification) {
+	if o == nil || o.UserVerification == nil {
 		var ret UserVerificationEnum
 		return ret
 	}
@@ -210,7 +207,7 @@ func (o *PatchedAuthenticatorWebAuthnStageRequest) GetUserVerification() UserVer
 // GetUserVerificationOk returns a tuple with the UserVerification field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorWebAuthnStageRequest) GetUserVerificationOk() (*UserVerificationEnum, bool) {
-	if o == nil || IsNil(o.UserVerification) {
+	if o == nil || o.UserVerification == nil {
 		return nil, false
 	}
 	return o.UserVerification, true
@@ -218,7 +215,7 @@ func (o *PatchedAuthenticatorWebAuthnStageRequest) GetUserVerificationOk() (*Use
 
 // HasUserVerification returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorWebAuthnStageRequest) HasUserVerification() bool {
-	if o != nil && !IsNil(o.UserVerification) {
+	if o != nil && o.UserVerification != nil {
 		return true
 	}
 
@@ -232,7 +229,7 @@ func (o *PatchedAuthenticatorWebAuthnStageRequest) SetUserVerification(v UserVer
 
 // GetAuthenticatorAttachment returns the AuthenticatorAttachment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedAuthenticatorWebAuthnStageRequest) GetAuthenticatorAttachment() AuthenticatorAttachmentEnum {
-	if o == nil || IsNil(o.AuthenticatorAttachment.Get()) {
+	if o == nil || o.AuthenticatorAttachment.Get() == nil {
 		var ret AuthenticatorAttachmentEnum
 		return ret
 	}
@@ -275,7 +272,7 @@ func (o *PatchedAuthenticatorWebAuthnStageRequest) UnsetAuthenticatorAttachment(
 
 // GetResidentKeyRequirement returns the ResidentKeyRequirement field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorWebAuthnStageRequest) GetResidentKeyRequirement() ResidentKeyRequirementEnum {
-	if o == nil || IsNil(o.ResidentKeyRequirement) {
+	if o == nil || o.ResidentKeyRequirement == nil {
 		var ret ResidentKeyRequirementEnum
 		return ret
 	}
@@ -285,7 +282,7 @@ func (o *PatchedAuthenticatorWebAuthnStageRequest) GetResidentKeyRequirement() R
 // GetResidentKeyRequirementOk returns a tuple with the ResidentKeyRequirement field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorWebAuthnStageRequest) GetResidentKeyRequirementOk() (*ResidentKeyRequirementEnum, bool) {
-	if o == nil || IsNil(o.ResidentKeyRequirement) {
+	if o == nil || o.ResidentKeyRequirement == nil {
 		return nil, false
 	}
 	return o.ResidentKeyRequirement, true
@@ -293,7 +290,7 @@ func (o *PatchedAuthenticatorWebAuthnStageRequest) GetResidentKeyRequirementOk()
 
 // HasResidentKeyRequirement returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorWebAuthnStageRequest) HasResidentKeyRequirement() bool {
-	if o != nil && !IsNil(o.ResidentKeyRequirement) {
+	if o != nil && o.ResidentKeyRequirement != nil {
 		return true
 	}
 
@@ -307,7 +304,7 @@ func (o *PatchedAuthenticatorWebAuthnStageRequest) SetResidentKeyRequirement(v R
 
 // GetDeviceTypeRestrictions returns the DeviceTypeRestrictions field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorWebAuthnStageRequest) GetDeviceTypeRestrictions() []string {
-	if o == nil || IsNil(o.DeviceTypeRestrictions) {
+	if o == nil || o.DeviceTypeRestrictions == nil {
 		var ret []string
 		return ret
 	}
@@ -317,7 +314,7 @@ func (o *PatchedAuthenticatorWebAuthnStageRequest) GetDeviceTypeRestrictions() [
 // GetDeviceTypeRestrictionsOk returns a tuple with the DeviceTypeRestrictions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorWebAuthnStageRequest) GetDeviceTypeRestrictionsOk() ([]string, bool) {
-	if o == nil || IsNil(o.DeviceTypeRestrictions) {
+	if o == nil || o.DeviceTypeRestrictions == nil {
 		return nil, false
 	}
 	return o.DeviceTypeRestrictions, true
@@ -325,7 +322,7 @@ func (o *PatchedAuthenticatorWebAuthnStageRequest) GetDeviceTypeRestrictionsOk()
 
 // HasDeviceTypeRestrictions returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorWebAuthnStageRequest) HasDeviceTypeRestrictions() bool {
-	if o != nil && !IsNil(o.DeviceTypeRestrictions) {
+	if o != nil && o.DeviceTypeRestrictions != nil {
 		return true
 	}
 
@@ -338,19 +335,11 @@ func (o *PatchedAuthenticatorWebAuthnStageRequest) SetDeviceTypeRestrictions(v [
 }
 
 func (o PatchedAuthenticatorWebAuthnStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedAuthenticatorWebAuthnStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.FlowSet) {
+	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.ConfigureFlow.IsSet() {
@@ -359,19 +348,19 @@ func (o PatchedAuthenticatorWebAuthnStageRequest) ToMap() (map[string]interface{
 	if o.FriendlyName.IsSet() {
 		toSerialize["friendly_name"] = o.FriendlyName.Get()
 	}
-	if !IsNil(o.UserVerification) {
+	if o.UserVerification != nil {
 		toSerialize["user_verification"] = o.UserVerification
 	}
 	if o.AuthenticatorAttachment.IsSet() {
 		toSerialize["authenticator_attachment"] = o.AuthenticatorAttachment.Get()
 	}
-	if !IsNil(o.ResidentKeyRequirement) {
+	if o.ResidentKeyRequirement != nil {
 		toSerialize["resident_key_requirement"] = o.ResidentKeyRequirement
 	}
-	if !IsNil(o.DeviceTypeRestrictions) {
+	if o.DeviceTypeRestrictions != nil {
 		toSerialize["device_type_restrictions"] = o.DeviceTypeRestrictions
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedAuthenticatorWebAuthnStageRequest struct {

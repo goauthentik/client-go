@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedBlueprintInstanceRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedBlueprintInstanceRequest{}
-
 // PatchedBlueprintInstanceRequest Info about a single blueprint instance file
 type PatchedBlueprintInstanceRequest struct {
 	Name    *string     `json:"name,omitempty"`
@@ -50,7 +47,7 @@ func NewPatchedBlueprintInstanceRequestWithDefaults() *PatchedBlueprintInstanceR
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedBlueprintInstanceRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -60,7 +57,7 @@ func (o *PatchedBlueprintInstanceRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedBlueprintInstanceRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -68,7 +65,7 @@ func (o *PatchedBlueprintInstanceRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedBlueprintInstanceRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -82,7 +79,7 @@ func (o *PatchedBlueprintInstanceRequest) SetName(v string) {
 
 // GetPath returns the Path field value if set, zero value otherwise.
 func (o *PatchedBlueprintInstanceRequest) GetPath() string {
-	if o == nil || IsNil(o.Path) {
+	if o == nil || o.Path == nil {
 		var ret string
 		return ret
 	}
@@ -92,7 +89,7 @@ func (o *PatchedBlueprintInstanceRequest) GetPath() string {
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedBlueprintInstanceRequest) GetPathOk() (*string, bool) {
-	if o == nil || IsNil(o.Path) {
+	if o == nil || o.Path == nil {
 		return nil, false
 	}
 	return o.Path, true
@@ -100,7 +97,7 @@ func (o *PatchedBlueprintInstanceRequest) GetPathOk() (*string, bool) {
 
 // HasPath returns a boolean if a field has been set.
 func (o *PatchedBlueprintInstanceRequest) HasPath() bool {
-	if o != nil && !IsNil(o.Path) {
+	if o != nil && o.Path != nil {
 		return true
 	}
 
@@ -125,7 +122,7 @@ func (o *PatchedBlueprintInstanceRequest) GetContext() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedBlueprintInstanceRequest) GetContextOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Context) {
+	if o == nil || o.Context == nil {
 		return nil, false
 	}
 	return &o.Context, true
@@ -133,7 +130,7 @@ func (o *PatchedBlueprintInstanceRequest) GetContextOk() (*interface{}, bool) {
 
 // HasContext returns a boolean if a field has been set.
 func (o *PatchedBlueprintInstanceRequest) HasContext() bool {
-	if o != nil && !IsNil(o.Context) {
+	if o != nil && o.Context != nil {
 		return true
 	}
 
@@ -147,7 +144,7 @@ func (o *PatchedBlueprintInstanceRequest) SetContext(v interface{}) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *PatchedBlueprintInstanceRequest) GetEnabled() bool {
-	if o == nil || IsNil(o.Enabled) {
+	if o == nil || o.Enabled == nil {
 		var ret bool
 		return ret
 	}
@@ -157,7 +154,7 @@ func (o *PatchedBlueprintInstanceRequest) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedBlueprintInstanceRequest) GetEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.Enabled) {
+	if o == nil || o.Enabled == nil {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -165,7 +162,7 @@ func (o *PatchedBlueprintInstanceRequest) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *PatchedBlueprintInstanceRequest) HasEnabled() bool {
-	if o != nil && !IsNil(o.Enabled) {
+	if o != nil && o.Enabled != nil {
 		return true
 	}
 
@@ -179,7 +176,7 @@ func (o *PatchedBlueprintInstanceRequest) SetEnabled(v bool) {
 
 // GetContent returns the Content field value if set, zero value otherwise.
 func (o *PatchedBlueprintInstanceRequest) GetContent() string {
-	if o == nil || IsNil(o.Content) {
+	if o == nil || o.Content == nil {
 		var ret string
 		return ret
 	}
@@ -189,7 +186,7 @@ func (o *PatchedBlueprintInstanceRequest) GetContent() string {
 // GetContentOk returns a tuple with the Content field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedBlueprintInstanceRequest) GetContentOk() (*string, bool) {
-	if o == nil || IsNil(o.Content) {
+	if o == nil || o.Content == nil {
 		return nil, false
 	}
 	return o.Content, true
@@ -197,7 +194,7 @@ func (o *PatchedBlueprintInstanceRequest) GetContentOk() (*string, bool) {
 
 // HasContent returns a boolean if a field has been set.
 func (o *PatchedBlueprintInstanceRequest) HasContent() bool {
-	if o != nil && !IsNil(o.Content) {
+	if o != nil && o.Content != nil {
 		return true
 	}
 
@@ -210,31 +207,23 @@ func (o *PatchedBlueprintInstanceRequest) SetContent(v string) {
 }
 
 func (o PatchedBlueprintInstanceRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedBlueprintInstanceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Path) {
+	if o.Path != nil {
 		toSerialize["path"] = o.Path
 	}
 	if o.Context != nil {
 		toSerialize["context"] = o.Context
 	}
-	if !IsNil(o.Enabled) {
+	if o.Enabled != nil {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !IsNil(o.Content) {
+	if o.Content != nil {
 		toSerialize["content"] = o.Content
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedBlueprintInstanceRequest struct {

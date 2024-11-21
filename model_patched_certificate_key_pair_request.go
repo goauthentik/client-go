@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedCertificateKeyPairRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedCertificateKeyPairRequest{}
-
 // PatchedCertificateKeyPairRequest CertificateKeyPair Serializer
 type PatchedCertificateKeyPairRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -46,7 +43,7 @@ func NewPatchedCertificateKeyPairRequestWithDefaults() *PatchedCertificateKeyPai
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedCertificateKeyPairRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -56,7 +53,7 @@ func (o *PatchedCertificateKeyPairRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedCertificateKeyPairRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -64,7 +61,7 @@ func (o *PatchedCertificateKeyPairRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedCertificateKeyPairRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -78,7 +75,7 @@ func (o *PatchedCertificateKeyPairRequest) SetName(v string) {
 
 // GetCertificateData returns the CertificateData field value if set, zero value otherwise.
 func (o *PatchedCertificateKeyPairRequest) GetCertificateData() string {
-	if o == nil || IsNil(o.CertificateData) {
+	if o == nil || o.CertificateData == nil {
 		var ret string
 		return ret
 	}
@@ -88,7 +85,7 @@ func (o *PatchedCertificateKeyPairRequest) GetCertificateData() string {
 // GetCertificateDataOk returns a tuple with the CertificateData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedCertificateKeyPairRequest) GetCertificateDataOk() (*string, bool) {
-	if o == nil || IsNil(o.CertificateData) {
+	if o == nil || o.CertificateData == nil {
 		return nil, false
 	}
 	return o.CertificateData, true
@@ -96,7 +93,7 @@ func (o *PatchedCertificateKeyPairRequest) GetCertificateDataOk() (*string, bool
 
 // HasCertificateData returns a boolean if a field has been set.
 func (o *PatchedCertificateKeyPairRequest) HasCertificateData() bool {
-	if o != nil && !IsNil(o.CertificateData) {
+	if o != nil && o.CertificateData != nil {
 		return true
 	}
 
@@ -110,7 +107,7 @@ func (o *PatchedCertificateKeyPairRequest) SetCertificateData(v string) {
 
 // GetKeyData returns the KeyData field value if set, zero value otherwise.
 func (o *PatchedCertificateKeyPairRequest) GetKeyData() string {
-	if o == nil || IsNil(o.KeyData) {
+	if o == nil || o.KeyData == nil {
 		var ret string
 		return ret
 	}
@@ -120,7 +117,7 @@ func (o *PatchedCertificateKeyPairRequest) GetKeyData() string {
 // GetKeyDataOk returns a tuple with the KeyData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedCertificateKeyPairRequest) GetKeyDataOk() (*string, bool) {
-	if o == nil || IsNil(o.KeyData) {
+	if o == nil || o.KeyData == nil {
 		return nil, false
 	}
 	return o.KeyData, true
@@ -128,7 +125,7 @@ func (o *PatchedCertificateKeyPairRequest) GetKeyDataOk() (*string, bool) {
 
 // HasKeyData returns a boolean if a field has been set.
 func (o *PatchedCertificateKeyPairRequest) HasKeyData() bool {
-	if o != nil && !IsNil(o.KeyData) {
+	if o != nil && o.KeyData != nil {
 		return true
 	}
 
@@ -141,25 +138,17 @@ func (o *PatchedCertificateKeyPairRequest) SetKeyData(v string) {
 }
 
 func (o PatchedCertificateKeyPairRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedCertificateKeyPairRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.CertificateData) {
+	if o.CertificateData != nil {
 		toSerialize["certificate_data"] = o.CertificateData
 	}
-	if !IsNil(o.KeyData) {
+	if o.KeyData != nil {
 		toSerialize["key_data"] = o.KeyData
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedCertificateKeyPairRequest struct {

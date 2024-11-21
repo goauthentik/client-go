@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the IdentificationChallenge type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &IdentificationChallenge{}
 
 // IdentificationChallenge Identification challenges with all UI elements
 type IdentificationChallenge struct {
@@ -38,8 +33,6 @@ type IdentificationChallenge struct {
 	Sources           []LoginSource             `json:"sources,omitempty"`
 	ShowSourceLabels  bool                      `json:"show_source_labels"`
 }
-
-type _IdentificationChallenge IdentificationChallenge
 
 // NewIdentificationChallenge instantiates a new IdentificationChallenge object
 // This constructor will assign default values to properties that have it defined,
@@ -73,7 +66,7 @@ func NewIdentificationChallengeWithDefaults() *IdentificationChallenge {
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
 func (o *IdentificationChallenge) GetFlowInfo() ContextualFlowInfo {
-	if o == nil || IsNil(o.FlowInfo) {
+	if o == nil || o.FlowInfo == nil {
 		var ret ContextualFlowInfo
 		return ret
 	}
@@ -83,7 +76,7 @@ func (o *IdentificationChallenge) GetFlowInfo() ContextualFlowInfo {
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
-	if o == nil || IsNil(o.FlowInfo) {
+	if o == nil || o.FlowInfo == nil {
 		return nil, false
 	}
 	return o.FlowInfo, true
@@ -91,7 +84,7 @@ func (o *IdentificationChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
 
 // HasFlowInfo returns a boolean if a field has been set.
 func (o *IdentificationChallenge) HasFlowInfo() bool {
-	if o != nil && !IsNil(o.FlowInfo) {
+	if o != nil && o.FlowInfo != nil {
 		return true
 	}
 
@@ -105,7 +98,7 @@ func (o *IdentificationChallenge) SetFlowInfo(v ContextualFlowInfo) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *IdentificationChallenge) GetComponent() string {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		var ret string
 		return ret
 	}
@@ -115,7 +108,7 @@ func (o *IdentificationChallenge) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		return nil, false
 	}
 	return o.Component, true
@@ -123,7 +116,7 @@ func (o *IdentificationChallenge) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *IdentificationChallenge) HasComponent() bool {
-	if o != nil && !IsNil(o.Component) {
+	if o != nil && o.Component != nil {
 		return true
 	}
 
@@ -137,7 +130,7 @@ func (o *IdentificationChallenge) SetComponent(v string) {
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
 func (o *IdentificationChallenge) GetResponseErrors() map[string][]ErrorDetail {
-	if o == nil || IsNil(o.ResponseErrors) {
+	if o == nil || o.ResponseErrors == nil {
 		var ret map[string][]ErrorDetail
 		return ret
 	}
@@ -147,7 +140,7 @@ func (o *IdentificationChallenge) GetResponseErrors() map[string][]ErrorDetail {
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
-	if o == nil || IsNil(o.ResponseErrors) {
+	if o == nil || o.ResponseErrors == nil {
 		return nil, false
 	}
 	return o.ResponseErrors, true
@@ -155,7 +148,7 @@ func (o *IdentificationChallenge) GetResponseErrorsOk() (*map[string][]ErrorDeta
 
 // HasResponseErrors returns a boolean if a field has been set.
 func (o *IdentificationChallenge) HasResponseErrors() bool {
-	if o != nil && !IsNil(o.ResponseErrors) {
+	if o != nil && o.ResponseErrors != nil {
 		return true
 	}
 
@@ -182,7 +175,7 @@ func (o *IdentificationChallenge) GetUserFields() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IdentificationChallenge) GetUserFieldsOk() ([]string, bool) {
-	if o == nil || IsNil(o.UserFields) {
+	if o == nil || o.UserFields == nil {
 		return nil, false
 	}
 	return o.UserFields, true
@@ -219,7 +212,7 @@ func (o *IdentificationChallenge) SetPasswordFields(v bool) {
 
 // GetAllowShowPassword returns the AllowShowPassword field value if set, zero value otherwise.
 func (o *IdentificationChallenge) GetAllowShowPassword() bool {
-	if o == nil || IsNil(o.AllowShowPassword) {
+	if o == nil || o.AllowShowPassword == nil {
 		var ret bool
 		return ret
 	}
@@ -229,7 +222,7 @@ func (o *IdentificationChallenge) GetAllowShowPassword() bool {
 // GetAllowShowPasswordOk returns a tuple with the AllowShowPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationChallenge) GetAllowShowPasswordOk() (*bool, bool) {
-	if o == nil || IsNil(o.AllowShowPassword) {
+	if o == nil || o.AllowShowPassword == nil {
 		return nil, false
 	}
 	return o.AllowShowPassword, true
@@ -237,7 +230,7 @@ func (o *IdentificationChallenge) GetAllowShowPasswordOk() (*bool, bool) {
 
 // HasAllowShowPassword returns a boolean if a field has been set.
 func (o *IdentificationChallenge) HasAllowShowPassword() bool {
-	if o != nil && !IsNil(o.AllowShowPassword) {
+	if o != nil && o.AllowShowPassword != nil {
 		return true
 	}
 
@@ -251,7 +244,7 @@ func (o *IdentificationChallenge) SetAllowShowPassword(v bool) {
 
 // GetApplicationPre returns the ApplicationPre field value if set, zero value otherwise.
 func (o *IdentificationChallenge) GetApplicationPre() string {
-	if o == nil || IsNil(o.ApplicationPre) {
+	if o == nil || o.ApplicationPre == nil {
 		var ret string
 		return ret
 	}
@@ -261,7 +254,7 @@ func (o *IdentificationChallenge) GetApplicationPre() string {
 // GetApplicationPreOk returns a tuple with the ApplicationPre field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationChallenge) GetApplicationPreOk() (*string, bool) {
-	if o == nil || IsNil(o.ApplicationPre) {
+	if o == nil || o.ApplicationPre == nil {
 		return nil, false
 	}
 	return o.ApplicationPre, true
@@ -269,7 +262,7 @@ func (o *IdentificationChallenge) GetApplicationPreOk() (*string, bool) {
 
 // HasApplicationPre returns a boolean if a field has been set.
 func (o *IdentificationChallenge) HasApplicationPre() bool {
-	if o != nil && !IsNil(o.ApplicationPre) {
+	if o != nil && o.ApplicationPre != nil {
 		return true
 	}
 
@@ -307,7 +300,7 @@ func (o *IdentificationChallenge) SetFlowDesignation(v FlowDesignationEnum) {
 
 // GetCaptchaStage returns the CaptchaStage field value if set, zero value otherwise.
 func (o *IdentificationChallenge) GetCaptchaStage() CaptchaChallenge {
-	if o == nil || IsNil(o.CaptchaStage) {
+	if o == nil || o.CaptchaStage == nil {
 		var ret CaptchaChallenge
 		return ret
 	}
@@ -317,7 +310,7 @@ func (o *IdentificationChallenge) GetCaptchaStage() CaptchaChallenge {
 // GetCaptchaStageOk returns a tuple with the CaptchaStage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationChallenge) GetCaptchaStageOk() (*CaptchaChallenge, bool) {
-	if o == nil || IsNil(o.CaptchaStage) {
+	if o == nil || o.CaptchaStage == nil {
 		return nil, false
 	}
 	return o.CaptchaStage, true
@@ -325,7 +318,7 @@ func (o *IdentificationChallenge) GetCaptchaStageOk() (*CaptchaChallenge, bool) 
 
 // HasCaptchaStage returns a boolean if a field has been set.
 func (o *IdentificationChallenge) HasCaptchaStage() bool {
-	if o != nil && !IsNil(o.CaptchaStage) {
+	if o != nil && o.CaptchaStage != nil {
 		return true
 	}
 
@@ -339,7 +332,7 @@ func (o *IdentificationChallenge) SetCaptchaStage(v CaptchaChallenge) {
 
 // GetEnrollUrl returns the EnrollUrl field value if set, zero value otherwise.
 func (o *IdentificationChallenge) GetEnrollUrl() string {
-	if o == nil || IsNil(o.EnrollUrl) {
+	if o == nil || o.EnrollUrl == nil {
 		var ret string
 		return ret
 	}
@@ -349,7 +342,7 @@ func (o *IdentificationChallenge) GetEnrollUrl() string {
 // GetEnrollUrlOk returns a tuple with the EnrollUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationChallenge) GetEnrollUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.EnrollUrl) {
+	if o == nil || o.EnrollUrl == nil {
 		return nil, false
 	}
 	return o.EnrollUrl, true
@@ -357,7 +350,7 @@ func (o *IdentificationChallenge) GetEnrollUrlOk() (*string, bool) {
 
 // HasEnrollUrl returns a boolean if a field has been set.
 func (o *IdentificationChallenge) HasEnrollUrl() bool {
-	if o != nil && !IsNil(o.EnrollUrl) {
+	if o != nil && o.EnrollUrl != nil {
 		return true
 	}
 
@@ -371,7 +364,7 @@ func (o *IdentificationChallenge) SetEnrollUrl(v string) {
 
 // GetRecoveryUrl returns the RecoveryUrl field value if set, zero value otherwise.
 func (o *IdentificationChallenge) GetRecoveryUrl() string {
-	if o == nil || IsNil(o.RecoveryUrl) {
+	if o == nil || o.RecoveryUrl == nil {
 		var ret string
 		return ret
 	}
@@ -381,7 +374,7 @@ func (o *IdentificationChallenge) GetRecoveryUrl() string {
 // GetRecoveryUrlOk returns a tuple with the RecoveryUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationChallenge) GetRecoveryUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.RecoveryUrl) {
+	if o == nil || o.RecoveryUrl == nil {
 		return nil, false
 	}
 	return o.RecoveryUrl, true
@@ -389,7 +382,7 @@ func (o *IdentificationChallenge) GetRecoveryUrlOk() (*string, bool) {
 
 // HasRecoveryUrl returns a boolean if a field has been set.
 func (o *IdentificationChallenge) HasRecoveryUrl() bool {
-	if o != nil && !IsNil(o.RecoveryUrl) {
+	if o != nil && o.RecoveryUrl != nil {
 		return true
 	}
 
@@ -403,7 +396,7 @@ func (o *IdentificationChallenge) SetRecoveryUrl(v string) {
 
 // GetPasswordlessUrl returns the PasswordlessUrl field value if set, zero value otherwise.
 func (o *IdentificationChallenge) GetPasswordlessUrl() string {
-	if o == nil || IsNil(o.PasswordlessUrl) {
+	if o == nil || o.PasswordlessUrl == nil {
 		var ret string
 		return ret
 	}
@@ -413,7 +406,7 @@ func (o *IdentificationChallenge) GetPasswordlessUrl() string {
 // GetPasswordlessUrlOk returns a tuple with the PasswordlessUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationChallenge) GetPasswordlessUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.PasswordlessUrl) {
+	if o == nil || o.PasswordlessUrl == nil {
 		return nil, false
 	}
 	return o.PasswordlessUrl, true
@@ -421,7 +414,7 @@ func (o *IdentificationChallenge) GetPasswordlessUrlOk() (*string, bool) {
 
 // HasPasswordlessUrl returns a boolean if a field has been set.
 func (o *IdentificationChallenge) HasPasswordlessUrl() bool {
-	if o != nil && !IsNil(o.PasswordlessUrl) {
+	if o != nil && o.PasswordlessUrl != nil {
 		return true
 	}
 
@@ -459,7 +452,7 @@ func (o *IdentificationChallenge) SetPrimaryAction(v string) {
 
 // GetSources returns the Sources field value if set, zero value otherwise.
 func (o *IdentificationChallenge) GetSources() []LoginSource {
-	if o == nil || IsNil(o.Sources) {
+	if o == nil || o.Sources == nil {
 		var ret []LoginSource
 		return ret
 	}
@@ -469,7 +462,7 @@ func (o *IdentificationChallenge) GetSources() []LoginSource {
 // GetSourcesOk returns a tuple with the Sources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationChallenge) GetSourcesOk() ([]LoginSource, bool) {
-	if o == nil || IsNil(o.Sources) {
+	if o == nil || o.Sources == nil {
 		return nil, false
 	}
 	return o.Sources, true
@@ -477,7 +470,7 @@ func (o *IdentificationChallenge) GetSourcesOk() ([]LoginSource, bool) {
 
 // HasSources returns a boolean if a field has been set.
 func (o *IdentificationChallenge) HasSources() bool {
-	if o != nil && !IsNil(o.Sources) {
+	if o != nil && o.Sources != nil {
 		return true
 	}
 
@@ -514,94 +507,53 @@ func (o *IdentificationChallenge) SetShowSourceLabels(v bool) {
 }
 
 func (o IdentificationChallenge) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o IdentificationChallenge) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.FlowInfo) {
+	if o.FlowInfo != nil {
 		toSerialize["flow_info"] = o.FlowInfo
 	}
-	if !IsNil(o.Component) {
+	if o.Component != nil {
 		toSerialize["component"] = o.Component
 	}
-	if !IsNil(o.ResponseErrors) {
+	if o.ResponseErrors != nil {
 		toSerialize["response_errors"] = o.ResponseErrors
 	}
 	if o.UserFields != nil {
 		toSerialize["user_fields"] = o.UserFields
 	}
-	toSerialize["password_fields"] = o.PasswordFields
-	if !IsNil(o.AllowShowPassword) {
+	if true {
+		toSerialize["password_fields"] = o.PasswordFields
+	}
+	if o.AllowShowPassword != nil {
 		toSerialize["allow_show_password"] = o.AllowShowPassword
 	}
-	if !IsNil(o.ApplicationPre) {
+	if o.ApplicationPre != nil {
 		toSerialize["application_pre"] = o.ApplicationPre
 	}
-	toSerialize["flow_designation"] = o.FlowDesignation
-	if !IsNil(o.CaptchaStage) {
+	if true {
+		toSerialize["flow_designation"] = o.FlowDesignation
+	}
+	if o.CaptchaStage != nil {
 		toSerialize["captcha_stage"] = o.CaptchaStage
 	}
-	if !IsNil(o.EnrollUrl) {
+	if o.EnrollUrl != nil {
 		toSerialize["enroll_url"] = o.EnrollUrl
 	}
-	if !IsNil(o.RecoveryUrl) {
+	if o.RecoveryUrl != nil {
 		toSerialize["recovery_url"] = o.RecoveryUrl
 	}
-	if !IsNil(o.PasswordlessUrl) {
+	if o.PasswordlessUrl != nil {
 		toSerialize["passwordless_url"] = o.PasswordlessUrl
 	}
-	toSerialize["primary_action"] = o.PrimaryAction
-	if !IsNil(o.Sources) {
+	if true {
+		toSerialize["primary_action"] = o.PrimaryAction
+	}
+	if o.Sources != nil {
 		toSerialize["sources"] = o.Sources
 	}
-	toSerialize["show_source_labels"] = o.ShowSourceLabels
-	return toSerialize, nil
-}
-
-func (o *IdentificationChallenge) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"user_fields",
-		"password_fields",
-		"flow_designation",
-		"primary_action",
-		"show_source_labels",
+	if true {
+		toSerialize["show_source_labels"] = o.ShowSourceLabels
 	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varIdentificationChallenge := _IdentificationChallenge{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varIdentificationChallenge)
-
-	if err != nil {
-		return err
-	}
-
-	*o = IdentificationChallenge(varIdentificationChallenge)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableIdentificationChallenge struct {

@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AuthenticatorValidationChallengeResponseRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthenticatorValidationChallengeResponseRequest{}
-
 // AuthenticatorValidationChallengeResponseRequest Challenge used for Code-based and WebAuthn authenticators
 type AuthenticatorValidationChallengeResponseRequest struct {
 	Component         *string                 `json:"component,omitempty"`
@@ -51,7 +48,7 @@ func NewAuthenticatorValidationChallengeResponseRequestWithDefaults() *Authentic
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *AuthenticatorValidationChallengeResponseRequest) GetComponent() string {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		var ret string
 		return ret
 	}
@@ -61,7 +58,7 @@ func (o *AuthenticatorValidationChallengeResponseRequest) GetComponent() string 
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidationChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		return nil, false
 	}
 	return o.Component, true
@@ -69,7 +66,7 @@ func (o *AuthenticatorValidationChallengeResponseRequest) GetComponentOk() (*str
 
 // HasComponent returns a boolean if a field has been set.
 func (o *AuthenticatorValidationChallengeResponseRequest) HasComponent() bool {
-	if o != nil && !IsNil(o.Component) {
+	if o != nil && o.Component != nil {
 		return true
 	}
 
@@ -83,7 +80,7 @@ func (o *AuthenticatorValidationChallengeResponseRequest) SetComponent(v string)
 
 // GetSelectedChallenge returns the SelectedChallenge field value if set, zero value otherwise.
 func (o *AuthenticatorValidationChallengeResponseRequest) GetSelectedChallenge() DeviceChallengeRequest {
-	if o == nil || IsNil(o.SelectedChallenge) {
+	if o == nil || o.SelectedChallenge == nil {
 		var ret DeviceChallengeRequest
 		return ret
 	}
@@ -93,7 +90,7 @@ func (o *AuthenticatorValidationChallengeResponseRequest) GetSelectedChallenge()
 // GetSelectedChallengeOk returns a tuple with the SelectedChallenge field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidationChallengeResponseRequest) GetSelectedChallengeOk() (*DeviceChallengeRequest, bool) {
-	if o == nil || IsNil(o.SelectedChallenge) {
+	if o == nil || o.SelectedChallenge == nil {
 		return nil, false
 	}
 	return o.SelectedChallenge, true
@@ -101,7 +98,7 @@ func (o *AuthenticatorValidationChallengeResponseRequest) GetSelectedChallengeOk
 
 // HasSelectedChallenge returns a boolean if a field has been set.
 func (o *AuthenticatorValidationChallengeResponseRequest) HasSelectedChallenge() bool {
-	if o != nil && !IsNil(o.SelectedChallenge) {
+	if o != nil && o.SelectedChallenge != nil {
 		return true
 	}
 
@@ -115,7 +112,7 @@ func (o *AuthenticatorValidationChallengeResponseRequest) SetSelectedChallenge(v
 
 // GetSelectedStage returns the SelectedStage field value if set, zero value otherwise.
 func (o *AuthenticatorValidationChallengeResponseRequest) GetSelectedStage() string {
-	if o == nil || IsNil(o.SelectedStage) {
+	if o == nil || o.SelectedStage == nil {
 		var ret string
 		return ret
 	}
@@ -125,7 +122,7 @@ func (o *AuthenticatorValidationChallengeResponseRequest) GetSelectedStage() str
 // GetSelectedStageOk returns a tuple with the SelectedStage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidationChallengeResponseRequest) GetSelectedStageOk() (*string, bool) {
-	if o == nil || IsNil(o.SelectedStage) {
+	if o == nil || o.SelectedStage == nil {
 		return nil, false
 	}
 	return o.SelectedStage, true
@@ -133,7 +130,7 @@ func (o *AuthenticatorValidationChallengeResponseRequest) GetSelectedStageOk() (
 
 // HasSelectedStage returns a boolean if a field has been set.
 func (o *AuthenticatorValidationChallengeResponseRequest) HasSelectedStage() bool {
-	if o != nil && !IsNil(o.SelectedStage) {
+	if o != nil && o.SelectedStage != nil {
 		return true
 	}
 
@@ -147,7 +144,7 @@ func (o *AuthenticatorValidationChallengeResponseRequest) SetSelectedStage(v str
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *AuthenticatorValidationChallengeResponseRequest) GetCode() string {
-	if o == nil || IsNil(o.Code) {
+	if o == nil || o.Code == nil {
 		var ret string
 		return ret
 	}
@@ -157,7 +154,7 @@ func (o *AuthenticatorValidationChallengeResponseRequest) GetCode() string {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidationChallengeResponseRequest) GetCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.Code) {
+	if o == nil || o.Code == nil {
 		return nil, false
 	}
 	return o.Code, true
@@ -165,7 +162,7 @@ func (o *AuthenticatorValidationChallengeResponseRequest) GetCodeOk() (*string, 
 
 // HasCode returns a boolean if a field has been set.
 func (o *AuthenticatorValidationChallengeResponseRequest) HasCode() bool {
-	if o != nil && !IsNil(o.Code) {
+	if o != nil && o.Code != nil {
 		return true
 	}
 
@@ -179,7 +176,7 @@ func (o *AuthenticatorValidationChallengeResponseRequest) SetCode(v string) {
 
 // GetWebauthn returns the Webauthn field value if set, zero value otherwise.
 func (o *AuthenticatorValidationChallengeResponseRequest) GetWebauthn() map[string]interface{} {
-	if o == nil || IsNil(o.Webauthn) {
+	if o == nil || o.Webauthn == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -189,15 +186,15 @@ func (o *AuthenticatorValidationChallengeResponseRequest) GetWebauthn() map[stri
 // GetWebauthnOk returns a tuple with the Webauthn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidationChallengeResponseRequest) GetWebauthnOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Webauthn) {
-		return map[string]interface{}{}, false
+	if o == nil || o.Webauthn == nil {
+		return nil, false
 	}
 	return o.Webauthn, true
 }
 
 // HasWebauthn returns a boolean if a field has been set.
 func (o *AuthenticatorValidationChallengeResponseRequest) HasWebauthn() bool {
-	if o != nil && !IsNil(o.Webauthn) {
+	if o != nil && o.Webauthn != nil {
 		return true
 	}
 
@@ -211,7 +208,7 @@ func (o *AuthenticatorValidationChallengeResponseRequest) SetWebauthn(v map[stri
 
 // GetDuo returns the Duo field value if set, zero value otherwise.
 func (o *AuthenticatorValidationChallengeResponseRequest) GetDuo() int32 {
-	if o == nil || IsNil(o.Duo) {
+	if o == nil || o.Duo == nil {
 		var ret int32
 		return ret
 	}
@@ -221,7 +218,7 @@ func (o *AuthenticatorValidationChallengeResponseRequest) GetDuo() int32 {
 // GetDuoOk returns a tuple with the Duo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidationChallengeResponseRequest) GetDuoOk() (*int32, bool) {
-	if o == nil || IsNil(o.Duo) {
+	if o == nil || o.Duo == nil {
 		return nil, false
 	}
 	return o.Duo, true
@@ -229,7 +226,7 @@ func (o *AuthenticatorValidationChallengeResponseRequest) GetDuoOk() (*int32, bo
 
 // HasDuo returns a boolean if a field has been set.
 func (o *AuthenticatorValidationChallengeResponseRequest) HasDuo() bool {
-	if o != nil && !IsNil(o.Duo) {
+	if o != nil && o.Duo != nil {
 		return true
 	}
 
@@ -242,34 +239,26 @@ func (o *AuthenticatorValidationChallengeResponseRequest) SetDuo(v int32) {
 }
 
 func (o AuthenticatorValidationChallengeResponseRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o AuthenticatorValidationChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Component) {
+	if o.Component != nil {
 		toSerialize["component"] = o.Component
 	}
-	if !IsNil(o.SelectedChallenge) {
+	if o.SelectedChallenge != nil {
 		toSerialize["selected_challenge"] = o.SelectedChallenge
 	}
-	if !IsNil(o.SelectedStage) {
+	if o.SelectedStage != nil {
 		toSerialize["selected_stage"] = o.SelectedStage
 	}
-	if !IsNil(o.Code) {
+	if o.Code != nil {
 		toSerialize["code"] = o.Code
 	}
-	if !IsNil(o.Webauthn) {
+	if o.Webauthn != nil {
 		toSerialize["webauthn"] = o.Webauthn
 	}
-	if !IsNil(o.Duo) {
+	if o.Duo != nil {
 		toSerialize["duo"] = o.Duo
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableAuthenticatorValidationChallengeResponseRequest struct {

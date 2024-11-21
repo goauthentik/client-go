@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the AuthenticatorValidateStageRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthenticatorValidateStageRequest{}
 
 // AuthenticatorValidateStageRequest AuthenticatorValidateStage Serializer
 type AuthenticatorValidateStageRequest struct {
@@ -35,8 +30,6 @@ type AuthenticatorValidateStageRequest struct {
 	WebauthnUserVerification   *UserVerificationEnum `json:"webauthn_user_verification,omitempty"`
 	WebauthnAllowedDeviceTypes []string              `json:"webauthn_allowed_device_types,omitempty"`
 }
-
-type _AuthenticatorValidateStageRequest AuthenticatorValidateStageRequest
 
 // NewAuthenticatorValidateStageRequest instantiates a new AuthenticatorValidateStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -82,7 +75,7 @@ func (o *AuthenticatorValidateStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *AuthenticatorValidateStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -92,7 +85,7 @@ func (o *AuthenticatorValidateStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidateStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -100,7 +93,7 @@ func (o *AuthenticatorValidateStageRequest) GetFlowSetOk() ([]FlowSetRequest, bo
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *AuthenticatorValidateStageRequest) HasFlowSet() bool {
-	if o != nil && !IsNil(o.FlowSet) {
+	if o != nil && o.FlowSet != nil {
 		return true
 	}
 
@@ -114,7 +107,7 @@ func (o *AuthenticatorValidateStageRequest) SetFlowSet(v []FlowSetRequest) {
 
 // GetNotConfiguredAction returns the NotConfiguredAction field value if set, zero value otherwise.
 func (o *AuthenticatorValidateStageRequest) GetNotConfiguredAction() NotConfiguredActionEnum {
-	if o == nil || IsNil(o.NotConfiguredAction) {
+	if o == nil || o.NotConfiguredAction == nil {
 		var ret NotConfiguredActionEnum
 		return ret
 	}
@@ -124,7 +117,7 @@ func (o *AuthenticatorValidateStageRequest) GetNotConfiguredAction() NotConfigur
 // GetNotConfiguredActionOk returns a tuple with the NotConfiguredAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidateStageRequest) GetNotConfiguredActionOk() (*NotConfiguredActionEnum, bool) {
-	if o == nil || IsNil(o.NotConfiguredAction) {
+	if o == nil || o.NotConfiguredAction == nil {
 		return nil, false
 	}
 	return o.NotConfiguredAction, true
@@ -132,7 +125,7 @@ func (o *AuthenticatorValidateStageRequest) GetNotConfiguredActionOk() (*NotConf
 
 // HasNotConfiguredAction returns a boolean if a field has been set.
 func (o *AuthenticatorValidateStageRequest) HasNotConfiguredAction() bool {
-	if o != nil && !IsNil(o.NotConfiguredAction) {
+	if o != nil && o.NotConfiguredAction != nil {
 		return true
 	}
 
@@ -146,7 +139,7 @@ func (o *AuthenticatorValidateStageRequest) SetNotConfiguredAction(v NotConfigur
 
 // GetDeviceClasses returns the DeviceClasses field value if set, zero value otherwise.
 func (o *AuthenticatorValidateStageRequest) GetDeviceClasses() []DeviceClassesEnum {
-	if o == nil || IsNil(o.DeviceClasses) {
+	if o == nil || o.DeviceClasses == nil {
 		var ret []DeviceClassesEnum
 		return ret
 	}
@@ -156,7 +149,7 @@ func (o *AuthenticatorValidateStageRequest) GetDeviceClasses() []DeviceClassesEn
 // GetDeviceClassesOk returns a tuple with the DeviceClasses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidateStageRequest) GetDeviceClassesOk() ([]DeviceClassesEnum, bool) {
-	if o == nil || IsNil(o.DeviceClasses) {
+	if o == nil || o.DeviceClasses == nil {
 		return nil, false
 	}
 	return o.DeviceClasses, true
@@ -164,7 +157,7 @@ func (o *AuthenticatorValidateStageRequest) GetDeviceClassesOk() ([]DeviceClasse
 
 // HasDeviceClasses returns a boolean if a field has been set.
 func (o *AuthenticatorValidateStageRequest) HasDeviceClasses() bool {
-	if o != nil && !IsNil(o.DeviceClasses) {
+	if o != nil && o.DeviceClasses != nil {
 		return true
 	}
 
@@ -178,7 +171,7 @@ func (o *AuthenticatorValidateStageRequest) SetDeviceClasses(v []DeviceClassesEn
 
 // GetConfigurationStages returns the ConfigurationStages field value if set, zero value otherwise.
 func (o *AuthenticatorValidateStageRequest) GetConfigurationStages() []string {
-	if o == nil || IsNil(o.ConfigurationStages) {
+	if o == nil || o.ConfigurationStages == nil {
 		var ret []string
 		return ret
 	}
@@ -188,7 +181,7 @@ func (o *AuthenticatorValidateStageRequest) GetConfigurationStages() []string {
 // GetConfigurationStagesOk returns a tuple with the ConfigurationStages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidateStageRequest) GetConfigurationStagesOk() ([]string, bool) {
-	if o == nil || IsNil(o.ConfigurationStages) {
+	if o == nil || o.ConfigurationStages == nil {
 		return nil, false
 	}
 	return o.ConfigurationStages, true
@@ -196,7 +189,7 @@ func (o *AuthenticatorValidateStageRequest) GetConfigurationStagesOk() ([]string
 
 // HasConfigurationStages returns a boolean if a field has been set.
 func (o *AuthenticatorValidateStageRequest) HasConfigurationStages() bool {
-	if o != nil && !IsNil(o.ConfigurationStages) {
+	if o != nil && o.ConfigurationStages != nil {
 		return true
 	}
 
@@ -210,7 +203,7 @@ func (o *AuthenticatorValidateStageRequest) SetConfigurationStages(v []string) {
 
 // GetLastAuthThreshold returns the LastAuthThreshold field value if set, zero value otherwise.
 func (o *AuthenticatorValidateStageRequest) GetLastAuthThreshold() string {
-	if o == nil || IsNil(o.LastAuthThreshold) {
+	if o == nil || o.LastAuthThreshold == nil {
 		var ret string
 		return ret
 	}
@@ -220,7 +213,7 @@ func (o *AuthenticatorValidateStageRequest) GetLastAuthThreshold() string {
 // GetLastAuthThresholdOk returns a tuple with the LastAuthThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidateStageRequest) GetLastAuthThresholdOk() (*string, bool) {
-	if o == nil || IsNil(o.LastAuthThreshold) {
+	if o == nil || o.LastAuthThreshold == nil {
 		return nil, false
 	}
 	return o.LastAuthThreshold, true
@@ -228,7 +221,7 @@ func (o *AuthenticatorValidateStageRequest) GetLastAuthThresholdOk() (*string, b
 
 // HasLastAuthThreshold returns a boolean if a field has been set.
 func (o *AuthenticatorValidateStageRequest) HasLastAuthThreshold() bool {
-	if o != nil && !IsNil(o.LastAuthThreshold) {
+	if o != nil && o.LastAuthThreshold != nil {
 		return true
 	}
 
@@ -242,7 +235,7 @@ func (o *AuthenticatorValidateStageRequest) SetLastAuthThreshold(v string) {
 
 // GetWebauthnUserVerification returns the WebauthnUserVerification field value if set, zero value otherwise.
 func (o *AuthenticatorValidateStageRequest) GetWebauthnUserVerification() UserVerificationEnum {
-	if o == nil || IsNil(o.WebauthnUserVerification) {
+	if o == nil || o.WebauthnUserVerification == nil {
 		var ret UserVerificationEnum
 		return ret
 	}
@@ -252,7 +245,7 @@ func (o *AuthenticatorValidateStageRequest) GetWebauthnUserVerification() UserVe
 // GetWebauthnUserVerificationOk returns a tuple with the WebauthnUserVerification field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidateStageRequest) GetWebauthnUserVerificationOk() (*UserVerificationEnum, bool) {
-	if o == nil || IsNil(o.WebauthnUserVerification) {
+	if o == nil || o.WebauthnUserVerification == nil {
 		return nil, false
 	}
 	return o.WebauthnUserVerification, true
@@ -260,7 +253,7 @@ func (o *AuthenticatorValidateStageRequest) GetWebauthnUserVerificationOk() (*Us
 
 // HasWebauthnUserVerification returns a boolean if a field has been set.
 func (o *AuthenticatorValidateStageRequest) HasWebauthnUserVerification() bool {
-	if o != nil && !IsNil(o.WebauthnUserVerification) {
+	if o != nil && o.WebauthnUserVerification != nil {
 		return true
 	}
 
@@ -274,7 +267,7 @@ func (o *AuthenticatorValidateStageRequest) SetWebauthnUserVerification(v UserVe
 
 // GetWebauthnAllowedDeviceTypes returns the WebauthnAllowedDeviceTypes field value if set, zero value otherwise.
 func (o *AuthenticatorValidateStageRequest) GetWebauthnAllowedDeviceTypes() []string {
-	if o == nil || IsNil(o.WebauthnAllowedDeviceTypes) {
+	if o == nil || o.WebauthnAllowedDeviceTypes == nil {
 		var ret []string
 		return ret
 	}
@@ -284,7 +277,7 @@ func (o *AuthenticatorValidateStageRequest) GetWebauthnAllowedDeviceTypes() []st
 // GetWebauthnAllowedDeviceTypesOk returns a tuple with the WebauthnAllowedDeviceTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidateStageRequest) GetWebauthnAllowedDeviceTypesOk() ([]string, bool) {
-	if o == nil || IsNil(o.WebauthnAllowedDeviceTypes) {
+	if o == nil || o.WebauthnAllowedDeviceTypes == nil {
 		return nil, false
 	}
 	return o.WebauthnAllowedDeviceTypes, true
@@ -292,7 +285,7 @@ func (o *AuthenticatorValidateStageRequest) GetWebauthnAllowedDeviceTypesOk() ([
 
 // HasWebauthnAllowedDeviceTypes returns a boolean if a field has been set.
 func (o *AuthenticatorValidateStageRequest) HasWebauthnAllowedDeviceTypes() bool {
-	if o != nil && !IsNil(o.WebauthnAllowedDeviceTypes) {
+	if o != nil && o.WebauthnAllowedDeviceTypes != nil {
 		return true
 	}
 
@@ -305,75 +298,32 @@ func (o *AuthenticatorValidateStageRequest) SetWebauthnAllowedDeviceTypes(v []st
 }
 
 func (o AuthenticatorValidateStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o AuthenticatorValidateStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	if !IsNil(o.FlowSet) {
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
 	}
-	if !IsNil(o.NotConfiguredAction) {
+	if o.NotConfiguredAction != nil {
 		toSerialize["not_configured_action"] = o.NotConfiguredAction
 	}
-	if !IsNil(o.DeviceClasses) {
+	if o.DeviceClasses != nil {
 		toSerialize["device_classes"] = o.DeviceClasses
 	}
-	if !IsNil(o.ConfigurationStages) {
+	if o.ConfigurationStages != nil {
 		toSerialize["configuration_stages"] = o.ConfigurationStages
 	}
-	if !IsNil(o.LastAuthThreshold) {
+	if o.LastAuthThreshold != nil {
 		toSerialize["last_auth_threshold"] = o.LastAuthThreshold
 	}
-	if !IsNil(o.WebauthnUserVerification) {
+	if o.WebauthnUserVerification != nil {
 		toSerialize["webauthn_user_verification"] = o.WebauthnUserVerification
 	}
-	if !IsNil(o.WebauthnAllowedDeviceTypes) {
+	if o.WebauthnAllowedDeviceTypes != nil {
 		toSerialize["webauthn_allowed_device_types"] = o.WebauthnAllowedDeviceTypes
 	}
-	return toSerialize, nil
-}
-
-func (o *AuthenticatorValidateStageRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varAuthenticatorValidateStageRequest := _AuthenticatorValidateStageRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorValidateStageRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AuthenticatorValidateStageRequest(varAuthenticatorValidateStageRequest)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableAuthenticatorValidateStageRequest struct {

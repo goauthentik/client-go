@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the FlowErrorChallenge type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &FlowErrorChallenge{}
 
 // FlowErrorChallenge Challenge class when an unhandled error occurs during a stage. Normal users are shown an error message, superusers are shown a full stacktrace.
 type FlowErrorChallenge struct {
@@ -29,8 +24,6 @@ type FlowErrorChallenge struct {
 	Error          *string                   `json:"error,omitempty"`
 	Traceback      *string                   `json:"traceback,omitempty"`
 }
-
-type _FlowErrorChallenge FlowErrorChallenge
 
 // NewFlowErrorChallenge instantiates a new FlowErrorChallenge object
 // This constructor will assign default values to properties that have it defined,
@@ -56,7 +49,7 @@ func NewFlowErrorChallengeWithDefaults() *FlowErrorChallenge {
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
 func (o *FlowErrorChallenge) GetFlowInfo() ContextualFlowInfo {
-	if o == nil || IsNil(o.FlowInfo) {
+	if o == nil || o.FlowInfo == nil {
 		var ret ContextualFlowInfo
 		return ret
 	}
@@ -66,7 +59,7 @@ func (o *FlowErrorChallenge) GetFlowInfo() ContextualFlowInfo {
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowErrorChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
-	if o == nil || IsNil(o.FlowInfo) {
+	if o == nil || o.FlowInfo == nil {
 		return nil, false
 	}
 	return o.FlowInfo, true
@@ -74,7 +67,7 @@ func (o *FlowErrorChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
 
 // HasFlowInfo returns a boolean if a field has been set.
 func (o *FlowErrorChallenge) HasFlowInfo() bool {
-	if o != nil && !IsNil(o.FlowInfo) {
+	if o != nil && o.FlowInfo != nil {
 		return true
 	}
 
@@ -88,7 +81,7 @@ func (o *FlowErrorChallenge) SetFlowInfo(v ContextualFlowInfo) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *FlowErrorChallenge) GetComponent() string {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		var ret string
 		return ret
 	}
@@ -98,7 +91,7 @@ func (o *FlowErrorChallenge) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowErrorChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		return nil, false
 	}
 	return o.Component, true
@@ -106,7 +99,7 @@ func (o *FlowErrorChallenge) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *FlowErrorChallenge) HasComponent() bool {
-	if o != nil && !IsNil(o.Component) {
+	if o != nil && o.Component != nil {
 		return true
 	}
 
@@ -120,7 +113,7 @@ func (o *FlowErrorChallenge) SetComponent(v string) {
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
 func (o *FlowErrorChallenge) GetResponseErrors() map[string][]ErrorDetail {
-	if o == nil || IsNil(o.ResponseErrors) {
+	if o == nil || o.ResponseErrors == nil {
 		var ret map[string][]ErrorDetail
 		return ret
 	}
@@ -130,7 +123,7 @@ func (o *FlowErrorChallenge) GetResponseErrors() map[string][]ErrorDetail {
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowErrorChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
-	if o == nil || IsNil(o.ResponseErrors) {
+	if o == nil || o.ResponseErrors == nil {
 		return nil, false
 	}
 	return o.ResponseErrors, true
@@ -138,7 +131,7 @@ func (o *FlowErrorChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, b
 
 // HasResponseErrors returns a boolean if a field has been set.
 func (o *FlowErrorChallenge) HasResponseErrors() bool {
-	if o != nil && !IsNil(o.ResponseErrors) {
+	if o != nil && o.ResponseErrors != nil {
 		return true
 	}
 
@@ -176,7 +169,7 @@ func (o *FlowErrorChallenge) SetRequestId(v string) {
 
 // GetError returns the Error field value if set, zero value otherwise.
 func (o *FlowErrorChallenge) GetError() string {
-	if o == nil || IsNil(o.Error) {
+	if o == nil || o.Error == nil {
 		var ret string
 		return ret
 	}
@@ -186,7 +179,7 @@ func (o *FlowErrorChallenge) GetError() string {
 // GetErrorOk returns a tuple with the Error field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowErrorChallenge) GetErrorOk() (*string, bool) {
-	if o == nil || IsNil(o.Error) {
+	if o == nil || o.Error == nil {
 		return nil, false
 	}
 	return o.Error, true
@@ -194,7 +187,7 @@ func (o *FlowErrorChallenge) GetErrorOk() (*string, bool) {
 
 // HasError returns a boolean if a field has been set.
 func (o *FlowErrorChallenge) HasError() bool {
-	if o != nil && !IsNil(o.Error) {
+	if o != nil && o.Error != nil {
 		return true
 	}
 
@@ -208,7 +201,7 @@ func (o *FlowErrorChallenge) SetError(v string) {
 
 // GetTraceback returns the Traceback field value if set, zero value otherwise.
 func (o *FlowErrorChallenge) GetTraceback() string {
-	if o == nil || IsNil(o.Traceback) {
+	if o == nil || o.Traceback == nil {
 		var ret string
 		return ret
 	}
@@ -218,7 +211,7 @@ func (o *FlowErrorChallenge) GetTraceback() string {
 // GetTracebackOk returns a tuple with the Traceback field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowErrorChallenge) GetTracebackOk() (*string, bool) {
-	if o == nil || IsNil(o.Traceback) {
+	if o == nil || o.Traceback == nil {
 		return nil, false
 	}
 	return o.Traceback, true
@@ -226,7 +219,7 @@ func (o *FlowErrorChallenge) GetTracebackOk() (*string, bool) {
 
 // HasTraceback returns a boolean if a field has been set.
 func (o *FlowErrorChallenge) HasTraceback() bool {
-	if o != nil && !IsNil(o.Traceback) {
+	if o != nil && o.Traceback != nil {
 		return true
 	}
 
@@ -239,69 +232,26 @@ func (o *FlowErrorChallenge) SetTraceback(v string) {
 }
 
 func (o FlowErrorChallenge) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o FlowErrorChallenge) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.FlowInfo) {
+	if o.FlowInfo != nil {
 		toSerialize["flow_info"] = o.FlowInfo
 	}
-	if !IsNil(o.Component) {
+	if o.Component != nil {
 		toSerialize["component"] = o.Component
 	}
-	if !IsNil(o.ResponseErrors) {
+	if o.ResponseErrors != nil {
 		toSerialize["response_errors"] = o.ResponseErrors
 	}
-	toSerialize["request_id"] = o.RequestId
-	if !IsNil(o.Error) {
+	if true {
+		toSerialize["request_id"] = o.RequestId
+	}
+	if o.Error != nil {
 		toSerialize["error"] = o.Error
 	}
-	if !IsNil(o.Traceback) {
+	if o.Traceback != nil {
 		toSerialize["traceback"] = o.Traceback
 	}
-	return toSerialize, nil
-}
-
-func (o *FlowErrorChallenge) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"request_id",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varFlowErrorChallenge := _FlowErrorChallenge{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varFlowErrorChallenge)
-
-	if err != nil {
-		return err
-	}
-
-	*o = FlowErrorChallenge(varFlowErrorChallenge)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableFlowErrorChallenge struct {

@@ -1,22 +1,22 @@
-# \RacAPI
+# \RacApi
 
 All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**RacConnectionTokensDestroy**](RacAPI.md#RacConnectionTokensDestroy) | **Delete** /rac/connection_tokens/{connection_token_uuid}/ | 
-[**RacConnectionTokensList**](RacAPI.md#RacConnectionTokensList) | **Get** /rac/connection_tokens/ | 
-[**RacConnectionTokensPartialUpdate**](RacAPI.md#RacConnectionTokensPartialUpdate) | **Patch** /rac/connection_tokens/{connection_token_uuid}/ | 
-[**RacConnectionTokensRetrieve**](RacAPI.md#RacConnectionTokensRetrieve) | **Get** /rac/connection_tokens/{connection_token_uuid}/ | 
-[**RacConnectionTokensUpdate**](RacAPI.md#RacConnectionTokensUpdate) | **Put** /rac/connection_tokens/{connection_token_uuid}/ | 
-[**RacConnectionTokensUsedByList**](RacAPI.md#RacConnectionTokensUsedByList) | **Get** /rac/connection_tokens/{connection_token_uuid}/used_by/ | 
-[**RacEndpointsCreate**](RacAPI.md#RacEndpointsCreate) | **Post** /rac/endpoints/ | 
-[**RacEndpointsDestroy**](RacAPI.md#RacEndpointsDestroy) | **Delete** /rac/endpoints/{pbm_uuid}/ | 
-[**RacEndpointsList**](RacAPI.md#RacEndpointsList) | **Get** /rac/endpoints/ | 
-[**RacEndpointsPartialUpdate**](RacAPI.md#RacEndpointsPartialUpdate) | **Patch** /rac/endpoints/{pbm_uuid}/ | 
-[**RacEndpointsRetrieve**](RacAPI.md#RacEndpointsRetrieve) | **Get** /rac/endpoints/{pbm_uuid}/ | 
-[**RacEndpointsUpdate**](RacAPI.md#RacEndpointsUpdate) | **Put** /rac/endpoints/{pbm_uuid}/ | 
-[**RacEndpointsUsedByList**](RacAPI.md#RacEndpointsUsedByList) | **Get** /rac/endpoints/{pbm_uuid}/used_by/ | 
+[**RacConnectionTokensDestroy**](RacApi.md#RacConnectionTokensDestroy) | **Delete** /rac/connection_tokens/{connection_token_uuid}/ | 
+[**RacConnectionTokensList**](RacApi.md#RacConnectionTokensList) | **Get** /rac/connection_tokens/ | 
+[**RacConnectionTokensPartialUpdate**](RacApi.md#RacConnectionTokensPartialUpdate) | **Patch** /rac/connection_tokens/{connection_token_uuid}/ | 
+[**RacConnectionTokensRetrieve**](RacApi.md#RacConnectionTokensRetrieve) | **Get** /rac/connection_tokens/{connection_token_uuid}/ | 
+[**RacConnectionTokensUpdate**](RacApi.md#RacConnectionTokensUpdate) | **Put** /rac/connection_tokens/{connection_token_uuid}/ | 
+[**RacConnectionTokensUsedByList**](RacApi.md#RacConnectionTokensUsedByList) | **Get** /rac/connection_tokens/{connection_token_uuid}/used_by/ | 
+[**RacEndpointsCreate**](RacApi.md#RacEndpointsCreate) | **Post** /rac/endpoints/ | 
+[**RacEndpointsDestroy**](RacApi.md#RacEndpointsDestroy) | **Delete** /rac/endpoints/{pbm_uuid}/ | 
+[**RacEndpointsList**](RacApi.md#RacEndpointsList) | **Get** /rac/endpoints/ | 
+[**RacEndpointsPartialUpdate**](RacApi.md#RacEndpointsPartialUpdate) | **Patch** /rac/endpoints/{pbm_uuid}/ | 
+[**RacEndpointsRetrieve**](RacApi.md#RacEndpointsRetrieve) | **Get** /rac/endpoints/{pbm_uuid}/ | 
+[**RacEndpointsUpdate**](RacApi.md#RacEndpointsUpdate) | **Put** /rac/endpoints/{pbm_uuid}/ | 
+[**RacEndpointsUsedByList**](RacApi.md#RacEndpointsUsedByList) | **Get** /rac/endpoints/{pbm_uuid}/used_by/ | 
 
 
 
@@ -34,22 +34,22 @@ Method | HTTP request | Description
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Connection token.
+    connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Connection token.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.RacAPI.RacConnectionTokensDestroy(context.Background(), connectionTokenUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RacAPI.RacConnectionTokensDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RacApi.RacConnectionTokensDestroy(context.Background(), connectionTokenUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RacApi.RacConnectionTokensDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -102,30 +102,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	endpoint := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	provider := int32(56) // int32 |  (optional)
-	search := "search_example" // string | A search term. (optional)
-	sessionUser := int32(56) // int32 |  (optional)
+    endpoint := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    provider := int32(56) // int32 |  (optional)
+    search := "search_example" // string | A search term. (optional)
+    sessionUser := int32(56) // int32 |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RacAPI.RacConnectionTokensList(context.Background()).Endpoint(endpoint).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).SessionUser(sessionUser).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RacAPI.RacConnectionTokensList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RacConnectionTokensList`: PaginatedConnectionTokenList
-	fmt.Fprintf(os.Stdout, "Response from `RacAPI.RacConnectionTokensList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RacApi.RacConnectionTokensList(context.Background()).Endpoint(endpoint).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).SessionUser(sessionUser).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RacApi.RacConnectionTokensList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RacConnectionTokensList`: PaginatedConnectionTokenList
+    fmt.Fprintf(os.Stdout, "Response from `RacApi.RacConnectionTokensList`: %v\n", resp)
 }
 ```
 
@@ -180,25 +180,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Connection token.
-	patchedConnectionTokenRequest := *openapiclient.NewPatchedConnectionTokenRequest() // PatchedConnectionTokenRequest |  (optional)
+    connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Connection token.
+    patchedConnectionTokenRequest := *openapiclient.NewPatchedConnectionTokenRequest() // PatchedConnectionTokenRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RacAPI.RacConnectionTokensPartialUpdate(context.Background(), connectionTokenUuid).PatchedConnectionTokenRequest(patchedConnectionTokenRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RacAPI.RacConnectionTokensPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RacConnectionTokensPartialUpdate`: ConnectionToken
-	fmt.Fprintf(os.Stdout, "Response from `RacAPI.RacConnectionTokensPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RacApi.RacConnectionTokensPartialUpdate(context.Background(), connectionTokenUuid).PatchedConnectionTokenRequest(patchedConnectionTokenRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RacApi.RacConnectionTokensPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RacConnectionTokensPartialUpdate`: ConnectionToken
+    fmt.Fprintf(os.Stdout, "Response from `RacApi.RacConnectionTokensPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -252,24 +252,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Connection token.
+    connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Connection token.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RacAPI.RacConnectionTokensRetrieve(context.Background(), connectionTokenUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RacAPI.RacConnectionTokensRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RacConnectionTokensRetrieve`: ConnectionToken
-	fmt.Fprintf(os.Stdout, "Response from `RacAPI.RacConnectionTokensRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RacApi.RacConnectionTokensRetrieve(context.Background(), connectionTokenUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RacApi.RacConnectionTokensRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RacConnectionTokensRetrieve`: ConnectionToken
+    fmt.Fprintf(os.Stdout, "Response from `RacApi.RacConnectionTokensRetrieve`: %v\n", resp)
 }
 ```
 
@@ -322,25 +322,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Connection token.
-	connectionTokenRequest := *openapiclient.NewConnectionTokenRequest(int32(123), "Endpoint_example") // ConnectionTokenRequest | 
+    connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Connection token.
+    connectionTokenRequest := *openapiclient.NewConnectionTokenRequest(int32(123), "Endpoint_example") // ConnectionTokenRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RacAPI.RacConnectionTokensUpdate(context.Background(), connectionTokenUuid).ConnectionTokenRequest(connectionTokenRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RacAPI.RacConnectionTokensUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RacConnectionTokensUpdate`: ConnectionToken
-	fmt.Fprintf(os.Stdout, "Response from `RacAPI.RacConnectionTokensUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RacApi.RacConnectionTokensUpdate(context.Background(), connectionTokenUuid).ConnectionTokenRequest(connectionTokenRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RacApi.RacConnectionTokensUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RacConnectionTokensUpdate`: ConnectionToken
+    fmt.Fprintf(os.Stdout, "Response from `RacApi.RacConnectionTokensUpdate`: %v\n", resp)
 }
 ```
 
@@ -394,24 +394,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Connection token.
+    connectionTokenUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Connection token.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RacAPI.RacConnectionTokensUsedByList(context.Background(), connectionTokenUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RacAPI.RacConnectionTokensUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RacConnectionTokensUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `RacAPI.RacConnectionTokensUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RacApi.RacConnectionTokensUsedByList(context.Background(), connectionTokenUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RacApi.RacConnectionTokensUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RacConnectionTokensUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `RacApi.RacConnectionTokensUsedByList`: %v\n", resp)
 }
 ```
 
@@ -464,24 +464,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	endpointRequest := *openapiclient.NewEndpointRequest("Name_example", int32(123), openapiclient.ProtocolEnum("rdp"), "Host_example", openapiclient.AuthModeEnum("static")) // EndpointRequest | 
+    endpointRequest := *openapiclient.NewEndpointRequest("Name_example", int32(123), openapiclient.ProtocolEnum("rdp"), "Host_example", openapiclient.AuthModeEnum("static")) // EndpointRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RacAPI.RacEndpointsCreate(context.Background()).EndpointRequest(endpointRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RacAPI.RacEndpointsCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RacEndpointsCreate`: Endpoint
-	fmt.Fprintf(os.Stdout, "Response from `RacAPI.RacEndpointsCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RacApi.RacEndpointsCreate(context.Background()).EndpointRequest(endpointRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RacApi.RacEndpointsCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RacEndpointsCreate`: Endpoint
+    fmt.Fprintf(os.Stdout, "Response from `RacApi.RacEndpointsCreate`: %v\n", resp)
 }
 ```
 
@@ -530,22 +530,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Endpoint.
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Endpoint.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.RacAPI.RacEndpointsDestroy(context.Background(), pbmUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RacAPI.RacEndpointsDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RacApi.RacEndpointsDestroy(context.Background(), pbmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RacApi.RacEndpointsDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -598,30 +598,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	provider := int32(56) // int32 |  (optional)
-	search := "search_example" // string |  (optional)
-	superuserFullList := true // bool |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    provider := int32(56) // int32 |  (optional)
+    search := "search_example" // string |  (optional)
+    superuserFullList := true // bool |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RacAPI.RacEndpointsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).SuperuserFullList(superuserFullList).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RacAPI.RacEndpointsList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RacEndpointsList`: PaginatedEndpointList
-	fmt.Fprintf(os.Stdout, "Response from `RacAPI.RacEndpointsList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RacApi.RacEndpointsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Provider(provider).Search(search).SuperuserFullList(superuserFullList).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RacApi.RacEndpointsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RacEndpointsList`: PaginatedEndpointList
+    fmt.Fprintf(os.Stdout, "Response from `RacApi.RacEndpointsList`: %v\n", resp)
 }
 ```
 
@@ -676,25 +676,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Endpoint.
-	patchedEndpointRequest := *openapiclient.NewPatchedEndpointRequest() // PatchedEndpointRequest |  (optional)
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Endpoint.
+    patchedEndpointRequest := *openapiclient.NewPatchedEndpointRequest() // PatchedEndpointRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RacAPI.RacEndpointsPartialUpdate(context.Background(), pbmUuid).PatchedEndpointRequest(patchedEndpointRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RacAPI.RacEndpointsPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RacEndpointsPartialUpdate`: Endpoint
-	fmt.Fprintf(os.Stdout, "Response from `RacAPI.RacEndpointsPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RacApi.RacEndpointsPartialUpdate(context.Background(), pbmUuid).PatchedEndpointRequest(patchedEndpointRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RacApi.RacEndpointsPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RacEndpointsPartialUpdate`: Endpoint
+    fmt.Fprintf(os.Stdout, "Response from `RacApi.RacEndpointsPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -748,24 +748,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Endpoint.
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Endpoint.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RacAPI.RacEndpointsRetrieve(context.Background(), pbmUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RacAPI.RacEndpointsRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RacEndpointsRetrieve`: Endpoint
-	fmt.Fprintf(os.Stdout, "Response from `RacAPI.RacEndpointsRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RacApi.RacEndpointsRetrieve(context.Background(), pbmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RacApi.RacEndpointsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RacEndpointsRetrieve`: Endpoint
+    fmt.Fprintf(os.Stdout, "Response from `RacApi.RacEndpointsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -818,25 +818,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Endpoint.
-	endpointRequest := *openapiclient.NewEndpointRequest("Name_example", int32(123), openapiclient.ProtocolEnum("rdp"), "Host_example", openapiclient.AuthModeEnum("static")) // EndpointRequest | 
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Endpoint.
+    endpointRequest := *openapiclient.NewEndpointRequest("Name_example", int32(123), openapiclient.ProtocolEnum("rdp"), "Host_example", openapiclient.AuthModeEnum("static")) // EndpointRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RacAPI.RacEndpointsUpdate(context.Background(), pbmUuid).EndpointRequest(endpointRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RacAPI.RacEndpointsUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RacEndpointsUpdate`: Endpoint
-	fmt.Fprintf(os.Stdout, "Response from `RacAPI.RacEndpointsUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RacApi.RacEndpointsUpdate(context.Background(), pbmUuid).EndpointRequest(endpointRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RacApi.RacEndpointsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RacEndpointsUpdate`: Endpoint
+    fmt.Fprintf(os.Stdout, "Response from `RacApi.RacEndpointsUpdate`: %v\n", resp)
 }
 ```
 
@@ -890,24 +890,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Endpoint.
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Endpoint.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RacAPI.RacEndpointsUsedByList(context.Background(), pbmUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RacAPI.RacEndpointsUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RacEndpointsUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `RacAPI.RacEndpointsUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RacApi.RacEndpointsUsedByList(context.Background(), pbmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RacApi.RacEndpointsUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RacEndpointsUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `RacApi.RacEndpointsUsedByList`: %v\n", resp)
 }
 ```
 

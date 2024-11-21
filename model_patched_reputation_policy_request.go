@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedReputationPolicyRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedReputationPolicyRequest{}
-
 // PatchedReputationPolicyRequest Reputation Policy Serializer
 type PatchedReputationPolicyRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -47,7 +44,7 @@ func NewPatchedReputationPolicyRequestWithDefaults() *PatchedReputationPolicyReq
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedReputationPolicyRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -57,7 +54,7 @@ func (o *PatchedReputationPolicyRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedReputationPolicyRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -65,7 +62,7 @@ func (o *PatchedReputationPolicyRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedReputationPolicyRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -79,7 +76,7 @@ func (o *PatchedReputationPolicyRequest) SetName(v string) {
 
 // GetExecutionLogging returns the ExecutionLogging field value if set, zero value otherwise.
 func (o *PatchedReputationPolicyRequest) GetExecutionLogging() bool {
-	if o == nil || IsNil(o.ExecutionLogging) {
+	if o == nil || o.ExecutionLogging == nil {
 		var ret bool
 		return ret
 	}
@@ -89,7 +86,7 @@ func (o *PatchedReputationPolicyRequest) GetExecutionLogging() bool {
 // GetExecutionLoggingOk returns a tuple with the ExecutionLogging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedReputationPolicyRequest) GetExecutionLoggingOk() (*bool, bool) {
-	if o == nil || IsNil(o.ExecutionLogging) {
+	if o == nil || o.ExecutionLogging == nil {
 		return nil, false
 	}
 	return o.ExecutionLogging, true
@@ -97,7 +94,7 @@ func (o *PatchedReputationPolicyRequest) GetExecutionLoggingOk() (*bool, bool) {
 
 // HasExecutionLogging returns a boolean if a field has been set.
 func (o *PatchedReputationPolicyRequest) HasExecutionLogging() bool {
-	if o != nil && !IsNil(o.ExecutionLogging) {
+	if o != nil && o.ExecutionLogging != nil {
 		return true
 	}
 
@@ -111,7 +108,7 @@ func (o *PatchedReputationPolicyRequest) SetExecutionLogging(v bool) {
 
 // GetCheckIp returns the CheckIp field value if set, zero value otherwise.
 func (o *PatchedReputationPolicyRequest) GetCheckIp() bool {
-	if o == nil || IsNil(o.CheckIp) {
+	if o == nil || o.CheckIp == nil {
 		var ret bool
 		return ret
 	}
@@ -121,7 +118,7 @@ func (o *PatchedReputationPolicyRequest) GetCheckIp() bool {
 // GetCheckIpOk returns a tuple with the CheckIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedReputationPolicyRequest) GetCheckIpOk() (*bool, bool) {
-	if o == nil || IsNil(o.CheckIp) {
+	if o == nil || o.CheckIp == nil {
 		return nil, false
 	}
 	return o.CheckIp, true
@@ -129,7 +126,7 @@ func (o *PatchedReputationPolicyRequest) GetCheckIpOk() (*bool, bool) {
 
 // HasCheckIp returns a boolean if a field has been set.
 func (o *PatchedReputationPolicyRequest) HasCheckIp() bool {
-	if o != nil && !IsNil(o.CheckIp) {
+	if o != nil && o.CheckIp != nil {
 		return true
 	}
 
@@ -143,7 +140,7 @@ func (o *PatchedReputationPolicyRequest) SetCheckIp(v bool) {
 
 // GetCheckUsername returns the CheckUsername field value if set, zero value otherwise.
 func (o *PatchedReputationPolicyRequest) GetCheckUsername() bool {
-	if o == nil || IsNil(o.CheckUsername) {
+	if o == nil || o.CheckUsername == nil {
 		var ret bool
 		return ret
 	}
@@ -153,7 +150,7 @@ func (o *PatchedReputationPolicyRequest) GetCheckUsername() bool {
 // GetCheckUsernameOk returns a tuple with the CheckUsername field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedReputationPolicyRequest) GetCheckUsernameOk() (*bool, bool) {
-	if o == nil || IsNil(o.CheckUsername) {
+	if o == nil || o.CheckUsername == nil {
 		return nil, false
 	}
 	return o.CheckUsername, true
@@ -161,7 +158,7 @@ func (o *PatchedReputationPolicyRequest) GetCheckUsernameOk() (*bool, bool) {
 
 // HasCheckUsername returns a boolean if a field has been set.
 func (o *PatchedReputationPolicyRequest) HasCheckUsername() bool {
-	if o != nil && !IsNil(o.CheckUsername) {
+	if o != nil && o.CheckUsername != nil {
 		return true
 	}
 
@@ -175,7 +172,7 @@ func (o *PatchedReputationPolicyRequest) SetCheckUsername(v bool) {
 
 // GetThreshold returns the Threshold field value if set, zero value otherwise.
 func (o *PatchedReputationPolicyRequest) GetThreshold() int32 {
-	if o == nil || IsNil(o.Threshold) {
+	if o == nil || o.Threshold == nil {
 		var ret int32
 		return ret
 	}
@@ -185,7 +182,7 @@ func (o *PatchedReputationPolicyRequest) GetThreshold() int32 {
 // GetThresholdOk returns a tuple with the Threshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedReputationPolicyRequest) GetThresholdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Threshold) {
+	if o == nil || o.Threshold == nil {
 		return nil, false
 	}
 	return o.Threshold, true
@@ -193,7 +190,7 @@ func (o *PatchedReputationPolicyRequest) GetThresholdOk() (*int32, bool) {
 
 // HasThreshold returns a boolean if a field has been set.
 func (o *PatchedReputationPolicyRequest) HasThreshold() bool {
-	if o != nil && !IsNil(o.Threshold) {
+	if o != nil && o.Threshold != nil {
 		return true
 	}
 
@@ -206,31 +203,23 @@ func (o *PatchedReputationPolicyRequest) SetThreshold(v int32) {
 }
 
 func (o PatchedReputationPolicyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedReputationPolicyRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.ExecutionLogging) {
+	if o.ExecutionLogging != nil {
 		toSerialize["execution_logging"] = o.ExecutionLogging
 	}
-	if !IsNil(o.CheckIp) {
+	if o.CheckIp != nil {
 		toSerialize["check_ip"] = o.CheckIp
 	}
-	if !IsNil(o.CheckUsername) {
+	if o.CheckUsername != nil {
 		toSerialize["check_username"] = o.CheckUsername
 	}
-	if !IsNil(o.Threshold) {
+	if o.Threshold != nil {
 		toSerialize["threshold"] = o.Threshold
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedReputationPolicyRequest struct {

@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedSCIMProviderRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedSCIMProviderRequest{}
-
 // PatchedSCIMProviderRequest SCIMProvider Serializer
 type PatchedSCIMProviderRequest struct {
 	Name             *string  `json:"name,omitempty"`
@@ -52,7 +49,7 @@ func NewPatchedSCIMProviderRequestWithDefaults() *PatchedSCIMProviderRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedSCIMProviderRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -62,7 +59,7 @@ func (o *PatchedSCIMProviderRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMProviderRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -70,7 +67,7 @@ func (o *PatchedSCIMProviderRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedSCIMProviderRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -84,7 +81,7 @@ func (o *PatchedSCIMProviderRequest) SetName(v string) {
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
 func (o *PatchedSCIMProviderRequest) GetPropertyMappings() []string {
-	if o == nil || IsNil(o.PropertyMappings) {
+	if o == nil || o.PropertyMappings == nil {
 		var ret []string
 		return ret
 	}
@@ -94,7 +91,7 @@ func (o *PatchedSCIMProviderRequest) GetPropertyMappings() []string {
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
-	if o == nil || IsNil(o.PropertyMappings) {
+	if o == nil || o.PropertyMappings == nil {
 		return nil, false
 	}
 	return o.PropertyMappings, true
@@ -102,7 +99,7 @@ func (o *PatchedSCIMProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
 
 // HasPropertyMappings returns a boolean if a field has been set.
 func (o *PatchedSCIMProviderRequest) HasPropertyMappings() bool {
-	if o != nil && !IsNil(o.PropertyMappings) {
+	if o != nil && o.PropertyMappings != nil {
 		return true
 	}
 
@@ -116,7 +113,7 @@ func (o *PatchedSCIMProviderRequest) SetPropertyMappings(v []string) {
 
 // GetPropertyMappingsGroup returns the PropertyMappingsGroup field value if set, zero value otherwise.
 func (o *PatchedSCIMProviderRequest) GetPropertyMappingsGroup() []string {
-	if o == nil || IsNil(o.PropertyMappingsGroup) {
+	if o == nil || o.PropertyMappingsGroup == nil {
 		var ret []string
 		return ret
 	}
@@ -126,7 +123,7 @@ func (o *PatchedSCIMProviderRequest) GetPropertyMappingsGroup() []string {
 // GetPropertyMappingsGroupOk returns a tuple with the PropertyMappingsGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMProviderRequest) GetPropertyMappingsGroupOk() ([]string, bool) {
-	if o == nil || IsNil(o.PropertyMappingsGroup) {
+	if o == nil || o.PropertyMappingsGroup == nil {
 		return nil, false
 	}
 	return o.PropertyMappingsGroup, true
@@ -134,7 +131,7 @@ func (o *PatchedSCIMProviderRequest) GetPropertyMappingsGroupOk() ([]string, boo
 
 // HasPropertyMappingsGroup returns a boolean if a field has been set.
 func (o *PatchedSCIMProviderRequest) HasPropertyMappingsGroup() bool {
-	if o != nil && !IsNil(o.PropertyMappingsGroup) {
+	if o != nil && o.PropertyMappingsGroup != nil {
 		return true
 	}
 
@@ -148,7 +145,7 @@ func (o *PatchedSCIMProviderRequest) SetPropertyMappingsGroup(v []string) {
 
 // GetUrl returns the Url field value if set, zero value otherwise.
 func (o *PatchedSCIMProviderRequest) GetUrl() string {
-	if o == nil || IsNil(o.Url) {
+	if o == nil || o.Url == nil {
 		var ret string
 		return ret
 	}
@@ -158,7 +155,7 @@ func (o *PatchedSCIMProviderRequest) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMProviderRequest) GetUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.Url) {
+	if o == nil || o.Url == nil {
 		return nil, false
 	}
 	return o.Url, true
@@ -166,7 +163,7 @@ func (o *PatchedSCIMProviderRequest) GetUrlOk() (*string, bool) {
 
 // HasUrl returns a boolean if a field has been set.
 func (o *PatchedSCIMProviderRequest) HasUrl() bool {
-	if o != nil && !IsNil(o.Url) {
+	if o != nil && o.Url != nil {
 		return true
 	}
 
@@ -180,7 +177,7 @@ func (o *PatchedSCIMProviderRequest) SetUrl(v string) {
 
 // GetVerifyCertificates returns the VerifyCertificates field value if set, zero value otherwise.
 func (o *PatchedSCIMProviderRequest) GetVerifyCertificates() bool {
-	if o == nil || IsNil(o.VerifyCertificates) {
+	if o == nil || o.VerifyCertificates == nil {
 		var ret bool
 		return ret
 	}
@@ -190,7 +187,7 @@ func (o *PatchedSCIMProviderRequest) GetVerifyCertificates() bool {
 // GetVerifyCertificatesOk returns a tuple with the VerifyCertificates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMProviderRequest) GetVerifyCertificatesOk() (*bool, bool) {
-	if o == nil || IsNil(o.VerifyCertificates) {
+	if o == nil || o.VerifyCertificates == nil {
 		return nil, false
 	}
 	return o.VerifyCertificates, true
@@ -198,7 +195,7 @@ func (o *PatchedSCIMProviderRequest) GetVerifyCertificatesOk() (*bool, bool) {
 
 // HasVerifyCertificates returns a boolean if a field has been set.
 func (o *PatchedSCIMProviderRequest) HasVerifyCertificates() bool {
-	if o != nil && !IsNil(o.VerifyCertificates) {
+	if o != nil && o.VerifyCertificates != nil {
 		return true
 	}
 
@@ -212,7 +209,7 @@ func (o *PatchedSCIMProviderRequest) SetVerifyCertificates(v bool) {
 
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *PatchedSCIMProviderRequest) GetToken() string {
-	if o == nil || IsNil(o.Token) {
+	if o == nil || o.Token == nil {
 		var ret string
 		return ret
 	}
@@ -222,7 +219,7 @@ func (o *PatchedSCIMProviderRequest) GetToken() string {
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMProviderRequest) GetTokenOk() (*string, bool) {
-	if o == nil || IsNil(o.Token) {
+	if o == nil || o.Token == nil {
 		return nil, false
 	}
 	return o.Token, true
@@ -230,7 +227,7 @@ func (o *PatchedSCIMProviderRequest) GetTokenOk() (*string, bool) {
 
 // HasToken returns a boolean if a field has been set.
 func (o *PatchedSCIMProviderRequest) HasToken() bool {
-	if o != nil && !IsNil(o.Token) {
+	if o != nil && o.Token != nil {
 		return true
 	}
 
@@ -244,7 +241,7 @@ func (o *PatchedSCIMProviderRequest) SetToken(v string) {
 
 // GetExcludeUsersServiceAccount returns the ExcludeUsersServiceAccount field value if set, zero value otherwise.
 func (o *PatchedSCIMProviderRequest) GetExcludeUsersServiceAccount() bool {
-	if o == nil || IsNil(o.ExcludeUsersServiceAccount) {
+	if o == nil || o.ExcludeUsersServiceAccount == nil {
 		var ret bool
 		return ret
 	}
@@ -254,7 +251,7 @@ func (o *PatchedSCIMProviderRequest) GetExcludeUsersServiceAccount() bool {
 // GetExcludeUsersServiceAccountOk returns a tuple with the ExcludeUsersServiceAccount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMProviderRequest) GetExcludeUsersServiceAccountOk() (*bool, bool) {
-	if o == nil || IsNil(o.ExcludeUsersServiceAccount) {
+	if o == nil || o.ExcludeUsersServiceAccount == nil {
 		return nil, false
 	}
 	return o.ExcludeUsersServiceAccount, true
@@ -262,7 +259,7 @@ func (o *PatchedSCIMProviderRequest) GetExcludeUsersServiceAccountOk() (*bool, b
 
 // HasExcludeUsersServiceAccount returns a boolean if a field has been set.
 func (o *PatchedSCIMProviderRequest) HasExcludeUsersServiceAccount() bool {
-	if o != nil && !IsNil(o.ExcludeUsersServiceAccount) {
+	if o != nil && o.ExcludeUsersServiceAccount != nil {
 		return true
 	}
 
@@ -276,7 +273,7 @@ func (o *PatchedSCIMProviderRequest) SetExcludeUsersServiceAccount(v bool) {
 
 // GetFilterGroup returns the FilterGroup field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedSCIMProviderRequest) GetFilterGroup() string {
-	if o == nil || IsNil(o.FilterGroup.Get()) {
+	if o == nil || o.FilterGroup.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -318,40 +315,32 @@ func (o *PatchedSCIMProviderRequest) UnsetFilterGroup() {
 }
 
 func (o PatchedSCIMProviderRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedSCIMProviderRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.PropertyMappings) {
+	if o.PropertyMappings != nil {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
-	if !IsNil(o.PropertyMappingsGroup) {
+	if o.PropertyMappingsGroup != nil {
 		toSerialize["property_mappings_group"] = o.PropertyMappingsGroup
 	}
-	if !IsNil(o.Url) {
+	if o.Url != nil {
 		toSerialize["url"] = o.Url
 	}
-	if !IsNil(o.VerifyCertificates) {
+	if o.VerifyCertificates != nil {
 		toSerialize["verify_certificates"] = o.VerifyCertificates
 	}
-	if !IsNil(o.Token) {
+	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
-	if !IsNil(o.ExcludeUsersServiceAccount) {
+	if o.ExcludeUsersServiceAccount != nil {
 		toSerialize["exclude_users_service_account"] = o.ExcludeUsersServiceAccount
 	}
 	if o.FilterGroup.IsSet() {
 		toSerialize["filter_group"] = o.FilterGroup.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedSCIMProviderRequest struct {

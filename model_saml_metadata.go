@@ -12,21 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the SAMLMetadata type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SAMLMetadata{}
 
 // SAMLMetadata SAML Provider Metadata serializer
 type SAMLMetadata struct {
 	Metadata    string `json:"metadata"`
 	DownloadUrl string `json:"download_url"`
 }
-
-type _SAMLMetadata SAMLMetadata
 
 // NewSAMLMetadata instantiates a new SAMLMetadata object
 // This constructor will assign default values to properties that have it defined,
@@ -96,56 +89,14 @@ func (o *SAMLMetadata) SetDownloadUrl(v string) {
 }
 
 func (o SAMLMetadata) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["metadata"] = o.Metadata
+	}
+	if true {
+		toSerialize["download_url"] = o.DownloadUrl
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o SAMLMetadata) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["metadata"] = o.Metadata
-	toSerialize["download_url"] = o.DownloadUrl
-	return toSerialize, nil
-}
-
-func (o *SAMLMetadata) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"metadata",
-		"download_url",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSAMLMetadata := _SAMLMetadata{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSAMLMetadata)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SAMLMetadata(varSAMLMetadata)
-
-	return err
 }
 
 type NullableSAMLMetadata struct {

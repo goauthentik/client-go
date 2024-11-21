@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the PasswordExpiryPolicyRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PasswordExpiryPolicyRequest{}
 
 // PasswordExpiryPolicyRequest Password Expiry Policy Serializer
 type PasswordExpiryPolicyRequest struct {
@@ -28,8 +23,6 @@ type PasswordExpiryPolicyRequest struct {
 	Days             int32 `json:"days"`
 	DenyOnly         *bool `json:"deny_only,omitempty"`
 }
-
-type _PasswordExpiryPolicyRequest PasswordExpiryPolicyRequest
 
 // NewPasswordExpiryPolicyRequest instantiates a new PasswordExpiryPolicyRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -76,7 +69,7 @@ func (o *PasswordExpiryPolicyRequest) SetName(v string) {
 
 // GetExecutionLogging returns the ExecutionLogging field value if set, zero value otherwise.
 func (o *PasswordExpiryPolicyRequest) GetExecutionLogging() bool {
-	if o == nil || IsNil(o.ExecutionLogging) {
+	if o == nil || o.ExecutionLogging == nil {
 		var ret bool
 		return ret
 	}
@@ -86,7 +79,7 @@ func (o *PasswordExpiryPolicyRequest) GetExecutionLogging() bool {
 // GetExecutionLoggingOk returns a tuple with the ExecutionLogging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordExpiryPolicyRequest) GetExecutionLoggingOk() (*bool, bool) {
-	if o == nil || IsNil(o.ExecutionLogging) {
+	if o == nil || o.ExecutionLogging == nil {
 		return nil, false
 	}
 	return o.ExecutionLogging, true
@@ -94,7 +87,7 @@ func (o *PasswordExpiryPolicyRequest) GetExecutionLoggingOk() (*bool, bool) {
 
 // HasExecutionLogging returns a boolean if a field has been set.
 func (o *PasswordExpiryPolicyRequest) HasExecutionLogging() bool {
-	if o != nil && !IsNil(o.ExecutionLogging) {
+	if o != nil && o.ExecutionLogging != nil {
 		return true
 	}
 
@@ -132,7 +125,7 @@ func (o *PasswordExpiryPolicyRequest) SetDays(v int32) {
 
 // GetDenyOnly returns the DenyOnly field value if set, zero value otherwise.
 func (o *PasswordExpiryPolicyRequest) GetDenyOnly() bool {
-	if o == nil || IsNil(o.DenyOnly) {
+	if o == nil || o.DenyOnly == nil {
 		var ret bool
 		return ret
 	}
@@ -142,7 +135,7 @@ func (o *PasswordExpiryPolicyRequest) GetDenyOnly() bool {
 // GetDenyOnlyOk returns a tuple with the DenyOnly field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordExpiryPolicyRequest) GetDenyOnlyOk() (*bool, bool) {
-	if o == nil || IsNil(o.DenyOnly) {
+	if o == nil || o.DenyOnly == nil {
 		return nil, false
 	}
 	return o.DenyOnly, true
@@ -150,7 +143,7 @@ func (o *PasswordExpiryPolicyRequest) GetDenyOnlyOk() (*bool, bool) {
 
 // HasDenyOnly returns a boolean if a field has been set.
 func (o *PasswordExpiryPolicyRequest) HasDenyOnly() bool {
-	if o != nil && !IsNil(o.DenyOnly) {
+	if o != nil && o.DenyOnly != nil {
 		return true
 	}
 
@@ -163,62 +156,20 @@ func (o *PasswordExpiryPolicyRequest) SetDenyOnly(v bool) {
 }
 
 func (o PasswordExpiryPolicyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PasswordExpiryPolicyRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	if !IsNil(o.ExecutionLogging) {
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.ExecutionLogging != nil {
 		toSerialize["execution_logging"] = o.ExecutionLogging
 	}
-	toSerialize["days"] = o.Days
-	if !IsNil(o.DenyOnly) {
+	if true {
+		toSerialize["days"] = o.Days
+	}
+	if o.DenyOnly != nil {
 		toSerialize["deny_only"] = o.DenyOnly
 	}
-	return toSerialize, nil
-}
-
-func (o *PasswordExpiryPolicyRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"days",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPasswordExpiryPolicyRequest := _PasswordExpiryPolicyRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPasswordExpiryPolicyRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PasswordExpiryPolicyRequest(varPasswordExpiryPolicyRequest)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullablePasswordExpiryPolicyRequest struct {

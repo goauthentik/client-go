@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the UserSetting type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UserSetting{}
 
 // UserSetting Serializer for User settings for stages and sources
 type UserSetting struct {
@@ -28,8 +23,6 @@ type UserSetting struct {
 	ConfigureUrl *string `json:"configure_url,omitempty"`
 	IconUrl      *string `json:"icon_url,omitempty"`
 }
-
-type _UserSetting UserSetting
 
 // NewUserSetting instantiates a new UserSetting object
 // This constructor will assign default values to properties that have it defined,
@@ -125,7 +118,7 @@ func (o *UserSetting) SetTitle(v string) {
 
 // GetConfigureUrl returns the ConfigureUrl field value if set, zero value otherwise.
 func (o *UserSetting) GetConfigureUrl() string {
-	if o == nil || IsNil(o.ConfigureUrl) {
+	if o == nil || o.ConfigureUrl == nil {
 		var ret string
 		return ret
 	}
@@ -135,7 +128,7 @@ func (o *UserSetting) GetConfigureUrl() string {
 // GetConfigureUrlOk returns a tuple with the ConfigureUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserSetting) GetConfigureUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.ConfigureUrl) {
+	if o == nil || o.ConfigureUrl == nil {
 		return nil, false
 	}
 	return o.ConfigureUrl, true
@@ -143,7 +136,7 @@ func (o *UserSetting) GetConfigureUrlOk() (*string, bool) {
 
 // HasConfigureUrl returns a boolean if a field has been set.
 func (o *UserSetting) HasConfigureUrl() bool {
-	if o != nil && !IsNil(o.ConfigureUrl) {
+	if o != nil && o.ConfigureUrl != nil {
 		return true
 	}
 
@@ -157,7 +150,7 @@ func (o *UserSetting) SetConfigureUrl(v string) {
 
 // GetIconUrl returns the IconUrl field value if set, zero value otherwise.
 func (o *UserSetting) GetIconUrl() string {
-	if o == nil || IsNil(o.IconUrl) {
+	if o == nil || o.IconUrl == nil {
 		var ret string
 		return ret
 	}
@@ -167,7 +160,7 @@ func (o *UserSetting) GetIconUrl() string {
 // GetIconUrlOk returns a tuple with the IconUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserSetting) GetIconUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.IconUrl) {
+	if o == nil || o.IconUrl == nil {
 		return nil, false
 	}
 	return o.IconUrl, true
@@ -175,7 +168,7 @@ func (o *UserSetting) GetIconUrlOk() (*string, bool) {
 
 // HasIconUrl returns a boolean if a field has been set.
 func (o *UserSetting) HasIconUrl() bool {
-	if o != nil && !IsNil(o.IconUrl) {
+	if o != nil && o.IconUrl != nil {
 		return true
 	}
 
@@ -188,64 +181,23 @@ func (o *UserSetting) SetIconUrl(v string) {
 }
 
 func (o UserSetting) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o UserSetting) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["object_uid"] = o.ObjectUid
-	toSerialize["component"] = o.Component
-	toSerialize["title"] = o.Title
-	if !IsNil(o.ConfigureUrl) {
+	if true {
+		toSerialize["object_uid"] = o.ObjectUid
+	}
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["title"] = o.Title
+	}
+	if o.ConfigureUrl != nil {
 		toSerialize["configure_url"] = o.ConfigureUrl
 	}
-	if !IsNil(o.IconUrl) {
+	if o.IconUrl != nil {
 		toSerialize["icon_url"] = o.IconUrl
 	}
-	return toSerialize, nil
-}
-
-func (o *UserSetting) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"object_uid",
-		"component",
-		"title",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varUserSetting := _UserSetting{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserSetting)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UserSetting(varUserSetting)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableUserSetting struct {

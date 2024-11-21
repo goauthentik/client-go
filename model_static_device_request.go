@@ -12,21 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the StaticDeviceRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &StaticDeviceRequest{}
 
 // StaticDeviceRequest Serializer for static authenticator devices
 type StaticDeviceRequest struct {
 	// The human-readable name of this device.
 	Name string `json:"name"`
 }
-
-type _StaticDeviceRequest StaticDeviceRequest
 
 // NewStaticDeviceRequest instantiates a new StaticDeviceRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -71,54 +64,11 @@ func (o *StaticDeviceRequest) SetName(v string) {
 }
 
 func (o StaticDeviceRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["name"] = o.Name
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o StaticDeviceRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	return toSerialize, nil
-}
-
-func (o *StaticDeviceRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varStaticDeviceRequest := _StaticDeviceRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStaticDeviceRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = StaticDeviceRequest(varStaticDeviceRequest)
-
-	return err
 }
 
 type NullableStaticDeviceRequest struct {

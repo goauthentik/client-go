@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the KerberosSourcePropertyMappingRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &KerberosSourcePropertyMappingRequest{}
 
 // KerberosSourcePropertyMappingRequest Kerberos PropertyMapping Serializer
 type KerberosSourcePropertyMappingRequest struct {
@@ -27,8 +22,6 @@ type KerberosSourcePropertyMappingRequest struct {
 	Name       string         `json:"name"`
 	Expression string         `json:"expression"`
 }
-
-type _KerberosSourcePropertyMappingRequest KerberosSourcePropertyMappingRequest
 
 // NewKerberosSourcePropertyMappingRequest instantiates a new KerberosSourcePropertyMappingRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -51,7 +44,7 @@ func NewKerberosSourcePropertyMappingRequestWithDefaults() *KerberosSourceProper
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KerberosSourcePropertyMappingRequest) GetManaged() string {
-	if o == nil || IsNil(o.Managed.Get()) {
+	if o == nil || o.Managed.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -141,59 +134,17 @@ func (o *KerberosSourcePropertyMappingRequest) SetExpression(v string) {
 }
 
 func (o KerberosSourcePropertyMappingRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o KerberosSourcePropertyMappingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	toSerialize["name"] = o.Name
-	toSerialize["expression"] = o.Expression
-	return toSerialize, nil
-}
-
-func (o *KerberosSourcePropertyMappingRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"expression",
+	if true {
+		toSerialize["name"] = o.Name
 	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
+	if true {
+		toSerialize["expression"] = o.Expression
 	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varKerberosSourcePropertyMappingRequest := _KerberosSourcePropertyMappingRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKerberosSourcePropertyMappingRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = KerberosSourcePropertyMappingRequest(varKerberosSourcePropertyMappingRequest)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableKerberosSourcePropertyMappingRequest struct {

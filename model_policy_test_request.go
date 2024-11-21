@@ -12,21 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the PolicyTestRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PolicyTestRequest{}
 
 // PolicyTestRequest Test policy execution for a user with context
 type PolicyTestRequest struct {
 	User    int32                  `json:"user"`
 	Context map[string]interface{} `json:"context,omitempty"`
 }
-
-type _PolicyTestRequest PolicyTestRequest
 
 // NewPolicyTestRequest instantiates a new PolicyTestRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -72,7 +65,7 @@ func (o *PolicyTestRequest) SetUser(v int32) {
 
 // GetContext returns the Context field value if set, zero value otherwise.
 func (o *PolicyTestRequest) GetContext() map[string]interface{} {
-	if o == nil || IsNil(o.Context) {
+	if o == nil || o.Context == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -82,15 +75,15 @@ func (o *PolicyTestRequest) GetContext() map[string]interface{} {
 // GetContextOk returns a tuple with the Context field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PolicyTestRequest) GetContextOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Context) {
-		return map[string]interface{}{}, false
+	if o == nil || o.Context == nil {
+		return nil, false
 	}
 	return o.Context, true
 }
 
 // HasContext returns a boolean if a field has been set.
 func (o *PolicyTestRequest) HasContext() bool {
-	if o != nil && !IsNil(o.Context) {
+	if o != nil && o.Context != nil {
 		return true
 	}
 
@@ -103,57 +96,14 @@ func (o *PolicyTestRequest) SetContext(v map[string]interface{}) {
 }
 
 func (o PolicyTestRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PolicyTestRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["user"] = o.User
-	if !IsNil(o.Context) {
+	if true {
+		toSerialize["user"] = o.User
+	}
+	if o.Context != nil {
 		toSerialize["context"] = o.Context
 	}
-	return toSerialize, nil
-}
-
-func (o *PolicyTestRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"user",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPolicyTestRequest := _PolicyTestRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPolicyTestRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PolicyTestRequest(varPolicyTestRequest)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullablePolicyTestRequest struct {

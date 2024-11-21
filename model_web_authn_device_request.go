@@ -12,20 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the WebAuthnDeviceRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &WebAuthnDeviceRequest{}
 
 // WebAuthnDeviceRequest Serializer for WebAuthn authenticator devices
 type WebAuthnDeviceRequest struct {
 	Name string `json:"name"`
 }
-
-type _WebAuthnDeviceRequest WebAuthnDeviceRequest
 
 // NewWebAuthnDeviceRequest instantiates a new WebAuthnDeviceRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -70,54 +63,11 @@ func (o *WebAuthnDeviceRequest) SetName(v string) {
 }
 
 func (o WebAuthnDeviceRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["name"] = o.Name
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o WebAuthnDeviceRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	return toSerialize, nil
-}
-
-func (o *WebAuthnDeviceRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varWebAuthnDeviceRequest := _WebAuthnDeviceRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varWebAuthnDeviceRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = WebAuthnDeviceRequest(varWebAuthnDeviceRequest)
-
-	return err
 }
 
 type NullableWebAuthnDeviceRequest struct {

@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the ServiceConnection type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServiceConnection{}
 
 // ServiceConnection ServiceConnection Serializer
 type ServiceConnection struct {
@@ -35,8 +30,6 @@ type ServiceConnection struct {
 	// Return internal model name
 	MetaModelName string `json:"meta_model_name"`
 }
-
-type _ServiceConnection ServiceConnection
 
 // NewServiceConnection instantiates a new ServiceConnection object
 // This constructor will assign default values to properties that have it defined,
@@ -111,7 +104,7 @@ func (o *ServiceConnection) SetName(v string) {
 
 // GetLocal returns the Local field value if set, zero value otherwise.
 func (o *ServiceConnection) GetLocal() bool {
-	if o == nil || IsNil(o.Local) {
+	if o == nil || o.Local == nil {
 		var ret bool
 		return ret
 	}
@@ -121,7 +114,7 @@ func (o *ServiceConnection) GetLocal() bool {
 // GetLocalOk returns a tuple with the Local field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceConnection) GetLocalOk() (*bool, bool) {
-	if o == nil || IsNil(o.Local) {
+	if o == nil || o.Local == nil {
 		return nil, false
 	}
 	return o.Local, true
@@ -129,7 +122,7 @@ func (o *ServiceConnection) GetLocalOk() (*bool, bool) {
 
 // HasLocal returns a boolean if a field has been set.
 func (o *ServiceConnection) HasLocal() bool {
-	if o != nil && !IsNil(o.Local) {
+	if o != nil && o.Local != nil {
 		return true
 	}
 
@@ -238,67 +231,29 @@ func (o *ServiceConnection) SetMetaModelName(v string) {
 }
 
 func (o ServiceConnection) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ServiceConnection) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["pk"] = o.Pk
-	toSerialize["name"] = o.Name
-	if !IsNil(o.Local) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.Local != nil {
 		toSerialize["local"] = o.Local
 	}
-	toSerialize["component"] = o.Component
-	toSerialize["verbose_name"] = o.VerboseName
-	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	toSerialize["meta_model_name"] = o.MetaModelName
-	return toSerialize, nil
-}
-
-func (o *ServiceConnection) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pk",
-		"name",
-		"component",
-		"verbose_name",
-		"verbose_name_plural",
-		"meta_model_name",
+	if true {
+		toSerialize["component"] = o.Component
 	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
 	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	}
-
-	varServiceConnection := _ServiceConnection{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varServiceConnection)
-
-	if err != nil {
-		return err
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
-
-	*o = ServiceConnection(varServiceConnection)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableServiceConnection struct {

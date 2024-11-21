@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **BrandingLogo** | **string** |  | 
 **BrandingFavicon** | **string** |  | 
 **UiFooterLinks** | [**[]FooterLink**](FooterLink.md) |  | [readonly] 
-**UiTheme** | [**UiThemeEnum**](UiThemeEnum.md) |  | [readonly] [default to UITHEMEENUM_AUTOMATIC]
+**UiTheme** | [**UiThemeEnum**](UiThemeEnum.md) |  | [readonly] 
 **FlowAuthentication** | Pointer to **string** |  | [optional] 
 **FlowInvalidation** | Pointer to **string** |  | [optional] 
 **FlowRecovery** | Pointer to **string** |  | [optional] 

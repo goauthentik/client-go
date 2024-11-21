@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the ErrorReportingConfig type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ErrorReportingConfig{}
 
 // ErrorReportingConfig Config for error reporting
 type ErrorReportingConfig struct {
@@ -28,8 +23,6 @@ type ErrorReportingConfig struct {
 	SendPii          bool    `json:"send_pii"`
 	TracesSampleRate float64 `json:"traces_sample_rate"`
 }
-
-type _ErrorReportingConfig ErrorReportingConfig
 
 // NewErrorReportingConfig instantiates a new ErrorReportingConfig object
 // This constructor will assign default values to properties that have it defined,
@@ -174,62 +167,23 @@ func (o *ErrorReportingConfig) SetTracesSampleRate(v float64) {
 }
 
 func (o ErrorReportingConfig) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["enabled"] = o.Enabled
+	}
+	if true {
+		toSerialize["sentry_dsn"] = o.SentryDsn
+	}
+	if true {
+		toSerialize["environment"] = o.Environment
+	}
+	if true {
+		toSerialize["send_pii"] = o.SendPii
+	}
+	if true {
+		toSerialize["traces_sample_rate"] = o.TracesSampleRate
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o ErrorReportingConfig) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["enabled"] = o.Enabled
-	toSerialize["sentry_dsn"] = o.SentryDsn
-	toSerialize["environment"] = o.Environment
-	toSerialize["send_pii"] = o.SendPii
-	toSerialize["traces_sample_rate"] = o.TracesSampleRate
-	return toSerialize, nil
-}
-
-func (o *ErrorReportingConfig) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"enabled",
-		"sentry_dsn",
-		"environment",
-		"send_pii",
-		"traces_sample_rate",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varErrorReportingConfig := _ErrorReportingConfig{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varErrorReportingConfig)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ErrorReportingConfig(varErrorReportingConfig)
-
-	return err
 }
 
 type NullableErrorReportingConfig struct {

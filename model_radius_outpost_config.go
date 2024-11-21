@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the RadiusOutpostConfig type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &RadiusOutpostConfig{}
 
 // RadiusOutpostConfig RadiusProvider Serializer
 type RadiusOutpostConfig struct {
@@ -33,8 +28,6 @@ type RadiusOutpostConfig struct {
 	// When enabled, code-based multi-factor authentication can be used by appending a semicolon and the TOTP code to the password. This should only be enabled if all users that will bind to this provider have a TOTP device configured, as otherwise a password may incorrectly be rejected if it contains a semicolon.
 	MfaSupport *bool `json:"mfa_support,omitempty"`
 }
-
-type _RadiusOutpostConfig RadiusOutpostConfig
 
 // NewRadiusOutpostConfig instantiates a new RadiusOutpostConfig object
 // This constructor will assign default values to properties that have it defined,
@@ -155,7 +148,7 @@ func (o *RadiusOutpostConfig) SetAuthFlowSlug(v string) {
 
 // GetClientNetworks returns the ClientNetworks field value if set, zero value otherwise.
 func (o *RadiusOutpostConfig) GetClientNetworks() string {
-	if o == nil || IsNil(o.ClientNetworks) {
+	if o == nil || o.ClientNetworks == nil {
 		var ret string
 		return ret
 	}
@@ -165,7 +158,7 @@ func (o *RadiusOutpostConfig) GetClientNetworks() string {
 // GetClientNetworksOk returns a tuple with the ClientNetworks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RadiusOutpostConfig) GetClientNetworksOk() (*string, bool) {
-	if o == nil || IsNil(o.ClientNetworks) {
+	if o == nil || o.ClientNetworks == nil {
 		return nil, false
 	}
 	return o.ClientNetworks, true
@@ -173,7 +166,7 @@ func (o *RadiusOutpostConfig) GetClientNetworksOk() (*string, bool) {
 
 // HasClientNetworks returns a boolean if a field has been set.
 func (o *RadiusOutpostConfig) HasClientNetworks() bool {
-	if o != nil && !IsNil(o.ClientNetworks) {
+	if o != nil && o.ClientNetworks != nil {
 		return true
 	}
 
@@ -187,7 +180,7 @@ func (o *RadiusOutpostConfig) SetClientNetworks(v string) {
 
 // GetSharedSecret returns the SharedSecret field value if set, zero value otherwise.
 func (o *RadiusOutpostConfig) GetSharedSecret() string {
-	if o == nil || IsNil(o.SharedSecret) {
+	if o == nil || o.SharedSecret == nil {
 		var ret string
 		return ret
 	}
@@ -197,7 +190,7 @@ func (o *RadiusOutpostConfig) GetSharedSecret() string {
 // GetSharedSecretOk returns a tuple with the SharedSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RadiusOutpostConfig) GetSharedSecretOk() (*string, bool) {
-	if o == nil || IsNil(o.SharedSecret) {
+	if o == nil || o.SharedSecret == nil {
 		return nil, false
 	}
 	return o.SharedSecret, true
@@ -205,7 +198,7 @@ func (o *RadiusOutpostConfig) GetSharedSecretOk() (*string, bool) {
 
 // HasSharedSecret returns a boolean if a field has been set.
 func (o *RadiusOutpostConfig) HasSharedSecret() bool {
-	if o != nil && !IsNil(o.SharedSecret) {
+	if o != nil && o.SharedSecret != nil {
 		return true
 	}
 
@@ -219,7 +212,7 @@ func (o *RadiusOutpostConfig) SetSharedSecret(v string) {
 
 // GetMfaSupport returns the MfaSupport field value if set, zero value otherwise.
 func (o *RadiusOutpostConfig) GetMfaSupport() bool {
-	if o == nil || IsNil(o.MfaSupport) {
+	if o == nil || o.MfaSupport == nil {
 		var ret bool
 		return ret
 	}
@@ -229,7 +222,7 @@ func (o *RadiusOutpostConfig) GetMfaSupport() bool {
 // GetMfaSupportOk returns a tuple with the MfaSupport field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RadiusOutpostConfig) GetMfaSupportOk() (*bool, bool) {
-	if o == nil || IsNil(o.MfaSupport) {
+	if o == nil || o.MfaSupport == nil {
 		return nil, false
 	}
 	return o.MfaSupport, true
@@ -237,7 +230,7 @@ func (o *RadiusOutpostConfig) GetMfaSupportOk() (*bool, bool) {
 
 // HasMfaSupport returns a boolean if a field has been set.
 func (o *RadiusOutpostConfig) HasMfaSupport() bool {
-	if o != nil && !IsNil(o.MfaSupport) {
+	if o != nil && o.MfaSupport != nil {
 		return true
 	}
 
@@ -250,69 +243,29 @@ func (o *RadiusOutpostConfig) SetMfaSupport(v bool) {
 }
 
 func (o RadiusOutpostConfig) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o RadiusOutpostConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["pk"] = o.Pk
-	toSerialize["name"] = o.Name
-	toSerialize["application_slug"] = o.ApplicationSlug
-	toSerialize["auth_flow_slug"] = o.AuthFlowSlug
-	if !IsNil(o.ClientNetworks) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["application_slug"] = o.ApplicationSlug
+	}
+	if true {
+		toSerialize["auth_flow_slug"] = o.AuthFlowSlug
+	}
+	if o.ClientNetworks != nil {
 		toSerialize["client_networks"] = o.ClientNetworks
 	}
-	if !IsNil(o.SharedSecret) {
+	if o.SharedSecret != nil {
 		toSerialize["shared_secret"] = o.SharedSecret
 	}
-	if !IsNil(o.MfaSupport) {
+	if o.MfaSupport != nil {
 		toSerialize["mfa_support"] = o.MfaSupport
 	}
-	return toSerialize, nil
-}
-
-func (o *RadiusOutpostConfig) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pk",
-		"name",
-		"application_slug",
-		"auth_flow_slug",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varRadiusOutpostConfig := _RadiusOutpostConfig{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRadiusOutpostConfig)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RadiusOutpostConfig(varRadiusOutpostConfig)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableRadiusOutpostConfig struct {

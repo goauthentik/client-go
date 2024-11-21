@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the SCIMSourcePropertyMapping type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SCIMSourcePropertyMapping{}
 
 // SCIMSourcePropertyMapping SCIMSourcePropertyMapping Serializer
 type SCIMSourcePropertyMapping struct {
@@ -36,8 +31,6 @@ type SCIMSourcePropertyMapping struct {
 	// Return internal model name
 	MetaModelName string `json:"meta_model_name"`
 }
-
-type _SCIMSourcePropertyMapping SCIMSourcePropertyMapping
 
 // NewSCIMSourcePropertyMapping instantiates a new SCIMSourcePropertyMapping object
 // This constructor will assign default values to properties that have it defined,
@@ -89,7 +82,7 @@ func (o *SCIMSourcePropertyMapping) SetPk(v string) {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SCIMSourcePropertyMapping) GetManaged() string {
-	if o == nil || IsNil(o.Managed.Get()) {
+	if o == nil || o.Managed.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -275,69 +268,32 @@ func (o *SCIMSourcePropertyMapping) SetMetaModelName(v string) {
 }
 
 func (o SCIMSourcePropertyMapping) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o SCIMSourcePropertyMapping) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["pk"] = o.Pk
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	toSerialize["name"] = o.Name
-	toSerialize["expression"] = o.Expression
-	toSerialize["component"] = o.Component
-	toSerialize["verbose_name"] = o.VerboseName
-	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	toSerialize["meta_model_name"] = o.MetaModelName
-	return toSerialize, nil
-}
-
-func (o *SCIMSourcePropertyMapping) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pk",
-		"name",
-		"expression",
-		"component",
-		"verbose_name",
-		"verbose_name_plural",
-		"meta_model_name",
+	if true {
+		toSerialize["name"] = o.Name
 	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
+	if true {
+		toSerialize["expression"] = o.Expression
 	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
+	if true {
+		toSerialize["component"] = o.Component
 	}
-
-	varSCIMSourcePropertyMapping := _SCIMSourcePropertyMapping{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSCIMSourcePropertyMapping)
-
-	if err != nil {
-		return err
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
 	}
-
-	*o = SCIMSourcePropertyMapping(varSCIMSourcePropertyMapping)
-
-	return err
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
+	}
+	return json.Marshal(toSerialize)
 }
 
 type NullableSCIMSourcePropertyMapping struct {

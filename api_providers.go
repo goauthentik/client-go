@@ -14,7 +14,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io"
+	"io/ioutil"
 	"net/http"
 	"net/url"
 	"os"
@@ -22,12 +22,12 @@ import (
 	"strings"
 )
 
-// ProvidersAPIService ProvidersAPI service
-type ProvidersAPIService service
+// ProvidersApiService ProvidersApi service
+type ProvidersApiService service
 
 type ApiProvidersAllDestroyRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -44,7 +44,7 @@ Provider Viewset
 	@param id A unique integer value identifying this provider.
 	@return ApiProvidersAllDestroyRequest
 */
-func (a *ProvidersAPIService) ProvidersAllDestroy(ctx context.Context, id int32) ApiProvidersAllDestroyRequest {
+func (a *ProvidersApiService) ProvidersAllDestroy(ctx context.Context, id int32) ApiProvidersAllDestroyRequest {
 	return ApiProvidersAllDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -53,20 +53,20 @@ func (a *ProvidersAPIService) ProvidersAllDestroy(ctx context.Context, id int32)
 }
 
 // Execute executes the request
-func (a *ProvidersAPIService) ProvidersAllDestroyExecute(r ApiProvidersAllDestroyRequest) (*http.Response, error) {
+func (a *ProvidersApiService) ProvidersAllDestroyExecute(r ApiProvidersAllDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersAllDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersAllDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/all/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -99,9 +99,9 @@ func (a *ProvidersAPIService) ProvidersAllDestroyExecute(r ApiProvidersAllDestro
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -118,7 +118,6 @@ func (a *ProvidersAPIService) ProvidersAllDestroyExecute(r ApiProvidersAllDestro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -129,7 +128,6 @@ func (a *ProvidersAPIService) ProvidersAllDestroyExecute(r ApiProvidersAllDestro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -140,7 +138,7 @@ func (a *ProvidersAPIService) ProvidersAllDestroyExecute(r ApiProvidersAllDestro
 
 type ApiProvidersAllListRequest struct {
 	ctx               context.Context
-	ApiService        *ProvidersAPIService
+	ApiService        *ProvidersApiService
 	applicationIsnull *bool
 	backchannel       *bool
 	ordering          *string
@@ -196,7 +194,7 @@ Provider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersAllListRequest
 */
-func (a *ProvidersAPIService) ProvidersAllList(ctx context.Context) ApiProvidersAllListRequest {
+func (a *ProvidersApiService) ProvidersAllList(ctx context.Context) ApiProvidersAllListRequest {
 	return ApiProvidersAllListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -206,7 +204,7 @@ func (a *ProvidersAPIService) ProvidersAllList(ctx context.Context) ApiProviders
 // Execute executes the request
 //
 //	@return PaginatedProviderList
-func (a *ProvidersAPIService) ProvidersAllListExecute(r ApiProvidersAllListRequest) (*PaginatedProviderList, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersAllListExecute(r ApiProvidersAllListRequest) (*PaginatedProviderList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -214,7 +212,7 @@ func (a *ProvidersAPIService) ProvidersAllListExecute(r ApiProvidersAllListReque
 		localVarReturnValue *PaginatedProviderList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersAllList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersAllList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -226,22 +224,22 @@ func (a *ProvidersAPIService) ProvidersAllListExecute(r ApiProvidersAllListReque
 	localVarFormParams := url.Values{}
 
 	if r.applicationIsnull != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "application__isnull", r.applicationIsnull, "form", "")
+		localVarQueryParams.Add("application__isnull", parameterToString(*r.applicationIsnull, ""))
 	}
 	if r.backchannel != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "backchannel", r.backchannel, "form", "")
+		localVarQueryParams.Add("backchannel", parameterToString(*r.backchannel, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -270,9 +268,9 @@ func (a *ProvidersAPIService) ProvidersAllListExecute(r ApiProvidersAllListReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -289,7 +287,6 @@ func (a *ProvidersAPIService) ProvidersAllListExecute(r ApiProvidersAllListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -300,7 +297,6 @@ func (a *ProvidersAPIService) ProvidersAllListExecute(r ApiProvidersAllListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -320,7 +316,7 @@ func (a *ProvidersAPIService) ProvidersAllListExecute(r ApiProvidersAllListReque
 
 type ApiProvidersAllRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -337,7 +333,7 @@ Provider Viewset
 	@param id A unique integer value identifying this provider.
 	@return ApiProvidersAllRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersAllRetrieve(ctx context.Context, id int32) ApiProvidersAllRetrieveRequest {
+func (a *ProvidersApiService) ProvidersAllRetrieve(ctx context.Context, id int32) ApiProvidersAllRetrieveRequest {
 	return ApiProvidersAllRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -348,7 +344,7 @@ func (a *ProvidersAPIService) ProvidersAllRetrieve(ctx context.Context, id int32
 // Execute executes the request
 //
 //	@return Provider
-func (a *ProvidersAPIService) ProvidersAllRetrieveExecute(r ApiProvidersAllRetrieveRequest) (*Provider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersAllRetrieveExecute(r ApiProvidersAllRetrieveRequest) (*Provider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -356,13 +352,13 @@ func (a *ProvidersAPIService) ProvidersAllRetrieveExecute(r ApiProvidersAllRetri
 		localVarReturnValue *Provider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersAllRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersAllRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/all/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -395,9 +391,9 @@ func (a *ProvidersAPIService) ProvidersAllRetrieveExecute(r ApiProvidersAllRetri
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -414,7 +410,6 @@ func (a *ProvidersAPIService) ProvidersAllRetrieveExecute(r ApiProvidersAllRetri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -425,7 +420,6 @@ func (a *ProvidersAPIService) ProvidersAllRetrieveExecute(r ApiProvidersAllRetri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -445,7 +439,7 @@ func (a *ProvidersAPIService) ProvidersAllRetrieveExecute(r ApiProvidersAllRetri
 
 type ApiProvidersAllTypesListRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 }
 
 func (r ApiProvidersAllTypesListRequest) Execute() ([]TypeCreate, *http.Response, error) {
@@ -460,7 +454,7 @@ Get all creatable types
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersAllTypesListRequest
 */
-func (a *ProvidersAPIService) ProvidersAllTypesList(ctx context.Context) ApiProvidersAllTypesListRequest {
+func (a *ProvidersApiService) ProvidersAllTypesList(ctx context.Context) ApiProvidersAllTypesListRequest {
 	return ApiProvidersAllTypesListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -470,7 +464,7 @@ func (a *ProvidersAPIService) ProvidersAllTypesList(ctx context.Context) ApiProv
 // Execute executes the request
 //
 //	@return []TypeCreate
-func (a *ProvidersAPIService) ProvidersAllTypesListExecute(r ApiProvidersAllTypesListRequest) ([]TypeCreate, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersAllTypesListExecute(r ApiProvidersAllTypesListRequest) ([]TypeCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -478,7 +472,7 @@ func (a *ProvidersAPIService) ProvidersAllTypesListExecute(r ApiProvidersAllType
 		localVarReturnValue []TypeCreate
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersAllTypesList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersAllTypesList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -516,9 +510,9 @@ func (a *ProvidersAPIService) ProvidersAllTypesListExecute(r ApiProvidersAllType
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -535,7 +529,6 @@ func (a *ProvidersAPIService) ProvidersAllTypesListExecute(r ApiProvidersAllType
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -546,7 +539,6 @@ func (a *ProvidersAPIService) ProvidersAllTypesListExecute(r ApiProvidersAllType
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -566,7 +558,7 @@ func (a *ProvidersAPIService) ProvidersAllTypesListExecute(r ApiProvidersAllType
 
 type ApiProvidersAllUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -583,7 +575,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this provider.
 	@return ApiProvidersAllUsedByListRequest
 */
-func (a *ProvidersAPIService) ProvidersAllUsedByList(ctx context.Context, id int32) ApiProvidersAllUsedByListRequest {
+func (a *ProvidersApiService) ProvidersAllUsedByList(ctx context.Context, id int32) ApiProvidersAllUsedByListRequest {
 	return ApiProvidersAllUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -594,7 +586,7 @@ func (a *ProvidersAPIService) ProvidersAllUsedByList(ctx context.Context, id int
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *ProvidersAPIService) ProvidersAllUsedByListExecute(r ApiProvidersAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersAllUsedByListExecute(r ApiProvidersAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -602,13 +594,13 @@ func (a *ProvidersAPIService) ProvidersAllUsedByListExecute(r ApiProvidersAllUse
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersAllUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersAllUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/all/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -641,9 +633,9 @@ func (a *ProvidersAPIService) ProvidersAllUsedByListExecute(r ApiProvidersAllUse
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -660,7 +652,6 @@ func (a *ProvidersAPIService) ProvidersAllUsedByListExecute(r ApiProvidersAllUse
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -671,7 +662,6 @@ func (a *ProvidersAPIService) ProvidersAllUsedByListExecute(r ApiProvidersAllUse
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -691,7 +681,7 @@ func (a *ProvidersAPIService) ProvidersAllUsedByListExecute(r ApiProvidersAllUse
 
 type ApiProvidersGoogleWorkspaceCreateRequest struct {
 	ctx                            context.Context
-	ApiService                     *ProvidersAPIService
+	ApiService                     *ProvidersApiService
 	googleWorkspaceProviderRequest *GoogleWorkspaceProviderRequest
 }
 
@@ -712,7 +702,7 @@ GoogleWorkspaceProvider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersGoogleWorkspaceCreateRequest
 */
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceCreate(ctx context.Context) ApiProvidersGoogleWorkspaceCreateRequest {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceCreate(ctx context.Context) ApiProvidersGoogleWorkspaceCreateRequest {
 	return ApiProvidersGoogleWorkspaceCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -722,7 +712,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceCreate(ctx context.Context
 // Execute executes the request
 //
 //	@return GoogleWorkspaceProvider
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceCreateExecute(r ApiProvidersGoogleWorkspaceCreateRequest) (*GoogleWorkspaceProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceCreateExecute(r ApiProvidersGoogleWorkspaceCreateRequest) (*GoogleWorkspaceProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -730,7 +720,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceCreateExecute(r ApiProvide
 		localVarReturnValue *GoogleWorkspaceProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersGoogleWorkspaceCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -773,9 +763,9 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceCreateExecute(r ApiProvide
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -792,7 +782,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceCreateExecute(r ApiProvide
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -803,7 +792,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceCreateExecute(r ApiProvide
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -823,7 +811,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceCreateExecute(r ApiProvide
 
 type ApiProvidersGoogleWorkspaceDestroyRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -840,7 +828,7 @@ GoogleWorkspaceProvider Viewset
 	@param id A unique integer value identifying this Google Workspace Provider.
 	@return ApiProvidersGoogleWorkspaceDestroyRequest
 */
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceDestroy(ctx context.Context, id int32) ApiProvidersGoogleWorkspaceDestroyRequest {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceDestroy(ctx context.Context, id int32) ApiProvidersGoogleWorkspaceDestroyRequest {
 	return ApiProvidersGoogleWorkspaceDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -849,20 +837,20 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceDestroy(ctx context.Contex
 }
 
 // Execute executes the request
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceDestroyExecute(r ApiProvidersGoogleWorkspaceDestroyRequest) (*http.Response, error) {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceDestroyExecute(r ApiProvidersGoogleWorkspaceDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersGoogleWorkspaceDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/google_workspace/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -895,9 +883,9 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceDestroyExecute(r ApiProvid
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -914,7 +902,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceDestroyExecute(r ApiProvid
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -925,7 +912,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceDestroyExecute(r ApiProvid
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -936,7 +922,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceDestroyExecute(r ApiProvid
 
 type ApiProvidersGoogleWorkspaceGroupsCreateRequest struct {
 	ctx                                 context.Context
-	ApiService                          *ProvidersAPIService
+	ApiService                          *ProvidersApiService
 	googleWorkspaceProviderGroupRequest *GoogleWorkspaceProviderGroupRequest
 }
 
@@ -957,7 +943,7 @@ GoogleWorkspaceProviderGroup Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersGoogleWorkspaceGroupsCreateRequest
 */
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsCreate(ctx context.Context) ApiProvidersGoogleWorkspaceGroupsCreateRequest {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsCreate(ctx context.Context) ApiProvidersGoogleWorkspaceGroupsCreateRequest {
 	return ApiProvidersGoogleWorkspaceGroupsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -967,7 +953,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsCreate(ctx context.C
 // Execute executes the request
 //
 //	@return GoogleWorkspaceProviderGroup
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsCreateExecute(r ApiProvidersGoogleWorkspaceGroupsCreateRequest) (*GoogleWorkspaceProviderGroup, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsCreateExecute(r ApiProvidersGoogleWorkspaceGroupsCreateRequest) (*GoogleWorkspaceProviderGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -975,7 +961,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsCreateExecute(r ApiP
 		localVarReturnValue *GoogleWorkspaceProviderGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersGoogleWorkspaceGroupsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceGroupsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1018,9 +1004,9 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsCreateExecute(r ApiP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1037,7 +1023,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsCreateExecute(r ApiP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1048,7 +1033,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsCreateExecute(r ApiP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1068,7 +1052,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsCreateExecute(r ApiP
 
 type ApiProvidersGoogleWorkspaceGroupsDestroyRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         string
 }
 
@@ -1085,7 +1069,7 @@ GoogleWorkspaceProviderGroup Viewset
 	@param id A UUID string identifying this Google Workspace Provider Group.
 	@return ApiProvidersGoogleWorkspaceGroupsDestroyRequest
 */
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsDestroy(ctx context.Context, id string) ApiProvidersGoogleWorkspaceGroupsDestroyRequest {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsDestroy(ctx context.Context, id string) ApiProvidersGoogleWorkspaceGroupsDestroyRequest {
 	return ApiProvidersGoogleWorkspaceGroupsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1094,20 +1078,20 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsDestroy(ctx context.
 }
 
 // Execute executes the request
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsDestroyExecute(r ApiProvidersGoogleWorkspaceGroupsDestroyRequest) (*http.Response, error) {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsDestroyExecute(r ApiProvidersGoogleWorkspaceGroupsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersGoogleWorkspaceGroupsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceGroupsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/google_workspace_groups/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1140,9 +1124,9 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsDestroyExecute(r Api
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1159,7 +1143,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsDestroyExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -1170,7 +1153,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsDestroyExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -1181,7 +1163,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsDestroyExecute(r Api
 
 type ApiProvidersGoogleWorkspaceGroupsListRequest struct {
 	ctx            context.Context
-	ApiService     *ProvidersAPIService
+	ApiService     *ProvidersApiService
 	groupGroupUuid *string
 	groupName      *string
 	ordering       *string
@@ -1242,7 +1224,7 @@ GoogleWorkspaceProviderGroup Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersGoogleWorkspaceGroupsListRequest
 */
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsList(ctx context.Context) ApiProvidersGoogleWorkspaceGroupsListRequest {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsList(ctx context.Context) ApiProvidersGoogleWorkspaceGroupsListRequest {
 	return ApiProvidersGoogleWorkspaceGroupsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1252,7 +1234,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsList(ctx context.Con
 // Execute executes the request
 //
 //	@return PaginatedGoogleWorkspaceProviderGroupList
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsListExecute(r ApiProvidersGoogleWorkspaceGroupsListRequest) (*PaginatedGoogleWorkspaceProviderGroupList, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsListExecute(r ApiProvidersGoogleWorkspaceGroupsListRequest) (*PaginatedGoogleWorkspaceProviderGroupList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1260,7 +1242,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsListExecute(r ApiPro
 		localVarReturnValue *PaginatedGoogleWorkspaceProviderGroupList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersGoogleWorkspaceGroupsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceGroupsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1272,25 +1254,25 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsListExecute(r ApiPro
 	localVarFormParams := url.Values{}
 
 	if r.groupGroupUuid != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "group__group_uuid", r.groupGroupUuid, "form", "")
+		localVarQueryParams.Add("group__group_uuid", parameterToString(*r.groupGroupUuid, ""))
 	}
 	if r.groupName != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "group__name", r.groupName, "form", "")
+		localVarQueryParams.Add("group__name", parameterToString(*r.groupName, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.providerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "provider__id", r.providerId, "form", "")
+		localVarQueryParams.Add("provider__id", parameterToString(*r.providerId, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1319,9 +1301,9 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsListExecute(r ApiPro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1338,7 +1320,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsListExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1349,7 +1330,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsListExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1369,7 +1349,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsListExecute(r ApiPro
 
 type ApiProvidersGoogleWorkspaceGroupsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         string
 }
 
@@ -1386,7 +1366,7 @@ GoogleWorkspaceProviderGroup Viewset
 	@param id A UUID string identifying this Google Workspace Provider Group.
 	@return ApiProvidersGoogleWorkspaceGroupsRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsRetrieve(ctx context.Context, id string) ApiProvidersGoogleWorkspaceGroupsRetrieveRequest {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsRetrieve(ctx context.Context, id string) ApiProvidersGoogleWorkspaceGroupsRetrieveRequest {
 	return ApiProvidersGoogleWorkspaceGroupsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1397,7 +1377,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsRetrieve(ctx context
 // Execute executes the request
 //
 //	@return GoogleWorkspaceProviderGroup
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsRetrieveExecute(r ApiProvidersGoogleWorkspaceGroupsRetrieveRequest) (*GoogleWorkspaceProviderGroup, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsRetrieveExecute(r ApiProvidersGoogleWorkspaceGroupsRetrieveRequest) (*GoogleWorkspaceProviderGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1405,13 +1385,13 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsRetrieveExecute(r Ap
 		localVarReturnValue *GoogleWorkspaceProviderGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersGoogleWorkspaceGroupsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceGroupsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/google_workspace_groups/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1444,9 +1424,9 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsRetrieveExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1463,7 +1443,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsRetrieveExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1474,7 +1453,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsRetrieveExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1494,7 +1472,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsRetrieveExecute(r Ap
 
 type ApiProvidersGoogleWorkspaceGroupsUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         string
 }
 
@@ -1511,7 +1489,7 @@ Get a list of all objects that use this object
 	@param id A UUID string identifying this Google Workspace Provider Group.
 	@return ApiProvidersGoogleWorkspaceGroupsUsedByListRequest
 */
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsUsedByList(ctx context.Context, id string) ApiProvidersGoogleWorkspaceGroupsUsedByListRequest {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsUsedByList(ctx context.Context, id string) ApiProvidersGoogleWorkspaceGroupsUsedByListRequest {
 	return ApiProvidersGoogleWorkspaceGroupsUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1522,7 +1500,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsUsedByList(ctx conte
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsUsedByListExecute(r ApiProvidersGoogleWorkspaceGroupsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceGroupsUsedByListExecute(r ApiProvidersGoogleWorkspaceGroupsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1530,13 +1508,13 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsUsedByListExecute(r 
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersGoogleWorkspaceGroupsUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceGroupsUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/google_workspace_groups/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1569,9 +1547,9 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsUsedByListExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1588,7 +1566,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsUsedByListExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1599,7 +1576,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsUsedByListExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1619,7 +1595,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceGroupsUsedByListExecute(r 
 
 type ApiProvidersGoogleWorkspaceListRequest struct {
 	ctx                        context.Context
-	ApiService                 *ProvidersAPIService
+	ApiService                 *ProvidersApiService
 	delegatedSubject           *string
 	excludeUsersServiceAccount *bool
 	filterGroup                *string
@@ -1686,7 +1662,7 @@ GoogleWorkspaceProvider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersGoogleWorkspaceListRequest
 */
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceList(ctx context.Context) ApiProvidersGoogleWorkspaceListRequest {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceList(ctx context.Context) ApiProvidersGoogleWorkspaceListRequest {
 	return ApiProvidersGoogleWorkspaceListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1696,7 +1672,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceList(ctx context.Context) 
 // Execute executes the request
 //
 //	@return PaginatedGoogleWorkspaceProviderList
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceListExecute(r ApiProvidersGoogleWorkspaceListRequest) (*PaginatedGoogleWorkspaceProviderList, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceListExecute(r ApiProvidersGoogleWorkspaceListRequest) (*PaginatedGoogleWorkspaceProviderList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1704,7 +1680,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceListExecute(r ApiProviders
 		localVarReturnValue *PaginatedGoogleWorkspaceProviderList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersGoogleWorkspaceList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1716,28 +1692,28 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceListExecute(r ApiProviders
 	localVarFormParams := url.Values{}
 
 	if r.delegatedSubject != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "delegated_subject", r.delegatedSubject, "form", "")
+		localVarQueryParams.Add("delegated_subject", parameterToString(*r.delegatedSubject, ""))
 	}
 	if r.excludeUsersServiceAccount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude_users_service_account", r.excludeUsersServiceAccount, "form", "")
+		localVarQueryParams.Add("exclude_users_service_account", parameterToString(*r.excludeUsersServiceAccount, ""))
 	}
 	if r.filterGroup != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "filter_group", r.filterGroup, "form", "")
+		localVarQueryParams.Add("filter_group", parameterToString(*r.filterGroup, ""))
 	}
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1766,9 +1742,9 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceListExecute(r ApiProviders
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1785,7 +1761,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceListExecute(r ApiProviders
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1796,7 +1771,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceListExecute(r ApiProviders
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1816,7 +1790,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceListExecute(r ApiProviders
 
 type ApiProvidersGoogleWorkspacePartialUpdateRequest struct {
 	ctx                                   context.Context
-	ApiService                            *ProvidersAPIService
+	ApiService                            *ProvidersApiService
 	id                                    int32
 	patchedGoogleWorkspaceProviderRequest *PatchedGoogleWorkspaceProviderRequest
 }
@@ -1839,7 +1813,7 @@ GoogleWorkspaceProvider Viewset
 	@param id A unique integer value identifying this Google Workspace Provider.
 	@return ApiProvidersGoogleWorkspacePartialUpdateRequest
 */
-func (a *ProvidersAPIService) ProvidersGoogleWorkspacePartialUpdate(ctx context.Context, id int32) ApiProvidersGoogleWorkspacePartialUpdateRequest {
+func (a *ProvidersApiService) ProvidersGoogleWorkspacePartialUpdate(ctx context.Context, id int32) ApiProvidersGoogleWorkspacePartialUpdateRequest {
 	return ApiProvidersGoogleWorkspacePartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1850,7 +1824,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspacePartialUpdate(ctx context.
 // Execute executes the request
 //
 //	@return GoogleWorkspaceProvider
-func (a *ProvidersAPIService) ProvidersGoogleWorkspacePartialUpdateExecute(r ApiProvidersGoogleWorkspacePartialUpdateRequest) (*GoogleWorkspaceProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersGoogleWorkspacePartialUpdateExecute(r ApiProvidersGoogleWorkspacePartialUpdateRequest) (*GoogleWorkspaceProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -1858,13 +1832,13 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspacePartialUpdateExecute(r Api
 		localVarReturnValue *GoogleWorkspaceProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersGoogleWorkspacePartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspacePartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/google_workspace/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1899,9 +1873,9 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspacePartialUpdateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1918,7 +1892,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspacePartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1929,7 +1902,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspacePartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1949,7 +1921,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspacePartialUpdateExecute(r Api
 
 type ApiProvidersGoogleWorkspaceRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -1966,7 +1938,7 @@ GoogleWorkspaceProvider Viewset
 	@param id A unique integer value identifying this Google Workspace Provider.
 	@return ApiProvidersGoogleWorkspaceRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceRetrieve(ctx context.Context, id int32) ApiProvidersGoogleWorkspaceRetrieveRequest {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceRetrieve(ctx context.Context, id int32) ApiProvidersGoogleWorkspaceRetrieveRequest {
 	return ApiProvidersGoogleWorkspaceRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1977,7 +1949,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceRetrieve(ctx context.Conte
 // Execute executes the request
 //
 //	@return GoogleWorkspaceProvider
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceRetrieveExecute(r ApiProvidersGoogleWorkspaceRetrieveRequest) (*GoogleWorkspaceProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceRetrieveExecute(r ApiProvidersGoogleWorkspaceRetrieveRequest) (*GoogleWorkspaceProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1985,13 +1957,13 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceRetrieveExecute(r ApiProvi
 		localVarReturnValue *GoogleWorkspaceProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersGoogleWorkspaceRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/google_workspace/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2024,9 +1996,9 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceRetrieveExecute(r ApiProvi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2043,7 +2015,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceRetrieveExecute(r ApiProvi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2054,7 +2025,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceRetrieveExecute(r ApiProvi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2074,7 +2044,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceRetrieveExecute(r ApiProvi
 
 type ApiProvidersGoogleWorkspaceSyncObjectCreateRequest struct {
 	ctx               context.Context
-	ApiService        *ProvidersAPIService
+	ApiService        *ProvidersApiService
 	id                int32
 	syncObjectRequest *SyncObjectRequest
 }
@@ -2097,7 +2067,7 @@ Sync/Re-sync a single user/group object
 	@param id A unique integer value identifying this Google Workspace Provider.
 	@return ApiProvidersGoogleWorkspaceSyncObjectCreateRequest
 */
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceSyncObjectCreate(ctx context.Context, id int32) ApiProvidersGoogleWorkspaceSyncObjectCreateRequest {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceSyncObjectCreate(ctx context.Context, id int32) ApiProvidersGoogleWorkspaceSyncObjectCreateRequest {
 	return ApiProvidersGoogleWorkspaceSyncObjectCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2108,7 +2078,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceSyncObjectCreate(ctx conte
 // Execute executes the request
 //
 //	@return SyncObjectResult
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceSyncObjectCreateExecute(r ApiProvidersGoogleWorkspaceSyncObjectCreateRequest) (*SyncObjectResult, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceSyncObjectCreateExecute(r ApiProvidersGoogleWorkspaceSyncObjectCreateRequest) (*SyncObjectResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -2116,13 +2086,13 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceSyncObjectCreateExecute(r 
 		localVarReturnValue *SyncObjectResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersGoogleWorkspaceSyncObjectCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceSyncObjectCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/google_workspace/{id}/sync/object/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2160,9 +2130,9 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceSyncObjectCreateExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2179,7 +2149,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceSyncObjectCreateExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2190,7 +2159,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceSyncObjectCreateExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2210,7 +2178,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceSyncObjectCreateExecute(r 
 
 type ApiProvidersGoogleWorkspaceSyncStatusRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -2227,7 +2195,7 @@ Get provider's sync status
 	@param id A unique integer value identifying this Google Workspace Provider.
 	@return ApiProvidersGoogleWorkspaceSyncStatusRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceSyncStatusRetrieve(ctx context.Context, id int32) ApiProvidersGoogleWorkspaceSyncStatusRetrieveRequest {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceSyncStatusRetrieve(ctx context.Context, id int32) ApiProvidersGoogleWorkspaceSyncStatusRetrieveRequest {
 	return ApiProvidersGoogleWorkspaceSyncStatusRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2238,7 +2206,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceSyncStatusRetrieve(ctx con
 // Execute executes the request
 //
 //	@return SyncStatus
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceSyncStatusRetrieveExecute(r ApiProvidersGoogleWorkspaceSyncStatusRetrieveRequest) (*SyncStatus, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceSyncStatusRetrieveExecute(r ApiProvidersGoogleWorkspaceSyncStatusRetrieveRequest) (*SyncStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2246,13 +2214,13 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceSyncStatusRetrieveExecute(
 		localVarReturnValue *SyncStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersGoogleWorkspaceSyncStatusRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceSyncStatusRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/google_workspace/{id}/sync/status/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2285,9 +2253,9 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceSyncStatusRetrieveExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2304,7 +2272,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceSyncStatusRetrieveExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2315,7 +2282,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceSyncStatusRetrieveExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2335,7 +2301,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceSyncStatusRetrieveExecute(
 
 type ApiProvidersGoogleWorkspaceUpdateRequest struct {
 	ctx                            context.Context
-	ApiService                     *ProvidersAPIService
+	ApiService                     *ProvidersApiService
 	id                             int32
 	googleWorkspaceProviderRequest *GoogleWorkspaceProviderRequest
 }
@@ -2358,7 +2324,7 @@ GoogleWorkspaceProvider Viewset
 	@param id A unique integer value identifying this Google Workspace Provider.
 	@return ApiProvidersGoogleWorkspaceUpdateRequest
 */
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUpdate(ctx context.Context, id int32) ApiProvidersGoogleWorkspaceUpdateRequest {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUpdate(ctx context.Context, id int32) ApiProvidersGoogleWorkspaceUpdateRequest {
 	return ApiProvidersGoogleWorkspaceUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2369,7 +2335,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUpdate(ctx context.Context
 // Execute executes the request
 //
 //	@return GoogleWorkspaceProvider
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUpdateExecute(r ApiProvidersGoogleWorkspaceUpdateRequest) (*GoogleWorkspaceProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUpdateExecute(r ApiProvidersGoogleWorkspaceUpdateRequest) (*GoogleWorkspaceProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -2377,13 +2343,13 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUpdateExecute(r ApiProvide
 		localVarReturnValue *GoogleWorkspaceProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersGoogleWorkspaceUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/google_workspace/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2421,9 +2387,9 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUpdateExecute(r ApiProvide
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2440,7 +2406,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUpdateExecute(r ApiProvide
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2451,7 +2416,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUpdateExecute(r ApiProvide
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2471,7 +2435,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUpdateExecute(r ApiProvide
 
 type ApiProvidersGoogleWorkspaceUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -2488,7 +2452,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this Google Workspace Provider.
 	@return ApiProvidersGoogleWorkspaceUsedByListRequest
 */
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsedByList(ctx context.Context, id int32) ApiProvidersGoogleWorkspaceUsedByListRequest {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsedByList(ctx context.Context, id int32) ApiProvidersGoogleWorkspaceUsedByListRequest {
 	return ApiProvidersGoogleWorkspaceUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2499,7 +2463,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsedByList(ctx context.Con
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsedByListExecute(r ApiProvidersGoogleWorkspaceUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsedByListExecute(r ApiProvidersGoogleWorkspaceUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2507,13 +2471,13 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsedByListExecute(r ApiPro
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersGoogleWorkspaceUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/google_workspace/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2546,9 +2510,9 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsedByListExecute(r ApiPro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2565,7 +2529,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsedByListExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2576,7 +2539,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsedByListExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2596,7 +2558,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsedByListExecute(r ApiPro
 
 type ApiProvidersGoogleWorkspaceUsersCreateRequest struct {
 	ctx                                context.Context
-	ApiService                         *ProvidersAPIService
+	ApiService                         *ProvidersApiService
 	googleWorkspaceProviderUserRequest *GoogleWorkspaceProviderUserRequest
 }
 
@@ -2617,7 +2579,7 @@ GoogleWorkspaceProviderUser Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersGoogleWorkspaceUsersCreateRequest
 */
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersCreate(ctx context.Context) ApiProvidersGoogleWorkspaceUsersCreateRequest {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersCreate(ctx context.Context) ApiProvidersGoogleWorkspaceUsersCreateRequest {
 	return ApiProvidersGoogleWorkspaceUsersCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2627,7 +2589,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersCreate(ctx context.Co
 // Execute executes the request
 //
 //	@return GoogleWorkspaceProviderUser
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersCreateExecute(r ApiProvidersGoogleWorkspaceUsersCreateRequest) (*GoogleWorkspaceProviderUser, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersCreateExecute(r ApiProvidersGoogleWorkspaceUsersCreateRequest) (*GoogleWorkspaceProviderUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -2635,7 +2597,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersCreateExecute(r ApiPr
 		localVarReturnValue *GoogleWorkspaceProviderUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersGoogleWorkspaceUsersCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceUsersCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2678,9 +2640,9 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersCreateExecute(r ApiPr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2697,7 +2659,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersCreateExecute(r ApiPr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2708,7 +2669,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersCreateExecute(r ApiPr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2728,7 +2688,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersCreateExecute(r ApiPr
 
 type ApiProvidersGoogleWorkspaceUsersDestroyRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         string
 }
 
@@ -2745,7 +2705,7 @@ GoogleWorkspaceProviderUser Viewset
 	@param id A UUID string identifying this Google Workspace Provider User.
 	@return ApiProvidersGoogleWorkspaceUsersDestroyRequest
 */
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersDestroy(ctx context.Context, id string) ApiProvidersGoogleWorkspaceUsersDestroyRequest {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersDestroy(ctx context.Context, id string) ApiProvidersGoogleWorkspaceUsersDestroyRequest {
 	return ApiProvidersGoogleWorkspaceUsersDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2754,20 +2714,20 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersDestroy(ctx context.C
 }
 
 // Execute executes the request
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersDestroyExecute(r ApiProvidersGoogleWorkspaceUsersDestroyRequest) (*http.Response, error) {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersDestroyExecute(r ApiProvidersGoogleWorkspaceUsersDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersGoogleWorkspaceUsersDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceUsersDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/google_workspace_users/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2800,9 +2760,9 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersDestroyExecute(r ApiP
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -2819,7 +2779,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersDestroyExecute(r ApiP
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -2830,7 +2789,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersDestroyExecute(r ApiP
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -2841,7 +2799,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersDestroyExecute(r ApiP
 
 type ApiProvidersGoogleWorkspaceUsersListRequest struct {
 	ctx          context.Context
-	ApiService   *ProvidersAPIService
+	ApiService   *ProvidersApiService
 	ordering     *string
 	page         *int32
 	pageSize     *int32
@@ -2902,7 +2860,7 @@ GoogleWorkspaceProviderUser Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersGoogleWorkspaceUsersListRequest
 */
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersList(ctx context.Context) ApiProvidersGoogleWorkspaceUsersListRequest {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersList(ctx context.Context) ApiProvidersGoogleWorkspaceUsersListRequest {
 	return ApiProvidersGoogleWorkspaceUsersListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2912,7 +2870,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersList(ctx context.Cont
 // Execute executes the request
 //
 //	@return PaginatedGoogleWorkspaceProviderUserList
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersListExecute(r ApiProvidersGoogleWorkspaceUsersListRequest) (*PaginatedGoogleWorkspaceProviderUserList, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersListExecute(r ApiProvidersGoogleWorkspaceUsersListRequest) (*PaginatedGoogleWorkspaceProviderUserList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2920,7 +2878,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersListExecute(r ApiProv
 		localVarReturnValue *PaginatedGoogleWorkspaceProviderUserList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersGoogleWorkspaceUsersList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceUsersList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2932,25 +2890,25 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersListExecute(r ApiProv
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.providerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "provider__id", r.providerId, "form", "")
+		localVarQueryParams.Add("provider__id", parameterToString(*r.providerId, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.userId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "user__id", r.userId, "form", "")
+		localVarQueryParams.Add("user__id", parameterToString(*r.userId, ""))
 	}
 	if r.userUsername != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "user__username", r.userUsername, "form", "")
+		localVarQueryParams.Add("user__username", parameterToString(*r.userUsername, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2979,9 +2937,9 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersListExecute(r ApiProv
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2998,7 +2956,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersListExecute(r ApiProv
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3009,7 +2966,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersListExecute(r ApiProv
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3029,7 +2985,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersListExecute(r ApiProv
 
 type ApiProvidersGoogleWorkspaceUsersRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         string
 }
 
@@ -3046,7 +3002,7 @@ GoogleWorkspaceProviderUser Viewset
 	@param id A UUID string identifying this Google Workspace Provider User.
 	@return ApiProvidersGoogleWorkspaceUsersRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersRetrieve(ctx context.Context, id string) ApiProvidersGoogleWorkspaceUsersRetrieveRequest {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersRetrieve(ctx context.Context, id string) ApiProvidersGoogleWorkspaceUsersRetrieveRequest {
 	return ApiProvidersGoogleWorkspaceUsersRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3057,7 +3013,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersRetrieve(ctx context.
 // Execute executes the request
 //
 //	@return GoogleWorkspaceProviderUser
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersRetrieveExecute(r ApiProvidersGoogleWorkspaceUsersRetrieveRequest) (*GoogleWorkspaceProviderUser, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersRetrieveExecute(r ApiProvidersGoogleWorkspaceUsersRetrieveRequest) (*GoogleWorkspaceProviderUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3065,13 +3021,13 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersRetrieveExecute(r Api
 		localVarReturnValue *GoogleWorkspaceProviderUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersGoogleWorkspaceUsersRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceUsersRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/google_workspace_users/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3104,9 +3060,9 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersRetrieveExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3123,7 +3079,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersRetrieveExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3134,7 +3089,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersRetrieveExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3154,7 +3108,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersRetrieveExecute(r Api
 
 type ApiProvidersGoogleWorkspaceUsersUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         string
 }
 
@@ -3171,7 +3125,7 @@ Get a list of all objects that use this object
 	@param id A UUID string identifying this Google Workspace Provider User.
 	@return ApiProvidersGoogleWorkspaceUsersUsedByListRequest
 */
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersUsedByList(ctx context.Context, id string) ApiProvidersGoogleWorkspaceUsersUsedByListRequest {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersUsedByList(ctx context.Context, id string) ApiProvidersGoogleWorkspaceUsersUsedByListRequest {
 	return ApiProvidersGoogleWorkspaceUsersUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3182,7 +3136,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersUsedByList(ctx contex
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersUsedByListExecute(r ApiProvidersGoogleWorkspaceUsersUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersGoogleWorkspaceUsersUsedByListExecute(r ApiProvidersGoogleWorkspaceUsersUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3190,13 +3144,13 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersUsedByListExecute(r A
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersGoogleWorkspaceUsersUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersGoogleWorkspaceUsersUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/google_workspace_users/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3229,9 +3183,9 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersUsedByListExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3248,7 +3202,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersUsedByListExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3259,7 +3212,6 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersUsedByListExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3279,7 +3231,7 @@ func (a *ProvidersAPIService) ProvidersGoogleWorkspaceUsersUsedByListExecute(r A
 
 type ApiProvidersLdapCreateRequest struct {
 	ctx                 context.Context
-	ApiService          *ProvidersAPIService
+	ApiService          *ProvidersApiService
 	lDAPProviderRequest *LDAPProviderRequest
 }
 
@@ -3300,7 +3252,7 @@ LDAPProvider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersLdapCreateRequest
 */
-func (a *ProvidersAPIService) ProvidersLdapCreate(ctx context.Context) ApiProvidersLdapCreateRequest {
+func (a *ProvidersApiService) ProvidersLdapCreate(ctx context.Context) ApiProvidersLdapCreateRequest {
 	return ApiProvidersLdapCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3310,7 +3262,7 @@ func (a *ProvidersAPIService) ProvidersLdapCreate(ctx context.Context) ApiProvid
 // Execute executes the request
 //
 //	@return LDAPProvider
-func (a *ProvidersAPIService) ProvidersLdapCreateExecute(r ApiProvidersLdapCreateRequest) (*LDAPProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersLdapCreateExecute(r ApiProvidersLdapCreateRequest) (*LDAPProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -3318,7 +3270,7 @@ func (a *ProvidersAPIService) ProvidersLdapCreateExecute(r ApiProvidersLdapCreat
 		localVarReturnValue *LDAPProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersLdapCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersLdapCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3361,9 +3313,9 @@ func (a *ProvidersAPIService) ProvidersLdapCreateExecute(r ApiProvidersLdapCreat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3380,7 +3332,6 @@ func (a *ProvidersAPIService) ProvidersLdapCreateExecute(r ApiProvidersLdapCreat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3391,7 +3342,6 @@ func (a *ProvidersAPIService) ProvidersLdapCreateExecute(r ApiProvidersLdapCreat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3411,7 +3361,7 @@ func (a *ProvidersAPIService) ProvidersLdapCreateExecute(r ApiProvidersLdapCreat
 
 type ApiProvidersLdapDestroyRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -3428,7 +3378,7 @@ LDAPProvider Viewset
 	@param id A unique integer value identifying this LDAP Provider.
 	@return ApiProvidersLdapDestroyRequest
 */
-func (a *ProvidersAPIService) ProvidersLdapDestroy(ctx context.Context, id int32) ApiProvidersLdapDestroyRequest {
+func (a *ProvidersApiService) ProvidersLdapDestroy(ctx context.Context, id int32) ApiProvidersLdapDestroyRequest {
 	return ApiProvidersLdapDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3437,20 +3387,20 @@ func (a *ProvidersAPIService) ProvidersLdapDestroy(ctx context.Context, id int32
 }
 
 // Execute executes the request
-func (a *ProvidersAPIService) ProvidersLdapDestroyExecute(r ApiProvidersLdapDestroyRequest) (*http.Response, error) {
+func (a *ProvidersApiService) ProvidersLdapDestroyExecute(r ApiProvidersLdapDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersLdapDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersLdapDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/ldap/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3483,9 +3433,9 @@ func (a *ProvidersAPIService) ProvidersLdapDestroyExecute(r ApiProvidersLdapDest
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -3502,7 +3452,6 @@ func (a *ProvidersAPIService) ProvidersLdapDestroyExecute(r ApiProvidersLdapDest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -3513,7 +3462,6 @@ func (a *ProvidersAPIService) ProvidersLdapDestroyExecute(r ApiProvidersLdapDest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -3524,7 +3472,7 @@ func (a *ProvidersAPIService) ProvidersLdapDestroyExecute(r ApiProvidersLdapDest
 
 type ApiProvidersLdapListRequest struct {
 	ctx                         context.Context
-	ApiService                  *ProvidersAPIService
+	ApiService                  *ProvidersApiService
 	applicationIsnull           *bool
 	authorizationFlowSlugIexact *string
 	baseDnIexact                *string
@@ -3621,7 +3569,7 @@ LDAPProvider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersLdapListRequest
 */
-func (a *ProvidersAPIService) ProvidersLdapList(ctx context.Context) ApiProvidersLdapListRequest {
+func (a *ProvidersApiService) ProvidersLdapList(ctx context.Context) ApiProvidersLdapListRequest {
 	return ApiProvidersLdapListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3631,7 +3579,7 @@ func (a *ProvidersAPIService) ProvidersLdapList(ctx context.Context) ApiProvider
 // Execute executes the request
 //
 //	@return PaginatedLDAPProviderList
-func (a *ProvidersAPIService) ProvidersLdapListExecute(r ApiProvidersLdapListRequest) (*PaginatedLDAPProviderList, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersLdapListExecute(r ApiProvidersLdapListRequest) (*PaginatedLDAPProviderList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3639,7 +3587,7 @@ func (a *ProvidersAPIService) ProvidersLdapListExecute(r ApiProvidersLdapListReq
 		localVarReturnValue *PaginatedLDAPProviderList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersLdapList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersLdapList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3651,43 +3599,43 @@ func (a *ProvidersAPIService) ProvidersLdapListExecute(r ApiProvidersLdapListReq
 	localVarFormParams := url.Values{}
 
 	if r.applicationIsnull != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "application__isnull", r.applicationIsnull, "form", "")
+		localVarQueryParams.Add("application__isnull", parameterToString(*r.applicationIsnull, ""))
 	}
 	if r.authorizationFlowSlugIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "authorization_flow__slug__iexact", r.authorizationFlowSlugIexact, "form", "")
+		localVarQueryParams.Add("authorization_flow__slug__iexact", parameterToString(*r.authorizationFlowSlugIexact, ""))
 	}
 	if r.baseDnIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "base_dn__iexact", r.baseDnIexact, "form", "")
+		localVarQueryParams.Add("base_dn__iexact", parameterToString(*r.baseDnIexact, ""))
 	}
 	if r.certificateKpUuidIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "certificate__kp_uuid__iexact", r.certificateKpUuidIexact, "form", "")
+		localVarQueryParams.Add("certificate__kp_uuid__iexact", parameterToString(*r.certificateKpUuidIexact, ""))
 	}
 	if r.certificateNameIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "certificate__name__iexact", r.certificateNameIexact, "form", "")
+		localVarQueryParams.Add("certificate__name__iexact", parameterToString(*r.certificateNameIexact, ""))
 	}
 	if r.gidStartNumberIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "gid_start_number__iexact", r.gidStartNumberIexact, "form", "")
+		localVarQueryParams.Add("gid_start_number__iexact", parameterToString(*r.gidStartNumberIexact, ""))
 	}
 	if r.nameIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name__iexact", r.nameIexact, "form", "")
+		localVarQueryParams.Add("name__iexact", parameterToString(*r.nameIexact, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.tlsServerNameIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "tls_server_name__iexact", r.tlsServerNameIexact, "form", "")
+		localVarQueryParams.Add("tls_server_name__iexact", parameterToString(*r.tlsServerNameIexact, ""))
 	}
 	if r.uidStartNumberIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "uid_start_number__iexact", r.uidStartNumberIexact, "form", "")
+		localVarQueryParams.Add("uid_start_number__iexact", parameterToString(*r.uidStartNumberIexact, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3716,9 +3664,9 @@ func (a *ProvidersAPIService) ProvidersLdapListExecute(r ApiProvidersLdapListReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3735,7 +3683,6 @@ func (a *ProvidersAPIService) ProvidersLdapListExecute(r ApiProvidersLdapListReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3746,7 +3693,6 @@ func (a *ProvidersAPIService) ProvidersLdapListExecute(r ApiProvidersLdapListReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3766,7 +3712,7 @@ func (a *ProvidersAPIService) ProvidersLdapListExecute(r ApiProvidersLdapListReq
 
 type ApiProvidersLdapPartialUpdateRequest struct {
 	ctx                        context.Context
-	ApiService                 *ProvidersAPIService
+	ApiService                 *ProvidersApiService
 	id                         int32
 	patchedLDAPProviderRequest *PatchedLDAPProviderRequest
 }
@@ -3789,7 +3735,7 @@ LDAPProvider Viewset
 	@param id A unique integer value identifying this LDAP Provider.
 	@return ApiProvidersLdapPartialUpdateRequest
 */
-func (a *ProvidersAPIService) ProvidersLdapPartialUpdate(ctx context.Context, id int32) ApiProvidersLdapPartialUpdateRequest {
+func (a *ProvidersApiService) ProvidersLdapPartialUpdate(ctx context.Context, id int32) ApiProvidersLdapPartialUpdateRequest {
 	return ApiProvidersLdapPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3800,7 +3746,7 @@ func (a *ProvidersAPIService) ProvidersLdapPartialUpdate(ctx context.Context, id
 // Execute executes the request
 //
 //	@return LDAPProvider
-func (a *ProvidersAPIService) ProvidersLdapPartialUpdateExecute(r ApiProvidersLdapPartialUpdateRequest) (*LDAPProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersLdapPartialUpdateExecute(r ApiProvidersLdapPartialUpdateRequest) (*LDAPProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -3808,13 +3754,13 @@ func (a *ProvidersAPIService) ProvidersLdapPartialUpdateExecute(r ApiProvidersLd
 		localVarReturnValue *LDAPProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersLdapPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersLdapPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/ldap/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3849,9 +3795,9 @@ func (a *ProvidersAPIService) ProvidersLdapPartialUpdateExecute(r ApiProvidersLd
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3868,7 +3814,6 @@ func (a *ProvidersAPIService) ProvidersLdapPartialUpdateExecute(r ApiProvidersLd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3879,7 +3824,6 @@ func (a *ProvidersAPIService) ProvidersLdapPartialUpdateExecute(r ApiProvidersLd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3899,7 +3843,7 @@ func (a *ProvidersAPIService) ProvidersLdapPartialUpdateExecute(r ApiProvidersLd
 
 type ApiProvidersLdapRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -3916,7 +3860,7 @@ LDAPProvider Viewset
 	@param id A unique integer value identifying this LDAP Provider.
 	@return ApiProvidersLdapRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersLdapRetrieve(ctx context.Context, id int32) ApiProvidersLdapRetrieveRequest {
+func (a *ProvidersApiService) ProvidersLdapRetrieve(ctx context.Context, id int32) ApiProvidersLdapRetrieveRequest {
 	return ApiProvidersLdapRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3927,7 +3871,7 @@ func (a *ProvidersAPIService) ProvidersLdapRetrieve(ctx context.Context, id int3
 // Execute executes the request
 //
 //	@return LDAPProvider
-func (a *ProvidersAPIService) ProvidersLdapRetrieveExecute(r ApiProvidersLdapRetrieveRequest) (*LDAPProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersLdapRetrieveExecute(r ApiProvidersLdapRetrieveRequest) (*LDAPProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3935,13 +3879,13 @@ func (a *ProvidersAPIService) ProvidersLdapRetrieveExecute(r ApiProvidersLdapRet
 		localVarReturnValue *LDAPProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersLdapRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersLdapRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/ldap/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3974,9 +3918,9 @@ func (a *ProvidersAPIService) ProvidersLdapRetrieveExecute(r ApiProvidersLdapRet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3993,7 +3937,6 @@ func (a *ProvidersAPIService) ProvidersLdapRetrieveExecute(r ApiProvidersLdapRet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4004,7 +3947,6 @@ func (a *ProvidersAPIService) ProvidersLdapRetrieveExecute(r ApiProvidersLdapRet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4024,7 +3966,7 @@ func (a *ProvidersAPIService) ProvidersLdapRetrieveExecute(r ApiProvidersLdapRet
 
 type ApiProvidersLdapUpdateRequest struct {
 	ctx                 context.Context
-	ApiService          *ProvidersAPIService
+	ApiService          *ProvidersApiService
 	id                  int32
 	lDAPProviderRequest *LDAPProviderRequest
 }
@@ -4047,7 +3989,7 @@ LDAPProvider Viewset
 	@param id A unique integer value identifying this LDAP Provider.
 	@return ApiProvidersLdapUpdateRequest
 */
-func (a *ProvidersAPIService) ProvidersLdapUpdate(ctx context.Context, id int32) ApiProvidersLdapUpdateRequest {
+func (a *ProvidersApiService) ProvidersLdapUpdate(ctx context.Context, id int32) ApiProvidersLdapUpdateRequest {
 	return ApiProvidersLdapUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4058,7 +4000,7 @@ func (a *ProvidersAPIService) ProvidersLdapUpdate(ctx context.Context, id int32)
 // Execute executes the request
 //
 //	@return LDAPProvider
-func (a *ProvidersAPIService) ProvidersLdapUpdateExecute(r ApiProvidersLdapUpdateRequest) (*LDAPProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersLdapUpdateExecute(r ApiProvidersLdapUpdateRequest) (*LDAPProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -4066,13 +4008,13 @@ func (a *ProvidersAPIService) ProvidersLdapUpdateExecute(r ApiProvidersLdapUpdat
 		localVarReturnValue *LDAPProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersLdapUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersLdapUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/ldap/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4110,9 +4052,9 @@ func (a *ProvidersAPIService) ProvidersLdapUpdateExecute(r ApiProvidersLdapUpdat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4129,7 +4071,6 @@ func (a *ProvidersAPIService) ProvidersLdapUpdateExecute(r ApiProvidersLdapUpdat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4140,7 +4081,6 @@ func (a *ProvidersAPIService) ProvidersLdapUpdateExecute(r ApiProvidersLdapUpdat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4160,7 +4100,7 @@ func (a *ProvidersAPIService) ProvidersLdapUpdateExecute(r ApiProvidersLdapUpdat
 
 type ApiProvidersLdapUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -4177,7 +4117,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this LDAP Provider.
 	@return ApiProvidersLdapUsedByListRequest
 */
-func (a *ProvidersAPIService) ProvidersLdapUsedByList(ctx context.Context, id int32) ApiProvidersLdapUsedByListRequest {
+func (a *ProvidersApiService) ProvidersLdapUsedByList(ctx context.Context, id int32) ApiProvidersLdapUsedByListRequest {
 	return ApiProvidersLdapUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4188,7 +4128,7 @@ func (a *ProvidersAPIService) ProvidersLdapUsedByList(ctx context.Context, id in
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *ProvidersAPIService) ProvidersLdapUsedByListExecute(r ApiProvidersLdapUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersLdapUsedByListExecute(r ApiProvidersLdapUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4196,13 +4136,13 @@ func (a *ProvidersAPIService) ProvidersLdapUsedByListExecute(r ApiProvidersLdapU
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersLdapUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersLdapUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/ldap/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4235,9 +4175,9 @@ func (a *ProvidersAPIService) ProvidersLdapUsedByListExecute(r ApiProvidersLdapU
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4254,7 +4194,6 @@ func (a *ProvidersAPIService) ProvidersLdapUsedByListExecute(r ApiProvidersLdapU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4265,7 +4204,6 @@ func (a *ProvidersAPIService) ProvidersLdapUsedByListExecute(r ApiProvidersLdapU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4285,7 +4223,7 @@ func (a *ProvidersAPIService) ProvidersLdapUsedByListExecute(r ApiProvidersLdapU
 
 type ApiProvidersMicrosoftEntraCreateRequest struct {
 	ctx                           context.Context
-	ApiService                    *ProvidersAPIService
+	ApiService                    *ProvidersApiService
 	microsoftEntraProviderRequest *MicrosoftEntraProviderRequest
 }
 
@@ -4306,7 +4244,7 @@ MicrosoftEntraProvider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersMicrosoftEntraCreateRequest
 */
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraCreate(ctx context.Context) ApiProvidersMicrosoftEntraCreateRequest {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraCreate(ctx context.Context) ApiProvidersMicrosoftEntraCreateRequest {
 	return ApiProvidersMicrosoftEntraCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4316,7 +4254,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraCreate(ctx context.Context)
 // Execute executes the request
 //
 //	@return MicrosoftEntraProvider
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraCreateExecute(r ApiProvidersMicrosoftEntraCreateRequest) (*MicrosoftEntraProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraCreateExecute(r ApiProvidersMicrosoftEntraCreateRequest) (*MicrosoftEntraProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -4324,7 +4262,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraCreateExecute(r ApiProvider
 		localVarReturnValue *MicrosoftEntraProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersMicrosoftEntraCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4367,9 +4305,9 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraCreateExecute(r ApiProvider
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4386,7 +4324,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraCreateExecute(r ApiProvider
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4397,7 +4334,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraCreateExecute(r ApiProvider
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4417,7 +4353,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraCreateExecute(r ApiProvider
 
 type ApiProvidersMicrosoftEntraDestroyRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -4434,7 +4370,7 @@ MicrosoftEntraProvider Viewset
 	@param id A unique integer value identifying this Microsoft Entra Provider.
 	@return ApiProvidersMicrosoftEntraDestroyRequest
 */
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraDestroy(ctx context.Context, id int32) ApiProvidersMicrosoftEntraDestroyRequest {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraDestroy(ctx context.Context, id int32) ApiProvidersMicrosoftEntraDestroyRequest {
 	return ApiProvidersMicrosoftEntraDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4443,20 +4379,20 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraDestroy(ctx context.Context
 }
 
 // Execute executes the request
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraDestroyExecute(r ApiProvidersMicrosoftEntraDestroyRequest) (*http.Response, error) {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraDestroyExecute(r ApiProvidersMicrosoftEntraDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersMicrosoftEntraDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/microsoft_entra/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4489,9 +4425,9 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraDestroyExecute(r ApiProvide
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -4508,7 +4444,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraDestroyExecute(r ApiProvide
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -4519,7 +4454,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraDestroyExecute(r ApiProvide
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -4530,7 +4464,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraDestroyExecute(r ApiProvide
 
 type ApiProvidersMicrosoftEntraGroupsCreateRequest struct {
 	ctx                                context.Context
-	ApiService                         *ProvidersAPIService
+	ApiService                         *ProvidersApiService
 	microsoftEntraProviderGroupRequest *MicrosoftEntraProviderGroupRequest
 }
 
@@ -4551,7 +4485,7 @@ MicrosoftEntraProviderGroup Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersMicrosoftEntraGroupsCreateRequest
 */
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsCreate(ctx context.Context) ApiProvidersMicrosoftEntraGroupsCreateRequest {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsCreate(ctx context.Context) ApiProvidersMicrosoftEntraGroupsCreateRequest {
 	return ApiProvidersMicrosoftEntraGroupsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4561,7 +4495,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsCreate(ctx context.Co
 // Execute executes the request
 //
 //	@return MicrosoftEntraProviderGroup
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsCreateExecute(r ApiProvidersMicrosoftEntraGroupsCreateRequest) (*MicrosoftEntraProviderGroup, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsCreateExecute(r ApiProvidersMicrosoftEntraGroupsCreateRequest) (*MicrosoftEntraProviderGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -4569,7 +4503,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsCreateExecute(r ApiPr
 		localVarReturnValue *MicrosoftEntraProviderGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersMicrosoftEntraGroupsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraGroupsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4612,9 +4546,9 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsCreateExecute(r ApiPr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4631,7 +4565,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsCreateExecute(r ApiPr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4642,7 +4575,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsCreateExecute(r ApiPr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4662,7 +4594,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsCreateExecute(r ApiPr
 
 type ApiProvidersMicrosoftEntraGroupsDestroyRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         string
 }
 
@@ -4679,7 +4611,7 @@ MicrosoftEntraProviderGroup Viewset
 	@param id A UUID string identifying this Microsoft Entra Provider Group.
 	@return ApiProvidersMicrosoftEntraGroupsDestroyRequest
 */
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsDestroy(ctx context.Context, id string) ApiProvidersMicrosoftEntraGroupsDestroyRequest {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsDestroy(ctx context.Context, id string) ApiProvidersMicrosoftEntraGroupsDestroyRequest {
 	return ApiProvidersMicrosoftEntraGroupsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4688,20 +4620,20 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsDestroy(ctx context.C
 }
 
 // Execute executes the request
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsDestroyExecute(r ApiProvidersMicrosoftEntraGroupsDestroyRequest) (*http.Response, error) {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsDestroyExecute(r ApiProvidersMicrosoftEntraGroupsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersMicrosoftEntraGroupsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraGroupsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/microsoft_entra_groups/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4734,9 +4666,9 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsDestroyExecute(r ApiP
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -4753,7 +4685,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsDestroyExecute(r ApiP
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -4764,7 +4695,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsDestroyExecute(r ApiP
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -4775,7 +4705,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsDestroyExecute(r ApiP
 
 type ApiProvidersMicrosoftEntraGroupsListRequest struct {
 	ctx            context.Context
-	ApiService     *ProvidersAPIService
+	ApiService     *ProvidersApiService
 	groupGroupUuid *string
 	groupName      *string
 	ordering       *string
@@ -4836,7 +4766,7 @@ MicrosoftEntraProviderGroup Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersMicrosoftEntraGroupsListRequest
 */
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsList(ctx context.Context) ApiProvidersMicrosoftEntraGroupsListRequest {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsList(ctx context.Context) ApiProvidersMicrosoftEntraGroupsListRequest {
 	return ApiProvidersMicrosoftEntraGroupsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4846,7 +4776,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsList(ctx context.Cont
 // Execute executes the request
 //
 //	@return PaginatedMicrosoftEntraProviderGroupList
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsListExecute(r ApiProvidersMicrosoftEntraGroupsListRequest) (*PaginatedMicrosoftEntraProviderGroupList, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsListExecute(r ApiProvidersMicrosoftEntraGroupsListRequest) (*PaginatedMicrosoftEntraProviderGroupList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4854,7 +4784,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsListExecute(r ApiProv
 		localVarReturnValue *PaginatedMicrosoftEntraProviderGroupList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersMicrosoftEntraGroupsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraGroupsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4866,25 +4796,25 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsListExecute(r ApiProv
 	localVarFormParams := url.Values{}
 
 	if r.groupGroupUuid != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "group__group_uuid", r.groupGroupUuid, "form", "")
+		localVarQueryParams.Add("group__group_uuid", parameterToString(*r.groupGroupUuid, ""))
 	}
 	if r.groupName != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "group__name", r.groupName, "form", "")
+		localVarQueryParams.Add("group__name", parameterToString(*r.groupName, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.providerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "provider__id", r.providerId, "form", "")
+		localVarQueryParams.Add("provider__id", parameterToString(*r.providerId, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4913,9 +4843,9 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsListExecute(r ApiProv
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4932,7 +4862,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsListExecute(r ApiProv
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4943,7 +4872,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsListExecute(r ApiProv
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4963,7 +4891,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsListExecute(r ApiProv
 
 type ApiProvidersMicrosoftEntraGroupsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         string
 }
 
@@ -4980,7 +4908,7 @@ MicrosoftEntraProviderGroup Viewset
 	@param id A UUID string identifying this Microsoft Entra Provider Group.
 	@return ApiProvidersMicrosoftEntraGroupsRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsRetrieve(ctx context.Context, id string) ApiProvidersMicrosoftEntraGroupsRetrieveRequest {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsRetrieve(ctx context.Context, id string) ApiProvidersMicrosoftEntraGroupsRetrieveRequest {
 	return ApiProvidersMicrosoftEntraGroupsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4991,7 +4919,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsRetrieve(ctx context.
 // Execute executes the request
 //
 //	@return MicrosoftEntraProviderGroup
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsRetrieveExecute(r ApiProvidersMicrosoftEntraGroupsRetrieveRequest) (*MicrosoftEntraProviderGroup, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsRetrieveExecute(r ApiProvidersMicrosoftEntraGroupsRetrieveRequest) (*MicrosoftEntraProviderGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4999,13 +4927,13 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsRetrieveExecute(r Api
 		localVarReturnValue *MicrosoftEntraProviderGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersMicrosoftEntraGroupsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraGroupsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/microsoft_entra_groups/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5038,9 +4966,9 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsRetrieveExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5057,7 +4985,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsRetrieveExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5068,7 +4995,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsRetrieveExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5088,7 +5014,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsRetrieveExecute(r Api
 
 type ApiProvidersMicrosoftEntraGroupsUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         string
 }
 
@@ -5105,7 +5031,7 @@ Get a list of all objects that use this object
 	@param id A UUID string identifying this Microsoft Entra Provider Group.
 	@return ApiProvidersMicrosoftEntraGroupsUsedByListRequest
 */
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsUsedByList(ctx context.Context, id string) ApiProvidersMicrosoftEntraGroupsUsedByListRequest {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsUsedByList(ctx context.Context, id string) ApiProvidersMicrosoftEntraGroupsUsedByListRequest {
 	return ApiProvidersMicrosoftEntraGroupsUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5116,7 +5042,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsUsedByList(ctx contex
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsUsedByListExecute(r ApiProvidersMicrosoftEntraGroupsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraGroupsUsedByListExecute(r ApiProvidersMicrosoftEntraGroupsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -5124,13 +5050,13 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsUsedByListExecute(r A
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersMicrosoftEntraGroupsUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraGroupsUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/microsoft_entra_groups/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5163,9 +5089,9 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsUsedByListExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5182,7 +5108,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsUsedByListExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5193,7 +5118,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsUsedByListExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5213,7 +5137,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraGroupsUsedByListExecute(r A
 
 type ApiProvidersMicrosoftEntraListRequest struct {
 	ctx                        context.Context
-	ApiService                 *ProvidersAPIService
+	ApiService                 *ProvidersApiService
 	excludeUsersServiceAccount *bool
 	filterGroup                *string
 	name                       *string
@@ -5274,7 +5198,7 @@ MicrosoftEntraProvider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersMicrosoftEntraListRequest
 */
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraList(ctx context.Context) ApiProvidersMicrosoftEntraListRequest {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraList(ctx context.Context) ApiProvidersMicrosoftEntraListRequest {
 	return ApiProvidersMicrosoftEntraListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5284,7 +5208,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraList(ctx context.Context) A
 // Execute executes the request
 //
 //	@return PaginatedMicrosoftEntraProviderList
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraListExecute(r ApiProvidersMicrosoftEntraListRequest) (*PaginatedMicrosoftEntraProviderList, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraListExecute(r ApiProvidersMicrosoftEntraListRequest) (*PaginatedMicrosoftEntraProviderList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -5292,7 +5216,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraListExecute(r ApiProvidersM
 		localVarReturnValue *PaginatedMicrosoftEntraProviderList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersMicrosoftEntraList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5304,25 +5228,25 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraListExecute(r ApiProvidersM
 	localVarFormParams := url.Values{}
 
 	if r.excludeUsersServiceAccount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude_users_service_account", r.excludeUsersServiceAccount, "form", "")
+		localVarQueryParams.Add("exclude_users_service_account", parameterToString(*r.excludeUsersServiceAccount, ""))
 	}
 	if r.filterGroup != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "filter_group", r.filterGroup, "form", "")
+		localVarQueryParams.Add("filter_group", parameterToString(*r.filterGroup, ""))
 	}
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5351,9 +5275,9 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraListExecute(r ApiProvidersM
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5370,7 +5294,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraListExecute(r ApiProvidersM
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5381,7 +5304,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraListExecute(r ApiProvidersM
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5401,7 +5323,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraListExecute(r ApiProvidersM
 
 type ApiProvidersMicrosoftEntraPartialUpdateRequest struct {
 	ctx                                  context.Context
-	ApiService                           *ProvidersAPIService
+	ApiService                           *ProvidersApiService
 	id                                   int32
 	patchedMicrosoftEntraProviderRequest *PatchedMicrosoftEntraProviderRequest
 }
@@ -5424,7 +5346,7 @@ MicrosoftEntraProvider Viewset
 	@param id A unique integer value identifying this Microsoft Entra Provider.
 	@return ApiProvidersMicrosoftEntraPartialUpdateRequest
 */
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraPartialUpdate(ctx context.Context, id int32) ApiProvidersMicrosoftEntraPartialUpdateRequest {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraPartialUpdate(ctx context.Context, id int32) ApiProvidersMicrosoftEntraPartialUpdateRequest {
 	return ApiProvidersMicrosoftEntraPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5435,7 +5357,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraPartialUpdate(ctx context.C
 // Execute executes the request
 //
 //	@return MicrosoftEntraProvider
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraPartialUpdateExecute(r ApiProvidersMicrosoftEntraPartialUpdateRequest) (*MicrosoftEntraProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraPartialUpdateExecute(r ApiProvidersMicrosoftEntraPartialUpdateRequest) (*MicrosoftEntraProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -5443,13 +5365,13 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraPartialUpdateExecute(r ApiP
 		localVarReturnValue *MicrosoftEntraProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersMicrosoftEntraPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/microsoft_entra/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5484,9 +5406,9 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraPartialUpdateExecute(r ApiP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5503,7 +5425,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraPartialUpdateExecute(r ApiP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5514,7 +5435,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraPartialUpdateExecute(r ApiP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5534,7 +5454,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraPartialUpdateExecute(r ApiP
 
 type ApiProvidersMicrosoftEntraRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -5551,7 +5471,7 @@ MicrosoftEntraProvider Viewset
 	@param id A unique integer value identifying this Microsoft Entra Provider.
 	@return ApiProvidersMicrosoftEntraRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraRetrieve(ctx context.Context, id int32) ApiProvidersMicrosoftEntraRetrieveRequest {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraRetrieve(ctx context.Context, id int32) ApiProvidersMicrosoftEntraRetrieveRequest {
 	return ApiProvidersMicrosoftEntraRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5562,7 +5482,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraRetrieve(ctx context.Contex
 // Execute executes the request
 //
 //	@return MicrosoftEntraProvider
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraRetrieveExecute(r ApiProvidersMicrosoftEntraRetrieveRequest) (*MicrosoftEntraProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraRetrieveExecute(r ApiProvidersMicrosoftEntraRetrieveRequest) (*MicrosoftEntraProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -5570,13 +5490,13 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraRetrieveExecute(r ApiProvid
 		localVarReturnValue *MicrosoftEntraProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersMicrosoftEntraRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/microsoft_entra/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5609,9 +5529,9 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraRetrieveExecute(r ApiProvid
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5628,7 +5548,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraRetrieveExecute(r ApiProvid
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5639,7 +5558,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraRetrieveExecute(r ApiProvid
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5659,7 +5577,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraRetrieveExecute(r ApiProvid
 
 type ApiProvidersMicrosoftEntraSyncObjectCreateRequest struct {
 	ctx               context.Context
-	ApiService        *ProvidersAPIService
+	ApiService        *ProvidersApiService
 	id                int32
 	syncObjectRequest *SyncObjectRequest
 }
@@ -5682,7 +5600,7 @@ Sync/Re-sync a single user/group object
 	@param id A unique integer value identifying this Microsoft Entra Provider.
 	@return ApiProvidersMicrosoftEntraSyncObjectCreateRequest
 */
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraSyncObjectCreate(ctx context.Context, id int32) ApiProvidersMicrosoftEntraSyncObjectCreateRequest {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraSyncObjectCreate(ctx context.Context, id int32) ApiProvidersMicrosoftEntraSyncObjectCreateRequest {
 	return ApiProvidersMicrosoftEntraSyncObjectCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5693,7 +5611,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraSyncObjectCreate(ctx contex
 // Execute executes the request
 //
 //	@return SyncObjectResult
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraSyncObjectCreateExecute(r ApiProvidersMicrosoftEntraSyncObjectCreateRequest) (*SyncObjectResult, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraSyncObjectCreateExecute(r ApiProvidersMicrosoftEntraSyncObjectCreateRequest) (*SyncObjectResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -5701,13 +5619,13 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraSyncObjectCreateExecute(r A
 		localVarReturnValue *SyncObjectResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersMicrosoftEntraSyncObjectCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraSyncObjectCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/microsoft_entra/{id}/sync/object/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5745,9 +5663,9 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraSyncObjectCreateExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5764,7 +5682,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraSyncObjectCreateExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5775,7 +5692,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraSyncObjectCreateExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5795,7 +5711,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraSyncObjectCreateExecute(r A
 
 type ApiProvidersMicrosoftEntraSyncStatusRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -5812,7 +5728,7 @@ Get provider's sync status
 	@param id A unique integer value identifying this Microsoft Entra Provider.
 	@return ApiProvidersMicrosoftEntraSyncStatusRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraSyncStatusRetrieve(ctx context.Context, id int32) ApiProvidersMicrosoftEntraSyncStatusRetrieveRequest {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraSyncStatusRetrieve(ctx context.Context, id int32) ApiProvidersMicrosoftEntraSyncStatusRetrieveRequest {
 	return ApiProvidersMicrosoftEntraSyncStatusRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5823,7 +5739,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraSyncStatusRetrieve(ctx cont
 // Execute executes the request
 //
 //	@return SyncStatus
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraSyncStatusRetrieveExecute(r ApiProvidersMicrosoftEntraSyncStatusRetrieveRequest) (*SyncStatus, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraSyncStatusRetrieveExecute(r ApiProvidersMicrosoftEntraSyncStatusRetrieveRequest) (*SyncStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -5831,13 +5747,13 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraSyncStatusRetrieveExecute(r
 		localVarReturnValue *SyncStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersMicrosoftEntraSyncStatusRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraSyncStatusRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/microsoft_entra/{id}/sync/status/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5870,9 +5786,9 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraSyncStatusRetrieveExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5889,7 +5805,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraSyncStatusRetrieveExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5900,7 +5815,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraSyncStatusRetrieveExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5920,7 +5834,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraSyncStatusRetrieveExecute(r
 
 type ApiProvidersMicrosoftEntraUpdateRequest struct {
 	ctx                           context.Context
-	ApiService                    *ProvidersAPIService
+	ApiService                    *ProvidersApiService
 	id                            int32
 	microsoftEntraProviderRequest *MicrosoftEntraProviderRequest
 }
@@ -5943,7 +5857,7 @@ MicrosoftEntraProvider Viewset
 	@param id A unique integer value identifying this Microsoft Entra Provider.
 	@return ApiProvidersMicrosoftEntraUpdateRequest
 */
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraUpdate(ctx context.Context, id int32) ApiProvidersMicrosoftEntraUpdateRequest {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUpdate(ctx context.Context, id int32) ApiProvidersMicrosoftEntraUpdateRequest {
 	return ApiProvidersMicrosoftEntraUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5954,7 +5868,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUpdate(ctx context.Context,
 // Execute executes the request
 //
 //	@return MicrosoftEntraProvider
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraUpdateExecute(r ApiProvidersMicrosoftEntraUpdateRequest) (*MicrosoftEntraProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUpdateExecute(r ApiProvidersMicrosoftEntraUpdateRequest) (*MicrosoftEntraProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -5962,13 +5876,13 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUpdateExecute(r ApiProvider
 		localVarReturnValue *MicrosoftEntraProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersMicrosoftEntraUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/microsoft_entra/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6006,9 +5920,9 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUpdateExecute(r ApiProvider
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6025,7 +5939,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUpdateExecute(r ApiProvider
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6036,7 +5949,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUpdateExecute(r ApiProvider
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6056,7 +5968,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUpdateExecute(r ApiProvider
 
 type ApiProvidersMicrosoftEntraUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -6073,7 +5985,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this Microsoft Entra Provider.
 	@return ApiProvidersMicrosoftEntraUsedByListRequest
 */
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsedByList(ctx context.Context, id int32) ApiProvidersMicrosoftEntraUsedByListRequest {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsedByList(ctx context.Context, id int32) ApiProvidersMicrosoftEntraUsedByListRequest {
 	return ApiProvidersMicrosoftEntraUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6084,7 +5996,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsedByList(ctx context.Cont
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsedByListExecute(r ApiProvidersMicrosoftEntraUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsedByListExecute(r ApiProvidersMicrosoftEntraUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6092,13 +6004,13 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsedByListExecute(r ApiProv
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersMicrosoftEntraUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/microsoft_entra/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6131,9 +6043,9 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsedByListExecute(r ApiProv
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6150,7 +6062,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsedByListExecute(r ApiProv
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6161,7 +6072,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsedByListExecute(r ApiProv
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6181,7 +6091,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsedByListExecute(r ApiProv
 
 type ApiProvidersMicrosoftEntraUsersCreateRequest struct {
 	ctx                               context.Context
-	ApiService                        *ProvidersAPIService
+	ApiService                        *ProvidersApiService
 	microsoftEntraProviderUserRequest *MicrosoftEntraProviderUserRequest
 }
 
@@ -6202,7 +6112,7 @@ MicrosoftEntraProviderUser Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersMicrosoftEntraUsersCreateRequest
 */
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersCreate(ctx context.Context) ApiProvidersMicrosoftEntraUsersCreateRequest {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersCreate(ctx context.Context) ApiProvidersMicrosoftEntraUsersCreateRequest {
 	return ApiProvidersMicrosoftEntraUsersCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6212,7 +6122,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersCreate(ctx context.Con
 // Execute executes the request
 //
 //	@return MicrosoftEntraProviderUser
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersCreateExecute(r ApiProvidersMicrosoftEntraUsersCreateRequest) (*MicrosoftEntraProviderUser, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersCreateExecute(r ApiProvidersMicrosoftEntraUsersCreateRequest) (*MicrosoftEntraProviderUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -6220,7 +6130,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersCreateExecute(r ApiPro
 		localVarReturnValue *MicrosoftEntraProviderUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersMicrosoftEntraUsersCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraUsersCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -6263,9 +6173,9 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersCreateExecute(r ApiPro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6282,7 +6192,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersCreateExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6293,7 +6202,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersCreateExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6313,7 +6221,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersCreateExecute(r ApiPro
 
 type ApiProvidersMicrosoftEntraUsersDestroyRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         string
 }
 
@@ -6330,7 +6238,7 @@ MicrosoftEntraProviderUser Viewset
 	@param id A UUID string identifying this Microsoft Entra Provider User.
 	@return ApiProvidersMicrosoftEntraUsersDestroyRequest
 */
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersDestroy(ctx context.Context, id string) ApiProvidersMicrosoftEntraUsersDestroyRequest {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersDestroy(ctx context.Context, id string) ApiProvidersMicrosoftEntraUsersDestroyRequest {
 	return ApiProvidersMicrosoftEntraUsersDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6339,20 +6247,20 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersDestroy(ctx context.Co
 }
 
 // Execute executes the request
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersDestroyExecute(r ApiProvidersMicrosoftEntraUsersDestroyRequest) (*http.Response, error) {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersDestroyExecute(r ApiProvidersMicrosoftEntraUsersDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersMicrosoftEntraUsersDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraUsersDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/microsoft_entra_users/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6385,9 +6293,9 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersDestroyExecute(r ApiPr
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -6404,7 +6312,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersDestroyExecute(r ApiPr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -6415,7 +6322,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersDestroyExecute(r ApiPr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -6426,7 +6332,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersDestroyExecute(r ApiPr
 
 type ApiProvidersMicrosoftEntraUsersListRequest struct {
 	ctx          context.Context
-	ApiService   *ProvidersAPIService
+	ApiService   *ProvidersApiService
 	ordering     *string
 	page         *int32
 	pageSize     *int32
@@ -6487,7 +6393,7 @@ MicrosoftEntraProviderUser Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersMicrosoftEntraUsersListRequest
 */
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersList(ctx context.Context) ApiProvidersMicrosoftEntraUsersListRequest {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersList(ctx context.Context) ApiProvidersMicrosoftEntraUsersListRequest {
 	return ApiProvidersMicrosoftEntraUsersListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6497,7 +6403,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersList(ctx context.Conte
 // Execute executes the request
 //
 //	@return PaginatedMicrosoftEntraProviderUserList
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersListExecute(r ApiProvidersMicrosoftEntraUsersListRequest) (*PaginatedMicrosoftEntraProviderUserList, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersListExecute(r ApiProvidersMicrosoftEntraUsersListRequest) (*PaginatedMicrosoftEntraProviderUserList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6505,7 +6411,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersListExecute(r ApiProvi
 		localVarReturnValue *PaginatedMicrosoftEntraProviderUserList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersMicrosoftEntraUsersList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraUsersList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -6517,25 +6423,25 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersListExecute(r ApiProvi
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.providerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "provider__id", r.providerId, "form", "")
+		localVarQueryParams.Add("provider__id", parameterToString(*r.providerId, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.userId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "user__id", r.userId, "form", "")
+		localVarQueryParams.Add("user__id", parameterToString(*r.userId, ""))
 	}
 	if r.userUsername != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "user__username", r.userUsername, "form", "")
+		localVarQueryParams.Add("user__username", parameterToString(*r.userUsername, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6564,9 +6470,9 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersListExecute(r ApiProvi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6583,7 +6489,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersListExecute(r ApiProvi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6594,7 +6499,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersListExecute(r ApiProvi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6614,7 +6518,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersListExecute(r ApiProvi
 
 type ApiProvidersMicrosoftEntraUsersRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         string
 }
 
@@ -6631,7 +6535,7 @@ MicrosoftEntraProviderUser Viewset
 	@param id A UUID string identifying this Microsoft Entra Provider User.
 	@return ApiProvidersMicrosoftEntraUsersRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersRetrieve(ctx context.Context, id string) ApiProvidersMicrosoftEntraUsersRetrieveRequest {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersRetrieve(ctx context.Context, id string) ApiProvidersMicrosoftEntraUsersRetrieveRequest {
 	return ApiProvidersMicrosoftEntraUsersRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6642,7 +6546,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersRetrieve(ctx context.C
 // Execute executes the request
 //
 //	@return MicrosoftEntraProviderUser
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersRetrieveExecute(r ApiProvidersMicrosoftEntraUsersRetrieveRequest) (*MicrosoftEntraProviderUser, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersRetrieveExecute(r ApiProvidersMicrosoftEntraUsersRetrieveRequest) (*MicrosoftEntraProviderUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6650,13 +6554,13 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersRetrieveExecute(r ApiP
 		localVarReturnValue *MicrosoftEntraProviderUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersMicrosoftEntraUsersRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraUsersRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/microsoft_entra_users/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6689,9 +6593,9 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersRetrieveExecute(r ApiP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6708,7 +6612,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersRetrieveExecute(r ApiP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6719,7 +6622,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersRetrieveExecute(r ApiP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6739,7 +6641,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersRetrieveExecute(r ApiP
 
 type ApiProvidersMicrosoftEntraUsersUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         string
 }
 
@@ -6756,7 +6658,7 @@ Get a list of all objects that use this object
 	@param id A UUID string identifying this Microsoft Entra Provider User.
 	@return ApiProvidersMicrosoftEntraUsersUsedByListRequest
 */
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersUsedByList(ctx context.Context, id string) ApiProvidersMicrosoftEntraUsersUsedByListRequest {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersUsedByList(ctx context.Context, id string) ApiProvidersMicrosoftEntraUsersUsedByListRequest {
 	return ApiProvidersMicrosoftEntraUsersUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6767,7 +6669,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersUsedByList(ctx context
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersUsedByListExecute(r ApiProvidersMicrosoftEntraUsersUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersMicrosoftEntraUsersUsedByListExecute(r ApiProvidersMicrosoftEntraUsersUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6775,13 +6677,13 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersUsedByListExecute(r Ap
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersMicrosoftEntraUsersUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersMicrosoftEntraUsersUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/microsoft_entra_users/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6814,9 +6716,9 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersUsedByListExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6833,7 +6735,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersUsedByListExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6844,7 +6745,6 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersUsedByListExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6864,7 +6764,7 @@ func (a *ProvidersAPIService) ProvidersMicrosoftEntraUsersUsedByListExecute(r Ap
 
 type ApiProvidersOauth2CreateRequest struct {
 	ctx                   context.Context
-	ApiService            *ProvidersAPIService
+	ApiService            *ProvidersApiService
 	oAuth2ProviderRequest *OAuth2ProviderRequest
 }
 
@@ -6885,7 +6785,7 @@ OAuth2Provider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersOauth2CreateRequest
 */
-func (a *ProvidersAPIService) ProvidersOauth2Create(ctx context.Context) ApiProvidersOauth2CreateRequest {
+func (a *ProvidersApiService) ProvidersOauth2Create(ctx context.Context) ApiProvidersOauth2CreateRequest {
 	return ApiProvidersOauth2CreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6895,7 +6795,7 @@ func (a *ProvidersAPIService) ProvidersOauth2Create(ctx context.Context) ApiProv
 // Execute executes the request
 //
 //	@return OAuth2Provider
-func (a *ProvidersAPIService) ProvidersOauth2CreateExecute(r ApiProvidersOauth2CreateRequest) (*OAuth2Provider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersOauth2CreateExecute(r ApiProvidersOauth2CreateRequest) (*OAuth2Provider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -6903,7 +6803,7 @@ func (a *ProvidersAPIService) ProvidersOauth2CreateExecute(r ApiProvidersOauth2C
 		localVarReturnValue *OAuth2Provider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersOauth2Create")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersOauth2Create")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -6946,9 +6846,9 @@ func (a *ProvidersAPIService) ProvidersOauth2CreateExecute(r ApiProvidersOauth2C
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6965,7 +6865,6 @@ func (a *ProvidersAPIService) ProvidersOauth2CreateExecute(r ApiProvidersOauth2C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6976,7 +6875,6 @@ func (a *ProvidersAPIService) ProvidersOauth2CreateExecute(r ApiProvidersOauth2C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6996,7 +6894,7 @@ func (a *ProvidersAPIService) ProvidersOauth2CreateExecute(r ApiProvidersOauth2C
 
 type ApiProvidersOauth2DestroyRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -7013,7 +6911,7 @@ OAuth2Provider Viewset
 	@param id A unique integer value identifying this OAuth2/OpenID Provider.
 	@return ApiProvidersOauth2DestroyRequest
 */
-func (a *ProvidersAPIService) ProvidersOauth2Destroy(ctx context.Context, id int32) ApiProvidersOauth2DestroyRequest {
+func (a *ProvidersApiService) ProvidersOauth2Destroy(ctx context.Context, id int32) ApiProvidersOauth2DestroyRequest {
 	return ApiProvidersOauth2DestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7022,20 +6920,20 @@ func (a *ProvidersAPIService) ProvidersOauth2Destroy(ctx context.Context, id int
 }
 
 // Execute executes the request
-func (a *ProvidersAPIService) ProvidersOauth2DestroyExecute(r ApiProvidersOauth2DestroyRequest) (*http.Response, error) {
+func (a *ProvidersApiService) ProvidersOauth2DestroyExecute(r ApiProvidersOauth2DestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersOauth2Destroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersOauth2Destroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/oauth2/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7068,9 +6966,9 @@ func (a *ProvidersAPIService) ProvidersOauth2DestroyExecute(r ApiProvidersOauth2
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -7087,7 +6985,6 @@ func (a *ProvidersAPIService) ProvidersOauth2DestroyExecute(r ApiProvidersOauth2
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -7098,7 +6995,6 @@ func (a *ProvidersAPIService) ProvidersOauth2DestroyExecute(r ApiProvidersOauth2
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -7109,7 +7005,7 @@ func (a *ProvidersAPIService) ProvidersOauth2DestroyExecute(r ApiProvidersOauth2
 
 type ApiProvidersOauth2ListRequest struct {
 	ctx                    context.Context
-	ApiService             *ProvidersAPIService
+	ApiService             *ProvidersApiService
 	accessCodeValidity     *string
 	accessTokenValidity    *string
 	application            *string
@@ -7233,7 +7129,7 @@ OAuth2Provider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersOauth2ListRequest
 */
-func (a *ProvidersAPIService) ProvidersOauth2List(ctx context.Context) ApiProvidersOauth2ListRequest {
+func (a *ProvidersApiService) ProvidersOauth2List(ctx context.Context) ApiProvidersOauth2ListRequest {
 	return ApiProvidersOauth2ListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7243,7 +7139,7 @@ func (a *ProvidersAPIService) ProvidersOauth2List(ctx context.Context) ApiProvid
 // Execute executes the request
 //
 //	@return PaginatedOAuth2ProviderList
-func (a *ProvidersAPIService) ProvidersOauth2ListExecute(r ApiProvidersOauth2ListRequest) (*PaginatedOAuth2ProviderList, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersOauth2ListExecute(r ApiProvidersOauth2ListRequest) (*PaginatedOAuth2ProviderList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -7251,7 +7147,7 @@ func (a *ProvidersAPIService) ProvidersOauth2ListExecute(r ApiProvidersOauth2Lis
 		localVarReturnValue *PaginatedOAuth2ProviderList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersOauth2List")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersOauth2List")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -7263,63 +7159,63 @@ func (a *ProvidersAPIService) ProvidersOauth2ListExecute(r ApiProvidersOauth2Lis
 	localVarFormParams := url.Values{}
 
 	if r.accessCodeValidity != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "access_code_validity", r.accessCodeValidity, "form", "")
+		localVarQueryParams.Add("access_code_validity", parameterToString(*r.accessCodeValidity, ""))
 	}
 	if r.accessTokenValidity != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "access_token_validity", r.accessTokenValidity, "form", "")
+		localVarQueryParams.Add("access_token_validity", parameterToString(*r.accessTokenValidity, ""))
 	}
 	if r.application != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "application", r.application, "form", "")
+		localVarQueryParams.Add("application", parameterToString(*r.application, ""))
 	}
 	if r.authorizationFlow != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "authorization_flow", r.authorizationFlow, "form", "")
+		localVarQueryParams.Add("authorization_flow", parameterToString(*r.authorizationFlow, ""))
 	}
 	if r.clientId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "client_id", r.clientId, "form", "")
+		localVarQueryParams.Add("client_id", parameterToString(*r.clientId, ""))
 	}
 	if r.clientType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "client_type", r.clientType, "form", "")
+		localVarQueryParams.Add("client_type", parameterToString(*r.clientType, ""))
 	}
 	if r.includeClaimsInIdToken != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_claims_in_id_token", r.includeClaimsInIdToken, "form", "")
+		localVarQueryParams.Add("include_claims_in_id_token", parameterToString(*r.includeClaimsInIdToken, ""))
 	}
 	if r.issuerMode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "issuer_mode", r.issuerMode, "form", "")
+		localVarQueryParams.Add("issuer_mode", parameterToString(*r.issuerMode, ""))
 	}
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.propertyMappings != nil {
 		t := *r.propertyMappings
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "property_mappings", s.Index(i).Interface(), "form", "multi")
+				localVarQueryParams.Add("property_mappings", parameterToString(s.Index(i), "multi"))
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "property_mappings", t, "form", "multi")
+			localVarQueryParams.Add("property_mappings", parameterToString(t, "multi"))
 		}
 	}
 	if r.refreshTokenValidity != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "refresh_token_validity", r.refreshTokenValidity, "form", "")
+		localVarQueryParams.Add("refresh_token_validity", parameterToString(*r.refreshTokenValidity, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.signingKey != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "signing_key", r.signingKey, "form", "")
+		localVarQueryParams.Add("signing_key", parameterToString(*r.signingKey, ""))
 	}
 	if r.subMode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sub_mode", r.subMode, "form", "")
+		localVarQueryParams.Add("sub_mode", parameterToString(*r.subMode, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7348,9 +7244,9 @@ func (a *ProvidersAPIService) ProvidersOauth2ListExecute(r ApiProvidersOauth2Lis
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7367,7 +7263,6 @@ func (a *ProvidersAPIService) ProvidersOauth2ListExecute(r ApiProvidersOauth2Lis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7378,7 +7273,6 @@ func (a *ProvidersAPIService) ProvidersOauth2ListExecute(r ApiProvidersOauth2Lis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7398,7 +7292,7 @@ func (a *ProvidersAPIService) ProvidersOauth2ListExecute(r ApiProvidersOauth2Lis
 
 type ApiProvidersOauth2PartialUpdateRequest struct {
 	ctx                          context.Context
-	ApiService                   *ProvidersAPIService
+	ApiService                   *ProvidersApiService
 	id                           int32
 	patchedOAuth2ProviderRequest *PatchedOAuth2ProviderRequest
 }
@@ -7421,7 +7315,7 @@ OAuth2Provider Viewset
 	@param id A unique integer value identifying this OAuth2/OpenID Provider.
 	@return ApiProvidersOauth2PartialUpdateRequest
 */
-func (a *ProvidersAPIService) ProvidersOauth2PartialUpdate(ctx context.Context, id int32) ApiProvidersOauth2PartialUpdateRequest {
+func (a *ProvidersApiService) ProvidersOauth2PartialUpdate(ctx context.Context, id int32) ApiProvidersOauth2PartialUpdateRequest {
 	return ApiProvidersOauth2PartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7432,7 +7326,7 @@ func (a *ProvidersAPIService) ProvidersOauth2PartialUpdate(ctx context.Context, 
 // Execute executes the request
 //
 //	@return OAuth2Provider
-func (a *ProvidersAPIService) ProvidersOauth2PartialUpdateExecute(r ApiProvidersOauth2PartialUpdateRequest) (*OAuth2Provider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersOauth2PartialUpdateExecute(r ApiProvidersOauth2PartialUpdateRequest) (*OAuth2Provider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -7440,13 +7334,13 @@ func (a *ProvidersAPIService) ProvidersOauth2PartialUpdateExecute(r ApiProviders
 		localVarReturnValue *OAuth2Provider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersOauth2PartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersOauth2PartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/oauth2/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7481,9 +7375,9 @@ func (a *ProvidersAPIService) ProvidersOauth2PartialUpdateExecute(r ApiProviders
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7500,7 +7394,6 @@ func (a *ProvidersAPIService) ProvidersOauth2PartialUpdateExecute(r ApiProviders
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7511,7 +7404,6 @@ func (a *ProvidersAPIService) ProvidersOauth2PartialUpdateExecute(r ApiProviders
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7531,7 +7423,7 @@ func (a *ProvidersAPIService) ProvidersOauth2PartialUpdateExecute(r ApiProviders
 
 type ApiProvidersOauth2PreviewUserRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 	forUser    *int32
 }
@@ -7554,7 +7446,7 @@ Preview user data for provider
 	@param id A unique integer value identifying this OAuth2/OpenID Provider.
 	@return ApiProvidersOauth2PreviewUserRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersOauth2PreviewUserRetrieve(ctx context.Context, id int32) ApiProvidersOauth2PreviewUserRetrieveRequest {
+func (a *ProvidersApiService) ProvidersOauth2PreviewUserRetrieve(ctx context.Context, id int32) ApiProvidersOauth2PreviewUserRetrieveRequest {
 	return ApiProvidersOauth2PreviewUserRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7565,7 +7457,7 @@ func (a *ProvidersAPIService) ProvidersOauth2PreviewUserRetrieve(ctx context.Con
 // Execute executes the request
 //
 //	@return PropertyMappingPreview
-func (a *ProvidersAPIService) ProvidersOauth2PreviewUserRetrieveExecute(r ApiProvidersOauth2PreviewUserRetrieveRequest) (*PropertyMappingPreview, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersOauth2PreviewUserRetrieveExecute(r ApiProvidersOauth2PreviewUserRetrieveRequest) (*PropertyMappingPreview, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -7573,20 +7465,20 @@ func (a *ProvidersAPIService) ProvidersOauth2PreviewUserRetrieveExecute(r ApiPro
 		localVarReturnValue *PropertyMappingPreview
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersOauth2PreviewUserRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersOauth2PreviewUserRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/oauth2/{id}/preview_user/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.forUser != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "for_user", r.forUser, "form", "")
+		localVarQueryParams.Add("for_user", parameterToString(*r.forUser, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7615,9 +7507,9 @@ func (a *ProvidersAPIService) ProvidersOauth2PreviewUserRetrieveExecute(r ApiPro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7634,7 +7526,6 @@ func (a *ProvidersAPIService) ProvidersOauth2PreviewUserRetrieveExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7654,7 +7545,7 @@ func (a *ProvidersAPIService) ProvidersOauth2PreviewUserRetrieveExecute(r ApiPro
 
 type ApiProvidersOauth2RetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -7671,7 +7562,7 @@ OAuth2Provider Viewset
 	@param id A unique integer value identifying this OAuth2/OpenID Provider.
 	@return ApiProvidersOauth2RetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersOauth2Retrieve(ctx context.Context, id int32) ApiProvidersOauth2RetrieveRequest {
+func (a *ProvidersApiService) ProvidersOauth2Retrieve(ctx context.Context, id int32) ApiProvidersOauth2RetrieveRequest {
 	return ApiProvidersOauth2RetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7682,7 +7573,7 @@ func (a *ProvidersAPIService) ProvidersOauth2Retrieve(ctx context.Context, id in
 // Execute executes the request
 //
 //	@return OAuth2Provider
-func (a *ProvidersAPIService) ProvidersOauth2RetrieveExecute(r ApiProvidersOauth2RetrieveRequest) (*OAuth2Provider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersOauth2RetrieveExecute(r ApiProvidersOauth2RetrieveRequest) (*OAuth2Provider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -7690,13 +7581,13 @@ func (a *ProvidersAPIService) ProvidersOauth2RetrieveExecute(r ApiProvidersOauth
 		localVarReturnValue *OAuth2Provider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersOauth2Retrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersOauth2Retrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/oauth2/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7729,9 +7620,9 @@ func (a *ProvidersAPIService) ProvidersOauth2RetrieveExecute(r ApiProvidersOauth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7748,7 +7639,6 @@ func (a *ProvidersAPIService) ProvidersOauth2RetrieveExecute(r ApiProvidersOauth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7759,7 +7649,6 @@ func (a *ProvidersAPIService) ProvidersOauth2RetrieveExecute(r ApiProvidersOauth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7779,7 +7668,7 @@ func (a *ProvidersAPIService) ProvidersOauth2RetrieveExecute(r ApiProvidersOauth
 
 type ApiProvidersOauth2SetupUrlsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -7796,7 +7685,7 @@ Get Providers setup URLs
 	@param id A unique integer value identifying this OAuth2/OpenID Provider.
 	@return ApiProvidersOauth2SetupUrlsRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersOauth2SetupUrlsRetrieve(ctx context.Context, id int32) ApiProvidersOauth2SetupUrlsRetrieveRequest {
+func (a *ProvidersApiService) ProvidersOauth2SetupUrlsRetrieve(ctx context.Context, id int32) ApiProvidersOauth2SetupUrlsRetrieveRequest {
 	return ApiProvidersOauth2SetupUrlsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7807,7 +7696,7 @@ func (a *ProvidersAPIService) ProvidersOauth2SetupUrlsRetrieve(ctx context.Conte
 // Execute executes the request
 //
 //	@return OAuth2ProviderSetupURLs
-func (a *ProvidersAPIService) ProvidersOauth2SetupUrlsRetrieveExecute(r ApiProvidersOauth2SetupUrlsRetrieveRequest) (*OAuth2ProviderSetupURLs, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersOauth2SetupUrlsRetrieveExecute(r ApiProvidersOauth2SetupUrlsRetrieveRequest) (*OAuth2ProviderSetupURLs, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -7815,13 +7704,13 @@ func (a *ProvidersAPIService) ProvidersOauth2SetupUrlsRetrieveExecute(r ApiProvi
 		localVarReturnValue *OAuth2ProviderSetupURLs
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersOauth2SetupUrlsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersOauth2SetupUrlsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/oauth2/{id}/setup_urls/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7854,9 +7743,9 @@ func (a *ProvidersAPIService) ProvidersOauth2SetupUrlsRetrieveExecute(r ApiProvi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7873,7 +7762,6 @@ func (a *ProvidersAPIService) ProvidersOauth2SetupUrlsRetrieveExecute(r ApiProvi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7884,7 +7772,6 @@ func (a *ProvidersAPIService) ProvidersOauth2SetupUrlsRetrieveExecute(r ApiProvi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7904,7 +7791,7 @@ func (a *ProvidersAPIService) ProvidersOauth2SetupUrlsRetrieveExecute(r ApiProvi
 
 type ApiProvidersOauth2UpdateRequest struct {
 	ctx                   context.Context
-	ApiService            *ProvidersAPIService
+	ApiService            *ProvidersApiService
 	id                    int32
 	oAuth2ProviderRequest *OAuth2ProviderRequest
 }
@@ -7927,7 +7814,7 @@ OAuth2Provider Viewset
 	@param id A unique integer value identifying this OAuth2/OpenID Provider.
 	@return ApiProvidersOauth2UpdateRequest
 */
-func (a *ProvidersAPIService) ProvidersOauth2Update(ctx context.Context, id int32) ApiProvidersOauth2UpdateRequest {
+func (a *ProvidersApiService) ProvidersOauth2Update(ctx context.Context, id int32) ApiProvidersOauth2UpdateRequest {
 	return ApiProvidersOauth2UpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7938,7 +7825,7 @@ func (a *ProvidersAPIService) ProvidersOauth2Update(ctx context.Context, id int3
 // Execute executes the request
 //
 //	@return OAuth2Provider
-func (a *ProvidersAPIService) ProvidersOauth2UpdateExecute(r ApiProvidersOauth2UpdateRequest) (*OAuth2Provider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersOauth2UpdateExecute(r ApiProvidersOauth2UpdateRequest) (*OAuth2Provider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -7946,13 +7833,13 @@ func (a *ProvidersAPIService) ProvidersOauth2UpdateExecute(r ApiProvidersOauth2U
 		localVarReturnValue *OAuth2Provider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersOauth2Update")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersOauth2Update")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/oauth2/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7990,9 +7877,9 @@ func (a *ProvidersAPIService) ProvidersOauth2UpdateExecute(r ApiProvidersOauth2U
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8009,7 +7896,6 @@ func (a *ProvidersAPIService) ProvidersOauth2UpdateExecute(r ApiProvidersOauth2U
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8020,7 +7906,6 @@ func (a *ProvidersAPIService) ProvidersOauth2UpdateExecute(r ApiProvidersOauth2U
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8040,7 +7925,7 @@ func (a *ProvidersAPIService) ProvidersOauth2UpdateExecute(r ApiProvidersOauth2U
 
 type ApiProvidersOauth2UsedByListRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -8057,7 +7942,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this OAuth2/OpenID Provider.
 	@return ApiProvidersOauth2UsedByListRequest
 */
-func (a *ProvidersAPIService) ProvidersOauth2UsedByList(ctx context.Context, id int32) ApiProvidersOauth2UsedByListRequest {
+func (a *ProvidersApiService) ProvidersOauth2UsedByList(ctx context.Context, id int32) ApiProvidersOauth2UsedByListRequest {
 	return ApiProvidersOauth2UsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8068,7 +7953,7 @@ func (a *ProvidersAPIService) ProvidersOauth2UsedByList(ctx context.Context, id 
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *ProvidersAPIService) ProvidersOauth2UsedByListExecute(r ApiProvidersOauth2UsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersOauth2UsedByListExecute(r ApiProvidersOauth2UsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -8076,13 +7961,13 @@ func (a *ProvidersAPIService) ProvidersOauth2UsedByListExecute(r ApiProvidersOau
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersOauth2UsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersOauth2UsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/oauth2/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8115,9 +8000,9 @@ func (a *ProvidersAPIService) ProvidersOauth2UsedByListExecute(r ApiProvidersOau
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8134,7 +8019,6 @@ func (a *ProvidersAPIService) ProvidersOauth2UsedByListExecute(r ApiProvidersOau
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8145,7 +8029,6 @@ func (a *ProvidersAPIService) ProvidersOauth2UsedByListExecute(r ApiProvidersOau
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8165,7 +8048,7 @@ func (a *ProvidersAPIService) ProvidersOauth2UsedByListExecute(r ApiProvidersOau
 
 type ApiProvidersProxyCreateRequest struct {
 	ctx                  context.Context
-	ApiService           *ProvidersAPIService
+	ApiService           *ProvidersApiService
 	proxyProviderRequest *ProxyProviderRequest
 }
 
@@ -8186,7 +8069,7 @@ ProxyProvider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersProxyCreateRequest
 */
-func (a *ProvidersAPIService) ProvidersProxyCreate(ctx context.Context) ApiProvidersProxyCreateRequest {
+func (a *ProvidersApiService) ProvidersProxyCreate(ctx context.Context) ApiProvidersProxyCreateRequest {
 	return ApiProvidersProxyCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8196,7 +8079,7 @@ func (a *ProvidersAPIService) ProvidersProxyCreate(ctx context.Context) ApiProvi
 // Execute executes the request
 //
 //	@return ProxyProvider
-func (a *ProvidersAPIService) ProvidersProxyCreateExecute(r ApiProvidersProxyCreateRequest) (*ProxyProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersProxyCreateExecute(r ApiProvidersProxyCreateRequest) (*ProxyProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -8204,7 +8087,7 @@ func (a *ProvidersAPIService) ProvidersProxyCreateExecute(r ApiProvidersProxyCre
 		localVarReturnValue *ProxyProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersProxyCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersProxyCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -8247,9 +8130,9 @@ func (a *ProvidersAPIService) ProvidersProxyCreateExecute(r ApiProvidersProxyCre
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8266,7 +8149,6 @@ func (a *ProvidersAPIService) ProvidersProxyCreateExecute(r ApiProvidersProxyCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8277,7 +8159,6 @@ func (a *ProvidersAPIService) ProvidersProxyCreateExecute(r ApiProvidersProxyCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8297,7 +8178,7 @@ func (a *ProvidersAPIService) ProvidersProxyCreateExecute(r ApiProvidersProxyCre
 
 type ApiProvidersProxyDestroyRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -8314,7 +8195,7 @@ ProxyProvider Viewset
 	@param id A unique integer value identifying this Proxy Provider.
 	@return ApiProvidersProxyDestroyRequest
 */
-func (a *ProvidersAPIService) ProvidersProxyDestroy(ctx context.Context, id int32) ApiProvidersProxyDestroyRequest {
+func (a *ProvidersApiService) ProvidersProxyDestroy(ctx context.Context, id int32) ApiProvidersProxyDestroyRequest {
 	return ApiProvidersProxyDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8323,20 +8204,20 @@ func (a *ProvidersAPIService) ProvidersProxyDestroy(ctx context.Context, id int3
 }
 
 // Execute executes the request
-func (a *ProvidersAPIService) ProvidersProxyDestroyExecute(r ApiProvidersProxyDestroyRequest) (*http.Response, error) {
+func (a *ProvidersApiService) ProvidersProxyDestroyExecute(r ApiProvidersProxyDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersProxyDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersProxyDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/proxy/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8369,9 +8250,9 @@ func (a *ProvidersAPIService) ProvidersProxyDestroyExecute(r ApiProvidersProxyDe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -8388,7 +8269,6 @@ func (a *ProvidersAPIService) ProvidersProxyDestroyExecute(r ApiProvidersProxyDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -8399,7 +8279,6 @@ func (a *ProvidersAPIService) ProvidersProxyDestroyExecute(r ApiProvidersProxyDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -8410,7 +8289,7 @@ func (a *ProvidersAPIService) ProvidersProxyDestroyExecute(r ApiProvidersProxyDe
 
 type ApiProvidersProxyListRequest struct {
 	ctx                              context.Context
-	ApiService                       *ProvidersAPIService
+	ApiService                       *ProvidersApiService
 	applicationIsnull                *bool
 	authorizationFlowSlugIexact      *string
 	basicAuthEnabledIexact           *bool
@@ -8543,7 +8422,7 @@ ProxyProvider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersProxyListRequest
 */
-func (a *ProvidersAPIService) ProvidersProxyList(ctx context.Context) ApiProvidersProxyListRequest {
+func (a *ProvidersApiService) ProvidersProxyList(ctx context.Context) ApiProvidersProxyListRequest {
 	return ApiProvidersProxyListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8553,7 +8432,7 @@ func (a *ProvidersAPIService) ProvidersProxyList(ctx context.Context) ApiProvide
 // Execute executes the request
 //
 //	@return PaginatedProxyProviderList
-func (a *ProvidersAPIService) ProvidersProxyListExecute(r ApiProvidersProxyListRequest) (*PaginatedProxyProviderList, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersProxyListExecute(r ApiProvidersProxyListRequest) (*PaginatedProxyProviderList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -8561,7 +8440,7 @@ func (a *ProvidersAPIService) ProvidersProxyListExecute(r ApiProvidersProxyListR
 		localVarReturnValue *PaginatedProxyProviderList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersProxyList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersProxyList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -8573,69 +8452,69 @@ func (a *ProvidersAPIService) ProvidersProxyListExecute(r ApiProvidersProxyListR
 	localVarFormParams := url.Values{}
 
 	if r.applicationIsnull != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "application__isnull", r.applicationIsnull, "form", "")
+		localVarQueryParams.Add("application__isnull", parameterToString(*r.applicationIsnull, ""))
 	}
 	if r.authorizationFlowSlugIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "authorization_flow__slug__iexact", r.authorizationFlowSlugIexact, "form", "")
+		localVarQueryParams.Add("authorization_flow__slug__iexact", parameterToString(*r.authorizationFlowSlugIexact, ""))
 	}
 	if r.basicAuthEnabledIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "basic_auth_enabled__iexact", r.basicAuthEnabledIexact, "form", "")
+		localVarQueryParams.Add("basic_auth_enabled__iexact", parameterToString(*r.basicAuthEnabledIexact, ""))
 	}
 	if r.basicAuthPasswordAttributeIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "basic_auth_password_attribute__iexact", r.basicAuthPasswordAttributeIexact, "form", "")
+		localVarQueryParams.Add("basic_auth_password_attribute__iexact", parameterToString(*r.basicAuthPasswordAttributeIexact, ""))
 	}
 	if r.basicAuthUserAttributeIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "basic_auth_user_attribute__iexact", r.basicAuthUserAttributeIexact, "form", "")
+		localVarQueryParams.Add("basic_auth_user_attribute__iexact", parameterToString(*r.basicAuthUserAttributeIexact, ""))
 	}
 	if r.certificateKpUuidIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "certificate__kp_uuid__iexact", r.certificateKpUuidIexact, "form", "")
+		localVarQueryParams.Add("certificate__kp_uuid__iexact", parameterToString(*r.certificateKpUuidIexact, ""))
 	}
 	if r.certificateNameIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "certificate__name__iexact", r.certificateNameIexact, "form", "")
+		localVarQueryParams.Add("certificate__name__iexact", parameterToString(*r.certificateNameIexact, ""))
 	}
 	if r.cookieDomainIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "cookie_domain__iexact", r.cookieDomainIexact, "form", "")
+		localVarQueryParams.Add("cookie_domain__iexact", parameterToString(*r.cookieDomainIexact, ""))
 	}
 	if r.externalHostIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "external_host__iexact", r.externalHostIexact, "form", "")
+		localVarQueryParams.Add("external_host__iexact", parameterToString(*r.externalHostIexact, ""))
 	}
 	if r.internalHostIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "internal_host__iexact", r.internalHostIexact, "form", "")
+		localVarQueryParams.Add("internal_host__iexact", parameterToString(*r.internalHostIexact, ""))
 	}
 	if r.internalHostSslValidationIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "internal_host_ssl_validation__iexact", r.internalHostSslValidationIexact, "form", "")
+		localVarQueryParams.Add("internal_host_ssl_validation__iexact", parameterToString(*r.internalHostSslValidationIexact, ""))
 	}
 	if r.modeIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "mode__iexact", r.modeIexact, "form", "")
+		localVarQueryParams.Add("mode__iexact", parameterToString(*r.modeIexact, ""))
 	}
 	if r.nameIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name__iexact", r.nameIexact, "form", "")
+		localVarQueryParams.Add("name__iexact", parameterToString(*r.nameIexact, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.propertyMappingsIexact != nil {
 		t := *r.propertyMappingsIexact
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "property_mappings__iexact", s.Index(i).Interface(), "form", "multi")
+				localVarQueryParams.Add("property_mappings__iexact", parameterToString(s.Index(i), "multi"))
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "property_mappings__iexact", t, "form", "multi")
+			localVarQueryParams.Add("property_mappings__iexact", parameterToString(t, "multi"))
 		}
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.skipPathRegexIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "skip_path_regex__iexact", r.skipPathRegexIexact, "form", "")
+		localVarQueryParams.Add("skip_path_regex__iexact", parameterToString(*r.skipPathRegexIexact, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8664,9 +8543,9 @@ func (a *ProvidersAPIService) ProvidersProxyListExecute(r ApiProvidersProxyListR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8683,7 +8562,6 @@ func (a *ProvidersAPIService) ProvidersProxyListExecute(r ApiProvidersProxyListR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8694,7 +8572,6 @@ func (a *ProvidersAPIService) ProvidersProxyListExecute(r ApiProvidersProxyListR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8714,7 +8591,7 @@ func (a *ProvidersAPIService) ProvidersProxyListExecute(r ApiProvidersProxyListR
 
 type ApiProvidersProxyPartialUpdateRequest struct {
 	ctx                         context.Context
-	ApiService                  *ProvidersAPIService
+	ApiService                  *ProvidersApiService
 	id                          int32
 	patchedProxyProviderRequest *PatchedProxyProviderRequest
 }
@@ -8737,7 +8614,7 @@ ProxyProvider Viewset
 	@param id A unique integer value identifying this Proxy Provider.
 	@return ApiProvidersProxyPartialUpdateRequest
 */
-func (a *ProvidersAPIService) ProvidersProxyPartialUpdate(ctx context.Context, id int32) ApiProvidersProxyPartialUpdateRequest {
+func (a *ProvidersApiService) ProvidersProxyPartialUpdate(ctx context.Context, id int32) ApiProvidersProxyPartialUpdateRequest {
 	return ApiProvidersProxyPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8748,7 +8625,7 @@ func (a *ProvidersAPIService) ProvidersProxyPartialUpdate(ctx context.Context, i
 // Execute executes the request
 //
 //	@return ProxyProvider
-func (a *ProvidersAPIService) ProvidersProxyPartialUpdateExecute(r ApiProvidersProxyPartialUpdateRequest) (*ProxyProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersProxyPartialUpdateExecute(r ApiProvidersProxyPartialUpdateRequest) (*ProxyProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -8756,13 +8633,13 @@ func (a *ProvidersAPIService) ProvidersProxyPartialUpdateExecute(r ApiProvidersP
 		localVarReturnValue *ProxyProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersProxyPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersProxyPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/proxy/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8797,9 +8674,9 @@ func (a *ProvidersAPIService) ProvidersProxyPartialUpdateExecute(r ApiProvidersP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8816,7 +8693,6 @@ func (a *ProvidersAPIService) ProvidersProxyPartialUpdateExecute(r ApiProvidersP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8827,7 +8703,6 @@ func (a *ProvidersAPIService) ProvidersProxyPartialUpdateExecute(r ApiProvidersP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8847,7 +8722,7 @@ func (a *ProvidersAPIService) ProvidersProxyPartialUpdateExecute(r ApiProvidersP
 
 type ApiProvidersProxyRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -8864,7 +8739,7 @@ ProxyProvider Viewset
 	@param id A unique integer value identifying this Proxy Provider.
 	@return ApiProvidersProxyRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersProxyRetrieve(ctx context.Context, id int32) ApiProvidersProxyRetrieveRequest {
+func (a *ProvidersApiService) ProvidersProxyRetrieve(ctx context.Context, id int32) ApiProvidersProxyRetrieveRequest {
 	return ApiProvidersProxyRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8875,7 +8750,7 @@ func (a *ProvidersAPIService) ProvidersProxyRetrieve(ctx context.Context, id int
 // Execute executes the request
 //
 //	@return ProxyProvider
-func (a *ProvidersAPIService) ProvidersProxyRetrieveExecute(r ApiProvidersProxyRetrieveRequest) (*ProxyProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersProxyRetrieveExecute(r ApiProvidersProxyRetrieveRequest) (*ProxyProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -8883,13 +8758,13 @@ func (a *ProvidersAPIService) ProvidersProxyRetrieveExecute(r ApiProvidersProxyR
 		localVarReturnValue *ProxyProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersProxyRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersProxyRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/proxy/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8922,9 +8797,9 @@ func (a *ProvidersAPIService) ProvidersProxyRetrieveExecute(r ApiProvidersProxyR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8941,7 +8816,6 @@ func (a *ProvidersAPIService) ProvidersProxyRetrieveExecute(r ApiProvidersProxyR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8952,7 +8826,6 @@ func (a *ProvidersAPIService) ProvidersProxyRetrieveExecute(r ApiProvidersProxyR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8972,7 +8845,7 @@ func (a *ProvidersAPIService) ProvidersProxyRetrieveExecute(r ApiProvidersProxyR
 
 type ApiProvidersProxyUpdateRequest struct {
 	ctx                  context.Context
-	ApiService           *ProvidersAPIService
+	ApiService           *ProvidersApiService
 	id                   int32
 	proxyProviderRequest *ProxyProviderRequest
 }
@@ -8995,7 +8868,7 @@ ProxyProvider Viewset
 	@param id A unique integer value identifying this Proxy Provider.
 	@return ApiProvidersProxyUpdateRequest
 */
-func (a *ProvidersAPIService) ProvidersProxyUpdate(ctx context.Context, id int32) ApiProvidersProxyUpdateRequest {
+func (a *ProvidersApiService) ProvidersProxyUpdate(ctx context.Context, id int32) ApiProvidersProxyUpdateRequest {
 	return ApiProvidersProxyUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9006,7 +8879,7 @@ func (a *ProvidersAPIService) ProvidersProxyUpdate(ctx context.Context, id int32
 // Execute executes the request
 //
 //	@return ProxyProvider
-func (a *ProvidersAPIService) ProvidersProxyUpdateExecute(r ApiProvidersProxyUpdateRequest) (*ProxyProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersProxyUpdateExecute(r ApiProvidersProxyUpdateRequest) (*ProxyProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -9014,13 +8887,13 @@ func (a *ProvidersAPIService) ProvidersProxyUpdateExecute(r ApiProvidersProxyUpd
 		localVarReturnValue *ProxyProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersProxyUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersProxyUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/proxy/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9058,9 +8931,9 @@ func (a *ProvidersAPIService) ProvidersProxyUpdateExecute(r ApiProvidersProxyUpd
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9077,7 +8950,6 @@ func (a *ProvidersAPIService) ProvidersProxyUpdateExecute(r ApiProvidersProxyUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9088,7 +8960,6 @@ func (a *ProvidersAPIService) ProvidersProxyUpdateExecute(r ApiProvidersProxyUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9108,7 +8979,7 @@ func (a *ProvidersAPIService) ProvidersProxyUpdateExecute(r ApiProvidersProxyUpd
 
 type ApiProvidersProxyUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -9125,7 +8996,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this Proxy Provider.
 	@return ApiProvidersProxyUsedByListRequest
 */
-func (a *ProvidersAPIService) ProvidersProxyUsedByList(ctx context.Context, id int32) ApiProvidersProxyUsedByListRequest {
+func (a *ProvidersApiService) ProvidersProxyUsedByList(ctx context.Context, id int32) ApiProvidersProxyUsedByListRequest {
 	return ApiProvidersProxyUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9136,7 +9007,7 @@ func (a *ProvidersAPIService) ProvidersProxyUsedByList(ctx context.Context, id i
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *ProvidersAPIService) ProvidersProxyUsedByListExecute(r ApiProvidersProxyUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersProxyUsedByListExecute(r ApiProvidersProxyUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -9144,13 +9015,13 @@ func (a *ProvidersAPIService) ProvidersProxyUsedByListExecute(r ApiProvidersProx
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersProxyUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersProxyUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/proxy/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9183,9 +9054,9 @@ func (a *ProvidersAPIService) ProvidersProxyUsedByListExecute(r ApiProvidersProx
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9202,7 +9073,6 @@ func (a *ProvidersAPIService) ProvidersProxyUsedByListExecute(r ApiProvidersProx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9213,7 +9083,6 @@ func (a *ProvidersAPIService) ProvidersProxyUsedByListExecute(r ApiProvidersProx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9233,7 +9102,7 @@ func (a *ProvidersAPIService) ProvidersProxyUsedByListExecute(r ApiProvidersProx
 
 type ApiProvidersRacCreateRequest struct {
 	ctx                context.Context
-	ApiService         *ProvidersAPIService
+	ApiService         *ProvidersApiService
 	rACProviderRequest *RACProviderRequest
 }
 
@@ -9254,7 +9123,7 @@ RACProvider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersRacCreateRequest
 */
-func (a *ProvidersAPIService) ProvidersRacCreate(ctx context.Context) ApiProvidersRacCreateRequest {
+func (a *ProvidersApiService) ProvidersRacCreate(ctx context.Context) ApiProvidersRacCreateRequest {
 	return ApiProvidersRacCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9264,7 +9133,7 @@ func (a *ProvidersAPIService) ProvidersRacCreate(ctx context.Context) ApiProvide
 // Execute executes the request
 //
 //	@return RACProvider
-func (a *ProvidersAPIService) ProvidersRacCreateExecute(r ApiProvidersRacCreateRequest) (*RACProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersRacCreateExecute(r ApiProvidersRacCreateRequest) (*RACProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -9272,7 +9141,7 @@ func (a *ProvidersAPIService) ProvidersRacCreateExecute(r ApiProvidersRacCreateR
 		localVarReturnValue *RACProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersRacCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersRacCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -9315,9 +9184,9 @@ func (a *ProvidersAPIService) ProvidersRacCreateExecute(r ApiProvidersRacCreateR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9334,7 +9203,6 @@ func (a *ProvidersAPIService) ProvidersRacCreateExecute(r ApiProvidersRacCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9345,7 +9213,6 @@ func (a *ProvidersAPIService) ProvidersRacCreateExecute(r ApiProvidersRacCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9365,7 +9232,7 @@ func (a *ProvidersAPIService) ProvidersRacCreateExecute(r ApiProvidersRacCreateR
 
 type ApiProvidersRacDestroyRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -9382,7 +9249,7 @@ RACProvider Viewset
 	@param id A unique integer value identifying this RAC Provider.
 	@return ApiProvidersRacDestroyRequest
 */
-func (a *ProvidersAPIService) ProvidersRacDestroy(ctx context.Context, id int32) ApiProvidersRacDestroyRequest {
+func (a *ProvidersApiService) ProvidersRacDestroy(ctx context.Context, id int32) ApiProvidersRacDestroyRequest {
 	return ApiProvidersRacDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9391,20 +9258,20 @@ func (a *ProvidersAPIService) ProvidersRacDestroy(ctx context.Context, id int32)
 }
 
 // Execute executes the request
-func (a *ProvidersAPIService) ProvidersRacDestroyExecute(r ApiProvidersRacDestroyRequest) (*http.Response, error) {
+func (a *ProvidersApiService) ProvidersRacDestroyExecute(r ApiProvidersRacDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersRacDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersRacDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/rac/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9437,9 +9304,9 @@ func (a *ProvidersAPIService) ProvidersRacDestroyExecute(r ApiProvidersRacDestro
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -9456,7 +9323,6 @@ func (a *ProvidersAPIService) ProvidersRacDestroyExecute(r ApiProvidersRacDestro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -9467,7 +9333,6 @@ func (a *ProvidersAPIService) ProvidersRacDestroyExecute(r ApiProvidersRacDestro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -9478,7 +9343,7 @@ func (a *ProvidersAPIService) ProvidersRacDestroyExecute(r ApiProvidersRacDestro
 
 type ApiProvidersRacListRequest struct {
 	ctx               context.Context
-	ApiService        *ProvidersAPIService
+	ApiService        *ProvidersApiService
 	applicationIsnull *bool
 	nameIexact        *string
 	ordering          *string
@@ -9533,7 +9398,7 @@ RACProvider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersRacListRequest
 */
-func (a *ProvidersAPIService) ProvidersRacList(ctx context.Context) ApiProvidersRacListRequest {
+func (a *ProvidersApiService) ProvidersRacList(ctx context.Context) ApiProvidersRacListRequest {
 	return ApiProvidersRacListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9543,7 +9408,7 @@ func (a *ProvidersAPIService) ProvidersRacList(ctx context.Context) ApiProviders
 // Execute executes the request
 //
 //	@return PaginatedRACProviderList
-func (a *ProvidersAPIService) ProvidersRacListExecute(r ApiProvidersRacListRequest) (*PaginatedRACProviderList, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersRacListExecute(r ApiProvidersRacListRequest) (*PaginatedRACProviderList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -9551,7 +9416,7 @@ func (a *ProvidersAPIService) ProvidersRacListExecute(r ApiProvidersRacListReque
 		localVarReturnValue *PaginatedRACProviderList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersRacList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersRacList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -9563,22 +9428,22 @@ func (a *ProvidersAPIService) ProvidersRacListExecute(r ApiProvidersRacListReque
 	localVarFormParams := url.Values{}
 
 	if r.applicationIsnull != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "application__isnull", r.applicationIsnull, "form", "")
+		localVarQueryParams.Add("application__isnull", parameterToString(*r.applicationIsnull, ""))
 	}
 	if r.nameIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name__iexact", r.nameIexact, "form", "")
+		localVarQueryParams.Add("name__iexact", parameterToString(*r.nameIexact, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -9607,9 +9472,9 @@ func (a *ProvidersAPIService) ProvidersRacListExecute(r ApiProvidersRacListReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9626,7 +9491,6 @@ func (a *ProvidersAPIService) ProvidersRacListExecute(r ApiProvidersRacListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9637,7 +9501,6 @@ func (a *ProvidersAPIService) ProvidersRacListExecute(r ApiProvidersRacListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9657,7 +9520,7 @@ func (a *ProvidersAPIService) ProvidersRacListExecute(r ApiProvidersRacListReque
 
 type ApiProvidersRacPartialUpdateRequest struct {
 	ctx                       context.Context
-	ApiService                *ProvidersAPIService
+	ApiService                *ProvidersApiService
 	id                        int32
 	patchedRACProviderRequest *PatchedRACProviderRequest
 }
@@ -9680,7 +9543,7 @@ RACProvider Viewset
 	@param id A unique integer value identifying this RAC Provider.
 	@return ApiProvidersRacPartialUpdateRequest
 */
-func (a *ProvidersAPIService) ProvidersRacPartialUpdate(ctx context.Context, id int32) ApiProvidersRacPartialUpdateRequest {
+func (a *ProvidersApiService) ProvidersRacPartialUpdate(ctx context.Context, id int32) ApiProvidersRacPartialUpdateRequest {
 	return ApiProvidersRacPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9691,7 +9554,7 @@ func (a *ProvidersAPIService) ProvidersRacPartialUpdate(ctx context.Context, id 
 // Execute executes the request
 //
 //	@return RACProvider
-func (a *ProvidersAPIService) ProvidersRacPartialUpdateExecute(r ApiProvidersRacPartialUpdateRequest) (*RACProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersRacPartialUpdateExecute(r ApiProvidersRacPartialUpdateRequest) (*RACProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -9699,13 +9562,13 @@ func (a *ProvidersAPIService) ProvidersRacPartialUpdateExecute(r ApiProvidersRac
 		localVarReturnValue *RACProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersRacPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersRacPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/rac/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9740,9 +9603,9 @@ func (a *ProvidersAPIService) ProvidersRacPartialUpdateExecute(r ApiProvidersRac
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9759,7 +9622,6 @@ func (a *ProvidersAPIService) ProvidersRacPartialUpdateExecute(r ApiProvidersRac
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9770,7 +9632,6 @@ func (a *ProvidersAPIService) ProvidersRacPartialUpdateExecute(r ApiProvidersRac
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9790,7 +9651,7 @@ func (a *ProvidersAPIService) ProvidersRacPartialUpdateExecute(r ApiProvidersRac
 
 type ApiProvidersRacRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -9807,7 +9668,7 @@ RACProvider Viewset
 	@param id A unique integer value identifying this RAC Provider.
 	@return ApiProvidersRacRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersRacRetrieve(ctx context.Context, id int32) ApiProvidersRacRetrieveRequest {
+func (a *ProvidersApiService) ProvidersRacRetrieve(ctx context.Context, id int32) ApiProvidersRacRetrieveRequest {
 	return ApiProvidersRacRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9818,7 +9679,7 @@ func (a *ProvidersAPIService) ProvidersRacRetrieve(ctx context.Context, id int32
 // Execute executes the request
 //
 //	@return RACProvider
-func (a *ProvidersAPIService) ProvidersRacRetrieveExecute(r ApiProvidersRacRetrieveRequest) (*RACProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersRacRetrieveExecute(r ApiProvidersRacRetrieveRequest) (*RACProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -9826,13 +9687,13 @@ func (a *ProvidersAPIService) ProvidersRacRetrieveExecute(r ApiProvidersRacRetri
 		localVarReturnValue *RACProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersRacRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersRacRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/rac/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9865,9 +9726,9 @@ func (a *ProvidersAPIService) ProvidersRacRetrieveExecute(r ApiProvidersRacRetri
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9884,7 +9745,6 @@ func (a *ProvidersAPIService) ProvidersRacRetrieveExecute(r ApiProvidersRacRetri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9895,7 +9755,6 @@ func (a *ProvidersAPIService) ProvidersRacRetrieveExecute(r ApiProvidersRacRetri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9915,7 +9774,7 @@ func (a *ProvidersAPIService) ProvidersRacRetrieveExecute(r ApiProvidersRacRetri
 
 type ApiProvidersRacUpdateRequest struct {
 	ctx                context.Context
-	ApiService         *ProvidersAPIService
+	ApiService         *ProvidersApiService
 	id                 int32
 	rACProviderRequest *RACProviderRequest
 }
@@ -9938,7 +9797,7 @@ RACProvider Viewset
 	@param id A unique integer value identifying this RAC Provider.
 	@return ApiProvidersRacUpdateRequest
 */
-func (a *ProvidersAPIService) ProvidersRacUpdate(ctx context.Context, id int32) ApiProvidersRacUpdateRequest {
+func (a *ProvidersApiService) ProvidersRacUpdate(ctx context.Context, id int32) ApiProvidersRacUpdateRequest {
 	return ApiProvidersRacUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9949,7 +9808,7 @@ func (a *ProvidersAPIService) ProvidersRacUpdate(ctx context.Context, id int32) 
 // Execute executes the request
 //
 //	@return RACProvider
-func (a *ProvidersAPIService) ProvidersRacUpdateExecute(r ApiProvidersRacUpdateRequest) (*RACProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersRacUpdateExecute(r ApiProvidersRacUpdateRequest) (*RACProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -9957,13 +9816,13 @@ func (a *ProvidersAPIService) ProvidersRacUpdateExecute(r ApiProvidersRacUpdateR
 		localVarReturnValue *RACProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersRacUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersRacUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/rac/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10001,9 +9860,9 @@ func (a *ProvidersAPIService) ProvidersRacUpdateExecute(r ApiProvidersRacUpdateR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10020,7 +9879,6 @@ func (a *ProvidersAPIService) ProvidersRacUpdateExecute(r ApiProvidersRacUpdateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10031,7 +9889,6 @@ func (a *ProvidersAPIService) ProvidersRacUpdateExecute(r ApiProvidersRacUpdateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10051,7 +9908,7 @@ func (a *ProvidersAPIService) ProvidersRacUpdateExecute(r ApiProvidersRacUpdateR
 
 type ApiProvidersRacUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -10068,7 +9925,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this RAC Provider.
 	@return ApiProvidersRacUsedByListRequest
 */
-func (a *ProvidersAPIService) ProvidersRacUsedByList(ctx context.Context, id int32) ApiProvidersRacUsedByListRequest {
+func (a *ProvidersApiService) ProvidersRacUsedByList(ctx context.Context, id int32) ApiProvidersRacUsedByListRequest {
 	return ApiProvidersRacUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10079,7 +9936,7 @@ func (a *ProvidersAPIService) ProvidersRacUsedByList(ctx context.Context, id int
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *ProvidersAPIService) ProvidersRacUsedByListExecute(r ApiProvidersRacUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersRacUsedByListExecute(r ApiProvidersRacUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -10087,13 +9944,13 @@ func (a *ProvidersAPIService) ProvidersRacUsedByListExecute(r ApiProvidersRacUse
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersRacUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersRacUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/rac/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10126,9 +9983,9 @@ func (a *ProvidersAPIService) ProvidersRacUsedByListExecute(r ApiProvidersRacUse
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10145,7 +10002,6 @@ func (a *ProvidersAPIService) ProvidersRacUsedByListExecute(r ApiProvidersRacUse
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10156,7 +10012,6 @@ func (a *ProvidersAPIService) ProvidersRacUsedByListExecute(r ApiProvidersRacUse
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10176,7 +10031,7 @@ func (a *ProvidersAPIService) ProvidersRacUsedByListExecute(r ApiProvidersRacUse
 
 type ApiProvidersRadiusCreateRequest struct {
 	ctx                   context.Context
-	ApiService            *ProvidersAPIService
+	ApiService            *ProvidersApiService
 	radiusProviderRequest *RadiusProviderRequest
 }
 
@@ -10197,7 +10052,7 @@ RadiusProvider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersRadiusCreateRequest
 */
-func (a *ProvidersAPIService) ProvidersRadiusCreate(ctx context.Context) ApiProvidersRadiusCreateRequest {
+func (a *ProvidersApiService) ProvidersRadiusCreate(ctx context.Context) ApiProvidersRadiusCreateRequest {
 	return ApiProvidersRadiusCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10207,7 +10062,7 @@ func (a *ProvidersAPIService) ProvidersRadiusCreate(ctx context.Context) ApiProv
 // Execute executes the request
 //
 //	@return RadiusProvider
-func (a *ProvidersAPIService) ProvidersRadiusCreateExecute(r ApiProvidersRadiusCreateRequest) (*RadiusProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersRadiusCreateExecute(r ApiProvidersRadiusCreateRequest) (*RadiusProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -10215,7 +10070,7 @@ func (a *ProvidersAPIService) ProvidersRadiusCreateExecute(r ApiProvidersRadiusC
 		localVarReturnValue *RadiusProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersRadiusCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersRadiusCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -10258,9 +10113,9 @@ func (a *ProvidersAPIService) ProvidersRadiusCreateExecute(r ApiProvidersRadiusC
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10277,7 +10132,6 @@ func (a *ProvidersAPIService) ProvidersRadiusCreateExecute(r ApiProvidersRadiusC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10288,7 +10142,6 @@ func (a *ProvidersAPIService) ProvidersRadiusCreateExecute(r ApiProvidersRadiusC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10308,7 +10161,7 @@ func (a *ProvidersAPIService) ProvidersRadiusCreateExecute(r ApiProvidersRadiusC
 
 type ApiProvidersRadiusDestroyRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -10325,7 +10178,7 @@ RadiusProvider Viewset
 	@param id A unique integer value identifying this Radius Provider.
 	@return ApiProvidersRadiusDestroyRequest
 */
-func (a *ProvidersAPIService) ProvidersRadiusDestroy(ctx context.Context, id int32) ApiProvidersRadiusDestroyRequest {
+func (a *ProvidersApiService) ProvidersRadiusDestroy(ctx context.Context, id int32) ApiProvidersRadiusDestroyRequest {
 	return ApiProvidersRadiusDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10334,20 +10187,20 @@ func (a *ProvidersAPIService) ProvidersRadiusDestroy(ctx context.Context, id int
 }
 
 // Execute executes the request
-func (a *ProvidersAPIService) ProvidersRadiusDestroyExecute(r ApiProvidersRadiusDestroyRequest) (*http.Response, error) {
+func (a *ProvidersApiService) ProvidersRadiusDestroyExecute(r ApiProvidersRadiusDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersRadiusDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersRadiusDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/radius/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10380,9 +10233,9 @@ func (a *ProvidersAPIService) ProvidersRadiusDestroyExecute(r ApiProvidersRadius
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -10399,7 +10252,6 @@ func (a *ProvidersAPIService) ProvidersRadiusDestroyExecute(r ApiProvidersRadius
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -10410,7 +10262,6 @@ func (a *ProvidersAPIService) ProvidersRadiusDestroyExecute(r ApiProvidersRadius
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -10421,7 +10272,7 @@ func (a *ProvidersAPIService) ProvidersRadiusDestroyExecute(r ApiProvidersRadius
 
 type ApiProvidersRadiusListRequest struct {
 	ctx                         context.Context
-	ApiService                  *ProvidersAPIService
+	ApiService                  *ProvidersApiService
 	applicationIsnull           *bool
 	authorizationFlowSlugIexact *string
 	clientNetworksIexact        *string
@@ -10488,7 +10339,7 @@ RadiusProvider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersRadiusListRequest
 */
-func (a *ProvidersAPIService) ProvidersRadiusList(ctx context.Context) ApiProvidersRadiusListRequest {
+func (a *ProvidersApiService) ProvidersRadiusList(ctx context.Context) ApiProvidersRadiusListRequest {
 	return ApiProvidersRadiusListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10498,7 +10349,7 @@ func (a *ProvidersAPIService) ProvidersRadiusList(ctx context.Context) ApiProvid
 // Execute executes the request
 //
 //	@return PaginatedRadiusProviderList
-func (a *ProvidersAPIService) ProvidersRadiusListExecute(r ApiProvidersRadiusListRequest) (*PaginatedRadiusProviderList, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersRadiusListExecute(r ApiProvidersRadiusListRequest) (*PaginatedRadiusProviderList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -10506,7 +10357,7 @@ func (a *ProvidersAPIService) ProvidersRadiusListExecute(r ApiProvidersRadiusLis
 		localVarReturnValue *PaginatedRadiusProviderList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersRadiusList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersRadiusList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -10518,28 +10369,28 @@ func (a *ProvidersAPIService) ProvidersRadiusListExecute(r ApiProvidersRadiusLis
 	localVarFormParams := url.Values{}
 
 	if r.applicationIsnull != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "application__isnull", r.applicationIsnull, "form", "")
+		localVarQueryParams.Add("application__isnull", parameterToString(*r.applicationIsnull, ""))
 	}
 	if r.authorizationFlowSlugIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "authorization_flow__slug__iexact", r.authorizationFlowSlugIexact, "form", "")
+		localVarQueryParams.Add("authorization_flow__slug__iexact", parameterToString(*r.authorizationFlowSlugIexact, ""))
 	}
 	if r.clientNetworksIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "client_networks__iexact", r.clientNetworksIexact, "form", "")
+		localVarQueryParams.Add("client_networks__iexact", parameterToString(*r.clientNetworksIexact, ""))
 	}
 	if r.nameIexact != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name__iexact", r.nameIexact, "form", "")
+		localVarQueryParams.Add("name__iexact", parameterToString(*r.nameIexact, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -10568,9 +10419,9 @@ func (a *ProvidersAPIService) ProvidersRadiusListExecute(r ApiProvidersRadiusLis
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10587,7 +10438,6 @@ func (a *ProvidersAPIService) ProvidersRadiusListExecute(r ApiProvidersRadiusLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10598,7 +10448,6 @@ func (a *ProvidersAPIService) ProvidersRadiusListExecute(r ApiProvidersRadiusLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10618,7 +10467,7 @@ func (a *ProvidersAPIService) ProvidersRadiusListExecute(r ApiProvidersRadiusLis
 
 type ApiProvidersRadiusPartialUpdateRequest struct {
 	ctx                          context.Context
-	ApiService                   *ProvidersAPIService
+	ApiService                   *ProvidersApiService
 	id                           int32
 	patchedRadiusProviderRequest *PatchedRadiusProviderRequest
 }
@@ -10641,7 +10490,7 @@ RadiusProvider Viewset
 	@param id A unique integer value identifying this Radius Provider.
 	@return ApiProvidersRadiusPartialUpdateRequest
 */
-func (a *ProvidersAPIService) ProvidersRadiusPartialUpdate(ctx context.Context, id int32) ApiProvidersRadiusPartialUpdateRequest {
+func (a *ProvidersApiService) ProvidersRadiusPartialUpdate(ctx context.Context, id int32) ApiProvidersRadiusPartialUpdateRequest {
 	return ApiProvidersRadiusPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10652,7 +10501,7 @@ func (a *ProvidersAPIService) ProvidersRadiusPartialUpdate(ctx context.Context, 
 // Execute executes the request
 //
 //	@return RadiusProvider
-func (a *ProvidersAPIService) ProvidersRadiusPartialUpdateExecute(r ApiProvidersRadiusPartialUpdateRequest) (*RadiusProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersRadiusPartialUpdateExecute(r ApiProvidersRadiusPartialUpdateRequest) (*RadiusProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -10660,13 +10509,13 @@ func (a *ProvidersAPIService) ProvidersRadiusPartialUpdateExecute(r ApiProviders
 		localVarReturnValue *RadiusProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersRadiusPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersRadiusPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/radius/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10701,9 +10550,9 @@ func (a *ProvidersAPIService) ProvidersRadiusPartialUpdateExecute(r ApiProviders
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10720,7 +10569,6 @@ func (a *ProvidersAPIService) ProvidersRadiusPartialUpdateExecute(r ApiProviders
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10731,7 +10579,6 @@ func (a *ProvidersAPIService) ProvidersRadiusPartialUpdateExecute(r ApiProviders
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10751,7 +10598,7 @@ func (a *ProvidersAPIService) ProvidersRadiusPartialUpdateExecute(r ApiProviders
 
 type ApiProvidersRadiusRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -10768,7 +10615,7 @@ RadiusProvider Viewset
 	@param id A unique integer value identifying this Radius Provider.
 	@return ApiProvidersRadiusRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersRadiusRetrieve(ctx context.Context, id int32) ApiProvidersRadiusRetrieveRequest {
+func (a *ProvidersApiService) ProvidersRadiusRetrieve(ctx context.Context, id int32) ApiProvidersRadiusRetrieveRequest {
 	return ApiProvidersRadiusRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10779,7 +10626,7 @@ func (a *ProvidersAPIService) ProvidersRadiusRetrieve(ctx context.Context, id in
 // Execute executes the request
 //
 //	@return RadiusProvider
-func (a *ProvidersAPIService) ProvidersRadiusRetrieveExecute(r ApiProvidersRadiusRetrieveRequest) (*RadiusProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersRadiusRetrieveExecute(r ApiProvidersRadiusRetrieveRequest) (*RadiusProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -10787,13 +10634,13 @@ func (a *ProvidersAPIService) ProvidersRadiusRetrieveExecute(r ApiProvidersRadiu
 		localVarReturnValue *RadiusProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersRadiusRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersRadiusRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/radius/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10826,9 +10673,9 @@ func (a *ProvidersAPIService) ProvidersRadiusRetrieveExecute(r ApiProvidersRadiu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10845,7 +10692,6 @@ func (a *ProvidersAPIService) ProvidersRadiusRetrieveExecute(r ApiProvidersRadiu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10856,7 +10702,6 @@ func (a *ProvidersAPIService) ProvidersRadiusRetrieveExecute(r ApiProvidersRadiu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10876,7 +10721,7 @@ func (a *ProvidersAPIService) ProvidersRadiusRetrieveExecute(r ApiProvidersRadiu
 
 type ApiProvidersRadiusUpdateRequest struct {
 	ctx                   context.Context
-	ApiService            *ProvidersAPIService
+	ApiService            *ProvidersApiService
 	id                    int32
 	radiusProviderRequest *RadiusProviderRequest
 }
@@ -10899,7 +10744,7 @@ RadiusProvider Viewset
 	@param id A unique integer value identifying this Radius Provider.
 	@return ApiProvidersRadiusUpdateRequest
 */
-func (a *ProvidersAPIService) ProvidersRadiusUpdate(ctx context.Context, id int32) ApiProvidersRadiusUpdateRequest {
+func (a *ProvidersApiService) ProvidersRadiusUpdate(ctx context.Context, id int32) ApiProvidersRadiusUpdateRequest {
 	return ApiProvidersRadiusUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10910,7 +10755,7 @@ func (a *ProvidersAPIService) ProvidersRadiusUpdate(ctx context.Context, id int3
 // Execute executes the request
 //
 //	@return RadiusProvider
-func (a *ProvidersAPIService) ProvidersRadiusUpdateExecute(r ApiProvidersRadiusUpdateRequest) (*RadiusProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersRadiusUpdateExecute(r ApiProvidersRadiusUpdateRequest) (*RadiusProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -10918,13 +10763,13 @@ func (a *ProvidersAPIService) ProvidersRadiusUpdateExecute(r ApiProvidersRadiusU
 		localVarReturnValue *RadiusProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersRadiusUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersRadiusUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/radius/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10962,9 +10807,9 @@ func (a *ProvidersAPIService) ProvidersRadiusUpdateExecute(r ApiProvidersRadiusU
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10981,7 +10826,6 @@ func (a *ProvidersAPIService) ProvidersRadiusUpdateExecute(r ApiProvidersRadiusU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10992,7 +10836,6 @@ func (a *ProvidersAPIService) ProvidersRadiusUpdateExecute(r ApiProvidersRadiusU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -11012,7 +10855,7 @@ func (a *ProvidersAPIService) ProvidersRadiusUpdateExecute(r ApiProvidersRadiusU
 
 type ApiProvidersRadiusUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -11029,7 +10872,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this Radius Provider.
 	@return ApiProvidersRadiusUsedByListRequest
 */
-func (a *ProvidersAPIService) ProvidersRadiusUsedByList(ctx context.Context, id int32) ApiProvidersRadiusUsedByListRequest {
+func (a *ProvidersApiService) ProvidersRadiusUsedByList(ctx context.Context, id int32) ApiProvidersRadiusUsedByListRequest {
 	return ApiProvidersRadiusUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -11040,7 +10883,7 @@ func (a *ProvidersAPIService) ProvidersRadiusUsedByList(ctx context.Context, id 
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *ProvidersAPIService) ProvidersRadiusUsedByListExecute(r ApiProvidersRadiusUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersRadiusUsedByListExecute(r ApiProvidersRadiusUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -11048,13 +10891,13 @@ func (a *ProvidersAPIService) ProvidersRadiusUsedByListExecute(r ApiProvidersRad
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersRadiusUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersRadiusUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/radius/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -11087,9 +10930,9 @@ func (a *ProvidersAPIService) ProvidersRadiusUsedByListExecute(r ApiProvidersRad
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -11106,7 +10949,6 @@ func (a *ProvidersAPIService) ProvidersRadiusUsedByListExecute(r ApiProvidersRad
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -11117,7 +10959,6 @@ func (a *ProvidersAPIService) ProvidersRadiusUsedByListExecute(r ApiProvidersRad
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -11137,7 +10978,7 @@ func (a *ProvidersAPIService) ProvidersRadiusUsedByListExecute(r ApiProvidersRad
 
 type ApiProvidersSamlCreateRequest struct {
 	ctx                 context.Context
-	ApiService          *ProvidersAPIService
+	ApiService          *ProvidersApiService
 	sAMLProviderRequest *SAMLProviderRequest
 }
 
@@ -11158,7 +10999,7 @@ SAMLProvider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersSamlCreateRequest
 */
-func (a *ProvidersAPIService) ProvidersSamlCreate(ctx context.Context) ApiProvidersSamlCreateRequest {
+func (a *ProvidersApiService) ProvidersSamlCreate(ctx context.Context) ApiProvidersSamlCreateRequest {
 	return ApiProvidersSamlCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -11168,7 +11009,7 @@ func (a *ProvidersAPIService) ProvidersSamlCreate(ctx context.Context) ApiProvid
 // Execute executes the request
 //
 //	@return SAMLProvider
-func (a *ProvidersAPIService) ProvidersSamlCreateExecute(r ApiProvidersSamlCreateRequest) (*SAMLProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersSamlCreateExecute(r ApiProvidersSamlCreateRequest) (*SAMLProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -11176,7 +11017,7 @@ func (a *ProvidersAPIService) ProvidersSamlCreateExecute(r ApiProvidersSamlCreat
 		localVarReturnValue *SAMLProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersSamlCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersSamlCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -11219,9 +11060,9 @@ func (a *ProvidersAPIService) ProvidersSamlCreateExecute(r ApiProvidersSamlCreat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -11238,7 +11079,6 @@ func (a *ProvidersAPIService) ProvidersSamlCreateExecute(r ApiProvidersSamlCreat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -11249,7 +11089,6 @@ func (a *ProvidersAPIService) ProvidersSamlCreateExecute(r ApiProvidersSamlCreat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -11269,7 +11108,7 @@ func (a *ProvidersAPIService) ProvidersSamlCreateExecute(r ApiProvidersSamlCreat
 
 type ApiProvidersSamlDestroyRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -11286,7 +11125,7 @@ SAMLProvider Viewset
 	@param id A unique integer value identifying this SAML Provider.
 	@return ApiProvidersSamlDestroyRequest
 */
-func (a *ProvidersAPIService) ProvidersSamlDestroy(ctx context.Context, id int32) ApiProvidersSamlDestroyRequest {
+func (a *ProvidersApiService) ProvidersSamlDestroy(ctx context.Context, id int32) ApiProvidersSamlDestroyRequest {
 	return ApiProvidersSamlDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -11295,20 +11134,20 @@ func (a *ProvidersAPIService) ProvidersSamlDestroy(ctx context.Context, id int32
 }
 
 // Execute executes the request
-func (a *ProvidersAPIService) ProvidersSamlDestroyExecute(r ApiProvidersSamlDestroyRequest) (*http.Response, error) {
+func (a *ProvidersApiService) ProvidersSamlDestroyExecute(r ApiProvidersSamlDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersSamlDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersSamlDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/saml/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -11341,9 +11180,9 @@ func (a *ProvidersAPIService) ProvidersSamlDestroyExecute(r ApiProvidersSamlDest
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -11360,7 +11199,6 @@ func (a *ProvidersAPIService) ProvidersSamlDestroyExecute(r ApiProvidersSamlDest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -11371,7 +11209,6 @@ func (a *ProvidersAPIService) ProvidersSamlDestroyExecute(r ApiProvidersSamlDest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -11382,11 +11219,11 @@ func (a *ProvidersAPIService) ProvidersSamlDestroyExecute(r ApiProvidersSamlDest
 
 type ApiProvidersSamlImportMetadataCreateRequest struct {
 	ctx               context.Context
-	ApiService        *ProvidersAPIService
+	ApiService        *ProvidersApiService
 	name              *string
 	authorizationFlow *string
 	invalidationFlow  *string
-	file              *os.File
+	file              **os.File
 }
 
 func (r ApiProvidersSamlImportMetadataCreateRequest) Name(name string) ApiProvidersSamlImportMetadataCreateRequest {
@@ -11405,7 +11242,7 @@ func (r ApiProvidersSamlImportMetadataCreateRequest) InvalidationFlow(invalidati
 }
 
 func (r ApiProvidersSamlImportMetadataCreateRequest) File(file *os.File) ApiProvidersSamlImportMetadataCreateRequest {
-	r.file = file
+	r.file = &file
 	return r
 }
 
@@ -11421,7 +11258,7 @@ Create provider from SAML Metadata
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersSamlImportMetadataCreateRequest
 */
-func (a *ProvidersAPIService) ProvidersSamlImportMetadataCreate(ctx context.Context) ApiProvidersSamlImportMetadataCreateRequest {
+func (a *ProvidersApiService) ProvidersSamlImportMetadataCreate(ctx context.Context) ApiProvidersSamlImportMetadataCreateRequest {
 	return ApiProvidersSamlImportMetadataCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -11429,14 +11266,14 @@ func (a *ProvidersAPIService) ProvidersSamlImportMetadataCreate(ctx context.Cont
 }
 
 // Execute executes the request
-func (a *ProvidersAPIService) ProvidersSamlImportMetadataCreateExecute(r ApiProvidersSamlImportMetadataCreateRequest) (*http.Response, error) {
+func (a *ProvidersApiService) ProvidersSamlImportMetadataCreateExecute(r ApiProvidersSamlImportMetadataCreateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersSamlImportMetadataCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersSamlImportMetadataCreate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -11479,24 +11316,23 @@ func (a *ProvidersAPIService) ProvidersSamlImportMetadataCreateExecute(r ApiProv
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "authorization_flow", r.authorizationFlow, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "invalidation_flow", r.invalidationFlow, "", "")
+	localVarFormParams.Add("name", parameterToString(*r.name, ""))
+	localVarFormParams.Add("authorization_flow", parameterToString(*r.authorizationFlow, ""))
+	localVarFormParams.Add("invalidation_flow", parameterToString(*r.invalidationFlow, ""))
 	var fileLocalVarFormFileName string
 	var fileLocalVarFileName string
 	var fileLocalVarFileBytes []byte
 
 	fileLocalVarFormFileName = "file"
-	fileLocalVarFile := r.file
 
+	fileLocalVarFile := *r.file
 	if fileLocalVarFile != nil {
-		fbs, _ := io.ReadAll(fileLocalVarFile)
-
+		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
 		fileLocalVarFile.Close()
-		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	}
+	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -11507,9 +11343,9 @@ func (a *ProvidersAPIService) ProvidersSamlImportMetadataCreateExecute(r ApiProv
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -11526,7 +11362,6 @@ func (a *ProvidersAPIService) ProvidersSamlImportMetadataCreateExecute(r ApiProv
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -11537,7 +11372,7 @@ func (a *ProvidersAPIService) ProvidersSamlImportMetadataCreateExecute(r ApiProv
 
 type ApiProvidersSamlListRequest struct {
 	ctx                        context.Context
-	ApiService                 *ProvidersAPIService
+	ApiService                 *ProvidersApiService
 	acsUrl                     *string
 	assertionValidNotBefore    *string
 	assertionValidNotOnOrAfter *string
@@ -11719,7 +11554,7 @@ SAMLProvider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersSamlListRequest
 */
-func (a *ProvidersAPIService) ProvidersSamlList(ctx context.Context) ApiProvidersSamlListRequest {
+func (a *ProvidersApiService) ProvidersSamlList(ctx context.Context) ApiProvidersSamlListRequest {
 	return ApiProvidersSamlListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -11729,7 +11564,7 @@ func (a *ProvidersAPIService) ProvidersSamlList(ctx context.Context) ApiProvider
 // Execute executes the request
 //
 //	@return PaginatedSAMLProviderList
-func (a *ProvidersAPIService) ProvidersSamlListExecute(r ApiProvidersSamlListRequest) (*PaginatedSAMLProviderList, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListRequest) (*PaginatedSAMLProviderList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -11737,7 +11572,7 @@ func (a *ProvidersAPIService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 		localVarReturnValue *PaginatedSAMLProviderList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersSamlList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersSamlList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -11749,93 +11584,93 @@ func (a *ProvidersAPIService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 	localVarFormParams := url.Values{}
 
 	if r.acsUrl != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "acs_url", r.acsUrl, "form", "")
+		localVarQueryParams.Add("acs_url", parameterToString(*r.acsUrl, ""))
 	}
 	if r.assertionValidNotBefore != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "assertion_valid_not_before", r.assertionValidNotBefore, "form", "")
+		localVarQueryParams.Add("assertion_valid_not_before", parameterToString(*r.assertionValidNotBefore, ""))
 	}
 	if r.assertionValidNotOnOrAfter != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "assertion_valid_not_on_or_after", r.assertionValidNotOnOrAfter, "form", "")
+		localVarQueryParams.Add("assertion_valid_not_on_or_after", parameterToString(*r.assertionValidNotOnOrAfter, ""))
 	}
 	if r.audience != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "audience", r.audience, "form", "")
+		localVarQueryParams.Add("audience", parameterToString(*r.audience, ""))
 	}
 	if r.authenticationFlow != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "authentication_flow", r.authenticationFlow, "form", "")
+		localVarQueryParams.Add("authentication_flow", parameterToString(*r.authenticationFlow, ""))
 	}
 	if r.authorizationFlow != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "authorization_flow", r.authorizationFlow, "form", "")
+		localVarQueryParams.Add("authorization_flow", parameterToString(*r.authorizationFlow, ""))
 	}
 	if r.backchannelApplication != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "backchannel_application", r.backchannelApplication, "form", "")
+		localVarQueryParams.Add("backchannel_application", parameterToString(*r.backchannelApplication, ""))
 	}
 	if r.defaultRelayState != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "default_relay_state", r.defaultRelayState, "form", "")
+		localVarQueryParams.Add("default_relay_state", parameterToString(*r.defaultRelayState, ""))
 	}
 	if r.digestAlgorithm != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "digest_algorithm", r.digestAlgorithm, "form", "")
+		localVarQueryParams.Add("digest_algorithm", parameterToString(*r.digestAlgorithm, ""))
 	}
 	if r.encryptionKp != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "encryption_kp", r.encryptionKp, "form", "")
+		localVarQueryParams.Add("encryption_kp", parameterToString(*r.encryptionKp, ""))
 	}
 	if r.invalidationFlow != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "invalidation_flow", r.invalidationFlow, "form", "")
+		localVarQueryParams.Add("invalidation_flow", parameterToString(*r.invalidationFlow, ""))
 	}
 	if r.isBackchannel != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "is_backchannel", r.isBackchannel, "form", "")
+		localVarQueryParams.Add("is_backchannel", parameterToString(*r.isBackchannel, ""))
 	}
 	if r.issuer != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "issuer", r.issuer, "form", "")
+		localVarQueryParams.Add("issuer", parameterToString(*r.issuer, ""))
 	}
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.nameIdMapping != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name_id_mapping", r.nameIdMapping, "form", "")
+		localVarQueryParams.Add("name_id_mapping", parameterToString(*r.nameIdMapping, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.propertyMappings != nil {
 		t := *r.propertyMappings
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "property_mappings", s.Index(i).Interface(), "form", "multi")
+				localVarQueryParams.Add("property_mappings", parameterToString(s.Index(i), "multi"))
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "property_mappings", t, "form", "multi")
+			localVarQueryParams.Add("property_mappings", parameterToString(t, "multi"))
 		}
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.sessionValidNotOnOrAfter != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "session_valid_not_on_or_after", r.sessionValidNotOnOrAfter, "form", "")
+		localVarQueryParams.Add("session_valid_not_on_or_after", parameterToString(*r.sessionValidNotOnOrAfter, ""))
 	}
 	if r.signAssertion != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sign_assertion", r.signAssertion, "form", "")
+		localVarQueryParams.Add("sign_assertion", parameterToString(*r.signAssertion, ""))
 	}
 	if r.signResponse != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sign_response", r.signResponse, "form", "")
+		localVarQueryParams.Add("sign_response", parameterToString(*r.signResponse, ""))
 	}
 	if r.signatureAlgorithm != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "signature_algorithm", r.signatureAlgorithm, "form", "")
+		localVarQueryParams.Add("signature_algorithm", parameterToString(*r.signatureAlgorithm, ""))
 	}
 	if r.signingKp != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "signing_kp", r.signingKp, "form", "")
+		localVarQueryParams.Add("signing_kp", parameterToString(*r.signingKp, ""))
 	}
 	if r.spBinding != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sp_binding", r.spBinding, "form", "")
+		localVarQueryParams.Add("sp_binding", parameterToString(*r.spBinding, ""))
 	}
 	if r.verificationKp != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "verification_kp", r.verificationKp, "form", "")
+		localVarQueryParams.Add("verification_kp", parameterToString(*r.verificationKp, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -11864,9 +11699,9 @@ func (a *ProvidersAPIService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -11883,7 +11718,6 @@ func (a *ProvidersAPIService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -11894,7 +11728,6 @@ func (a *ProvidersAPIService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -11914,7 +11747,7 @@ func (a *ProvidersAPIService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 
 type ApiProvidersSamlMetadataRetrieveRequest struct {
 	ctx          context.Context
-	ApiService   *ProvidersAPIService
+	ApiService   *ProvidersApiService
 	id           int32
 	download     *bool
 	forceBinding *string
@@ -11944,7 +11777,7 @@ Return metadata as XML string
 	@param id A unique integer value identifying this SAML Provider.
 	@return ApiProvidersSamlMetadataRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersSamlMetadataRetrieve(ctx context.Context, id int32) ApiProvidersSamlMetadataRetrieveRequest {
+func (a *ProvidersApiService) ProvidersSamlMetadataRetrieve(ctx context.Context, id int32) ApiProvidersSamlMetadataRetrieveRequest {
 	return ApiProvidersSamlMetadataRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -11955,7 +11788,7 @@ func (a *ProvidersAPIService) ProvidersSamlMetadataRetrieve(ctx context.Context,
 // Execute executes the request
 //
 //	@return SAMLMetadata
-func (a *ProvidersAPIService) ProvidersSamlMetadataRetrieveExecute(r ApiProvidersSamlMetadataRetrieveRequest) (*SAMLMetadata, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersSamlMetadataRetrieveExecute(r ApiProvidersSamlMetadataRetrieveRequest) (*SAMLMetadata, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -11963,23 +11796,23 @@ func (a *ProvidersAPIService) ProvidersSamlMetadataRetrieveExecute(r ApiProvider
 		localVarReturnValue *SAMLMetadata
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersSamlMetadataRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersSamlMetadataRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/saml/{id}/metadata/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.download != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "download", r.download, "form", "")
+		localVarQueryParams.Add("download", parameterToString(*r.download, ""))
 	}
 	if r.forceBinding != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "force_binding", r.forceBinding, "form", "")
+		localVarQueryParams.Add("force_binding", parameterToString(*r.forceBinding, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -12008,9 +11841,9 @@ func (a *ProvidersAPIService) ProvidersSamlMetadataRetrieveExecute(r ApiProvider
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -12027,7 +11860,6 @@ func (a *ProvidersAPIService) ProvidersSamlMetadataRetrieveExecute(r ApiProvider
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -12038,7 +11870,6 @@ func (a *ProvidersAPIService) ProvidersSamlMetadataRetrieveExecute(r ApiProvider
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -12058,7 +11889,7 @@ func (a *ProvidersAPIService) ProvidersSamlMetadataRetrieveExecute(r ApiProvider
 
 type ApiProvidersSamlPartialUpdateRequest struct {
 	ctx                        context.Context
-	ApiService                 *ProvidersAPIService
+	ApiService                 *ProvidersApiService
 	id                         int32
 	patchedSAMLProviderRequest *PatchedSAMLProviderRequest
 }
@@ -12081,7 +11912,7 @@ SAMLProvider Viewset
 	@param id A unique integer value identifying this SAML Provider.
 	@return ApiProvidersSamlPartialUpdateRequest
 */
-func (a *ProvidersAPIService) ProvidersSamlPartialUpdate(ctx context.Context, id int32) ApiProvidersSamlPartialUpdateRequest {
+func (a *ProvidersApiService) ProvidersSamlPartialUpdate(ctx context.Context, id int32) ApiProvidersSamlPartialUpdateRequest {
 	return ApiProvidersSamlPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12092,7 +11923,7 @@ func (a *ProvidersAPIService) ProvidersSamlPartialUpdate(ctx context.Context, id
 // Execute executes the request
 //
 //	@return SAMLProvider
-func (a *ProvidersAPIService) ProvidersSamlPartialUpdateExecute(r ApiProvidersSamlPartialUpdateRequest) (*SAMLProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersSamlPartialUpdateExecute(r ApiProvidersSamlPartialUpdateRequest) (*SAMLProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -12100,13 +11931,13 @@ func (a *ProvidersAPIService) ProvidersSamlPartialUpdateExecute(r ApiProvidersSa
 		localVarReturnValue *SAMLProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersSamlPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersSamlPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/saml/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12141,9 +11972,9 @@ func (a *ProvidersAPIService) ProvidersSamlPartialUpdateExecute(r ApiProvidersSa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -12160,7 +11991,6 @@ func (a *ProvidersAPIService) ProvidersSamlPartialUpdateExecute(r ApiProvidersSa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -12171,7 +12001,6 @@ func (a *ProvidersAPIService) ProvidersSamlPartialUpdateExecute(r ApiProvidersSa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -12191,7 +12020,7 @@ func (a *ProvidersAPIService) ProvidersSamlPartialUpdateExecute(r ApiProvidersSa
 
 type ApiProvidersSamlPreviewUserRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 	forUser    *int32
 }
@@ -12214,7 +12043,7 @@ Preview user data for provider
 	@param id A unique integer value identifying this SAML Provider.
 	@return ApiProvidersSamlPreviewUserRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersSamlPreviewUserRetrieve(ctx context.Context, id int32) ApiProvidersSamlPreviewUserRetrieveRequest {
+func (a *ProvidersApiService) ProvidersSamlPreviewUserRetrieve(ctx context.Context, id int32) ApiProvidersSamlPreviewUserRetrieveRequest {
 	return ApiProvidersSamlPreviewUserRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12225,7 +12054,7 @@ func (a *ProvidersAPIService) ProvidersSamlPreviewUserRetrieve(ctx context.Conte
 // Execute executes the request
 //
 //	@return PropertyMappingPreview
-func (a *ProvidersAPIService) ProvidersSamlPreviewUserRetrieveExecute(r ApiProvidersSamlPreviewUserRetrieveRequest) (*PropertyMappingPreview, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersSamlPreviewUserRetrieveExecute(r ApiProvidersSamlPreviewUserRetrieveRequest) (*PropertyMappingPreview, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -12233,20 +12062,20 @@ func (a *ProvidersAPIService) ProvidersSamlPreviewUserRetrieveExecute(r ApiProvi
 		localVarReturnValue *PropertyMappingPreview
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersSamlPreviewUserRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersSamlPreviewUserRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/saml/{id}/preview_user/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.forUser != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "for_user", r.forUser, "form", "")
+		localVarQueryParams.Add("for_user", parameterToString(*r.forUser, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -12275,9 +12104,9 @@ func (a *ProvidersAPIService) ProvidersSamlPreviewUserRetrieveExecute(r ApiProvi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -12294,7 +12123,6 @@ func (a *ProvidersAPIService) ProvidersSamlPreviewUserRetrieveExecute(r ApiProvi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -12314,7 +12142,7 @@ func (a *ProvidersAPIService) ProvidersSamlPreviewUserRetrieveExecute(r ApiProvi
 
 type ApiProvidersSamlRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -12331,7 +12159,7 @@ SAMLProvider Viewset
 	@param id A unique integer value identifying this SAML Provider.
 	@return ApiProvidersSamlRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersSamlRetrieve(ctx context.Context, id int32) ApiProvidersSamlRetrieveRequest {
+func (a *ProvidersApiService) ProvidersSamlRetrieve(ctx context.Context, id int32) ApiProvidersSamlRetrieveRequest {
 	return ApiProvidersSamlRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12342,7 +12170,7 @@ func (a *ProvidersAPIService) ProvidersSamlRetrieve(ctx context.Context, id int3
 // Execute executes the request
 //
 //	@return SAMLProvider
-func (a *ProvidersAPIService) ProvidersSamlRetrieveExecute(r ApiProvidersSamlRetrieveRequest) (*SAMLProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersSamlRetrieveExecute(r ApiProvidersSamlRetrieveRequest) (*SAMLProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -12350,13 +12178,13 @@ func (a *ProvidersAPIService) ProvidersSamlRetrieveExecute(r ApiProvidersSamlRet
 		localVarReturnValue *SAMLProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersSamlRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersSamlRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/saml/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12389,9 +12217,9 @@ func (a *ProvidersAPIService) ProvidersSamlRetrieveExecute(r ApiProvidersSamlRet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -12408,7 +12236,6 @@ func (a *ProvidersAPIService) ProvidersSamlRetrieveExecute(r ApiProvidersSamlRet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -12419,7 +12246,6 @@ func (a *ProvidersAPIService) ProvidersSamlRetrieveExecute(r ApiProvidersSamlRet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -12439,7 +12265,7 @@ func (a *ProvidersAPIService) ProvidersSamlRetrieveExecute(r ApiProvidersSamlRet
 
 type ApiProvidersSamlUpdateRequest struct {
 	ctx                 context.Context
-	ApiService          *ProvidersAPIService
+	ApiService          *ProvidersApiService
 	id                  int32
 	sAMLProviderRequest *SAMLProviderRequest
 }
@@ -12462,7 +12288,7 @@ SAMLProvider Viewset
 	@param id A unique integer value identifying this SAML Provider.
 	@return ApiProvidersSamlUpdateRequest
 */
-func (a *ProvidersAPIService) ProvidersSamlUpdate(ctx context.Context, id int32) ApiProvidersSamlUpdateRequest {
+func (a *ProvidersApiService) ProvidersSamlUpdate(ctx context.Context, id int32) ApiProvidersSamlUpdateRequest {
 	return ApiProvidersSamlUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12473,7 +12299,7 @@ func (a *ProvidersAPIService) ProvidersSamlUpdate(ctx context.Context, id int32)
 // Execute executes the request
 //
 //	@return SAMLProvider
-func (a *ProvidersAPIService) ProvidersSamlUpdateExecute(r ApiProvidersSamlUpdateRequest) (*SAMLProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersSamlUpdateExecute(r ApiProvidersSamlUpdateRequest) (*SAMLProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -12481,13 +12307,13 @@ func (a *ProvidersAPIService) ProvidersSamlUpdateExecute(r ApiProvidersSamlUpdat
 		localVarReturnValue *SAMLProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersSamlUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersSamlUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/saml/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12525,9 +12351,9 @@ func (a *ProvidersAPIService) ProvidersSamlUpdateExecute(r ApiProvidersSamlUpdat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -12544,7 +12370,6 @@ func (a *ProvidersAPIService) ProvidersSamlUpdateExecute(r ApiProvidersSamlUpdat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -12555,7 +12380,6 @@ func (a *ProvidersAPIService) ProvidersSamlUpdateExecute(r ApiProvidersSamlUpdat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -12575,7 +12399,7 @@ func (a *ProvidersAPIService) ProvidersSamlUpdateExecute(r ApiProvidersSamlUpdat
 
 type ApiProvidersSamlUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -12592,7 +12416,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this SAML Provider.
 	@return ApiProvidersSamlUsedByListRequest
 */
-func (a *ProvidersAPIService) ProvidersSamlUsedByList(ctx context.Context, id int32) ApiProvidersSamlUsedByListRequest {
+func (a *ProvidersApiService) ProvidersSamlUsedByList(ctx context.Context, id int32) ApiProvidersSamlUsedByListRequest {
 	return ApiProvidersSamlUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12603,7 +12427,7 @@ func (a *ProvidersAPIService) ProvidersSamlUsedByList(ctx context.Context, id in
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *ProvidersAPIService) ProvidersSamlUsedByListExecute(r ApiProvidersSamlUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersSamlUsedByListExecute(r ApiProvidersSamlUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -12611,13 +12435,13 @@ func (a *ProvidersAPIService) ProvidersSamlUsedByListExecute(r ApiProvidersSamlU
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersSamlUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersSamlUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/saml/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12650,9 +12474,9 @@ func (a *ProvidersAPIService) ProvidersSamlUsedByListExecute(r ApiProvidersSamlU
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -12669,7 +12493,6 @@ func (a *ProvidersAPIService) ProvidersSamlUsedByListExecute(r ApiProvidersSamlU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -12680,7 +12503,6 @@ func (a *ProvidersAPIService) ProvidersSamlUsedByListExecute(r ApiProvidersSamlU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -12700,7 +12522,7 @@ func (a *ProvidersAPIService) ProvidersSamlUsedByListExecute(r ApiProvidersSamlU
 
 type ApiProvidersScimCreateRequest struct {
 	ctx                 context.Context
-	ApiService          *ProvidersAPIService
+	ApiService          *ProvidersApiService
 	sCIMProviderRequest *SCIMProviderRequest
 }
 
@@ -12721,7 +12543,7 @@ SCIMProvider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersScimCreateRequest
 */
-func (a *ProvidersAPIService) ProvidersScimCreate(ctx context.Context) ApiProvidersScimCreateRequest {
+func (a *ProvidersApiService) ProvidersScimCreate(ctx context.Context) ApiProvidersScimCreateRequest {
 	return ApiProvidersScimCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12731,7 +12553,7 @@ func (a *ProvidersAPIService) ProvidersScimCreate(ctx context.Context) ApiProvid
 // Execute executes the request
 //
 //	@return SCIMProvider
-func (a *ProvidersAPIService) ProvidersScimCreateExecute(r ApiProvidersScimCreateRequest) (*SCIMProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersScimCreateExecute(r ApiProvidersScimCreateRequest) (*SCIMProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -12739,7 +12561,7 @@ func (a *ProvidersAPIService) ProvidersScimCreateExecute(r ApiProvidersScimCreat
 		localVarReturnValue *SCIMProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersScimCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -12782,9 +12604,9 @@ func (a *ProvidersAPIService) ProvidersScimCreateExecute(r ApiProvidersScimCreat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -12801,7 +12623,6 @@ func (a *ProvidersAPIService) ProvidersScimCreateExecute(r ApiProvidersScimCreat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -12812,7 +12633,6 @@ func (a *ProvidersAPIService) ProvidersScimCreateExecute(r ApiProvidersScimCreat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -12832,7 +12652,7 @@ func (a *ProvidersAPIService) ProvidersScimCreateExecute(r ApiProvidersScimCreat
 
 type ApiProvidersScimDestroyRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -12849,7 +12669,7 @@ SCIMProvider Viewset
 	@param id A unique integer value identifying this SCIM Provider.
 	@return ApiProvidersScimDestroyRequest
 */
-func (a *ProvidersAPIService) ProvidersScimDestroy(ctx context.Context, id int32) ApiProvidersScimDestroyRequest {
+func (a *ProvidersApiService) ProvidersScimDestroy(ctx context.Context, id int32) ApiProvidersScimDestroyRequest {
 	return ApiProvidersScimDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12858,20 +12678,20 @@ func (a *ProvidersAPIService) ProvidersScimDestroy(ctx context.Context, id int32
 }
 
 // Execute executes the request
-func (a *ProvidersAPIService) ProvidersScimDestroyExecute(r ApiProvidersScimDestroyRequest) (*http.Response, error) {
+func (a *ProvidersApiService) ProvidersScimDestroyExecute(r ApiProvidersScimDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersScimDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/scim/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12904,9 +12724,9 @@ func (a *ProvidersAPIService) ProvidersScimDestroyExecute(r ApiProvidersScimDest
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -12923,7 +12743,6 @@ func (a *ProvidersAPIService) ProvidersScimDestroyExecute(r ApiProvidersScimDest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -12934,7 +12753,6 @@ func (a *ProvidersAPIService) ProvidersScimDestroyExecute(r ApiProvidersScimDest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -12945,7 +12763,7 @@ func (a *ProvidersAPIService) ProvidersScimDestroyExecute(r ApiProvidersScimDest
 
 type ApiProvidersScimGroupsCreateRequest struct {
 	ctx                      context.Context
-	ApiService               *ProvidersAPIService
+	ApiService               *ProvidersApiService
 	sCIMProviderGroupRequest *SCIMProviderGroupRequest
 }
 
@@ -12966,7 +12784,7 @@ SCIMProviderGroup Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersScimGroupsCreateRequest
 */
-func (a *ProvidersAPIService) ProvidersScimGroupsCreate(ctx context.Context) ApiProvidersScimGroupsCreateRequest {
+func (a *ProvidersApiService) ProvidersScimGroupsCreate(ctx context.Context) ApiProvidersScimGroupsCreateRequest {
 	return ApiProvidersScimGroupsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12976,7 +12794,7 @@ func (a *ProvidersAPIService) ProvidersScimGroupsCreate(ctx context.Context) Api
 // Execute executes the request
 //
 //	@return SCIMProviderGroup
-func (a *ProvidersAPIService) ProvidersScimGroupsCreateExecute(r ApiProvidersScimGroupsCreateRequest) (*SCIMProviderGroup, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersScimGroupsCreateExecute(r ApiProvidersScimGroupsCreateRequest) (*SCIMProviderGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -12984,7 +12802,7 @@ func (a *ProvidersAPIService) ProvidersScimGroupsCreateExecute(r ApiProvidersSci
 		localVarReturnValue *SCIMProviderGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersScimGroupsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimGroupsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -13027,9 +12845,9 @@ func (a *ProvidersAPIService) ProvidersScimGroupsCreateExecute(r ApiProvidersSci
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -13046,7 +12864,6 @@ func (a *ProvidersAPIService) ProvidersScimGroupsCreateExecute(r ApiProvidersSci
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -13057,7 +12874,6 @@ func (a *ProvidersAPIService) ProvidersScimGroupsCreateExecute(r ApiProvidersSci
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -13077,7 +12893,7 @@ func (a *ProvidersAPIService) ProvidersScimGroupsCreateExecute(r ApiProvidersSci
 
 type ApiProvidersScimGroupsDestroyRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         string
 }
 
@@ -13094,7 +12910,7 @@ SCIMProviderGroup Viewset
 	@param id A UUID string identifying this scim provider group.
 	@return ApiProvidersScimGroupsDestroyRequest
 */
-func (a *ProvidersAPIService) ProvidersScimGroupsDestroy(ctx context.Context, id string) ApiProvidersScimGroupsDestroyRequest {
+func (a *ProvidersApiService) ProvidersScimGroupsDestroy(ctx context.Context, id string) ApiProvidersScimGroupsDestroyRequest {
 	return ApiProvidersScimGroupsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13103,20 +12919,20 @@ func (a *ProvidersAPIService) ProvidersScimGroupsDestroy(ctx context.Context, id
 }
 
 // Execute executes the request
-func (a *ProvidersAPIService) ProvidersScimGroupsDestroyExecute(r ApiProvidersScimGroupsDestroyRequest) (*http.Response, error) {
+func (a *ProvidersApiService) ProvidersScimGroupsDestroyExecute(r ApiProvidersScimGroupsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersScimGroupsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimGroupsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/scim_groups/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13149,9 +12965,9 @@ func (a *ProvidersAPIService) ProvidersScimGroupsDestroyExecute(r ApiProvidersSc
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -13168,7 +12984,6 @@ func (a *ProvidersAPIService) ProvidersScimGroupsDestroyExecute(r ApiProvidersSc
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -13179,7 +12994,6 @@ func (a *ProvidersAPIService) ProvidersScimGroupsDestroyExecute(r ApiProvidersSc
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -13190,7 +13004,7 @@ func (a *ProvidersAPIService) ProvidersScimGroupsDestroyExecute(r ApiProvidersSc
 
 type ApiProvidersScimGroupsListRequest struct {
 	ctx            context.Context
-	ApiService     *ProvidersAPIService
+	ApiService     *ProvidersApiService
 	groupGroupUuid *string
 	groupName      *string
 	ordering       *string
@@ -13251,7 +13065,7 @@ SCIMProviderGroup Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersScimGroupsListRequest
 */
-func (a *ProvidersAPIService) ProvidersScimGroupsList(ctx context.Context) ApiProvidersScimGroupsListRequest {
+func (a *ProvidersApiService) ProvidersScimGroupsList(ctx context.Context) ApiProvidersScimGroupsListRequest {
 	return ApiProvidersScimGroupsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13261,7 +13075,7 @@ func (a *ProvidersAPIService) ProvidersScimGroupsList(ctx context.Context) ApiPr
 // Execute executes the request
 //
 //	@return PaginatedSCIMProviderGroupList
-func (a *ProvidersAPIService) ProvidersScimGroupsListExecute(r ApiProvidersScimGroupsListRequest) (*PaginatedSCIMProviderGroupList, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersScimGroupsListExecute(r ApiProvidersScimGroupsListRequest) (*PaginatedSCIMProviderGroupList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -13269,7 +13083,7 @@ func (a *ProvidersAPIService) ProvidersScimGroupsListExecute(r ApiProvidersScimG
 		localVarReturnValue *PaginatedSCIMProviderGroupList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersScimGroupsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimGroupsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -13281,25 +13095,25 @@ func (a *ProvidersAPIService) ProvidersScimGroupsListExecute(r ApiProvidersScimG
 	localVarFormParams := url.Values{}
 
 	if r.groupGroupUuid != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "group__group_uuid", r.groupGroupUuid, "form", "")
+		localVarQueryParams.Add("group__group_uuid", parameterToString(*r.groupGroupUuid, ""))
 	}
 	if r.groupName != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "group__name", r.groupName, "form", "")
+		localVarQueryParams.Add("group__name", parameterToString(*r.groupName, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.providerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "provider__id", r.providerId, "form", "")
+		localVarQueryParams.Add("provider__id", parameterToString(*r.providerId, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -13328,9 +13142,9 @@ func (a *ProvidersAPIService) ProvidersScimGroupsListExecute(r ApiProvidersScimG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -13347,7 +13161,6 @@ func (a *ProvidersAPIService) ProvidersScimGroupsListExecute(r ApiProvidersScimG
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -13358,7 +13171,6 @@ func (a *ProvidersAPIService) ProvidersScimGroupsListExecute(r ApiProvidersScimG
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -13378,7 +13190,7 @@ func (a *ProvidersAPIService) ProvidersScimGroupsListExecute(r ApiProvidersScimG
 
 type ApiProvidersScimGroupsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         string
 }
 
@@ -13395,7 +13207,7 @@ SCIMProviderGroup Viewset
 	@param id A UUID string identifying this scim provider group.
 	@return ApiProvidersScimGroupsRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersScimGroupsRetrieve(ctx context.Context, id string) ApiProvidersScimGroupsRetrieveRequest {
+func (a *ProvidersApiService) ProvidersScimGroupsRetrieve(ctx context.Context, id string) ApiProvidersScimGroupsRetrieveRequest {
 	return ApiProvidersScimGroupsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13406,7 +13218,7 @@ func (a *ProvidersAPIService) ProvidersScimGroupsRetrieve(ctx context.Context, i
 // Execute executes the request
 //
 //	@return SCIMProviderGroup
-func (a *ProvidersAPIService) ProvidersScimGroupsRetrieveExecute(r ApiProvidersScimGroupsRetrieveRequest) (*SCIMProviderGroup, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersScimGroupsRetrieveExecute(r ApiProvidersScimGroupsRetrieveRequest) (*SCIMProviderGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -13414,13 +13226,13 @@ func (a *ProvidersAPIService) ProvidersScimGroupsRetrieveExecute(r ApiProvidersS
 		localVarReturnValue *SCIMProviderGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersScimGroupsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimGroupsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/scim_groups/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13453,9 +13265,9 @@ func (a *ProvidersAPIService) ProvidersScimGroupsRetrieveExecute(r ApiProvidersS
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -13472,7 +13284,6 @@ func (a *ProvidersAPIService) ProvidersScimGroupsRetrieveExecute(r ApiProvidersS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -13483,7 +13294,6 @@ func (a *ProvidersAPIService) ProvidersScimGroupsRetrieveExecute(r ApiProvidersS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -13503,7 +13313,7 @@ func (a *ProvidersAPIService) ProvidersScimGroupsRetrieveExecute(r ApiProvidersS
 
 type ApiProvidersScimGroupsUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         string
 }
 
@@ -13520,7 +13330,7 @@ Get a list of all objects that use this object
 	@param id A UUID string identifying this scim provider group.
 	@return ApiProvidersScimGroupsUsedByListRequest
 */
-func (a *ProvidersAPIService) ProvidersScimGroupsUsedByList(ctx context.Context, id string) ApiProvidersScimGroupsUsedByListRequest {
+func (a *ProvidersApiService) ProvidersScimGroupsUsedByList(ctx context.Context, id string) ApiProvidersScimGroupsUsedByListRequest {
 	return ApiProvidersScimGroupsUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13531,7 +13341,7 @@ func (a *ProvidersAPIService) ProvidersScimGroupsUsedByList(ctx context.Context,
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *ProvidersAPIService) ProvidersScimGroupsUsedByListExecute(r ApiProvidersScimGroupsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersScimGroupsUsedByListExecute(r ApiProvidersScimGroupsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -13539,13 +13349,13 @@ func (a *ProvidersAPIService) ProvidersScimGroupsUsedByListExecute(r ApiProvider
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersScimGroupsUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimGroupsUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/scim_groups/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13578,9 +13388,9 @@ func (a *ProvidersAPIService) ProvidersScimGroupsUsedByListExecute(r ApiProvider
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -13597,7 +13407,6 @@ func (a *ProvidersAPIService) ProvidersScimGroupsUsedByListExecute(r ApiProvider
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -13608,7 +13417,6 @@ func (a *ProvidersAPIService) ProvidersScimGroupsUsedByListExecute(r ApiProvider
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -13628,7 +13436,7 @@ func (a *ProvidersAPIService) ProvidersScimGroupsUsedByListExecute(r ApiProvider
 
 type ApiProvidersScimListRequest struct {
 	ctx                        context.Context
-	ApiService                 *ProvidersAPIService
+	ApiService                 *ProvidersApiService
 	excludeUsersServiceAccount *bool
 	filterGroup                *string
 	name                       *string
@@ -13695,7 +13503,7 @@ SCIMProvider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersScimListRequest
 */
-func (a *ProvidersAPIService) ProvidersScimList(ctx context.Context) ApiProvidersScimListRequest {
+func (a *ProvidersApiService) ProvidersScimList(ctx context.Context) ApiProvidersScimListRequest {
 	return ApiProvidersScimListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13705,7 +13513,7 @@ func (a *ProvidersAPIService) ProvidersScimList(ctx context.Context) ApiProvider
 // Execute executes the request
 //
 //	@return PaginatedSCIMProviderList
-func (a *ProvidersAPIService) ProvidersScimListExecute(r ApiProvidersScimListRequest) (*PaginatedSCIMProviderList, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersScimListExecute(r ApiProvidersScimListRequest) (*PaginatedSCIMProviderList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -13713,7 +13521,7 @@ func (a *ProvidersAPIService) ProvidersScimListExecute(r ApiProvidersScimListReq
 		localVarReturnValue *PaginatedSCIMProviderList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersScimList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -13725,28 +13533,28 @@ func (a *ProvidersAPIService) ProvidersScimListExecute(r ApiProvidersScimListReq
 	localVarFormParams := url.Values{}
 
 	if r.excludeUsersServiceAccount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude_users_service_account", r.excludeUsersServiceAccount, "form", "")
+		localVarQueryParams.Add("exclude_users_service_account", parameterToString(*r.excludeUsersServiceAccount, ""))
 	}
 	if r.filterGroup != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "filter_group", r.filterGroup, "form", "")
+		localVarQueryParams.Add("filter_group", parameterToString(*r.filterGroup, ""))
 	}
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.url != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "url", r.url, "form", "")
+		localVarQueryParams.Add("url", parameterToString(*r.url, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -13775,9 +13583,9 @@ func (a *ProvidersAPIService) ProvidersScimListExecute(r ApiProvidersScimListReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -13794,7 +13602,6 @@ func (a *ProvidersAPIService) ProvidersScimListExecute(r ApiProvidersScimListReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -13805,7 +13612,6 @@ func (a *ProvidersAPIService) ProvidersScimListExecute(r ApiProvidersScimListReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -13825,7 +13631,7 @@ func (a *ProvidersAPIService) ProvidersScimListExecute(r ApiProvidersScimListReq
 
 type ApiProvidersScimPartialUpdateRequest struct {
 	ctx                        context.Context
-	ApiService                 *ProvidersAPIService
+	ApiService                 *ProvidersApiService
 	id                         int32
 	patchedSCIMProviderRequest *PatchedSCIMProviderRequest
 }
@@ -13848,7 +13654,7 @@ SCIMProvider Viewset
 	@param id A unique integer value identifying this SCIM Provider.
 	@return ApiProvidersScimPartialUpdateRequest
 */
-func (a *ProvidersAPIService) ProvidersScimPartialUpdate(ctx context.Context, id int32) ApiProvidersScimPartialUpdateRequest {
+func (a *ProvidersApiService) ProvidersScimPartialUpdate(ctx context.Context, id int32) ApiProvidersScimPartialUpdateRequest {
 	return ApiProvidersScimPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13859,7 +13665,7 @@ func (a *ProvidersAPIService) ProvidersScimPartialUpdate(ctx context.Context, id
 // Execute executes the request
 //
 //	@return SCIMProvider
-func (a *ProvidersAPIService) ProvidersScimPartialUpdateExecute(r ApiProvidersScimPartialUpdateRequest) (*SCIMProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersScimPartialUpdateExecute(r ApiProvidersScimPartialUpdateRequest) (*SCIMProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -13867,13 +13673,13 @@ func (a *ProvidersAPIService) ProvidersScimPartialUpdateExecute(r ApiProvidersSc
 		localVarReturnValue *SCIMProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersScimPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/scim/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13908,9 +13714,9 @@ func (a *ProvidersAPIService) ProvidersScimPartialUpdateExecute(r ApiProvidersSc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -13927,7 +13733,6 @@ func (a *ProvidersAPIService) ProvidersScimPartialUpdateExecute(r ApiProvidersSc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -13938,7 +13743,6 @@ func (a *ProvidersAPIService) ProvidersScimPartialUpdateExecute(r ApiProvidersSc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -13958,7 +13762,7 @@ func (a *ProvidersAPIService) ProvidersScimPartialUpdateExecute(r ApiProvidersSc
 
 type ApiProvidersScimRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -13975,7 +13779,7 @@ SCIMProvider Viewset
 	@param id A unique integer value identifying this SCIM Provider.
 	@return ApiProvidersScimRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersScimRetrieve(ctx context.Context, id int32) ApiProvidersScimRetrieveRequest {
+func (a *ProvidersApiService) ProvidersScimRetrieve(ctx context.Context, id int32) ApiProvidersScimRetrieveRequest {
 	return ApiProvidersScimRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13986,7 +13790,7 @@ func (a *ProvidersAPIService) ProvidersScimRetrieve(ctx context.Context, id int3
 // Execute executes the request
 //
 //	@return SCIMProvider
-func (a *ProvidersAPIService) ProvidersScimRetrieveExecute(r ApiProvidersScimRetrieveRequest) (*SCIMProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersScimRetrieveExecute(r ApiProvidersScimRetrieveRequest) (*SCIMProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -13994,13 +13798,13 @@ func (a *ProvidersAPIService) ProvidersScimRetrieveExecute(r ApiProvidersScimRet
 		localVarReturnValue *SCIMProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersScimRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/scim/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14033,9 +13837,9 @@ func (a *ProvidersAPIService) ProvidersScimRetrieveExecute(r ApiProvidersScimRet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -14052,7 +13856,6 @@ func (a *ProvidersAPIService) ProvidersScimRetrieveExecute(r ApiProvidersScimRet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -14063,7 +13866,6 @@ func (a *ProvidersAPIService) ProvidersScimRetrieveExecute(r ApiProvidersScimRet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -14083,7 +13885,7 @@ func (a *ProvidersAPIService) ProvidersScimRetrieveExecute(r ApiProvidersScimRet
 
 type ApiProvidersScimSyncObjectCreateRequest struct {
 	ctx               context.Context
-	ApiService        *ProvidersAPIService
+	ApiService        *ProvidersApiService
 	id                int32
 	syncObjectRequest *SyncObjectRequest
 }
@@ -14106,7 +13908,7 @@ Sync/Re-sync a single user/group object
 	@param id A unique integer value identifying this SCIM Provider.
 	@return ApiProvidersScimSyncObjectCreateRequest
 */
-func (a *ProvidersAPIService) ProvidersScimSyncObjectCreate(ctx context.Context, id int32) ApiProvidersScimSyncObjectCreateRequest {
+func (a *ProvidersApiService) ProvidersScimSyncObjectCreate(ctx context.Context, id int32) ApiProvidersScimSyncObjectCreateRequest {
 	return ApiProvidersScimSyncObjectCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14117,7 +13919,7 @@ func (a *ProvidersAPIService) ProvidersScimSyncObjectCreate(ctx context.Context,
 // Execute executes the request
 //
 //	@return SyncObjectResult
-func (a *ProvidersAPIService) ProvidersScimSyncObjectCreateExecute(r ApiProvidersScimSyncObjectCreateRequest) (*SyncObjectResult, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersScimSyncObjectCreateExecute(r ApiProvidersScimSyncObjectCreateRequest) (*SyncObjectResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -14125,13 +13927,13 @@ func (a *ProvidersAPIService) ProvidersScimSyncObjectCreateExecute(r ApiProvider
 		localVarReturnValue *SyncObjectResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersScimSyncObjectCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimSyncObjectCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/scim/{id}/sync/object/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14169,9 +13971,9 @@ func (a *ProvidersAPIService) ProvidersScimSyncObjectCreateExecute(r ApiProvider
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -14188,7 +13990,6 @@ func (a *ProvidersAPIService) ProvidersScimSyncObjectCreateExecute(r ApiProvider
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -14199,7 +14000,6 @@ func (a *ProvidersAPIService) ProvidersScimSyncObjectCreateExecute(r ApiProvider
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -14219,7 +14019,7 @@ func (a *ProvidersAPIService) ProvidersScimSyncObjectCreateExecute(r ApiProvider
 
 type ApiProvidersScimSyncStatusRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -14236,7 +14036,7 @@ Get provider's sync status
 	@param id A unique integer value identifying this SCIM Provider.
 	@return ApiProvidersScimSyncStatusRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersScimSyncStatusRetrieve(ctx context.Context, id int32) ApiProvidersScimSyncStatusRetrieveRequest {
+func (a *ProvidersApiService) ProvidersScimSyncStatusRetrieve(ctx context.Context, id int32) ApiProvidersScimSyncStatusRetrieveRequest {
 	return ApiProvidersScimSyncStatusRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14247,7 +14047,7 @@ func (a *ProvidersAPIService) ProvidersScimSyncStatusRetrieve(ctx context.Contex
 // Execute executes the request
 //
 //	@return SyncStatus
-func (a *ProvidersAPIService) ProvidersScimSyncStatusRetrieveExecute(r ApiProvidersScimSyncStatusRetrieveRequest) (*SyncStatus, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersScimSyncStatusRetrieveExecute(r ApiProvidersScimSyncStatusRetrieveRequest) (*SyncStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -14255,13 +14055,13 @@ func (a *ProvidersAPIService) ProvidersScimSyncStatusRetrieveExecute(r ApiProvid
 		localVarReturnValue *SyncStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersScimSyncStatusRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimSyncStatusRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/scim/{id}/sync/status/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14294,9 +14094,9 @@ func (a *ProvidersAPIService) ProvidersScimSyncStatusRetrieveExecute(r ApiProvid
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -14313,7 +14113,6 @@ func (a *ProvidersAPIService) ProvidersScimSyncStatusRetrieveExecute(r ApiProvid
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -14324,7 +14123,6 @@ func (a *ProvidersAPIService) ProvidersScimSyncStatusRetrieveExecute(r ApiProvid
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -14344,7 +14142,7 @@ func (a *ProvidersAPIService) ProvidersScimSyncStatusRetrieveExecute(r ApiProvid
 
 type ApiProvidersScimUpdateRequest struct {
 	ctx                 context.Context
-	ApiService          *ProvidersAPIService
+	ApiService          *ProvidersApiService
 	id                  int32
 	sCIMProviderRequest *SCIMProviderRequest
 }
@@ -14367,7 +14165,7 @@ SCIMProvider Viewset
 	@param id A unique integer value identifying this SCIM Provider.
 	@return ApiProvidersScimUpdateRequest
 */
-func (a *ProvidersAPIService) ProvidersScimUpdate(ctx context.Context, id int32) ApiProvidersScimUpdateRequest {
+func (a *ProvidersApiService) ProvidersScimUpdate(ctx context.Context, id int32) ApiProvidersScimUpdateRequest {
 	return ApiProvidersScimUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14378,7 +14176,7 @@ func (a *ProvidersAPIService) ProvidersScimUpdate(ctx context.Context, id int32)
 // Execute executes the request
 //
 //	@return SCIMProvider
-func (a *ProvidersAPIService) ProvidersScimUpdateExecute(r ApiProvidersScimUpdateRequest) (*SCIMProvider, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersScimUpdateExecute(r ApiProvidersScimUpdateRequest) (*SCIMProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -14386,13 +14184,13 @@ func (a *ProvidersAPIService) ProvidersScimUpdateExecute(r ApiProvidersScimUpdat
 		localVarReturnValue *SCIMProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersScimUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/scim/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14430,9 +14228,9 @@ func (a *ProvidersAPIService) ProvidersScimUpdateExecute(r ApiProvidersScimUpdat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -14449,7 +14247,6 @@ func (a *ProvidersAPIService) ProvidersScimUpdateExecute(r ApiProvidersScimUpdat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -14460,7 +14257,6 @@ func (a *ProvidersAPIService) ProvidersScimUpdateExecute(r ApiProvidersScimUpdat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -14480,7 +14276,7 @@ func (a *ProvidersAPIService) ProvidersScimUpdateExecute(r ApiProvidersScimUpdat
 
 type ApiProvidersScimUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         int32
 }
 
@@ -14497,7 +14293,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this SCIM Provider.
 	@return ApiProvidersScimUsedByListRequest
 */
-func (a *ProvidersAPIService) ProvidersScimUsedByList(ctx context.Context, id int32) ApiProvidersScimUsedByListRequest {
+func (a *ProvidersApiService) ProvidersScimUsedByList(ctx context.Context, id int32) ApiProvidersScimUsedByListRequest {
 	return ApiProvidersScimUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14508,7 +14304,7 @@ func (a *ProvidersAPIService) ProvidersScimUsedByList(ctx context.Context, id in
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *ProvidersAPIService) ProvidersScimUsedByListExecute(r ApiProvidersScimUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersScimUsedByListExecute(r ApiProvidersScimUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -14516,13 +14312,13 @@ func (a *ProvidersAPIService) ProvidersScimUsedByListExecute(r ApiProvidersScimU
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersScimUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/scim/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14555,9 +14351,9 @@ func (a *ProvidersAPIService) ProvidersScimUsedByListExecute(r ApiProvidersScimU
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -14574,7 +14370,6 @@ func (a *ProvidersAPIService) ProvidersScimUsedByListExecute(r ApiProvidersScimU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -14585,7 +14380,6 @@ func (a *ProvidersAPIService) ProvidersScimUsedByListExecute(r ApiProvidersScimU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -14605,7 +14399,7 @@ func (a *ProvidersAPIService) ProvidersScimUsedByListExecute(r ApiProvidersScimU
 
 type ApiProvidersScimUsersCreateRequest struct {
 	ctx                     context.Context
-	ApiService              *ProvidersAPIService
+	ApiService              *ProvidersApiService
 	sCIMProviderUserRequest *SCIMProviderUserRequest
 }
 
@@ -14626,7 +14420,7 @@ SCIMProviderUser Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersScimUsersCreateRequest
 */
-func (a *ProvidersAPIService) ProvidersScimUsersCreate(ctx context.Context) ApiProvidersScimUsersCreateRequest {
+func (a *ProvidersApiService) ProvidersScimUsersCreate(ctx context.Context) ApiProvidersScimUsersCreateRequest {
 	return ApiProvidersScimUsersCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14636,7 +14430,7 @@ func (a *ProvidersAPIService) ProvidersScimUsersCreate(ctx context.Context) ApiP
 // Execute executes the request
 //
 //	@return SCIMProviderUser
-func (a *ProvidersAPIService) ProvidersScimUsersCreateExecute(r ApiProvidersScimUsersCreateRequest) (*SCIMProviderUser, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersScimUsersCreateExecute(r ApiProvidersScimUsersCreateRequest) (*SCIMProviderUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -14644,7 +14438,7 @@ func (a *ProvidersAPIService) ProvidersScimUsersCreateExecute(r ApiProvidersScim
 		localVarReturnValue *SCIMProviderUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersScimUsersCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimUsersCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -14687,9 +14481,9 @@ func (a *ProvidersAPIService) ProvidersScimUsersCreateExecute(r ApiProvidersScim
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -14706,7 +14500,6 @@ func (a *ProvidersAPIService) ProvidersScimUsersCreateExecute(r ApiProvidersScim
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -14717,7 +14510,6 @@ func (a *ProvidersAPIService) ProvidersScimUsersCreateExecute(r ApiProvidersScim
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -14737,7 +14529,7 @@ func (a *ProvidersAPIService) ProvidersScimUsersCreateExecute(r ApiProvidersScim
 
 type ApiProvidersScimUsersDestroyRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         string
 }
 
@@ -14754,7 +14546,7 @@ SCIMProviderUser Viewset
 	@param id A UUID string identifying this scim provider user.
 	@return ApiProvidersScimUsersDestroyRequest
 */
-func (a *ProvidersAPIService) ProvidersScimUsersDestroy(ctx context.Context, id string) ApiProvidersScimUsersDestroyRequest {
+func (a *ProvidersApiService) ProvidersScimUsersDestroy(ctx context.Context, id string) ApiProvidersScimUsersDestroyRequest {
 	return ApiProvidersScimUsersDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14763,20 +14555,20 @@ func (a *ProvidersAPIService) ProvidersScimUsersDestroy(ctx context.Context, id 
 }
 
 // Execute executes the request
-func (a *ProvidersAPIService) ProvidersScimUsersDestroyExecute(r ApiProvidersScimUsersDestroyRequest) (*http.Response, error) {
+func (a *ProvidersApiService) ProvidersScimUsersDestroyExecute(r ApiProvidersScimUsersDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersScimUsersDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimUsersDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/scim_users/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14809,9 +14601,9 @@ func (a *ProvidersAPIService) ProvidersScimUsersDestroyExecute(r ApiProvidersSci
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -14828,7 +14620,6 @@ func (a *ProvidersAPIService) ProvidersScimUsersDestroyExecute(r ApiProvidersSci
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -14839,7 +14630,6 @@ func (a *ProvidersAPIService) ProvidersScimUsersDestroyExecute(r ApiProvidersSci
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -14850,7 +14640,7 @@ func (a *ProvidersAPIService) ProvidersScimUsersDestroyExecute(r ApiProvidersSci
 
 type ApiProvidersScimUsersListRequest struct {
 	ctx          context.Context
-	ApiService   *ProvidersAPIService
+	ApiService   *ProvidersApiService
 	ordering     *string
 	page         *int32
 	pageSize     *int32
@@ -14911,7 +14701,7 @@ SCIMProviderUser Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiProvidersScimUsersListRequest
 */
-func (a *ProvidersAPIService) ProvidersScimUsersList(ctx context.Context) ApiProvidersScimUsersListRequest {
+func (a *ProvidersApiService) ProvidersScimUsersList(ctx context.Context) ApiProvidersScimUsersListRequest {
 	return ApiProvidersScimUsersListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14921,7 +14711,7 @@ func (a *ProvidersAPIService) ProvidersScimUsersList(ctx context.Context) ApiPro
 // Execute executes the request
 //
 //	@return PaginatedSCIMProviderUserList
-func (a *ProvidersAPIService) ProvidersScimUsersListExecute(r ApiProvidersScimUsersListRequest) (*PaginatedSCIMProviderUserList, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersScimUsersListExecute(r ApiProvidersScimUsersListRequest) (*PaginatedSCIMProviderUserList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -14929,7 +14719,7 @@ func (a *ProvidersAPIService) ProvidersScimUsersListExecute(r ApiProvidersScimUs
 		localVarReturnValue *PaginatedSCIMProviderUserList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersScimUsersList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimUsersList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -14941,25 +14731,25 @@ func (a *ProvidersAPIService) ProvidersScimUsersListExecute(r ApiProvidersScimUs
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.providerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "provider__id", r.providerId, "form", "")
+		localVarQueryParams.Add("provider__id", parameterToString(*r.providerId, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.userId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "user__id", r.userId, "form", "")
+		localVarQueryParams.Add("user__id", parameterToString(*r.userId, ""))
 	}
 	if r.userUsername != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "user__username", r.userUsername, "form", "")
+		localVarQueryParams.Add("user__username", parameterToString(*r.userUsername, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -14988,9 +14778,9 @@ func (a *ProvidersAPIService) ProvidersScimUsersListExecute(r ApiProvidersScimUs
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -15007,7 +14797,6 @@ func (a *ProvidersAPIService) ProvidersScimUsersListExecute(r ApiProvidersScimUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -15018,7 +14807,6 @@ func (a *ProvidersAPIService) ProvidersScimUsersListExecute(r ApiProvidersScimUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -15038,7 +14826,7 @@ func (a *ProvidersAPIService) ProvidersScimUsersListExecute(r ApiProvidersScimUs
 
 type ApiProvidersScimUsersRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         string
 }
 
@@ -15055,7 +14843,7 @@ SCIMProviderUser Viewset
 	@param id A UUID string identifying this scim provider user.
 	@return ApiProvidersScimUsersRetrieveRequest
 */
-func (a *ProvidersAPIService) ProvidersScimUsersRetrieve(ctx context.Context, id string) ApiProvidersScimUsersRetrieveRequest {
+func (a *ProvidersApiService) ProvidersScimUsersRetrieve(ctx context.Context, id string) ApiProvidersScimUsersRetrieveRequest {
 	return ApiProvidersScimUsersRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -15066,7 +14854,7 @@ func (a *ProvidersAPIService) ProvidersScimUsersRetrieve(ctx context.Context, id
 // Execute executes the request
 //
 //	@return SCIMProviderUser
-func (a *ProvidersAPIService) ProvidersScimUsersRetrieveExecute(r ApiProvidersScimUsersRetrieveRequest) (*SCIMProviderUser, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersScimUsersRetrieveExecute(r ApiProvidersScimUsersRetrieveRequest) (*SCIMProviderUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -15074,13 +14862,13 @@ func (a *ProvidersAPIService) ProvidersScimUsersRetrieveExecute(r ApiProvidersSc
 		localVarReturnValue *SCIMProviderUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersScimUsersRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimUsersRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/scim_users/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15113,9 +14901,9 @@ func (a *ProvidersAPIService) ProvidersScimUsersRetrieveExecute(r ApiProvidersSc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -15132,7 +14920,6 @@ func (a *ProvidersAPIService) ProvidersScimUsersRetrieveExecute(r ApiProvidersSc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -15143,7 +14930,6 @@ func (a *ProvidersAPIService) ProvidersScimUsersRetrieveExecute(r ApiProvidersSc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -15163,7 +14949,7 @@ func (a *ProvidersAPIService) ProvidersScimUsersRetrieveExecute(r ApiProvidersSc
 
 type ApiProvidersScimUsersUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *ProvidersAPIService
+	ApiService *ProvidersApiService
 	id         string
 }
 
@@ -15180,7 +14966,7 @@ Get a list of all objects that use this object
 	@param id A UUID string identifying this scim provider user.
 	@return ApiProvidersScimUsersUsedByListRequest
 */
-func (a *ProvidersAPIService) ProvidersScimUsersUsedByList(ctx context.Context, id string) ApiProvidersScimUsersUsedByListRequest {
+func (a *ProvidersApiService) ProvidersScimUsersUsedByList(ctx context.Context, id string) ApiProvidersScimUsersUsedByListRequest {
 	return ApiProvidersScimUsersUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -15191,7 +14977,7 @@ func (a *ProvidersAPIService) ProvidersScimUsersUsedByList(ctx context.Context, 
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *ProvidersAPIService) ProvidersScimUsersUsedByListExecute(r ApiProvidersScimUsersUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *ProvidersApiService) ProvidersScimUsersUsedByListExecute(r ApiProvidersScimUsersUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -15199,13 +14985,13 @@ func (a *ProvidersAPIService) ProvidersScimUsersUsedByListExecute(r ApiProviders
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersScimUsersUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersScimUsersUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/scim_users/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15238,9 +15024,9 @@ func (a *ProvidersAPIService) ProvidersScimUsersUsedByListExecute(r ApiProviders
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -15257,7 +15043,6 @@ func (a *ProvidersAPIService) ProvidersScimUsersUsedByListExecute(r ApiProviders
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -15268,7 +15053,6 @@ func (a *ProvidersAPIService) ProvidersScimUsersUsedByListExecute(r ApiProviders
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

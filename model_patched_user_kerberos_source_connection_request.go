@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedUserKerberosSourceConnectionRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedUserKerberosSourceConnectionRequest{}
-
 // PatchedUserKerberosSourceConnectionRequest Kerberos Source Serializer
 type PatchedUserKerberosSourceConnectionRequest struct {
 	User       *int32  `json:"user,omitempty"`
@@ -43,7 +40,7 @@ func NewPatchedUserKerberosSourceConnectionRequestWithDefaults() *PatchedUserKer
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *PatchedUserKerberosSourceConnectionRequest) GetUser() int32 {
-	if o == nil || IsNil(o.User) {
+	if o == nil || o.User == nil {
 		var ret int32
 		return ret
 	}
@@ -53,7 +50,7 @@ func (o *PatchedUserKerberosSourceConnectionRequest) GetUser() int32 {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserKerberosSourceConnectionRequest) GetUserOk() (*int32, bool) {
-	if o == nil || IsNil(o.User) {
+	if o == nil || o.User == nil {
 		return nil, false
 	}
 	return o.User, true
@@ -61,7 +58,7 @@ func (o *PatchedUserKerberosSourceConnectionRequest) GetUserOk() (*int32, bool) 
 
 // HasUser returns a boolean if a field has been set.
 func (o *PatchedUserKerberosSourceConnectionRequest) HasUser() bool {
-	if o != nil && !IsNil(o.User) {
+	if o != nil && o.User != nil {
 		return true
 	}
 
@@ -75,7 +72,7 @@ func (o *PatchedUserKerberosSourceConnectionRequest) SetUser(v int32) {
 
 // GetIdentifier returns the Identifier field value if set, zero value otherwise.
 func (o *PatchedUserKerberosSourceConnectionRequest) GetIdentifier() string {
-	if o == nil || IsNil(o.Identifier) {
+	if o == nil || o.Identifier == nil {
 		var ret string
 		return ret
 	}
@@ -85,7 +82,7 @@ func (o *PatchedUserKerberosSourceConnectionRequest) GetIdentifier() string {
 // GetIdentifierOk returns a tuple with the Identifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserKerberosSourceConnectionRequest) GetIdentifierOk() (*string, bool) {
-	if o == nil || IsNil(o.Identifier) {
+	if o == nil || o.Identifier == nil {
 		return nil, false
 	}
 	return o.Identifier, true
@@ -93,7 +90,7 @@ func (o *PatchedUserKerberosSourceConnectionRequest) GetIdentifierOk() (*string,
 
 // HasIdentifier returns a boolean if a field has been set.
 func (o *PatchedUserKerberosSourceConnectionRequest) HasIdentifier() bool {
-	if o != nil && !IsNil(o.Identifier) {
+	if o != nil && o.Identifier != nil {
 		return true
 	}
 
@@ -106,22 +103,14 @@ func (o *PatchedUserKerberosSourceConnectionRequest) SetIdentifier(v string) {
 }
 
 func (o PatchedUserKerberosSourceConnectionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedUserKerberosSourceConnectionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.User) {
+	if o.User != nil {
 		toSerialize["user"] = o.User
 	}
-	if !IsNil(o.Identifier) {
+	if o.Identifier != nil {
 		toSerialize["identifier"] = o.Identifier
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedUserKerberosSourceConnectionRequest struct {

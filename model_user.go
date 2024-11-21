@@ -12,14 +12,9 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 	"time"
 )
-
-// checks if the User type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &User{}
 
 // User User Serializer
 type User struct {
@@ -42,8 +37,6 @@ type User struct {
 	Type       *UserTypeEnum          `json:"type,omitempty"`
 	Uuid       string                 `json:"uuid"`
 }
-
-type _User User
 
 // NewUser instantiates a new User object
 // This constructor will assign default values to properties that have it defined,
@@ -144,7 +137,7 @@ func (o *User) SetName(v string) {
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise.
 func (o *User) GetIsActive() bool {
-	if o == nil || IsNil(o.IsActive) {
+	if o == nil || o.IsActive == nil {
 		var ret bool
 		return ret
 	}
@@ -154,7 +147,7 @@ func (o *User) GetIsActive() bool {
 // GetIsActiveOk returns a tuple with the IsActive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *User) GetIsActiveOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsActive) {
+	if o == nil || o.IsActive == nil {
 		return nil, false
 	}
 	return o.IsActive, true
@@ -162,7 +155,7 @@ func (o *User) GetIsActiveOk() (*bool, bool) {
 
 // HasIsActive returns a boolean if a field has been set.
 func (o *User) HasIsActive() bool {
-	if o != nil && !IsNil(o.IsActive) {
+	if o != nil && o.IsActive != nil {
 		return true
 	}
 
@@ -176,7 +169,7 @@ func (o *User) SetIsActive(v bool) {
 
 // GetLastLogin returns the LastLogin field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *User) GetLastLogin() time.Time {
-	if o == nil || IsNil(o.LastLogin.Get()) {
+	if o == nil || o.LastLogin.Get() == nil {
 		var ret time.Time
 		return ret
 	}
@@ -243,7 +236,7 @@ func (o *User) SetIsSuperuser(v bool) {
 
 // GetGroups returns the Groups field value if set, zero value otherwise.
 func (o *User) GetGroups() []string {
-	if o == nil || IsNil(o.Groups) {
+	if o == nil || o.Groups == nil {
 		var ret []string
 		return ret
 	}
@@ -253,7 +246,7 @@ func (o *User) GetGroups() []string {
 // GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *User) GetGroupsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Groups) {
+	if o == nil || o.Groups == nil {
 		return nil, false
 	}
 	return o.Groups, true
@@ -261,7 +254,7 @@ func (o *User) GetGroupsOk() ([]string, bool) {
 
 // HasGroups returns a boolean if a field has been set.
 func (o *User) HasGroups() bool {
-	if o != nil && !IsNil(o.Groups) {
+	if o != nil && o.Groups != nil {
 		return true
 	}
 
@@ -288,7 +281,7 @@ func (o *User) GetGroupsObj() []UserGroup {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *User) GetGroupsObjOk() ([]UserGroup, bool) {
-	if o == nil || IsNil(o.GroupsObj) {
+	if o == nil || o.GroupsObj == nil {
 		return nil, false
 	}
 	return o.GroupsObj, true
@@ -301,7 +294,7 @@ func (o *User) SetGroupsObj(v []UserGroup) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *User) GetEmail() string {
-	if o == nil || IsNil(o.Email) {
+	if o == nil || o.Email == nil {
 		var ret string
 		return ret
 	}
@@ -311,7 +304,7 @@ func (o *User) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *User) GetEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.Email) {
+	if o == nil || o.Email == nil {
 		return nil, false
 	}
 	return o.Email, true
@@ -319,7 +312,7 @@ func (o *User) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *User) HasEmail() bool {
-	if o != nil && !IsNil(o.Email) {
+	if o != nil && o.Email != nil {
 		return true
 	}
 
@@ -357,7 +350,7 @@ func (o *User) SetAvatar(v string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *User) GetAttributes() map[string]interface{} {
-	if o == nil || IsNil(o.Attributes) {
+	if o == nil || o.Attributes == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -367,15 +360,15 @@ func (o *User) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *User) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Attributes) {
-		return map[string]interface{}{}, false
+	if o == nil || o.Attributes == nil {
+		return nil, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *User) HasAttributes() bool {
-	if o != nil && !IsNil(o.Attributes) {
+	if o != nil && o.Attributes != nil {
 		return true
 	}
 
@@ -413,7 +406,7 @@ func (o *User) SetUid(v string) {
 
 // GetPath returns the Path field value if set, zero value otherwise.
 func (o *User) GetPath() string {
-	if o == nil || IsNil(o.Path) {
+	if o == nil || o.Path == nil {
 		var ret string
 		return ret
 	}
@@ -423,7 +416,7 @@ func (o *User) GetPath() string {
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *User) GetPathOk() (*string, bool) {
-	if o == nil || IsNil(o.Path) {
+	if o == nil || o.Path == nil {
 		return nil, false
 	}
 	return o.Path, true
@@ -431,7 +424,7 @@ func (o *User) GetPathOk() (*string, bool) {
 
 // HasPath returns a boolean if a field has been set.
 func (o *User) HasPath() bool {
-	if o != nil && !IsNil(o.Path) {
+	if o != nil && o.Path != nil {
 		return true
 	}
 
@@ -445,7 +438,7 @@ func (o *User) SetPath(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *User) GetType() UserTypeEnum {
-	if o == nil || IsNil(o.Type) {
+	if o == nil || o.Type == nil {
 		var ret UserTypeEnum
 		return ret
 	}
@@ -455,7 +448,7 @@ func (o *User) GetType() UserTypeEnum {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *User) GetTypeOk() (*UserTypeEnum, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil || o.Type == nil {
 		return nil, false
 	}
 	return o.Type, true
@@ -463,7 +456,7 @@ func (o *User) GetTypeOk() (*UserTypeEnum, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *User) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
+	if o != nil && o.Type != nil {
 		return true
 	}
 
@@ -500,91 +493,53 @@ func (o *User) SetUuid(v string) {
 }
 
 func (o User) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o User) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["pk"] = o.Pk
-	toSerialize["username"] = o.Username
-	toSerialize["name"] = o.Name
-	if !IsNil(o.IsActive) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["username"] = o.Username
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.IsActive != nil {
 		toSerialize["is_active"] = o.IsActive
 	}
 	if o.LastLogin.IsSet() {
 		toSerialize["last_login"] = o.LastLogin.Get()
 	}
-	toSerialize["is_superuser"] = o.IsSuperuser
-	if !IsNil(o.Groups) {
+	if true {
+		toSerialize["is_superuser"] = o.IsSuperuser
+	}
+	if o.Groups != nil {
 		toSerialize["groups"] = o.Groups
 	}
 	if o.GroupsObj != nil {
 		toSerialize["groups_obj"] = o.GroupsObj
 	}
-	if !IsNil(o.Email) {
+	if o.Email != nil {
 		toSerialize["email"] = o.Email
 	}
-	toSerialize["avatar"] = o.Avatar
-	if !IsNil(o.Attributes) {
+	if true {
+		toSerialize["avatar"] = o.Avatar
+	}
+	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
-	toSerialize["uid"] = o.Uid
-	if !IsNil(o.Path) {
+	if true {
+		toSerialize["uid"] = o.Uid
+	}
+	if o.Path != nil {
 		toSerialize["path"] = o.Path
 	}
-	if !IsNil(o.Type) {
+	if o.Type != nil {
 		toSerialize["type"] = o.Type
 	}
-	toSerialize["uuid"] = o.Uuid
-	return toSerialize, nil
-}
-
-func (o *User) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pk",
-		"username",
-		"name",
-		"is_superuser",
-		"groups_obj",
-		"avatar",
-		"uid",
-		"uuid",
+	if true {
+		toSerialize["uuid"] = o.Uuid
 	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varUser := _User{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUser)
-
-	if err != nil {
-		return err
-	}
-
-	*o = User(varUser)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableUser struct {

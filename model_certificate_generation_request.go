@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the CertificateGenerationRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CertificateGenerationRequest{}
 
 // CertificateGenerationRequest Certificate generation parameters
 type CertificateGenerationRequest struct {
@@ -28,8 +23,6 @@ type CertificateGenerationRequest struct {
 	Alg            *AlgEnum `json:"alg,omitempty"`
 }
 
-type _CertificateGenerationRequest CertificateGenerationRequest
-
 // NewCertificateGenerationRequest instantiates a new CertificateGenerationRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
@@ -38,8 +31,6 @@ func NewCertificateGenerationRequest(commonName string, validityDays int32) *Cer
 	this := CertificateGenerationRequest{}
 	this.CommonName = commonName
 	this.ValidityDays = validityDays
-	var alg AlgEnum = ALGENUM_RSA
-	this.Alg = &alg
 	return &this
 }
 
@@ -48,8 +39,6 @@ func NewCertificateGenerationRequest(commonName string, validityDays int32) *Cer
 // but it doesn't guarantee that properties required by API are set
 func NewCertificateGenerationRequestWithDefaults() *CertificateGenerationRequest {
 	this := CertificateGenerationRequest{}
-	var alg AlgEnum = ALGENUM_RSA
-	this.Alg = &alg
 	return &this
 }
 
@@ -79,7 +68,7 @@ func (o *CertificateGenerationRequest) SetCommonName(v string) {
 
 // GetSubjectAltName returns the SubjectAltName field value if set, zero value otherwise.
 func (o *CertificateGenerationRequest) GetSubjectAltName() string {
-	if o == nil || IsNil(o.SubjectAltName) {
+	if o == nil || o.SubjectAltName == nil {
 		var ret string
 		return ret
 	}
@@ -89,7 +78,7 @@ func (o *CertificateGenerationRequest) GetSubjectAltName() string {
 // GetSubjectAltNameOk returns a tuple with the SubjectAltName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateGenerationRequest) GetSubjectAltNameOk() (*string, bool) {
-	if o == nil || IsNil(o.SubjectAltName) {
+	if o == nil || o.SubjectAltName == nil {
 		return nil, false
 	}
 	return o.SubjectAltName, true
@@ -97,7 +86,7 @@ func (o *CertificateGenerationRequest) GetSubjectAltNameOk() (*string, bool) {
 
 // HasSubjectAltName returns a boolean if a field has been set.
 func (o *CertificateGenerationRequest) HasSubjectAltName() bool {
-	if o != nil && !IsNil(o.SubjectAltName) {
+	if o != nil && o.SubjectAltName != nil {
 		return true
 	}
 
@@ -135,7 +124,7 @@ func (o *CertificateGenerationRequest) SetValidityDays(v int32) {
 
 // GetAlg returns the Alg field value if set, zero value otherwise.
 func (o *CertificateGenerationRequest) GetAlg() AlgEnum {
-	if o == nil || IsNil(o.Alg) {
+	if o == nil || o.Alg == nil {
 		var ret AlgEnum
 		return ret
 	}
@@ -145,7 +134,7 @@ func (o *CertificateGenerationRequest) GetAlg() AlgEnum {
 // GetAlgOk returns a tuple with the Alg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateGenerationRequest) GetAlgOk() (*AlgEnum, bool) {
-	if o == nil || IsNil(o.Alg) {
+	if o == nil || o.Alg == nil {
 		return nil, false
 	}
 	return o.Alg, true
@@ -153,7 +142,7 @@ func (o *CertificateGenerationRequest) GetAlgOk() (*AlgEnum, bool) {
 
 // HasAlg returns a boolean if a field has been set.
 func (o *CertificateGenerationRequest) HasAlg() bool {
-	if o != nil && !IsNil(o.Alg) {
+	if o != nil && o.Alg != nil {
 		return true
 	}
 
@@ -166,62 +155,20 @@ func (o *CertificateGenerationRequest) SetAlg(v AlgEnum) {
 }
 
 func (o CertificateGenerationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CertificateGenerationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["common_name"] = o.CommonName
-	if !IsNil(o.SubjectAltName) {
+	if true {
+		toSerialize["common_name"] = o.CommonName
+	}
+	if o.SubjectAltName != nil {
 		toSerialize["subject_alt_name"] = o.SubjectAltName
 	}
-	toSerialize["validity_days"] = o.ValidityDays
-	if !IsNil(o.Alg) {
+	if true {
+		toSerialize["validity_days"] = o.ValidityDays
+	}
+	if o.Alg != nil {
 		toSerialize["alg"] = o.Alg
 	}
-	return toSerialize, nil
-}
-
-func (o *CertificateGenerationRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"common_name",
-		"validity_days",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCertificateGenerationRequest := _CertificateGenerationRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCertificateGenerationRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CertificateGenerationRequest(varCertificateGenerationRequest)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableCertificateGenerationRequest struct {

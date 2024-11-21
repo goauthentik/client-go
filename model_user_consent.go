@@ -12,14 +12,9 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 	"time"
 )
-
-// checks if the UserConsent type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UserConsent{}
 
 // UserConsent UserConsent Serializer
 type UserConsent struct {
@@ -30,8 +25,6 @@ type UserConsent struct {
 	Application Application  `json:"application"`
 	Permissions *string      `json:"permissions,omitempty"`
 }
-
-type _UserConsent UserConsent
 
 // NewUserConsent instantiates a new UserConsent object
 // This constructor will assign default values to properties that have it defined,
@@ -83,7 +76,7 @@ func (o *UserConsent) SetPk(v int32) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserConsent) GetExpires() time.Time {
-	if o == nil || IsNil(o.Expires.Get()) {
+	if o == nil || o.Expires.Get() == nil {
 		var ret time.Time
 		return ret
 	}
@@ -126,7 +119,7 @@ func (o *UserConsent) UnsetExpires() {
 
 // GetExpiring returns the Expiring field value if set, zero value otherwise.
 func (o *UserConsent) GetExpiring() bool {
-	if o == nil || IsNil(o.Expiring) {
+	if o == nil || o.Expiring == nil {
 		var ret bool
 		return ret
 	}
@@ -136,7 +129,7 @@ func (o *UserConsent) GetExpiring() bool {
 // GetExpiringOk returns a tuple with the Expiring field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserConsent) GetExpiringOk() (*bool, bool) {
-	if o == nil || IsNil(o.Expiring) {
+	if o == nil || o.Expiring == nil {
 		return nil, false
 	}
 	return o.Expiring, true
@@ -144,7 +137,7 @@ func (o *UserConsent) GetExpiringOk() (*bool, bool) {
 
 // HasExpiring returns a boolean if a field has been set.
 func (o *UserConsent) HasExpiring() bool {
-	if o != nil && !IsNil(o.Expiring) {
+	if o != nil && o.Expiring != nil {
 		return true
 	}
 
@@ -206,7 +199,7 @@ func (o *UserConsent) SetApplication(v Application) {
 
 // GetPermissions returns the Permissions field value if set, zero value otherwise.
 func (o *UserConsent) GetPermissions() string {
-	if o == nil || IsNil(o.Permissions) {
+	if o == nil || o.Permissions == nil {
 		var ret string
 		return ret
 	}
@@ -216,7 +209,7 @@ func (o *UserConsent) GetPermissions() string {
 // GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserConsent) GetPermissionsOk() (*string, bool) {
-	if o == nil || IsNil(o.Permissions) {
+	if o == nil || o.Permissions == nil {
 		return nil, false
 	}
 	return o.Permissions, true
@@ -224,7 +217,7 @@ func (o *UserConsent) GetPermissionsOk() (*string, bool) {
 
 // HasPermissions returns a boolean if a field has been set.
 func (o *UserConsent) HasPermissions() bool {
-	if o != nil && !IsNil(o.Permissions) {
+	if o != nil && o.Permissions != nil {
 		return true
 	}
 
@@ -237,67 +230,26 @@ func (o *UserConsent) SetPermissions(v string) {
 }
 
 func (o UserConsent) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o UserConsent) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["pk"] = o.Pk
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
 	if o.Expires.IsSet() {
 		toSerialize["expires"] = o.Expires.Get()
 	}
-	if !IsNil(o.Expiring) {
+	if o.Expiring != nil {
 		toSerialize["expiring"] = o.Expiring
 	}
-	toSerialize["user"] = o.User
-	toSerialize["application"] = o.Application
-	if !IsNil(o.Permissions) {
+	if true {
+		toSerialize["user"] = o.User
+	}
+	if true {
+		toSerialize["application"] = o.Application
+	}
+	if o.Permissions != nil {
 		toSerialize["permissions"] = o.Permissions
 	}
-	return toSerialize, nil
-}
-
-func (o *UserConsent) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pk",
-		"user",
-		"application",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varUserConsent := _UserConsent{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserConsent)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UserConsent(varUserConsent)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableUserConsent struct {

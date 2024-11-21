@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the AuthenticatorEndpointGDTCStage type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthenticatorEndpointGDTCStage{}
 
 // AuthenticatorEndpointGDTCStage AuthenticatorEndpointGDTCStage Serializer
 type AuthenticatorEndpointGDTCStage struct {
@@ -38,8 +33,6 @@ type AuthenticatorEndpointGDTCStage struct {
 	FriendlyName  NullableString `json:"friendly_name,omitempty"`
 	Credentials   interface{}    `json:"credentials"`
 }
-
-type _AuthenticatorEndpointGDTCStage AuthenticatorEndpointGDTCStage
 
 // NewAuthenticatorEndpointGDTCStage instantiates a new AuthenticatorEndpointGDTCStage object
 // This constructor will assign default values to properties that have it defined,
@@ -211,7 +204,7 @@ func (o *AuthenticatorEndpointGDTCStage) SetMetaModelName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *AuthenticatorEndpointGDTCStage) GetFlowSet() []FlowSet {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		var ret []FlowSet
 		return ret
 	}
@@ -221,7 +214,7 @@ func (o *AuthenticatorEndpointGDTCStage) GetFlowSet() []FlowSet {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorEndpointGDTCStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -229,7 +222,7 @@ func (o *AuthenticatorEndpointGDTCStage) GetFlowSetOk() ([]FlowSet, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *AuthenticatorEndpointGDTCStage) HasFlowSet() bool {
-	if o != nil && !IsNil(o.FlowSet) {
+	if o != nil && o.FlowSet != nil {
 		return true
 	}
 
@@ -243,7 +236,7 @@ func (o *AuthenticatorEndpointGDTCStage) SetFlowSet(v []FlowSet) {
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorEndpointGDTCStage) GetConfigureFlow() string {
-	if o == nil || IsNil(o.ConfigureFlow.Get()) {
+	if o == nil || o.ConfigureFlow.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -286,7 +279,7 @@ func (o *AuthenticatorEndpointGDTCStage) UnsetConfigureFlow() {
 
 // GetFriendlyName returns the FriendlyName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorEndpointGDTCStage) GetFriendlyName() string {
-	if o == nil || IsNil(o.FriendlyName.Get()) {
+	if o == nil || o.FriendlyName.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -342,7 +335,7 @@ func (o *AuthenticatorEndpointGDTCStage) GetCredentials() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatorEndpointGDTCStage) GetCredentialsOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Credentials) {
+	if o == nil || o.Credentials == nil {
 		return nil, false
 	}
 	return &o.Credentials, true
@@ -354,22 +347,26 @@ func (o *AuthenticatorEndpointGDTCStage) SetCredentials(v interface{}) {
 }
 
 func (o AuthenticatorEndpointGDTCStage) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o AuthenticatorEndpointGDTCStage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["pk"] = o.Pk
-	toSerialize["name"] = o.Name
-	toSerialize["component"] = o.Component
-	toSerialize["verbose_name"] = o.VerboseName
-	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	toSerialize["meta_model_name"] = o.MetaModelName
-	if !IsNil(o.FlowSet) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
+	}
+	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.ConfigureFlow.IsSet() {
@@ -381,50 +378,7 @@ func (o AuthenticatorEndpointGDTCStage) ToMap() (map[string]interface{}, error) 
 	if o.Credentials != nil {
 		toSerialize["credentials"] = o.Credentials
 	}
-	return toSerialize, nil
-}
-
-func (o *AuthenticatorEndpointGDTCStage) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pk",
-		"name",
-		"component",
-		"verbose_name",
-		"verbose_name_plural",
-		"meta_model_name",
-		"credentials",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varAuthenticatorEndpointGDTCStage := _AuthenticatorEndpointGDTCStage{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorEndpointGDTCStage)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AuthenticatorEndpointGDTCStage(varAuthenticatorEndpointGDTCStage)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableAuthenticatorEndpointGDTCStage struct {

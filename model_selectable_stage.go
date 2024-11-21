@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the SelectableStage type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SelectableStage{}
 
 // SelectableStage Serializer for stages which can be selected by users
 type SelectableStage struct {
@@ -27,8 +22,6 @@ type SelectableStage struct {
 	VerboseName   string `json:"verbose_name"`
 	MetaModelName string `json:"meta_model_name"`
 }
-
-type _SelectableStage SelectableStage
 
 // NewSelectableStage instantiates a new SelectableStage object
 // This constructor will assign default values to properties that have it defined,
@@ -148,60 +141,20 @@ func (o *SelectableStage) SetMetaModelName(v string) {
 }
 
 func (o SelectableStage) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o SelectableStage) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["pk"] = o.Pk
-	toSerialize["name"] = o.Name
-	toSerialize["verbose_name"] = o.VerboseName
-	toSerialize["meta_model_name"] = o.MetaModelName
-	return toSerialize, nil
-}
-
-func (o *SelectableStage) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pk",
-		"name",
-		"verbose_name",
-		"meta_model_name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSelectableStage := _SelectableStage{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSelectableStage)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SelectableStage(varSelectableStage)
-
-	return err
 }
 
 type NullableSelectableStage struct {

@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedNotificationRuleRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedNotificationRuleRequest{}
-
 // PatchedNotificationRuleRequest NotificationRule Serializer
 type PatchedNotificationRuleRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -48,7 +45,7 @@ func NewPatchedNotificationRuleRequestWithDefaults() *PatchedNotificationRuleReq
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedNotificationRuleRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -58,7 +55,7 @@ func (o *PatchedNotificationRuleRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedNotificationRuleRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -66,7 +63,7 @@ func (o *PatchedNotificationRuleRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedNotificationRuleRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -80,7 +77,7 @@ func (o *PatchedNotificationRuleRequest) SetName(v string) {
 
 // GetTransports returns the Transports field value if set, zero value otherwise.
 func (o *PatchedNotificationRuleRequest) GetTransports() []string {
-	if o == nil || IsNil(o.Transports) {
+	if o == nil || o.Transports == nil {
 		var ret []string
 		return ret
 	}
@@ -90,7 +87,7 @@ func (o *PatchedNotificationRuleRequest) GetTransports() []string {
 // GetTransportsOk returns a tuple with the Transports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedNotificationRuleRequest) GetTransportsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Transports) {
+	if o == nil || o.Transports == nil {
 		return nil, false
 	}
 	return o.Transports, true
@@ -98,7 +95,7 @@ func (o *PatchedNotificationRuleRequest) GetTransportsOk() ([]string, bool) {
 
 // HasTransports returns a boolean if a field has been set.
 func (o *PatchedNotificationRuleRequest) HasTransports() bool {
-	if o != nil && !IsNil(o.Transports) {
+	if o != nil && o.Transports != nil {
 		return true
 	}
 
@@ -112,7 +109,7 @@ func (o *PatchedNotificationRuleRequest) SetTransports(v []string) {
 
 // GetSeverity returns the Severity field value if set, zero value otherwise.
 func (o *PatchedNotificationRuleRequest) GetSeverity() SeverityEnum {
-	if o == nil || IsNil(o.Severity) {
+	if o == nil || o.Severity == nil {
 		var ret SeverityEnum
 		return ret
 	}
@@ -122,7 +119,7 @@ func (o *PatchedNotificationRuleRequest) GetSeverity() SeverityEnum {
 // GetSeverityOk returns a tuple with the Severity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedNotificationRuleRequest) GetSeverityOk() (*SeverityEnum, bool) {
-	if o == nil || IsNil(o.Severity) {
+	if o == nil || o.Severity == nil {
 		return nil, false
 	}
 	return o.Severity, true
@@ -130,7 +127,7 @@ func (o *PatchedNotificationRuleRequest) GetSeverityOk() (*SeverityEnum, bool) {
 
 // HasSeverity returns a boolean if a field has been set.
 func (o *PatchedNotificationRuleRequest) HasSeverity() bool {
-	if o != nil && !IsNil(o.Severity) {
+	if o != nil && o.Severity != nil {
 		return true
 	}
 
@@ -144,7 +141,7 @@ func (o *PatchedNotificationRuleRequest) SetSeverity(v SeverityEnum) {
 
 // GetGroup returns the Group field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedNotificationRuleRequest) GetGroup() string {
-	if o == nil || IsNil(o.Group.Get()) {
+	if o == nil || o.Group.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -186,28 +183,20 @@ func (o *PatchedNotificationRuleRequest) UnsetGroup() {
 }
 
 func (o PatchedNotificationRuleRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedNotificationRuleRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Transports) {
+	if o.Transports != nil {
 		toSerialize["transports"] = o.Transports
 	}
-	if !IsNil(o.Severity) {
+	if o.Severity != nil {
 		toSerialize["severity"] = o.Severity
 	}
 	if o.Group.IsSet() {
 		toSerialize["group"] = o.Group.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedNotificationRuleRequest struct {

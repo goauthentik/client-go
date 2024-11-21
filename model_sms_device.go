@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the SMSDevice type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SMSDevice{}
 
 // SMSDevice Serializer for sms authenticator devices
 type SMSDevice struct {
@@ -27,8 +22,6 @@ type SMSDevice struct {
 	Pk          int32  `json:"pk"`
 	PhoneNumber string `json:"phone_number"`
 }
-
-type _SMSDevice SMSDevice
 
 // NewSMSDevice instantiates a new SMSDevice object
 // This constructor will assign default values to properties that have it defined,
@@ -123,58 +116,17 @@ func (o *SMSDevice) SetPhoneNumber(v string) {
 }
 
 func (o SMSDevice) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["phone_number"] = o.PhoneNumber
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o SMSDevice) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["pk"] = o.Pk
-	toSerialize["phone_number"] = o.PhoneNumber
-	return toSerialize, nil
-}
-
-func (o *SMSDevice) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"pk",
-		"phone_number",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSMSDevice := _SMSDevice{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSMSDevice)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SMSDevice(varSMSDevice)
-
-	return err
 }
 
 type NullableSMSDevice struct {

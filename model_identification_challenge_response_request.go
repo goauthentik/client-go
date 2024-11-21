@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the IdentificationChallengeResponseRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &IdentificationChallengeResponseRequest{}
 
 // IdentificationChallengeResponseRequest Identification challenge
 type IdentificationChallengeResponseRequest struct {
@@ -27,8 +22,6 @@ type IdentificationChallengeResponseRequest struct {
 	Password     NullableString `json:"password,omitempty"`
 	CaptchaToken NullableString `json:"captcha_token,omitempty"`
 }
-
-type _IdentificationChallengeResponseRequest IdentificationChallengeResponseRequest
 
 // NewIdentificationChallengeResponseRequest instantiates a new IdentificationChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -54,7 +47,7 @@ func NewIdentificationChallengeResponseRequestWithDefaults() *IdentificationChal
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *IdentificationChallengeResponseRequest) GetComponent() string {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		var ret string
 		return ret
 	}
@@ -64,7 +57,7 @@ func (o *IdentificationChallengeResponseRequest) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		return nil, false
 	}
 	return o.Component, true
@@ -72,7 +65,7 @@ func (o *IdentificationChallengeResponseRequest) GetComponentOk() (*string, bool
 
 // HasComponent returns a boolean if a field has been set.
 func (o *IdentificationChallengeResponseRequest) HasComponent() bool {
-	if o != nil && !IsNil(o.Component) {
+	if o != nil && o.Component != nil {
 		return true
 	}
 
@@ -110,7 +103,7 @@ func (o *IdentificationChallengeResponseRequest) SetUidField(v string) {
 
 // GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentificationChallengeResponseRequest) GetPassword() string {
-	if o == nil || IsNil(o.Password.Get()) {
+	if o == nil || o.Password.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -153,7 +146,7 @@ func (o *IdentificationChallengeResponseRequest) UnsetPassword() {
 
 // GetCaptchaToken returns the CaptchaToken field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentificationChallengeResponseRequest) GetCaptchaToken() string {
-	if o == nil || IsNil(o.CaptchaToken.Get()) {
+	if o == nil || o.CaptchaToken.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -195,63 +188,20 @@ func (o *IdentificationChallengeResponseRequest) UnsetCaptchaToken() {
 }
 
 func (o IdentificationChallengeResponseRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o IdentificationChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Component) {
+	if o.Component != nil {
 		toSerialize["component"] = o.Component
 	}
-	toSerialize["uid_field"] = o.UidField
+	if true {
+		toSerialize["uid_field"] = o.UidField
+	}
 	if o.Password.IsSet() {
 		toSerialize["password"] = o.Password.Get()
 	}
 	if o.CaptchaToken.IsSet() {
 		toSerialize["captcha_token"] = o.CaptchaToken.Get()
 	}
-	return toSerialize, nil
-}
-
-func (o *IdentificationChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"uid_field",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varIdentificationChallengeResponseRequest := _IdentificationChallengeResponseRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varIdentificationChallengeResponseRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = IdentificationChallengeResponseRequest(varIdentificationChallengeResponseRequest)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableIdentificationChallengeResponseRequest struct {

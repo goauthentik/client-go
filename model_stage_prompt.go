@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the StagePrompt type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &StagePrompt{}
 
 // StagePrompt Serializer for a single Prompt field
 type StagePrompt struct {
@@ -32,8 +27,6 @@ type StagePrompt struct {
 	SubText      string         `json:"sub_text"`
 	Choices      []string       `json:"choices"`
 }
-
-type _StagePrompt StagePrompt
 
 // NewStagePrompt instantiates a new StagePrompt object
 // This constructor will assign default values to properties that have it defined,
@@ -268,7 +261,7 @@ func (o *StagePrompt) GetChoices() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StagePrompt) GetChoicesOk() ([]string, bool) {
-	if o == nil || IsNil(o.Choices) {
+	if o == nil || o.Choices == nil {
 		return nil, false
 	}
 	return o.Choices, true
@@ -280,72 +273,35 @@ func (o *StagePrompt) SetChoices(v []string) {
 }
 
 func (o StagePrompt) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o StagePrompt) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["field_key"] = o.FieldKey
-	toSerialize["label"] = o.Label
-	toSerialize["type"] = o.Type
-	toSerialize["required"] = o.Required
-	toSerialize["placeholder"] = o.Placeholder
-	toSerialize["initial_value"] = o.InitialValue
-	toSerialize["order"] = o.Order
-	toSerialize["sub_text"] = o.SubText
+	if true {
+		toSerialize["field_key"] = o.FieldKey
+	}
+	if true {
+		toSerialize["label"] = o.Label
+	}
+	if true {
+		toSerialize["type"] = o.Type
+	}
+	if true {
+		toSerialize["required"] = o.Required
+	}
+	if true {
+		toSerialize["placeholder"] = o.Placeholder
+	}
+	if true {
+		toSerialize["initial_value"] = o.InitialValue
+	}
+	if true {
+		toSerialize["order"] = o.Order
+	}
+	if true {
+		toSerialize["sub_text"] = o.SubText
+	}
 	if o.Choices != nil {
 		toSerialize["choices"] = o.Choices
 	}
-	return toSerialize, nil
-}
-
-func (o *StagePrompt) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"field_key",
-		"label",
-		"type",
-		"required",
-		"placeholder",
-		"initial_value",
-		"order",
-		"sub_text",
-		"choices",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varStagePrompt := _StagePrompt{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStagePrompt)
-
-	if err != nil {
-		return err
-	}
-
-	*o = StagePrompt(varStagePrompt)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableStagePrompt struct {

@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the ExtraRoleObjectPermission type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ExtraRoleObjectPermission{}
 
 // ExtraRoleObjectPermission User permission with additional object-related data
 type ExtraRoleObjectPermission struct {
@@ -35,8 +30,6 @@ type ExtraRoleObjectPermission struct {
 	// Get model description from attached model. This operation takes at least one additional query, and the description is only shown if the user/role has the view_ permission on the object
 	ObjectDescription NullableString `json:"object_description"`
 }
-
-type _ExtraRoleObjectPermission ExtraRoleObjectPermission
 
 // NewExtraRoleObjectPermission instantiates a new ExtraRoleObjectPermission object
 // This constructor will assign default values to properties that have it defined,
@@ -283,70 +276,35 @@ func (o *ExtraRoleObjectPermission) SetObjectDescription(v string) {
 }
 
 func (o ExtraRoleObjectPermission) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["codename"] = o.Codename
+	}
+	if true {
+		toSerialize["model"] = o.Model
+	}
+	if true {
+		toSerialize["app_label"] = o.AppLabel
+	}
+	if true {
+		toSerialize["object_pk"] = o.ObjectPk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["app_label_verbose"] = o.AppLabelVerbose
+	}
+	if true {
+		toSerialize["model_verbose"] = o.ModelVerbose
+	}
+	if true {
+		toSerialize["object_description"] = o.ObjectDescription.Get()
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o ExtraRoleObjectPermission) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["codename"] = o.Codename
-	toSerialize["model"] = o.Model
-	toSerialize["app_label"] = o.AppLabel
-	toSerialize["object_pk"] = o.ObjectPk
-	toSerialize["name"] = o.Name
-	toSerialize["app_label_verbose"] = o.AppLabelVerbose
-	toSerialize["model_verbose"] = o.ModelVerbose
-	toSerialize["object_description"] = o.ObjectDescription.Get()
-	return toSerialize, nil
-}
-
-func (o *ExtraRoleObjectPermission) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"codename",
-		"model",
-		"app_label",
-		"object_pk",
-		"name",
-		"app_label_verbose",
-		"model_verbose",
-		"object_description",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varExtraRoleObjectPermission := _ExtraRoleObjectPermission{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varExtraRoleObjectPermission)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ExtraRoleObjectPermission(varExtraRoleObjectPermission)
-
-	return err
 }
 
 type NullableExtraRoleObjectPermission struct {

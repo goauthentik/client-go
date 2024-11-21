@@ -14,18 +14,18 @@ package api
 import (
 	"bytes"
 	"context"
-	"io"
+	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// EnterpriseAPIService EnterpriseAPI service
-type EnterpriseAPIService service
+// EnterpriseApiService EnterpriseApi service
+type EnterpriseApiService service
 
 type ApiEnterpriseLicenseCreateRequest struct {
 	ctx            context.Context
-	ApiService     *EnterpriseAPIService
+	ApiService     *EnterpriseApiService
 	licenseRequest *LicenseRequest
 }
 
@@ -46,7 +46,7 @@ License Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEnterpriseLicenseCreateRequest
 */
-func (a *EnterpriseAPIService) EnterpriseLicenseCreate(ctx context.Context) ApiEnterpriseLicenseCreateRequest {
+func (a *EnterpriseApiService) EnterpriseLicenseCreate(ctx context.Context) ApiEnterpriseLicenseCreateRequest {
 	return ApiEnterpriseLicenseCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -56,7 +56,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseCreate(ctx context.Context) ApiE
 // Execute executes the request
 //
 //	@return License
-func (a *EnterpriseAPIService) EnterpriseLicenseCreateExecute(r ApiEnterpriseLicenseCreateRequest) (*License, *http.Response, error) {
+func (a *EnterpriseApiService) EnterpriseLicenseCreateExecute(r ApiEnterpriseLicenseCreateRequest) (*License, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -64,7 +64,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseCreateExecute(r ApiEnterpriseLic
 		localVarReturnValue *License
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseAPIService.EnterpriseLicenseCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.EnterpriseLicenseCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -107,9 +107,9 @@ func (a *EnterpriseAPIService) EnterpriseLicenseCreateExecute(r ApiEnterpriseLic
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -126,7 +126,6 @@ func (a *EnterpriseAPIService) EnterpriseLicenseCreateExecute(r ApiEnterpriseLic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -137,7 +136,6 @@ func (a *EnterpriseAPIService) EnterpriseLicenseCreateExecute(r ApiEnterpriseLic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -157,7 +155,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseCreateExecute(r ApiEnterpriseLic
 
 type ApiEnterpriseLicenseDestroyRequest struct {
 	ctx         context.Context
-	ApiService  *EnterpriseAPIService
+	ApiService  *EnterpriseApiService
 	licenseUuid string
 }
 
@@ -174,7 +172,7 @@ License Viewset
 	@param licenseUuid A UUID string identifying this License.
 	@return ApiEnterpriseLicenseDestroyRequest
 */
-func (a *EnterpriseAPIService) EnterpriseLicenseDestroy(ctx context.Context, licenseUuid string) ApiEnterpriseLicenseDestroyRequest {
+func (a *EnterpriseApiService) EnterpriseLicenseDestroy(ctx context.Context, licenseUuid string) ApiEnterpriseLicenseDestroyRequest {
 	return ApiEnterpriseLicenseDestroyRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -183,20 +181,20 @@ func (a *EnterpriseAPIService) EnterpriseLicenseDestroy(ctx context.Context, lic
 }
 
 // Execute executes the request
-func (a *EnterpriseAPIService) EnterpriseLicenseDestroyExecute(r ApiEnterpriseLicenseDestroyRequest) (*http.Response, error) {
+func (a *EnterpriseApiService) EnterpriseLicenseDestroyExecute(r ApiEnterpriseLicenseDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseAPIService.EnterpriseLicenseDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.EnterpriseLicenseDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/enterprise/license/{license_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"license_uuid"+"}", url.PathEscape(parameterValueToString(r.licenseUuid, "licenseUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"license_uuid"+"}", url.PathEscape(parameterToString(r.licenseUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -229,9 +227,9 @@ func (a *EnterpriseAPIService) EnterpriseLicenseDestroyExecute(r ApiEnterpriseLi
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -248,7 +246,6 @@ func (a *EnterpriseAPIService) EnterpriseLicenseDestroyExecute(r ApiEnterpriseLi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -259,7 +256,6 @@ func (a *EnterpriseAPIService) EnterpriseLicenseDestroyExecute(r ApiEnterpriseLi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -270,7 +266,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseDestroyExecute(r ApiEnterpriseLi
 
 type ApiEnterpriseLicenseForecastRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *EnterpriseAPIService
+	ApiService *EnterpriseApiService
 }
 
 func (r ApiEnterpriseLicenseForecastRetrieveRequest) Execute() (*LicenseForecast, *http.Response, error) {
@@ -285,7 +281,7 @@ Forecast how many users will be required in a year
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEnterpriseLicenseForecastRetrieveRequest
 */
-func (a *EnterpriseAPIService) EnterpriseLicenseForecastRetrieve(ctx context.Context) ApiEnterpriseLicenseForecastRetrieveRequest {
+func (a *EnterpriseApiService) EnterpriseLicenseForecastRetrieve(ctx context.Context) ApiEnterpriseLicenseForecastRetrieveRequest {
 	return ApiEnterpriseLicenseForecastRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -295,7 +291,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseForecastRetrieve(ctx context.Con
 // Execute executes the request
 //
 //	@return LicenseForecast
-func (a *EnterpriseAPIService) EnterpriseLicenseForecastRetrieveExecute(r ApiEnterpriseLicenseForecastRetrieveRequest) (*LicenseForecast, *http.Response, error) {
+func (a *EnterpriseApiService) EnterpriseLicenseForecastRetrieveExecute(r ApiEnterpriseLicenseForecastRetrieveRequest) (*LicenseForecast, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -303,7 +299,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseForecastRetrieveExecute(r ApiEnt
 		localVarReturnValue *LicenseForecast
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseAPIService.EnterpriseLicenseForecastRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.EnterpriseLicenseForecastRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -341,9 +337,9 @@ func (a *EnterpriseAPIService) EnterpriseLicenseForecastRetrieveExecute(r ApiEnt
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -360,7 +356,6 @@ func (a *EnterpriseAPIService) EnterpriseLicenseForecastRetrieveExecute(r ApiEnt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -371,7 +366,6 @@ func (a *EnterpriseAPIService) EnterpriseLicenseForecastRetrieveExecute(r ApiEnt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -391,7 +385,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseForecastRetrieveExecute(r ApiEnt
 
 type ApiEnterpriseLicenseInstallIdRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *EnterpriseAPIService
+	ApiService *EnterpriseApiService
 }
 
 func (r ApiEnterpriseLicenseInstallIdRetrieveRequest) Execute() (*InstallID, *http.Response, error) {
@@ -406,7 +400,7 @@ Get install_id
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEnterpriseLicenseInstallIdRetrieveRequest
 */
-func (a *EnterpriseAPIService) EnterpriseLicenseInstallIdRetrieve(ctx context.Context) ApiEnterpriseLicenseInstallIdRetrieveRequest {
+func (a *EnterpriseApiService) EnterpriseLicenseInstallIdRetrieve(ctx context.Context) ApiEnterpriseLicenseInstallIdRetrieveRequest {
 	return ApiEnterpriseLicenseInstallIdRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -416,7 +410,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseInstallIdRetrieve(ctx context.Co
 // Execute executes the request
 //
 //	@return InstallID
-func (a *EnterpriseAPIService) EnterpriseLicenseInstallIdRetrieveExecute(r ApiEnterpriseLicenseInstallIdRetrieveRequest) (*InstallID, *http.Response, error) {
+func (a *EnterpriseApiService) EnterpriseLicenseInstallIdRetrieveExecute(r ApiEnterpriseLicenseInstallIdRetrieveRequest) (*InstallID, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -424,7 +418,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseInstallIdRetrieveExecute(r ApiEn
 		localVarReturnValue *InstallID
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseAPIService.EnterpriseLicenseInstallIdRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.EnterpriseLicenseInstallIdRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -462,9 +456,9 @@ func (a *EnterpriseAPIService) EnterpriseLicenseInstallIdRetrieveExecute(r ApiEn
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -481,7 +475,6 @@ func (a *EnterpriseAPIService) EnterpriseLicenseInstallIdRetrieveExecute(r ApiEn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -492,7 +485,6 @@ func (a *EnterpriseAPIService) EnterpriseLicenseInstallIdRetrieveExecute(r ApiEn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -512,7 +504,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseInstallIdRetrieveExecute(r ApiEn
 
 type ApiEnterpriseLicenseListRequest struct {
 	ctx        context.Context
-	ApiService *EnterpriseAPIService
+	ApiService *EnterpriseApiService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -561,7 +553,7 @@ License Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEnterpriseLicenseListRequest
 */
-func (a *EnterpriseAPIService) EnterpriseLicenseList(ctx context.Context) ApiEnterpriseLicenseListRequest {
+func (a *EnterpriseApiService) EnterpriseLicenseList(ctx context.Context) ApiEnterpriseLicenseListRequest {
 	return ApiEnterpriseLicenseListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -571,7 +563,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseList(ctx context.Context) ApiEnt
 // Execute executes the request
 //
 //	@return PaginatedLicenseList
-func (a *EnterpriseAPIService) EnterpriseLicenseListExecute(r ApiEnterpriseLicenseListRequest) (*PaginatedLicenseList, *http.Response, error) {
+func (a *EnterpriseApiService) EnterpriseLicenseListExecute(r ApiEnterpriseLicenseListRequest) (*PaginatedLicenseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -579,7 +571,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseListExecute(r ApiEnterpriseLicen
 		localVarReturnValue *PaginatedLicenseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseAPIService.EnterpriseLicenseList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.EnterpriseLicenseList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -591,19 +583,19 @@ func (a *EnterpriseAPIService) EnterpriseLicenseListExecute(r ApiEnterpriseLicen
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -632,9 +624,9 @@ func (a *EnterpriseAPIService) EnterpriseLicenseListExecute(r ApiEnterpriseLicen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -651,7 +643,6 @@ func (a *EnterpriseAPIService) EnterpriseLicenseListExecute(r ApiEnterpriseLicen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -662,7 +653,6 @@ func (a *EnterpriseAPIService) EnterpriseLicenseListExecute(r ApiEnterpriseLicen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -682,7 +672,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseListExecute(r ApiEnterpriseLicen
 
 type ApiEnterpriseLicensePartialUpdateRequest struct {
 	ctx                   context.Context
-	ApiService            *EnterpriseAPIService
+	ApiService            *EnterpriseApiService
 	licenseUuid           string
 	patchedLicenseRequest *PatchedLicenseRequest
 }
@@ -705,7 +695,7 @@ License Viewset
 	@param licenseUuid A UUID string identifying this License.
 	@return ApiEnterpriseLicensePartialUpdateRequest
 */
-func (a *EnterpriseAPIService) EnterpriseLicensePartialUpdate(ctx context.Context, licenseUuid string) ApiEnterpriseLicensePartialUpdateRequest {
+func (a *EnterpriseApiService) EnterpriseLicensePartialUpdate(ctx context.Context, licenseUuid string) ApiEnterpriseLicensePartialUpdateRequest {
 	return ApiEnterpriseLicensePartialUpdateRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -716,7 +706,7 @@ func (a *EnterpriseAPIService) EnterpriseLicensePartialUpdate(ctx context.Contex
 // Execute executes the request
 //
 //	@return License
-func (a *EnterpriseAPIService) EnterpriseLicensePartialUpdateExecute(r ApiEnterpriseLicensePartialUpdateRequest) (*License, *http.Response, error) {
+func (a *EnterpriseApiService) EnterpriseLicensePartialUpdateExecute(r ApiEnterpriseLicensePartialUpdateRequest) (*License, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -724,13 +714,13 @@ func (a *EnterpriseAPIService) EnterpriseLicensePartialUpdateExecute(r ApiEnterp
 		localVarReturnValue *License
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseAPIService.EnterpriseLicensePartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.EnterpriseLicensePartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/enterprise/license/{license_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"license_uuid"+"}", url.PathEscape(parameterValueToString(r.licenseUuid, "licenseUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"license_uuid"+"}", url.PathEscape(parameterToString(r.licenseUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -765,9 +755,9 @@ func (a *EnterpriseAPIService) EnterpriseLicensePartialUpdateExecute(r ApiEnterp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -784,7 +774,6 @@ func (a *EnterpriseAPIService) EnterpriseLicensePartialUpdateExecute(r ApiEnterp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -795,7 +784,6 @@ func (a *EnterpriseAPIService) EnterpriseLicensePartialUpdateExecute(r ApiEnterp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -815,7 +803,7 @@ func (a *EnterpriseAPIService) EnterpriseLicensePartialUpdateExecute(r ApiEnterp
 
 type ApiEnterpriseLicenseRetrieveRequest struct {
 	ctx         context.Context
-	ApiService  *EnterpriseAPIService
+	ApiService  *EnterpriseApiService
 	licenseUuid string
 }
 
@@ -832,7 +820,7 @@ License Viewset
 	@param licenseUuid A UUID string identifying this License.
 	@return ApiEnterpriseLicenseRetrieveRequest
 */
-func (a *EnterpriseAPIService) EnterpriseLicenseRetrieve(ctx context.Context, licenseUuid string) ApiEnterpriseLicenseRetrieveRequest {
+func (a *EnterpriseApiService) EnterpriseLicenseRetrieve(ctx context.Context, licenseUuid string) ApiEnterpriseLicenseRetrieveRequest {
 	return ApiEnterpriseLicenseRetrieveRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -843,7 +831,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseRetrieve(ctx context.Context, li
 // Execute executes the request
 //
 //	@return License
-func (a *EnterpriseAPIService) EnterpriseLicenseRetrieveExecute(r ApiEnterpriseLicenseRetrieveRequest) (*License, *http.Response, error) {
+func (a *EnterpriseApiService) EnterpriseLicenseRetrieveExecute(r ApiEnterpriseLicenseRetrieveRequest) (*License, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -851,13 +839,13 @@ func (a *EnterpriseAPIService) EnterpriseLicenseRetrieveExecute(r ApiEnterpriseL
 		localVarReturnValue *License
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseAPIService.EnterpriseLicenseRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.EnterpriseLicenseRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/enterprise/license/{license_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"license_uuid"+"}", url.PathEscape(parameterValueToString(r.licenseUuid, "licenseUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"license_uuid"+"}", url.PathEscape(parameterToString(r.licenseUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -890,9 +878,9 @@ func (a *EnterpriseAPIService) EnterpriseLicenseRetrieveExecute(r ApiEnterpriseL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -909,7 +897,6 @@ func (a *EnterpriseAPIService) EnterpriseLicenseRetrieveExecute(r ApiEnterpriseL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -920,7 +907,6 @@ func (a *EnterpriseAPIService) EnterpriseLicenseRetrieveExecute(r ApiEnterpriseL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -940,7 +926,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseRetrieveExecute(r ApiEnterpriseL
 
 type ApiEnterpriseLicenseSummaryRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *EnterpriseAPIService
+	ApiService *EnterpriseApiService
 	cached     *bool
 }
 
@@ -961,7 +947,7 @@ Get the total license status
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEnterpriseLicenseSummaryRetrieveRequest
 */
-func (a *EnterpriseAPIService) EnterpriseLicenseSummaryRetrieve(ctx context.Context) ApiEnterpriseLicenseSummaryRetrieveRequest {
+func (a *EnterpriseApiService) EnterpriseLicenseSummaryRetrieve(ctx context.Context) ApiEnterpriseLicenseSummaryRetrieveRequest {
 	return ApiEnterpriseLicenseSummaryRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -971,7 +957,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseSummaryRetrieve(ctx context.Cont
 // Execute executes the request
 //
 //	@return LicenseSummary
-func (a *EnterpriseAPIService) EnterpriseLicenseSummaryRetrieveExecute(r ApiEnterpriseLicenseSummaryRetrieveRequest) (*LicenseSummary, *http.Response, error) {
+func (a *EnterpriseApiService) EnterpriseLicenseSummaryRetrieveExecute(r ApiEnterpriseLicenseSummaryRetrieveRequest) (*LicenseSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -979,7 +965,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseSummaryRetrieveExecute(r ApiEnte
 		localVarReturnValue *LicenseSummary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseAPIService.EnterpriseLicenseSummaryRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.EnterpriseLicenseSummaryRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -991,10 +977,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseSummaryRetrieveExecute(r ApiEnte
 	localVarFormParams := url.Values{}
 
 	if r.cached != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "cached", r.cached, "form", "")
-	} else {
-		var defaultValue bool = true
-		r.cached = &defaultValue
+		localVarQueryParams.Add("cached", parameterToString(*r.cached, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1023,9 +1006,9 @@ func (a *EnterpriseAPIService) EnterpriseLicenseSummaryRetrieveExecute(r ApiEnte
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1042,7 +1025,6 @@ func (a *EnterpriseAPIService) EnterpriseLicenseSummaryRetrieveExecute(r ApiEnte
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1053,7 +1035,6 @@ func (a *EnterpriseAPIService) EnterpriseLicenseSummaryRetrieveExecute(r ApiEnte
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1073,7 +1054,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseSummaryRetrieveExecute(r ApiEnte
 
 type ApiEnterpriseLicenseUpdateRequest struct {
 	ctx            context.Context
-	ApiService     *EnterpriseAPIService
+	ApiService     *EnterpriseApiService
 	licenseUuid    string
 	licenseRequest *LicenseRequest
 }
@@ -1096,7 +1077,7 @@ License Viewset
 	@param licenseUuid A UUID string identifying this License.
 	@return ApiEnterpriseLicenseUpdateRequest
 */
-func (a *EnterpriseAPIService) EnterpriseLicenseUpdate(ctx context.Context, licenseUuid string) ApiEnterpriseLicenseUpdateRequest {
+func (a *EnterpriseApiService) EnterpriseLicenseUpdate(ctx context.Context, licenseUuid string) ApiEnterpriseLicenseUpdateRequest {
 	return ApiEnterpriseLicenseUpdateRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -1107,7 +1088,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseUpdate(ctx context.Context, lice
 // Execute executes the request
 //
 //	@return License
-func (a *EnterpriseAPIService) EnterpriseLicenseUpdateExecute(r ApiEnterpriseLicenseUpdateRequest) (*License, *http.Response, error) {
+func (a *EnterpriseApiService) EnterpriseLicenseUpdateExecute(r ApiEnterpriseLicenseUpdateRequest) (*License, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -1115,13 +1096,13 @@ func (a *EnterpriseAPIService) EnterpriseLicenseUpdateExecute(r ApiEnterpriseLic
 		localVarReturnValue *License
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseAPIService.EnterpriseLicenseUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.EnterpriseLicenseUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/enterprise/license/{license_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"license_uuid"+"}", url.PathEscape(parameterValueToString(r.licenseUuid, "licenseUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"license_uuid"+"}", url.PathEscape(parameterToString(r.licenseUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1159,9 +1140,9 @@ func (a *EnterpriseAPIService) EnterpriseLicenseUpdateExecute(r ApiEnterpriseLic
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1178,7 +1159,6 @@ func (a *EnterpriseAPIService) EnterpriseLicenseUpdateExecute(r ApiEnterpriseLic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1189,7 +1169,6 @@ func (a *EnterpriseAPIService) EnterpriseLicenseUpdateExecute(r ApiEnterpriseLic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1209,7 +1188,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseUpdateExecute(r ApiEnterpriseLic
 
 type ApiEnterpriseLicenseUsedByListRequest struct {
 	ctx         context.Context
-	ApiService  *EnterpriseAPIService
+	ApiService  *EnterpriseApiService
 	licenseUuid string
 }
 
@@ -1226,7 +1205,7 @@ Get a list of all objects that use this object
 	@param licenseUuid A UUID string identifying this License.
 	@return ApiEnterpriseLicenseUsedByListRequest
 */
-func (a *EnterpriseAPIService) EnterpriseLicenseUsedByList(ctx context.Context, licenseUuid string) ApiEnterpriseLicenseUsedByListRequest {
+func (a *EnterpriseApiService) EnterpriseLicenseUsedByList(ctx context.Context, licenseUuid string) ApiEnterpriseLicenseUsedByListRequest {
 	return ApiEnterpriseLicenseUsedByListRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -1237,7 +1216,7 @@ func (a *EnterpriseAPIService) EnterpriseLicenseUsedByList(ctx context.Context, 
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *EnterpriseAPIService) EnterpriseLicenseUsedByListExecute(r ApiEnterpriseLicenseUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *EnterpriseApiService) EnterpriseLicenseUsedByListExecute(r ApiEnterpriseLicenseUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1245,13 +1224,13 @@ func (a *EnterpriseAPIService) EnterpriseLicenseUsedByListExecute(r ApiEnterpris
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseAPIService.EnterpriseLicenseUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseApiService.EnterpriseLicenseUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/enterprise/license/{license_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"license_uuid"+"}", url.PathEscape(parameterValueToString(r.licenseUuid, "licenseUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"license_uuid"+"}", url.PathEscape(parameterToString(r.licenseUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1284,9 +1263,9 @@ func (a *EnterpriseAPIService) EnterpriseLicenseUsedByListExecute(r ApiEnterpris
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1303,7 +1282,6 @@ func (a *EnterpriseAPIService) EnterpriseLicenseUsedByListExecute(r ApiEnterpris
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1314,7 +1292,6 @@ func (a *EnterpriseAPIService) EnterpriseLicenseUsedByListExecute(r ApiEnterpris
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

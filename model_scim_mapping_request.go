@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the SCIMMappingRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SCIMMappingRequest{}
 
 // SCIMMappingRequest SCIMMapping Serializer
 type SCIMMappingRequest struct {
@@ -27,8 +22,6 @@ type SCIMMappingRequest struct {
 	Name       string         `json:"name"`
 	Expression string         `json:"expression"`
 }
-
-type _SCIMMappingRequest SCIMMappingRequest
 
 // NewSCIMMappingRequest instantiates a new SCIMMappingRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -51,7 +44,7 @@ func NewSCIMMappingRequestWithDefaults() *SCIMMappingRequest {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SCIMMappingRequest) GetManaged() string {
-	if o == nil || IsNil(o.Managed.Get()) {
+	if o == nil || o.Managed.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -141,59 +134,17 @@ func (o *SCIMMappingRequest) SetExpression(v string) {
 }
 
 func (o SCIMMappingRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o SCIMMappingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	toSerialize["name"] = o.Name
-	toSerialize["expression"] = o.Expression
-	return toSerialize, nil
-}
-
-func (o *SCIMMappingRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"expression",
+	if true {
+		toSerialize["name"] = o.Name
 	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
+	if true {
+		toSerialize["expression"] = o.Expression
 	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSCIMMappingRequest := _SCIMMappingRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSCIMMappingRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SCIMMappingRequest(varSCIMMappingRequest)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableSCIMMappingRequest struct {

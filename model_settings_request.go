@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the SettingsRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SettingsRequest{}
-
 // SettingsRequest Settings Serializer
 type SettingsRequest struct {
 	// Configure how authentik should show avatars for users.
@@ -63,7 +60,7 @@ func NewSettingsRequestWithDefaults() *SettingsRequest {
 
 // GetAvatars returns the Avatars field value if set, zero value otherwise.
 func (o *SettingsRequest) GetAvatars() string {
-	if o == nil || IsNil(o.Avatars) {
+	if o == nil || o.Avatars == nil {
 		var ret string
 		return ret
 	}
@@ -73,7 +70,7 @@ func (o *SettingsRequest) GetAvatars() string {
 // GetAvatarsOk returns a tuple with the Avatars field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsRequest) GetAvatarsOk() (*string, bool) {
-	if o == nil || IsNil(o.Avatars) {
+	if o == nil || o.Avatars == nil {
 		return nil, false
 	}
 	return o.Avatars, true
@@ -81,7 +78,7 @@ func (o *SettingsRequest) GetAvatarsOk() (*string, bool) {
 
 // HasAvatars returns a boolean if a field has been set.
 func (o *SettingsRequest) HasAvatars() bool {
-	if o != nil && !IsNil(o.Avatars) {
+	if o != nil && o.Avatars != nil {
 		return true
 	}
 
@@ -95,7 +92,7 @@ func (o *SettingsRequest) SetAvatars(v string) {
 
 // GetDefaultUserChangeName returns the DefaultUserChangeName field value if set, zero value otherwise.
 func (o *SettingsRequest) GetDefaultUserChangeName() bool {
-	if o == nil || IsNil(o.DefaultUserChangeName) {
+	if o == nil || o.DefaultUserChangeName == nil {
 		var ret bool
 		return ret
 	}
@@ -105,7 +102,7 @@ func (o *SettingsRequest) GetDefaultUserChangeName() bool {
 // GetDefaultUserChangeNameOk returns a tuple with the DefaultUserChangeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsRequest) GetDefaultUserChangeNameOk() (*bool, bool) {
-	if o == nil || IsNil(o.DefaultUserChangeName) {
+	if o == nil || o.DefaultUserChangeName == nil {
 		return nil, false
 	}
 	return o.DefaultUserChangeName, true
@@ -113,7 +110,7 @@ func (o *SettingsRequest) GetDefaultUserChangeNameOk() (*bool, bool) {
 
 // HasDefaultUserChangeName returns a boolean if a field has been set.
 func (o *SettingsRequest) HasDefaultUserChangeName() bool {
-	if o != nil && !IsNil(o.DefaultUserChangeName) {
+	if o != nil && o.DefaultUserChangeName != nil {
 		return true
 	}
 
@@ -127,7 +124,7 @@ func (o *SettingsRequest) SetDefaultUserChangeName(v bool) {
 
 // GetDefaultUserChangeEmail returns the DefaultUserChangeEmail field value if set, zero value otherwise.
 func (o *SettingsRequest) GetDefaultUserChangeEmail() bool {
-	if o == nil || IsNil(o.DefaultUserChangeEmail) {
+	if o == nil || o.DefaultUserChangeEmail == nil {
 		var ret bool
 		return ret
 	}
@@ -137,7 +134,7 @@ func (o *SettingsRequest) GetDefaultUserChangeEmail() bool {
 // GetDefaultUserChangeEmailOk returns a tuple with the DefaultUserChangeEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsRequest) GetDefaultUserChangeEmailOk() (*bool, bool) {
-	if o == nil || IsNil(o.DefaultUserChangeEmail) {
+	if o == nil || o.DefaultUserChangeEmail == nil {
 		return nil, false
 	}
 	return o.DefaultUserChangeEmail, true
@@ -145,7 +142,7 @@ func (o *SettingsRequest) GetDefaultUserChangeEmailOk() (*bool, bool) {
 
 // HasDefaultUserChangeEmail returns a boolean if a field has been set.
 func (o *SettingsRequest) HasDefaultUserChangeEmail() bool {
-	if o != nil && !IsNil(o.DefaultUserChangeEmail) {
+	if o != nil && o.DefaultUserChangeEmail != nil {
 		return true
 	}
 
@@ -159,7 +156,7 @@ func (o *SettingsRequest) SetDefaultUserChangeEmail(v bool) {
 
 // GetDefaultUserChangeUsername returns the DefaultUserChangeUsername field value if set, zero value otherwise.
 func (o *SettingsRequest) GetDefaultUserChangeUsername() bool {
-	if o == nil || IsNil(o.DefaultUserChangeUsername) {
+	if o == nil || o.DefaultUserChangeUsername == nil {
 		var ret bool
 		return ret
 	}
@@ -169,7 +166,7 @@ func (o *SettingsRequest) GetDefaultUserChangeUsername() bool {
 // GetDefaultUserChangeUsernameOk returns a tuple with the DefaultUserChangeUsername field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsRequest) GetDefaultUserChangeUsernameOk() (*bool, bool) {
-	if o == nil || IsNil(o.DefaultUserChangeUsername) {
+	if o == nil || o.DefaultUserChangeUsername == nil {
 		return nil, false
 	}
 	return o.DefaultUserChangeUsername, true
@@ -177,7 +174,7 @@ func (o *SettingsRequest) GetDefaultUserChangeUsernameOk() (*bool, bool) {
 
 // HasDefaultUserChangeUsername returns a boolean if a field has been set.
 func (o *SettingsRequest) HasDefaultUserChangeUsername() bool {
-	if o != nil && !IsNil(o.DefaultUserChangeUsername) {
+	if o != nil && o.DefaultUserChangeUsername != nil {
 		return true
 	}
 
@@ -191,7 +188,7 @@ func (o *SettingsRequest) SetDefaultUserChangeUsername(v bool) {
 
 // GetEventRetention returns the EventRetention field value if set, zero value otherwise.
 func (o *SettingsRequest) GetEventRetention() string {
-	if o == nil || IsNil(o.EventRetention) {
+	if o == nil || o.EventRetention == nil {
 		var ret string
 		return ret
 	}
@@ -201,7 +198,7 @@ func (o *SettingsRequest) GetEventRetention() string {
 // GetEventRetentionOk returns a tuple with the EventRetention field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsRequest) GetEventRetentionOk() (*string, bool) {
-	if o == nil || IsNil(o.EventRetention) {
+	if o == nil || o.EventRetention == nil {
 		return nil, false
 	}
 	return o.EventRetention, true
@@ -209,7 +206,7 @@ func (o *SettingsRequest) GetEventRetentionOk() (*string, bool) {
 
 // HasEventRetention returns a boolean if a field has been set.
 func (o *SettingsRequest) HasEventRetention() bool {
-	if o != nil && !IsNil(o.EventRetention) {
+	if o != nil && o.EventRetention != nil {
 		return true
 	}
 
@@ -234,7 +231,7 @@ func (o *SettingsRequest) GetFooterLinks() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SettingsRequest) GetFooterLinksOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.FooterLinks) {
+	if o == nil || o.FooterLinks == nil {
 		return nil, false
 	}
 	return &o.FooterLinks, true
@@ -242,7 +239,7 @@ func (o *SettingsRequest) GetFooterLinksOk() (*interface{}, bool) {
 
 // HasFooterLinks returns a boolean if a field has been set.
 func (o *SettingsRequest) HasFooterLinks() bool {
-	if o != nil && !IsNil(o.FooterLinks) {
+	if o != nil && o.FooterLinks != nil {
 		return true
 	}
 
@@ -256,7 +253,7 @@ func (o *SettingsRequest) SetFooterLinks(v interface{}) {
 
 // GetGdprCompliance returns the GdprCompliance field value if set, zero value otherwise.
 func (o *SettingsRequest) GetGdprCompliance() bool {
-	if o == nil || IsNil(o.GdprCompliance) {
+	if o == nil || o.GdprCompliance == nil {
 		var ret bool
 		return ret
 	}
@@ -266,7 +263,7 @@ func (o *SettingsRequest) GetGdprCompliance() bool {
 // GetGdprComplianceOk returns a tuple with the GdprCompliance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsRequest) GetGdprComplianceOk() (*bool, bool) {
-	if o == nil || IsNil(o.GdprCompliance) {
+	if o == nil || o.GdprCompliance == nil {
 		return nil, false
 	}
 	return o.GdprCompliance, true
@@ -274,7 +271,7 @@ func (o *SettingsRequest) GetGdprComplianceOk() (*bool, bool) {
 
 // HasGdprCompliance returns a boolean if a field has been set.
 func (o *SettingsRequest) HasGdprCompliance() bool {
-	if o != nil && !IsNil(o.GdprCompliance) {
+	if o != nil && o.GdprCompliance != nil {
 		return true
 	}
 
@@ -288,7 +285,7 @@ func (o *SettingsRequest) SetGdprCompliance(v bool) {
 
 // GetImpersonation returns the Impersonation field value if set, zero value otherwise.
 func (o *SettingsRequest) GetImpersonation() bool {
-	if o == nil || IsNil(o.Impersonation) {
+	if o == nil || o.Impersonation == nil {
 		var ret bool
 		return ret
 	}
@@ -298,7 +295,7 @@ func (o *SettingsRequest) GetImpersonation() bool {
 // GetImpersonationOk returns a tuple with the Impersonation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsRequest) GetImpersonationOk() (*bool, bool) {
-	if o == nil || IsNil(o.Impersonation) {
+	if o == nil || o.Impersonation == nil {
 		return nil, false
 	}
 	return o.Impersonation, true
@@ -306,7 +303,7 @@ func (o *SettingsRequest) GetImpersonationOk() (*bool, bool) {
 
 // HasImpersonation returns a boolean if a field has been set.
 func (o *SettingsRequest) HasImpersonation() bool {
-	if o != nil && !IsNil(o.Impersonation) {
+	if o != nil && o.Impersonation != nil {
 		return true
 	}
 
@@ -320,7 +317,7 @@ func (o *SettingsRequest) SetImpersonation(v bool) {
 
 // GetImpersonationRequireReason returns the ImpersonationRequireReason field value if set, zero value otherwise.
 func (o *SettingsRequest) GetImpersonationRequireReason() bool {
-	if o == nil || IsNil(o.ImpersonationRequireReason) {
+	if o == nil || o.ImpersonationRequireReason == nil {
 		var ret bool
 		return ret
 	}
@@ -330,7 +327,7 @@ func (o *SettingsRequest) GetImpersonationRequireReason() bool {
 // GetImpersonationRequireReasonOk returns a tuple with the ImpersonationRequireReason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsRequest) GetImpersonationRequireReasonOk() (*bool, bool) {
-	if o == nil || IsNil(o.ImpersonationRequireReason) {
+	if o == nil || o.ImpersonationRequireReason == nil {
 		return nil, false
 	}
 	return o.ImpersonationRequireReason, true
@@ -338,7 +335,7 @@ func (o *SettingsRequest) GetImpersonationRequireReasonOk() (*bool, bool) {
 
 // HasImpersonationRequireReason returns a boolean if a field has been set.
 func (o *SettingsRequest) HasImpersonationRequireReason() bool {
-	if o != nil && !IsNil(o.ImpersonationRequireReason) {
+	if o != nil && o.ImpersonationRequireReason != nil {
 		return true
 	}
 
@@ -352,7 +349,7 @@ func (o *SettingsRequest) SetImpersonationRequireReason(v bool) {
 
 // GetDefaultTokenDuration returns the DefaultTokenDuration field value if set, zero value otherwise.
 func (o *SettingsRequest) GetDefaultTokenDuration() string {
-	if o == nil || IsNil(o.DefaultTokenDuration) {
+	if o == nil || o.DefaultTokenDuration == nil {
 		var ret string
 		return ret
 	}
@@ -362,7 +359,7 @@ func (o *SettingsRequest) GetDefaultTokenDuration() string {
 // GetDefaultTokenDurationOk returns a tuple with the DefaultTokenDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsRequest) GetDefaultTokenDurationOk() (*string, bool) {
-	if o == nil || IsNil(o.DefaultTokenDuration) {
+	if o == nil || o.DefaultTokenDuration == nil {
 		return nil, false
 	}
 	return o.DefaultTokenDuration, true
@@ -370,7 +367,7 @@ func (o *SettingsRequest) GetDefaultTokenDurationOk() (*string, bool) {
 
 // HasDefaultTokenDuration returns a boolean if a field has been set.
 func (o *SettingsRequest) HasDefaultTokenDuration() bool {
-	if o != nil && !IsNil(o.DefaultTokenDuration) {
+	if o != nil && o.DefaultTokenDuration != nil {
 		return true
 	}
 
@@ -384,7 +381,7 @@ func (o *SettingsRequest) SetDefaultTokenDuration(v string) {
 
 // GetDefaultTokenLength returns the DefaultTokenLength field value if set, zero value otherwise.
 func (o *SettingsRequest) GetDefaultTokenLength() int32 {
-	if o == nil || IsNil(o.DefaultTokenLength) {
+	if o == nil || o.DefaultTokenLength == nil {
 		var ret int32
 		return ret
 	}
@@ -394,7 +391,7 @@ func (o *SettingsRequest) GetDefaultTokenLength() int32 {
 // GetDefaultTokenLengthOk returns a tuple with the DefaultTokenLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsRequest) GetDefaultTokenLengthOk() (*int32, bool) {
-	if o == nil || IsNil(o.DefaultTokenLength) {
+	if o == nil || o.DefaultTokenLength == nil {
 		return nil, false
 	}
 	return o.DefaultTokenLength, true
@@ -402,7 +399,7 @@ func (o *SettingsRequest) GetDefaultTokenLengthOk() (*int32, bool) {
 
 // HasDefaultTokenLength returns a boolean if a field has been set.
 func (o *SettingsRequest) HasDefaultTokenLength() bool {
-	if o != nil && !IsNil(o.DefaultTokenLength) {
+	if o != nil && o.DefaultTokenLength != nil {
 		return true
 	}
 
@@ -415,49 +412,41 @@ func (o *SettingsRequest) SetDefaultTokenLength(v int32) {
 }
 
 func (o SettingsRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o SettingsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Avatars) {
+	if o.Avatars != nil {
 		toSerialize["avatars"] = o.Avatars
 	}
-	if !IsNil(o.DefaultUserChangeName) {
+	if o.DefaultUserChangeName != nil {
 		toSerialize["default_user_change_name"] = o.DefaultUserChangeName
 	}
-	if !IsNil(o.DefaultUserChangeEmail) {
+	if o.DefaultUserChangeEmail != nil {
 		toSerialize["default_user_change_email"] = o.DefaultUserChangeEmail
 	}
-	if !IsNil(o.DefaultUserChangeUsername) {
+	if o.DefaultUserChangeUsername != nil {
 		toSerialize["default_user_change_username"] = o.DefaultUserChangeUsername
 	}
-	if !IsNil(o.EventRetention) {
+	if o.EventRetention != nil {
 		toSerialize["event_retention"] = o.EventRetention
 	}
 	if o.FooterLinks != nil {
 		toSerialize["footer_links"] = o.FooterLinks
 	}
-	if !IsNil(o.GdprCompliance) {
+	if o.GdprCompliance != nil {
 		toSerialize["gdpr_compliance"] = o.GdprCompliance
 	}
-	if !IsNil(o.Impersonation) {
+	if o.Impersonation != nil {
 		toSerialize["impersonation"] = o.Impersonation
 	}
-	if !IsNil(o.ImpersonationRequireReason) {
+	if o.ImpersonationRequireReason != nil {
 		toSerialize["impersonation_require_reason"] = o.ImpersonationRequireReason
 	}
-	if !IsNil(o.DefaultTokenDuration) {
+	if o.DefaultTokenDuration != nil {
 		toSerialize["default_token_duration"] = o.DefaultTokenDuration
 	}
-	if !IsNil(o.DefaultTokenLength) {
+	if o.DefaultTokenLength != nil {
 		toSerialize["default_token_length"] = o.DefaultTokenLength
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableSettingsRequest struct {

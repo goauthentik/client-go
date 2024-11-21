@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the GoogleWorkspaceProvider type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GoogleWorkspaceProvider{}
 
 // GoogleWorkspaceProvider GoogleWorkspaceProvider Serializer
 type GoogleWorkspaceProvider struct {
@@ -48,8 +43,6 @@ type GoogleWorkspaceProvider struct {
 	GroupDeleteAction          *OutgoingSyncDeleteAction `json:"group_delete_action,omitempty"`
 	DefaultGroupEmailDomain    string                    `json:"default_group_email_domain"`
 }
-
-type _GoogleWorkspaceProvider GoogleWorkspaceProvider
 
 // NewGoogleWorkspaceProvider instantiates a new GoogleWorkspaceProvider object
 // This constructor will assign default values to properties that have it defined,
@@ -129,7 +122,7 @@ func (o *GoogleWorkspaceProvider) SetName(v string) {
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
 func (o *GoogleWorkspaceProvider) GetPropertyMappings() []string {
-	if o == nil || IsNil(o.PropertyMappings) {
+	if o == nil || o.PropertyMappings == nil {
 		var ret []string
 		return ret
 	}
@@ -139,7 +132,7 @@ func (o *GoogleWorkspaceProvider) GetPropertyMappings() []string {
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GoogleWorkspaceProvider) GetPropertyMappingsOk() ([]string, bool) {
-	if o == nil || IsNil(o.PropertyMappings) {
+	if o == nil || o.PropertyMappings == nil {
 		return nil, false
 	}
 	return o.PropertyMappings, true
@@ -147,7 +140,7 @@ func (o *GoogleWorkspaceProvider) GetPropertyMappingsOk() ([]string, bool) {
 
 // HasPropertyMappings returns a boolean if a field has been set.
 func (o *GoogleWorkspaceProvider) HasPropertyMappings() bool {
-	if o != nil && !IsNil(o.PropertyMappings) {
+	if o != nil && o.PropertyMappings != nil {
 		return true
 	}
 
@@ -161,7 +154,7 @@ func (o *GoogleWorkspaceProvider) SetPropertyMappings(v []string) {
 
 // GetPropertyMappingsGroup returns the PropertyMappingsGroup field value if set, zero value otherwise.
 func (o *GoogleWorkspaceProvider) GetPropertyMappingsGroup() []string {
-	if o == nil || IsNil(o.PropertyMappingsGroup) {
+	if o == nil || o.PropertyMappingsGroup == nil {
 		var ret []string
 		return ret
 	}
@@ -171,7 +164,7 @@ func (o *GoogleWorkspaceProvider) GetPropertyMappingsGroup() []string {
 // GetPropertyMappingsGroupOk returns a tuple with the PropertyMappingsGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GoogleWorkspaceProvider) GetPropertyMappingsGroupOk() ([]string, bool) {
-	if o == nil || IsNil(o.PropertyMappingsGroup) {
+	if o == nil || o.PropertyMappingsGroup == nil {
 		return nil, false
 	}
 	return o.PropertyMappingsGroup, true
@@ -179,7 +172,7 @@ func (o *GoogleWorkspaceProvider) GetPropertyMappingsGroupOk() ([]string, bool) 
 
 // HasPropertyMappingsGroup returns a boolean if a field has been set.
 func (o *GoogleWorkspaceProvider) HasPropertyMappingsGroup() bool {
-	if o != nil && !IsNil(o.PropertyMappingsGroup) {
+	if o != nil && o.PropertyMappingsGroup != nil {
 		return true
 	}
 
@@ -374,7 +367,7 @@ func (o *GoogleWorkspaceProvider) GetCredentials() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GoogleWorkspaceProvider) GetCredentialsOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Credentials) {
+	if o == nil || o.Credentials == nil {
 		return nil, false
 	}
 	return &o.Credentials, true
@@ -387,7 +380,7 @@ func (o *GoogleWorkspaceProvider) SetCredentials(v interface{}) {
 
 // GetScopes returns the Scopes field value if set, zero value otherwise.
 func (o *GoogleWorkspaceProvider) GetScopes() string {
-	if o == nil || IsNil(o.Scopes) {
+	if o == nil || o.Scopes == nil {
 		var ret string
 		return ret
 	}
@@ -397,7 +390,7 @@ func (o *GoogleWorkspaceProvider) GetScopes() string {
 // GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GoogleWorkspaceProvider) GetScopesOk() (*string, bool) {
-	if o == nil || IsNil(o.Scopes) {
+	if o == nil || o.Scopes == nil {
 		return nil, false
 	}
 	return o.Scopes, true
@@ -405,7 +398,7 @@ func (o *GoogleWorkspaceProvider) GetScopesOk() (*string, bool) {
 
 // HasScopes returns a boolean if a field has been set.
 func (o *GoogleWorkspaceProvider) HasScopes() bool {
-	if o != nil && !IsNil(o.Scopes) {
+	if o != nil && o.Scopes != nil {
 		return true
 	}
 
@@ -419,7 +412,7 @@ func (o *GoogleWorkspaceProvider) SetScopes(v string) {
 
 // GetExcludeUsersServiceAccount returns the ExcludeUsersServiceAccount field value if set, zero value otherwise.
 func (o *GoogleWorkspaceProvider) GetExcludeUsersServiceAccount() bool {
-	if o == nil || IsNil(o.ExcludeUsersServiceAccount) {
+	if o == nil || o.ExcludeUsersServiceAccount == nil {
 		var ret bool
 		return ret
 	}
@@ -429,7 +422,7 @@ func (o *GoogleWorkspaceProvider) GetExcludeUsersServiceAccount() bool {
 // GetExcludeUsersServiceAccountOk returns a tuple with the ExcludeUsersServiceAccount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GoogleWorkspaceProvider) GetExcludeUsersServiceAccountOk() (*bool, bool) {
-	if o == nil || IsNil(o.ExcludeUsersServiceAccount) {
+	if o == nil || o.ExcludeUsersServiceAccount == nil {
 		return nil, false
 	}
 	return o.ExcludeUsersServiceAccount, true
@@ -437,7 +430,7 @@ func (o *GoogleWorkspaceProvider) GetExcludeUsersServiceAccountOk() (*bool, bool
 
 // HasExcludeUsersServiceAccount returns a boolean if a field has been set.
 func (o *GoogleWorkspaceProvider) HasExcludeUsersServiceAccount() bool {
-	if o != nil && !IsNil(o.ExcludeUsersServiceAccount) {
+	if o != nil && o.ExcludeUsersServiceAccount != nil {
 		return true
 	}
 
@@ -451,7 +444,7 @@ func (o *GoogleWorkspaceProvider) SetExcludeUsersServiceAccount(v bool) {
 
 // GetFilterGroup returns the FilterGroup field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GoogleWorkspaceProvider) GetFilterGroup() string {
-	if o == nil || IsNil(o.FilterGroup.Get()) {
+	if o == nil || o.FilterGroup.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -494,7 +487,7 @@ func (o *GoogleWorkspaceProvider) UnsetFilterGroup() {
 
 // GetUserDeleteAction returns the UserDeleteAction field value if set, zero value otherwise.
 func (o *GoogleWorkspaceProvider) GetUserDeleteAction() OutgoingSyncDeleteAction {
-	if o == nil || IsNil(o.UserDeleteAction) {
+	if o == nil || o.UserDeleteAction == nil {
 		var ret OutgoingSyncDeleteAction
 		return ret
 	}
@@ -504,7 +497,7 @@ func (o *GoogleWorkspaceProvider) GetUserDeleteAction() OutgoingSyncDeleteAction
 // GetUserDeleteActionOk returns a tuple with the UserDeleteAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GoogleWorkspaceProvider) GetUserDeleteActionOk() (*OutgoingSyncDeleteAction, bool) {
-	if o == nil || IsNil(o.UserDeleteAction) {
+	if o == nil || o.UserDeleteAction == nil {
 		return nil, false
 	}
 	return o.UserDeleteAction, true
@@ -512,7 +505,7 @@ func (o *GoogleWorkspaceProvider) GetUserDeleteActionOk() (*OutgoingSyncDeleteAc
 
 // HasUserDeleteAction returns a boolean if a field has been set.
 func (o *GoogleWorkspaceProvider) HasUserDeleteAction() bool {
-	if o != nil && !IsNil(o.UserDeleteAction) {
+	if o != nil && o.UserDeleteAction != nil {
 		return true
 	}
 
@@ -526,7 +519,7 @@ func (o *GoogleWorkspaceProvider) SetUserDeleteAction(v OutgoingSyncDeleteAction
 
 // GetGroupDeleteAction returns the GroupDeleteAction field value if set, zero value otherwise.
 func (o *GoogleWorkspaceProvider) GetGroupDeleteAction() OutgoingSyncDeleteAction {
-	if o == nil || IsNil(o.GroupDeleteAction) {
+	if o == nil || o.GroupDeleteAction == nil {
 		var ret OutgoingSyncDeleteAction
 		return ret
 	}
@@ -536,7 +529,7 @@ func (o *GoogleWorkspaceProvider) GetGroupDeleteAction() OutgoingSyncDeleteActio
 // GetGroupDeleteActionOk returns a tuple with the GroupDeleteAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GoogleWorkspaceProvider) GetGroupDeleteActionOk() (*OutgoingSyncDeleteAction, bool) {
-	if o == nil || IsNil(o.GroupDeleteAction) {
+	if o == nil || o.GroupDeleteAction == nil {
 		return nil, false
 	}
 	return o.GroupDeleteAction, true
@@ -544,7 +537,7 @@ func (o *GoogleWorkspaceProvider) GetGroupDeleteActionOk() (*OutgoingSyncDeleteA
 
 // HasGroupDeleteAction returns a boolean if a field has been set.
 func (o *GoogleWorkspaceProvider) HasGroupDeleteAction() bool {
-	if o != nil && !IsNil(o.GroupDeleteAction) {
+	if o != nil && o.GroupDeleteAction != nil {
 		return true
 	}
 
@@ -581,97 +574,62 @@ func (o *GoogleWorkspaceProvider) SetDefaultGroupEmailDomain(v string) {
 }
 
 func (o GoogleWorkspaceProvider) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o GoogleWorkspaceProvider) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["pk"] = o.Pk
-	toSerialize["name"] = o.Name
-	if !IsNil(o.PropertyMappings) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.PropertyMappings != nil {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
-	if !IsNil(o.PropertyMappingsGroup) {
+	if o.PropertyMappingsGroup != nil {
 		toSerialize["property_mappings_group"] = o.PropertyMappingsGroup
 	}
-	toSerialize["component"] = o.Component
-	toSerialize["assigned_backchannel_application_slug"] = o.AssignedBackchannelApplicationSlug
-	toSerialize["assigned_backchannel_application_name"] = o.AssignedBackchannelApplicationName
-	toSerialize["verbose_name"] = o.VerboseName
-	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	toSerialize["meta_model_name"] = o.MetaModelName
-	toSerialize["delegated_subject"] = o.DelegatedSubject
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["assigned_backchannel_application_slug"] = o.AssignedBackchannelApplicationSlug
+	}
+	if true {
+		toSerialize["assigned_backchannel_application_name"] = o.AssignedBackchannelApplicationName
+	}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
+	}
+	if true {
+		toSerialize["delegated_subject"] = o.DelegatedSubject
+	}
 	if o.Credentials != nil {
 		toSerialize["credentials"] = o.Credentials
 	}
-	if !IsNil(o.Scopes) {
+	if o.Scopes != nil {
 		toSerialize["scopes"] = o.Scopes
 	}
-	if !IsNil(o.ExcludeUsersServiceAccount) {
+	if o.ExcludeUsersServiceAccount != nil {
 		toSerialize["exclude_users_service_account"] = o.ExcludeUsersServiceAccount
 	}
 	if o.FilterGroup.IsSet() {
 		toSerialize["filter_group"] = o.FilterGroup.Get()
 	}
-	if !IsNil(o.UserDeleteAction) {
+	if o.UserDeleteAction != nil {
 		toSerialize["user_delete_action"] = o.UserDeleteAction
 	}
-	if !IsNil(o.GroupDeleteAction) {
+	if o.GroupDeleteAction != nil {
 		toSerialize["group_delete_action"] = o.GroupDeleteAction
 	}
-	toSerialize["default_group_email_domain"] = o.DefaultGroupEmailDomain
-	return toSerialize, nil
-}
-
-func (o *GoogleWorkspaceProvider) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pk",
-		"name",
-		"component",
-		"assigned_backchannel_application_slug",
-		"assigned_backchannel_application_name",
-		"verbose_name",
-		"verbose_name_plural",
-		"meta_model_name",
-		"delegated_subject",
-		"credentials",
-		"default_group_email_domain",
+	if true {
+		toSerialize["default_group_email_domain"] = o.DefaultGroupEmailDomain
 	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varGoogleWorkspaceProvider := _GoogleWorkspaceProvider{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGoogleWorkspaceProvider)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GoogleWorkspaceProvider(varGoogleWorkspaceProvider)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableGoogleWorkspaceProvider struct {

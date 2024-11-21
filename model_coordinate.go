@@ -12,21 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the Coordinate type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Coordinate{}
 
 // Coordinate Coordinates for diagrams
 type Coordinate struct {
 	XCord int32 `json:"x_cord"`
 	YCord int32 `json:"y_cord"`
 }
-
-type _Coordinate Coordinate
 
 // NewCoordinate instantiates a new Coordinate object
 // This constructor will assign default values to properties that have it defined,
@@ -96,56 +89,14 @@ func (o *Coordinate) SetYCord(v int32) {
 }
 
 func (o Coordinate) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["x_cord"] = o.XCord
+	}
+	if true {
+		toSerialize["y_cord"] = o.YCord
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o Coordinate) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["x_cord"] = o.XCord
-	toSerialize["y_cord"] = o.YCord
-	return toSerialize, nil
-}
-
-func (o *Coordinate) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"x_cord",
-		"y_cord",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCoordinate := _Coordinate{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCoordinate)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Coordinate(varCoordinate)
-
-	return err
 }
 
 type NullableCoordinate struct {

@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the CaptchaChallenge type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CaptchaChallenge{}
 
 // CaptchaChallenge Site public key
 type CaptchaChallenge struct {
@@ -31,8 +26,6 @@ type CaptchaChallenge struct {
 	JsUrl             string                    `json:"js_url"`
 	Interactive       bool                      `json:"interactive"`
 }
-
-type _CaptchaChallenge CaptchaChallenge
 
 // NewCaptchaChallenge instantiates a new CaptchaChallenge object
 // This constructor will assign default values to properties that have it defined,
@@ -62,7 +55,7 @@ func NewCaptchaChallengeWithDefaults() *CaptchaChallenge {
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
 func (o *CaptchaChallenge) GetFlowInfo() ContextualFlowInfo {
-	if o == nil || IsNil(o.FlowInfo) {
+	if o == nil || o.FlowInfo == nil {
 		var ret ContextualFlowInfo
 		return ret
 	}
@@ -72,7 +65,7 @@ func (o *CaptchaChallenge) GetFlowInfo() ContextualFlowInfo {
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CaptchaChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
-	if o == nil || IsNil(o.FlowInfo) {
+	if o == nil || o.FlowInfo == nil {
 		return nil, false
 	}
 	return o.FlowInfo, true
@@ -80,7 +73,7 @@ func (o *CaptchaChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
 
 // HasFlowInfo returns a boolean if a field has been set.
 func (o *CaptchaChallenge) HasFlowInfo() bool {
-	if o != nil && !IsNil(o.FlowInfo) {
+	if o != nil && o.FlowInfo != nil {
 		return true
 	}
 
@@ -94,7 +87,7 @@ func (o *CaptchaChallenge) SetFlowInfo(v ContextualFlowInfo) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *CaptchaChallenge) GetComponent() string {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		var ret string
 		return ret
 	}
@@ -104,7 +97,7 @@ func (o *CaptchaChallenge) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CaptchaChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		return nil, false
 	}
 	return o.Component, true
@@ -112,7 +105,7 @@ func (o *CaptchaChallenge) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *CaptchaChallenge) HasComponent() bool {
-	if o != nil && !IsNil(o.Component) {
+	if o != nil && o.Component != nil {
 		return true
 	}
 
@@ -126,7 +119,7 @@ func (o *CaptchaChallenge) SetComponent(v string) {
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
 func (o *CaptchaChallenge) GetResponseErrors() map[string][]ErrorDetail {
-	if o == nil || IsNil(o.ResponseErrors) {
+	if o == nil || o.ResponseErrors == nil {
 		var ret map[string][]ErrorDetail
 		return ret
 	}
@@ -136,7 +129,7 @@ func (o *CaptchaChallenge) GetResponseErrors() map[string][]ErrorDetail {
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CaptchaChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
-	if o == nil || IsNil(o.ResponseErrors) {
+	if o == nil || o.ResponseErrors == nil {
 		return nil, false
 	}
 	return o.ResponseErrors, true
@@ -144,7 +137,7 @@ func (o *CaptchaChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, boo
 
 // HasResponseErrors returns a boolean if a field has been set.
 func (o *CaptchaChallenge) HasResponseErrors() bool {
-	if o != nil && !IsNil(o.ResponseErrors) {
+	if o != nil && o.ResponseErrors != nil {
 		return true
 	}
 
@@ -277,71 +270,32 @@ func (o *CaptchaChallenge) SetInteractive(v bool) {
 }
 
 func (o CaptchaChallenge) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CaptchaChallenge) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.FlowInfo) {
+	if o.FlowInfo != nil {
 		toSerialize["flow_info"] = o.FlowInfo
 	}
-	if !IsNil(o.Component) {
+	if o.Component != nil {
 		toSerialize["component"] = o.Component
 	}
-	if !IsNil(o.ResponseErrors) {
+	if o.ResponseErrors != nil {
 		toSerialize["response_errors"] = o.ResponseErrors
 	}
-	toSerialize["pending_user"] = o.PendingUser
-	toSerialize["pending_user_avatar"] = o.PendingUserAvatar
-	toSerialize["site_key"] = o.SiteKey
-	toSerialize["js_url"] = o.JsUrl
-	toSerialize["interactive"] = o.Interactive
-	return toSerialize, nil
-}
-
-func (o *CaptchaChallenge) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pending_user",
-		"pending_user_avatar",
-		"site_key",
-		"js_url",
-		"interactive",
+	if true {
+		toSerialize["pending_user"] = o.PendingUser
 	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
+	if true {
+		toSerialize["pending_user_avatar"] = o.PendingUserAvatar
 	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
+	if true {
+		toSerialize["site_key"] = o.SiteKey
 	}
-
-	varCaptchaChallenge := _CaptchaChallenge{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCaptchaChallenge)
-
-	if err != nil {
-		return err
+	if true {
+		toSerialize["js_url"] = o.JsUrl
 	}
-
-	*o = CaptchaChallenge(varCaptchaChallenge)
-
-	return err
+	if true {
+		toSerialize["interactive"] = o.Interactive
+	}
+	return json.Marshal(toSerialize)
 }
 
 type NullableCaptchaChallenge struct {

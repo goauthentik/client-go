@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedFlowStageBindingRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedFlowStageBindingRequest{}
-
 // PatchedFlowStageBindingRequest FlowStageBinding Serializer
 type PatchedFlowStageBindingRequest struct {
 	Target *string `json:"target,omitempty"`
@@ -51,7 +48,7 @@ func NewPatchedFlowStageBindingRequestWithDefaults() *PatchedFlowStageBindingReq
 
 // GetTarget returns the Target field value if set, zero value otherwise.
 func (o *PatchedFlowStageBindingRequest) GetTarget() string {
-	if o == nil || IsNil(o.Target) {
+	if o == nil || o.Target == nil {
 		var ret string
 		return ret
 	}
@@ -61,7 +58,7 @@ func (o *PatchedFlowStageBindingRequest) GetTarget() string {
 // GetTargetOk returns a tuple with the Target field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFlowStageBindingRequest) GetTargetOk() (*string, bool) {
-	if o == nil || IsNil(o.Target) {
+	if o == nil || o.Target == nil {
 		return nil, false
 	}
 	return o.Target, true
@@ -69,7 +66,7 @@ func (o *PatchedFlowStageBindingRequest) GetTargetOk() (*string, bool) {
 
 // HasTarget returns a boolean if a field has been set.
 func (o *PatchedFlowStageBindingRequest) HasTarget() bool {
-	if o != nil && !IsNil(o.Target) {
+	if o != nil && o.Target != nil {
 		return true
 	}
 
@@ -83,7 +80,7 @@ func (o *PatchedFlowStageBindingRequest) SetTarget(v string) {
 
 // GetStage returns the Stage field value if set, zero value otherwise.
 func (o *PatchedFlowStageBindingRequest) GetStage() string {
-	if o == nil || IsNil(o.Stage) {
+	if o == nil || o.Stage == nil {
 		var ret string
 		return ret
 	}
@@ -93,7 +90,7 @@ func (o *PatchedFlowStageBindingRequest) GetStage() string {
 // GetStageOk returns a tuple with the Stage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFlowStageBindingRequest) GetStageOk() (*string, bool) {
-	if o == nil || IsNil(o.Stage) {
+	if o == nil || o.Stage == nil {
 		return nil, false
 	}
 	return o.Stage, true
@@ -101,7 +98,7 @@ func (o *PatchedFlowStageBindingRequest) GetStageOk() (*string, bool) {
 
 // HasStage returns a boolean if a field has been set.
 func (o *PatchedFlowStageBindingRequest) HasStage() bool {
-	if o != nil && !IsNil(o.Stage) {
+	if o != nil && o.Stage != nil {
 		return true
 	}
 
@@ -115,7 +112,7 @@ func (o *PatchedFlowStageBindingRequest) SetStage(v string) {
 
 // GetEvaluateOnPlan returns the EvaluateOnPlan field value if set, zero value otherwise.
 func (o *PatchedFlowStageBindingRequest) GetEvaluateOnPlan() bool {
-	if o == nil || IsNil(o.EvaluateOnPlan) {
+	if o == nil || o.EvaluateOnPlan == nil {
 		var ret bool
 		return ret
 	}
@@ -125,7 +122,7 @@ func (o *PatchedFlowStageBindingRequest) GetEvaluateOnPlan() bool {
 // GetEvaluateOnPlanOk returns a tuple with the EvaluateOnPlan field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFlowStageBindingRequest) GetEvaluateOnPlanOk() (*bool, bool) {
-	if o == nil || IsNil(o.EvaluateOnPlan) {
+	if o == nil || o.EvaluateOnPlan == nil {
 		return nil, false
 	}
 	return o.EvaluateOnPlan, true
@@ -133,7 +130,7 @@ func (o *PatchedFlowStageBindingRequest) GetEvaluateOnPlanOk() (*bool, bool) {
 
 // HasEvaluateOnPlan returns a boolean if a field has been set.
 func (o *PatchedFlowStageBindingRequest) HasEvaluateOnPlan() bool {
-	if o != nil && !IsNil(o.EvaluateOnPlan) {
+	if o != nil && o.EvaluateOnPlan != nil {
 		return true
 	}
 
@@ -147,7 +144,7 @@ func (o *PatchedFlowStageBindingRequest) SetEvaluateOnPlan(v bool) {
 
 // GetReEvaluatePolicies returns the ReEvaluatePolicies field value if set, zero value otherwise.
 func (o *PatchedFlowStageBindingRequest) GetReEvaluatePolicies() bool {
-	if o == nil || IsNil(o.ReEvaluatePolicies) {
+	if o == nil || o.ReEvaluatePolicies == nil {
 		var ret bool
 		return ret
 	}
@@ -157,7 +154,7 @@ func (o *PatchedFlowStageBindingRequest) GetReEvaluatePolicies() bool {
 // GetReEvaluatePoliciesOk returns a tuple with the ReEvaluatePolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFlowStageBindingRequest) GetReEvaluatePoliciesOk() (*bool, bool) {
-	if o == nil || IsNil(o.ReEvaluatePolicies) {
+	if o == nil || o.ReEvaluatePolicies == nil {
 		return nil, false
 	}
 	return o.ReEvaluatePolicies, true
@@ -165,7 +162,7 @@ func (o *PatchedFlowStageBindingRequest) GetReEvaluatePoliciesOk() (*bool, bool)
 
 // HasReEvaluatePolicies returns a boolean if a field has been set.
 func (o *PatchedFlowStageBindingRequest) HasReEvaluatePolicies() bool {
-	if o != nil && !IsNil(o.ReEvaluatePolicies) {
+	if o != nil && o.ReEvaluatePolicies != nil {
 		return true
 	}
 
@@ -179,7 +176,7 @@ func (o *PatchedFlowStageBindingRequest) SetReEvaluatePolicies(v bool) {
 
 // GetOrder returns the Order field value if set, zero value otherwise.
 func (o *PatchedFlowStageBindingRequest) GetOrder() int32 {
-	if o == nil || IsNil(o.Order) {
+	if o == nil || o.Order == nil {
 		var ret int32
 		return ret
 	}
@@ -189,7 +186,7 @@ func (o *PatchedFlowStageBindingRequest) GetOrder() int32 {
 // GetOrderOk returns a tuple with the Order field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFlowStageBindingRequest) GetOrderOk() (*int32, bool) {
-	if o == nil || IsNil(o.Order) {
+	if o == nil || o.Order == nil {
 		return nil, false
 	}
 	return o.Order, true
@@ -197,7 +194,7 @@ func (o *PatchedFlowStageBindingRequest) GetOrderOk() (*int32, bool) {
 
 // HasOrder returns a boolean if a field has been set.
 func (o *PatchedFlowStageBindingRequest) HasOrder() bool {
-	if o != nil && !IsNil(o.Order) {
+	if o != nil && o.Order != nil {
 		return true
 	}
 
@@ -211,7 +208,7 @@ func (o *PatchedFlowStageBindingRequest) SetOrder(v int32) {
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
 func (o *PatchedFlowStageBindingRequest) GetPolicyEngineMode() PolicyEngineMode {
-	if o == nil || IsNil(o.PolicyEngineMode) {
+	if o == nil || o.PolicyEngineMode == nil {
 		var ret PolicyEngineMode
 		return ret
 	}
@@ -221,7 +218,7 @@ func (o *PatchedFlowStageBindingRequest) GetPolicyEngineMode() PolicyEngineMode 
 // GetPolicyEngineModeOk returns a tuple with the PolicyEngineMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFlowStageBindingRequest) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
-	if o == nil || IsNil(o.PolicyEngineMode) {
+	if o == nil || o.PolicyEngineMode == nil {
 		return nil, false
 	}
 	return o.PolicyEngineMode, true
@@ -229,7 +226,7 @@ func (o *PatchedFlowStageBindingRequest) GetPolicyEngineModeOk() (*PolicyEngineM
 
 // HasPolicyEngineMode returns a boolean if a field has been set.
 func (o *PatchedFlowStageBindingRequest) HasPolicyEngineMode() bool {
-	if o != nil && !IsNil(o.PolicyEngineMode) {
+	if o != nil && o.PolicyEngineMode != nil {
 		return true
 	}
 
@@ -243,7 +240,7 @@ func (o *PatchedFlowStageBindingRequest) SetPolicyEngineMode(v PolicyEngineMode)
 
 // GetInvalidResponseAction returns the InvalidResponseAction field value if set, zero value otherwise.
 func (o *PatchedFlowStageBindingRequest) GetInvalidResponseAction() InvalidResponseActionEnum {
-	if o == nil || IsNil(o.InvalidResponseAction) {
+	if o == nil || o.InvalidResponseAction == nil {
 		var ret InvalidResponseActionEnum
 		return ret
 	}
@@ -253,7 +250,7 @@ func (o *PatchedFlowStageBindingRequest) GetInvalidResponseAction() InvalidRespo
 // GetInvalidResponseActionOk returns a tuple with the InvalidResponseAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFlowStageBindingRequest) GetInvalidResponseActionOk() (*InvalidResponseActionEnum, bool) {
-	if o == nil || IsNil(o.InvalidResponseAction) {
+	if o == nil || o.InvalidResponseAction == nil {
 		return nil, false
 	}
 	return o.InvalidResponseAction, true
@@ -261,7 +258,7 @@ func (o *PatchedFlowStageBindingRequest) GetInvalidResponseActionOk() (*InvalidR
 
 // HasInvalidResponseAction returns a boolean if a field has been set.
 func (o *PatchedFlowStageBindingRequest) HasInvalidResponseAction() bool {
-	if o != nil && !IsNil(o.InvalidResponseAction) {
+	if o != nil && o.InvalidResponseAction != nil {
 		return true
 	}
 
@@ -274,37 +271,29 @@ func (o *PatchedFlowStageBindingRequest) SetInvalidResponseAction(v InvalidRespo
 }
 
 func (o PatchedFlowStageBindingRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedFlowStageBindingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Target) {
+	if o.Target != nil {
 		toSerialize["target"] = o.Target
 	}
-	if !IsNil(o.Stage) {
+	if o.Stage != nil {
 		toSerialize["stage"] = o.Stage
 	}
-	if !IsNil(o.EvaluateOnPlan) {
+	if o.EvaluateOnPlan != nil {
 		toSerialize["evaluate_on_plan"] = o.EvaluateOnPlan
 	}
-	if !IsNil(o.ReEvaluatePolicies) {
+	if o.ReEvaluatePolicies != nil {
 		toSerialize["re_evaluate_policies"] = o.ReEvaluatePolicies
 	}
-	if !IsNil(o.Order) {
+	if o.Order != nil {
 		toSerialize["order"] = o.Order
 	}
-	if !IsNil(o.PolicyEngineMode) {
+	if o.PolicyEngineMode != nil {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
 	}
-	if !IsNil(o.InvalidResponseAction) {
+	if o.InvalidResponseAction != nil {
 		toSerialize["invalid_response_action"] = o.InvalidResponseAction
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedFlowStageBindingRequest struct {

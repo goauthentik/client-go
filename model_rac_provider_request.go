@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the RACProviderRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &RACProviderRequest{}
 
 // RACProviderRequest RACProvider Serializer
 type RACProviderRequest struct {
@@ -34,8 +29,6 @@ type RACProviderRequest struct {
 	// When set to true, connection tokens will be deleted upon disconnect.
 	DeleteTokenOnDisconnect *bool `json:"delete_token_on_disconnect,omitempty"`
 }
-
-type _RACProviderRequest RACProviderRequest
 
 // NewRACProviderRequest instantiates a new RACProviderRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -82,7 +75,7 @@ func (o *RACProviderRequest) SetName(v string) {
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RACProviderRequest) GetAuthenticationFlow() string {
-	if o == nil || IsNil(o.AuthenticationFlow.Get()) {
+	if o == nil || o.AuthenticationFlow.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -149,7 +142,7 @@ func (o *RACProviderRequest) SetAuthorizationFlow(v string) {
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
 func (o *RACProviderRequest) GetPropertyMappings() []string {
-	if o == nil || IsNil(o.PropertyMappings) {
+	if o == nil || o.PropertyMappings == nil {
 		var ret []string
 		return ret
 	}
@@ -159,7 +152,7 @@ func (o *RACProviderRequest) GetPropertyMappings() []string {
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RACProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
-	if o == nil || IsNil(o.PropertyMappings) {
+	if o == nil || o.PropertyMappings == nil {
 		return nil, false
 	}
 	return o.PropertyMappings, true
@@ -167,7 +160,7 @@ func (o *RACProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
 
 // HasPropertyMappings returns a boolean if a field has been set.
 func (o *RACProviderRequest) HasPropertyMappings() bool {
-	if o != nil && !IsNil(o.PropertyMappings) {
+	if o != nil && o.PropertyMappings != nil {
 		return true
 	}
 
@@ -192,7 +185,7 @@ func (o *RACProviderRequest) GetSettings() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RACProviderRequest) GetSettingsOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Settings) {
+	if o == nil || o.Settings == nil {
 		return nil, false
 	}
 	return &o.Settings, true
@@ -200,7 +193,7 @@ func (o *RACProviderRequest) GetSettingsOk() (*interface{}, bool) {
 
 // HasSettings returns a boolean if a field has been set.
 func (o *RACProviderRequest) HasSettings() bool {
-	if o != nil && !IsNil(o.Settings) {
+	if o != nil && o.Settings != nil {
 		return true
 	}
 
@@ -214,7 +207,7 @@ func (o *RACProviderRequest) SetSettings(v interface{}) {
 
 // GetConnectionExpiry returns the ConnectionExpiry field value if set, zero value otherwise.
 func (o *RACProviderRequest) GetConnectionExpiry() string {
-	if o == nil || IsNil(o.ConnectionExpiry) {
+	if o == nil || o.ConnectionExpiry == nil {
 		var ret string
 		return ret
 	}
@@ -224,7 +217,7 @@ func (o *RACProviderRequest) GetConnectionExpiry() string {
 // GetConnectionExpiryOk returns a tuple with the ConnectionExpiry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RACProviderRequest) GetConnectionExpiryOk() (*string, bool) {
-	if o == nil || IsNil(o.ConnectionExpiry) {
+	if o == nil || o.ConnectionExpiry == nil {
 		return nil, false
 	}
 	return o.ConnectionExpiry, true
@@ -232,7 +225,7 @@ func (o *RACProviderRequest) GetConnectionExpiryOk() (*string, bool) {
 
 // HasConnectionExpiry returns a boolean if a field has been set.
 func (o *RACProviderRequest) HasConnectionExpiry() bool {
-	if o != nil && !IsNil(o.ConnectionExpiry) {
+	if o != nil && o.ConnectionExpiry != nil {
 		return true
 	}
 
@@ -246,7 +239,7 @@ func (o *RACProviderRequest) SetConnectionExpiry(v string) {
 
 // GetDeleteTokenOnDisconnect returns the DeleteTokenOnDisconnect field value if set, zero value otherwise.
 func (o *RACProviderRequest) GetDeleteTokenOnDisconnect() bool {
-	if o == nil || IsNil(o.DeleteTokenOnDisconnect) {
+	if o == nil || o.DeleteTokenOnDisconnect == nil {
 		var ret bool
 		return ret
 	}
@@ -256,7 +249,7 @@ func (o *RACProviderRequest) GetDeleteTokenOnDisconnect() bool {
 // GetDeleteTokenOnDisconnectOk returns a tuple with the DeleteTokenOnDisconnect field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RACProviderRequest) GetDeleteTokenOnDisconnectOk() (*bool, bool) {
-	if o == nil || IsNil(o.DeleteTokenOnDisconnect) {
+	if o == nil || o.DeleteTokenOnDisconnect == nil {
 		return nil, false
 	}
 	return o.DeleteTokenOnDisconnect, true
@@ -264,7 +257,7 @@ func (o *RACProviderRequest) GetDeleteTokenOnDisconnectOk() (*bool, bool) {
 
 // HasDeleteTokenOnDisconnect returns a boolean if a field has been set.
 func (o *RACProviderRequest) HasDeleteTokenOnDisconnect() bool {
-	if o != nil && !IsNil(o.DeleteTokenOnDisconnect) {
+	if o != nil && o.DeleteTokenOnDisconnect != nil {
 		return true
 	}
 
@@ -277,71 +270,29 @@ func (o *RACProviderRequest) SetDeleteTokenOnDisconnect(v bool) {
 }
 
 func (o RACProviderRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o RACProviderRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
+	if true {
+		toSerialize["name"] = o.Name
+	}
 	if o.AuthenticationFlow.IsSet() {
 		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
 	}
-	toSerialize["authorization_flow"] = o.AuthorizationFlow
-	if !IsNil(o.PropertyMappings) {
+	if true {
+		toSerialize["authorization_flow"] = o.AuthorizationFlow
+	}
+	if o.PropertyMappings != nil {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
 	if o.Settings != nil {
 		toSerialize["settings"] = o.Settings
 	}
-	if !IsNil(o.ConnectionExpiry) {
+	if o.ConnectionExpiry != nil {
 		toSerialize["connection_expiry"] = o.ConnectionExpiry
 	}
-	if !IsNil(o.DeleteTokenOnDisconnect) {
+	if o.DeleteTokenOnDisconnect != nil {
 		toSerialize["delete_token_on_disconnect"] = o.DeleteTokenOnDisconnect
 	}
-	return toSerialize, nil
-}
-
-func (o *RACProviderRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"authorization_flow",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varRACProviderRequest := _RACProviderRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRACProviderRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RACProviderRequest(varRACProviderRequest)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableRACProviderRequest struct {

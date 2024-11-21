@@ -12,20 +12,15 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 	"time"
 )
-
-// checks if the GroupMember type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GroupMember{}
 
 // GroupMember Stripped down user serializer to show relevant users for groups
 type GroupMember struct {
 	Pk int32 `json:"pk"`
 	// Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
-	Username string `json:"username" validate:"regexp=^[\\\\w.@+-]+$"`
+	Username string `json:"username"`
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
@@ -35,8 +30,6 @@ type GroupMember struct {
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	Uid        string                 `json:"uid"`
 }
-
-type _GroupMember GroupMember
 
 // NewGroupMember instantiates a new GroupMember object
 // This constructor will assign default values to properties that have it defined,
@@ -133,7 +126,7 @@ func (o *GroupMember) SetName(v string) {
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise.
 func (o *GroupMember) GetIsActive() bool {
-	if o == nil || IsNil(o.IsActive) {
+	if o == nil || o.IsActive == nil {
 		var ret bool
 		return ret
 	}
@@ -143,7 +136,7 @@ func (o *GroupMember) GetIsActive() bool {
 // GetIsActiveOk returns a tuple with the IsActive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupMember) GetIsActiveOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsActive) {
+	if o == nil || o.IsActive == nil {
 		return nil, false
 	}
 	return o.IsActive, true
@@ -151,7 +144,7 @@ func (o *GroupMember) GetIsActiveOk() (*bool, bool) {
 
 // HasIsActive returns a boolean if a field has been set.
 func (o *GroupMember) HasIsActive() bool {
-	if o != nil && !IsNil(o.IsActive) {
+	if o != nil && o.IsActive != nil {
 		return true
 	}
 
@@ -165,7 +158,7 @@ func (o *GroupMember) SetIsActive(v bool) {
 
 // GetLastLogin returns the LastLogin field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GroupMember) GetLastLogin() time.Time {
-	if o == nil || IsNil(o.LastLogin.Get()) {
+	if o == nil || o.LastLogin.Get() == nil {
 		var ret time.Time
 		return ret
 	}
@@ -208,7 +201,7 @@ func (o *GroupMember) UnsetLastLogin() {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *GroupMember) GetEmail() string {
-	if o == nil || IsNil(o.Email) {
+	if o == nil || o.Email == nil {
 		var ret string
 		return ret
 	}
@@ -218,7 +211,7 @@ func (o *GroupMember) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupMember) GetEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.Email) {
+	if o == nil || o.Email == nil {
 		return nil, false
 	}
 	return o.Email, true
@@ -226,7 +219,7 @@ func (o *GroupMember) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *GroupMember) HasEmail() bool {
-	if o != nil && !IsNil(o.Email) {
+	if o != nil && o.Email != nil {
 		return true
 	}
 
@@ -240,7 +233,7 @@ func (o *GroupMember) SetEmail(v string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *GroupMember) GetAttributes() map[string]interface{} {
-	if o == nil || IsNil(o.Attributes) {
+	if o == nil || o.Attributes == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -250,15 +243,15 @@ func (o *GroupMember) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupMember) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Attributes) {
-		return map[string]interface{}{}, false
+	if o == nil || o.Attributes == nil {
+		return nil, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *GroupMember) HasAttributes() bool {
-	if o != nil && !IsNil(o.Attributes) {
+	if o != nil && o.Attributes != nil {
 		return true
 	}
 
@@ -295,72 +288,32 @@ func (o *GroupMember) SetUid(v string) {
 }
 
 func (o GroupMember) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o GroupMember) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["pk"] = o.Pk
-	toSerialize["username"] = o.Username
-	toSerialize["name"] = o.Name
-	if !IsNil(o.IsActive) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["username"] = o.Username
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.IsActive != nil {
 		toSerialize["is_active"] = o.IsActive
 	}
 	if o.LastLogin.IsSet() {
 		toSerialize["last_login"] = o.LastLogin.Get()
 	}
-	if !IsNil(o.Email) {
+	if o.Email != nil {
 		toSerialize["email"] = o.Email
 	}
-	if !IsNil(o.Attributes) {
+	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
-	toSerialize["uid"] = o.Uid
-	return toSerialize, nil
-}
-
-func (o *GroupMember) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pk",
-		"username",
-		"name",
-		"uid",
+	if true {
+		toSerialize["uid"] = o.Uid
 	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varGroupMember := _GroupMember{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGroupMember)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GroupMember(varGroupMember)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableGroupMember struct {

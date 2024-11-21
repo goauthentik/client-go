@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the UserServiceAccountResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UserServiceAccountResponse{}
 
 // UserServiceAccountResponse struct for UserServiceAccountResponse
 type UserServiceAccountResponse struct {
@@ -28,8 +23,6 @@ type UserServiceAccountResponse struct {
 	UserPk   int32   `json:"user_pk"`
 	GroupPk  *string `json:"group_pk,omitempty"`
 }
-
-type _UserServiceAccountResponse UserServiceAccountResponse
 
 // NewUserServiceAccountResponse instantiates a new UserServiceAccountResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -150,7 +143,7 @@ func (o *UserServiceAccountResponse) SetUserPk(v int32) {
 
 // GetGroupPk returns the GroupPk field value if set, zero value otherwise.
 func (o *UserServiceAccountResponse) GetGroupPk() string {
-	if o == nil || IsNil(o.GroupPk) {
+	if o == nil || o.GroupPk == nil {
 		var ret string
 		return ret
 	}
@@ -160,7 +153,7 @@ func (o *UserServiceAccountResponse) GetGroupPk() string {
 // GetGroupPkOk returns a tuple with the GroupPk field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserServiceAccountResponse) GetGroupPkOk() (*string, bool) {
-	if o == nil || IsNil(o.GroupPk) {
+	if o == nil || o.GroupPk == nil {
 		return nil, false
 	}
 	return o.GroupPk, true
@@ -168,7 +161,7 @@ func (o *UserServiceAccountResponse) GetGroupPkOk() (*string, bool) {
 
 // HasGroupPk returns a boolean if a field has been set.
 func (o *UserServiceAccountResponse) HasGroupPk() bool {
-	if o != nil && !IsNil(o.GroupPk) {
+	if o != nil && o.GroupPk != nil {
 		return true
 	}
 
@@ -181,63 +174,23 @@ func (o *UserServiceAccountResponse) SetGroupPk(v string) {
 }
 
 func (o UserServiceAccountResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o UserServiceAccountResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["username"] = o.Username
-	toSerialize["token"] = o.Token
-	toSerialize["user_uid"] = o.UserUid
-	toSerialize["user_pk"] = o.UserPk
-	if !IsNil(o.GroupPk) {
+	if true {
+		toSerialize["username"] = o.Username
+	}
+	if true {
+		toSerialize["token"] = o.Token
+	}
+	if true {
+		toSerialize["user_uid"] = o.UserUid
+	}
+	if true {
+		toSerialize["user_pk"] = o.UserPk
+	}
+	if o.GroupPk != nil {
 		toSerialize["group_pk"] = o.GroupPk
 	}
-	return toSerialize, nil
-}
-
-func (o *UserServiceAccountResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"username",
-		"token",
-		"user_uid",
-		"user_pk",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varUserServiceAccountResponse := _UserServiceAccountResponse{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserServiceAccountResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UserServiceAccountResponse(varUserServiceAccountResponse)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableUserServiceAccountResponse struct {

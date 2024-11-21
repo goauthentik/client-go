@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the OpenIDConnectConfiguration type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &OpenIDConnectConfiguration{}
 
 // OpenIDConnectConfiguration rest_framework Serializer for OIDC Configuration
 type OpenIDConnectConfiguration struct {
@@ -34,8 +29,6 @@ type OpenIDConnectConfiguration struct {
 	SubjectTypesSupported             []string `json:"subject_types_supported"`
 	TokenEndpointAuthMethodsSupported []string `json:"token_endpoint_auth_methods_supported"`
 }
-
-type _OpenIDConnectConfiguration OpenIDConnectConfiguration
 
 // NewOpenIDConnectConfiguration instantiates a new OpenIDConnectConfiguration object
 // This constructor will assign default values to properties that have it defined,
@@ -330,74 +323,41 @@ func (o *OpenIDConnectConfiguration) SetTokenEndpointAuthMethodsSupported(v []st
 }
 
 func (o OpenIDConnectConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["issuer"] = o.Issuer
+	}
+	if true {
+		toSerialize["authorization_endpoint"] = o.AuthorizationEndpoint
+	}
+	if true {
+		toSerialize["token_endpoint"] = o.TokenEndpoint
+	}
+	if true {
+		toSerialize["userinfo_endpoint"] = o.UserinfoEndpoint
+	}
+	if true {
+		toSerialize["end_session_endpoint"] = o.EndSessionEndpoint
+	}
+	if true {
+		toSerialize["introspection_endpoint"] = o.IntrospectionEndpoint
+	}
+	if true {
+		toSerialize["jwks_uri"] = o.JwksUri
+	}
+	if true {
+		toSerialize["response_types_supported"] = o.ResponseTypesSupported
+	}
+	if true {
+		toSerialize["id_token_signing_alg_values_supported"] = o.IdTokenSigningAlgValuesSupported
+	}
+	if true {
+		toSerialize["subject_types_supported"] = o.SubjectTypesSupported
+	}
+	if true {
+		toSerialize["token_endpoint_auth_methods_supported"] = o.TokenEndpointAuthMethodsSupported
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o OpenIDConnectConfiguration) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["issuer"] = o.Issuer
-	toSerialize["authorization_endpoint"] = o.AuthorizationEndpoint
-	toSerialize["token_endpoint"] = o.TokenEndpoint
-	toSerialize["userinfo_endpoint"] = o.UserinfoEndpoint
-	toSerialize["end_session_endpoint"] = o.EndSessionEndpoint
-	toSerialize["introspection_endpoint"] = o.IntrospectionEndpoint
-	toSerialize["jwks_uri"] = o.JwksUri
-	toSerialize["response_types_supported"] = o.ResponseTypesSupported
-	toSerialize["id_token_signing_alg_values_supported"] = o.IdTokenSigningAlgValuesSupported
-	toSerialize["subject_types_supported"] = o.SubjectTypesSupported
-	toSerialize["token_endpoint_auth_methods_supported"] = o.TokenEndpointAuthMethodsSupported
-	return toSerialize, nil
-}
-
-func (o *OpenIDConnectConfiguration) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"issuer",
-		"authorization_endpoint",
-		"token_endpoint",
-		"userinfo_endpoint",
-		"end_session_endpoint",
-		"introspection_endpoint",
-		"jwks_uri",
-		"response_types_supported",
-		"id_token_signing_alg_values_supported",
-		"subject_types_supported",
-		"token_endpoint_auth_methods_supported",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varOpenIDConnectConfiguration := _OpenIDConnectConfiguration{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOpenIDConnectConfiguration)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OpenIDConnectConfiguration(varOpenIDConnectConfiguration)
-
-	return err
 }
 
 type NullableOpenIDConnectConfiguration struct {

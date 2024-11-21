@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the PermissionAssignRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PermissionAssignRequest{}
 
 // PermissionAssignRequest Request to assign a new permission
 type PermissionAssignRequest struct {
@@ -26,8 +21,6 @@ type PermissionAssignRequest struct {
 	Model       *ModelEnum `json:"model,omitempty"`
 	ObjectPk    *string    `json:"object_pk,omitempty"`
 }
-
-type _PermissionAssignRequest PermissionAssignRequest
 
 // NewPermissionAssignRequest instantiates a new PermissionAssignRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -73,7 +66,7 @@ func (o *PermissionAssignRequest) SetPermissions(v []string) {
 
 // GetModel returns the Model field value if set, zero value otherwise.
 func (o *PermissionAssignRequest) GetModel() ModelEnum {
-	if o == nil || IsNil(o.Model) {
+	if o == nil || o.Model == nil {
 		var ret ModelEnum
 		return ret
 	}
@@ -83,7 +76,7 @@ func (o *PermissionAssignRequest) GetModel() ModelEnum {
 // GetModelOk returns a tuple with the Model field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PermissionAssignRequest) GetModelOk() (*ModelEnum, bool) {
-	if o == nil || IsNil(o.Model) {
+	if o == nil || o.Model == nil {
 		return nil, false
 	}
 	return o.Model, true
@@ -91,7 +84,7 @@ func (o *PermissionAssignRequest) GetModelOk() (*ModelEnum, bool) {
 
 // HasModel returns a boolean if a field has been set.
 func (o *PermissionAssignRequest) HasModel() bool {
-	if o != nil && !IsNil(o.Model) {
+	if o != nil && o.Model != nil {
 		return true
 	}
 
@@ -105,7 +98,7 @@ func (o *PermissionAssignRequest) SetModel(v ModelEnum) {
 
 // GetObjectPk returns the ObjectPk field value if set, zero value otherwise.
 func (o *PermissionAssignRequest) GetObjectPk() string {
-	if o == nil || IsNil(o.ObjectPk) {
+	if o == nil || o.ObjectPk == nil {
 		var ret string
 		return ret
 	}
@@ -115,7 +108,7 @@ func (o *PermissionAssignRequest) GetObjectPk() string {
 // GetObjectPkOk returns a tuple with the ObjectPk field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PermissionAssignRequest) GetObjectPkOk() (*string, bool) {
-	if o == nil || IsNil(o.ObjectPk) {
+	if o == nil || o.ObjectPk == nil {
 		return nil, false
 	}
 	return o.ObjectPk, true
@@ -123,7 +116,7 @@ func (o *PermissionAssignRequest) GetObjectPkOk() (*string, bool) {
 
 // HasObjectPk returns a boolean if a field has been set.
 func (o *PermissionAssignRequest) HasObjectPk() bool {
-	if o != nil && !IsNil(o.ObjectPk) {
+	if o != nil && o.ObjectPk != nil {
 		return true
 	}
 
@@ -136,60 +129,17 @@ func (o *PermissionAssignRequest) SetObjectPk(v string) {
 }
 
 func (o PermissionAssignRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PermissionAssignRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["permissions"] = o.Permissions
-	if !IsNil(o.Model) {
+	if true {
+		toSerialize["permissions"] = o.Permissions
+	}
+	if o.Model != nil {
 		toSerialize["model"] = o.Model
 	}
-	if !IsNil(o.ObjectPk) {
+	if o.ObjectPk != nil {
 		toSerialize["object_pk"] = o.ObjectPk
 	}
-	return toSerialize, nil
-}
-
-func (o *PermissionAssignRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"permissions",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPermissionAssignRequest := _PermissionAssignRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPermissionAssignRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PermissionAssignRequest(varPermissionAssignRequest)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullablePermissionAssignRequest struct {

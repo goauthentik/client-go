@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the NotificationRule type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NotificationRule{}
 
 // NotificationRule NotificationRule Serializer
 type NotificationRule struct {
@@ -32,8 +27,6 @@ type NotificationRule struct {
 	Group    NullableString `json:"group,omitempty"`
 	GroupObj Group          `json:"group_obj"`
 }
-
-type _NotificationRule NotificationRule
 
 // NewNotificationRule instantiates a new NotificationRule object
 // This constructor will assign default values to properties that have it defined,
@@ -105,7 +98,7 @@ func (o *NotificationRule) SetName(v string) {
 
 // GetTransports returns the Transports field value if set, zero value otherwise.
 func (o *NotificationRule) GetTransports() []string {
-	if o == nil || IsNil(o.Transports) {
+	if o == nil || o.Transports == nil {
 		var ret []string
 		return ret
 	}
@@ -115,7 +108,7 @@ func (o *NotificationRule) GetTransports() []string {
 // GetTransportsOk returns a tuple with the Transports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationRule) GetTransportsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Transports) {
+	if o == nil || o.Transports == nil {
 		return nil, false
 	}
 	return o.Transports, true
@@ -123,7 +116,7 @@ func (o *NotificationRule) GetTransportsOk() ([]string, bool) {
 
 // HasTransports returns a boolean if a field has been set.
 func (o *NotificationRule) HasTransports() bool {
-	if o != nil && !IsNil(o.Transports) {
+	if o != nil && o.Transports != nil {
 		return true
 	}
 
@@ -137,7 +130,7 @@ func (o *NotificationRule) SetTransports(v []string) {
 
 // GetSeverity returns the Severity field value if set, zero value otherwise.
 func (o *NotificationRule) GetSeverity() SeverityEnum {
-	if o == nil || IsNil(o.Severity) {
+	if o == nil || o.Severity == nil {
 		var ret SeverityEnum
 		return ret
 	}
@@ -147,7 +140,7 @@ func (o *NotificationRule) GetSeverity() SeverityEnum {
 // GetSeverityOk returns a tuple with the Severity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationRule) GetSeverityOk() (*SeverityEnum, bool) {
-	if o == nil || IsNil(o.Severity) {
+	if o == nil || o.Severity == nil {
 		return nil, false
 	}
 	return o.Severity, true
@@ -155,7 +148,7 @@ func (o *NotificationRule) GetSeverityOk() (*SeverityEnum, bool) {
 
 // HasSeverity returns a boolean if a field has been set.
 func (o *NotificationRule) HasSeverity() bool {
-	if o != nil && !IsNil(o.Severity) {
+	if o != nil && o.Severity != nil {
 		return true
 	}
 
@@ -169,7 +162,7 @@ func (o *NotificationRule) SetSeverity(v SeverityEnum) {
 
 // GetGroup returns the Group field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *NotificationRule) GetGroup() string {
-	if o == nil || IsNil(o.Group.Get()) {
+	if o == nil || o.Group.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -235,67 +228,26 @@ func (o *NotificationRule) SetGroupObj(v Group) {
 }
 
 func (o NotificationRule) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o NotificationRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["pk"] = o.Pk
-	toSerialize["name"] = o.Name
-	if !IsNil(o.Transports) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.Transports != nil {
 		toSerialize["transports"] = o.Transports
 	}
-	if !IsNil(o.Severity) {
+	if o.Severity != nil {
 		toSerialize["severity"] = o.Severity
 	}
 	if o.Group.IsSet() {
 		toSerialize["group"] = o.Group.Get()
 	}
-	toSerialize["group_obj"] = o.GroupObj
-	return toSerialize, nil
-}
-
-func (o *NotificationRule) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pk",
-		"name",
-		"group_obj",
+	if true {
+		toSerialize["group_obj"] = o.GroupObj
 	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varNotificationRule := _NotificationRule{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varNotificationRule)
-
-	if err != nil {
-		return err
-	}
-
-	*o = NotificationRule(varNotificationRule)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableNotificationRule struct {

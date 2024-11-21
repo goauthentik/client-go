@@ -1,34 +1,34 @@
-# \FlowsAPI
+# \FlowsApi
 
 All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**FlowsBindingsCreate**](FlowsAPI.md#FlowsBindingsCreate) | **Post** /flows/bindings/ | 
-[**FlowsBindingsDestroy**](FlowsAPI.md#FlowsBindingsDestroy) | **Delete** /flows/bindings/{fsb_uuid}/ | 
-[**FlowsBindingsList**](FlowsAPI.md#FlowsBindingsList) | **Get** /flows/bindings/ | 
-[**FlowsBindingsPartialUpdate**](FlowsAPI.md#FlowsBindingsPartialUpdate) | **Patch** /flows/bindings/{fsb_uuid}/ | 
-[**FlowsBindingsRetrieve**](FlowsAPI.md#FlowsBindingsRetrieve) | **Get** /flows/bindings/{fsb_uuid}/ | 
-[**FlowsBindingsUpdate**](FlowsAPI.md#FlowsBindingsUpdate) | **Put** /flows/bindings/{fsb_uuid}/ | 
-[**FlowsBindingsUsedByList**](FlowsAPI.md#FlowsBindingsUsedByList) | **Get** /flows/bindings/{fsb_uuid}/used_by/ | 
-[**FlowsExecutorGet**](FlowsAPI.md#FlowsExecutorGet) | **Get** /flows/executor/{flow_slug}/ | 
-[**FlowsExecutorSolve**](FlowsAPI.md#FlowsExecutorSolve) | **Post** /flows/executor/{flow_slug}/ | 
-[**FlowsInspectorGet**](FlowsAPI.md#FlowsInspectorGet) | **Get** /flows/inspector/{flow_slug}/ | 
-[**FlowsInstancesCacheClearCreate**](FlowsAPI.md#FlowsInstancesCacheClearCreate) | **Post** /flows/instances/cache_clear/ | 
-[**FlowsInstancesCacheInfoRetrieve**](FlowsAPI.md#FlowsInstancesCacheInfoRetrieve) | **Get** /flows/instances/cache_info/ | 
-[**FlowsInstancesCreate**](FlowsAPI.md#FlowsInstancesCreate) | **Post** /flows/instances/ | 
-[**FlowsInstancesDestroy**](FlowsAPI.md#FlowsInstancesDestroy) | **Delete** /flows/instances/{slug}/ | 
-[**FlowsInstancesDiagramRetrieve**](FlowsAPI.md#FlowsInstancesDiagramRetrieve) | **Get** /flows/instances/{slug}/diagram/ | 
-[**FlowsInstancesExecuteRetrieve**](FlowsAPI.md#FlowsInstancesExecuteRetrieve) | **Get** /flows/instances/{slug}/execute/ | 
-[**FlowsInstancesExportRetrieve**](FlowsAPI.md#FlowsInstancesExportRetrieve) | **Get** /flows/instances/{slug}/export/ | 
-[**FlowsInstancesImportCreate**](FlowsAPI.md#FlowsInstancesImportCreate) | **Post** /flows/instances/import/ | 
-[**FlowsInstancesList**](FlowsAPI.md#FlowsInstancesList) | **Get** /flows/instances/ | 
-[**FlowsInstancesPartialUpdate**](FlowsAPI.md#FlowsInstancesPartialUpdate) | **Patch** /flows/instances/{slug}/ | 
-[**FlowsInstancesRetrieve**](FlowsAPI.md#FlowsInstancesRetrieve) | **Get** /flows/instances/{slug}/ | 
-[**FlowsInstancesSetBackgroundCreate**](FlowsAPI.md#FlowsInstancesSetBackgroundCreate) | **Post** /flows/instances/{slug}/set_background/ | 
-[**FlowsInstancesSetBackgroundUrlCreate**](FlowsAPI.md#FlowsInstancesSetBackgroundUrlCreate) | **Post** /flows/instances/{slug}/set_background_url/ | 
-[**FlowsInstancesUpdate**](FlowsAPI.md#FlowsInstancesUpdate) | **Put** /flows/instances/{slug}/ | 
-[**FlowsInstancesUsedByList**](FlowsAPI.md#FlowsInstancesUsedByList) | **Get** /flows/instances/{slug}/used_by/ | 
+[**FlowsBindingsCreate**](FlowsApi.md#FlowsBindingsCreate) | **Post** /flows/bindings/ | 
+[**FlowsBindingsDestroy**](FlowsApi.md#FlowsBindingsDestroy) | **Delete** /flows/bindings/{fsb_uuid}/ | 
+[**FlowsBindingsList**](FlowsApi.md#FlowsBindingsList) | **Get** /flows/bindings/ | 
+[**FlowsBindingsPartialUpdate**](FlowsApi.md#FlowsBindingsPartialUpdate) | **Patch** /flows/bindings/{fsb_uuid}/ | 
+[**FlowsBindingsRetrieve**](FlowsApi.md#FlowsBindingsRetrieve) | **Get** /flows/bindings/{fsb_uuid}/ | 
+[**FlowsBindingsUpdate**](FlowsApi.md#FlowsBindingsUpdate) | **Put** /flows/bindings/{fsb_uuid}/ | 
+[**FlowsBindingsUsedByList**](FlowsApi.md#FlowsBindingsUsedByList) | **Get** /flows/bindings/{fsb_uuid}/used_by/ | 
+[**FlowsExecutorGet**](FlowsApi.md#FlowsExecutorGet) | **Get** /flows/executor/{flow_slug}/ | 
+[**FlowsExecutorSolve**](FlowsApi.md#FlowsExecutorSolve) | **Post** /flows/executor/{flow_slug}/ | 
+[**FlowsInspectorGet**](FlowsApi.md#FlowsInspectorGet) | **Get** /flows/inspector/{flow_slug}/ | 
+[**FlowsInstancesCacheClearCreate**](FlowsApi.md#FlowsInstancesCacheClearCreate) | **Post** /flows/instances/cache_clear/ | 
+[**FlowsInstancesCacheInfoRetrieve**](FlowsApi.md#FlowsInstancesCacheInfoRetrieve) | **Get** /flows/instances/cache_info/ | 
+[**FlowsInstancesCreate**](FlowsApi.md#FlowsInstancesCreate) | **Post** /flows/instances/ | 
+[**FlowsInstancesDestroy**](FlowsApi.md#FlowsInstancesDestroy) | **Delete** /flows/instances/{slug}/ | 
+[**FlowsInstancesDiagramRetrieve**](FlowsApi.md#FlowsInstancesDiagramRetrieve) | **Get** /flows/instances/{slug}/diagram/ | 
+[**FlowsInstancesExecuteRetrieve**](FlowsApi.md#FlowsInstancesExecuteRetrieve) | **Get** /flows/instances/{slug}/execute/ | 
+[**FlowsInstancesExportRetrieve**](FlowsApi.md#FlowsInstancesExportRetrieve) | **Get** /flows/instances/{slug}/export/ | 
+[**FlowsInstancesImportCreate**](FlowsApi.md#FlowsInstancesImportCreate) | **Post** /flows/instances/import/ | 
+[**FlowsInstancesList**](FlowsApi.md#FlowsInstancesList) | **Get** /flows/instances/ | 
+[**FlowsInstancesPartialUpdate**](FlowsApi.md#FlowsInstancesPartialUpdate) | **Patch** /flows/instances/{slug}/ | 
+[**FlowsInstancesRetrieve**](FlowsApi.md#FlowsInstancesRetrieve) | **Get** /flows/instances/{slug}/ | 
+[**FlowsInstancesSetBackgroundCreate**](FlowsApi.md#FlowsInstancesSetBackgroundCreate) | **Post** /flows/instances/{slug}/set_background/ | 
+[**FlowsInstancesSetBackgroundUrlCreate**](FlowsApi.md#FlowsInstancesSetBackgroundUrlCreate) | **Post** /flows/instances/{slug}/set_background_url/ | 
+[**FlowsInstancesUpdate**](FlowsApi.md#FlowsInstancesUpdate) | **Put** /flows/instances/{slug}/ | 
+[**FlowsInstancesUsedByList**](FlowsApi.md#FlowsInstancesUsedByList) | **Get** /flows/instances/{slug}/used_by/ | 
 
 
 
@@ -46,24 +46,24 @@ Method | HTTP request | Description
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	flowStageBindingRequest := *openapiclient.NewFlowStageBindingRequest("Target_example", "Stage_example", int32(123)) // FlowStageBindingRequest | 
+    flowStageBindingRequest := *openapiclient.NewFlowStageBindingRequest("Target_example", "Stage_example", int32(123)) // FlowStageBindingRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FlowsAPI.FlowsBindingsCreate(context.Background()).FlowStageBindingRequest(flowStageBindingRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsBindingsCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `FlowsBindingsCreate`: FlowStageBinding
-	fmt.Fprintf(os.Stdout, "Response from `FlowsAPI.FlowsBindingsCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsBindingsCreate(context.Background()).FlowStageBindingRequest(flowStageBindingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsBindingsCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsBindingsCreate`: FlowStageBinding
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsBindingsCreate`: %v\n", resp)
 }
 ```
 
@@ -112,22 +112,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	fsbUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Flow Stage Binding.
+    fsbUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Flow Stage Binding.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.FlowsAPI.FlowsBindingsDestroy(context.Background(), fsbUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsBindingsDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsBindingsDestroy(context.Background(), fsbUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsBindingsDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -180,37 +180,37 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	evaluateOnPlan := true // bool |  (optional)
-	fsbUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	invalidResponseAction := "invalidResponseAction_example" // string | Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.   (optional)
-	order := int32(56) // int32 |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	policies := []string{"Inner_example"} // []string |  (optional)
-	policyEngineMode := "policyEngineMode_example" // string |  (optional)
-	reEvaluatePolicies := true // bool |  (optional)
-	search := "search_example" // string | A search term. (optional)
-	stage := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	target := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    evaluateOnPlan := true // bool |  (optional)
+    fsbUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    invalidResponseAction := "invalidResponseAction_example" // string | Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.   (optional)
+    order := int32(56) // int32 |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    policies := []string{"Inner_example"} // []string |  (optional)
+    policyEngineMode := "policyEngineMode_example" // string |  (optional)
+    reEvaluatePolicies := true // bool |  (optional)
+    search := "search_example" // string | A search term. (optional)
+    stage := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    target := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FlowsAPI.FlowsBindingsList(context.Background()).EvaluateOnPlan(evaluateOnPlan).FsbUuid(fsbUuid).InvalidResponseAction(invalidResponseAction).Order(order).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).Policies(policies).PolicyEngineMode(policyEngineMode).ReEvaluatePolicies(reEvaluatePolicies).Search(search).Stage(stage).Target(target).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsBindingsList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `FlowsBindingsList`: PaginatedFlowStageBindingList
-	fmt.Fprintf(os.Stdout, "Response from `FlowsAPI.FlowsBindingsList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsBindingsList(context.Background()).EvaluateOnPlan(evaluateOnPlan).FsbUuid(fsbUuid).InvalidResponseAction(invalidResponseAction).Order(order).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).Policies(policies).PolicyEngineMode(policyEngineMode).ReEvaluatePolicies(reEvaluatePolicies).Search(search).Stage(stage).Target(target).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsBindingsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsBindingsList`: PaginatedFlowStageBindingList
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsBindingsList`: %v\n", resp)
 }
 ```
 
@@ -272,25 +272,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	fsbUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Flow Stage Binding.
-	patchedFlowStageBindingRequest := *openapiclient.NewPatchedFlowStageBindingRequest() // PatchedFlowStageBindingRequest |  (optional)
+    fsbUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Flow Stage Binding.
+    patchedFlowStageBindingRequest := *openapiclient.NewPatchedFlowStageBindingRequest() // PatchedFlowStageBindingRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FlowsAPI.FlowsBindingsPartialUpdate(context.Background(), fsbUuid).PatchedFlowStageBindingRequest(patchedFlowStageBindingRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsBindingsPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `FlowsBindingsPartialUpdate`: FlowStageBinding
-	fmt.Fprintf(os.Stdout, "Response from `FlowsAPI.FlowsBindingsPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsBindingsPartialUpdate(context.Background(), fsbUuid).PatchedFlowStageBindingRequest(patchedFlowStageBindingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsBindingsPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsBindingsPartialUpdate`: FlowStageBinding
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsBindingsPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -344,24 +344,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	fsbUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Flow Stage Binding.
+    fsbUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Flow Stage Binding.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FlowsAPI.FlowsBindingsRetrieve(context.Background(), fsbUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsBindingsRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `FlowsBindingsRetrieve`: FlowStageBinding
-	fmt.Fprintf(os.Stdout, "Response from `FlowsAPI.FlowsBindingsRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsBindingsRetrieve(context.Background(), fsbUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsBindingsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsBindingsRetrieve`: FlowStageBinding
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsBindingsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -414,25 +414,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	fsbUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Flow Stage Binding.
-	flowStageBindingRequest := *openapiclient.NewFlowStageBindingRequest("Target_example", "Stage_example", int32(123)) // FlowStageBindingRequest | 
+    fsbUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Flow Stage Binding.
+    flowStageBindingRequest := *openapiclient.NewFlowStageBindingRequest("Target_example", "Stage_example", int32(123)) // FlowStageBindingRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FlowsAPI.FlowsBindingsUpdate(context.Background(), fsbUuid).FlowStageBindingRequest(flowStageBindingRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsBindingsUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `FlowsBindingsUpdate`: FlowStageBinding
-	fmt.Fprintf(os.Stdout, "Response from `FlowsAPI.FlowsBindingsUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsBindingsUpdate(context.Background(), fsbUuid).FlowStageBindingRequest(flowStageBindingRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsBindingsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsBindingsUpdate`: FlowStageBinding
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsBindingsUpdate`: %v\n", resp)
 }
 ```
 
@@ -486,24 +486,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	fsbUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Flow Stage Binding.
+    fsbUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Flow Stage Binding.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FlowsAPI.FlowsBindingsUsedByList(context.Background(), fsbUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsBindingsUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `FlowsBindingsUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `FlowsAPI.FlowsBindingsUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsBindingsUsedByList(context.Background(), fsbUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsBindingsUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsBindingsUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsBindingsUsedByList`: %v\n", resp)
 }
 ```
 
@@ -556,25 +556,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	flowSlug := "flowSlug_example" // string | 
-	query := "query_example" // string | Querystring as received
+    flowSlug := "flowSlug_example" // string | 
+    query := "query_example" // string | Querystring as received
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FlowsAPI.FlowsExecutorGet(context.Background(), flowSlug).Query(query).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsExecutorGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `FlowsExecutorGet`: ChallengeTypes
-	fmt.Fprintf(os.Stdout, "Response from `FlowsAPI.FlowsExecutorGet`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsExecutorGet(context.Background(), flowSlug).Query(query).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsExecutorGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsExecutorGet`: ChallengeTypes
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsExecutorGet`: %v\n", resp)
 }
 ```
 
@@ -628,26 +628,26 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	flowSlug := "flowSlug_example" // string | 
-	query := "query_example" // string | Querystring as received
-	flowChallengeResponseRequest := openapiclient.FlowChallengeResponseRequest{AppleChallengeResponseRequest: openapiclient.NewAppleChallengeResponseRequest()} // FlowChallengeResponseRequest |  (optional)
+    flowSlug := "flowSlug_example" // string | 
+    query := "query_example" // string | Querystring as received
+    flowChallengeResponseRequest := openapiclient.FlowChallengeResponseRequest{AppleChallengeResponseRequest: openapiclient.NewAppleChallengeResponseRequest()} // FlowChallengeResponseRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FlowsAPI.FlowsExecutorSolve(context.Background(), flowSlug).Query(query).FlowChallengeResponseRequest(flowChallengeResponseRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsExecutorSolve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `FlowsExecutorSolve`: ChallengeTypes
-	fmt.Fprintf(os.Stdout, "Response from `FlowsAPI.FlowsExecutorSolve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsExecutorSolve(context.Background(), flowSlug).Query(query).FlowChallengeResponseRequest(flowChallengeResponseRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsExecutorSolve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsExecutorSolve`: ChallengeTypes
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsExecutorSolve`: %v\n", resp)
 }
 ```
 
@@ -702,24 +702,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	flowSlug := "flowSlug_example" // string | 
+    flowSlug := "flowSlug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FlowsAPI.FlowsInspectorGet(context.Background(), flowSlug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsInspectorGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `FlowsInspectorGet`: FlowInspection
-	fmt.Fprintf(os.Stdout, "Response from `FlowsAPI.FlowsInspectorGet`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInspectorGet(context.Background(), flowSlug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInspectorGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsInspectorGet`: FlowInspection
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsInspectorGet`: %v\n", resp)
 }
 ```
 
@@ -772,21 +772,21 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.FlowsAPI.FlowsInstancesCacheClearCreate(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsInstancesCacheClearCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesCacheClearCreate(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesCacheClearCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -831,23 +831,23 @@ Other parameters are passed through a pointer to a apiFlowsInstancesCacheClearCr
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FlowsAPI.FlowsInstancesCacheInfoRetrieve(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsInstancesCacheInfoRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `FlowsInstancesCacheInfoRetrieve`: Cache
-	fmt.Fprintf(os.Stdout, "Response from `FlowsAPI.FlowsInstancesCacheInfoRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesCacheInfoRetrieve(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesCacheInfoRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsInstancesCacheInfoRetrieve`: Cache
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsInstancesCacheInfoRetrieve`: %v\n", resp)
 }
 ```
 
@@ -892,24 +892,24 @@ Other parameters are passed through a pointer to a apiFlowsInstancesCacheInfoRet
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	flowRequest := *openapiclient.NewFlowRequest("Name_example", "Slug_example", "Title_example", openapiclient.FlowDesignationEnum("authentication")) // FlowRequest | 
+    flowRequest := *openapiclient.NewFlowRequest("Name_example", "Slug_example", "Title_example", openapiclient.FlowDesignationEnum("authentication")) // FlowRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FlowsAPI.FlowsInstancesCreate(context.Background()).FlowRequest(flowRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsInstancesCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `FlowsInstancesCreate`: Flow
-	fmt.Fprintf(os.Stdout, "Response from `FlowsAPI.FlowsInstancesCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesCreate(context.Background()).FlowRequest(flowRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsInstancesCreate`: Flow
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsInstancesCreate`: %v\n", resp)
 }
 ```
 
@@ -958,22 +958,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.FlowsAPI.FlowsInstancesDestroy(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsInstancesDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesDestroy(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -1026,24 +1026,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FlowsAPI.FlowsInstancesDiagramRetrieve(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsInstancesDiagramRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `FlowsInstancesDiagramRetrieve`: FlowDiagram
-	fmt.Fprintf(os.Stdout, "Response from `FlowsAPI.FlowsInstancesDiagramRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesDiagramRetrieve(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesDiagramRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsInstancesDiagramRetrieve`: FlowDiagram
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsInstancesDiagramRetrieve`: %v\n", resp)
 }
 ```
 
@@ -1096,24 +1096,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FlowsAPI.FlowsInstancesExecuteRetrieve(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsInstancesExecuteRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `FlowsInstancesExecuteRetrieve`: Link
-	fmt.Fprintf(os.Stdout, "Response from `FlowsAPI.FlowsInstancesExecuteRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesExecuteRetrieve(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesExecuteRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsInstancesExecuteRetrieve`: Link
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsInstancesExecuteRetrieve`: %v\n", resp)
 }
 ```
 
@@ -1166,24 +1166,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FlowsAPI.FlowsInstancesExportRetrieve(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsInstancesExportRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `FlowsInstancesExportRetrieve`: *os.File
-	fmt.Fprintf(os.Stdout, "Response from `FlowsAPI.FlowsInstancesExportRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesExportRetrieve(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesExportRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsInstancesExportRetrieve`: *os.File
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsInstancesExportRetrieve`: %v\n", resp)
 }
 ```
 
@@ -1236,25 +1236,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	file := os.NewFile(1234, "some_file") // *os.File |  (optional)
-	clear := true // bool |  (optional) (default to false)
+    file := os.NewFile(1234, "some_file") // *os.File |  (optional)
+    clear := true // bool |  (optional) (default to false)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FlowsAPI.FlowsInstancesImportCreate(context.Background()).File(file).Clear(clear).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsInstancesImportCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `FlowsInstancesImportCreate`: FlowImportResult
-	fmt.Fprintf(os.Stdout, "Response from `FlowsAPI.FlowsInstancesImportCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesImportCreate(context.Background()).File(file).Clear(clear).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesImportCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsInstancesImportCreate`: FlowImportResult
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsInstancesImportCreate`: %v\n", resp)
 }
 ```
 
@@ -1304,32 +1304,32 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	deniedAction := "deniedAction_example" // string | Configure what should happen when a flow denies access to a user.   (optional)
-	designation := "designation_example" // string | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.   (optional)
-	flowUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-	slug := "slug_example" // string |  (optional)
+    deniedAction := "deniedAction_example" // string | Configure what should happen when a flow denies access to a user.   (optional)
+    designation := "designation_example" // string | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.   (optional)
+    flowUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    slug := "slug_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FlowsAPI.FlowsInstancesList(context.Background()).DeniedAction(deniedAction).Designation(designation).FlowUuid(flowUuid).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsInstancesList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `FlowsInstancesList`: PaginatedFlowList
-	fmt.Fprintf(os.Stdout, "Response from `FlowsAPI.FlowsInstancesList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesList(context.Background()).DeniedAction(deniedAction).Designation(designation).FlowUuid(flowUuid).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsInstancesList`: PaginatedFlowList
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsInstancesList`: %v\n", resp)
 }
 ```
 
@@ -1386,25 +1386,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
-	patchedFlowRequest := *openapiclient.NewPatchedFlowRequest() // PatchedFlowRequest |  (optional)
+    slug := "slug_example" // string | 
+    patchedFlowRequest := *openapiclient.NewPatchedFlowRequest() // PatchedFlowRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FlowsAPI.FlowsInstancesPartialUpdate(context.Background(), slug).PatchedFlowRequest(patchedFlowRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsInstancesPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `FlowsInstancesPartialUpdate`: Flow
-	fmt.Fprintf(os.Stdout, "Response from `FlowsAPI.FlowsInstancesPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesPartialUpdate(context.Background(), slug).PatchedFlowRequest(patchedFlowRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsInstancesPartialUpdate`: Flow
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsInstancesPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -1458,24 +1458,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FlowsAPI.FlowsInstancesRetrieve(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsInstancesRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `FlowsInstancesRetrieve`: Flow
-	fmt.Fprintf(os.Stdout, "Response from `FlowsAPI.FlowsInstancesRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesRetrieve(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsInstancesRetrieve`: Flow
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsInstancesRetrieve`: %v\n", resp)
 }
 ```
 
@@ -1528,24 +1528,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
-	file := os.NewFile(1234, "some_file") // *os.File |  (optional)
-	clear := true // bool |  (optional) (default to false)
+    slug := "slug_example" // string | 
+    file := os.NewFile(1234, "some_file") // *os.File |  (optional)
+    clear := true // bool |  (optional) (default to false)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.FlowsAPI.FlowsInstancesSetBackgroundCreate(context.Background(), slug).File(file).Clear(clear).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsInstancesSetBackgroundCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesSetBackgroundCreate(context.Background(), slug).File(file).Clear(clear).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesSetBackgroundCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -1600,23 +1600,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
-	filePathRequest := *openapiclient.NewFilePathRequest("Url_example") // FilePathRequest | 
+    slug := "slug_example" // string | 
+    filePathRequest := *openapiclient.NewFilePathRequest("Url_example") // FilePathRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.FlowsAPI.FlowsInstancesSetBackgroundUrlCreate(context.Background(), slug).FilePathRequest(filePathRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsInstancesSetBackgroundUrlCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesSetBackgroundUrlCreate(context.Background(), slug).FilePathRequest(filePathRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesSetBackgroundUrlCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -1670,25 +1670,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
-	flowRequest := *openapiclient.NewFlowRequest("Name_example", "Slug_example", "Title_example", openapiclient.FlowDesignationEnum("authentication")) // FlowRequest | 
+    slug := "slug_example" // string | 
+    flowRequest := *openapiclient.NewFlowRequest("Name_example", "Slug_example", "Title_example", openapiclient.FlowDesignationEnum("authentication")) // FlowRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FlowsAPI.FlowsInstancesUpdate(context.Background(), slug).FlowRequest(flowRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsInstancesUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `FlowsInstancesUpdate`: Flow
-	fmt.Fprintf(os.Stdout, "Response from `FlowsAPI.FlowsInstancesUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesUpdate(context.Background(), slug).FlowRequest(flowRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsInstancesUpdate`: Flow
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsInstancesUpdate`: %v\n", resp)
 }
 ```
 
@@ -1742,24 +1742,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FlowsAPI.FlowsInstancesUsedByList(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsInstancesUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `FlowsInstancesUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `FlowsAPI.FlowsInstancesUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FlowsApi.FlowsInstancesUsedByList(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FlowsApi.FlowsInstancesUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `FlowsInstancesUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `FlowsApi.FlowsInstancesUsedByList`: %v\n", resp)
 }
 ```
 

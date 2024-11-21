@@ -1,19 +1,19 @@
-# \CryptoAPI
+# \CryptoApi
 
 All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CryptoCertificatekeypairsCreate**](CryptoAPI.md#CryptoCertificatekeypairsCreate) | **Post** /crypto/certificatekeypairs/ | 
-[**CryptoCertificatekeypairsDestroy**](CryptoAPI.md#CryptoCertificatekeypairsDestroy) | **Delete** /crypto/certificatekeypairs/{kp_uuid}/ | 
-[**CryptoCertificatekeypairsGenerateCreate**](CryptoAPI.md#CryptoCertificatekeypairsGenerateCreate) | **Post** /crypto/certificatekeypairs/generate/ | 
-[**CryptoCertificatekeypairsList**](CryptoAPI.md#CryptoCertificatekeypairsList) | **Get** /crypto/certificatekeypairs/ | 
-[**CryptoCertificatekeypairsPartialUpdate**](CryptoAPI.md#CryptoCertificatekeypairsPartialUpdate) | **Patch** /crypto/certificatekeypairs/{kp_uuid}/ | 
-[**CryptoCertificatekeypairsRetrieve**](CryptoAPI.md#CryptoCertificatekeypairsRetrieve) | **Get** /crypto/certificatekeypairs/{kp_uuid}/ | 
-[**CryptoCertificatekeypairsUpdate**](CryptoAPI.md#CryptoCertificatekeypairsUpdate) | **Put** /crypto/certificatekeypairs/{kp_uuid}/ | 
-[**CryptoCertificatekeypairsUsedByList**](CryptoAPI.md#CryptoCertificatekeypairsUsedByList) | **Get** /crypto/certificatekeypairs/{kp_uuid}/used_by/ | 
-[**CryptoCertificatekeypairsViewCertificateRetrieve**](CryptoAPI.md#CryptoCertificatekeypairsViewCertificateRetrieve) | **Get** /crypto/certificatekeypairs/{kp_uuid}/view_certificate/ | 
-[**CryptoCertificatekeypairsViewPrivateKeyRetrieve**](CryptoAPI.md#CryptoCertificatekeypairsViewPrivateKeyRetrieve) | **Get** /crypto/certificatekeypairs/{kp_uuid}/view_private_key/ | 
+[**CryptoCertificatekeypairsCreate**](CryptoApi.md#CryptoCertificatekeypairsCreate) | **Post** /crypto/certificatekeypairs/ | 
+[**CryptoCertificatekeypairsDestroy**](CryptoApi.md#CryptoCertificatekeypairsDestroy) | **Delete** /crypto/certificatekeypairs/{kp_uuid}/ | 
+[**CryptoCertificatekeypairsGenerateCreate**](CryptoApi.md#CryptoCertificatekeypairsGenerateCreate) | **Post** /crypto/certificatekeypairs/generate/ | 
+[**CryptoCertificatekeypairsList**](CryptoApi.md#CryptoCertificatekeypairsList) | **Get** /crypto/certificatekeypairs/ | 
+[**CryptoCertificatekeypairsPartialUpdate**](CryptoApi.md#CryptoCertificatekeypairsPartialUpdate) | **Patch** /crypto/certificatekeypairs/{kp_uuid}/ | 
+[**CryptoCertificatekeypairsRetrieve**](CryptoApi.md#CryptoCertificatekeypairsRetrieve) | **Get** /crypto/certificatekeypairs/{kp_uuid}/ | 
+[**CryptoCertificatekeypairsUpdate**](CryptoApi.md#CryptoCertificatekeypairsUpdate) | **Put** /crypto/certificatekeypairs/{kp_uuid}/ | 
+[**CryptoCertificatekeypairsUsedByList**](CryptoApi.md#CryptoCertificatekeypairsUsedByList) | **Get** /crypto/certificatekeypairs/{kp_uuid}/used_by/ | 
+[**CryptoCertificatekeypairsViewCertificateRetrieve**](CryptoApi.md#CryptoCertificatekeypairsViewCertificateRetrieve) | **Get** /crypto/certificatekeypairs/{kp_uuid}/view_certificate/ | 
+[**CryptoCertificatekeypairsViewPrivateKeyRetrieve**](CryptoApi.md#CryptoCertificatekeypairsViewPrivateKeyRetrieve) | **Get** /crypto/certificatekeypairs/{kp_uuid}/view_private_key/ | 
 
 
 
@@ -31,24 +31,24 @@ Method | HTTP request | Description
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	certificateKeyPairRequest := *openapiclient.NewCertificateKeyPairRequest("Name_example", "CertificateData_example") // CertificateKeyPairRequest | 
+    certificateKeyPairRequest := *openapiclient.NewCertificateKeyPairRequest("Name_example", "CertificateData_example") // CertificateKeyPairRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CryptoAPI.CryptoCertificatekeypairsCreate(context.Background()).CertificateKeyPairRequest(certificateKeyPairRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CryptoAPI.CryptoCertificatekeypairsCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CryptoCertificatekeypairsCreate`: CertificateKeyPair
-	fmt.Fprintf(os.Stdout, "Response from `CryptoAPI.CryptoCertificatekeypairsCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsCreate(context.Background()).CertificateKeyPairRequest(certificateKeyPairRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CryptoCertificatekeypairsCreate`: CertificateKeyPair
+    fmt.Fprintf(os.Stdout, "Response from `CryptoApi.CryptoCertificatekeypairsCreate`: %v\n", resp)
 }
 ```
 
@@ -97,22 +97,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
+    kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.CryptoAPI.CryptoCertificatekeypairsDestroy(context.Background(), kpUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CryptoAPI.CryptoCertificatekeypairsDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsDestroy(context.Background(), kpUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -165,24 +165,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	certificateGenerationRequest := *openapiclient.NewCertificateGenerationRequest("CommonName_example", int32(123)) // CertificateGenerationRequest | 
+    certificateGenerationRequest := *openapiclient.NewCertificateGenerationRequest("CommonName_example", int32(123)) // CertificateGenerationRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CryptoAPI.CryptoCertificatekeypairsGenerateCreate(context.Background()).CertificateGenerationRequest(certificateGenerationRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CryptoAPI.CryptoCertificatekeypairsGenerateCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CryptoCertificatekeypairsGenerateCreate`: CertificateKeyPair
-	fmt.Fprintf(os.Stdout, "Response from `CryptoAPI.CryptoCertificatekeypairsGenerateCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsGenerateCreate(context.Background()).CertificateGenerationRequest(certificateGenerationRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsGenerateCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CryptoCertificatekeypairsGenerateCreate`: CertificateKeyPair
+    fmt.Fprintf(os.Stdout, "Response from `CryptoApi.CryptoCertificatekeypairsGenerateCreate`: %v\n", resp)
 }
 ```
 
@@ -231,31 +231,31 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	hasKey := true // bool | Only return certificate-key pairs with keys (optional)
-	includeDetails := true // bool |  (optional) (default to true)
-	managed := "managed_example" // string |  (optional)
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
+    hasKey := true // bool | Only return certificate-key pairs with keys (optional)
+    includeDetails := true // bool |  (optional) (default to true)
+    managed := "managed_example" // string |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CryptoAPI.CryptoCertificatekeypairsList(context.Background()).HasKey(hasKey).IncludeDetails(includeDetails).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CryptoAPI.CryptoCertificatekeypairsList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CryptoCertificatekeypairsList`: PaginatedCertificateKeyPairList
-	fmt.Fprintf(os.Stdout, "Response from `CryptoAPI.CryptoCertificatekeypairsList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsList(context.Background()).HasKey(hasKey).IncludeDetails(includeDetails).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CryptoCertificatekeypairsList`: PaginatedCertificateKeyPairList
+    fmt.Fprintf(os.Stdout, "Response from `CryptoApi.CryptoCertificatekeypairsList`: %v\n", resp)
 }
 ```
 
@@ -311,25 +311,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
-	patchedCertificateKeyPairRequest := *openapiclient.NewPatchedCertificateKeyPairRequest() // PatchedCertificateKeyPairRequest |  (optional)
+    kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
+    patchedCertificateKeyPairRequest := *openapiclient.NewPatchedCertificateKeyPairRequest() // PatchedCertificateKeyPairRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CryptoAPI.CryptoCertificatekeypairsPartialUpdate(context.Background(), kpUuid).PatchedCertificateKeyPairRequest(patchedCertificateKeyPairRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CryptoAPI.CryptoCertificatekeypairsPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CryptoCertificatekeypairsPartialUpdate`: CertificateKeyPair
-	fmt.Fprintf(os.Stdout, "Response from `CryptoAPI.CryptoCertificatekeypairsPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsPartialUpdate(context.Background(), kpUuid).PatchedCertificateKeyPairRequest(patchedCertificateKeyPairRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CryptoCertificatekeypairsPartialUpdate`: CertificateKeyPair
+    fmt.Fprintf(os.Stdout, "Response from `CryptoApi.CryptoCertificatekeypairsPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -383,24 +383,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
+    kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CryptoAPI.CryptoCertificatekeypairsRetrieve(context.Background(), kpUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CryptoAPI.CryptoCertificatekeypairsRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CryptoCertificatekeypairsRetrieve`: CertificateKeyPair
-	fmt.Fprintf(os.Stdout, "Response from `CryptoAPI.CryptoCertificatekeypairsRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsRetrieve(context.Background(), kpUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CryptoCertificatekeypairsRetrieve`: CertificateKeyPair
+    fmt.Fprintf(os.Stdout, "Response from `CryptoApi.CryptoCertificatekeypairsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -453,25 +453,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
-	certificateKeyPairRequest := *openapiclient.NewCertificateKeyPairRequest("Name_example", "CertificateData_example") // CertificateKeyPairRequest | 
+    kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
+    certificateKeyPairRequest := *openapiclient.NewCertificateKeyPairRequest("Name_example", "CertificateData_example") // CertificateKeyPairRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CryptoAPI.CryptoCertificatekeypairsUpdate(context.Background(), kpUuid).CertificateKeyPairRequest(certificateKeyPairRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CryptoAPI.CryptoCertificatekeypairsUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CryptoCertificatekeypairsUpdate`: CertificateKeyPair
-	fmt.Fprintf(os.Stdout, "Response from `CryptoAPI.CryptoCertificatekeypairsUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsUpdate(context.Background(), kpUuid).CertificateKeyPairRequest(certificateKeyPairRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CryptoCertificatekeypairsUpdate`: CertificateKeyPair
+    fmt.Fprintf(os.Stdout, "Response from `CryptoApi.CryptoCertificatekeypairsUpdate`: %v\n", resp)
 }
 ```
 
@@ -525,24 +525,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
+    kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CryptoAPI.CryptoCertificatekeypairsUsedByList(context.Background(), kpUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CryptoAPI.CryptoCertificatekeypairsUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CryptoCertificatekeypairsUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `CryptoAPI.CryptoCertificatekeypairsUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsUsedByList(context.Background(), kpUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CryptoCertificatekeypairsUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `CryptoApi.CryptoCertificatekeypairsUsedByList`: %v\n", resp)
 }
 ```
 
@@ -595,25 +595,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
-	download := true // bool |  (optional)
+    kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
+    download := true // bool |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CryptoAPI.CryptoCertificatekeypairsViewCertificateRetrieve(context.Background(), kpUuid).Download(download).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CryptoAPI.CryptoCertificatekeypairsViewCertificateRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CryptoCertificatekeypairsViewCertificateRetrieve`: CertificateData
-	fmt.Fprintf(os.Stdout, "Response from `CryptoAPI.CryptoCertificatekeypairsViewCertificateRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsViewCertificateRetrieve(context.Background(), kpUuid).Download(download).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsViewCertificateRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CryptoCertificatekeypairsViewCertificateRetrieve`: CertificateData
+    fmt.Fprintf(os.Stdout, "Response from `CryptoApi.CryptoCertificatekeypairsViewCertificateRetrieve`: %v\n", resp)
 }
 ```
 
@@ -667,25 +667,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
-	download := true // bool |  (optional)
+    kpUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Certificate-Key Pair.
+    download := true // bool |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CryptoAPI.CryptoCertificatekeypairsViewPrivateKeyRetrieve(context.Background(), kpUuid).Download(download).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CryptoAPI.CryptoCertificatekeypairsViewPrivateKeyRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CryptoCertificatekeypairsViewPrivateKeyRetrieve`: CertificateData
-	fmt.Fprintf(os.Stdout, "Response from `CryptoAPI.CryptoCertificatekeypairsViewPrivateKeyRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CryptoApi.CryptoCertificatekeypairsViewPrivateKeyRetrieve(context.Background(), kpUuid).Download(download).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CryptoApi.CryptoCertificatekeypairsViewPrivateKeyRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CryptoCertificatekeypairsViewPrivateKeyRetrieve`: CertificateData
+    fmt.Fprintf(os.Stdout, "Response from `CryptoApi.CryptoCertificatekeypairsViewPrivateKeyRetrieve`: %v\n", resp)
 }
 ```
 

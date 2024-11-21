@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedLicenseRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedLicenseRequest{}
-
 // PatchedLicenseRequest License Serializer
 type PatchedLicenseRequest struct {
 	Key *string `json:"key,omitempty"`
@@ -42,7 +39,7 @@ func NewPatchedLicenseRequestWithDefaults() *PatchedLicenseRequest {
 
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *PatchedLicenseRequest) GetKey() string {
-	if o == nil || IsNil(o.Key) {
+	if o == nil || o.Key == nil {
 		var ret string
 		return ret
 	}
@@ -52,7 +49,7 @@ func (o *PatchedLicenseRequest) GetKey() string {
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedLicenseRequest) GetKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.Key) {
+	if o == nil || o.Key == nil {
 		return nil, false
 	}
 	return o.Key, true
@@ -60,7 +57,7 @@ func (o *PatchedLicenseRequest) GetKeyOk() (*string, bool) {
 
 // HasKey returns a boolean if a field has been set.
 func (o *PatchedLicenseRequest) HasKey() bool {
-	if o != nil && !IsNil(o.Key) {
+	if o != nil && o.Key != nil {
 		return true
 	}
 
@@ -73,19 +70,11 @@ func (o *PatchedLicenseRequest) SetKey(v string) {
 }
 
 func (o PatchedLicenseRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedLicenseRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Key) {
+	if o.Key != nil {
 		toSerialize["key"] = o.Key
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedLicenseRequest struct {

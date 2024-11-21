@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the ScopeMapping type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ScopeMapping{}
 
 // ScopeMapping ScopeMapping Serializer
 type ScopeMapping struct {
@@ -40,8 +35,6 @@ type ScopeMapping struct {
 	// Description shown to the user when consenting. If left empty, the user won't be informed.
 	Description *string `json:"description,omitempty"`
 }
-
-type _ScopeMapping ScopeMapping
 
 // NewScopeMapping instantiates a new ScopeMapping object
 // This constructor will assign default values to properties that have it defined,
@@ -94,7 +87,7 @@ func (o *ScopeMapping) SetPk(v string) {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ScopeMapping) GetManaged() string {
-	if o == nil || IsNil(o.Managed.Get()) {
+	if o == nil || o.Managed.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -305,7 +298,7 @@ func (o *ScopeMapping) SetScopeName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ScopeMapping) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || o.Description == nil {
 		var ret string
 		return ret
 	}
@@ -315,7 +308,7 @@ func (o *ScopeMapping) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ScopeMapping) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || o.Description == nil {
 		return nil, false
 	}
 	return o.Description, true
@@ -323,7 +316,7 @@ func (o *ScopeMapping) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ScopeMapping) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
+	if o != nil && o.Description != nil {
 		return true
 	}
 
@@ -336,74 +329,38 @@ func (o *ScopeMapping) SetDescription(v string) {
 }
 
 func (o ScopeMapping) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ScopeMapping) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["pk"] = o.Pk
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	toSerialize["name"] = o.Name
-	toSerialize["expression"] = o.Expression
-	toSerialize["component"] = o.Component
-	toSerialize["verbose_name"] = o.VerboseName
-	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	toSerialize["meta_model_name"] = o.MetaModelName
-	toSerialize["scope_name"] = o.ScopeName
-	if !IsNil(o.Description) {
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["expression"] = o.Expression
+	}
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
+	}
+	if true {
+		toSerialize["scope_name"] = o.ScopeName
+	}
+	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
-	return toSerialize, nil
-}
-
-func (o *ScopeMapping) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pk",
-		"name",
-		"expression",
-		"component",
-		"verbose_name",
-		"verbose_name_plural",
-		"meta_model_name",
-		"scope_name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varScopeMapping := _ScopeMapping{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varScopeMapping)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ScopeMapping(varScopeMapping)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableScopeMapping struct {

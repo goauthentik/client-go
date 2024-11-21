@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the NotificationTransportRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NotificationTransportRequest{}
 
 // NotificationTransportRequest NotificationTransport Serializer
 type NotificationTransportRequest struct {
@@ -29,8 +24,6 @@ type NotificationTransportRequest struct {
 	// Only send notification once, for example when sending a webhook into a chat channel.
 	SendOnce *bool `json:"send_once,omitempty"`
 }
-
-type _NotificationTransportRequest NotificationTransportRequest
 
 // NewNotificationTransportRequest instantiates a new NotificationTransportRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -76,7 +69,7 @@ func (o *NotificationTransportRequest) SetName(v string) {
 
 // GetMode returns the Mode field value if set, zero value otherwise.
 func (o *NotificationTransportRequest) GetMode() NotificationTransportModeEnum {
-	if o == nil || IsNil(o.Mode) {
+	if o == nil || o.Mode == nil {
 		var ret NotificationTransportModeEnum
 		return ret
 	}
@@ -86,7 +79,7 @@ func (o *NotificationTransportRequest) GetMode() NotificationTransportModeEnum {
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationTransportRequest) GetModeOk() (*NotificationTransportModeEnum, bool) {
-	if o == nil || IsNil(o.Mode) {
+	if o == nil || o.Mode == nil {
 		return nil, false
 	}
 	return o.Mode, true
@@ -94,7 +87,7 @@ func (o *NotificationTransportRequest) GetModeOk() (*NotificationTransportModeEn
 
 // HasMode returns a boolean if a field has been set.
 func (o *NotificationTransportRequest) HasMode() bool {
-	if o != nil && !IsNil(o.Mode) {
+	if o != nil && o.Mode != nil {
 		return true
 	}
 
@@ -108,7 +101,7 @@ func (o *NotificationTransportRequest) SetMode(v NotificationTransportModeEnum) 
 
 // GetWebhookUrl returns the WebhookUrl field value if set, zero value otherwise.
 func (o *NotificationTransportRequest) GetWebhookUrl() string {
-	if o == nil || IsNil(o.WebhookUrl) {
+	if o == nil || o.WebhookUrl == nil {
 		var ret string
 		return ret
 	}
@@ -118,7 +111,7 @@ func (o *NotificationTransportRequest) GetWebhookUrl() string {
 // GetWebhookUrlOk returns a tuple with the WebhookUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationTransportRequest) GetWebhookUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.WebhookUrl) {
+	if o == nil || o.WebhookUrl == nil {
 		return nil, false
 	}
 	return o.WebhookUrl, true
@@ -126,7 +119,7 @@ func (o *NotificationTransportRequest) GetWebhookUrlOk() (*string, bool) {
 
 // HasWebhookUrl returns a boolean if a field has been set.
 func (o *NotificationTransportRequest) HasWebhookUrl() bool {
-	if o != nil && !IsNil(o.WebhookUrl) {
+	if o != nil && o.WebhookUrl != nil {
 		return true
 	}
 
@@ -140,7 +133,7 @@ func (o *NotificationTransportRequest) SetWebhookUrl(v string) {
 
 // GetWebhookMapping returns the WebhookMapping field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *NotificationTransportRequest) GetWebhookMapping() string {
-	if o == nil || IsNil(o.WebhookMapping.Get()) {
+	if o == nil || o.WebhookMapping.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -183,7 +176,7 @@ func (o *NotificationTransportRequest) UnsetWebhookMapping() {
 
 // GetSendOnce returns the SendOnce field value if set, zero value otherwise.
 func (o *NotificationTransportRequest) GetSendOnce() bool {
-	if o == nil || IsNil(o.SendOnce) {
+	if o == nil || o.SendOnce == nil {
 		var ret bool
 		return ret
 	}
@@ -193,7 +186,7 @@ func (o *NotificationTransportRequest) GetSendOnce() bool {
 // GetSendOnceOk returns a tuple with the SendOnce field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationTransportRequest) GetSendOnceOk() (*bool, bool) {
-	if o == nil || IsNil(o.SendOnce) {
+	if o == nil || o.SendOnce == nil {
 		return nil, false
 	}
 	return o.SendOnce, true
@@ -201,7 +194,7 @@ func (o *NotificationTransportRequest) GetSendOnceOk() (*bool, bool) {
 
 // HasSendOnce returns a boolean if a field has been set.
 func (o *NotificationTransportRequest) HasSendOnce() bool {
-	if o != nil && !IsNil(o.SendOnce) {
+	if o != nil && o.SendOnce != nil {
 		return true
 	}
 
@@ -214,66 +207,23 @@ func (o *NotificationTransportRequest) SetSendOnce(v bool) {
 }
 
 func (o NotificationTransportRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o NotificationTransportRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	if !IsNil(o.Mode) {
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.Mode != nil {
 		toSerialize["mode"] = o.Mode
 	}
-	if !IsNil(o.WebhookUrl) {
+	if o.WebhookUrl != nil {
 		toSerialize["webhook_url"] = o.WebhookUrl
 	}
 	if o.WebhookMapping.IsSet() {
 		toSerialize["webhook_mapping"] = o.WebhookMapping.Get()
 	}
-	if !IsNil(o.SendOnce) {
+	if o.SendOnce != nil {
 		toSerialize["send_once"] = o.SendOnce
 	}
-	return toSerialize, nil
-}
-
-func (o *NotificationTransportRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varNotificationTransportRequest := _NotificationTransportRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varNotificationTransportRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = NotificationTransportRequest(varNotificationTransportRequest)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableNotificationTransportRequest struct {

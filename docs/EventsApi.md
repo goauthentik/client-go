@@ -1,44 +1,44 @@
-# \EventsAPI
+# \EventsApi
 
 All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**EventsEventsActionsList**](EventsAPI.md#EventsEventsActionsList) | **Get** /events/events/actions/ | 
-[**EventsEventsCreate**](EventsAPI.md#EventsEventsCreate) | **Post** /events/events/ | 
-[**EventsEventsDestroy**](EventsAPI.md#EventsEventsDestroy) | **Delete** /events/events/{event_uuid}/ | 
-[**EventsEventsList**](EventsAPI.md#EventsEventsList) | **Get** /events/events/ | 
-[**EventsEventsPartialUpdate**](EventsAPI.md#EventsEventsPartialUpdate) | **Patch** /events/events/{event_uuid}/ | 
-[**EventsEventsPerMonthList**](EventsAPI.md#EventsEventsPerMonthList) | **Get** /events/events/per_month/ | 
-[**EventsEventsRetrieve**](EventsAPI.md#EventsEventsRetrieve) | **Get** /events/events/{event_uuid}/ | 
-[**EventsEventsTopPerUserList**](EventsAPI.md#EventsEventsTopPerUserList) | **Get** /events/events/top_per_user/ | 
-[**EventsEventsUpdate**](EventsAPI.md#EventsEventsUpdate) | **Put** /events/events/{event_uuid}/ | 
-[**EventsEventsVolumeList**](EventsAPI.md#EventsEventsVolumeList) | **Get** /events/events/volume/ | 
-[**EventsNotificationsDestroy**](EventsAPI.md#EventsNotificationsDestroy) | **Delete** /events/notifications/{uuid}/ | 
-[**EventsNotificationsList**](EventsAPI.md#EventsNotificationsList) | **Get** /events/notifications/ | 
-[**EventsNotificationsMarkAllSeenCreate**](EventsAPI.md#EventsNotificationsMarkAllSeenCreate) | **Post** /events/notifications/mark_all_seen/ | 
-[**EventsNotificationsPartialUpdate**](EventsAPI.md#EventsNotificationsPartialUpdate) | **Patch** /events/notifications/{uuid}/ | 
-[**EventsNotificationsRetrieve**](EventsAPI.md#EventsNotificationsRetrieve) | **Get** /events/notifications/{uuid}/ | 
-[**EventsNotificationsUpdate**](EventsAPI.md#EventsNotificationsUpdate) | **Put** /events/notifications/{uuid}/ | 
-[**EventsNotificationsUsedByList**](EventsAPI.md#EventsNotificationsUsedByList) | **Get** /events/notifications/{uuid}/used_by/ | 
-[**EventsRulesCreate**](EventsAPI.md#EventsRulesCreate) | **Post** /events/rules/ | 
-[**EventsRulesDestroy**](EventsAPI.md#EventsRulesDestroy) | **Delete** /events/rules/{pbm_uuid}/ | 
-[**EventsRulesList**](EventsAPI.md#EventsRulesList) | **Get** /events/rules/ | 
-[**EventsRulesPartialUpdate**](EventsAPI.md#EventsRulesPartialUpdate) | **Patch** /events/rules/{pbm_uuid}/ | 
-[**EventsRulesRetrieve**](EventsAPI.md#EventsRulesRetrieve) | **Get** /events/rules/{pbm_uuid}/ | 
-[**EventsRulesUpdate**](EventsAPI.md#EventsRulesUpdate) | **Put** /events/rules/{pbm_uuid}/ | 
-[**EventsRulesUsedByList**](EventsAPI.md#EventsRulesUsedByList) | **Get** /events/rules/{pbm_uuid}/used_by/ | 
-[**EventsSystemTasksList**](EventsAPI.md#EventsSystemTasksList) | **Get** /events/system_tasks/ | 
-[**EventsSystemTasksRetrieve**](EventsAPI.md#EventsSystemTasksRetrieve) | **Get** /events/system_tasks/{uuid}/ | 
-[**EventsSystemTasksRunCreate**](EventsAPI.md#EventsSystemTasksRunCreate) | **Post** /events/system_tasks/{uuid}/run/ | 
-[**EventsTransportsCreate**](EventsAPI.md#EventsTransportsCreate) | **Post** /events/transports/ | 
-[**EventsTransportsDestroy**](EventsAPI.md#EventsTransportsDestroy) | **Delete** /events/transports/{uuid}/ | 
-[**EventsTransportsList**](EventsAPI.md#EventsTransportsList) | **Get** /events/transports/ | 
-[**EventsTransportsPartialUpdate**](EventsAPI.md#EventsTransportsPartialUpdate) | **Patch** /events/transports/{uuid}/ | 
-[**EventsTransportsRetrieve**](EventsAPI.md#EventsTransportsRetrieve) | **Get** /events/transports/{uuid}/ | 
-[**EventsTransportsTestCreate**](EventsAPI.md#EventsTransportsTestCreate) | **Post** /events/transports/{uuid}/test/ | 
-[**EventsTransportsUpdate**](EventsAPI.md#EventsTransportsUpdate) | **Put** /events/transports/{uuid}/ | 
-[**EventsTransportsUsedByList**](EventsAPI.md#EventsTransportsUsedByList) | **Get** /events/transports/{uuid}/used_by/ | 
+[**EventsEventsActionsList**](EventsApi.md#EventsEventsActionsList) | **Get** /events/events/actions/ | 
+[**EventsEventsCreate**](EventsApi.md#EventsEventsCreate) | **Post** /events/events/ | 
+[**EventsEventsDestroy**](EventsApi.md#EventsEventsDestroy) | **Delete** /events/events/{event_uuid}/ | 
+[**EventsEventsList**](EventsApi.md#EventsEventsList) | **Get** /events/events/ | 
+[**EventsEventsPartialUpdate**](EventsApi.md#EventsEventsPartialUpdate) | **Patch** /events/events/{event_uuid}/ | 
+[**EventsEventsPerMonthList**](EventsApi.md#EventsEventsPerMonthList) | **Get** /events/events/per_month/ | 
+[**EventsEventsRetrieve**](EventsApi.md#EventsEventsRetrieve) | **Get** /events/events/{event_uuid}/ | 
+[**EventsEventsTopPerUserList**](EventsApi.md#EventsEventsTopPerUserList) | **Get** /events/events/top_per_user/ | 
+[**EventsEventsUpdate**](EventsApi.md#EventsEventsUpdate) | **Put** /events/events/{event_uuid}/ | 
+[**EventsEventsVolumeList**](EventsApi.md#EventsEventsVolumeList) | **Get** /events/events/volume/ | 
+[**EventsNotificationsDestroy**](EventsApi.md#EventsNotificationsDestroy) | **Delete** /events/notifications/{uuid}/ | 
+[**EventsNotificationsList**](EventsApi.md#EventsNotificationsList) | **Get** /events/notifications/ | 
+[**EventsNotificationsMarkAllSeenCreate**](EventsApi.md#EventsNotificationsMarkAllSeenCreate) | **Post** /events/notifications/mark_all_seen/ | 
+[**EventsNotificationsPartialUpdate**](EventsApi.md#EventsNotificationsPartialUpdate) | **Patch** /events/notifications/{uuid}/ | 
+[**EventsNotificationsRetrieve**](EventsApi.md#EventsNotificationsRetrieve) | **Get** /events/notifications/{uuid}/ | 
+[**EventsNotificationsUpdate**](EventsApi.md#EventsNotificationsUpdate) | **Put** /events/notifications/{uuid}/ | 
+[**EventsNotificationsUsedByList**](EventsApi.md#EventsNotificationsUsedByList) | **Get** /events/notifications/{uuid}/used_by/ | 
+[**EventsRulesCreate**](EventsApi.md#EventsRulesCreate) | **Post** /events/rules/ | 
+[**EventsRulesDestroy**](EventsApi.md#EventsRulesDestroy) | **Delete** /events/rules/{pbm_uuid}/ | 
+[**EventsRulesList**](EventsApi.md#EventsRulesList) | **Get** /events/rules/ | 
+[**EventsRulesPartialUpdate**](EventsApi.md#EventsRulesPartialUpdate) | **Patch** /events/rules/{pbm_uuid}/ | 
+[**EventsRulesRetrieve**](EventsApi.md#EventsRulesRetrieve) | **Get** /events/rules/{pbm_uuid}/ | 
+[**EventsRulesUpdate**](EventsApi.md#EventsRulesUpdate) | **Put** /events/rules/{pbm_uuid}/ | 
+[**EventsRulesUsedByList**](EventsApi.md#EventsRulesUsedByList) | **Get** /events/rules/{pbm_uuid}/used_by/ | 
+[**EventsSystemTasksList**](EventsApi.md#EventsSystemTasksList) | **Get** /events/system_tasks/ | 
+[**EventsSystemTasksRetrieve**](EventsApi.md#EventsSystemTasksRetrieve) | **Get** /events/system_tasks/{uuid}/ | 
+[**EventsSystemTasksRunCreate**](EventsApi.md#EventsSystemTasksRunCreate) | **Post** /events/system_tasks/{uuid}/run/ | 
+[**EventsTransportsCreate**](EventsApi.md#EventsTransportsCreate) | **Post** /events/transports/ | 
+[**EventsTransportsDestroy**](EventsApi.md#EventsTransportsDestroy) | **Delete** /events/transports/{uuid}/ | 
+[**EventsTransportsList**](EventsApi.md#EventsTransportsList) | **Get** /events/transports/ | 
+[**EventsTransportsPartialUpdate**](EventsApi.md#EventsTransportsPartialUpdate) | **Patch** /events/transports/{uuid}/ | 
+[**EventsTransportsRetrieve**](EventsApi.md#EventsTransportsRetrieve) | **Get** /events/transports/{uuid}/ | 
+[**EventsTransportsTestCreate**](EventsApi.md#EventsTransportsTestCreate) | **Post** /events/transports/{uuid}/test/ | 
+[**EventsTransportsUpdate**](EventsApi.md#EventsTransportsUpdate) | **Put** /events/transports/{uuid}/ | 
+[**EventsTransportsUsedByList**](EventsApi.md#EventsTransportsUsedByList) | **Get** /events/transports/{uuid}/used_by/ | 
 
 
 
@@ -56,23 +56,23 @@ Method | HTTP request | Description
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsEventsActionsList(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsEventsActionsList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsEventsActionsList`: []TypeCreate
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsEventsActionsList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsEventsActionsList(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsActionsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsEventsActionsList`: []TypeCreate
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsEventsActionsList`: %v\n", resp)
 }
 ```
 
@@ -117,24 +117,24 @@ Other parameters are passed through a pointer to a apiEventsEventsActionsListReq
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	eventRequest := *openapiclient.NewEventRequest(openapiclient.EventActions("login"), "App_example") // EventRequest | 
+    eventRequest := *openapiclient.NewEventRequest(openapiclient.EventActions("login"), "App_example") // EventRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsEventsCreate(context.Background()).EventRequest(eventRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsEventsCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsEventsCreate`: Event
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsEventsCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsEventsCreate(context.Background()).EventRequest(eventRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsEventsCreate`: Event
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsEventsCreate`: %v\n", resp)
 }
 ```
 
@@ -183,22 +183,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	eventUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Event.
+    eventUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Event.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.EventsAPI.EventsEventsDestroy(context.Background(), eventUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsEventsDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsEventsDestroy(context.Background(), eventUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -251,35 +251,35 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	action := "action_example" // string |  (optional)
-	brandName := "brandName_example" // string | Brand name (optional)
-	clientIp := "clientIp_example" // string |  (optional)
-	contextAuthorizedApp := "contextAuthorizedApp_example" // string | Context Authorized application (optional)
-	contextModelApp := "contextModelApp_example" // string | Context Model App (optional)
-	contextModelName := "contextModelName_example" // string | Context Model Name (optional)
-	contextModelPk := "contextModelPk_example" // string | Context Model Primary Key (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-	username := "username_example" // string | Username (optional)
+    action := "action_example" // string |  (optional)
+    brandName := "brandName_example" // string | Brand name (optional)
+    clientIp := "clientIp_example" // string |  (optional)
+    contextAuthorizedApp := "contextAuthorizedApp_example" // string | Context Authorized application (optional)
+    contextModelApp := "contextModelApp_example" // string | Context Model App (optional)
+    contextModelName := "contextModelName_example" // string | Context Model Name (optional)
+    contextModelPk := "contextModelPk_example" // string | Context Model Primary Key (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    username := "username_example" // string | Username (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsEventsList(context.Background()).Action(action).BrandName(brandName).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Username(username).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsEventsList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsEventsList`: PaginatedEventList
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsEventsList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsEventsList(context.Background()).Action(action).BrandName(brandName).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Username(username).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsEventsList`: PaginatedEventList
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsEventsList`: %v\n", resp)
 }
 ```
 
@@ -339,25 +339,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	eventUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Event.
-	patchedEventRequest := *openapiclient.NewPatchedEventRequest() // PatchedEventRequest |  (optional)
+    eventUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Event.
+    patchedEventRequest := *openapiclient.NewPatchedEventRequest() // PatchedEventRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsEventsPartialUpdate(context.Background(), eventUuid).PatchedEventRequest(patchedEventRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsEventsPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsEventsPartialUpdate`: Event
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsEventsPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsEventsPartialUpdate(context.Background(), eventUuid).PatchedEventRequest(patchedEventRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsEventsPartialUpdate`: Event
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsEventsPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -411,25 +411,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	action := "action_example" // string |  (optional)
-	query := "query_example" // string |  (optional)
+    action := "action_example" // string |  (optional)
+    query := "query_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsEventsPerMonthList(context.Background()).Action(action).Query(query).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsEventsPerMonthList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsEventsPerMonthList`: []Coordinate
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsEventsPerMonthList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsEventsPerMonthList(context.Background()).Action(action).Query(query).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsPerMonthList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsEventsPerMonthList`: []Coordinate
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsEventsPerMonthList`: %v\n", resp)
 }
 ```
 
@@ -479,24 +479,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	eventUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Event.
+    eventUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Event.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsEventsRetrieve(context.Background(), eventUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsEventsRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsEventsRetrieve`: Event
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsEventsRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsEventsRetrieve(context.Background(), eventUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsEventsRetrieve`: Event
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsEventsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -549,25 +549,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	action := "action_example" // string |  (optional)
-	topN := int32(56) // int32 |  (optional)
+    action := "action_example" // string |  (optional)
+    topN := int32(56) // int32 |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsEventsTopPerUserList(context.Background()).Action(action).TopN(topN).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsEventsTopPerUserList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsEventsTopPerUserList`: []EventTopPerUser
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsEventsTopPerUserList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsEventsTopPerUserList(context.Background()).Action(action).TopN(topN).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsTopPerUserList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsEventsTopPerUserList`: []EventTopPerUser
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsEventsTopPerUserList`: %v\n", resp)
 }
 ```
 
@@ -617,25 +617,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	eventUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Event.
-	eventRequest := *openapiclient.NewEventRequest(openapiclient.EventActions("login"), "App_example") // EventRequest | 
+    eventUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Event.
+    eventRequest := *openapiclient.NewEventRequest(openapiclient.EventActions("login"), "App_example") // EventRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsEventsUpdate(context.Background(), eventUuid).EventRequest(eventRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsEventsUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsEventsUpdate`: Event
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsEventsUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsEventsUpdate(context.Background(), eventUuid).EventRequest(eventRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsEventsUpdate`: Event
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsEventsUpdate`: %v\n", resp)
 }
 ```
 
@@ -689,33 +689,33 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	action := "action_example" // string |  (optional)
-	brandName := "brandName_example" // string | Brand name (optional)
-	clientIp := "clientIp_example" // string |  (optional)
-	contextAuthorizedApp := "contextAuthorizedApp_example" // string | Context Authorized application (optional)
-	contextModelApp := "contextModelApp_example" // string | Context Model App (optional)
-	contextModelName := "contextModelName_example" // string | Context Model Name (optional)
-	contextModelPk := "contextModelPk_example" // string | Context Model Primary Key (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	search := "search_example" // string | A search term. (optional)
-	username := "username_example" // string | Username (optional)
+    action := "action_example" // string |  (optional)
+    brandName := "brandName_example" // string | Brand name (optional)
+    clientIp := "clientIp_example" // string |  (optional)
+    contextAuthorizedApp := "contextAuthorizedApp_example" // string | Context Authorized application (optional)
+    contextModelApp := "contextModelApp_example" // string | Context Model App (optional)
+    contextModelName := "contextModelName_example" // string | Context Model Name (optional)
+    contextModelPk := "contextModelPk_example" // string | Context Model Primary Key (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    search := "search_example" // string | A search term. (optional)
+    username := "username_example" // string | Username (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsEventsVolumeList(context.Background()).Action(action).BrandName(brandName).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Search(search).Username(username).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsEventsVolumeList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsEventsVolumeList`: []Coordinate
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsEventsVolumeList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsEventsVolumeList(context.Background()).Action(action).BrandName(brandName).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Search(search).Username(username).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsVolumeList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsEventsVolumeList`: []Coordinate
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsEventsVolumeList`: %v\n", resp)
 }
 ```
 
@@ -773,22 +773,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.EventsAPI.EventsNotificationsDestroy(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsNotificationsDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsNotificationsDestroy(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsNotificationsDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -841,34 +841,34 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
     "time"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    openapiclient "./openapi"
 )
 
 func main() {
-	body := "body_example" // string |  (optional)
-	created := time.Now() // time.Time |  (optional)
-	event := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-	seen := true // bool |  (optional)
-	severity := "severity_example" // string |  (optional)
-	user := int32(56) // int32 |  (optional)
+    body := "body_example" // string |  (optional)
+    created := time.Now() // time.Time |  (optional)
+    event := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    seen := true // bool |  (optional)
+    severity := "severity_example" // string |  (optional)
+    user := int32(56) // int32 |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsNotificationsList(context.Background()).Body(body).Created(created).Event(event).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Seen(seen).Severity(severity).User(user).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsNotificationsList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsNotificationsList`: PaginatedNotificationList
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsNotificationsList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsNotificationsList(context.Background()).Body(body).Created(created).Event(event).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Seen(seen).Severity(severity).User(user).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsNotificationsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsNotificationsList`: PaginatedNotificationList
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsNotificationsList`: %v\n", resp)
 }
 ```
 
@@ -926,21 +926,21 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.EventsAPI.EventsNotificationsMarkAllSeenCreate(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsNotificationsMarkAllSeenCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsNotificationsMarkAllSeenCreate(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsNotificationsMarkAllSeenCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -985,25 +985,25 @@ Other parameters are passed through a pointer to a apiEventsNotificationsMarkAll
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification.
-	patchedNotificationRequest := *openapiclient.NewPatchedNotificationRequest() // PatchedNotificationRequest |  (optional)
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification.
+    patchedNotificationRequest := *openapiclient.NewPatchedNotificationRequest() // PatchedNotificationRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsNotificationsPartialUpdate(context.Background(), uuid).PatchedNotificationRequest(patchedNotificationRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsNotificationsPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsNotificationsPartialUpdate`: Notification
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsNotificationsPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsNotificationsPartialUpdate(context.Background(), uuid).PatchedNotificationRequest(patchedNotificationRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsNotificationsPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsNotificationsPartialUpdate`: Notification
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsNotificationsPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -1057,24 +1057,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsNotificationsRetrieve(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsNotificationsRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsNotificationsRetrieve`: Notification
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsNotificationsRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsNotificationsRetrieve(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsNotificationsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsNotificationsRetrieve`: Notification
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsNotificationsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -1127,25 +1127,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification.
-	notificationRequest := *openapiclient.NewNotificationRequest() // NotificationRequest |  (optional)
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification.
+    notificationRequest := *openapiclient.NewNotificationRequest() // NotificationRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsNotificationsUpdate(context.Background(), uuid).NotificationRequest(notificationRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsNotificationsUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsNotificationsUpdate`: Notification
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsNotificationsUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsNotificationsUpdate(context.Background(), uuid).NotificationRequest(notificationRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsNotificationsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsNotificationsUpdate`: Notification
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsNotificationsUpdate`: %v\n", resp)
 }
 ```
 
@@ -1199,24 +1199,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsNotificationsUsedByList(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsNotificationsUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsNotificationsUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsNotificationsUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsNotificationsUsedByList(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsNotificationsUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsNotificationsUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsNotificationsUsedByList`: %v\n", resp)
 }
 ```
 
@@ -1269,24 +1269,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	notificationRuleRequest := *openapiclient.NewNotificationRuleRequest("Name_example") // NotificationRuleRequest | 
+    notificationRuleRequest := *openapiclient.NewNotificationRuleRequest("Name_example") // NotificationRuleRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsRulesCreate(context.Background()).NotificationRuleRequest(notificationRuleRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsRulesCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsRulesCreate`: NotificationRule
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsRulesCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsRulesCreate(context.Background()).NotificationRuleRequest(notificationRuleRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsRulesCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsRulesCreate`: NotificationRule
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsRulesCreate`: %v\n", resp)
 }
 ```
 
@@ -1335,22 +1335,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Rule.
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Rule.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.EventsAPI.EventsRulesDestroy(context.Background(), pbmUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsRulesDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsRulesDestroy(context.Background(), pbmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsRulesDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -1403,30 +1403,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	groupName := "groupName_example" // string |  (optional)
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-	severity := "severity_example" // string | Controls which severity level the created notifications will have.   (optional)
+    groupName := "groupName_example" // string |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    severity := "severity_example" // string | Controls which severity level the created notifications will have.   (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsRulesList(context.Background()).GroupName(groupName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Severity(severity).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsRulesList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsRulesList`: PaginatedNotificationRuleList
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsRulesList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsRulesList(context.Background()).GroupName(groupName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Severity(severity).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsRulesList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsRulesList`: PaginatedNotificationRuleList
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsRulesList`: %v\n", resp)
 }
 ```
 
@@ -1481,25 +1481,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Rule.
-	patchedNotificationRuleRequest := *openapiclient.NewPatchedNotificationRuleRequest() // PatchedNotificationRuleRequest |  (optional)
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Rule.
+    patchedNotificationRuleRequest := *openapiclient.NewPatchedNotificationRuleRequest() // PatchedNotificationRuleRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsRulesPartialUpdate(context.Background(), pbmUuid).PatchedNotificationRuleRequest(patchedNotificationRuleRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsRulesPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsRulesPartialUpdate`: NotificationRule
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsRulesPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsRulesPartialUpdate(context.Background(), pbmUuid).PatchedNotificationRuleRequest(patchedNotificationRuleRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsRulesPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsRulesPartialUpdate`: NotificationRule
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsRulesPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -1553,24 +1553,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Rule.
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Rule.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsRulesRetrieve(context.Background(), pbmUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsRulesRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsRulesRetrieve`: NotificationRule
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsRulesRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsRulesRetrieve(context.Background(), pbmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsRulesRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsRulesRetrieve`: NotificationRule
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsRulesRetrieve`: %v\n", resp)
 }
 ```
 
@@ -1623,25 +1623,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Rule.
-	notificationRuleRequest := *openapiclient.NewNotificationRuleRequest("Name_example") // NotificationRuleRequest | 
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Rule.
+    notificationRuleRequest := *openapiclient.NewNotificationRuleRequest("Name_example") // NotificationRuleRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsRulesUpdate(context.Background(), pbmUuid).NotificationRuleRequest(notificationRuleRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsRulesUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsRulesUpdate`: NotificationRule
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsRulesUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsRulesUpdate(context.Background(), pbmUuid).NotificationRuleRequest(notificationRuleRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsRulesUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsRulesUpdate`: NotificationRule
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsRulesUpdate`: %v\n", resp)
 }
 ```
 
@@ -1695,24 +1695,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Rule.
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Rule.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsRulesUsedByList(context.Background(), pbmUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsRulesUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsRulesUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsRulesUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsRulesUsedByList(context.Background(), pbmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsRulesUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsRulesUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsRulesUsedByList`: %v\n", resp)
 }
 ```
 
@@ -1765,30 +1765,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-	status := "status_example" // string |  (optional)
-	uid := "uid_example" // string |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    status := "status_example" // string |  (optional)
+    uid := "uid_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsSystemTasksList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Status(status).Uid(uid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsSystemTasksList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsSystemTasksList`: PaginatedSystemTaskList
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsSystemTasksList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsSystemTasksList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Status(status).Uid(uid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsSystemTasksList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsSystemTasksList`: PaginatedSystemTaskList
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsSystemTasksList`: %v\n", resp)
 }
 ```
 
@@ -1843,24 +1843,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this System Task.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this System Task.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsSystemTasksRetrieve(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsSystemTasksRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsSystemTasksRetrieve`: SystemTask
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsSystemTasksRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsSystemTasksRetrieve(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsSystemTasksRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsSystemTasksRetrieve`: SystemTask
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsSystemTasksRetrieve`: %v\n", resp)
 }
 ```
 
@@ -1913,22 +1913,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this System Task.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this System Task.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.EventsAPI.EventsSystemTasksRunCreate(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsSystemTasksRunCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsSystemTasksRunCreate(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsSystemTasksRunCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -1981,24 +1981,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	notificationTransportRequest := *openapiclient.NewNotificationTransportRequest("Name_example") // NotificationTransportRequest | 
+    notificationTransportRequest := *openapiclient.NewNotificationTransportRequest("Name_example") // NotificationTransportRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsTransportsCreate(context.Background()).NotificationTransportRequest(notificationTransportRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsTransportsCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsTransportsCreate`: NotificationTransport
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsTransportsCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsTransportsCreate(context.Background()).NotificationTransportRequest(notificationTransportRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsTransportsCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsTransportsCreate`: NotificationTransport
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsTransportsCreate`: %v\n", resp)
 }
 ```
 
@@ -2047,22 +2047,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Transport.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Transport.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.EventsAPI.EventsTransportsDestroy(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsTransportsDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsTransportsDestroy(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsTransportsDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -2115,31 +2115,31 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	mode := "mode_example" // string |  (optional)
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-	sendOnce := true // bool |  (optional)
-	webhookUrl := "webhookUrl_example" // string |  (optional)
+    mode := "mode_example" // string |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sendOnce := true // bool |  (optional)
+    webhookUrl := "webhookUrl_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsTransportsList(context.Background()).Mode(mode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SendOnce(sendOnce).WebhookUrl(webhookUrl).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsTransportsList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsTransportsList`: PaginatedNotificationTransportList
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsTransportsList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsTransportsList(context.Background()).Mode(mode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SendOnce(sendOnce).WebhookUrl(webhookUrl).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsTransportsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsTransportsList`: PaginatedNotificationTransportList
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsTransportsList`: %v\n", resp)
 }
 ```
 
@@ -2195,25 +2195,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Transport.
-	patchedNotificationTransportRequest := *openapiclient.NewPatchedNotificationTransportRequest() // PatchedNotificationTransportRequest |  (optional)
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Transport.
+    patchedNotificationTransportRequest := *openapiclient.NewPatchedNotificationTransportRequest() // PatchedNotificationTransportRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsTransportsPartialUpdate(context.Background(), uuid).PatchedNotificationTransportRequest(patchedNotificationTransportRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsTransportsPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsTransportsPartialUpdate`: NotificationTransport
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsTransportsPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsTransportsPartialUpdate(context.Background(), uuid).PatchedNotificationTransportRequest(patchedNotificationTransportRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsTransportsPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsTransportsPartialUpdate`: NotificationTransport
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsTransportsPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -2267,24 +2267,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Transport.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Transport.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsTransportsRetrieve(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsTransportsRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsTransportsRetrieve`: NotificationTransport
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsTransportsRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsTransportsRetrieve(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsTransportsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsTransportsRetrieve`: NotificationTransport
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsTransportsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -2337,24 +2337,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Transport.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Transport.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsTransportsTestCreate(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsTransportsTestCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsTransportsTestCreate`: NotificationTransportTest
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsTransportsTestCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsTransportsTestCreate(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsTransportsTestCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsTransportsTestCreate`: NotificationTransportTest
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsTransportsTestCreate`: %v\n", resp)
 }
 ```
 
@@ -2407,25 +2407,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Transport.
-	notificationTransportRequest := *openapiclient.NewNotificationTransportRequest("Name_example") // NotificationTransportRequest | 
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Transport.
+    notificationTransportRequest := *openapiclient.NewNotificationTransportRequest("Name_example") // NotificationTransportRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsTransportsUpdate(context.Background(), uuid).NotificationTransportRequest(notificationTransportRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsTransportsUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsTransportsUpdate`: NotificationTransport
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsTransportsUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsTransportsUpdate(context.Background(), uuid).NotificationTransportRequest(notificationTransportRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsTransportsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsTransportsUpdate`: NotificationTransport
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsTransportsUpdate`: %v\n", resp)
 }
 ```
 
@@ -2479,24 +2479,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Transport.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Notification Transport.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsTransportsUsedByList(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsTransportsUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsTransportsUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsTransportsUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EventsApi.EventsTransportsUsedByList(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsTransportsUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EventsTransportsUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsTransportsUsedByList`: %v\n", resp)
 }
 ```
 

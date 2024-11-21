@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the MicrosoftEntraProviderRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &MicrosoftEntraProviderRequest{}
 
 // MicrosoftEntraProviderRequest MicrosoftEntraProvider Serializer
 type MicrosoftEntraProviderRequest struct {
@@ -34,8 +29,6 @@ type MicrosoftEntraProviderRequest struct {
 	UserDeleteAction           *OutgoingSyncDeleteAction `json:"user_delete_action,omitempty"`
 	GroupDeleteAction          *OutgoingSyncDeleteAction `json:"group_delete_action,omitempty"`
 }
-
-type _MicrosoftEntraProviderRequest MicrosoftEntraProviderRequest
 
 // NewMicrosoftEntraProviderRequest instantiates a new MicrosoftEntraProviderRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -84,7 +77,7 @@ func (o *MicrosoftEntraProviderRequest) SetName(v string) {
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
 func (o *MicrosoftEntraProviderRequest) GetPropertyMappings() []string {
-	if o == nil || IsNil(o.PropertyMappings) {
+	if o == nil || o.PropertyMappings == nil {
 		var ret []string
 		return ret
 	}
@@ -94,7 +87,7 @@ func (o *MicrosoftEntraProviderRequest) GetPropertyMappings() []string {
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MicrosoftEntraProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
-	if o == nil || IsNil(o.PropertyMappings) {
+	if o == nil || o.PropertyMappings == nil {
 		return nil, false
 	}
 	return o.PropertyMappings, true
@@ -102,7 +95,7 @@ func (o *MicrosoftEntraProviderRequest) GetPropertyMappingsOk() ([]string, bool)
 
 // HasPropertyMappings returns a boolean if a field has been set.
 func (o *MicrosoftEntraProviderRequest) HasPropertyMappings() bool {
-	if o != nil && !IsNil(o.PropertyMappings) {
+	if o != nil && o.PropertyMappings != nil {
 		return true
 	}
 
@@ -116,7 +109,7 @@ func (o *MicrosoftEntraProviderRequest) SetPropertyMappings(v []string) {
 
 // GetPropertyMappingsGroup returns the PropertyMappingsGroup field value if set, zero value otherwise.
 func (o *MicrosoftEntraProviderRequest) GetPropertyMappingsGroup() []string {
-	if o == nil || IsNil(o.PropertyMappingsGroup) {
+	if o == nil || o.PropertyMappingsGroup == nil {
 		var ret []string
 		return ret
 	}
@@ -126,7 +119,7 @@ func (o *MicrosoftEntraProviderRequest) GetPropertyMappingsGroup() []string {
 // GetPropertyMappingsGroupOk returns a tuple with the PropertyMappingsGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MicrosoftEntraProviderRequest) GetPropertyMappingsGroupOk() ([]string, bool) {
-	if o == nil || IsNil(o.PropertyMappingsGroup) {
+	if o == nil || o.PropertyMappingsGroup == nil {
 		return nil, false
 	}
 	return o.PropertyMappingsGroup, true
@@ -134,7 +127,7 @@ func (o *MicrosoftEntraProviderRequest) GetPropertyMappingsGroupOk() ([]string, 
 
 // HasPropertyMappingsGroup returns a boolean if a field has been set.
 func (o *MicrosoftEntraProviderRequest) HasPropertyMappingsGroup() bool {
-	if o != nil && !IsNil(o.PropertyMappingsGroup) {
+	if o != nil && o.PropertyMappingsGroup != nil {
 		return true
 	}
 
@@ -220,7 +213,7 @@ func (o *MicrosoftEntraProviderRequest) SetTenantId(v string) {
 
 // GetExcludeUsersServiceAccount returns the ExcludeUsersServiceAccount field value if set, zero value otherwise.
 func (o *MicrosoftEntraProviderRequest) GetExcludeUsersServiceAccount() bool {
-	if o == nil || IsNil(o.ExcludeUsersServiceAccount) {
+	if o == nil || o.ExcludeUsersServiceAccount == nil {
 		var ret bool
 		return ret
 	}
@@ -230,7 +223,7 @@ func (o *MicrosoftEntraProviderRequest) GetExcludeUsersServiceAccount() bool {
 // GetExcludeUsersServiceAccountOk returns a tuple with the ExcludeUsersServiceAccount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MicrosoftEntraProviderRequest) GetExcludeUsersServiceAccountOk() (*bool, bool) {
-	if o == nil || IsNil(o.ExcludeUsersServiceAccount) {
+	if o == nil || o.ExcludeUsersServiceAccount == nil {
 		return nil, false
 	}
 	return o.ExcludeUsersServiceAccount, true
@@ -238,7 +231,7 @@ func (o *MicrosoftEntraProviderRequest) GetExcludeUsersServiceAccountOk() (*bool
 
 // HasExcludeUsersServiceAccount returns a boolean if a field has been set.
 func (o *MicrosoftEntraProviderRequest) HasExcludeUsersServiceAccount() bool {
-	if o != nil && !IsNil(o.ExcludeUsersServiceAccount) {
+	if o != nil && o.ExcludeUsersServiceAccount != nil {
 		return true
 	}
 
@@ -252,7 +245,7 @@ func (o *MicrosoftEntraProviderRequest) SetExcludeUsersServiceAccount(v bool) {
 
 // GetFilterGroup returns the FilterGroup field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MicrosoftEntraProviderRequest) GetFilterGroup() string {
-	if o == nil || IsNil(o.FilterGroup.Get()) {
+	if o == nil || o.FilterGroup.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -295,7 +288,7 @@ func (o *MicrosoftEntraProviderRequest) UnsetFilterGroup() {
 
 // GetUserDeleteAction returns the UserDeleteAction field value if set, zero value otherwise.
 func (o *MicrosoftEntraProviderRequest) GetUserDeleteAction() OutgoingSyncDeleteAction {
-	if o == nil || IsNil(o.UserDeleteAction) {
+	if o == nil || o.UserDeleteAction == nil {
 		var ret OutgoingSyncDeleteAction
 		return ret
 	}
@@ -305,7 +298,7 @@ func (o *MicrosoftEntraProviderRequest) GetUserDeleteAction() OutgoingSyncDelete
 // GetUserDeleteActionOk returns a tuple with the UserDeleteAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MicrosoftEntraProviderRequest) GetUserDeleteActionOk() (*OutgoingSyncDeleteAction, bool) {
-	if o == nil || IsNil(o.UserDeleteAction) {
+	if o == nil || o.UserDeleteAction == nil {
 		return nil, false
 	}
 	return o.UserDeleteAction, true
@@ -313,7 +306,7 @@ func (o *MicrosoftEntraProviderRequest) GetUserDeleteActionOk() (*OutgoingSyncDe
 
 // HasUserDeleteAction returns a boolean if a field has been set.
 func (o *MicrosoftEntraProviderRequest) HasUserDeleteAction() bool {
-	if o != nil && !IsNil(o.UserDeleteAction) {
+	if o != nil && o.UserDeleteAction != nil {
 		return true
 	}
 
@@ -327,7 +320,7 @@ func (o *MicrosoftEntraProviderRequest) SetUserDeleteAction(v OutgoingSyncDelete
 
 // GetGroupDeleteAction returns the GroupDeleteAction field value if set, zero value otherwise.
 func (o *MicrosoftEntraProviderRequest) GetGroupDeleteAction() OutgoingSyncDeleteAction {
-	if o == nil || IsNil(o.GroupDeleteAction) {
+	if o == nil || o.GroupDeleteAction == nil {
 		var ret OutgoingSyncDeleteAction
 		return ret
 	}
@@ -337,7 +330,7 @@ func (o *MicrosoftEntraProviderRequest) GetGroupDeleteAction() OutgoingSyncDelet
 // GetGroupDeleteActionOk returns a tuple with the GroupDeleteAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MicrosoftEntraProviderRequest) GetGroupDeleteActionOk() (*OutgoingSyncDeleteAction, bool) {
-	if o == nil || IsNil(o.GroupDeleteAction) {
+	if o == nil || o.GroupDeleteAction == nil {
 		return nil, false
 	}
 	return o.GroupDeleteAction, true
@@ -345,7 +338,7 @@ func (o *MicrosoftEntraProviderRequest) GetGroupDeleteActionOk() (*OutgoingSyncD
 
 // HasGroupDeleteAction returns a boolean if a field has been set.
 func (o *MicrosoftEntraProviderRequest) HasGroupDeleteAction() bool {
-	if o != nil && !IsNil(o.GroupDeleteAction) {
+	if o != nil && o.GroupDeleteAction != nil {
 		return true
 	}
 
@@ -358,78 +351,38 @@ func (o *MicrosoftEntraProviderRequest) SetGroupDeleteAction(v OutgoingSyncDelet
 }
 
 func (o MicrosoftEntraProviderRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o MicrosoftEntraProviderRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	if !IsNil(o.PropertyMappings) {
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.PropertyMappings != nil {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
-	if !IsNil(o.PropertyMappingsGroup) {
+	if o.PropertyMappingsGroup != nil {
 		toSerialize["property_mappings_group"] = o.PropertyMappingsGroup
 	}
-	toSerialize["client_id"] = o.ClientId
-	toSerialize["client_secret"] = o.ClientSecret
-	toSerialize["tenant_id"] = o.TenantId
-	if !IsNil(o.ExcludeUsersServiceAccount) {
+	if true {
+		toSerialize["client_id"] = o.ClientId
+	}
+	if true {
+		toSerialize["client_secret"] = o.ClientSecret
+	}
+	if true {
+		toSerialize["tenant_id"] = o.TenantId
+	}
+	if o.ExcludeUsersServiceAccount != nil {
 		toSerialize["exclude_users_service_account"] = o.ExcludeUsersServiceAccount
 	}
 	if o.FilterGroup.IsSet() {
 		toSerialize["filter_group"] = o.FilterGroup.Get()
 	}
-	if !IsNil(o.UserDeleteAction) {
+	if o.UserDeleteAction != nil {
 		toSerialize["user_delete_action"] = o.UserDeleteAction
 	}
-	if !IsNil(o.GroupDeleteAction) {
+	if o.GroupDeleteAction != nil {
 		toSerialize["group_delete_action"] = o.GroupDeleteAction
 	}
-	return toSerialize, nil
-}
-
-func (o *MicrosoftEntraProviderRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"client_id",
-		"client_secret",
-		"tenant_id",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varMicrosoftEntraProviderRequest := _MicrosoftEntraProviderRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varMicrosoftEntraProviderRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = MicrosoftEntraProviderRequest(varMicrosoftEntraProviderRequest)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableMicrosoftEntraProviderRequest struct {

@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the OAuth2ProviderSetupURLs type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &OAuth2ProviderSetupURLs{}
 
 // OAuth2ProviderSetupURLs OAuth2 Provider Metadata serializer
 type OAuth2ProviderSetupURLs struct {
@@ -30,8 +25,6 @@ type OAuth2ProviderSetupURLs struct {
 	Logout       string `json:"logout"`
 	Jwks         string `json:"jwks"`
 }
-
-type _OAuth2ProviderSetupURLs OAuth2ProviderSetupURLs
 
 // NewOAuth2ProviderSetupURLs instantiates a new OAuth2ProviderSetupURLs object
 // This constructor will assign default values to properties that have it defined,
@@ -226,66 +219,29 @@ func (o *OAuth2ProviderSetupURLs) SetJwks(v string) {
 }
 
 func (o OAuth2ProviderSetupURLs) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["issuer"] = o.Issuer
+	}
+	if true {
+		toSerialize["authorize"] = o.Authorize
+	}
+	if true {
+		toSerialize["token"] = o.Token
+	}
+	if true {
+		toSerialize["user_info"] = o.UserInfo
+	}
+	if true {
+		toSerialize["provider_info"] = o.ProviderInfo
+	}
+	if true {
+		toSerialize["logout"] = o.Logout
+	}
+	if true {
+		toSerialize["jwks"] = o.Jwks
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o OAuth2ProviderSetupURLs) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["issuer"] = o.Issuer
-	toSerialize["authorize"] = o.Authorize
-	toSerialize["token"] = o.Token
-	toSerialize["user_info"] = o.UserInfo
-	toSerialize["provider_info"] = o.ProviderInfo
-	toSerialize["logout"] = o.Logout
-	toSerialize["jwks"] = o.Jwks
-	return toSerialize, nil
-}
-
-func (o *OAuth2ProviderSetupURLs) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"issuer",
-		"authorize",
-		"token",
-		"user_info",
-		"provider_info",
-		"logout",
-		"jwks",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varOAuth2ProviderSetupURLs := _OAuth2ProviderSetupURLs{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOAuth2ProviderSetupURLs)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OAuth2ProviderSetupURLs(varOAuth2ProviderSetupURLs)
-
-	return err
 }
 
 type NullableOAuth2ProviderSetupURLs struct {

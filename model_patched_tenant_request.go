@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedTenantRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedTenantRequest{}
-
 // PatchedTenantRequest Tenant Serializer
 type PatchedTenantRequest struct {
 	SchemaName *string `json:"schema_name,omitempty"`
@@ -44,7 +41,7 @@ func NewPatchedTenantRequestWithDefaults() *PatchedTenantRequest {
 
 // GetSchemaName returns the SchemaName field value if set, zero value otherwise.
 func (o *PatchedTenantRequest) GetSchemaName() string {
-	if o == nil || IsNil(o.SchemaName) {
+	if o == nil || o.SchemaName == nil {
 		var ret string
 		return ret
 	}
@@ -54,7 +51,7 @@ func (o *PatchedTenantRequest) GetSchemaName() string {
 // GetSchemaNameOk returns a tuple with the SchemaName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedTenantRequest) GetSchemaNameOk() (*string, bool) {
-	if o == nil || IsNil(o.SchemaName) {
+	if o == nil || o.SchemaName == nil {
 		return nil, false
 	}
 	return o.SchemaName, true
@@ -62,7 +59,7 @@ func (o *PatchedTenantRequest) GetSchemaNameOk() (*string, bool) {
 
 // HasSchemaName returns a boolean if a field has been set.
 func (o *PatchedTenantRequest) HasSchemaName() bool {
-	if o != nil && !IsNil(o.SchemaName) {
+	if o != nil && o.SchemaName != nil {
 		return true
 	}
 
@@ -76,7 +73,7 @@ func (o *PatchedTenantRequest) SetSchemaName(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedTenantRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -86,7 +83,7 @@ func (o *PatchedTenantRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedTenantRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -94,7 +91,7 @@ func (o *PatchedTenantRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedTenantRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -108,7 +105,7 @@ func (o *PatchedTenantRequest) SetName(v string) {
 
 // GetReady returns the Ready field value if set, zero value otherwise.
 func (o *PatchedTenantRequest) GetReady() bool {
-	if o == nil || IsNil(o.Ready) {
+	if o == nil || o.Ready == nil {
 		var ret bool
 		return ret
 	}
@@ -118,7 +115,7 @@ func (o *PatchedTenantRequest) GetReady() bool {
 // GetReadyOk returns a tuple with the Ready field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedTenantRequest) GetReadyOk() (*bool, bool) {
-	if o == nil || IsNil(o.Ready) {
+	if o == nil || o.Ready == nil {
 		return nil, false
 	}
 	return o.Ready, true
@@ -126,7 +123,7 @@ func (o *PatchedTenantRequest) GetReadyOk() (*bool, bool) {
 
 // HasReady returns a boolean if a field has been set.
 func (o *PatchedTenantRequest) HasReady() bool {
-	if o != nil && !IsNil(o.Ready) {
+	if o != nil && o.Ready != nil {
 		return true
 	}
 
@@ -139,25 +136,17 @@ func (o *PatchedTenantRequest) SetReady(v bool) {
 }
 
 func (o PatchedTenantRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedTenantRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.SchemaName) {
+	if o.SchemaName != nil {
 		toSerialize["schema_name"] = o.SchemaName
 	}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Ready) {
+	if o.Ready != nil {
 		toSerialize["ready"] = o.Ready
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedTenantRequest struct {

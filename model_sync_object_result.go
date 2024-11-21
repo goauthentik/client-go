@@ -12,20 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the SyncObjectResult type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SyncObjectResult{}
 
 // SyncObjectResult Result of a single object sync
 type SyncObjectResult struct {
 	Messages []LogEvent `json:"messages"`
 }
-
-type _SyncObjectResult SyncObjectResult
 
 // NewSyncObjectResult instantiates a new SyncObjectResult object
 // This constructor will assign default values to properties that have it defined,
@@ -70,54 +63,11 @@ func (o *SyncObjectResult) SetMessages(v []LogEvent) {
 }
 
 func (o SyncObjectResult) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["messages"] = o.Messages
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o SyncObjectResult) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["messages"] = o.Messages
-	return toSerialize, nil
-}
-
-func (o *SyncObjectResult) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"messages",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSyncObjectResult := _SyncObjectResult{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSyncObjectResult)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SyncObjectResult(varSyncObjectResult)
-
-	return err
 }
 
 type NullableSyncObjectResult struct {

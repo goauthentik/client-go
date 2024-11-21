@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **ConfigUrl** | **string** |  | 
 **DeviceChallenges** | [**[]DeviceChallenge**](DeviceChallenge.md) |  | 
 **ConfigurationStages** | [**[]SelectableStage**](SelectableStage.md) |  | 
-**Registration** | **map[string]map[string]interface{}** |  | 
+**Registration** | **map[string]interface{}** |  | 
 **Url** | **string** |  | 
 **Attrs** | **map[string]string** |  | 
 **Title** | Pointer to **string** |  | [optional] 
@@ -64,7 +64,7 @@ Name | Type | Description | Notes
 
 ### NewChallengeTypes
 
-`func NewChallengeTypes(pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, interactive bool, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, name string, requestId string, loadingText string, userFields []string, passwordFields bool, flowDesignation FlowDesignationEnum, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, brandName string, body string, ) *ChallengeTypes`
+`func NewChallengeTypes(pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, interactive bool, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, name string, requestId string, loadingText string, userFields []string, passwordFields bool, flowDesignation FlowDesignationEnum, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, brandName string, body string, ) *ChallengeTypes`
 
 NewChallengeTypes instantiates a new ChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -466,20 +466,20 @@ SetConfigurationStages sets ConfigurationStages field to given value.
 
 ### GetRegistration
 
-`func (o *ChallengeTypes) GetRegistration() map[string]map[string]interface{}`
+`func (o *ChallengeTypes) GetRegistration() map[string]interface{}`
 
 GetRegistration returns the Registration field if non-nil, zero value otherwise.
 
 ### GetRegistrationOk
 
-`func (o *ChallengeTypes) GetRegistrationOk() (*map[string]map[string]interface{}, bool)`
+`func (o *ChallengeTypes) GetRegistrationOk() (*map[string]interface{}, bool)`
 
 GetRegistrationOk returns a tuple with the Registration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRegistration
 
-`func (o *ChallengeTypes) SetRegistration(v map[string]map[string]interface{})`
+`func (o *ChallengeTypes) SetRegistration(v map[string]interface{})`
 
 SetRegistration sets Registration field to given value.
 

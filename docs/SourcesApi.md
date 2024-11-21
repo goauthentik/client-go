@@ -1,140 +1,140 @@
-# \SourcesAPI
+# \SourcesApi
 
 All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SourcesAllDestroy**](SourcesAPI.md#SourcesAllDestroy) | **Delete** /sources/all/{slug}/ | 
-[**SourcesAllList**](SourcesAPI.md#SourcesAllList) | **Get** /sources/all/ | 
-[**SourcesAllRetrieve**](SourcesAPI.md#SourcesAllRetrieve) | **Get** /sources/all/{slug}/ | 
-[**SourcesAllSetIconCreate**](SourcesAPI.md#SourcesAllSetIconCreate) | **Post** /sources/all/{slug}/set_icon/ | 
-[**SourcesAllSetIconUrlCreate**](SourcesAPI.md#SourcesAllSetIconUrlCreate) | **Post** /sources/all/{slug}/set_icon_url/ | 
-[**SourcesAllTypesList**](SourcesAPI.md#SourcesAllTypesList) | **Get** /sources/all/types/ | 
-[**SourcesAllUsedByList**](SourcesAPI.md#SourcesAllUsedByList) | **Get** /sources/all/{slug}/used_by/ | 
-[**SourcesAllUserSettingsList**](SourcesAPI.md#SourcesAllUserSettingsList) | **Get** /sources/all/user_settings/ | 
-[**SourcesGroupConnectionsKerberosDestroy**](SourcesAPI.md#SourcesGroupConnectionsKerberosDestroy) | **Delete** /sources/group_connections/kerberos/{id}/ | 
-[**SourcesGroupConnectionsKerberosList**](SourcesAPI.md#SourcesGroupConnectionsKerberosList) | **Get** /sources/group_connections/kerberos/ | 
-[**SourcesGroupConnectionsKerberosPartialUpdate**](SourcesAPI.md#SourcesGroupConnectionsKerberosPartialUpdate) | **Patch** /sources/group_connections/kerberos/{id}/ | 
-[**SourcesGroupConnectionsKerberosRetrieve**](SourcesAPI.md#SourcesGroupConnectionsKerberosRetrieve) | **Get** /sources/group_connections/kerberos/{id}/ | 
-[**SourcesGroupConnectionsKerberosUpdate**](SourcesAPI.md#SourcesGroupConnectionsKerberosUpdate) | **Put** /sources/group_connections/kerberos/{id}/ | 
-[**SourcesGroupConnectionsKerberosUsedByList**](SourcesAPI.md#SourcesGroupConnectionsKerberosUsedByList) | **Get** /sources/group_connections/kerberos/{id}/used_by/ | 
-[**SourcesGroupConnectionsOauthCreate**](SourcesAPI.md#SourcesGroupConnectionsOauthCreate) | **Post** /sources/group_connections/oauth/ | 
-[**SourcesGroupConnectionsOauthDestroy**](SourcesAPI.md#SourcesGroupConnectionsOauthDestroy) | **Delete** /sources/group_connections/oauth/{id}/ | 
-[**SourcesGroupConnectionsOauthList**](SourcesAPI.md#SourcesGroupConnectionsOauthList) | **Get** /sources/group_connections/oauth/ | 
-[**SourcesGroupConnectionsOauthPartialUpdate**](SourcesAPI.md#SourcesGroupConnectionsOauthPartialUpdate) | **Patch** /sources/group_connections/oauth/{id}/ | 
-[**SourcesGroupConnectionsOauthRetrieve**](SourcesAPI.md#SourcesGroupConnectionsOauthRetrieve) | **Get** /sources/group_connections/oauth/{id}/ | 
-[**SourcesGroupConnectionsOauthUpdate**](SourcesAPI.md#SourcesGroupConnectionsOauthUpdate) | **Put** /sources/group_connections/oauth/{id}/ | 
-[**SourcesGroupConnectionsOauthUsedByList**](SourcesAPI.md#SourcesGroupConnectionsOauthUsedByList) | **Get** /sources/group_connections/oauth/{id}/used_by/ | 
-[**SourcesGroupConnectionsPlexCreate**](SourcesAPI.md#SourcesGroupConnectionsPlexCreate) | **Post** /sources/group_connections/plex/ | 
-[**SourcesGroupConnectionsPlexDestroy**](SourcesAPI.md#SourcesGroupConnectionsPlexDestroy) | **Delete** /sources/group_connections/plex/{id}/ | 
-[**SourcesGroupConnectionsPlexList**](SourcesAPI.md#SourcesGroupConnectionsPlexList) | **Get** /sources/group_connections/plex/ | 
-[**SourcesGroupConnectionsPlexPartialUpdate**](SourcesAPI.md#SourcesGroupConnectionsPlexPartialUpdate) | **Patch** /sources/group_connections/plex/{id}/ | 
-[**SourcesGroupConnectionsPlexRetrieve**](SourcesAPI.md#SourcesGroupConnectionsPlexRetrieve) | **Get** /sources/group_connections/plex/{id}/ | 
-[**SourcesGroupConnectionsPlexUpdate**](SourcesAPI.md#SourcesGroupConnectionsPlexUpdate) | **Put** /sources/group_connections/plex/{id}/ | 
-[**SourcesGroupConnectionsPlexUsedByList**](SourcesAPI.md#SourcesGroupConnectionsPlexUsedByList) | **Get** /sources/group_connections/plex/{id}/used_by/ | 
-[**SourcesGroupConnectionsSamlDestroy**](SourcesAPI.md#SourcesGroupConnectionsSamlDestroy) | **Delete** /sources/group_connections/saml/{id}/ | 
-[**SourcesGroupConnectionsSamlList**](SourcesAPI.md#SourcesGroupConnectionsSamlList) | **Get** /sources/group_connections/saml/ | 
-[**SourcesGroupConnectionsSamlPartialUpdate**](SourcesAPI.md#SourcesGroupConnectionsSamlPartialUpdate) | **Patch** /sources/group_connections/saml/{id}/ | 
-[**SourcesGroupConnectionsSamlRetrieve**](SourcesAPI.md#SourcesGroupConnectionsSamlRetrieve) | **Get** /sources/group_connections/saml/{id}/ | 
-[**SourcesGroupConnectionsSamlUpdate**](SourcesAPI.md#SourcesGroupConnectionsSamlUpdate) | **Put** /sources/group_connections/saml/{id}/ | 
-[**SourcesGroupConnectionsSamlUsedByList**](SourcesAPI.md#SourcesGroupConnectionsSamlUsedByList) | **Get** /sources/group_connections/saml/{id}/used_by/ | 
-[**SourcesKerberosCreate**](SourcesAPI.md#SourcesKerberosCreate) | **Post** /sources/kerberos/ | 
-[**SourcesKerberosDestroy**](SourcesAPI.md#SourcesKerberosDestroy) | **Delete** /sources/kerberos/{slug}/ | 
-[**SourcesKerberosList**](SourcesAPI.md#SourcesKerberosList) | **Get** /sources/kerberos/ | 
-[**SourcesKerberosPartialUpdate**](SourcesAPI.md#SourcesKerberosPartialUpdate) | **Patch** /sources/kerberos/{slug}/ | 
-[**SourcesKerberosRetrieve**](SourcesAPI.md#SourcesKerberosRetrieve) | **Get** /sources/kerberos/{slug}/ | 
-[**SourcesKerberosSyncStatusRetrieve**](SourcesAPI.md#SourcesKerberosSyncStatusRetrieve) | **Get** /sources/kerberos/{slug}/sync/status/ | 
-[**SourcesKerberosUpdate**](SourcesAPI.md#SourcesKerberosUpdate) | **Put** /sources/kerberos/{slug}/ | 
-[**SourcesKerberosUsedByList**](SourcesAPI.md#SourcesKerberosUsedByList) | **Get** /sources/kerberos/{slug}/used_by/ | 
-[**SourcesLdapCreate**](SourcesAPI.md#SourcesLdapCreate) | **Post** /sources/ldap/ | 
-[**SourcesLdapDebugRetrieve**](SourcesAPI.md#SourcesLdapDebugRetrieve) | **Get** /sources/ldap/{slug}/debug/ | 
-[**SourcesLdapDestroy**](SourcesAPI.md#SourcesLdapDestroy) | **Delete** /sources/ldap/{slug}/ | 
-[**SourcesLdapList**](SourcesAPI.md#SourcesLdapList) | **Get** /sources/ldap/ | 
-[**SourcesLdapPartialUpdate**](SourcesAPI.md#SourcesLdapPartialUpdate) | **Patch** /sources/ldap/{slug}/ | 
-[**SourcesLdapRetrieve**](SourcesAPI.md#SourcesLdapRetrieve) | **Get** /sources/ldap/{slug}/ | 
-[**SourcesLdapSyncStatusRetrieve**](SourcesAPI.md#SourcesLdapSyncStatusRetrieve) | **Get** /sources/ldap/{slug}/sync/status/ | 
-[**SourcesLdapUpdate**](SourcesAPI.md#SourcesLdapUpdate) | **Put** /sources/ldap/{slug}/ | 
-[**SourcesLdapUsedByList**](SourcesAPI.md#SourcesLdapUsedByList) | **Get** /sources/ldap/{slug}/used_by/ | 
-[**SourcesOauthCreate**](SourcesAPI.md#SourcesOauthCreate) | **Post** /sources/oauth/ | 
-[**SourcesOauthDestroy**](SourcesAPI.md#SourcesOauthDestroy) | **Delete** /sources/oauth/{slug}/ | 
-[**SourcesOauthList**](SourcesAPI.md#SourcesOauthList) | **Get** /sources/oauth/ | 
-[**SourcesOauthPartialUpdate**](SourcesAPI.md#SourcesOauthPartialUpdate) | **Patch** /sources/oauth/{slug}/ | 
-[**SourcesOauthRetrieve**](SourcesAPI.md#SourcesOauthRetrieve) | **Get** /sources/oauth/{slug}/ | 
-[**SourcesOauthSourceTypesList**](SourcesAPI.md#SourcesOauthSourceTypesList) | **Get** /sources/oauth/source_types/ | 
-[**SourcesOauthUpdate**](SourcesAPI.md#SourcesOauthUpdate) | **Put** /sources/oauth/{slug}/ | 
-[**SourcesOauthUsedByList**](SourcesAPI.md#SourcesOauthUsedByList) | **Get** /sources/oauth/{slug}/used_by/ | 
-[**SourcesPlexCreate**](SourcesAPI.md#SourcesPlexCreate) | **Post** /sources/plex/ | 
-[**SourcesPlexDestroy**](SourcesAPI.md#SourcesPlexDestroy) | **Delete** /sources/plex/{slug}/ | 
-[**SourcesPlexList**](SourcesAPI.md#SourcesPlexList) | **Get** /sources/plex/ | 
-[**SourcesPlexPartialUpdate**](SourcesAPI.md#SourcesPlexPartialUpdate) | **Patch** /sources/plex/{slug}/ | 
-[**SourcesPlexRedeemTokenAuthenticatedCreate**](SourcesAPI.md#SourcesPlexRedeemTokenAuthenticatedCreate) | **Post** /sources/plex/redeem_token_authenticated/ | 
-[**SourcesPlexRedeemTokenCreate**](SourcesAPI.md#SourcesPlexRedeemTokenCreate) | **Post** /sources/plex/redeem_token/ | 
-[**SourcesPlexRetrieve**](SourcesAPI.md#SourcesPlexRetrieve) | **Get** /sources/plex/{slug}/ | 
-[**SourcesPlexUpdate**](SourcesAPI.md#SourcesPlexUpdate) | **Put** /sources/plex/{slug}/ | 
-[**SourcesPlexUsedByList**](SourcesAPI.md#SourcesPlexUsedByList) | **Get** /sources/plex/{slug}/used_by/ | 
-[**SourcesSamlCreate**](SourcesAPI.md#SourcesSamlCreate) | **Post** /sources/saml/ | 
-[**SourcesSamlDestroy**](SourcesAPI.md#SourcesSamlDestroy) | **Delete** /sources/saml/{slug}/ | 
-[**SourcesSamlList**](SourcesAPI.md#SourcesSamlList) | **Get** /sources/saml/ | 
-[**SourcesSamlMetadataRetrieve**](SourcesAPI.md#SourcesSamlMetadataRetrieve) | **Get** /sources/saml/{slug}/metadata/ | 
-[**SourcesSamlPartialUpdate**](SourcesAPI.md#SourcesSamlPartialUpdate) | **Patch** /sources/saml/{slug}/ | 
-[**SourcesSamlRetrieve**](SourcesAPI.md#SourcesSamlRetrieve) | **Get** /sources/saml/{slug}/ | 
-[**SourcesSamlUpdate**](SourcesAPI.md#SourcesSamlUpdate) | **Put** /sources/saml/{slug}/ | 
-[**SourcesSamlUsedByList**](SourcesAPI.md#SourcesSamlUsedByList) | **Get** /sources/saml/{slug}/used_by/ | 
-[**SourcesScimCreate**](SourcesAPI.md#SourcesScimCreate) | **Post** /sources/scim/ | 
-[**SourcesScimDestroy**](SourcesAPI.md#SourcesScimDestroy) | **Delete** /sources/scim/{slug}/ | 
-[**SourcesScimGroupsCreate**](SourcesAPI.md#SourcesScimGroupsCreate) | **Post** /sources/scim_groups/ | 
-[**SourcesScimGroupsDestroy**](SourcesAPI.md#SourcesScimGroupsDestroy) | **Delete** /sources/scim_groups/{id}/ | 
-[**SourcesScimGroupsList**](SourcesAPI.md#SourcesScimGroupsList) | **Get** /sources/scim_groups/ | 
-[**SourcesScimGroupsPartialUpdate**](SourcesAPI.md#SourcesScimGroupsPartialUpdate) | **Patch** /sources/scim_groups/{id}/ | 
-[**SourcesScimGroupsRetrieve**](SourcesAPI.md#SourcesScimGroupsRetrieve) | **Get** /sources/scim_groups/{id}/ | 
-[**SourcesScimGroupsUpdate**](SourcesAPI.md#SourcesScimGroupsUpdate) | **Put** /sources/scim_groups/{id}/ | 
-[**SourcesScimGroupsUsedByList**](SourcesAPI.md#SourcesScimGroupsUsedByList) | **Get** /sources/scim_groups/{id}/used_by/ | 
-[**SourcesScimList**](SourcesAPI.md#SourcesScimList) | **Get** /sources/scim/ | 
-[**SourcesScimPartialUpdate**](SourcesAPI.md#SourcesScimPartialUpdate) | **Patch** /sources/scim/{slug}/ | 
-[**SourcesScimRetrieve**](SourcesAPI.md#SourcesScimRetrieve) | **Get** /sources/scim/{slug}/ | 
-[**SourcesScimUpdate**](SourcesAPI.md#SourcesScimUpdate) | **Put** /sources/scim/{slug}/ | 
-[**SourcesScimUsedByList**](SourcesAPI.md#SourcesScimUsedByList) | **Get** /sources/scim/{slug}/used_by/ | 
-[**SourcesScimUsersCreate**](SourcesAPI.md#SourcesScimUsersCreate) | **Post** /sources/scim_users/ | 
-[**SourcesScimUsersDestroy**](SourcesAPI.md#SourcesScimUsersDestroy) | **Delete** /sources/scim_users/{id}/ | 
-[**SourcesScimUsersList**](SourcesAPI.md#SourcesScimUsersList) | **Get** /sources/scim_users/ | 
-[**SourcesScimUsersPartialUpdate**](SourcesAPI.md#SourcesScimUsersPartialUpdate) | **Patch** /sources/scim_users/{id}/ | 
-[**SourcesScimUsersRetrieve**](SourcesAPI.md#SourcesScimUsersRetrieve) | **Get** /sources/scim_users/{id}/ | 
-[**SourcesScimUsersUpdate**](SourcesAPI.md#SourcesScimUsersUpdate) | **Put** /sources/scim_users/{id}/ | 
-[**SourcesScimUsersUsedByList**](SourcesAPI.md#SourcesScimUsersUsedByList) | **Get** /sources/scim_users/{id}/used_by/ | 
-[**SourcesUserConnectionsAllDestroy**](SourcesAPI.md#SourcesUserConnectionsAllDestroy) | **Delete** /sources/user_connections/all/{id}/ | 
-[**SourcesUserConnectionsAllList**](SourcesAPI.md#SourcesUserConnectionsAllList) | **Get** /sources/user_connections/all/ | 
-[**SourcesUserConnectionsAllPartialUpdate**](SourcesAPI.md#SourcesUserConnectionsAllPartialUpdate) | **Patch** /sources/user_connections/all/{id}/ | 
-[**SourcesUserConnectionsAllRetrieve**](SourcesAPI.md#SourcesUserConnectionsAllRetrieve) | **Get** /sources/user_connections/all/{id}/ | 
-[**SourcesUserConnectionsAllUpdate**](SourcesAPI.md#SourcesUserConnectionsAllUpdate) | **Put** /sources/user_connections/all/{id}/ | 
-[**SourcesUserConnectionsAllUsedByList**](SourcesAPI.md#SourcesUserConnectionsAllUsedByList) | **Get** /sources/user_connections/all/{id}/used_by/ | 
-[**SourcesUserConnectionsKerberosCreate**](SourcesAPI.md#SourcesUserConnectionsKerberosCreate) | **Post** /sources/user_connections/kerberos/ | 
-[**SourcesUserConnectionsKerberosDestroy**](SourcesAPI.md#SourcesUserConnectionsKerberosDestroy) | **Delete** /sources/user_connections/kerberos/{id}/ | 
-[**SourcesUserConnectionsKerberosList**](SourcesAPI.md#SourcesUserConnectionsKerberosList) | **Get** /sources/user_connections/kerberos/ | 
-[**SourcesUserConnectionsKerberosPartialUpdate**](SourcesAPI.md#SourcesUserConnectionsKerberosPartialUpdate) | **Patch** /sources/user_connections/kerberos/{id}/ | 
-[**SourcesUserConnectionsKerberosRetrieve**](SourcesAPI.md#SourcesUserConnectionsKerberosRetrieve) | **Get** /sources/user_connections/kerberos/{id}/ | 
-[**SourcesUserConnectionsKerberosUpdate**](SourcesAPI.md#SourcesUserConnectionsKerberosUpdate) | **Put** /sources/user_connections/kerberos/{id}/ | 
-[**SourcesUserConnectionsKerberosUsedByList**](SourcesAPI.md#SourcesUserConnectionsKerberosUsedByList) | **Get** /sources/user_connections/kerberos/{id}/used_by/ | 
-[**SourcesUserConnectionsOauthCreate**](SourcesAPI.md#SourcesUserConnectionsOauthCreate) | **Post** /sources/user_connections/oauth/ | 
-[**SourcesUserConnectionsOauthDestroy**](SourcesAPI.md#SourcesUserConnectionsOauthDestroy) | **Delete** /sources/user_connections/oauth/{id}/ | 
-[**SourcesUserConnectionsOauthList**](SourcesAPI.md#SourcesUserConnectionsOauthList) | **Get** /sources/user_connections/oauth/ | 
-[**SourcesUserConnectionsOauthPartialUpdate**](SourcesAPI.md#SourcesUserConnectionsOauthPartialUpdate) | **Patch** /sources/user_connections/oauth/{id}/ | 
-[**SourcesUserConnectionsOauthRetrieve**](SourcesAPI.md#SourcesUserConnectionsOauthRetrieve) | **Get** /sources/user_connections/oauth/{id}/ | 
-[**SourcesUserConnectionsOauthUpdate**](SourcesAPI.md#SourcesUserConnectionsOauthUpdate) | **Put** /sources/user_connections/oauth/{id}/ | 
-[**SourcesUserConnectionsOauthUsedByList**](SourcesAPI.md#SourcesUserConnectionsOauthUsedByList) | **Get** /sources/user_connections/oauth/{id}/used_by/ | 
-[**SourcesUserConnectionsPlexCreate**](SourcesAPI.md#SourcesUserConnectionsPlexCreate) | **Post** /sources/user_connections/plex/ | 
-[**SourcesUserConnectionsPlexDestroy**](SourcesAPI.md#SourcesUserConnectionsPlexDestroy) | **Delete** /sources/user_connections/plex/{id}/ | 
-[**SourcesUserConnectionsPlexList**](SourcesAPI.md#SourcesUserConnectionsPlexList) | **Get** /sources/user_connections/plex/ | 
-[**SourcesUserConnectionsPlexPartialUpdate**](SourcesAPI.md#SourcesUserConnectionsPlexPartialUpdate) | **Patch** /sources/user_connections/plex/{id}/ | 
-[**SourcesUserConnectionsPlexRetrieve**](SourcesAPI.md#SourcesUserConnectionsPlexRetrieve) | **Get** /sources/user_connections/plex/{id}/ | 
-[**SourcesUserConnectionsPlexUpdate**](SourcesAPI.md#SourcesUserConnectionsPlexUpdate) | **Put** /sources/user_connections/plex/{id}/ | 
-[**SourcesUserConnectionsPlexUsedByList**](SourcesAPI.md#SourcesUserConnectionsPlexUsedByList) | **Get** /sources/user_connections/plex/{id}/used_by/ | 
-[**SourcesUserConnectionsSamlCreate**](SourcesAPI.md#SourcesUserConnectionsSamlCreate) | **Post** /sources/user_connections/saml/ | 
-[**SourcesUserConnectionsSamlDestroy**](SourcesAPI.md#SourcesUserConnectionsSamlDestroy) | **Delete** /sources/user_connections/saml/{id}/ | 
-[**SourcesUserConnectionsSamlList**](SourcesAPI.md#SourcesUserConnectionsSamlList) | **Get** /sources/user_connections/saml/ | 
-[**SourcesUserConnectionsSamlPartialUpdate**](SourcesAPI.md#SourcesUserConnectionsSamlPartialUpdate) | **Patch** /sources/user_connections/saml/{id}/ | 
-[**SourcesUserConnectionsSamlRetrieve**](SourcesAPI.md#SourcesUserConnectionsSamlRetrieve) | **Get** /sources/user_connections/saml/{id}/ | 
-[**SourcesUserConnectionsSamlUpdate**](SourcesAPI.md#SourcesUserConnectionsSamlUpdate) | **Put** /sources/user_connections/saml/{id}/ | 
-[**SourcesUserConnectionsSamlUsedByList**](SourcesAPI.md#SourcesUserConnectionsSamlUsedByList) | **Get** /sources/user_connections/saml/{id}/used_by/ | 
+[**SourcesAllDestroy**](SourcesApi.md#SourcesAllDestroy) | **Delete** /sources/all/{slug}/ | 
+[**SourcesAllList**](SourcesApi.md#SourcesAllList) | **Get** /sources/all/ | 
+[**SourcesAllRetrieve**](SourcesApi.md#SourcesAllRetrieve) | **Get** /sources/all/{slug}/ | 
+[**SourcesAllSetIconCreate**](SourcesApi.md#SourcesAllSetIconCreate) | **Post** /sources/all/{slug}/set_icon/ | 
+[**SourcesAllSetIconUrlCreate**](SourcesApi.md#SourcesAllSetIconUrlCreate) | **Post** /sources/all/{slug}/set_icon_url/ | 
+[**SourcesAllTypesList**](SourcesApi.md#SourcesAllTypesList) | **Get** /sources/all/types/ | 
+[**SourcesAllUsedByList**](SourcesApi.md#SourcesAllUsedByList) | **Get** /sources/all/{slug}/used_by/ | 
+[**SourcesAllUserSettingsList**](SourcesApi.md#SourcesAllUserSettingsList) | **Get** /sources/all/user_settings/ | 
+[**SourcesGroupConnectionsKerberosDestroy**](SourcesApi.md#SourcesGroupConnectionsKerberosDestroy) | **Delete** /sources/group_connections/kerberos/{id}/ | 
+[**SourcesGroupConnectionsKerberosList**](SourcesApi.md#SourcesGroupConnectionsKerberosList) | **Get** /sources/group_connections/kerberos/ | 
+[**SourcesGroupConnectionsKerberosPartialUpdate**](SourcesApi.md#SourcesGroupConnectionsKerberosPartialUpdate) | **Patch** /sources/group_connections/kerberos/{id}/ | 
+[**SourcesGroupConnectionsKerberosRetrieve**](SourcesApi.md#SourcesGroupConnectionsKerberosRetrieve) | **Get** /sources/group_connections/kerberos/{id}/ | 
+[**SourcesGroupConnectionsKerberosUpdate**](SourcesApi.md#SourcesGroupConnectionsKerberosUpdate) | **Put** /sources/group_connections/kerberos/{id}/ | 
+[**SourcesGroupConnectionsKerberosUsedByList**](SourcesApi.md#SourcesGroupConnectionsKerberosUsedByList) | **Get** /sources/group_connections/kerberos/{id}/used_by/ | 
+[**SourcesGroupConnectionsOauthCreate**](SourcesApi.md#SourcesGroupConnectionsOauthCreate) | **Post** /sources/group_connections/oauth/ | 
+[**SourcesGroupConnectionsOauthDestroy**](SourcesApi.md#SourcesGroupConnectionsOauthDestroy) | **Delete** /sources/group_connections/oauth/{id}/ | 
+[**SourcesGroupConnectionsOauthList**](SourcesApi.md#SourcesGroupConnectionsOauthList) | **Get** /sources/group_connections/oauth/ | 
+[**SourcesGroupConnectionsOauthPartialUpdate**](SourcesApi.md#SourcesGroupConnectionsOauthPartialUpdate) | **Patch** /sources/group_connections/oauth/{id}/ | 
+[**SourcesGroupConnectionsOauthRetrieve**](SourcesApi.md#SourcesGroupConnectionsOauthRetrieve) | **Get** /sources/group_connections/oauth/{id}/ | 
+[**SourcesGroupConnectionsOauthUpdate**](SourcesApi.md#SourcesGroupConnectionsOauthUpdate) | **Put** /sources/group_connections/oauth/{id}/ | 
+[**SourcesGroupConnectionsOauthUsedByList**](SourcesApi.md#SourcesGroupConnectionsOauthUsedByList) | **Get** /sources/group_connections/oauth/{id}/used_by/ | 
+[**SourcesGroupConnectionsPlexCreate**](SourcesApi.md#SourcesGroupConnectionsPlexCreate) | **Post** /sources/group_connections/plex/ | 
+[**SourcesGroupConnectionsPlexDestroy**](SourcesApi.md#SourcesGroupConnectionsPlexDestroy) | **Delete** /sources/group_connections/plex/{id}/ | 
+[**SourcesGroupConnectionsPlexList**](SourcesApi.md#SourcesGroupConnectionsPlexList) | **Get** /sources/group_connections/plex/ | 
+[**SourcesGroupConnectionsPlexPartialUpdate**](SourcesApi.md#SourcesGroupConnectionsPlexPartialUpdate) | **Patch** /sources/group_connections/plex/{id}/ | 
+[**SourcesGroupConnectionsPlexRetrieve**](SourcesApi.md#SourcesGroupConnectionsPlexRetrieve) | **Get** /sources/group_connections/plex/{id}/ | 
+[**SourcesGroupConnectionsPlexUpdate**](SourcesApi.md#SourcesGroupConnectionsPlexUpdate) | **Put** /sources/group_connections/plex/{id}/ | 
+[**SourcesGroupConnectionsPlexUsedByList**](SourcesApi.md#SourcesGroupConnectionsPlexUsedByList) | **Get** /sources/group_connections/plex/{id}/used_by/ | 
+[**SourcesGroupConnectionsSamlDestroy**](SourcesApi.md#SourcesGroupConnectionsSamlDestroy) | **Delete** /sources/group_connections/saml/{id}/ | 
+[**SourcesGroupConnectionsSamlList**](SourcesApi.md#SourcesGroupConnectionsSamlList) | **Get** /sources/group_connections/saml/ | 
+[**SourcesGroupConnectionsSamlPartialUpdate**](SourcesApi.md#SourcesGroupConnectionsSamlPartialUpdate) | **Patch** /sources/group_connections/saml/{id}/ | 
+[**SourcesGroupConnectionsSamlRetrieve**](SourcesApi.md#SourcesGroupConnectionsSamlRetrieve) | **Get** /sources/group_connections/saml/{id}/ | 
+[**SourcesGroupConnectionsSamlUpdate**](SourcesApi.md#SourcesGroupConnectionsSamlUpdate) | **Put** /sources/group_connections/saml/{id}/ | 
+[**SourcesGroupConnectionsSamlUsedByList**](SourcesApi.md#SourcesGroupConnectionsSamlUsedByList) | **Get** /sources/group_connections/saml/{id}/used_by/ | 
+[**SourcesKerberosCreate**](SourcesApi.md#SourcesKerberosCreate) | **Post** /sources/kerberos/ | 
+[**SourcesKerberosDestroy**](SourcesApi.md#SourcesKerberosDestroy) | **Delete** /sources/kerberos/{slug}/ | 
+[**SourcesKerberosList**](SourcesApi.md#SourcesKerberosList) | **Get** /sources/kerberos/ | 
+[**SourcesKerberosPartialUpdate**](SourcesApi.md#SourcesKerberosPartialUpdate) | **Patch** /sources/kerberos/{slug}/ | 
+[**SourcesKerberosRetrieve**](SourcesApi.md#SourcesKerberosRetrieve) | **Get** /sources/kerberos/{slug}/ | 
+[**SourcesKerberosSyncStatusRetrieve**](SourcesApi.md#SourcesKerberosSyncStatusRetrieve) | **Get** /sources/kerberos/{slug}/sync/status/ | 
+[**SourcesKerberosUpdate**](SourcesApi.md#SourcesKerberosUpdate) | **Put** /sources/kerberos/{slug}/ | 
+[**SourcesKerberosUsedByList**](SourcesApi.md#SourcesKerberosUsedByList) | **Get** /sources/kerberos/{slug}/used_by/ | 
+[**SourcesLdapCreate**](SourcesApi.md#SourcesLdapCreate) | **Post** /sources/ldap/ | 
+[**SourcesLdapDebugRetrieve**](SourcesApi.md#SourcesLdapDebugRetrieve) | **Get** /sources/ldap/{slug}/debug/ | 
+[**SourcesLdapDestroy**](SourcesApi.md#SourcesLdapDestroy) | **Delete** /sources/ldap/{slug}/ | 
+[**SourcesLdapList**](SourcesApi.md#SourcesLdapList) | **Get** /sources/ldap/ | 
+[**SourcesLdapPartialUpdate**](SourcesApi.md#SourcesLdapPartialUpdate) | **Patch** /sources/ldap/{slug}/ | 
+[**SourcesLdapRetrieve**](SourcesApi.md#SourcesLdapRetrieve) | **Get** /sources/ldap/{slug}/ | 
+[**SourcesLdapSyncStatusRetrieve**](SourcesApi.md#SourcesLdapSyncStatusRetrieve) | **Get** /sources/ldap/{slug}/sync/status/ | 
+[**SourcesLdapUpdate**](SourcesApi.md#SourcesLdapUpdate) | **Put** /sources/ldap/{slug}/ | 
+[**SourcesLdapUsedByList**](SourcesApi.md#SourcesLdapUsedByList) | **Get** /sources/ldap/{slug}/used_by/ | 
+[**SourcesOauthCreate**](SourcesApi.md#SourcesOauthCreate) | **Post** /sources/oauth/ | 
+[**SourcesOauthDestroy**](SourcesApi.md#SourcesOauthDestroy) | **Delete** /sources/oauth/{slug}/ | 
+[**SourcesOauthList**](SourcesApi.md#SourcesOauthList) | **Get** /sources/oauth/ | 
+[**SourcesOauthPartialUpdate**](SourcesApi.md#SourcesOauthPartialUpdate) | **Patch** /sources/oauth/{slug}/ | 
+[**SourcesOauthRetrieve**](SourcesApi.md#SourcesOauthRetrieve) | **Get** /sources/oauth/{slug}/ | 
+[**SourcesOauthSourceTypesList**](SourcesApi.md#SourcesOauthSourceTypesList) | **Get** /sources/oauth/source_types/ | 
+[**SourcesOauthUpdate**](SourcesApi.md#SourcesOauthUpdate) | **Put** /sources/oauth/{slug}/ | 
+[**SourcesOauthUsedByList**](SourcesApi.md#SourcesOauthUsedByList) | **Get** /sources/oauth/{slug}/used_by/ | 
+[**SourcesPlexCreate**](SourcesApi.md#SourcesPlexCreate) | **Post** /sources/plex/ | 
+[**SourcesPlexDestroy**](SourcesApi.md#SourcesPlexDestroy) | **Delete** /sources/plex/{slug}/ | 
+[**SourcesPlexList**](SourcesApi.md#SourcesPlexList) | **Get** /sources/plex/ | 
+[**SourcesPlexPartialUpdate**](SourcesApi.md#SourcesPlexPartialUpdate) | **Patch** /sources/plex/{slug}/ | 
+[**SourcesPlexRedeemTokenAuthenticatedCreate**](SourcesApi.md#SourcesPlexRedeemTokenAuthenticatedCreate) | **Post** /sources/plex/redeem_token_authenticated/ | 
+[**SourcesPlexRedeemTokenCreate**](SourcesApi.md#SourcesPlexRedeemTokenCreate) | **Post** /sources/plex/redeem_token/ | 
+[**SourcesPlexRetrieve**](SourcesApi.md#SourcesPlexRetrieve) | **Get** /sources/plex/{slug}/ | 
+[**SourcesPlexUpdate**](SourcesApi.md#SourcesPlexUpdate) | **Put** /sources/plex/{slug}/ | 
+[**SourcesPlexUsedByList**](SourcesApi.md#SourcesPlexUsedByList) | **Get** /sources/plex/{slug}/used_by/ | 
+[**SourcesSamlCreate**](SourcesApi.md#SourcesSamlCreate) | **Post** /sources/saml/ | 
+[**SourcesSamlDestroy**](SourcesApi.md#SourcesSamlDestroy) | **Delete** /sources/saml/{slug}/ | 
+[**SourcesSamlList**](SourcesApi.md#SourcesSamlList) | **Get** /sources/saml/ | 
+[**SourcesSamlMetadataRetrieve**](SourcesApi.md#SourcesSamlMetadataRetrieve) | **Get** /sources/saml/{slug}/metadata/ | 
+[**SourcesSamlPartialUpdate**](SourcesApi.md#SourcesSamlPartialUpdate) | **Patch** /sources/saml/{slug}/ | 
+[**SourcesSamlRetrieve**](SourcesApi.md#SourcesSamlRetrieve) | **Get** /sources/saml/{slug}/ | 
+[**SourcesSamlUpdate**](SourcesApi.md#SourcesSamlUpdate) | **Put** /sources/saml/{slug}/ | 
+[**SourcesSamlUsedByList**](SourcesApi.md#SourcesSamlUsedByList) | **Get** /sources/saml/{slug}/used_by/ | 
+[**SourcesScimCreate**](SourcesApi.md#SourcesScimCreate) | **Post** /sources/scim/ | 
+[**SourcesScimDestroy**](SourcesApi.md#SourcesScimDestroy) | **Delete** /sources/scim/{slug}/ | 
+[**SourcesScimGroupsCreate**](SourcesApi.md#SourcesScimGroupsCreate) | **Post** /sources/scim_groups/ | 
+[**SourcesScimGroupsDestroy**](SourcesApi.md#SourcesScimGroupsDestroy) | **Delete** /sources/scim_groups/{id}/ | 
+[**SourcesScimGroupsList**](SourcesApi.md#SourcesScimGroupsList) | **Get** /sources/scim_groups/ | 
+[**SourcesScimGroupsPartialUpdate**](SourcesApi.md#SourcesScimGroupsPartialUpdate) | **Patch** /sources/scim_groups/{id}/ | 
+[**SourcesScimGroupsRetrieve**](SourcesApi.md#SourcesScimGroupsRetrieve) | **Get** /sources/scim_groups/{id}/ | 
+[**SourcesScimGroupsUpdate**](SourcesApi.md#SourcesScimGroupsUpdate) | **Put** /sources/scim_groups/{id}/ | 
+[**SourcesScimGroupsUsedByList**](SourcesApi.md#SourcesScimGroupsUsedByList) | **Get** /sources/scim_groups/{id}/used_by/ | 
+[**SourcesScimList**](SourcesApi.md#SourcesScimList) | **Get** /sources/scim/ | 
+[**SourcesScimPartialUpdate**](SourcesApi.md#SourcesScimPartialUpdate) | **Patch** /sources/scim/{slug}/ | 
+[**SourcesScimRetrieve**](SourcesApi.md#SourcesScimRetrieve) | **Get** /sources/scim/{slug}/ | 
+[**SourcesScimUpdate**](SourcesApi.md#SourcesScimUpdate) | **Put** /sources/scim/{slug}/ | 
+[**SourcesScimUsedByList**](SourcesApi.md#SourcesScimUsedByList) | **Get** /sources/scim/{slug}/used_by/ | 
+[**SourcesScimUsersCreate**](SourcesApi.md#SourcesScimUsersCreate) | **Post** /sources/scim_users/ | 
+[**SourcesScimUsersDestroy**](SourcesApi.md#SourcesScimUsersDestroy) | **Delete** /sources/scim_users/{id}/ | 
+[**SourcesScimUsersList**](SourcesApi.md#SourcesScimUsersList) | **Get** /sources/scim_users/ | 
+[**SourcesScimUsersPartialUpdate**](SourcesApi.md#SourcesScimUsersPartialUpdate) | **Patch** /sources/scim_users/{id}/ | 
+[**SourcesScimUsersRetrieve**](SourcesApi.md#SourcesScimUsersRetrieve) | **Get** /sources/scim_users/{id}/ | 
+[**SourcesScimUsersUpdate**](SourcesApi.md#SourcesScimUsersUpdate) | **Put** /sources/scim_users/{id}/ | 
+[**SourcesScimUsersUsedByList**](SourcesApi.md#SourcesScimUsersUsedByList) | **Get** /sources/scim_users/{id}/used_by/ | 
+[**SourcesUserConnectionsAllDestroy**](SourcesApi.md#SourcesUserConnectionsAllDestroy) | **Delete** /sources/user_connections/all/{id}/ | 
+[**SourcesUserConnectionsAllList**](SourcesApi.md#SourcesUserConnectionsAllList) | **Get** /sources/user_connections/all/ | 
+[**SourcesUserConnectionsAllPartialUpdate**](SourcesApi.md#SourcesUserConnectionsAllPartialUpdate) | **Patch** /sources/user_connections/all/{id}/ | 
+[**SourcesUserConnectionsAllRetrieve**](SourcesApi.md#SourcesUserConnectionsAllRetrieve) | **Get** /sources/user_connections/all/{id}/ | 
+[**SourcesUserConnectionsAllUpdate**](SourcesApi.md#SourcesUserConnectionsAllUpdate) | **Put** /sources/user_connections/all/{id}/ | 
+[**SourcesUserConnectionsAllUsedByList**](SourcesApi.md#SourcesUserConnectionsAllUsedByList) | **Get** /sources/user_connections/all/{id}/used_by/ | 
+[**SourcesUserConnectionsKerberosCreate**](SourcesApi.md#SourcesUserConnectionsKerberosCreate) | **Post** /sources/user_connections/kerberos/ | 
+[**SourcesUserConnectionsKerberosDestroy**](SourcesApi.md#SourcesUserConnectionsKerberosDestroy) | **Delete** /sources/user_connections/kerberos/{id}/ | 
+[**SourcesUserConnectionsKerberosList**](SourcesApi.md#SourcesUserConnectionsKerberosList) | **Get** /sources/user_connections/kerberos/ | 
+[**SourcesUserConnectionsKerberosPartialUpdate**](SourcesApi.md#SourcesUserConnectionsKerberosPartialUpdate) | **Patch** /sources/user_connections/kerberos/{id}/ | 
+[**SourcesUserConnectionsKerberosRetrieve**](SourcesApi.md#SourcesUserConnectionsKerberosRetrieve) | **Get** /sources/user_connections/kerberos/{id}/ | 
+[**SourcesUserConnectionsKerberosUpdate**](SourcesApi.md#SourcesUserConnectionsKerberosUpdate) | **Put** /sources/user_connections/kerberos/{id}/ | 
+[**SourcesUserConnectionsKerberosUsedByList**](SourcesApi.md#SourcesUserConnectionsKerberosUsedByList) | **Get** /sources/user_connections/kerberos/{id}/used_by/ | 
+[**SourcesUserConnectionsOauthCreate**](SourcesApi.md#SourcesUserConnectionsOauthCreate) | **Post** /sources/user_connections/oauth/ | 
+[**SourcesUserConnectionsOauthDestroy**](SourcesApi.md#SourcesUserConnectionsOauthDestroy) | **Delete** /sources/user_connections/oauth/{id}/ | 
+[**SourcesUserConnectionsOauthList**](SourcesApi.md#SourcesUserConnectionsOauthList) | **Get** /sources/user_connections/oauth/ | 
+[**SourcesUserConnectionsOauthPartialUpdate**](SourcesApi.md#SourcesUserConnectionsOauthPartialUpdate) | **Patch** /sources/user_connections/oauth/{id}/ | 
+[**SourcesUserConnectionsOauthRetrieve**](SourcesApi.md#SourcesUserConnectionsOauthRetrieve) | **Get** /sources/user_connections/oauth/{id}/ | 
+[**SourcesUserConnectionsOauthUpdate**](SourcesApi.md#SourcesUserConnectionsOauthUpdate) | **Put** /sources/user_connections/oauth/{id}/ | 
+[**SourcesUserConnectionsOauthUsedByList**](SourcesApi.md#SourcesUserConnectionsOauthUsedByList) | **Get** /sources/user_connections/oauth/{id}/used_by/ | 
+[**SourcesUserConnectionsPlexCreate**](SourcesApi.md#SourcesUserConnectionsPlexCreate) | **Post** /sources/user_connections/plex/ | 
+[**SourcesUserConnectionsPlexDestroy**](SourcesApi.md#SourcesUserConnectionsPlexDestroy) | **Delete** /sources/user_connections/plex/{id}/ | 
+[**SourcesUserConnectionsPlexList**](SourcesApi.md#SourcesUserConnectionsPlexList) | **Get** /sources/user_connections/plex/ | 
+[**SourcesUserConnectionsPlexPartialUpdate**](SourcesApi.md#SourcesUserConnectionsPlexPartialUpdate) | **Patch** /sources/user_connections/plex/{id}/ | 
+[**SourcesUserConnectionsPlexRetrieve**](SourcesApi.md#SourcesUserConnectionsPlexRetrieve) | **Get** /sources/user_connections/plex/{id}/ | 
+[**SourcesUserConnectionsPlexUpdate**](SourcesApi.md#SourcesUserConnectionsPlexUpdate) | **Put** /sources/user_connections/plex/{id}/ | 
+[**SourcesUserConnectionsPlexUsedByList**](SourcesApi.md#SourcesUserConnectionsPlexUsedByList) | **Get** /sources/user_connections/plex/{id}/used_by/ | 
+[**SourcesUserConnectionsSamlCreate**](SourcesApi.md#SourcesUserConnectionsSamlCreate) | **Post** /sources/user_connections/saml/ | 
+[**SourcesUserConnectionsSamlDestroy**](SourcesApi.md#SourcesUserConnectionsSamlDestroy) | **Delete** /sources/user_connections/saml/{id}/ | 
+[**SourcesUserConnectionsSamlList**](SourcesApi.md#SourcesUserConnectionsSamlList) | **Get** /sources/user_connections/saml/ | 
+[**SourcesUserConnectionsSamlPartialUpdate**](SourcesApi.md#SourcesUserConnectionsSamlPartialUpdate) | **Patch** /sources/user_connections/saml/{id}/ | 
+[**SourcesUserConnectionsSamlRetrieve**](SourcesApi.md#SourcesUserConnectionsSamlRetrieve) | **Get** /sources/user_connections/saml/{id}/ | 
+[**SourcesUserConnectionsSamlUpdate**](SourcesApi.md#SourcesUserConnectionsSamlUpdate) | **Put** /sources/user_connections/saml/{id}/ | 
+[**SourcesUserConnectionsSamlUsedByList**](SourcesApi.md#SourcesUserConnectionsSamlUsedByList) | **Get** /sources/user_connections/saml/{id}/used_by/ | 
 
 
 
@@ -152,22 +152,22 @@ Method | HTTP request | Description
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesAllDestroy(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesAllDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesAllDestroy(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesAllDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -220,30 +220,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	managed := "managed_example" // string |  (optional)
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-	slug := "slug_example" // string |  (optional)
+    managed := "managed_example" // string |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    slug := "slug_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesAllList(context.Background()).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesAllList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesAllList`: PaginatedSourceList
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesAllList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesAllList(context.Background()).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesAllList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesAllList`: PaginatedSourceList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesAllList`: %v\n", resp)
 }
 ```
 
@@ -298,24 +298,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesAllRetrieve(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesAllRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesAllRetrieve`: Source
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesAllRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesAllRetrieve(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesAllRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesAllRetrieve`: Source
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesAllRetrieve`: %v\n", resp)
 }
 ```
 
@@ -368,24 +368,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
-	file := os.NewFile(1234, "some_file") // *os.File |  (optional)
-	clear := true // bool |  (optional) (default to false)
+    slug := "slug_example" // string | 
+    file := os.NewFile(1234, "some_file") // *os.File |  (optional)
+    clear := true // bool |  (optional) (default to false)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesAllSetIconCreate(context.Background(), slug).File(file).Clear(clear).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesAllSetIconCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesAllSetIconCreate(context.Background(), slug).File(file).Clear(clear).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesAllSetIconCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -440,23 +440,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
-	filePathRequest := *openapiclient.NewFilePathRequest("Url_example") // FilePathRequest | 
+    slug := "slug_example" // string | 
+    filePathRequest := *openapiclient.NewFilePathRequest("Url_example") // FilePathRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesAllSetIconUrlCreate(context.Background(), slug).FilePathRequest(filePathRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesAllSetIconUrlCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesAllSetIconUrlCreate(context.Background(), slug).FilePathRequest(filePathRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesAllSetIconUrlCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -510,23 +510,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesAllTypesList(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesAllTypesList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesAllTypesList`: []TypeCreate
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesAllTypesList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesAllTypesList(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesAllTypesList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesAllTypesList`: []TypeCreate
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesAllTypesList`: %v\n", resp)
 }
 ```
 
@@ -571,24 +571,24 @@ Other parameters are passed through a pointer to a apiSourcesAllTypesListRequest
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesAllUsedByList(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesAllUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesAllUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesAllUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesAllUsedByList(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesAllUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesAllUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesAllUsedByList`: %v\n", resp)
 }
 ```
 
@@ -641,23 +641,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesAllUserSettingsList(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesAllUserSettingsList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesAllUserSettingsList`: []UserSetting
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesAllUserSettingsList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesAllUserSettingsList(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesAllUserSettingsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesAllUserSettingsList`: []UserSetting
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesAllUserSettingsList`: %v\n", resp)
 }
 ```
 
@@ -702,22 +702,22 @@ Other parameters are passed through a pointer to a apiSourcesAllUserSettingsList
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Group Kerberos Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this Group Kerberos Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesGroupConnectionsKerberosDestroy(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsKerberosDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsKerberosDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsKerberosDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -770,29 +770,29 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	group := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-	sourceSlug := "sourceSlug_example" // string |  (optional)
+    group := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsKerberosList(context.Background()).Group(group).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsKerberosList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsKerberosList`: PaginatedGroupKerberosSourceConnectionList
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsKerberosList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsKerberosList(context.Background()).Group(group).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsKerberosList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsKerberosList`: PaginatedGroupKerberosSourceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsKerberosList`: %v\n", resp)
 }
 ```
 
@@ -846,24 +846,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Group Kerberos Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this Group Kerberos Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsKerberosPartialUpdate(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsKerberosPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsKerberosPartialUpdate`: GroupKerberosSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsKerberosPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsKerberosPartialUpdate(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsKerberosPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsKerberosPartialUpdate`: GroupKerberosSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsKerberosPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -916,24 +916,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Group Kerberos Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this Group Kerberos Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsKerberosRetrieve(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsKerberosRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsKerberosRetrieve`: GroupKerberosSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsKerberosRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsKerberosRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsKerberosRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsKerberosRetrieve`: GroupKerberosSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsKerberosRetrieve`: %v\n", resp)
 }
 ```
 
@@ -986,24 +986,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Group Kerberos Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this Group Kerberos Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsKerberosUpdate(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsKerberosUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsKerberosUpdate`: GroupKerberosSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsKerberosUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsKerberosUpdate(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsKerberosUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsKerberosUpdate`: GroupKerberosSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsKerberosUpdate`: %v\n", resp)
 }
 ```
 
@@ -1056,24 +1056,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Group Kerberos Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this Group Kerberos Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsKerberosUsedByList(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsKerberosUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsKerberosUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsKerberosUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsKerberosUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsKerberosUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsKerberosUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsKerberosUsedByList`: %v\n", resp)
 }
 ```
 
@@ -1126,23 +1126,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsOauthCreate(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsOauthCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsOauthCreate`: GroupOAuthSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsOauthCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsOauthCreate(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsOauthCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsOauthCreate`: GroupOAuthSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsOauthCreate`: %v\n", resp)
 }
 ```
 
@@ -1187,22 +1187,22 @@ Other parameters are passed through a pointer to a apiSourcesGroupConnectionsOau
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Group OAuth Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this Group OAuth Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesGroupConnectionsOauthDestroy(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsOauthDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsOauthDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsOauthDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -1255,29 +1255,29 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	group := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-	sourceSlug := "sourceSlug_example" // string |  (optional)
+    group := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsOauthList(context.Background()).Group(group).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsOauthList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsOauthList`: PaginatedGroupOAuthSourceConnectionList
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsOauthList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsOauthList(context.Background()).Group(group).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsOauthList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsOauthList`: PaginatedGroupOAuthSourceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsOauthList`: %v\n", resp)
 }
 ```
 
@@ -1331,24 +1331,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Group OAuth Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this Group OAuth Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsOauthPartialUpdate(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsOauthPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsOauthPartialUpdate`: GroupOAuthSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsOauthPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsOauthPartialUpdate(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsOauthPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsOauthPartialUpdate`: GroupOAuthSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsOauthPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -1401,24 +1401,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Group OAuth Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this Group OAuth Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsOauthRetrieve(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsOauthRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsOauthRetrieve`: GroupOAuthSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsOauthRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsOauthRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsOauthRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsOauthRetrieve`: GroupOAuthSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsOauthRetrieve`: %v\n", resp)
 }
 ```
 
@@ -1471,24 +1471,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Group OAuth Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this Group OAuth Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsOauthUpdate(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsOauthUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsOauthUpdate`: GroupOAuthSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsOauthUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsOauthUpdate(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsOauthUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsOauthUpdate`: GroupOAuthSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsOauthUpdate`: %v\n", resp)
 }
 ```
 
@@ -1541,24 +1541,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Group OAuth Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this Group OAuth Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsOauthUsedByList(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsOauthUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsOauthUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsOauthUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsOauthUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsOauthUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsOauthUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsOauthUsedByList`: %v\n", resp)
 }
 ```
 
@@ -1611,23 +1611,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsPlexCreate(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsPlexCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsPlexCreate`: GroupPlexSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsPlexCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsPlexCreate(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsPlexCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsPlexCreate`: GroupPlexSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsPlexCreate`: %v\n", resp)
 }
 ```
 
@@ -1672,22 +1672,22 @@ Other parameters are passed through a pointer to a apiSourcesGroupConnectionsPle
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Group Plex Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this Group Plex Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesGroupConnectionsPlexDestroy(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsPlexDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsPlexDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsPlexDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -1740,29 +1740,29 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	group := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-	sourceSlug := "sourceSlug_example" // string |  (optional)
+    group := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsPlexList(context.Background()).Group(group).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsPlexList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsPlexList`: PaginatedGroupPlexSourceConnectionList
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsPlexList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsPlexList(context.Background()).Group(group).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsPlexList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsPlexList`: PaginatedGroupPlexSourceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsPlexList`: %v\n", resp)
 }
 ```
 
@@ -1816,24 +1816,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Group Plex Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this Group Plex Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsPlexPartialUpdate(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsPlexPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsPlexPartialUpdate`: GroupPlexSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsPlexPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsPlexPartialUpdate(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsPlexPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsPlexPartialUpdate`: GroupPlexSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsPlexPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -1886,24 +1886,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Group Plex Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this Group Plex Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsPlexRetrieve(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsPlexRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsPlexRetrieve`: GroupPlexSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsPlexRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsPlexRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsPlexRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsPlexRetrieve`: GroupPlexSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsPlexRetrieve`: %v\n", resp)
 }
 ```
 
@@ -1956,24 +1956,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Group Plex Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this Group Plex Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsPlexUpdate(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsPlexUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsPlexUpdate`: GroupPlexSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsPlexUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsPlexUpdate(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsPlexUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsPlexUpdate`: GroupPlexSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsPlexUpdate`: %v\n", resp)
 }
 ```
 
@@ -2026,24 +2026,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Group Plex Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this Group Plex Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsPlexUsedByList(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsPlexUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsPlexUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsPlexUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsPlexUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsPlexUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsPlexUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsPlexUsedByList`: %v\n", resp)
 }
 ```
 
@@ -2096,22 +2096,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Group SAML Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this Group SAML Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesGroupConnectionsSamlDestroy(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsSamlDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsSamlDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsSamlDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -2164,29 +2164,29 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	group := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-	sourceSlug := "sourceSlug_example" // string |  (optional)
+    group := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsSamlList(context.Background()).Group(group).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsSamlList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsSamlList`: PaginatedGroupSAMLSourceConnectionList
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsSamlList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsSamlList(context.Background()).Group(group).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsSamlList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsSamlList`: PaginatedGroupSAMLSourceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsSamlList`: %v\n", resp)
 }
 ```
 
@@ -2240,24 +2240,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Group SAML Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this Group SAML Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsSamlPartialUpdate(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsSamlPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsSamlPartialUpdate`: GroupSAMLSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsSamlPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsSamlPartialUpdate(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsSamlPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsSamlPartialUpdate`: GroupSAMLSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsSamlPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -2310,24 +2310,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Group SAML Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this Group SAML Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsSamlRetrieve(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsSamlRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsSamlRetrieve`: GroupSAMLSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsSamlRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsSamlRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsSamlRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsSamlRetrieve`: GroupSAMLSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsSamlRetrieve`: %v\n", resp)
 }
 ```
 
@@ -2380,24 +2380,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Group SAML Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this Group SAML Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsSamlUpdate(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsSamlUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsSamlUpdate`: GroupSAMLSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsSamlUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsSamlUpdate(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsSamlUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsSamlUpdate`: GroupSAMLSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsSamlUpdate`: %v\n", resp)
 }
 ```
 
@@ -2450,24 +2450,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Group SAML Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this Group SAML Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesGroupConnectionsSamlUsedByList(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesGroupConnectionsSamlUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesGroupConnectionsSamlUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesGroupConnectionsSamlUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsSamlUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsSamlUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsSamlUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsSamlUsedByList`: %v\n", resp)
 }
 ```
 
@@ -2520,24 +2520,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	kerberosSourceRequest := *openapiclient.NewKerberosSourceRequest("Name_example", "Slug_example", "Realm_example") // KerberosSourceRequest | 
+    kerberosSourceRequest := *openapiclient.NewKerberosSourceRequest("Name_example", "Slug_example", "Realm_example") // KerberosSourceRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesKerberosCreate(context.Background()).KerberosSourceRequest(kerberosSourceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesKerberosCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesKerberosCreate`: KerberosSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesKerberosCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesKerberosCreate(context.Background()).KerberosSourceRequest(kerberosSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesKerberosCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesKerberosCreate`: KerberosSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesKerberosCreate`: %v\n", resp)
 }
 ```
 
@@ -2586,22 +2586,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesKerberosDestroy(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesKerberosDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesKerberosDestroy(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesKerberosDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -2654,36 +2654,36 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	enabled := true // bool |  (optional)
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	passwordLoginUpdateInternalPassword := true // bool |  (optional)
-	realm := "realm_example" // string |  (optional)
-	search := "search_example" // string | A search term. (optional)
-	slug := "slug_example" // string |  (optional)
-	spnegoServerName := "spnegoServerName_example" // string |  (optional)
-	syncPrincipal := "syncPrincipal_example" // string |  (optional)
-	syncUsers := true // bool |  (optional)
-	syncUsersPassword := true // bool |  (optional)
+    enabled := true // bool |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    passwordLoginUpdateInternalPassword := true // bool |  (optional)
+    realm := "realm_example" // string |  (optional)
+    search := "search_example" // string | A search term. (optional)
+    slug := "slug_example" // string |  (optional)
+    spnegoServerName := "spnegoServerName_example" // string |  (optional)
+    syncPrincipal := "syncPrincipal_example" // string |  (optional)
+    syncUsers := true // bool |  (optional)
+    syncUsersPassword := true // bool |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesKerberosList(context.Background()).Enabled(enabled).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).Realm(realm).Search(search).Slug(slug).SpnegoServerName(spnegoServerName).SyncPrincipal(syncPrincipal).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesKerberosList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesKerberosList`: PaginatedKerberosSourceList
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesKerberosList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesKerberosList(context.Background()).Enabled(enabled).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).Realm(realm).Search(search).Slug(slug).SpnegoServerName(spnegoServerName).SyncPrincipal(syncPrincipal).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesKerberosList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesKerberosList`: PaginatedKerberosSourceList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesKerberosList`: %v\n", resp)
 }
 ```
 
@@ -2744,25 +2744,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
-	patchedKerberosSourceRequest := *openapiclient.NewPatchedKerberosSourceRequest() // PatchedKerberosSourceRequest |  (optional)
+    slug := "slug_example" // string | 
+    patchedKerberosSourceRequest := *openapiclient.NewPatchedKerberosSourceRequest() // PatchedKerberosSourceRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesKerberosPartialUpdate(context.Background(), slug).PatchedKerberosSourceRequest(patchedKerberosSourceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesKerberosPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesKerberosPartialUpdate`: KerberosSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesKerberosPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesKerberosPartialUpdate(context.Background(), slug).PatchedKerberosSourceRequest(patchedKerberosSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesKerberosPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesKerberosPartialUpdate`: KerberosSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesKerberosPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -2816,24 +2816,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesKerberosRetrieve(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesKerberosRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesKerberosRetrieve`: KerberosSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesKerberosRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesKerberosRetrieve(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesKerberosRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesKerberosRetrieve`: KerberosSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesKerberosRetrieve`: %v\n", resp)
 }
 ```
 
@@ -2886,24 +2886,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesKerberosSyncStatusRetrieve(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesKerberosSyncStatusRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesKerberosSyncStatusRetrieve`: KerberosSyncStatus
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesKerberosSyncStatusRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesKerberosSyncStatusRetrieve(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesKerberosSyncStatusRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesKerberosSyncStatusRetrieve`: KerberosSyncStatus
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesKerberosSyncStatusRetrieve`: %v\n", resp)
 }
 ```
 
@@ -2956,25 +2956,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
-	kerberosSourceRequest := *openapiclient.NewKerberosSourceRequest("Name_example", "Slug_example", "Realm_example") // KerberosSourceRequest | 
+    slug := "slug_example" // string | 
+    kerberosSourceRequest := *openapiclient.NewKerberosSourceRequest("Name_example", "Slug_example", "Realm_example") // KerberosSourceRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesKerberosUpdate(context.Background(), slug).KerberosSourceRequest(kerberosSourceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesKerberosUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesKerberosUpdate`: KerberosSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesKerberosUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesKerberosUpdate(context.Background(), slug).KerberosSourceRequest(kerberosSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesKerberosUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesKerberosUpdate`: KerberosSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesKerberosUpdate`: %v\n", resp)
 }
 ```
 
@@ -3028,24 +3028,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesKerberosUsedByList(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesKerberosUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesKerberosUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesKerberosUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesKerberosUsedByList(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesKerberosUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesKerberosUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesKerberosUsedByList`: %v\n", resp)
 }
 ```
 
@@ -3098,24 +3098,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	lDAPSourceRequest := *openapiclient.NewLDAPSourceRequest("Name_example", "Slug_example", "ServerUri_example", "BaseDn_example") // LDAPSourceRequest | 
+    lDAPSourceRequest := *openapiclient.NewLDAPSourceRequest("Name_example", "Slug_example", "ServerUri_example", "BaseDn_example") // LDAPSourceRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesLdapCreate(context.Background()).LDAPSourceRequest(lDAPSourceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesLdapCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesLdapCreate`: LDAPSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesLdapCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesLdapCreate(context.Background()).LDAPSourceRequest(lDAPSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesLdapCreate`: LDAPSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesLdapCreate`: %v\n", resp)
 }
 ```
 
@@ -3164,24 +3164,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesLdapDebugRetrieve(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesLdapDebugRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesLdapDebugRetrieve`: LDAPDebug
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesLdapDebugRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesLdapDebugRetrieve(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapDebugRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesLdapDebugRetrieve`: LDAPDebug
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesLdapDebugRetrieve`: %v\n", resp)
 }
 ```
 
@@ -3234,22 +3234,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesLdapDestroy(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesLdapDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesLdapDestroy(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -3302,50 +3302,50 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	additionalGroupDn := "additionalGroupDn_example" // string |  (optional)
-	additionalUserDn := "additionalUserDn_example" // string |  (optional)
-	baseDn := "baseDn_example" // string |  (optional)
-	bindCn := "bindCn_example" // string |  (optional)
-	clientCertificate := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	enabled := true // bool |  (optional)
-	groupMembershipField := "groupMembershipField_example" // string |  (optional)
-	groupObjectFilter := "groupObjectFilter_example" // string |  (optional)
-	groupPropertyMappings := []string{"Inner_example"} // []string |  (optional)
-	name := "name_example" // string |  (optional)
-	objectUniquenessField := "objectUniquenessField_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	passwordLoginUpdateInternalPassword := true // bool |  (optional)
-	peerCertificate := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	search := "search_example" // string | A search term. (optional)
-	serverUri := "serverUri_example" // string |  (optional)
-	slug := "slug_example" // string |  (optional)
-	sni := true // bool |  (optional)
-	startTls := true // bool |  (optional)
-	syncGroups := true // bool |  (optional)
-	syncParentGroup := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	syncUsers := true // bool |  (optional)
-	syncUsersPassword := true // bool |  (optional)
-	userObjectFilter := "userObjectFilter_example" // string |  (optional)
-	userPropertyMappings := []string{"Inner_example"} // []string |  (optional)
+    additionalGroupDn := "additionalGroupDn_example" // string |  (optional)
+    additionalUserDn := "additionalUserDn_example" // string |  (optional)
+    baseDn := "baseDn_example" // string |  (optional)
+    bindCn := "bindCn_example" // string |  (optional)
+    clientCertificate := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    enabled := true // bool |  (optional)
+    groupMembershipField := "groupMembershipField_example" // string |  (optional)
+    groupObjectFilter := "groupObjectFilter_example" // string |  (optional)
+    groupPropertyMappings := []string{"Inner_example"} // []string |  (optional)
+    name := "name_example" // string |  (optional)
+    objectUniquenessField := "objectUniquenessField_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    passwordLoginUpdateInternalPassword := true // bool |  (optional)
+    peerCertificate := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    search := "search_example" // string | A search term. (optional)
+    serverUri := "serverUri_example" // string |  (optional)
+    slug := "slug_example" // string |  (optional)
+    sni := true // bool |  (optional)
+    startTls := true // bool |  (optional)
+    syncGroups := true // bool |  (optional)
+    syncParentGroup := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    syncUsers := true // bool |  (optional)
+    syncUsersPassword := true // bool |  (optional)
+    userObjectFilter := "userObjectFilter_example" // string |  (optional)
+    userPropertyMappings := []string{"Inner_example"} // []string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesLdapList(context.Background()).AdditionalGroupDn(additionalGroupDn).AdditionalUserDn(additionalUserDn).BaseDn(baseDn).BindCn(bindCn).ClientCertificate(clientCertificate).Enabled(enabled).GroupMembershipField(groupMembershipField).GroupObjectFilter(groupObjectFilter).GroupPropertyMappings(groupPropertyMappings).Name(name).ObjectUniquenessField(objectUniquenessField).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).PeerCertificate(peerCertificate).Search(search).ServerUri(serverUri).Slug(slug).Sni(sni).StartTls(startTls).SyncGroups(syncGroups).SyncParentGroup(syncParentGroup).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).UserObjectFilter(userObjectFilter).UserPropertyMappings(userPropertyMappings).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesLdapList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesLdapList`: PaginatedLDAPSourceList
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesLdapList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesLdapList(context.Background()).AdditionalGroupDn(additionalGroupDn).AdditionalUserDn(additionalUserDn).BaseDn(baseDn).BindCn(bindCn).ClientCertificate(clientCertificate).Enabled(enabled).GroupMembershipField(groupMembershipField).GroupObjectFilter(groupObjectFilter).GroupPropertyMappings(groupPropertyMappings).Name(name).ObjectUniquenessField(objectUniquenessField).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).PeerCertificate(peerCertificate).Search(search).ServerUri(serverUri).Slug(slug).Sni(sni).StartTls(startTls).SyncGroups(syncGroups).SyncParentGroup(syncParentGroup).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).UserObjectFilter(userObjectFilter).UserPropertyMappings(userPropertyMappings).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesLdapList`: PaginatedLDAPSourceList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesLdapList`: %v\n", resp)
 }
 ```
 
@@ -3420,25 +3420,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
-	patchedLDAPSourceRequest := *openapiclient.NewPatchedLDAPSourceRequest() // PatchedLDAPSourceRequest |  (optional)
+    slug := "slug_example" // string | 
+    patchedLDAPSourceRequest := *openapiclient.NewPatchedLDAPSourceRequest() // PatchedLDAPSourceRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesLdapPartialUpdate(context.Background(), slug).PatchedLDAPSourceRequest(patchedLDAPSourceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesLdapPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesLdapPartialUpdate`: LDAPSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesLdapPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesLdapPartialUpdate(context.Background(), slug).PatchedLDAPSourceRequest(patchedLDAPSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesLdapPartialUpdate`: LDAPSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesLdapPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -3492,24 +3492,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesLdapRetrieve(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesLdapRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesLdapRetrieve`: LDAPSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesLdapRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesLdapRetrieve(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesLdapRetrieve`: LDAPSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesLdapRetrieve`: %v\n", resp)
 }
 ```
 
@@ -3562,24 +3562,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesLdapSyncStatusRetrieve(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesLdapSyncStatusRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesLdapSyncStatusRetrieve`: SyncStatus
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesLdapSyncStatusRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesLdapSyncStatusRetrieve(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapSyncStatusRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesLdapSyncStatusRetrieve`: SyncStatus
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesLdapSyncStatusRetrieve`: %v\n", resp)
 }
 ```
 
@@ -3632,25 +3632,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
-	lDAPSourceRequest := *openapiclient.NewLDAPSourceRequest("Name_example", "Slug_example", "ServerUri_example", "BaseDn_example") // LDAPSourceRequest | 
+    slug := "slug_example" // string | 
+    lDAPSourceRequest := *openapiclient.NewLDAPSourceRequest("Name_example", "Slug_example", "ServerUri_example", "BaseDn_example") // LDAPSourceRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesLdapUpdate(context.Background(), slug).LDAPSourceRequest(lDAPSourceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesLdapUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesLdapUpdate`: LDAPSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesLdapUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesLdapUpdate(context.Background(), slug).LDAPSourceRequest(lDAPSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesLdapUpdate`: LDAPSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesLdapUpdate`: %v\n", resp)
 }
 ```
 
@@ -3704,24 +3704,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesLdapUsedByList(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesLdapUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesLdapUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesLdapUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesLdapUsedByList(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesLdapUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesLdapUsedByList`: %v\n", resp)
 }
 ```
 
@@ -3774,24 +3774,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	oAuthSourceRequest := *openapiclient.NewOAuthSourceRequest("Name_example", "Slug_example", openapiclient.ProviderTypeEnum("apple"), "ConsumerKey_example", "ConsumerSecret_example") // OAuthSourceRequest | 
+    oAuthSourceRequest := *openapiclient.NewOAuthSourceRequest("Name_example", "Slug_example", openapiclient.ProviderTypeEnum("apple"), "ConsumerKey_example", "ConsumerSecret_example") // OAuthSourceRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesOauthCreate(context.Background()).OAuthSourceRequest(oAuthSourceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesOauthCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesOauthCreate`: OAuthSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesOauthCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesOauthCreate(context.Background()).OAuthSourceRequest(oAuthSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesOauthCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesOauthCreate`: OAuthSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesOauthCreate`: %v\n", resp)
 }
 ```
 
@@ -3840,22 +3840,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesOauthDestroy(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesOauthDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesOauthDestroy(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesOauthDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -3908,43 +3908,43 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	accessTokenUrl := "accessTokenUrl_example" // string |  (optional)
-	additionalScopes := "additionalScopes_example" // string |  (optional)
-	authenticationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	authorizationUrl := "authorizationUrl_example" // string |  (optional)
-	consumerKey := "consumerKey_example" // string |  (optional)
-	enabled := true // bool |  (optional)
-	enrollmentFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	groupMatchingMode := "groupMatchingMode_example" // string | How the source determines if an existing group should be used or a new group created.   (optional)
-	hasJwks := true // bool | Only return sources with JWKS data (optional)
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	policyEngineMode := "policyEngineMode_example" // string |  (optional)
-	profileUrl := "profileUrl_example" // string |  (optional)
-	providerType := "providerType_example" // string |  (optional)
-	requestTokenUrl := "requestTokenUrl_example" // string |  (optional)
-	search := "search_example" // string | A search term. (optional)
-	slug := "slug_example" // string |  (optional)
-	userMatchingMode := "userMatchingMode_example" // string | How the source determines if an existing user should be authenticated or a new user enrolled.   (optional)
+    accessTokenUrl := "accessTokenUrl_example" // string |  (optional)
+    additionalScopes := "additionalScopes_example" // string |  (optional)
+    authenticationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    authorizationUrl := "authorizationUrl_example" // string |  (optional)
+    consumerKey := "consumerKey_example" // string |  (optional)
+    enabled := true // bool |  (optional)
+    enrollmentFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    groupMatchingMode := "groupMatchingMode_example" // string | How the source determines if an existing group should be used or a new group created.   (optional)
+    hasJwks := true // bool | Only return sources with JWKS data (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    policyEngineMode := "policyEngineMode_example" // string |  (optional)
+    profileUrl := "profileUrl_example" // string |  (optional)
+    providerType := "providerType_example" // string |  (optional)
+    requestTokenUrl := "requestTokenUrl_example" // string |  (optional)
+    search := "search_example" // string | A search term. (optional)
+    slug := "slug_example" // string |  (optional)
+    userMatchingMode := "userMatchingMode_example" // string | How the source determines if an existing user should be authenticated or a new user enrolled.   (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesOauthList(context.Background()).AccessTokenUrl(accessTokenUrl).AdditionalScopes(additionalScopes).AuthenticationFlow(authenticationFlow).AuthorizationUrl(authorizationUrl).ConsumerKey(consumerKey).Enabled(enabled).EnrollmentFlow(enrollmentFlow).GroupMatchingMode(groupMatchingMode).HasJwks(hasJwks).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).ProfileUrl(profileUrl).ProviderType(providerType).RequestTokenUrl(requestTokenUrl).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesOauthList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesOauthList`: PaginatedOAuthSourceList
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesOauthList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesOauthList(context.Background()).AccessTokenUrl(accessTokenUrl).AdditionalScopes(additionalScopes).AuthenticationFlow(authenticationFlow).AuthorizationUrl(authorizationUrl).ConsumerKey(consumerKey).Enabled(enabled).EnrollmentFlow(enrollmentFlow).GroupMatchingMode(groupMatchingMode).HasJwks(hasJwks).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).ProfileUrl(profileUrl).ProviderType(providerType).RequestTokenUrl(requestTokenUrl).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesOauthList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesOauthList`: PaginatedOAuthSourceList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesOauthList`: %v\n", resp)
 }
 ```
 
@@ -4012,25 +4012,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
-	patchedOAuthSourceRequest := *openapiclient.NewPatchedOAuthSourceRequest() // PatchedOAuthSourceRequest |  (optional)
+    slug := "slug_example" // string | 
+    patchedOAuthSourceRequest := *openapiclient.NewPatchedOAuthSourceRequest() // PatchedOAuthSourceRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesOauthPartialUpdate(context.Background(), slug).PatchedOAuthSourceRequest(patchedOAuthSourceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesOauthPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesOauthPartialUpdate`: OAuthSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesOauthPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesOauthPartialUpdate(context.Background(), slug).PatchedOAuthSourceRequest(patchedOAuthSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesOauthPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesOauthPartialUpdate`: OAuthSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesOauthPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -4084,24 +4084,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesOauthRetrieve(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesOauthRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesOauthRetrieve`: OAuthSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesOauthRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesOauthRetrieve(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesOauthRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesOauthRetrieve`: OAuthSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesOauthRetrieve`: %v\n", resp)
 }
 ```
 
@@ -4154,24 +4154,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	name := "name_example" // string |  (optional)
+    name := "name_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesOauthSourceTypesList(context.Background()).Name(name).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesOauthSourceTypesList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesOauthSourceTypesList`: []SourceType
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesOauthSourceTypesList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesOauthSourceTypesList(context.Background()).Name(name).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesOauthSourceTypesList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesOauthSourceTypesList`: []SourceType
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesOauthSourceTypesList`: %v\n", resp)
 }
 ```
 
@@ -4220,25 +4220,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
-	oAuthSourceRequest := *openapiclient.NewOAuthSourceRequest("Name_example", "Slug_example", openapiclient.ProviderTypeEnum("apple"), "ConsumerKey_example", "ConsumerSecret_example") // OAuthSourceRequest | 
+    slug := "slug_example" // string | 
+    oAuthSourceRequest := *openapiclient.NewOAuthSourceRequest("Name_example", "Slug_example", openapiclient.ProviderTypeEnum("apple"), "ConsumerKey_example", "ConsumerSecret_example") // OAuthSourceRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesOauthUpdate(context.Background(), slug).OAuthSourceRequest(oAuthSourceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesOauthUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesOauthUpdate`: OAuthSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesOauthUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesOauthUpdate(context.Background(), slug).OAuthSourceRequest(oAuthSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesOauthUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesOauthUpdate`: OAuthSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesOauthUpdate`: %v\n", resp)
 }
 ```
 
@@ -4292,24 +4292,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesOauthUsedByList(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesOauthUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesOauthUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesOauthUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesOauthUsedByList(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesOauthUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesOauthUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesOauthUsedByList`: %v\n", resp)
 }
 ```
 
@@ -4362,24 +4362,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	plexSourceRequest := *openapiclient.NewPlexSourceRequest("Name_example", "Slug_example", "PlexToken_example") // PlexSourceRequest | 
+    plexSourceRequest := *openapiclient.NewPlexSourceRequest("Name_example", "Slug_example", "PlexToken_example") // PlexSourceRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesPlexCreate(context.Background()).PlexSourceRequest(plexSourceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesPlexCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesPlexCreate`: PlexSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesPlexCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesPlexCreate(context.Background()).PlexSourceRequest(plexSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesPlexCreate`: PlexSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesPlexCreate`: %v\n", resp)
 }
 ```
 
@@ -4428,22 +4428,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesPlexDestroy(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesPlexDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesPlexDestroy(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -4496,37 +4496,37 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	allowFriends := true // bool |  (optional)
-	authenticationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	clientId := "clientId_example" // string |  (optional)
-	enabled := true // bool |  (optional)
-	enrollmentFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	groupMatchingMode := "groupMatchingMode_example" // string | How the source determines if an existing group should be used or a new group created.   (optional)
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	policyEngineMode := "policyEngineMode_example" // string |  (optional)
-	search := "search_example" // string | A search term. (optional)
-	slug := "slug_example" // string |  (optional)
-	userMatchingMode := "userMatchingMode_example" // string | How the source determines if an existing user should be authenticated or a new user enrolled.   (optional)
+    allowFriends := true // bool |  (optional)
+    authenticationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    clientId := "clientId_example" // string |  (optional)
+    enabled := true // bool |  (optional)
+    enrollmentFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    groupMatchingMode := "groupMatchingMode_example" // string | How the source determines if an existing group should be used or a new group created.   (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    policyEngineMode := "policyEngineMode_example" // string |  (optional)
+    search := "search_example" // string | A search term. (optional)
+    slug := "slug_example" // string |  (optional)
+    userMatchingMode := "userMatchingMode_example" // string | How the source determines if an existing user should be authenticated or a new user enrolled.   (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesPlexList(context.Background()).AllowFriends(allowFriends).AuthenticationFlow(authenticationFlow).ClientId(clientId).Enabled(enabled).EnrollmentFlow(enrollmentFlow).GroupMatchingMode(groupMatchingMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesPlexList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesPlexList`: PaginatedPlexSourceList
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesPlexList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesPlexList(context.Background()).AllowFriends(allowFriends).AuthenticationFlow(authenticationFlow).ClientId(clientId).Enabled(enabled).EnrollmentFlow(enrollmentFlow).GroupMatchingMode(groupMatchingMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesPlexList`: PaginatedPlexSourceList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesPlexList`: %v\n", resp)
 }
 ```
 
@@ -4588,25 +4588,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
-	patchedPlexSourceRequest := *openapiclient.NewPatchedPlexSourceRequest() // PatchedPlexSourceRequest |  (optional)
+    slug := "slug_example" // string | 
+    patchedPlexSourceRequest := *openapiclient.NewPatchedPlexSourceRequest() // PatchedPlexSourceRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesPlexPartialUpdate(context.Background(), slug).PatchedPlexSourceRequest(patchedPlexSourceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesPlexPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesPlexPartialUpdate`: PlexSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesPlexPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesPlexPartialUpdate(context.Background(), slug).PatchedPlexSourceRequest(patchedPlexSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesPlexPartialUpdate`: PlexSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesPlexPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -4660,23 +4660,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	plexTokenRedeemRequest := *openapiclient.NewPlexTokenRedeemRequest("PlexToken_example") // PlexTokenRedeemRequest | 
-	slug := "slug_example" // string |  (optional)
+    plexTokenRedeemRequest := *openapiclient.NewPlexTokenRedeemRequest("PlexToken_example") // PlexTokenRedeemRequest | 
+    slug := "slug_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesPlexRedeemTokenAuthenticatedCreate(context.Background()).PlexTokenRedeemRequest(plexTokenRedeemRequest).Slug(slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesPlexRedeemTokenAuthenticatedCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesPlexRedeemTokenAuthenticatedCreate(context.Background()).PlexTokenRedeemRequest(plexTokenRedeemRequest).Slug(slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexRedeemTokenAuthenticatedCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -4726,25 +4726,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	plexTokenRedeemRequest := *openapiclient.NewPlexTokenRedeemRequest("PlexToken_example") // PlexTokenRedeemRequest | 
-	slug := "slug_example" // string |  (optional)
+    plexTokenRedeemRequest := *openapiclient.NewPlexTokenRedeemRequest("PlexToken_example") // PlexTokenRedeemRequest | 
+    slug := "slug_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesPlexRedeemTokenCreate(context.Background()).PlexTokenRedeemRequest(plexTokenRedeemRequest).Slug(slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesPlexRedeemTokenCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesPlexRedeemTokenCreate`: RedirectChallenge
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesPlexRedeemTokenCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesPlexRedeemTokenCreate(context.Background()).PlexTokenRedeemRequest(plexTokenRedeemRequest).Slug(slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexRedeemTokenCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesPlexRedeemTokenCreate`: RedirectChallenge
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesPlexRedeemTokenCreate`: %v\n", resp)
 }
 ```
 
@@ -4794,24 +4794,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesPlexRetrieve(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesPlexRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesPlexRetrieve`: PlexSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesPlexRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesPlexRetrieve(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesPlexRetrieve`: PlexSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesPlexRetrieve`: %v\n", resp)
 }
 ```
 
@@ -4864,25 +4864,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
-	plexSourceRequest := *openapiclient.NewPlexSourceRequest("Name_example", "Slug_example", "PlexToken_example") // PlexSourceRequest | 
+    slug := "slug_example" // string | 
+    plexSourceRequest := *openapiclient.NewPlexSourceRequest("Name_example", "Slug_example", "PlexToken_example") // PlexSourceRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesPlexUpdate(context.Background(), slug).PlexSourceRequest(plexSourceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesPlexUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesPlexUpdate`: PlexSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesPlexUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesPlexUpdate(context.Background(), slug).PlexSourceRequest(plexSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesPlexUpdate`: PlexSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesPlexUpdate`: %v\n", resp)
 }
 ```
 
@@ -4936,24 +4936,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesPlexUsedByList(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesPlexUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesPlexUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesPlexUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesPlexUsedByList(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesPlexUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesPlexUsedByList`: %v\n", resp)
 }
 ```
 
@@ -5006,24 +5006,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	sAMLSourceRequest := *openapiclient.NewSAMLSourceRequest("Name_example", "Slug_example", "PreAuthenticationFlow_example", "SsoUrl_example") // SAMLSourceRequest | 
+    sAMLSourceRequest := *openapiclient.NewSAMLSourceRequest("Name_example", "Slug_example", "PreAuthenticationFlow_example", "SsoUrl_example") // SAMLSourceRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesSamlCreate(context.Background()).SAMLSourceRequest(sAMLSourceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesSamlCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesSamlCreate`: SAMLSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesSamlCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesSamlCreate(context.Background()).SAMLSourceRequest(sAMLSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesSamlCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesSamlCreate`: SAMLSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesSamlCreate`: %v\n", resp)
 }
 ```
 
@@ -5072,22 +5072,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesSamlDestroy(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesSamlDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesSamlDestroy(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesSamlDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -5140,47 +5140,47 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	allowIdpInitiated := true // bool |  (optional)
-	authenticationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	bindingType := "bindingType_example" // string |  (optional)
-	digestAlgorithm := "digestAlgorithm_example" // string |  (optional)
-	enabled := true // bool |  (optional)
-	enrollmentFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	issuer := "issuer_example" // string |  (optional)
-	managed := "managed_example" // string |  (optional)
-	name := "name_example" // string |  (optional)
-	nameIdPolicy := "nameIdPolicy_example" // string | NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.   (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	policyEngineMode := "policyEngineMode_example" // string |  (optional)
-	preAuthenticationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	search := "search_example" // string | A search term. (optional)
-	signatureAlgorithm := "signatureAlgorithm_example" // string |  (optional)
-	signingKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	sloUrl := "sloUrl_example" // string |  (optional)
-	slug := "slug_example" // string |  (optional)
-	ssoUrl := "ssoUrl_example" // string |  (optional)
-	temporaryUserDeleteAfter := "temporaryUserDeleteAfter_example" // string |  (optional)
-	userMatchingMode := "userMatchingMode_example" // string | How the source determines if an existing user should be authenticated or a new user enrolled.   (optional)
-	verificationKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    allowIdpInitiated := true // bool |  (optional)
+    authenticationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    bindingType := "bindingType_example" // string |  (optional)
+    digestAlgorithm := "digestAlgorithm_example" // string |  (optional)
+    enabled := true // bool |  (optional)
+    enrollmentFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    issuer := "issuer_example" // string |  (optional)
+    managed := "managed_example" // string |  (optional)
+    name := "name_example" // string |  (optional)
+    nameIdPolicy := "nameIdPolicy_example" // string | NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.   (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    policyEngineMode := "policyEngineMode_example" // string |  (optional)
+    preAuthenticationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    search := "search_example" // string | A search term. (optional)
+    signatureAlgorithm := "signatureAlgorithm_example" // string |  (optional)
+    signingKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    sloUrl := "sloUrl_example" // string |  (optional)
+    slug := "slug_example" // string |  (optional)
+    ssoUrl := "ssoUrl_example" // string |  (optional)
+    temporaryUserDeleteAfter := "temporaryUserDeleteAfter_example" // string |  (optional)
+    userMatchingMode := "userMatchingMode_example" // string | How the source determines if an existing user should be authenticated or a new user enrolled.   (optional)
+    verificationKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesSamlList(context.Background()).AllowIdpInitiated(allowIdpInitiated).AuthenticationFlow(authenticationFlow).BindingType(bindingType).DigestAlgorithm(digestAlgorithm).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Issuer(issuer).Managed(managed).Name(name).NameIdPolicy(nameIdPolicy).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).PreAuthenticationFlow(preAuthenticationFlow).Search(search).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SloUrl(sloUrl).Slug(slug).SsoUrl(ssoUrl).TemporaryUserDeleteAfter(temporaryUserDeleteAfter).UserMatchingMode(userMatchingMode).VerificationKp(verificationKp).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesSamlList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesSamlList`: PaginatedSAMLSourceList
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesSamlList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesSamlList(context.Background()).AllowIdpInitiated(allowIdpInitiated).AuthenticationFlow(authenticationFlow).BindingType(bindingType).DigestAlgorithm(digestAlgorithm).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Issuer(issuer).Managed(managed).Name(name).NameIdPolicy(nameIdPolicy).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).PreAuthenticationFlow(preAuthenticationFlow).Search(search).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SloUrl(sloUrl).Slug(slug).SsoUrl(ssoUrl).TemporaryUserDeleteAfter(temporaryUserDeleteAfter).UserMatchingMode(userMatchingMode).VerificationKp(verificationKp).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesSamlList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesSamlList`: PaginatedSAMLSourceList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesSamlList`: %v\n", resp)
 }
 ```
 
@@ -5252,24 +5252,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesSamlMetadataRetrieve(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesSamlMetadataRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesSamlMetadataRetrieve`: SAMLMetadata
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesSamlMetadataRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesSamlMetadataRetrieve(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesSamlMetadataRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesSamlMetadataRetrieve`: SAMLMetadata
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesSamlMetadataRetrieve`: %v\n", resp)
 }
 ```
 
@@ -5322,25 +5322,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
-	patchedSAMLSourceRequest := *openapiclient.NewPatchedSAMLSourceRequest() // PatchedSAMLSourceRequest |  (optional)
+    slug := "slug_example" // string | 
+    patchedSAMLSourceRequest := *openapiclient.NewPatchedSAMLSourceRequest() // PatchedSAMLSourceRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesSamlPartialUpdate(context.Background(), slug).PatchedSAMLSourceRequest(patchedSAMLSourceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesSamlPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesSamlPartialUpdate`: SAMLSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesSamlPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesSamlPartialUpdate(context.Background(), slug).PatchedSAMLSourceRequest(patchedSAMLSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesSamlPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesSamlPartialUpdate`: SAMLSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesSamlPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -5394,24 +5394,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesSamlRetrieve(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesSamlRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesSamlRetrieve`: SAMLSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesSamlRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesSamlRetrieve(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesSamlRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesSamlRetrieve`: SAMLSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesSamlRetrieve`: %v\n", resp)
 }
 ```
 
@@ -5464,25 +5464,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
-	sAMLSourceRequest := *openapiclient.NewSAMLSourceRequest("Name_example", "Slug_example", "PreAuthenticationFlow_example", "SsoUrl_example") // SAMLSourceRequest | 
+    slug := "slug_example" // string | 
+    sAMLSourceRequest := *openapiclient.NewSAMLSourceRequest("Name_example", "Slug_example", "PreAuthenticationFlow_example", "SsoUrl_example") // SAMLSourceRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesSamlUpdate(context.Background(), slug).SAMLSourceRequest(sAMLSourceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesSamlUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesSamlUpdate`: SAMLSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesSamlUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesSamlUpdate(context.Background(), slug).SAMLSourceRequest(sAMLSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesSamlUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesSamlUpdate`: SAMLSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesSamlUpdate`: %v\n", resp)
 }
 ```
 
@@ -5536,24 +5536,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesSamlUsedByList(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesSamlUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesSamlUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesSamlUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesSamlUsedByList(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesSamlUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesSamlUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesSamlUsedByList`: %v\n", resp)
 }
 ```
 
@@ -5606,24 +5606,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	sCIMSourceRequest := *openapiclient.NewSCIMSourceRequest("Name_example", "Slug_example") // SCIMSourceRequest | 
+    sCIMSourceRequest := *openapiclient.NewSCIMSourceRequest("Name_example", "Slug_example") // SCIMSourceRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesScimCreate(context.Background()).SCIMSourceRequest(sCIMSourceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesScimCreate`: SCIMSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesScimCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimCreate(context.Background()).SCIMSourceRequest(sCIMSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimCreate`: SCIMSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimCreate`: %v\n", resp)
 }
 ```
 
@@ -5672,22 +5672,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesScimDestroy(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimDestroy(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -5740,24 +5740,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	sCIMSourceGroupRequest := *openapiclient.NewSCIMSourceGroupRequest("Id_example", "Group_example", "Source_example") // SCIMSourceGroupRequest | 
+    sCIMSourceGroupRequest := *openapiclient.NewSCIMSourceGroupRequest("Id_example", "Group_example", "Source_example") // SCIMSourceGroupRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesScimGroupsCreate(context.Background()).SCIMSourceGroupRequest(sCIMSourceGroupRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimGroupsCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesScimGroupsCreate`: SCIMSourceGroup
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesScimGroupsCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimGroupsCreate(context.Background()).SCIMSourceGroupRequest(sCIMSourceGroupRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimGroupsCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimGroupsCreate`: SCIMSourceGroup
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimGroupsCreate`: %v\n", resp)
 }
 ```
 
@@ -5806,22 +5806,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := "id_example" // string | A unique value identifying this scim source group.
+    id := "id_example" // string | A unique value identifying this scim source group.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesScimGroupsDestroy(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimGroupsDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimGroupsDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimGroupsDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -5874,30 +5874,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	groupGroupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	groupName := "groupName_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-	sourceSlug := "sourceSlug_example" // string |  (optional)
+    groupGroupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    groupName := "groupName_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesScimGroupsList(context.Background()).GroupGroupUuid(groupGroupUuid).GroupName(groupName).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimGroupsList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesScimGroupsList`: PaginatedSCIMSourceGroupList
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesScimGroupsList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimGroupsList(context.Background()).GroupGroupUuid(groupGroupUuid).GroupName(groupName).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimGroupsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimGroupsList`: PaginatedSCIMSourceGroupList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimGroupsList`: %v\n", resp)
 }
 ```
 
@@ -5952,25 +5952,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := "id_example" // string | A unique value identifying this scim source group.
-	patchedSCIMSourceGroupRequest := *openapiclient.NewPatchedSCIMSourceGroupRequest() // PatchedSCIMSourceGroupRequest |  (optional)
+    id := "id_example" // string | A unique value identifying this scim source group.
+    patchedSCIMSourceGroupRequest := *openapiclient.NewPatchedSCIMSourceGroupRequest() // PatchedSCIMSourceGroupRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesScimGroupsPartialUpdate(context.Background(), id).PatchedSCIMSourceGroupRequest(patchedSCIMSourceGroupRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimGroupsPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesScimGroupsPartialUpdate`: SCIMSourceGroup
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesScimGroupsPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimGroupsPartialUpdate(context.Background(), id).PatchedSCIMSourceGroupRequest(patchedSCIMSourceGroupRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimGroupsPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimGroupsPartialUpdate`: SCIMSourceGroup
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimGroupsPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -6024,24 +6024,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := "id_example" // string | A unique value identifying this scim source group.
+    id := "id_example" // string | A unique value identifying this scim source group.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesScimGroupsRetrieve(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimGroupsRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesScimGroupsRetrieve`: SCIMSourceGroup
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesScimGroupsRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimGroupsRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimGroupsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimGroupsRetrieve`: SCIMSourceGroup
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimGroupsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -6094,25 +6094,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := "id_example" // string | A unique value identifying this scim source group.
-	sCIMSourceGroupRequest := *openapiclient.NewSCIMSourceGroupRequest("Id_example", "Group_example", "Source_example") // SCIMSourceGroupRequest | 
+    id := "id_example" // string | A unique value identifying this scim source group.
+    sCIMSourceGroupRequest := *openapiclient.NewSCIMSourceGroupRequest("Id_example", "Group_example", "Source_example") // SCIMSourceGroupRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesScimGroupsUpdate(context.Background(), id).SCIMSourceGroupRequest(sCIMSourceGroupRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimGroupsUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesScimGroupsUpdate`: SCIMSourceGroup
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesScimGroupsUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimGroupsUpdate(context.Background(), id).SCIMSourceGroupRequest(sCIMSourceGroupRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimGroupsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimGroupsUpdate`: SCIMSourceGroup
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimGroupsUpdate`: %v\n", resp)
 }
 ```
 
@@ -6166,24 +6166,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := "id_example" // string | A unique value identifying this scim source group.
+    id := "id_example" // string | A unique value identifying this scim source group.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesScimGroupsUsedByList(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimGroupsUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesScimGroupsUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesScimGroupsUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimGroupsUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimGroupsUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimGroupsUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimGroupsUsedByList`: %v\n", resp)
 }
 ```
 
@@ -6236,29 +6236,29 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-	slug := "slug_example" // string |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    slug := "slug_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesScimList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesScimList`: PaginatedSCIMSourceList
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesScimList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimList`: PaginatedSCIMSourceList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimList`: %v\n", resp)
 }
 ```
 
@@ -6312,25 +6312,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
-	patchedSCIMSourceRequest := *openapiclient.NewPatchedSCIMSourceRequest() // PatchedSCIMSourceRequest |  (optional)
+    slug := "slug_example" // string | 
+    patchedSCIMSourceRequest := *openapiclient.NewPatchedSCIMSourceRequest() // PatchedSCIMSourceRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesScimPartialUpdate(context.Background(), slug).PatchedSCIMSourceRequest(patchedSCIMSourceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesScimPartialUpdate`: SCIMSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesScimPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimPartialUpdate(context.Background(), slug).PatchedSCIMSourceRequest(patchedSCIMSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimPartialUpdate`: SCIMSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -6384,24 +6384,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesScimRetrieve(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesScimRetrieve`: SCIMSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesScimRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimRetrieve(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimRetrieve`: SCIMSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimRetrieve`: %v\n", resp)
 }
 ```
 
@@ -6454,25 +6454,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
-	sCIMSourceRequest := *openapiclient.NewSCIMSourceRequest("Name_example", "Slug_example") // SCIMSourceRequest | 
+    slug := "slug_example" // string | 
+    sCIMSourceRequest := *openapiclient.NewSCIMSourceRequest("Name_example", "Slug_example") // SCIMSourceRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesScimUpdate(context.Background(), slug).SCIMSourceRequest(sCIMSourceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesScimUpdate`: SCIMSource
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesScimUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimUpdate(context.Background(), slug).SCIMSourceRequest(sCIMSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimUpdate`: SCIMSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimUpdate`: %v\n", resp)
 }
 ```
 
@@ -6526,24 +6526,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	slug := "slug_example" // string | 
+    slug := "slug_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesScimUsedByList(context.Background(), slug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesScimUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesScimUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimUsedByList(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimUsedByList`: %v\n", resp)
 }
 ```
 
@@ -6596,24 +6596,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	sCIMSourceUserRequest := *openapiclient.NewSCIMSourceUserRequest("Id_example", int32(123), "Source_example") // SCIMSourceUserRequest | 
+    sCIMSourceUserRequest := *openapiclient.NewSCIMSourceUserRequest("Id_example", int32(123), "Source_example") // SCIMSourceUserRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesScimUsersCreate(context.Background()).SCIMSourceUserRequest(sCIMSourceUserRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimUsersCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesScimUsersCreate`: SCIMSourceUser
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesScimUsersCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimUsersCreate(context.Background()).SCIMSourceUserRequest(sCIMSourceUserRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimUsersCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimUsersCreate`: SCIMSourceUser
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimUsersCreate`: %v\n", resp)
 }
 ```
 
@@ -6662,22 +6662,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := "id_example" // string | A unique value identifying this scim source user.
+    id := "id_example" // string | A unique value identifying this scim source user.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesScimUsersDestroy(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimUsersDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimUsersDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimUsersDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -6730,30 +6730,30 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-	sourceSlug := "sourceSlug_example" // string |  (optional)
-	userId := int32(56) // int32 |  (optional)
-	userUsername := "userUsername_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
+    userId := int32(56) // int32 |  (optional)
+    userUsername := "userUsername_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesScimUsersList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).UserId(userId).UserUsername(userUsername).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimUsersList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesScimUsersList`: PaginatedSCIMSourceUserList
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesScimUsersList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimUsersList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).UserId(userId).UserUsername(userUsername).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimUsersList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimUsersList`: PaginatedSCIMSourceUserList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimUsersList`: %v\n", resp)
 }
 ```
 
@@ -6808,25 +6808,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := "id_example" // string | A unique value identifying this scim source user.
-	patchedSCIMSourceUserRequest := *openapiclient.NewPatchedSCIMSourceUserRequest() // PatchedSCIMSourceUserRequest |  (optional)
+    id := "id_example" // string | A unique value identifying this scim source user.
+    patchedSCIMSourceUserRequest := *openapiclient.NewPatchedSCIMSourceUserRequest() // PatchedSCIMSourceUserRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesScimUsersPartialUpdate(context.Background(), id).PatchedSCIMSourceUserRequest(patchedSCIMSourceUserRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimUsersPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesScimUsersPartialUpdate`: SCIMSourceUser
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesScimUsersPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimUsersPartialUpdate(context.Background(), id).PatchedSCIMSourceUserRequest(patchedSCIMSourceUserRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimUsersPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimUsersPartialUpdate`: SCIMSourceUser
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimUsersPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -6880,24 +6880,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := "id_example" // string | A unique value identifying this scim source user.
+    id := "id_example" // string | A unique value identifying this scim source user.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesScimUsersRetrieve(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimUsersRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesScimUsersRetrieve`: SCIMSourceUser
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesScimUsersRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimUsersRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimUsersRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimUsersRetrieve`: SCIMSourceUser
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimUsersRetrieve`: %v\n", resp)
 }
 ```
 
@@ -6950,25 +6950,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := "id_example" // string | A unique value identifying this scim source user.
-	sCIMSourceUserRequest := *openapiclient.NewSCIMSourceUserRequest("Id_example", int32(123), "Source_example") // SCIMSourceUserRequest | 
+    id := "id_example" // string | A unique value identifying this scim source user.
+    sCIMSourceUserRequest := *openapiclient.NewSCIMSourceUserRequest("Id_example", int32(123), "Source_example") // SCIMSourceUserRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesScimUsersUpdate(context.Background(), id).SCIMSourceUserRequest(sCIMSourceUserRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimUsersUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesScimUsersUpdate`: SCIMSourceUser
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesScimUsersUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimUsersUpdate(context.Background(), id).SCIMSourceUserRequest(sCIMSourceUserRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimUsersUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimUsersUpdate`: SCIMSourceUser
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimUsersUpdate`: %v\n", resp)
 }
 ```
 
@@ -7022,24 +7022,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := "id_example" // string | A unique value identifying this scim source user.
+    id := "id_example" // string | A unique value identifying this scim source user.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesScimUsersUsedByList(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesScimUsersUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesScimUsersUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesScimUsersUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesScimUsersUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimUsersUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesScimUsersUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesScimUsersUsedByList`: %v\n", resp)
 }
 ```
 
@@ -7092,22 +7092,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this user source connection.
+    id := int32(56) // int32 | A unique integer value identifying this user source connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesUserConnectionsAllDestroy(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsAllDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsAllDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -7160,29 +7160,29 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-	sourceSlug := "sourceSlug_example" // string |  (optional)
-	user := int32(56) // int32 |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
+    user := int32(56) // int32 |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsAllList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).User(user).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsAllList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsAllList`: PaginatedUserSourceConnectionList
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsAllList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsAllList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).User(user).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsAllList`: PaginatedUserSourceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsAllList`: %v\n", resp)
 }
 ```
 
@@ -7236,24 +7236,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this user source connection.
+    id := int32(56) // int32 | A unique integer value identifying this user source connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsAllPartialUpdate(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsAllPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsAllPartialUpdate`: UserSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsAllPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsAllPartialUpdate(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsAllPartialUpdate`: UserSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsAllPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -7306,24 +7306,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this user source connection.
+    id := int32(56) // int32 | A unique integer value identifying this user source connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsAllRetrieve(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsAllRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsAllRetrieve`: UserSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsAllRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsAllRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsAllRetrieve`: UserSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsAllRetrieve`: %v\n", resp)
 }
 ```
 
@@ -7376,24 +7376,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this user source connection.
+    id := int32(56) // int32 | A unique integer value identifying this user source connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsAllUpdate(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsAllUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsAllUpdate`: UserSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsAllUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsAllUpdate(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsAllUpdate`: UserSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsAllUpdate`: %v\n", resp)
 }
 ```
 
@@ -7446,24 +7446,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this user source connection.
+    id := int32(56) // int32 | A unique integer value identifying this user source connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsAllUsedByList(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsAllUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsAllUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsAllUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsAllUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsAllUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsAllUsedByList`: %v\n", resp)
 }
 ```
 
@@ -7516,24 +7516,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	userKerberosSourceConnectionRequest := *openapiclient.NewUserKerberosSourceConnectionRequest(int32(123), "Identifier_example") // UserKerberosSourceConnectionRequest | 
+    userKerberosSourceConnectionRequest := *openapiclient.NewUserKerberosSourceConnectionRequest(int32(123), "Identifier_example") // UserKerberosSourceConnectionRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsKerberosCreate(context.Background()).UserKerberosSourceConnectionRequest(userKerberosSourceConnectionRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsKerberosCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsKerberosCreate`: UserKerberosSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsKerberosCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsKerberosCreate(context.Background()).UserKerberosSourceConnectionRequest(userKerberosSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsKerberosCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsKerberosCreate`: UserKerberosSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsKerberosCreate`: %v\n", resp)
 }
 ```
 
@@ -7582,22 +7582,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this User Kerberos Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this User Kerberos Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesUserConnectionsKerberosDestroy(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsKerberosDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsKerberosDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsKerberosDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -7650,28 +7650,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-	sourceSlug := "sourceSlug_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsKerberosList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsKerberosList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsKerberosList`: PaginatedUserKerberosSourceConnectionList
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsKerberosList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsKerberosList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsKerberosList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsKerberosList`: PaginatedUserKerberosSourceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsKerberosList`: %v\n", resp)
 }
 ```
 
@@ -7724,25 +7724,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this User Kerberos Source Connection.
-	patchedUserKerberosSourceConnectionRequest := *openapiclient.NewPatchedUserKerberosSourceConnectionRequest() // PatchedUserKerberosSourceConnectionRequest |  (optional)
+    id := int32(56) // int32 | A unique integer value identifying this User Kerberos Source Connection.
+    patchedUserKerberosSourceConnectionRequest := *openapiclient.NewPatchedUserKerberosSourceConnectionRequest() // PatchedUserKerberosSourceConnectionRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsKerberosPartialUpdate(context.Background(), id).PatchedUserKerberosSourceConnectionRequest(patchedUserKerberosSourceConnectionRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsKerberosPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsKerberosPartialUpdate`: UserKerberosSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsKerberosPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsKerberosPartialUpdate(context.Background(), id).PatchedUserKerberosSourceConnectionRequest(patchedUserKerberosSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsKerberosPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsKerberosPartialUpdate`: UserKerberosSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsKerberosPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -7796,24 +7796,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this User Kerberos Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this User Kerberos Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsKerberosRetrieve(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsKerberosRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsKerberosRetrieve`: UserKerberosSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsKerberosRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsKerberosRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsKerberosRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsKerberosRetrieve`: UserKerberosSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsKerberosRetrieve`: %v\n", resp)
 }
 ```
 
@@ -7866,25 +7866,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this User Kerberos Source Connection.
-	userKerberosSourceConnectionRequest := *openapiclient.NewUserKerberosSourceConnectionRequest(int32(123), "Identifier_example") // UserKerberosSourceConnectionRequest | 
+    id := int32(56) // int32 | A unique integer value identifying this User Kerberos Source Connection.
+    userKerberosSourceConnectionRequest := *openapiclient.NewUserKerberosSourceConnectionRequest(int32(123), "Identifier_example") // UserKerberosSourceConnectionRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsKerberosUpdate(context.Background(), id).UserKerberosSourceConnectionRequest(userKerberosSourceConnectionRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsKerberosUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsKerberosUpdate`: UserKerberosSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsKerberosUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsKerberosUpdate(context.Background(), id).UserKerberosSourceConnectionRequest(userKerberosSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsKerberosUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsKerberosUpdate`: UserKerberosSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsKerberosUpdate`: %v\n", resp)
 }
 ```
 
@@ -7938,24 +7938,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this User Kerberos Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this User Kerberos Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsKerberosUsedByList(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsKerberosUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsKerberosUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsKerberosUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsKerberosUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsKerberosUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsKerberosUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsKerberosUsedByList`: %v\n", resp)
 }
 ```
 
@@ -8008,24 +8008,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest("Identifier_example") // UserOAuthSourceConnectionRequest | 
+    userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest("Identifier_example") // UserOAuthSourceConnectionRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsOauthCreate(context.Background()).UserOAuthSourceConnectionRequest(userOAuthSourceConnectionRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsOauthCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsOauthCreate`: UserOAuthSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsOauthCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsOauthCreate(context.Background()).UserOAuthSourceConnectionRequest(userOAuthSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsOauthCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsOauthCreate`: UserOAuthSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsOauthCreate`: %v\n", resp)
 }
 ```
 
@@ -8074,22 +8074,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this User OAuth Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this User OAuth Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesUserConnectionsOauthDestroy(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsOauthDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsOauthDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsOauthDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -8142,29 +8142,29 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-	sourceSlug := "sourceSlug_example" // string |  (optional)
-	user := int32(56) // int32 |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
+    user := int32(56) // int32 |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsOauthList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).User(user).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsOauthList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsOauthList`: PaginatedUserOAuthSourceConnectionList
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsOauthList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsOauthList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).User(user).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsOauthList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsOauthList`: PaginatedUserOAuthSourceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsOauthList`: %v\n", resp)
 }
 ```
 
@@ -8218,25 +8218,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this User OAuth Source Connection.
-	patchedUserOAuthSourceConnectionRequest := *openapiclient.NewPatchedUserOAuthSourceConnectionRequest() // PatchedUserOAuthSourceConnectionRequest |  (optional)
+    id := int32(56) // int32 | A unique integer value identifying this User OAuth Source Connection.
+    patchedUserOAuthSourceConnectionRequest := *openapiclient.NewPatchedUserOAuthSourceConnectionRequest() // PatchedUserOAuthSourceConnectionRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsOauthPartialUpdate(context.Background(), id).PatchedUserOAuthSourceConnectionRequest(patchedUserOAuthSourceConnectionRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsOauthPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsOauthPartialUpdate`: UserOAuthSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsOauthPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsOauthPartialUpdate(context.Background(), id).PatchedUserOAuthSourceConnectionRequest(patchedUserOAuthSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsOauthPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsOauthPartialUpdate`: UserOAuthSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsOauthPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -8290,24 +8290,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this User OAuth Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this User OAuth Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsOauthRetrieve(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsOauthRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsOauthRetrieve`: UserOAuthSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsOauthRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsOauthRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsOauthRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsOauthRetrieve`: UserOAuthSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsOauthRetrieve`: %v\n", resp)
 }
 ```
 
@@ -8360,25 +8360,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this User OAuth Source Connection.
-	userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest("Identifier_example") // UserOAuthSourceConnectionRequest | 
+    id := int32(56) // int32 | A unique integer value identifying this User OAuth Source Connection.
+    userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest("Identifier_example") // UserOAuthSourceConnectionRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsOauthUpdate(context.Background(), id).UserOAuthSourceConnectionRequest(userOAuthSourceConnectionRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsOauthUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsOauthUpdate`: UserOAuthSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsOauthUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsOauthUpdate(context.Background(), id).UserOAuthSourceConnectionRequest(userOAuthSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsOauthUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsOauthUpdate`: UserOAuthSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsOauthUpdate`: %v\n", resp)
 }
 ```
 
@@ -8432,24 +8432,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this User OAuth Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this User OAuth Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsOauthUsedByList(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsOauthUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsOauthUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsOauthUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsOauthUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsOauthUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsOauthUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsOauthUsedByList`: %v\n", resp)
 }
 ```
 
@@ -8502,24 +8502,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	userPlexSourceConnectionRequest := *openapiclient.NewUserPlexSourceConnectionRequest("Identifier_example", "PlexToken_example") // UserPlexSourceConnectionRequest | 
+    userPlexSourceConnectionRequest := *openapiclient.NewUserPlexSourceConnectionRequest("Identifier_example", "PlexToken_example") // UserPlexSourceConnectionRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsPlexCreate(context.Background()).UserPlexSourceConnectionRequest(userPlexSourceConnectionRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsPlexCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsPlexCreate`: UserPlexSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsPlexCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsPlexCreate(context.Background()).UserPlexSourceConnectionRequest(userPlexSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsPlexCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsPlexCreate`: UserPlexSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsPlexCreate`: %v\n", resp)
 }
 ```
 
@@ -8568,22 +8568,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this User Plex Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this User Plex Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesUserConnectionsPlexDestroy(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsPlexDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsPlexDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsPlexDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -8636,29 +8636,29 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-	sourceSlug := "sourceSlug_example" // string |  (optional)
-	user := int32(56) // int32 |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
+    user := int32(56) // int32 |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsPlexList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).User(user).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsPlexList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsPlexList`: PaginatedUserPlexSourceConnectionList
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsPlexList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsPlexList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).User(user).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsPlexList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsPlexList`: PaginatedUserPlexSourceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsPlexList`: %v\n", resp)
 }
 ```
 
@@ -8712,25 +8712,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this User Plex Source Connection.
-	patchedUserPlexSourceConnectionRequest := *openapiclient.NewPatchedUserPlexSourceConnectionRequest() // PatchedUserPlexSourceConnectionRequest |  (optional)
+    id := int32(56) // int32 | A unique integer value identifying this User Plex Source Connection.
+    patchedUserPlexSourceConnectionRequest := *openapiclient.NewPatchedUserPlexSourceConnectionRequest() // PatchedUserPlexSourceConnectionRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsPlexPartialUpdate(context.Background(), id).PatchedUserPlexSourceConnectionRequest(patchedUserPlexSourceConnectionRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsPlexPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsPlexPartialUpdate`: UserPlexSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsPlexPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsPlexPartialUpdate(context.Background(), id).PatchedUserPlexSourceConnectionRequest(patchedUserPlexSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsPlexPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsPlexPartialUpdate`: UserPlexSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsPlexPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -8784,24 +8784,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this User Plex Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this User Plex Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsPlexRetrieve(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsPlexRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsPlexRetrieve`: UserPlexSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsPlexRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsPlexRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsPlexRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsPlexRetrieve`: UserPlexSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsPlexRetrieve`: %v\n", resp)
 }
 ```
 
@@ -8854,25 +8854,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this User Plex Source Connection.
-	userPlexSourceConnectionRequest := *openapiclient.NewUserPlexSourceConnectionRequest("Identifier_example", "PlexToken_example") // UserPlexSourceConnectionRequest | 
+    id := int32(56) // int32 | A unique integer value identifying this User Plex Source Connection.
+    userPlexSourceConnectionRequest := *openapiclient.NewUserPlexSourceConnectionRequest("Identifier_example", "PlexToken_example") // UserPlexSourceConnectionRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsPlexUpdate(context.Background(), id).UserPlexSourceConnectionRequest(userPlexSourceConnectionRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsPlexUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsPlexUpdate`: UserPlexSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsPlexUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsPlexUpdate(context.Background(), id).UserPlexSourceConnectionRequest(userPlexSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsPlexUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsPlexUpdate`: UserPlexSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsPlexUpdate`: %v\n", resp)
 }
 ```
 
@@ -8926,24 +8926,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this User Plex Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this User Plex Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsPlexUsedByList(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsPlexUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsPlexUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsPlexUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsPlexUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsPlexUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsPlexUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsPlexUsedByList`: %v\n", resp)
 }
 ```
 
@@ -8996,24 +8996,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	userSAMLSourceConnectionRequest := *openapiclient.NewUserSAMLSourceConnectionRequest("Identifier_example") // UserSAMLSourceConnectionRequest | 
+    userSAMLSourceConnectionRequest := *openapiclient.NewUserSAMLSourceConnectionRequest("Identifier_example") // UserSAMLSourceConnectionRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsSamlCreate(context.Background()).UserSAMLSourceConnectionRequest(userSAMLSourceConnectionRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsSamlCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsSamlCreate`: UserSAMLSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsSamlCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsSamlCreate(context.Background()).UserSAMLSourceConnectionRequest(userSAMLSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsSamlCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsSamlCreate`: UserSAMLSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsSamlCreate`: %v\n", resp)
 }
 ```
 
@@ -9062,22 +9062,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this User SAML Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this User SAML Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SourcesAPI.SourcesUserConnectionsSamlDestroy(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsSamlDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsSamlDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsSamlDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -9130,29 +9130,29 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-	sourceSlug := "sourceSlug_example" // string |  (optional)
-	user := int32(56) // int32 |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
+    user := int32(56) // int32 |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsSamlList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).User(user).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsSamlList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsSamlList`: PaginatedUserSAMLSourceConnectionList
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsSamlList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsSamlList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).User(user).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsSamlList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsSamlList`: PaginatedUserSAMLSourceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsSamlList`: %v\n", resp)
 }
 ```
 
@@ -9206,25 +9206,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this User SAML Source Connection.
-	patchedUserSAMLSourceConnectionRequest := *openapiclient.NewPatchedUserSAMLSourceConnectionRequest() // PatchedUserSAMLSourceConnectionRequest |  (optional)
+    id := int32(56) // int32 | A unique integer value identifying this User SAML Source Connection.
+    patchedUserSAMLSourceConnectionRequest := *openapiclient.NewPatchedUserSAMLSourceConnectionRequest() // PatchedUserSAMLSourceConnectionRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsSamlPartialUpdate(context.Background(), id).PatchedUserSAMLSourceConnectionRequest(patchedUserSAMLSourceConnectionRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsSamlPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsSamlPartialUpdate`: UserSAMLSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsSamlPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsSamlPartialUpdate(context.Background(), id).PatchedUserSAMLSourceConnectionRequest(patchedUserSAMLSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsSamlPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsSamlPartialUpdate`: UserSAMLSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsSamlPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -9278,24 +9278,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this User SAML Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this User SAML Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsSamlRetrieve(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsSamlRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsSamlRetrieve`: UserSAMLSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsSamlRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsSamlRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsSamlRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsSamlRetrieve`: UserSAMLSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsSamlRetrieve`: %v\n", resp)
 }
 ```
 
@@ -9348,25 +9348,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this User SAML Source Connection.
-	userSAMLSourceConnectionRequest := *openapiclient.NewUserSAMLSourceConnectionRequest("Identifier_example") // UserSAMLSourceConnectionRequest | 
+    id := int32(56) // int32 | A unique integer value identifying this User SAML Source Connection.
+    userSAMLSourceConnectionRequest := *openapiclient.NewUserSAMLSourceConnectionRequest("Identifier_example") // UserSAMLSourceConnectionRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsSamlUpdate(context.Background(), id).UserSAMLSourceConnectionRequest(userSAMLSourceConnectionRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsSamlUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsSamlUpdate`: UserSAMLSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsSamlUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsSamlUpdate(context.Background(), id).UserSAMLSourceConnectionRequest(userSAMLSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsSamlUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsSamlUpdate`: UserSAMLSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsSamlUpdate`: %v\n", resp)
 }
 ```
 
@@ -9420,24 +9420,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this User SAML Source Connection.
+    id := int32(56) // int32 | A unique integer value identifying this User SAML Source Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesUserConnectionsSamlUsedByList(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesUserConnectionsSamlUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesUserConnectionsSamlUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesUserConnectionsSamlUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsSamlUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsSamlUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsSamlUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsSamlUsedByList`: %v\n", resp)
 }
 ```
 

@@ -12,20 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the LicenseRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &LicenseRequest{}
 
 // LicenseRequest License Serializer
 type LicenseRequest struct {
 	Key string `json:"key"`
 }
-
-type _LicenseRequest LicenseRequest
 
 // NewLicenseRequest instantiates a new LicenseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -70,54 +63,11 @@ func (o *LicenseRequest) SetKey(v string) {
 }
 
 func (o LicenseRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["key"] = o.Key
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o LicenseRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["key"] = o.Key
-	return toSerialize, nil
-}
-
-func (o *LicenseRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"key",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varLicenseRequest := _LicenseRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLicenseRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = LicenseRequest(varLicenseRequest)
-
-	return err
 }
 
 type NullableLicenseRequest struct {

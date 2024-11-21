@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the DockerServiceConnection type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DockerServiceConnection{}
 
 // DockerServiceConnection DockerServiceConnection Serializer
 type DockerServiceConnection struct {
@@ -40,8 +35,6 @@ type DockerServiceConnection struct {
 	// Certificate/Key used for authentication. Can be left empty for no authentication.
 	TlsAuthentication NullableString `json:"tls_authentication,omitempty"`
 }
-
-type _DockerServiceConnection DockerServiceConnection
 
 // NewDockerServiceConnection instantiates a new DockerServiceConnection object
 // This constructor will assign default values to properties that have it defined,
@@ -117,7 +110,7 @@ func (o *DockerServiceConnection) SetName(v string) {
 
 // GetLocal returns the Local field value if set, zero value otherwise.
 func (o *DockerServiceConnection) GetLocal() bool {
-	if o == nil || IsNil(o.Local) {
+	if o == nil || o.Local == nil {
 		var ret bool
 		return ret
 	}
@@ -127,7 +120,7 @@ func (o *DockerServiceConnection) GetLocal() bool {
 // GetLocalOk returns a tuple with the Local field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DockerServiceConnection) GetLocalOk() (*bool, bool) {
-	if o == nil || IsNil(o.Local) {
+	if o == nil || o.Local == nil {
 		return nil, false
 	}
 	return o.Local, true
@@ -135,7 +128,7 @@ func (o *DockerServiceConnection) GetLocalOk() (*bool, bool) {
 
 // HasLocal returns a boolean if a field has been set.
 func (o *DockerServiceConnection) HasLocal() bool {
-	if o != nil && !IsNil(o.Local) {
+	if o != nil && o.Local != nil {
 		return true
 	}
 
@@ -269,7 +262,7 @@ func (o *DockerServiceConnection) SetUrl(v string) {
 
 // GetTlsVerification returns the TlsVerification field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DockerServiceConnection) GetTlsVerification() string {
-	if o == nil || IsNil(o.TlsVerification.Get()) {
+	if o == nil || o.TlsVerification.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -312,7 +305,7 @@ func (o *DockerServiceConnection) UnsetTlsVerification() {
 
 // GetTlsAuthentication returns the TlsAuthentication field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DockerServiceConnection) GetTlsAuthentication() string {
-	if o == nil || IsNil(o.TlsAuthentication.Get()) {
+	if o == nil || o.TlsAuthentication.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -354,75 +347,38 @@ func (o *DockerServiceConnection) UnsetTlsAuthentication() {
 }
 
 func (o DockerServiceConnection) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o DockerServiceConnection) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["pk"] = o.Pk
-	toSerialize["name"] = o.Name
-	if !IsNil(o.Local) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.Local != nil {
 		toSerialize["local"] = o.Local
 	}
-	toSerialize["component"] = o.Component
-	toSerialize["verbose_name"] = o.VerboseName
-	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	toSerialize["meta_model_name"] = o.MetaModelName
-	toSerialize["url"] = o.Url
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
+	}
+	if true {
+		toSerialize["url"] = o.Url
+	}
 	if o.TlsVerification.IsSet() {
 		toSerialize["tls_verification"] = o.TlsVerification.Get()
 	}
 	if o.TlsAuthentication.IsSet() {
 		toSerialize["tls_authentication"] = o.TlsAuthentication.Get()
 	}
-	return toSerialize, nil
-}
-
-func (o *DockerServiceConnection) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pk",
-		"name",
-		"component",
-		"verbose_name",
-		"verbose_name_plural",
-		"meta_model_name",
-		"url",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDockerServiceConnection := _DockerServiceConnection{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDockerServiceConnection)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DockerServiceConnection(varDockerServiceConnection)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableDockerServiceConnection struct {

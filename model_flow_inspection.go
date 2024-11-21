@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the FlowInspection type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &FlowInspection{}
 
 // FlowInspection Serializer for inspect endpoint
 type FlowInspection struct {
@@ -26,8 +21,6 @@ type FlowInspection struct {
 	CurrentPlan *FlowInspectorPlan  `json:"current_plan,omitempty"`
 	IsCompleted bool                `json:"is_completed"`
 }
-
-type _FlowInspection FlowInspection
 
 // NewFlowInspection instantiates a new FlowInspection object
 // This constructor will assign default values to properties that have it defined,
@@ -74,7 +67,7 @@ func (o *FlowInspection) SetPlans(v []FlowInspectorPlan) {
 
 // GetCurrentPlan returns the CurrentPlan field value if set, zero value otherwise.
 func (o *FlowInspection) GetCurrentPlan() FlowInspectorPlan {
-	if o == nil || IsNil(o.CurrentPlan) {
+	if o == nil || o.CurrentPlan == nil {
 		var ret FlowInspectorPlan
 		return ret
 	}
@@ -84,7 +77,7 @@ func (o *FlowInspection) GetCurrentPlan() FlowInspectorPlan {
 // GetCurrentPlanOk returns a tuple with the CurrentPlan field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowInspection) GetCurrentPlanOk() (*FlowInspectorPlan, bool) {
-	if o == nil || IsNil(o.CurrentPlan) {
+	if o == nil || o.CurrentPlan == nil {
 		return nil, false
 	}
 	return o.CurrentPlan, true
@@ -92,7 +85,7 @@ func (o *FlowInspection) GetCurrentPlanOk() (*FlowInspectorPlan, bool) {
 
 // HasCurrentPlan returns a boolean if a field has been set.
 func (o *FlowInspection) HasCurrentPlan() bool {
-	if o != nil && !IsNil(o.CurrentPlan) {
+	if o != nil && o.CurrentPlan != nil {
 		return true
 	}
 
@@ -129,59 +122,17 @@ func (o *FlowInspection) SetIsCompleted(v bool) {
 }
 
 func (o FlowInspection) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o FlowInspection) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["plans"] = o.Plans
-	if !IsNil(o.CurrentPlan) {
+	if true {
+		toSerialize["plans"] = o.Plans
+	}
+	if o.CurrentPlan != nil {
 		toSerialize["current_plan"] = o.CurrentPlan
 	}
-	toSerialize["is_completed"] = o.IsCompleted
-	return toSerialize, nil
-}
-
-func (o *FlowInspection) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"plans",
-		"is_completed",
+	if true {
+		toSerialize["is_completed"] = o.IsCompleted
 	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varFlowInspection := _FlowInspection{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varFlowInspection)
-
-	if err != nil {
-		return err
-	}
-
-	*o = FlowInspection(varFlowInspection)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableFlowInspection struct {

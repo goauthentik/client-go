@@ -12,21 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the PasswordChallengeResponseRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PasswordChallengeResponseRequest{}
 
 // PasswordChallengeResponseRequest Password challenge response
 type PasswordChallengeResponseRequest struct {
 	Component *string `json:"component,omitempty"`
 	Password  string  `json:"password"`
 }
-
-type _PasswordChallengeResponseRequest PasswordChallengeResponseRequest
 
 // NewPasswordChallengeResponseRequest instantiates a new PasswordChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -52,7 +45,7 @@ func NewPasswordChallengeResponseRequestWithDefaults() *PasswordChallengeRespons
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *PasswordChallengeResponseRequest) GetComponent() string {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		var ret string
 		return ret
 	}
@@ -62,7 +55,7 @@ func (o *PasswordChallengeResponseRequest) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		return nil, false
 	}
 	return o.Component, true
@@ -70,7 +63,7 @@ func (o *PasswordChallengeResponseRequest) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *PasswordChallengeResponseRequest) HasComponent() bool {
-	if o != nil && !IsNil(o.Component) {
+	if o != nil && o.Component != nil {
 		return true
 	}
 
@@ -107,57 +100,14 @@ func (o *PasswordChallengeResponseRequest) SetPassword(v string) {
 }
 
 func (o PasswordChallengeResponseRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PasswordChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Component) {
+	if o.Component != nil {
 		toSerialize["component"] = o.Component
 	}
-	toSerialize["password"] = o.Password
-	return toSerialize, nil
-}
-
-func (o *PasswordChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"password",
+	if true {
+		toSerialize["password"] = o.Password
 	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPasswordChallengeResponseRequest := _PasswordChallengeResponseRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPasswordChallengeResponseRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PasswordChallengeResponseRequest(varPasswordChallengeResponseRequest)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullablePasswordChallengeResponseRequest struct {

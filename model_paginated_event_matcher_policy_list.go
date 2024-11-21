@@ -12,21 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the PaginatedEventMatcherPolicyList type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedEventMatcherPolicyList{}
 
 // PaginatedEventMatcherPolicyList struct for PaginatedEventMatcherPolicyList
 type PaginatedEventMatcherPolicyList struct {
 	Pagination Pagination           `json:"pagination"`
 	Results    []EventMatcherPolicy `json:"results"`
 }
-
-type _PaginatedEventMatcherPolicyList PaginatedEventMatcherPolicyList
 
 // NewPaginatedEventMatcherPolicyList instantiates a new PaginatedEventMatcherPolicyList object
 // This constructor will assign default values to properties that have it defined,
@@ -96,56 +89,14 @@ func (o *PaginatedEventMatcherPolicyList) SetResults(v []EventMatcherPolicy) {
 }
 
 func (o PaginatedEventMatcherPolicyList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["pagination"] = o.Pagination
+	}
+	if true {
+		toSerialize["results"] = o.Results
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o PaginatedEventMatcherPolicyList) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["pagination"] = o.Pagination
-	toSerialize["results"] = o.Results
-	return toSerialize, nil
-}
-
-func (o *PaginatedEventMatcherPolicyList) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pagination",
-		"results",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPaginatedEventMatcherPolicyList := _PaginatedEventMatcherPolicyList{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedEventMatcherPolicyList)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PaginatedEventMatcherPolicyList(varPaginatedEventMatcherPolicyList)
-
-	return err
 }
 
 type NullablePaginatedEventMatcherPolicyList struct {

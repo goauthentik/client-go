@@ -12,20 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the NotificationTransportTest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NotificationTransportTest{}
 
 // NotificationTransportTest Notification test serializer
 type NotificationTransportTest struct {
 	Messages []string `json:"messages"`
 }
-
-type _NotificationTransportTest NotificationTransportTest
 
 // NewNotificationTransportTest instantiates a new NotificationTransportTest object
 // This constructor will assign default values to properties that have it defined,
@@ -70,54 +63,11 @@ func (o *NotificationTransportTest) SetMessages(v []string) {
 }
 
 func (o NotificationTransportTest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["messages"] = o.Messages
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o NotificationTransportTest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["messages"] = o.Messages
-	return toSerialize, nil
-}
-
-func (o *NotificationTransportTest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"messages",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varNotificationTransportTest := _NotificationTransportTest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varNotificationTransportTest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = NotificationTransportTest(varNotificationTransportTest)
-
-	return err
 }
 
 type NullableNotificationTransportTest struct {

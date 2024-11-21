@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the PlexAuthenticationChallenge type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PlexAuthenticationChallenge{}
 
 // PlexAuthenticationChallenge Challenge shown to the user in identification stage
 type PlexAuthenticationChallenge struct {
@@ -28,8 +23,6 @@ type PlexAuthenticationChallenge struct {
 	ClientId       string                    `json:"client_id"`
 	Slug           string                    `json:"slug"`
 }
-
-type _PlexAuthenticationChallenge PlexAuthenticationChallenge
 
 // NewPlexAuthenticationChallenge instantiates a new PlexAuthenticationChallenge object
 // This constructor will assign default values to properties that have it defined,
@@ -56,7 +49,7 @@ func NewPlexAuthenticationChallengeWithDefaults() *PlexAuthenticationChallenge {
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
 func (o *PlexAuthenticationChallenge) GetFlowInfo() ContextualFlowInfo {
-	if o == nil || IsNil(o.FlowInfo) {
+	if o == nil || o.FlowInfo == nil {
 		var ret ContextualFlowInfo
 		return ret
 	}
@@ -66,7 +59,7 @@ func (o *PlexAuthenticationChallenge) GetFlowInfo() ContextualFlowInfo {
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PlexAuthenticationChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
-	if o == nil || IsNil(o.FlowInfo) {
+	if o == nil || o.FlowInfo == nil {
 		return nil, false
 	}
 	return o.FlowInfo, true
@@ -74,7 +67,7 @@ func (o *PlexAuthenticationChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool
 
 // HasFlowInfo returns a boolean if a field has been set.
 func (o *PlexAuthenticationChallenge) HasFlowInfo() bool {
-	if o != nil && !IsNil(o.FlowInfo) {
+	if o != nil && o.FlowInfo != nil {
 		return true
 	}
 
@@ -88,7 +81,7 @@ func (o *PlexAuthenticationChallenge) SetFlowInfo(v ContextualFlowInfo) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *PlexAuthenticationChallenge) GetComponent() string {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		var ret string
 		return ret
 	}
@@ -98,7 +91,7 @@ func (o *PlexAuthenticationChallenge) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PlexAuthenticationChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || IsNil(o.Component) {
+	if o == nil || o.Component == nil {
 		return nil, false
 	}
 	return o.Component, true
@@ -106,7 +99,7 @@ func (o *PlexAuthenticationChallenge) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *PlexAuthenticationChallenge) HasComponent() bool {
-	if o != nil && !IsNil(o.Component) {
+	if o != nil && o.Component != nil {
 		return true
 	}
 
@@ -120,7 +113,7 @@ func (o *PlexAuthenticationChallenge) SetComponent(v string) {
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
 func (o *PlexAuthenticationChallenge) GetResponseErrors() map[string][]ErrorDetail {
-	if o == nil || IsNil(o.ResponseErrors) {
+	if o == nil || o.ResponseErrors == nil {
 		var ret map[string][]ErrorDetail
 		return ret
 	}
@@ -130,7 +123,7 @@ func (o *PlexAuthenticationChallenge) GetResponseErrors() map[string][]ErrorDeta
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PlexAuthenticationChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
-	if o == nil || IsNil(o.ResponseErrors) {
+	if o == nil || o.ResponseErrors == nil {
 		return nil, false
 	}
 	return o.ResponseErrors, true
@@ -138,7 +131,7 @@ func (o *PlexAuthenticationChallenge) GetResponseErrorsOk() (*map[string][]Error
 
 // HasResponseErrors returns a boolean if a field has been set.
 func (o *PlexAuthenticationChallenge) HasResponseErrors() bool {
-	if o != nil && !IsNil(o.ResponseErrors) {
+	if o != nil && o.ResponseErrors != nil {
 		return true
 	}
 
@@ -199,65 +192,23 @@ func (o *PlexAuthenticationChallenge) SetSlug(v string) {
 }
 
 func (o PlexAuthenticationChallenge) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PlexAuthenticationChallenge) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.FlowInfo) {
+	if o.FlowInfo != nil {
 		toSerialize["flow_info"] = o.FlowInfo
 	}
-	if !IsNil(o.Component) {
+	if o.Component != nil {
 		toSerialize["component"] = o.Component
 	}
-	if !IsNil(o.ResponseErrors) {
+	if o.ResponseErrors != nil {
 		toSerialize["response_errors"] = o.ResponseErrors
 	}
-	toSerialize["client_id"] = o.ClientId
-	toSerialize["slug"] = o.Slug
-	return toSerialize, nil
-}
-
-func (o *PlexAuthenticationChallenge) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"client_id",
-		"slug",
+	if true {
+		toSerialize["client_id"] = o.ClientId
 	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
+	if true {
+		toSerialize["slug"] = o.Slug
 	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPlexAuthenticationChallenge := _PlexAuthenticationChallenge{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPlexAuthenticationChallenge)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PlexAuthenticationChallenge(varPlexAuthenticationChallenge)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullablePlexAuthenticationChallenge struct {

@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the SCIMProviderGroupRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SCIMProviderGroupRequest{}
 
 // SCIMProviderGroupRequest SCIMProviderGroup Serializer
 type SCIMProviderGroupRequest struct {
@@ -26,8 +21,6 @@ type SCIMProviderGroupRequest struct {
 	Group    string `json:"group"`
 	Provider int32  `json:"provider"`
 }
-
-type _SCIMProviderGroupRequest SCIMProviderGroupRequest
 
 // NewSCIMProviderGroupRequest instantiates a new SCIMProviderGroupRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -122,58 +115,17 @@ func (o *SCIMProviderGroupRequest) SetProvider(v int32) {
 }
 
 func (o SCIMProviderGroupRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["scim_id"] = o.ScimId
+	}
+	if true {
+		toSerialize["group"] = o.Group
+	}
+	if true {
+		toSerialize["provider"] = o.Provider
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o SCIMProviderGroupRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["scim_id"] = o.ScimId
-	toSerialize["group"] = o.Group
-	toSerialize["provider"] = o.Provider
-	return toSerialize, nil
-}
-
-func (o *SCIMProviderGroupRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"scim_id",
-		"group",
-		"provider",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSCIMProviderGroupRequest := _SCIMProviderGroupRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSCIMProviderGroupRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SCIMProviderGroupRequest(varSCIMProviderGroupRequest)
-
-	return err
 }
 
 type NullableSCIMProviderGroupRequest struct {

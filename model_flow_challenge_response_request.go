@@ -187,247 +187,7 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 	var jsonDict map[string]interface{}
 	err = newStrictDecoder(data).Decode(&jsonDict)
 	if err != nil {
-		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
-	}
-
-	// check if the discriminator value is 'ak-provider-oauth2-device-code'
-	if jsonDict["component"] == "ak-provider-oauth2-device-code" {
-		// try to unmarshal JSON data into OAuthDeviceCodeChallengeResponseRequest
-		err = json.Unmarshal(data, &dst.OAuthDeviceCodeChallengeResponseRequest)
-		if err == nil {
-			return nil // data stored in dst.OAuthDeviceCodeChallengeResponseRequest, return on the first match
-		} else {
-			dst.OAuthDeviceCodeChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as OAuthDeviceCodeChallengeResponseRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ak-provider-oauth2-device-code-finish'
-	if jsonDict["component"] == "ak-provider-oauth2-device-code-finish" {
-		// try to unmarshal JSON data into OAuthDeviceCodeFinishChallengeResponseRequest
-		err = json.Unmarshal(data, &dst.OAuthDeviceCodeFinishChallengeResponseRequest)
-		if err == nil {
-			return nil // data stored in dst.OAuthDeviceCodeFinishChallengeResponseRequest, return on the first match
-		} else {
-			dst.OAuthDeviceCodeFinishChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as OAuthDeviceCodeFinishChallengeResponseRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ak-source-oauth-apple'
-	if jsonDict["component"] == "ak-source-oauth-apple" {
-		// try to unmarshal JSON data into AppleChallengeResponseRequest
-		err = json.Unmarshal(data, &dst.AppleChallengeResponseRequest)
-		if err == nil {
-			return nil // data stored in dst.AppleChallengeResponseRequest, return on the first match
-		} else {
-			dst.AppleChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as AppleChallengeResponseRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ak-source-plex'
-	if jsonDict["component"] == "ak-source-plex" {
-		// try to unmarshal JSON data into PlexAuthenticationChallengeResponseRequest
-		err = json.Unmarshal(data, &dst.PlexAuthenticationChallengeResponseRequest)
-		if err == nil {
-			return nil // data stored in dst.PlexAuthenticationChallengeResponseRequest, return on the first match
-		} else {
-			dst.PlexAuthenticationChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as PlexAuthenticationChallengeResponseRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ak-stage-authenticator-duo'
-	if jsonDict["component"] == "ak-stage-authenticator-duo" {
-		// try to unmarshal JSON data into AuthenticatorDuoChallengeResponseRequest
-		err = json.Unmarshal(data, &dst.AuthenticatorDuoChallengeResponseRequest)
-		if err == nil {
-			return nil // data stored in dst.AuthenticatorDuoChallengeResponseRequest, return on the first match
-		} else {
-			dst.AuthenticatorDuoChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as AuthenticatorDuoChallengeResponseRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ak-stage-authenticator-sms'
-	if jsonDict["component"] == "ak-stage-authenticator-sms" {
-		// try to unmarshal JSON data into AuthenticatorSMSChallengeResponseRequest
-		err = json.Unmarshal(data, &dst.AuthenticatorSMSChallengeResponseRequest)
-		if err == nil {
-			return nil // data stored in dst.AuthenticatorSMSChallengeResponseRequest, return on the first match
-		} else {
-			dst.AuthenticatorSMSChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as AuthenticatorSMSChallengeResponseRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ak-stage-authenticator-static'
-	if jsonDict["component"] == "ak-stage-authenticator-static" {
-		// try to unmarshal JSON data into AuthenticatorStaticChallengeResponseRequest
-		err = json.Unmarshal(data, &dst.AuthenticatorStaticChallengeResponseRequest)
-		if err == nil {
-			return nil // data stored in dst.AuthenticatorStaticChallengeResponseRequest, return on the first match
-		} else {
-			dst.AuthenticatorStaticChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as AuthenticatorStaticChallengeResponseRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ak-stage-authenticator-totp'
-	if jsonDict["component"] == "ak-stage-authenticator-totp" {
-		// try to unmarshal JSON data into AuthenticatorTOTPChallengeResponseRequest
-		err = json.Unmarshal(data, &dst.AuthenticatorTOTPChallengeResponseRequest)
-		if err == nil {
-			return nil // data stored in dst.AuthenticatorTOTPChallengeResponseRequest, return on the first match
-		} else {
-			dst.AuthenticatorTOTPChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as AuthenticatorTOTPChallengeResponseRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ak-stage-authenticator-validate'
-	if jsonDict["component"] == "ak-stage-authenticator-validate" {
-		// try to unmarshal JSON data into AuthenticatorValidationChallengeResponseRequest
-		err = json.Unmarshal(data, &dst.AuthenticatorValidationChallengeResponseRequest)
-		if err == nil {
-			return nil // data stored in dst.AuthenticatorValidationChallengeResponseRequest, return on the first match
-		} else {
-			dst.AuthenticatorValidationChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as AuthenticatorValidationChallengeResponseRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ak-stage-authenticator-webauthn'
-	if jsonDict["component"] == "ak-stage-authenticator-webauthn" {
-		// try to unmarshal JSON data into AuthenticatorWebAuthnChallengeResponseRequest
-		err = json.Unmarshal(data, &dst.AuthenticatorWebAuthnChallengeResponseRequest)
-		if err == nil {
-			return nil // data stored in dst.AuthenticatorWebAuthnChallengeResponseRequest, return on the first match
-		} else {
-			dst.AuthenticatorWebAuthnChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as AuthenticatorWebAuthnChallengeResponseRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ak-stage-autosubmit'
-	if jsonDict["component"] == "ak-stage-autosubmit" {
-		// try to unmarshal JSON data into AutoSubmitChallengeResponseRequest
-		err = json.Unmarshal(data, &dst.AutoSubmitChallengeResponseRequest)
-		if err == nil {
-			return nil // data stored in dst.AutoSubmitChallengeResponseRequest, return on the first match
-		} else {
-			dst.AutoSubmitChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as AutoSubmitChallengeResponseRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ak-stage-captcha'
-	if jsonDict["component"] == "ak-stage-captcha" {
-		// try to unmarshal JSON data into CaptchaChallengeResponseRequest
-		err = json.Unmarshal(data, &dst.CaptchaChallengeResponseRequest)
-		if err == nil {
-			return nil // data stored in dst.CaptchaChallengeResponseRequest, return on the first match
-		} else {
-			dst.CaptchaChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as CaptchaChallengeResponseRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ak-stage-consent'
-	if jsonDict["component"] == "ak-stage-consent" {
-		// try to unmarshal JSON data into ConsentChallengeResponseRequest
-		err = json.Unmarshal(data, &dst.ConsentChallengeResponseRequest)
-		if err == nil {
-			return nil // data stored in dst.ConsentChallengeResponseRequest, return on the first match
-		} else {
-			dst.ConsentChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as ConsentChallengeResponseRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ak-stage-dummy'
-	if jsonDict["component"] == "ak-stage-dummy" {
-		// try to unmarshal JSON data into DummyChallengeResponseRequest
-		err = json.Unmarshal(data, &dst.DummyChallengeResponseRequest)
-		if err == nil {
-			return nil // data stored in dst.DummyChallengeResponseRequest, return on the first match
-		} else {
-			dst.DummyChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as DummyChallengeResponseRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ak-stage-email'
-	if jsonDict["component"] == "ak-stage-email" {
-		// try to unmarshal JSON data into EmailChallengeResponseRequest
-		err = json.Unmarshal(data, &dst.EmailChallengeResponseRequest)
-		if err == nil {
-			return nil // data stored in dst.EmailChallengeResponseRequest, return on the first match
-		} else {
-			dst.EmailChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as EmailChallengeResponseRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ak-stage-identification'
-	if jsonDict["component"] == "ak-stage-identification" {
-		// try to unmarshal JSON data into IdentificationChallengeResponseRequest
-		err = json.Unmarshal(data, &dst.IdentificationChallengeResponseRequest)
-		if err == nil {
-			return nil // data stored in dst.IdentificationChallengeResponseRequest, return on the first match
-		} else {
-			dst.IdentificationChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as IdentificationChallengeResponseRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ak-stage-password'
-	if jsonDict["component"] == "ak-stage-password" {
-		// try to unmarshal JSON data into PasswordChallengeResponseRequest
-		err = json.Unmarshal(data, &dst.PasswordChallengeResponseRequest)
-		if err == nil {
-			return nil // data stored in dst.PasswordChallengeResponseRequest, return on the first match
-		} else {
-			dst.PasswordChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as PasswordChallengeResponseRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ak-stage-prompt'
-	if jsonDict["component"] == "ak-stage-prompt" {
-		// try to unmarshal JSON data into PromptChallengeResponseRequest
-		err = json.Unmarshal(data, &dst.PromptChallengeResponseRequest)
-		if err == nil {
-			return nil // data stored in dst.PromptChallengeResponseRequest, return on the first match
-		} else {
-			dst.PromptChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as PromptChallengeResponseRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ak-stage-user-login'
-	if jsonDict["component"] == "ak-stage-user-login" {
-		// try to unmarshal JSON data into UserLoginChallengeResponseRequest
-		err = json.Unmarshal(data, &dst.UserLoginChallengeResponseRequest)
-		if err == nil {
-			return nil // data stored in dst.UserLoginChallengeResponseRequest, return on the first match
-		} else {
-			dst.UserLoginChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as UserLoginChallengeResponseRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'xak-flow-frame'
-	if jsonDict["component"] == "xak-flow-frame" {
-		// try to unmarshal JSON data into FrameChallengeResponseRequest
-		err = json.Unmarshal(data, &dst.FrameChallengeResponseRequest)
-		if err == nil {
-			return nil // data stored in dst.FrameChallengeResponseRequest, return on the first match
-		} else {
-			dst.FrameChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as FrameChallengeResponseRequest: %s", err.Error())
-		}
+		return fmt.Errorf("Failed to unmarshal JSON into map for the discriminator lookup.")
 	}
 
 	// check if the discriminator value is 'AppleChallengeResponseRequest'
@@ -438,7 +198,7 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AppleChallengeResponseRequest, return on the first match
 		} else {
 			dst.AppleChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as AppleChallengeResponseRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AppleChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -450,7 +210,7 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AuthenticatorDuoChallengeResponseRequest, return on the first match
 		} else {
 			dst.AuthenticatorDuoChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as AuthenticatorDuoChallengeResponseRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AuthenticatorDuoChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -462,7 +222,7 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AuthenticatorSMSChallengeResponseRequest, return on the first match
 		} else {
 			dst.AuthenticatorSMSChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as AuthenticatorSMSChallengeResponseRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AuthenticatorSMSChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -474,7 +234,7 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AuthenticatorStaticChallengeResponseRequest, return on the first match
 		} else {
 			dst.AuthenticatorStaticChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as AuthenticatorStaticChallengeResponseRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AuthenticatorStaticChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -486,7 +246,7 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AuthenticatorTOTPChallengeResponseRequest, return on the first match
 		} else {
 			dst.AuthenticatorTOTPChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as AuthenticatorTOTPChallengeResponseRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AuthenticatorTOTPChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -498,7 +258,7 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AuthenticatorValidationChallengeResponseRequest, return on the first match
 		} else {
 			dst.AuthenticatorValidationChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as AuthenticatorValidationChallengeResponseRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AuthenticatorValidationChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -510,7 +270,7 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AuthenticatorWebAuthnChallengeResponseRequest, return on the first match
 		} else {
 			dst.AuthenticatorWebAuthnChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as AuthenticatorWebAuthnChallengeResponseRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AuthenticatorWebAuthnChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -522,7 +282,7 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AutoSubmitChallengeResponseRequest, return on the first match
 		} else {
 			dst.AutoSubmitChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as AutoSubmitChallengeResponseRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AutoSubmitChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -534,7 +294,7 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.CaptchaChallengeResponseRequest, return on the first match
 		} else {
 			dst.CaptchaChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as CaptchaChallengeResponseRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as CaptchaChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -546,7 +306,7 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.ConsentChallengeResponseRequest, return on the first match
 		} else {
 			dst.ConsentChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as ConsentChallengeResponseRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as ConsentChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -558,7 +318,7 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.DummyChallengeResponseRequest, return on the first match
 		} else {
 			dst.DummyChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as DummyChallengeResponseRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as DummyChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -570,7 +330,7 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.EmailChallengeResponseRequest, return on the first match
 		} else {
 			dst.EmailChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as EmailChallengeResponseRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as EmailChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -582,7 +342,7 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.FrameChallengeResponseRequest, return on the first match
 		} else {
 			dst.FrameChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as FrameChallengeResponseRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as FrameChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -594,7 +354,7 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.IdentificationChallengeResponseRequest, return on the first match
 		} else {
 			dst.IdentificationChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as IdentificationChallengeResponseRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as IdentificationChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -606,7 +366,7 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.OAuthDeviceCodeChallengeResponseRequest, return on the first match
 		} else {
 			dst.OAuthDeviceCodeChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as OAuthDeviceCodeChallengeResponseRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as OAuthDeviceCodeChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -618,7 +378,7 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.OAuthDeviceCodeFinishChallengeResponseRequest, return on the first match
 		} else {
 			dst.OAuthDeviceCodeFinishChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as OAuthDeviceCodeFinishChallengeResponseRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as OAuthDeviceCodeFinishChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -630,7 +390,7 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.PasswordChallengeResponseRequest, return on the first match
 		} else {
 			dst.PasswordChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as PasswordChallengeResponseRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as PasswordChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -642,7 +402,7 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.PlexAuthenticationChallengeResponseRequest, return on the first match
 		} else {
 			dst.PlexAuthenticationChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as PlexAuthenticationChallengeResponseRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as PlexAuthenticationChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -654,7 +414,7 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.PromptChallengeResponseRequest, return on the first match
 		} else {
 			dst.PromptChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as PromptChallengeResponseRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as PromptChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -666,7 +426,247 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.UserLoginChallengeResponseRequest, return on the first match
 		} else {
 			dst.UserLoginChallengeResponseRequest = nil
-			return fmt.Errorf("failed to unmarshal FlowChallengeResponseRequest as UserLoginChallengeResponseRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as UserLoginChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-provider-oauth2-device-code'
+	if jsonDict["component"] == "ak-provider-oauth2-device-code" {
+		// try to unmarshal JSON data into OAuthDeviceCodeChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.OAuthDeviceCodeChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.OAuthDeviceCodeChallengeResponseRequest, return on the first match
+		} else {
+			dst.OAuthDeviceCodeChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as OAuthDeviceCodeChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-provider-oauth2-device-code-finish'
+	if jsonDict["component"] == "ak-provider-oauth2-device-code-finish" {
+		// try to unmarshal JSON data into OAuthDeviceCodeFinishChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.OAuthDeviceCodeFinishChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.OAuthDeviceCodeFinishChallengeResponseRequest, return on the first match
+		} else {
+			dst.OAuthDeviceCodeFinishChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as OAuthDeviceCodeFinishChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-source-oauth-apple'
+	if jsonDict["component"] == "ak-source-oauth-apple" {
+		// try to unmarshal JSON data into AppleChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.AppleChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.AppleChallengeResponseRequest, return on the first match
+		} else {
+			dst.AppleChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AppleChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-source-plex'
+	if jsonDict["component"] == "ak-source-plex" {
+		// try to unmarshal JSON data into PlexAuthenticationChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.PlexAuthenticationChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.PlexAuthenticationChallengeResponseRequest, return on the first match
+		} else {
+			dst.PlexAuthenticationChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as PlexAuthenticationChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-stage-authenticator-duo'
+	if jsonDict["component"] == "ak-stage-authenticator-duo" {
+		// try to unmarshal JSON data into AuthenticatorDuoChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.AuthenticatorDuoChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.AuthenticatorDuoChallengeResponseRequest, return on the first match
+		} else {
+			dst.AuthenticatorDuoChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AuthenticatorDuoChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-stage-authenticator-sms'
+	if jsonDict["component"] == "ak-stage-authenticator-sms" {
+		// try to unmarshal JSON data into AuthenticatorSMSChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.AuthenticatorSMSChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.AuthenticatorSMSChallengeResponseRequest, return on the first match
+		} else {
+			dst.AuthenticatorSMSChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AuthenticatorSMSChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-stage-authenticator-static'
+	if jsonDict["component"] == "ak-stage-authenticator-static" {
+		// try to unmarshal JSON data into AuthenticatorStaticChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.AuthenticatorStaticChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.AuthenticatorStaticChallengeResponseRequest, return on the first match
+		} else {
+			dst.AuthenticatorStaticChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AuthenticatorStaticChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-stage-authenticator-totp'
+	if jsonDict["component"] == "ak-stage-authenticator-totp" {
+		// try to unmarshal JSON data into AuthenticatorTOTPChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.AuthenticatorTOTPChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.AuthenticatorTOTPChallengeResponseRequest, return on the first match
+		} else {
+			dst.AuthenticatorTOTPChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AuthenticatorTOTPChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-stage-authenticator-validate'
+	if jsonDict["component"] == "ak-stage-authenticator-validate" {
+		// try to unmarshal JSON data into AuthenticatorValidationChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.AuthenticatorValidationChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.AuthenticatorValidationChallengeResponseRequest, return on the first match
+		} else {
+			dst.AuthenticatorValidationChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AuthenticatorValidationChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-stage-authenticator-webauthn'
+	if jsonDict["component"] == "ak-stage-authenticator-webauthn" {
+		// try to unmarshal JSON data into AuthenticatorWebAuthnChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.AuthenticatorWebAuthnChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.AuthenticatorWebAuthnChallengeResponseRequest, return on the first match
+		} else {
+			dst.AuthenticatorWebAuthnChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AuthenticatorWebAuthnChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-stage-autosubmit'
+	if jsonDict["component"] == "ak-stage-autosubmit" {
+		// try to unmarshal JSON data into AutoSubmitChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.AutoSubmitChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.AutoSubmitChallengeResponseRequest, return on the first match
+		} else {
+			dst.AutoSubmitChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AutoSubmitChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-stage-captcha'
+	if jsonDict["component"] == "ak-stage-captcha" {
+		// try to unmarshal JSON data into CaptchaChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.CaptchaChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.CaptchaChallengeResponseRequest, return on the first match
+		} else {
+			dst.CaptchaChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as CaptchaChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-stage-consent'
+	if jsonDict["component"] == "ak-stage-consent" {
+		// try to unmarshal JSON data into ConsentChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.ConsentChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.ConsentChallengeResponseRequest, return on the first match
+		} else {
+			dst.ConsentChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as ConsentChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-stage-dummy'
+	if jsonDict["component"] == "ak-stage-dummy" {
+		// try to unmarshal JSON data into DummyChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.DummyChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.DummyChallengeResponseRequest, return on the first match
+		} else {
+			dst.DummyChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as DummyChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-stage-email'
+	if jsonDict["component"] == "ak-stage-email" {
+		// try to unmarshal JSON data into EmailChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.EmailChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.EmailChallengeResponseRequest, return on the first match
+		} else {
+			dst.EmailChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as EmailChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-stage-identification'
+	if jsonDict["component"] == "ak-stage-identification" {
+		// try to unmarshal JSON data into IdentificationChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.IdentificationChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.IdentificationChallengeResponseRequest, return on the first match
+		} else {
+			dst.IdentificationChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as IdentificationChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-stage-password'
+	if jsonDict["component"] == "ak-stage-password" {
+		// try to unmarshal JSON data into PasswordChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.PasswordChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.PasswordChallengeResponseRequest, return on the first match
+		} else {
+			dst.PasswordChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as PasswordChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-stage-prompt'
+	if jsonDict["component"] == "ak-stage-prompt" {
+		// try to unmarshal JSON data into PromptChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.PromptChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.PromptChallengeResponseRequest, return on the first match
+		} else {
+			dst.PromptChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as PromptChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-stage-user-login'
+	if jsonDict["component"] == "ak-stage-user-login" {
+		// try to unmarshal JSON data into UserLoginChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.UserLoginChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.UserLoginChallengeResponseRequest, return on the first match
+		} else {
+			dst.UserLoginChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as UserLoginChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'xak-flow-frame'
+	if jsonDict["component"] == "xak-flow-frame" {
+		// try to unmarshal JSON data into FrameChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.FrameChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.FrameChallengeResponseRequest, return on the first match
+		} else {
+			dst.FrameChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as FrameChallengeResponseRequest: %s", err.Error())
 		}
 	}
 

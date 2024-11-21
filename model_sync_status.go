@@ -12,21 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the SyncStatus type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SyncStatus{}
 
 // SyncStatus Provider sync status
 type SyncStatus struct {
 	IsRunning bool         `json:"is_running"`
 	Tasks     []SystemTask `json:"tasks"`
 }
-
-type _SyncStatus SyncStatus
 
 // NewSyncStatus instantiates a new SyncStatus object
 // This constructor will assign default values to properties that have it defined,
@@ -96,56 +89,14 @@ func (o *SyncStatus) SetTasks(v []SystemTask) {
 }
 
 func (o SyncStatus) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["is_running"] = o.IsRunning
+	}
+	if true {
+		toSerialize["tasks"] = o.Tasks
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o SyncStatus) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["is_running"] = o.IsRunning
-	toSerialize["tasks"] = o.Tasks
-	return toSerialize, nil
-}
-
-func (o *SyncStatus) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"is_running",
-		"tasks",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSyncStatus := _SyncStatus{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSyncStatus)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SyncStatus(varSyncStatus)
-
-	return err
 }
 
 type NullableSyncStatus struct {

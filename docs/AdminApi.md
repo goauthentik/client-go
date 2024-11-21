@@ -1,21 +1,21 @@
-# \AdminAPI
+# \AdminApi
 
 All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AdminAppsList**](AdminAPI.md#AdminAppsList) | **Get** /admin/apps/ | 
-[**AdminMetricsRetrieve**](AdminAPI.md#AdminMetricsRetrieve) | **Get** /admin/metrics/ | 
-[**AdminModelsList**](AdminAPI.md#AdminModelsList) | **Get** /admin/models/ | 
-[**AdminSettingsPartialUpdate**](AdminAPI.md#AdminSettingsPartialUpdate) | **Patch** /admin/settings/ | 
-[**AdminSettingsRetrieve**](AdminAPI.md#AdminSettingsRetrieve) | **Get** /admin/settings/ | 
-[**AdminSettingsUpdate**](AdminAPI.md#AdminSettingsUpdate) | **Put** /admin/settings/ | 
-[**AdminSystemCreate**](AdminAPI.md#AdminSystemCreate) | **Post** /admin/system/ | 
-[**AdminSystemRetrieve**](AdminAPI.md#AdminSystemRetrieve) | **Get** /admin/system/ | 
-[**AdminVersionHistoryList**](AdminAPI.md#AdminVersionHistoryList) | **Get** /admin/version/history/ | 
-[**AdminVersionHistoryRetrieve**](AdminAPI.md#AdminVersionHistoryRetrieve) | **Get** /admin/version/history/{id}/ | 
-[**AdminVersionRetrieve**](AdminAPI.md#AdminVersionRetrieve) | **Get** /admin/version/ | 
-[**AdminWorkersRetrieve**](AdminAPI.md#AdminWorkersRetrieve) | **Get** /admin/workers/ | 
+[**AdminAppsList**](AdminApi.md#AdminAppsList) | **Get** /admin/apps/ | 
+[**AdminMetricsRetrieve**](AdminApi.md#AdminMetricsRetrieve) | **Get** /admin/metrics/ | 
+[**AdminModelsList**](AdminApi.md#AdminModelsList) | **Get** /admin/models/ | 
+[**AdminSettingsPartialUpdate**](AdminApi.md#AdminSettingsPartialUpdate) | **Patch** /admin/settings/ | 
+[**AdminSettingsRetrieve**](AdminApi.md#AdminSettingsRetrieve) | **Get** /admin/settings/ | 
+[**AdminSettingsUpdate**](AdminApi.md#AdminSettingsUpdate) | **Put** /admin/settings/ | 
+[**AdminSystemCreate**](AdminApi.md#AdminSystemCreate) | **Post** /admin/system/ | 
+[**AdminSystemRetrieve**](AdminApi.md#AdminSystemRetrieve) | **Get** /admin/system/ | 
+[**AdminVersionHistoryList**](AdminApi.md#AdminVersionHistoryList) | **Get** /admin/version/history/ | 
+[**AdminVersionHistoryRetrieve**](AdminApi.md#AdminVersionHistoryRetrieve) | **Get** /admin/version/history/{id}/ | 
+[**AdminVersionRetrieve**](AdminApi.md#AdminVersionRetrieve) | **Get** /admin/version/ | 
+[**AdminWorkersRetrieve**](AdminApi.md#AdminWorkersRetrieve) | **Get** /admin/workers/ | 
 
 
 
@@ -33,23 +33,23 @@ Method | HTTP request | Description
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.AdminAppsList(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.AdminAppsList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AdminAppsList`: []App
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.AdminAppsList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AdminApi.AdminAppsList(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminAppsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AdminAppsList`: []App
+    fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminAppsList`: %v\n", resp)
 }
 ```
 
@@ -94,23 +94,23 @@ Other parameters are passed through a pointer to a apiAdminAppsListRequest struc
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.AdminMetricsRetrieve(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.AdminMetricsRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AdminMetricsRetrieve`: LoginMetrics
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.AdminMetricsRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AdminApi.AdminMetricsRetrieve(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminMetricsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AdminMetricsRetrieve`: LoginMetrics
+    fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminMetricsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -155,23 +155,23 @@ Other parameters are passed through a pointer to a apiAdminMetricsRetrieveReques
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.AdminModelsList(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.AdminModelsList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AdminModelsList`: []App
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.AdminModelsList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AdminApi.AdminModelsList(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminModelsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AdminModelsList`: []App
+    fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminModelsList`: %v\n", resp)
 }
 ```
 
@@ -216,24 +216,24 @@ Other parameters are passed through a pointer to a apiAdminModelsListRequest str
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	patchedSettingsRequest := *openapiclient.NewPatchedSettingsRequest() // PatchedSettingsRequest |  (optional)
+    patchedSettingsRequest := *openapiclient.NewPatchedSettingsRequest() // PatchedSettingsRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.AdminSettingsPartialUpdate(context.Background()).PatchedSettingsRequest(patchedSettingsRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.AdminSettingsPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AdminSettingsPartialUpdate`: Settings
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.AdminSettingsPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AdminApi.AdminSettingsPartialUpdate(context.Background()).PatchedSettingsRequest(patchedSettingsRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminSettingsPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AdminSettingsPartialUpdate`: Settings
+    fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminSettingsPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -282,23 +282,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.AdminSettingsRetrieve(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.AdminSettingsRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AdminSettingsRetrieve`: Settings
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.AdminSettingsRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AdminApi.AdminSettingsRetrieve(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminSettingsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AdminSettingsRetrieve`: Settings
+    fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminSettingsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -343,24 +343,24 @@ Other parameters are passed through a pointer to a apiAdminSettingsRetrieveReque
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	settingsRequest := *openapiclient.NewSettingsRequest() // SettingsRequest |  (optional)
+    settingsRequest := *openapiclient.NewSettingsRequest() // SettingsRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.AdminSettingsUpdate(context.Background()).SettingsRequest(settingsRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.AdminSettingsUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AdminSettingsUpdate`: Settings
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.AdminSettingsUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AdminApi.AdminSettingsUpdate(context.Background()).SettingsRequest(settingsRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminSettingsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AdminSettingsUpdate`: Settings
+    fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminSettingsUpdate`: %v\n", resp)
 }
 ```
 
@@ -409,23 +409,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.AdminSystemCreate(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.AdminSystemCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AdminSystemCreate`: SystemInfo
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.AdminSystemCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AdminApi.AdminSystemCreate(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminSystemCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AdminSystemCreate`: SystemInfo
+    fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminSystemCreate`: %v\n", resp)
 }
 ```
 
@@ -470,23 +470,23 @@ Other parameters are passed through a pointer to a apiAdminSystemCreateRequest s
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.AdminSystemRetrieve(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.AdminSystemRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AdminSystemRetrieve`: SystemInfo
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.AdminSystemRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AdminApi.AdminSystemRetrieve(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminSystemRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AdminSystemRetrieve`: SystemInfo
+    fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminSystemRetrieve`: %v\n", resp)
 }
 ```
 
@@ -531,27 +531,27 @@ Other parameters are passed through a pointer to a apiAdminSystemRetrieveRequest
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	build := "build_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	search := "search_example" // string | A search term. (optional)
-	version := "version_example" // string |  (optional)
+    build := "build_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    search := "search_example" // string | A search term. (optional)
+    version := "version_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.AdminVersionHistoryList(context.Background()).Build(build).Ordering(ordering).Search(search).Version(version).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.AdminVersionHistoryList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AdminVersionHistoryList`: []VersionHistory
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.AdminVersionHistoryList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AdminApi.AdminVersionHistoryList(context.Background()).Build(build).Ordering(ordering).Search(search).Version(version).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminVersionHistoryList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AdminVersionHistoryList`: []VersionHistory
+    fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminVersionHistoryList`: %v\n", resp)
 }
 ```
 
@@ -603,24 +603,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Version history.
+    id := int32(56) // int32 | A unique integer value identifying this Version history.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.AdminVersionHistoryRetrieve(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.AdminVersionHistoryRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AdminVersionHistoryRetrieve`: VersionHistory
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.AdminVersionHistoryRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AdminApi.AdminVersionHistoryRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminVersionHistoryRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AdminVersionHistoryRetrieve`: VersionHistory
+    fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminVersionHistoryRetrieve`: %v\n", resp)
 }
 ```
 
@@ -673,23 +673,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.AdminVersionRetrieve(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.AdminVersionRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AdminVersionRetrieve`: Version
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.AdminVersionRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AdminApi.AdminVersionRetrieve(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminVersionRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AdminVersionRetrieve`: Version
+    fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminVersionRetrieve`: %v\n", resp)
 }
 ```
 
@@ -734,23 +734,23 @@ Other parameters are passed through a pointer to a apiAdminVersionRetrieveReques
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.AdminWorkersRetrieve(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.AdminWorkersRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AdminWorkersRetrieve`: Workers
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.AdminWorkersRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AdminApi.AdminWorkersRetrieve(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminWorkersRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AdminWorkersRetrieve`: Workers
+    fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminWorkersRetrieve`: %v\n", resp)
 }
 ```
 

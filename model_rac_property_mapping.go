@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the RACPropertyMapping type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &RACPropertyMapping{}
 
 // RACPropertyMapping RACPropertyMapping Serializer
 type RACPropertyMapping struct {
@@ -37,8 +32,6 @@ type RACPropertyMapping struct {
 	MetaModelName  string                 `json:"meta_model_name"`
 	StaticSettings map[string]interface{} `json:"static_settings"`
 }
-
-type _RACPropertyMapping RACPropertyMapping
 
 // NewRACPropertyMapping instantiates a new RACPropertyMapping object
 // This constructor will assign default values to properties that have it defined,
@@ -90,7 +83,7 @@ func (o *RACPropertyMapping) SetPk(v string) {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RACPropertyMapping) GetManaged() string {
-	if o == nil || IsNil(o.Managed.Get()) {
+	if o == nil || o.Managed.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -157,7 +150,7 @@ func (o *RACPropertyMapping) SetName(v string) {
 
 // GetExpression returns the Expression field value if set, zero value otherwise.
 func (o *RACPropertyMapping) GetExpression() string {
-	if o == nil || IsNil(o.Expression) {
+	if o == nil || o.Expression == nil {
 		var ret string
 		return ret
 	}
@@ -167,7 +160,7 @@ func (o *RACPropertyMapping) GetExpression() string {
 // GetExpressionOk returns a tuple with the Expression field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RACPropertyMapping) GetExpressionOk() (*string, bool) {
-	if o == nil || IsNil(o.Expression) {
+	if o == nil || o.Expression == nil {
 		return nil, false
 	}
 	return o.Expression, true
@@ -175,7 +168,7 @@ func (o *RACPropertyMapping) GetExpressionOk() (*string, bool) {
 
 // HasExpression returns a boolean if a field has been set.
 func (o *RACPropertyMapping) HasExpression() bool {
-	if o != nil && !IsNil(o.Expression) {
+	if o != nil && o.Expression != nil {
 		return true
 	}
 
@@ -297,7 +290,7 @@ func (o *RACPropertyMapping) GetStaticSettings() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *RACPropertyMapping) GetStaticSettingsOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.StaticSettings, true
 }
@@ -308,72 +301,35 @@ func (o *RACPropertyMapping) SetStaticSettings(v map[string]interface{}) {
 }
 
 func (o RACPropertyMapping) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o RACPropertyMapping) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["pk"] = o.Pk
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	toSerialize["name"] = o.Name
-	if !IsNil(o.Expression) {
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.Expression != nil {
 		toSerialize["expression"] = o.Expression
 	}
-	toSerialize["component"] = o.Component
-	toSerialize["verbose_name"] = o.VerboseName
-	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	toSerialize["meta_model_name"] = o.MetaModelName
-	toSerialize["static_settings"] = o.StaticSettings
-	return toSerialize, nil
-}
-
-func (o *RACPropertyMapping) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pk",
-		"name",
-		"component",
-		"verbose_name",
-		"verbose_name_plural",
-		"meta_model_name",
-		"static_settings",
+	if true {
+		toSerialize["component"] = o.Component
 	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
 	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	}
-
-	varRACPropertyMapping := _RACPropertyMapping{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRACPropertyMapping)
-
-	if err != nil {
-		return err
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
 	}
-
-	*o = RACPropertyMapping(varRACPropertyMapping)
-
-	return err
+	if true {
+		toSerialize["static_settings"] = o.StaticSettings
+	}
+	return json.Marshal(toSerialize)
 }
 
 type NullableRACPropertyMapping struct {

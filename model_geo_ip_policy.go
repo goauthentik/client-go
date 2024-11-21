@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the GeoIPPolicy type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GeoIPPolicy{}
 
 // GeoIPPolicy GeoIP Policy Serializer
 type GeoIPPolicy struct {
@@ -40,8 +35,6 @@ type GeoIPPolicy struct {
 	Countries    []CountryCodeEnum      `json:"countries"`
 	CountriesObj []DetailedCountryField `json:"countries_obj"`
 }
-
-type _GeoIPPolicy GeoIPPolicy
 
 // NewGeoIPPolicy instantiates a new GeoIPPolicy object
 // This constructor will assign default values to properties that have it defined,
@@ -119,7 +112,7 @@ func (o *GeoIPPolicy) SetName(v string) {
 
 // GetExecutionLogging returns the ExecutionLogging field value if set, zero value otherwise.
 func (o *GeoIPPolicy) GetExecutionLogging() bool {
-	if o == nil || IsNil(o.ExecutionLogging) {
+	if o == nil || o.ExecutionLogging == nil {
 		var ret bool
 		return ret
 	}
@@ -129,7 +122,7 @@ func (o *GeoIPPolicy) GetExecutionLogging() bool {
 // GetExecutionLoggingOk returns a tuple with the ExecutionLogging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GeoIPPolicy) GetExecutionLoggingOk() (*bool, bool) {
-	if o == nil || IsNil(o.ExecutionLogging) {
+	if o == nil || o.ExecutionLogging == nil {
 		return nil, false
 	}
 	return o.ExecutionLogging, true
@@ -137,7 +130,7 @@ func (o *GeoIPPolicy) GetExecutionLoggingOk() (*bool, bool) {
 
 // HasExecutionLogging returns a boolean if a field has been set.
 func (o *GeoIPPolicy) HasExecutionLogging() bool {
-	if o != nil && !IsNil(o.ExecutionLogging) {
+	if o != nil && o.ExecutionLogging != nil {
 		return true
 	}
 
@@ -271,7 +264,7 @@ func (o *GeoIPPolicy) SetBoundTo(v int32) {
 
 // GetAsns returns the Asns field value if set, zero value otherwise.
 func (o *GeoIPPolicy) GetAsns() []int32 {
-	if o == nil || IsNil(o.Asns) {
+	if o == nil || o.Asns == nil {
 		var ret []int32
 		return ret
 	}
@@ -281,7 +274,7 @@ func (o *GeoIPPolicy) GetAsns() []int32 {
 // GetAsnsOk returns a tuple with the Asns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GeoIPPolicy) GetAsnsOk() ([]int32, bool) {
-	if o == nil || IsNil(o.Asns) {
+	if o == nil || o.Asns == nil {
 		return nil, false
 	}
 	return o.Asns, true
@@ -289,7 +282,7 @@ func (o *GeoIPPolicy) GetAsnsOk() ([]int32, bool) {
 
 // HasAsns returns a boolean if a field has been set.
 func (o *GeoIPPolicy) HasAsns() bool {
-	if o != nil && !IsNil(o.Asns) {
+	if o != nil && o.Asns != nil {
 		return true
 	}
 
@@ -350,76 +343,41 @@ func (o *GeoIPPolicy) SetCountriesObj(v []DetailedCountryField) {
 }
 
 func (o GeoIPPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o GeoIPPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["pk"] = o.Pk
-	toSerialize["name"] = o.Name
-	if !IsNil(o.ExecutionLogging) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.ExecutionLogging != nil {
 		toSerialize["execution_logging"] = o.ExecutionLogging
 	}
-	toSerialize["component"] = o.Component
-	toSerialize["verbose_name"] = o.VerboseName
-	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	toSerialize["meta_model_name"] = o.MetaModelName
-	toSerialize["bound_to"] = o.BoundTo
-	if !IsNil(o.Asns) {
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
+	}
+	if true {
+		toSerialize["bound_to"] = o.BoundTo
+	}
+	if o.Asns != nil {
 		toSerialize["asns"] = o.Asns
 	}
-	toSerialize["countries"] = o.Countries
-	toSerialize["countries_obj"] = o.CountriesObj
-	return toSerialize, nil
-}
-
-func (o *GeoIPPolicy) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pk",
-		"name",
-		"component",
-		"verbose_name",
-		"verbose_name_plural",
-		"meta_model_name",
-		"bound_to",
-		"countries",
-		"countries_obj",
+	if true {
+		toSerialize["countries"] = o.Countries
 	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
+	if true {
+		toSerialize["countries_obj"] = o.CountriesObj
 	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varGeoIPPolicy := _GeoIPPolicy{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGeoIPPolicy)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GeoIPPolicy(varGeoIPPolicy)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableGeoIPPolicy struct {

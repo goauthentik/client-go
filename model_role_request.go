@@ -12,20 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the RoleRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &RoleRequest{}
 
 // RoleRequest Role serializer
 type RoleRequest struct {
 	Name string `json:"name"`
 }
-
-type _RoleRequest RoleRequest
 
 // NewRoleRequest instantiates a new RoleRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -70,54 +63,11 @@ func (o *RoleRequest) SetName(v string) {
 }
 
 func (o RoleRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["name"] = o.Name
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o RoleRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	return toSerialize, nil
-}
-
-func (o *RoleRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varRoleRequest := _RoleRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRoleRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RoleRequest(varRoleRequest)
-
-	return err
 }
 
 type NullableRoleRequest struct {

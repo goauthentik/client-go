@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedSCIMSourceUserRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedSCIMSourceUserRequest{}
-
 // PatchedSCIMSourceUserRequest SCIMSourceUser Serializer
 type PatchedSCIMSourceUserRequest struct {
 	Id         *string     `json:"id,omitempty"`
@@ -45,7 +42,7 @@ func NewPatchedSCIMSourceUserRequestWithDefaults() *PatchedSCIMSourceUserRequest
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *PatchedSCIMSourceUserRequest) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || o.Id == nil {
 		var ret string
 		return ret
 	}
@@ -55,7 +52,7 @@ func (o *PatchedSCIMSourceUserRequest) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMSourceUserRequest) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || o.Id == nil {
 		return nil, false
 	}
 	return o.Id, true
@@ -63,7 +60,7 @@ func (o *PatchedSCIMSourceUserRequest) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *PatchedSCIMSourceUserRequest) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && o.Id != nil {
 		return true
 	}
 
@@ -77,7 +74,7 @@ func (o *PatchedSCIMSourceUserRequest) SetId(v string) {
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *PatchedSCIMSourceUserRequest) GetUser() int32 {
-	if o == nil || IsNil(o.User) {
+	if o == nil || o.User == nil {
 		var ret int32
 		return ret
 	}
@@ -87,7 +84,7 @@ func (o *PatchedSCIMSourceUserRequest) GetUser() int32 {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMSourceUserRequest) GetUserOk() (*int32, bool) {
-	if o == nil || IsNil(o.User) {
+	if o == nil || o.User == nil {
 		return nil, false
 	}
 	return o.User, true
@@ -95,7 +92,7 @@ func (o *PatchedSCIMSourceUserRequest) GetUserOk() (*int32, bool) {
 
 // HasUser returns a boolean if a field has been set.
 func (o *PatchedSCIMSourceUserRequest) HasUser() bool {
-	if o != nil && !IsNil(o.User) {
+	if o != nil && o.User != nil {
 		return true
 	}
 
@@ -109,7 +106,7 @@ func (o *PatchedSCIMSourceUserRequest) SetUser(v int32) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *PatchedSCIMSourceUserRequest) GetSource() string {
-	if o == nil || IsNil(o.Source) {
+	if o == nil || o.Source == nil {
 		var ret string
 		return ret
 	}
@@ -119,7 +116,7 @@ func (o *PatchedSCIMSourceUserRequest) GetSource() string {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMSourceUserRequest) GetSourceOk() (*string, bool) {
-	if o == nil || IsNil(o.Source) {
+	if o == nil || o.Source == nil {
 		return nil, false
 	}
 	return o.Source, true
@@ -127,7 +124,7 @@ func (o *PatchedSCIMSourceUserRequest) GetSourceOk() (*string, bool) {
 
 // HasSource returns a boolean if a field has been set.
 func (o *PatchedSCIMSourceUserRequest) HasSource() bool {
-	if o != nil && !IsNil(o.Source) {
+	if o != nil && o.Source != nil {
 		return true
 	}
 
@@ -152,7 +149,7 @@ func (o *PatchedSCIMSourceUserRequest) GetAttributes() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedSCIMSourceUserRequest) GetAttributesOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Attributes) {
+	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
 	return &o.Attributes, true
@@ -160,7 +157,7 @@ func (o *PatchedSCIMSourceUserRequest) GetAttributesOk() (*interface{}, bool) {
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *PatchedSCIMSourceUserRequest) HasAttributes() bool {
-	if o != nil && !IsNil(o.Attributes) {
+	if o != nil && o.Attributes != nil {
 		return true
 	}
 
@@ -173,28 +170,20 @@ func (o *PatchedSCIMSourceUserRequest) SetAttributes(v interface{}) {
 }
 
 func (o PatchedSCIMSourceUserRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedSCIMSourceUserRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
+	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.User) {
+	if o.User != nil {
 		toSerialize["user"] = o.User
 	}
-	if !IsNil(o.Source) {
+	if o.Source != nil {
 		toSerialize["source"] = o.Source
 	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedSCIMSourceUserRequest struct {

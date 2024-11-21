@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the GoogleWorkspaceProviderUser type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GoogleWorkspaceProviderUser{}
 
 // GoogleWorkspaceProviderUser GoogleWorkspaceProviderUser Serializer
 type GoogleWorkspaceProviderUser struct {
@@ -29,8 +24,6 @@ type GoogleWorkspaceProviderUser struct {
 	Provider   int32       `json:"provider"`
 	Attributes interface{} `json:"attributes"`
 }
-
-type _GoogleWorkspaceProviderUser GoogleWorkspaceProviderUser
 
 // NewGoogleWorkspaceProviderUser instantiates a new GoogleWorkspaceProviderUser object
 // This constructor will assign default values to properties that have it defined,
@@ -190,7 +183,7 @@ func (o *GoogleWorkspaceProviderUser) GetAttributes() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GoogleWorkspaceProviderUser) GetAttributesOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Attributes) {
+	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
 	return &o.Attributes, true
@@ -202,66 +195,26 @@ func (o *GoogleWorkspaceProviderUser) SetAttributes(v interface{}) {
 }
 
 func (o GoogleWorkspaceProviderUser) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o GoogleWorkspaceProviderUser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["google_id"] = o.GoogleId
-	toSerialize["user"] = o.User
-	toSerialize["user_obj"] = o.UserObj
-	toSerialize["provider"] = o.Provider
+	if true {
+		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["google_id"] = o.GoogleId
+	}
+	if true {
+		toSerialize["user"] = o.User
+	}
+	if true {
+		toSerialize["user_obj"] = o.UserObj
+	}
+	if true {
+		toSerialize["provider"] = o.Provider
+	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
-	return toSerialize, nil
-}
-
-func (o *GoogleWorkspaceProviderUser) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"google_id",
-		"user",
-		"user_obj",
-		"provider",
-		"attributes",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varGoogleWorkspaceProviderUser := _GoogleWorkspaceProviderUser{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGoogleWorkspaceProviderUser)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GoogleWorkspaceProviderUser(varGoogleWorkspaceProviderUser)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableGoogleWorkspaceProviderUser struct {

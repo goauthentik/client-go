@@ -12,21 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the PropertyMappingTestResult type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PropertyMappingTestResult{}
 
 // PropertyMappingTestResult Result of a Property-mapping test
 type PropertyMappingTestResult struct {
 	Result     string `json:"result"`
 	Successful bool   `json:"successful"`
 }
-
-type _PropertyMappingTestResult PropertyMappingTestResult
 
 // NewPropertyMappingTestResult instantiates a new PropertyMappingTestResult object
 // This constructor will assign default values to properties that have it defined,
@@ -96,56 +89,14 @@ func (o *PropertyMappingTestResult) SetSuccessful(v bool) {
 }
 
 func (o PropertyMappingTestResult) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["result"] = o.Result
+	}
+	if true {
+		toSerialize["successful"] = o.Successful
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o PropertyMappingTestResult) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["result"] = o.Result
-	toSerialize["successful"] = o.Successful
-	return toSerialize, nil
-}
-
-func (o *PropertyMappingTestResult) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"result",
-		"successful",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPropertyMappingTestResult := _PropertyMappingTestResult{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPropertyMappingTestResult)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PropertyMappingTestResult(varPropertyMappingTestResult)
-
-	return err
 }
 
 type NullablePropertyMappingTestResult struct {

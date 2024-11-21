@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedConnectionTokenRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedConnectionTokenRequest{}
-
 // PatchedConnectionTokenRequest ConnectionToken Serializer
 type PatchedConnectionTokenRequest struct {
 	Pk       *string `json:"pk,omitempty"`
@@ -44,7 +41,7 @@ func NewPatchedConnectionTokenRequestWithDefaults() *PatchedConnectionTokenReque
 
 // GetPk returns the Pk field value if set, zero value otherwise.
 func (o *PatchedConnectionTokenRequest) GetPk() string {
-	if o == nil || IsNil(o.Pk) {
+	if o == nil || o.Pk == nil {
 		var ret string
 		return ret
 	}
@@ -54,7 +51,7 @@ func (o *PatchedConnectionTokenRequest) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedConnectionTokenRequest) GetPkOk() (*string, bool) {
-	if o == nil || IsNil(o.Pk) {
+	if o == nil || o.Pk == nil {
 		return nil, false
 	}
 	return o.Pk, true
@@ -62,7 +59,7 @@ func (o *PatchedConnectionTokenRequest) GetPkOk() (*string, bool) {
 
 // HasPk returns a boolean if a field has been set.
 func (o *PatchedConnectionTokenRequest) HasPk() bool {
-	if o != nil && !IsNil(o.Pk) {
+	if o != nil && o.Pk != nil {
 		return true
 	}
 
@@ -76,7 +73,7 @@ func (o *PatchedConnectionTokenRequest) SetPk(v string) {
 
 // GetProvider returns the Provider field value if set, zero value otherwise.
 func (o *PatchedConnectionTokenRequest) GetProvider() int32 {
-	if o == nil || IsNil(o.Provider) {
+	if o == nil || o.Provider == nil {
 		var ret int32
 		return ret
 	}
@@ -86,7 +83,7 @@ func (o *PatchedConnectionTokenRequest) GetProvider() int32 {
 // GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedConnectionTokenRequest) GetProviderOk() (*int32, bool) {
-	if o == nil || IsNil(o.Provider) {
+	if o == nil || o.Provider == nil {
 		return nil, false
 	}
 	return o.Provider, true
@@ -94,7 +91,7 @@ func (o *PatchedConnectionTokenRequest) GetProviderOk() (*int32, bool) {
 
 // HasProvider returns a boolean if a field has been set.
 func (o *PatchedConnectionTokenRequest) HasProvider() bool {
-	if o != nil && !IsNil(o.Provider) {
+	if o != nil && o.Provider != nil {
 		return true
 	}
 
@@ -108,7 +105,7 @@ func (o *PatchedConnectionTokenRequest) SetProvider(v int32) {
 
 // GetEndpoint returns the Endpoint field value if set, zero value otherwise.
 func (o *PatchedConnectionTokenRequest) GetEndpoint() string {
-	if o == nil || IsNil(o.Endpoint) {
+	if o == nil || o.Endpoint == nil {
 		var ret string
 		return ret
 	}
@@ -118,7 +115,7 @@ func (o *PatchedConnectionTokenRequest) GetEndpoint() string {
 // GetEndpointOk returns a tuple with the Endpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedConnectionTokenRequest) GetEndpointOk() (*string, bool) {
-	if o == nil || IsNil(o.Endpoint) {
+	if o == nil || o.Endpoint == nil {
 		return nil, false
 	}
 	return o.Endpoint, true
@@ -126,7 +123,7 @@ func (o *PatchedConnectionTokenRequest) GetEndpointOk() (*string, bool) {
 
 // HasEndpoint returns a boolean if a field has been set.
 func (o *PatchedConnectionTokenRequest) HasEndpoint() bool {
-	if o != nil && !IsNil(o.Endpoint) {
+	if o != nil && o.Endpoint != nil {
 		return true
 	}
 
@@ -139,25 +136,17 @@ func (o *PatchedConnectionTokenRequest) SetEndpoint(v string) {
 }
 
 func (o PatchedConnectionTokenRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedConnectionTokenRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Pk) {
+	if o.Pk != nil {
 		toSerialize["pk"] = o.Pk
 	}
-	if !IsNil(o.Provider) {
+	if o.Provider != nil {
 		toSerialize["provider"] = o.Provider
 	}
-	if !IsNil(o.Endpoint) {
+	if o.Endpoint != nil {
 		toSerialize["endpoint"] = o.Endpoint
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedConnectionTokenRequest struct {

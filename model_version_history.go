@@ -12,14 +12,9 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 	"time"
 )
-
-// checks if the VersionHistory type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &VersionHistory{}
 
 // VersionHistory VersionHistory Serializer
 type VersionHistory struct {
@@ -28,8 +23,6 @@ type VersionHistory struct {
 	Version   string    `json:"version"`
 	Build     string    `json:"build"`
 }
-
-type _VersionHistory VersionHistory
 
 // NewVersionHistory instantiates a new VersionHistory object
 // This constructor will assign default values to properties that have it defined,
@@ -149,60 +142,20 @@ func (o *VersionHistory) SetBuild(v string) {
 }
 
 func (o VersionHistory) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["timestamp"] = o.Timestamp
+	}
+	if true {
+		toSerialize["version"] = o.Version
+	}
+	if true {
+		toSerialize["build"] = o.Build
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o VersionHistory) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["timestamp"] = o.Timestamp
-	toSerialize["version"] = o.Version
-	toSerialize["build"] = o.Build
-	return toSerialize, nil
-}
-
-func (o *VersionHistory) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"timestamp",
-		"version",
-		"build",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varVersionHistory := _VersionHistory{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVersionHistory)
-
-	if err != nil {
-		return err
-	}
-
-	*o = VersionHistory(varVersionHistory)
-
-	return err
 }
 
 type NullableVersionHistory struct {

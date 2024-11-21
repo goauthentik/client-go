@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the OutpostRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &OutpostRequest{}
 
 // OutpostRequest Outpost Serializer
 type OutpostRequest struct {
@@ -31,8 +26,6 @@ type OutpostRequest struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed NullableString `json:"managed,omitempty"`
 }
-
-type _OutpostRequest OutpostRequest
 
 // NewOutpostRequest instantiates a new OutpostRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -129,7 +122,7 @@ func (o *OutpostRequest) SetProviders(v []int32) {
 
 // GetServiceConnection returns the ServiceConnection field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OutpostRequest) GetServiceConnection() string {
-	if o == nil || IsNil(o.ServiceConnection.Get()) {
+	if o == nil || o.ServiceConnection.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -184,7 +177,7 @@ func (o *OutpostRequest) GetConfig() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *OutpostRequest) GetConfigOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Config, true
 }
@@ -196,7 +189,7 @@ func (o *OutpostRequest) SetConfig(v map[string]interface{}) {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OutpostRequest) GetManaged() string {
-	if o == nil || IsNil(o.Managed.Get()) {
+	if o == nil || o.Managed.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -238,66 +231,26 @@ func (o *OutpostRequest) UnsetManaged() {
 }
 
 func (o OutpostRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o OutpostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["type"] = o.Type
-	toSerialize["providers"] = o.Providers
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["type"] = o.Type
+	}
+	if true {
+		toSerialize["providers"] = o.Providers
+	}
 	if o.ServiceConnection.IsSet() {
 		toSerialize["service_connection"] = o.ServiceConnection.Get()
 	}
-	toSerialize["config"] = o.Config
+	if true {
+		toSerialize["config"] = o.Config
+	}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	return toSerialize, nil
-}
-
-func (o *OutpostRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"type",
-		"providers",
-		"config",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varOutpostRequest := _OutpostRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOutpostRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OutpostRequest(varOutpostRequest)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableOutpostRequest struct {

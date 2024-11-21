@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the UserGroup type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UserGroup{}
 
 // UserGroup Simplified Group Serializer for user's groups
 type UserGroup struct {
@@ -32,8 +27,6 @@ type UserGroup struct {
 	ParentName  NullableString         `json:"parent_name"`
 	Attributes  map[string]interface{} `json:"attributes,omitempty"`
 }
-
-type _UserGroup UserGroup
 
 // NewUserGroup instantiates a new UserGroup object
 // This constructor will assign default values to properties that have it defined,
@@ -130,7 +123,7 @@ func (o *UserGroup) SetName(v string) {
 
 // GetIsSuperuser returns the IsSuperuser field value if set, zero value otherwise.
 func (o *UserGroup) GetIsSuperuser() bool {
-	if o == nil || IsNil(o.IsSuperuser) {
+	if o == nil || o.IsSuperuser == nil {
 		var ret bool
 		return ret
 	}
@@ -140,7 +133,7 @@ func (o *UserGroup) GetIsSuperuser() bool {
 // GetIsSuperuserOk returns a tuple with the IsSuperuser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserGroup) GetIsSuperuserOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsSuperuser) {
+	if o == nil || o.IsSuperuser == nil {
 		return nil, false
 	}
 	return o.IsSuperuser, true
@@ -148,7 +141,7 @@ func (o *UserGroup) GetIsSuperuserOk() (*bool, bool) {
 
 // HasIsSuperuser returns a boolean if a field has been set.
 func (o *UserGroup) HasIsSuperuser() bool {
-	if o != nil && !IsNil(o.IsSuperuser) {
+	if o != nil && o.IsSuperuser != nil {
 		return true
 	}
 
@@ -162,7 +155,7 @@ func (o *UserGroup) SetIsSuperuser(v bool) {
 
 // GetParent returns the Parent field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserGroup) GetParent() string {
-	if o == nil || IsNil(o.Parent.Get()) {
+	if o == nil || o.Parent.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -231,7 +224,7 @@ func (o *UserGroup) SetParentName(v string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *UserGroup) GetAttributes() map[string]interface{} {
-	if o == nil || IsNil(o.Attributes) {
+	if o == nil || o.Attributes == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -241,15 +234,15 @@ func (o *UserGroup) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserGroup) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Attributes) {
-		return map[string]interface{}{}, false
+	if o == nil || o.Attributes == nil {
+		return nil, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *UserGroup) HasAttributes() bool {
-	if o != nil && !IsNil(o.Attributes) {
+	if o != nil && o.Attributes != nil {
 		return true
 	}
 
@@ -262,69 +255,29 @@ func (o *UserGroup) SetAttributes(v map[string]interface{}) {
 }
 
 func (o UserGroup) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o UserGroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["pk"] = o.Pk
-	toSerialize["num_pk"] = o.NumPk
-	toSerialize["name"] = o.Name
-	if !IsNil(o.IsSuperuser) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["num_pk"] = o.NumPk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.IsSuperuser != nil {
 		toSerialize["is_superuser"] = o.IsSuperuser
 	}
 	if o.Parent.IsSet() {
 		toSerialize["parent"] = o.Parent.Get()
 	}
-	toSerialize["parent_name"] = o.ParentName.Get()
-	if !IsNil(o.Attributes) {
+	if true {
+		toSerialize["parent_name"] = o.ParentName.Get()
+	}
+	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
-	return toSerialize, nil
-}
-
-func (o *UserGroup) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pk",
-		"num_pk",
-		"name",
-		"parent_name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varUserGroup := _UserGroup{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserGroup)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UserGroup(varUserGroup)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableUserGroup struct {

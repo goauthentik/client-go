@@ -99,115 +99,7 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 	var jsonDict map[string]interface{}
 	err = newStrictDecoder(data).Decode(&jsonDict)
 	if err != nil {
-		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
-	}
-
-	// check if the discriminator value is 'authentik_providers_google_workspace.googleworkspaceprovider'
-	if jsonDict["provider_model"] == "authentik_providers_google_workspace.googleworkspaceprovider" {
-		// try to unmarshal JSON data into GoogleWorkspaceProviderRequest
-		err = json.Unmarshal(data, &dst.GoogleWorkspaceProviderRequest)
-		if err == nil {
-			return nil // data stored in dst.GoogleWorkspaceProviderRequest, return on the first match
-		} else {
-			dst.GoogleWorkspaceProviderRequest = nil
-			return fmt.Errorf("failed to unmarshal ModelRequest as GoogleWorkspaceProviderRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'authentik_providers_ldap.ldapprovider'
-	if jsonDict["provider_model"] == "authentik_providers_ldap.ldapprovider" {
-		// try to unmarshal JSON data into LDAPProviderRequest
-		err = json.Unmarshal(data, &dst.LDAPProviderRequest)
-		if err == nil {
-			return nil // data stored in dst.LDAPProviderRequest, return on the first match
-		} else {
-			dst.LDAPProviderRequest = nil
-			return fmt.Errorf("failed to unmarshal ModelRequest as LDAPProviderRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'authentik_providers_microsoft_entra.microsoftentraprovider'
-	if jsonDict["provider_model"] == "authentik_providers_microsoft_entra.microsoftentraprovider" {
-		// try to unmarshal JSON data into MicrosoftEntraProviderRequest
-		err = json.Unmarshal(data, &dst.MicrosoftEntraProviderRequest)
-		if err == nil {
-			return nil // data stored in dst.MicrosoftEntraProviderRequest, return on the first match
-		} else {
-			dst.MicrosoftEntraProviderRequest = nil
-			return fmt.Errorf("failed to unmarshal ModelRequest as MicrosoftEntraProviderRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'authentik_providers_oauth2.oauth2provider'
-	if jsonDict["provider_model"] == "authentik_providers_oauth2.oauth2provider" {
-		// try to unmarshal JSON data into OAuth2ProviderRequest
-		err = json.Unmarshal(data, &dst.OAuth2ProviderRequest)
-		if err == nil {
-			return nil // data stored in dst.OAuth2ProviderRequest, return on the first match
-		} else {
-			dst.OAuth2ProviderRequest = nil
-			return fmt.Errorf("failed to unmarshal ModelRequest as OAuth2ProviderRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'authentik_providers_proxy.proxyprovider'
-	if jsonDict["provider_model"] == "authentik_providers_proxy.proxyprovider" {
-		// try to unmarshal JSON data into ProxyProviderRequest
-		err = json.Unmarshal(data, &dst.ProxyProviderRequest)
-		if err == nil {
-			return nil // data stored in dst.ProxyProviderRequest, return on the first match
-		} else {
-			dst.ProxyProviderRequest = nil
-			return fmt.Errorf("failed to unmarshal ModelRequest as ProxyProviderRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'authentik_providers_rac.racprovider'
-	if jsonDict["provider_model"] == "authentik_providers_rac.racprovider" {
-		// try to unmarshal JSON data into RACProviderRequest
-		err = json.Unmarshal(data, &dst.RACProviderRequest)
-		if err == nil {
-			return nil // data stored in dst.RACProviderRequest, return on the first match
-		} else {
-			dst.RACProviderRequest = nil
-			return fmt.Errorf("failed to unmarshal ModelRequest as RACProviderRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'authentik_providers_radius.radiusprovider'
-	if jsonDict["provider_model"] == "authentik_providers_radius.radiusprovider" {
-		// try to unmarshal JSON data into RadiusProviderRequest
-		err = json.Unmarshal(data, &dst.RadiusProviderRequest)
-		if err == nil {
-			return nil // data stored in dst.RadiusProviderRequest, return on the first match
-		} else {
-			dst.RadiusProviderRequest = nil
-			return fmt.Errorf("failed to unmarshal ModelRequest as RadiusProviderRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'authentik_providers_saml.samlprovider'
-	if jsonDict["provider_model"] == "authentik_providers_saml.samlprovider" {
-		// try to unmarshal JSON data into SAMLProviderRequest
-		err = json.Unmarshal(data, &dst.SAMLProviderRequest)
-		if err == nil {
-			return nil // data stored in dst.SAMLProviderRequest, return on the first match
-		} else {
-			dst.SAMLProviderRequest = nil
-			return fmt.Errorf("failed to unmarshal ModelRequest as SAMLProviderRequest: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'authentik_providers_scim.scimprovider'
-	if jsonDict["provider_model"] == "authentik_providers_scim.scimprovider" {
-		// try to unmarshal JSON data into SCIMProviderRequest
-		err = json.Unmarshal(data, &dst.SCIMProviderRequest)
-		if err == nil {
-			return nil // data stored in dst.SCIMProviderRequest, return on the first match
-		} else {
-			dst.SCIMProviderRequest = nil
-			return fmt.Errorf("failed to unmarshal ModelRequest as SCIMProviderRequest: %s", err.Error())
-		}
+		return fmt.Errorf("Failed to unmarshal JSON into map for the discriminator lookup.")
 	}
 
 	// check if the discriminator value is 'GoogleWorkspaceProviderRequest'
@@ -218,7 +110,7 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.GoogleWorkspaceProviderRequest, return on the first match
 		} else {
 			dst.GoogleWorkspaceProviderRequest = nil
-			return fmt.Errorf("failed to unmarshal ModelRequest as GoogleWorkspaceProviderRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal ModelRequest as GoogleWorkspaceProviderRequest: %s", err.Error())
 		}
 	}
 
@@ -230,7 +122,7 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.LDAPProviderRequest, return on the first match
 		} else {
 			dst.LDAPProviderRequest = nil
-			return fmt.Errorf("failed to unmarshal ModelRequest as LDAPProviderRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal ModelRequest as LDAPProviderRequest: %s", err.Error())
 		}
 	}
 
@@ -242,7 +134,7 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.MicrosoftEntraProviderRequest, return on the first match
 		} else {
 			dst.MicrosoftEntraProviderRequest = nil
-			return fmt.Errorf("failed to unmarshal ModelRequest as MicrosoftEntraProviderRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal ModelRequest as MicrosoftEntraProviderRequest: %s", err.Error())
 		}
 	}
 
@@ -254,7 +146,7 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.OAuth2ProviderRequest, return on the first match
 		} else {
 			dst.OAuth2ProviderRequest = nil
-			return fmt.Errorf("failed to unmarshal ModelRequest as OAuth2ProviderRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal ModelRequest as OAuth2ProviderRequest: %s", err.Error())
 		}
 	}
 
@@ -266,7 +158,7 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.ProxyProviderRequest, return on the first match
 		} else {
 			dst.ProxyProviderRequest = nil
-			return fmt.Errorf("failed to unmarshal ModelRequest as ProxyProviderRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal ModelRequest as ProxyProviderRequest: %s", err.Error())
 		}
 	}
 
@@ -278,7 +170,7 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.RACProviderRequest, return on the first match
 		} else {
 			dst.RACProviderRequest = nil
-			return fmt.Errorf("failed to unmarshal ModelRequest as RACProviderRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal ModelRequest as RACProviderRequest: %s", err.Error())
 		}
 	}
 
@@ -290,7 +182,7 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.RadiusProviderRequest, return on the first match
 		} else {
 			dst.RadiusProviderRequest = nil
-			return fmt.Errorf("failed to unmarshal ModelRequest as RadiusProviderRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal ModelRequest as RadiusProviderRequest: %s", err.Error())
 		}
 	}
 
@@ -302,7 +194,7 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.SAMLProviderRequest, return on the first match
 		} else {
 			dst.SAMLProviderRequest = nil
-			return fmt.Errorf("failed to unmarshal ModelRequest as SAMLProviderRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal ModelRequest as SAMLProviderRequest: %s", err.Error())
 		}
 	}
 
@@ -314,7 +206,115 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.SCIMProviderRequest, return on the first match
 		} else {
 			dst.SCIMProviderRequest = nil
-			return fmt.Errorf("failed to unmarshal ModelRequest as SCIMProviderRequest: %s", err.Error())
+			return fmt.Errorf("Failed to unmarshal ModelRequest as SCIMProviderRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'authentik_providers_google_workspace.googleworkspaceprovider'
+	if jsonDict["provider_model"] == "authentik_providers_google_workspace.googleworkspaceprovider" {
+		// try to unmarshal JSON data into GoogleWorkspaceProviderRequest
+		err = json.Unmarshal(data, &dst.GoogleWorkspaceProviderRequest)
+		if err == nil {
+			return nil // data stored in dst.GoogleWorkspaceProviderRequest, return on the first match
+		} else {
+			dst.GoogleWorkspaceProviderRequest = nil
+			return fmt.Errorf("Failed to unmarshal ModelRequest as GoogleWorkspaceProviderRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'authentik_providers_ldap.ldapprovider'
+	if jsonDict["provider_model"] == "authentik_providers_ldap.ldapprovider" {
+		// try to unmarshal JSON data into LDAPProviderRequest
+		err = json.Unmarshal(data, &dst.LDAPProviderRequest)
+		if err == nil {
+			return nil // data stored in dst.LDAPProviderRequest, return on the first match
+		} else {
+			dst.LDAPProviderRequest = nil
+			return fmt.Errorf("Failed to unmarshal ModelRequest as LDAPProviderRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'authentik_providers_microsoft_entra.microsoftentraprovider'
+	if jsonDict["provider_model"] == "authentik_providers_microsoft_entra.microsoftentraprovider" {
+		// try to unmarshal JSON data into MicrosoftEntraProviderRequest
+		err = json.Unmarshal(data, &dst.MicrosoftEntraProviderRequest)
+		if err == nil {
+			return nil // data stored in dst.MicrosoftEntraProviderRequest, return on the first match
+		} else {
+			dst.MicrosoftEntraProviderRequest = nil
+			return fmt.Errorf("Failed to unmarshal ModelRequest as MicrosoftEntraProviderRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'authentik_providers_oauth2.oauth2provider'
+	if jsonDict["provider_model"] == "authentik_providers_oauth2.oauth2provider" {
+		// try to unmarshal JSON data into OAuth2ProviderRequest
+		err = json.Unmarshal(data, &dst.OAuth2ProviderRequest)
+		if err == nil {
+			return nil // data stored in dst.OAuth2ProviderRequest, return on the first match
+		} else {
+			dst.OAuth2ProviderRequest = nil
+			return fmt.Errorf("Failed to unmarshal ModelRequest as OAuth2ProviderRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'authentik_providers_proxy.proxyprovider'
+	if jsonDict["provider_model"] == "authentik_providers_proxy.proxyprovider" {
+		// try to unmarshal JSON data into ProxyProviderRequest
+		err = json.Unmarshal(data, &dst.ProxyProviderRequest)
+		if err == nil {
+			return nil // data stored in dst.ProxyProviderRequest, return on the first match
+		} else {
+			dst.ProxyProviderRequest = nil
+			return fmt.Errorf("Failed to unmarshal ModelRequest as ProxyProviderRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'authentik_providers_rac.racprovider'
+	if jsonDict["provider_model"] == "authentik_providers_rac.racprovider" {
+		// try to unmarshal JSON data into RACProviderRequest
+		err = json.Unmarshal(data, &dst.RACProviderRequest)
+		if err == nil {
+			return nil // data stored in dst.RACProviderRequest, return on the first match
+		} else {
+			dst.RACProviderRequest = nil
+			return fmt.Errorf("Failed to unmarshal ModelRequest as RACProviderRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'authentik_providers_radius.radiusprovider'
+	if jsonDict["provider_model"] == "authentik_providers_radius.radiusprovider" {
+		// try to unmarshal JSON data into RadiusProviderRequest
+		err = json.Unmarshal(data, &dst.RadiusProviderRequest)
+		if err == nil {
+			return nil // data stored in dst.RadiusProviderRequest, return on the first match
+		} else {
+			dst.RadiusProviderRequest = nil
+			return fmt.Errorf("Failed to unmarshal ModelRequest as RadiusProviderRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'authentik_providers_saml.samlprovider'
+	if jsonDict["provider_model"] == "authentik_providers_saml.samlprovider" {
+		// try to unmarshal JSON data into SAMLProviderRequest
+		err = json.Unmarshal(data, &dst.SAMLProviderRequest)
+		if err == nil {
+			return nil // data stored in dst.SAMLProviderRequest, return on the first match
+		} else {
+			dst.SAMLProviderRequest = nil
+			return fmt.Errorf("Failed to unmarshal ModelRequest as SAMLProviderRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'authentik_providers_scim.scimprovider'
+	if jsonDict["provider_model"] == "authentik_providers_scim.scimprovider" {
+		// try to unmarshal JSON data into SCIMProviderRequest
+		err = json.Unmarshal(data, &dst.SCIMProviderRequest)
+		if err == nil {
+			return nil // data stored in dst.SCIMProviderRequest, return on the first match
+		} else {
+			dst.SCIMProviderRequest = nil
+			return fmt.Errorf("Failed to unmarshal ModelRequest as SCIMProviderRequest: %s", err.Error())
 		}
 	}
 

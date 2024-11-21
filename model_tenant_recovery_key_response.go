@@ -12,22 +12,15 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 	"time"
 )
-
-// checks if the TenantRecoveryKeyResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TenantRecoveryKeyResponse{}
 
 // TenantRecoveryKeyResponse Tenant recovery key creation response serializer
 type TenantRecoveryKeyResponse struct {
 	Expiry time.Time `json:"expiry"`
 	Url    string    `json:"url"`
 }
-
-type _TenantRecoveryKeyResponse TenantRecoveryKeyResponse
 
 // NewTenantRecoveryKeyResponse instantiates a new TenantRecoveryKeyResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -97,56 +90,14 @@ func (o *TenantRecoveryKeyResponse) SetUrl(v string) {
 }
 
 func (o TenantRecoveryKeyResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["expiry"] = o.Expiry
+	}
+	if true {
+		toSerialize["url"] = o.Url
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o TenantRecoveryKeyResponse) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["expiry"] = o.Expiry
-	toSerialize["url"] = o.Url
-	return toSerialize, nil
-}
-
-func (o *TenantRecoveryKeyResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"expiry",
-		"url",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varTenantRecoveryKeyResponse := _TenantRecoveryKeyResponse{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTenantRecoveryKeyResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = TenantRecoveryKeyResponse(varTenantRecoveryKeyResponse)
-
-	return err
 }
 
 type NullableTenantRecoveryKeyResponse struct {

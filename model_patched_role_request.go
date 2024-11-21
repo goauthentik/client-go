@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedRoleRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedRoleRequest{}
-
 // PatchedRoleRequest Role serializer
 type PatchedRoleRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -42,7 +39,7 @@ func NewPatchedRoleRequestWithDefaults() *PatchedRoleRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedRoleRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -52,7 +49,7 @@ func (o *PatchedRoleRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedRoleRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -60,7 +57,7 @@ func (o *PatchedRoleRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedRoleRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -73,19 +70,11 @@ func (o *PatchedRoleRequest) SetName(v string) {
 }
 
 func (o PatchedRoleRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedRoleRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedRoleRequest struct {

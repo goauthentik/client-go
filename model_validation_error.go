@@ -15,17 +15,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the ValidationError type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ValidationError{}
-
 // ValidationError Validation Error
 type ValidationError struct {
-	NonFieldErrors       []string `json:"non_field_errors,omitempty"`
-	Code                 *string  `json:"code,omitempty"`
-	AdditionalProperties map[string]interface{}
+	NonFieldErrors []string `json:"non_field_errors,omitempty"`
+	Code           *string  `json:"code,omitempty"`
 }
-
-type _ValidationError ValidationError
 
 // NewValidationError instantiates a new ValidationError object
 // This constructor will assign default values to properties that have it defined,
@@ -46,7 +40,7 @@ func NewValidationErrorWithDefaults() *ValidationError {
 
 // GetNonFieldErrors returns the NonFieldErrors field value if set, zero value otherwise.
 func (o *ValidationError) GetNonFieldErrors() []string {
-	if o == nil || IsNil(o.NonFieldErrors) {
+	if o == nil || o.NonFieldErrors == nil {
 		var ret []string
 		return ret
 	}
@@ -56,7 +50,7 @@ func (o *ValidationError) GetNonFieldErrors() []string {
 // GetNonFieldErrorsOk returns a tuple with the NonFieldErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ValidationError) GetNonFieldErrorsOk() ([]string, bool) {
-	if o == nil || IsNil(o.NonFieldErrors) {
+	if o == nil || o.NonFieldErrors == nil {
 		return nil, false
 	}
 	return o.NonFieldErrors, true
@@ -64,7 +58,7 @@ func (o *ValidationError) GetNonFieldErrorsOk() ([]string, bool) {
 
 // HasNonFieldErrors returns a boolean if a field has been set.
 func (o *ValidationError) HasNonFieldErrors() bool {
-	if o != nil && !IsNil(o.NonFieldErrors) {
+	if o != nil && o.NonFieldErrors != nil {
 		return true
 	}
 
@@ -78,7 +72,7 @@ func (o *ValidationError) SetNonFieldErrors(v []string) {
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *ValidationError) GetCode() string {
-	if o == nil || IsNil(o.Code) {
+	if o == nil || o.Code == nil {
 		var ret string
 		return ret
 	}
@@ -88,7 +82,7 @@ func (o *ValidationError) GetCode() string {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ValidationError) GetCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.Code) {
+	if o == nil || o.Code == nil {
 		return nil, false
 	}
 	return o.Code, true
@@ -96,7 +90,7 @@ func (o *ValidationError) GetCodeOk() (*string, bool) {
 
 // HasCode returns a boolean if a field has been set.
 func (o *ValidationError) HasCode() bool {
-	if o != nil && !IsNil(o.Code) {
+	if o != nil && o.Code != nil {
 		return true
 	}
 
@@ -109,49 +103,14 @@ func (o *ValidationError) SetCode(v string) {
 }
 
 func (o ValidationError) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ValidationError) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.NonFieldErrors) {
+	if o.NonFieldErrors != nil {
 		toSerialize["non_field_errors"] = o.NonFieldErrors
 	}
-	if !IsNil(o.Code) {
+	if o.Code != nil {
 		toSerialize["code"] = o.Code
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
-	return toSerialize, nil
-}
-
-func (o *ValidationError) UnmarshalJSON(data []byte) (err error) {
-	varValidationError := _ValidationError{}
-
-	err = json.Unmarshal(data, &varValidationError)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ValidationError(varValidationError)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "non_field_errors")
-		delete(additionalProperties, "code")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableValidationError struct {

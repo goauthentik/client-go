@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the Endpoint type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Endpoint{}
 
 // Endpoint Endpoint Serializer
 type Endpoint struct {
@@ -35,8 +30,6 @@ type Endpoint struct {
 	LaunchUrl          NullableString `json:"launch_url"`
 	MaximumConnections *int32         `json:"maximum_connections,omitempty"`
 }
-
-type _Endpoint Endpoint
 
 // NewEndpoint instantiates a new Endpoint object
 // This constructor will assign default values to properties that have it defined,
@@ -220,7 +213,7 @@ func (o *Endpoint) GetSettings() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Endpoint) GetSettingsOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Settings) {
+	if o == nil || o.Settings == nil {
 		return nil, false
 	}
 	return &o.Settings, true
@@ -228,7 +221,7 @@ func (o *Endpoint) GetSettingsOk() (*interface{}, bool) {
 
 // HasSettings returns a boolean if a field has been set.
 func (o *Endpoint) HasSettings() bool {
-	if o != nil && !IsNil(o.Settings) {
+	if o != nil && o.Settings != nil {
 		return true
 	}
 
@@ -242,7 +235,7 @@ func (o *Endpoint) SetSettings(v interface{}) {
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
 func (o *Endpoint) GetPropertyMappings() []string {
-	if o == nil || IsNil(o.PropertyMappings) {
+	if o == nil || o.PropertyMappings == nil {
 		var ret []string
 		return ret
 	}
@@ -252,7 +245,7 @@ func (o *Endpoint) GetPropertyMappings() []string {
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Endpoint) GetPropertyMappingsOk() ([]string, bool) {
-	if o == nil || IsNil(o.PropertyMappings) {
+	if o == nil || o.PropertyMappings == nil {
 		return nil, false
 	}
 	return o.PropertyMappings, true
@@ -260,7 +253,7 @@ func (o *Endpoint) GetPropertyMappingsOk() ([]string, bool) {
 
 // HasPropertyMappings returns a boolean if a field has been set.
 func (o *Endpoint) HasPropertyMappings() bool {
-	if o != nil && !IsNil(o.PropertyMappings) {
+	if o != nil && o.PropertyMappings != nil {
 		return true
 	}
 
@@ -324,7 +317,7 @@ func (o *Endpoint) SetLaunchUrl(v string) {
 
 // GetMaximumConnections returns the MaximumConnections field value if set, zero value otherwise.
 func (o *Endpoint) GetMaximumConnections() int32 {
-	if o == nil || IsNil(o.MaximumConnections) {
+	if o == nil || o.MaximumConnections == nil {
 		var ret int32
 		return ret
 	}
@@ -334,7 +327,7 @@ func (o *Endpoint) GetMaximumConnections() int32 {
 // GetMaximumConnectionsOk returns a tuple with the MaximumConnections field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Endpoint) GetMaximumConnectionsOk() (*int32, bool) {
-	if o == nil || IsNil(o.MaximumConnections) {
+	if o == nil || o.MaximumConnections == nil {
 		return nil, false
 	}
 	return o.MaximumConnections, true
@@ -342,7 +335,7 @@ func (o *Endpoint) GetMaximumConnectionsOk() (*int32, bool) {
 
 // HasMaximumConnections returns a boolean if a field has been set.
 func (o *Endpoint) HasMaximumConnections() bool {
-	if o != nil && !IsNil(o.MaximumConnections) {
+	if o != nil && o.MaximumConnections != nil {
 		return true
 	}
 
@@ -355,77 +348,41 @@ func (o *Endpoint) SetMaximumConnections(v int32) {
 }
 
 func (o Endpoint) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o Endpoint) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["pk"] = o.Pk
-	toSerialize["name"] = o.Name
-	toSerialize["provider"] = o.Provider
-	toSerialize["provider_obj"] = o.ProviderObj
-	toSerialize["protocol"] = o.Protocol
-	toSerialize["host"] = o.Host
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["provider"] = o.Provider
+	}
+	if true {
+		toSerialize["provider_obj"] = o.ProviderObj
+	}
+	if true {
+		toSerialize["protocol"] = o.Protocol
+	}
+	if true {
+		toSerialize["host"] = o.Host
+	}
 	if o.Settings != nil {
 		toSerialize["settings"] = o.Settings
 	}
-	if !IsNil(o.PropertyMappings) {
+	if o.PropertyMappings != nil {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
-	toSerialize["auth_mode"] = o.AuthMode
-	toSerialize["launch_url"] = o.LaunchUrl.Get()
-	if !IsNil(o.MaximumConnections) {
+	if true {
+		toSerialize["auth_mode"] = o.AuthMode
+	}
+	if true {
+		toSerialize["launch_url"] = o.LaunchUrl.Get()
+	}
+	if o.MaximumConnections != nil {
 		toSerialize["maximum_connections"] = o.MaximumConnections
 	}
-	return toSerialize, nil
-}
-
-func (o *Endpoint) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pk",
-		"name",
-		"provider",
-		"provider_obj",
-		"protocol",
-		"host",
-		"auth_mode",
-		"launch_url",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varEndpoint := _Endpoint{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEndpoint)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Endpoint(varEndpoint)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableEndpoint struct {

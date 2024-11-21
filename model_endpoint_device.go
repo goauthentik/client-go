@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the EndpointDevice type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &EndpointDevice{}
 
 // EndpointDevice Serializer for Endpoint authenticator devices
 type EndpointDevice struct {
@@ -26,8 +21,6 @@ type EndpointDevice struct {
 	// The human-readable name of this device.
 	Name string `json:"name"`
 }
-
-type _EndpointDevice EndpointDevice
 
 // NewEndpointDevice instantiates a new EndpointDevice object
 // This constructor will assign default values to properties that have it defined,
@@ -49,7 +42,7 @@ func NewEndpointDeviceWithDefaults() *EndpointDevice {
 
 // GetPk returns the Pk field value if set, zero value otherwise.
 func (o *EndpointDevice) GetPk() string {
-	if o == nil || IsNil(o.Pk) {
+	if o == nil || o.Pk == nil {
 		var ret string
 		return ret
 	}
@@ -59,7 +52,7 @@ func (o *EndpointDevice) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EndpointDevice) GetPkOk() (*string, bool) {
-	if o == nil || IsNil(o.Pk) {
+	if o == nil || o.Pk == nil {
 		return nil, false
 	}
 	return o.Pk, true
@@ -67,7 +60,7 @@ func (o *EndpointDevice) GetPkOk() (*string, bool) {
 
 // HasPk returns a boolean if a field has been set.
 func (o *EndpointDevice) HasPk() bool {
-	if o != nil && !IsNil(o.Pk) {
+	if o != nil && o.Pk != nil {
 		return true
 	}
 
@@ -104,57 +97,14 @@ func (o *EndpointDevice) SetName(v string) {
 }
 
 func (o EndpointDevice) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o EndpointDevice) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Pk) {
+	if o.Pk != nil {
 		toSerialize["pk"] = o.Pk
 	}
-	toSerialize["name"] = o.Name
-	return toSerialize, nil
-}
-
-func (o *EndpointDevice) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
+	if true {
+		toSerialize["name"] = o.Name
 	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varEndpointDevice := _EndpointDevice{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEndpointDevice)
-
-	if err != nil {
-		return err
-	}
-
-	*o = EndpointDevice(varEndpointDevice)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableEndpointDevice struct {

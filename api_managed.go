@@ -14,18 +14,18 @@ package api
 import (
 	"bytes"
 	"context"
-	"io"
+	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ManagedAPIService ManagedAPI service
-type ManagedAPIService service
+// ManagedApiService ManagedApi service
+type ManagedApiService service
 
 type ApiManagedBlueprintsApplyCreateRequest struct {
 	ctx          context.Context
-	ApiService   *ManagedAPIService
+	ApiService   *ManagedApiService
 	instanceUuid string
 }
 
@@ -42,7 +42,7 @@ Apply a blueprint
 	@param instanceUuid A UUID string identifying this Blueprint Instance.
 	@return ApiManagedBlueprintsApplyCreateRequest
 */
-func (a *ManagedAPIService) ManagedBlueprintsApplyCreate(ctx context.Context, instanceUuid string) ApiManagedBlueprintsApplyCreateRequest {
+func (a *ManagedApiService) ManagedBlueprintsApplyCreate(ctx context.Context, instanceUuid string) ApiManagedBlueprintsApplyCreateRequest {
 	return ApiManagedBlueprintsApplyCreateRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -53,7 +53,7 @@ func (a *ManagedAPIService) ManagedBlueprintsApplyCreate(ctx context.Context, in
 // Execute executes the request
 //
 //	@return BlueprintInstance
-func (a *ManagedAPIService) ManagedBlueprintsApplyCreateExecute(r ApiManagedBlueprintsApplyCreateRequest) (*BlueprintInstance, *http.Response, error) {
+func (a *ManagedApiService) ManagedBlueprintsApplyCreateExecute(r ApiManagedBlueprintsApplyCreateRequest) (*BlueprintInstance, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -61,13 +61,13 @@ func (a *ManagedAPIService) ManagedBlueprintsApplyCreateExecute(r ApiManagedBlue
 		localVarReturnValue *BlueprintInstance
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedAPIService.ManagedBlueprintsApplyCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedApiService.ManagedBlueprintsApplyCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/managed/blueprints/{instance_uuid}/apply/"
-	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterValueToString(r.instanceUuid, "instanceUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterToString(r.instanceUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -100,9 +100,9 @@ func (a *ManagedAPIService) ManagedBlueprintsApplyCreateExecute(r ApiManagedBlue
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -119,7 +119,6 @@ func (a *ManagedAPIService) ManagedBlueprintsApplyCreateExecute(r ApiManagedBlue
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -130,7 +129,6 @@ func (a *ManagedAPIService) ManagedBlueprintsApplyCreateExecute(r ApiManagedBlue
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -150,7 +148,7 @@ func (a *ManagedAPIService) ManagedBlueprintsApplyCreateExecute(r ApiManagedBlue
 
 type ApiManagedBlueprintsAvailableListRequest struct {
 	ctx        context.Context
-	ApiService *ManagedAPIService
+	ApiService *ManagedApiService
 }
 
 func (r ApiManagedBlueprintsAvailableListRequest) Execute() ([]BlueprintFile, *http.Response, error) {
@@ -165,7 +163,7 @@ Get blueprints
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiManagedBlueprintsAvailableListRequest
 */
-func (a *ManagedAPIService) ManagedBlueprintsAvailableList(ctx context.Context) ApiManagedBlueprintsAvailableListRequest {
+func (a *ManagedApiService) ManagedBlueprintsAvailableList(ctx context.Context) ApiManagedBlueprintsAvailableListRequest {
 	return ApiManagedBlueprintsAvailableListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -175,7 +173,7 @@ func (a *ManagedAPIService) ManagedBlueprintsAvailableList(ctx context.Context) 
 // Execute executes the request
 //
 //	@return []BlueprintFile
-func (a *ManagedAPIService) ManagedBlueprintsAvailableListExecute(r ApiManagedBlueprintsAvailableListRequest) ([]BlueprintFile, *http.Response, error) {
+func (a *ManagedApiService) ManagedBlueprintsAvailableListExecute(r ApiManagedBlueprintsAvailableListRequest) ([]BlueprintFile, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +181,7 @@ func (a *ManagedAPIService) ManagedBlueprintsAvailableListExecute(r ApiManagedBl
 		localVarReturnValue []BlueprintFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedAPIService.ManagedBlueprintsAvailableList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedApiService.ManagedBlueprintsAvailableList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -221,9 +219,9 @@ func (a *ManagedAPIService) ManagedBlueprintsAvailableListExecute(r ApiManagedBl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -240,7 +238,6 @@ func (a *ManagedAPIService) ManagedBlueprintsAvailableListExecute(r ApiManagedBl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -251,7 +248,6 @@ func (a *ManagedAPIService) ManagedBlueprintsAvailableListExecute(r ApiManagedBl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -271,7 +267,7 @@ func (a *ManagedAPIService) ManagedBlueprintsAvailableListExecute(r ApiManagedBl
 
 type ApiManagedBlueprintsCreateRequest struct {
 	ctx                      context.Context
-	ApiService               *ManagedAPIService
+	ApiService               *ManagedApiService
 	blueprintInstanceRequest *BlueprintInstanceRequest
 }
 
@@ -292,7 +288,7 @@ Blueprint instances
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiManagedBlueprintsCreateRequest
 */
-func (a *ManagedAPIService) ManagedBlueprintsCreate(ctx context.Context) ApiManagedBlueprintsCreateRequest {
+func (a *ManagedApiService) ManagedBlueprintsCreate(ctx context.Context) ApiManagedBlueprintsCreateRequest {
 	return ApiManagedBlueprintsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -302,7 +298,7 @@ func (a *ManagedAPIService) ManagedBlueprintsCreate(ctx context.Context) ApiMana
 // Execute executes the request
 //
 //	@return BlueprintInstance
-func (a *ManagedAPIService) ManagedBlueprintsCreateExecute(r ApiManagedBlueprintsCreateRequest) (*BlueprintInstance, *http.Response, error) {
+func (a *ManagedApiService) ManagedBlueprintsCreateExecute(r ApiManagedBlueprintsCreateRequest) (*BlueprintInstance, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -310,7 +306,7 @@ func (a *ManagedAPIService) ManagedBlueprintsCreateExecute(r ApiManagedBlueprint
 		localVarReturnValue *BlueprintInstance
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedAPIService.ManagedBlueprintsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedApiService.ManagedBlueprintsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -353,9 +349,9 @@ func (a *ManagedAPIService) ManagedBlueprintsCreateExecute(r ApiManagedBlueprint
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -372,7 +368,6 @@ func (a *ManagedAPIService) ManagedBlueprintsCreateExecute(r ApiManagedBlueprint
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -383,7 +378,6 @@ func (a *ManagedAPIService) ManagedBlueprintsCreateExecute(r ApiManagedBlueprint
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -403,7 +397,7 @@ func (a *ManagedAPIService) ManagedBlueprintsCreateExecute(r ApiManagedBlueprint
 
 type ApiManagedBlueprintsDestroyRequest struct {
 	ctx          context.Context
-	ApiService   *ManagedAPIService
+	ApiService   *ManagedApiService
 	instanceUuid string
 }
 
@@ -420,7 +414,7 @@ Blueprint instances
 	@param instanceUuid A UUID string identifying this Blueprint Instance.
 	@return ApiManagedBlueprintsDestroyRequest
 */
-func (a *ManagedAPIService) ManagedBlueprintsDestroy(ctx context.Context, instanceUuid string) ApiManagedBlueprintsDestroyRequest {
+func (a *ManagedApiService) ManagedBlueprintsDestroy(ctx context.Context, instanceUuid string) ApiManagedBlueprintsDestroyRequest {
 	return ApiManagedBlueprintsDestroyRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -429,20 +423,20 @@ func (a *ManagedAPIService) ManagedBlueprintsDestroy(ctx context.Context, instan
 }
 
 // Execute executes the request
-func (a *ManagedAPIService) ManagedBlueprintsDestroyExecute(r ApiManagedBlueprintsDestroyRequest) (*http.Response, error) {
+func (a *ManagedApiService) ManagedBlueprintsDestroyExecute(r ApiManagedBlueprintsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedAPIService.ManagedBlueprintsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedApiService.ManagedBlueprintsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/managed/blueprints/{instance_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterValueToString(r.instanceUuid, "instanceUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterToString(r.instanceUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -475,9 +469,9 @@ func (a *ManagedAPIService) ManagedBlueprintsDestroyExecute(r ApiManagedBlueprin
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -494,7 +488,6 @@ func (a *ManagedAPIService) ManagedBlueprintsDestroyExecute(r ApiManagedBlueprin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -505,7 +498,6 @@ func (a *ManagedAPIService) ManagedBlueprintsDestroyExecute(r ApiManagedBlueprin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -516,7 +508,7 @@ func (a *ManagedAPIService) ManagedBlueprintsDestroyExecute(r ApiManagedBlueprin
 
 type ApiManagedBlueprintsListRequest struct {
 	ctx        context.Context
-	ApiService *ManagedAPIService
+	ApiService *ManagedApiService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -571,7 +563,7 @@ Blueprint instances
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiManagedBlueprintsListRequest
 */
-func (a *ManagedAPIService) ManagedBlueprintsList(ctx context.Context) ApiManagedBlueprintsListRequest {
+func (a *ManagedApiService) ManagedBlueprintsList(ctx context.Context) ApiManagedBlueprintsListRequest {
 	return ApiManagedBlueprintsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -581,7 +573,7 @@ func (a *ManagedAPIService) ManagedBlueprintsList(ctx context.Context) ApiManage
 // Execute executes the request
 //
 //	@return PaginatedBlueprintInstanceList
-func (a *ManagedAPIService) ManagedBlueprintsListExecute(r ApiManagedBlueprintsListRequest) (*PaginatedBlueprintInstanceList, *http.Response, error) {
+func (a *ManagedApiService) ManagedBlueprintsListExecute(r ApiManagedBlueprintsListRequest) (*PaginatedBlueprintInstanceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -589,7 +581,7 @@ func (a *ManagedAPIService) ManagedBlueprintsListExecute(r ApiManagedBlueprintsL
 		localVarReturnValue *PaginatedBlueprintInstanceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedAPIService.ManagedBlueprintsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedApiService.ManagedBlueprintsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -601,22 +593,22 @@ func (a *ManagedAPIService) ManagedBlueprintsListExecute(r ApiManagedBlueprintsL
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.path != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "path", r.path, "form", "")
+		localVarQueryParams.Add("path", parameterToString(*r.path, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -645,9 +637,9 @@ func (a *ManagedAPIService) ManagedBlueprintsListExecute(r ApiManagedBlueprintsL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -664,7 +656,6 @@ func (a *ManagedAPIService) ManagedBlueprintsListExecute(r ApiManagedBlueprintsL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -675,7 +666,6 @@ func (a *ManagedAPIService) ManagedBlueprintsListExecute(r ApiManagedBlueprintsL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -695,7 +685,7 @@ func (a *ManagedAPIService) ManagedBlueprintsListExecute(r ApiManagedBlueprintsL
 
 type ApiManagedBlueprintsPartialUpdateRequest struct {
 	ctx                             context.Context
-	ApiService                      *ManagedAPIService
+	ApiService                      *ManagedApiService
 	instanceUuid                    string
 	patchedBlueprintInstanceRequest *PatchedBlueprintInstanceRequest
 }
@@ -718,7 +708,7 @@ Blueprint instances
 	@param instanceUuid A UUID string identifying this Blueprint Instance.
 	@return ApiManagedBlueprintsPartialUpdateRequest
 */
-func (a *ManagedAPIService) ManagedBlueprintsPartialUpdate(ctx context.Context, instanceUuid string) ApiManagedBlueprintsPartialUpdateRequest {
+func (a *ManagedApiService) ManagedBlueprintsPartialUpdate(ctx context.Context, instanceUuid string) ApiManagedBlueprintsPartialUpdateRequest {
 	return ApiManagedBlueprintsPartialUpdateRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -729,7 +719,7 @@ func (a *ManagedAPIService) ManagedBlueprintsPartialUpdate(ctx context.Context, 
 // Execute executes the request
 //
 //	@return BlueprintInstance
-func (a *ManagedAPIService) ManagedBlueprintsPartialUpdateExecute(r ApiManagedBlueprintsPartialUpdateRequest) (*BlueprintInstance, *http.Response, error) {
+func (a *ManagedApiService) ManagedBlueprintsPartialUpdateExecute(r ApiManagedBlueprintsPartialUpdateRequest) (*BlueprintInstance, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -737,13 +727,13 @@ func (a *ManagedAPIService) ManagedBlueprintsPartialUpdateExecute(r ApiManagedBl
 		localVarReturnValue *BlueprintInstance
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedAPIService.ManagedBlueprintsPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedApiService.ManagedBlueprintsPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/managed/blueprints/{instance_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterValueToString(r.instanceUuid, "instanceUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterToString(r.instanceUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -778,9 +768,9 @@ func (a *ManagedAPIService) ManagedBlueprintsPartialUpdateExecute(r ApiManagedBl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -797,7 +787,6 @@ func (a *ManagedAPIService) ManagedBlueprintsPartialUpdateExecute(r ApiManagedBl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -808,7 +797,6 @@ func (a *ManagedAPIService) ManagedBlueprintsPartialUpdateExecute(r ApiManagedBl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -828,7 +816,7 @@ func (a *ManagedAPIService) ManagedBlueprintsPartialUpdateExecute(r ApiManagedBl
 
 type ApiManagedBlueprintsRetrieveRequest struct {
 	ctx          context.Context
-	ApiService   *ManagedAPIService
+	ApiService   *ManagedApiService
 	instanceUuid string
 }
 
@@ -845,7 +833,7 @@ Blueprint instances
 	@param instanceUuid A UUID string identifying this Blueprint Instance.
 	@return ApiManagedBlueprintsRetrieveRequest
 */
-func (a *ManagedAPIService) ManagedBlueprintsRetrieve(ctx context.Context, instanceUuid string) ApiManagedBlueprintsRetrieveRequest {
+func (a *ManagedApiService) ManagedBlueprintsRetrieve(ctx context.Context, instanceUuid string) ApiManagedBlueprintsRetrieveRequest {
 	return ApiManagedBlueprintsRetrieveRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -856,7 +844,7 @@ func (a *ManagedAPIService) ManagedBlueprintsRetrieve(ctx context.Context, insta
 // Execute executes the request
 //
 //	@return BlueprintInstance
-func (a *ManagedAPIService) ManagedBlueprintsRetrieveExecute(r ApiManagedBlueprintsRetrieveRequest) (*BlueprintInstance, *http.Response, error) {
+func (a *ManagedApiService) ManagedBlueprintsRetrieveExecute(r ApiManagedBlueprintsRetrieveRequest) (*BlueprintInstance, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -864,13 +852,13 @@ func (a *ManagedAPIService) ManagedBlueprintsRetrieveExecute(r ApiManagedBluepri
 		localVarReturnValue *BlueprintInstance
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedAPIService.ManagedBlueprintsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedApiService.ManagedBlueprintsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/managed/blueprints/{instance_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterValueToString(r.instanceUuid, "instanceUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterToString(r.instanceUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -903,9 +891,9 @@ func (a *ManagedAPIService) ManagedBlueprintsRetrieveExecute(r ApiManagedBluepri
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -922,7 +910,6 @@ func (a *ManagedAPIService) ManagedBlueprintsRetrieveExecute(r ApiManagedBluepri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -933,7 +920,6 @@ func (a *ManagedAPIService) ManagedBlueprintsRetrieveExecute(r ApiManagedBluepri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -953,7 +939,7 @@ func (a *ManagedAPIService) ManagedBlueprintsRetrieveExecute(r ApiManagedBluepri
 
 type ApiManagedBlueprintsUpdateRequest struct {
 	ctx                      context.Context
-	ApiService               *ManagedAPIService
+	ApiService               *ManagedApiService
 	instanceUuid             string
 	blueprintInstanceRequest *BlueprintInstanceRequest
 }
@@ -976,7 +962,7 @@ Blueprint instances
 	@param instanceUuid A UUID string identifying this Blueprint Instance.
 	@return ApiManagedBlueprintsUpdateRequest
 */
-func (a *ManagedAPIService) ManagedBlueprintsUpdate(ctx context.Context, instanceUuid string) ApiManagedBlueprintsUpdateRequest {
+func (a *ManagedApiService) ManagedBlueprintsUpdate(ctx context.Context, instanceUuid string) ApiManagedBlueprintsUpdateRequest {
 	return ApiManagedBlueprintsUpdateRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -987,7 +973,7 @@ func (a *ManagedAPIService) ManagedBlueprintsUpdate(ctx context.Context, instanc
 // Execute executes the request
 //
 //	@return BlueprintInstance
-func (a *ManagedAPIService) ManagedBlueprintsUpdateExecute(r ApiManagedBlueprintsUpdateRequest) (*BlueprintInstance, *http.Response, error) {
+func (a *ManagedApiService) ManagedBlueprintsUpdateExecute(r ApiManagedBlueprintsUpdateRequest) (*BlueprintInstance, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -995,13 +981,13 @@ func (a *ManagedAPIService) ManagedBlueprintsUpdateExecute(r ApiManagedBlueprint
 		localVarReturnValue *BlueprintInstance
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedAPIService.ManagedBlueprintsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedApiService.ManagedBlueprintsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/managed/blueprints/{instance_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterValueToString(r.instanceUuid, "instanceUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterToString(r.instanceUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1039,9 +1025,9 @@ func (a *ManagedAPIService) ManagedBlueprintsUpdateExecute(r ApiManagedBlueprint
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1058,7 +1044,6 @@ func (a *ManagedAPIService) ManagedBlueprintsUpdateExecute(r ApiManagedBlueprint
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1069,7 +1054,6 @@ func (a *ManagedAPIService) ManagedBlueprintsUpdateExecute(r ApiManagedBlueprint
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1089,7 +1073,7 @@ func (a *ManagedAPIService) ManagedBlueprintsUpdateExecute(r ApiManagedBlueprint
 
 type ApiManagedBlueprintsUsedByListRequest struct {
 	ctx          context.Context
-	ApiService   *ManagedAPIService
+	ApiService   *ManagedApiService
 	instanceUuid string
 }
 
@@ -1106,7 +1090,7 @@ Get a list of all objects that use this object
 	@param instanceUuid A UUID string identifying this Blueprint Instance.
 	@return ApiManagedBlueprintsUsedByListRequest
 */
-func (a *ManagedAPIService) ManagedBlueprintsUsedByList(ctx context.Context, instanceUuid string) ApiManagedBlueprintsUsedByListRequest {
+func (a *ManagedApiService) ManagedBlueprintsUsedByList(ctx context.Context, instanceUuid string) ApiManagedBlueprintsUsedByListRequest {
 	return ApiManagedBlueprintsUsedByListRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1117,7 +1101,7 @@ func (a *ManagedAPIService) ManagedBlueprintsUsedByList(ctx context.Context, ins
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *ManagedAPIService) ManagedBlueprintsUsedByListExecute(r ApiManagedBlueprintsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *ManagedApiService) ManagedBlueprintsUsedByListExecute(r ApiManagedBlueprintsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1125,13 +1109,13 @@ func (a *ManagedAPIService) ManagedBlueprintsUsedByListExecute(r ApiManagedBluep
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedAPIService.ManagedBlueprintsUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedApiService.ManagedBlueprintsUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/managed/blueprints/{instance_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterValueToString(r.instanceUuid, "instanceUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"instance_uuid"+"}", url.PathEscape(parameterToString(r.instanceUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1164,9 +1148,9 @@ func (a *ManagedAPIService) ManagedBlueprintsUsedByListExecute(r ApiManagedBluep
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1183,7 +1167,6 @@ func (a *ManagedAPIService) ManagedBlueprintsUsedByListExecute(r ApiManagedBluep
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1194,7 +1177,6 @@ func (a *ManagedAPIService) ManagedBlueprintsUsedByListExecute(r ApiManagedBluep
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

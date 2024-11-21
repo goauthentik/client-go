@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedSourceStageRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedSourceStageRequest{}
-
 // PatchedSourceStageRequest SourceStage Serializer
 type PatchedSourceStageRequest struct {
 	Name    *string          `json:"name,omitempty"`
@@ -46,7 +43,7 @@ func NewPatchedSourceStageRequestWithDefaults() *PatchedSourceStageRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedSourceStageRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -56,7 +53,7 @@ func (o *PatchedSourceStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSourceStageRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -64,7 +61,7 @@ func (o *PatchedSourceStageRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedSourceStageRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -78,7 +75,7 @@ func (o *PatchedSourceStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *PatchedSourceStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -88,7 +85,7 @@ func (o *PatchedSourceStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSourceStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -96,7 +93,7 @@ func (o *PatchedSourceStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *PatchedSourceStageRequest) HasFlowSet() bool {
-	if o != nil && !IsNil(o.FlowSet) {
+	if o != nil && o.FlowSet != nil {
 		return true
 	}
 
@@ -110,7 +107,7 @@ func (o *PatchedSourceStageRequest) SetFlowSet(v []FlowSetRequest) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *PatchedSourceStageRequest) GetSource() string {
-	if o == nil || IsNil(o.Source) {
+	if o == nil || o.Source == nil {
 		var ret string
 		return ret
 	}
@@ -120,7 +117,7 @@ func (o *PatchedSourceStageRequest) GetSource() string {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSourceStageRequest) GetSourceOk() (*string, bool) {
-	if o == nil || IsNil(o.Source) {
+	if o == nil || o.Source == nil {
 		return nil, false
 	}
 	return o.Source, true
@@ -128,7 +125,7 @@ func (o *PatchedSourceStageRequest) GetSourceOk() (*string, bool) {
 
 // HasSource returns a boolean if a field has been set.
 func (o *PatchedSourceStageRequest) HasSource() bool {
-	if o != nil && !IsNil(o.Source) {
+	if o != nil && o.Source != nil {
 		return true
 	}
 
@@ -142,7 +139,7 @@ func (o *PatchedSourceStageRequest) SetSource(v string) {
 
 // GetResumeTimeout returns the ResumeTimeout field value if set, zero value otherwise.
 func (o *PatchedSourceStageRequest) GetResumeTimeout() string {
-	if o == nil || IsNil(o.ResumeTimeout) {
+	if o == nil || o.ResumeTimeout == nil {
 		var ret string
 		return ret
 	}
@@ -152,7 +149,7 @@ func (o *PatchedSourceStageRequest) GetResumeTimeout() string {
 // GetResumeTimeoutOk returns a tuple with the ResumeTimeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSourceStageRequest) GetResumeTimeoutOk() (*string, bool) {
-	if o == nil || IsNil(o.ResumeTimeout) {
+	if o == nil || o.ResumeTimeout == nil {
 		return nil, false
 	}
 	return o.ResumeTimeout, true
@@ -160,7 +157,7 @@ func (o *PatchedSourceStageRequest) GetResumeTimeoutOk() (*string, bool) {
 
 // HasResumeTimeout returns a boolean if a field has been set.
 func (o *PatchedSourceStageRequest) HasResumeTimeout() bool {
-	if o != nil && !IsNil(o.ResumeTimeout) {
+	if o != nil && o.ResumeTimeout != nil {
 		return true
 	}
 
@@ -173,28 +170,20 @@ func (o *PatchedSourceStageRequest) SetResumeTimeout(v string) {
 }
 
 func (o PatchedSourceStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedSourceStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.FlowSet) {
+	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
 	}
-	if !IsNil(o.Source) {
+	if o.Source != nil {
 		toSerialize["source"] = o.Source
 	}
-	if !IsNil(o.ResumeTimeout) {
+	if o.ResumeTimeout != nil {
 		toSerialize["resume_timeout"] = o.ResumeTimeout
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedSourceStageRequest struct {

@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedUserLoginStageRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedUserLoginStageRequest{}
-
 // PatchedUserLoginStageRequest UserLoginStage Serializer
 type PatchedUserLoginStageRequest struct {
 	Name    *string          `json:"name,omitempty"`
@@ -53,7 +50,7 @@ func NewPatchedUserLoginStageRequestWithDefaults() *PatchedUserLoginStageRequest
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedUserLoginStageRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -63,7 +60,7 @@ func (o *PatchedUserLoginStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserLoginStageRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -71,7 +68,7 @@ func (o *PatchedUserLoginStageRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedUserLoginStageRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -85,7 +82,7 @@ func (o *PatchedUserLoginStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *PatchedUserLoginStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -95,7 +92,7 @@ func (o *PatchedUserLoginStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserLoginStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -103,7 +100,7 @@ func (o *PatchedUserLoginStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *PatchedUserLoginStageRequest) HasFlowSet() bool {
-	if o != nil && !IsNil(o.FlowSet) {
+	if o != nil && o.FlowSet != nil {
 		return true
 	}
 
@@ -117,7 +114,7 @@ func (o *PatchedUserLoginStageRequest) SetFlowSet(v []FlowSetRequest) {
 
 // GetSessionDuration returns the SessionDuration field value if set, zero value otherwise.
 func (o *PatchedUserLoginStageRequest) GetSessionDuration() string {
-	if o == nil || IsNil(o.SessionDuration) {
+	if o == nil || o.SessionDuration == nil {
 		var ret string
 		return ret
 	}
@@ -127,7 +124,7 @@ func (o *PatchedUserLoginStageRequest) GetSessionDuration() string {
 // GetSessionDurationOk returns a tuple with the SessionDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserLoginStageRequest) GetSessionDurationOk() (*string, bool) {
-	if o == nil || IsNil(o.SessionDuration) {
+	if o == nil || o.SessionDuration == nil {
 		return nil, false
 	}
 	return o.SessionDuration, true
@@ -135,7 +132,7 @@ func (o *PatchedUserLoginStageRequest) GetSessionDurationOk() (*string, bool) {
 
 // HasSessionDuration returns a boolean if a field has been set.
 func (o *PatchedUserLoginStageRequest) HasSessionDuration() bool {
-	if o != nil && !IsNil(o.SessionDuration) {
+	if o != nil && o.SessionDuration != nil {
 		return true
 	}
 
@@ -149,7 +146,7 @@ func (o *PatchedUserLoginStageRequest) SetSessionDuration(v string) {
 
 // GetTerminateOtherSessions returns the TerminateOtherSessions field value if set, zero value otherwise.
 func (o *PatchedUserLoginStageRequest) GetTerminateOtherSessions() bool {
-	if o == nil || IsNil(o.TerminateOtherSessions) {
+	if o == nil || o.TerminateOtherSessions == nil {
 		var ret bool
 		return ret
 	}
@@ -159,7 +156,7 @@ func (o *PatchedUserLoginStageRequest) GetTerminateOtherSessions() bool {
 // GetTerminateOtherSessionsOk returns a tuple with the TerminateOtherSessions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserLoginStageRequest) GetTerminateOtherSessionsOk() (*bool, bool) {
-	if o == nil || IsNil(o.TerminateOtherSessions) {
+	if o == nil || o.TerminateOtherSessions == nil {
 		return nil, false
 	}
 	return o.TerminateOtherSessions, true
@@ -167,7 +164,7 @@ func (o *PatchedUserLoginStageRequest) GetTerminateOtherSessionsOk() (*bool, boo
 
 // HasTerminateOtherSessions returns a boolean if a field has been set.
 func (o *PatchedUserLoginStageRequest) HasTerminateOtherSessions() bool {
-	if o != nil && !IsNil(o.TerminateOtherSessions) {
+	if o != nil && o.TerminateOtherSessions != nil {
 		return true
 	}
 
@@ -181,7 +178,7 @@ func (o *PatchedUserLoginStageRequest) SetTerminateOtherSessions(v bool) {
 
 // GetRememberMeOffset returns the RememberMeOffset field value if set, zero value otherwise.
 func (o *PatchedUserLoginStageRequest) GetRememberMeOffset() string {
-	if o == nil || IsNil(o.RememberMeOffset) {
+	if o == nil || o.RememberMeOffset == nil {
 		var ret string
 		return ret
 	}
@@ -191,7 +188,7 @@ func (o *PatchedUserLoginStageRequest) GetRememberMeOffset() string {
 // GetRememberMeOffsetOk returns a tuple with the RememberMeOffset field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserLoginStageRequest) GetRememberMeOffsetOk() (*string, bool) {
-	if o == nil || IsNil(o.RememberMeOffset) {
+	if o == nil || o.RememberMeOffset == nil {
 		return nil, false
 	}
 	return o.RememberMeOffset, true
@@ -199,7 +196,7 @@ func (o *PatchedUserLoginStageRequest) GetRememberMeOffsetOk() (*string, bool) {
 
 // HasRememberMeOffset returns a boolean if a field has been set.
 func (o *PatchedUserLoginStageRequest) HasRememberMeOffset() bool {
-	if o != nil && !IsNil(o.RememberMeOffset) {
+	if o != nil && o.RememberMeOffset != nil {
 		return true
 	}
 
@@ -213,7 +210,7 @@ func (o *PatchedUserLoginStageRequest) SetRememberMeOffset(v string) {
 
 // GetNetworkBinding returns the NetworkBinding field value if set, zero value otherwise.
 func (o *PatchedUserLoginStageRequest) GetNetworkBinding() NetworkBindingEnum {
-	if o == nil || IsNil(o.NetworkBinding) {
+	if o == nil || o.NetworkBinding == nil {
 		var ret NetworkBindingEnum
 		return ret
 	}
@@ -223,7 +220,7 @@ func (o *PatchedUserLoginStageRequest) GetNetworkBinding() NetworkBindingEnum {
 // GetNetworkBindingOk returns a tuple with the NetworkBinding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserLoginStageRequest) GetNetworkBindingOk() (*NetworkBindingEnum, bool) {
-	if o == nil || IsNil(o.NetworkBinding) {
+	if o == nil || o.NetworkBinding == nil {
 		return nil, false
 	}
 	return o.NetworkBinding, true
@@ -231,7 +228,7 @@ func (o *PatchedUserLoginStageRequest) GetNetworkBindingOk() (*NetworkBindingEnu
 
 // HasNetworkBinding returns a boolean if a field has been set.
 func (o *PatchedUserLoginStageRequest) HasNetworkBinding() bool {
-	if o != nil && !IsNil(o.NetworkBinding) {
+	if o != nil && o.NetworkBinding != nil {
 		return true
 	}
 
@@ -245,7 +242,7 @@ func (o *PatchedUserLoginStageRequest) SetNetworkBinding(v NetworkBindingEnum) {
 
 // GetGeoipBinding returns the GeoipBinding field value if set, zero value otherwise.
 func (o *PatchedUserLoginStageRequest) GetGeoipBinding() GeoipBindingEnum {
-	if o == nil || IsNil(o.GeoipBinding) {
+	if o == nil || o.GeoipBinding == nil {
 		var ret GeoipBindingEnum
 		return ret
 	}
@@ -255,7 +252,7 @@ func (o *PatchedUserLoginStageRequest) GetGeoipBinding() GeoipBindingEnum {
 // GetGeoipBindingOk returns a tuple with the GeoipBinding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserLoginStageRequest) GetGeoipBindingOk() (*GeoipBindingEnum, bool) {
-	if o == nil || IsNil(o.GeoipBinding) {
+	if o == nil || o.GeoipBinding == nil {
 		return nil, false
 	}
 	return o.GeoipBinding, true
@@ -263,7 +260,7 @@ func (o *PatchedUserLoginStageRequest) GetGeoipBindingOk() (*GeoipBindingEnum, b
 
 // HasGeoipBinding returns a boolean if a field has been set.
 func (o *PatchedUserLoginStageRequest) HasGeoipBinding() bool {
-	if o != nil && !IsNil(o.GeoipBinding) {
+	if o != nil && o.GeoipBinding != nil {
 		return true
 	}
 
@@ -276,37 +273,29 @@ func (o *PatchedUserLoginStageRequest) SetGeoipBinding(v GeoipBindingEnum) {
 }
 
 func (o PatchedUserLoginStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedUserLoginStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.FlowSet) {
+	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
 	}
-	if !IsNil(o.SessionDuration) {
+	if o.SessionDuration != nil {
 		toSerialize["session_duration"] = o.SessionDuration
 	}
-	if !IsNil(o.TerminateOtherSessions) {
+	if o.TerminateOtherSessions != nil {
 		toSerialize["terminate_other_sessions"] = o.TerminateOtherSessions
 	}
-	if !IsNil(o.RememberMeOffset) {
+	if o.RememberMeOffset != nil {
 		toSerialize["remember_me_offset"] = o.RememberMeOffset
 	}
-	if !IsNil(o.NetworkBinding) {
+	if o.NetworkBinding != nil {
 		toSerialize["network_binding"] = o.NetworkBinding
 	}
-	if !IsNil(o.GeoipBinding) {
+	if o.GeoipBinding != nil {
 		toSerialize["geoip_binding"] = o.GeoipBinding
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedUserLoginStageRequest struct {

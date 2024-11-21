@@ -12,21 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the TransactionApplicationResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TransactionApplicationResponse{}
 
 // TransactionApplicationResponse Transactional creation response
 type TransactionApplicationResponse struct {
 	Applied bool     `json:"applied"`
 	Logs    []string `json:"logs"`
 }
-
-type _TransactionApplicationResponse TransactionApplicationResponse
 
 // NewTransactionApplicationResponse instantiates a new TransactionApplicationResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -96,56 +89,14 @@ func (o *TransactionApplicationResponse) SetLogs(v []string) {
 }
 
 func (o TransactionApplicationResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["applied"] = o.Applied
+	}
+	if true {
+		toSerialize["logs"] = o.Logs
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o TransactionApplicationResponse) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["applied"] = o.Applied
-	toSerialize["logs"] = o.Logs
-	return toSerialize, nil
-}
-
-func (o *TransactionApplicationResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"applied",
-		"logs",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varTransactionApplicationResponse := _TransactionApplicationResponse{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransactionApplicationResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = TransactionApplicationResponse(varTransactionApplicationResponse)
-
-	return err
 }
 
 type NullableTransactionApplicationResponse struct {

@@ -12,14 +12,9 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 	"time"
 )
-
-// checks if the UserServiceAccountRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UserServiceAccountRequest{}
 
 // UserServiceAccountRequest struct for UserServiceAccountRequest
 type UserServiceAccountRequest struct {
@@ -29,8 +24,6 @@ type UserServiceAccountRequest struct {
 	// If not provided, valid for 360 days
 	Expires *time.Time `json:"expires,omitempty"`
 }
-
-type _UserServiceAccountRequest UserServiceAccountRequest
 
 // NewUserServiceAccountRequest instantiates a new UserServiceAccountRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -84,7 +77,7 @@ func (o *UserServiceAccountRequest) SetName(v string) {
 
 // GetCreateGroup returns the CreateGroup field value if set, zero value otherwise.
 func (o *UserServiceAccountRequest) GetCreateGroup() bool {
-	if o == nil || IsNil(o.CreateGroup) {
+	if o == nil || o.CreateGroup == nil {
 		var ret bool
 		return ret
 	}
@@ -94,7 +87,7 @@ func (o *UserServiceAccountRequest) GetCreateGroup() bool {
 // GetCreateGroupOk returns a tuple with the CreateGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserServiceAccountRequest) GetCreateGroupOk() (*bool, bool) {
-	if o == nil || IsNil(o.CreateGroup) {
+	if o == nil || o.CreateGroup == nil {
 		return nil, false
 	}
 	return o.CreateGroup, true
@@ -102,7 +95,7 @@ func (o *UserServiceAccountRequest) GetCreateGroupOk() (*bool, bool) {
 
 // HasCreateGroup returns a boolean if a field has been set.
 func (o *UserServiceAccountRequest) HasCreateGroup() bool {
-	if o != nil && !IsNil(o.CreateGroup) {
+	if o != nil && o.CreateGroup != nil {
 		return true
 	}
 
@@ -116,7 +109,7 @@ func (o *UserServiceAccountRequest) SetCreateGroup(v bool) {
 
 // GetExpiring returns the Expiring field value if set, zero value otherwise.
 func (o *UserServiceAccountRequest) GetExpiring() bool {
-	if o == nil || IsNil(o.Expiring) {
+	if o == nil || o.Expiring == nil {
 		var ret bool
 		return ret
 	}
@@ -126,7 +119,7 @@ func (o *UserServiceAccountRequest) GetExpiring() bool {
 // GetExpiringOk returns a tuple with the Expiring field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserServiceAccountRequest) GetExpiringOk() (*bool, bool) {
-	if o == nil || IsNil(o.Expiring) {
+	if o == nil || o.Expiring == nil {
 		return nil, false
 	}
 	return o.Expiring, true
@@ -134,7 +127,7 @@ func (o *UserServiceAccountRequest) GetExpiringOk() (*bool, bool) {
 
 // HasExpiring returns a boolean if a field has been set.
 func (o *UserServiceAccountRequest) HasExpiring() bool {
-	if o != nil && !IsNil(o.Expiring) {
+	if o != nil && o.Expiring != nil {
 		return true
 	}
 
@@ -148,7 +141,7 @@ func (o *UserServiceAccountRequest) SetExpiring(v bool) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
 func (o *UserServiceAccountRequest) GetExpires() time.Time {
-	if o == nil || IsNil(o.Expires) {
+	if o == nil || o.Expires == nil {
 		var ret time.Time
 		return ret
 	}
@@ -158,7 +151,7 @@ func (o *UserServiceAccountRequest) GetExpires() time.Time {
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserServiceAccountRequest) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.Expires) {
+	if o == nil || o.Expires == nil {
 		return nil, false
 	}
 	return o.Expires, true
@@ -166,7 +159,7 @@ func (o *UserServiceAccountRequest) GetExpiresOk() (*time.Time, bool) {
 
 // HasExpires returns a boolean if a field has been set.
 func (o *UserServiceAccountRequest) HasExpires() bool {
-	if o != nil && !IsNil(o.Expires) {
+	if o != nil && o.Expires != nil {
 		return true
 	}
 
@@ -179,63 +172,20 @@ func (o *UserServiceAccountRequest) SetExpires(v time.Time) {
 }
 
 func (o UserServiceAccountRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o UserServiceAccountRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	if !IsNil(o.CreateGroup) {
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.CreateGroup != nil {
 		toSerialize["create_group"] = o.CreateGroup
 	}
-	if !IsNil(o.Expiring) {
+	if o.Expiring != nil {
 		toSerialize["expiring"] = o.Expiring
 	}
-	if !IsNil(o.Expires) {
+	if o.Expires != nil {
 		toSerialize["expires"] = o.Expires
 	}
-	return toSerialize, nil
-}
-
-func (o *UserServiceAccountRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varUserServiceAccountRequest := _UserServiceAccountRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserServiceAccountRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UserServiceAccountRequest(varUserServiceAccountRequest)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableUserServiceAccountRequest struct {

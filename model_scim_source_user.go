@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the SCIMSourceUser type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SCIMSourceUser{}
 
 // SCIMSourceUser SCIMSourceUser Serializer
 type SCIMSourceUser struct {
@@ -28,8 +23,6 @@ type SCIMSourceUser struct {
 	Source     string      `json:"source"`
 	Attributes interface{} `json:"attributes,omitempty"`
 }
-
-type _SCIMSourceUser SCIMSourceUser
 
 // NewSCIMSourceUser instantiates a new SCIMSourceUser object
 // This constructor will assign default values to properties that have it defined,
@@ -161,7 +154,7 @@ func (o *SCIMSourceUser) GetAttributes() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SCIMSourceUser) GetAttributesOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Attributes) {
+	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
 	return &o.Attributes, true
@@ -169,7 +162,7 @@ func (o *SCIMSourceUser) GetAttributesOk() (*interface{}, bool) {
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *SCIMSourceUser) HasAttributes() bool {
-	if o != nil && !IsNil(o.Attributes) {
+	if o != nil && o.Attributes != nil {
 		return true
 	}
 
@@ -182,63 +175,23 @@ func (o *SCIMSourceUser) SetAttributes(v interface{}) {
 }
 
 func (o SCIMSourceUser) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o SCIMSourceUser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["user"] = o.User
-	toSerialize["user_obj"] = o.UserObj
-	toSerialize["source"] = o.Source
+	if true {
+		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["user"] = o.User
+	}
+	if true {
+		toSerialize["user_obj"] = o.UserObj
+	}
+	if true {
+		toSerialize["source"] = o.Source
+	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
-	return toSerialize, nil
-}
-
-func (o *SCIMSourceUser) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"user",
-		"user_obj",
-		"source",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSCIMSourceUser := _SCIMSourceUser{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSCIMSourceUser)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SCIMSourceUser(varSCIMSourceUser)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableSCIMSourceUser struct {

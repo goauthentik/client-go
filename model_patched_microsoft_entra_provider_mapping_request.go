@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedMicrosoftEntraProviderMappingRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedMicrosoftEntraProviderMappingRequest{}
-
 // PatchedMicrosoftEntraProviderMappingRequest MicrosoftEntraProviderMapping Serializer
 type PatchedMicrosoftEntraProviderMappingRequest struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
@@ -45,7 +42,7 @@ func NewPatchedMicrosoftEntraProviderMappingRequestWithDefaults() *PatchedMicros
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedMicrosoftEntraProviderMappingRequest) GetManaged() string {
-	if o == nil || IsNil(o.Managed.Get()) {
+	if o == nil || o.Managed.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -88,7 +85,7 @@ func (o *PatchedMicrosoftEntraProviderMappingRequest) UnsetManaged() {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedMicrosoftEntraProviderMappingRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -98,7 +95,7 @@ func (o *PatchedMicrosoftEntraProviderMappingRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedMicrosoftEntraProviderMappingRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -106,7 +103,7 @@ func (o *PatchedMicrosoftEntraProviderMappingRequest) GetNameOk() (*string, bool
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedMicrosoftEntraProviderMappingRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -120,7 +117,7 @@ func (o *PatchedMicrosoftEntraProviderMappingRequest) SetName(v string) {
 
 // GetExpression returns the Expression field value if set, zero value otherwise.
 func (o *PatchedMicrosoftEntraProviderMappingRequest) GetExpression() string {
-	if o == nil || IsNil(o.Expression) {
+	if o == nil || o.Expression == nil {
 		var ret string
 		return ret
 	}
@@ -130,7 +127,7 @@ func (o *PatchedMicrosoftEntraProviderMappingRequest) GetExpression() string {
 // GetExpressionOk returns a tuple with the Expression field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedMicrosoftEntraProviderMappingRequest) GetExpressionOk() (*string, bool) {
-	if o == nil || IsNil(o.Expression) {
+	if o == nil || o.Expression == nil {
 		return nil, false
 	}
 	return o.Expression, true
@@ -138,7 +135,7 @@ func (o *PatchedMicrosoftEntraProviderMappingRequest) GetExpressionOk() (*string
 
 // HasExpression returns a boolean if a field has been set.
 func (o *PatchedMicrosoftEntraProviderMappingRequest) HasExpression() bool {
-	if o != nil && !IsNil(o.Expression) {
+	if o != nil && o.Expression != nil {
 		return true
 	}
 
@@ -151,25 +148,17 @@ func (o *PatchedMicrosoftEntraProviderMappingRequest) SetExpression(v string) {
 }
 
 func (o PatchedMicrosoftEntraProviderMappingRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedMicrosoftEntraProviderMappingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Expression) {
+	if o.Expression != nil {
 		toSerialize["expression"] = o.Expression
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedMicrosoftEntraProviderMappingRequest struct {

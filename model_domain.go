@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the Domain type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Domain{}
 
 // Domain Domain Serializer
 type Domain struct {
@@ -27,8 +22,6 @@ type Domain struct {
 	IsPrimary *bool  `json:"is_primary,omitempty"`
 	Tenant    string `json:"tenant"`
 }
-
-type _Domain Domain
 
 // NewDomain instantiates a new Domain object
 // This constructor will assign default values to properties that have it defined,
@@ -100,7 +93,7 @@ func (o *Domain) SetDomain(v string) {
 
 // GetIsPrimary returns the IsPrimary field value if set, zero value otherwise.
 func (o *Domain) GetIsPrimary() bool {
-	if o == nil || IsNil(o.IsPrimary) {
+	if o == nil || o.IsPrimary == nil {
 		var ret bool
 		return ret
 	}
@@ -110,7 +103,7 @@ func (o *Domain) GetIsPrimary() bool {
 // GetIsPrimaryOk returns a tuple with the IsPrimary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Domain) GetIsPrimaryOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsPrimary) {
+	if o == nil || o.IsPrimary == nil {
 		return nil, false
 	}
 	return o.IsPrimary, true
@@ -118,7 +111,7 @@ func (o *Domain) GetIsPrimaryOk() (*bool, bool) {
 
 // HasIsPrimary returns a boolean if a field has been set.
 func (o *Domain) HasIsPrimary() bool {
-	if o != nil && !IsNil(o.IsPrimary) {
+	if o != nil && o.IsPrimary != nil {
 		return true
 	}
 
@@ -155,61 +148,20 @@ func (o *Domain) SetTenant(v string) {
 }
 
 func (o Domain) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o Domain) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["domain"] = o.Domain
-	if !IsNil(o.IsPrimary) {
+	if true {
+		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["domain"] = o.Domain
+	}
+	if o.IsPrimary != nil {
 		toSerialize["is_primary"] = o.IsPrimary
 	}
-	toSerialize["tenant"] = o.Tenant
-	return toSerialize, nil
-}
-
-func (o *Domain) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"domain",
-		"tenant",
+	if true {
+		toSerialize["tenant"] = o.Tenant
 	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDomain := _Domain{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDomain)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Domain(varDomain)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableDomain struct {

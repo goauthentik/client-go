@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedOutpostRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedOutpostRequest{}
-
 // PatchedOutpostRequest Outpost Serializer
 type PatchedOutpostRequest struct {
 	Name      *string          `json:"name,omitempty"`
@@ -49,7 +46,7 @@ func NewPatchedOutpostRequestWithDefaults() *PatchedOutpostRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedOutpostRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -59,7 +56,7 @@ func (o *PatchedOutpostRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedOutpostRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -67,7 +64,7 @@ func (o *PatchedOutpostRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedOutpostRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -81,7 +78,7 @@ func (o *PatchedOutpostRequest) SetName(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *PatchedOutpostRequest) GetType() OutpostTypeEnum {
-	if o == nil || IsNil(o.Type) {
+	if o == nil || o.Type == nil {
 		var ret OutpostTypeEnum
 		return ret
 	}
@@ -91,7 +88,7 @@ func (o *PatchedOutpostRequest) GetType() OutpostTypeEnum {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedOutpostRequest) GetTypeOk() (*OutpostTypeEnum, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil || o.Type == nil {
 		return nil, false
 	}
 	return o.Type, true
@@ -99,7 +96,7 @@ func (o *PatchedOutpostRequest) GetTypeOk() (*OutpostTypeEnum, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *PatchedOutpostRequest) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
+	if o != nil && o.Type != nil {
 		return true
 	}
 
@@ -113,7 +110,7 @@ func (o *PatchedOutpostRequest) SetType(v OutpostTypeEnum) {
 
 // GetProviders returns the Providers field value if set, zero value otherwise.
 func (o *PatchedOutpostRequest) GetProviders() []int32 {
-	if o == nil || IsNil(o.Providers) {
+	if o == nil || o.Providers == nil {
 		var ret []int32
 		return ret
 	}
@@ -123,7 +120,7 @@ func (o *PatchedOutpostRequest) GetProviders() []int32 {
 // GetProvidersOk returns a tuple with the Providers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedOutpostRequest) GetProvidersOk() ([]int32, bool) {
-	if o == nil || IsNil(o.Providers) {
+	if o == nil || o.Providers == nil {
 		return nil, false
 	}
 	return o.Providers, true
@@ -131,7 +128,7 @@ func (o *PatchedOutpostRequest) GetProvidersOk() ([]int32, bool) {
 
 // HasProviders returns a boolean if a field has been set.
 func (o *PatchedOutpostRequest) HasProviders() bool {
-	if o != nil && !IsNil(o.Providers) {
+	if o != nil && o.Providers != nil {
 		return true
 	}
 
@@ -145,7 +142,7 @@ func (o *PatchedOutpostRequest) SetProviders(v []int32) {
 
 // GetServiceConnection returns the ServiceConnection field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedOutpostRequest) GetServiceConnection() string {
-	if o == nil || IsNil(o.ServiceConnection.Get()) {
+	if o == nil || o.ServiceConnection.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -188,7 +185,7 @@ func (o *PatchedOutpostRequest) UnsetServiceConnection() {
 
 // GetConfig returns the Config field value if set, zero value otherwise.
 func (o *PatchedOutpostRequest) GetConfig() map[string]interface{} {
-	if o == nil || IsNil(o.Config) {
+	if o == nil || o.Config == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -198,15 +195,15 @@ func (o *PatchedOutpostRequest) GetConfig() map[string]interface{} {
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedOutpostRequest) GetConfigOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Config) {
-		return map[string]interface{}{}, false
+	if o == nil || o.Config == nil {
+		return nil, false
 	}
 	return o.Config, true
 }
 
 // HasConfig returns a boolean if a field has been set.
 func (o *PatchedOutpostRequest) HasConfig() bool {
-	if o != nil && !IsNil(o.Config) {
+	if o != nil && o.Config != nil {
 		return true
 	}
 
@@ -220,7 +217,7 @@ func (o *PatchedOutpostRequest) SetConfig(v map[string]interface{}) {
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedOutpostRequest) GetManaged() string {
-	if o == nil || IsNil(o.Managed.Get()) {
+	if o == nil || o.Managed.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -262,34 +259,26 @@ func (o *PatchedOutpostRequest) UnsetManaged() {
 }
 
 func (o PatchedOutpostRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedOutpostRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Type) {
+	if o.Type != nil {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.Providers) {
+	if o.Providers != nil {
 		toSerialize["providers"] = o.Providers
 	}
 	if o.ServiceConnection.IsSet() {
 		toSerialize["service_connection"] = o.ServiceConnection.Get()
 	}
-	if !IsNil(o.Config) {
+	if o.Config != nil {
 		toSerialize["config"] = o.Config
 	}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedOutpostRequest struct {

@@ -14,18 +14,18 @@ package api
 import (
 	"bytes"
 	"context"
-	"io"
+	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// RacAPIService RacAPI service
-type RacAPIService service
+// RacApiService RacApi service
+type RacApiService service
 
 type ApiRacConnectionTokensDestroyRequest struct {
 	ctx                 context.Context
-	ApiService          *RacAPIService
+	ApiService          *RacApiService
 	connectionTokenUuid string
 }
 
@@ -42,7 +42,7 @@ ConnectionToken Viewset
 	@param connectionTokenUuid A UUID string identifying this RAC Connection token.
 	@return ApiRacConnectionTokensDestroyRequest
 */
-func (a *RacAPIService) RacConnectionTokensDestroy(ctx context.Context, connectionTokenUuid string) ApiRacConnectionTokensDestroyRequest {
+func (a *RacApiService) RacConnectionTokensDestroy(ctx context.Context, connectionTokenUuid string) ApiRacConnectionTokensDestroyRequest {
 	return ApiRacConnectionTokensDestroyRequest{
 		ApiService:          a,
 		ctx:                 ctx,
@@ -51,20 +51,20 @@ func (a *RacAPIService) RacConnectionTokensDestroy(ctx context.Context, connecti
 }
 
 // Execute executes the request
-func (a *RacAPIService) RacConnectionTokensDestroyExecute(r ApiRacConnectionTokensDestroyRequest) (*http.Response, error) {
+func (a *RacApiService) RacConnectionTokensDestroyExecute(r ApiRacConnectionTokensDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacAPIService.RacConnectionTokensDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacApiService.RacConnectionTokensDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/rac/connection_tokens/{connection_token_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"connection_token_uuid"+"}", url.PathEscape(parameterValueToString(r.connectionTokenUuid, "connectionTokenUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connection_token_uuid"+"}", url.PathEscape(parameterToString(r.connectionTokenUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -97,9 +97,9 @@ func (a *RacAPIService) RacConnectionTokensDestroyExecute(r ApiRacConnectionToke
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -116,7 +116,6 @@ func (a *RacAPIService) RacConnectionTokensDestroyExecute(r ApiRacConnectionToke
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -127,7 +126,6 @@ func (a *RacAPIService) RacConnectionTokensDestroyExecute(r ApiRacConnectionToke
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -138,7 +136,7 @@ func (a *RacAPIService) RacConnectionTokensDestroyExecute(r ApiRacConnectionToke
 
 type ApiRacConnectionTokensListRequest struct {
 	ctx         context.Context
-	ApiService  *RacAPIService
+	ApiService  *RacApiService
 	endpoint    *string
 	ordering    *string
 	page        *int32
@@ -199,7 +197,7 @@ ConnectionToken Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiRacConnectionTokensListRequest
 */
-func (a *RacAPIService) RacConnectionTokensList(ctx context.Context) ApiRacConnectionTokensListRequest {
+func (a *RacApiService) RacConnectionTokensList(ctx context.Context) ApiRacConnectionTokensListRequest {
 	return ApiRacConnectionTokensListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -209,7 +207,7 @@ func (a *RacAPIService) RacConnectionTokensList(ctx context.Context) ApiRacConne
 // Execute executes the request
 //
 //	@return PaginatedConnectionTokenList
-func (a *RacAPIService) RacConnectionTokensListExecute(r ApiRacConnectionTokensListRequest) (*PaginatedConnectionTokenList, *http.Response, error) {
+func (a *RacApiService) RacConnectionTokensListExecute(r ApiRacConnectionTokensListRequest) (*PaginatedConnectionTokenList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -217,7 +215,7 @@ func (a *RacAPIService) RacConnectionTokensListExecute(r ApiRacConnectionTokensL
 		localVarReturnValue *PaginatedConnectionTokenList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacAPIService.RacConnectionTokensList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacApiService.RacConnectionTokensList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -229,25 +227,25 @@ func (a *RacAPIService) RacConnectionTokensListExecute(r ApiRacConnectionTokensL
 	localVarFormParams := url.Values{}
 
 	if r.endpoint != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "endpoint", r.endpoint, "form", "")
+		localVarQueryParams.Add("endpoint", parameterToString(*r.endpoint, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.provider != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "provider", r.provider, "form", "")
+		localVarQueryParams.Add("provider", parameterToString(*r.provider, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.sessionUser != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "session__user", r.sessionUser, "form", "")
+		localVarQueryParams.Add("session__user", parameterToString(*r.sessionUser, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -276,9 +274,9 @@ func (a *RacAPIService) RacConnectionTokensListExecute(r ApiRacConnectionTokensL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -295,7 +293,6 @@ func (a *RacAPIService) RacConnectionTokensListExecute(r ApiRacConnectionTokensL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -306,7 +303,6 @@ func (a *RacAPIService) RacConnectionTokensListExecute(r ApiRacConnectionTokensL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -326,7 +322,7 @@ func (a *RacAPIService) RacConnectionTokensListExecute(r ApiRacConnectionTokensL
 
 type ApiRacConnectionTokensPartialUpdateRequest struct {
 	ctx                           context.Context
-	ApiService                    *RacAPIService
+	ApiService                    *RacApiService
 	connectionTokenUuid           string
 	patchedConnectionTokenRequest *PatchedConnectionTokenRequest
 }
@@ -349,7 +345,7 @@ ConnectionToken Viewset
 	@param connectionTokenUuid A UUID string identifying this RAC Connection token.
 	@return ApiRacConnectionTokensPartialUpdateRequest
 */
-func (a *RacAPIService) RacConnectionTokensPartialUpdate(ctx context.Context, connectionTokenUuid string) ApiRacConnectionTokensPartialUpdateRequest {
+func (a *RacApiService) RacConnectionTokensPartialUpdate(ctx context.Context, connectionTokenUuid string) ApiRacConnectionTokensPartialUpdateRequest {
 	return ApiRacConnectionTokensPartialUpdateRequest{
 		ApiService:          a,
 		ctx:                 ctx,
@@ -360,7 +356,7 @@ func (a *RacAPIService) RacConnectionTokensPartialUpdate(ctx context.Context, co
 // Execute executes the request
 //
 //	@return ConnectionToken
-func (a *RacAPIService) RacConnectionTokensPartialUpdateExecute(r ApiRacConnectionTokensPartialUpdateRequest) (*ConnectionToken, *http.Response, error) {
+func (a *RacApiService) RacConnectionTokensPartialUpdateExecute(r ApiRacConnectionTokensPartialUpdateRequest) (*ConnectionToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -368,13 +364,13 @@ func (a *RacAPIService) RacConnectionTokensPartialUpdateExecute(r ApiRacConnecti
 		localVarReturnValue *ConnectionToken
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacAPIService.RacConnectionTokensPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacApiService.RacConnectionTokensPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/rac/connection_tokens/{connection_token_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"connection_token_uuid"+"}", url.PathEscape(parameterValueToString(r.connectionTokenUuid, "connectionTokenUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connection_token_uuid"+"}", url.PathEscape(parameterToString(r.connectionTokenUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -409,9 +405,9 @@ func (a *RacAPIService) RacConnectionTokensPartialUpdateExecute(r ApiRacConnecti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -428,7 +424,6 @@ func (a *RacAPIService) RacConnectionTokensPartialUpdateExecute(r ApiRacConnecti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -439,7 +434,6 @@ func (a *RacAPIService) RacConnectionTokensPartialUpdateExecute(r ApiRacConnecti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -459,7 +453,7 @@ func (a *RacAPIService) RacConnectionTokensPartialUpdateExecute(r ApiRacConnecti
 
 type ApiRacConnectionTokensRetrieveRequest struct {
 	ctx                 context.Context
-	ApiService          *RacAPIService
+	ApiService          *RacApiService
 	connectionTokenUuid string
 }
 
@@ -476,7 +470,7 @@ ConnectionToken Viewset
 	@param connectionTokenUuid A UUID string identifying this RAC Connection token.
 	@return ApiRacConnectionTokensRetrieveRequest
 */
-func (a *RacAPIService) RacConnectionTokensRetrieve(ctx context.Context, connectionTokenUuid string) ApiRacConnectionTokensRetrieveRequest {
+func (a *RacApiService) RacConnectionTokensRetrieve(ctx context.Context, connectionTokenUuid string) ApiRacConnectionTokensRetrieveRequest {
 	return ApiRacConnectionTokensRetrieveRequest{
 		ApiService:          a,
 		ctx:                 ctx,
@@ -487,7 +481,7 @@ func (a *RacAPIService) RacConnectionTokensRetrieve(ctx context.Context, connect
 // Execute executes the request
 //
 //	@return ConnectionToken
-func (a *RacAPIService) RacConnectionTokensRetrieveExecute(r ApiRacConnectionTokensRetrieveRequest) (*ConnectionToken, *http.Response, error) {
+func (a *RacApiService) RacConnectionTokensRetrieveExecute(r ApiRacConnectionTokensRetrieveRequest) (*ConnectionToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -495,13 +489,13 @@ func (a *RacAPIService) RacConnectionTokensRetrieveExecute(r ApiRacConnectionTok
 		localVarReturnValue *ConnectionToken
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacAPIService.RacConnectionTokensRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacApiService.RacConnectionTokensRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/rac/connection_tokens/{connection_token_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"connection_token_uuid"+"}", url.PathEscape(parameterValueToString(r.connectionTokenUuid, "connectionTokenUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connection_token_uuid"+"}", url.PathEscape(parameterToString(r.connectionTokenUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -534,9 +528,9 @@ func (a *RacAPIService) RacConnectionTokensRetrieveExecute(r ApiRacConnectionTok
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -553,7 +547,6 @@ func (a *RacAPIService) RacConnectionTokensRetrieveExecute(r ApiRacConnectionTok
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -564,7 +557,6 @@ func (a *RacAPIService) RacConnectionTokensRetrieveExecute(r ApiRacConnectionTok
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -584,7 +576,7 @@ func (a *RacAPIService) RacConnectionTokensRetrieveExecute(r ApiRacConnectionTok
 
 type ApiRacConnectionTokensUpdateRequest struct {
 	ctx                    context.Context
-	ApiService             *RacAPIService
+	ApiService             *RacApiService
 	connectionTokenUuid    string
 	connectionTokenRequest *ConnectionTokenRequest
 }
@@ -607,7 +599,7 @@ ConnectionToken Viewset
 	@param connectionTokenUuid A UUID string identifying this RAC Connection token.
 	@return ApiRacConnectionTokensUpdateRequest
 */
-func (a *RacAPIService) RacConnectionTokensUpdate(ctx context.Context, connectionTokenUuid string) ApiRacConnectionTokensUpdateRequest {
+func (a *RacApiService) RacConnectionTokensUpdate(ctx context.Context, connectionTokenUuid string) ApiRacConnectionTokensUpdateRequest {
 	return ApiRacConnectionTokensUpdateRequest{
 		ApiService:          a,
 		ctx:                 ctx,
@@ -618,7 +610,7 @@ func (a *RacAPIService) RacConnectionTokensUpdate(ctx context.Context, connectio
 // Execute executes the request
 //
 //	@return ConnectionToken
-func (a *RacAPIService) RacConnectionTokensUpdateExecute(r ApiRacConnectionTokensUpdateRequest) (*ConnectionToken, *http.Response, error) {
+func (a *RacApiService) RacConnectionTokensUpdateExecute(r ApiRacConnectionTokensUpdateRequest) (*ConnectionToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -626,13 +618,13 @@ func (a *RacAPIService) RacConnectionTokensUpdateExecute(r ApiRacConnectionToken
 		localVarReturnValue *ConnectionToken
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacAPIService.RacConnectionTokensUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacApiService.RacConnectionTokensUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/rac/connection_tokens/{connection_token_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"connection_token_uuid"+"}", url.PathEscape(parameterValueToString(r.connectionTokenUuid, "connectionTokenUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connection_token_uuid"+"}", url.PathEscape(parameterToString(r.connectionTokenUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -670,9 +662,9 @@ func (a *RacAPIService) RacConnectionTokensUpdateExecute(r ApiRacConnectionToken
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -689,7 +681,6 @@ func (a *RacAPIService) RacConnectionTokensUpdateExecute(r ApiRacConnectionToken
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -700,7 +691,6 @@ func (a *RacAPIService) RacConnectionTokensUpdateExecute(r ApiRacConnectionToken
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -720,7 +710,7 @@ func (a *RacAPIService) RacConnectionTokensUpdateExecute(r ApiRacConnectionToken
 
 type ApiRacConnectionTokensUsedByListRequest struct {
 	ctx                 context.Context
-	ApiService          *RacAPIService
+	ApiService          *RacApiService
 	connectionTokenUuid string
 }
 
@@ -737,7 +727,7 @@ Get a list of all objects that use this object
 	@param connectionTokenUuid A UUID string identifying this RAC Connection token.
 	@return ApiRacConnectionTokensUsedByListRequest
 */
-func (a *RacAPIService) RacConnectionTokensUsedByList(ctx context.Context, connectionTokenUuid string) ApiRacConnectionTokensUsedByListRequest {
+func (a *RacApiService) RacConnectionTokensUsedByList(ctx context.Context, connectionTokenUuid string) ApiRacConnectionTokensUsedByListRequest {
 	return ApiRacConnectionTokensUsedByListRequest{
 		ApiService:          a,
 		ctx:                 ctx,
@@ -748,7 +738,7 @@ func (a *RacAPIService) RacConnectionTokensUsedByList(ctx context.Context, conne
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *RacAPIService) RacConnectionTokensUsedByListExecute(r ApiRacConnectionTokensUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *RacApiService) RacConnectionTokensUsedByListExecute(r ApiRacConnectionTokensUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -756,13 +746,13 @@ func (a *RacAPIService) RacConnectionTokensUsedByListExecute(r ApiRacConnectionT
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacAPIService.RacConnectionTokensUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacApiService.RacConnectionTokensUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/rac/connection_tokens/{connection_token_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"connection_token_uuid"+"}", url.PathEscape(parameterValueToString(r.connectionTokenUuid, "connectionTokenUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connection_token_uuid"+"}", url.PathEscape(parameterToString(r.connectionTokenUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -795,9 +785,9 @@ func (a *RacAPIService) RacConnectionTokensUsedByListExecute(r ApiRacConnectionT
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -814,7 +804,6 @@ func (a *RacAPIService) RacConnectionTokensUsedByListExecute(r ApiRacConnectionT
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -825,7 +814,6 @@ func (a *RacAPIService) RacConnectionTokensUsedByListExecute(r ApiRacConnectionT
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -845,7 +833,7 @@ func (a *RacAPIService) RacConnectionTokensUsedByListExecute(r ApiRacConnectionT
 
 type ApiRacEndpointsCreateRequest struct {
 	ctx             context.Context
-	ApiService      *RacAPIService
+	ApiService      *RacApiService
 	endpointRequest *EndpointRequest
 }
 
@@ -866,7 +854,7 @@ Endpoint Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiRacEndpointsCreateRequest
 */
-func (a *RacAPIService) RacEndpointsCreate(ctx context.Context) ApiRacEndpointsCreateRequest {
+func (a *RacApiService) RacEndpointsCreate(ctx context.Context) ApiRacEndpointsCreateRequest {
 	return ApiRacEndpointsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -876,7 +864,7 @@ func (a *RacAPIService) RacEndpointsCreate(ctx context.Context) ApiRacEndpointsC
 // Execute executes the request
 //
 //	@return Endpoint
-func (a *RacAPIService) RacEndpointsCreateExecute(r ApiRacEndpointsCreateRequest) (*Endpoint, *http.Response, error) {
+func (a *RacApiService) RacEndpointsCreateExecute(r ApiRacEndpointsCreateRequest) (*Endpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -884,7 +872,7 @@ func (a *RacAPIService) RacEndpointsCreateExecute(r ApiRacEndpointsCreateRequest
 		localVarReturnValue *Endpoint
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacAPIService.RacEndpointsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacApiService.RacEndpointsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -927,9 +915,9 @@ func (a *RacAPIService) RacEndpointsCreateExecute(r ApiRacEndpointsCreateRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -946,7 +934,6 @@ func (a *RacAPIService) RacEndpointsCreateExecute(r ApiRacEndpointsCreateRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -957,7 +944,6 @@ func (a *RacAPIService) RacEndpointsCreateExecute(r ApiRacEndpointsCreateRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -977,7 +963,7 @@ func (a *RacAPIService) RacEndpointsCreateExecute(r ApiRacEndpointsCreateRequest
 
 type ApiRacEndpointsDestroyRequest struct {
 	ctx        context.Context
-	ApiService *RacAPIService
+	ApiService *RacApiService
 	pbmUuid    string
 }
 
@@ -994,7 +980,7 @@ Endpoint Viewset
 	@param pbmUuid A UUID string identifying this RAC Endpoint.
 	@return ApiRacEndpointsDestroyRequest
 */
-func (a *RacAPIService) RacEndpointsDestroy(ctx context.Context, pbmUuid string) ApiRacEndpointsDestroyRequest {
+func (a *RacApiService) RacEndpointsDestroy(ctx context.Context, pbmUuid string) ApiRacEndpointsDestroyRequest {
 	return ApiRacEndpointsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1003,20 +989,20 @@ func (a *RacAPIService) RacEndpointsDestroy(ctx context.Context, pbmUuid string)
 }
 
 // Execute executes the request
-func (a *RacAPIService) RacEndpointsDestroyExecute(r ApiRacEndpointsDestroyRequest) (*http.Response, error) {
+func (a *RacApiService) RacEndpointsDestroyExecute(r ApiRacEndpointsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacAPIService.RacEndpointsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacApiService.RacEndpointsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/rac/endpoints/{pbm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterValueToString(r.pbmUuid, "pbmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1049,9 +1035,9 @@ func (a *RacAPIService) RacEndpointsDestroyExecute(r ApiRacEndpointsDestroyReque
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1068,7 +1054,6 @@ func (a *RacAPIService) RacEndpointsDestroyExecute(r ApiRacEndpointsDestroyReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -1079,7 +1064,6 @@ func (a *RacAPIService) RacEndpointsDestroyExecute(r ApiRacEndpointsDestroyReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -1090,7 +1074,7 @@ func (a *RacAPIService) RacEndpointsDestroyExecute(r ApiRacEndpointsDestroyReque
 
 type ApiRacEndpointsListRequest struct {
 	ctx               context.Context
-	ApiService        *RacAPIService
+	ApiService        *RacApiService
 	name              *string
 	ordering          *string
 	page              *int32
@@ -1150,7 +1134,7 @@ List accessible endpoints
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiRacEndpointsListRequest
 */
-func (a *RacAPIService) RacEndpointsList(ctx context.Context) ApiRacEndpointsListRequest {
+func (a *RacApiService) RacEndpointsList(ctx context.Context) ApiRacEndpointsListRequest {
 	return ApiRacEndpointsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1160,7 +1144,7 @@ func (a *RacAPIService) RacEndpointsList(ctx context.Context) ApiRacEndpointsLis
 // Execute executes the request
 //
 //	@return PaginatedEndpointList
-func (a *RacAPIService) RacEndpointsListExecute(r ApiRacEndpointsListRequest) (*PaginatedEndpointList, *http.Response, error) {
+func (a *RacApiService) RacEndpointsListExecute(r ApiRacEndpointsListRequest) (*PaginatedEndpointList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1168,7 +1152,7 @@ func (a *RacAPIService) RacEndpointsListExecute(r ApiRacEndpointsListRequest) (*
 		localVarReturnValue *PaginatedEndpointList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacAPIService.RacEndpointsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacApiService.RacEndpointsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1180,25 +1164,25 @@ func (a *RacAPIService) RacEndpointsListExecute(r ApiRacEndpointsListRequest) (*
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
 	}
 	if r.provider != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "provider", r.provider, "form", "")
+		localVarQueryParams.Add("provider", parameterToString(*r.provider, ""))
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.superuserFullList != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "superuser_full_list", r.superuserFullList, "form", "")
+		localVarQueryParams.Add("superuser_full_list", parameterToString(*r.superuserFullList, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1227,9 +1211,9 @@ func (a *RacAPIService) RacEndpointsListExecute(r ApiRacEndpointsListRequest) (*
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1246,7 +1230,6 @@ func (a *RacAPIService) RacEndpointsListExecute(r ApiRacEndpointsListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1266,7 +1249,7 @@ func (a *RacAPIService) RacEndpointsListExecute(r ApiRacEndpointsListRequest) (*
 
 type ApiRacEndpointsPartialUpdateRequest struct {
 	ctx                    context.Context
-	ApiService             *RacAPIService
+	ApiService             *RacApiService
 	pbmUuid                string
 	patchedEndpointRequest *PatchedEndpointRequest
 }
@@ -1289,7 +1272,7 @@ Endpoint Viewset
 	@param pbmUuid A UUID string identifying this RAC Endpoint.
 	@return ApiRacEndpointsPartialUpdateRequest
 */
-func (a *RacAPIService) RacEndpointsPartialUpdate(ctx context.Context, pbmUuid string) ApiRacEndpointsPartialUpdateRequest {
+func (a *RacApiService) RacEndpointsPartialUpdate(ctx context.Context, pbmUuid string) ApiRacEndpointsPartialUpdateRequest {
 	return ApiRacEndpointsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1300,7 +1283,7 @@ func (a *RacAPIService) RacEndpointsPartialUpdate(ctx context.Context, pbmUuid s
 // Execute executes the request
 //
 //	@return Endpoint
-func (a *RacAPIService) RacEndpointsPartialUpdateExecute(r ApiRacEndpointsPartialUpdateRequest) (*Endpoint, *http.Response, error) {
+func (a *RacApiService) RacEndpointsPartialUpdateExecute(r ApiRacEndpointsPartialUpdateRequest) (*Endpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -1308,13 +1291,13 @@ func (a *RacAPIService) RacEndpointsPartialUpdateExecute(r ApiRacEndpointsPartia
 		localVarReturnValue *Endpoint
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacAPIService.RacEndpointsPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacApiService.RacEndpointsPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/rac/endpoints/{pbm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterValueToString(r.pbmUuid, "pbmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1349,9 +1332,9 @@ func (a *RacAPIService) RacEndpointsPartialUpdateExecute(r ApiRacEndpointsPartia
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1368,7 +1351,6 @@ func (a *RacAPIService) RacEndpointsPartialUpdateExecute(r ApiRacEndpointsPartia
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1379,7 +1361,6 @@ func (a *RacAPIService) RacEndpointsPartialUpdateExecute(r ApiRacEndpointsPartia
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1399,7 +1380,7 @@ func (a *RacAPIService) RacEndpointsPartialUpdateExecute(r ApiRacEndpointsPartia
 
 type ApiRacEndpointsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *RacAPIService
+	ApiService *RacApiService
 	pbmUuid    string
 }
 
@@ -1416,7 +1397,7 @@ Endpoint Viewset
 	@param pbmUuid A UUID string identifying this RAC Endpoint.
 	@return ApiRacEndpointsRetrieveRequest
 */
-func (a *RacAPIService) RacEndpointsRetrieve(ctx context.Context, pbmUuid string) ApiRacEndpointsRetrieveRequest {
+func (a *RacApiService) RacEndpointsRetrieve(ctx context.Context, pbmUuid string) ApiRacEndpointsRetrieveRequest {
 	return ApiRacEndpointsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1427,7 +1408,7 @@ func (a *RacAPIService) RacEndpointsRetrieve(ctx context.Context, pbmUuid string
 // Execute executes the request
 //
 //	@return Endpoint
-func (a *RacAPIService) RacEndpointsRetrieveExecute(r ApiRacEndpointsRetrieveRequest) (*Endpoint, *http.Response, error) {
+func (a *RacApiService) RacEndpointsRetrieveExecute(r ApiRacEndpointsRetrieveRequest) (*Endpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1435,13 +1416,13 @@ func (a *RacAPIService) RacEndpointsRetrieveExecute(r ApiRacEndpointsRetrieveReq
 		localVarReturnValue *Endpoint
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacAPIService.RacEndpointsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacApiService.RacEndpointsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/rac/endpoints/{pbm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterValueToString(r.pbmUuid, "pbmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1474,9 +1455,9 @@ func (a *RacAPIService) RacEndpointsRetrieveExecute(r ApiRacEndpointsRetrieveReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1493,7 +1474,6 @@ func (a *RacAPIService) RacEndpointsRetrieveExecute(r ApiRacEndpointsRetrieveReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1504,7 +1484,6 @@ func (a *RacAPIService) RacEndpointsRetrieveExecute(r ApiRacEndpointsRetrieveReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1524,7 +1503,7 @@ func (a *RacAPIService) RacEndpointsRetrieveExecute(r ApiRacEndpointsRetrieveReq
 
 type ApiRacEndpointsUpdateRequest struct {
 	ctx             context.Context
-	ApiService      *RacAPIService
+	ApiService      *RacApiService
 	pbmUuid         string
 	endpointRequest *EndpointRequest
 }
@@ -1547,7 +1526,7 @@ Endpoint Viewset
 	@param pbmUuid A UUID string identifying this RAC Endpoint.
 	@return ApiRacEndpointsUpdateRequest
 */
-func (a *RacAPIService) RacEndpointsUpdate(ctx context.Context, pbmUuid string) ApiRacEndpointsUpdateRequest {
+func (a *RacApiService) RacEndpointsUpdate(ctx context.Context, pbmUuid string) ApiRacEndpointsUpdateRequest {
 	return ApiRacEndpointsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1558,7 +1537,7 @@ func (a *RacAPIService) RacEndpointsUpdate(ctx context.Context, pbmUuid string) 
 // Execute executes the request
 //
 //	@return Endpoint
-func (a *RacAPIService) RacEndpointsUpdateExecute(r ApiRacEndpointsUpdateRequest) (*Endpoint, *http.Response, error) {
+func (a *RacApiService) RacEndpointsUpdateExecute(r ApiRacEndpointsUpdateRequest) (*Endpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -1566,13 +1545,13 @@ func (a *RacAPIService) RacEndpointsUpdateExecute(r ApiRacEndpointsUpdateRequest
 		localVarReturnValue *Endpoint
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacAPIService.RacEndpointsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacApiService.RacEndpointsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/rac/endpoints/{pbm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterValueToString(r.pbmUuid, "pbmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1610,9 +1589,9 @@ func (a *RacAPIService) RacEndpointsUpdateExecute(r ApiRacEndpointsUpdateRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1629,7 +1608,6 @@ func (a *RacAPIService) RacEndpointsUpdateExecute(r ApiRacEndpointsUpdateRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1640,7 +1618,6 @@ func (a *RacAPIService) RacEndpointsUpdateExecute(r ApiRacEndpointsUpdateRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1660,7 +1637,7 @@ func (a *RacAPIService) RacEndpointsUpdateExecute(r ApiRacEndpointsUpdateRequest
 
 type ApiRacEndpointsUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *RacAPIService
+	ApiService *RacApiService
 	pbmUuid    string
 }
 
@@ -1677,7 +1654,7 @@ Get a list of all objects that use this object
 	@param pbmUuid A UUID string identifying this RAC Endpoint.
 	@return ApiRacEndpointsUsedByListRequest
 */
-func (a *RacAPIService) RacEndpointsUsedByList(ctx context.Context, pbmUuid string) ApiRacEndpointsUsedByListRequest {
+func (a *RacApiService) RacEndpointsUsedByList(ctx context.Context, pbmUuid string) ApiRacEndpointsUsedByListRequest {
 	return ApiRacEndpointsUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1688,7 +1665,7 @@ func (a *RacAPIService) RacEndpointsUsedByList(ctx context.Context, pbmUuid stri
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *RacAPIService) RacEndpointsUsedByListExecute(r ApiRacEndpointsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *RacApiService) RacEndpointsUsedByListExecute(r ApiRacEndpointsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1696,13 +1673,13 @@ func (a *RacAPIService) RacEndpointsUsedByListExecute(r ApiRacEndpointsUsedByLis
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacAPIService.RacEndpointsUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RacApiService.RacEndpointsUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/rac/endpoints/{pbm_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterValueToString(r.pbmUuid, "pbmUuid")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1735,9 +1712,9 @@ func (a *RacAPIService) RacEndpointsUsedByListExecute(r ApiRacEndpointsUsedByLis
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1754,7 +1731,6 @@ func (a *RacAPIService) RacEndpointsUsedByListExecute(r ApiRacEndpointsUsedByLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1765,7 +1741,6 @@ func (a *RacAPIService) RacEndpointsUsedByListExecute(r ApiRacEndpointsUsedByLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

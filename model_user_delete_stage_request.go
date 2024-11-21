@@ -12,21 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the UserDeleteStageRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UserDeleteStageRequest{}
 
 // UserDeleteStageRequest UserDeleteStage Serializer
 type UserDeleteStageRequest struct {
 	Name    string           `json:"name"`
 	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 }
-
-type _UserDeleteStageRequest UserDeleteStageRequest
 
 // NewUserDeleteStageRequest instantiates a new UserDeleteStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -72,7 +65,7 @@ func (o *UserDeleteStageRequest) SetName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *UserDeleteStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		var ret []FlowSetRequest
 		return ret
 	}
@@ -82,7 +75,7 @@ func (o *UserDeleteStageRequest) GetFlowSet() []FlowSetRequest {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserDeleteStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -90,7 +83,7 @@ func (o *UserDeleteStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *UserDeleteStageRequest) HasFlowSet() bool {
-	if o != nil && !IsNil(o.FlowSet) {
+	if o != nil && o.FlowSet != nil {
 		return true
 	}
 
@@ -103,57 +96,14 @@ func (o *UserDeleteStageRequest) SetFlowSet(v []FlowSetRequest) {
 }
 
 func (o UserDeleteStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o UserDeleteStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	if !IsNil(o.FlowSet) {
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
 	}
-	return toSerialize, nil
-}
-
-func (o *UserDeleteStageRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varUserDeleteStageRequest := _UserDeleteStageRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserDeleteStageRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UserDeleteStageRequest(varUserDeleteStageRequest)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableUserDeleteStageRequest struct {

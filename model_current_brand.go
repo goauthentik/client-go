@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the CurrentBrand type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CurrentBrand{}
 
 // CurrentBrand Partial brand information for styling
 type CurrentBrand struct {
@@ -36,8 +31,6 @@ type CurrentBrand struct {
 	FlowDeviceCode     *string      `json:"flow_device_code,omitempty"`
 	DefaultLocale      string       `json:"default_locale"`
 }
-
-type _CurrentBrand CurrentBrand
 
 // NewCurrentBrand instantiates a new CurrentBrand object
 // This constructor will assign default values to properties that have it defined,
@@ -209,7 +202,7 @@ func (o *CurrentBrand) SetUiTheme(v UiThemeEnum) {
 
 // GetFlowAuthentication returns the FlowAuthentication field value if set, zero value otherwise.
 func (o *CurrentBrand) GetFlowAuthentication() string {
-	if o == nil || IsNil(o.FlowAuthentication) {
+	if o == nil || o.FlowAuthentication == nil {
 		var ret string
 		return ret
 	}
@@ -219,7 +212,7 @@ func (o *CurrentBrand) GetFlowAuthentication() string {
 // GetFlowAuthenticationOk returns a tuple with the FlowAuthentication field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrentBrand) GetFlowAuthenticationOk() (*string, bool) {
-	if o == nil || IsNil(o.FlowAuthentication) {
+	if o == nil || o.FlowAuthentication == nil {
 		return nil, false
 	}
 	return o.FlowAuthentication, true
@@ -227,7 +220,7 @@ func (o *CurrentBrand) GetFlowAuthenticationOk() (*string, bool) {
 
 // HasFlowAuthentication returns a boolean if a field has been set.
 func (o *CurrentBrand) HasFlowAuthentication() bool {
-	if o != nil && !IsNil(o.FlowAuthentication) {
+	if o != nil && o.FlowAuthentication != nil {
 		return true
 	}
 
@@ -241,7 +234,7 @@ func (o *CurrentBrand) SetFlowAuthentication(v string) {
 
 // GetFlowInvalidation returns the FlowInvalidation field value if set, zero value otherwise.
 func (o *CurrentBrand) GetFlowInvalidation() string {
-	if o == nil || IsNil(o.FlowInvalidation) {
+	if o == nil || o.FlowInvalidation == nil {
 		var ret string
 		return ret
 	}
@@ -251,7 +244,7 @@ func (o *CurrentBrand) GetFlowInvalidation() string {
 // GetFlowInvalidationOk returns a tuple with the FlowInvalidation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrentBrand) GetFlowInvalidationOk() (*string, bool) {
-	if o == nil || IsNil(o.FlowInvalidation) {
+	if o == nil || o.FlowInvalidation == nil {
 		return nil, false
 	}
 	return o.FlowInvalidation, true
@@ -259,7 +252,7 @@ func (o *CurrentBrand) GetFlowInvalidationOk() (*string, bool) {
 
 // HasFlowInvalidation returns a boolean if a field has been set.
 func (o *CurrentBrand) HasFlowInvalidation() bool {
-	if o != nil && !IsNil(o.FlowInvalidation) {
+	if o != nil && o.FlowInvalidation != nil {
 		return true
 	}
 
@@ -273,7 +266,7 @@ func (o *CurrentBrand) SetFlowInvalidation(v string) {
 
 // GetFlowRecovery returns the FlowRecovery field value if set, zero value otherwise.
 func (o *CurrentBrand) GetFlowRecovery() string {
-	if o == nil || IsNil(o.FlowRecovery) {
+	if o == nil || o.FlowRecovery == nil {
 		var ret string
 		return ret
 	}
@@ -283,7 +276,7 @@ func (o *CurrentBrand) GetFlowRecovery() string {
 // GetFlowRecoveryOk returns a tuple with the FlowRecovery field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrentBrand) GetFlowRecoveryOk() (*string, bool) {
-	if o == nil || IsNil(o.FlowRecovery) {
+	if o == nil || o.FlowRecovery == nil {
 		return nil, false
 	}
 	return o.FlowRecovery, true
@@ -291,7 +284,7 @@ func (o *CurrentBrand) GetFlowRecoveryOk() (*string, bool) {
 
 // HasFlowRecovery returns a boolean if a field has been set.
 func (o *CurrentBrand) HasFlowRecovery() bool {
-	if o != nil && !IsNil(o.FlowRecovery) {
+	if o != nil && o.FlowRecovery != nil {
 		return true
 	}
 
@@ -305,7 +298,7 @@ func (o *CurrentBrand) SetFlowRecovery(v string) {
 
 // GetFlowUnenrollment returns the FlowUnenrollment field value if set, zero value otherwise.
 func (o *CurrentBrand) GetFlowUnenrollment() string {
-	if o == nil || IsNil(o.FlowUnenrollment) {
+	if o == nil || o.FlowUnenrollment == nil {
 		var ret string
 		return ret
 	}
@@ -315,7 +308,7 @@ func (o *CurrentBrand) GetFlowUnenrollment() string {
 // GetFlowUnenrollmentOk returns a tuple with the FlowUnenrollment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrentBrand) GetFlowUnenrollmentOk() (*string, bool) {
-	if o == nil || IsNil(o.FlowUnenrollment) {
+	if o == nil || o.FlowUnenrollment == nil {
 		return nil, false
 	}
 	return o.FlowUnenrollment, true
@@ -323,7 +316,7 @@ func (o *CurrentBrand) GetFlowUnenrollmentOk() (*string, bool) {
 
 // HasFlowUnenrollment returns a boolean if a field has been set.
 func (o *CurrentBrand) HasFlowUnenrollment() bool {
-	if o != nil && !IsNil(o.FlowUnenrollment) {
+	if o != nil && o.FlowUnenrollment != nil {
 		return true
 	}
 
@@ -337,7 +330,7 @@ func (o *CurrentBrand) SetFlowUnenrollment(v string) {
 
 // GetFlowUserSettings returns the FlowUserSettings field value if set, zero value otherwise.
 func (o *CurrentBrand) GetFlowUserSettings() string {
-	if o == nil || IsNil(o.FlowUserSettings) {
+	if o == nil || o.FlowUserSettings == nil {
 		var ret string
 		return ret
 	}
@@ -347,7 +340,7 @@ func (o *CurrentBrand) GetFlowUserSettings() string {
 // GetFlowUserSettingsOk returns a tuple with the FlowUserSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrentBrand) GetFlowUserSettingsOk() (*string, bool) {
-	if o == nil || IsNil(o.FlowUserSettings) {
+	if o == nil || o.FlowUserSettings == nil {
 		return nil, false
 	}
 	return o.FlowUserSettings, true
@@ -355,7 +348,7 @@ func (o *CurrentBrand) GetFlowUserSettingsOk() (*string, bool) {
 
 // HasFlowUserSettings returns a boolean if a field has been set.
 func (o *CurrentBrand) HasFlowUserSettings() bool {
-	if o != nil && !IsNil(o.FlowUserSettings) {
+	if o != nil && o.FlowUserSettings != nil {
 		return true
 	}
 
@@ -369,7 +362,7 @@ func (o *CurrentBrand) SetFlowUserSettings(v string) {
 
 // GetFlowDeviceCode returns the FlowDeviceCode field value if set, zero value otherwise.
 func (o *CurrentBrand) GetFlowDeviceCode() string {
-	if o == nil || IsNil(o.FlowDeviceCode) {
+	if o == nil || o.FlowDeviceCode == nil {
 		var ret string
 		return ret
 	}
@@ -379,7 +372,7 @@ func (o *CurrentBrand) GetFlowDeviceCode() string {
 // GetFlowDeviceCodeOk returns a tuple with the FlowDeviceCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrentBrand) GetFlowDeviceCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.FlowDeviceCode) {
+	if o == nil || o.FlowDeviceCode == nil {
 		return nil, false
 	}
 	return o.FlowDeviceCode, true
@@ -387,7 +380,7 @@ func (o *CurrentBrand) GetFlowDeviceCodeOk() (*string, bool) {
 
 // HasFlowDeviceCode returns a boolean if a field has been set.
 func (o *CurrentBrand) HasFlowDeviceCode() bool {
-	if o != nil && !IsNil(o.FlowDeviceCode) {
+	if o != nil && o.FlowDeviceCode != nil {
 		return true
 	}
 
@@ -424,84 +417,47 @@ func (o *CurrentBrand) SetDefaultLocale(v string) {
 }
 
 func (o CurrentBrand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CurrentBrand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["matched_domain"] = o.MatchedDomain
-	toSerialize["branding_title"] = o.BrandingTitle
-	toSerialize["branding_logo"] = o.BrandingLogo
-	toSerialize["branding_favicon"] = o.BrandingFavicon
-	toSerialize["ui_footer_links"] = o.UiFooterLinks
-	toSerialize["ui_theme"] = o.UiTheme
-	if !IsNil(o.FlowAuthentication) {
+	if true {
+		toSerialize["matched_domain"] = o.MatchedDomain
+	}
+	if true {
+		toSerialize["branding_title"] = o.BrandingTitle
+	}
+	if true {
+		toSerialize["branding_logo"] = o.BrandingLogo
+	}
+	if true {
+		toSerialize["branding_favicon"] = o.BrandingFavicon
+	}
+	if true {
+		toSerialize["ui_footer_links"] = o.UiFooterLinks
+	}
+	if true {
+		toSerialize["ui_theme"] = o.UiTheme
+	}
+	if o.FlowAuthentication != nil {
 		toSerialize["flow_authentication"] = o.FlowAuthentication
 	}
-	if !IsNil(o.FlowInvalidation) {
+	if o.FlowInvalidation != nil {
 		toSerialize["flow_invalidation"] = o.FlowInvalidation
 	}
-	if !IsNil(o.FlowRecovery) {
+	if o.FlowRecovery != nil {
 		toSerialize["flow_recovery"] = o.FlowRecovery
 	}
-	if !IsNil(o.FlowUnenrollment) {
+	if o.FlowUnenrollment != nil {
 		toSerialize["flow_unenrollment"] = o.FlowUnenrollment
 	}
-	if !IsNil(o.FlowUserSettings) {
+	if o.FlowUserSettings != nil {
 		toSerialize["flow_user_settings"] = o.FlowUserSettings
 	}
-	if !IsNil(o.FlowDeviceCode) {
+	if o.FlowDeviceCode != nil {
 		toSerialize["flow_device_code"] = o.FlowDeviceCode
 	}
-	toSerialize["default_locale"] = o.DefaultLocale
-	return toSerialize, nil
-}
-
-func (o *CurrentBrand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"matched_domain",
-		"branding_title",
-		"branding_logo",
-		"branding_favicon",
-		"ui_footer_links",
-		"ui_theme",
-		"default_locale",
+	if true {
+		toSerialize["default_locale"] = o.DefaultLocale
 	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCurrentBrand := _CurrentBrand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCurrentBrand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CurrentBrand(varCurrentBrand)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableCurrentBrand struct {

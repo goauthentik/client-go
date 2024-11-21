@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the EventTopPerUser type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &EventTopPerUser{}
 
 // EventTopPerUser Response object of Event's top_per_user
 type EventTopPerUser struct {
@@ -26,8 +21,6 @@ type EventTopPerUser struct {
 	CountedEvents int32                  `json:"counted_events"`
 	UniqueUsers   int32                  `json:"unique_users"`
 }
-
-type _EventTopPerUser EventTopPerUser
 
 // NewEventTopPerUser instantiates a new EventTopPerUser object
 // This constructor will assign default values to properties that have it defined,
@@ -63,7 +56,7 @@ func (o *EventTopPerUser) GetApplication() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *EventTopPerUser) GetApplicationOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Application, true
 }
@@ -122,58 +115,17 @@ func (o *EventTopPerUser) SetUniqueUsers(v int32) {
 }
 
 func (o EventTopPerUser) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["application"] = o.Application
+	}
+	if true {
+		toSerialize["counted_events"] = o.CountedEvents
+	}
+	if true {
+		toSerialize["unique_users"] = o.UniqueUsers
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o EventTopPerUser) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["application"] = o.Application
-	toSerialize["counted_events"] = o.CountedEvents
-	toSerialize["unique_users"] = o.UniqueUsers
-	return toSerialize, nil
-}
-
-func (o *EventTopPerUser) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"application",
-		"counted_events",
-		"unique_users",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varEventTopPerUser := _EventTopPerUser{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEventTopPerUser)
-
-	if err != nil {
-		return err
-	}
-
-	*o = EventTopPerUser(varEventTopPerUser)
-
-	return err
 }
 
 type NullableEventTopPerUser struct {

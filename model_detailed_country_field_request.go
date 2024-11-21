@@ -12,21 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the DetailedCountryFieldRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DetailedCountryFieldRequest{}
 
 // DetailedCountryFieldRequest struct for DetailedCountryFieldRequest
 type DetailedCountryFieldRequest struct {
 	Code CountryCodeEnum `json:"code"`
 	Name string          `json:"name"`
 }
-
-type _DetailedCountryFieldRequest DetailedCountryFieldRequest
 
 // NewDetailedCountryFieldRequest instantiates a new DetailedCountryFieldRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -96,56 +89,14 @@ func (o *DetailedCountryFieldRequest) SetName(v string) {
 }
 
 func (o DetailedCountryFieldRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["code"] = o.Code
+	}
+	if true {
+		toSerialize["name"] = o.Name
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o DetailedCountryFieldRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["code"] = o.Code
-	toSerialize["name"] = o.Name
-	return toSerialize, nil
-}
-
-func (o *DetailedCountryFieldRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"code",
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDetailedCountryFieldRequest := _DetailedCountryFieldRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDetailedCountryFieldRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DetailedCountryFieldRequest(varDetailedCountryFieldRequest)
-
-	return err
 }
 
 type NullableDetailedCountryFieldRequest struct {

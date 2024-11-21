@@ -15,15 +15,12 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedApplicationRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedApplicationRequest{}
-
 // PatchedApplicationRequest Application Serializer
 type PatchedApplicationRequest struct {
 	// Application's display Name.
 	Name *string `json:"name,omitempty"`
 	// Internal application name, used in URLs.
-	Slug                 *string       `json:"slug,omitempty" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Slug                 *string       `json:"slug,omitempty"`
 	Provider             NullableInt32 `json:"provider,omitempty"`
 	BackchannelProviders []int32       `json:"backchannel_providers,omitempty"`
 	// Open launch URL in a new browser tab or window.
@@ -54,7 +51,7 @@ func NewPatchedApplicationRequestWithDefaults() *PatchedApplicationRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedApplicationRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -64,7 +61,7 @@ func (o *PatchedApplicationRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedApplicationRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -72,7 +69,7 @@ func (o *PatchedApplicationRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedApplicationRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -86,7 +83,7 @@ func (o *PatchedApplicationRequest) SetName(v string) {
 
 // GetSlug returns the Slug field value if set, zero value otherwise.
 func (o *PatchedApplicationRequest) GetSlug() string {
-	if o == nil || IsNil(o.Slug) {
+	if o == nil || o.Slug == nil {
 		var ret string
 		return ret
 	}
@@ -96,7 +93,7 @@ func (o *PatchedApplicationRequest) GetSlug() string {
 // GetSlugOk returns a tuple with the Slug field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedApplicationRequest) GetSlugOk() (*string, bool) {
-	if o == nil || IsNil(o.Slug) {
+	if o == nil || o.Slug == nil {
 		return nil, false
 	}
 	return o.Slug, true
@@ -104,7 +101,7 @@ func (o *PatchedApplicationRequest) GetSlugOk() (*string, bool) {
 
 // HasSlug returns a boolean if a field has been set.
 func (o *PatchedApplicationRequest) HasSlug() bool {
-	if o != nil && !IsNil(o.Slug) {
+	if o != nil && o.Slug != nil {
 		return true
 	}
 
@@ -118,7 +115,7 @@ func (o *PatchedApplicationRequest) SetSlug(v string) {
 
 // GetProvider returns the Provider field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedApplicationRequest) GetProvider() int32 {
-	if o == nil || IsNil(o.Provider.Get()) {
+	if o == nil || o.Provider.Get() == nil {
 		var ret int32
 		return ret
 	}
@@ -161,7 +158,7 @@ func (o *PatchedApplicationRequest) UnsetProvider() {
 
 // GetBackchannelProviders returns the BackchannelProviders field value if set, zero value otherwise.
 func (o *PatchedApplicationRequest) GetBackchannelProviders() []int32 {
-	if o == nil || IsNil(o.BackchannelProviders) {
+	if o == nil || o.BackchannelProviders == nil {
 		var ret []int32
 		return ret
 	}
@@ -171,7 +168,7 @@ func (o *PatchedApplicationRequest) GetBackchannelProviders() []int32 {
 // GetBackchannelProvidersOk returns a tuple with the BackchannelProviders field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedApplicationRequest) GetBackchannelProvidersOk() ([]int32, bool) {
-	if o == nil || IsNil(o.BackchannelProviders) {
+	if o == nil || o.BackchannelProviders == nil {
 		return nil, false
 	}
 	return o.BackchannelProviders, true
@@ -179,7 +176,7 @@ func (o *PatchedApplicationRequest) GetBackchannelProvidersOk() ([]int32, bool) 
 
 // HasBackchannelProviders returns a boolean if a field has been set.
 func (o *PatchedApplicationRequest) HasBackchannelProviders() bool {
-	if o != nil && !IsNil(o.BackchannelProviders) {
+	if o != nil && o.BackchannelProviders != nil {
 		return true
 	}
 
@@ -193,7 +190,7 @@ func (o *PatchedApplicationRequest) SetBackchannelProviders(v []int32) {
 
 // GetOpenInNewTab returns the OpenInNewTab field value if set, zero value otherwise.
 func (o *PatchedApplicationRequest) GetOpenInNewTab() bool {
-	if o == nil || IsNil(o.OpenInNewTab) {
+	if o == nil || o.OpenInNewTab == nil {
 		var ret bool
 		return ret
 	}
@@ -203,7 +200,7 @@ func (o *PatchedApplicationRequest) GetOpenInNewTab() bool {
 // GetOpenInNewTabOk returns a tuple with the OpenInNewTab field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedApplicationRequest) GetOpenInNewTabOk() (*bool, bool) {
-	if o == nil || IsNil(o.OpenInNewTab) {
+	if o == nil || o.OpenInNewTab == nil {
 		return nil, false
 	}
 	return o.OpenInNewTab, true
@@ -211,7 +208,7 @@ func (o *PatchedApplicationRequest) GetOpenInNewTabOk() (*bool, bool) {
 
 // HasOpenInNewTab returns a boolean if a field has been set.
 func (o *PatchedApplicationRequest) HasOpenInNewTab() bool {
-	if o != nil && !IsNil(o.OpenInNewTab) {
+	if o != nil && o.OpenInNewTab != nil {
 		return true
 	}
 
@@ -225,7 +222,7 @@ func (o *PatchedApplicationRequest) SetOpenInNewTab(v bool) {
 
 // GetMetaLaunchUrl returns the MetaLaunchUrl field value if set, zero value otherwise.
 func (o *PatchedApplicationRequest) GetMetaLaunchUrl() string {
-	if o == nil || IsNil(o.MetaLaunchUrl) {
+	if o == nil || o.MetaLaunchUrl == nil {
 		var ret string
 		return ret
 	}
@@ -235,7 +232,7 @@ func (o *PatchedApplicationRequest) GetMetaLaunchUrl() string {
 // GetMetaLaunchUrlOk returns a tuple with the MetaLaunchUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedApplicationRequest) GetMetaLaunchUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.MetaLaunchUrl) {
+	if o == nil || o.MetaLaunchUrl == nil {
 		return nil, false
 	}
 	return o.MetaLaunchUrl, true
@@ -243,7 +240,7 @@ func (o *PatchedApplicationRequest) GetMetaLaunchUrlOk() (*string, bool) {
 
 // HasMetaLaunchUrl returns a boolean if a field has been set.
 func (o *PatchedApplicationRequest) HasMetaLaunchUrl() bool {
-	if o != nil && !IsNil(o.MetaLaunchUrl) {
+	if o != nil && o.MetaLaunchUrl != nil {
 		return true
 	}
 
@@ -257,7 +254,7 @@ func (o *PatchedApplicationRequest) SetMetaLaunchUrl(v string) {
 
 // GetMetaDescription returns the MetaDescription field value if set, zero value otherwise.
 func (o *PatchedApplicationRequest) GetMetaDescription() string {
-	if o == nil || IsNil(o.MetaDescription) {
+	if o == nil || o.MetaDescription == nil {
 		var ret string
 		return ret
 	}
@@ -267,7 +264,7 @@ func (o *PatchedApplicationRequest) GetMetaDescription() string {
 // GetMetaDescriptionOk returns a tuple with the MetaDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedApplicationRequest) GetMetaDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.MetaDescription) {
+	if o == nil || o.MetaDescription == nil {
 		return nil, false
 	}
 	return o.MetaDescription, true
@@ -275,7 +272,7 @@ func (o *PatchedApplicationRequest) GetMetaDescriptionOk() (*string, bool) {
 
 // HasMetaDescription returns a boolean if a field has been set.
 func (o *PatchedApplicationRequest) HasMetaDescription() bool {
-	if o != nil && !IsNil(o.MetaDescription) {
+	if o != nil && o.MetaDescription != nil {
 		return true
 	}
 
@@ -289,7 +286,7 @@ func (o *PatchedApplicationRequest) SetMetaDescription(v string) {
 
 // GetMetaPublisher returns the MetaPublisher field value if set, zero value otherwise.
 func (o *PatchedApplicationRequest) GetMetaPublisher() string {
-	if o == nil || IsNil(o.MetaPublisher) {
+	if o == nil || o.MetaPublisher == nil {
 		var ret string
 		return ret
 	}
@@ -299,7 +296,7 @@ func (o *PatchedApplicationRequest) GetMetaPublisher() string {
 // GetMetaPublisherOk returns a tuple with the MetaPublisher field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedApplicationRequest) GetMetaPublisherOk() (*string, bool) {
-	if o == nil || IsNil(o.MetaPublisher) {
+	if o == nil || o.MetaPublisher == nil {
 		return nil, false
 	}
 	return o.MetaPublisher, true
@@ -307,7 +304,7 @@ func (o *PatchedApplicationRequest) GetMetaPublisherOk() (*string, bool) {
 
 // HasMetaPublisher returns a boolean if a field has been set.
 func (o *PatchedApplicationRequest) HasMetaPublisher() bool {
-	if o != nil && !IsNil(o.MetaPublisher) {
+	if o != nil && o.MetaPublisher != nil {
 		return true
 	}
 
@@ -321,7 +318,7 @@ func (o *PatchedApplicationRequest) SetMetaPublisher(v string) {
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
 func (o *PatchedApplicationRequest) GetPolicyEngineMode() PolicyEngineMode {
-	if o == nil || IsNil(o.PolicyEngineMode) {
+	if o == nil || o.PolicyEngineMode == nil {
 		var ret PolicyEngineMode
 		return ret
 	}
@@ -331,7 +328,7 @@ func (o *PatchedApplicationRequest) GetPolicyEngineMode() PolicyEngineMode {
 // GetPolicyEngineModeOk returns a tuple with the PolicyEngineMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedApplicationRequest) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
-	if o == nil || IsNil(o.PolicyEngineMode) {
+	if o == nil || o.PolicyEngineMode == nil {
 		return nil, false
 	}
 	return o.PolicyEngineMode, true
@@ -339,7 +336,7 @@ func (o *PatchedApplicationRequest) GetPolicyEngineModeOk() (*PolicyEngineMode, 
 
 // HasPolicyEngineMode returns a boolean if a field has been set.
 func (o *PatchedApplicationRequest) HasPolicyEngineMode() bool {
-	if o != nil && !IsNil(o.PolicyEngineMode) {
+	if o != nil && o.PolicyEngineMode != nil {
 		return true
 	}
 
@@ -353,7 +350,7 @@ func (o *PatchedApplicationRequest) SetPolicyEngineMode(v PolicyEngineMode) {
 
 // GetGroup returns the Group field value if set, zero value otherwise.
 func (o *PatchedApplicationRequest) GetGroup() string {
-	if o == nil || IsNil(o.Group) {
+	if o == nil || o.Group == nil {
 		var ret string
 		return ret
 	}
@@ -363,7 +360,7 @@ func (o *PatchedApplicationRequest) GetGroup() string {
 // GetGroupOk returns a tuple with the Group field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedApplicationRequest) GetGroupOk() (*string, bool) {
-	if o == nil || IsNil(o.Group) {
+	if o == nil || o.Group == nil {
 		return nil, false
 	}
 	return o.Group, true
@@ -371,7 +368,7 @@ func (o *PatchedApplicationRequest) GetGroupOk() (*string, bool) {
 
 // HasGroup returns a boolean if a field has been set.
 func (o *PatchedApplicationRequest) HasGroup() bool {
-	if o != nil && !IsNil(o.Group) {
+	if o != nil && o.Group != nil {
 		return true
 	}
 
@@ -384,46 +381,38 @@ func (o *PatchedApplicationRequest) SetGroup(v string) {
 }
 
 func (o PatchedApplicationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedApplicationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Slug) {
+	if o.Slug != nil {
 		toSerialize["slug"] = o.Slug
 	}
 	if o.Provider.IsSet() {
 		toSerialize["provider"] = o.Provider.Get()
 	}
-	if !IsNil(o.BackchannelProviders) {
+	if o.BackchannelProviders != nil {
 		toSerialize["backchannel_providers"] = o.BackchannelProviders
 	}
-	if !IsNil(o.OpenInNewTab) {
+	if o.OpenInNewTab != nil {
 		toSerialize["open_in_new_tab"] = o.OpenInNewTab
 	}
-	if !IsNil(o.MetaLaunchUrl) {
+	if o.MetaLaunchUrl != nil {
 		toSerialize["meta_launch_url"] = o.MetaLaunchUrl
 	}
-	if !IsNil(o.MetaDescription) {
+	if o.MetaDescription != nil {
 		toSerialize["meta_description"] = o.MetaDescription
 	}
-	if !IsNil(o.MetaPublisher) {
+	if o.MetaPublisher != nil {
 		toSerialize["meta_publisher"] = o.MetaPublisher
 	}
-	if !IsNil(o.PolicyEngineMode) {
+	if o.PolicyEngineMode != nil {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
 	}
-	if !IsNil(o.Group) {
+	if o.Group != nil {
 		toSerialize["group"] = o.Group
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedApplicationRequest struct {

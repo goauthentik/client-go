@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the AuthenticatorTOTPStage type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthenticatorTOTPStage{}
 
 // AuthenticatorTOTPStage AuthenticatorTOTPStage Serializer
 type AuthenticatorTOTPStage struct {
@@ -38,8 +33,6 @@ type AuthenticatorTOTPStage struct {
 	FriendlyName  NullableString `json:"friendly_name,omitempty"`
 	Digits        DigitsEnum     `json:"digits"`
 }
-
-type _AuthenticatorTOTPStage AuthenticatorTOTPStage
 
 // NewAuthenticatorTOTPStage instantiates a new AuthenticatorTOTPStage object
 // This constructor will assign default values to properties that have it defined,
@@ -211,7 +204,7 @@ func (o *AuthenticatorTOTPStage) SetMetaModelName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *AuthenticatorTOTPStage) GetFlowSet() []FlowSet {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		var ret []FlowSet
 		return ret
 	}
@@ -221,7 +214,7 @@ func (o *AuthenticatorTOTPStage) GetFlowSet() []FlowSet {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorTOTPStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -229,7 +222,7 @@ func (o *AuthenticatorTOTPStage) GetFlowSetOk() ([]FlowSet, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *AuthenticatorTOTPStage) HasFlowSet() bool {
-	if o != nil && !IsNil(o.FlowSet) {
+	if o != nil && o.FlowSet != nil {
 		return true
 	}
 
@@ -243,7 +236,7 @@ func (o *AuthenticatorTOTPStage) SetFlowSet(v []FlowSet) {
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorTOTPStage) GetConfigureFlow() string {
-	if o == nil || IsNil(o.ConfigureFlow.Get()) {
+	if o == nil || o.ConfigureFlow.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -286,7 +279,7 @@ func (o *AuthenticatorTOTPStage) UnsetConfigureFlow() {
 
 // GetFriendlyName returns the FriendlyName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorTOTPStage) GetFriendlyName() string {
-	if o == nil || IsNil(o.FriendlyName.Get()) {
+	if o == nil || o.FriendlyName.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -352,22 +345,26 @@ func (o *AuthenticatorTOTPStage) SetDigits(v DigitsEnum) {
 }
 
 func (o AuthenticatorTOTPStage) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o AuthenticatorTOTPStage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["pk"] = o.Pk
-	toSerialize["name"] = o.Name
-	toSerialize["component"] = o.Component
-	toSerialize["verbose_name"] = o.VerboseName
-	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	toSerialize["meta_model_name"] = o.MetaModelName
-	if !IsNil(o.FlowSet) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
+	}
+	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.ConfigureFlow.IsSet() {
@@ -376,51 +373,10 @@ func (o AuthenticatorTOTPStage) ToMap() (map[string]interface{}, error) {
 	if o.FriendlyName.IsSet() {
 		toSerialize["friendly_name"] = o.FriendlyName.Get()
 	}
-	toSerialize["digits"] = o.Digits
-	return toSerialize, nil
-}
-
-func (o *AuthenticatorTOTPStage) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pk",
-		"name",
-		"component",
-		"verbose_name",
-		"verbose_name_plural",
-		"meta_model_name",
-		"digits",
+	if true {
+		toSerialize["digits"] = o.Digits
 	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varAuthenticatorTOTPStage := _AuthenticatorTOTPStage{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorTOTPStage)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AuthenticatorTOTPStage(varAuthenticatorTOTPStage)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableAuthenticatorTOTPStage struct {

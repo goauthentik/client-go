@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedExtraUserObjectPermissionRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedExtraUserObjectPermissionRequest{}
-
 // PatchedExtraUserObjectPermissionRequest User permission with additional object-related data
 type PatchedExtraUserObjectPermissionRequest struct {
 	ObjectPk *string `json:"object_pk,omitempty"`
@@ -42,7 +39,7 @@ func NewPatchedExtraUserObjectPermissionRequestWithDefaults() *PatchedExtraUserO
 
 // GetObjectPk returns the ObjectPk field value if set, zero value otherwise.
 func (o *PatchedExtraUserObjectPermissionRequest) GetObjectPk() string {
-	if o == nil || IsNil(o.ObjectPk) {
+	if o == nil || o.ObjectPk == nil {
 		var ret string
 		return ret
 	}
@@ -52,7 +49,7 @@ func (o *PatchedExtraUserObjectPermissionRequest) GetObjectPk() string {
 // GetObjectPkOk returns a tuple with the ObjectPk field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedExtraUserObjectPermissionRequest) GetObjectPkOk() (*string, bool) {
-	if o == nil || IsNil(o.ObjectPk) {
+	if o == nil || o.ObjectPk == nil {
 		return nil, false
 	}
 	return o.ObjectPk, true
@@ -60,7 +57,7 @@ func (o *PatchedExtraUserObjectPermissionRequest) GetObjectPkOk() (*string, bool
 
 // HasObjectPk returns a boolean if a field has been set.
 func (o *PatchedExtraUserObjectPermissionRequest) HasObjectPk() bool {
-	if o != nil && !IsNil(o.ObjectPk) {
+	if o != nil && o.ObjectPk != nil {
 		return true
 	}
 
@@ -73,19 +70,11 @@ func (o *PatchedExtraUserObjectPermissionRequest) SetObjectPk(v string) {
 }
 
 func (o PatchedExtraUserObjectPermissionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedExtraUserObjectPermissionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ObjectPk) {
+	if o.ObjectPk != nil {
 		toSerialize["object_pk"] = o.ObjectPk
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedExtraUserObjectPermissionRequest struct {

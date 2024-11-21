@@ -1,43 +1,43 @@
-# \OutpostsAPI
+# \OutpostsApi
 
 All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**OutpostsInstancesCreate**](OutpostsAPI.md#OutpostsInstancesCreate) | **Post** /outposts/instances/ | 
-[**OutpostsInstancesDefaultSettingsRetrieve**](OutpostsAPI.md#OutpostsInstancesDefaultSettingsRetrieve) | **Get** /outposts/instances/default_settings/ | 
-[**OutpostsInstancesDestroy**](OutpostsAPI.md#OutpostsInstancesDestroy) | **Delete** /outposts/instances/{uuid}/ | 
-[**OutpostsInstancesHealthList**](OutpostsAPI.md#OutpostsInstancesHealthList) | **Get** /outposts/instances/{uuid}/health/ | 
-[**OutpostsInstancesList**](OutpostsAPI.md#OutpostsInstancesList) | **Get** /outposts/instances/ | 
-[**OutpostsInstancesPartialUpdate**](OutpostsAPI.md#OutpostsInstancesPartialUpdate) | **Patch** /outposts/instances/{uuid}/ | 
-[**OutpostsInstancesRetrieve**](OutpostsAPI.md#OutpostsInstancesRetrieve) | **Get** /outposts/instances/{uuid}/ | 
-[**OutpostsInstancesUpdate**](OutpostsAPI.md#OutpostsInstancesUpdate) | **Put** /outposts/instances/{uuid}/ | 
-[**OutpostsInstancesUsedByList**](OutpostsAPI.md#OutpostsInstancesUsedByList) | **Get** /outposts/instances/{uuid}/used_by/ | 
-[**OutpostsLdapAccessCheck**](OutpostsAPI.md#OutpostsLdapAccessCheck) | **Get** /outposts/ldap/{id}/check_access/ | 
-[**OutpostsLdapList**](OutpostsAPI.md#OutpostsLdapList) | **Get** /outposts/ldap/ | 
-[**OutpostsProxyList**](OutpostsAPI.md#OutpostsProxyList) | **Get** /outposts/proxy/ | 
-[**OutpostsRadiusAccessCheck**](OutpostsAPI.md#OutpostsRadiusAccessCheck) | **Get** /outposts/radius/{id}/check_access/ | 
-[**OutpostsRadiusList**](OutpostsAPI.md#OutpostsRadiusList) | **Get** /outposts/radius/ | 
-[**OutpostsServiceConnectionsAllDestroy**](OutpostsAPI.md#OutpostsServiceConnectionsAllDestroy) | **Delete** /outposts/service_connections/all/{uuid}/ | 
-[**OutpostsServiceConnectionsAllList**](OutpostsAPI.md#OutpostsServiceConnectionsAllList) | **Get** /outposts/service_connections/all/ | 
-[**OutpostsServiceConnectionsAllRetrieve**](OutpostsAPI.md#OutpostsServiceConnectionsAllRetrieve) | **Get** /outposts/service_connections/all/{uuid}/ | 
-[**OutpostsServiceConnectionsAllStateRetrieve**](OutpostsAPI.md#OutpostsServiceConnectionsAllStateRetrieve) | **Get** /outposts/service_connections/all/{uuid}/state/ | 
-[**OutpostsServiceConnectionsAllTypesList**](OutpostsAPI.md#OutpostsServiceConnectionsAllTypesList) | **Get** /outposts/service_connections/all/types/ | 
-[**OutpostsServiceConnectionsAllUsedByList**](OutpostsAPI.md#OutpostsServiceConnectionsAllUsedByList) | **Get** /outposts/service_connections/all/{uuid}/used_by/ | 
-[**OutpostsServiceConnectionsDockerCreate**](OutpostsAPI.md#OutpostsServiceConnectionsDockerCreate) | **Post** /outposts/service_connections/docker/ | 
-[**OutpostsServiceConnectionsDockerDestroy**](OutpostsAPI.md#OutpostsServiceConnectionsDockerDestroy) | **Delete** /outposts/service_connections/docker/{uuid}/ | 
-[**OutpostsServiceConnectionsDockerList**](OutpostsAPI.md#OutpostsServiceConnectionsDockerList) | **Get** /outposts/service_connections/docker/ | 
-[**OutpostsServiceConnectionsDockerPartialUpdate**](OutpostsAPI.md#OutpostsServiceConnectionsDockerPartialUpdate) | **Patch** /outposts/service_connections/docker/{uuid}/ | 
-[**OutpostsServiceConnectionsDockerRetrieve**](OutpostsAPI.md#OutpostsServiceConnectionsDockerRetrieve) | **Get** /outposts/service_connections/docker/{uuid}/ | 
-[**OutpostsServiceConnectionsDockerUpdate**](OutpostsAPI.md#OutpostsServiceConnectionsDockerUpdate) | **Put** /outposts/service_connections/docker/{uuid}/ | 
-[**OutpostsServiceConnectionsDockerUsedByList**](OutpostsAPI.md#OutpostsServiceConnectionsDockerUsedByList) | **Get** /outposts/service_connections/docker/{uuid}/used_by/ | 
-[**OutpostsServiceConnectionsKubernetesCreate**](OutpostsAPI.md#OutpostsServiceConnectionsKubernetesCreate) | **Post** /outposts/service_connections/kubernetes/ | 
-[**OutpostsServiceConnectionsKubernetesDestroy**](OutpostsAPI.md#OutpostsServiceConnectionsKubernetesDestroy) | **Delete** /outposts/service_connections/kubernetes/{uuid}/ | 
-[**OutpostsServiceConnectionsKubernetesList**](OutpostsAPI.md#OutpostsServiceConnectionsKubernetesList) | **Get** /outposts/service_connections/kubernetes/ | 
-[**OutpostsServiceConnectionsKubernetesPartialUpdate**](OutpostsAPI.md#OutpostsServiceConnectionsKubernetesPartialUpdate) | **Patch** /outposts/service_connections/kubernetes/{uuid}/ | 
-[**OutpostsServiceConnectionsKubernetesRetrieve**](OutpostsAPI.md#OutpostsServiceConnectionsKubernetesRetrieve) | **Get** /outposts/service_connections/kubernetes/{uuid}/ | 
-[**OutpostsServiceConnectionsKubernetesUpdate**](OutpostsAPI.md#OutpostsServiceConnectionsKubernetesUpdate) | **Put** /outposts/service_connections/kubernetes/{uuid}/ | 
-[**OutpostsServiceConnectionsKubernetesUsedByList**](OutpostsAPI.md#OutpostsServiceConnectionsKubernetesUsedByList) | **Get** /outposts/service_connections/kubernetes/{uuid}/used_by/ | 
+[**OutpostsInstancesCreate**](OutpostsApi.md#OutpostsInstancesCreate) | **Post** /outposts/instances/ | 
+[**OutpostsInstancesDefaultSettingsRetrieve**](OutpostsApi.md#OutpostsInstancesDefaultSettingsRetrieve) | **Get** /outposts/instances/default_settings/ | 
+[**OutpostsInstancesDestroy**](OutpostsApi.md#OutpostsInstancesDestroy) | **Delete** /outposts/instances/{uuid}/ | 
+[**OutpostsInstancesHealthList**](OutpostsApi.md#OutpostsInstancesHealthList) | **Get** /outposts/instances/{uuid}/health/ | 
+[**OutpostsInstancesList**](OutpostsApi.md#OutpostsInstancesList) | **Get** /outposts/instances/ | 
+[**OutpostsInstancesPartialUpdate**](OutpostsApi.md#OutpostsInstancesPartialUpdate) | **Patch** /outposts/instances/{uuid}/ | 
+[**OutpostsInstancesRetrieve**](OutpostsApi.md#OutpostsInstancesRetrieve) | **Get** /outposts/instances/{uuid}/ | 
+[**OutpostsInstancesUpdate**](OutpostsApi.md#OutpostsInstancesUpdate) | **Put** /outposts/instances/{uuid}/ | 
+[**OutpostsInstancesUsedByList**](OutpostsApi.md#OutpostsInstancesUsedByList) | **Get** /outposts/instances/{uuid}/used_by/ | 
+[**OutpostsLdapAccessCheck**](OutpostsApi.md#OutpostsLdapAccessCheck) | **Get** /outposts/ldap/{id}/check_access/ | 
+[**OutpostsLdapList**](OutpostsApi.md#OutpostsLdapList) | **Get** /outposts/ldap/ | 
+[**OutpostsProxyList**](OutpostsApi.md#OutpostsProxyList) | **Get** /outposts/proxy/ | 
+[**OutpostsRadiusAccessCheck**](OutpostsApi.md#OutpostsRadiusAccessCheck) | **Get** /outposts/radius/{id}/check_access/ | 
+[**OutpostsRadiusList**](OutpostsApi.md#OutpostsRadiusList) | **Get** /outposts/radius/ | 
+[**OutpostsServiceConnectionsAllDestroy**](OutpostsApi.md#OutpostsServiceConnectionsAllDestroy) | **Delete** /outposts/service_connections/all/{uuid}/ | 
+[**OutpostsServiceConnectionsAllList**](OutpostsApi.md#OutpostsServiceConnectionsAllList) | **Get** /outposts/service_connections/all/ | 
+[**OutpostsServiceConnectionsAllRetrieve**](OutpostsApi.md#OutpostsServiceConnectionsAllRetrieve) | **Get** /outposts/service_connections/all/{uuid}/ | 
+[**OutpostsServiceConnectionsAllStateRetrieve**](OutpostsApi.md#OutpostsServiceConnectionsAllStateRetrieve) | **Get** /outposts/service_connections/all/{uuid}/state/ | 
+[**OutpostsServiceConnectionsAllTypesList**](OutpostsApi.md#OutpostsServiceConnectionsAllTypesList) | **Get** /outposts/service_connections/all/types/ | 
+[**OutpostsServiceConnectionsAllUsedByList**](OutpostsApi.md#OutpostsServiceConnectionsAllUsedByList) | **Get** /outposts/service_connections/all/{uuid}/used_by/ | 
+[**OutpostsServiceConnectionsDockerCreate**](OutpostsApi.md#OutpostsServiceConnectionsDockerCreate) | **Post** /outposts/service_connections/docker/ | 
+[**OutpostsServiceConnectionsDockerDestroy**](OutpostsApi.md#OutpostsServiceConnectionsDockerDestroy) | **Delete** /outposts/service_connections/docker/{uuid}/ | 
+[**OutpostsServiceConnectionsDockerList**](OutpostsApi.md#OutpostsServiceConnectionsDockerList) | **Get** /outposts/service_connections/docker/ | 
+[**OutpostsServiceConnectionsDockerPartialUpdate**](OutpostsApi.md#OutpostsServiceConnectionsDockerPartialUpdate) | **Patch** /outposts/service_connections/docker/{uuid}/ | 
+[**OutpostsServiceConnectionsDockerRetrieve**](OutpostsApi.md#OutpostsServiceConnectionsDockerRetrieve) | **Get** /outposts/service_connections/docker/{uuid}/ | 
+[**OutpostsServiceConnectionsDockerUpdate**](OutpostsApi.md#OutpostsServiceConnectionsDockerUpdate) | **Put** /outposts/service_connections/docker/{uuid}/ | 
+[**OutpostsServiceConnectionsDockerUsedByList**](OutpostsApi.md#OutpostsServiceConnectionsDockerUsedByList) | **Get** /outposts/service_connections/docker/{uuid}/used_by/ | 
+[**OutpostsServiceConnectionsKubernetesCreate**](OutpostsApi.md#OutpostsServiceConnectionsKubernetesCreate) | **Post** /outposts/service_connections/kubernetes/ | 
+[**OutpostsServiceConnectionsKubernetesDestroy**](OutpostsApi.md#OutpostsServiceConnectionsKubernetesDestroy) | **Delete** /outposts/service_connections/kubernetes/{uuid}/ | 
+[**OutpostsServiceConnectionsKubernetesList**](OutpostsApi.md#OutpostsServiceConnectionsKubernetesList) | **Get** /outposts/service_connections/kubernetes/ | 
+[**OutpostsServiceConnectionsKubernetesPartialUpdate**](OutpostsApi.md#OutpostsServiceConnectionsKubernetesPartialUpdate) | **Patch** /outposts/service_connections/kubernetes/{uuid}/ | 
+[**OutpostsServiceConnectionsKubernetesRetrieve**](OutpostsApi.md#OutpostsServiceConnectionsKubernetesRetrieve) | **Get** /outposts/service_connections/kubernetes/{uuid}/ | 
+[**OutpostsServiceConnectionsKubernetesUpdate**](OutpostsApi.md#OutpostsServiceConnectionsKubernetesUpdate) | **Put** /outposts/service_connections/kubernetes/{uuid}/ | 
+[**OutpostsServiceConnectionsKubernetesUsedByList**](OutpostsApi.md#OutpostsServiceConnectionsKubernetesUsedByList) | **Get** /outposts/service_connections/kubernetes/{uuid}/used_by/ | 
 
 
 
@@ -55,24 +55,24 @@ Method | HTTP request | Description
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	outpostRequest := *openapiclient.NewOutpostRequest("Name_example", openapiclient.OutpostTypeEnum("proxy"), []int32{int32(123)}, map[string]interface{}{"key": interface{}(123)}) // OutpostRequest | 
+    outpostRequest := *openapiclient.NewOutpostRequest("Name_example", openapiclient.OutpostTypeEnum("proxy"), []int32{int32(123)}, map[string]interface{}{"key": interface{}(123)}) // OutpostRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsInstancesCreate(context.Background()).OutpostRequest(outpostRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsInstancesCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsInstancesCreate`: Outpost
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsInstancesCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsInstancesCreate(context.Background()).OutpostRequest(outpostRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsInstancesCreate`: Outpost
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsInstancesCreate`: %v\n", resp)
 }
 ```
 
@@ -121,23 +121,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsInstancesDefaultSettingsRetrieve(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsInstancesDefaultSettingsRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsInstancesDefaultSettingsRetrieve`: OutpostDefaultConfig
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsInstancesDefaultSettingsRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsInstancesDefaultSettingsRetrieve(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesDefaultSettingsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsInstancesDefaultSettingsRetrieve`: OutpostDefaultConfig
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsInstancesDefaultSettingsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -182,22 +182,22 @@ Other parameters are passed through a pointer to a apiOutpostsInstancesDefaultSe
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.OutpostsAPI.OutpostsInstancesDestroy(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsInstancesDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsInstancesDestroy(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -250,34 +250,34 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost.
-	managedIcontains := "managedIcontains_example" // string |  (optional)
-	managedIexact := "managedIexact_example" // string |  (optional)
-	nameIcontains := "nameIcontains_example" // string |  (optional)
-	nameIexact := "nameIexact_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	providersIsnull := true // bool |  (optional)
-	providersByPk := []int32{int32(123)} // []int32 |  (optional)
-	search := "search_example" // string | A search term. (optional)
-	serviceConnectionNameIcontains := "serviceConnectionNameIcontains_example" // string |  (optional)
-	serviceConnectionNameIexact := "serviceConnectionNameIexact_example" // string |  (optional)
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost.
+    managedIcontains := "managedIcontains_example" // string |  (optional)
+    managedIexact := "managedIexact_example" // string |  (optional)
+    nameIcontains := "nameIcontains_example" // string |  (optional)
+    nameIexact := "nameIexact_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    providersIsnull := true // bool |  (optional)
+    providersByPk := []int32{int32(123)} // []int32 |  (optional)
+    search := "search_example" // string | A search term. (optional)
+    serviceConnectionNameIcontains := "serviceConnectionNameIcontains_example" // string |  (optional)
+    serviceConnectionNameIexact := "serviceConnectionNameIexact_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsInstancesHealthList(context.Background(), uuid).ManagedIcontains(managedIcontains).ManagedIexact(managedIexact).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).ProvidersIsnull(providersIsnull).ProvidersByPk(providersByPk).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsInstancesHealthList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsInstancesHealthList`: []OutpostHealth
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsInstancesHealthList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsInstancesHealthList(context.Background(), uuid).ManagedIcontains(managedIcontains).ManagedIexact(managedIexact).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).ProvidersIsnull(providersIsnull).ProvidersByPk(providersByPk).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesHealthList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsInstancesHealthList`: []OutpostHealth
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsInstancesHealthList`: %v\n", resp)
 }
 ```
 
@@ -340,35 +340,35 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	managedIcontains := "managedIcontains_example" // string |  (optional)
-	managedIexact := "managedIexact_example" // string |  (optional)
-	nameIcontains := "nameIcontains_example" // string |  (optional)
-	nameIexact := "nameIexact_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	providersIsnull := true // bool |  (optional)
-	providersByPk := []int32{int32(123)} // []int32 |  (optional)
-	search := "search_example" // string | A search term. (optional)
-	serviceConnectionNameIcontains := "serviceConnectionNameIcontains_example" // string |  (optional)
-	serviceConnectionNameIexact := "serviceConnectionNameIexact_example" // string |  (optional)
+    managedIcontains := "managedIcontains_example" // string |  (optional)
+    managedIexact := "managedIexact_example" // string |  (optional)
+    nameIcontains := "nameIcontains_example" // string |  (optional)
+    nameIexact := "nameIexact_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    providersIsnull := true // bool |  (optional)
+    providersByPk := []int32{int32(123)} // []int32 |  (optional)
+    search := "search_example" // string | A search term. (optional)
+    serviceConnectionNameIcontains := "serviceConnectionNameIcontains_example" // string |  (optional)
+    serviceConnectionNameIexact := "serviceConnectionNameIexact_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsInstancesList(context.Background()).ManagedIcontains(managedIcontains).ManagedIexact(managedIexact).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).ProvidersIsnull(providersIsnull).ProvidersByPk(providersByPk).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsInstancesList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsInstancesList`: PaginatedOutpostList
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsInstancesList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsInstancesList(context.Background()).ManagedIcontains(managedIcontains).ManagedIexact(managedIexact).NameIcontains(nameIcontains).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).ProvidersIsnull(providersIsnull).ProvidersByPk(providersByPk).Search(search).ServiceConnectionNameIcontains(serviceConnectionNameIcontains).ServiceConnectionNameIexact(serviceConnectionNameIexact).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsInstancesList`: PaginatedOutpostList
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsInstancesList`: %v\n", resp)
 }
 ```
 
@@ -428,25 +428,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost.
-	patchedOutpostRequest := *openapiclient.NewPatchedOutpostRequest() // PatchedOutpostRequest |  (optional)
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost.
+    patchedOutpostRequest := *openapiclient.NewPatchedOutpostRequest() // PatchedOutpostRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsInstancesPartialUpdate(context.Background(), uuid).PatchedOutpostRequest(patchedOutpostRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsInstancesPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsInstancesPartialUpdate`: Outpost
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsInstancesPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsInstancesPartialUpdate(context.Background(), uuid).PatchedOutpostRequest(patchedOutpostRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsInstancesPartialUpdate`: Outpost
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsInstancesPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -500,24 +500,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsInstancesRetrieve(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsInstancesRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsInstancesRetrieve`: Outpost
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsInstancesRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsInstancesRetrieve(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsInstancesRetrieve`: Outpost
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsInstancesRetrieve`: %v\n", resp)
 }
 ```
 
@@ -570,25 +570,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost.
-	outpostRequest := *openapiclient.NewOutpostRequest("Name_example", openapiclient.OutpostTypeEnum("proxy"), []int32{int32(123)}, map[string]interface{}{"key": interface{}(123)}) // OutpostRequest | 
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost.
+    outpostRequest := *openapiclient.NewOutpostRequest("Name_example", openapiclient.OutpostTypeEnum("proxy"), []int32{int32(123)}, map[string]interface{}{"key": interface{}(123)}) // OutpostRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsInstancesUpdate(context.Background(), uuid).OutpostRequest(outpostRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsInstancesUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsInstancesUpdate`: Outpost
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsInstancesUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsInstancesUpdate(context.Background(), uuid).OutpostRequest(outpostRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsInstancesUpdate`: Outpost
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsInstancesUpdate`: %v\n", resp)
 }
 ```
 
@@ -642,24 +642,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsInstancesUsedByList(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsInstancesUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsInstancesUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsInstancesUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsInstancesUsedByList(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsInstancesUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsInstancesUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsInstancesUsedByList`: %v\n", resp)
 }
 ```
 
@@ -712,25 +712,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this LDAP Provider.
-	appSlug := "appSlug_example" // string |  (optional)
+    id := int32(56) // int32 | A unique integer value identifying this LDAP Provider.
+    appSlug := "appSlug_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsLdapAccessCheck(context.Background(), id).AppSlug(appSlug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsLdapAccessCheck``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsLdapAccessCheck`: LDAPCheckAccess
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsLdapAccessCheck`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsLdapAccessCheck(context.Background(), id).AppSlug(appSlug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsLdapAccessCheck``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsLdapAccessCheck`: LDAPCheckAccess
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsLdapAccessCheck`: %v\n", resp)
 }
 ```
 
@@ -784,28 +784,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsLdapList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsLdapList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsLdapList`: PaginatedLDAPOutpostConfigList
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsLdapList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsLdapList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsLdapList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsLdapList`: PaginatedLDAPOutpostConfigList
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsLdapList`: %v\n", resp)
 }
 ```
 
@@ -858,28 +858,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsProxyList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsProxyList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsProxyList`: PaginatedProxyOutpostConfigList
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsProxyList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsProxyList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsProxyList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsProxyList`: PaginatedProxyOutpostConfigList
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsProxyList`: %v\n", resp)
 }
 ```
 
@@ -932,25 +932,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	id := int32(56) // int32 | A unique integer value identifying this Radius Provider.
-	appSlug := "appSlug_example" // string |  (optional)
+    id := int32(56) // int32 | A unique integer value identifying this Radius Provider.
+    appSlug := "appSlug_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsRadiusAccessCheck(context.Background(), id).AppSlug(appSlug).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsRadiusAccessCheck``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsRadiusAccessCheck`: RadiusCheckAccess
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsRadiusAccessCheck`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsRadiusAccessCheck(context.Background(), id).AppSlug(appSlug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsRadiusAccessCheck``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsRadiusAccessCheck`: RadiusCheckAccess
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsRadiusAccessCheck`: %v\n", resp)
 }
 ```
 
@@ -1004,28 +1004,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsRadiusList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsRadiusList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsRadiusList`: PaginatedRadiusOutpostConfigList
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsRadiusList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsRadiusList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsRadiusList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsRadiusList`: PaginatedRadiusOutpostConfigList
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsRadiusList`: %v\n", resp)
 }
 ```
 
@@ -1078,22 +1078,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost Service-Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.OutpostsAPI.OutpostsServiceConnectionsAllDestroy(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsServiceConnectionsAllDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsAllDestroy(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsAllDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -1146,28 +1146,28 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsServiceConnectionsAllList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsServiceConnectionsAllList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsServiceConnectionsAllList`: PaginatedServiceConnectionList
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsServiceConnectionsAllList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsAllList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsAllList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsServiceConnectionsAllList`: PaginatedServiceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsServiceConnectionsAllList`: %v\n", resp)
 }
 ```
 
@@ -1220,24 +1220,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost Service-Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsServiceConnectionsAllRetrieve(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsServiceConnectionsAllRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsServiceConnectionsAllRetrieve`: ServiceConnection
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsServiceConnectionsAllRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsAllRetrieve(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsAllRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsServiceConnectionsAllRetrieve`: ServiceConnection
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsServiceConnectionsAllRetrieve`: %v\n", resp)
 }
 ```
 
@@ -1290,24 +1290,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost Service-Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsServiceConnectionsAllStateRetrieve(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsServiceConnectionsAllStateRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsServiceConnectionsAllStateRetrieve`: ServiceConnectionState
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsServiceConnectionsAllStateRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsAllStateRetrieve(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsAllStateRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsServiceConnectionsAllStateRetrieve`: ServiceConnectionState
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsServiceConnectionsAllStateRetrieve`: %v\n", resp)
 }
 ```
 
@@ -1360,23 +1360,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsServiceConnectionsAllTypesList(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsServiceConnectionsAllTypesList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsServiceConnectionsAllTypesList`: []TypeCreate
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsServiceConnectionsAllTypesList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsAllTypesList(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsAllTypesList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsServiceConnectionsAllTypesList`: []TypeCreate
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsServiceConnectionsAllTypesList`: %v\n", resp)
 }
 ```
 
@@ -1421,24 +1421,24 @@ Other parameters are passed through a pointer to a apiOutpostsServiceConnections
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Outpost Service-Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsServiceConnectionsAllUsedByList(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsServiceConnectionsAllUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsServiceConnectionsAllUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsServiceConnectionsAllUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsAllUsedByList(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsAllUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsServiceConnectionsAllUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsServiceConnectionsAllUsedByList`: %v\n", resp)
 }
 ```
 
@@ -1491,24 +1491,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	dockerServiceConnectionRequest := *openapiclient.NewDockerServiceConnectionRequest("Name_example", "Url_example") // DockerServiceConnectionRequest | 
+    dockerServiceConnectionRequest := *openapiclient.NewDockerServiceConnectionRequest("Name_example", "Url_example") // DockerServiceConnectionRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsServiceConnectionsDockerCreate(context.Background()).DockerServiceConnectionRequest(dockerServiceConnectionRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsServiceConnectionsDockerCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsServiceConnectionsDockerCreate`: DockerServiceConnection
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsServiceConnectionsDockerCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsDockerCreate(context.Background()).DockerServiceConnectionRequest(dockerServiceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsDockerCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsServiceConnectionsDockerCreate`: DockerServiceConnection
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsServiceConnectionsDockerCreate`: %v\n", resp)
 }
 ```
 
@@ -1557,22 +1557,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Docker Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Docker Service-Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.OutpostsAPI.OutpostsServiceConnectionsDockerDestroy(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsServiceConnectionsDockerDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsDockerDestroy(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsDockerDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -1625,32 +1625,32 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	local := true // bool |  (optional)
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-	tlsAuthentication := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	tlsVerification := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	url := "url_example" // string |  (optional)
+    local := true // bool |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    tlsAuthentication := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    tlsVerification := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    url := "url_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsServiceConnectionsDockerList(context.Background()).Local(local).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TlsAuthentication(tlsAuthentication).TlsVerification(tlsVerification).Url(url).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsServiceConnectionsDockerList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsServiceConnectionsDockerList`: PaginatedDockerServiceConnectionList
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsServiceConnectionsDockerList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsDockerList(context.Background()).Local(local).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).TlsAuthentication(tlsAuthentication).TlsVerification(tlsVerification).Url(url).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsDockerList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsServiceConnectionsDockerList`: PaginatedDockerServiceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsServiceConnectionsDockerList`: %v\n", resp)
 }
 ```
 
@@ -1707,25 +1707,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Docker Service-Connection.
-	patchedDockerServiceConnectionRequest := *openapiclient.NewPatchedDockerServiceConnectionRequest() // PatchedDockerServiceConnectionRequest |  (optional)
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Docker Service-Connection.
+    patchedDockerServiceConnectionRequest := *openapiclient.NewPatchedDockerServiceConnectionRequest() // PatchedDockerServiceConnectionRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsServiceConnectionsDockerPartialUpdate(context.Background(), uuid).PatchedDockerServiceConnectionRequest(patchedDockerServiceConnectionRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsServiceConnectionsDockerPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsServiceConnectionsDockerPartialUpdate`: DockerServiceConnection
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsServiceConnectionsDockerPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsDockerPartialUpdate(context.Background(), uuid).PatchedDockerServiceConnectionRequest(patchedDockerServiceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsDockerPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsServiceConnectionsDockerPartialUpdate`: DockerServiceConnection
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsServiceConnectionsDockerPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -1779,24 +1779,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Docker Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Docker Service-Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsServiceConnectionsDockerRetrieve(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsServiceConnectionsDockerRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsServiceConnectionsDockerRetrieve`: DockerServiceConnection
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsServiceConnectionsDockerRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsDockerRetrieve(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsDockerRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsServiceConnectionsDockerRetrieve`: DockerServiceConnection
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsServiceConnectionsDockerRetrieve`: %v\n", resp)
 }
 ```
 
@@ -1849,25 +1849,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Docker Service-Connection.
-	dockerServiceConnectionRequest := *openapiclient.NewDockerServiceConnectionRequest("Name_example", "Url_example") // DockerServiceConnectionRequest | 
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Docker Service-Connection.
+    dockerServiceConnectionRequest := *openapiclient.NewDockerServiceConnectionRequest("Name_example", "Url_example") // DockerServiceConnectionRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsServiceConnectionsDockerUpdate(context.Background(), uuid).DockerServiceConnectionRequest(dockerServiceConnectionRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsServiceConnectionsDockerUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsServiceConnectionsDockerUpdate`: DockerServiceConnection
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsServiceConnectionsDockerUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsDockerUpdate(context.Background(), uuid).DockerServiceConnectionRequest(dockerServiceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsDockerUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsServiceConnectionsDockerUpdate`: DockerServiceConnection
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsServiceConnectionsDockerUpdate`: %v\n", resp)
 }
 ```
 
@@ -1921,24 +1921,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Docker Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Docker Service-Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsServiceConnectionsDockerUsedByList(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsServiceConnectionsDockerUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsServiceConnectionsDockerUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsServiceConnectionsDockerUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsDockerUsedByList(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsDockerUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsServiceConnectionsDockerUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsServiceConnectionsDockerUsedByList`: %v\n", resp)
 }
 ```
 
@@ -1991,24 +1991,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	kubernetesServiceConnectionRequest := *openapiclient.NewKubernetesServiceConnectionRequest("Name_example") // KubernetesServiceConnectionRequest | 
+    kubernetesServiceConnectionRequest := *openapiclient.NewKubernetesServiceConnectionRequest("Name_example") // KubernetesServiceConnectionRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsServiceConnectionsKubernetesCreate(context.Background()).KubernetesServiceConnectionRequest(kubernetesServiceConnectionRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsServiceConnectionsKubernetesCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsServiceConnectionsKubernetesCreate`: KubernetesServiceConnection
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsServiceConnectionsKubernetesCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsKubernetesCreate(context.Background()).KubernetesServiceConnectionRequest(kubernetesServiceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsKubernetesCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsServiceConnectionsKubernetesCreate`: KubernetesServiceConnection
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsServiceConnectionsKubernetesCreate`: %v\n", resp)
 }
 ```
 
@@ -2057,22 +2057,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kubernetes Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kubernetes Service-Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.OutpostsAPI.OutpostsServiceConnectionsKubernetesDestroy(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsServiceConnectionsKubernetesDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsKubernetesDestroy(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsKubernetesDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -2125,29 +2125,29 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	local := true // bool |  (optional)
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
+    local := true // bool |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsServiceConnectionsKubernetesList(context.Background()).Local(local).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsServiceConnectionsKubernetesList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsServiceConnectionsKubernetesList`: PaginatedKubernetesServiceConnectionList
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsServiceConnectionsKubernetesList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsKubernetesList(context.Background()).Local(local).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsKubernetesList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsServiceConnectionsKubernetesList`: PaginatedKubernetesServiceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsServiceConnectionsKubernetesList`: %v\n", resp)
 }
 ```
 
@@ -2201,25 +2201,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kubernetes Service-Connection.
-	patchedKubernetesServiceConnectionRequest := *openapiclient.NewPatchedKubernetesServiceConnectionRequest() // PatchedKubernetesServiceConnectionRequest |  (optional)
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kubernetes Service-Connection.
+    patchedKubernetesServiceConnectionRequest := *openapiclient.NewPatchedKubernetesServiceConnectionRequest() // PatchedKubernetesServiceConnectionRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsServiceConnectionsKubernetesPartialUpdate(context.Background(), uuid).PatchedKubernetesServiceConnectionRequest(patchedKubernetesServiceConnectionRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsServiceConnectionsKubernetesPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsServiceConnectionsKubernetesPartialUpdate`: KubernetesServiceConnection
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsServiceConnectionsKubernetesPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsKubernetesPartialUpdate(context.Background(), uuid).PatchedKubernetesServiceConnectionRequest(patchedKubernetesServiceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsKubernetesPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsServiceConnectionsKubernetesPartialUpdate`: KubernetesServiceConnection
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsServiceConnectionsKubernetesPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -2273,24 +2273,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kubernetes Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kubernetes Service-Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsServiceConnectionsKubernetesRetrieve(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsServiceConnectionsKubernetesRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsServiceConnectionsKubernetesRetrieve`: KubernetesServiceConnection
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsServiceConnectionsKubernetesRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsKubernetesRetrieve(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsKubernetesRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsServiceConnectionsKubernetesRetrieve`: KubernetesServiceConnection
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsServiceConnectionsKubernetesRetrieve`: %v\n", resp)
 }
 ```
 
@@ -2343,25 +2343,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kubernetes Service-Connection.
-	kubernetesServiceConnectionRequest := *openapiclient.NewKubernetesServiceConnectionRequest("Name_example") // KubernetesServiceConnectionRequest | 
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kubernetes Service-Connection.
+    kubernetesServiceConnectionRequest := *openapiclient.NewKubernetesServiceConnectionRequest("Name_example") // KubernetesServiceConnectionRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsServiceConnectionsKubernetesUpdate(context.Background(), uuid).KubernetesServiceConnectionRequest(kubernetesServiceConnectionRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsServiceConnectionsKubernetesUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsServiceConnectionsKubernetesUpdate`: KubernetesServiceConnection
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsServiceConnectionsKubernetesUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsKubernetesUpdate(context.Background(), uuid).KubernetesServiceConnectionRequest(kubernetesServiceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsKubernetesUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsServiceConnectionsKubernetesUpdate`: KubernetesServiceConnection
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsServiceConnectionsKubernetesUpdate`: %v\n", resp)
 }
 ```
 
@@ -2415,24 +2415,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kubernetes Service-Connection.
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Kubernetes Service-Connection.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OutpostsAPI.OutpostsServiceConnectionsKubernetesUsedByList(context.Background(), uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutpostsAPI.OutpostsServiceConnectionsKubernetesUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OutpostsServiceConnectionsKubernetesUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `OutpostsAPI.OutpostsServiceConnectionsKubernetesUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OutpostsApi.OutpostsServiceConnectionsKubernetesUsedByList(context.Background(), uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OutpostsApi.OutpostsServiceConnectionsKubernetesUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `OutpostsServiceConnectionsKubernetesUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `OutpostsApi.OutpostsServiceConnectionsKubernetesUsedByList`: %v\n", resp)
 }
 ```
 

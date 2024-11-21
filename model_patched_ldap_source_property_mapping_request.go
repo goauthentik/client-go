@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedLDAPSourcePropertyMappingRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedLDAPSourcePropertyMappingRequest{}
-
 // PatchedLDAPSourcePropertyMappingRequest LDAP PropertyMapping Serializer
 type PatchedLDAPSourcePropertyMappingRequest struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
@@ -45,7 +42,7 @@ func NewPatchedLDAPSourcePropertyMappingRequestWithDefaults() *PatchedLDAPSource
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedLDAPSourcePropertyMappingRequest) GetManaged() string {
-	if o == nil || IsNil(o.Managed.Get()) {
+	if o == nil || o.Managed.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -88,7 +85,7 @@ func (o *PatchedLDAPSourcePropertyMappingRequest) UnsetManaged() {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedLDAPSourcePropertyMappingRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
@@ -98,7 +95,7 @@ func (o *PatchedLDAPSourcePropertyMappingRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedLDAPSourcePropertyMappingRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
 	return o.Name, true
@@ -106,7 +103,7 @@ func (o *PatchedLDAPSourcePropertyMappingRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedLDAPSourcePropertyMappingRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
@@ -120,7 +117,7 @@ func (o *PatchedLDAPSourcePropertyMappingRequest) SetName(v string) {
 
 // GetExpression returns the Expression field value if set, zero value otherwise.
 func (o *PatchedLDAPSourcePropertyMappingRequest) GetExpression() string {
-	if o == nil || IsNil(o.Expression) {
+	if o == nil || o.Expression == nil {
 		var ret string
 		return ret
 	}
@@ -130,7 +127,7 @@ func (o *PatchedLDAPSourcePropertyMappingRequest) GetExpression() string {
 // GetExpressionOk returns a tuple with the Expression field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedLDAPSourcePropertyMappingRequest) GetExpressionOk() (*string, bool) {
-	if o == nil || IsNil(o.Expression) {
+	if o == nil || o.Expression == nil {
 		return nil, false
 	}
 	return o.Expression, true
@@ -138,7 +135,7 @@ func (o *PatchedLDAPSourcePropertyMappingRequest) GetExpressionOk() (*string, bo
 
 // HasExpression returns a boolean if a field has been set.
 func (o *PatchedLDAPSourcePropertyMappingRequest) HasExpression() bool {
-	if o != nil && !IsNil(o.Expression) {
+	if o != nil && o.Expression != nil {
 		return true
 	}
 
@@ -151,25 +148,17 @@ func (o *PatchedLDAPSourcePropertyMappingRequest) SetExpression(v string) {
 }
 
 func (o PatchedLDAPSourcePropertyMappingRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedLDAPSourcePropertyMappingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	if !IsNil(o.Name) {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Expression) {
+	if o.Expression != nil {
 		toSerialize["expression"] = o.Expression
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedLDAPSourcePropertyMappingRequest struct {

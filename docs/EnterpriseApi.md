@@ -1,19 +1,19 @@
-# \EnterpriseAPI
+# \EnterpriseApi
 
 All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**EnterpriseLicenseCreate**](EnterpriseAPI.md#EnterpriseLicenseCreate) | **Post** /enterprise/license/ | 
-[**EnterpriseLicenseDestroy**](EnterpriseAPI.md#EnterpriseLicenseDestroy) | **Delete** /enterprise/license/{license_uuid}/ | 
-[**EnterpriseLicenseForecastRetrieve**](EnterpriseAPI.md#EnterpriseLicenseForecastRetrieve) | **Get** /enterprise/license/forecast/ | 
-[**EnterpriseLicenseInstallIdRetrieve**](EnterpriseAPI.md#EnterpriseLicenseInstallIdRetrieve) | **Get** /enterprise/license/install_id/ | 
-[**EnterpriseLicenseList**](EnterpriseAPI.md#EnterpriseLicenseList) | **Get** /enterprise/license/ | 
-[**EnterpriseLicensePartialUpdate**](EnterpriseAPI.md#EnterpriseLicensePartialUpdate) | **Patch** /enterprise/license/{license_uuid}/ | 
-[**EnterpriseLicenseRetrieve**](EnterpriseAPI.md#EnterpriseLicenseRetrieve) | **Get** /enterprise/license/{license_uuid}/ | 
-[**EnterpriseLicenseSummaryRetrieve**](EnterpriseAPI.md#EnterpriseLicenseSummaryRetrieve) | **Get** /enterprise/license/summary/ | 
-[**EnterpriseLicenseUpdate**](EnterpriseAPI.md#EnterpriseLicenseUpdate) | **Put** /enterprise/license/{license_uuid}/ | 
-[**EnterpriseLicenseUsedByList**](EnterpriseAPI.md#EnterpriseLicenseUsedByList) | **Get** /enterprise/license/{license_uuid}/used_by/ | 
+[**EnterpriseLicenseCreate**](EnterpriseApi.md#EnterpriseLicenseCreate) | **Post** /enterprise/license/ | 
+[**EnterpriseLicenseDestroy**](EnterpriseApi.md#EnterpriseLicenseDestroy) | **Delete** /enterprise/license/{license_uuid}/ | 
+[**EnterpriseLicenseForecastRetrieve**](EnterpriseApi.md#EnterpriseLicenseForecastRetrieve) | **Get** /enterprise/license/forecast/ | 
+[**EnterpriseLicenseInstallIdRetrieve**](EnterpriseApi.md#EnterpriseLicenseInstallIdRetrieve) | **Get** /enterprise/license/install_id/ | 
+[**EnterpriseLicenseList**](EnterpriseApi.md#EnterpriseLicenseList) | **Get** /enterprise/license/ | 
+[**EnterpriseLicensePartialUpdate**](EnterpriseApi.md#EnterpriseLicensePartialUpdate) | **Patch** /enterprise/license/{license_uuid}/ | 
+[**EnterpriseLicenseRetrieve**](EnterpriseApi.md#EnterpriseLicenseRetrieve) | **Get** /enterprise/license/{license_uuid}/ | 
+[**EnterpriseLicenseSummaryRetrieve**](EnterpriseApi.md#EnterpriseLicenseSummaryRetrieve) | **Get** /enterprise/license/summary/ | 
+[**EnterpriseLicenseUpdate**](EnterpriseApi.md#EnterpriseLicenseUpdate) | **Put** /enterprise/license/{license_uuid}/ | 
+[**EnterpriseLicenseUsedByList**](EnterpriseApi.md#EnterpriseLicenseUsedByList) | **Get** /enterprise/license/{license_uuid}/used_by/ | 
 
 
 
@@ -31,24 +31,24 @@ Method | HTTP request | Description
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	licenseRequest := *openapiclient.NewLicenseRequest("Key_example") // LicenseRequest | 
+    licenseRequest := *openapiclient.NewLicenseRequest("Key_example") // LicenseRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnterpriseAPI.EnterpriseLicenseCreate(context.Background()).LicenseRequest(licenseRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseAPI.EnterpriseLicenseCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EnterpriseLicenseCreate`: License
-	fmt.Fprintf(os.Stdout, "Response from `EnterpriseAPI.EnterpriseLicenseCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnterpriseApi.EnterpriseLicenseCreate(context.Background()).LicenseRequest(licenseRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseApi.EnterpriseLicenseCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EnterpriseLicenseCreate`: License
+    fmt.Fprintf(os.Stdout, "Response from `EnterpriseApi.EnterpriseLicenseCreate`: %v\n", resp)
 }
 ```
 
@@ -97,22 +97,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	licenseUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this License.
+    licenseUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this License.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.EnterpriseAPI.EnterpriseLicenseDestroy(context.Background(), licenseUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseAPI.EnterpriseLicenseDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnterpriseApi.EnterpriseLicenseDestroy(context.Background(), licenseUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseApi.EnterpriseLicenseDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -165,23 +165,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnterpriseAPI.EnterpriseLicenseForecastRetrieve(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseAPI.EnterpriseLicenseForecastRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EnterpriseLicenseForecastRetrieve`: LicenseForecast
-	fmt.Fprintf(os.Stdout, "Response from `EnterpriseAPI.EnterpriseLicenseForecastRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnterpriseApi.EnterpriseLicenseForecastRetrieve(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseApi.EnterpriseLicenseForecastRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EnterpriseLicenseForecastRetrieve`: LicenseForecast
+    fmt.Fprintf(os.Stdout, "Response from `EnterpriseApi.EnterpriseLicenseForecastRetrieve`: %v\n", resp)
 }
 ```
 
@@ -226,23 +226,23 @@ Other parameters are passed through a pointer to a apiEnterpriseLicenseForecastR
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnterpriseAPI.EnterpriseLicenseInstallIdRetrieve(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseAPI.EnterpriseLicenseInstallIdRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EnterpriseLicenseInstallIdRetrieve`: InstallID
-	fmt.Fprintf(os.Stdout, "Response from `EnterpriseAPI.EnterpriseLicenseInstallIdRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnterpriseApi.EnterpriseLicenseInstallIdRetrieve(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseApi.EnterpriseLicenseInstallIdRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EnterpriseLicenseInstallIdRetrieve`: InstallID
+    fmt.Fprintf(os.Stdout, "Response from `EnterpriseApi.EnterpriseLicenseInstallIdRetrieve`: %v\n", resp)
 }
 ```
 
@@ -287,28 +287,28 @@ Other parameters are passed through a pointer to a apiEnterpriseLicenseInstallId
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnterpriseAPI.EnterpriseLicenseList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseAPI.EnterpriseLicenseList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EnterpriseLicenseList`: PaginatedLicenseList
-	fmt.Fprintf(os.Stdout, "Response from `EnterpriseAPI.EnterpriseLicenseList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnterpriseApi.EnterpriseLicenseList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseApi.EnterpriseLicenseList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EnterpriseLicenseList`: PaginatedLicenseList
+    fmt.Fprintf(os.Stdout, "Response from `EnterpriseApi.EnterpriseLicenseList`: %v\n", resp)
 }
 ```
 
@@ -361,25 +361,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	licenseUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this License.
-	patchedLicenseRequest := *openapiclient.NewPatchedLicenseRequest() // PatchedLicenseRequest |  (optional)
+    licenseUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this License.
+    patchedLicenseRequest := *openapiclient.NewPatchedLicenseRequest() // PatchedLicenseRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnterpriseAPI.EnterpriseLicensePartialUpdate(context.Background(), licenseUuid).PatchedLicenseRequest(patchedLicenseRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseAPI.EnterpriseLicensePartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EnterpriseLicensePartialUpdate`: License
-	fmt.Fprintf(os.Stdout, "Response from `EnterpriseAPI.EnterpriseLicensePartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnterpriseApi.EnterpriseLicensePartialUpdate(context.Background(), licenseUuid).PatchedLicenseRequest(patchedLicenseRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseApi.EnterpriseLicensePartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EnterpriseLicensePartialUpdate`: License
+    fmt.Fprintf(os.Stdout, "Response from `EnterpriseApi.EnterpriseLicensePartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -433,24 +433,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	licenseUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this License.
+    licenseUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this License.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnterpriseAPI.EnterpriseLicenseRetrieve(context.Background(), licenseUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseAPI.EnterpriseLicenseRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EnterpriseLicenseRetrieve`: License
-	fmt.Fprintf(os.Stdout, "Response from `EnterpriseAPI.EnterpriseLicenseRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnterpriseApi.EnterpriseLicenseRetrieve(context.Background(), licenseUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseApi.EnterpriseLicenseRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EnterpriseLicenseRetrieve`: License
+    fmt.Fprintf(os.Stdout, "Response from `EnterpriseApi.EnterpriseLicenseRetrieve`: %v\n", resp)
 }
 ```
 
@@ -503,24 +503,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	cached := true // bool |  (optional) (default to true)
+    cached := true // bool |  (optional) (default to true)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnterpriseAPI.EnterpriseLicenseSummaryRetrieve(context.Background()).Cached(cached).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseAPI.EnterpriseLicenseSummaryRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EnterpriseLicenseSummaryRetrieve`: LicenseSummary
-	fmt.Fprintf(os.Stdout, "Response from `EnterpriseAPI.EnterpriseLicenseSummaryRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnterpriseApi.EnterpriseLicenseSummaryRetrieve(context.Background()).Cached(cached).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseApi.EnterpriseLicenseSummaryRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EnterpriseLicenseSummaryRetrieve`: LicenseSummary
+    fmt.Fprintf(os.Stdout, "Response from `EnterpriseApi.EnterpriseLicenseSummaryRetrieve`: %v\n", resp)
 }
 ```
 
@@ -569,25 +569,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	licenseUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this License.
-	licenseRequest := *openapiclient.NewLicenseRequest("Key_example") // LicenseRequest | 
+    licenseUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this License.
+    licenseRequest := *openapiclient.NewLicenseRequest("Key_example") // LicenseRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnterpriseAPI.EnterpriseLicenseUpdate(context.Background(), licenseUuid).LicenseRequest(licenseRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseAPI.EnterpriseLicenseUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EnterpriseLicenseUpdate`: License
-	fmt.Fprintf(os.Stdout, "Response from `EnterpriseAPI.EnterpriseLicenseUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnterpriseApi.EnterpriseLicenseUpdate(context.Background(), licenseUuid).LicenseRequest(licenseRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseApi.EnterpriseLicenseUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EnterpriseLicenseUpdate`: License
+    fmt.Fprintf(os.Stdout, "Response from `EnterpriseApi.EnterpriseLicenseUpdate`: %v\n", resp)
 }
 ```
 
@@ -641,24 +641,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	licenseUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this License.
+    licenseUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this License.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnterpriseAPI.EnterpriseLicenseUsedByList(context.Background(), licenseUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseAPI.EnterpriseLicenseUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EnterpriseLicenseUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `EnterpriseAPI.EnterpriseLicenseUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnterpriseApi.EnterpriseLicenseUsedByList(context.Background(), licenseUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseApi.EnterpriseLicenseUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EnterpriseLicenseUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `EnterpriseApi.EnterpriseLicenseUsedByList`: %v\n", resp)
 }
 ```
 

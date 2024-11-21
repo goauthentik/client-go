@@ -12,21 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the PaginatedKubernetesServiceConnectionList type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedKubernetesServiceConnectionList{}
 
 // PaginatedKubernetesServiceConnectionList struct for PaginatedKubernetesServiceConnectionList
 type PaginatedKubernetesServiceConnectionList struct {
 	Pagination Pagination                    `json:"pagination"`
 	Results    []KubernetesServiceConnection `json:"results"`
 }
-
-type _PaginatedKubernetesServiceConnectionList PaginatedKubernetesServiceConnectionList
 
 // NewPaginatedKubernetesServiceConnectionList instantiates a new PaginatedKubernetesServiceConnectionList object
 // This constructor will assign default values to properties that have it defined,
@@ -96,56 +89,14 @@ func (o *PaginatedKubernetesServiceConnectionList) SetResults(v []KubernetesServ
 }
 
 func (o PaginatedKubernetesServiceConnectionList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["pagination"] = o.Pagination
+	}
+	if true {
+		toSerialize["results"] = o.Results
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o PaginatedKubernetesServiceConnectionList) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["pagination"] = o.Pagination
-	toSerialize["results"] = o.Results
-	return toSerialize, nil
-}
-
-func (o *PaginatedKubernetesServiceConnectionList) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pagination",
-		"results",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPaginatedKubernetesServiceConnectionList := _PaginatedKubernetesServiceConnectionList{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedKubernetesServiceConnectionList)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PaginatedKubernetesServiceConnectionList(varPaginatedKubernetesServiceConnectionList)
-
-	return err
 }
 
 type NullablePaginatedKubernetesServiceConnectionList struct {

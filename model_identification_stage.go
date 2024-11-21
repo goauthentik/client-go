@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the IdentificationStage type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &IdentificationStage{}
 
 // IdentificationStage IdentificationStage Serializer
 type IdentificationStage struct {
@@ -55,8 +50,6 @@ type IdentificationStage struct {
 	// When enabled, the stage will succeed and continue even when incorrect user info is entered.
 	PretendUserExists *bool `json:"pretend_user_exists,omitempty"`
 }
-
-type _IdentificationStage IdentificationStage
 
 // NewIdentificationStage instantiates a new IdentificationStage object
 // This constructor will assign default values to properties that have it defined,
@@ -227,7 +220,7 @@ func (o *IdentificationStage) SetMetaModelName(v string) {
 
 // GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *IdentificationStage) GetFlowSet() []FlowSet {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		var ret []FlowSet
 		return ret
 	}
@@ -237,7 +230,7 @@ func (o *IdentificationStage) GetFlowSet() []FlowSet {
 // GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil || IsNil(o.FlowSet) {
+	if o == nil || o.FlowSet == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
@@ -245,7 +238,7 @@ func (o *IdentificationStage) GetFlowSetOk() ([]FlowSet, bool) {
 
 // HasFlowSet returns a boolean if a field has been set.
 func (o *IdentificationStage) HasFlowSet() bool {
-	if o != nil && !IsNil(o.FlowSet) {
+	if o != nil && o.FlowSet != nil {
 		return true
 	}
 
@@ -259,7 +252,7 @@ func (o *IdentificationStage) SetFlowSet(v []FlowSet) {
 
 // GetUserFields returns the UserFields field value if set, zero value otherwise.
 func (o *IdentificationStage) GetUserFields() []UserFieldsEnum {
-	if o == nil || IsNil(o.UserFields) {
+	if o == nil || o.UserFields == nil {
 		var ret []UserFieldsEnum
 		return ret
 	}
@@ -269,7 +262,7 @@ func (o *IdentificationStage) GetUserFields() []UserFieldsEnum {
 // GetUserFieldsOk returns a tuple with the UserFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationStage) GetUserFieldsOk() ([]UserFieldsEnum, bool) {
-	if o == nil || IsNil(o.UserFields) {
+	if o == nil || o.UserFields == nil {
 		return nil, false
 	}
 	return o.UserFields, true
@@ -277,7 +270,7 @@ func (o *IdentificationStage) GetUserFieldsOk() ([]UserFieldsEnum, bool) {
 
 // HasUserFields returns a boolean if a field has been set.
 func (o *IdentificationStage) HasUserFields() bool {
-	if o != nil && !IsNil(o.UserFields) {
+	if o != nil && o.UserFields != nil {
 		return true
 	}
 
@@ -291,7 +284,7 @@ func (o *IdentificationStage) SetUserFields(v []UserFieldsEnum) {
 
 // GetPasswordStage returns the PasswordStage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentificationStage) GetPasswordStage() string {
-	if o == nil || IsNil(o.PasswordStage.Get()) {
+	if o == nil || o.PasswordStage.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -334,7 +327,7 @@ func (o *IdentificationStage) UnsetPasswordStage() {
 
 // GetCaptchaStage returns the CaptchaStage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentificationStage) GetCaptchaStage() string {
-	if o == nil || IsNil(o.CaptchaStage.Get()) {
+	if o == nil || o.CaptchaStage.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -377,7 +370,7 @@ func (o *IdentificationStage) UnsetCaptchaStage() {
 
 // GetCaseInsensitiveMatching returns the CaseInsensitiveMatching field value if set, zero value otherwise.
 func (o *IdentificationStage) GetCaseInsensitiveMatching() bool {
-	if o == nil || IsNil(o.CaseInsensitiveMatching) {
+	if o == nil || o.CaseInsensitiveMatching == nil {
 		var ret bool
 		return ret
 	}
@@ -387,7 +380,7 @@ func (o *IdentificationStage) GetCaseInsensitiveMatching() bool {
 // GetCaseInsensitiveMatchingOk returns a tuple with the CaseInsensitiveMatching field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationStage) GetCaseInsensitiveMatchingOk() (*bool, bool) {
-	if o == nil || IsNil(o.CaseInsensitiveMatching) {
+	if o == nil || o.CaseInsensitiveMatching == nil {
 		return nil, false
 	}
 	return o.CaseInsensitiveMatching, true
@@ -395,7 +388,7 @@ func (o *IdentificationStage) GetCaseInsensitiveMatchingOk() (*bool, bool) {
 
 // HasCaseInsensitiveMatching returns a boolean if a field has been set.
 func (o *IdentificationStage) HasCaseInsensitiveMatching() bool {
-	if o != nil && !IsNil(o.CaseInsensitiveMatching) {
+	if o != nil && o.CaseInsensitiveMatching != nil {
 		return true
 	}
 
@@ -409,7 +402,7 @@ func (o *IdentificationStage) SetCaseInsensitiveMatching(v bool) {
 
 // GetShowMatchedUser returns the ShowMatchedUser field value if set, zero value otherwise.
 func (o *IdentificationStage) GetShowMatchedUser() bool {
-	if o == nil || IsNil(o.ShowMatchedUser) {
+	if o == nil || o.ShowMatchedUser == nil {
 		var ret bool
 		return ret
 	}
@@ -419,7 +412,7 @@ func (o *IdentificationStage) GetShowMatchedUser() bool {
 // GetShowMatchedUserOk returns a tuple with the ShowMatchedUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationStage) GetShowMatchedUserOk() (*bool, bool) {
-	if o == nil || IsNil(o.ShowMatchedUser) {
+	if o == nil || o.ShowMatchedUser == nil {
 		return nil, false
 	}
 	return o.ShowMatchedUser, true
@@ -427,7 +420,7 @@ func (o *IdentificationStage) GetShowMatchedUserOk() (*bool, bool) {
 
 // HasShowMatchedUser returns a boolean if a field has been set.
 func (o *IdentificationStage) HasShowMatchedUser() bool {
-	if o != nil && !IsNil(o.ShowMatchedUser) {
+	if o != nil && o.ShowMatchedUser != nil {
 		return true
 	}
 
@@ -441,7 +434,7 @@ func (o *IdentificationStage) SetShowMatchedUser(v bool) {
 
 // GetEnrollmentFlow returns the EnrollmentFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentificationStage) GetEnrollmentFlow() string {
-	if o == nil || IsNil(o.EnrollmentFlow.Get()) {
+	if o == nil || o.EnrollmentFlow.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -484,7 +477,7 @@ func (o *IdentificationStage) UnsetEnrollmentFlow() {
 
 // GetRecoveryFlow returns the RecoveryFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentificationStage) GetRecoveryFlow() string {
-	if o == nil || IsNil(o.RecoveryFlow.Get()) {
+	if o == nil || o.RecoveryFlow.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -527,7 +520,7 @@ func (o *IdentificationStage) UnsetRecoveryFlow() {
 
 // GetPasswordlessFlow returns the PasswordlessFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentificationStage) GetPasswordlessFlow() string {
-	if o == nil || IsNil(o.PasswordlessFlow.Get()) {
+	if o == nil || o.PasswordlessFlow.Get() == nil {
 		var ret string
 		return ret
 	}
@@ -570,7 +563,7 @@ func (o *IdentificationStage) UnsetPasswordlessFlow() {
 
 // GetSources returns the Sources field value if set, zero value otherwise.
 func (o *IdentificationStage) GetSources() []string {
-	if o == nil || IsNil(o.Sources) {
+	if o == nil || o.Sources == nil {
 		var ret []string
 		return ret
 	}
@@ -580,7 +573,7 @@ func (o *IdentificationStage) GetSources() []string {
 // GetSourcesOk returns a tuple with the Sources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationStage) GetSourcesOk() ([]string, bool) {
-	if o == nil || IsNil(o.Sources) {
+	if o == nil || o.Sources == nil {
 		return nil, false
 	}
 	return o.Sources, true
@@ -588,7 +581,7 @@ func (o *IdentificationStage) GetSourcesOk() ([]string, bool) {
 
 // HasSources returns a boolean if a field has been set.
 func (o *IdentificationStage) HasSources() bool {
-	if o != nil && !IsNil(o.Sources) {
+	if o != nil && o.Sources != nil {
 		return true
 	}
 
@@ -602,7 +595,7 @@ func (o *IdentificationStage) SetSources(v []string) {
 
 // GetShowSourceLabels returns the ShowSourceLabels field value if set, zero value otherwise.
 func (o *IdentificationStage) GetShowSourceLabels() bool {
-	if o == nil || IsNil(o.ShowSourceLabels) {
+	if o == nil || o.ShowSourceLabels == nil {
 		var ret bool
 		return ret
 	}
@@ -612,7 +605,7 @@ func (o *IdentificationStage) GetShowSourceLabels() bool {
 // GetShowSourceLabelsOk returns a tuple with the ShowSourceLabels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationStage) GetShowSourceLabelsOk() (*bool, bool) {
-	if o == nil || IsNil(o.ShowSourceLabels) {
+	if o == nil || o.ShowSourceLabels == nil {
 		return nil, false
 	}
 	return o.ShowSourceLabels, true
@@ -620,7 +613,7 @@ func (o *IdentificationStage) GetShowSourceLabelsOk() (*bool, bool) {
 
 // HasShowSourceLabels returns a boolean if a field has been set.
 func (o *IdentificationStage) HasShowSourceLabels() bool {
-	if o != nil && !IsNil(o.ShowSourceLabels) {
+	if o != nil && o.ShowSourceLabels != nil {
 		return true
 	}
 
@@ -634,7 +627,7 @@ func (o *IdentificationStage) SetShowSourceLabels(v bool) {
 
 // GetPretendUserExists returns the PretendUserExists field value if set, zero value otherwise.
 func (o *IdentificationStage) GetPretendUserExists() bool {
-	if o == nil || IsNil(o.PretendUserExists) {
+	if o == nil || o.PretendUserExists == nil {
 		var ret bool
 		return ret
 	}
@@ -644,7 +637,7 @@ func (o *IdentificationStage) GetPretendUserExists() bool {
 // GetPretendUserExistsOk returns a tuple with the PretendUserExists field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationStage) GetPretendUserExistsOk() (*bool, bool) {
-	if o == nil || IsNil(o.PretendUserExists) {
+	if o == nil || o.PretendUserExists == nil {
 		return nil, false
 	}
 	return o.PretendUserExists, true
@@ -652,7 +645,7 @@ func (o *IdentificationStage) GetPretendUserExistsOk() (*bool, bool) {
 
 // HasPretendUserExists returns a boolean if a field has been set.
 func (o *IdentificationStage) HasPretendUserExists() bool {
-	if o != nil && !IsNil(o.PretendUserExists) {
+	if o != nil && o.PretendUserExists != nil {
 		return true
 	}
 
@@ -665,25 +658,29 @@ func (o *IdentificationStage) SetPretendUserExists(v bool) {
 }
 
 func (o IdentificationStage) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o IdentificationStage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["pk"] = o.Pk
-	toSerialize["name"] = o.Name
-	toSerialize["component"] = o.Component
-	toSerialize["verbose_name"] = o.VerboseName
-	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	toSerialize["meta_model_name"] = o.MetaModelName
-	if !IsNil(o.FlowSet) {
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["component"] = o.Component
+	}
+	if true {
+		toSerialize["verbose_name"] = o.VerboseName
+	}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	}
+	if true {
+		toSerialize["meta_model_name"] = o.MetaModelName
+	}
+	if o.FlowSet != nil {
 		toSerialize["flow_set"] = o.FlowSet
 	}
-	if !IsNil(o.UserFields) {
+	if o.UserFields != nil {
 		toSerialize["user_fields"] = o.UserFields
 	}
 	if o.PasswordStage.IsSet() {
@@ -692,10 +689,10 @@ func (o IdentificationStage) ToMap() (map[string]interface{}, error) {
 	if o.CaptchaStage.IsSet() {
 		toSerialize["captcha_stage"] = o.CaptchaStage.Get()
 	}
-	if !IsNil(o.CaseInsensitiveMatching) {
+	if o.CaseInsensitiveMatching != nil {
 		toSerialize["case_insensitive_matching"] = o.CaseInsensitiveMatching
 	}
-	if !IsNil(o.ShowMatchedUser) {
+	if o.ShowMatchedUser != nil {
 		toSerialize["show_matched_user"] = o.ShowMatchedUser
 	}
 	if o.EnrollmentFlow.IsSet() {
@@ -707,58 +704,16 @@ func (o IdentificationStage) ToMap() (map[string]interface{}, error) {
 	if o.PasswordlessFlow.IsSet() {
 		toSerialize["passwordless_flow"] = o.PasswordlessFlow.Get()
 	}
-	if !IsNil(o.Sources) {
+	if o.Sources != nil {
 		toSerialize["sources"] = o.Sources
 	}
-	if !IsNil(o.ShowSourceLabels) {
+	if o.ShowSourceLabels != nil {
 		toSerialize["show_source_labels"] = o.ShowSourceLabels
 	}
-	if !IsNil(o.PretendUserExists) {
+	if o.PretendUserExists != nil {
 		toSerialize["pretend_user_exists"] = o.PretendUserExists
 	}
-	return toSerialize, nil
-}
-
-func (o *IdentificationStage) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"pk",
-		"name",
-		"component",
-		"verbose_name",
-		"verbose_name_plural",
-		"meta_model_name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varIdentificationStage := _IdentificationStage{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varIdentificationStage)
-
-	if err != nil {
-		return err
-	}
-
-	*o = IdentificationStage(varIdentificationStage)
-
-	return err
+	return json.Marshal(toSerialize)
 }
 
 type NullableIdentificationStage struct {

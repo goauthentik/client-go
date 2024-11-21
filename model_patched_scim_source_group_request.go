@@ -15,9 +15,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PatchedSCIMSourceGroupRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchedSCIMSourceGroupRequest{}
-
 // PatchedSCIMSourceGroupRequest SCIMSourceGroup Serializer
 type PatchedSCIMSourceGroupRequest struct {
 	Id         *string     `json:"id,omitempty"`
@@ -45,7 +42,7 @@ func NewPatchedSCIMSourceGroupRequestWithDefaults() *PatchedSCIMSourceGroupReque
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *PatchedSCIMSourceGroupRequest) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || o.Id == nil {
 		var ret string
 		return ret
 	}
@@ -55,7 +52,7 @@ func (o *PatchedSCIMSourceGroupRequest) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMSourceGroupRequest) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || o.Id == nil {
 		return nil, false
 	}
 	return o.Id, true
@@ -63,7 +60,7 @@ func (o *PatchedSCIMSourceGroupRequest) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *PatchedSCIMSourceGroupRequest) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && o.Id != nil {
 		return true
 	}
 
@@ -77,7 +74,7 @@ func (o *PatchedSCIMSourceGroupRequest) SetId(v string) {
 
 // GetGroup returns the Group field value if set, zero value otherwise.
 func (o *PatchedSCIMSourceGroupRequest) GetGroup() string {
-	if o == nil || IsNil(o.Group) {
+	if o == nil || o.Group == nil {
 		var ret string
 		return ret
 	}
@@ -87,7 +84,7 @@ func (o *PatchedSCIMSourceGroupRequest) GetGroup() string {
 // GetGroupOk returns a tuple with the Group field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMSourceGroupRequest) GetGroupOk() (*string, bool) {
-	if o == nil || IsNil(o.Group) {
+	if o == nil || o.Group == nil {
 		return nil, false
 	}
 	return o.Group, true
@@ -95,7 +92,7 @@ func (o *PatchedSCIMSourceGroupRequest) GetGroupOk() (*string, bool) {
 
 // HasGroup returns a boolean if a field has been set.
 func (o *PatchedSCIMSourceGroupRequest) HasGroup() bool {
-	if o != nil && !IsNil(o.Group) {
+	if o != nil && o.Group != nil {
 		return true
 	}
 
@@ -109,7 +106,7 @@ func (o *PatchedSCIMSourceGroupRequest) SetGroup(v string) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *PatchedSCIMSourceGroupRequest) GetSource() string {
-	if o == nil || IsNil(o.Source) {
+	if o == nil || o.Source == nil {
 		var ret string
 		return ret
 	}
@@ -119,7 +116,7 @@ func (o *PatchedSCIMSourceGroupRequest) GetSource() string {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMSourceGroupRequest) GetSourceOk() (*string, bool) {
-	if o == nil || IsNil(o.Source) {
+	if o == nil || o.Source == nil {
 		return nil, false
 	}
 	return o.Source, true
@@ -127,7 +124,7 @@ func (o *PatchedSCIMSourceGroupRequest) GetSourceOk() (*string, bool) {
 
 // HasSource returns a boolean if a field has been set.
 func (o *PatchedSCIMSourceGroupRequest) HasSource() bool {
-	if o != nil && !IsNil(o.Source) {
+	if o != nil && o.Source != nil {
 		return true
 	}
 
@@ -152,7 +149,7 @@ func (o *PatchedSCIMSourceGroupRequest) GetAttributes() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchedSCIMSourceGroupRequest) GetAttributesOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Attributes) {
+	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
 	return &o.Attributes, true
@@ -160,7 +157,7 @@ func (o *PatchedSCIMSourceGroupRequest) GetAttributesOk() (*interface{}, bool) {
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *PatchedSCIMSourceGroupRequest) HasAttributes() bool {
-	if o != nil && !IsNil(o.Attributes) {
+	if o != nil && o.Attributes != nil {
 		return true
 	}
 
@@ -173,28 +170,20 @@ func (o *PatchedSCIMSourceGroupRequest) SetAttributes(v interface{}) {
 }
 
 func (o PatchedSCIMSourceGroupRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PatchedSCIMSourceGroupRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
+	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Group) {
+	if o.Group != nil {
 		toSerialize["group"] = o.Group
 	}
-	if !IsNil(o.Source) {
+	if o.Source != nil {
 		toSerialize["source"] = o.Source
 	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePatchedSCIMSourceGroupRequest struct {

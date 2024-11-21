@@ -12,13 +12,8 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
-
-// checks if the SystemInfoRuntime type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SystemInfoRuntime{}
 
 // SystemInfoRuntime Get versions
 type SystemInfoRuntime struct {
@@ -31,8 +26,6 @@ type SystemInfoRuntime struct {
 	OpensslFipsEnabled NullableBool `json:"openssl_fips_enabled"`
 	AuthentikVersion   string       `json:"authentik_version"`
 }
-
-type _SystemInfoRuntime SystemInfoRuntime
 
 // NewSystemInfoRuntime instantiates a new SystemInfoRuntime object
 // This constructor will assign default values to properties that have it defined,
@@ -254,68 +247,32 @@ func (o *SystemInfoRuntime) SetAuthentikVersion(v string) {
 }
 
 func (o SystemInfoRuntime) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["python_version"] = o.PythonVersion
+	}
+	if true {
+		toSerialize["environment"] = o.Environment
+	}
+	if true {
+		toSerialize["architecture"] = o.Architecture
+	}
+	if true {
+		toSerialize["platform"] = o.Platform
+	}
+	if true {
+		toSerialize["uname"] = o.Uname
+	}
+	if true {
+		toSerialize["openssl_version"] = o.OpensslVersion
+	}
+	if true {
+		toSerialize["openssl_fips_enabled"] = o.OpensslFipsEnabled.Get()
+	}
+	if true {
+		toSerialize["authentik_version"] = o.AuthentikVersion
 	}
 	return json.Marshal(toSerialize)
-}
-
-func (o SystemInfoRuntime) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["python_version"] = o.PythonVersion
-	toSerialize["environment"] = o.Environment
-	toSerialize["architecture"] = o.Architecture
-	toSerialize["platform"] = o.Platform
-	toSerialize["uname"] = o.Uname
-	toSerialize["openssl_version"] = o.OpensslVersion
-	toSerialize["openssl_fips_enabled"] = o.OpensslFipsEnabled.Get()
-	toSerialize["authentik_version"] = o.AuthentikVersion
-	return toSerialize, nil
-}
-
-func (o *SystemInfoRuntime) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"python_version",
-		"environment",
-		"architecture",
-		"platform",
-		"uname",
-		"openssl_version",
-		"openssl_fips_enabled",
-		"authentik_version",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSystemInfoRuntime := _SystemInfoRuntime{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSystemInfoRuntime)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SystemInfoRuntime(varSystemInfoRuntime)
-
-	return err
 }
 
 type NullableSystemInfoRuntime struct {

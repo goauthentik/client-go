@@ -1,18 +1,18 @@
-# \ManagedAPI
+# \ManagedApi
 
 All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ManagedBlueprintsApplyCreate**](ManagedAPI.md#ManagedBlueprintsApplyCreate) | **Post** /managed/blueprints/{instance_uuid}/apply/ | 
-[**ManagedBlueprintsAvailableList**](ManagedAPI.md#ManagedBlueprintsAvailableList) | **Get** /managed/blueprints/available/ | 
-[**ManagedBlueprintsCreate**](ManagedAPI.md#ManagedBlueprintsCreate) | **Post** /managed/blueprints/ | 
-[**ManagedBlueprintsDestroy**](ManagedAPI.md#ManagedBlueprintsDestroy) | **Delete** /managed/blueprints/{instance_uuid}/ | 
-[**ManagedBlueprintsList**](ManagedAPI.md#ManagedBlueprintsList) | **Get** /managed/blueprints/ | 
-[**ManagedBlueprintsPartialUpdate**](ManagedAPI.md#ManagedBlueprintsPartialUpdate) | **Patch** /managed/blueprints/{instance_uuid}/ | 
-[**ManagedBlueprintsRetrieve**](ManagedAPI.md#ManagedBlueprintsRetrieve) | **Get** /managed/blueprints/{instance_uuid}/ | 
-[**ManagedBlueprintsUpdate**](ManagedAPI.md#ManagedBlueprintsUpdate) | **Put** /managed/blueprints/{instance_uuid}/ | 
-[**ManagedBlueprintsUsedByList**](ManagedAPI.md#ManagedBlueprintsUsedByList) | **Get** /managed/blueprints/{instance_uuid}/used_by/ | 
+[**ManagedBlueprintsApplyCreate**](ManagedApi.md#ManagedBlueprintsApplyCreate) | **Post** /managed/blueprints/{instance_uuid}/apply/ | 
+[**ManagedBlueprintsAvailableList**](ManagedApi.md#ManagedBlueprintsAvailableList) | **Get** /managed/blueprints/available/ | 
+[**ManagedBlueprintsCreate**](ManagedApi.md#ManagedBlueprintsCreate) | **Post** /managed/blueprints/ | 
+[**ManagedBlueprintsDestroy**](ManagedApi.md#ManagedBlueprintsDestroy) | **Delete** /managed/blueprints/{instance_uuid}/ | 
+[**ManagedBlueprintsList**](ManagedApi.md#ManagedBlueprintsList) | **Get** /managed/blueprints/ | 
+[**ManagedBlueprintsPartialUpdate**](ManagedApi.md#ManagedBlueprintsPartialUpdate) | **Patch** /managed/blueprints/{instance_uuid}/ | 
+[**ManagedBlueprintsRetrieve**](ManagedApi.md#ManagedBlueprintsRetrieve) | **Get** /managed/blueprints/{instance_uuid}/ | 
+[**ManagedBlueprintsUpdate**](ManagedApi.md#ManagedBlueprintsUpdate) | **Put** /managed/blueprints/{instance_uuid}/ | 
+[**ManagedBlueprintsUsedByList**](ManagedApi.md#ManagedBlueprintsUsedByList) | **Get** /managed/blueprints/{instance_uuid}/used_by/ | 
 
 
 
@@ -30,24 +30,24 @@ Method | HTTP request | Description
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	instanceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Blueprint Instance.
+    instanceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Blueprint Instance.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ManagedAPI.ManagedBlueprintsApplyCreate(context.Background(), instanceUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ManagedAPI.ManagedBlueprintsApplyCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ManagedBlueprintsApplyCreate`: BlueprintInstance
-	fmt.Fprintf(os.Stdout, "Response from `ManagedAPI.ManagedBlueprintsApplyCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagedApi.ManagedBlueprintsApplyCreate(context.Background(), instanceUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagedApi.ManagedBlueprintsApplyCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ManagedBlueprintsApplyCreate`: BlueprintInstance
+    fmt.Fprintf(os.Stdout, "Response from `ManagedApi.ManagedBlueprintsApplyCreate`: %v\n", resp)
 }
 ```
 
@@ -100,23 +100,23 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ManagedAPI.ManagedBlueprintsAvailableList(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ManagedAPI.ManagedBlueprintsAvailableList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ManagedBlueprintsAvailableList`: []BlueprintFile
-	fmt.Fprintf(os.Stdout, "Response from `ManagedAPI.ManagedBlueprintsAvailableList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagedApi.ManagedBlueprintsAvailableList(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagedApi.ManagedBlueprintsAvailableList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ManagedBlueprintsAvailableList`: []BlueprintFile
+    fmt.Fprintf(os.Stdout, "Response from `ManagedApi.ManagedBlueprintsAvailableList`: %v\n", resp)
 }
 ```
 
@@ -161,24 +161,24 @@ Other parameters are passed through a pointer to a apiManagedBlueprintsAvailable
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	blueprintInstanceRequest := *openapiclient.NewBlueprintInstanceRequest("Name_example") // BlueprintInstanceRequest | 
+    blueprintInstanceRequest := *openapiclient.NewBlueprintInstanceRequest("Name_example") // BlueprintInstanceRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ManagedAPI.ManagedBlueprintsCreate(context.Background()).BlueprintInstanceRequest(blueprintInstanceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ManagedAPI.ManagedBlueprintsCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ManagedBlueprintsCreate`: BlueprintInstance
-	fmt.Fprintf(os.Stdout, "Response from `ManagedAPI.ManagedBlueprintsCreate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagedApi.ManagedBlueprintsCreate(context.Background()).BlueprintInstanceRequest(blueprintInstanceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagedApi.ManagedBlueprintsCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ManagedBlueprintsCreate`: BlueprintInstance
+    fmt.Fprintf(os.Stdout, "Response from `ManagedApi.ManagedBlueprintsCreate`: %v\n", resp)
 }
 ```
 
@@ -227,22 +227,22 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	instanceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Blueprint Instance.
+    instanceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Blueprint Instance.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ManagedAPI.ManagedBlueprintsDestroy(context.Background(), instanceUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ManagedAPI.ManagedBlueprintsDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagedApi.ManagedBlueprintsDestroy(context.Background(), instanceUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagedApi.ManagedBlueprintsDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -295,29 +295,29 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	path := "path_example" // string |  (optional)
-	search := "search_example" // string | A search term. (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    path := "path_example" // string |  (optional)
+    search := "search_example" // string | A search term. (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ManagedAPI.ManagedBlueprintsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).Search(search).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ManagedAPI.ManagedBlueprintsList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ManagedBlueprintsList`: PaginatedBlueprintInstanceList
-	fmt.Fprintf(os.Stdout, "Response from `ManagedAPI.ManagedBlueprintsList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagedApi.ManagedBlueprintsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagedApi.ManagedBlueprintsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ManagedBlueprintsList`: PaginatedBlueprintInstanceList
+    fmt.Fprintf(os.Stdout, "Response from `ManagedApi.ManagedBlueprintsList`: %v\n", resp)
 }
 ```
 
@@ -371,25 +371,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	instanceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Blueprint Instance.
-	patchedBlueprintInstanceRequest := *openapiclient.NewPatchedBlueprintInstanceRequest() // PatchedBlueprintInstanceRequest |  (optional)
+    instanceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Blueprint Instance.
+    patchedBlueprintInstanceRequest := *openapiclient.NewPatchedBlueprintInstanceRequest() // PatchedBlueprintInstanceRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ManagedAPI.ManagedBlueprintsPartialUpdate(context.Background(), instanceUuid).PatchedBlueprintInstanceRequest(patchedBlueprintInstanceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ManagedAPI.ManagedBlueprintsPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ManagedBlueprintsPartialUpdate`: BlueprintInstance
-	fmt.Fprintf(os.Stdout, "Response from `ManagedAPI.ManagedBlueprintsPartialUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagedApi.ManagedBlueprintsPartialUpdate(context.Background(), instanceUuid).PatchedBlueprintInstanceRequest(patchedBlueprintInstanceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagedApi.ManagedBlueprintsPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ManagedBlueprintsPartialUpdate`: BlueprintInstance
+    fmt.Fprintf(os.Stdout, "Response from `ManagedApi.ManagedBlueprintsPartialUpdate`: %v\n", resp)
 }
 ```
 
@@ -443,24 +443,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	instanceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Blueprint Instance.
+    instanceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Blueprint Instance.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ManagedAPI.ManagedBlueprintsRetrieve(context.Background(), instanceUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ManagedAPI.ManagedBlueprintsRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ManagedBlueprintsRetrieve`: BlueprintInstance
-	fmt.Fprintf(os.Stdout, "Response from `ManagedAPI.ManagedBlueprintsRetrieve`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagedApi.ManagedBlueprintsRetrieve(context.Background(), instanceUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagedApi.ManagedBlueprintsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ManagedBlueprintsRetrieve`: BlueprintInstance
+    fmt.Fprintf(os.Stdout, "Response from `ManagedApi.ManagedBlueprintsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -513,25 +513,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	instanceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Blueprint Instance.
-	blueprintInstanceRequest := *openapiclient.NewBlueprintInstanceRequest("Name_example") // BlueprintInstanceRequest | 
+    instanceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Blueprint Instance.
+    blueprintInstanceRequest := *openapiclient.NewBlueprintInstanceRequest("Name_example") // BlueprintInstanceRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ManagedAPI.ManagedBlueprintsUpdate(context.Background(), instanceUuid).BlueprintInstanceRequest(blueprintInstanceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ManagedAPI.ManagedBlueprintsUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ManagedBlueprintsUpdate`: BlueprintInstance
-	fmt.Fprintf(os.Stdout, "Response from `ManagedAPI.ManagedBlueprintsUpdate`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagedApi.ManagedBlueprintsUpdate(context.Background(), instanceUuid).BlueprintInstanceRequest(blueprintInstanceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagedApi.ManagedBlueprintsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ManagedBlueprintsUpdate`: BlueprintInstance
+    fmt.Fprintf(os.Stdout, "Response from `ManagedApi.ManagedBlueprintsUpdate`: %v\n", resp)
 }
 ```
 
@@ -585,24 +585,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
 )
 
 func main() {
-	instanceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Blueprint Instance.
+    instanceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Blueprint Instance.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ManagedAPI.ManagedBlueprintsUsedByList(context.Background(), instanceUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ManagedAPI.ManagedBlueprintsUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ManagedBlueprintsUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `ManagedAPI.ManagedBlueprintsUsedByList`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ManagedApi.ManagedBlueprintsUsedByList(context.Background(), instanceUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagedApi.ManagedBlueprintsUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ManagedBlueprintsUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `ManagedApi.ManagedBlueprintsUsedByList`: %v\n", resp)
 }
 ```
 
