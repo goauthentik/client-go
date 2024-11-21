@@ -57067,7 +57067,11 @@ components:
           cookie_domain: cookie_domain
           skip_path_regex: skip_path_regex
           basic_auth_password_attribute: basic_auth_password_attribute
-          redirect_uris: redirect_uris
+          redirect_uris:
+          - matching_mode: strict
+            url: url
+          - matching_mode: strict
+            url: url
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_host: https://openapi-generator.tech
           outpost_set:
@@ -57104,7 +57108,11 @@ components:
           cookie_domain: cookie_domain
           skip_path_regex: skip_path_regex
           basic_auth_password_attribute: basic_auth_password_attribute
-          redirect_uris: redirect_uris
+          redirect_uris:
+          - matching_mode: strict
+            url: url
+          - matching_mode: strict
+            url: url
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_host: https://openapi-generator.tech
           outpost_set:
@@ -65951,7 +65959,11 @@ components:
         cookie_domain: cookie_domain
         skip_path_regex: skip_path_regex
         basic_auth_password_attribute: basic_auth_password_attribute
-        redirect_uris: redirect_uris
+        redirect_uris:
+        - matching_mode: strict
+          url: url
+        - matching_mode: strict
+          url: url
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         internal_host: https://openapi-generator.tech
         outpost_set:
@@ -66072,8 +66084,10 @@ components:
             \ header and authenticate requests based on its value."
           type: boolean
         redirect_uris:
+          items:
+            $ref: '#/components/schemas/RedirectURI'
           readOnly: true
-          type: string
+          type: array
         cookie_domain:
           type: string
         jwks_sources:

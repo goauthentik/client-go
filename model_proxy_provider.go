@@ -64,10 +64,10 @@ type ProxyProvider struct {
 	// Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.
 	Mode *ProxyMode `json:"mode,omitempty"`
 	// When enabled, this provider will intercept the authorization header and authenticate requests based on its value.
-	InterceptHeaderAuth *bool    `json:"intercept_header_auth,omitempty"`
-	RedirectUris        string   `json:"redirect_uris"`
-	CookieDomain        *string  `json:"cookie_domain,omitempty"`
-	JwksSources         []string `json:"jwks_sources,omitempty"`
+	InterceptHeaderAuth *bool         `json:"intercept_header_auth,omitempty"`
+	RedirectUris        []RedirectURI `json:"redirect_uris"`
+	CookieDomain        *string       `json:"cookie_domain,omitempty"`
+	JwksSources         []string      `json:"jwks_sources,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	AccessTokenValidity *string `json:"access_token_validity,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
@@ -81,7 +81,7 @@ type _ProxyProvider ProxyProvider
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProxyProvider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, clientId string, externalHost string, redirectUris string, outpostSet []string) *ProxyProvider {
+func NewProxyProvider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, clientId string, externalHost string, redirectUris []RedirectURI, outpostSet []string) *ProxyProvider {
 	this := ProxyProvider{}
 	this.Pk = pk
 	this.Name = name
@@ -821,9 +821,9 @@ func (o *ProxyProvider) SetInterceptHeaderAuth(v bool) {
 }
 
 // GetRedirectUris returns the RedirectUris field value
-func (o *ProxyProvider) GetRedirectUris() string {
+func (o *ProxyProvider) GetRedirectUris() []RedirectURI {
 	if o == nil {
-		var ret string
+		var ret []RedirectURI
 		return ret
 	}
 
@@ -832,15 +832,15 @@ func (o *ProxyProvider) GetRedirectUris() string {
 
 // GetRedirectUrisOk returns a tuple with the RedirectUris field value
 // and a boolean to check if the value has been set.
-func (o *ProxyProvider) GetRedirectUrisOk() (*string, bool) {
+func (o *ProxyProvider) GetRedirectUrisOk() ([]RedirectURI, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.RedirectUris, true
+	return o.RedirectUris, true
 }
 
 // SetRedirectUris sets field value
-func (o *ProxyProvider) SetRedirectUris(v string) {
+func (o *ProxyProvider) SetRedirectUris(v []RedirectURI) {
 	o.RedirectUris = v
 }
 

@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **BasicAuthUserAttribute** | Pointer to **string** | User/Group Attribute used for the user part of the HTTP-Basic Header. If not set, the user&#39;s Email address is used. | [optional] 
 **Mode** | Pointer to [**ProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host. | [optional] 
 **InterceptHeaderAuth** | Pointer to **bool** | When enabled, this provider will intercept the authorization header and authenticate requests based on its value. | [optional] 
-**RedirectUris** | **string** |  | [readonly] 
+**RedirectUris** | [**[]RedirectURI**](RedirectURI.md) |  | [readonly] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
 **JwksSources** | Pointer to **[]string** |  | [optional] 
 **AccessTokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
@@ -40,7 +40,7 @@ Name | Type | Description | Notes
 
 ### NewProxyProvider
 
-`func NewProxyProvider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, clientId string, externalHost string, redirectUris string, outpostSet []string, ) *ProxyProvider`
+`func NewProxyProvider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, clientId string, externalHost string, redirectUris []RedirectURI, outpostSet []string, ) *ProxyProvider`
 
 NewProxyProvider instantiates a new ProxyProvider object
 This constructor will assign default values to properties that have it defined,
@@ -632,20 +632,20 @@ HasInterceptHeaderAuth returns a boolean if a field has been set.
 
 ### GetRedirectUris
 
-`func (o *ProxyProvider) GetRedirectUris() string`
+`func (o *ProxyProvider) GetRedirectUris() []RedirectURI`
 
 GetRedirectUris returns the RedirectUris field if non-nil, zero value otherwise.
 
 ### GetRedirectUrisOk
 
-`func (o *ProxyProvider) GetRedirectUrisOk() (*string, bool)`
+`func (o *ProxyProvider) GetRedirectUrisOk() (*[]RedirectURI, bool)`
 
 GetRedirectUrisOk returns a tuple with the RedirectUris field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRedirectUris
 
-`func (o *ProxyProvider) SetRedirectUris(v string)`
+`func (o *ProxyProvider) SetRedirectUris(v []RedirectURI)`
 
 SetRedirectUris sets RedirectUris field to given value.
 
