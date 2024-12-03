@@ -39,7 +39,8 @@ Name | Type | Description | Notes
 **RedirectUris** | [**[]RedirectURIRequest**](RedirectURIRequest.md) |  | 
 **SubMode** | Pointer to [**SubModeEnum**](SubModeEnum.md) | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. | [optional] 
 **IssuerMode** | Pointer to [**IssuerModeEnum**](IssuerModeEnum.md) | Configure how the issuer field of the ID Token should be filled. | [optional] 
-**JwksSources** | Pointer to **[]string** |  | [optional] 
+**JwtFederationSources** | Pointer to **[]string** |  | [optional] 
+**JwtFederationProviders** | Pointer to **[]int32** |  | [optional] 
 **InternalHost** | Pointer to **string** |  | [optional] 
 **ExternalHost** | **string** |  | 
 **InternalHostSslValidation** | Pointer to **bool** | Validate SSL Certificates of upstream servers | [optional] 
@@ -979,30 +980,55 @@ SetIssuerMode sets IssuerMode field to given value.
 
 HasIssuerMode returns a boolean if a field has been set.
 
-### GetJwksSources
+### GetJwtFederationSources
 
-`func (o *ModelRequest) GetJwksSources() []string`
+`func (o *ModelRequest) GetJwtFederationSources() []string`
 
-GetJwksSources returns the JwksSources field if non-nil, zero value otherwise.
+GetJwtFederationSources returns the JwtFederationSources field if non-nil, zero value otherwise.
 
-### GetJwksSourcesOk
+### GetJwtFederationSourcesOk
 
-`func (o *ModelRequest) GetJwksSourcesOk() (*[]string, bool)`
+`func (o *ModelRequest) GetJwtFederationSourcesOk() (*[]string, bool)`
 
-GetJwksSourcesOk returns a tuple with the JwksSources field if it's non-nil, zero value otherwise
+GetJwtFederationSourcesOk returns a tuple with the JwtFederationSources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetJwksSources
+### SetJwtFederationSources
 
-`func (o *ModelRequest) SetJwksSources(v []string)`
+`func (o *ModelRequest) SetJwtFederationSources(v []string)`
 
-SetJwksSources sets JwksSources field to given value.
+SetJwtFederationSources sets JwtFederationSources field to given value.
 
-### HasJwksSources
+### HasJwtFederationSources
 
-`func (o *ModelRequest) HasJwksSources() bool`
+`func (o *ModelRequest) HasJwtFederationSources() bool`
 
-HasJwksSources returns a boolean if a field has been set.
+HasJwtFederationSources returns a boolean if a field has been set.
+
+### GetJwtFederationProviders
+
+`func (o *ModelRequest) GetJwtFederationProviders() []int32`
+
+GetJwtFederationProviders returns the JwtFederationProviders field if non-nil, zero value otherwise.
+
+### GetJwtFederationProvidersOk
+
+`func (o *ModelRequest) GetJwtFederationProvidersOk() (*[]int32, bool)`
+
+GetJwtFederationProvidersOk returns a tuple with the JwtFederationProviders field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwtFederationProviders
+
+`func (o *ModelRequest) SetJwtFederationProviders(v []int32)`
+
+SetJwtFederationProviders sets JwtFederationProviders field to given value.
+
+### HasJwtFederationProviders
+
+`func (o *ModelRequest) HasJwtFederationProviders() bool`
+
+HasJwtFederationProviders returns a boolean if a field has been set.
 
 ### GetInternalHost
 

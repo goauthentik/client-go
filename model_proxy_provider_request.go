@@ -41,9 +41,10 @@ type ProxyProviderRequest struct {
 	// Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host.
 	Mode *ProxyMode `json:"mode,omitempty"`
 	// When enabled, this provider will intercept the authorization header and authenticate requests based on its value.
-	InterceptHeaderAuth *bool    `json:"intercept_header_auth,omitempty"`
-	CookieDomain        *string  `json:"cookie_domain,omitempty"`
-	JwksSources         []string `json:"jwks_sources,omitempty"`
+	InterceptHeaderAuth    *bool    `json:"intercept_header_auth,omitempty"`
+	CookieDomain           *string  `json:"cookie_domain,omitempty"`
+	JwtFederationSources   []string `json:"jwt_federation_sources,omitempty"`
+	JwtFederationProviders []int32  `json:"jwt_federation_providers,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	AccessTokenValidity *string `json:"access_token_validity,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
@@ -573,36 +574,68 @@ func (o *ProxyProviderRequest) SetCookieDomain(v string) {
 	o.CookieDomain = &v
 }
 
-// GetJwksSources returns the JwksSources field value if set, zero value otherwise.
-func (o *ProxyProviderRequest) GetJwksSources() []string {
-	if o == nil || o.JwksSources == nil {
+// GetJwtFederationSources returns the JwtFederationSources field value if set, zero value otherwise.
+func (o *ProxyProviderRequest) GetJwtFederationSources() []string {
+	if o == nil || o.JwtFederationSources == nil {
 		var ret []string
 		return ret
 	}
-	return o.JwksSources
+	return o.JwtFederationSources
 }
 
-// GetJwksSourcesOk returns a tuple with the JwksSources field value if set, nil otherwise
+// GetJwtFederationSourcesOk returns a tuple with the JwtFederationSources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProxyProviderRequest) GetJwksSourcesOk() ([]string, bool) {
-	if o == nil || o.JwksSources == nil {
+func (o *ProxyProviderRequest) GetJwtFederationSourcesOk() ([]string, bool) {
+	if o == nil || o.JwtFederationSources == nil {
 		return nil, false
 	}
-	return o.JwksSources, true
+	return o.JwtFederationSources, true
 }
 
-// HasJwksSources returns a boolean if a field has been set.
-func (o *ProxyProviderRequest) HasJwksSources() bool {
-	if o != nil && o.JwksSources != nil {
+// HasJwtFederationSources returns a boolean if a field has been set.
+func (o *ProxyProviderRequest) HasJwtFederationSources() bool {
+	if o != nil && o.JwtFederationSources != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetJwksSources gets a reference to the given []string and assigns it to the JwksSources field.
-func (o *ProxyProviderRequest) SetJwksSources(v []string) {
-	o.JwksSources = v
+// SetJwtFederationSources gets a reference to the given []string and assigns it to the JwtFederationSources field.
+func (o *ProxyProviderRequest) SetJwtFederationSources(v []string) {
+	o.JwtFederationSources = v
+}
+
+// GetJwtFederationProviders returns the JwtFederationProviders field value if set, zero value otherwise.
+func (o *ProxyProviderRequest) GetJwtFederationProviders() []int32 {
+	if o == nil || o.JwtFederationProviders == nil {
+		var ret []int32
+		return ret
+	}
+	return o.JwtFederationProviders
+}
+
+// GetJwtFederationProvidersOk returns a tuple with the JwtFederationProviders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProxyProviderRequest) GetJwtFederationProvidersOk() ([]int32, bool) {
+	if o == nil || o.JwtFederationProviders == nil {
+		return nil, false
+	}
+	return o.JwtFederationProviders, true
+}
+
+// HasJwtFederationProviders returns a boolean if a field has been set.
+func (o *ProxyProviderRequest) HasJwtFederationProviders() bool {
+	if o != nil && o.JwtFederationProviders != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJwtFederationProviders gets a reference to the given []int32 and assigns it to the JwtFederationProviders field.
+func (o *ProxyProviderRequest) SetJwtFederationProviders(v []int32) {
+	o.JwtFederationProviders = v
 }
 
 // GetAccessTokenValidity returns the AccessTokenValidity field value if set, zero value otherwise.
@@ -719,8 +752,11 @@ func (o ProxyProviderRequest) MarshalJSON() ([]byte, error) {
 	if o.CookieDomain != nil {
 		toSerialize["cookie_domain"] = o.CookieDomain
 	}
-	if o.JwksSources != nil {
-		toSerialize["jwks_sources"] = o.JwksSources
+	if o.JwtFederationSources != nil {
+		toSerialize["jwt_federation_sources"] = o.JwtFederationSources
+	}
+	if o.JwtFederationProviders != nil {
+		toSerialize["jwt_federation_providers"] = o.JwtFederationProviders
 	}
 	if o.AccessTokenValidity != nil {
 		toSerialize["access_token_validity"] = o.AccessTokenValidity

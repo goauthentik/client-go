@@ -46351,6 +46351,9 @@ components:
           client_type: ""
           sub_mode: ""
           client_id: client_id
+          jwt_federation_sources:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           refresh_token_validity: refresh_token_validity
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           access_code_validity: access_code_validity
@@ -46358,6 +46361,9 @@ components:
           assigned_backchannel_application_name: assigned_backchannel_application_name
           issuer_mode: ""
           client_secret: client_secret
+          jwt_federation_providers:
+          - 1
+          - 1
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -46373,9 +46379,6 @@ components:
           include_claims_in_id_token: true
           assigned_backchannel_application_slug: assigned_backchannel_application_slug
           access_token_validity: access_token_validity
-          jwks_sources:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 6
@@ -51023,6 +51026,9 @@ components:
         client_type: ""
         sub_mode: ""
         client_id: client_id
+        jwt_federation_sources:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         refresh_token_validity: refresh_token_validity
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         access_code_validity: access_code_validity
@@ -51030,6 +51036,9 @@ components:
         assigned_backchannel_application_name: assigned_backchannel_application_name
         issuer_mode: ""
         client_secret: client_secret
+        jwt_federation_providers:
+        - 1
+        - 1
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -51045,9 +51054,6 @@ components:
         include_claims_in_id_token: true
         assigned_backchannel_application_slug: assigned_backchannel_application_slug
         access_token_validity: access_token_validity
-        jwks_sources:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         pk: 6
@@ -51160,13 +51166,17 @@ components:
           allOf:
           - $ref: '#/components/schemas/IssuerModeEnum'
           description: Configure how the issuer field of the ID Token should be filled.
-        jwks_sources:
+        jwt_federation_sources:
           items:
             format: uuid
             title: Any JWT signed by the JWK of the selected source can be used to
               authenticate.
             type: string
           title: Any JWT signed by the JWK of the selected source can be used to authenticate.
+          type: array
+        jwt_federation_providers:
+          items:
+            type: integer
           type: array
       required:
       - assigned_application_name
@@ -51196,6 +51206,9 @@ components:
           url: url
         sub_mode: ""
         client_id: client_id
+        jwt_federation_sources:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         refresh_token_validity: refresh_token_validity
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -51203,12 +51216,12 @@ components:
         include_claims_in_id_token: true
         access_token_validity: access_token_validity
         issuer_mode: ""
-        jwks_sources:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         client_secret: client_secret
+        jwt_federation_providers:
+        - 0
+        - 0
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -51290,13 +51303,17 @@ components:
           allOf:
           - $ref: '#/components/schemas/IssuerModeEnum'
           description: Configure how the issuer field of the ID Token should be filled.
-        jwks_sources:
+        jwt_federation_sources:
           items:
             format: uuid
             title: Any JWT signed by the JWK of the selected source can be used to
               authenticate.
             type: string
           title: Any JWT signed by the JWK of the selected source can be used to authenticate.
+          type: array
+        jwt_federation_providers:
+          items:
+            type: integer
           type: array
       required:
       - authorization_flow
@@ -53937,6 +53954,9 @@ components:
             client_type: ""
             sub_mode: ""
             client_id: client_id
+            jwt_federation_sources:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             refresh_token_validity: refresh_token_validity
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             access_code_validity: access_code_validity
@@ -53944,6 +53964,9 @@ components:
             assigned_backchannel_application_name: assigned_backchannel_application_name
             issuer_mode: ""
             client_secret: client_secret
+            jwt_federation_providers:
+            - 1
+            - 1
             property_mappings:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -53959,9 +53982,6 @@ components:
             include_claims_in_id_token: true
             assigned_backchannel_application_slug: assigned_backchannel_application_slug
             access_token_validity: access_token_validity
-            jwks_sources:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
             encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             pk: 6
@@ -54014,6 +54034,9 @@ components:
             client_type: ""
             sub_mode: ""
             client_id: client_id
+            jwt_federation_sources:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             refresh_token_validity: refresh_token_validity
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             access_code_validity: access_code_validity
@@ -54021,6 +54044,9 @@ components:
             assigned_backchannel_application_name: assigned_backchannel_application_name
             issuer_mode: ""
             client_secret: client_secret
+            jwt_federation_providers:
+            - 1
+            - 1
             property_mappings:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -54036,9 +54062,6 @@ components:
             include_claims_in_id_token: true
             assigned_backchannel_application_slug: assigned_backchannel_application_slug
             access_token_validity: access_token_validity
-            jwks_sources:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
             encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             pk: 6
@@ -55830,6 +55853,9 @@ components:
           client_type: ""
           sub_mode: ""
           client_id: client_id
+          jwt_federation_sources:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           refresh_token_validity: refresh_token_validity
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           access_code_validity: access_code_validity
@@ -55837,6 +55863,9 @@ components:
           assigned_backchannel_application_name: assigned_backchannel_application_name
           issuer_mode: ""
           client_secret: client_secret
+          jwt_federation_providers:
+          - 1
+          - 1
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -55852,9 +55881,6 @@ components:
           include_claims_in_id_token: true
           assigned_backchannel_application_slug: assigned_backchannel_application_slug
           access_token_validity: access_token_validity
-          jwks_sources:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 6
@@ -55865,6 +55891,9 @@ components:
           client_type: ""
           sub_mode: ""
           client_id: client_id
+          jwt_federation_sources:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           refresh_token_validity: refresh_token_validity
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           access_code_validity: access_code_validity
@@ -55872,6 +55901,9 @@ components:
           assigned_backchannel_application_name: assigned_backchannel_application_name
           issuer_mode: ""
           client_secret: client_secret
+          jwt_federation_providers:
+          - 1
+          - 1
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -55887,9 +55919,6 @@ components:
           include_claims_in_id_token: true
           assigned_backchannel_application_slug: assigned_backchannel_application_slug
           access_token_validity: access_token_validity
-          jwks_sources:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 6
@@ -57030,6 +57059,9 @@ components:
           invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           client_id: client_id
+          jwt_federation_sources:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           refresh_token_validity: refresh_token_validity
           mode: ""
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -57037,6 +57069,9 @@ components:
           assigned_backchannel_application_name: assigned_backchannel_application_name
           intercept_header_auth: true
           internal_host_ssl_validation: true
+          jwt_federation_providers:
+          - 6
+          - 6
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -57061,9 +57096,6 @@ components:
           meta_model_name: meta_model_name
           assigned_backchannel_application_slug: assigned_backchannel_application_slug
           access_token_validity: access_token_validity
-          jwks_sources:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           pk: 0
         - verbose_name_plural: verbose_name_plural
@@ -57071,6 +57103,9 @@ components:
           invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
           client_id: client_id
+          jwt_federation_sources:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           refresh_token_validity: refresh_token_validity
           mode: ""
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -57078,6 +57113,9 @@ components:
           assigned_backchannel_application_name: assigned_backchannel_application_name
           intercept_header_auth: true
           internal_host_ssl_validation: true
+          jwt_federation_providers:
+          - 6
+          - 6
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -57102,9 +57140,6 @@ components:
           meta_model_name: meta_model_name
           assigned_backchannel_application_slug: assigned_backchannel_application_slug
           access_token_validity: access_token_validity
-          jwks_sources:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           pk: 0
       properties:
@@ -58675,6 +58710,9 @@ components:
             client_type: ""
             sub_mode: ""
             client_id: client_id
+            jwt_federation_sources:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             refresh_token_validity: refresh_token_validity
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             access_code_validity: access_code_validity
@@ -58682,6 +58720,9 @@ components:
             assigned_backchannel_application_name: assigned_backchannel_application_name
             issuer_mode: ""
             client_secret: client_secret
+            jwt_federation_providers:
+            - 1
+            - 1
             property_mappings:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -58697,9 +58738,6 @@ components:
             include_claims_in_id_token: true
             assigned_backchannel_application_slug: assigned_backchannel_application_slug
             access_token_validity: access_token_validity
-            jwks_sources:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
             encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             pk: 6
@@ -58754,6 +58792,9 @@ components:
             client_type: ""
             sub_mode: ""
             client_id: client_id
+            jwt_federation_sources:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             refresh_token_validity: refresh_token_validity
             authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             access_code_validity: access_code_validity
@@ -58761,6 +58802,9 @@ components:
             assigned_backchannel_application_name: assigned_backchannel_application_name
             issuer_mode: ""
             client_secret: client_secret
+            jwt_federation_providers:
+            - 1
+            - 1
             property_mappings:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -58776,9 +58820,6 @@ components:
             include_claims_in_id_token: true
             assigned_backchannel_application_slug: assigned_backchannel_application_slug
             access_token_validity: access_token_validity
-            jwks_sources:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
             encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             pk: 6
@@ -62376,6 +62417,9 @@ components:
           url: url
         sub_mode: ""
         client_id: client_id
+        jwt_federation_sources:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         refresh_token_validity: refresh_token_validity
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -62383,12 +62427,12 @@ components:
         include_claims_in_id_token: true
         access_token_validity: access_token_validity
         issuer_mode: ""
-        jwks_sources:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         client_secret: client_secret
+        jwt_federation_providers:
+        - 0
+        - 0
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -62470,13 +62514,17 @@ components:
           allOf:
           - $ref: '#/components/schemas/IssuerModeEnum'
           description: Configure how the issuer field of the ID Token should be filled.
-        jwks_sources:
+        jwt_federation_sources:
           items:
             format: uuid
             title: Any JWT signed by the JWK of the selected source can be used to
               authenticate.
             type: string
           title: Any JWT signed by the JWK of the selected source can be used to authenticate.
+          type: array
+        jwt_federation_providers:
+          items:
+            type: integer
           type: array
       type: object
     PatchedOAuthSourcePropertyMappingRequest:
@@ -63136,6 +63184,9 @@ components:
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         basic_auth_password_attribute: basic_auth_password_attribute
         invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        jwt_federation_sources:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         refresh_token_validity: refresh_token_validity
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mode: ""
@@ -63144,12 +63195,12 @@ components:
         basic_auth_enabled: true
         basic_auth_user_attribute: basic_auth_user_attribute
         access_token_validity: access_token_validity
-        jwks_sources:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         intercept_header_auth: true
         internal_host_ssl_validation: true
+        jwt_federation_providers:
+        - 0
+        - 0
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -63220,13 +63271,17 @@ components:
           type: boolean
         cookie_domain:
           type: string
-        jwks_sources:
+        jwt_federation_sources:
           items:
             format: uuid
             title: Any JWT signed by the JWK of the selected source can be used to
               authenticate.
             type: string
           title: Any JWT signed by the JWK of the selected source can be used to authenticate.
+          type: array
+        jwt_federation_providers:
+          items:
+            type: integer
           type: array
         access_token_validity:
           description: "Tokens not valid on or after current time + this value (Format:\
@@ -65922,6 +65977,9 @@ components:
         invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         assigned_application_slug: assigned_application_slug
         client_id: client_id
+        jwt_federation_sources:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         refresh_token_validity: refresh_token_validity
         mode: ""
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -65929,6 +65987,9 @@ components:
         assigned_backchannel_application_name: assigned_backchannel_application_name
         intercept_header_auth: true
         internal_host_ssl_validation: true
+        jwt_federation_providers:
+        - 6
+        - 6
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -65953,9 +66014,6 @@ components:
         meta_model_name: meta_model_name
         assigned_backchannel_application_slug: assigned_backchannel_application_slug
         access_token_validity: access_token_validity
-        jwks_sources:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         pk: 0
       properties:
@@ -66067,13 +66125,17 @@ components:
           type: array
         cookie_domain:
           type: string
-        jwks_sources:
+        jwt_federation_sources:
           items:
             format: uuid
             title: Any JWT signed by the JWK of the selected source can be used to
               authenticate.
             type: string
           title: Any JWT signed by the JWK of the selected source can be used to authenticate.
+          type: array
+        jwt_federation_providers:
+          items:
+            type: integer
           type: array
         access_token_validity:
           description: "Tokens not valid on or after current time + this value (Format:\
@@ -66115,6 +66177,9 @@ components:
         certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         basic_auth_password_attribute: basic_auth_password_attribute
         invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        jwt_federation_sources:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         refresh_token_validity: refresh_token_validity
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mode: ""
@@ -66123,12 +66188,12 @@ components:
         basic_auth_enabled: true
         basic_auth_user_attribute: basic_auth_user_attribute
         access_token_validity: access_token_validity
-        jwks_sources:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         intercept_header_auth: true
         internal_host_ssl_validation: true
+        jwt_federation_providers:
+        - 0
+        - 0
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -66199,13 +66264,17 @@ components:
           type: boolean
         cookie_domain:
           type: string
-        jwks_sources:
+        jwt_federation_sources:
           items:
             format: uuid
             title: Any JWT signed by the JWK of the selected source can be used to
               authenticate.
             type: string
           title: Any JWT signed by the JWK of the selected source can be used to authenticate.
+          type: array
+        jwt_federation_providers:
+          items:
+            type: integer
           type: array
         access_token_validity:
           description: "Tokens not valid on or after current time + this value (Format:\
@@ -70075,6 +70144,9 @@ components:
           client_type: ""
           sub_mode: ""
           client_id: client_id
+          jwt_federation_sources:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           refresh_token_validity: refresh_token_validity
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           access_code_validity: access_code_validity
@@ -70082,6 +70154,9 @@ components:
           assigned_backchannel_application_name: assigned_backchannel_application_name
           issuer_mode: ""
           client_secret: client_secret
+          jwt_federation_providers:
+          - 1
+          - 1
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -70097,9 +70172,6 @@ components:
           include_claims_in_id_token: true
           assigned_backchannel_application_slug: assigned_backchannel_application_slug
           access_token_validity: access_token_validity
-          jwks_sources:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 6

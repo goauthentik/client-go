@@ -20,7 +20,8 @@ Name | Type | Description | Notes
 **Mode** | Pointer to [**ProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host. | [optional] 
 **InterceptHeaderAuth** | Pointer to **bool** | When enabled, this provider will intercept the authorization header and authenticate requests based on its value. | [optional] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
-**JwksSources** | Pointer to **[]string** |  | [optional] 
+**JwtFederationSources** | Pointer to **[]string** |  | [optional] 
+**JwtFederationProviders** | Pointer to **[]int32** |  | [optional] 
 **AccessTokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **RefreshTokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 
@@ -443,30 +444,55 @@ SetCookieDomain sets CookieDomain field to given value.
 
 HasCookieDomain returns a boolean if a field has been set.
 
-### GetJwksSources
+### GetJwtFederationSources
 
-`func (o *ProxyProviderRequest) GetJwksSources() []string`
+`func (o *ProxyProviderRequest) GetJwtFederationSources() []string`
 
-GetJwksSources returns the JwksSources field if non-nil, zero value otherwise.
+GetJwtFederationSources returns the JwtFederationSources field if non-nil, zero value otherwise.
 
-### GetJwksSourcesOk
+### GetJwtFederationSourcesOk
 
-`func (o *ProxyProviderRequest) GetJwksSourcesOk() (*[]string, bool)`
+`func (o *ProxyProviderRequest) GetJwtFederationSourcesOk() (*[]string, bool)`
 
-GetJwksSourcesOk returns a tuple with the JwksSources field if it's non-nil, zero value otherwise
+GetJwtFederationSourcesOk returns a tuple with the JwtFederationSources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetJwksSources
+### SetJwtFederationSources
 
-`func (o *ProxyProviderRequest) SetJwksSources(v []string)`
+`func (o *ProxyProviderRequest) SetJwtFederationSources(v []string)`
 
-SetJwksSources sets JwksSources field to given value.
+SetJwtFederationSources sets JwtFederationSources field to given value.
 
-### HasJwksSources
+### HasJwtFederationSources
 
-`func (o *ProxyProviderRequest) HasJwksSources() bool`
+`func (o *ProxyProviderRequest) HasJwtFederationSources() bool`
 
-HasJwksSources returns a boolean if a field has been set.
+HasJwtFederationSources returns a boolean if a field has been set.
+
+### GetJwtFederationProviders
+
+`func (o *ProxyProviderRequest) GetJwtFederationProviders() []int32`
+
+GetJwtFederationProviders returns the JwtFederationProviders field if non-nil, zero value otherwise.
+
+### GetJwtFederationProvidersOk
+
+`func (o *ProxyProviderRequest) GetJwtFederationProvidersOk() (*[]int32, bool)`
+
+GetJwtFederationProvidersOk returns a tuple with the JwtFederationProviders field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwtFederationProviders
+
+`func (o *ProxyProviderRequest) SetJwtFederationProviders(v []int32)`
+
+SetJwtFederationProviders sets JwtFederationProviders field to given value.
+
+### HasJwtFederationProviders
+
+`func (o *ProxyProviderRequest) HasJwtFederationProviders() bool`
+
+HasJwtFederationProviders returns a boolean if a field has been set.
 
 ### GetAccessTokenValidity
 

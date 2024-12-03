@@ -30,7 +30,8 @@ Name | Type | Description | Notes
 **RedirectUris** | [**[]RedirectURI**](RedirectURI.md) |  | 
 **SubMode** | Pointer to [**SubModeEnum**](SubModeEnum.md) | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. | [optional] 
 **IssuerMode** | Pointer to [**IssuerModeEnum**](IssuerModeEnum.md) | Configure how the issuer field of the ID Token should be filled. | [optional] 
-**JwksSources** | Pointer to **[]string** |  | [optional] 
+**JwtFederationSources** | Pointer to **[]string** |  | [optional] 
+**JwtFederationProviders** | Pointer to **[]int32** |  | [optional] 
 
 ## Methods
 
@@ -666,30 +667,55 @@ SetIssuerMode sets IssuerMode field to given value.
 
 HasIssuerMode returns a boolean if a field has been set.
 
-### GetJwksSources
+### GetJwtFederationSources
 
-`func (o *OAuth2Provider) GetJwksSources() []string`
+`func (o *OAuth2Provider) GetJwtFederationSources() []string`
 
-GetJwksSources returns the JwksSources field if non-nil, zero value otherwise.
+GetJwtFederationSources returns the JwtFederationSources field if non-nil, zero value otherwise.
 
-### GetJwksSourcesOk
+### GetJwtFederationSourcesOk
 
-`func (o *OAuth2Provider) GetJwksSourcesOk() (*[]string, bool)`
+`func (o *OAuth2Provider) GetJwtFederationSourcesOk() (*[]string, bool)`
 
-GetJwksSourcesOk returns a tuple with the JwksSources field if it's non-nil, zero value otherwise
+GetJwtFederationSourcesOk returns a tuple with the JwtFederationSources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetJwksSources
+### SetJwtFederationSources
 
-`func (o *OAuth2Provider) SetJwksSources(v []string)`
+`func (o *OAuth2Provider) SetJwtFederationSources(v []string)`
 
-SetJwksSources sets JwksSources field to given value.
+SetJwtFederationSources sets JwtFederationSources field to given value.
 
-### HasJwksSources
+### HasJwtFederationSources
 
-`func (o *OAuth2Provider) HasJwksSources() bool`
+`func (o *OAuth2Provider) HasJwtFederationSources() bool`
 
-HasJwksSources returns a boolean if a field has been set.
+HasJwtFederationSources returns a boolean if a field has been set.
+
+### GetJwtFederationProviders
+
+`func (o *OAuth2Provider) GetJwtFederationProviders() []int32`
+
+GetJwtFederationProviders returns the JwtFederationProviders field if non-nil, zero value otherwise.
+
+### GetJwtFederationProvidersOk
+
+`func (o *OAuth2Provider) GetJwtFederationProvidersOk() (*[]int32, bool)`
+
+GetJwtFederationProvidersOk returns a tuple with the JwtFederationProviders field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwtFederationProviders
+
+`func (o *OAuth2Provider) SetJwtFederationProviders(v []int32)`
+
+SetJwtFederationProviders sets JwtFederationProviders field to given value.
+
+### HasJwtFederationProviders
+
+`func (o *OAuth2Provider) HasJwtFederationProviders() bool`
+
+HasJwtFederationProviders returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

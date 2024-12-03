@@ -62,8 +62,9 @@ type OAuth2Provider struct {
 	// Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
 	SubMode *SubModeEnum `json:"sub_mode,omitempty"`
 	// Configure how the issuer field of the ID Token should be filled.
-	IssuerMode  *IssuerModeEnum `json:"issuer_mode,omitempty"`
-	JwksSources []string        `json:"jwks_sources,omitempty"`
+	IssuerMode             *IssuerModeEnum `json:"issuer_mode,omitempty"`
+	JwtFederationSources   []string        `json:"jwt_federation_sources,omitempty"`
+	JwtFederationProviders []int32         `json:"jwt_federation_providers,omitempty"`
 }
 
 // NewOAuth2Provider instantiates a new OAuth2Provider object
@@ -857,36 +858,68 @@ func (o *OAuth2Provider) SetIssuerMode(v IssuerModeEnum) {
 	o.IssuerMode = &v
 }
 
-// GetJwksSources returns the JwksSources field value if set, zero value otherwise.
-func (o *OAuth2Provider) GetJwksSources() []string {
-	if o == nil || o.JwksSources == nil {
+// GetJwtFederationSources returns the JwtFederationSources field value if set, zero value otherwise.
+func (o *OAuth2Provider) GetJwtFederationSources() []string {
+	if o == nil || o.JwtFederationSources == nil {
 		var ret []string
 		return ret
 	}
-	return o.JwksSources
+	return o.JwtFederationSources
 }
 
-// GetJwksSourcesOk returns a tuple with the JwksSources field value if set, nil otherwise
+// GetJwtFederationSourcesOk returns a tuple with the JwtFederationSources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OAuth2Provider) GetJwksSourcesOk() ([]string, bool) {
-	if o == nil || o.JwksSources == nil {
+func (o *OAuth2Provider) GetJwtFederationSourcesOk() ([]string, bool) {
+	if o == nil || o.JwtFederationSources == nil {
 		return nil, false
 	}
-	return o.JwksSources, true
+	return o.JwtFederationSources, true
 }
 
-// HasJwksSources returns a boolean if a field has been set.
-func (o *OAuth2Provider) HasJwksSources() bool {
-	if o != nil && o.JwksSources != nil {
+// HasJwtFederationSources returns a boolean if a field has been set.
+func (o *OAuth2Provider) HasJwtFederationSources() bool {
+	if o != nil && o.JwtFederationSources != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetJwksSources gets a reference to the given []string and assigns it to the JwksSources field.
-func (o *OAuth2Provider) SetJwksSources(v []string) {
-	o.JwksSources = v
+// SetJwtFederationSources gets a reference to the given []string and assigns it to the JwtFederationSources field.
+func (o *OAuth2Provider) SetJwtFederationSources(v []string) {
+	o.JwtFederationSources = v
+}
+
+// GetJwtFederationProviders returns the JwtFederationProviders field value if set, zero value otherwise.
+func (o *OAuth2Provider) GetJwtFederationProviders() []int32 {
+	if o == nil || o.JwtFederationProviders == nil {
+		var ret []int32
+		return ret
+	}
+	return o.JwtFederationProviders
+}
+
+// GetJwtFederationProvidersOk returns a tuple with the JwtFederationProviders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuth2Provider) GetJwtFederationProvidersOk() ([]int32, bool) {
+	if o == nil || o.JwtFederationProviders == nil {
+		return nil, false
+	}
+	return o.JwtFederationProviders, true
+}
+
+// HasJwtFederationProviders returns a boolean if a field has been set.
+func (o *OAuth2Provider) HasJwtFederationProviders() bool {
+	if o != nil && o.JwtFederationProviders != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJwtFederationProviders gets a reference to the given []int32 and assigns it to the JwtFederationProviders field.
+func (o *OAuth2Provider) SetJwtFederationProviders(v []int32) {
+	o.JwtFederationProviders = v
 }
 
 func (o OAuth2Provider) MarshalJSON() ([]byte, error) {
@@ -969,8 +1002,11 @@ func (o OAuth2Provider) MarshalJSON() ([]byte, error) {
 	if o.IssuerMode != nil {
 		toSerialize["issuer_mode"] = o.IssuerMode
 	}
-	if o.JwksSources != nil {
-		toSerialize["jwks_sources"] = o.JwksSources
+	if o.JwtFederationSources != nil {
+		toSerialize["jwt_federation_sources"] = o.JwtFederationSources
+	}
+	if o.JwtFederationProviders != nil {
+		toSerialize["jwt_federation_providers"] = o.JwtFederationProviders
 	}
 	return json.Marshal(toSerialize)
 }
