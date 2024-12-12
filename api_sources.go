@@ -4654,6 +4654,7 @@ type ApiSourcesKerberosListRequest struct {
 	ctx                                 context.Context
 	ApiService                          *SourcesApiService
 	enabled                             *bool
+	kadminType                          *string
 	name                                *string
 	ordering                            *string
 	page                                *int32
@@ -4670,6 +4671,12 @@ type ApiSourcesKerberosListRequest struct {
 
 func (r ApiSourcesKerberosListRequest) Enabled(enabled bool) ApiSourcesKerberosListRequest {
 	r.enabled = &enabled
+	return r
+}
+
+// KAdmin server type
+func (r ApiSourcesKerberosListRequest) KadminType(kadminType string) ApiSourcesKerberosListRequest {
+	r.kadminType = &kadminType
 	return r
 }
 
@@ -4780,6 +4787,9 @@ func (a *SourcesApiService) SourcesKerberosListExecute(r ApiSourcesKerberosListR
 
 	if r.enabled != nil {
 		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
+	}
+	if r.kadminType != nil {
+		localVarQueryParams.Add("kadmin_type", parameterToString(*r.kadminType, ""))
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))

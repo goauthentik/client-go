@@ -38,6 +38,8 @@ type PatchedKerberosSourceRequest struct {
 	Realm *string `json:"realm,omitempty"`
 	// Custom krb5.conf to use. Uses the system one by default
 	Krb5Conf *string `json:"krb5_conf,omitempty"`
+	// KAdmin server type
+	KadminType *KadminTypeEnum `json:"kadmin_type,omitempty"`
 	// Sync users from Kerberos into authentik
 	SyncUsers *bool `json:"sync_users,omitempty"`
 	// When a user changes their password, sync it back to Kerberos
@@ -515,6 +517,38 @@ func (o *PatchedKerberosSourceRequest) SetKrb5Conf(v string) {
 	o.Krb5Conf = &v
 }
 
+// GetKadminType returns the KadminType field value if set, zero value otherwise.
+func (o *PatchedKerberosSourceRequest) GetKadminType() KadminTypeEnum {
+	if o == nil || o.KadminType == nil {
+		var ret KadminTypeEnum
+		return ret
+	}
+	return *o.KadminType
+}
+
+// GetKadminTypeOk returns a tuple with the KadminType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedKerberosSourceRequest) GetKadminTypeOk() (*KadminTypeEnum, bool) {
+	if o == nil || o.KadminType == nil {
+		return nil, false
+	}
+	return o.KadminType, true
+}
+
+// HasKadminType returns a boolean if a field has been set.
+func (o *PatchedKerberosSourceRequest) HasKadminType() bool {
+	if o != nil && o.KadminType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKadminType gets a reference to the given KadminTypeEnum and assigns it to the KadminType field.
+func (o *PatchedKerberosSourceRequest) SetKadminType(v KadminTypeEnum) {
+	o.KadminType = &v
+}
+
 // GetSyncUsers returns the SyncUsers field value if set, zero value otherwise.
 func (o *PatchedKerberosSourceRequest) GetSyncUsers() bool {
 	if o == nil || o.SyncUsers == nil {
@@ -875,6 +909,9 @@ func (o PatchedKerberosSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Krb5Conf != nil {
 		toSerialize["krb5_conf"] = o.Krb5Conf
+	}
+	if o.KadminType != nil {
+		toSerialize["kadmin_type"] = o.KadminType
 	}
 	if o.SyncUsers != nil {
 		toSerialize["sync_users"] = o.SyncUsers

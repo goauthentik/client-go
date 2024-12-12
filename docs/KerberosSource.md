@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **GroupMatchingMode** | Pointer to [**GroupMatchingModeEnum**](GroupMatchingModeEnum.md) | How the source determines if an existing group should be used or a new group created. | [optional] 
 **Realm** | **string** | Kerberos realm | 
 **Krb5Conf** | Pointer to **string** | Custom krb5.conf to use. Uses the system one by default | [optional] 
+**KadminType** | Pointer to [**KadminTypeEnum**](KadminTypeEnum.md) | KAdmin server type | [optional] 
 **SyncUsers** | Pointer to **bool** | Sync users from Kerberos into authentik | [optional] 
 **SyncUsersPassword** | Pointer to **bool** | When a user changes their password, sync it back to Kerberos | [optional] 
 **SyncPrincipal** | Pointer to **string** | Principal to authenticate to kadmin for sync. | [optional] 
@@ -531,6 +532,31 @@ SetKrb5Conf sets Krb5Conf field to given value.
 `func (o *KerberosSource) HasKrb5Conf() bool`
 
 HasKrb5Conf returns a boolean if a field has been set.
+
+### GetKadminType
+
+`func (o *KerberosSource) GetKadminType() KadminTypeEnum`
+
+GetKadminType returns the KadminType field if non-nil, zero value otherwise.
+
+### GetKadminTypeOk
+
+`func (o *KerberosSource) GetKadminTypeOk() (*KadminTypeEnum, bool)`
+
+GetKadminTypeOk returns a tuple with the KadminType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKadminType
+
+`func (o *KerberosSource) SetKadminType(v KadminTypeEnum)`
+
+SetKadminType sets KadminType field to given value.
+
+### HasKadminType
+
+`func (o *KerberosSource) HasKadminType() bool`
+
+HasKadminType returns a boolean if a field has been set.
 
 ### GetSyncUsers
 

@@ -2642,7 +2642,7 @@ Name | Type | Description  | Notes
 
 ## SourcesKerberosList
 
-> PaginatedKerberosSourceList SourcesKerberosList(ctx).Enabled(enabled).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).Realm(realm).Search(search).Slug(slug).SpnegoServerName(spnegoServerName).SyncPrincipal(syncPrincipal).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).Execute()
+> PaginatedKerberosSourceList SourcesKerberosList(ctx).Enabled(enabled).KadminType(kadminType).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).Realm(realm).Search(search).Slug(slug).SpnegoServerName(spnegoServerName).SyncPrincipal(syncPrincipal).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).Execute()
 
 
 
@@ -2662,6 +2662,7 @@ import (
 
 func main() {
     enabled := true // bool |  (optional)
+    kadminType := "kadminType_example" // string | KAdmin server type   (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -2677,7 +2678,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesKerberosList(context.Background()).Enabled(enabled).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).Realm(realm).Search(search).Slug(slug).SpnegoServerName(spnegoServerName).SyncPrincipal(syncPrincipal).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesKerberosList(context.Background()).Enabled(enabled).KadminType(kadminType).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).Realm(realm).Search(search).Slug(slug).SpnegoServerName(spnegoServerName).SyncPrincipal(syncPrincipal).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesKerberosList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2699,6 +2700,7 @@ Other parameters are passed through a pointer to a apiSourcesKerberosListRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **enabled** | **bool** |  | 
+ **kadminType** | **string** | KAdmin server type   | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 

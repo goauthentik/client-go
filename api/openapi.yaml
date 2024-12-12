@@ -28700,6 +28700,20 @@ paths:
         schema:
           type: boolean
         style: form
+      - description: |+
+          KAdmin server type
+
+        explode: true
+        in: query
+        name: kadmin_type
+        required: false
+        schema:
+          enum:
+          - Heimdal
+          - MIT
+          - other
+          type: string
+        style: form
       - explode: true
         in: query
         name: name
@@ -48717,6 +48731,12 @@ components:
       - global
       - per_provider
       type: string
+    KadminTypeEnum:
+      enum:
+      - MIT
+      - Heimdal
+      - other
+      type: string
     KerberosSource:
       description: Kerberos Source Serializer
       example:
@@ -48729,6 +48749,7 @@ components:
         icon: icon
         sync_ccache: sync_ccache
         enabled: true
+        kadmin_type: ""
         spnego_server_name: spnego_server_name
         krb5_conf: krb5_conf
         connectivity:
@@ -48837,6 +48858,10 @@ components:
         krb5_conf:
           description: Custom krb5.conf to use. Uses the system one by default
           type: string
+        kadmin_type:
+          allOf:
+          - $ref: '#/components/schemas/KadminTypeEnum'
+          description: KAdmin server type
         sync_users:
           description: Sync users from Kerberos into authentik
           type: boolean
@@ -48974,6 +48999,7 @@ components:
         sync_ccache: sync_ccache
         enabled: true
         group_matching_mode: ""
+        kadmin_type: ""
         password_login_update_internal_password: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
@@ -49046,6 +49072,10 @@ components:
         krb5_conf:
           description: Custom krb5.conf to use. Uses the system one by default
           type: string
+        kadmin_type:
+          allOf:
+          - $ref: '#/components/schemas/KadminTypeEnum'
+          description: KAdmin server type
         sync_users:
           description: Sync users from Kerberos into authentik
           type: boolean
@@ -55063,6 +55093,7 @@ components:
           icon: icon
           sync_ccache: sync_ccache
           enabled: true
+          kadmin_type: ""
           spnego_server_name: spnego_server_name
           krb5_conf: krb5_conf
           connectivity:
@@ -55096,6 +55127,7 @@ components:
           icon: icon
           sync_ccache: sync_ccache
           enabled: true
+          kadmin_type: ""
           spnego_server_name: spnego_server_name
           krb5_conf: krb5_conf
           connectivity:
@@ -61846,6 +61878,7 @@ components:
         sync_ccache: sync_ccache
         enabled: true
         group_matching_mode: ""
+        kadmin_type: ""
         password_login_update_internal_password: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
@@ -61918,6 +61951,10 @@ components:
         krb5_conf:
           description: Custom krb5.conf to use. Uses the system one by default
           type: string
+        kadmin_type:
+          allOf:
+          - $ref: '#/components/schemas/KadminTypeEnum'
+          description: KAdmin server type
         sync_users:
           description: Sync users from Kerberos into authentik
           type: boolean

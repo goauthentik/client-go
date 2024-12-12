@@ -215,6 +215,7 @@ docs/InvitationRequest.md
 docs/InvitationStage.md
 docs/InvitationStageRequest.md
 docs/IssuerModeEnum.md
+docs/KadminTypeEnum.md
 docs/KerberosSource.md
 docs/KerberosSourcePropertyMapping.md
 docs/KerberosSourcePropertyMappingRequest.md
@@ -909,6 +910,7 @@ model_invitation_request.go
 model_invitation_stage.go
 model_invitation_stage_request.go
 model_issuer_mode_enum.go
+model_kadmin_type_enum.go
 model_kerberos_source.go
 model_kerberos_source_property_mapping.go
 model_kerberos_source_property_mapping_request.go
