@@ -25999,6 +25999,7 @@ paths:
           - authentik_stages_password.passwordstage
           - authentik_stages_prompt.prompt
           - authentik_stages_prompt.promptstage
+          - authentik_stages_redirect.redirectstage
           - authentik_stages_source.sourcestage
           - authentik_stages_user_delete.userdeletestage
           - authentik_stages_user_login.userloginstage
@@ -26255,6 +26256,7 @@ paths:
           - authentik_stages_password.passwordstage
           - authentik_stages_prompt.prompt
           - authentik_stages_prompt.promptstage
+          - authentik_stages_redirect.redirectstage
           - authentik_stages_source.sourcestage
           - authentik_stages_user_delete.userdeletestage
           - authentik_stages_user_login.userloginstage
@@ -39655,6 +39657,296 @@ paths:
       - authentik: []
       tags:
       - stages
+  /stages/redirect/:
+    get:
+      description: RedirectStage Viewset
+      operationId: stages_redirect_list
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedRedirectStageList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    post:
+      description: RedirectStage Viewset
+      operationId: stages_redirect_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RedirectStageRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedirectStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+  /stages/redirect/{stage_uuid}/:
+    delete:
+      description: RedirectStage Viewset
+      operationId: stages_redirect_destroy
+      parameters:
+      - description: A UUID string identifying this Redirect Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    get:
+      description: RedirectStage Viewset
+      operationId: stages_redirect_retrieve
+      parameters:
+      - description: A UUID string identifying this Redirect Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedirectStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    patch:
+      description: RedirectStage Viewset
+      operationId: stages_redirect_partial_update
+      parameters:
+      - description: A UUID string identifying this Redirect Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRedirectStageRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedirectStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    put:
+      description: RedirectStage Viewset
+      operationId: stages_redirect_update
+      parameters:
+      - description: A UUID string identifying this Redirect Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RedirectStageRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedirectStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+  /stages/redirect/{stage_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: stages_redirect_used_by_list
+      parameters:
+      - description: A UUID string identifying this Redirect Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
   /stages/source/:
     get:
       description: SourceStage Viewset
@@ -41881,6 +42173,7 @@ components:
       - authentik.stages.invitation
       - authentik.stages.password
       - authentik.stages.prompt
+      - authentik.stages.redirect
       - authentik.stages.user_delete
       - authentik.stages.user_login
       - authentik.stages.user_logout
@@ -42192,6 +42485,7 @@ components:
       - require_authenticated
       - require_unauthenticated
       - require_superuser
+      - require_redirect
       - require_outpost
       type: string
     AuthenticatorAttachmentEnum:
@@ -46826,6 +47120,7 @@ components:
           ak-stage-password: '#/components/schemas/PasswordChallengeResponseRequest'
           ak-source-plex: '#/components/schemas/PlexAuthenticationChallengeResponseRequest'
           ak-stage-prompt: '#/components/schemas/PromptChallengeResponseRequest'
+          xak-flow-redirect: '#/components/schemas/RedirectChallengeResponseRequest'
           ak-stage-user-login: '#/components/schemas/UserLoginChallengeResponseRequest'
         propertyName: component
       oneOf:
@@ -46848,6 +47143,7 @@ components:
       - $ref: '#/components/schemas/PasswordChallengeResponseRequest'
       - $ref: '#/components/schemas/PlexAuthenticationChallengeResponseRequest'
       - $ref: '#/components/schemas/PromptChallengeResponseRequest'
+      - $ref: '#/components/schemas/RedirectChallengeResponseRequest'
       - $ref: '#/components/schemas/UserLoginChallengeResponseRequest'
     FlowDesignationEnum:
       enum:
@@ -50728,6 +51024,7 @@ components:
       - authentik_stages_password.passwordstage
       - authentik_stages_prompt.prompt
       - authentik_stages_prompt.promptstage
+      - authentik_stages_redirect.redirectstage
       - authentik_stages_user_delete.userdeletestage
       - authentik_stages_user_login.userloginstage
       - authentik_stages_user_logout.userlogoutstage
@@ -57431,6 +57728,98 @@ components:
       - pagination
       - results
       type: object
+    PaginatedRedirectStageList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - mode: null
+          component: component
+          verbose_name: verbose_name
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          target_static: target_static
+          target_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          flow_set:
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+          keep_context: true
+        - mode: null
+          component: component
+          verbose_name: verbose_name
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          target_static: target_static
+          target_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          flow_set:
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+          keep_context: true
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/RedirectStage'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedReputationList:
       example:
         pagination:
@@ -63476,6 +63865,50 @@ components:
             \ be rejected if it contains a semicolon."
           type: boolean
       type: object
+    PatchedRedirectStageRequest:
+      description: RedirectStage Serializer
+      example:
+        mode: null
+        target_static: target_static
+        target_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        flow_set:
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+        keep_context: true
+      properties:
+        name:
+          minLength: 1
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/FlowSetRequest'
+          type: array
+        keep_context:
+          type: boolean
+        mode:
+          $ref: '#/components/schemas/RedirectStageModeEnum'
+        target_static:
+          type: string
+        target_flow:
+          format: uuid
+          nullable: true
+          type: string
+      type: object
     PatchedReputationPolicyRequest:
       description: Reputation Policy Serializer
       example:
@@ -66927,6 +67360,156 @@ components:
           type: string
       required:
       - to
+      type: object
+    RedirectChallengeResponseRequest:
+      description: Redirect challenge response
+      properties:
+        component:
+          default: xak-flow-redirect
+          minLength: 1
+          type: string
+        to:
+          minLength: 1
+          type: string
+      required:
+      - to
+      type: object
+    RedirectStage:
+      description: RedirectStage Serializer
+      example:
+        mode: null
+        component: component
+        verbose_name: verbose_name
+        verbose_name_plural: verbose_name_plural
+        meta_model_name: meta_model_name
+        target_static: target_static
+        target_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        flow_set:
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          background: background
+          denied_action: ""
+          name: name
+          export_url: export_url
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          designation: ""
+          title: title
+          slug: slug
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          background: background
+          denied_action: ""
+          name: name
+          export_url: export_url
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          designation: ""
+          title: title
+          slug: slug
+        keep_context: true
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Stage uuid
+          type: string
+        name:
+          type: string
+        component:
+          description: Get object type so that we know how to edit the object
+          readOnly: true
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/FlowSet'
+          type: array
+        keep_context:
+          type: boolean
+        mode:
+          $ref: '#/components/schemas/RedirectStageModeEnum'
+        target_static:
+          type: string
+        target_flow:
+          format: uuid
+          nullable: true
+          type: string
+      required:
+      - component
+      - meta_model_name
+      - mode
+      - name
+      - pk
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    RedirectStageModeEnum:
+      enum:
+      - static
+      - flow
+      type: string
+    RedirectStageRequest:
+      description: RedirectStage Serializer
+      example:
+        mode: null
+        target_static: target_static
+        target_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        flow_set:
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+        keep_context: true
+      properties:
+        name:
+          minLength: 1
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/FlowSetRequest'
+          type: array
+        keep_context:
+          type: boolean
+        mode:
+          $ref: '#/components/schemas/RedirectStageModeEnum'
+        target_static:
+          type: string
+        target_flow:
+          format: uuid
+          nullable: true
+          type: string
+      required:
+      - mode
+      - name
       type: object
     RedirectURI:
       description: A single allowed redirect URI entry

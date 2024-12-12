@@ -143,6 +143,13 @@ Method | HTTP request | Description
 [**StagesPromptStagesRetrieve**](StagesApi.md#StagesPromptStagesRetrieve) | **Get** /stages/prompt/stages/{stage_uuid}/ | 
 [**StagesPromptStagesUpdate**](StagesApi.md#StagesPromptStagesUpdate) | **Put** /stages/prompt/stages/{stage_uuid}/ | 
 [**StagesPromptStagesUsedByList**](StagesApi.md#StagesPromptStagesUsedByList) | **Get** /stages/prompt/stages/{stage_uuid}/used_by/ | 
+[**StagesRedirectCreate**](StagesApi.md#StagesRedirectCreate) | **Post** /stages/redirect/ | 
+[**StagesRedirectDestroy**](StagesApi.md#StagesRedirectDestroy) | **Delete** /stages/redirect/{stage_uuid}/ | 
+[**StagesRedirectList**](StagesApi.md#StagesRedirectList) | **Get** /stages/redirect/ | 
+[**StagesRedirectPartialUpdate**](StagesApi.md#StagesRedirectPartialUpdate) | **Patch** /stages/redirect/{stage_uuid}/ | 
+[**StagesRedirectRetrieve**](StagesApi.md#StagesRedirectRetrieve) | **Get** /stages/redirect/{stage_uuid}/ | 
+[**StagesRedirectUpdate**](StagesApi.md#StagesRedirectUpdate) | **Put** /stages/redirect/{stage_uuid}/ | 
+[**StagesRedirectUsedByList**](StagesApi.md#StagesRedirectUsedByList) | **Get** /stages/redirect/{stage_uuid}/used_by/ | 
 [**StagesSourceCreate**](StagesApi.md#StagesSourceCreate) | **Post** /stages/source/ | 
 [**StagesSourceDestroy**](StagesApi.md#StagesSourceDestroy) | **Delete** /stages/source/{stage_uuid}/ | 
 [**StagesSourceList**](StagesApi.md#StagesSourceList) | **Get** /stages/source/ | 
@@ -10057,6 +10064,498 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStagesPromptStagesUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesRedirectCreate
+
+> RedirectStage StagesRedirectCreate(ctx).RedirectStageRequest(redirectStageRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    redirectStageRequest := *openapiclient.NewRedirectStageRequest("Name_example", openapiclient.RedirectStageModeEnum("static")) // RedirectStageRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesRedirectCreate(context.Background()).RedirectStageRequest(redirectStageRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesRedirectCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesRedirectCreate`: RedirectStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesRedirectCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesRedirectCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **redirectStageRequest** | [**RedirectStageRequest**](RedirectStageRequest.md) |  | 
+
+### Return type
+
+[**RedirectStage**](RedirectStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesRedirectDestroy
+
+> StagesRedirectDestroy(ctx, stageUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Redirect Stage.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesRedirectDestroy(context.Background(), stageUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesRedirectDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Redirect Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesRedirectDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesRedirectList
+
+> PaginatedRedirectStageList StagesRedirectList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesRedirectList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesRedirectList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesRedirectList`: PaginatedRedirectStageList
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesRedirectList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesRedirectListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedRedirectStageList**](PaginatedRedirectStageList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesRedirectPartialUpdate
+
+> RedirectStage StagesRedirectPartialUpdate(ctx, stageUuid).PatchedRedirectStageRequest(patchedRedirectStageRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Redirect Stage.
+    patchedRedirectStageRequest := *openapiclient.NewPatchedRedirectStageRequest() // PatchedRedirectStageRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesRedirectPartialUpdate(context.Background(), stageUuid).PatchedRedirectStageRequest(patchedRedirectStageRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesRedirectPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesRedirectPartialUpdate`: RedirectStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesRedirectPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Redirect Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesRedirectPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedRedirectStageRequest** | [**PatchedRedirectStageRequest**](PatchedRedirectStageRequest.md) |  | 
+
+### Return type
+
+[**RedirectStage**](RedirectStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesRedirectRetrieve
+
+> RedirectStage StagesRedirectRetrieve(ctx, stageUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Redirect Stage.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesRedirectRetrieve(context.Background(), stageUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesRedirectRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesRedirectRetrieve`: RedirectStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesRedirectRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Redirect Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesRedirectRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**RedirectStage**](RedirectStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesRedirectUpdate
+
+> RedirectStage StagesRedirectUpdate(ctx, stageUuid).RedirectStageRequest(redirectStageRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Redirect Stage.
+    redirectStageRequest := *openapiclient.NewRedirectStageRequest("Name_example", openapiclient.RedirectStageModeEnum("static")) // RedirectStageRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesRedirectUpdate(context.Background(), stageUuid).RedirectStageRequest(redirectStageRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesRedirectUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesRedirectUpdate`: RedirectStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesRedirectUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Redirect Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesRedirectUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **redirectStageRequest** | [**RedirectStageRequest**](RedirectStageRequest.md) |  | 
+
+### Return type
+
+[**RedirectStage**](RedirectStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesRedirectUsedByList
+
+> []UsedBy StagesRedirectUsedByList(ctx, stageUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Redirect Stage.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesRedirectUsedByList(context.Background(), stageUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesRedirectUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesRedirectUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesRedirectUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Redirect Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesRedirectUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

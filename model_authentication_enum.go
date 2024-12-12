@@ -25,6 +25,7 @@ const (
 	AUTHENTICATIONENUM_REQUIRE_AUTHENTICATED   AuthenticationEnum = "require_authenticated"
 	AUTHENTICATIONENUM_REQUIRE_UNAUTHENTICATED AuthenticationEnum = "require_unauthenticated"
 	AUTHENTICATIONENUM_REQUIRE_SUPERUSER       AuthenticationEnum = "require_superuser"
+	AUTHENTICATIONENUM_REQUIRE_REDIRECT        AuthenticationEnum = "require_redirect"
 	AUTHENTICATIONENUM_REQUIRE_OUTPOST         AuthenticationEnum = "require_outpost"
 )
 
@@ -34,6 +35,7 @@ var AllowedAuthenticationEnumEnumValues = []AuthenticationEnum{
 	"require_authenticated",
 	"require_unauthenticated",
 	"require_superuser",
+	"require_redirect",
 	"require_outpost",
 }
 

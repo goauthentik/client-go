@@ -375,6 +375,7 @@ docs/PaginatedRACProviderList.md
 docs/PaginatedRadiusOutpostConfigList.md
 docs/PaginatedRadiusProviderList.md
 docs/PaginatedRadiusProviderPropertyMappingList.md
+docs/PaginatedRedirectStageList.md
 docs/PaginatedReputationList.md
 docs/PaginatedReputationPolicyList.md
 docs/PaginatedRoleAssignedObjectPermissionList.md
@@ -494,6 +495,7 @@ docs/PatchedRACPropertyMappingRequest.md
 docs/PatchedRACProviderRequest.md
 docs/PatchedRadiusProviderPropertyMappingRequest.md
 docs/PatchedRadiusProviderRequest.md
+docs/PatchedRedirectStageRequest.md
 docs/PatchedReputationPolicyRequest.md
 docs/PatchedRoleRequest.md
 docs/PatchedSAMLPropertyMappingRequest.md
@@ -578,6 +580,10 @@ docs/RadiusProviderPropertyMappingRequest.md
 docs/RadiusProviderRequest.md
 docs/RbacApi.md
 docs/RedirectChallenge.md
+docs/RedirectChallengeResponseRequest.md
+docs/RedirectStage.md
+docs/RedirectStageModeEnum.md
+docs/RedirectStageRequest.md
 docs/RedirectURI.md
 docs/RedirectURIRequest.md
 docs/Reputation.md
@@ -1067,6 +1073,7 @@ model_paginated_rac_provider_list.go
 model_paginated_radius_outpost_config_list.go
 model_paginated_radius_provider_list.go
 model_paginated_radius_provider_property_mapping_list.go
+model_paginated_redirect_stage_list.go
 model_paginated_reputation_list.go
 model_paginated_reputation_policy_list.go
 model_paginated_role_assigned_object_permission_list.go
@@ -1186,6 +1193,7 @@ model_patched_rac_property_mapping_request.go
 model_patched_rac_provider_request.go
 model_patched_radius_provider_property_mapping_request.go
 model_patched_radius_provider_request.go
+model_patched_redirect_stage_request.go
 model_patched_reputation_policy_request.go
 model_patched_role_request.go
 model_patched_saml_property_mapping_request.go
@@ -1265,6 +1273,10 @@ model_radius_provider_property_mapping.go
 model_radius_provider_property_mapping_request.go
 model_radius_provider_request.go
 model_redirect_challenge.go
+model_redirect_challenge_response_request.go
+model_redirect_stage.go
+model_redirect_stage_mode_enum.go
+model_redirect_stage_request.go
 model_redirect_uri.go
 model_redirect_uri_request.go
 model_reputation.go

@@ -909,6 +909,13 @@ Class | Method | HTTP request | Description
 *StagesApi* | [**StagesPromptStagesRetrieve**](docs/StagesApi.md#stagespromptstagesretrieve) | **Get** /stages/prompt/stages/{stage_uuid}/ | 
 *StagesApi* | [**StagesPromptStagesUpdate**](docs/StagesApi.md#stagespromptstagesupdate) | **Put** /stages/prompt/stages/{stage_uuid}/ | 
 *StagesApi* | [**StagesPromptStagesUsedByList**](docs/StagesApi.md#stagespromptstagesusedbylist) | **Get** /stages/prompt/stages/{stage_uuid}/used_by/ | 
+*StagesApi* | [**StagesRedirectCreate**](docs/StagesApi.md#stagesredirectcreate) | **Post** /stages/redirect/ | 
+*StagesApi* | [**StagesRedirectDestroy**](docs/StagesApi.md#stagesredirectdestroy) | **Delete** /stages/redirect/{stage_uuid}/ | 
+*StagesApi* | [**StagesRedirectList**](docs/StagesApi.md#stagesredirectlist) | **Get** /stages/redirect/ | 
+*StagesApi* | [**StagesRedirectPartialUpdate**](docs/StagesApi.md#stagesredirectpartialupdate) | **Patch** /stages/redirect/{stage_uuid}/ | 
+*StagesApi* | [**StagesRedirectRetrieve**](docs/StagesApi.md#stagesredirectretrieve) | **Get** /stages/redirect/{stage_uuid}/ | 
+*StagesApi* | [**StagesRedirectUpdate**](docs/StagesApi.md#stagesredirectupdate) | **Put** /stages/redirect/{stage_uuid}/ | 
+*StagesApi* | [**StagesRedirectUsedByList**](docs/StagesApi.md#stagesredirectusedbylist) | **Get** /stages/redirect/{stage_uuid}/used_by/ | 
 *StagesApi* | [**StagesSourceCreate**](docs/StagesApi.md#stagessourcecreate) | **Post** /stages/source/ | 
 *StagesApi* | [**StagesSourceDestroy**](docs/StagesApi.md#stagessourcedestroy) | **Delete** /stages/source/{stage_uuid}/ | 
 *StagesApi* | [**StagesSourceList**](docs/StagesApi.md#stagessourcelist) | **Get** /stages/source/ | 
@@ -1303,6 +1310,7 @@ Class | Method | HTTP request | Description
  - [PaginatedRadiusOutpostConfigList](docs/PaginatedRadiusOutpostConfigList.md)
  - [PaginatedRadiusProviderList](docs/PaginatedRadiusProviderList.md)
  - [PaginatedRadiusProviderPropertyMappingList](docs/PaginatedRadiusProviderPropertyMappingList.md)
+ - [PaginatedRedirectStageList](docs/PaginatedRedirectStageList.md)
  - [PaginatedReputationList](docs/PaginatedReputationList.md)
  - [PaginatedReputationPolicyList](docs/PaginatedReputationPolicyList.md)
  - [PaginatedRoleAssignedObjectPermissionList](docs/PaginatedRoleAssignedObjectPermissionList.md)
@@ -1422,6 +1430,7 @@ Class | Method | HTTP request | Description
  - [PatchedRACProviderRequest](docs/PatchedRACProviderRequest.md)
  - [PatchedRadiusProviderPropertyMappingRequest](docs/PatchedRadiusProviderPropertyMappingRequest.md)
  - [PatchedRadiusProviderRequest](docs/PatchedRadiusProviderRequest.md)
+ - [PatchedRedirectStageRequest](docs/PatchedRedirectStageRequest.md)
  - [PatchedReputationPolicyRequest](docs/PatchedReputationPolicyRequest.md)
  - [PatchedRoleRequest](docs/PatchedRoleRequest.md)
  - [PatchedSAMLPropertyMappingRequest](docs/PatchedSAMLPropertyMappingRequest.md)
@@ -1501,6 +1510,10 @@ Class | Method | HTTP request | Description
  - [RadiusProviderPropertyMappingRequest](docs/RadiusProviderPropertyMappingRequest.md)
  - [RadiusProviderRequest](docs/RadiusProviderRequest.md)
  - [RedirectChallenge](docs/RedirectChallenge.md)
+ - [RedirectChallengeResponseRequest](docs/RedirectChallengeResponseRequest.md)
+ - [RedirectStage](docs/RedirectStage.md)
+ - [RedirectStageModeEnum](docs/RedirectStageModeEnum.md)
+ - [RedirectStageRequest](docs/RedirectStageRequest.md)
  - [RedirectURI](docs/RedirectURI.md)
  - [RedirectURIRequest](docs/RedirectURIRequest.md)
  - [Reputation](docs/Reputation.md)

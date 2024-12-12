@@ -90,6 +90,7 @@ const (
 	MODELENUM_STAGES_PASSWORD_PASSWORDSTAGE                                     ModelEnum = "authentik_stages_password.passwordstage"
 	MODELENUM_STAGES_PROMPT_PROMPT                                              ModelEnum = "authentik_stages_prompt.prompt"
 	MODELENUM_STAGES_PROMPT_PROMPTSTAGE                                         ModelEnum = "authentik_stages_prompt.promptstage"
+	MODELENUM_STAGES_REDIRECT_REDIRECTSTAGE                                     ModelEnum = "authentik_stages_redirect.redirectstage"
 	MODELENUM_STAGES_USER_DELETE_USERDELETESTAGE                                ModelEnum = "authentik_stages_user_delete.userdeletestage"
 	MODELENUM_STAGES_USER_LOGIN_USERLOGINSTAGE                                  ModelEnum = "authentik_stages_user_login.userloginstage"
 	MODELENUM_STAGES_USER_LOGOUT_USERLOGOUTSTAGE                                ModelEnum = "authentik_stages_user_logout.userlogoutstage"
@@ -188,6 +189,7 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_stages_password.passwordstage",
 	"authentik_stages_prompt.prompt",
 	"authentik_stages_prompt.promptstage",
+	"authentik_stages_redirect.redirectstage",
 	"authentik_stages_user_delete.userdeletestage",
 	"authentik_stages_user_login.userloginstage",
 	"authentik_stages_user_logout.userlogoutstage",

@@ -65,6 +65,7 @@ const (
 	APPENUM_STAGES_INVITATION                             AppEnum = "authentik.stages.invitation"
 	APPENUM_STAGES_PASSWORD                               AppEnum = "authentik.stages.password"
 	APPENUM_STAGES_PROMPT                                 AppEnum = "authentik.stages.prompt"
+	APPENUM_STAGES_REDIRECT                               AppEnum = "authentik.stages.redirect"
 	APPENUM_STAGES_USER_DELETE                            AppEnum = "authentik.stages.user_delete"
 	APPENUM_STAGES_USER_LOGIN                             AppEnum = "authentik.stages.user_login"
 	APPENUM_STAGES_USER_LOGOUT                            AppEnum = "authentik.stages.user_logout"
@@ -128,6 +129,7 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.stages.invitation",
 	"authentik.stages.password",
 	"authentik.stages.prompt",
+	"authentik.stages.redirect",
 	"authentik.stages.user_delete",
 	"authentik.stages.user_login",
 	"authentik.stages.user_logout",

@@ -16,13 +16,14 @@ Name | Type | Description | Notes
 **UidField** | **string** |  | 
 **Password** | **string** |  | 
 **CaptchaToken** | Pointer to **NullableString** |  | [optional] 
+**To** | **string** |  | 
 **RememberMe** | **bool** |  | 
 
 ## Methods
 
 ### NewFlowChallengeResponseRequest
 
-`func NewFlowChallengeResponseRequest(code string, response map[string]interface{}, token string, uidField string, password string, rememberMe bool, ) *FlowChallengeResponseRequest`
+`func NewFlowChallengeResponseRequest(code string, response map[string]interface{}, token string, uidField string, password string, to string, rememberMe bool, ) *FlowChallengeResponseRequest`
 
 NewFlowChallengeResponseRequest instantiates a new FlowChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -322,6 +323,26 @@ HasCaptchaToken returns a boolean if a field has been set.
 `func (o *FlowChallengeResponseRequest) UnsetCaptchaToken()`
 
 UnsetCaptchaToken ensures that no value is present for CaptchaToken, not even an explicit nil
+### GetTo
+
+`func (o *FlowChallengeResponseRequest) GetTo() string`
+
+GetTo returns the To field if non-nil, zero value otherwise.
+
+### GetToOk
+
+`func (o *FlowChallengeResponseRequest) GetToOk() (*string, bool)`
+
+GetToOk returns a tuple with the To field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTo
+
+`func (o *FlowChallengeResponseRequest) SetTo(v string)`
+
+SetTo sets To field to given value.
+
+
 ### GetRememberMe
 
 `func (o *FlowChallengeResponseRequest) GetRememberMe() bool`

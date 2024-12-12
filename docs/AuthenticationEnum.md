@@ -11,6 +11,8 @@
 
 * `REQUIRE_SUPERUSER` (value: `"require_superuser"`)
 
+* `REQUIRE_REDIRECT` (value: `"require_redirect"`)
+
 * `REQUIRE_OUTPOST` (value: `"require_outpost"`)
 
 

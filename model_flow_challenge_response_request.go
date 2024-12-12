@@ -37,6 +37,7 @@ type FlowChallengeResponseRequest struct {
 	PasswordChallengeResponseRequest                *PasswordChallengeResponseRequest
 	PlexAuthenticationChallengeResponseRequest      *PlexAuthenticationChallengeResponseRequest
 	PromptChallengeResponseRequest                  *PromptChallengeResponseRequest
+	RedirectChallengeResponseRequest                *RedirectChallengeResponseRequest
 	UserLoginChallengeResponseRequest               *UserLoginChallengeResponseRequest
 }
 
@@ -170,6 +171,13 @@ func PlexAuthenticationChallengeResponseRequestAsFlowChallengeResponseRequest(v 
 func PromptChallengeResponseRequestAsFlowChallengeResponseRequest(v *PromptChallengeResponseRequest) FlowChallengeResponseRequest {
 	return FlowChallengeResponseRequest{
 		PromptChallengeResponseRequest: v,
+	}
+}
+
+// RedirectChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns RedirectChallengeResponseRequest wrapped in FlowChallengeResponseRequest
+func RedirectChallengeResponseRequestAsFlowChallengeResponseRequest(v *RedirectChallengeResponseRequest) FlowChallengeResponseRequest {
+	return FlowChallengeResponseRequest{
+		RedirectChallengeResponseRequest: v,
 	}
 }
 
@@ -415,6 +423,18 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.PromptChallengeResponseRequest = nil
 			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as PromptChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'RedirectChallengeResponseRequest'
+	if jsonDict["component"] == "RedirectChallengeResponseRequest" {
+		// try to unmarshal JSON data into RedirectChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.RedirectChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.RedirectChallengeResponseRequest, return on the first match
+		} else {
+			dst.RedirectChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as RedirectChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -670,6 +690,18 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'xak-flow-redirect'
+	if jsonDict["component"] == "xak-flow-redirect" {
+		// try to unmarshal JSON data into RedirectChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.RedirectChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.RedirectChallengeResponseRequest, return on the first match
+		} else {
+			dst.RedirectChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as RedirectChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
 	return nil
 }
 
@@ -749,6 +781,10 @@ func (src FlowChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 
 	if src.PromptChallengeResponseRequest != nil {
 		return json.Marshal(&src.PromptChallengeResponseRequest)
+	}
+
+	if src.RedirectChallengeResponseRequest != nil {
+		return json.Marshal(&src.RedirectChallengeResponseRequest)
 	}
 
 	if src.UserLoginChallengeResponseRequest != nil {
@@ -837,6 +873,10 @@ func (obj *FlowChallengeResponseRequest) GetActualInstance() interface{} {
 
 	if obj.PromptChallengeResponseRequest != nil {
 		return obj.PromptChallengeResponseRequest
+	}
+
+	if obj.RedirectChallengeResponseRequest != nil {
+		return obj.RedirectChallengeResponseRequest
 	}
 
 	if obj.UserLoginChallengeResponseRequest != nil {

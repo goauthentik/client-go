@@ -141,6 +141,8 @@
 
 * `STAGES_PROMPT_PROMPTSTAGE` (value: `"authentik_stages_prompt.promptstage"`)
 
+* `STAGES_REDIRECT_REDIRECTSTAGE` (value: `"authentik_stages_redirect.redirectstage"`)
+
 * `STAGES_USER_DELETE_USERDELETESTAGE` (value: `"authentik_stages_user_delete.userdeletestage"`)
 
 * `STAGES_USER_LOGIN_USERLOGINSTAGE` (value: `"authentik_stages_user_login.userloginstage"`)
