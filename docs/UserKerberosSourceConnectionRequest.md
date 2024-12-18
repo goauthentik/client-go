@@ -5,13 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **User** | **int32** |  | 
+**Source** | **string** |  | 
 **Identifier** | **string** |  | 
 
 ## Methods
 
 ### NewUserKerberosSourceConnectionRequest
 
-`func NewUserKerberosSourceConnectionRequest(user int32, identifier string, ) *UserKerberosSourceConnectionRequest`
+`func NewUserKerberosSourceConnectionRequest(user int32, source string, identifier string, ) *UserKerberosSourceConnectionRequest`
 
 NewUserKerberosSourceConnectionRequest instantiates a new UserKerberosSourceConnectionRequest object
 This constructor will assign default values to properties that have it defined,
@@ -44,6 +45,26 @@ and a boolean to check if the value has been set.
 `func (o *UserKerberosSourceConnectionRequest) SetUser(v int32)`
 
 SetUser sets User field to given value.
+
+
+### GetSource
+
+`func (o *UserKerberosSourceConnectionRequest) GetSource() string`
+
+GetSource returns the Source field if non-nil, zero value otherwise.
+
+### GetSourceOk
+
+`func (o *UserKerberosSourceConnectionRequest) GetSourceOk() (*string, bool)`
+
+GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSource
+
+`func (o *UserKerberosSourceConnectionRequest) SetSource(v string)`
+
+SetSource sets Source field to given value.
 
 
 ### GetIdentifier

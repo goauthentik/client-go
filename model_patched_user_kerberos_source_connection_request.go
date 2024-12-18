@@ -18,6 +18,7 @@ import (
 // PatchedUserKerberosSourceConnectionRequest Kerberos Source Serializer
 type PatchedUserKerberosSourceConnectionRequest struct {
 	User       *int32  `json:"user,omitempty"`
+	Source     *string `json:"source,omitempty"`
 	Identifier *string `json:"identifier,omitempty"`
 }
 
@@ -70,6 +71,38 @@ func (o *PatchedUserKerberosSourceConnectionRequest) SetUser(v int32) {
 	o.User = &v
 }
 
+// GetSource returns the Source field value if set, zero value otherwise.
+func (o *PatchedUserKerberosSourceConnectionRequest) GetSource() string {
+	if o == nil || o.Source == nil {
+		var ret string
+		return ret
+	}
+	return *o.Source
+}
+
+// GetSourceOk returns a tuple with the Source field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedUserKerberosSourceConnectionRequest) GetSourceOk() (*string, bool) {
+	if o == nil || o.Source == nil {
+		return nil, false
+	}
+	return o.Source, true
+}
+
+// HasSource returns a boolean if a field has been set.
+func (o *PatchedUserKerberosSourceConnectionRequest) HasSource() bool {
+	if o != nil && o.Source != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSource gets a reference to the given string and assigns it to the Source field.
+func (o *PatchedUserKerberosSourceConnectionRequest) SetSource(v string) {
+	o.Source = &v
+}
+
 // GetIdentifier returns the Identifier field value if set, zero value otherwise.
 func (o *PatchedUserKerberosSourceConnectionRequest) GetIdentifier() string {
 	if o == nil || o.Identifier == nil {
@@ -106,6 +139,9 @@ func (o PatchedUserKerberosSourceConnectionRequest) MarshalJSON() ([]byte, error
 	toSerialize := map[string]interface{}{}
 	if o.User != nil {
 		toSerialize["user"] = o.User
+	}
+	if o.Source != nil {
+		toSerialize["source"] = o.Source
 	}
 	if o.Identifier != nil {
 		toSerialize["identifier"] = o.Identifier

@@ -20,7 +20,8 @@ import (
 type UserPlexSourceConnection struct {
 	Pk         int32     `json:"pk"`
 	User       int32     `json:"user"`
-	Source     Source    `json:"source"`
+	Source     string    `json:"source"`
+	SourceObj  Source    `json:"source_obj"`
 	Created    time.Time `json:"created"`
 	Identifier string    `json:"identifier"`
 }
@@ -29,11 +30,12 @@ type UserPlexSourceConnection struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserPlexSourceConnection(pk int32, user int32, source Source, created time.Time, identifier string) *UserPlexSourceConnection {
+func NewUserPlexSourceConnection(pk int32, user int32, source string, sourceObj Source, created time.Time, identifier string) *UserPlexSourceConnection {
 	this := UserPlexSourceConnection{}
 	this.Pk = pk
 	this.User = user
 	this.Source = source
+	this.SourceObj = sourceObj
 	this.Created = created
 	this.Identifier = identifier
 	return &this
@@ -96,9 +98,9 @@ func (o *UserPlexSourceConnection) SetUser(v int32) {
 }
 
 // GetSource returns the Source field value
-func (o *UserPlexSourceConnection) GetSource() Source {
+func (o *UserPlexSourceConnection) GetSource() string {
 	if o == nil {
-		var ret Source
+		var ret string
 		return ret
 	}
 
@@ -107,7 +109,7 @@ func (o *UserPlexSourceConnection) GetSource() Source {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *UserPlexSourceConnection) GetSourceOk() (*Source, bool) {
+func (o *UserPlexSourceConnection) GetSourceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -115,8 +117,32 @@ func (o *UserPlexSourceConnection) GetSourceOk() (*Source, bool) {
 }
 
 // SetSource sets field value
-func (o *UserPlexSourceConnection) SetSource(v Source) {
+func (o *UserPlexSourceConnection) SetSource(v string) {
 	o.Source = v
+}
+
+// GetSourceObj returns the SourceObj field value
+func (o *UserPlexSourceConnection) GetSourceObj() Source {
+	if o == nil {
+		var ret Source
+		return ret
+	}
+
+	return o.SourceObj
+}
+
+// GetSourceObjOk returns a tuple with the SourceObj field value
+// and a boolean to check if the value has been set.
+func (o *UserPlexSourceConnection) GetSourceObjOk() (*Source, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SourceObj, true
+}
+
+// SetSourceObj sets field value
+func (o *UserPlexSourceConnection) SetSourceObj(v Source) {
+	o.SourceObj = v
 }
 
 // GetCreated returns the Created field value
@@ -177,6 +203,9 @@ func (o UserPlexSourceConnection) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["source"] = o.Source
+	}
+	if true {
+		toSerialize["source_obj"] = o.SourceObj
 	}
 	if true {
 		toSerialize["created"] = o.Created

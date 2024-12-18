@@ -18,6 +18,7 @@ import (
 // UserKerberosSourceConnectionRequest Kerberos Source Serializer
 type UserKerberosSourceConnectionRequest struct {
 	User       int32  `json:"user"`
+	Source     string `json:"source"`
 	Identifier string `json:"identifier"`
 }
 
@@ -25,9 +26,10 @@ type UserKerberosSourceConnectionRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserKerberosSourceConnectionRequest(user int32, identifier string) *UserKerberosSourceConnectionRequest {
+func NewUserKerberosSourceConnectionRequest(user int32, source string, identifier string) *UserKerberosSourceConnectionRequest {
 	this := UserKerberosSourceConnectionRequest{}
 	this.User = user
+	this.Source = source
 	this.Identifier = identifier
 	return &this
 }
@@ -64,6 +66,30 @@ func (o *UserKerberosSourceConnectionRequest) SetUser(v int32) {
 	o.User = v
 }
 
+// GetSource returns the Source field value
+func (o *UserKerberosSourceConnectionRequest) GetSource() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Source
+}
+
+// GetSourceOk returns a tuple with the Source field value
+// and a boolean to check if the value has been set.
+func (o *UserKerberosSourceConnectionRequest) GetSourceOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Source, true
+}
+
+// SetSource sets field value
+func (o *UserKerberosSourceConnectionRequest) SetSource(v string) {
+	o.Source = v
+}
+
 // GetIdentifier returns the Identifier field value
 func (o *UserKerberosSourceConnectionRequest) GetIdentifier() string {
 	if o == nil {
@@ -92,6 +118,9 @@ func (o UserKerberosSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["user"] = o.User
+	}
+	if true {
+		toSerialize["source"] = o.Source
 	}
 	if true {
 		toSerialize["identifier"] = o.Identifier

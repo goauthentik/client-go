@@ -20,7 +20,8 @@ import (
 type UserOAuthSourceConnection struct {
 	Pk         int32     `json:"pk"`
 	User       int32     `json:"user"`
-	Source     Source    `json:"source"`
+	Source     string    `json:"source"`
+	SourceObj  Source    `json:"source_obj"`
 	Created    time.Time `json:"created"`
 	Identifier string    `json:"identifier"`
 }
@@ -29,11 +30,12 @@ type UserOAuthSourceConnection struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserOAuthSourceConnection(pk int32, user int32, source Source, created time.Time, identifier string) *UserOAuthSourceConnection {
+func NewUserOAuthSourceConnection(pk int32, user int32, source string, sourceObj Source, created time.Time, identifier string) *UserOAuthSourceConnection {
 	this := UserOAuthSourceConnection{}
 	this.Pk = pk
 	this.User = user
 	this.Source = source
+	this.SourceObj = sourceObj
 	this.Created = created
 	this.Identifier = identifier
 	return &this
@@ -96,9 +98,9 @@ func (o *UserOAuthSourceConnection) SetUser(v int32) {
 }
 
 // GetSource returns the Source field value
-func (o *UserOAuthSourceConnection) GetSource() Source {
+func (o *UserOAuthSourceConnection) GetSource() string {
 	if o == nil {
-		var ret Source
+		var ret string
 		return ret
 	}
 
@@ -107,7 +109,7 @@ func (o *UserOAuthSourceConnection) GetSource() Source {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *UserOAuthSourceConnection) GetSourceOk() (*Source, bool) {
+func (o *UserOAuthSourceConnection) GetSourceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -115,8 +117,32 @@ func (o *UserOAuthSourceConnection) GetSourceOk() (*Source, bool) {
 }
 
 // SetSource sets field value
-func (o *UserOAuthSourceConnection) SetSource(v Source) {
+func (o *UserOAuthSourceConnection) SetSource(v string) {
 	o.Source = v
+}
+
+// GetSourceObj returns the SourceObj field value
+func (o *UserOAuthSourceConnection) GetSourceObj() Source {
+	if o == nil {
+		var ret Source
+		return ret
+	}
+
+	return o.SourceObj
+}
+
+// GetSourceObjOk returns a tuple with the SourceObj field value
+// and a boolean to check if the value has been set.
+func (o *UserOAuthSourceConnection) GetSourceObjOk() (*Source, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SourceObj, true
+}
+
+// SetSourceObj sets field value
+func (o *UserOAuthSourceConnection) SetSourceObj(v Source) {
+	o.SourceObj = v
 }
 
 // GetCreated returns the Created field value
@@ -177,6 +203,9 @@ func (o UserOAuthSourceConnection) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["source"] = o.Source
+	}
+	if true {
+		toSerialize["source_obj"] = o.SourceObj
 	}
 	if true {
 		toSerialize["created"] = o.Created

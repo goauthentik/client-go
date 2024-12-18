@@ -17,6 +17,8 @@ import (
 
 // PatchedUserSAMLSourceConnectionRequest SAML Source Serializer
 type PatchedUserSAMLSourceConnectionRequest struct {
+	User       *int32  `json:"user,omitempty"`
+	Source     *string `json:"source,omitempty"`
 	Identifier *string `json:"identifier,omitempty"`
 }
 
@@ -35,6 +37,70 @@ func NewPatchedUserSAMLSourceConnectionRequest() *PatchedUserSAMLSourceConnectio
 func NewPatchedUserSAMLSourceConnectionRequestWithDefaults() *PatchedUserSAMLSourceConnectionRequest {
 	this := PatchedUserSAMLSourceConnectionRequest{}
 	return &this
+}
+
+// GetUser returns the User field value if set, zero value otherwise.
+func (o *PatchedUserSAMLSourceConnectionRequest) GetUser() int32 {
+	if o == nil || o.User == nil {
+		var ret int32
+		return ret
+	}
+	return *o.User
+}
+
+// GetUserOk returns a tuple with the User field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedUserSAMLSourceConnectionRequest) GetUserOk() (*int32, bool) {
+	if o == nil || o.User == nil {
+		return nil, false
+	}
+	return o.User, true
+}
+
+// HasUser returns a boolean if a field has been set.
+func (o *PatchedUserSAMLSourceConnectionRequest) HasUser() bool {
+	if o != nil && o.User != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUser gets a reference to the given int32 and assigns it to the User field.
+func (o *PatchedUserSAMLSourceConnectionRequest) SetUser(v int32) {
+	o.User = &v
+}
+
+// GetSource returns the Source field value if set, zero value otherwise.
+func (o *PatchedUserSAMLSourceConnectionRequest) GetSource() string {
+	if o == nil || o.Source == nil {
+		var ret string
+		return ret
+	}
+	return *o.Source
+}
+
+// GetSourceOk returns a tuple with the Source field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedUserSAMLSourceConnectionRequest) GetSourceOk() (*string, bool) {
+	if o == nil || o.Source == nil {
+		return nil, false
+	}
+	return o.Source, true
+}
+
+// HasSource returns a boolean if a field has been set.
+func (o *PatchedUserSAMLSourceConnectionRequest) HasSource() bool {
+	if o != nil && o.Source != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSource gets a reference to the given string and assigns it to the Source field.
+func (o *PatchedUserSAMLSourceConnectionRequest) SetSource(v string) {
+	o.Source = &v
 }
 
 // GetIdentifier returns the Identifier field value if set, zero value otherwise.
@@ -71,6 +137,12 @@ func (o *PatchedUserSAMLSourceConnectionRequest) SetIdentifier(v string) {
 
 func (o PatchedUserSAMLSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.User != nil {
+		toSerialize["user"] = o.User
+	}
+	if o.Source != nil {
+		toSerialize["source"] = o.Source
+	}
 	if o.Identifier != nil {
 		toSerialize["identifier"] = o.Identifier
 	}

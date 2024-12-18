@@ -17,6 +17,8 @@ import (
 
 // UserSAMLSourceConnectionRequest SAML Source Serializer
 type UserSAMLSourceConnectionRequest struct {
+	User       int32  `json:"user"`
+	Source     string `json:"source"`
 	Identifier string `json:"identifier"`
 }
 
@@ -24,8 +26,10 @@ type UserSAMLSourceConnectionRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserSAMLSourceConnectionRequest(identifier string) *UserSAMLSourceConnectionRequest {
+func NewUserSAMLSourceConnectionRequest(user int32, source string, identifier string) *UserSAMLSourceConnectionRequest {
 	this := UserSAMLSourceConnectionRequest{}
+	this.User = user
+	this.Source = source
 	this.Identifier = identifier
 	return &this
 }
@@ -36,6 +40,54 @@ func NewUserSAMLSourceConnectionRequest(identifier string) *UserSAMLSourceConnec
 func NewUserSAMLSourceConnectionRequestWithDefaults() *UserSAMLSourceConnectionRequest {
 	this := UserSAMLSourceConnectionRequest{}
 	return &this
+}
+
+// GetUser returns the User field value
+func (o *UserSAMLSourceConnectionRequest) GetUser() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.User
+}
+
+// GetUserOk returns a tuple with the User field value
+// and a boolean to check if the value has been set.
+func (o *UserSAMLSourceConnectionRequest) GetUserOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.User, true
+}
+
+// SetUser sets field value
+func (o *UserSAMLSourceConnectionRequest) SetUser(v int32) {
+	o.User = v
+}
+
+// GetSource returns the Source field value
+func (o *UserSAMLSourceConnectionRequest) GetSource() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Source
+}
+
+// GetSourceOk returns a tuple with the Source field value
+// and a boolean to check if the value has been set.
+func (o *UserSAMLSourceConnectionRequest) GetSourceOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Source, true
+}
+
+// SetSource sets field value
+func (o *UserSAMLSourceConnectionRequest) SetSource(v string) {
+	o.Source = v
 }
 
 // GetIdentifier returns the Identifier field value
@@ -64,6 +116,12 @@ func (o *UserSAMLSourceConnectionRequest) SetIdentifier(v string) {
 
 func (o UserSAMLSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["user"] = o.User
+	}
+	if true {
+		toSerialize["source"] = o.Source
+	}
 	if true {
 		toSerialize["identifier"] = o.Identifier
 	}

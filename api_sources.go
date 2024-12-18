@@ -1340,9 +1340,15 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosListExecute(r ApiSour
 }
 
 type ApiSourcesGroupConnectionsKerberosPartialUpdateRequest struct {
-	ctx        context.Context
-	ApiService *SourcesApiService
-	id         int32
+	ctx                                         context.Context
+	ApiService                                  *SourcesApiService
+	id                                          int32
+	patchedGroupKerberosSourceConnectionRequest *PatchedGroupKerberosSourceConnectionRequest
+}
+
+func (r ApiSourcesGroupConnectionsKerberosPartialUpdateRequest) PatchedGroupKerberosSourceConnectionRequest(patchedGroupKerberosSourceConnectionRequest PatchedGroupKerberosSourceConnectionRequest) ApiSourcesGroupConnectionsKerberosPartialUpdateRequest {
+	r.patchedGroupKerberosSourceConnectionRequest = &patchedGroupKerberosSourceConnectionRequest
+	return r
 }
 
 func (r ApiSourcesGroupConnectionsKerberosPartialUpdateRequest) Execute() (*GroupKerberosSourceConnection, *http.Response, error) {
@@ -1390,7 +1396,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosPartialUpdateExecute(
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1406,6 +1412,8 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosPartialUpdateExecute(
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.patchedGroupKerberosSourceConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1586,9 +1594,15 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosRetrieveExecute(r Api
 }
 
 type ApiSourcesGroupConnectionsKerberosUpdateRequest struct {
-	ctx        context.Context
-	ApiService *SourcesApiService
-	id         int32
+	ctx                                  context.Context
+	ApiService                           *SourcesApiService
+	id                                   int32
+	groupKerberosSourceConnectionRequest *GroupKerberosSourceConnectionRequest
+}
+
+func (r ApiSourcesGroupConnectionsKerberosUpdateRequest) GroupKerberosSourceConnectionRequest(groupKerberosSourceConnectionRequest GroupKerberosSourceConnectionRequest) ApiSourcesGroupConnectionsKerberosUpdateRequest {
+	r.groupKerberosSourceConnectionRequest = &groupKerberosSourceConnectionRequest
+	return r
 }
 
 func (r ApiSourcesGroupConnectionsKerberosUpdateRequest) Execute() (*GroupKerberosSourceConnection, *http.Response, error) {
@@ -1634,9 +1648,12 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosUpdateExecute(r ApiSo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.groupKerberosSourceConnectionRequest == nil {
+		return localVarReturnValue, nil, reportError("groupKerberosSourceConnectionRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1652,6 +1669,8 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosUpdateExecute(r ApiSo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.groupKerberosSourceConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1832,8 +1851,14 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosUsedByListExecute(r A
 }
 
 type ApiSourcesGroupConnectionsOauthCreateRequest struct {
-	ctx        context.Context
-	ApiService *SourcesApiService
+	ctx                               context.Context
+	ApiService                        *SourcesApiService
+	groupOAuthSourceConnectionRequest *GroupOAuthSourceConnectionRequest
+}
+
+func (r ApiSourcesGroupConnectionsOauthCreateRequest) GroupOAuthSourceConnectionRequest(groupOAuthSourceConnectionRequest GroupOAuthSourceConnectionRequest) ApiSourcesGroupConnectionsOauthCreateRequest {
+	r.groupOAuthSourceConnectionRequest = &groupOAuthSourceConnectionRequest
+	return r
 }
 
 func (r ApiSourcesGroupConnectionsOauthCreateRequest) Execute() (*GroupOAuthSourceConnection, *http.Response, error) {
@@ -1876,9 +1901,12 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthCreateExecute(r ApiSourc
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.groupOAuthSourceConnectionRequest == nil {
+		return localVarReturnValue, nil, reportError("groupOAuthSourceConnectionRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1894,6 +1922,8 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthCreateExecute(r ApiSourc
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.groupOAuthSourceConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2239,9 +2269,15 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthListExecute(r ApiSources
 }
 
 type ApiSourcesGroupConnectionsOauthPartialUpdateRequest struct {
-	ctx        context.Context
-	ApiService *SourcesApiService
-	id         int32
+	ctx                                      context.Context
+	ApiService                               *SourcesApiService
+	id                                       int32
+	patchedGroupOAuthSourceConnectionRequest *PatchedGroupOAuthSourceConnectionRequest
+}
+
+func (r ApiSourcesGroupConnectionsOauthPartialUpdateRequest) PatchedGroupOAuthSourceConnectionRequest(patchedGroupOAuthSourceConnectionRequest PatchedGroupOAuthSourceConnectionRequest) ApiSourcesGroupConnectionsOauthPartialUpdateRequest {
+	r.patchedGroupOAuthSourceConnectionRequest = &patchedGroupOAuthSourceConnectionRequest
+	return r
 }
 
 func (r ApiSourcesGroupConnectionsOauthPartialUpdateRequest) Execute() (*GroupOAuthSourceConnection, *http.Response, error) {
@@ -2289,7 +2325,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthPartialUpdateExecute(r A
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -2305,6 +2341,8 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthPartialUpdateExecute(r A
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.patchedGroupOAuthSourceConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2485,9 +2523,15 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthRetrieveExecute(r ApiSou
 }
 
 type ApiSourcesGroupConnectionsOauthUpdateRequest struct {
-	ctx        context.Context
-	ApiService *SourcesApiService
-	id         int32
+	ctx                               context.Context
+	ApiService                        *SourcesApiService
+	id                                int32
+	groupOAuthSourceConnectionRequest *GroupOAuthSourceConnectionRequest
+}
+
+func (r ApiSourcesGroupConnectionsOauthUpdateRequest) GroupOAuthSourceConnectionRequest(groupOAuthSourceConnectionRequest GroupOAuthSourceConnectionRequest) ApiSourcesGroupConnectionsOauthUpdateRequest {
+	r.groupOAuthSourceConnectionRequest = &groupOAuthSourceConnectionRequest
+	return r
 }
 
 func (r ApiSourcesGroupConnectionsOauthUpdateRequest) Execute() (*GroupOAuthSourceConnection, *http.Response, error) {
@@ -2533,9 +2577,12 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthUpdateExecute(r ApiSourc
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.groupOAuthSourceConnectionRequest == nil {
+		return localVarReturnValue, nil, reportError("groupOAuthSourceConnectionRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -2551,6 +2598,8 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthUpdateExecute(r ApiSourc
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.groupOAuthSourceConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2731,8 +2780,14 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthUsedByListExecute(r ApiS
 }
 
 type ApiSourcesGroupConnectionsPlexCreateRequest struct {
-	ctx        context.Context
-	ApiService *SourcesApiService
+	ctx                              context.Context
+	ApiService                       *SourcesApiService
+	groupPlexSourceConnectionRequest *GroupPlexSourceConnectionRequest
+}
+
+func (r ApiSourcesGroupConnectionsPlexCreateRequest) GroupPlexSourceConnectionRequest(groupPlexSourceConnectionRequest GroupPlexSourceConnectionRequest) ApiSourcesGroupConnectionsPlexCreateRequest {
+	r.groupPlexSourceConnectionRequest = &groupPlexSourceConnectionRequest
+	return r
 }
 
 func (r ApiSourcesGroupConnectionsPlexCreateRequest) Execute() (*GroupPlexSourceConnection, *http.Response, error) {
@@ -2775,9 +2830,12 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexCreateExecute(r ApiSource
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.groupPlexSourceConnectionRequest == nil {
+		return localVarReturnValue, nil, reportError("groupPlexSourceConnectionRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -2793,6 +2851,8 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexCreateExecute(r ApiSource
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.groupPlexSourceConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3138,9 +3198,15 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexListExecute(r ApiSourcesG
 }
 
 type ApiSourcesGroupConnectionsPlexPartialUpdateRequest struct {
-	ctx        context.Context
-	ApiService *SourcesApiService
-	id         int32
+	ctx                                     context.Context
+	ApiService                              *SourcesApiService
+	id                                      int32
+	patchedGroupPlexSourceConnectionRequest *PatchedGroupPlexSourceConnectionRequest
+}
+
+func (r ApiSourcesGroupConnectionsPlexPartialUpdateRequest) PatchedGroupPlexSourceConnectionRequest(patchedGroupPlexSourceConnectionRequest PatchedGroupPlexSourceConnectionRequest) ApiSourcesGroupConnectionsPlexPartialUpdateRequest {
+	r.patchedGroupPlexSourceConnectionRequest = &patchedGroupPlexSourceConnectionRequest
+	return r
 }
 
 func (r ApiSourcesGroupConnectionsPlexPartialUpdateRequest) Execute() (*GroupPlexSourceConnection, *http.Response, error) {
@@ -3188,7 +3254,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexPartialUpdateExecute(r Ap
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -3204,6 +3270,8 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexPartialUpdateExecute(r Ap
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.patchedGroupPlexSourceConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3384,9 +3452,15 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexRetrieveExecute(r ApiSour
 }
 
 type ApiSourcesGroupConnectionsPlexUpdateRequest struct {
-	ctx        context.Context
-	ApiService *SourcesApiService
-	id         int32
+	ctx                              context.Context
+	ApiService                       *SourcesApiService
+	id                               int32
+	groupPlexSourceConnectionRequest *GroupPlexSourceConnectionRequest
+}
+
+func (r ApiSourcesGroupConnectionsPlexUpdateRequest) GroupPlexSourceConnectionRequest(groupPlexSourceConnectionRequest GroupPlexSourceConnectionRequest) ApiSourcesGroupConnectionsPlexUpdateRequest {
+	r.groupPlexSourceConnectionRequest = &groupPlexSourceConnectionRequest
+	return r
 }
 
 func (r ApiSourcesGroupConnectionsPlexUpdateRequest) Execute() (*GroupPlexSourceConnection, *http.Response, error) {
@@ -3432,9 +3506,12 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexUpdateExecute(r ApiSource
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.groupPlexSourceConnectionRequest == nil {
+		return localVarReturnValue, nil, reportError("groupPlexSourceConnectionRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -3450,6 +3527,8 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexUpdateExecute(r ApiSource
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.groupPlexSourceConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3918,9 +3997,15 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlListExecute(r ApiSourcesG
 }
 
 type ApiSourcesGroupConnectionsSamlPartialUpdateRequest struct {
-	ctx        context.Context
-	ApiService *SourcesApiService
-	id         int32
+	ctx                                     context.Context
+	ApiService                              *SourcesApiService
+	id                                      int32
+	patchedGroupSAMLSourceConnectionRequest *PatchedGroupSAMLSourceConnectionRequest
+}
+
+func (r ApiSourcesGroupConnectionsSamlPartialUpdateRequest) PatchedGroupSAMLSourceConnectionRequest(patchedGroupSAMLSourceConnectionRequest PatchedGroupSAMLSourceConnectionRequest) ApiSourcesGroupConnectionsSamlPartialUpdateRequest {
+	r.patchedGroupSAMLSourceConnectionRequest = &patchedGroupSAMLSourceConnectionRequest
+	return r
 }
 
 func (r ApiSourcesGroupConnectionsSamlPartialUpdateRequest) Execute() (*GroupSAMLSourceConnection, *http.Response, error) {
@@ -3968,7 +4053,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlPartialUpdateExecute(r Ap
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -3984,6 +4069,8 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlPartialUpdateExecute(r Ap
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.patchedGroupSAMLSourceConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -4164,9 +4251,15 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlRetrieveExecute(r ApiSour
 }
 
 type ApiSourcesGroupConnectionsSamlUpdateRequest struct {
-	ctx        context.Context
-	ApiService *SourcesApiService
-	id         int32
+	ctx                              context.Context
+	ApiService                       *SourcesApiService
+	id                               int32
+	groupSAMLSourceConnectionRequest *GroupSAMLSourceConnectionRequest
+}
+
+func (r ApiSourcesGroupConnectionsSamlUpdateRequest) GroupSAMLSourceConnectionRequest(groupSAMLSourceConnectionRequest GroupSAMLSourceConnectionRequest) ApiSourcesGroupConnectionsSamlUpdateRequest {
+	r.groupSAMLSourceConnectionRequest = &groupSAMLSourceConnectionRequest
+	return r
 }
 
 func (r ApiSourcesGroupConnectionsSamlUpdateRequest) Execute() (*GroupSAMLSourceConnection, *http.Response, error) {
@@ -4212,9 +4305,12 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlUpdateExecute(r ApiSource
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.groupSAMLSourceConnectionRequest == nil {
+		return localVarReturnValue, nil, reportError("groupSAMLSourceConnectionRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -4230,6 +4326,8 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlUpdateExecute(r ApiSource
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.groupSAMLSourceConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -13643,9 +13741,15 @@ func (a *SourcesApiService) SourcesUserConnectionsAllListExecute(r ApiSourcesUse
 }
 
 type ApiSourcesUserConnectionsAllPartialUpdateRequest struct {
-	ctx        context.Context
-	ApiService *SourcesApiService
-	id         int32
+	ctx                                context.Context
+	ApiService                         *SourcesApiService
+	id                                 int32
+	patchedUserSourceConnectionRequest *PatchedUserSourceConnectionRequest
+}
+
+func (r ApiSourcesUserConnectionsAllPartialUpdateRequest) PatchedUserSourceConnectionRequest(patchedUserSourceConnectionRequest PatchedUserSourceConnectionRequest) ApiSourcesUserConnectionsAllPartialUpdateRequest {
+	r.patchedUserSourceConnectionRequest = &patchedUserSourceConnectionRequest
+	return r
 }
 
 func (r ApiSourcesUserConnectionsAllPartialUpdateRequest) Execute() (*UserSourceConnection, *http.Response, error) {
@@ -13693,7 +13797,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllPartialUpdateExecute(r ApiS
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -13709,6 +13813,8 @@ func (a *SourcesApiService) SourcesUserConnectionsAllPartialUpdateExecute(r ApiS
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.patchedUserSourceConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -13889,9 +13995,15 @@ func (a *SourcesApiService) SourcesUserConnectionsAllRetrieveExecute(r ApiSource
 }
 
 type ApiSourcesUserConnectionsAllUpdateRequest struct {
-	ctx        context.Context
-	ApiService *SourcesApiService
-	id         int32
+	ctx                         context.Context
+	ApiService                  *SourcesApiService
+	id                          int32
+	userSourceConnectionRequest *UserSourceConnectionRequest
+}
+
+func (r ApiSourcesUserConnectionsAllUpdateRequest) UserSourceConnectionRequest(userSourceConnectionRequest UserSourceConnectionRequest) ApiSourcesUserConnectionsAllUpdateRequest {
+	r.userSourceConnectionRequest = &userSourceConnectionRequest
+	return r
 }
 
 func (r ApiSourcesUserConnectionsAllUpdateRequest) Execute() (*UserSourceConnection, *http.Response, error) {
@@ -13937,9 +14049,12 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUpdateExecute(r ApiSourcesU
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.userSourceConnectionRequest == nil {
+		return localVarReturnValue, nil, reportError("userSourceConnectionRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -13955,6 +14070,8 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUpdateExecute(r ApiSourcesU
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.userSourceConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

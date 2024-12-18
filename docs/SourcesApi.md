@@ -834,7 +834,7 @@ Name | Type | Description  | Notes
 
 ## SourcesGroupConnectionsKerberosPartialUpdate
 
-> GroupKerberosSourceConnection SourcesGroupConnectionsKerberosPartialUpdate(ctx, id).Execute()
+> GroupKerberosSourceConnection SourcesGroupConnectionsKerberosPartialUpdate(ctx, id).PatchedGroupKerberosSourceConnectionRequest(patchedGroupKerberosSourceConnectionRequest).Execute()
 
 
 
@@ -854,10 +854,11 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this Group Kerberos Source Connection.
+    patchedGroupKerberosSourceConnectionRequest := *openapiclient.NewPatchedGroupKerberosSourceConnectionRequest() // PatchedGroupKerberosSourceConnectionRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsKerberosPartialUpdate(context.Background(), id).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsKerberosPartialUpdate(context.Background(), id).PatchedGroupKerberosSourceConnectionRequest(patchedGroupKerberosSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsKerberosPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -883,6 +884,7 @@ Other parameters are passed through a pointer to a apiSourcesGroupConnectionsKer
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **patchedGroupKerberosSourceConnectionRequest** | [**PatchedGroupKerberosSourceConnectionRequest**](PatchedGroupKerberosSourceConnectionRequest.md) |  | 
 
 ### Return type
 
@@ -894,7 +896,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -974,7 +976,7 @@ Name | Type | Description  | Notes
 
 ## SourcesGroupConnectionsKerberosUpdate
 
-> GroupKerberosSourceConnection SourcesGroupConnectionsKerberosUpdate(ctx, id).Execute()
+> GroupKerberosSourceConnection SourcesGroupConnectionsKerberosUpdate(ctx, id).GroupKerberosSourceConnectionRequest(groupKerberosSourceConnectionRequest).Execute()
 
 
 
@@ -994,10 +996,11 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this Group Kerberos Source Connection.
+    groupKerberosSourceConnectionRequest := *openapiclient.NewGroupKerberosSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupKerberosSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsKerberosUpdate(context.Background(), id).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsKerberosUpdate(context.Background(), id).GroupKerberosSourceConnectionRequest(groupKerberosSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsKerberosUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1023,6 +1026,7 @@ Other parameters are passed through a pointer to a apiSourcesGroupConnectionsKer
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **groupKerberosSourceConnectionRequest** | [**GroupKerberosSourceConnectionRequest**](GroupKerberosSourceConnectionRequest.md) |  | 
 
 ### Return type
 
@@ -1034,7 +1038,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1114,7 +1118,7 @@ Name | Type | Description  | Notes
 
 ## SourcesGroupConnectionsOauthCreate
 
-> GroupOAuthSourceConnection SourcesGroupConnectionsOauthCreate(ctx).Execute()
+> GroupOAuthSourceConnection SourcesGroupConnectionsOauthCreate(ctx).GroupOAuthSourceConnectionRequest(groupOAuthSourceConnectionRequest).Execute()
 
 
 
@@ -1133,10 +1137,11 @@ import (
 )
 
 func main() {
+    groupOAuthSourceConnectionRequest := *openapiclient.NewGroupOAuthSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupOAuthSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsOauthCreate(context.Background()).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsOauthCreate(context.Background()).GroupOAuthSourceConnectionRequest(groupOAuthSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsOauthCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1148,12 +1153,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSourcesGroupConnectionsOauthCreateRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupOAuthSourceConnectionRequest** | [**GroupOAuthSourceConnectionRequest**](GroupOAuthSourceConnectionRequest.md) |  | 
 
 ### Return type
 
@@ -1165,7 +1174,7 @@ Other parameters are passed through a pointer to a apiSourcesGroupConnectionsOau
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1319,7 +1328,7 @@ Name | Type | Description  | Notes
 
 ## SourcesGroupConnectionsOauthPartialUpdate
 
-> GroupOAuthSourceConnection SourcesGroupConnectionsOauthPartialUpdate(ctx, id).Execute()
+> GroupOAuthSourceConnection SourcesGroupConnectionsOauthPartialUpdate(ctx, id).PatchedGroupOAuthSourceConnectionRequest(patchedGroupOAuthSourceConnectionRequest).Execute()
 
 
 
@@ -1339,10 +1348,11 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this Group OAuth Source Connection.
+    patchedGroupOAuthSourceConnectionRequest := *openapiclient.NewPatchedGroupOAuthSourceConnectionRequest() // PatchedGroupOAuthSourceConnectionRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsOauthPartialUpdate(context.Background(), id).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsOauthPartialUpdate(context.Background(), id).PatchedGroupOAuthSourceConnectionRequest(patchedGroupOAuthSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsOauthPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1368,6 +1378,7 @@ Other parameters are passed through a pointer to a apiSourcesGroupConnectionsOau
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **patchedGroupOAuthSourceConnectionRequest** | [**PatchedGroupOAuthSourceConnectionRequest**](PatchedGroupOAuthSourceConnectionRequest.md) |  | 
 
 ### Return type
 
@@ -1379,7 +1390,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1459,7 +1470,7 @@ Name | Type | Description  | Notes
 
 ## SourcesGroupConnectionsOauthUpdate
 
-> GroupOAuthSourceConnection SourcesGroupConnectionsOauthUpdate(ctx, id).Execute()
+> GroupOAuthSourceConnection SourcesGroupConnectionsOauthUpdate(ctx, id).GroupOAuthSourceConnectionRequest(groupOAuthSourceConnectionRequest).Execute()
 
 
 
@@ -1479,10 +1490,11 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this Group OAuth Source Connection.
+    groupOAuthSourceConnectionRequest := *openapiclient.NewGroupOAuthSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupOAuthSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsOauthUpdate(context.Background(), id).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsOauthUpdate(context.Background(), id).GroupOAuthSourceConnectionRequest(groupOAuthSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsOauthUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1508,6 +1520,7 @@ Other parameters are passed through a pointer to a apiSourcesGroupConnectionsOau
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **groupOAuthSourceConnectionRequest** | [**GroupOAuthSourceConnectionRequest**](GroupOAuthSourceConnectionRequest.md) |  | 
 
 ### Return type
 
@@ -1519,7 +1532,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1599,7 +1612,7 @@ Name | Type | Description  | Notes
 
 ## SourcesGroupConnectionsPlexCreate
 
-> GroupPlexSourceConnection SourcesGroupConnectionsPlexCreate(ctx).Execute()
+> GroupPlexSourceConnection SourcesGroupConnectionsPlexCreate(ctx).GroupPlexSourceConnectionRequest(groupPlexSourceConnectionRequest).Execute()
 
 
 
@@ -1618,10 +1631,11 @@ import (
 )
 
 func main() {
+    groupPlexSourceConnectionRequest := *openapiclient.NewGroupPlexSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupPlexSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsPlexCreate(context.Background()).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsPlexCreate(context.Background()).GroupPlexSourceConnectionRequest(groupPlexSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsPlexCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1633,12 +1647,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSourcesGroupConnectionsPlexCreateRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupPlexSourceConnectionRequest** | [**GroupPlexSourceConnectionRequest**](GroupPlexSourceConnectionRequest.md) |  | 
 
 ### Return type
 
@@ -1650,7 +1668,7 @@ Other parameters are passed through a pointer to a apiSourcesGroupConnectionsPle
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1804,7 +1822,7 @@ Name | Type | Description  | Notes
 
 ## SourcesGroupConnectionsPlexPartialUpdate
 
-> GroupPlexSourceConnection SourcesGroupConnectionsPlexPartialUpdate(ctx, id).Execute()
+> GroupPlexSourceConnection SourcesGroupConnectionsPlexPartialUpdate(ctx, id).PatchedGroupPlexSourceConnectionRequest(patchedGroupPlexSourceConnectionRequest).Execute()
 
 
 
@@ -1824,10 +1842,11 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this Group Plex Source Connection.
+    patchedGroupPlexSourceConnectionRequest := *openapiclient.NewPatchedGroupPlexSourceConnectionRequest() // PatchedGroupPlexSourceConnectionRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsPlexPartialUpdate(context.Background(), id).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsPlexPartialUpdate(context.Background(), id).PatchedGroupPlexSourceConnectionRequest(patchedGroupPlexSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsPlexPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1853,6 +1872,7 @@ Other parameters are passed through a pointer to a apiSourcesGroupConnectionsPle
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **patchedGroupPlexSourceConnectionRequest** | [**PatchedGroupPlexSourceConnectionRequest**](PatchedGroupPlexSourceConnectionRequest.md) |  | 
 
 ### Return type
 
@@ -1864,7 +1884,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1944,7 +1964,7 @@ Name | Type | Description  | Notes
 
 ## SourcesGroupConnectionsPlexUpdate
 
-> GroupPlexSourceConnection SourcesGroupConnectionsPlexUpdate(ctx, id).Execute()
+> GroupPlexSourceConnection SourcesGroupConnectionsPlexUpdate(ctx, id).GroupPlexSourceConnectionRequest(groupPlexSourceConnectionRequest).Execute()
 
 
 
@@ -1964,10 +1984,11 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this Group Plex Source Connection.
+    groupPlexSourceConnectionRequest := *openapiclient.NewGroupPlexSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupPlexSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsPlexUpdate(context.Background(), id).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsPlexUpdate(context.Background(), id).GroupPlexSourceConnectionRequest(groupPlexSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsPlexUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1993,6 +2014,7 @@ Other parameters are passed through a pointer to a apiSourcesGroupConnectionsPle
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **groupPlexSourceConnectionRequest** | [**GroupPlexSourceConnectionRequest**](GroupPlexSourceConnectionRequest.md) |  | 
 
 ### Return type
 
@@ -2004,7 +2026,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2228,7 +2250,7 @@ Name | Type | Description  | Notes
 
 ## SourcesGroupConnectionsSamlPartialUpdate
 
-> GroupSAMLSourceConnection SourcesGroupConnectionsSamlPartialUpdate(ctx, id).Execute()
+> GroupSAMLSourceConnection SourcesGroupConnectionsSamlPartialUpdate(ctx, id).PatchedGroupSAMLSourceConnectionRequest(patchedGroupSAMLSourceConnectionRequest).Execute()
 
 
 
@@ -2248,10 +2270,11 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this Group SAML Source Connection.
+    patchedGroupSAMLSourceConnectionRequest := *openapiclient.NewPatchedGroupSAMLSourceConnectionRequest() // PatchedGroupSAMLSourceConnectionRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsSamlPartialUpdate(context.Background(), id).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsSamlPartialUpdate(context.Background(), id).PatchedGroupSAMLSourceConnectionRequest(patchedGroupSAMLSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsSamlPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2277,6 +2300,7 @@ Other parameters are passed through a pointer to a apiSourcesGroupConnectionsSam
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **patchedGroupSAMLSourceConnectionRequest** | [**PatchedGroupSAMLSourceConnectionRequest**](PatchedGroupSAMLSourceConnectionRequest.md) |  | 
 
 ### Return type
 
@@ -2288,7 +2312,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2368,7 +2392,7 @@ Name | Type | Description  | Notes
 
 ## SourcesGroupConnectionsSamlUpdate
 
-> GroupSAMLSourceConnection SourcesGroupConnectionsSamlUpdate(ctx, id).Execute()
+> GroupSAMLSourceConnection SourcesGroupConnectionsSamlUpdate(ctx, id).GroupSAMLSourceConnectionRequest(groupSAMLSourceConnectionRequest).Execute()
 
 
 
@@ -2388,10 +2412,11 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this Group SAML Source Connection.
+    groupSAMLSourceConnectionRequest := *openapiclient.NewGroupSAMLSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupSAMLSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsSamlUpdate(context.Background(), id).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsSamlUpdate(context.Background(), id).GroupSAMLSourceConnectionRequest(groupSAMLSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsSamlUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2417,6 +2442,7 @@ Other parameters are passed through a pointer to a apiSourcesGroupConnectionsSam
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **groupSAMLSourceConnectionRequest** | [**GroupSAMLSourceConnectionRequest**](GroupSAMLSourceConnectionRequest.md) |  | 
 
 ### Return type
 
@@ -2428,7 +2454,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -7226,7 +7252,7 @@ Name | Type | Description  | Notes
 
 ## SourcesUserConnectionsAllPartialUpdate
 
-> UserSourceConnection SourcesUserConnectionsAllPartialUpdate(ctx, id).Execute()
+> UserSourceConnection SourcesUserConnectionsAllPartialUpdate(ctx, id).PatchedUserSourceConnectionRequest(patchedUserSourceConnectionRequest).Execute()
 
 
 
@@ -7246,10 +7272,11 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this user source connection.
+    patchedUserSourceConnectionRequest := *openapiclient.NewPatchedUserSourceConnectionRequest() // PatchedUserSourceConnectionRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsAllPartialUpdate(context.Background(), id).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsAllPartialUpdate(context.Background(), id).PatchedUserSourceConnectionRequest(patchedUserSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7275,6 +7302,7 @@ Other parameters are passed through a pointer to a apiSourcesUserConnectionsAllP
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **patchedUserSourceConnectionRequest** | [**PatchedUserSourceConnectionRequest**](PatchedUserSourceConnectionRequest.md) |  | 
 
 ### Return type
 
@@ -7286,7 +7314,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -7366,7 +7394,7 @@ Name | Type | Description  | Notes
 
 ## SourcesUserConnectionsAllUpdate
 
-> UserSourceConnection SourcesUserConnectionsAllUpdate(ctx, id).Execute()
+> UserSourceConnection SourcesUserConnectionsAllUpdate(ctx, id).UserSourceConnectionRequest(userSourceConnectionRequest).Execute()
 
 
 
@@ -7386,10 +7414,11 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this user source connection.
+    userSourceConnectionRequest := *openapiclient.NewUserSourceConnectionRequest(int32(123), "Source_example") // UserSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsAllUpdate(context.Background(), id).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsAllUpdate(context.Background(), id).UserSourceConnectionRequest(userSourceConnectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsAllUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7415,6 +7444,7 @@ Other parameters are passed through a pointer to a apiSourcesUserConnectionsAllU
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **userSourceConnectionRequest** | [**UserSourceConnectionRequest**](UserSourceConnectionRequest.md) |  | 
 
 ### Return type
 
@@ -7426,7 +7456,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -7525,7 +7555,7 @@ import (
 )
 
 func main() {
-    userKerberosSourceConnectionRequest := *openapiclient.NewUserKerberosSourceConnectionRequest(int32(123), "Identifier_example") // UserKerberosSourceConnectionRequest | 
+    userKerberosSourceConnectionRequest := *openapiclient.NewUserKerberosSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserKerberosSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -7876,7 +7906,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this User Kerberos Source Connection.
-    userKerberosSourceConnectionRequest := *openapiclient.NewUserKerberosSourceConnectionRequest(int32(123), "Identifier_example") // UserKerberosSourceConnectionRequest | 
+    userKerberosSourceConnectionRequest := *openapiclient.NewUserKerberosSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserKerberosSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -8017,7 +8047,7 @@ import (
 )
 
 func main() {
-    userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest("Identifier_example") // UserOAuthSourceConnectionRequest | 
+    userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserOAuthSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -8370,7 +8400,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this User OAuth Source Connection.
-    userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest("Identifier_example") // UserOAuthSourceConnectionRequest | 
+    userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserOAuthSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -8511,7 +8541,7 @@ import (
 )
 
 func main() {
-    userPlexSourceConnectionRequest := *openapiclient.NewUserPlexSourceConnectionRequest("Identifier_example", "PlexToken_example") // UserPlexSourceConnectionRequest | 
+    userPlexSourceConnectionRequest := *openapiclient.NewUserPlexSourceConnectionRequest(int32(123), "Source_example", "Identifier_example", "PlexToken_example") // UserPlexSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -8864,7 +8894,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this User Plex Source Connection.
-    userPlexSourceConnectionRequest := *openapiclient.NewUserPlexSourceConnectionRequest("Identifier_example", "PlexToken_example") // UserPlexSourceConnectionRequest | 
+    userPlexSourceConnectionRequest := *openapiclient.NewUserPlexSourceConnectionRequest(int32(123), "Source_example", "Identifier_example", "PlexToken_example") // UserPlexSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -9005,7 +9035,7 @@ import (
 )
 
 func main() {
-    userSAMLSourceConnectionRequest := *openapiclient.NewUserSAMLSourceConnectionRequest("Identifier_example") // UserSAMLSourceConnectionRequest | 
+    userSAMLSourceConnectionRequest := *openapiclient.NewUserSAMLSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserSAMLSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -9358,7 +9388,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this User SAML Source Connection.
-    userSAMLSourceConnectionRequest := *openapiclient.NewUserSAMLSourceConnectionRequest("Identifier_example") // UserSAMLSourceConnectionRequest | 
+    userSAMLSourceConnectionRequest := *openapiclient.NewUserSAMLSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserSAMLSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

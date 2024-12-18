@@ -5,16 +5,17 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **int32** |  | [readonly] 
-**Group** | **string** |  | [readonly] 
-**Source** | [**Source**](Source.md) |  | [readonly] 
-**Identifier** | **string** |  | [readonly] 
+**Group** | **string** |  | 
+**Source** | **string** |  | 
+**SourceObj** | [**Source**](Source.md) |  | [readonly] 
+**Identifier** | **string** |  | 
 **Created** | **time.Time** |  | [readonly] 
 
 ## Methods
 
 ### NewGroupKerberosSourceConnection
 
-`func NewGroupKerberosSourceConnection(pk int32, group string, source Source, identifier string, created time.Time, ) *GroupKerberosSourceConnection`
+`func NewGroupKerberosSourceConnection(pk int32, group string, source string, sourceObj Source, identifier string, created time.Time, ) *GroupKerberosSourceConnection`
 
 NewGroupKerberosSourceConnection instantiates a new GroupKerberosSourceConnection object
 This constructor will assign default values to properties that have it defined,
@@ -71,22 +72,42 @@ SetGroup sets Group field to given value.
 
 ### GetSource
 
-`func (o *GroupKerberosSourceConnection) GetSource() Source`
+`func (o *GroupKerberosSourceConnection) GetSource() string`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *GroupKerberosSourceConnection) GetSourceOk() (*Source, bool)`
+`func (o *GroupKerberosSourceConnection) GetSourceOk() (*string, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *GroupKerberosSourceConnection) SetSource(v Source)`
+`func (o *GroupKerberosSourceConnection) SetSource(v string)`
 
 SetSource sets Source field to given value.
+
+
+### GetSourceObj
+
+`func (o *GroupKerberosSourceConnection) GetSourceObj() Source`
+
+GetSourceObj returns the SourceObj field if non-nil, zero value otherwise.
+
+### GetSourceObjOk
+
+`func (o *GroupKerberosSourceConnection) GetSourceObjOk() (*Source, bool)`
+
+GetSourceObjOk returns a tuple with the SourceObj field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSourceObj
+
+`func (o *GroupKerberosSourceConnection) SetSourceObj(v Source)`
+
+SetSourceObj sets SourceObj field to given value.
 
 
 ### GetIdentifier

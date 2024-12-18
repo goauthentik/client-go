@@ -20,7 +20,8 @@ import (
 type GroupPlexSourceConnection struct {
 	Pk         int32     `json:"pk"`
 	Group      string    `json:"group"`
-	Source     Source    `json:"source"`
+	Source     string    `json:"source"`
+	SourceObj  Source    `json:"source_obj"`
 	Identifier string    `json:"identifier"`
 	Created    time.Time `json:"created"`
 }
@@ -29,11 +30,12 @@ type GroupPlexSourceConnection struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupPlexSourceConnection(pk int32, group string, source Source, identifier string, created time.Time) *GroupPlexSourceConnection {
+func NewGroupPlexSourceConnection(pk int32, group string, source string, sourceObj Source, identifier string, created time.Time) *GroupPlexSourceConnection {
 	this := GroupPlexSourceConnection{}
 	this.Pk = pk
 	this.Group = group
 	this.Source = source
+	this.SourceObj = sourceObj
 	this.Identifier = identifier
 	this.Created = created
 	return &this
@@ -96,9 +98,9 @@ func (o *GroupPlexSourceConnection) SetGroup(v string) {
 }
 
 // GetSource returns the Source field value
-func (o *GroupPlexSourceConnection) GetSource() Source {
+func (o *GroupPlexSourceConnection) GetSource() string {
 	if o == nil {
-		var ret Source
+		var ret string
 		return ret
 	}
 
@@ -107,7 +109,7 @@ func (o *GroupPlexSourceConnection) GetSource() Source {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *GroupPlexSourceConnection) GetSourceOk() (*Source, bool) {
+func (o *GroupPlexSourceConnection) GetSourceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -115,8 +117,32 @@ func (o *GroupPlexSourceConnection) GetSourceOk() (*Source, bool) {
 }
 
 // SetSource sets field value
-func (o *GroupPlexSourceConnection) SetSource(v Source) {
+func (o *GroupPlexSourceConnection) SetSource(v string) {
 	o.Source = v
+}
+
+// GetSourceObj returns the SourceObj field value
+func (o *GroupPlexSourceConnection) GetSourceObj() Source {
+	if o == nil {
+		var ret Source
+		return ret
+	}
+
+	return o.SourceObj
+}
+
+// GetSourceObjOk returns a tuple with the SourceObj field value
+// and a boolean to check if the value has been set.
+func (o *GroupPlexSourceConnection) GetSourceObjOk() (*Source, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SourceObj, true
+}
+
+// SetSourceObj sets field value
+func (o *GroupPlexSourceConnection) SetSourceObj(v Source) {
+	o.SourceObj = v
 }
 
 // GetIdentifier returns the Identifier field value
@@ -177,6 +203,9 @@ func (o GroupPlexSourceConnection) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["source"] = o.Source
+	}
+	if true {
+		toSerialize["source_obj"] = o.SourceObj
 	}
 	if true {
 		toSerialize["identifier"] = o.Identifier

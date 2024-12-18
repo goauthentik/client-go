@@ -5,8 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **int32** |  | [readonly] 
-**User** | **int32** |  | [readonly] 
-**Source** | [**Source**](Source.md) |  | [readonly] 
+**User** | **int32** |  | 
+**Source** | **string** |  | 
+**SourceObj** | [**Source**](Source.md) |  | [readonly] 
 **Created** | **time.Time** |  | [readonly] 
 **Identifier** | **string** |  | 
 
@@ -14,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewUserSAMLSourceConnection
 
-`func NewUserSAMLSourceConnection(pk int32, user int32, source Source, created time.Time, identifier string, ) *UserSAMLSourceConnection`
+`func NewUserSAMLSourceConnection(pk int32, user int32, source string, sourceObj Source, created time.Time, identifier string, ) *UserSAMLSourceConnection`
 
 NewUserSAMLSourceConnection instantiates a new UserSAMLSourceConnection object
 This constructor will assign default values to properties that have it defined,
@@ -71,22 +72,42 @@ SetUser sets User field to given value.
 
 ### GetSource
 
-`func (o *UserSAMLSourceConnection) GetSource() Source`
+`func (o *UserSAMLSourceConnection) GetSource() string`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *UserSAMLSourceConnection) GetSourceOk() (*Source, bool)`
+`func (o *UserSAMLSourceConnection) GetSourceOk() (*string, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *UserSAMLSourceConnection) SetSource(v Source)`
+`func (o *UserSAMLSourceConnection) SetSource(v string)`
 
 SetSource sets Source field to given value.
+
+
+### GetSourceObj
+
+`func (o *UserSAMLSourceConnection) GetSourceObj() Source`
+
+GetSourceObj returns the SourceObj field if non-nil, zero value otherwise.
+
+### GetSourceObjOk
+
+`func (o *UserSAMLSourceConnection) GetSourceObjOk() (*Source, bool)`
+
+GetSourceObjOk returns a tuple with the SourceObj field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSourceObj
+
+`func (o *UserSAMLSourceConnection) SetSourceObj(v Source)`
+
+SetSourceObj sets SourceObj field to given value.
 
 
 ### GetCreated

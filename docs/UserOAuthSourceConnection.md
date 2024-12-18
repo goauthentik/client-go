@@ -5,8 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **int32** |  | [readonly] 
-**User** | **int32** |  | [readonly] 
-**Source** | [**Source**](Source.md) |  | [readonly] 
+**User** | **int32** |  | 
+**Source** | **string** |  | 
+**SourceObj** | [**Source**](Source.md) |  | [readonly] 
 **Created** | **time.Time** |  | [readonly] 
 **Identifier** | **string** |  | 
 
@@ -14,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewUserOAuthSourceConnection
 
-`func NewUserOAuthSourceConnection(pk int32, user int32, source Source, created time.Time, identifier string, ) *UserOAuthSourceConnection`
+`func NewUserOAuthSourceConnection(pk int32, user int32, source string, sourceObj Source, created time.Time, identifier string, ) *UserOAuthSourceConnection`
 
 NewUserOAuthSourceConnection instantiates a new UserOAuthSourceConnection object
 This constructor will assign default values to properties that have it defined,
@@ -71,22 +72,42 @@ SetUser sets User field to given value.
 
 ### GetSource
 
-`func (o *UserOAuthSourceConnection) GetSource() Source`
+`func (o *UserOAuthSourceConnection) GetSource() string`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *UserOAuthSourceConnection) GetSourceOk() (*Source, bool)`
+`func (o *UserOAuthSourceConnection) GetSourceOk() (*string, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *UserOAuthSourceConnection) SetSource(v Source)`
+`func (o *UserOAuthSourceConnection) SetSource(v string)`
 
 SetSource sets Source field to given value.
+
+
+### GetSourceObj
+
+`func (o *UserOAuthSourceConnection) GetSourceObj() Source`
+
+GetSourceObj returns the SourceObj field if non-nil, zero value otherwise.
+
+### GetSourceObjOk
+
+`func (o *UserOAuthSourceConnection) GetSourceObjOk() (*Source, bool)`
+
+GetSourceObjOk returns a tuple with the SourceObj field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSourceObj
+
+`func (o *UserOAuthSourceConnection) SetSourceObj(v Source)`
+
+SetSourceObj sets SourceObj field to given value.
 
 
 ### GetCreated

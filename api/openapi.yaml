@@ -27790,6 +27790,11 @@ paths:
         schema:
           type: integer
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedGroupKerberosSourceConnectionRequest'
       responses:
         "200":
           content:
@@ -27826,6 +27831,12 @@ paths:
         schema:
           type: integer
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupKerberosSourceConnectionRequest'
+        required: true
       responses:
         "200":
           content:
@@ -27966,6 +27977,12 @@ paths:
     post:
       description: Group-source connection Viewset
       operationId: sources_group_connections_oauth_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupOAuthSourceConnectionRequest'
+        required: true
       responses:
         "201":
           content:
@@ -28068,6 +28085,11 @@ paths:
         schema:
           type: integer
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedGroupOAuthSourceConnectionRequest'
       responses:
         "200":
           content:
@@ -28103,6 +28125,12 @@ paths:
         schema:
           type: integer
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupOAuthSourceConnectionRequest'
+        required: true
       responses:
         "200":
           content:
@@ -28242,6 +28270,12 @@ paths:
     post:
       description: Group-source connection Viewset
       operationId: sources_group_connections_plex_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupPlexSourceConnectionRequest'
+        required: true
       responses:
         "201":
           content:
@@ -28344,6 +28378,11 @@ paths:
         schema:
           type: integer
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedGroupPlexSourceConnectionRequest'
       responses:
         "200":
           content:
@@ -28379,6 +28418,12 @@ paths:
         schema:
           type: integer
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupPlexSourceConnectionRequest'
+        required: true
       responses:
         "200":
           content:
@@ -28594,6 +28639,11 @@ paths:
         schema:
           type: integer
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedGroupSAMLSourceConnectionRequest'
       responses:
         "200":
           content:
@@ -28629,6 +28679,12 @@ paths:
         schema:
           type: integer
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupSAMLSourceConnectionRequest'
+        required: true
       responses:
         "200":
           content:
@@ -32029,6 +32085,11 @@ paths:
         schema:
           type: integer
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUserSourceConnectionRequest'
       responses:
         "200":
           content:
@@ -32064,6 +32125,12 @@ paths:
         schema:
           type: integer
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSourceConnectionRequest'
+        required: true
       responses:
         "200":
           content:
@@ -48207,9 +48274,10 @@ components:
       description: OAuth Group-Source connection Serializer
       example:
         identifier: identifier
+        source_obj: ""
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
-        source: ""
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pk:
@@ -48218,14 +48286,15 @@ components:
           type: integer
         group:
           format: uuid
-          readOnly: true
           type: string
         source:
+          format: uuid
+          type: string
+        source_obj:
           allOf:
           - $ref: '#/components/schemas/Source'
           readOnly: true
         identifier:
-          readOnly: true
           type: string
         created:
           format: date-time
@@ -48236,6 +48305,28 @@ components:
       - group
       - identifier
       - pk
+      - source
+      - source_obj
+      type: object
+    GroupKerberosSourceConnectionRequest:
+      description: OAuth Group-Source connection Serializer
+      example:
+        identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        group:
+          format: uuid
+          type: string
+        source:
+          format: uuid
+          type: string
+        identifier:
+          minLength: 1
+          type: string
+      required:
+      - group
+      - identifier
       - source
       type: object
     GroupMatchingModeEnum:
@@ -48335,9 +48426,10 @@ components:
       description: OAuth Group-Source connection Serializer
       example:
         identifier: identifier
+        source_obj: ""
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
-        source: ""
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pk:
@@ -48346,14 +48438,15 @@ components:
           type: integer
         group:
           format: uuid
-          readOnly: true
           type: string
         source:
+          format: uuid
+          type: string
+        source_obj:
           allOf:
           - $ref: '#/components/schemas/Source'
           readOnly: true
         identifier:
-          readOnly: true
           type: string
         created:
           format: date-time
@@ -48365,14 +48458,37 @@ components:
       - identifier
       - pk
       - source
+      - source_obj
+      type: object
+    GroupOAuthSourceConnectionRequest:
+      description: OAuth Group-Source connection Serializer
+      example:
+        identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        group:
+          format: uuid
+          type: string
+        source:
+          format: uuid
+          type: string
+        identifier:
+          minLength: 1
+          type: string
+      required:
+      - group
+      - identifier
+      - source
       type: object
     GroupPlexSourceConnection:
       description: Plex Group-Source connection Serializer
       example:
         identifier: identifier
+        source_obj: ""
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
-        source: ""
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pk:
@@ -48381,14 +48497,15 @@ components:
           type: integer
         group:
           format: uuid
-          readOnly: true
           type: string
         source:
+          format: uuid
+          type: string
+        source_obj:
           allOf:
           - $ref: '#/components/schemas/Source'
           readOnly: true
         identifier:
-          readOnly: true
           type: string
         created:
           format: date-time
@@ -48399,6 +48516,28 @@ components:
       - group
       - identifier
       - pk
+      - source
+      - source_obj
+      type: object
+    GroupPlexSourceConnectionRequest:
+      description: Plex Group-Source connection Serializer
+      example:
+        identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        group:
+          format: uuid
+          type: string
+        source:
+          format: uuid
+          type: string
+        identifier:
+          minLength: 1
+          type: string
+      required:
+      - group
+      - identifier
       - source
       type: object
     GroupRequest:
@@ -48445,9 +48584,10 @@ components:
       description: OAuth Group-Source connection Serializer
       example:
         identifier: identifier
+        source_obj: ""
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
-        source: ""
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pk:
@@ -48456,14 +48596,15 @@ components:
           type: integer
         group:
           format: uuid
-          readOnly: true
           type: string
         source:
+          format: uuid
+          type: string
+        source_obj:
           allOf:
           - $ref: '#/components/schemas/Source'
           readOnly: true
         identifier:
-          readOnly: true
           type: string
         created:
           format: date-time
@@ -48474,6 +48615,28 @@ components:
       - group
       - identifier
       - pk
+      - source
+      - source_obj
+      type: object
+    GroupSAMLSourceConnectionRequest:
+      description: OAuth Group-Source connection Serializer
+      example:
+        identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        group:
+          format: uuid
+          type: string
+        source:
+          format: uuid
+          type: string
+        identifier:
+          minLength: 1
+          type: string
+      required:
+      - group
+      - identifier
       - source
       type: object
     IdentificationChallenge:
@@ -54916,14 +55079,16 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
+          source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
-          source: ""
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - identifier: identifier
+          source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
-          source: ""
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
@@ -55046,14 +55211,16 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
+          source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
-          source: ""
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - identifier: identifier
+          source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
-          source: ""
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
@@ -55078,14 +55245,16 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
+          source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
-          source: ""
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - identifier: identifier
+          source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
-          source: ""
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
@@ -55110,14 +55279,16 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
+          source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
-          source: ""
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - identifier: identifier
+          source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
-          source: ""
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
@@ -59660,14 +59831,16 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
+          source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
-          source: ""
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 6
         - identifier: identifier
+          source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
-          source: ""
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 6
       properties:
         pagination:
@@ -59960,14 +60133,16 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
+          source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
-          source: ""
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 6
         - identifier: identifier
+          source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
-          source: ""
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 6
       properties:
         pagination:
@@ -59992,14 +60167,16 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
+          source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
-          source: ""
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 6
         - identifier: identifier
+          source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
-          source: ""
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 6
       properties:
         pagination:
@@ -60024,14 +60201,16 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
+          source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
-          source: ""
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 6
         - identifier: identifier
+          source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
-          source: ""
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 6
       properties:
         pagination:
@@ -60055,13 +60234,15 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - created: 2000-01-23T04:56:07.000+00:00
+        - source_obj: ""
+          created: 2000-01-23T04:56:07.000+00:00
           pk: 0
-          source: ""
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 6
-        - created: 2000-01-23T04:56:07.000+00:00
+        - source_obj: ""
+          created: 2000-01-23T04:56:07.000+00:00
           pk: 0
-          source: ""
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 6
       properties:
         pagination:
@@ -62024,6 +62205,57 @@ components:
           minLength: 1
           type: string
       type: object
+    PatchedGroupKerberosSourceConnectionRequest:
+      description: OAuth Group-Source connection Serializer
+      example:
+        identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        group:
+          format: uuid
+          type: string
+        source:
+          format: uuid
+          type: string
+        identifier:
+          minLength: 1
+          type: string
+      type: object
+    PatchedGroupOAuthSourceConnectionRequest:
+      description: OAuth Group-Source connection Serializer
+      example:
+        identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        group:
+          format: uuid
+          type: string
+        source:
+          format: uuid
+          type: string
+        identifier:
+          minLength: 1
+          type: string
+      type: object
+    PatchedGroupPlexSourceConnectionRequest:
+      description: Plex Group-Source connection Serializer
+      example:
+        identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        group:
+          format: uuid
+          type: string
+        source:
+          format: uuid
+          type: string
+        identifier:
+          minLength: 1
+          type: string
+      type: object
     PatchedGroupRequest:
       description: Group Serializer
       example:
@@ -62061,6 +62293,23 @@ components:
             format: uuid
             type: string
           type: array
+      type: object
+    PatchedGroupSAMLSourceConnectionRequest:
+      description: OAuth Group-Source connection Serializer
+      example:
+        identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        group:
+          format: uuid
+          type: string
+        source:
+          format: uuid
+          type: string
+        identifier:
+          minLength: 1
+          type: string
       type: object
     PatchedIdentificationStageRequest:
       description: IdentificationStage Serializer
@@ -64686,10 +64935,14 @@ components:
       description: Kerberos Source Serializer
       example:
         identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 0
       properties:
         user:
           type: integer
+        source:
+          format: uuid
+          type: string
         identifier:
           minLength: 1
           type: string
@@ -64787,7 +65040,14 @@ components:
       example:
         access_token: access_token
         identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user: 0
       properties:
+        user:
+          type: integer
+        source:
+          format: uuid
+          type: string
         identifier:
           maxLength: 255
           minLength: 1
@@ -64801,8 +65061,15 @@ components:
       description: Plex Source connection Serializer
       example:
         identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         plex_token: plex_token
+        user: 0
       properties:
+        user:
+          type: integer
+        source:
+          format: uuid
+          type: string
         identifier:
           minLength: 1
           type: string
@@ -64866,9 +65133,28 @@ components:
       description: SAML Source Serializer
       example:
         identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user: 0
       properties:
+        user:
+          type: integer
+        source:
+          format: uuid
+          type: string
         identifier:
           minLength: 1
+          type: string
+      type: object
+    PatchedUserSourceConnectionRequest:
+      description: User source connection
+      example:
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user: 0
+      properties:
+        user:
+          type: integer
+        source:
+          format: uuid
           type: string
       type: object
     PatchedUserWriteStageRequest:
@@ -71596,9 +71882,10 @@ components:
       description: Kerberos Source Serializer
       example:
         identifier: identifier
+        source_obj: ""
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
-        source: ""
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 6
       properties:
         pk:
@@ -71608,6 +71895,9 @@ components:
         user:
           type: integer
         source:
+          format: uuid
+          type: string
+        source_obj:
           allOf:
           - $ref: '#/components/schemas/Source'
           readOnly: true
@@ -71622,21 +71912,27 @@ components:
       - identifier
       - pk
       - source
+      - source_obj
       - user
       type: object
     UserKerberosSourceConnectionRequest:
       description: Kerberos Source Serializer
       example:
         identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 0
       properties:
         user:
           type: integer
+        source:
+          format: uuid
+          type: string
         identifier:
           minLength: 1
           type: string
       required:
       - identifier
+      - source
       - user
       type: object
     UserLoginChallenge:
@@ -71982,9 +72278,10 @@ components:
       description: OAuth Source Serializer
       example:
         identifier: identifier
+        source_obj: ""
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
-        source: ""
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 6
       properties:
         pk:
@@ -71992,9 +72289,11 @@ components:
           title: ID
           type: integer
         user:
-          readOnly: true
           type: integer
         source:
+          format: uuid
+          type: string
+        source_obj:
           allOf:
           - $ref: '#/components/schemas/Source'
           readOnly: true
@@ -72010,6 +72309,7 @@ components:
       - identifier
       - pk
       - source
+      - source_obj
       - user
       type: object
     UserOAuthSourceConnectionRequest:
@@ -72017,7 +72317,14 @@ components:
       example:
         access_token: access_token
         identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user: 0
       properties:
+        user:
+          type: integer
+        source:
+          format: uuid
+          type: string
         identifier:
           maxLength: 255
           minLength: 1
@@ -72028,6 +72335,8 @@ components:
           writeOnly: true
       required:
       - identifier
+      - source
+      - user
       type: object
     UserObjectPermission:
       description: User-bound object level permission
@@ -72093,9 +72402,10 @@ components:
       description: Plex Source connection Serializer
       example:
         identifier: identifier
+        source_obj: ""
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
-        source: ""
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 6
       properties:
         pk:
@@ -72103,9 +72413,11 @@ components:
           title: ID
           type: integer
         user:
-          readOnly: true
           type: integer
         source:
+          format: uuid
+          type: string
+        source_obj:
           allOf:
           - $ref: '#/components/schemas/Source'
           readOnly: true
@@ -72120,14 +72432,22 @@ components:
       - identifier
       - pk
       - source
+      - source_obj
       - user
       type: object
     UserPlexSourceConnectionRequest:
       description: Plex Source connection Serializer
       example:
         identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         plex_token: plex_token
+        user: 0
       properties:
+        user:
+          type: integer
+        source:
+          format: uuid
+          type: string
         identifier:
           minLength: 1
           type: string
@@ -72138,6 +72458,8 @@ components:
       required:
       - identifier
       - plex_token
+      - source
+      - user
       type: object
     UserRequest:
       description: User Serializer
@@ -72197,9 +72519,10 @@ components:
       description: SAML Source Serializer
       example:
         identifier: identifier
+        source_obj: ""
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
-        source: ""
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 6
       properties:
         pk:
@@ -72207,9 +72530,11 @@ components:
           title: ID
           type: integer
         user:
-          readOnly: true
           type: integer
         source:
+          format: uuid
+          type: string
+        source_obj:
           allOf:
           - $ref: '#/components/schemas/Source'
           readOnly: true
@@ -72224,18 +72549,28 @@ components:
       - identifier
       - pk
       - source
+      - source_obj
       - user
       type: object
     UserSAMLSourceConnectionRequest:
       description: SAML Source Serializer
       example:
         identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user: 0
       properties:
+        user:
+          type: integer
+        source:
+          format: uuid
+          type: string
         identifier:
           minLength: 1
           type: string
       required:
       - identifier
+      - source
+      - user
       type: object
     UserSelf:
       description: User Serializer for information a user can retrieve about themselves
@@ -72411,11 +72746,12 @@ components:
       - title
       type: object
     UserSourceConnection:
-      description: OAuth Source Serializer
+      description: User source connection
       example:
+        source_obj: ""
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
-        source: ""
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 6
       properties:
         pk:
@@ -72423,9 +72759,11 @@ components:
           title: ID
           type: integer
         user:
-          readOnly: true
           type: integer
         source:
+          format: uuid
+          type: string
+        source_obj:
           allOf:
           - $ref: '#/components/schemas/Source'
           readOnly: true
@@ -72436,6 +72774,22 @@ components:
       required:
       - created
       - pk
+      - source
+      - source_obj
+      - user
+      type: object
+    UserSourceConnectionRequest:
+      description: User source connection
+      example:
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user: 0
+      properties:
+        user:
+          type: integer
+        source:
+          format: uuid
+          type: string
+      required:
       - source
       - user
       type: object
