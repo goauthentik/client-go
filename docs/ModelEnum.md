@@ -161,6 +161,8 @@
 
 * `CORE_APPLICATION` (value: `"authentik_core.application"`)
 
+* `CORE_APPLICATIONENTITLEMENT` (value: `"authentik_core.applicationentitlement"`)
+
 * `CORE_TOKEN` (value: `"authentik_core.token"`)
 
 * `ENTERPRISE_LICENSE` (value: `"authentik_enterprise.license"`)

@@ -44,7 +44,7 @@ Name | Type | Description | Notes
 **AllowShowPassword** | Pointer to **bool** |  | [optional] [default to false]
 **ApplicationPre** | Pointer to **string** |  | [optional] 
 **FlowDesignation** | [**FlowDesignationEnum**](FlowDesignationEnum.md) |  | 
-**CaptchaStage** | Pointer to [**CaptchaChallenge**](CaptchaChallenge.md) |  | [optional] 
+**CaptchaStage** | Pointer to [**NullableIdentificationChallengeCaptchaStage**](IdentificationChallengeCaptchaStage.md) |  | [optional] 
 **EnrollUrl** | Pointer to **string** |  | [optional] 
 **RecoveryUrl** | Pointer to **string** |  | [optional] 
 **PasswordlessUrl** | Pointer to **string** |  | [optional] 
@@ -951,20 +951,20 @@ SetFlowDesignation sets FlowDesignation field to given value.
 
 ### GetCaptchaStage
 
-`func (o *ChallengeTypes) GetCaptchaStage() CaptchaChallenge`
+`func (o *ChallengeTypes) GetCaptchaStage() IdentificationChallengeCaptchaStage`
 
 GetCaptchaStage returns the CaptchaStage field if non-nil, zero value otherwise.
 
 ### GetCaptchaStageOk
 
-`func (o *ChallengeTypes) GetCaptchaStageOk() (*CaptchaChallenge, bool)`
+`func (o *ChallengeTypes) GetCaptchaStageOk() (*IdentificationChallengeCaptchaStage, bool)`
 
 GetCaptchaStageOk returns a tuple with the CaptchaStage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCaptchaStage
 
-`func (o *ChallengeTypes) SetCaptchaStage(v CaptchaChallenge)`
+`func (o *ChallengeTypes) SetCaptchaStage(v IdentificationChallengeCaptchaStage)`
 
 SetCaptchaStage sets CaptchaStage field to given value.
 
@@ -974,6 +974,16 @@ SetCaptchaStage sets CaptchaStage field to given value.
 
 HasCaptchaStage returns a boolean if a field has been set.
 
+### SetCaptchaStageNil
+
+`func (o *ChallengeTypes) SetCaptchaStageNil(b bool)`
+
+ SetCaptchaStageNil sets the value for CaptchaStage to be an explicit nil
+
+### UnsetCaptchaStage
+`func (o *ChallengeTypes) UnsetCaptchaStage()`
+
+UnsetCaptchaStage ensures that no value is present for CaptchaStage, not even an explicit nil
 ### GetEnrollUrl
 
 `func (o *ChallengeTypes) GetEnrollUrl() string`

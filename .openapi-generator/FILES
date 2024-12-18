@@ -32,6 +32,8 @@ docs/AppEnum.md
 docs/AppleChallengeResponseRequest.md
 docs/AppleLoginChallenge.md
 docs/Application.md
+docs/ApplicationEntitlement.md
+docs/ApplicationEntitlementRequest.md
 docs/ApplicationRequest.md
 docs/AuthModeEnum.md
 docs/AuthTypeEnum.md
@@ -207,6 +209,7 @@ docs/GroupRequest.md
 docs/GroupSAMLSourceConnection.md
 docs/GroupSAMLSourceConnectionRequest.md
 docs/IdentificationChallenge.md
+docs/IdentificationChallengeCaptchaStage.md
 docs/IdentificationChallengeResponseRequest.md
 docs/IdentificationStage.md
 docs/IdentificationStageRequest.md
@@ -295,6 +298,7 @@ docs/OutpostHealth.md
 docs/OutpostRequest.md
 docs/OutpostTypeEnum.md
 docs/OutpostsApi.md
+docs/PaginatedApplicationEntitlementList.md
 docs/PaginatedApplicationList.md
 docs/PaginatedAuthenticatedSessionList.md
 docs/PaginatedAuthenticatorDuoStageList.md
@@ -431,6 +435,7 @@ docs/PasswordPolicy.md
 docs/PasswordPolicyRequest.md
 docs/PasswordStage.md
 docs/PasswordStageRequest.md
+docs/PatchedApplicationEntitlementRequest.md
 docs/PatchedApplicationRequest.md
 docs/PatchedAuthenticatorDuoStageRequest.md
 docs/PatchedAuthenticatorEndpointGDTCStageRequest.md
@@ -749,6 +754,8 @@ model_app_enum.go
 model_apple_challenge_response_request.go
 model_apple_login_challenge.go
 model_application.go
+model_application_entitlement.go
+model_application_entitlement_request.go
 model_application_request.go
 model_auth_mode_enum.go
 model_auth_type_enum.go
@@ -918,6 +925,7 @@ model_group_request.go
 model_group_saml_source_connection.go
 model_group_saml_source_connection_request.go
 model_identification_challenge.go
+model_identification_challenge_captcha_stage.go
 model_identification_challenge_response_request.go
 model_identification_stage.go
 model_identification_stage_request.go
@@ -1003,6 +1011,7 @@ model_outpost_default_config.go
 model_outpost_health.go
 model_outpost_request.go
 model_outpost_type_enum.go
+model_paginated_application_entitlement_list.go
 model_paginated_application_list.go
 model_paginated_authenticated_session_list.go
 model_paginated_authenticator_duo_stage_list.go
@@ -1139,6 +1148,7 @@ model_password_policy.go
 model_password_policy_request.go
 model_password_stage.go
 model_password_stage_request.go
+model_patched_application_entitlement_request.go
 model_patched_application_request.go
 model_patched_authenticator_duo_stage_request.go
 model_patched_authenticator_endpoint_gdtc_stage_request.go

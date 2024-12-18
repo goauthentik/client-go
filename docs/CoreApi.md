@@ -4,6 +4,13 @@ All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CoreApplicationEntitlementsCreate**](CoreApi.md#CoreApplicationEntitlementsCreate) | **Post** /core/application_entitlements/ | 
+[**CoreApplicationEntitlementsDestroy**](CoreApi.md#CoreApplicationEntitlementsDestroy) | **Delete** /core/application_entitlements/{pbm_uuid}/ | 
+[**CoreApplicationEntitlementsList**](CoreApi.md#CoreApplicationEntitlementsList) | **Get** /core/application_entitlements/ | 
+[**CoreApplicationEntitlementsPartialUpdate**](CoreApi.md#CoreApplicationEntitlementsPartialUpdate) | **Patch** /core/application_entitlements/{pbm_uuid}/ | 
+[**CoreApplicationEntitlementsRetrieve**](CoreApi.md#CoreApplicationEntitlementsRetrieve) | **Get** /core/application_entitlements/{pbm_uuid}/ | 
+[**CoreApplicationEntitlementsUpdate**](CoreApi.md#CoreApplicationEntitlementsUpdate) | **Put** /core/application_entitlements/{pbm_uuid}/ | 
+[**CoreApplicationEntitlementsUsedByList**](CoreApi.md#CoreApplicationEntitlementsUsedByList) | **Get** /core/application_entitlements/{pbm_uuid}/used_by/ | 
 [**CoreApplicationsCheckAccessRetrieve**](CoreApi.md#CoreApplicationsCheckAccessRetrieve) | **Get** /core/applications/{slug}/check_access/ | 
 [**CoreApplicationsCreate**](CoreApi.md#CoreApplicationsCreate) | **Post** /core/applications/ | 
 [**CoreApplicationsDestroy**](CoreApi.md#CoreApplicationsDestroy) | **Delete** /core/applications/{slug}/ | 
@@ -67,6 +74,502 @@ Method | HTTP request | Description
 [**CoreUsersUpdate**](CoreApi.md#CoreUsersUpdate) | **Put** /core/users/{id}/ | 
 [**CoreUsersUsedByList**](CoreApi.md#CoreUsersUsedByList) | **Get** /core/users/{id}/used_by/ | 
 
+
+
+## CoreApplicationEntitlementsCreate
+
+> ApplicationEntitlement CoreApplicationEntitlementsCreate(ctx).ApplicationEntitlementRequest(applicationEntitlementRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    applicationEntitlementRequest := *openapiclient.NewApplicationEntitlementRequest("Name_example", "App_example") // ApplicationEntitlementRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreApplicationEntitlementsCreate(context.Background()).ApplicationEntitlementRequest(applicationEntitlementRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationEntitlementsCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CoreApplicationEntitlementsCreate`: ApplicationEntitlement
+    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreApplicationEntitlementsCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreApplicationEntitlementsCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicationEntitlementRequest** | [**ApplicationEntitlementRequest**](ApplicationEntitlementRequest.md) |  | 
+
+### Return type
+
+[**ApplicationEntitlement**](ApplicationEntitlement.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreApplicationEntitlementsDestroy
+
+> CoreApplicationEntitlementsDestroy(ctx, pbmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Application Entitlement.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreApplicationEntitlementsDestroy(context.Background(), pbmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationEntitlementsDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pbmUuid** | **string** | A UUID string identifying this Application Entitlement. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreApplicationEntitlementsDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreApplicationEntitlementsList
+
+> PaginatedApplicationEntitlementList CoreApplicationEntitlementsList(ctx).App(app).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    app := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreApplicationEntitlementsList(context.Background()).App(app).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationEntitlementsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CoreApplicationEntitlementsList`: PaginatedApplicationEntitlementList
+    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreApplicationEntitlementsList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreApplicationEntitlementsListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app** | **string** |  | 
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **pbmUuid** | **string** |  | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedApplicationEntitlementList**](PaginatedApplicationEntitlementList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreApplicationEntitlementsPartialUpdate
+
+> ApplicationEntitlement CoreApplicationEntitlementsPartialUpdate(ctx, pbmUuid).PatchedApplicationEntitlementRequest(patchedApplicationEntitlementRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Application Entitlement.
+    patchedApplicationEntitlementRequest := *openapiclient.NewPatchedApplicationEntitlementRequest() // PatchedApplicationEntitlementRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreApplicationEntitlementsPartialUpdate(context.Background(), pbmUuid).PatchedApplicationEntitlementRequest(patchedApplicationEntitlementRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationEntitlementsPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CoreApplicationEntitlementsPartialUpdate`: ApplicationEntitlement
+    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreApplicationEntitlementsPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pbmUuid** | **string** | A UUID string identifying this Application Entitlement. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreApplicationEntitlementsPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedApplicationEntitlementRequest** | [**PatchedApplicationEntitlementRequest**](PatchedApplicationEntitlementRequest.md) |  | 
+
+### Return type
+
+[**ApplicationEntitlement**](ApplicationEntitlement.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreApplicationEntitlementsRetrieve
+
+> ApplicationEntitlement CoreApplicationEntitlementsRetrieve(ctx, pbmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Application Entitlement.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreApplicationEntitlementsRetrieve(context.Background(), pbmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationEntitlementsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CoreApplicationEntitlementsRetrieve`: ApplicationEntitlement
+    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreApplicationEntitlementsRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pbmUuid** | **string** | A UUID string identifying this Application Entitlement. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreApplicationEntitlementsRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ApplicationEntitlement**](ApplicationEntitlement.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreApplicationEntitlementsUpdate
+
+> ApplicationEntitlement CoreApplicationEntitlementsUpdate(ctx, pbmUuid).ApplicationEntitlementRequest(applicationEntitlementRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Application Entitlement.
+    applicationEntitlementRequest := *openapiclient.NewApplicationEntitlementRequest("Name_example", "App_example") // ApplicationEntitlementRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreApplicationEntitlementsUpdate(context.Background(), pbmUuid).ApplicationEntitlementRequest(applicationEntitlementRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationEntitlementsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CoreApplicationEntitlementsUpdate`: ApplicationEntitlement
+    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreApplicationEntitlementsUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pbmUuid** | **string** | A UUID string identifying this Application Entitlement. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreApplicationEntitlementsUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **applicationEntitlementRequest** | [**ApplicationEntitlementRequest**](ApplicationEntitlementRequest.md) |  | 
+
+### Return type
+
+[**ApplicationEntitlement**](ApplicationEntitlement.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreApplicationEntitlementsUsedByList
+
+> []UsedBy CoreApplicationEntitlementsUsedByList(ctx, pbmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Application Entitlement.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreApplicationEntitlementsUsedByList(context.Background(), pbmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationEntitlementsUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CoreApplicationEntitlementsUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreApplicationEntitlementsUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pbmUuid** | **string** | A UUID string identifying this Application Entitlement. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreApplicationEntitlementsUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CoreApplicationsCheckAccessRetrieve

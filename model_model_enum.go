@@ -100,6 +100,7 @@ const (
 	MODELENUM_CORE_GROUP                                                        ModelEnum = "authentik_core.group"
 	MODELENUM_CORE_USER                                                         ModelEnum = "authentik_core.user"
 	MODELENUM_CORE_APPLICATION                                                  ModelEnum = "authentik_core.application"
+	MODELENUM_CORE_APPLICATIONENTITLEMENT                                       ModelEnum = "authentik_core.applicationentitlement"
 	MODELENUM_CORE_TOKEN                                                        ModelEnum = "authentik_core.token"
 	MODELENUM_ENTERPRISE_LICENSE                                                ModelEnum = "authentik_enterprise.license"
 	MODELENUM_PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDER                ModelEnum = "authentik_providers_google_workspace.googleworkspaceprovider"
@@ -199,6 +200,7 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_core.group",
 	"authentik_core.user",
 	"authentik_core.application",
+	"authentik_core.applicationentitlement",
 	"authentik_core.token",
 	"authentik_enterprise.license",
 	"authentik_providers_google_workspace.googleworkspaceprovider",

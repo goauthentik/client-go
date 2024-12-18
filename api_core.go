@@ -26,6 +26,944 @@ import (
 // CoreApiService CoreApi service
 type CoreApiService service
 
+type ApiCoreApplicationEntitlementsCreateRequest struct {
+	ctx                           context.Context
+	ApiService                    *CoreApiService
+	applicationEntitlementRequest *ApplicationEntitlementRequest
+}
+
+func (r ApiCoreApplicationEntitlementsCreateRequest) ApplicationEntitlementRequest(applicationEntitlementRequest ApplicationEntitlementRequest) ApiCoreApplicationEntitlementsCreateRequest {
+	r.applicationEntitlementRequest = &applicationEntitlementRequest
+	return r
+}
+
+func (r ApiCoreApplicationEntitlementsCreateRequest) Execute() (*ApplicationEntitlement, *http.Response, error) {
+	return r.ApiService.CoreApplicationEntitlementsCreateExecute(r)
+}
+
+/*
+CoreApplicationEntitlementsCreate Method for CoreApplicationEntitlementsCreate
+
+ApplicationEntitlement Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCoreApplicationEntitlementsCreateRequest
+*/
+func (a *CoreApiService) CoreApplicationEntitlementsCreate(ctx context.Context) ApiCoreApplicationEntitlementsCreateRequest {
+	return ApiCoreApplicationEntitlementsCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ApplicationEntitlement
+func (a *CoreApiService) CoreApplicationEntitlementsCreateExecute(r ApiCoreApplicationEntitlementsCreateRequest) (*ApplicationEntitlement, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApplicationEntitlement
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationEntitlementsCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/core/application_entitlements/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.applicationEntitlementRequest == nil {
+		return localVarReturnValue, nil, reportError("applicationEntitlementRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.applicationEntitlementRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCoreApplicationEntitlementsDestroyRequest struct {
+	ctx        context.Context
+	ApiService *CoreApiService
+	pbmUuid    string
+}
+
+func (r ApiCoreApplicationEntitlementsDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CoreApplicationEntitlementsDestroyExecute(r)
+}
+
+/*
+CoreApplicationEntitlementsDestroy Method for CoreApplicationEntitlementsDestroy
+
+ApplicationEntitlement Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pbmUuid A UUID string identifying this Application Entitlement.
+	@return ApiCoreApplicationEntitlementsDestroyRequest
+*/
+func (a *CoreApiService) CoreApplicationEntitlementsDestroy(ctx context.Context, pbmUuid string) ApiCoreApplicationEntitlementsDestroyRequest {
+	return ApiCoreApplicationEntitlementsDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pbmUuid:    pbmUuid,
+	}
+}
+
+// Execute executes the request
+func (a *CoreApiService) CoreApplicationEntitlementsDestroyExecute(r ApiCoreApplicationEntitlementsDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationEntitlementsDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/core/application_entitlements/{pbm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiCoreApplicationEntitlementsListRequest struct {
+	ctx        context.Context
+	ApiService *CoreApiService
+	app        *string
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	pbmUuid    *string
+	search     *string
+}
+
+func (r ApiCoreApplicationEntitlementsListRequest) App(app string) ApiCoreApplicationEntitlementsListRequest {
+	r.app = &app
+	return r
+}
+
+func (r ApiCoreApplicationEntitlementsListRequest) Name(name string) ApiCoreApplicationEntitlementsListRequest {
+	r.name = &name
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiCoreApplicationEntitlementsListRequest) Ordering(ordering string) ApiCoreApplicationEntitlementsListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiCoreApplicationEntitlementsListRequest) Page(page int32) ApiCoreApplicationEntitlementsListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiCoreApplicationEntitlementsListRequest) PageSize(pageSize int32) ApiCoreApplicationEntitlementsListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiCoreApplicationEntitlementsListRequest) PbmUuid(pbmUuid string) ApiCoreApplicationEntitlementsListRequest {
+	r.pbmUuid = &pbmUuid
+	return r
+}
+
+// A search term.
+func (r ApiCoreApplicationEntitlementsListRequest) Search(search string) ApiCoreApplicationEntitlementsListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiCoreApplicationEntitlementsListRequest) Execute() (*PaginatedApplicationEntitlementList, *http.Response, error) {
+	return r.ApiService.CoreApplicationEntitlementsListExecute(r)
+}
+
+/*
+CoreApplicationEntitlementsList Method for CoreApplicationEntitlementsList
+
+ApplicationEntitlement Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCoreApplicationEntitlementsListRequest
+*/
+func (a *CoreApiService) CoreApplicationEntitlementsList(ctx context.Context) ApiCoreApplicationEntitlementsListRequest {
+	return ApiCoreApplicationEntitlementsListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedApplicationEntitlementList
+func (a *CoreApiService) CoreApplicationEntitlementsListExecute(r ApiCoreApplicationEntitlementsListRequest) (*PaginatedApplicationEntitlementList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedApplicationEntitlementList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationEntitlementsList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/core/application_entitlements/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.app != nil {
+		localVarQueryParams.Add("app", parameterToString(*r.app, ""))
+	}
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.pbmUuid != nil {
+		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCoreApplicationEntitlementsPartialUpdateRequest struct {
+	ctx                                  context.Context
+	ApiService                           *CoreApiService
+	pbmUuid                              string
+	patchedApplicationEntitlementRequest *PatchedApplicationEntitlementRequest
+}
+
+func (r ApiCoreApplicationEntitlementsPartialUpdateRequest) PatchedApplicationEntitlementRequest(patchedApplicationEntitlementRequest PatchedApplicationEntitlementRequest) ApiCoreApplicationEntitlementsPartialUpdateRequest {
+	r.patchedApplicationEntitlementRequest = &patchedApplicationEntitlementRequest
+	return r
+}
+
+func (r ApiCoreApplicationEntitlementsPartialUpdateRequest) Execute() (*ApplicationEntitlement, *http.Response, error) {
+	return r.ApiService.CoreApplicationEntitlementsPartialUpdateExecute(r)
+}
+
+/*
+CoreApplicationEntitlementsPartialUpdate Method for CoreApplicationEntitlementsPartialUpdate
+
+ApplicationEntitlement Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pbmUuid A UUID string identifying this Application Entitlement.
+	@return ApiCoreApplicationEntitlementsPartialUpdateRequest
+*/
+func (a *CoreApiService) CoreApplicationEntitlementsPartialUpdate(ctx context.Context, pbmUuid string) ApiCoreApplicationEntitlementsPartialUpdateRequest {
+	return ApiCoreApplicationEntitlementsPartialUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pbmUuid:    pbmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ApplicationEntitlement
+func (a *CoreApiService) CoreApplicationEntitlementsPartialUpdateExecute(r ApiCoreApplicationEntitlementsPartialUpdateRequest) (*ApplicationEntitlement, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApplicationEntitlement
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationEntitlementsPartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/core/application_entitlements/{pbm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedApplicationEntitlementRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCoreApplicationEntitlementsRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *CoreApiService
+	pbmUuid    string
+}
+
+func (r ApiCoreApplicationEntitlementsRetrieveRequest) Execute() (*ApplicationEntitlement, *http.Response, error) {
+	return r.ApiService.CoreApplicationEntitlementsRetrieveExecute(r)
+}
+
+/*
+CoreApplicationEntitlementsRetrieve Method for CoreApplicationEntitlementsRetrieve
+
+ApplicationEntitlement Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pbmUuid A UUID string identifying this Application Entitlement.
+	@return ApiCoreApplicationEntitlementsRetrieveRequest
+*/
+func (a *CoreApiService) CoreApplicationEntitlementsRetrieve(ctx context.Context, pbmUuid string) ApiCoreApplicationEntitlementsRetrieveRequest {
+	return ApiCoreApplicationEntitlementsRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pbmUuid:    pbmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ApplicationEntitlement
+func (a *CoreApiService) CoreApplicationEntitlementsRetrieveExecute(r ApiCoreApplicationEntitlementsRetrieveRequest) (*ApplicationEntitlement, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApplicationEntitlement
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationEntitlementsRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/core/application_entitlements/{pbm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCoreApplicationEntitlementsUpdateRequest struct {
+	ctx                           context.Context
+	ApiService                    *CoreApiService
+	pbmUuid                       string
+	applicationEntitlementRequest *ApplicationEntitlementRequest
+}
+
+func (r ApiCoreApplicationEntitlementsUpdateRequest) ApplicationEntitlementRequest(applicationEntitlementRequest ApplicationEntitlementRequest) ApiCoreApplicationEntitlementsUpdateRequest {
+	r.applicationEntitlementRequest = &applicationEntitlementRequest
+	return r
+}
+
+func (r ApiCoreApplicationEntitlementsUpdateRequest) Execute() (*ApplicationEntitlement, *http.Response, error) {
+	return r.ApiService.CoreApplicationEntitlementsUpdateExecute(r)
+}
+
+/*
+CoreApplicationEntitlementsUpdate Method for CoreApplicationEntitlementsUpdate
+
+ApplicationEntitlement Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pbmUuid A UUID string identifying this Application Entitlement.
+	@return ApiCoreApplicationEntitlementsUpdateRequest
+*/
+func (a *CoreApiService) CoreApplicationEntitlementsUpdate(ctx context.Context, pbmUuid string) ApiCoreApplicationEntitlementsUpdateRequest {
+	return ApiCoreApplicationEntitlementsUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pbmUuid:    pbmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ApplicationEntitlement
+func (a *CoreApiService) CoreApplicationEntitlementsUpdateExecute(r ApiCoreApplicationEntitlementsUpdateRequest) (*ApplicationEntitlement, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApplicationEntitlement
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationEntitlementsUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/core/application_entitlements/{pbm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.applicationEntitlementRequest == nil {
+		return localVarReturnValue, nil, reportError("applicationEntitlementRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.applicationEntitlementRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCoreApplicationEntitlementsUsedByListRequest struct {
+	ctx        context.Context
+	ApiService *CoreApiService
+	pbmUuid    string
+}
+
+func (r ApiCoreApplicationEntitlementsUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.CoreApplicationEntitlementsUsedByListExecute(r)
+}
+
+/*
+CoreApplicationEntitlementsUsedByList Method for CoreApplicationEntitlementsUsedByList
+
+Get a list of all objects that use this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pbmUuid A UUID string identifying this Application Entitlement.
+	@return ApiCoreApplicationEntitlementsUsedByListRequest
+*/
+func (a *CoreApiService) CoreApplicationEntitlementsUsedByList(ctx context.Context, pbmUuid string) ApiCoreApplicationEntitlementsUsedByListRequest {
+	return ApiCoreApplicationEntitlementsUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pbmUuid:    pbmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []UsedBy
+func (a *CoreApiService) CoreApplicationEntitlementsUsedByListExecute(r ApiCoreApplicationEntitlementsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationEntitlementsUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/core/application_entitlements/{pbm_uuid}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiCoreApplicationsCheckAccessRetrieveRequest struct {
 	ctx        context.Context
 	ApiService *CoreApiService

@@ -3348,6 +3348,312 @@ paths:
       - authentik: []
       tags:
       - authenticators
+  /core/application_entitlements/:
+    get:
+      description: ApplicationEntitlement Viewset
+      operationId: core_application_entitlements_list
+      parameters:
+      - explode: true
+        in: query
+        name: app
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: pbm_uuid
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedApplicationEntitlementList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - core
+    post:
+      description: ApplicationEntitlement Viewset
+      operationId: core_application_entitlements_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationEntitlementRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationEntitlement'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - core
+  /core/application_entitlements/{pbm_uuid}/:
+    delete:
+      description: ApplicationEntitlement Viewset
+      operationId: core_application_entitlements_destroy
+      parameters:
+      - description: A UUID string identifying this Application Entitlement.
+        explode: false
+        in: path
+        name: pbm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - core
+    get:
+      description: ApplicationEntitlement Viewset
+      operationId: core_application_entitlements_retrieve
+      parameters:
+      - description: A UUID string identifying this Application Entitlement.
+        explode: false
+        in: path
+        name: pbm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationEntitlement'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - core
+    patch:
+      description: ApplicationEntitlement Viewset
+      operationId: core_application_entitlements_partial_update
+      parameters:
+      - description: A UUID string identifying this Application Entitlement.
+        explode: false
+        in: path
+        name: pbm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedApplicationEntitlementRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationEntitlement'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - core
+    put:
+      description: ApplicationEntitlement Viewset
+      operationId: core_application_entitlements_update
+      parameters:
+      - description: A UUID string identifying this Application Entitlement.
+        explode: false
+        in: path
+        name: pbm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationEntitlementRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationEntitlement'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - core
+  /core/application_entitlements/{pbm_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: core_application_entitlements_used_by_list
+      parameters:
+      - description: A UUID string identifying this Application Entitlement.
+        explode: false
+        in: path
+        name: pbm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - core
   /core/applications/:
     get:
       description: Custom list method that checks Policy based access instead of guardian
@@ -25914,6 +26220,7 @@ paths:
           - authentik_blueprints.blueprintinstance
           - authentik_brands.brand
           - authentik_core.application
+          - authentik_core.applicationentitlement
           - authentik_core.group
           - authentik_core.token
           - authentik_core.user
@@ -26171,6 +26478,7 @@ paths:
           - authentik_blueprints.blueprintinstance
           - authentik_brands.brand
           - authentik_core.application
+          - authentik_core.applicationentitlement
           - authentik_core.group
           - authentik_core.token
           - authentik_core.user
@@ -42411,6 +42719,47 @@ components:
       - provider_obj
       - slug
       type: object
+    ApplicationEntitlement:
+      description: ApplicationEntitlement Serializer
+      example:
+        app: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        attributes: ""
+      properties:
+        pbm_uuid:
+          format: uuid
+          readOnly: true
+          type: string
+        name:
+          type: string
+        app:
+          format: uuid
+          type: string
+        attributes: {}
+      required:
+      - app
+      - name
+      - pbm_uuid
+      type: object
+    ApplicationEntitlementRequest:
+      description: ApplicationEntitlement Serializer
+      example:
+        app: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        attributes: ""
+      properties:
+        name:
+          minLength: 1
+          type: string
+        app:
+          format: uuid
+          type: string
+        attributes: {}
+      required:
+      - app
+      - name
+      type: object
     ApplicationRequest:
       description: Application Serializer
       example:
@@ -48668,7 +49017,7 @@ components:
         flow_designation:
           $ref: '#/components/schemas/FlowDesignationEnum'
         captcha_stage:
-          $ref: '#/components/schemas/CaptchaChallenge'
+          $ref: '#/components/schemas/IdentificationChallenge_captcha_stage'
         enroll_url:
           type: string
         recovery_url:
@@ -51197,6 +51546,7 @@ components:
       - authentik_core.group
       - authentik_core.user
       - authentik_core.application
+      - authentik_core.applicationentitlement
       - authentik_core.token
       - authentik_enterprise.license
       - authentik_providers_google_workspace.googleworkspaceprovider
@@ -52569,6 +52919,36 @@ components:
       - radius
       - rac
       type: string
+    PaginatedApplicationEntitlementList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - app: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          attributes: ""
+        - app: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          attributes: ""
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/ApplicationEntitlement'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedApplicationList:
       example:
         pagination:
@@ -60909,6 +61289,21 @@ components:
       required:
       - backends
       - name
+      type: object
+    PatchedApplicationEntitlementRequest:
+      description: ApplicationEntitlement Serializer
+      example:
+        app: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        attributes: ""
+      properties:
+        name:
+          minLength: 1
+          type: string
+        app:
+          format: uuid
+          type: string
+        attributes: {}
       type: object
     PatchedApplicationRequest:
       description: Application Serializer
@@ -73280,6 +73675,10 @@ components:
       - asn
       - network
       type: object
+    IdentificationChallenge_captcha_stage:
+      allOf:
+      - $ref: '#/components/schemas/CaptchaChallenge'
+      nullable: true
     SystemInfo_runtime:
       description: Get versions
       example:

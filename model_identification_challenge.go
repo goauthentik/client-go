@@ -17,21 +17,21 @@ import (
 
 // IdentificationChallenge Identification challenges with all UI elements
 type IdentificationChallenge struct {
-	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component         *string                   `json:"component,omitempty"`
-	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	UserFields        []string                  `json:"user_fields"`
-	PasswordFields    bool                      `json:"password_fields"`
-	AllowShowPassword *bool                     `json:"allow_show_password,omitempty"`
-	ApplicationPre    *string                   `json:"application_pre,omitempty"`
-	FlowDesignation   FlowDesignationEnum       `json:"flow_designation"`
-	CaptchaStage      *CaptchaChallenge         `json:"captcha_stage,omitempty"`
-	EnrollUrl         *string                   `json:"enroll_url,omitempty"`
-	RecoveryUrl       *string                   `json:"recovery_url,omitempty"`
-	PasswordlessUrl   *string                   `json:"passwordless_url,omitempty"`
-	PrimaryAction     string                    `json:"primary_action"`
-	Sources           []LoginSource             `json:"sources,omitempty"`
-	ShowSourceLabels  bool                      `json:"show_source_labels"`
+	FlowInfo          *ContextualFlowInfo                         `json:"flow_info,omitempty"`
+	Component         *string                                     `json:"component,omitempty"`
+	ResponseErrors    *map[string][]ErrorDetail                   `json:"response_errors,omitempty"`
+	UserFields        []string                                    `json:"user_fields"`
+	PasswordFields    bool                                        `json:"password_fields"`
+	AllowShowPassword *bool                                       `json:"allow_show_password,omitempty"`
+	ApplicationPre    *string                                     `json:"application_pre,omitempty"`
+	FlowDesignation   FlowDesignationEnum                         `json:"flow_designation"`
+	CaptchaStage      NullableIdentificationChallengeCaptchaStage `json:"captcha_stage,omitempty"`
+	EnrollUrl         *string                                     `json:"enroll_url,omitempty"`
+	RecoveryUrl       *string                                     `json:"recovery_url,omitempty"`
+	PasswordlessUrl   *string                                     `json:"passwordless_url,omitempty"`
+	PrimaryAction     string                                      `json:"primary_action"`
+	Sources           []LoginSource                               `json:"sources,omitempty"`
+	ShowSourceLabels  bool                                        `json:"show_source_labels"`
 }
 
 // NewIdentificationChallenge instantiates a new IdentificationChallenge object
@@ -298,36 +298,47 @@ func (o *IdentificationChallenge) SetFlowDesignation(v FlowDesignationEnum) {
 	o.FlowDesignation = v
 }
 
-// GetCaptchaStage returns the CaptchaStage field value if set, zero value otherwise.
-func (o *IdentificationChallenge) GetCaptchaStage() CaptchaChallenge {
-	if o == nil || o.CaptchaStage == nil {
-		var ret CaptchaChallenge
+// GetCaptchaStage returns the CaptchaStage field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IdentificationChallenge) GetCaptchaStage() IdentificationChallengeCaptchaStage {
+	if o == nil || o.CaptchaStage.Get() == nil {
+		var ret IdentificationChallengeCaptchaStage
 		return ret
 	}
-	return *o.CaptchaStage
+	return *o.CaptchaStage.Get()
 }
 
 // GetCaptchaStageOk returns a tuple with the CaptchaStage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentificationChallenge) GetCaptchaStageOk() (*CaptchaChallenge, bool) {
-	if o == nil || o.CaptchaStage == nil {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *IdentificationChallenge) GetCaptchaStageOk() (*IdentificationChallengeCaptchaStage, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CaptchaStage, true
+	return o.CaptchaStage.Get(), o.CaptchaStage.IsSet()
 }
 
 // HasCaptchaStage returns a boolean if a field has been set.
 func (o *IdentificationChallenge) HasCaptchaStage() bool {
-	if o != nil && o.CaptchaStage != nil {
+	if o != nil && o.CaptchaStage.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCaptchaStage gets a reference to the given CaptchaChallenge and assigns it to the CaptchaStage field.
-func (o *IdentificationChallenge) SetCaptchaStage(v CaptchaChallenge) {
-	o.CaptchaStage = &v
+// SetCaptchaStage gets a reference to the given NullableIdentificationChallengeCaptchaStage and assigns it to the CaptchaStage field.
+func (o *IdentificationChallenge) SetCaptchaStage(v IdentificationChallengeCaptchaStage) {
+	o.CaptchaStage.Set(&v)
+}
+
+// SetCaptchaStageNil sets the value for CaptchaStage to be an explicit nil
+func (o *IdentificationChallenge) SetCaptchaStageNil() {
+	o.CaptchaStage.Set(nil)
+}
+
+// UnsetCaptchaStage ensures that no value is present for CaptchaStage, not even an explicit nil
+func (o *IdentificationChallenge) UnsetCaptchaStage() {
+	o.CaptchaStage.Unset()
 }
 
 // GetEnrollUrl returns the EnrollUrl field value if set, zero value otherwise.
@@ -532,8 +543,8 @@ func (o IdentificationChallenge) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["flow_designation"] = o.FlowDesignation
 	}
-	if o.CaptchaStage != nil {
-		toSerialize["captcha_stage"] = o.CaptchaStage
+	if o.CaptchaStage.IsSet() {
+		toSerialize["captcha_stage"] = o.CaptchaStage.Get()
 	}
 	if o.EnrollUrl != nil {
 		toSerialize["enroll_url"] = o.EnrollUrl

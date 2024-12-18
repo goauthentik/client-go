@@ -120,6 +120,13 @@ Class | Method | HTTP request | Description
 *AuthenticatorsApi* | [**AuthenticatorsWebauthnRetrieve**](docs/AuthenticatorsApi.md#authenticatorswebauthnretrieve) | **Get** /authenticators/webauthn/{id}/ | 
 *AuthenticatorsApi* | [**AuthenticatorsWebauthnUpdate**](docs/AuthenticatorsApi.md#authenticatorswebauthnupdate) | **Put** /authenticators/webauthn/{id}/ | 
 *AuthenticatorsApi* | [**AuthenticatorsWebauthnUsedByList**](docs/AuthenticatorsApi.md#authenticatorswebauthnusedbylist) | **Get** /authenticators/webauthn/{id}/used_by/ | 
+*CoreApi* | [**CoreApplicationEntitlementsCreate**](docs/CoreApi.md#coreapplicationentitlementscreate) | **Post** /core/application_entitlements/ | 
+*CoreApi* | [**CoreApplicationEntitlementsDestroy**](docs/CoreApi.md#coreapplicationentitlementsdestroy) | **Delete** /core/application_entitlements/{pbm_uuid}/ | 
+*CoreApi* | [**CoreApplicationEntitlementsList**](docs/CoreApi.md#coreapplicationentitlementslist) | **Get** /core/application_entitlements/ | 
+*CoreApi* | [**CoreApplicationEntitlementsPartialUpdate**](docs/CoreApi.md#coreapplicationentitlementspartialupdate) | **Patch** /core/application_entitlements/{pbm_uuid}/ | 
+*CoreApi* | [**CoreApplicationEntitlementsRetrieve**](docs/CoreApi.md#coreapplicationentitlementsretrieve) | **Get** /core/application_entitlements/{pbm_uuid}/ | 
+*CoreApi* | [**CoreApplicationEntitlementsUpdate**](docs/CoreApi.md#coreapplicationentitlementsupdate) | **Put** /core/application_entitlements/{pbm_uuid}/ | 
+*CoreApi* | [**CoreApplicationEntitlementsUsedByList**](docs/CoreApi.md#coreapplicationentitlementsusedbylist) | **Get** /core/application_entitlements/{pbm_uuid}/used_by/ | 
 *CoreApi* | [**CoreApplicationsCheckAccessRetrieve**](docs/CoreApi.md#coreapplicationscheckaccessretrieve) | **Get** /core/applications/{slug}/check_access/ | 
 *CoreApi* | [**CoreApplicationsCreate**](docs/CoreApi.md#coreapplicationscreate) | **Post** /core/applications/ | 
 *CoreApi* | [**CoreApplicationsDestroy**](docs/CoreApi.md#coreapplicationsdestroy) | **Delete** /core/applications/{slug}/ | 
@@ -976,6 +983,8 @@ Class | Method | HTTP request | Description
  - [AppleChallengeResponseRequest](docs/AppleChallengeResponseRequest.md)
  - [AppleLoginChallenge](docs/AppleLoginChallenge.md)
  - [Application](docs/Application.md)
+ - [ApplicationEntitlement](docs/ApplicationEntitlement.md)
+ - [ApplicationEntitlementRequest](docs/ApplicationEntitlementRequest.md)
  - [ApplicationRequest](docs/ApplicationRequest.md)
  - [AuthModeEnum](docs/AuthModeEnum.md)
  - [AuthTypeEnum](docs/AuthTypeEnum.md)
@@ -1145,6 +1154,7 @@ Class | Method | HTTP request | Description
  - [GroupSAMLSourceConnection](docs/GroupSAMLSourceConnection.md)
  - [GroupSAMLSourceConnectionRequest](docs/GroupSAMLSourceConnectionRequest.md)
  - [IdentificationChallenge](docs/IdentificationChallenge.md)
+ - [IdentificationChallengeCaptchaStage](docs/IdentificationChallengeCaptchaStage.md)
  - [IdentificationChallengeResponseRequest](docs/IdentificationChallengeResponseRequest.md)
  - [IdentificationStage](docs/IdentificationStage.md)
  - [IdentificationStageRequest](docs/IdentificationStageRequest.md)
@@ -1230,6 +1240,7 @@ Class | Method | HTTP request | Description
  - [OutpostHealth](docs/OutpostHealth.md)
  - [OutpostRequest](docs/OutpostRequest.md)
  - [OutpostTypeEnum](docs/OutpostTypeEnum.md)
+ - [PaginatedApplicationEntitlementList](docs/PaginatedApplicationEntitlementList.md)
  - [PaginatedApplicationList](docs/PaginatedApplicationList.md)
  - [PaginatedAuthenticatedSessionList](docs/PaginatedAuthenticatedSessionList.md)
  - [PaginatedAuthenticatorDuoStageList](docs/PaginatedAuthenticatorDuoStageList.md)
@@ -1366,6 +1377,7 @@ Class | Method | HTTP request | Description
  - [PasswordPolicyRequest](docs/PasswordPolicyRequest.md)
  - [PasswordStage](docs/PasswordStage.md)
  - [PasswordStageRequest](docs/PasswordStageRequest.md)
+ - [PatchedApplicationEntitlementRequest](docs/PatchedApplicationEntitlementRequest.md)
  - [PatchedApplicationRequest](docs/PatchedApplicationRequest.md)
  - [PatchedAuthenticatorDuoStageRequest](docs/PatchedAuthenticatorDuoStageRequest.md)
  - [PatchedAuthenticatorEndpointGDTCStageRequest](docs/PatchedAuthenticatorEndpointGDTCStageRequest.md)
