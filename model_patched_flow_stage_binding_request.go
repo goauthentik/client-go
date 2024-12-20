@@ -21,7 +21,7 @@ type PatchedFlowStageBindingRequest struct {
 	Stage  *string `json:"stage,omitempty"`
 	// Evaluate policies during the Flow planning process.
 	EvaluateOnPlan *bool `json:"evaluate_on_plan,omitempty"`
-	// Evaluate policies when the Stage is present to the user.
+	// Evaluate policies when the Stage is presented to the user.
 	ReEvaluatePolicies *bool             `json:"re_evaluate_policies,omitempty"`
 	Order              *int32            `json:"order,omitempty"`
 	PolicyEngineMode   *PolicyEngineMode `json:"policy_engine_mode,omitempty"`

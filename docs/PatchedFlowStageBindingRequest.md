@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Target** | Pointer to **string** |  | [optional] 
 **Stage** | Pointer to **string** |  | [optional] 
 **EvaluateOnPlan** | Pointer to **bool** | Evaluate policies during the Flow planning process. | [optional] 
-**ReEvaluatePolicies** | Pointer to **bool** | Evaluate policies when the Stage is present to the user. | [optional] 
+**ReEvaluatePolicies** | Pointer to **bool** | Evaluate policies when the Stage is presented to the user. | [optional] 
 **Order** | Pointer to **int32** |  | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **InvalidResponseAction** | Pointer to [**InvalidResponseActionEnum**](InvalidResponseActionEnum.md) | Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context. | [optional] 

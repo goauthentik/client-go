@@ -24,7 +24,7 @@ type FlowStageBinding struct {
 	StageObj                Stage  `json:"stage_obj"`
 	// Evaluate policies during the Flow planning process.
 	EvaluateOnPlan *bool `json:"evaluate_on_plan,omitempty"`
-	// Evaluate policies when the Stage is present to the user.
+	// Evaluate policies when the Stage is presented to the user.
 	ReEvaluatePolicies *bool             `json:"re_evaluate_policies,omitempty"`
 	Order              int32             `json:"order"`
 	PolicyEngineMode   *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
