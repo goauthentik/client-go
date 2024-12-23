@@ -48,7 +48,7 @@ Class | Method | HTTP request | Description
 *AdminApi* | [**AdminVersionHistoryList**](docs/AdminApi.md#adminversionhistorylist) | **Get** /admin/version/history/ | 
 *AdminApi* | [**AdminVersionHistoryRetrieve**](docs/AdminApi.md#adminversionhistoryretrieve) | **Get** /admin/version/history/{id}/ | 
 *AdminApi* | [**AdminVersionRetrieve**](docs/AdminApi.md#adminversionretrieve) | **Get** /admin/version/ | 
-*AdminApi* | [**AdminWorkersRetrieve**](docs/AdminApi.md#adminworkersretrieve) | **Get** /admin/workers/ | 
+*AdminApi* | [**AdminWorkersList**](docs/AdminApi.md#adminworkerslist) | **Get** /admin/workers/ | 
 *AuthenticatorsApi* | [**AuthenticatorsAdminAllList**](docs/AuthenticatorsApi.md#authenticatorsadminalllist) | **Get** /authenticators/admin/all/ | 
 *AuthenticatorsApi* | [**AuthenticatorsAdminDuoCreate**](docs/AuthenticatorsApi.md#authenticatorsadminduocreate) | **Post** /authenticators/admin/duo/ | 
 *AuthenticatorsApi* | [**AuthenticatorsAdminDuoDestroy**](docs/AuthenticatorsApi.md#authenticatorsadminduodestroy) | **Delete** /authenticators/admin/duo/{id}/ | 
@@ -1675,7 +1675,7 @@ Class | Method | HTTP request | Description
  - [WebAuthnDeviceRequest](docs/WebAuthnDeviceRequest.md)
  - [WebAuthnDeviceType](docs/WebAuthnDeviceType.md)
  - [WebAuthnDeviceTypeRequest](docs/WebAuthnDeviceTypeRequest.md)
- - [Workers](docs/Workers.md)
+ - [Worker](docs/Worker.md)
 
 
 ## Documentation For Authorization

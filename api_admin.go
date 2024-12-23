@@ -1390,25 +1390,25 @@ func (a *AdminApiService) AdminVersionRetrieveExecute(r ApiAdminVersionRetrieveR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminWorkersRetrieveRequest struct {
+type ApiAdminWorkersListRequest struct {
 	ctx        context.Context
 	ApiService *AdminApiService
 }
 
-func (r ApiAdminWorkersRetrieveRequest) Execute() (*Workers, *http.Response, error) {
-	return r.ApiService.AdminWorkersRetrieveExecute(r)
+func (r ApiAdminWorkersListRequest) Execute() ([]Worker, *http.Response, error) {
+	return r.ApiService.AdminWorkersListExecute(r)
 }
 
 /*
-AdminWorkersRetrieve Method for AdminWorkersRetrieve
+AdminWorkersList Method for AdminWorkersList
 
 Get currently connected worker count.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminWorkersRetrieveRequest
+	@return ApiAdminWorkersListRequest
 */
-func (a *AdminApiService) AdminWorkersRetrieve(ctx context.Context) ApiAdminWorkersRetrieveRequest {
-	return ApiAdminWorkersRetrieveRequest{
+func (a *AdminApiService) AdminWorkersList(ctx context.Context) ApiAdminWorkersListRequest {
+	return ApiAdminWorkersListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -1416,16 +1416,16 @@ func (a *AdminApiService) AdminWorkersRetrieve(ctx context.Context) ApiAdminWork
 
 // Execute executes the request
 //
-//	@return Workers
-func (a *AdminApiService) AdminWorkersRetrieveExecute(r ApiAdminWorkersRetrieveRequest) (*Workers, *http.Response, error) {
+//	@return []Worker
+func (a *AdminApiService) AdminWorkersListExecute(r ApiAdminWorkersListRequest) ([]Worker, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Workers
+		localVarReturnValue []Worker
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminWorkersRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminWorkersList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

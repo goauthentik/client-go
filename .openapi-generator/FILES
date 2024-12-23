@@ -743,7 +743,7 @@ docs/WebAuthnDeviceDeviceType.md
 docs/WebAuthnDeviceRequest.md
 docs/WebAuthnDeviceType.md
 docs/WebAuthnDeviceTypeRequest.md
-docs/Workers.md
+docs/Worker.md
 git_push.sh
 go.mod
 go.sum
@@ -1446,6 +1446,6 @@ model_web_authn_device_device_type.go
 model_web_authn_device_request.go
 model_web_authn_device_type.go
 model_web_authn_device_type_request.go
-model_workers.go
+model_worker.go
 response.go
 utils.go

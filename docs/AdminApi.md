@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**AdminVersionHistoryList**](AdminApi.md#AdminVersionHistoryList) | **Get** /admin/version/history/ | 
 [**AdminVersionHistoryRetrieve**](AdminApi.md#AdminVersionHistoryRetrieve) | **Get** /admin/version/history/{id}/ | 
 [**AdminVersionRetrieve**](AdminApi.md#AdminVersionRetrieve) | **Get** /admin/version/ | 
-[**AdminWorkersRetrieve**](AdminApi.md#AdminWorkersRetrieve) | **Get** /admin/workers/ | 
+[**AdminWorkersList**](AdminApi.md#AdminWorkersList) | **Get** /admin/workers/ | 
 
 
 
@@ -720,9 +720,9 @@ Other parameters are passed through a pointer to a apiAdminVersionRetrieveReques
 [[Back to README]](../README.md)
 
 
-## AdminWorkersRetrieve
+## AdminWorkersList
 
-> Workers AdminWorkersRetrieve(ctx).Execute()
+> []Worker AdminWorkersList(ctx).Execute()
 
 
 
@@ -744,13 +744,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AdminApi.AdminWorkersRetrieve(context.Background()).Execute()
+    resp, r, err := apiClient.AdminApi.AdminWorkersList(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminWorkersRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminWorkersList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AdminWorkersRetrieve`: Workers
-    fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminWorkersRetrieve`: %v\n", resp)
+    // response from `AdminWorkersList`: []Worker
+    fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminWorkersList`: %v\n", resp)
 }
 ```
 
@@ -760,12 +760,12 @@ This endpoint does not need any parameter.
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAdminWorkersRetrieveRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiAdminWorkersListRequest struct via the builder pattern
 
 
 ### Return type
 
-[**Workers**](Workers.md)
+[**[]Worker**](Worker.md)
 
 ### Authorization
 

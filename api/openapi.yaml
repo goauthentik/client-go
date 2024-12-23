@@ -364,13 +364,15 @@ paths:
   /admin/workers/:
     get:
       description: Get currently connected worker count.
-      operationId: admin_workers_retrieve
+      operationId: admin_workers_list
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Workers'
+                items:
+                  $ref: '#/components/schemas/Worker'
+                type: array
           description: ""
         "400":
           content:
@@ -73490,14 +73492,22 @@ components:
       - aaguid
       - description
       type: object
-    Workers:
+    Worker:
       example:
-        count: 0
+        version: version
+        version_matching: true
+        worker_id: worker_id
       properties:
-        count:
-          type: integer
+        worker_id:
+          type: string
+        version:
+          type: string
+        version_matching:
+          type: boolean
       required:
-      - count
+      - version
+      - version_matching
+      - worker_id
       type: object
     modelRequest:
       discriminator:
