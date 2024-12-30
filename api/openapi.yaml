@@ -24553,6 +24553,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SAMLMetadata'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SAMLMetadata'
           description: ""
         "404":
           description: Provider has no application assigned
