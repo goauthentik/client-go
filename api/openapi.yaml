@@ -46362,6 +46362,7 @@ components:
       example:
         name: name
         pk: 9
+        user: ""
       properties:
         pk:
           readOnly: true
@@ -46371,9 +46372,14 @@ components:
           description: The human-readable name of this device.
           maxLength: 64
           type: string
+        user:
+          allOf:
+          - $ref: '#/components/schemas/GroupMember'
+          readOnly: true
       required:
       - name
       - pk
+      - user
       type: object
     DuoDeviceEnrollmentStatus:
       example:
@@ -54527,8 +54533,10 @@ components:
         results:
         - name: name
           pk: 9
+          user: ""
         - name: name
           pk: 9
+          user: ""
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -59140,9 +59148,11 @@ components:
         - name: name
           phone_number: phone_number
           pk: 0
+          user: ""
         - name: name
           phone_number: phone_number
           pk: 0
+          user: ""
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -59484,11 +59494,13 @@ components:
           - token: token
           - token: token
           pk: 0
+          user: ""
         - name: name
           token_set:
           - token: token
           - token: token
           pk: 0
+          user: ""
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -59583,8 +59595,10 @@ components:
         results:
         - name: name
           pk: 0
+          user: ""
         - name: name
           pk: 0
+          user: ""
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -60750,11 +60764,13 @@ components:
           name: name
           device_type: null
           pk: 0
+          user: ""
         - aaguid: aaguid
           created_on: 2000-01-23T04:56:07.000+00:00
           name: name
           device_type: null
           pk: 0
+          user: ""
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -69995,6 +70011,7 @@ components:
         name: name
         phone_number: phone_number
         pk: 0
+        user: ""
       properties:
         name:
           description: The human-readable name of this device.
@@ -70007,10 +70024,15 @@ components:
         phone_number:
           readOnly: true
           type: string
+        user:
+          allOf:
+          - $ref: '#/components/schemas/GroupMember'
+          readOnly: true
       required:
       - name
       - phone_number
       - pk
+      - user
       type: object
     SMSDeviceRequest:
       description: Serializer for sms authenticator devices
@@ -70949,6 +70971,7 @@ components:
         - token: token
         - token: token
         pk: 0
+        user: ""
       properties:
         name:
           description: The human-readable name of this device.
@@ -70963,10 +70986,15 @@ components:
           readOnly: true
           title: ID
           type: integer
+        user:
+          allOf:
+          - $ref: '#/components/schemas/GroupMember'
+          readOnly: true
       required:
       - name
       - pk
       - token_set
+      - user
       type: object
     StaticDeviceRequest:
       description: Serializer for static authenticator devices
@@ -71275,6 +71303,7 @@ components:
       example:
         name: name
         pk: 0
+        user: ""
       properties:
         name:
           description: The human-readable name of this device.
@@ -71284,9 +71313,14 @@ components:
           readOnly: true
           title: ID
           type: integer
+        user:
+          allOf:
+          - $ref: '#/components/schemas/GroupMember'
+          readOnly: true
       required:
       - name
       - pk
+      - user
       type: object
     TOTPDeviceRequest:
       description: Serializer for totp authenticator devices
@@ -73431,6 +73465,7 @@ components:
         name: name
         device_type: null
         pk: 0
+        user: ""
       properties:
         pk:
           readOnly: true
@@ -73448,12 +73483,17 @@ components:
         aaguid:
           readOnly: true
           type: string
+        user:
+          allOf:
+          - $ref: '#/components/schemas/GroupMember'
+          readOnly: true
       required:
       - aaguid
       - created_on
       - device_type
       - name
       - pk
+      - user
       type: object
     WebAuthnDeviceRequest:
       description: Serializer for WebAuthn authenticator devices

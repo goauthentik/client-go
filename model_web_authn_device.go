@@ -23,19 +23,21 @@ type WebAuthnDevice struct {
 	CreatedOn  time.Time                        `json:"created_on"`
 	DeviceType NullableWebAuthnDeviceDeviceType `json:"device_type"`
 	Aaguid     string                           `json:"aaguid"`
+	User       GroupMember                      `json:"user"`
 }
 
 // NewWebAuthnDevice instantiates a new WebAuthnDevice object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWebAuthnDevice(pk int32, name string, createdOn time.Time, deviceType NullableWebAuthnDeviceDeviceType, aaguid string) *WebAuthnDevice {
+func NewWebAuthnDevice(pk int32, name string, createdOn time.Time, deviceType NullableWebAuthnDeviceDeviceType, aaguid string, user GroupMember) *WebAuthnDevice {
 	this := WebAuthnDevice{}
 	this.Pk = pk
 	this.Name = name
 	this.CreatedOn = createdOn
 	this.DeviceType = deviceType
 	this.Aaguid = aaguid
+	this.User = user
 	return &this
 }
 
@@ -169,6 +171,30 @@ func (o *WebAuthnDevice) SetAaguid(v string) {
 	o.Aaguid = v
 }
 
+// GetUser returns the User field value
+func (o *WebAuthnDevice) GetUser() GroupMember {
+	if o == nil {
+		var ret GroupMember
+		return ret
+	}
+
+	return o.User
+}
+
+// GetUserOk returns a tuple with the User field value
+// and a boolean to check if the value has been set.
+func (o *WebAuthnDevice) GetUserOk() (*GroupMember, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.User, true
+}
+
+// SetUser sets field value
+func (o *WebAuthnDevice) SetUser(v GroupMember) {
+	o.User = v
+}
+
 func (o WebAuthnDevice) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -185,6 +211,9 @@ func (o WebAuthnDevice) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["aaguid"] = o.Aaguid
+	}
+	if true {
+		toSerialize["user"] = o.User
 	}
 	return json.Marshal(toSerialize)
 }

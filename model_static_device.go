@@ -21,17 +21,19 @@ type StaticDevice struct {
 	Name     string              `json:"name"`
 	TokenSet []StaticDeviceToken `json:"token_set"`
 	Pk       int32               `json:"pk"`
+	User     GroupMember         `json:"user"`
 }
 
 // NewStaticDevice instantiates a new StaticDevice object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStaticDevice(name string, tokenSet []StaticDeviceToken, pk int32) *StaticDevice {
+func NewStaticDevice(name string, tokenSet []StaticDeviceToken, pk int32, user GroupMember) *StaticDevice {
 	this := StaticDevice{}
 	this.Name = name
 	this.TokenSet = tokenSet
 	this.Pk = pk
+	this.User = user
 	return &this
 }
 
@@ -115,6 +117,30 @@ func (o *StaticDevice) SetPk(v int32) {
 	o.Pk = v
 }
 
+// GetUser returns the User field value
+func (o *StaticDevice) GetUser() GroupMember {
+	if o == nil {
+		var ret GroupMember
+		return ret
+	}
+
+	return o.User
+}
+
+// GetUserOk returns a tuple with the User field value
+// and a boolean to check if the value has been set.
+func (o *StaticDevice) GetUserOk() (*GroupMember, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.User, true
+}
+
+// SetUser sets field value
+func (o *StaticDevice) SetUser(v GroupMember) {
+	o.User = v
+}
+
 func (o StaticDevice) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -125,6 +151,9 @@ func (o StaticDevice) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["user"] = o.User
 	}
 	return json.Marshal(toSerialize)
 }

@@ -18,20 +18,22 @@ import (
 // SMSDevice Serializer for sms authenticator devices
 type SMSDevice struct {
 	// The human-readable name of this device.
-	Name        string `json:"name"`
-	Pk          int32  `json:"pk"`
-	PhoneNumber string `json:"phone_number"`
+	Name        string      `json:"name"`
+	Pk          int32       `json:"pk"`
+	PhoneNumber string      `json:"phone_number"`
+	User        GroupMember `json:"user"`
 }
 
 // NewSMSDevice instantiates a new SMSDevice object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSMSDevice(name string, pk int32, phoneNumber string) *SMSDevice {
+func NewSMSDevice(name string, pk int32, phoneNumber string, user GroupMember) *SMSDevice {
 	this := SMSDevice{}
 	this.Name = name
 	this.Pk = pk
 	this.PhoneNumber = phoneNumber
+	this.User = user
 	return &this
 }
 
@@ -115,6 +117,30 @@ func (o *SMSDevice) SetPhoneNumber(v string) {
 	o.PhoneNumber = v
 }
 
+// GetUser returns the User field value
+func (o *SMSDevice) GetUser() GroupMember {
+	if o == nil {
+		var ret GroupMember
+		return ret
+	}
+
+	return o.User
+}
+
+// GetUserOk returns a tuple with the User field value
+// and a boolean to check if the value has been set.
+func (o *SMSDevice) GetUserOk() (*GroupMember, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.User, true
+}
+
+// SetUser sets field value
+func (o *SMSDevice) SetUser(v GroupMember) {
+	o.User = v
+}
+
 func (o SMSDevice) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -125,6 +151,9 @@ func (o SMSDevice) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["phone_number"] = o.PhoneNumber
+	}
+	if true {
+		toSerialize["user"] = o.User
 	}
 	return json.Marshal(toSerialize)
 }

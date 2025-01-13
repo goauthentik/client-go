@@ -19,17 +19,19 @@ import (
 type DuoDevice struct {
 	Pk int32 `json:"pk"`
 	// The human-readable name of this device.
-	Name string `json:"name"`
+	Name string      `json:"name"`
+	User GroupMember `json:"user"`
 }
 
 // NewDuoDevice instantiates a new DuoDevice object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDuoDevice(pk int32, name string) *DuoDevice {
+func NewDuoDevice(pk int32, name string, user GroupMember) *DuoDevice {
 	this := DuoDevice{}
 	this.Pk = pk
 	this.Name = name
+	this.User = user
 	return &this
 }
 
@@ -89,6 +91,30 @@ func (o *DuoDevice) SetName(v string) {
 	o.Name = v
 }
 
+// GetUser returns the User field value
+func (o *DuoDevice) GetUser() GroupMember {
+	if o == nil {
+		var ret GroupMember
+		return ret
+	}
+
+	return o.User
+}
+
+// GetUserOk returns a tuple with the User field value
+// and a boolean to check if the value has been set.
+func (o *DuoDevice) GetUserOk() (*GroupMember, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.User, true
+}
+
+// SetUser sets field value
+func (o *DuoDevice) SetUser(v GroupMember) {
+	o.User = v
+}
+
 func (o DuoDevice) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -96,6 +122,9 @@ func (o DuoDevice) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["user"] = o.User
 	}
 	return json.Marshal(toSerialize)
 }

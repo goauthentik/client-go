@@ -7,12 +7,13 @@ Name | Type | Description | Notes
 **Name** | **string** | The human-readable name of this device. | 
 **TokenSet** | [**[]StaticDeviceToken**](StaticDeviceToken.md) |  | [readonly] 
 **Pk** | **int32** |  | [readonly] 
+**User** | [**GroupMember**](GroupMember.md) |  | [readonly] 
 
 ## Methods
 
 ### NewStaticDevice
 
-`func NewStaticDevice(name string, tokenSet []StaticDeviceToken, pk int32, ) *StaticDevice`
+`func NewStaticDevice(name string, tokenSet []StaticDeviceToken, pk int32, user GroupMember, ) *StaticDevice`
 
 NewStaticDevice instantiates a new StaticDevice object
 This constructor will assign default values to properties that have it defined,
@@ -85,6 +86,26 @@ and a boolean to check if the value has been set.
 `func (o *StaticDevice) SetPk(v int32)`
 
 SetPk sets Pk field to given value.
+
+
+### GetUser
+
+`func (o *StaticDevice) GetUser() GroupMember`
+
+GetUser returns the User field if non-nil, zero value otherwise.
+
+### GetUserOk
+
+`func (o *StaticDevice) GetUserOk() (*GroupMember, bool)`
+
+GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUser
+
+`func (o *StaticDevice) SetUser(v GroupMember)`
+
+SetUser sets User field to given value.
 
 
 

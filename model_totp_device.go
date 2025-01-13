@@ -18,18 +18,20 @@ import (
 // TOTPDevice Serializer for totp authenticator devices
 type TOTPDevice struct {
 	// The human-readable name of this device.
-	Name string `json:"name"`
-	Pk   int32  `json:"pk"`
+	Name string      `json:"name"`
+	Pk   int32       `json:"pk"`
+	User GroupMember `json:"user"`
 }
 
 // NewTOTPDevice instantiates a new TOTPDevice object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTOTPDevice(name string, pk int32) *TOTPDevice {
+func NewTOTPDevice(name string, pk int32, user GroupMember) *TOTPDevice {
 	this := TOTPDevice{}
 	this.Name = name
 	this.Pk = pk
+	this.User = user
 	return &this
 }
 
@@ -89,6 +91,30 @@ func (o *TOTPDevice) SetPk(v int32) {
 	o.Pk = v
 }
 
+// GetUser returns the User field value
+func (o *TOTPDevice) GetUser() GroupMember {
+	if o == nil {
+		var ret GroupMember
+		return ret
+	}
+
+	return o.User
+}
+
+// GetUserOk returns a tuple with the User field value
+// and a boolean to check if the value has been set.
+func (o *TOTPDevice) GetUserOk() (*GroupMember, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.User, true
+}
+
+// SetUser sets field value
+func (o *TOTPDevice) SetUser(v GroupMember) {
+	o.User = v
+}
+
 func (o TOTPDevice) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -96,6 +122,9 @@ func (o TOTPDevice) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["user"] = o.User
 	}
 	return json.Marshal(toSerialize)
 }
