@@ -2668,7 +2668,7 @@ Name | Type | Description  | Notes
 
 ## SourcesKerberosList
 
-> PaginatedKerberosSourceList SourcesKerberosList(ctx).Enabled(enabled).KadminType(kadminType).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).Realm(realm).Search(search).Slug(slug).SpnegoServerName(spnegoServerName).SyncPrincipal(syncPrincipal).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).Execute()
+> PaginatedKerberosSourceList SourcesKerberosList(ctx).Enabled(enabled).KadminType(kadminType).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).PbmUuid(pbmUuid).Realm(realm).Search(search).Slug(slug).SpnegoServerName(spnegoServerName).SyncPrincipal(syncPrincipal).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).Execute()
 
 
 
@@ -2694,6 +2694,7 @@ func main() {
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     passwordLoginUpdateInternalPassword := true // bool |  (optional)
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     realm := "realm_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     slug := "slug_example" // string |  (optional)
@@ -2704,7 +2705,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesKerberosList(context.Background()).Enabled(enabled).KadminType(kadminType).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).Realm(realm).Search(search).Slug(slug).SpnegoServerName(spnegoServerName).SyncPrincipal(syncPrincipal).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesKerberosList(context.Background()).Enabled(enabled).KadminType(kadminType).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).PbmUuid(pbmUuid).Realm(realm).Search(search).Slug(slug).SpnegoServerName(spnegoServerName).SyncPrincipal(syncPrincipal).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesKerberosList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2732,6 +2733,7 @@ Name | Type | Description  | Notes
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **passwordLoginUpdateInternalPassword** | **bool** |  | 
+ **pbmUuid** | **string** |  | 
  **realm** | **string** |  | 
  **search** | **string** | A search term. | 
  **slug** | **string** |  | 
@@ -3318,7 +3320,7 @@ Name | Type | Description  | Notes
 
 ## SourcesLdapList
 
-> PaginatedLDAPSourceList SourcesLdapList(ctx).AdditionalGroupDn(additionalGroupDn).AdditionalUserDn(additionalUserDn).BaseDn(baseDn).BindCn(bindCn).ClientCertificate(clientCertificate).Enabled(enabled).GroupMembershipField(groupMembershipField).GroupObjectFilter(groupObjectFilter).GroupPropertyMappings(groupPropertyMappings).Name(name).ObjectUniquenessField(objectUniquenessField).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).PeerCertificate(peerCertificate).Search(search).ServerUri(serverUri).Slug(slug).Sni(sni).StartTls(startTls).SyncGroups(syncGroups).SyncParentGroup(syncParentGroup).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).UserObjectFilter(userObjectFilter).UserPropertyMappings(userPropertyMappings).Execute()
+> PaginatedLDAPSourceList SourcesLdapList(ctx).AdditionalGroupDn(additionalGroupDn).AdditionalUserDn(additionalUserDn).BaseDn(baseDn).BindCn(bindCn).ClientCertificate(clientCertificate).Enabled(enabled).GroupMembershipField(groupMembershipField).GroupObjectFilter(groupObjectFilter).GroupPropertyMappings(groupPropertyMappings).Name(name).ObjectUniquenessField(objectUniquenessField).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).PbmUuid(pbmUuid).PeerCertificate(peerCertificate).Search(search).ServerUri(serverUri).Slug(slug).Sni(sni).StartTls(startTls).SyncGroups(syncGroups).SyncParentGroup(syncParentGroup).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).UserObjectFilter(userObjectFilter).UserPropertyMappings(userPropertyMappings).Execute()
 
 
 
@@ -3352,6 +3354,7 @@ func main() {
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     passwordLoginUpdateInternalPassword := true // bool |  (optional)
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     peerCertificate := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     serverUri := "serverUri_example" // string |  (optional)
@@ -3367,7 +3370,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesLdapList(context.Background()).AdditionalGroupDn(additionalGroupDn).AdditionalUserDn(additionalUserDn).BaseDn(baseDn).BindCn(bindCn).ClientCertificate(clientCertificate).Enabled(enabled).GroupMembershipField(groupMembershipField).GroupObjectFilter(groupObjectFilter).GroupPropertyMappings(groupPropertyMappings).Name(name).ObjectUniquenessField(objectUniquenessField).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).PeerCertificate(peerCertificate).Search(search).ServerUri(serverUri).Slug(slug).Sni(sni).StartTls(startTls).SyncGroups(syncGroups).SyncParentGroup(syncParentGroup).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).UserObjectFilter(userObjectFilter).UserPropertyMappings(userPropertyMappings).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesLdapList(context.Background()).AdditionalGroupDn(additionalGroupDn).AdditionalUserDn(additionalUserDn).BaseDn(baseDn).BindCn(bindCn).ClientCertificate(clientCertificate).Enabled(enabled).GroupMembershipField(groupMembershipField).GroupObjectFilter(groupObjectFilter).GroupPropertyMappings(groupPropertyMappings).Name(name).ObjectUniquenessField(objectUniquenessField).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).PbmUuid(pbmUuid).PeerCertificate(peerCertificate).Search(search).ServerUri(serverUri).Slug(slug).Sni(sni).StartTls(startTls).SyncGroups(syncGroups).SyncParentGroup(syncParentGroup).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).UserObjectFilter(userObjectFilter).UserPropertyMappings(userPropertyMappings).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3403,6 +3406,7 @@ Name | Type | Description  | Notes
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **passwordLoginUpdateInternalPassword** | **bool** |  | 
+ **pbmUuid** | **string** |  | 
  **peerCertificate** | **string** |  | 
  **search** | **string** | A search term. | 
  **serverUri** | **string** |  | 
@@ -3924,7 +3928,7 @@ Name | Type | Description  | Notes
 
 ## SourcesOauthList
 
-> PaginatedOAuthSourceList SourcesOauthList(ctx).AccessTokenUrl(accessTokenUrl).AdditionalScopes(additionalScopes).AuthenticationFlow(authenticationFlow).AuthorizationUrl(authorizationUrl).ConsumerKey(consumerKey).Enabled(enabled).EnrollmentFlow(enrollmentFlow).GroupMatchingMode(groupMatchingMode).HasJwks(hasJwks).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).ProfileUrl(profileUrl).ProviderType(providerType).RequestTokenUrl(requestTokenUrl).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
+> PaginatedOAuthSourceList SourcesOauthList(ctx).AccessTokenUrl(accessTokenUrl).AdditionalScopes(additionalScopes).AuthenticationFlow(authenticationFlow).AuthorizationUrl(authorizationUrl).ConsumerKey(consumerKey).Enabled(enabled).EnrollmentFlow(enrollmentFlow).GroupMatchingMode(groupMatchingMode).HasJwks(hasJwks).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).PolicyEngineMode(policyEngineMode).ProfileUrl(profileUrl).ProviderType(providerType).RequestTokenUrl(requestTokenUrl).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
 
 
 
@@ -3956,6 +3960,7 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     policyEngineMode := "policyEngineMode_example" // string |  (optional)
     profileUrl := "profileUrl_example" // string |  (optional)
     providerType := "providerType_example" // string |  (optional)
@@ -3966,7 +3971,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesOauthList(context.Background()).AccessTokenUrl(accessTokenUrl).AdditionalScopes(additionalScopes).AuthenticationFlow(authenticationFlow).AuthorizationUrl(authorizationUrl).ConsumerKey(consumerKey).Enabled(enabled).EnrollmentFlow(enrollmentFlow).GroupMatchingMode(groupMatchingMode).HasJwks(hasJwks).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).ProfileUrl(profileUrl).ProviderType(providerType).RequestTokenUrl(requestTokenUrl).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesOauthList(context.Background()).AccessTokenUrl(accessTokenUrl).AdditionalScopes(additionalScopes).AuthenticationFlow(authenticationFlow).AuthorizationUrl(authorizationUrl).ConsumerKey(consumerKey).Enabled(enabled).EnrollmentFlow(enrollmentFlow).GroupMatchingMode(groupMatchingMode).HasJwks(hasJwks).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).PolicyEngineMode(policyEngineMode).ProfileUrl(profileUrl).ProviderType(providerType).RequestTokenUrl(requestTokenUrl).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesOauthList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4000,6 +4005,7 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
+ **pbmUuid** | **string** |  | 
  **policyEngineMode** | **string** |  | 
  **profileUrl** | **string** |  | 
  **providerType** | **string** |  | 
@@ -4512,7 +4518,7 @@ Name | Type | Description  | Notes
 
 ## SourcesPlexList
 
-> PaginatedPlexSourceList SourcesPlexList(ctx).AllowFriends(allowFriends).AuthenticationFlow(authenticationFlow).ClientId(clientId).Enabled(enabled).EnrollmentFlow(enrollmentFlow).GroupMatchingMode(groupMatchingMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
+> PaginatedPlexSourceList SourcesPlexList(ctx).AllowFriends(allowFriends).AuthenticationFlow(authenticationFlow).ClientId(clientId).Enabled(enabled).EnrollmentFlow(enrollmentFlow).GroupMatchingMode(groupMatchingMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).PolicyEngineMode(policyEngineMode).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
 
 
 
@@ -4541,6 +4547,7 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     policyEngineMode := "policyEngineMode_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     slug := "slug_example" // string |  (optional)
@@ -4548,7 +4555,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesPlexList(context.Background()).AllowFriends(allowFriends).AuthenticationFlow(authenticationFlow).ClientId(clientId).Enabled(enabled).EnrollmentFlow(enrollmentFlow).GroupMatchingMode(groupMatchingMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesPlexList(context.Background()).AllowFriends(allowFriends).AuthenticationFlow(authenticationFlow).ClientId(clientId).Enabled(enabled).EnrollmentFlow(enrollmentFlow).GroupMatchingMode(groupMatchingMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).PolicyEngineMode(policyEngineMode).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesPlexList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4579,6 +4586,7 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
+ **pbmUuid** | **string** |  | 
  **policyEngineMode** | **string** |  | 
  **search** | **string** | A search term. | 
  **slug** | **string** |  | 
@@ -5156,7 +5164,7 @@ Name | Type | Description  | Notes
 
 ## SourcesSamlList
 
-> PaginatedSAMLSourceList SourcesSamlList(ctx).AllowIdpInitiated(allowIdpInitiated).AuthenticationFlow(authenticationFlow).BindingType(bindingType).DigestAlgorithm(digestAlgorithm).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Issuer(issuer).Managed(managed).Name(name).NameIdPolicy(nameIdPolicy).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).PreAuthenticationFlow(preAuthenticationFlow).Search(search).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SloUrl(sloUrl).Slug(slug).SsoUrl(ssoUrl).TemporaryUserDeleteAfter(temporaryUserDeleteAfter).UserMatchingMode(userMatchingMode).VerificationKp(verificationKp).Execute()
+> PaginatedSAMLSourceList SourcesSamlList(ctx).AllowIdpInitiated(allowIdpInitiated).AuthenticationFlow(authenticationFlow).BindingType(bindingType).DigestAlgorithm(digestAlgorithm).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Issuer(issuer).Managed(managed).Name(name).NameIdPolicy(nameIdPolicy).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).PolicyEngineMode(policyEngineMode).PreAuthenticationFlow(preAuthenticationFlow).Search(search).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SloUrl(sloUrl).Slug(slug).SsoUrl(ssoUrl).TemporaryUserDeleteAfter(temporaryUserDeleteAfter).UserMatchingMode(userMatchingMode).VerificationKp(verificationKp).Execute()
 
 
 
@@ -5188,6 +5196,7 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     policyEngineMode := "policyEngineMode_example" // string |  (optional)
     preAuthenticationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
@@ -5202,7 +5211,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesSamlList(context.Background()).AllowIdpInitiated(allowIdpInitiated).AuthenticationFlow(authenticationFlow).BindingType(bindingType).DigestAlgorithm(digestAlgorithm).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Issuer(issuer).Managed(managed).Name(name).NameIdPolicy(nameIdPolicy).Ordering(ordering).Page(page).PageSize(pageSize).PolicyEngineMode(policyEngineMode).PreAuthenticationFlow(preAuthenticationFlow).Search(search).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SloUrl(sloUrl).Slug(slug).SsoUrl(ssoUrl).TemporaryUserDeleteAfter(temporaryUserDeleteAfter).UserMatchingMode(userMatchingMode).VerificationKp(verificationKp).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesSamlList(context.Background()).AllowIdpInitiated(allowIdpInitiated).AuthenticationFlow(authenticationFlow).BindingType(bindingType).DigestAlgorithm(digestAlgorithm).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Issuer(issuer).Managed(managed).Name(name).NameIdPolicy(nameIdPolicy).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).PolicyEngineMode(policyEngineMode).PreAuthenticationFlow(preAuthenticationFlow).Search(search).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SloUrl(sloUrl).Slug(slug).SsoUrl(ssoUrl).TemporaryUserDeleteAfter(temporaryUserDeleteAfter).UserMatchingMode(userMatchingMode).VerificationKp(verificationKp).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesSamlList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5236,6 +5245,7 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
+ **pbmUuid** | **string** |  | 
  **policyEngineMode** | **string** |  | 
  **preAuthenticationFlow** | **string** |  | 
  **search** | **string** | A search term. | 
@@ -6252,7 +6262,7 @@ Name | Type | Description  | Notes
 
 ## SourcesScimList
 
-> PaginatedSCIMSourceList SourcesScimList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).Execute()
+> PaginatedSCIMSourceList SourcesScimList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).Search(search).Slug(slug).Execute()
 
 
 
@@ -6275,12 +6285,13 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     slug := "slug_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesScimList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Slug(slug).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesScimList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).Search(search).Slug(slug).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesScimList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6305,6 +6316,7 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
+ **pbmUuid** | **string** |  | 
  **search** | **string** | A search term. | 
  **slug** | **string** |  | 
 

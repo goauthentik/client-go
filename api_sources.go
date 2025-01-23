@@ -4758,6 +4758,7 @@ type ApiSourcesKerberosListRequest struct {
 	page                                *int32
 	pageSize                            *int32
 	passwordLoginUpdateInternalPassword *bool
+	pbmUuid                             *string
 	realm                               *string
 	search                              *string
 	slug                                *string
@@ -4803,6 +4804,11 @@ func (r ApiSourcesKerberosListRequest) PageSize(pageSize int32) ApiSourcesKerber
 
 func (r ApiSourcesKerberosListRequest) PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword bool) ApiSourcesKerberosListRequest {
 	r.passwordLoginUpdateInternalPassword = &passwordLoginUpdateInternalPassword
+	return r
+}
+
+func (r ApiSourcesKerberosListRequest) PbmUuid(pbmUuid string) ApiSourcesKerberosListRequest {
+	r.pbmUuid = &pbmUuid
 	return r
 }
 
@@ -4903,6 +4909,9 @@ func (a *SourcesApiService) SourcesKerberosListExecute(r ApiSourcesKerberosListR
 	}
 	if r.passwordLoginUpdateInternalPassword != nil {
 		localVarQueryParams.Add("password_login_update_internal_password", parameterToString(*r.passwordLoginUpdateInternalPassword, ""))
+	}
+	if r.pbmUuid != nil {
+		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
 	}
 	if r.realm != nil {
 		localVarQueryParams.Add("realm", parameterToString(*r.realm, ""))
@@ -6014,6 +6023,7 @@ type ApiSourcesLdapListRequest struct {
 	page                                *int32
 	pageSize                            *int32
 	passwordLoginUpdateInternalPassword *bool
+	pbmUuid                             *string
 	peerCertificate                     *string
 	search                              *string
 	serverUri                           *string
@@ -6103,6 +6113,11 @@ func (r ApiSourcesLdapListRequest) PageSize(pageSize int32) ApiSourcesLdapListRe
 
 func (r ApiSourcesLdapListRequest) PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword bool) ApiSourcesLdapListRequest {
 	r.passwordLoginUpdateInternalPassword = &passwordLoginUpdateInternalPassword
+	return r
+}
+
+func (r ApiSourcesLdapListRequest) PbmUuid(pbmUuid string) ApiSourcesLdapListRequest {
+	r.pbmUuid = &pbmUuid
 	return r
 }
 
@@ -6260,6 +6275,9 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 	}
 	if r.passwordLoginUpdateInternalPassword != nil {
 		localVarQueryParams.Add("password_login_update_internal_password", parameterToString(*r.passwordLoginUpdateInternalPassword, ""))
+	}
+	if r.pbmUuid != nil {
+		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
 	}
 	if r.peerCertificate != nil {
 		localVarQueryParams.Add("peer_certificate", parameterToString(*r.peerCertificate, ""))
@@ -7269,6 +7287,7 @@ type ApiSourcesOauthListRequest struct {
 	ordering           *string
 	page               *int32
 	pageSize           *int32
+	pbmUuid            *string
 	policyEngineMode   *string
 	profileUrl         *string
 	providerType       *string
@@ -7345,6 +7364,11 @@ func (r ApiSourcesOauthListRequest) Page(page int32) ApiSourcesOauthListRequest 
 // Number of results to return per page.
 func (r ApiSourcesOauthListRequest) PageSize(pageSize int32) ApiSourcesOauthListRequest {
 	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiSourcesOauthListRequest) PbmUuid(pbmUuid string) ApiSourcesOauthListRequest {
+	r.pbmUuid = &pbmUuid
 	return r
 }
 
@@ -7464,6 +7488,9 @@ func (a *SourcesApiService) SourcesOauthListExecute(r ApiSourcesOauthListRequest
 	}
 	if r.pageSize != nil {
 		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.pbmUuid != nil {
+		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
 	}
 	if r.policyEngineMode != nil {
 		localVarQueryParams.Add("policy_engine_mode", parameterToString(*r.policyEngineMode, ""))
@@ -8453,6 +8480,7 @@ type ApiSourcesPlexListRequest struct {
 	ordering           *string
 	page               *int32
 	pageSize           *int32
+	pbmUuid            *string
 	policyEngineMode   *string
 	search             *string
 	slug               *string
@@ -8510,6 +8538,11 @@ func (r ApiSourcesPlexListRequest) Page(page int32) ApiSourcesPlexListRequest {
 // Number of results to return per page.
 func (r ApiSourcesPlexListRequest) PageSize(pageSize int32) ApiSourcesPlexListRequest {
 	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiSourcesPlexListRequest) PbmUuid(pbmUuid string) ApiSourcesPlexListRequest {
+	r.pbmUuid = &pbmUuid
 	return r
 }
 
@@ -8605,6 +8638,9 @@ func (a *SourcesApiService) SourcesPlexListExecute(r ApiSourcesPlexListRequest) 
 	}
 	if r.pageSize != nil {
 		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.pbmUuid != nil {
+		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
 	}
 	if r.policyEngineMode != nil {
 		localVarQueryParams.Add("policy_engine_mode", parameterToString(*r.policyEngineMode, ""))
@@ -9688,6 +9724,7 @@ type ApiSourcesSamlListRequest struct {
 	ordering                 *string
 	page                     *int32
 	pageSize                 *int32
+	pbmUuid                  *string
 	policyEngineMode         *string
 	preAuthenticationFlow    *string
 	search                   *string
@@ -9767,6 +9804,11 @@ func (r ApiSourcesSamlListRequest) Page(page int32) ApiSourcesSamlListRequest {
 // Number of results to return per page.
 func (r ApiSourcesSamlListRequest) PageSize(pageSize int32) ApiSourcesSamlListRequest {
 	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiSourcesSamlListRequest) PbmUuid(pbmUuid string) ApiSourcesSamlListRequest {
+	r.pbmUuid = &pbmUuid
 	return r
 }
 
@@ -9906,6 +9948,9 @@ func (a *SourcesApiService) SourcesSamlListExecute(r ApiSourcesSamlListRequest) 
 	}
 	if r.pageSize != nil {
 		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.pbmUuid != nil {
+		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
 	}
 	if r.policyEngineMode != nil {
 		localVarQueryParams.Add("policy_engine_mode", parameterToString(*r.policyEngineMode, ""))
@@ -11833,6 +11878,7 @@ type ApiSourcesScimListRequest struct {
 	ordering   *string
 	page       *int32
 	pageSize   *int32
+	pbmUuid    *string
 	search     *string
 	slug       *string
 }
@@ -11857,6 +11903,11 @@ func (r ApiSourcesScimListRequest) Page(page int32) ApiSourcesScimListRequest {
 // Number of results to return per page.
 func (r ApiSourcesScimListRequest) PageSize(pageSize int32) ApiSourcesScimListRequest {
 	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiSourcesScimListRequest) PbmUuid(pbmUuid string) ApiSourcesScimListRequest {
+	r.pbmUuid = &pbmUuid
 	return r
 }
 
@@ -11923,6 +11974,9 @@ func (a *SourcesApiService) SourcesScimListExecute(r ApiSourcesScimListRequest) 
 	}
 	if r.pageSize != nil {
 		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.pbmUuid != nil {
+		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
