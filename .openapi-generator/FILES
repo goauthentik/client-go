@@ -20,6 +20,7 @@ api_rbac.go
 api_root.go
 api_schema.go
 api_sources.go
+api_ssf.go
 api_stages.go
 api_tenants.go
 client.go
@@ -113,6 +114,7 @@ docs/CoreApi.md
 docs/CountryCodeEnum.md
 docs/CryptoApi.md
 docs/CurrentBrand.md
+docs/DeliveryMethodEnum.md
 docs/DeniedActionEnum.md
 docs/DenyStage.md
 docs/DenyStageRequest.md
@@ -157,6 +159,7 @@ docs/EventMatcherPolicyRequest.md
 docs/EventRequest.md
 docs/EventTopPerUser.md
 docs/EventsApi.md
+docs/EventsRequestedEnum.md
 docs/ExpiringBaseGrantModel.md
 docs/ExpressionPolicy.md
 docs/ExpressionPolicyRequest.md
@@ -401,6 +404,8 @@ docs/PaginatedSCIMSourceList.md
 docs/PaginatedSCIMSourcePropertyMappingList.md
 docs/PaginatedSCIMSourceUserList.md
 docs/PaginatedSMSDeviceList.md
+docs/PaginatedSSFProviderList.md
+docs/PaginatedSSFStreamList.md
 docs/PaginatedScopeMappingList.md
 docs/PaginatedServiceConnectionList.md
 docs/PaginatedSourceList.md
@@ -522,6 +527,7 @@ docs/PatchedSCIMSourcePropertyMappingRequest.md
 docs/PatchedSCIMSourceRequest.md
 docs/PatchedSCIMSourceUserRequest.md
 docs/PatchedSMSDeviceRequest.md
+docs/PatchedSSFProviderRequest.md
 docs/PatchedScopeMappingRequest.md
 docs/PatchedSettingsRequest.md
 docs/PatchedSourceStageRequest.md
@@ -636,6 +642,9 @@ docs/SCIMSourceUser.md
 docs/SCIMSourceUserRequest.md
 docs/SMSDevice.md
 docs/SMSDeviceRequest.md
+docs/SSFProvider.md
+docs/SSFProviderRequest.md
+docs/SSFStream.md
 docs/SchemaApi.md
 docs/ScopeMapping.md
 docs/ScopeMappingRequest.md
@@ -657,6 +666,7 @@ docs/SourceStageRequest.md
 docs/SourceType.md
 docs/SourcesApi.md
 docs/SpBindingEnum.md
+docs/SsfApi.md
 docs/Stage.md
 docs/StagePrompt.md
 docs/StageRequest.md
@@ -832,6 +842,7 @@ model_contextual_flow_info_layout_enum.go
 model_coordinate.go
 model_country_code_enum.go
 model_current_brand.go
+model_delivery_method_enum.go
 model_denied_action_enum.go
 model_deny_stage.go
 model_deny_stage_request.go
@@ -874,6 +885,7 @@ model_event_matcher_policy.go
 model_event_matcher_policy_request.go
 model_event_request.go
 model_event_top_per_user.go
+model_events_requested_enum.go
 model_expiring_base_grant_model.go
 model_expression_policy.go
 model_expression_policy_request.go
@@ -1118,6 +1130,8 @@ model_paginated_service_connection_list.go
 model_paginated_sms_device_list.go
 model_paginated_source_list.go
 model_paginated_source_stage_list.go
+model_paginated_ssf_provider_list.go
+model_paginated_ssf_stream_list.go
 model_paginated_stage_list.go
 model_paginated_static_device_list.go
 model_paginated_system_task_list.go
@@ -1238,6 +1252,7 @@ model_patched_scope_mapping_request.go
 model_patched_settings_request.go
 model_patched_sms_device_request.go
 model_patched_source_stage_request.go
+model_patched_ssf_provider_request.go
 model_patched_static_device_request.go
 model_patched_tenant_request.go
 model_patched_token_request.go
@@ -1362,6 +1377,9 @@ model_source_stage.go
 model_source_stage_request.go
 model_source_type.go
 model_sp_binding_enum.go
+model_ssf_provider.go
+model_ssf_provider_request.go
+model_ssf_stream.go
 model_stage.go
 model_stage_prompt.go
 model_stage_request.go

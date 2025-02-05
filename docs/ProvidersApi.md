@@ -113,6 +113,13 @@ Method | HTTP request | Description
 [**ProvidersScimUsersList**](ProvidersApi.md#ProvidersScimUsersList) | **Get** /providers/scim_users/ | 
 [**ProvidersScimUsersRetrieve**](ProvidersApi.md#ProvidersScimUsersRetrieve) | **Get** /providers/scim_users/{id}/ | 
 [**ProvidersScimUsersUsedByList**](ProvidersApi.md#ProvidersScimUsersUsedByList) | **Get** /providers/scim_users/{id}/used_by/ | 
+[**ProvidersSsfCreate**](ProvidersApi.md#ProvidersSsfCreate) | **Post** /providers/ssf/ | 
+[**ProvidersSsfDestroy**](ProvidersApi.md#ProvidersSsfDestroy) | **Delete** /providers/ssf/{id}/ | 
+[**ProvidersSsfList**](ProvidersApi.md#ProvidersSsfList) | **Get** /providers/ssf/ | 
+[**ProvidersSsfPartialUpdate**](ProvidersApi.md#ProvidersSsfPartialUpdate) | **Patch** /providers/ssf/{id}/ | 
+[**ProvidersSsfRetrieve**](ProvidersApi.md#ProvidersSsfRetrieve) | **Get** /providers/ssf/{id}/ | 
+[**ProvidersSsfUpdate**](ProvidersApi.md#ProvidersSsfUpdate) | **Put** /providers/ssf/{id}/ | 
+[**ProvidersSsfUsedByList**](ProvidersApi.md#ProvidersSsfUsedByList) | **Get** /providers/ssf/{id}/used_by/ | 
 
 
 
@@ -7897,6 +7904,500 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiProvidersScimUsersUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersSsfCreate
+
+> SSFProvider ProvidersSsfCreate(ctx).SSFProviderRequest(sSFProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    sSFProviderRequest := *openapiclient.NewSSFProviderRequest("Name_example", "SigningKey_example") // SSFProviderRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersSsfCreate(context.Background()).SSFProviderRequest(sSFProviderRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSsfCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersSsfCreate`: SSFProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersSsfCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersSsfCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sSFProviderRequest** | [**SSFProviderRequest**](SSFProviderRequest.md) |  | 
+
+### Return type
+
+[**SSFProvider**](SSFProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersSsfDestroy
+
+> ProvidersSsfDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Shared Signals Framework Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersSsfDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSsfDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Shared Signals Framework Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersSsfDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersSsfList
+
+> PaginatedSSFProviderList ProvidersSsfList(ctx).ApplicationIsnull(applicationIsnull).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    applicationIsnull := true // bool |  (optional)
+    nameIexact := "nameIexact_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersSsfList(context.Background()).ApplicationIsnull(applicationIsnull).NameIexact(nameIexact).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSsfList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersSsfList`: PaginatedSSFProviderList
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersSsfList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersSsfListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicationIsnull** | **bool** |  | 
+ **nameIexact** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedSSFProviderList**](PaginatedSSFProviderList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersSsfPartialUpdate
+
+> SSFProvider ProvidersSsfPartialUpdate(ctx, id).PatchedSSFProviderRequest(patchedSSFProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Shared Signals Framework Provider.
+    patchedSSFProviderRequest := *openapiclient.NewPatchedSSFProviderRequest() // PatchedSSFProviderRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersSsfPartialUpdate(context.Background(), id).PatchedSSFProviderRequest(patchedSSFProviderRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSsfPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersSsfPartialUpdate`: SSFProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersSsfPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Shared Signals Framework Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersSsfPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedSSFProviderRequest** | [**PatchedSSFProviderRequest**](PatchedSSFProviderRequest.md) |  | 
+
+### Return type
+
+[**SSFProvider**](SSFProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersSsfRetrieve
+
+> SSFProvider ProvidersSsfRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Shared Signals Framework Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersSsfRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSsfRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersSsfRetrieve`: SSFProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersSsfRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Shared Signals Framework Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersSsfRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SSFProvider**](SSFProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersSsfUpdate
+
+> SSFProvider ProvidersSsfUpdate(ctx, id).SSFProviderRequest(sSFProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Shared Signals Framework Provider.
+    sSFProviderRequest := *openapiclient.NewSSFProviderRequest("Name_example", "SigningKey_example") // SSFProviderRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersSsfUpdate(context.Background(), id).SSFProviderRequest(sSFProviderRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSsfUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersSsfUpdate`: SSFProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersSsfUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Shared Signals Framework Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersSsfUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **sSFProviderRequest** | [**SSFProviderRequest**](SSFProviderRequest.md) |  | 
+
+### Return type
+
+[**SSFProvider**](SSFProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersSsfUsedByList
+
+> []UsedBy ProvidersSsfUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Shared Signals Framework Provider.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProvidersApi.ProvidersSsfUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSsfUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProvidersSsfUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersSsfUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Shared Signals Framework Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersSsfUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -110,6 +110,7 @@ const (
 	MODELENUM_PROVIDERS_RAC_RACPROVIDER                                         ModelEnum = "authentik_providers_rac.racprovider"
 	MODELENUM_PROVIDERS_RAC_ENDPOINT                                            ModelEnum = "authentik_providers_rac.endpoint"
 	MODELENUM_PROVIDERS_RAC_RACPROPERTYMAPPING                                  ModelEnum = "authentik_providers_rac.racpropertymapping"
+	MODELENUM_PROVIDERS_SSF_SSFPROVIDER                                         ModelEnum = "authentik_providers_ssf.ssfprovider"
 	MODELENUM_STAGES_AUTHENTICATOR_ENDPOINT_GDTC_AUTHENTICATORENDPOINTGDTCSTAGE ModelEnum = "authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage"
 	MODELENUM_STAGES_SOURCE_SOURCESTAGE                                         ModelEnum = "authentik_stages_source.sourcestage"
 	MODELENUM_EVENTS_EVENT                                                      ModelEnum = "authentik_events.event"
@@ -210,6 +211,7 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_providers_rac.racprovider",
 	"authentik_providers_rac.endpoint",
 	"authentik_providers_rac.racpropertymapping",
+	"authentik_providers_ssf.ssfprovider",
 	"authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage",
 	"authentik_stages_source.sourcestage",
 	"authentik_events.event",

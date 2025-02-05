@@ -181,6 +181,8 @@
 
 * `PROVIDERS_RAC_RACPROPERTYMAPPING` (value: `"authentik_providers_rac.racpropertymapping"`)
 
+* `PROVIDERS_SSF_SSFPROVIDER` (value: `"authentik_providers_ssf.ssfprovider"`)
+
 * `STAGES_AUTHENTICATOR_ENDPOINT_GDTC_AUTHENTICATORENDPOINTGDTCSTAGE` (value: `"authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage"`)
 
 * `STAGES_SOURCE_SOURCESTAGE` (value: `"authentik_stages_source.sourcestage"`)

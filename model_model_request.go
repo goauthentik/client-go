@@ -27,6 +27,7 @@ type ModelRequest struct {
 	RadiusProviderRequest          *RadiusProviderRequest
 	SAMLProviderRequest            *SAMLProviderRequest
 	SCIMProviderRequest            *SCIMProviderRequest
+	SSFProviderRequest             *SSFProviderRequest
 }
 
 // GoogleWorkspaceProviderRequestAsModelRequest is a convenience function that returns GoogleWorkspaceProviderRequest wrapped in ModelRequest
@@ -89,6 +90,13 @@ func SAMLProviderRequestAsModelRequest(v *SAMLProviderRequest) ModelRequest {
 func SCIMProviderRequestAsModelRequest(v *SCIMProviderRequest) ModelRequest {
 	return ModelRequest{
 		SCIMProviderRequest: v,
+	}
+}
+
+// SSFProviderRequestAsModelRequest is a convenience function that returns SSFProviderRequest wrapped in ModelRequest
+func SSFProviderRequestAsModelRequest(v *SSFProviderRequest) ModelRequest {
+	return ModelRequest{
+		SSFProviderRequest: v,
 	}
 }
 
@@ -210,6 +218,18 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'SSFProviderRequest'
+	if jsonDict["provider_model"] == "SSFProviderRequest" {
+		// try to unmarshal JSON data into SSFProviderRequest
+		err = json.Unmarshal(data, &dst.SSFProviderRequest)
+		if err == nil {
+			return nil // data stored in dst.SSFProviderRequest, return on the first match
+		} else {
+			dst.SSFProviderRequest = nil
+			return fmt.Errorf("Failed to unmarshal ModelRequest as SSFProviderRequest: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'authentik_providers_google_workspace.googleworkspaceprovider'
 	if jsonDict["provider_model"] == "authentik_providers_google_workspace.googleworkspaceprovider" {
 		// try to unmarshal JSON data into GoogleWorkspaceProviderRequest
@@ -318,6 +338,18 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'authentik_providers_ssf.ssfprovider'
+	if jsonDict["provider_model"] == "authentik_providers_ssf.ssfprovider" {
+		// try to unmarshal JSON data into SSFProviderRequest
+		err = json.Unmarshal(data, &dst.SSFProviderRequest)
+		if err == nil {
+			return nil // data stored in dst.SSFProviderRequest, return on the first match
+		} else {
+			dst.SSFProviderRequest = nil
+			return fmt.Errorf("Failed to unmarshal ModelRequest as SSFProviderRequest: %s", err.Error())
+		}
+	}
+
 	return nil
 }
 
@@ -357,6 +389,10 @@ func (src ModelRequest) MarshalJSON() ([]byte, error) {
 
 	if src.SCIMProviderRequest != nil {
 		return json.Marshal(&src.SCIMProviderRequest)
+	}
+
+	if src.SSFProviderRequest != nil {
+		return json.Marshal(&src.SSFProviderRequest)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -401,6 +437,10 @@ func (obj *ModelRequest) GetActualInstance() interface{} {
 
 	if obj.SCIMProviderRequest != nil {
 		return obj.SCIMProviderRequest
+	}
+
+	if obj.SSFProviderRequest != nil {
+		return obj.SSFProviderRequest
 	}
 
 	// all schemas are nil

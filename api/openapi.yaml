@@ -25508,6 +25508,303 @@ paths:
       - authentik: []
       tags:
       - providers
+  /providers/ssf/:
+    get:
+      description: SSFProvider Viewset
+      operationId: providers_ssf_list
+      parameters:
+      - explode: true
+        in: query
+        name: application__isnull
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: name__iexact
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSSFProviderList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    post:
+      description: SSFProvider Viewset
+      operationId: providers_ssf_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SSFProviderRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SSFProvider'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/ssf/{id}/:
+    delete:
+      description: SSFProvider Viewset
+      operationId: providers_ssf_destroy
+      parameters:
+      - description: A unique integer value identifying this Shared Signals Framework
+          Provider.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    get:
+      description: SSFProvider Viewset
+      operationId: providers_ssf_retrieve
+      parameters:
+      - description: A unique integer value identifying this Shared Signals Framework
+          Provider.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SSFProvider'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    patch:
+      description: SSFProvider Viewset
+      operationId: providers_ssf_partial_update
+      parameters:
+      - description: A unique integer value identifying this Shared Signals Framework
+          Provider.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSSFProviderRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SSFProvider'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+    put:
+      description: SSFProvider Viewset
+      operationId: providers_ssf_update
+      parameters:
+      - description: A unique integer value identifying this Shared Signals Framework
+          Provider.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SSFProviderRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SSFProvider'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
+  /providers/ssf/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: providers_ssf_used_by_list
+      parameters:
+      - description: A unique integer value identifying this Shared Signals Framework
+          Provider.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - providers
   /rac/connection_tokens/:
     get:
       description: ConnectionToken Viewset
@@ -26266,6 +26563,7 @@ paths:
           - authentik_providers_saml.samlprovider
           - authentik_providers_scim.scimmapping
           - authentik_providers_scim.scimprovider
+          - authentik_providers_ssf.ssfprovider
           - authentik_rbac.role
           - authentik_sources_kerberos.groupkerberossourceconnection
           - authentik_sources_kerberos.kerberossource
@@ -26524,6 +26822,7 @@ paths:
           - authentik_providers_saml.samlprovider
           - authentik_providers_scim.scimmapping
           - authentik_providers_scim.scimprovider
+          - authentik_providers_ssf.ssfprovider
           - authentik_rbac.role
           - authentik_sources_kerberos.groupkerberossourceconnection
           - authentik_sources_kerberos.kerberossource
@@ -33719,6 +34018,127 @@ paths:
       - authentik: []
       tags:
       - sources
+  /ssf/streams/:
+    get:
+      description: SSFStream Viewset
+      operationId: ssf_streams_list
+      parameters:
+      - explode: true
+        in: query
+        name: delivery_method
+        required: false
+        schema:
+          enum:
+          - https://schemas.openid.net/secevent/risc/delivery-method/poll
+          - https://schemas.openid.net/secevent/risc/delivery-method/push
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: endpoint_url
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: provider
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSSFStreamList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - ssf
+  /ssf/streams/{uuid}/:
+    get:
+      description: SSFStream Viewset
+      operationId: ssf_streams_retrieve
+      parameters:
+      - description: A UUID string identifying this SSF Stream.
+        explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SSFStream'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - ssf
   /stages/all/:
     get:
       description: Stage Viewset
@@ -42614,6 +43034,7 @@ components:
       - authentik.enterprise.providers.google_workspace
       - authentik.enterprise.providers.microsoft_entra
       - authentik.enterprise.providers.rac
+      - authentik.enterprise.providers.ssf
       - authentik.enterprise.stages.authenticator_endpoint_gdtc
       - authentik.enterprise.stages.source
       - authentik.events
@@ -45748,6 +46169,11 @@ components:
       - ui_footer_links
       - ui_theme
       type: object
+    DeliveryMethodEnum:
+      enum:
+      - https://schemas.openid.net/secevent/risc/delivery-method/push
+      - https://schemas.openid.net/secevent/risc/delivery-method/poll
+      type: string
     DeniedActionEnum:
       enum:
       - message_continue
@@ -47121,6 +47547,12 @@ components:
       - counted_events
       - unique_users
       type: object
+    EventsRequestedEnum:
+      enum:
+      - https://schemas.openid.net/secevent/caep/event-type/session-revoked
+      - https://schemas.openid.net/secevent/caep/event-type/credential-change
+      - https://schemas.openid.net/secevent/ssf/event-type/verification
+      type: string
     ExpiringBaseGrantModel:
       description: Serializer for BaseGrantModel and ExpiringBaseGrant
       example:
@@ -51615,6 +52047,7 @@ components:
       - authentik_providers_rac.racprovider
       - authentik_providers_rac.endpoint
       - authentik_providers_rac.racpropertymapping
+      - authentik_providers_ssf.ssfprovider
       - authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage
       - authentik_stages_source.sourcestage
       - authentik_events.event
@@ -59212,6 +59645,102 @@ components:
       - pagination
       - results
       type: object
+    PaginatedSSFProviderList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - component: component
+          verbose_name: verbose_name
+          token_obj: ""
+          ssf_url: ssf_url
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          oidc_auth_providers:
+          - 6
+          - 6
+          name: name
+          pk: 0
+          event_retention: event_retention
+        - component: component
+          verbose_name: verbose_name
+          token_obj: ""
+          ssf_url: ssf_url
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          oidc_auth_providers:
+          - 6
+          - 6
+          name: name
+          pk: 0
+          event_retention: event_retention
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/SSFProvider'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedSSFStreamList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - aud:
+          - aud
+          - aud
+          provider_obj: ""
+          endpoint_url: endpoint_url
+          provider: 0
+          delivery_method: null
+          format: format
+          iss: iss
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          events_requested:
+          - null
+          - null
+        - aud:
+          - aud
+          - aud
+          provider_obj: ""
+          endpoint_url: endpoint_url
+          provider: 0
+          delivery_method: null
+          format: format
+          iss: iss
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          events_requested:
+          - null
+          - null
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/SSFStream'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedScopeMappingList:
       example:
         pagination:
@@ -65159,6 +65688,31 @@ components:
           minLength: 1
           type: string
       type: object
+    PatchedSSFProviderRequest:
+      description: SSFProvider Serializer
+      example:
+        signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        oidc_auth_providers:
+        - 0
+        - 0
+        name: name
+        event_retention: event_retention
+      properties:
+        name:
+          minLength: 1
+          type: string
+        signing_key:
+          description: Key used to sign the SSF Events.
+          format: uuid
+          type: string
+        oidc_auth_providers:
+          items:
+            type: integer
+          type: array
+        event_retention:
+          minLength: 1
+          type: string
+      type: object
     PatchedScopeMappingRequest:
       description: ScopeMapping Serializer
       example:
@@ -67015,6 +67569,7 @@ components:
       - authentik_providers_radius.radiusprovider
       - authentik_providers_saml.samlprovider
       - authentik_providers_scim.scimprovider
+      - authentik_providers_ssf.ssfprovider
       type: string
     ProviderRequest:
       description: Provider Serializer
@@ -70094,6 +70649,155 @@ components:
           type: string
       required:
       - name
+      type: object
+    SSFProvider:
+      description: SSFProvider Serializer
+      example:
+        component: component
+        verbose_name: verbose_name
+        token_obj: ""
+        ssf_url: ssf_url
+        verbose_name_plural: verbose_name_plural
+        meta_model_name: meta_model_name
+        signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        oidc_auth_providers:
+        - 6
+        - 6
+        name: name
+        pk: 0
+        event_retention: event_retention
+      properties:
+        pk:
+          readOnly: true
+          title: ID
+          type: integer
+        name:
+          type: string
+        component:
+          description: Get object component so that we know how to edit the object
+          readOnly: true
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+        signing_key:
+          description: Key used to sign the SSF Events.
+          format: uuid
+          type: string
+        token_obj:
+          allOf:
+          - $ref: '#/components/schemas/Token'
+          readOnly: true
+        oidc_auth_providers:
+          items:
+            type: integer
+          type: array
+        ssf_url:
+          nullable: true
+          readOnly: true
+          type: string
+        event_retention:
+          type: string
+      required:
+      - component
+      - meta_model_name
+      - name
+      - pk
+      - signing_key
+      - ssf_url
+      - token_obj
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    SSFProviderRequest:
+      description: SSFProvider Serializer
+      example:
+        signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        oidc_auth_providers:
+        - 0
+        - 0
+        name: name
+        event_retention: event_retention
+      properties:
+        name:
+          minLength: 1
+          type: string
+        signing_key:
+          description: Key used to sign the SSF Events.
+          format: uuid
+          type: string
+        oidc_auth_providers:
+          items:
+            type: integer
+          type: array
+        event_retention:
+          minLength: 1
+          type: string
+      required:
+      - name
+      - signing_key
+      type: object
+    SSFStream:
+      description: SSFStream Serializer
+      example:
+        aud:
+        - aud
+        - aud
+        provider_obj: ""
+        endpoint_url: endpoint_url
+        provider: 0
+        delivery_method: null
+        format: format
+        iss: iss
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        events_requested:
+        - null
+        - null
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Uuid
+          type: string
+        provider:
+          type: integer
+        provider_obj:
+          allOf:
+          - $ref: '#/components/schemas/SSFProvider'
+          readOnly: true
+        delivery_method:
+          $ref: '#/components/schemas/DeliveryMethodEnum'
+        endpoint_url:
+          nullable: true
+          type: string
+        events_requested:
+          items:
+            $ref: '#/components/schemas/EventsRequestedEnum'
+          type: array
+        format:
+          type: string
+        aud:
+          items:
+            type: string
+          type: array
+        iss:
+          type: string
+      required:
+      - delivery_method
+      - format
+      - iss
+      - pk
+      - provider
+      - provider_obj
       type: object
     ScopeMapping:
       description: ScopeMapping Serializer
@@ -73612,6 +74316,7 @@ components:
           authentik_providers_radius.radiusprovider: '#/components/schemas/RadiusProviderRequest'
           authentik_providers_saml.samlprovider: '#/components/schemas/SAMLProviderRequest'
           authentik_providers_scim.scimprovider: '#/components/schemas/SCIMProviderRequest'
+          authentik_providers_ssf.ssfprovider: '#/components/schemas/SSFProviderRequest'
         propertyName: provider_model
       oneOf:
       - $ref: '#/components/schemas/GoogleWorkspaceProviderRequest'
@@ -73623,6 +74328,7 @@ components:
       - $ref: '#/components/schemas/RadiusProviderRequest'
       - $ref: '#/components/schemas/SAMLProviderRequest'
       - $ref: '#/components/schemas/SCIMProviderRequest'
+      - $ref: '#/components/schemas/SSFProviderRequest'
     AuthenticatedSession_user_agent_device:
       description: User agent device
       example:

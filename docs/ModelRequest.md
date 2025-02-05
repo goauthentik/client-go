@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 **AccessTokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **RefreshTokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **IncludeClaimsInIdToken** | Pointer to **bool** | Include User claims from scopes in the id_token, for applications that don&#39;t access the userinfo endpoint. | [optional] 
-**SigningKey** | Pointer to **NullableString** | Key used to sign the tokens. | [optional] 
+**SigningKey** | **string** | Key used to sign the SSF Events. | 
 **EncryptionKey** | Pointer to **NullableString** | Key used to encrypt the tokens. When set, tokens will be encrypted and returned as JWEs. | [optional] 
 **RedirectUris** | [**[]RedirectURIRequest**](RedirectURIRequest.md) |  | 
 **SubMode** | Pointer to [**SubModeEnum**](SubModeEnum.md) | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. | [optional] 
@@ -75,12 +75,14 @@ Name | Type | Description | Notes
 **Url** | **string** | Base URL to SCIM requests, usually ends in /v2 | 
 **VerifyCertificates** | Pointer to **bool** |  | [optional] 
 **Token** | **string** | Authentication token | 
+**OidcAuthProviders** | Pointer to **[]int32** |  | [optional] 
+**EventRetention** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewModelRequest
 
-`func NewModelRequest(name string, delegatedSubject string, credentials interface{}, defaultGroupEmailDomain string, authorizationFlow string, invalidationFlow string, clientId string, clientSecret string, tenantId string, redirectUris []RedirectURIRequest, externalHost string, acsUrl string, url string, token string, ) *ModelRequest`
+`func NewModelRequest(name string, delegatedSubject string, credentials interface{}, defaultGroupEmailDomain string, authorizationFlow string, invalidationFlow string, clientId string, clientSecret string, tenantId string, signingKey string, redirectUris []RedirectURIRequest, externalHost string, acsUrl string, url string, token string, ) *ModelRequest`
 
 NewModelRequest instantiates a new ModelRequest object
 This constructor will assign default values to properties that have it defined,
@@ -859,22 +861,7 @@ and a boolean to check if the value has been set.
 
 SetSigningKey sets SigningKey field to given value.
 
-### HasSigningKey
 
-`func (o *ModelRequest) HasSigningKey() bool`
-
-HasSigningKey returns a boolean if a field has been set.
-
-### SetSigningKeyNil
-
-`func (o *ModelRequest) SetSigningKeyNil(b bool)`
-
- SetSigningKeyNil sets the value for SigningKey to be an explicit nil
-
-### UnsetSigningKey
-`func (o *ModelRequest) UnsetSigningKey()`
-
-UnsetSigningKey ensures that no value is present for SigningKey, not even an explicit nil
 ### GetEncryptionKey
 
 `func (o *ModelRequest) GetEncryptionKey() string`
@@ -1909,6 +1896,56 @@ and a boolean to check if the value has been set.
 
 SetToken sets Token field to given value.
 
+
+### GetOidcAuthProviders
+
+`func (o *ModelRequest) GetOidcAuthProviders() []int32`
+
+GetOidcAuthProviders returns the OidcAuthProviders field if non-nil, zero value otherwise.
+
+### GetOidcAuthProvidersOk
+
+`func (o *ModelRequest) GetOidcAuthProvidersOk() (*[]int32, bool)`
+
+GetOidcAuthProvidersOk returns a tuple with the OidcAuthProviders field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOidcAuthProviders
+
+`func (o *ModelRequest) SetOidcAuthProviders(v []int32)`
+
+SetOidcAuthProviders sets OidcAuthProviders field to given value.
+
+### HasOidcAuthProviders
+
+`func (o *ModelRequest) HasOidcAuthProviders() bool`
+
+HasOidcAuthProviders returns a boolean if a field has been set.
+
+### GetEventRetention
+
+`func (o *ModelRequest) GetEventRetention() string`
+
+GetEventRetention returns the EventRetention field if non-nil, zero value otherwise.
+
+### GetEventRetentionOk
+
+`func (o *ModelRequest) GetEventRetentionOk() (*string, bool)`
+
+GetEventRetentionOk returns a tuple with the EventRetention field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEventRetention
+
+`func (o *ModelRequest) SetEventRetention(v string)`
+
+SetEventRetention sets EventRetention field to given value.
+
+### HasEventRetention
+
+`func (o *ModelRequest) HasEventRetention() bool`
+
+HasEventRetention returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

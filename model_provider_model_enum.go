@@ -30,6 +30,7 @@ const (
 	PROVIDERMODELENUM_RADIUS_RADIUSPROVIDER                    ProviderModelEnum = "authentik_providers_radius.radiusprovider"
 	PROVIDERMODELENUM_SAML_SAMLPROVIDER                        ProviderModelEnum = "authentik_providers_saml.samlprovider"
 	PROVIDERMODELENUM_SCIM_SCIMPROVIDER                        ProviderModelEnum = "authentik_providers_scim.scimprovider"
+	PROVIDERMODELENUM_SSF_SSFPROVIDER                          ProviderModelEnum = "authentik_providers_ssf.ssfprovider"
 )
 
 // All allowed values of ProviderModelEnum enum
@@ -43,6 +44,7 @@ var AllowedProviderModelEnumEnumValues = []ProviderModelEnum{
 	"authentik_providers_radius.radiusprovider",
 	"authentik_providers_saml.samlprovider",
 	"authentik_providers_scim.scimprovider",
+	"authentik_providers_ssf.ssfprovider",
 }
 
 func (v *ProviderModelEnum) UnmarshalJSON(src []byte) error {
