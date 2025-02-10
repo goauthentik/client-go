@@ -47605,6 +47605,7 @@ components:
           is_active: true
           is_superuser: true
           last_login: 2000-01-23T04:56:07.000+00:00
+          password_change_date: 2000-01-23T04:56:07.000+00:00
           groups:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -55357,6 +55358,7 @@ components:
             is_active: true
             is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
+            password_change_date: 2000-01-23T04:56:07.000+00:00
             groups:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -55437,6 +55439,7 @@ components:
             is_active: true
             is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
+            password_change_date: 2000-01-23T04:56:07.000+00:00
             groups:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -60319,6 +60322,7 @@ components:
             is_active: true
             is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
+            password_change_date: 2000-01-23T04:56:07.000+00:00
             groups:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -60401,6 +60405,7 @@ components:
             is_active: true
             is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
+            password_change_date: 2000-01-23T04:56:07.000+00:00
             groups:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -60580,6 +60585,7 @@ components:
             is_active: true
             is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
+            password_change_date: 2000-01-23T04:56:07.000+00:00
             groups:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -60669,6 +60675,7 @@ components:
             is_active: true
             is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
+            password_change_date: 2000-01-23T04:56:07.000+00:00
             groups:
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -60843,6 +60850,7 @@ components:
         - is_active: true
           is_superuser: true
           last_login: 2000-01-23T04:56:07.000+00:00
+          password_change_date: 2000-01-23T04:56:07.000+00:00
           groups:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -60877,6 +60885,7 @@ components:
         - is_active: true
           is_superuser: true
           last_login: 2000-01-23T04:56:07.000+00:00
+          password_change_date: 2000-01-23T04:56:07.000+00:00
           groups:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -72277,6 +72286,7 @@ components:
           is_active: true
           is_superuser: true
           last_login: 2000-01-23T04:56:07.000+00:00
+          password_change_date: 2000-01-23T04:56:07.000+00:00
           groups:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -72591,6 +72601,7 @@ components:
         is_active: true
         is_superuser: true
         last_login: 2000-01-23T04:56:07.000+00:00
+        password_change_date: 2000-01-23T04:56:07.000+00:00
         groups:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -72679,11 +72690,16 @@ components:
           format: uuid
           readOnly: true
           type: string
+        password_change_date:
+          format: date-time
+          readOnly: true
+          type: string
       required:
       - avatar
       - groups_obj
       - is_superuser
       - name
+      - password_change_date
       - pk
       - uid
       - username
@@ -72834,6 +72850,7 @@ components:
           is_active: true
           is_superuser: true
           last_login: 2000-01-23T04:56:07.000+00:00
+          password_change_date: 2000-01-23T04:56:07.000+00:00
           groups:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91

@@ -19,12 +19,13 @@ Name | Type | Description | Notes
 **Path** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to [**UserTypeEnum**](UserTypeEnum.md) |  | [optional] 
 **Uuid** | **string** |  | [readonly] 
+**PasswordChangeDate** | **time.Time** |  | [readonly] 
 
 ## Methods
 
 ### NewUser
 
-`func NewUser(pk int32, username string, name string, isSuperuser bool, groupsObj []UserGroup, avatar string, uid string, uuid string, ) *User`
+`func NewUser(pk int32, username string, name string, isSuperuser bool, groupsObj []UserGroup, avatar string, uid string, uuid string, passwordChangeDate time.Time, ) *User`
 
 NewUser instantiates a new User object
 This constructor will assign default values to properties that have it defined,
@@ -392,6 +393,26 @@ and a boolean to check if the value has been set.
 `func (o *User) SetUuid(v string)`
 
 SetUuid sets Uuid field to given value.
+
+
+### GetPasswordChangeDate
+
+`func (o *User) GetPasswordChangeDate() time.Time`
+
+GetPasswordChangeDate returns the PasswordChangeDate field if non-nil, zero value otherwise.
+
+### GetPasswordChangeDateOk
+
+`func (o *User) GetPasswordChangeDateOk() (*time.Time, bool)`
+
+GetPasswordChangeDateOk returns a tuple with the PasswordChangeDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordChangeDate
+
+`func (o *User) SetPasswordChangeDate(v time.Time)`
+
+SetPasswordChangeDate sets PasswordChangeDate field to given value.
 
 
 

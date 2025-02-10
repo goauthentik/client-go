@@ -30,19 +30,20 @@ type User struct {
 	GroupsObj   []UserGroup  `json:"groups_obj"`
 	Email       *string      `json:"email,omitempty"`
 	// User's avatar, either a http/https URL or a data URI
-	Avatar     string                 `json:"avatar"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
-	Uid        string                 `json:"uid"`
-	Path       *string                `json:"path,omitempty"`
-	Type       *UserTypeEnum          `json:"type,omitempty"`
-	Uuid       string                 `json:"uuid"`
+	Avatar             string                 `json:"avatar"`
+	Attributes         map[string]interface{} `json:"attributes,omitempty"`
+	Uid                string                 `json:"uid"`
+	Path               *string                `json:"path,omitempty"`
+	Type               *UserTypeEnum          `json:"type,omitempty"`
+	Uuid               string                 `json:"uuid"`
+	PasswordChangeDate time.Time              `json:"password_change_date"`
 }
 
 // NewUser instantiates a new User object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUser(pk int32, username string, name string, isSuperuser bool, groupsObj []UserGroup, avatar string, uid string, uuid string) *User {
+func NewUser(pk int32, username string, name string, isSuperuser bool, groupsObj []UserGroup, avatar string, uid string, uuid string, passwordChangeDate time.Time) *User {
 	this := User{}
 	this.Pk = pk
 	this.Username = username
@@ -52,6 +53,7 @@ func NewUser(pk int32, username string, name string, isSuperuser bool, groupsObj
 	this.Avatar = avatar
 	this.Uid = uid
 	this.Uuid = uuid
+	this.PasswordChangeDate = passwordChangeDate
 	return &this
 }
 
@@ -492,6 +494,30 @@ func (o *User) SetUuid(v string) {
 	o.Uuid = v
 }
 
+// GetPasswordChangeDate returns the PasswordChangeDate field value
+func (o *User) GetPasswordChangeDate() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.PasswordChangeDate
+}
+
+// GetPasswordChangeDateOk returns a tuple with the PasswordChangeDate field value
+// and a boolean to check if the value has been set.
+func (o *User) GetPasswordChangeDateOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PasswordChangeDate, true
+}
+
+// SetPasswordChangeDate sets field value
+func (o *User) SetPasswordChangeDate(v time.Time) {
+	o.PasswordChangeDate = v
+}
+
 func (o User) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -538,6 +564,9 @@ func (o User) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["uuid"] = o.Uuid
+	}
+	if true {
+		toSerialize["password_change_date"] = o.PasswordChangeDate
 	}
 	return json.Marshal(toSerialize)
 }
