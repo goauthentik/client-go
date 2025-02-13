@@ -144,6 +144,7 @@ type ApiSourcesAllListRequest struct {
 	ordering   *string
 	page       *int32
 	pageSize   *int32
+	pbmUuid    *string
 	search     *string
 	slug       *string
 }
@@ -173,6 +174,11 @@ func (r ApiSourcesAllListRequest) Page(page int32) ApiSourcesAllListRequest {
 // Number of results to return per page.
 func (r ApiSourcesAllListRequest) PageSize(pageSize int32) ApiSourcesAllListRequest {
 	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiSourcesAllListRequest) PbmUuid(pbmUuid string) ApiSourcesAllListRequest {
+	r.pbmUuid = &pbmUuid
 	return r
 }
 
@@ -242,6 +248,9 @@ func (a *SourcesApiService) SourcesAllListExecute(r ApiSourcesAllListRequest) (*
 	}
 	if r.pageSize != nil {
 		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.pbmUuid != nil {
+		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))

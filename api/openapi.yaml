@@ -27977,6 +27977,14 @@ paths:
         schema:
           type: integer
         style: form
+      - explode: true
+        in: query
+        name: pbm_uuid
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
       - description: A search term.
         explode: true
         in: query
