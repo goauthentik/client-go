@@ -99,6 +99,10 @@
 
 * `STAGES_AUTHENTICATOR_DUO_DUODEVICE` (value: `"authentik_stages_authenticator_duo.duodevice"`)
 
+* `STAGES_AUTHENTICATOR_EMAIL_AUTHENTICATOREMAILSTAGE` (value: `"authentik_stages_authenticator_email.authenticatoremailstage"`)
+
+* `STAGES_AUTHENTICATOR_EMAIL_EMAILDEVICE` (value: `"authentik_stages_authenticator_email.emaildevice"`)
+
 * `STAGES_AUTHENTICATOR_SMS_AUTHENTICATORSMSSTAGE` (value: `"authentik_stages_authenticator_sms.authenticatorsmsstage"`)
 
 * `STAGES_AUTHENTICATOR_SMS_SMSDEVICE` (value: `"authentik_stages_authenticator_sms.smsdevice"`)

@@ -674,6 +674,253 @@ paths:
       - authentik: []
       tags:
       - authenticators
+  /authenticators/admin/email/:
+    get:
+      description: Viewset for email authenticator devices (for admins)
+      operationId: authenticators_admin_email_list
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedEmailDeviceList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    post:
+      description: Viewset for email authenticator devices (for admins)
+      operationId: authenticators_admin_email_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailDeviceRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailDevice'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+  /authenticators/admin/email/{id}/:
+    delete:
+      description: Viewset for email authenticator devices (for admins)
+      operationId: authenticators_admin_email_destroy
+      parameters:
+      - description: A unique integer value identifying this Email Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    get:
+      description: Viewset for email authenticator devices (for admins)
+      operationId: authenticators_admin_email_retrieve
+      parameters:
+      - description: A unique integer value identifying this Email Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailDevice'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    patch:
+      description: Viewset for email authenticator devices (for admins)
+      operationId: authenticators_admin_email_partial_update
+      parameters:
+      - description: A unique integer value identifying this Email Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedEmailDeviceRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailDevice'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    put:
+      description: Viewset for email authenticator devices (for admins)
+      operationId: authenticators_admin_email_update
+      parameters:
+      - description: A unique integer value identifying this Email Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailDeviceRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailDevice'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
   /authenticators/admin/endpoint/:
     get:
       description: Viewset for Endpoint authenticator devices (for admins)
@@ -2163,6 +2410,259 @@ paths:
       operationId: authenticators_duo_used_by_list
       parameters:
       - description: A unique integer value identifying this Duo Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+  /authenticators/email/:
+    get:
+      description: Viewset for email authenticator devices
+      operationId: authenticators_email_list
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedEmailDeviceList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+  /authenticators/email/{id}/:
+    delete:
+      description: Viewset for email authenticator devices
+      operationId: authenticators_email_destroy
+      parameters:
+      - description: A unique integer value identifying this Email Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    get:
+      description: Viewset for email authenticator devices
+      operationId: authenticators_email_retrieve
+      parameters:
+      - description: A unique integer value identifying this Email Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailDevice'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    patch:
+      description: Viewset for email authenticator devices
+      operationId: authenticators_email_partial_update
+      parameters:
+      - description: A unique integer value identifying this Email Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedEmailDeviceRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailDevice'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+    put:
+      description: Viewset for email authenticator devices
+      operationId: authenticators_email_update
+      parameters:
+      - description: A unique integer value identifying this Email Device.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailDeviceRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailDevice'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - authenticators
+  /authenticators/email/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: authenticators_email_used_by_list
+      parameters:
+      - description: A unique integer value identifying this Email Device.
         explode: false
         in: path
         name: id
@@ -26587,6 +27087,8 @@ paths:
           - authentik_sources_scim.scimsourcepropertymapping
           - authentik_stages_authenticator_duo.authenticatorduostage
           - authentik_stages_authenticator_duo.duodevice
+          - authentik_stages_authenticator_email.authenticatoremailstage
+          - authentik_stages_authenticator_email.emaildevice
           - authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage
           - authentik_stages_authenticator_sms.authenticatorsmsstage
           - authentik_stages_authenticator_sms.smsdevice
@@ -26846,6 +27348,8 @@ paths:
           - authentik_sources_scim.scimsourcepropertymapping
           - authentik_stages_authenticator_duo.authenticatorduostage
           - authentik_stages_authenticator_duo.duodevice
+          - authentik_stages_authenticator_email.authenticatoremailstage
+          - authentik_stages_authenticator_email.emaildevice
           - authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage
           - authentik_stages_authenticator_sms.authenticatorsmsstage
           - authentik_stages_authenticator_sms.smsdevice
@@ -34764,6 +35268,403 @@ paths:
       operationId: stages_authenticator_duo_used_by_list
       parameters:
       - description: A UUID string identifying this Duo Authenticator Setup Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+  /stages/authenticator/email/:
+    get:
+      description: AuthenticatorEmailStage Viewset
+      operationId: stages_authenticator_email_list
+      parameters:
+      - explode: true
+        in: query
+        name: configure_flow
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: friendly_name
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: from_address
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: host
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: password
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: port
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: stage_uuid
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: subject
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: template
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: timeout
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: token_expiry
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: use_global_settings
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: use_ssl
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: use_tls
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: username
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAuthenticatorEmailStageList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    post:
+      description: AuthenticatorEmailStage Viewset
+      operationId: stages_authenticator_email_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthenticatorEmailStageRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticatorEmailStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+  /stages/authenticator/email/{stage_uuid}/:
+    delete:
+      description: AuthenticatorEmailStage Viewset
+      operationId: stages_authenticator_email_destroy
+      parameters:
+      - description: A UUID string identifying this Email Authenticator Setup Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    get:
+      description: AuthenticatorEmailStage Viewset
+      operationId: stages_authenticator_email_retrieve
+      parameters:
+      - description: A UUID string identifying this Email Authenticator Setup Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticatorEmailStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    patch:
+      description: AuthenticatorEmailStage Viewset
+      operationId: stages_authenticator_email_partial_update
+      parameters:
+      - description: A UUID string identifying this Email Authenticator Setup Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAuthenticatorEmailStageRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticatorEmailStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    put:
+      description: AuthenticatorEmailStage Viewset
+      operationId: stages_authenticator_email_update
+      parameters:
+      - description: A UUID string identifying this Email Authenticator Setup Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthenticatorEmailStageRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticatorEmailStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+  /stages/authenticator/email/{stage_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: stages_authenticator_email_used_by_list
+      parameters:
+      - description: A UUID string identifying this Email Authenticator Setup Stage.
         explode: false
         in: path
         name: stage_uuid
@@ -43015,6 +43916,7 @@ components:
       - authentik.sources.scim
       - authentik.stages.authenticator
       - authentik.stages.authenticator_duo
+      - authentik.stages.authenticator_email
       - authentik.stages.authenticator_sms
       - authentik.stages.authenticator_static
       - authentik.stages.authenticator_totp
@@ -43617,6 +44519,267 @@ components:
       - api_hostname
       - client_id
       - client_secret
+      - name
+      type: object
+    AuthenticatorEmailChallenge:
+      description: Authenticator Email Setup challenge
+      properties:
+        flow_info:
+          $ref: '#/components/schemas/ContextualFlowInfo'
+        component:
+          default: ak-stage-authenticator-email
+          type: string
+        response_errors:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/ErrorDetail'
+            type: array
+          type: object
+        pending_user:
+          type: string
+        pending_user_avatar:
+          type: string
+        email:
+          nullable: true
+          type: string
+        email_required:
+          default: true
+          type: boolean
+      required:
+      - pending_user
+      - pending_user_avatar
+      type: object
+    AuthenticatorEmailChallengeResponseRequest:
+      description: "Authenticator Email Challenge response, device is set by get_response_instance"
+      properties:
+        component:
+          default: ak-stage-authenticator-email
+          minLength: 1
+          type: string
+        code:
+          type: integer
+        email:
+          minLength: 1
+          type: string
+      type: object
+    AuthenticatorEmailStage:
+      description: AuthenticatorEmailStage Serializer
+      example:
+        template: template
+        configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
+        verbose_name_plural: verbose_name_plural
+        use_global_settings: true
+        use_ssl: true
+        subject: subject
+        flow_set:
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          background: background
+          denied_action: ""
+          name: name
+          export_url: export_url
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          designation: ""
+          title: title
+          slug: slug
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          background: background
+          denied_action: ""
+          name: name
+          export_url: export_url
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          designation: ""
+          title: title
+          slug: slug
+        token_expiry: token_expiry
+        timeout: 441289069
+        use_tls: true
+        component: component
+        verbose_name: verbose_name
+        password: password
+        meta_model_name: meta_model_name
+        port: -1803530559
+        name: name
+        host: host
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        from_address: from_address
+        username: username
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Stage uuid
+          type: string
+        name:
+          type: string
+        component:
+          description: Get object type so that we know how to edit the object
+          readOnly: true
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/FlowSet'
+          type: array
+        configure_flow:
+          description: "Flow used by an authenticated user to configure this Stage.\
+            \ If empty, user will not be able to configure this stage."
+          format: uuid
+          nullable: true
+          type: string
+        friendly_name:
+          nullable: true
+          type: string
+        use_global_settings:
+          description: "When enabled, global Email connection settings will be used\
+            \ and connection settings below will be ignored."
+          type: boolean
+        host:
+          type: string
+        port:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        username:
+          type: string
+        password:
+          type: string
+        use_tls:
+          type: boolean
+        use_ssl:
+          type: boolean
+        timeout:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        from_address:
+          format: email
+          maxLength: 254
+          type: string
+        subject:
+          type: string
+        token_expiry:
+          description: "Time the token sent is valid (Format: hours=3,minutes=17,seconds=300)."
+          type: string
+        template:
+          type: string
+      required:
+      - component
+      - meta_model_name
+      - name
+      - pk
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    AuthenticatorEmailStageRequest:
+      description: AuthenticatorEmailStage Serializer
+      example:
+        template: template
+        configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
+        use_global_settings: true
+        use_ssl: true
+        subject: subject
+        flow_set:
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+        token_expiry: token_expiry
+        timeout: 441289069
+        use_tls: true
+        password: password
+        port: -1803530559
+        name: name
+        host: host
+        from_address: from_address
+        username: username
+      properties:
+        name:
+          minLength: 1
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/FlowSetRequest'
+          type: array
+        configure_flow:
+          description: "Flow used by an authenticated user to configure this Stage.\
+            \ If empty, user will not be able to configure this stage."
+          format: uuid
+          nullable: true
+          type: string
+        friendly_name:
+          minLength: 1
+          nullable: true
+          type: string
+        use_global_settings:
+          description: "When enabled, global Email connection settings will be used\
+            \ and connection settings below will be ignored."
+          type: boolean
+        host:
+          minLength: 1
+          type: string
+        port:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        username:
+          type: string
+        password:
+          type: string
+        use_tls:
+          type: boolean
+        use_ssl:
+          type: boolean
+        timeout:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        from_address:
+          format: email
+          maxLength: 254
+          minLength: 1
+          type: string
+        subject:
+          minLength: 1
+          type: string
+        token_expiry:
+          description: "Time the token sent is valid (Format: hours=3,minutes=17,seconds=300)."
+          minLength: 1
+          type: string
+        template:
+          minLength: 1
+          type: string
+      required:
       - name
       type: object
     AuthenticatorEndpointGDTCStage:
@@ -45482,6 +46645,7 @@ components:
           ak-stage-access-denied: '#/components/schemas/AccessDeniedChallenge'
           ak-source-oauth-apple: '#/components/schemas/AppleLoginChallenge'
           ak-stage-authenticator-duo: '#/components/schemas/AuthenticatorDuoChallenge'
+          ak-stage-authenticator-email: '#/components/schemas/AuthenticatorEmailChallenge'
           ak-stage-authenticator-sms: '#/components/schemas/AuthenticatorSMSChallenge'
           ak-stage-authenticator-static: '#/components/schemas/AuthenticatorStaticChallenge'
           ak-stage-authenticator-totp: '#/components/schemas/AuthenticatorTOTPChallenge'
@@ -45509,6 +46673,7 @@ components:
       - $ref: '#/components/schemas/AccessDeniedChallenge'
       - $ref: '#/components/schemas/AppleLoginChallenge'
       - $ref: '#/components/schemas/AuthenticatorDuoChallenge'
+      - $ref: '#/components/schemas/AuthenticatorEmailChallenge'
       - $ref: '#/components/schemas/AuthenticatorSMSChallenge'
       - $ref: '#/components/schemas/AuthenticatorStaticChallenge'
       - $ref: '#/components/schemas/AuthenticatorTOTPChallenge'
@@ -46449,6 +47614,7 @@ components:
       - webauthn
       - duo
       - sms
+      - email
       type: string
     DigestAlgorithmEnum:
       enum:
@@ -46915,6 +48081,49 @@ components:
           default: ak-stage-email
           minLength: 1
           type: string
+      type: object
+    EmailDevice:
+      description: Serializer for email authenticator devices
+      example:
+        name: name
+        pk: 0
+        user: ""
+        email: email
+      properties:
+        name:
+          description: The human-readable name of this device.
+          maxLength: 64
+          type: string
+        pk:
+          readOnly: true
+          title: ID
+          type: integer
+        email:
+          format: email
+          readOnly: true
+          type: string
+        user:
+          allOf:
+          - $ref: '#/components/schemas/GroupMember'
+          readOnly: true
+      required:
+      - email
+      - name
+      - pk
+      - user
+      type: object
+    EmailDeviceRequest:
+      description: Serializer for email authenticator devices
+      example:
+        name: name
+      properties:
+        name:
+          description: The human-readable name of this device.
+          maxLength: 64
+          minLength: 1
+          type: string
+      required:
+      - name
       type: object
     EmailStage:
       description: EmailStage Serializer
@@ -48019,6 +49228,7 @@ components:
         mapping:
           ak-source-oauth-apple: '#/components/schemas/AppleChallengeResponseRequest'
           ak-stage-authenticator-duo: '#/components/schemas/AuthenticatorDuoChallengeResponseRequest'
+          ak-stage-authenticator-email: '#/components/schemas/AuthenticatorEmailChallengeResponseRequest'
           ak-stage-authenticator-sms: '#/components/schemas/AuthenticatorSMSChallengeResponseRequest'
           ak-stage-authenticator-static: '#/components/schemas/AuthenticatorStaticChallengeResponseRequest'
           ak-stage-authenticator-totp: '#/components/schemas/AuthenticatorTOTPChallengeResponseRequest'
@@ -48042,6 +49252,7 @@ components:
       oneOf:
       - $ref: '#/components/schemas/AppleChallengeResponseRequest'
       - $ref: '#/components/schemas/AuthenticatorDuoChallengeResponseRequest'
+      - $ref: '#/components/schemas/AuthenticatorEmailChallengeResponseRequest'
       - $ref: '#/components/schemas/AuthenticatorSMSChallengeResponseRequest'
       - $ref: '#/components/schemas/AuthenticatorStaticChallengeResponseRequest'
       - $ref: '#/components/schemas/AuthenticatorTOTPChallengeResponseRequest'
@@ -52015,6 +53226,8 @@ components:
       - authentik_sources_scim.scimsourcepropertymapping
       - authentik_stages_authenticator_duo.authenticatorduostage
       - authentik_stages_authenticator_duo.duodevice
+      - authentik_stages_authenticator_email.authenticatoremailstage
+      - authentik_stages_authenticator_email.emaildevice
       - authentik_stages_authenticator_sms.authenticatorsmsstage
       - authentik_stages_authenticator_sms.smsdevice
       - authentik_stages_authenticator_static.authenticatorstaticstage
@@ -53754,6 +54967,118 @@ components:
       - pagination
       - results
       type: object
+    PaginatedAuthenticatorEmailStageList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - template: template
+          configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          friendly_name: friendly_name
+          verbose_name_plural: verbose_name_plural
+          use_global_settings: true
+          use_ssl: true
+          subject: subject
+          flow_set:
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+          token_expiry: token_expiry
+          timeout: 441289069
+          use_tls: true
+          component: component
+          verbose_name: verbose_name
+          password: password
+          meta_model_name: meta_model_name
+          port: -1803530559
+          name: name
+          host: host
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          from_address: from_address
+          username: username
+        - template: template
+          configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          friendly_name: friendly_name
+          verbose_name_plural: verbose_name_plural
+          use_global_settings: true
+          use_ssl: true
+          subject: subject
+          flow_set:
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+          token_expiry: token_expiry
+          timeout: 441289069
+          use_tls: true
+          component: component
+          verbose_name: verbose_name
+          password: password
+          meta_model_name: meta_model_name
+          port: -1803530559
+          name: name
+          host: host
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          from_address: from_address
+          username: username
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/AuthenticatorEmailStage'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedAuthenticatorEndpointGDTCStageList:
       example:
         pagination:
@@ -55033,6 +56358,36 @@ components:
         results:
           items:
             $ref: '#/components/schemas/DuoDevice'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedEmailDeviceList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - name: name
+          pk: 0
+          user: ""
+          email: email
+        - name: name
+          pk: 0
+          user: ""
+          email: email
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/EmailDevice'
           type: array
       required:
       - pagination
@@ -62030,6 +63385,98 @@ components:
           type: string
           writeOnly: true
       type: object
+    PatchedAuthenticatorEmailStageRequest:
+      description: AuthenticatorEmailStage Serializer
+      example:
+        template: template
+        configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        friendly_name: friendly_name
+        use_global_settings: true
+        use_ssl: true
+        subject: subject
+        flow_set:
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+        token_expiry: token_expiry
+        timeout: 441289069
+        use_tls: true
+        password: password
+        port: -1803530559
+        name: name
+        host: host
+        from_address: from_address
+        username: username
+      properties:
+        name:
+          minLength: 1
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/FlowSetRequest'
+          type: array
+        configure_flow:
+          description: "Flow used by an authenticated user to configure this Stage.\
+            \ If empty, user will not be able to configure this stage."
+          format: uuid
+          nullable: true
+          type: string
+        friendly_name:
+          minLength: 1
+          nullable: true
+          type: string
+        use_global_settings:
+          description: "When enabled, global Email connection settings will be used\
+            \ and connection settings below will be ignored."
+          type: boolean
+        host:
+          minLength: 1
+          type: string
+        port:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        username:
+          type: string
+        password:
+          type: string
+        use_tls:
+          type: boolean
+        use_ssl:
+          type: boolean
+        timeout:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        from_address:
+          format: email
+          maxLength: 254
+          minLength: 1
+          type: string
+        subject:
+          minLength: 1
+          type: string
+        token_expiry:
+          description: "Time the token sent is valid (Format: hours=3,minutes=17,seconds=300)."
+          minLength: 1
+          type: string
+        template:
+          minLength: 1
+          type: string
+      type: object
     PatchedAuthenticatorEndpointGDTCStageRequest:
       description: AuthenticatorEndpointGDTCStage Serializer
       example:
@@ -62761,6 +64208,17 @@ components:
       type: object
     PatchedDuoDeviceRequest:
       description: Serializer for Duo authenticator devices
+      example:
+        name: name
+      properties:
+        name:
+          description: The human-readable name of this device.
+          maxLength: 64
+          minLength: 1
+          type: string
+      type: object
+    PatchedEmailDeviceRequest:
+      description: Serializer for email authenticator devices
       example:
         name: name
       properties:

@@ -53,6 +53,10 @@ docs/AuthenticatorDuoStage.md
 docs/AuthenticatorDuoStageDeviceImportResponse.md
 docs/AuthenticatorDuoStageManualDeviceImportRequest.md
 docs/AuthenticatorDuoStageRequest.md
+docs/AuthenticatorEmailChallenge.md
+docs/AuthenticatorEmailChallengeResponseRequest.md
+docs/AuthenticatorEmailStage.md
+docs/AuthenticatorEmailStageRequest.md
 docs/AuthenticatorEndpointGDTCStage.md
 docs/AuthenticatorEndpointGDTCStageRequest.md
 docs/AuthenticatorSMSChallenge.md
@@ -143,6 +147,8 @@ docs/DuoDeviceRequest.md
 docs/DuoResponseEnum.md
 docs/EmailChallenge.md
 docs/EmailChallengeResponseRequest.md
+docs/EmailDevice.md
+docs/EmailDeviceRequest.md
 docs/EmailStage.md
 docs/EmailStageRequest.md
 docs/Endpoint.md
@@ -305,6 +311,7 @@ docs/PaginatedApplicationEntitlementList.md
 docs/PaginatedApplicationList.md
 docs/PaginatedAuthenticatedSessionList.md
 docs/PaginatedAuthenticatorDuoStageList.md
+docs/PaginatedAuthenticatorEmailStageList.md
 docs/PaginatedAuthenticatorEndpointGDTCStageList.md
 docs/PaginatedAuthenticatorSMSStageList.md
 docs/PaginatedAuthenticatorStaticStageList.md
@@ -323,6 +330,7 @@ docs/PaginatedDomainList.md
 docs/PaginatedDummyPolicyList.md
 docs/PaginatedDummyStageList.md
 docs/PaginatedDuoDeviceList.md
+docs/PaginatedEmailDeviceList.md
 docs/PaginatedEmailStageList.md
 docs/PaginatedEndpointDeviceList.md
 docs/PaginatedEndpointList.md
@@ -443,6 +451,7 @@ docs/PasswordStageRequest.md
 docs/PatchedApplicationEntitlementRequest.md
 docs/PatchedApplicationRequest.md
 docs/PatchedAuthenticatorDuoStageRequest.md
+docs/PatchedAuthenticatorEmailStageRequest.md
 docs/PatchedAuthenticatorEndpointGDTCStageRequest.md
 docs/PatchedAuthenticatorSMSStageRequest.md
 docs/PatchedAuthenticatorStaticStageRequest.md
@@ -461,6 +470,7 @@ docs/PatchedDomainRequest.md
 docs/PatchedDummyPolicyRequest.md
 docs/PatchedDummyStageRequest.md
 docs/PatchedDuoDeviceRequest.md
+docs/PatchedEmailDeviceRequest.md
 docs/PatchedEmailStageRequest.md
 docs/PatchedEndpointDeviceRequest.md
 docs/PatchedEndpointRequest.md
@@ -784,6 +794,10 @@ model_authenticator_duo_stage.go
 model_authenticator_duo_stage_device_import_response.go
 model_authenticator_duo_stage_manual_device_import_request.go
 model_authenticator_duo_stage_request.go
+model_authenticator_email_challenge.go
+model_authenticator_email_challenge_response_request.go
+model_authenticator_email_stage.go
+model_authenticator_email_stage_request.go
 model_authenticator_endpoint_gdtc_stage.go
 model_authenticator_endpoint_gdtc_stage_request.go
 model_authenticator_sms_challenge.go
@@ -871,6 +885,8 @@ model_duo_device_request.go
 model_duo_response_enum.go
 model_email_challenge.go
 model_email_challenge_response_request.go
+model_email_device.go
+model_email_device_request.go
 model_email_stage.go
 model_email_stage_request.go
 model_endpoint.go
@@ -1027,6 +1043,7 @@ model_paginated_application_entitlement_list.go
 model_paginated_application_list.go
 model_paginated_authenticated_session_list.go
 model_paginated_authenticator_duo_stage_list.go
+model_paginated_authenticator_email_stage_list.go
 model_paginated_authenticator_endpoint_gdtc_stage_list.go
 model_paginated_authenticator_sms_stage_list.go
 model_paginated_authenticator_static_stage_list.go
@@ -1045,6 +1062,7 @@ model_paginated_domain_list.go
 model_paginated_dummy_policy_list.go
 model_paginated_dummy_stage_list.go
 model_paginated_duo_device_list.go
+model_paginated_email_device_list.go
 model_paginated_email_stage_list.go
 model_paginated_endpoint_device_list.go
 model_paginated_endpoint_list.go
@@ -1165,6 +1183,7 @@ model_password_stage_request.go
 model_patched_application_entitlement_request.go
 model_patched_application_request.go
 model_patched_authenticator_duo_stage_request.go
+model_patched_authenticator_email_stage_request.go
 model_patched_authenticator_endpoint_gdtc_stage_request.go
 model_patched_authenticator_sms_stage_request.go
 model_patched_authenticator_static_stage_request.go
@@ -1183,6 +1202,7 @@ model_patched_domain_request.go
 model_patched_dummy_policy_request.go
 model_patched_dummy_stage_request.go
 model_patched_duo_device_request.go
+model_patched_email_device_request.go
 model_patched_email_stage_request.go
 model_patched_endpoint_device_request.go
 model_patched_endpoint_request.go

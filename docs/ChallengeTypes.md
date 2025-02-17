@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 **ActivationBarcode** | **string** |  | 
 **ActivationCode** | **string** |  | 
 **StageUuid** | **string** |  | 
+**Email** | Pointer to **NullableString** |  | [optional] 
+**EmailRequired** | Pointer to **bool** |  | [optional] [default to true]
 **PhoneNumberRequired** | Pointer to **bool** |  | [optional] [default to true]
 **Codes** | **[]string** |  | 
 **ConfigUrl** | **string** |  | 
@@ -358,6 +360,66 @@ and a boolean to check if the value has been set.
 
 SetStageUuid sets StageUuid field to given value.
 
+
+### GetEmail
+
+`func (o *ChallengeTypes) GetEmail() string`
+
+GetEmail returns the Email field if non-nil, zero value otherwise.
+
+### GetEmailOk
+
+`func (o *ChallengeTypes) GetEmailOk() (*string, bool)`
+
+GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmail
+
+`func (o *ChallengeTypes) SetEmail(v string)`
+
+SetEmail sets Email field to given value.
+
+### HasEmail
+
+`func (o *ChallengeTypes) HasEmail() bool`
+
+HasEmail returns a boolean if a field has been set.
+
+### SetEmailNil
+
+`func (o *ChallengeTypes) SetEmailNil(b bool)`
+
+ SetEmailNil sets the value for Email to be an explicit nil
+
+### UnsetEmail
+`func (o *ChallengeTypes) UnsetEmail()`
+
+UnsetEmail ensures that no value is present for Email, not even an explicit nil
+### GetEmailRequired
+
+`func (o *ChallengeTypes) GetEmailRequired() bool`
+
+GetEmailRequired returns the EmailRequired field if non-nil, zero value otherwise.
+
+### GetEmailRequiredOk
+
+`func (o *ChallengeTypes) GetEmailRequiredOk() (*bool, bool)`
+
+GetEmailRequiredOk returns a tuple with the EmailRequired field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmailRequired
+
+`func (o *ChallengeTypes) SetEmailRequired(v bool)`
+
+SetEmailRequired sets EmailRequired field to given value.
+
+### HasEmailRequired
+
+`func (o *ChallengeTypes) HasEmailRequired() bool`
+
+HasEmailRequired returns a boolean if a field has been set.
 
 ### GetPhoneNumberRequired
 

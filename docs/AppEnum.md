@@ -63,6 +63,8 @@
 
 * `STAGES_AUTHENTICATOR_DUO` (value: `"authentik.stages.authenticator_duo"`)
 
+* `STAGES_AUTHENTICATOR_EMAIL` (value: `"authentik.stages.authenticator_email"`)
+
 * `STAGES_AUTHENTICATOR_SMS` (value: `"authentik.stages.authenticator_sms"`)
 
 * `STAGES_AUTHENTICATOR_STATIC` (value: `"authentik.stages.authenticator_static"`)

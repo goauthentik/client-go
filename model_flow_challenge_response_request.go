@@ -20,6 +20,7 @@ import (
 type FlowChallengeResponseRequest struct {
 	AppleChallengeResponseRequest                   *AppleChallengeResponseRequest
 	AuthenticatorDuoChallengeResponseRequest        *AuthenticatorDuoChallengeResponseRequest
+	AuthenticatorEmailChallengeResponseRequest      *AuthenticatorEmailChallengeResponseRequest
 	AuthenticatorSMSChallengeResponseRequest        *AuthenticatorSMSChallengeResponseRequest
 	AuthenticatorStaticChallengeResponseRequest     *AuthenticatorStaticChallengeResponseRequest
 	AuthenticatorTOTPChallengeResponseRequest       *AuthenticatorTOTPChallengeResponseRequest
@@ -52,6 +53,13 @@ func AppleChallengeResponseRequestAsFlowChallengeResponseRequest(v *AppleChallen
 func AuthenticatorDuoChallengeResponseRequestAsFlowChallengeResponseRequest(v *AuthenticatorDuoChallengeResponseRequest) FlowChallengeResponseRequest {
 	return FlowChallengeResponseRequest{
 		AuthenticatorDuoChallengeResponseRequest: v,
+	}
+}
+
+// AuthenticatorEmailChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns AuthenticatorEmailChallengeResponseRequest wrapped in FlowChallengeResponseRequest
+func AuthenticatorEmailChallengeResponseRequestAsFlowChallengeResponseRequest(v *AuthenticatorEmailChallengeResponseRequest) FlowChallengeResponseRequest {
+	return FlowChallengeResponseRequest{
+		AuthenticatorEmailChallengeResponseRequest: v,
 	}
 }
 
@@ -219,6 +227,18 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.AuthenticatorDuoChallengeResponseRequest = nil
 			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AuthenticatorDuoChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'AuthenticatorEmailChallengeResponseRequest'
+	if jsonDict["component"] == "AuthenticatorEmailChallengeResponseRequest" {
+		// try to unmarshal JSON data into AuthenticatorEmailChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.AuthenticatorEmailChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.AuthenticatorEmailChallengeResponseRequest, return on the first match
+		} else {
+			dst.AuthenticatorEmailChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AuthenticatorEmailChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -510,6 +530,18 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'ak-stage-authenticator-email'
+	if jsonDict["component"] == "ak-stage-authenticator-email" {
+		// try to unmarshal JSON data into AuthenticatorEmailChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.AuthenticatorEmailChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.AuthenticatorEmailChallengeResponseRequest, return on the first match
+		} else {
+			dst.AuthenticatorEmailChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as AuthenticatorEmailChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'ak-stage-authenticator-sms'
 	if jsonDict["component"] == "ak-stage-authenticator-sms" {
 		// try to unmarshal JSON data into AuthenticatorSMSChallengeResponseRequest
@@ -715,6 +747,10 @@ func (src FlowChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.AuthenticatorDuoChallengeResponseRequest)
 	}
 
+	if src.AuthenticatorEmailChallengeResponseRequest != nil {
+		return json.Marshal(&src.AuthenticatorEmailChallengeResponseRequest)
+	}
+
 	if src.AuthenticatorSMSChallengeResponseRequest != nil {
 		return json.Marshal(&src.AuthenticatorSMSChallengeResponseRequest)
 	}
@@ -805,6 +841,10 @@ func (obj *FlowChallengeResponseRequest) GetActualInstance() interface{} {
 
 	if obj.AuthenticatorDuoChallengeResponseRequest != nil {
 		return obj.AuthenticatorDuoChallengeResponseRequest
+	}
+
+	if obj.AuthenticatorEmailChallengeResponseRequest != nil {
+		return obj.AuthenticatorEmailChallengeResponseRequest
 	}
 
 	if obj.AuthenticatorSMSChallengeResponseRequest != nil {

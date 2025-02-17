@@ -21,6 +21,7 @@ type ChallengeTypes struct {
 	AccessDeniedChallenge            *AccessDeniedChallenge
 	AppleLoginChallenge              *AppleLoginChallenge
 	AuthenticatorDuoChallenge        *AuthenticatorDuoChallenge
+	AuthenticatorEmailChallenge      *AuthenticatorEmailChallenge
 	AuthenticatorSMSChallenge        *AuthenticatorSMSChallenge
 	AuthenticatorStaticChallenge     *AuthenticatorStaticChallenge
 	AuthenticatorTOTPChallenge       *AuthenticatorTOTPChallenge
@@ -63,6 +64,13 @@ func AppleLoginChallengeAsChallengeTypes(v *AppleLoginChallenge) ChallengeTypes 
 func AuthenticatorDuoChallengeAsChallengeTypes(v *AuthenticatorDuoChallenge) ChallengeTypes {
 	return ChallengeTypes{
 		AuthenticatorDuoChallenge: v,
+	}
+}
+
+// AuthenticatorEmailChallengeAsChallengeTypes is a convenience function that returns AuthenticatorEmailChallenge wrapped in ChallengeTypes
+func AuthenticatorEmailChallengeAsChallengeTypes(v *AuthenticatorEmailChallenge) ChallengeTypes {
+	return ChallengeTypes{
+		AuthenticatorEmailChallenge: v,
 	}
 }
 
@@ -263,6 +271,18 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.AuthenticatorDuoChallenge = nil
 			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AuthenticatorDuoChallenge: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'AuthenticatorEmailChallenge'
+	if jsonDict["component"] == "AuthenticatorEmailChallenge" {
+		// try to unmarshal JSON data into AuthenticatorEmailChallenge
+		err = json.Unmarshal(data, &dst.AuthenticatorEmailChallenge)
+		if err == nil {
+			return nil // data stored in dst.AuthenticatorEmailChallenge, return on the first match
+		} else {
+			dst.AuthenticatorEmailChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AuthenticatorEmailChallenge: %s", err.Error())
 		}
 	}
 
@@ -602,6 +622,18 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'ak-stage-authenticator-email'
+	if jsonDict["component"] == "ak-stage-authenticator-email" {
+		// try to unmarshal JSON data into AuthenticatorEmailChallenge
+		err = json.Unmarshal(data, &dst.AuthenticatorEmailChallenge)
+		if err == nil {
+			return nil // data stored in dst.AuthenticatorEmailChallenge, return on the first match
+		} else {
+			dst.AuthenticatorEmailChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as AuthenticatorEmailChallenge: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'ak-stage-authenticator-sms'
 	if jsonDict["component"] == "ak-stage-authenticator-sms" {
 		// try to unmarshal JSON data into AuthenticatorSMSChallenge
@@ -847,6 +879,10 @@ func (src ChallengeTypes) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.AuthenticatorDuoChallenge)
 	}
 
+	if src.AuthenticatorEmailChallenge != nil {
+		return json.Marshal(&src.AuthenticatorEmailChallenge)
+	}
+
 	if src.AuthenticatorSMSChallenge != nil {
 		return json.Marshal(&src.AuthenticatorSMSChallenge)
 	}
@@ -953,6 +989,10 @@ func (obj *ChallengeTypes) GetActualInstance() interface{} {
 
 	if obj.AuthenticatorDuoChallenge != nil {
 		return obj.AuthenticatorDuoChallenge
+	}
+
+	if obj.AuthenticatorEmailChallenge != nil {
+		return obj.AuthenticatorEmailChallenge
 	}
 
 	if obj.AuthenticatorSMSChallenge != nil {

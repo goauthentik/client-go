@@ -20,6 +20,13 @@ Method | HTTP request | Description
 [**StagesAuthenticatorDuoRetrieve**](StagesApi.md#StagesAuthenticatorDuoRetrieve) | **Get** /stages/authenticator/duo/{stage_uuid}/ | 
 [**StagesAuthenticatorDuoUpdate**](StagesApi.md#StagesAuthenticatorDuoUpdate) | **Put** /stages/authenticator/duo/{stage_uuid}/ | 
 [**StagesAuthenticatorDuoUsedByList**](StagesApi.md#StagesAuthenticatorDuoUsedByList) | **Get** /stages/authenticator/duo/{stage_uuid}/used_by/ | 
+[**StagesAuthenticatorEmailCreate**](StagesApi.md#StagesAuthenticatorEmailCreate) | **Post** /stages/authenticator/email/ | 
+[**StagesAuthenticatorEmailDestroy**](StagesApi.md#StagesAuthenticatorEmailDestroy) | **Delete** /stages/authenticator/email/{stage_uuid}/ | 
+[**StagesAuthenticatorEmailList**](StagesApi.md#StagesAuthenticatorEmailList) | **Get** /stages/authenticator/email/ | 
+[**StagesAuthenticatorEmailPartialUpdate**](StagesApi.md#StagesAuthenticatorEmailPartialUpdate) | **Patch** /stages/authenticator/email/{stage_uuid}/ | 
+[**StagesAuthenticatorEmailRetrieve**](StagesApi.md#StagesAuthenticatorEmailRetrieve) | **Get** /stages/authenticator/email/{stage_uuid}/ | 
+[**StagesAuthenticatorEmailUpdate**](StagesApi.md#StagesAuthenticatorEmailUpdate) | **Put** /stages/authenticator/email/{stage_uuid}/ | 
+[**StagesAuthenticatorEmailUsedByList**](StagesApi.md#StagesAuthenticatorEmailUsedByList) | **Get** /stages/authenticator/email/{stage_uuid}/used_by/ | 
 [**StagesAuthenticatorEndpointGdtcCreate**](StagesApi.md#StagesAuthenticatorEndpointGdtcCreate) | **Post** /stages/authenticator/endpoint_gdtc/ | 
 [**StagesAuthenticatorEndpointGdtcDestroy**](StagesApi.md#StagesAuthenticatorEndpointGdtcDestroy) | **Delete** /stages/authenticator/endpoint_gdtc/{stage_uuid}/ | 
 [**StagesAuthenticatorEndpointGdtcList**](StagesApi.md#StagesAuthenticatorEndpointGdtcList) | **Get** /stages/authenticator/endpoint_gdtc/ | 
@@ -1276,6 +1283,528 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStagesAuthenticatorDuoUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorEmailCreate
+
+> AuthenticatorEmailStage StagesAuthenticatorEmailCreate(ctx).AuthenticatorEmailStageRequest(authenticatorEmailStageRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    authenticatorEmailStageRequest := *openapiclient.NewAuthenticatorEmailStageRequest("Name_example") // AuthenticatorEmailStageRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEmailCreate(context.Background()).AuthenticatorEmailStageRequest(authenticatorEmailStageRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEmailCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorEmailCreate`: AuthenticatorEmailStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorEmailCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorEmailCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authenticatorEmailStageRequest** | [**AuthenticatorEmailStageRequest**](AuthenticatorEmailStageRequest.md) |  | 
+
+### Return type
+
+[**AuthenticatorEmailStage**](AuthenticatorEmailStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorEmailDestroy
+
+> StagesAuthenticatorEmailDestroy(ctx, stageUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Email Authenticator Setup Stage.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEmailDestroy(context.Background(), stageUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEmailDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Email Authenticator Setup Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorEmailDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorEmailList
+
+> PaginatedAuthenticatorEmailStageList StagesAuthenticatorEmailList(ctx).ConfigureFlow(configureFlow).FriendlyName(friendlyName).FromAddress(fromAddress).Host(host).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Password(password).Port(port).Search(search).StageUuid(stageUuid).Subject(subject).Template(template).Timeout(timeout).TokenExpiry(tokenExpiry).UseGlobalSettings(useGlobalSettings).UseSsl(useSsl).UseTls(useTls).Username(username).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    configureFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    friendlyName := "friendlyName_example" // string |  (optional)
+    fromAddress := "fromAddress_example" // string |  (optional)
+    host := "host_example" // string |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    password := "password_example" // string |  (optional)
+    port := int32(56) // int32 |  (optional)
+    search := "search_example" // string | A search term. (optional)
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    subject := "subject_example" // string |  (optional)
+    template := "template_example" // string |  (optional)
+    timeout := int32(56) // int32 |  (optional)
+    tokenExpiry := "tokenExpiry_example" // string |  (optional)
+    useGlobalSettings := true // bool |  (optional)
+    useSsl := true // bool |  (optional)
+    useTls := true // bool |  (optional)
+    username := "username_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEmailList(context.Background()).ConfigureFlow(configureFlow).FriendlyName(friendlyName).FromAddress(fromAddress).Host(host).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Password(password).Port(port).Search(search).StageUuid(stageUuid).Subject(subject).Template(template).Timeout(timeout).TokenExpiry(tokenExpiry).UseGlobalSettings(useGlobalSettings).UseSsl(useSsl).UseTls(useTls).Username(username).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEmailList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorEmailList`: PaginatedAuthenticatorEmailStageList
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorEmailList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorEmailListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **configureFlow** | **string** |  | 
+ **friendlyName** | **string** |  | 
+ **fromAddress** | **string** |  | 
+ **host** | **string** |  | 
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **password** | **string** |  | 
+ **port** | **int32** |  | 
+ **search** | **string** | A search term. | 
+ **stageUuid** | **string** |  | 
+ **subject** | **string** |  | 
+ **template** | **string** |  | 
+ **timeout** | **int32** |  | 
+ **tokenExpiry** | **string** |  | 
+ **useGlobalSettings** | **bool** |  | 
+ **useSsl** | **bool** |  | 
+ **useTls** | **bool** |  | 
+ **username** | **string** |  | 
+
+### Return type
+
+[**PaginatedAuthenticatorEmailStageList**](PaginatedAuthenticatorEmailStageList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorEmailPartialUpdate
+
+> AuthenticatorEmailStage StagesAuthenticatorEmailPartialUpdate(ctx, stageUuid).PatchedAuthenticatorEmailStageRequest(patchedAuthenticatorEmailStageRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Email Authenticator Setup Stage.
+    patchedAuthenticatorEmailStageRequest := *openapiclient.NewPatchedAuthenticatorEmailStageRequest() // PatchedAuthenticatorEmailStageRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEmailPartialUpdate(context.Background(), stageUuid).PatchedAuthenticatorEmailStageRequest(patchedAuthenticatorEmailStageRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEmailPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorEmailPartialUpdate`: AuthenticatorEmailStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorEmailPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Email Authenticator Setup Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorEmailPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedAuthenticatorEmailStageRequest** | [**PatchedAuthenticatorEmailStageRequest**](PatchedAuthenticatorEmailStageRequest.md) |  | 
+
+### Return type
+
+[**AuthenticatorEmailStage**](AuthenticatorEmailStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorEmailRetrieve
+
+> AuthenticatorEmailStage StagesAuthenticatorEmailRetrieve(ctx, stageUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Email Authenticator Setup Stage.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEmailRetrieve(context.Background(), stageUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEmailRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorEmailRetrieve`: AuthenticatorEmailStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorEmailRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Email Authenticator Setup Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorEmailRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**AuthenticatorEmailStage**](AuthenticatorEmailStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorEmailUpdate
+
+> AuthenticatorEmailStage StagesAuthenticatorEmailUpdate(ctx, stageUuid).AuthenticatorEmailStageRequest(authenticatorEmailStageRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Email Authenticator Setup Stage.
+    authenticatorEmailStageRequest := *openapiclient.NewAuthenticatorEmailStageRequest("Name_example") // AuthenticatorEmailStageRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEmailUpdate(context.Background(), stageUuid).AuthenticatorEmailStageRequest(authenticatorEmailStageRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEmailUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorEmailUpdate`: AuthenticatorEmailStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorEmailUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Email Authenticator Setup Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorEmailUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authenticatorEmailStageRequest** | [**AuthenticatorEmailStageRequest**](AuthenticatorEmailStageRequest.md) |  | 
+
+### Return type
+
+[**AuthenticatorEmailStage**](AuthenticatorEmailStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesAuthenticatorEmailUsedByList
+
+> []UsedBy StagesAuthenticatorEmailUsedByList(ctx, stageUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Email Authenticator Setup Stage.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesAuthenticatorEmailUsedByList(context.Background(), stageUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesAuthenticatorEmailUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesAuthenticatorEmailUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesAuthenticatorEmailUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Email Authenticator Setup Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesAuthenticatorEmailUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

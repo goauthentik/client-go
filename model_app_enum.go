@@ -51,6 +51,7 @@ const (
 	APPENUM_SOURCES_SCIM                                  AppEnum = "authentik.sources.scim"
 	APPENUM_STAGES_AUTHENTICATOR                          AppEnum = "authentik.stages.authenticator"
 	APPENUM_STAGES_AUTHENTICATOR_DUO                      AppEnum = "authentik.stages.authenticator_duo"
+	APPENUM_STAGES_AUTHENTICATOR_EMAIL                    AppEnum = "authentik.stages.authenticator_email"
 	APPENUM_STAGES_AUTHENTICATOR_SMS                      AppEnum = "authentik.stages.authenticator_sms"
 	APPENUM_STAGES_AUTHENTICATOR_STATIC                   AppEnum = "authentik.stages.authenticator_static"
 	APPENUM_STAGES_AUTHENTICATOR_TOTP                     AppEnum = "authentik.stages.authenticator_totp"
@@ -116,6 +117,7 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.sources.scim",
 	"authentik.stages.authenticator",
 	"authentik.stages.authenticator_duo",
+	"authentik.stages.authenticator_email",
 	"authentik.stages.authenticator_sms",
 	"authentik.stages.authenticator_static",
 	"authentik.stages.authenticator_totp",

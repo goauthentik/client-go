@@ -2083,6 +2083,1061 @@ func (a *StagesApiService) StagesAuthenticatorDuoUsedByListExecute(r ApiStagesAu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiStagesAuthenticatorEmailCreateRequest struct {
+	ctx                            context.Context
+	ApiService                     *StagesApiService
+	authenticatorEmailStageRequest *AuthenticatorEmailStageRequest
+}
+
+func (r ApiStagesAuthenticatorEmailCreateRequest) AuthenticatorEmailStageRequest(authenticatorEmailStageRequest AuthenticatorEmailStageRequest) ApiStagesAuthenticatorEmailCreateRequest {
+	r.authenticatorEmailStageRequest = &authenticatorEmailStageRequest
+	return r
+}
+
+func (r ApiStagesAuthenticatorEmailCreateRequest) Execute() (*AuthenticatorEmailStage, *http.Response, error) {
+	return r.ApiService.StagesAuthenticatorEmailCreateExecute(r)
+}
+
+/*
+StagesAuthenticatorEmailCreate Method for StagesAuthenticatorEmailCreate
+
+AuthenticatorEmailStage Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiStagesAuthenticatorEmailCreateRequest
+*/
+func (a *StagesApiService) StagesAuthenticatorEmailCreate(ctx context.Context) ApiStagesAuthenticatorEmailCreateRequest {
+	return ApiStagesAuthenticatorEmailCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return AuthenticatorEmailStage
+func (a *StagesApiService) StagesAuthenticatorEmailCreateExecute(r ApiStagesAuthenticatorEmailCreateRequest) (*AuthenticatorEmailStage, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorEmailStage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorEmailCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/authenticator/email/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authenticatorEmailStageRequest == nil {
+		return localVarReturnValue, nil, reportError("authenticatorEmailStageRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.authenticatorEmailStageRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStagesAuthenticatorEmailDestroyRequest struct {
+	ctx        context.Context
+	ApiService *StagesApiService
+	stageUuid  string
+}
+
+func (r ApiStagesAuthenticatorEmailDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.StagesAuthenticatorEmailDestroyExecute(r)
+}
+
+/*
+StagesAuthenticatorEmailDestroy Method for StagesAuthenticatorEmailDestroy
+
+AuthenticatorEmailStage Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param stageUuid A UUID string identifying this Email Authenticator Setup Stage.
+	@return ApiStagesAuthenticatorEmailDestroyRequest
+*/
+func (a *StagesApiService) StagesAuthenticatorEmailDestroy(ctx context.Context, stageUuid string) ApiStagesAuthenticatorEmailDestroyRequest {
+	return ApiStagesAuthenticatorEmailDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
+	}
+}
+
+// Execute executes the request
+func (a *StagesApiService) StagesAuthenticatorEmailDestroyExecute(r ApiStagesAuthenticatorEmailDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorEmailDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/authenticator/email/{stage_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiStagesAuthenticatorEmailListRequest struct {
+	ctx               context.Context
+	ApiService        *StagesApiService
+	configureFlow     *string
+	friendlyName      *string
+	fromAddress       *string
+	host              *string
+	name              *string
+	ordering          *string
+	page              *int32
+	pageSize          *int32
+	password          *string
+	port              *int32
+	search            *string
+	stageUuid         *string
+	subject           *string
+	template          *string
+	timeout           *int32
+	tokenExpiry       *string
+	useGlobalSettings *bool
+	useSsl            *bool
+	useTls            *bool
+	username          *string
+}
+
+func (r ApiStagesAuthenticatorEmailListRequest) ConfigureFlow(configureFlow string) ApiStagesAuthenticatorEmailListRequest {
+	r.configureFlow = &configureFlow
+	return r
+}
+
+func (r ApiStagesAuthenticatorEmailListRequest) FriendlyName(friendlyName string) ApiStagesAuthenticatorEmailListRequest {
+	r.friendlyName = &friendlyName
+	return r
+}
+
+func (r ApiStagesAuthenticatorEmailListRequest) FromAddress(fromAddress string) ApiStagesAuthenticatorEmailListRequest {
+	r.fromAddress = &fromAddress
+	return r
+}
+
+func (r ApiStagesAuthenticatorEmailListRequest) Host(host string) ApiStagesAuthenticatorEmailListRequest {
+	r.host = &host
+	return r
+}
+
+func (r ApiStagesAuthenticatorEmailListRequest) Name(name string) ApiStagesAuthenticatorEmailListRequest {
+	r.name = &name
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiStagesAuthenticatorEmailListRequest) Ordering(ordering string) ApiStagesAuthenticatorEmailListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiStagesAuthenticatorEmailListRequest) Page(page int32) ApiStagesAuthenticatorEmailListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiStagesAuthenticatorEmailListRequest) PageSize(pageSize int32) ApiStagesAuthenticatorEmailListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiStagesAuthenticatorEmailListRequest) Password(password string) ApiStagesAuthenticatorEmailListRequest {
+	r.password = &password
+	return r
+}
+
+func (r ApiStagesAuthenticatorEmailListRequest) Port(port int32) ApiStagesAuthenticatorEmailListRequest {
+	r.port = &port
+	return r
+}
+
+// A search term.
+func (r ApiStagesAuthenticatorEmailListRequest) Search(search string) ApiStagesAuthenticatorEmailListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiStagesAuthenticatorEmailListRequest) StageUuid(stageUuid string) ApiStagesAuthenticatorEmailListRequest {
+	r.stageUuid = &stageUuid
+	return r
+}
+
+func (r ApiStagesAuthenticatorEmailListRequest) Subject(subject string) ApiStagesAuthenticatorEmailListRequest {
+	r.subject = &subject
+	return r
+}
+
+func (r ApiStagesAuthenticatorEmailListRequest) Template(template string) ApiStagesAuthenticatorEmailListRequest {
+	r.template = &template
+	return r
+}
+
+func (r ApiStagesAuthenticatorEmailListRequest) Timeout(timeout int32) ApiStagesAuthenticatorEmailListRequest {
+	r.timeout = &timeout
+	return r
+}
+
+func (r ApiStagesAuthenticatorEmailListRequest) TokenExpiry(tokenExpiry string) ApiStagesAuthenticatorEmailListRequest {
+	r.tokenExpiry = &tokenExpiry
+	return r
+}
+
+func (r ApiStagesAuthenticatorEmailListRequest) UseGlobalSettings(useGlobalSettings bool) ApiStagesAuthenticatorEmailListRequest {
+	r.useGlobalSettings = &useGlobalSettings
+	return r
+}
+
+func (r ApiStagesAuthenticatorEmailListRequest) UseSsl(useSsl bool) ApiStagesAuthenticatorEmailListRequest {
+	r.useSsl = &useSsl
+	return r
+}
+
+func (r ApiStagesAuthenticatorEmailListRequest) UseTls(useTls bool) ApiStagesAuthenticatorEmailListRequest {
+	r.useTls = &useTls
+	return r
+}
+
+func (r ApiStagesAuthenticatorEmailListRequest) Username(username string) ApiStagesAuthenticatorEmailListRequest {
+	r.username = &username
+	return r
+}
+
+func (r ApiStagesAuthenticatorEmailListRequest) Execute() (*PaginatedAuthenticatorEmailStageList, *http.Response, error) {
+	return r.ApiService.StagesAuthenticatorEmailListExecute(r)
+}
+
+/*
+StagesAuthenticatorEmailList Method for StagesAuthenticatorEmailList
+
+AuthenticatorEmailStage Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiStagesAuthenticatorEmailListRequest
+*/
+func (a *StagesApiService) StagesAuthenticatorEmailList(ctx context.Context) ApiStagesAuthenticatorEmailListRequest {
+	return ApiStagesAuthenticatorEmailListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedAuthenticatorEmailStageList
+func (a *StagesApiService) StagesAuthenticatorEmailListExecute(r ApiStagesAuthenticatorEmailListRequest) (*PaginatedAuthenticatorEmailStageList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedAuthenticatorEmailStageList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorEmailList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/authenticator/email/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.configureFlow != nil {
+		localVarQueryParams.Add("configure_flow", parameterToString(*r.configureFlow, ""))
+	}
+	if r.friendlyName != nil {
+		localVarQueryParams.Add("friendly_name", parameterToString(*r.friendlyName, ""))
+	}
+	if r.fromAddress != nil {
+		localVarQueryParams.Add("from_address", parameterToString(*r.fromAddress, ""))
+	}
+	if r.host != nil {
+		localVarQueryParams.Add("host", parameterToString(*r.host, ""))
+	}
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.password != nil {
+		localVarQueryParams.Add("password", parameterToString(*r.password, ""))
+	}
+	if r.port != nil {
+		localVarQueryParams.Add("port", parameterToString(*r.port, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	if r.stageUuid != nil {
+		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+	}
+	if r.subject != nil {
+		localVarQueryParams.Add("subject", parameterToString(*r.subject, ""))
+	}
+	if r.template != nil {
+		localVarQueryParams.Add("template", parameterToString(*r.template, ""))
+	}
+	if r.timeout != nil {
+		localVarQueryParams.Add("timeout", parameterToString(*r.timeout, ""))
+	}
+	if r.tokenExpiry != nil {
+		localVarQueryParams.Add("token_expiry", parameterToString(*r.tokenExpiry, ""))
+	}
+	if r.useGlobalSettings != nil {
+		localVarQueryParams.Add("use_global_settings", parameterToString(*r.useGlobalSettings, ""))
+	}
+	if r.useSsl != nil {
+		localVarQueryParams.Add("use_ssl", parameterToString(*r.useSsl, ""))
+	}
+	if r.useTls != nil {
+		localVarQueryParams.Add("use_tls", parameterToString(*r.useTls, ""))
+	}
+	if r.username != nil {
+		localVarQueryParams.Add("username", parameterToString(*r.username, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStagesAuthenticatorEmailPartialUpdateRequest struct {
+	ctx                                   context.Context
+	ApiService                            *StagesApiService
+	stageUuid                             string
+	patchedAuthenticatorEmailStageRequest *PatchedAuthenticatorEmailStageRequest
+}
+
+func (r ApiStagesAuthenticatorEmailPartialUpdateRequest) PatchedAuthenticatorEmailStageRequest(patchedAuthenticatorEmailStageRequest PatchedAuthenticatorEmailStageRequest) ApiStagesAuthenticatorEmailPartialUpdateRequest {
+	r.patchedAuthenticatorEmailStageRequest = &patchedAuthenticatorEmailStageRequest
+	return r
+}
+
+func (r ApiStagesAuthenticatorEmailPartialUpdateRequest) Execute() (*AuthenticatorEmailStage, *http.Response, error) {
+	return r.ApiService.StagesAuthenticatorEmailPartialUpdateExecute(r)
+}
+
+/*
+StagesAuthenticatorEmailPartialUpdate Method for StagesAuthenticatorEmailPartialUpdate
+
+AuthenticatorEmailStage Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param stageUuid A UUID string identifying this Email Authenticator Setup Stage.
+	@return ApiStagesAuthenticatorEmailPartialUpdateRequest
+*/
+func (a *StagesApiService) StagesAuthenticatorEmailPartialUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorEmailPartialUpdateRequest {
+	return ApiStagesAuthenticatorEmailPartialUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return AuthenticatorEmailStage
+func (a *StagesApiService) StagesAuthenticatorEmailPartialUpdateExecute(r ApiStagesAuthenticatorEmailPartialUpdateRequest) (*AuthenticatorEmailStage, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorEmailStage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorEmailPartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/authenticator/email/{stage_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedAuthenticatorEmailStageRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStagesAuthenticatorEmailRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *StagesApiService
+	stageUuid  string
+}
+
+func (r ApiStagesAuthenticatorEmailRetrieveRequest) Execute() (*AuthenticatorEmailStage, *http.Response, error) {
+	return r.ApiService.StagesAuthenticatorEmailRetrieveExecute(r)
+}
+
+/*
+StagesAuthenticatorEmailRetrieve Method for StagesAuthenticatorEmailRetrieve
+
+AuthenticatorEmailStage Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param stageUuid A UUID string identifying this Email Authenticator Setup Stage.
+	@return ApiStagesAuthenticatorEmailRetrieveRequest
+*/
+func (a *StagesApiService) StagesAuthenticatorEmailRetrieve(ctx context.Context, stageUuid string) ApiStagesAuthenticatorEmailRetrieveRequest {
+	return ApiStagesAuthenticatorEmailRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return AuthenticatorEmailStage
+func (a *StagesApiService) StagesAuthenticatorEmailRetrieveExecute(r ApiStagesAuthenticatorEmailRetrieveRequest) (*AuthenticatorEmailStage, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorEmailStage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorEmailRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/authenticator/email/{stage_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStagesAuthenticatorEmailUpdateRequest struct {
+	ctx                            context.Context
+	ApiService                     *StagesApiService
+	stageUuid                      string
+	authenticatorEmailStageRequest *AuthenticatorEmailStageRequest
+}
+
+func (r ApiStagesAuthenticatorEmailUpdateRequest) AuthenticatorEmailStageRequest(authenticatorEmailStageRequest AuthenticatorEmailStageRequest) ApiStagesAuthenticatorEmailUpdateRequest {
+	r.authenticatorEmailStageRequest = &authenticatorEmailStageRequest
+	return r
+}
+
+func (r ApiStagesAuthenticatorEmailUpdateRequest) Execute() (*AuthenticatorEmailStage, *http.Response, error) {
+	return r.ApiService.StagesAuthenticatorEmailUpdateExecute(r)
+}
+
+/*
+StagesAuthenticatorEmailUpdate Method for StagesAuthenticatorEmailUpdate
+
+AuthenticatorEmailStage Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param stageUuid A UUID string identifying this Email Authenticator Setup Stage.
+	@return ApiStagesAuthenticatorEmailUpdateRequest
+*/
+func (a *StagesApiService) StagesAuthenticatorEmailUpdate(ctx context.Context, stageUuid string) ApiStagesAuthenticatorEmailUpdateRequest {
+	return ApiStagesAuthenticatorEmailUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return AuthenticatorEmailStage
+func (a *StagesApiService) StagesAuthenticatorEmailUpdateExecute(r ApiStagesAuthenticatorEmailUpdateRequest) (*AuthenticatorEmailStage, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AuthenticatorEmailStage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorEmailUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/authenticator/email/{stage_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.authenticatorEmailStageRequest == nil {
+		return localVarReturnValue, nil, reportError("authenticatorEmailStageRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.authenticatorEmailStageRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStagesAuthenticatorEmailUsedByListRequest struct {
+	ctx        context.Context
+	ApiService *StagesApiService
+	stageUuid  string
+}
+
+func (r ApiStagesAuthenticatorEmailUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.StagesAuthenticatorEmailUsedByListExecute(r)
+}
+
+/*
+StagesAuthenticatorEmailUsedByList Method for StagesAuthenticatorEmailUsedByList
+
+Get a list of all objects that use this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param stageUuid A UUID string identifying this Email Authenticator Setup Stage.
+	@return ApiStagesAuthenticatorEmailUsedByListRequest
+*/
+func (a *StagesApiService) StagesAuthenticatorEmailUsedByList(ctx context.Context, stageUuid string) ApiStagesAuthenticatorEmailUsedByListRequest {
+	return ApiStagesAuthenticatorEmailUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []UsedBy
+func (a *StagesApiService) StagesAuthenticatorEmailUsedByListExecute(r ApiStagesAuthenticatorEmailUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesAuthenticatorEmailUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/authenticator/email/{stage_uuid}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiStagesAuthenticatorEndpointGdtcCreateRequest struct {
 	ctx                                   context.Context
 	ApiService                            *StagesApiService

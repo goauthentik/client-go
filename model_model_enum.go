@@ -69,6 +69,8 @@ const (
 	MODELENUM_SOURCES_SCIM_SCIMSOURCEPROPERTYMAPPING                            ModelEnum = "authentik_sources_scim.scimsourcepropertymapping"
 	MODELENUM_STAGES_AUTHENTICATOR_DUO_AUTHENTICATORDUOSTAGE                    ModelEnum = "authentik_stages_authenticator_duo.authenticatorduostage"
 	MODELENUM_STAGES_AUTHENTICATOR_DUO_DUODEVICE                                ModelEnum = "authentik_stages_authenticator_duo.duodevice"
+	MODELENUM_STAGES_AUTHENTICATOR_EMAIL_AUTHENTICATOREMAILSTAGE                ModelEnum = "authentik_stages_authenticator_email.authenticatoremailstage"
+	MODELENUM_STAGES_AUTHENTICATOR_EMAIL_EMAILDEVICE                            ModelEnum = "authentik_stages_authenticator_email.emaildevice"
 	MODELENUM_STAGES_AUTHENTICATOR_SMS_AUTHENTICATORSMSSTAGE                    ModelEnum = "authentik_stages_authenticator_sms.authenticatorsmsstage"
 	MODELENUM_STAGES_AUTHENTICATOR_SMS_SMSDEVICE                                ModelEnum = "authentik_stages_authenticator_sms.smsdevice"
 	MODELENUM_STAGES_AUTHENTICATOR_STATIC_AUTHENTICATORSTATICSTAGE              ModelEnum = "authentik_stages_authenticator_static.authenticatorstaticstage"
@@ -170,6 +172,8 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_sources_scim.scimsourcepropertymapping",
 	"authentik_stages_authenticator_duo.authenticatorduostage",
 	"authentik_stages_authenticator_duo.duodevice",
+	"authentik_stages_authenticator_email.authenticatoremailstage",
+	"authentik_stages_authenticator_email.emaildevice",
 	"authentik_stages_authenticator_sms.authenticatorsmsstage",
 	"authentik_stages_authenticator_sms.smsdevice",
 	"authentik_stages_authenticator_static.authenticatorstaticstage",

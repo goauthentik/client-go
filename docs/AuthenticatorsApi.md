@@ -11,6 +11,12 @@ Method | HTTP request | Description
 [**AuthenticatorsAdminDuoPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminDuoPartialUpdate) | **Patch** /authenticators/admin/duo/{id}/ | 
 [**AuthenticatorsAdminDuoRetrieve**](AuthenticatorsApi.md#AuthenticatorsAdminDuoRetrieve) | **Get** /authenticators/admin/duo/{id}/ | 
 [**AuthenticatorsAdminDuoUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminDuoUpdate) | **Put** /authenticators/admin/duo/{id}/ | 
+[**AuthenticatorsAdminEmailCreate**](AuthenticatorsApi.md#AuthenticatorsAdminEmailCreate) | **Post** /authenticators/admin/email/ | 
+[**AuthenticatorsAdminEmailDestroy**](AuthenticatorsApi.md#AuthenticatorsAdminEmailDestroy) | **Delete** /authenticators/admin/email/{id}/ | 
+[**AuthenticatorsAdminEmailList**](AuthenticatorsApi.md#AuthenticatorsAdminEmailList) | **Get** /authenticators/admin/email/ | 
+[**AuthenticatorsAdminEmailPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminEmailPartialUpdate) | **Patch** /authenticators/admin/email/{id}/ | 
+[**AuthenticatorsAdminEmailRetrieve**](AuthenticatorsApi.md#AuthenticatorsAdminEmailRetrieve) | **Get** /authenticators/admin/email/{id}/ | 
+[**AuthenticatorsAdminEmailUpdate**](AuthenticatorsApi.md#AuthenticatorsAdminEmailUpdate) | **Put** /authenticators/admin/email/{id}/ | 
 [**AuthenticatorsAdminEndpointCreate**](AuthenticatorsApi.md#AuthenticatorsAdminEndpointCreate) | **Post** /authenticators/admin/endpoint/ | 
 [**AuthenticatorsAdminEndpointDestroy**](AuthenticatorsApi.md#AuthenticatorsAdminEndpointDestroy) | **Delete** /authenticators/admin/endpoint/{uuid}/ | 
 [**AuthenticatorsAdminEndpointList**](AuthenticatorsApi.md#AuthenticatorsAdminEndpointList) | **Get** /authenticators/admin/endpoint/ | 
@@ -48,6 +54,12 @@ Method | HTTP request | Description
 [**AuthenticatorsDuoRetrieve**](AuthenticatorsApi.md#AuthenticatorsDuoRetrieve) | **Get** /authenticators/duo/{id}/ | 
 [**AuthenticatorsDuoUpdate**](AuthenticatorsApi.md#AuthenticatorsDuoUpdate) | **Put** /authenticators/duo/{id}/ | 
 [**AuthenticatorsDuoUsedByList**](AuthenticatorsApi.md#AuthenticatorsDuoUsedByList) | **Get** /authenticators/duo/{id}/used_by/ | 
+[**AuthenticatorsEmailDestroy**](AuthenticatorsApi.md#AuthenticatorsEmailDestroy) | **Delete** /authenticators/email/{id}/ | 
+[**AuthenticatorsEmailList**](AuthenticatorsApi.md#AuthenticatorsEmailList) | **Get** /authenticators/email/ | 
+[**AuthenticatorsEmailPartialUpdate**](AuthenticatorsApi.md#AuthenticatorsEmailPartialUpdate) | **Patch** /authenticators/email/{id}/ | 
+[**AuthenticatorsEmailRetrieve**](AuthenticatorsApi.md#AuthenticatorsEmailRetrieve) | **Get** /authenticators/email/{id}/ | 
+[**AuthenticatorsEmailUpdate**](AuthenticatorsApi.md#AuthenticatorsEmailUpdate) | **Put** /authenticators/email/{id}/ | 
+[**AuthenticatorsEmailUsedByList**](AuthenticatorsApi.md#AuthenticatorsEmailUsedByList) | **Get** /authenticators/email/{id}/used_by/ | 
 [**AuthenticatorsEndpointList**](AuthenticatorsApi.md#AuthenticatorsEndpointList) | **Get** /authenticators/endpoint/ | 
 [**AuthenticatorsEndpointRetrieve**](AuthenticatorsApi.md#AuthenticatorsEndpointRetrieve) | **Get** /authenticators/endpoint/{uuid}/ | 
 [**AuthenticatorsEndpointUsedByList**](AuthenticatorsApi.md#AuthenticatorsEndpointUsedByList) | **Get** /authenticators/endpoint/{uuid}/used_by/ | 
@@ -551,6 +563,428 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DuoDevice**](DuoDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminEmailCreate
+
+> EmailDevice AuthenticatorsAdminEmailCreate(ctx).EmailDeviceRequest(emailDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    emailDeviceRequest := *openapiclient.NewEmailDeviceRequest("Name_example") // EmailDeviceRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEmailCreate(context.Background()).EmailDeviceRequest(emailDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEmailCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminEmailCreate`: EmailDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminEmailCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminEmailCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **emailDeviceRequest** | [**EmailDeviceRequest**](EmailDeviceRequest.md) |  | 
+
+### Return type
+
+[**EmailDevice**](EmailDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminEmailDestroy
+
+> AuthenticatorsAdminEmailDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Email Device.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEmailDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEmailDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Email Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminEmailDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminEmailList
+
+> PaginatedEmailDeviceList AuthenticatorsAdminEmailList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEmailList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEmailList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminEmailList`: PaginatedEmailDeviceList
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminEmailList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminEmailListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedEmailDeviceList**](PaginatedEmailDeviceList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminEmailPartialUpdate
+
+> EmailDevice AuthenticatorsAdminEmailPartialUpdate(ctx, id).PatchedEmailDeviceRequest(patchedEmailDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Email Device.
+    patchedEmailDeviceRequest := *openapiclient.NewPatchedEmailDeviceRequest() // PatchedEmailDeviceRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEmailPartialUpdate(context.Background(), id).PatchedEmailDeviceRequest(patchedEmailDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEmailPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminEmailPartialUpdate`: EmailDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminEmailPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Email Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminEmailPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedEmailDeviceRequest** | [**PatchedEmailDeviceRequest**](PatchedEmailDeviceRequest.md) |  | 
+
+### Return type
+
+[**EmailDevice**](EmailDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminEmailRetrieve
+
+> EmailDevice AuthenticatorsAdminEmailRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Email Device.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEmailRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEmailRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminEmailRetrieve`: EmailDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminEmailRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Email Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminEmailRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**EmailDevice**](EmailDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsAdminEmailUpdate
+
+> EmailDevice AuthenticatorsAdminEmailUpdate(ctx, id).EmailDeviceRequest(emailDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Email Device.
+    emailDeviceRequest := *openapiclient.NewEmailDeviceRequest("Name_example") // EmailDeviceRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEmailUpdate(context.Background(), id).EmailDeviceRequest(emailDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEmailUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsAdminEmailUpdate`: EmailDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminEmailUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Email Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsAdminEmailUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **emailDeviceRequest** | [**EmailDeviceRequest**](EmailDeviceRequest.md) |  | 
+
+### Return type
+
+[**EmailDevice**](EmailDevice.md)
 
 ### Authorization
 
@@ -3139,6 +3573,432 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiAuthenticatorsDuoUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsEmailDestroy
+
+> AuthenticatorsEmailDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Email Device.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsEmailDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsEmailDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Email Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsEmailDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsEmailList
+
+> PaginatedEmailDeviceList AuthenticatorsEmailList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsEmailList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsEmailList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsEmailList`: PaginatedEmailDeviceList
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsEmailList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsEmailListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedEmailDeviceList**](PaginatedEmailDeviceList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsEmailPartialUpdate
+
+> EmailDevice AuthenticatorsEmailPartialUpdate(ctx, id).PatchedEmailDeviceRequest(patchedEmailDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Email Device.
+    patchedEmailDeviceRequest := *openapiclient.NewPatchedEmailDeviceRequest() // PatchedEmailDeviceRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsEmailPartialUpdate(context.Background(), id).PatchedEmailDeviceRequest(patchedEmailDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsEmailPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsEmailPartialUpdate`: EmailDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsEmailPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Email Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsEmailPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedEmailDeviceRequest** | [**PatchedEmailDeviceRequest**](PatchedEmailDeviceRequest.md) |  | 
+
+### Return type
+
+[**EmailDevice**](EmailDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsEmailRetrieve
+
+> EmailDevice AuthenticatorsEmailRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Email Device.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsEmailRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsEmailRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsEmailRetrieve`: EmailDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsEmailRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Email Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsEmailRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**EmailDevice**](EmailDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsEmailUpdate
+
+> EmailDevice AuthenticatorsEmailUpdate(ctx, id).EmailDeviceRequest(emailDeviceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Email Device.
+    emailDeviceRequest := *openapiclient.NewEmailDeviceRequest("Name_example") // EmailDeviceRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsEmailUpdate(context.Background(), id).EmailDeviceRequest(emailDeviceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsEmailUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsEmailUpdate`: EmailDevice
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsEmailUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Email Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsEmailUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **emailDeviceRequest** | [**EmailDeviceRequest**](EmailDeviceRequest.md) |  | 
+
+### Return type
+
+[**EmailDevice**](EmailDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthenticatorsEmailUsedByList
+
+> []UsedBy AuthenticatorsEmailUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Email Device.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsEmailUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsEmailUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticatorsEmailUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsEmailUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Email Device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticatorsEmailUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
