@@ -8,6 +8,12 @@ Name | Type | Description | Notes
 **ExecutionLogging** | Pointer to **bool** | When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged. | [optional] 
 **Asns** | Pointer to **[]int32** |  | [optional] 
 **Countries** | Pointer to [**[]CountryCodeEnum**](CountryCodeEnum.md) |  | [optional] 
+**CheckHistoryDistance** | Pointer to **bool** |  | [optional] 
+**HistoryMaxDistanceKm** | Pointer to **int64** |  | [optional] 
+**DistanceToleranceKm** | Pointer to **int32** |  | [optional] 
+**HistoryLoginCount** | Pointer to **int32** |  | [optional] 
+**CheckImpossibleTravel** | Pointer to **bool** |  | [optional] 
+**ImpossibleToleranceKm** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -127,6 +133,156 @@ SetCountries sets Countries field to given value.
 `func (o *PatchedGeoIPPolicyRequest) HasCountries() bool`
 
 HasCountries returns a boolean if a field has been set.
+
+### GetCheckHistoryDistance
+
+`func (o *PatchedGeoIPPolicyRequest) GetCheckHistoryDistance() bool`
+
+GetCheckHistoryDistance returns the CheckHistoryDistance field if non-nil, zero value otherwise.
+
+### GetCheckHistoryDistanceOk
+
+`func (o *PatchedGeoIPPolicyRequest) GetCheckHistoryDistanceOk() (*bool, bool)`
+
+GetCheckHistoryDistanceOk returns a tuple with the CheckHistoryDistance field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCheckHistoryDistance
+
+`func (o *PatchedGeoIPPolicyRequest) SetCheckHistoryDistance(v bool)`
+
+SetCheckHistoryDistance sets CheckHistoryDistance field to given value.
+
+### HasCheckHistoryDistance
+
+`func (o *PatchedGeoIPPolicyRequest) HasCheckHistoryDistance() bool`
+
+HasCheckHistoryDistance returns a boolean if a field has been set.
+
+### GetHistoryMaxDistanceKm
+
+`func (o *PatchedGeoIPPolicyRequest) GetHistoryMaxDistanceKm() int64`
+
+GetHistoryMaxDistanceKm returns the HistoryMaxDistanceKm field if non-nil, zero value otherwise.
+
+### GetHistoryMaxDistanceKmOk
+
+`func (o *PatchedGeoIPPolicyRequest) GetHistoryMaxDistanceKmOk() (*int64, bool)`
+
+GetHistoryMaxDistanceKmOk returns a tuple with the HistoryMaxDistanceKm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHistoryMaxDistanceKm
+
+`func (o *PatchedGeoIPPolicyRequest) SetHistoryMaxDistanceKm(v int64)`
+
+SetHistoryMaxDistanceKm sets HistoryMaxDistanceKm field to given value.
+
+### HasHistoryMaxDistanceKm
+
+`func (o *PatchedGeoIPPolicyRequest) HasHistoryMaxDistanceKm() bool`
+
+HasHistoryMaxDistanceKm returns a boolean if a field has been set.
+
+### GetDistanceToleranceKm
+
+`func (o *PatchedGeoIPPolicyRequest) GetDistanceToleranceKm() int32`
+
+GetDistanceToleranceKm returns the DistanceToleranceKm field if non-nil, zero value otherwise.
+
+### GetDistanceToleranceKmOk
+
+`func (o *PatchedGeoIPPolicyRequest) GetDistanceToleranceKmOk() (*int32, bool)`
+
+GetDistanceToleranceKmOk returns a tuple with the DistanceToleranceKm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDistanceToleranceKm
+
+`func (o *PatchedGeoIPPolicyRequest) SetDistanceToleranceKm(v int32)`
+
+SetDistanceToleranceKm sets DistanceToleranceKm field to given value.
+
+### HasDistanceToleranceKm
+
+`func (o *PatchedGeoIPPolicyRequest) HasDistanceToleranceKm() bool`
+
+HasDistanceToleranceKm returns a boolean if a field has been set.
+
+### GetHistoryLoginCount
+
+`func (o *PatchedGeoIPPolicyRequest) GetHistoryLoginCount() int32`
+
+GetHistoryLoginCount returns the HistoryLoginCount field if non-nil, zero value otherwise.
+
+### GetHistoryLoginCountOk
+
+`func (o *PatchedGeoIPPolicyRequest) GetHistoryLoginCountOk() (*int32, bool)`
+
+GetHistoryLoginCountOk returns a tuple with the HistoryLoginCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHistoryLoginCount
+
+`func (o *PatchedGeoIPPolicyRequest) SetHistoryLoginCount(v int32)`
+
+SetHistoryLoginCount sets HistoryLoginCount field to given value.
+
+### HasHistoryLoginCount
+
+`func (o *PatchedGeoIPPolicyRequest) HasHistoryLoginCount() bool`
+
+HasHistoryLoginCount returns a boolean if a field has been set.
+
+### GetCheckImpossibleTravel
+
+`func (o *PatchedGeoIPPolicyRequest) GetCheckImpossibleTravel() bool`
+
+GetCheckImpossibleTravel returns the CheckImpossibleTravel field if non-nil, zero value otherwise.
+
+### GetCheckImpossibleTravelOk
+
+`func (o *PatchedGeoIPPolicyRequest) GetCheckImpossibleTravelOk() (*bool, bool)`
+
+GetCheckImpossibleTravelOk returns a tuple with the CheckImpossibleTravel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCheckImpossibleTravel
+
+`func (o *PatchedGeoIPPolicyRequest) SetCheckImpossibleTravel(v bool)`
+
+SetCheckImpossibleTravel sets CheckImpossibleTravel field to given value.
+
+### HasCheckImpossibleTravel
+
+`func (o *PatchedGeoIPPolicyRequest) HasCheckImpossibleTravel() bool`
+
+HasCheckImpossibleTravel returns a boolean if a field has been set.
+
+### GetImpossibleToleranceKm
+
+`func (o *PatchedGeoIPPolicyRequest) GetImpossibleToleranceKm() int32`
+
+GetImpossibleToleranceKm returns the ImpossibleToleranceKm field if non-nil, zero value otherwise.
+
+### GetImpossibleToleranceKmOk
+
+`func (o *PatchedGeoIPPolicyRequest) GetImpossibleToleranceKmOk() (*int32, bool)`
+
+GetImpossibleToleranceKmOk returns a tuple with the ImpossibleToleranceKm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImpossibleToleranceKm
+
+`func (o *PatchedGeoIPPolicyRequest) SetImpossibleToleranceKm(v int32)`
+
+SetImpossibleToleranceKm sets ImpossibleToleranceKm field to given value.
+
+### HasImpossibleToleranceKm
+
+`func (o *PatchedGeoIPPolicyRequest) HasImpossibleToleranceKm() bool`
+
+HasImpossibleToleranceKm returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

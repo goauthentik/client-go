@@ -49763,28 +49763,34 @@ components:
     GeoIPPolicy:
       description: GeoIP Policy Serializer
       example:
-        component: component
-        verbose_name: verbose_name
         verbose_name_plural: verbose_name_plural
-        meta_model_name: meta_model_name
         execution_logging: true
-        bound_to: 0
-        name: name
-        asns:
-        - 441289069
-        - 441289069
-        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         countries:
         - null
         - null
         - null
         - null
         - null
+        history_max_distance_km: 1351973845562961920
+        check_history_distance: true
+        history_login_count: 1210617418
+        component: component
+        verbose_name: verbose_name
+        meta_model_name: meta_model_name
+        bound_to: 0
+        check_impossible_travel: true
+        name: name
+        distance_tolerance_km: 1280358508
+        asns:
+        - 441289069
+        - 441289069
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         countries_obj:
         - code: null
           name: name
         - code: null
           name: name
+        impossible_tolerance_km: 494379917
       properties:
         pk:
           format: uuid
@@ -49833,6 +49839,27 @@ components:
             $ref: '#/components/schemas/DetailedCountryField'
           readOnly: true
           type: array
+        check_history_distance:
+          type: boolean
+        history_max_distance_km:
+          format: int64
+          maximum: 9223372036854775807
+          minimum: 0
+          type: integer
+        distance_tolerance_km:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        history_login_count:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        check_impossible_travel:
+          type: boolean
+        impossible_tolerance_km:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
       required:
       - bound_to
       - component
@@ -49847,8 +49874,12 @@ components:
     GeoIPPolicyRequest:
       description: GeoIP Policy Serializer
       example:
+        check_history_distance: true
+        history_login_count: 1280358508
         execution_logging: true
+        check_impossible_travel: true
         name: name
+        distance_tolerance_km: 314780940
         asns:
         - -1803530559
         - -1803530559
@@ -49858,6 +49889,8 @@ components:
         - null
         - null
         - null
+        history_max_distance_km: 5559347081229897728
+        impossible_tolerance_km: 1210617418
       properties:
         name:
           minLength: 1
@@ -49877,6 +49910,27 @@ components:
             $ref: '#/components/schemas/CountryCodeEnum'
           maxItems: 249
           type: array
+        check_history_distance:
+          type: boolean
+        history_max_distance_km:
+          format: int64
+          maximum: 9223372036854775807
+          minimum: 0
+          type: integer
+        distance_tolerance_km:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        history_login_count:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        check_impossible_travel:
+          type: boolean
+        impossible_tolerance_km:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
       required:
       - countries
       - name
@@ -57080,50 +57134,62 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - component: component
-          verbose_name: verbose_name
-          verbose_name_plural: verbose_name_plural
-          meta_model_name: meta_model_name
+        - verbose_name_plural: verbose_name_plural
           execution_logging: true
-          bound_to: 0
-          name: name
-          asns:
-          - 441289069
-          - 441289069
-          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           countries:
           - null
           - null
           - null
           - null
           - null
+          history_max_distance_km: 1351973845562961920
+          check_history_distance: true
+          history_login_count: 1210617418
+          component: component
+          verbose_name: verbose_name
+          meta_model_name: meta_model_name
+          bound_to: 0
+          check_impossible_travel: true
+          name: name
+          distance_tolerance_km: 1280358508
+          asns:
+          - 441289069
+          - 441289069
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           countries_obj:
           - code: null
             name: name
           - code: null
             name: name
-        - component: component
-          verbose_name: verbose_name
-          verbose_name_plural: verbose_name_plural
-          meta_model_name: meta_model_name
+          impossible_tolerance_km: 494379917
+        - verbose_name_plural: verbose_name_plural
           execution_logging: true
-          bound_to: 0
-          name: name
-          asns:
-          - 441289069
-          - 441289069
-          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           countries:
           - null
           - null
           - null
           - null
           - null
+          history_max_distance_km: 1351973845562961920
+          check_history_distance: true
+          history_login_count: 1210617418
+          component: component
+          verbose_name: verbose_name
+          meta_model_name: meta_model_name
+          bound_to: 0
+          check_impossible_travel: true
+          name: name
+          distance_tolerance_km: 1280358508
+          asns:
+          - 441289069
+          - 441289069
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           countries_obj:
           - code: null
             name: name
           - code: null
             name: name
+          impossible_tolerance_km: 494379917
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -64563,8 +64629,12 @@ components:
     PatchedGeoIPPolicyRequest:
       description: GeoIP Policy Serializer
       example:
+        check_history_distance: true
+        history_login_count: 1280358508
         execution_logging: true
+        check_impossible_travel: true
         name: name
+        distance_tolerance_km: 314780940
         asns:
         - -1803530559
         - -1803530559
@@ -64574,6 +64644,8 @@ components:
         - null
         - null
         - null
+        history_max_distance_km: 5559347081229897728
+        impossible_tolerance_km: 1210617418
       properties:
         name:
           minLength: 1
@@ -64593,6 +64665,27 @@ components:
             $ref: '#/components/schemas/CountryCodeEnum'
           maxItems: 249
           type: array
+        check_history_distance:
+          type: boolean
+        history_max_distance_km:
+          format: int64
+          maximum: 9223372036854775807
+          minimum: 0
+          type: integer
+        distance_tolerance_km:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        history_login_count:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        check_impossible_travel:
+          type: boolean
+        impossible_tolerance_km:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
       type: object
     PatchedGoogleWorkspaceProviderMappingRequest:
       description: GoogleWorkspaceProviderMapping Serializer
