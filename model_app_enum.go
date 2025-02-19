@@ -38,6 +38,7 @@ const (
 	APPENUM_PROVIDERS_LDAP                                AppEnum = "authentik.providers.ldap"
 	APPENUM_PROVIDERS_OAUTH2                              AppEnum = "authentik.providers.oauth2"
 	APPENUM_PROVIDERS_PROXY                               AppEnum = "authentik.providers.proxy"
+	APPENUM_PROVIDERS_RAC                                 AppEnum = "authentik.providers.rac"
 	APPENUM_PROVIDERS_RADIUS                              AppEnum = "authentik.providers.radius"
 	APPENUM_PROVIDERS_SAML                                AppEnum = "authentik.providers.saml"
 	APPENUM_PROVIDERS_SCIM                                AppEnum = "authentik.providers.scim"
@@ -78,7 +79,6 @@ const (
 	APPENUM_ENTERPRISE_AUDIT                              AppEnum = "authentik.enterprise.audit"
 	APPENUM_ENTERPRISE_PROVIDERS_GOOGLE_WORKSPACE         AppEnum = "authentik.enterprise.providers.google_workspace"
 	APPENUM_ENTERPRISE_PROVIDERS_MICROSOFT_ENTRA          AppEnum = "authentik.enterprise.providers.microsoft_entra"
-	APPENUM_ENTERPRISE_PROVIDERS_RAC                      AppEnum = "authentik.enterprise.providers.rac"
 	APPENUM_ENTERPRISE_PROVIDERS_SSF                      AppEnum = "authentik.enterprise.providers.ssf"
 	APPENUM_ENTERPRISE_STAGES_AUTHENTICATOR_ENDPOINT_GDTC AppEnum = "authentik.enterprise.stages.authenticator_endpoint_gdtc"
 	APPENUM_ENTERPRISE_STAGES_SOURCE                      AppEnum = "authentik.enterprise.stages.source"
@@ -104,6 +104,7 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.providers.ldap",
 	"authentik.providers.oauth2",
 	"authentik.providers.proxy",
+	"authentik.providers.rac",
 	"authentik.providers.radius",
 	"authentik.providers.saml",
 	"authentik.providers.scim",
@@ -144,7 +145,6 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.enterprise.audit",
 	"authentik.enterprise.providers.google_workspace",
 	"authentik.enterprise.providers.microsoft_entra",
-	"authentik.enterprise.providers.rac",
 	"authentik.enterprise.providers.ssf",
 	"authentik.enterprise.stages.authenticator_endpoint_gdtc",
 	"authentik.enterprise.stages.source",

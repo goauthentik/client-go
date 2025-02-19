@@ -37,6 +37,8 @@
 
 * `PROVIDERS_PROXY` (value: `"authentik.providers.proxy"`)
 
+* `PROVIDERS_RAC` (value: `"authentik.providers.rac"`)
+
 * `PROVIDERS_RADIUS` (value: `"authentik.providers.radius"`)
 
 * `PROVIDERS_SAML` (value: `"authentik.providers.saml"`)
@@ -116,8 +118,6 @@
 * `ENTERPRISE_PROVIDERS_GOOGLE_WORKSPACE` (value: `"authentik.enterprise.providers.google_workspace"`)
 
 * `ENTERPRISE_PROVIDERS_MICROSOFT_ENTRA` (value: `"authentik.enterprise.providers.microsoft_entra"`)
-
-* `ENTERPRISE_PROVIDERS_RAC` (value: `"authentik.enterprise.providers.rac"`)
 
 * `ENTERPRISE_PROVIDERS_SSF` (value: `"authentik.enterprise.providers.ssf"`)
 

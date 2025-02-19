@@ -41,6 +41,12 @@
 
 * `PROVIDERS_PROXY_PROXYPROVIDER` (value: `"authentik_providers_proxy.proxyprovider"`)
 
+* `PROVIDERS_RAC_RACPROVIDER` (value: `"authentik_providers_rac.racprovider"`)
+
+* `PROVIDERS_RAC_ENDPOINT` (value: `"authentik_providers_rac.endpoint"`)
+
+* `PROVIDERS_RAC_RACPROPERTYMAPPING` (value: `"authentik_providers_rac.racpropertymapping"`)
+
 * `PROVIDERS_RADIUS_RADIUSPROVIDER` (value: `"authentik_providers_radius.radiusprovider"`)
 
 * `PROVIDERS_RADIUS_RADIUSPROVIDERPROPERTYMAPPING` (value: `"authentik_providers_radius.radiusproviderpropertymapping"`)
@@ -178,12 +184,6 @@
 * `PROVIDERS_MICROSOFT_ENTRA_MICROSOFTENTRAPROVIDER` (value: `"authentik_providers_microsoft_entra.microsoftentraprovider"`)
 
 * `PROVIDERS_MICROSOFT_ENTRA_MICROSOFTENTRAPROVIDERMAPPING` (value: `"authentik_providers_microsoft_entra.microsoftentraprovidermapping"`)
-
-* `PROVIDERS_RAC_RACPROVIDER` (value: `"authentik_providers_rac.racprovider"`)
-
-* `PROVIDERS_RAC_ENDPOINT` (value: `"authentik_providers_rac.endpoint"`)
-
-* `PROVIDERS_RAC_RACPROPERTYMAPPING` (value: `"authentik_providers_rac.racpropertymapping"`)
 
 * `PROVIDERS_SSF_SSFPROVIDER` (value: `"authentik_providers_ssf.ssfprovider"`)
 

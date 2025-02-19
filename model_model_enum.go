@@ -40,6 +40,9 @@ const (
 	MODELENUM_PROVIDERS_OAUTH2_SCOPEMAPPING                                     ModelEnum = "authentik_providers_oauth2.scopemapping"
 	MODELENUM_PROVIDERS_OAUTH2_OAUTH2PROVIDER                                   ModelEnum = "authentik_providers_oauth2.oauth2provider"
 	MODELENUM_PROVIDERS_PROXY_PROXYPROVIDER                                     ModelEnum = "authentik_providers_proxy.proxyprovider"
+	MODELENUM_PROVIDERS_RAC_RACPROVIDER                                         ModelEnum = "authentik_providers_rac.racprovider"
+	MODELENUM_PROVIDERS_RAC_ENDPOINT                                            ModelEnum = "authentik_providers_rac.endpoint"
+	MODELENUM_PROVIDERS_RAC_RACPROPERTYMAPPING                                  ModelEnum = "authentik_providers_rac.racpropertymapping"
 	MODELENUM_PROVIDERS_RADIUS_RADIUSPROVIDER                                   ModelEnum = "authentik_providers_radius.radiusprovider"
 	MODELENUM_PROVIDERS_RADIUS_RADIUSPROVIDERPROPERTYMAPPING                    ModelEnum = "authentik_providers_radius.radiusproviderpropertymapping"
 	MODELENUM_PROVIDERS_SAML_SAMLPROVIDER                                       ModelEnum = "authentik_providers_saml.samlprovider"
@@ -109,9 +112,6 @@ const (
 	MODELENUM_PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDERMAPPING         ModelEnum = "authentik_providers_google_workspace.googleworkspaceprovidermapping"
 	MODELENUM_PROVIDERS_MICROSOFT_ENTRA_MICROSOFTENTRAPROVIDER                  ModelEnum = "authentik_providers_microsoft_entra.microsoftentraprovider"
 	MODELENUM_PROVIDERS_MICROSOFT_ENTRA_MICROSOFTENTRAPROVIDERMAPPING           ModelEnum = "authentik_providers_microsoft_entra.microsoftentraprovidermapping"
-	MODELENUM_PROVIDERS_RAC_RACPROVIDER                                         ModelEnum = "authentik_providers_rac.racprovider"
-	MODELENUM_PROVIDERS_RAC_ENDPOINT                                            ModelEnum = "authentik_providers_rac.endpoint"
-	MODELENUM_PROVIDERS_RAC_RACPROPERTYMAPPING                                  ModelEnum = "authentik_providers_rac.racpropertymapping"
 	MODELENUM_PROVIDERS_SSF_SSFPROVIDER                                         ModelEnum = "authentik_providers_ssf.ssfprovider"
 	MODELENUM_STAGES_AUTHENTICATOR_ENDPOINT_GDTC_AUTHENTICATORENDPOINTGDTCSTAGE ModelEnum = "authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage"
 	MODELENUM_STAGES_SOURCE_SOURCESTAGE                                         ModelEnum = "authentik_stages_source.sourcestage"
@@ -143,6 +143,9 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_providers_oauth2.scopemapping",
 	"authentik_providers_oauth2.oauth2provider",
 	"authentik_providers_proxy.proxyprovider",
+	"authentik_providers_rac.racprovider",
+	"authentik_providers_rac.endpoint",
+	"authentik_providers_rac.racpropertymapping",
 	"authentik_providers_radius.radiusprovider",
 	"authentik_providers_radius.radiusproviderpropertymapping",
 	"authentik_providers_saml.samlprovider",
@@ -212,9 +215,6 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_providers_google_workspace.googleworkspaceprovidermapping",
 	"authentik_providers_microsoft_entra.microsoftentraprovider",
 	"authentik_providers_microsoft_entra.microsoftentraprovidermapping",
-	"authentik_providers_rac.racprovider",
-	"authentik_providers_rac.endpoint",
-	"authentik_providers_rac.racpropertymapping",
 	"authentik_providers_ssf.ssfprovider",
 	"authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage",
 	"authentik_stages_source.sourcestage",
