@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SyncObjectModel** | [**SyncObjectModelEnum**](SyncObjectModelEnum.md) |  | 
 **SyncObjectId** | **string** |  | 
+**OverrideDryRun** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -65,6 +66,31 @@ and a boolean to check if the value has been set.
 
 SetSyncObjectId sets SyncObjectId field to given value.
 
+
+### GetOverrideDryRun
+
+`func (o *SyncObjectRequest) GetOverrideDryRun() bool`
+
+GetOverrideDryRun returns the OverrideDryRun field if non-nil, zero value otherwise.
+
+### GetOverrideDryRunOk
+
+`func (o *SyncObjectRequest) GetOverrideDryRunOk() (*bool, bool)`
+
+GetOverrideDryRunOk returns a tuple with the OverrideDryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOverrideDryRun
+
+`func (o *SyncObjectRequest) SetOverrideDryRun(v bool)`
+
+SetOverrideDryRun sets OverrideDryRun field to given value.
+
+### HasOverrideDryRun
+
+`func (o *SyncObjectRequest) HasOverrideDryRun() bool`
+
+HasOverrideDryRun returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

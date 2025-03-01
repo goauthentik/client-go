@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **UserDeleteAction** | Pointer to [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] 
 **GroupDeleteAction** | Pointer to [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] 
 **DefaultGroupEmailDomain** | **string** |  | 
+**DryRun** | Pointer to **bool** | When enabled, provider will not modify or create objects in the remote system. | [optional] 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
 **InvalidationFlow** | **string** | Flow used ending the session from a provider. | 
@@ -371,6 +372,31 @@ and a boolean to check if the value has been set.
 
 SetDefaultGroupEmailDomain sets DefaultGroupEmailDomain field to given value.
 
+
+### GetDryRun
+
+`func (o *ModelRequest) GetDryRun() bool`
+
+GetDryRun returns the DryRun field if non-nil, zero value otherwise.
+
+### GetDryRunOk
+
+`func (o *ModelRequest) GetDryRunOk() (*bool, bool)`
+
+GetDryRunOk returns a tuple with the DryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDryRun
+
+`func (o *ModelRequest) SetDryRun(v bool)`
+
+SetDryRun sets DryRun field to given value.
+
+### HasDryRun
+
+`func (o *ModelRequest) HasDryRun() bool`
+
+HasDryRun returns a boolean if a field has been set.
 
 ### GetAuthenticationFlow
 

@@ -49961,6 +49961,7 @@ components:
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         assigned_backchannel_application_name: assigned_backchannel_application_name
         name: name
+        dry_run: true
         pk: 0
         scopes: scopes
         property_mappings:
@@ -50028,6 +50029,10 @@ components:
           $ref: '#/components/schemas/OutgoingSyncDeleteAction'
         default_group_email_domain:
           type: string
+        dry_run:
+          description: "When enabled, provider will not modify or create objects in\
+            \ the remote system."
+          type: boolean
       required:
       - assigned_backchannel_application_name
       - assigned_backchannel_application_slug
@@ -50187,6 +50192,7 @@ components:
         credentials: ""
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        dry_run: true
         scopes: scopes
         user_delete_action: null
         property_mappings:
@@ -50231,6 +50237,10 @@ components:
         default_group_email_domain:
           minLength: 1
           type: string
+        dry_run:
+          description: "When enabled, provider will not modify or create objects in\
+            \ the remote system."
+          type: boolean
       required:
       - credentials
       - default_group_email_domain
@@ -52908,6 +52918,7 @@ components:
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         assigned_backchannel_application_name: assigned_backchannel_application_name
         name: name
+        dry_run: true
         pk: 0
         client_secret: client_secret
         property_mappings:
@@ -52972,6 +52983,10 @@ components:
           $ref: '#/components/schemas/OutgoingSyncDeleteAction'
         group_delete_action:
           $ref: '#/components/schemas/OutgoingSyncDeleteAction'
+        dry_run:
+          description: "When enabled, provider will not modify or create objects in\
+            \ the remote system."
+          type: boolean
       required:
       - assigned_backchannel_application_name
       - assigned_backchannel_application_slug
@@ -53129,6 +53144,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        dry_run: true
         client_secret: client_secret
         user_delete_action: null
         property_mappings:
@@ -53171,6 +53187,10 @@ components:
           $ref: '#/components/schemas/OutgoingSyncDeleteAction'
         group_delete_action:
           $ref: '#/components/schemas/OutgoingSyncDeleteAction'
+        dry_run:
+          description: "When enabled, provider will not modify or create objects in\
+            \ the remote system."
+          type: boolean
       required:
       - client_id
       - client_secret
@@ -57262,6 +57282,7 @@ components:
           filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
+          dry_run: true
           pk: 0
           scopes: scopes
           property_mappings:
@@ -57284,6 +57305,7 @@ components:
           filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
+          dry_run: true
           pk: 0
           scopes: scopes
           property_mappings:
@@ -58377,6 +58399,7 @@ components:
           filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
+          dry_run: true
           pk: 0
           client_secret: client_secret
           property_mappings:
@@ -58398,6 +58421,7 @@ components:
           filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
+          dry_run: true
           pk: 0
           client_secret: client_secret
           property_mappings:
@@ -60820,6 +60844,7 @@ components:
           filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
+          dry_run: true
           pk: 0
           verify_certificates: true
           property_mappings:
@@ -60839,6 +60864,7 @@ components:
           filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
+          dry_run: true
           pk: 0
           verify_certificates: true
           property_mappings:
@@ -64721,6 +64747,7 @@ components:
         credentials: ""
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        dry_run: true
         scopes: scopes
         user_delete_action: null
         property_mappings:
@@ -64765,6 +64792,10 @@ components:
         default_group_email_domain:
           minLength: 1
           type: string
+        dry_run:
+          description: "When enabled, provider will not modify or create objects in\
+            \ the remote system."
+          type: boolean
       type: object
     PatchedGroupKerberosSourceConnectionRequest:
       description: OAuth Group-Source connection Serializer
@@ -65507,6 +65538,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        dry_run: true
         client_secret: client_secret
         user_delete_action: null
         property_mappings:
@@ -65549,6 +65581,10 @@ components:
           $ref: '#/components/schemas/OutgoingSyncDeleteAction'
         group_delete_action:
           $ref: '#/components/schemas/OutgoingSyncDeleteAction'
+        dry_run:
+          description: "When enabled, provider will not modify or create objects in\
+            \ the remote system."
+          type: boolean
       type: object
     PatchedNotificationRequest:
       description: Notification Serializer
@@ -67106,6 +67142,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        dry_run: true
         verify_certificates: true
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -67144,6 +67181,10 @@ components:
           format: uuid
           nullable: true
           type: string
+        dry_run:
+          description: "When enabled, provider will not modify or create objects in\
+            \ the remote system."
+          type: boolean
       type: object
     PatchedSCIMSourceGroupRequest:
       description: SCIMSourceGroup Serializer
@@ -71635,6 +71676,7 @@ components:
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         assigned_backchannel_application_name: assigned_backchannel_application_name
         name: name
+        dry_run: true
         pk: 0
         verify_certificates: true
         property_mappings:
@@ -71696,6 +71738,10 @@ components:
           format: uuid
           nullable: true
           type: string
+        dry_run:
+          description: "When enabled, provider will not modify or create objects in\
+            \ the remote system."
+          type: boolean
       required:
       - assigned_backchannel_application_name
       - assigned_backchannel_application_slug
@@ -71767,6 +71813,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        dry_run: true
         verify_certificates: true
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -71805,6 +71852,10 @@ components:
           format: uuid
           nullable: true
           type: string
+        dry_run:
+          description: "When enabled, provider will not modify or create objects in\
+            \ the remote system."
+          type: boolean
       required:
       - name
       - token
@@ -73368,6 +73419,7 @@ components:
       description: Sync object serializer
       example:
         sync_object_model: null
+        override_dry_run: false
         sync_object_id: sync_object_id
       properties:
         sync_object_model:
@@ -73375,6 +73427,9 @@ components:
         sync_object_id:
           minLength: 1
           type: string
+        override_dry_run:
+          default: false
+          type: boolean
       required:
       - sync_object_id
       - sync_object_model

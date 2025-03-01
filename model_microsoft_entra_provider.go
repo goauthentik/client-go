@@ -41,6 +41,8 @@ type MicrosoftEntraProvider struct {
 	FilterGroup                NullableString            `json:"filter_group,omitempty"`
 	UserDeleteAction           *OutgoingSyncDeleteAction `json:"user_delete_action,omitempty"`
 	GroupDeleteAction          *OutgoingSyncDeleteAction `json:"group_delete_action,omitempty"`
+	// When enabled, provider will not modify or create objects in the remote system.
+	DryRun *bool `json:"dry_run,omitempty"`
 }
 
 // NewMicrosoftEntraProvider instantiates a new MicrosoftEntraProvider object
@@ -538,6 +540,38 @@ func (o *MicrosoftEntraProvider) SetGroupDeleteAction(v OutgoingSyncDeleteAction
 	o.GroupDeleteAction = &v
 }
 
+// GetDryRun returns the DryRun field value if set, zero value otherwise.
+func (o *MicrosoftEntraProvider) GetDryRun() bool {
+	if o == nil || o.DryRun == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DryRun
+}
+
+// GetDryRunOk returns a tuple with the DryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MicrosoftEntraProvider) GetDryRunOk() (*bool, bool) {
+	if o == nil || o.DryRun == nil {
+		return nil, false
+	}
+	return o.DryRun, true
+}
+
+// HasDryRun returns a boolean if a field has been set.
+func (o *MicrosoftEntraProvider) HasDryRun() bool {
+	if o != nil && o.DryRun != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDryRun gets a reference to the given bool and assigns it to the DryRun field.
+func (o *MicrosoftEntraProvider) SetDryRun(v bool) {
+	o.DryRun = &v
+}
+
 func (o MicrosoftEntraProvider) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -590,6 +624,9 @@ func (o MicrosoftEntraProvider) MarshalJSON() ([]byte, error) {
 	}
 	if o.GroupDeleteAction != nil {
 		toSerialize["group_delete_action"] = o.GroupDeleteAction
+	}
+	if o.DryRun != nil {
+		toSerialize["dry_run"] = o.DryRun
 	}
 	return json.Marshal(toSerialize)
 }

@@ -28,6 +28,8 @@ type SCIMProviderRequest struct {
 	Token                      string         `json:"token"`
 	ExcludeUsersServiceAccount *bool          `json:"exclude_users_service_account,omitempty"`
 	FilterGroup                NullableString `json:"filter_group,omitempty"`
+	// When enabled, provider will not modify or create objects in the remote system.
+	DryRun *bool `json:"dry_run,omitempty"`
 }
 
 // NewSCIMProviderRequest instantiates a new SCIMProviderRequest object
@@ -293,6 +295,38 @@ func (o *SCIMProviderRequest) UnsetFilterGroup() {
 	o.FilterGroup.Unset()
 }
 
+// GetDryRun returns the DryRun field value if set, zero value otherwise.
+func (o *SCIMProviderRequest) GetDryRun() bool {
+	if o == nil || o.DryRun == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DryRun
+}
+
+// GetDryRunOk returns a tuple with the DryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SCIMProviderRequest) GetDryRunOk() (*bool, bool) {
+	if o == nil || o.DryRun == nil {
+		return nil, false
+	}
+	return o.DryRun, true
+}
+
+// HasDryRun returns a boolean if a field has been set.
+func (o *SCIMProviderRequest) HasDryRun() bool {
+	if o != nil && o.DryRun != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDryRun gets a reference to the given bool and assigns it to the DryRun field.
+func (o *SCIMProviderRequest) SetDryRun(v bool) {
+	o.DryRun = &v
+}
+
 func (o SCIMProviderRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -318,6 +352,9 @@ func (o SCIMProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.FilterGroup.IsSet() {
 		toSerialize["filter_group"] = o.FilterGroup.Get()
+	}
+	if o.DryRun != nil {
+		toSerialize["dry_run"] = o.DryRun
 	}
 	return json.Marshal(toSerialize)
 }

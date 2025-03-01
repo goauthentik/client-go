@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **FilterGroup** | Pointer to **NullableString** |  | [optional] 
 **UserDeleteAction** | Pointer to [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] 
 **GroupDeleteAction** | Pointer to [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] 
+**DryRun** | Pointer to **bool** | When enabled, provider will not modify or create objects in the remote system. | [optional] 
 
 ## Methods
 
@@ -273,6 +274,31 @@ SetGroupDeleteAction sets GroupDeleteAction field to given value.
 `func (o *MicrosoftEntraProviderRequest) HasGroupDeleteAction() bool`
 
 HasGroupDeleteAction returns a boolean if a field has been set.
+
+### GetDryRun
+
+`func (o *MicrosoftEntraProviderRequest) GetDryRun() bool`
+
+GetDryRun returns the DryRun field if non-nil, zero value otherwise.
+
+### GetDryRunOk
+
+`func (o *MicrosoftEntraProviderRequest) GetDryRunOk() (*bool, bool)`
+
+GetDryRunOk returns a tuple with the DryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDryRun
+
+`func (o *MicrosoftEntraProviderRequest) SetDryRun(v bool)`
+
+SetDryRun sets DryRun field to given value.
+
+### HasDryRun
+
+`func (o *MicrosoftEntraProviderRequest) HasDryRun() bool`
+
+HasDryRun returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

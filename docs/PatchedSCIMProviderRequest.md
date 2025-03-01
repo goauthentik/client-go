@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Token** | Pointer to **string** | Authentication token | [optional] 
 **ExcludeUsersServiceAccount** | Pointer to **bool** |  | [optional] 
 **FilterGroup** | Pointer to **NullableString** |  | [optional] 
+**DryRun** | Pointer to **bool** | When enabled, provider will not modify or create objects in the remote system. | [optional] 
 
 ## Methods
 
@@ -242,6 +243,31 @@ HasFilterGroup returns a boolean if a field has been set.
 `func (o *PatchedSCIMProviderRequest) UnsetFilterGroup()`
 
 UnsetFilterGroup ensures that no value is present for FilterGroup, not even an explicit nil
+### GetDryRun
+
+`func (o *PatchedSCIMProviderRequest) GetDryRun() bool`
+
+GetDryRun returns the DryRun field if non-nil, zero value otherwise.
+
+### GetDryRunOk
+
+`func (o *PatchedSCIMProviderRequest) GetDryRunOk() (*bool, bool)`
+
+GetDryRunOk returns a tuple with the DryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDryRun
+
+`func (o *PatchedSCIMProviderRequest) SetDryRun(v bool)`
+
+SetDryRun sets DryRun field to given value.
+
+### HasDryRun
+
+`func (o *PatchedSCIMProviderRequest) HasDryRun() bool`
+
+HasDryRun returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
