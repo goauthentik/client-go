@@ -29,8 +29,8 @@ type PatchedEmailStageRequest struct {
 	UseSsl            *bool   `json:"use_ssl,omitempty"`
 	Timeout           *int32  `json:"timeout,omitempty"`
 	FromAddress       *string `json:"from_address,omitempty"`
-	// Time in minutes the token sent is valid.
-	TokenExpiry *int32  `json:"token_expiry,omitempty"`
+	// Time the token sent is valid (Format: hours=3,minutes=17,seconds=300).
+	TokenExpiry *string `json:"token_expiry,omitempty"`
 	Subject     *string `json:"subject,omitempty"`
 	Template    *string `json:"template,omitempty"`
 	// Activate users upon completion of stage.
@@ -407,9 +407,9 @@ func (o *PatchedEmailStageRequest) SetFromAddress(v string) {
 }
 
 // GetTokenExpiry returns the TokenExpiry field value if set, zero value otherwise.
-func (o *PatchedEmailStageRequest) GetTokenExpiry() int32 {
+func (o *PatchedEmailStageRequest) GetTokenExpiry() string {
 	if o == nil || o.TokenExpiry == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.TokenExpiry
@@ -417,7 +417,7 @@ func (o *PatchedEmailStageRequest) GetTokenExpiry() int32 {
 
 // GetTokenExpiryOk returns a tuple with the TokenExpiry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedEmailStageRequest) GetTokenExpiryOk() (*int32, bool) {
+func (o *PatchedEmailStageRequest) GetTokenExpiryOk() (*string, bool) {
 	if o == nil || o.TokenExpiry == nil {
 		return nil, false
 	}
@@ -433,8 +433,8 @@ func (o *PatchedEmailStageRequest) HasTokenExpiry() bool {
 	return false
 }
 
-// SetTokenExpiry gets a reference to the given int32 and assigns it to the TokenExpiry field.
-func (o *PatchedEmailStageRequest) SetTokenExpiry(v int32) {
+// SetTokenExpiry gets a reference to the given string and assigns it to the TokenExpiry field.
+func (o *PatchedEmailStageRequest) SetTokenExpiry(v string) {
 	o.TokenExpiry = &v
 }
 

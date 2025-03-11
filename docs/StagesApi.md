@@ -7140,7 +7140,7 @@ func main() {
     subject := "subject_example" // string |  (optional)
     template := "template_example" // string |  (optional)
     timeout := int32(56) // int32 |  (optional)
-    tokenExpiry := int32(56) // int32 |  (optional)
+    tokenExpiry := "tokenExpiry_example" // string |  (optional)
     useGlobalSettings := true // bool |  (optional)
     useSsl := true // bool |  (optional)
     useTls := true // bool |  (optional)
@@ -7181,7 +7181,7 @@ Name | Type | Description  | Notes
  **subject** | **string** |  | 
  **template** | **string** |  | 
  **timeout** | **int32** |  | 
- **tokenExpiry** | **int32** |  | 
+ **tokenExpiry** | **string** |  | 
  **useGlobalSettings** | **bool** |  | 
  **useSsl** | **bool** |  | 
  **useTls** | **bool** |  | 

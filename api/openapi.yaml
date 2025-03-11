@@ -39134,7 +39134,7 @@ paths:
         name: token_expiry
         required: false
         schema:
-          type: integer
+          type: string
         style: form
       - explode: true
         in: query
@@ -48158,7 +48158,7 @@ components:
           designation: ""
           title: title
           slug: slug
-        token_expiry: -1517921766
+        token_expiry: token_expiry
         timeout: 441289069
         use_tls: true
         component: component
@@ -48224,10 +48224,8 @@ components:
           maxLength: 254
           type: string
         token_expiry:
-          description: Time in minutes the token sent is valid.
-          maximum: 2147483647
-          minimum: -2147483648
-          type: integer
+          description: "Time the token sent is valid (Format: hours=3,minutes=17,seconds=300)."
+          type: string
         subject:
           type: string
         template:
@@ -48267,7 +48265,7 @@ components:
           designation: ""
           title: title
           slug: slug
-        token_expiry: -1517921766
+        token_expiry: token_expiry
         timeout: 441289069
         use_tls: true
         password: password
@@ -48315,10 +48313,9 @@ components:
           minLength: 1
           type: string
         token_expiry:
-          description: Time in minutes the token sent is valid.
-          maximum: 2147483647
-          minimum: -2147483648
-          type: integer
+          description: "Time the token sent is valid (Format: hours=3,minutes=17,seconds=300)."
+          minLength: 1
+          type: string
         subject:
           minLength: 1
           type: string
@@ -56508,7 +56505,7 @@ components:
             designation: ""
             title: title
             slug: slug
-          token_expiry: -1517921766
+          token_expiry: token_expiry
           timeout: 441289069
           use_tls: true
           component: component
@@ -56551,7 +56548,7 @@ components:
             designation: ""
             title: title
             slug: slug
-          token_expiry: -1517921766
+          token_expiry: token_expiry
           timeout: 441289069
           use_tls: true
           component: component
@@ -64344,7 +64341,7 @@ components:
           designation: ""
           title: title
           slug: slug
-        token_expiry: -1517921766
+        token_expiry: token_expiry
         timeout: 441289069
         use_tls: true
         password: password
@@ -64392,10 +64389,9 @@ components:
           minLength: 1
           type: string
         token_expiry:
-          description: Time in minutes the token sent is valid.
-          maximum: 2147483647
-          minimum: -2147483648
-          type: integer
+          description: "Time the token sent is valid (Format: hours=3,minutes=17,seconds=300)."
+          minLength: 1
+          type: string
         subject:
           minLength: 1
           type: string

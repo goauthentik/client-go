@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **UseSsl** | Pointer to **bool** |  | [optional] 
 **Timeout** | Pointer to **int32** |  | [optional] 
 **FromAddress** | Pointer to **string** |  | [optional] 
-**TokenExpiry** | Pointer to **int32** | Time in minutes the token sent is valid. | [optional] 
+**TokenExpiry** | Pointer to **string** | Time the token sent is valid (Format: hours&#x3D;3,minutes&#x3D;17,seconds&#x3D;300). | [optional] 
 **Subject** | Pointer to **string** |  | [optional] 
 **Template** | Pointer to **string** |  | [optional] 
 **ActivateUserOnSuccess** | Pointer to **bool** | Activate users upon completion of stage. | [optional] 
@@ -316,20 +316,20 @@ HasFromAddress returns a boolean if a field has been set.
 
 ### GetTokenExpiry
 
-`func (o *PatchedEmailStageRequest) GetTokenExpiry() int32`
+`func (o *PatchedEmailStageRequest) GetTokenExpiry() string`
 
 GetTokenExpiry returns the TokenExpiry field if non-nil, zero value otherwise.
 
 ### GetTokenExpiryOk
 
-`func (o *PatchedEmailStageRequest) GetTokenExpiryOk() (*int32, bool)`
+`func (o *PatchedEmailStageRequest) GetTokenExpiryOk() (*string, bool)`
 
 GetTokenExpiryOk returns a tuple with the TokenExpiry field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTokenExpiry
 
-`func (o *PatchedEmailStageRequest) SetTokenExpiry(v int32)`
+`func (o *PatchedEmailStageRequest) SetTokenExpiry(v string)`
 
 SetTokenExpiry sets TokenExpiry field to given value.
 

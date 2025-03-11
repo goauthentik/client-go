@@ -13261,7 +13261,7 @@ type ApiStagesEmailListRequest struct {
 	subject               *string
 	template              *string
 	timeout               *int32
-	tokenExpiry           *int32
+	tokenExpiry           *string
 	useGlobalSettings     *bool
 	useSsl                *bool
 	useTls                *bool
@@ -13332,7 +13332,7 @@ func (r ApiStagesEmailListRequest) Timeout(timeout int32) ApiStagesEmailListRequ
 	return r
 }
 
-func (r ApiStagesEmailListRequest) TokenExpiry(tokenExpiry int32) ApiStagesEmailListRequest {
+func (r ApiStagesEmailListRequest) TokenExpiry(tokenExpiry string) ApiStagesEmailListRequest {
 	r.tokenExpiry = &tokenExpiry
 	return r
 }
