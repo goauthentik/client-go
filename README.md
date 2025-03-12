@@ -1079,6 +1079,7 @@ Class | Method | HTTP request | Description
  - [CertificateKeyPairRequest](docs/CertificateKeyPairRequest.md)
  - [ChallengeTypes](docs/ChallengeTypes.md)
  - [ClientTypeEnum](docs/ClientTypeEnum.md)
+ - [CompatibilityModeEnum](docs/CompatibilityModeEnum.md)
  - [Config](docs/Config.md)
  - [ConnectionToken](docs/ConnectionToken.md)
  - [ConnectionTokenRequest](docs/ConnectionTokenRequest.md)

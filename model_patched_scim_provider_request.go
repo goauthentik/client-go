@@ -25,9 +25,11 @@ type PatchedSCIMProviderRequest struct {
 	Url                *string `json:"url,omitempty"`
 	VerifyCertificates *bool   `json:"verify_certificates,omitempty"`
 	// Authentication token
-	Token                      *string        `json:"token,omitempty"`
-	ExcludeUsersServiceAccount *bool          `json:"exclude_users_service_account,omitempty"`
-	FilterGroup                NullableString `json:"filter_group,omitempty"`
+	Token *string `json:"token,omitempty"`
+	// Alter authentik behavior for vendor-specific SCIM implementations.
+	CompatibilityMode          *CompatibilityModeEnum `json:"compatibility_mode,omitempty"`
+	ExcludeUsersServiceAccount *bool                  `json:"exclude_users_service_account,omitempty"`
+	FilterGroup                NullableString         `json:"filter_group,omitempty"`
 	// When enabled, provider will not modify or create objects in the remote system.
 	DryRun *bool `json:"dry_run,omitempty"`
 }
@@ -241,6 +243,38 @@ func (o *PatchedSCIMProviderRequest) SetToken(v string) {
 	o.Token = &v
 }
 
+// GetCompatibilityMode returns the CompatibilityMode field value if set, zero value otherwise.
+func (o *PatchedSCIMProviderRequest) GetCompatibilityMode() CompatibilityModeEnum {
+	if o == nil || o.CompatibilityMode == nil {
+		var ret CompatibilityModeEnum
+		return ret
+	}
+	return *o.CompatibilityMode
+}
+
+// GetCompatibilityModeOk returns a tuple with the CompatibilityMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedSCIMProviderRequest) GetCompatibilityModeOk() (*CompatibilityModeEnum, bool) {
+	if o == nil || o.CompatibilityMode == nil {
+		return nil, false
+	}
+	return o.CompatibilityMode, true
+}
+
+// HasCompatibilityMode returns a boolean if a field has been set.
+func (o *PatchedSCIMProviderRequest) HasCompatibilityMode() bool {
+	if o != nil && o.CompatibilityMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCompatibilityMode gets a reference to the given CompatibilityModeEnum and assigns it to the CompatibilityMode field.
+func (o *PatchedSCIMProviderRequest) SetCompatibilityMode(v CompatibilityModeEnum) {
+	o.CompatibilityMode = &v
+}
+
 // GetExcludeUsersServiceAccount returns the ExcludeUsersServiceAccount field value if set, zero value otherwise.
 func (o *PatchedSCIMProviderRequest) GetExcludeUsersServiceAccount() bool {
 	if o == nil || o.ExcludeUsersServiceAccount == nil {
@@ -367,6 +401,9 @@ func (o PatchedSCIMProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
+	}
+	if o.CompatibilityMode != nil {
+		toSerialize["compatibility_mode"] = o.CompatibilityMode
 	}
 	if o.ExcludeUsersServiceAccount != nil {
 		toSerialize["exclude_users_service_account"] = o.ExcludeUsersServiceAccount

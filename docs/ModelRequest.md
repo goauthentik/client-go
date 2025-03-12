@@ -76,6 +76,7 @@ Name | Type | Description | Notes
 **Url** | **string** | Base URL to SCIM requests, usually ends in /v2 | 
 **VerifyCertificates** | Pointer to **bool** |  | [optional] 
 **Token** | **string** | Authentication token | 
+**CompatibilityMode** | Pointer to [**CompatibilityModeEnum**](CompatibilityModeEnum.md) | Alter authentik behavior for vendor-specific SCIM implementations. | [optional] 
 **OidcAuthProviders** | Pointer to **[]int32** |  | [optional] 
 **EventRetention** | Pointer to **string** |  | [optional] 
 
@@ -1922,6 +1923,31 @@ and a boolean to check if the value has been set.
 
 SetToken sets Token field to given value.
 
+
+### GetCompatibilityMode
+
+`func (o *ModelRequest) GetCompatibilityMode() CompatibilityModeEnum`
+
+GetCompatibilityMode returns the CompatibilityMode field if non-nil, zero value otherwise.
+
+### GetCompatibilityModeOk
+
+`func (o *ModelRequest) GetCompatibilityModeOk() (*CompatibilityModeEnum, bool)`
+
+GetCompatibilityModeOk returns a tuple with the CompatibilityMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompatibilityMode
+
+`func (o *ModelRequest) SetCompatibilityMode(v CompatibilityModeEnum)`
+
+SetCompatibilityMode sets CompatibilityMode field to given value.
+
+### HasCompatibilityMode
+
+`func (o *ModelRequest) HasCompatibilityMode() bool`
+
+HasCompatibilityMode returns a boolean if a field has been set.
 
 ### GetOidcAuthProviders
 

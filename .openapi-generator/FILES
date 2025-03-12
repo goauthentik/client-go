@@ -102,6 +102,7 @@ docs/CertificateKeyPair.md
 docs/CertificateKeyPairRequest.md
 docs/ChallengeTypes.md
 docs/ClientTypeEnum.md
+docs/CompatibilityModeEnum.md
 docs/Config.md
 docs/ConnectionToken.md
 docs/ConnectionTokenRequest.md
@@ -842,6 +843,7 @@ model_certificate_key_pair.go
 model_certificate_key_pair_request.go
 model_challenge_types.go
 model_client_type_enum.go
+model_compatibility_mode_enum.go
 model_config.go
 model_connection_token.go
 model_connection_token_request.go

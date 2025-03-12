@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Url** | Pointer to **string** | Base URL to SCIM requests, usually ends in /v2 | [optional] 
 **VerifyCertificates** | Pointer to **bool** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token | [optional] 
+**CompatibilityMode** | Pointer to [**CompatibilityModeEnum**](CompatibilityModeEnum.md) | Alter authentik behavior for vendor-specific SCIM implementations. | [optional] 
 **ExcludeUsersServiceAccount** | Pointer to **bool** |  | [optional] 
 **FilterGroup** | Pointer to **NullableString** |  | [optional] 
 **DryRun** | Pointer to **bool** | When enabled, provider will not modify or create objects in the remote system. | [optional] 
@@ -182,6 +183,31 @@ SetToken sets Token field to given value.
 `func (o *PatchedSCIMProviderRequest) HasToken() bool`
 
 HasToken returns a boolean if a field has been set.
+
+### GetCompatibilityMode
+
+`func (o *PatchedSCIMProviderRequest) GetCompatibilityMode() CompatibilityModeEnum`
+
+GetCompatibilityMode returns the CompatibilityMode field if non-nil, zero value otherwise.
+
+### GetCompatibilityModeOk
+
+`func (o *PatchedSCIMProviderRequest) GetCompatibilityModeOk() (*CompatibilityModeEnum, bool)`
+
+GetCompatibilityModeOk returns a tuple with the CompatibilityMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompatibilityMode
+
+`func (o *PatchedSCIMProviderRequest) SetCompatibilityMode(v CompatibilityModeEnum)`
+
+SetCompatibilityMode sets CompatibilityMode field to given value.
+
+### HasCompatibilityMode
+
+`func (o *PatchedSCIMProviderRequest) HasCompatibilityMode() bool`
+
+HasCompatibilityMode returns a boolean if a field has been set.
 
 ### GetExcludeUsersServiceAccount
 

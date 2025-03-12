@@ -46701,6 +46701,12 @@ components:
       - confidential
       - public
       type: string
+    CompatibilityModeEnum:
+      enum:
+      - default
+      - aws
+      - slack
+      type: string
     Config:
       description: Serialize authentik Config into DRF Object
       example:
@@ -60827,7 +60833,8 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - property_mappings_group:
+        - compatibility_mode: ""
+          property_mappings_group:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
@@ -60847,7 +60854,8 @@ components:
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - property_mappings_group:
+        - compatibility_mode: ""
+          property_mappings_group:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
@@ -67133,6 +67141,7 @@ components:
     PatchedSCIMProviderRequest:
       description: SCIMProvider Serializer
       example:
+        compatibility_mode: ""
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -67171,6 +67180,11 @@ components:
           description: Authentication token
           minLength: 1
           type: string
+        compatibility_mode:
+          allOf:
+          - $ref: '#/components/schemas/CompatibilityModeEnum'
+          description: Alter authentik behavior for vendor-specific SCIM implementations.
+          title: SCIM Compatibility Mode
         exclude_users_service_account:
           type: boolean
         filter_group:
@@ -71658,6 +71672,7 @@ components:
     SCIMProvider:
       description: SCIMProvider Serializer
       example:
+        compatibility_mode: ""
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -71728,6 +71743,11 @@ components:
         token:
           description: Authentication token
           type: string
+        compatibility_mode:
+          allOf:
+          - $ref: '#/components/schemas/CompatibilityModeEnum'
+          description: Alter authentik behavior for vendor-specific SCIM implementations.
+          title: SCIM Compatibility Mode
         exclude_users_service_account:
           type: boolean
         filter_group:
@@ -71804,6 +71824,7 @@ components:
     SCIMProviderRequest:
       description: SCIMProvider Serializer
       example:
+        compatibility_mode: ""
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -71842,6 +71863,11 @@ components:
           description: Authentication token
           minLength: 1
           type: string
+        compatibility_mode:
+          allOf:
+          - $ref: '#/components/schemas/CompatibilityModeEnum'
+          description: Alter authentik behavior for vendor-specific SCIM implementations.
+          title: SCIM Compatibility Mode
         exclude_users_service_account:
           type: boolean
         filter_group:
