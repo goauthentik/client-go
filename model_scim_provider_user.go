@@ -17,24 +17,26 @@ import (
 
 // SCIMProviderUser SCIMProviderUser Serializer
 type SCIMProviderUser struct {
-	Id       string      `json:"id"`
-	ScimId   string      `json:"scim_id"`
-	User     int32       `json:"user"`
-	UserObj  GroupMember `json:"user_obj"`
-	Provider int32       `json:"provider"`
+	Id         string      `json:"id"`
+	ScimId     string      `json:"scim_id"`
+	User       int32       `json:"user"`
+	UserObj    GroupMember `json:"user_obj"`
+	Provider   int32       `json:"provider"`
+	Attributes interface{} `json:"attributes"`
 }
 
 // NewSCIMProviderUser instantiates a new SCIMProviderUser object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSCIMProviderUser(id string, scimId string, user int32, userObj GroupMember, provider int32) *SCIMProviderUser {
+func NewSCIMProviderUser(id string, scimId string, user int32, userObj GroupMember, provider int32, attributes interface{}) *SCIMProviderUser {
 	this := SCIMProviderUser{}
 	this.Id = id
 	this.ScimId = scimId
 	this.User = user
 	this.UserObj = userObj
 	this.Provider = provider
+	this.Attributes = attributes
 	return &this
 }
 
@@ -166,6 +168,32 @@ func (o *SCIMProviderUser) SetProvider(v int32) {
 	o.Provider = v
 }
 
+// GetAttributes returns the Attributes field value
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *SCIMProviderUser) GetAttributes() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+
+	return o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SCIMProviderUser) GetAttributesOk() (*interface{}, bool) {
+	if o == nil || o.Attributes == nil {
+		return nil, false
+	}
+	return &o.Attributes, true
+}
+
+// SetAttributes sets field value
+func (o *SCIMProviderUser) SetAttributes(v interface{}) {
+	o.Attributes = v
+}
+
 func (o SCIMProviderUser) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -182,6 +210,9 @@ func (o SCIMProviderUser) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["provider"] = o.Provider
+	}
+	if o.Attributes != nil {
+		toSerialize["attributes"] = o.Attributes
 	}
 	return json.Marshal(toSerialize)
 }

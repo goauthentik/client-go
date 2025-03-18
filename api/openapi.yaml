@@ -60804,11 +60804,13 @@ components:
         - scim_id: scim_id
           provider: 0
           group_obj: ""
+          attributes: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - scim_id: scim_id
           provider: 0
           group_obj: ""
+          attributes: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -60900,11 +60902,13 @@ components:
         - scim_id: scim_id
           user_obj: ""
           provider: 6
+          attributes: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 0
         - scim_id: scim_id
           user_obj: ""
           provider: 6
+          attributes: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 0
       properties:
@@ -71776,6 +71780,7 @@ components:
         scim_id: scim_id
         provider: 0
         group_obj: ""
+        attributes: ""
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -71794,7 +71799,10 @@ components:
           readOnly: true
         provider:
           type: integer
+        attributes:
+          readOnly: true
       required:
+      - attributes
       - group
       - group_obj
       - id
@@ -71889,6 +71897,7 @@ components:
         scim_id: scim_id
         user_obj: ""
         provider: 6
+        attributes: ""
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 0
       properties:
@@ -71906,7 +71915,10 @@ components:
           readOnly: true
         provider:
           type: integer
+        attributes:
+          readOnly: true
       required:
+      - attributes
       - id
       - provider
       - scim_id

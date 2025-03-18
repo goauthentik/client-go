@@ -9,12 +9,13 @@ Name | Type | Description | Notes
 **Group** | **string** |  | 
 **GroupObj** | [**UserGroup**](UserGroup.md) |  | [readonly] 
 **Provider** | **int32** |  | 
+**Attributes** | **interface{}** |  | [readonly] 
 
 ## Methods
 
 ### NewSCIMProviderGroup
 
-`func NewSCIMProviderGroup(id string, scimId string, group string, groupObj UserGroup, provider int32, ) *SCIMProviderGroup`
+`func NewSCIMProviderGroup(id string, scimId string, group string, groupObj UserGroup, provider int32, attributes interface{}, ) *SCIMProviderGroup`
 
 NewSCIMProviderGroup instantiates a new SCIMProviderGroup object
 This constructor will assign default values to properties that have it defined,
@@ -129,6 +130,36 @@ and a boolean to check if the value has been set.
 SetProvider sets Provider field to given value.
 
 
+### GetAttributes
+
+`func (o *SCIMProviderGroup) GetAttributes() interface{}`
+
+GetAttributes returns the Attributes field if non-nil, zero value otherwise.
+
+### GetAttributesOk
+
+`func (o *SCIMProviderGroup) GetAttributesOk() (*interface{}, bool)`
+
+GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttributes
+
+`func (o *SCIMProviderGroup) SetAttributes(v interface{})`
+
+SetAttributes sets Attributes field to given value.
+
+
+### SetAttributesNil
+
+`func (o *SCIMProviderGroup) SetAttributesNil(b bool)`
+
+ SetAttributesNil sets the value for Attributes to be an explicit nil
+
+### UnsetAttributes
+`func (o *SCIMProviderGroup) UnsetAttributes()`
+
+UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
