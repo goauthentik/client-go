@@ -38,7 +38,7 @@ func (r ApiSourcesAllDestroyRequest) Execute() (*http.Response, error) {
 /*
 SourcesAllDestroy Method for SourcesAllDestroy
 
-Source Viewset
+Prevent deletion of built-in sources
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param slug

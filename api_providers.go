@@ -11371,35 +11371,36 @@ func (a *ProvidersApiService) ProvidersSamlImportMetadataCreateExecute(r ApiProv
 }
 
 type ApiProvidersSamlListRequest struct {
-	ctx                        context.Context
-	ApiService                 *ProvidersApiService
-	acsUrl                     *string
-	assertionValidNotBefore    *string
-	assertionValidNotOnOrAfter *string
-	audience                   *string
-	authenticationFlow         *string
-	authorizationFlow          *string
-	backchannelApplication     *string
-	defaultRelayState          *string
-	digestAlgorithm            *string
-	encryptionKp               *string
-	invalidationFlow           *string
-	isBackchannel              *bool
-	issuer                     *string
-	name                       *string
-	nameIdMapping              *string
-	ordering                   *string
-	page                       *int32
-	pageSize                   *int32
-	propertyMappings           *[]string
-	search                     *string
-	sessionValidNotOnOrAfter   *string
-	signAssertion              *bool
-	signResponse               *bool
-	signatureAlgorithm         *string
-	signingKp                  *string
-	spBinding                  *string
-	verificationKp             *string
+	ctx                         context.Context
+	ApiService                  *ProvidersApiService
+	acsUrl                      *string
+	assertionValidNotBefore     *string
+	assertionValidNotOnOrAfter  *string
+	audience                    *string
+	authenticationFlow          *string
+	authnContextClassRefMapping *string
+	authorizationFlow           *string
+	backchannelApplication      *string
+	defaultRelayState           *string
+	digestAlgorithm             *string
+	encryptionKp                *string
+	invalidationFlow            *string
+	isBackchannel               *bool
+	issuer                      *string
+	name                        *string
+	nameIdMapping               *string
+	ordering                    *string
+	page                        *int32
+	pageSize                    *int32
+	propertyMappings            *[]string
+	search                      *string
+	sessionValidNotOnOrAfter    *string
+	signAssertion               *bool
+	signResponse                *bool
+	signatureAlgorithm          *string
+	signingKp                   *string
+	spBinding                   *string
+	verificationKp              *string
 }
 
 func (r ApiProvidersSamlListRequest) AcsUrl(acsUrl string) ApiProvidersSamlListRequest {
@@ -11424,6 +11425,11 @@ func (r ApiProvidersSamlListRequest) Audience(audience string) ApiProvidersSamlL
 
 func (r ApiProvidersSamlListRequest) AuthenticationFlow(authenticationFlow string) ApiProvidersSamlListRequest {
 	r.authenticationFlow = &authenticationFlow
+	return r
+}
+
+func (r ApiProvidersSamlListRequest) AuthnContextClassRefMapping(authnContextClassRefMapping string) ApiProvidersSamlListRequest {
+	r.authnContextClassRefMapping = &authnContextClassRefMapping
 	return r
 }
 
@@ -11597,6 +11603,9 @@ func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 	}
 	if r.authenticationFlow != nil {
 		localVarQueryParams.Add("authentication_flow", parameterToString(*r.authenticationFlow, ""))
+	}
+	if r.authnContextClassRefMapping != nil {
+		localVarQueryParams.Add("authn_context_class_ref_mapping", parameterToString(*r.authnContextClassRefMapping, ""))
 	}
 	if r.authorizationFlow != nil {
 		localVarQueryParams.Add("authorization_flow", parameterToString(*r.authorizationFlow, ""))

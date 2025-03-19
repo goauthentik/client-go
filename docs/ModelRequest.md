@@ -64,6 +64,7 @@ Name | Type | Description | Notes
 **AssertionValidNotOnOrAfter** | Pointer to **string** | Assertion not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **SessionValidNotOnOrAfter** | Pointer to **string** | Session not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **NameIdMapping** | Pointer to **NullableString** | Configure how the NameID value will be created. When left empty, the NameIDPolicy of the incoming request will be considered | [optional] 
+**AuthnContextClassRefMapping** | Pointer to **NullableString** | Configure how the AuthnContextClassRef value will be created. When left empty, the AuthnContextClassRef will be set based on which authentication methods the user used to authenticate. | [optional] 
 **DigestAlgorithm** | Pointer to [**DigestAlgorithmEnum**](DigestAlgorithmEnum.md) |  | [optional] 
 **SignatureAlgorithm** | Pointer to [**SignatureAlgorithmEnum**](SignatureAlgorithmEnum.md) |  | [optional] 
 **SigningKp** | Pointer to **NullableString** | Keypair used to sign outgoing Responses going to the Service Provider. | [optional] 
@@ -1604,6 +1605,41 @@ HasNameIdMapping returns a boolean if a field has been set.
 `func (o *ModelRequest) UnsetNameIdMapping()`
 
 UnsetNameIdMapping ensures that no value is present for NameIdMapping, not even an explicit nil
+### GetAuthnContextClassRefMapping
+
+`func (o *ModelRequest) GetAuthnContextClassRefMapping() string`
+
+GetAuthnContextClassRefMapping returns the AuthnContextClassRefMapping field if non-nil, zero value otherwise.
+
+### GetAuthnContextClassRefMappingOk
+
+`func (o *ModelRequest) GetAuthnContextClassRefMappingOk() (*string, bool)`
+
+GetAuthnContextClassRefMappingOk returns a tuple with the AuthnContextClassRefMapping field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthnContextClassRefMapping
+
+`func (o *ModelRequest) SetAuthnContextClassRefMapping(v string)`
+
+SetAuthnContextClassRefMapping sets AuthnContextClassRefMapping field to given value.
+
+### HasAuthnContextClassRefMapping
+
+`func (o *ModelRequest) HasAuthnContextClassRefMapping() bool`
+
+HasAuthnContextClassRefMapping returns a boolean if a field has been set.
+
+### SetAuthnContextClassRefMappingNil
+
+`func (o *ModelRequest) SetAuthnContextClassRefMappingNil(b bool)`
+
+ SetAuthnContextClassRefMappingNil sets the value for AuthnContextClassRefMapping to be an explicit nil
+
+### UnsetAuthnContextClassRefMapping
+`func (o *ModelRequest) UnsetAuthnContextClassRefMapping()`
+
+UnsetAuthnContextClassRefMapping ensures that no value is present for AuthnContextClassRefMapping, not even an explicit nil
 ### GetDigestAlgorithm
 
 `func (o *ModelRequest) GetDigestAlgorithm() DigestAlgorithmEnum`

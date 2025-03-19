@@ -24625,6 +24625,14 @@ paths:
         style: form
       - explode: true
         in: query
+        name: authn_context_class_ref_mapping
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: authorization_flow
         required: false
         schema:
@@ -28529,7 +28537,7 @@ paths:
       - sources
   /sources/all/{slug}/:
     delete:
-      description: Source Viewset
+      description: Prevent deletion of built-in sources
       operationId: sources_all_destroy
       parameters:
       - explode: false
@@ -60562,6 +60570,7 @@ components:
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
+          authn_context_class_ref_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           digest_algorithm: null
           meta_model_name: meta_model_name
           assigned_backchannel_application_slug: assigned_backchannel_application_slug
@@ -60600,6 +60609,7 @@ components:
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
+          authn_context_class_ref_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           digest_algorithm: null
           meta_model_name: meta_model_name
           assigned_backchannel_application_slug: assigned_backchannel_application_slug
@@ -66842,6 +66852,7 @@ components:
         issuer: issuer
         assertion_valid_not_before: assertion_valid_not_before
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        authn_context_class_ref_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         digest_algorithm: null
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         encryption_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -66912,6 +66923,14 @@ components:
           format: uuid
           nullable: true
           title: NameID Property Mapping
+          type: string
+        authn_context_class_ref_mapping:
+          description: "Configure how the AuthnContextClassRef value will be created.\
+            \ When left empty, the AuthnContextClassRef will be set based on which\
+            \ authentication methods the user used to authenticate."
+          format: uuid
+          nullable: true
+          title: AuthnContextClassRef Property Mapping
           type: string
         digest_algorithm:
           $ref: '#/components/schemas/DigestAlgorithmEnum'
@@ -70842,6 +70861,7 @@ components:
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         component: component
         verbose_name: verbose_name
+        authn_context_class_ref_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         digest_algorithm: null
         meta_model_name: meta_model_name
         assigned_backchannel_application_slug: assigned_backchannel_application_slug
@@ -70940,6 +70960,14 @@ components:
           format: uuid
           nullable: true
           title: NameID Property Mapping
+          type: string
+        authn_context_class_ref_mapping:
+          description: "Configure how the AuthnContextClassRef value will be created.\
+            \ When left empty, the AuthnContextClassRef will be set based on which\
+            \ authentication methods the user used to authenticate."
+          format: uuid
+          nullable: true
+          title: AuthnContextClassRef Property Mapping
           type: string
         digest_algorithm:
           $ref: '#/components/schemas/DigestAlgorithmEnum'
@@ -71059,6 +71087,7 @@ components:
         issuer: issuer
         assertion_valid_not_before: assertion_valid_not_before
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        authn_context_class_ref_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         digest_algorithm: null
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         encryption_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -71129,6 +71158,14 @@ components:
           format: uuid
           nullable: true
           title: NameID Property Mapping
+          type: string
+        authn_context_class_ref_mapping:
+          description: "Configure how the AuthnContextClassRef value will be created.\
+            \ When left empty, the AuthnContextClassRef will be set based on which\
+            \ authentication methods the user used to authenticate."
+          format: uuid
+          nullable: true
+          title: AuthnContextClassRef Property Mapping
           type: string
         digest_algorithm:
           $ref: '#/components/schemas/DigestAlgorithmEnum'

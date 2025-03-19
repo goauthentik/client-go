@@ -54,9 +54,11 @@ type SAMLProvider struct {
 	// Session not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	SessionValidNotOnOrAfter *string `json:"session_valid_not_on_or_after,omitempty"`
 	// Configure how the NameID value will be created. When left empty, the NameIDPolicy of the incoming request will be considered
-	NameIdMapping      NullableString          `json:"name_id_mapping,omitempty"`
-	DigestAlgorithm    *DigestAlgorithmEnum    `json:"digest_algorithm,omitempty"`
-	SignatureAlgorithm *SignatureAlgorithmEnum `json:"signature_algorithm,omitempty"`
+	NameIdMapping NullableString `json:"name_id_mapping,omitempty"`
+	// Configure how the AuthnContextClassRef value will be created. When left empty, the AuthnContextClassRef will be set based on which authentication methods the user used to authenticate.
+	AuthnContextClassRefMapping NullableString          `json:"authn_context_class_ref_mapping,omitempty"`
+	DigestAlgorithm             *DigestAlgorithmEnum    `json:"digest_algorithm,omitempty"`
+	SignatureAlgorithm          *SignatureAlgorithmEnum `json:"signature_algorithm,omitempty"`
 	// Keypair used to sign outgoing Responses going to the Service Provider.
 	SigningKp NullableString `json:"signing_kp,omitempty"`
 	// When selected, incoming assertion's Signatures will be validated against this certificate. To allow unsigned Requests, leave on default.
@@ -709,6 +711,49 @@ func (o *SAMLProvider) UnsetNameIdMapping() {
 	o.NameIdMapping.Unset()
 }
 
+// GetAuthnContextClassRefMapping returns the AuthnContextClassRefMapping field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SAMLProvider) GetAuthnContextClassRefMapping() string {
+	if o == nil || o.AuthnContextClassRefMapping.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.AuthnContextClassRefMapping.Get()
+}
+
+// GetAuthnContextClassRefMappingOk returns a tuple with the AuthnContextClassRefMapping field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SAMLProvider) GetAuthnContextClassRefMappingOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AuthnContextClassRefMapping.Get(), o.AuthnContextClassRefMapping.IsSet()
+}
+
+// HasAuthnContextClassRefMapping returns a boolean if a field has been set.
+func (o *SAMLProvider) HasAuthnContextClassRefMapping() bool {
+	if o != nil && o.AuthnContextClassRefMapping.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthnContextClassRefMapping gets a reference to the given NullableString and assigns it to the AuthnContextClassRefMapping field.
+func (o *SAMLProvider) SetAuthnContextClassRefMapping(v string) {
+	o.AuthnContextClassRefMapping.Set(&v)
+}
+
+// SetAuthnContextClassRefMappingNil sets the value for AuthnContextClassRefMapping to be an explicit nil
+func (o *SAMLProvider) SetAuthnContextClassRefMappingNil() {
+	o.AuthnContextClassRefMapping.Set(nil)
+}
+
+// UnsetAuthnContextClassRefMapping ensures that no value is present for AuthnContextClassRefMapping, not even an explicit nil
+func (o *SAMLProvider) UnsetAuthnContextClassRefMapping() {
+	o.AuthnContextClassRefMapping.Unset()
+}
+
 // GetDigestAlgorithm returns the DigestAlgorithm field value if set, zero value otherwise.
 func (o *SAMLProvider) GetDigestAlgorithm() DigestAlgorithmEnum {
 	if o == nil || o.DigestAlgorithm == nil {
@@ -1238,6 +1283,9 @@ func (o SAMLProvider) MarshalJSON() ([]byte, error) {
 	}
 	if o.NameIdMapping.IsSet() {
 		toSerialize["name_id_mapping"] = o.NameIdMapping.Get()
+	}
+	if o.AuthnContextClassRefMapping.IsSet() {
+		toSerialize["authn_context_class_ref_mapping"] = o.AuthnContextClassRefMapping.Get()
 	}
 	if o.DigestAlgorithm != nil {
 		toSerialize["digest_algorithm"] = o.DigestAlgorithm
