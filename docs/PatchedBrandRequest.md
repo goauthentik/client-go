@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **BrandingTitle** | Pointer to **string** |  | [optional] 
 **BrandingLogo** | Pointer to **string** |  | [optional] 
 **BrandingFavicon** | Pointer to **string** |  | [optional] 
+**BrandingCustomCss** | Pointer to **string** |  | [optional] 
 **FlowAuthentication** | Pointer to **NullableString** |  | [optional] 
 **FlowInvalidation** | Pointer to **NullableString** |  | [optional] 
 **FlowRecovery** | Pointer to **NullableString** |  | [optional] 
@@ -162,6 +163,31 @@ SetBrandingFavicon sets BrandingFavicon field to given value.
 `func (o *PatchedBrandRequest) HasBrandingFavicon() bool`
 
 HasBrandingFavicon returns a boolean if a field has been set.
+
+### GetBrandingCustomCss
+
+`func (o *PatchedBrandRequest) GetBrandingCustomCss() string`
+
+GetBrandingCustomCss returns the BrandingCustomCss field if non-nil, zero value otherwise.
+
+### GetBrandingCustomCssOk
+
+`func (o *PatchedBrandRequest) GetBrandingCustomCssOk() (*string, bool)`
+
+GetBrandingCustomCssOk returns a tuple with the BrandingCustomCss field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBrandingCustomCss
+
+`func (o *PatchedBrandRequest) SetBrandingCustomCss(v string)`
+
+SetBrandingCustomCss sets BrandingCustomCss field to given value.
+
+### HasBrandingCustomCss
+
+`func (o *PatchedBrandRequest) HasBrandingCustomCss() bool`
+
+HasBrandingCustomCss returns a boolean if a field has been set.
 
 ### GetFlowAuthentication
 

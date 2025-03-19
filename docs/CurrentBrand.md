@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **BrandingTitle** | **string** |  | 
 **BrandingLogo** | **string** |  | 
 **BrandingFavicon** | **string** |  | 
+**BrandingCustomCss** | **string** |  | 
 **UiFooterLinks** | [**[]FooterLink**](FooterLink.md) |  | [readonly] 
 **UiTheme** | [**UiThemeEnum**](UiThemeEnum.md) |  | [readonly] 
 **FlowAuthentication** | Pointer to **string** |  | [optional] 
@@ -22,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewCurrentBrand
 
-`func NewCurrentBrand(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, uiFooterLinks []FooterLink, uiTheme UiThemeEnum, defaultLocale string, ) *CurrentBrand`
+`func NewCurrentBrand(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, brandingCustomCss string, uiFooterLinks []FooterLink, uiTheme UiThemeEnum, defaultLocale string, ) *CurrentBrand`
 
 NewCurrentBrand instantiates a new CurrentBrand object
 This constructor will assign default values to properties that have it defined,
@@ -115,6 +116,26 @@ and a boolean to check if the value has been set.
 `func (o *CurrentBrand) SetBrandingFavicon(v string)`
 
 SetBrandingFavicon sets BrandingFavicon field to given value.
+
+
+### GetBrandingCustomCss
+
+`func (o *CurrentBrand) GetBrandingCustomCss() string`
+
+GetBrandingCustomCss returns the BrandingCustomCss field if non-nil, zero value otherwise.
+
+### GetBrandingCustomCssOk
+
+`func (o *CurrentBrand) GetBrandingCustomCssOk() (*string, bool)`
+
+GetBrandingCustomCssOk returns a tuple with the BrandingCustomCss field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBrandingCustomCss
+
+`func (o *CurrentBrand) SetBrandingCustomCss(v string)`
+
+SetBrandingCustomCss sets BrandingCustomCss field to given value.
 
 
 ### GetUiFooterLinks

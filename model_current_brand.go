@@ -21,6 +21,7 @@ type CurrentBrand struct {
 	BrandingTitle      string       `json:"branding_title"`
 	BrandingLogo       string       `json:"branding_logo"`
 	BrandingFavicon    string       `json:"branding_favicon"`
+	BrandingCustomCss  string       `json:"branding_custom_css"`
 	UiFooterLinks      []FooterLink `json:"ui_footer_links"`
 	UiTheme            UiThemeEnum  `json:"ui_theme"`
 	FlowAuthentication *string      `json:"flow_authentication,omitempty"`
@@ -36,12 +37,13 @@ type CurrentBrand struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCurrentBrand(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, uiFooterLinks []FooterLink, uiTheme UiThemeEnum, defaultLocale string) *CurrentBrand {
+func NewCurrentBrand(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, brandingCustomCss string, uiFooterLinks []FooterLink, uiTheme UiThemeEnum, defaultLocale string) *CurrentBrand {
 	this := CurrentBrand{}
 	this.MatchedDomain = matchedDomain
 	this.BrandingTitle = brandingTitle
 	this.BrandingLogo = brandingLogo
 	this.BrandingFavicon = brandingFavicon
+	this.BrandingCustomCss = brandingCustomCss
 	this.UiFooterLinks = uiFooterLinks
 	this.UiTheme = uiTheme
 	this.DefaultLocale = defaultLocale
@@ -150,6 +152,30 @@ func (o *CurrentBrand) GetBrandingFaviconOk() (*string, bool) {
 // SetBrandingFavicon sets field value
 func (o *CurrentBrand) SetBrandingFavicon(v string) {
 	o.BrandingFavicon = v
+}
+
+// GetBrandingCustomCss returns the BrandingCustomCss field value
+func (o *CurrentBrand) GetBrandingCustomCss() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BrandingCustomCss
+}
+
+// GetBrandingCustomCssOk returns a tuple with the BrandingCustomCss field value
+// and a boolean to check if the value has been set.
+func (o *CurrentBrand) GetBrandingCustomCssOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BrandingCustomCss, true
+}
+
+// SetBrandingCustomCss sets field value
+func (o *CurrentBrand) SetBrandingCustomCss(v string) {
+	o.BrandingCustomCss = v
 }
 
 // GetUiFooterLinks returns the UiFooterLinks field value
@@ -429,6 +455,9 @@ func (o CurrentBrand) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["branding_favicon"] = o.BrandingFavicon
+	}
+	if true {
+		toSerialize["branding_custom_css"] = o.BrandingCustomCss
 	}
 	if true {
 		toSerialize["ui_footer_links"] = o.UiFooterLinks

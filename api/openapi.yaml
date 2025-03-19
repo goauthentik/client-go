@@ -46135,6 +46135,7 @@ components:
         flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         default: true
+        branding_custom_css: branding_custom_css
         flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         domain: domain
         flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -46160,6 +46161,8 @@ components:
         branding_logo:
           type: string
         branding_favicon:
+          type: string
+        branding_custom_css:
           type: string
         flow_authentication:
           format: uuid
@@ -46210,6 +46213,7 @@ components:
         flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         default: true
+        branding_custom_css: branding_custom_css
         flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         domain: domain
         flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -46234,6 +46238,8 @@ components:
           type: string
         branding_favicon:
           minLength: 1
+          type: string
+        branding_custom_css:
           type: string
         flow_authentication:
           format: uuid
@@ -47307,6 +47313,7 @@ components:
         matched_domain: matched_domain
         flow_authentication: flow_authentication
         flow_recovery: flow_recovery
+        branding_custom_css: branding_custom_css
         flow_invalidation: flow_invalidation
         ui_theme: ""
         default_locale: default_locale
@@ -47322,6 +47329,8 @@ components:
         branding_logo:
           type: string
         branding_favicon:
+          type: string
+        branding_custom_css:
           type: string
         ui_footer_links:
           items:
@@ -47348,6 +47357,7 @@ components:
           readOnly: true
           type: string
       required:
+      - branding_custom_css
       - branding_favicon
       - branding_logo
       - branding_title
@@ -55833,6 +55843,7 @@ components:
           flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           default: true
+          branding_custom_css: branding_custom_css
           flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           domain: domain
           flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -55848,6 +55859,7 @@ components:
           flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           default: true
+          branding_custom_css: branding_custom_css
           flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           domain: domain
           flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -63966,6 +63978,7 @@ components:
         flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         default: true
+        branding_custom_css: branding_custom_css
         flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         domain: domain
         flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -63990,6 +64003,8 @@ components:
           type: string
         branding_favicon:
           minLength: 1
+          type: string
+        branding_custom_css:
           type: string
         flow_authentication:
           format: uuid

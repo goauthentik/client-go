@@ -24,6 +24,7 @@ type Brand struct {
 	BrandingTitle      *string        `json:"branding_title,omitempty"`
 	BrandingLogo       *string        `json:"branding_logo,omitempty"`
 	BrandingFavicon    *string        `json:"branding_favicon,omitempty"`
+	BrandingCustomCss  *string        `json:"branding_custom_css,omitempty"`
 	FlowAuthentication NullableString `json:"flow_authentication,omitempty"`
 	FlowInvalidation   NullableString `json:"flow_invalidation,omitempty"`
 	FlowRecovery       NullableString `json:"flow_recovery,omitempty"`
@@ -230,6 +231,38 @@ func (o *Brand) HasBrandingFavicon() bool {
 // SetBrandingFavicon gets a reference to the given string and assigns it to the BrandingFavicon field.
 func (o *Brand) SetBrandingFavicon(v string) {
 	o.BrandingFavicon = &v
+}
+
+// GetBrandingCustomCss returns the BrandingCustomCss field value if set, zero value otherwise.
+func (o *Brand) GetBrandingCustomCss() string {
+	if o == nil || o.BrandingCustomCss == nil {
+		var ret string
+		return ret
+	}
+	return *o.BrandingCustomCss
+}
+
+// GetBrandingCustomCssOk returns a tuple with the BrandingCustomCss field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Brand) GetBrandingCustomCssOk() (*string, bool) {
+	if o == nil || o.BrandingCustomCss == nil {
+		return nil, false
+	}
+	return o.BrandingCustomCss, true
+}
+
+// HasBrandingCustomCss returns a boolean if a field has been set.
+func (o *Brand) HasBrandingCustomCss() bool {
+	if o != nil && o.BrandingCustomCss != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBrandingCustomCss gets a reference to the given string and assigns it to the BrandingCustomCss field.
+func (o *Brand) SetBrandingCustomCss(v string) {
+	o.BrandingCustomCss = &v
 }
 
 // GetFlowAuthentication returns the FlowAuthentication field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -628,6 +661,9 @@ func (o Brand) MarshalJSON() ([]byte, error) {
 	}
 	if o.BrandingFavicon != nil {
 		toSerialize["branding_favicon"] = o.BrandingFavicon
+	}
+	if o.BrandingCustomCss != nil {
+		toSerialize["branding_custom_css"] = o.BrandingCustomCss
 	}
 	if o.FlowAuthentication.IsSet() {
 		toSerialize["flow_authentication"] = o.FlowAuthentication.Get()
