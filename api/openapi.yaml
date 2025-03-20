@@ -4849,6 +4849,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: branding_default_flow_background
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: branding_favicon
         required: false
         schema:
@@ -46132,6 +46139,7 @@ components:
         branding_logo: branding_logo
         default_application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        branding_default_flow_background: branding_default_flow_background
         flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         default: true
@@ -46163,6 +46171,8 @@ components:
         branding_favicon:
           type: string
         branding_custom_css:
+          type: string
+        branding_default_flow_background:
           type: string
         flow_authentication:
           format: uuid
@@ -46210,6 +46220,7 @@ components:
         branding_logo: branding_logo
         default_application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        branding_default_flow_background: branding_default_flow_background
         flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         default: true
@@ -46240,6 +46251,9 @@ components:
           minLength: 1
           type: string
         branding_custom_css:
+          type: string
+        branding_default_flow_background:
+          minLength: 1
           type: string
         flow_authentication:
           format: uuid
@@ -55840,6 +55854,7 @@ components:
         - branding_logo: branding_logo
           default_application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          branding_default_flow_background: branding_default_flow_background
           flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           default: true
@@ -55856,6 +55871,7 @@ components:
         - branding_logo: branding_logo
           default_application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          branding_default_flow_background: branding_default_flow_background
           flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           default: true
@@ -63975,6 +63991,7 @@ components:
         branding_logo: branding_logo
         default_application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        branding_default_flow_background: branding_default_flow_background
         flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_recovery: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         default: true
@@ -64005,6 +64022,9 @@ components:
           minLength: 1
           type: string
         branding_custom_css:
+          type: string
+        branding_default_flow_background:
+          minLength: 1
           type: string
         flow_authentication:
           format: uuid

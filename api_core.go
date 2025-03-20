@@ -3360,29 +3360,35 @@ func (a *CoreApiService) CoreBrandsDestroyExecute(r ApiCoreBrandsDestroyRequest)
 }
 
 type ApiCoreBrandsListRequest struct {
-	ctx                context.Context
-	ApiService         *CoreApiService
-	brandUuid          *string
-	brandingFavicon    *string
-	brandingLogo       *string
-	brandingTitle      *string
-	default_           *bool
-	domain             *string
-	flowAuthentication *string
-	flowDeviceCode     *string
-	flowInvalidation   *string
-	flowRecovery       *string
-	flowUnenrollment   *string
-	flowUserSettings   *string
-	ordering           *string
-	page               *int32
-	pageSize           *int32
-	search             *string
-	webCertificate     *string
+	ctx                           context.Context
+	ApiService                    *CoreApiService
+	brandUuid                     *string
+	brandingDefaultFlowBackground *string
+	brandingFavicon               *string
+	brandingLogo                  *string
+	brandingTitle                 *string
+	default_                      *bool
+	domain                        *string
+	flowAuthentication            *string
+	flowDeviceCode                *string
+	flowInvalidation              *string
+	flowRecovery                  *string
+	flowUnenrollment              *string
+	flowUserSettings              *string
+	ordering                      *string
+	page                          *int32
+	pageSize                      *int32
+	search                        *string
+	webCertificate                *string
 }
 
 func (r ApiCoreBrandsListRequest) BrandUuid(brandUuid string) ApiCoreBrandsListRequest {
 	r.brandUuid = &brandUuid
+	return r
+}
+
+func (r ApiCoreBrandsListRequest) BrandingDefaultFlowBackground(brandingDefaultFlowBackground string) ApiCoreBrandsListRequest {
+	r.brandingDefaultFlowBackground = &brandingDefaultFlowBackground
 	return r
 }
 
@@ -3513,6 +3519,9 @@ func (a *CoreApiService) CoreBrandsListExecute(r ApiCoreBrandsListRequest) (*Pag
 
 	if r.brandUuid != nil {
 		localVarQueryParams.Add("brand_uuid", parameterToString(*r.brandUuid, ""))
+	}
+	if r.brandingDefaultFlowBackground != nil {
+		localVarQueryParams.Add("branding_default_flow_background", parameterToString(*r.brandingDefaultFlowBackground, ""))
 	}
 	if r.brandingFavicon != nil {
 		localVarQueryParams.Add("branding_favicon", parameterToString(*r.brandingFavicon, ""))

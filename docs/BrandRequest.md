@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **BrandingLogo** | Pointer to **string** |  | [optional] 
 **BrandingFavicon** | Pointer to **string** |  | [optional] 
 **BrandingCustomCss** | Pointer to **string** |  | [optional] 
+**BrandingDefaultFlowBackground** | Pointer to **string** |  | [optional] 
 **FlowAuthentication** | Pointer to **NullableString** |  | [optional] 
 **FlowInvalidation** | Pointer to **NullableString** |  | [optional] 
 **FlowRecovery** | Pointer to **NullableString** |  | [optional] 
@@ -183,6 +184,31 @@ SetBrandingCustomCss sets BrandingCustomCss field to given value.
 `func (o *BrandRequest) HasBrandingCustomCss() bool`
 
 HasBrandingCustomCss returns a boolean if a field has been set.
+
+### GetBrandingDefaultFlowBackground
+
+`func (o *BrandRequest) GetBrandingDefaultFlowBackground() string`
+
+GetBrandingDefaultFlowBackground returns the BrandingDefaultFlowBackground field if non-nil, zero value otherwise.
+
+### GetBrandingDefaultFlowBackgroundOk
+
+`func (o *BrandRequest) GetBrandingDefaultFlowBackgroundOk() (*string, bool)`
+
+GetBrandingDefaultFlowBackgroundOk returns a tuple with the BrandingDefaultFlowBackground field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBrandingDefaultFlowBackground
+
+`func (o *BrandRequest) SetBrandingDefaultFlowBackground(v string)`
+
+SetBrandingDefaultFlowBackground sets BrandingDefaultFlowBackground field to given value.
+
+### HasBrandingDefaultFlowBackground
+
+`func (o *BrandRequest) HasBrandingDefaultFlowBackground() bool`
+
+HasBrandingDefaultFlowBackground returns a boolean if a field has been set.
 
 ### GetFlowAuthentication
 

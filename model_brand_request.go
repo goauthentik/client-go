@@ -18,18 +18,19 @@ import (
 // BrandRequest Brand Serializer
 type BrandRequest struct {
 	// Domain that activates this brand. Can be a superset, i.e. `a.b` for `aa.b` and `ba.b`
-	Domain             string         `json:"domain"`
-	Default            *bool          `json:"default,omitempty"`
-	BrandingTitle      *string        `json:"branding_title,omitempty"`
-	BrandingLogo       *string        `json:"branding_logo,omitempty"`
-	BrandingFavicon    *string        `json:"branding_favicon,omitempty"`
-	BrandingCustomCss  *string        `json:"branding_custom_css,omitempty"`
-	FlowAuthentication NullableString `json:"flow_authentication,omitempty"`
-	FlowInvalidation   NullableString `json:"flow_invalidation,omitempty"`
-	FlowRecovery       NullableString `json:"flow_recovery,omitempty"`
-	FlowUnenrollment   NullableString `json:"flow_unenrollment,omitempty"`
-	FlowUserSettings   NullableString `json:"flow_user_settings,omitempty"`
-	FlowDeviceCode     NullableString `json:"flow_device_code,omitempty"`
+	Domain                        string         `json:"domain"`
+	Default                       *bool          `json:"default,omitempty"`
+	BrandingTitle                 *string        `json:"branding_title,omitempty"`
+	BrandingLogo                  *string        `json:"branding_logo,omitempty"`
+	BrandingFavicon               *string        `json:"branding_favicon,omitempty"`
+	BrandingCustomCss             *string        `json:"branding_custom_css,omitempty"`
+	BrandingDefaultFlowBackground *string        `json:"branding_default_flow_background,omitempty"`
+	FlowAuthentication            NullableString `json:"flow_authentication,omitempty"`
+	FlowInvalidation              NullableString `json:"flow_invalidation,omitempty"`
+	FlowRecovery                  NullableString `json:"flow_recovery,omitempty"`
+	FlowUnenrollment              NullableString `json:"flow_unenrollment,omitempty"`
+	FlowUserSettings              NullableString `json:"flow_user_settings,omitempty"`
+	FlowDeviceCode                NullableString `json:"flow_device_code,omitempty"`
 	// When set, external users will be redirected to this application after authenticating.
 	DefaultApplication NullableString `json:"default_application,omitempty"`
 	// Web Certificate used by the authentik Core webserver.
@@ -237,6 +238,38 @@ func (o *BrandRequest) HasBrandingCustomCss() bool {
 // SetBrandingCustomCss gets a reference to the given string and assigns it to the BrandingCustomCss field.
 func (o *BrandRequest) SetBrandingCustomCss(v string) {
 	o.BrandingCustomCss = &v
+}
+
+// GetBrandingDefaultFlowBackground returns the BrandingDefaultFlowBackground field value if set, zero value otherwise.
+func (o *BrandRequest) GetBrandingDefaultFlowBackground() string {
+	if o == nil || o.BrandingDefaultFlowBackground == nil {
+		var ret string
+		return ret
+	}
+	return *o.BrandingDefaultFlowBackground
+}
+
+// GetBrandingDefaultFlowBackgroundOk returns a tuple with the BrandingDefaultFlowBackground field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandRequest) GetBrandingDefaultFlowBackgroundOk() (*string, bool) {
+	if o == nil || o.BrandingDefaultFlowBackground == nil {
+		return nil, false
+	}
+	return o.BrandingDefaultFlowBackground, true
+}
+
+// HasBrandingDefaultFlowBackground returns a boolean if a field has been set.
+func (o *BrandRequest) HasBrandingDefaultFlowBackground() bool {
+	if o != nil && o.BrandingDefaultFlowBackground != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBrandingDefaultFlowBackground gets a reference to the given string and assigns it to the BrandingDefaultFlowBackground field.
+func (o *BrandRequest) SetBrandingDefaultFlowBackground(v string) {
+	o.BrandingDefaultFlowBackground = &v
 }
 
 // GetFlowAuthentication returns the FlowAuthentication field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -635,6 +668,9 @@ func (o BrandRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.BrandingCustomCss != nil {
 		toSerialize["branding_custom_css"] = o.BrandingCustomCss
+	}
+	if o.BrandingDefaultFlowBackground != nil {
+		toSerialize["branding_default_flow_background"] = o.BrandingDefaultFlowBackground
 	}
 	if o.FlowAuthentication.IsSet() {
 		toSerialize["flow_authentication"] = o.FlowAuthentication.Get()
