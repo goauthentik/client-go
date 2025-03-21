@@ -17,10 +17,13 @@ import (
 
 // PatchedNotificationTransportRequest NotificationTransport Serializer
 type PatchedNotificationTransportRequest struct {
-	Name           *string                        `json:"name,omitempty"`
-	Mode           *NotificationTransportModeEnum `json:"mode,omitempty"`
-	WebhookUrl     *string                        `json:"webhook_url,omitempty"`
-	WebhookMapping NullableString                 `json:"webhook_mapping,omitempty"`
+	Name       *string                        `json:"name,omitempty"`
+	Mode       *NotificationTransportModeEnum `json:"mode,omitempty"`
+	WebhookUrl *string                        `json:"webhook_url,omitempty"`
+	// Customize the body of the request. Mapping should return data that is JSON-serializable.
+	WebhookMappingBody NullableString `json:"webhook_mapping_body,omitempty"`
+	// Configure additional headers to be sent. Mapping should return a dictionary of key-value pairs
+	WebhookMappingHeaders NullableString `json:"webhook_mapping_headers,omitempty"`
 	// Only send notification once, for example when sending a webhook into a chat channel.
 	SendOnce *bool `json:"send_once,omitempty"`
 }
@@ -138,47 +141,90 @@ func (o *PatchedNotificationTransportRequest) SetWebhookUrl(v string) {
 	o.WebhookUrl = &v
 }
 
-// GetWebhookMapping returns the WebhookMapping field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PatchedNotificationTransportRequest) GetWebhookMapping() string {
-	if o == nil || o.WebhookMapping.Get() == nil {
+// GetWebhookMappingBody returns the WebhookMappingBody field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedNotificationTransportRequest) GetWebhookMappingBody() string {
+	if o == nil || o.WebhookMappingBody.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.WebhookMapping.Get()
+	return *o.WebhookMappingBody.Get()
 }
 
-// GetWebhookMappingOk returns a tuple with the WebhookMapping field value if set, nil otherwise
+// GetWebhookMappingBodyOk returns a tuple with the WebhookMappingBody field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PatchedNotificationTransportRequest) GetWebhookMappingOk() (*string, bool) {
+func (o *PatchedNotificationTransportRequest) GetWebhookMappingBodyOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.WebhookMapping.Get(), o.WebhookMapping.IsSet()
+	return o.WebhookMappingBody.Get(), o.WebhookMappingBody.IsSet()
 }
 
-// HasWebhookMapping returns a boolean if a field has been set.
-func (o *PatchedNotificationTransportRequest) HasWebhookMapping() bool {
-	if o != nil && o.WebhookMapping.IsSet() {
+// HasWebhookMappingBody returns a boolean if a field has been set.
+func (o *PatchedNotificationTransportRequest) HasWebhookMappingBody() bool {
+	if o != nil && o.WebhookMappingBody.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWebhookMapping gets a reference to the given NullableString and assigns it to the WebhookMapping field.
-func (o *PatchedNotificationTransportRequest) SetWebhookMapping(v string) {
-	o.WebhookMapping.Set(&v)
+// SetWebhookMappingBody gets a reference to the given NullableString and assigns it to the WebhookMappingBody field.
+func (o *PatchedNotificationTransportRequest) SetWebhookMappingBody(v string) {
+	o.WebhookMappingBody.Set(&v)
 }
 
-// SetWebhookMappingNil sets the value for WebhookMapping to be an explicit nil
-func (o *PatchedNotificationTransportRequest) SetWebhookMappingNil() {
-	o.WebhookMapping.Set(nil)
+// SetWebhookMappingBodyNil sets the value for WebhookMappingBody to be an explicit nil
+func (o *PatchedNotificationTransportRequest) SetWebhookMappingBodyNil() {
+	o.WebhookMappingBody.Set(nil)
 }
 
-// UnsetWebhookMapping ensures that no value is present for WebhookMapping, not even an explicit nil
-func (o *PatchedNotificationTransportRequest) UnsetWebhookMapping() {
-	o.WebhookMapping.Unset()
+// UnsetWebhookMappingBody ensures that no value is present for WebhookMappingBody, not even an explicit nil
+func (o *PatchedNotificationTransportRequest) UnsetWebhookMappingBody() {
+	o.WebhookMappingBody.Unset()
+}
+
+// GetWebhookMappingHeaders returns the WebhookMappingHeaders field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedNotificationTransportRequest) GetWebhookMappingHeaders() string {
+	if o == nil || o.WebhookMappingHeaders.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.WebhookMappingHeaders.Get()
+}
+
+// GetWebhookMappingHeadersOk returns a tuple with the WebhookMappingHeaders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedNotificationTransportRequest) GetWebhookMappingHeadersOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.WebhookMappingHeaders.Get(), o.WebhookMappingHeaders.IsSet()
+}
+
+// HasWebhookMappingHeaders returns a boolean if a field has been set.
+func (o *PatchedNotificationTransportRequest) HasWebhookMappingHeaders() bool {
+	if o != nil && o.WebhookMappingHeaders.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetWebhookMappingHeaders gets a reference to the given NullableString and assigns it to the WebhookMappingHeaders field.
+func (o *PatchedNotificationTransportRequest) SetWebhookMappingHeaders(v string) {
+	o.WebhookMappingHeaders.Set(&v)
+}
+
+// SetWebhookMappingHeadersNil sets the value for WebhookMappingHeaders to be an explicit nil
+func (o *PatchedNotificationTransportRequest) SetWebhookMappingHeadersNil() {
+	o.WebhookMappingHeaders.Set(nil)
+}
+
+// UnsetWebhookMappingHeaders ensures that no value is present for WebhookMappingHeaders, not even an explicit nil
+func (o *PatchedNotificationTransportRequest) UnsetWebhookMappingHeaders() {
+	o.WebhookMappingHeaders.Unset()
 }
 
 // GetSendOnce returns the SendOnce field value if set, zero value otherwise.
@@ -224,8 +270,11 @@ func (o PatchedNotificationTransportRequest) MarshalJSON() ([]byte, error) {
 	if o.WebhookUrl != nil {
 		toSerialize["webhook_url"] = o.WebhookUrl
 	}
-	if o.WebhookMapping.IsSet() {
-		toSerialize["webhook_mapping"] = o.WebhookMapping.Get()
+	if o.WebhookMappingBody.IsSet() {
+		toSerialize["webhook_mapping_body"] = o.WebhookMappingBody.Get()
+	}
+	if o.WebhookMappingHeaders.IsSet() {
+		toSerialize["webhook_mapping_headers"] = o.WebhookMappingHeaders.Get()
 	}
 	if o.SendOnce != nil {
 		toSerialize["send_once"] = o.SendOnce

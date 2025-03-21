@@ -53557,12 +53557,13 @@ components:
       description: NotificationTransport Serializer
       example:
         mode: null
+        webhook_mapping_headers: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         webhook_url: https://openapi-generator.tech
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mode_verbose: mode_verbose
-        webhook_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         send_once: true
+        webhook_mapping_body: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pk:
           format: uuid
@@ -53580,7 +53581,15 @@ components:
         webhook_url:
           format: uri
           type: string
-        webhook_mapping:
+        webhook_mapping_body:
+          description: Customize the body of the request. Mapping should return data
+            that is JSON-serializable.
+          format: uuid
+          nullable: true
+          type: string
+        webhook_mapping_headers:
+          description: Configure additional headers to be sent. Mapping should return
+            a dictionary of key-value pairs
           format: uuid
           nullable: true
           type: string
@@ -53604,10 +53613,11 @@ components:
       description: NotificationTransport Serializer
       example:
         mode: null
+        webhook_mapping_headers: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         webhook_url: https://openapi-generator.tech
         name: name
-        webhook_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         send_once: true
+        webhook_mapping_body: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         name:
           minLength: 1
@@ -53617,7 +53627,15 @@ components:
         webhook_url:
           format: uri
           type: string
-        webhook_mapping:
+        webhook_mapping_body:
+          description: Customize the body of the request. Mapping should return data
+            that is JSON-serializable.
+          format: uuid
+          nullable: true
+          type: string
+        webhook_mapping_headers:
+          description: Configure additional headers to be sent. Mapping should return
+            a dictionary of key-value pairs
           format: uuid
           nullable: true
           type: string
@@ -58652,19 +58670,21 @@ components:
           total_pages: 5.637376656633329
         results:
         - mode: null
+          webhook_mapping_headers: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           webhook_url: https://openapi-generator.tech
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           mode_verbose: mode_verbose
-          webhook_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           send_once: true
+          webhook_mapping_body: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - mode: null
+          webhook_mapping_headers: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           webhook_url: https://openapi-generator.tech
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           mode_verbose: mode_verbose
-          webhook_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           send_once: true
+          webhook_mapping_body: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -65694,10 +65714,11 @@ components:
       description: NotificationTransport Serializer
       example:
         mode: null
+        webhook_mapping_headers: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         webhook_url: https://openapi-generator.tech
         name: name
-        webhook_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         send_once: true
+        webhook_mapping_body: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         name:
           minLength: 1
@@ -65707,7 +65728,15 @@ components:
         webhook_url:
           format: uri
           type: string
-        webhook_mapping:
+        webhook_mapping_body:
+          description: Customize the body of the request. Mapping should return data
+            that is JSON-serializable.
+          format: uuid
+          nullable: true
+          type: string
+        webhook_mapping_headers:
+          description: Configure additional headers to be sent. Mapping should return
+            a dictionary of key-value pairs
           format: uuid
           nullable: true
           type: string

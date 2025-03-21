@@ -7,7 +7,8 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **Mode** | Pointer to [**NotificationTransportModeEnum**](NotificationTransportModeEnum.md) |  | [optional] 
 **WebhookUrl** | Pointer to **string** |  | [optional] 
-**WebhookMapping** | Pointer to **NullableString** |  | [optional] 
+**WebhookMappingBody** | Pointer to **NullableString** | Customize the body of the request. Mapping should return data that is JSON-serializable. | [optional] 
+**WebhookMappingHeaders** | Pointer to **NullableString** | Configure additional headers to be sent. Mapping should return a dictionary of key-value pairs | [optional] 
 **SendOnce** | Pointer to **bool** | Only send notification once, for example when sending a webhook into a chat channel. | [optional] 
 
 ## Methods
@@ -104,41 +105,76 @@ SetWebhookUrl sets WebhookUrl field to given value.
 
 HasWebhookUrl returns a boolean if a field has been set.
 
-### GetWebhookMapping
+### GetWebhookMappingBody
 
-`func (o *PatchedNotificationTransportRequest) GetWebhookMapping() string`
+`func (o *PatchedNotificationTransportRequest) GetWebhookMappingBody() string`
 
-GetWebhookMapping returns the WebhookMapping field if non-nil, zero value otherwise.
+GetWebhookMappingBody returns the WebhookMappingBody field if non-nil, zero value otherwise.
 
-### GetWebhookMappingOk
+### GetWebhookMappingBodyOk
 
-`func (o *PatchedNotificationTransportRequest) GetWebhookMappingOk() (*string, bool)`
+`func (o *PatchedNotificationTransportRequest) GetWebhookMappingBodyOk() (*string, bool)`
 
-GetWebhookMappingOk returns a tuple with the WebhookMapping field if it's non-nil, zero value otherwise
+GetWebhookMappingBodyOk returns a tuple with the WebhookMappingBody field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWebhookMapping
+### SetWebhookMappingBody
 
-`func (o *PatchedNotificationTransportRequest) SetWebhookMapping(v string)`
+`func (o *PatchedNotificationTransportRequest) SetWebhookMappingBody(v string)`
 
-SetWebhookMapping sets WebhookMapping field to given value.
+SetWebhookMappingBody sets WebhookMappingBody field to given value.
 
-### HasWebhookMapping
+### HasWebhookMappingBody
 
-`func (o *PatchedNotificationTransportRequest) HasWebhookMapping() bool`
+`func (o *PatchedNotificationTransportRequest) HasWebhookMappingBody() bool`
 
-HasWebhookMapping returns a boolean if a field has been set.
+HasWebhookMappingBody returns a boolean if a field has been set.
 
-### SetWebhookMappingNil
+### SetWebhookMappingBodyNil
 
-`func (o *PatchedNotificationTransportRequest) SetWebhookMappingNil(b bool)`
+`func (o *PatchedNotificationTransportRequest) SetWebhookMappingBodyNil(b bool)`
 
- SetWebhookMappingNil sets the value for WebhookMapping to be an explicit nil
+ SetWebhookMappingBodyNil sets the value for WebhookMappingBody to be an explicit nil
 
-### UnsetWebhookMapping
-`func (o *PatchedNotificationTransportRequest) UnsetWebhookMapping()`
+### UnsetWebhookMappingBody
+`func (o *PatchedNotificationTransportRequest) UnsetWebhookMappingBody()`
 
-UnsetWebhookMapping ensures that no value is present for WebhookMapping, not even an explicit nil
+UnsetWebhookMappingBody ensures that no value is present for WebhookMappingBody, not even an explicit nil
+### GetWebhookMappingHeaders
+
+`func (o *PatchedNotificationTransportRequest) GetWebhookMappingHeaders() string`
+
+GetWebhookMappingHeaders returns the WebhookMappingHeaders field if non-nil, zero value otherwise.
+
+### GetWebhookMappingHeadersOk
+
+`func (o *PatchedNotificationTransportRequest) GetWebhookMappingHeadersOk() (*string, bool)`
+
+GetWebhookMappingHeadersOk returns a tuple with the WebhookMappingHeaders field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebhookMappingHeaders
+
+`func (o *PatchedNotificationTransportRequest) SetWebhookMappingHeaders(v string)`
+
+SetWebhookMappingHeaders sets WebhookMappingHeaders field to given value.
+
+### HasWebhookMappingHeaders
+
+`func (o *PatchedNotificationTransportRequest) HasWebhookMappingHeaders() bool`
+
+HasWebhookMappingHeaders returns a boolean if a field has been set.
+
+### SetWebhookMappingHeadersNil
+
+`func (o *PatchedNotificationTransportRequest) SetWebhookMappingHeadersNil(b bool)`
+
+ SetWebhookMappingHeadersNil sets the value for WebhookMappingHeaders to be an explicit nil
+
+### UnsetWebhookMappingHeaders
+`func (o *PatchedNotificationTransportRequest) UnsetWebhookMappingHeaders()`
+
+UnsetWebhookMappingHeaders ensures that no value is present for WebhookMappingHeaders, not even an explicit nil
 ### GetSendOnce
 
 `func (o *PatchedNotificationTransportRequest) GetSendOnce() bool`
