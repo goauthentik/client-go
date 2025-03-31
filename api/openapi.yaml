@@ -66955,7 +66955,6 @@ components:
           type: array
         acs_url:
           format: uri
-          maxLength: 200
           minLength: 1
           type: string
         audience:
@@ -67148,13 +67147,11 @@ components:
         sso_url:
           description: URL that the initial Login request is sent to.
           format: uri
-          maxLength: 200
           minLength: 1
           type: string
         slo_url:
           description: Optional URL if your IDP supports Single-Logout.
           format: uri
-          maxLength: 200
           nullable: true
           type: string
         allow_idp_initiated:
@@ -70997,7 +70994,6 @@ components:
           type: string
         acs_url:
           format: uri
-          maxLength: 200
           type: string
         audience:
           description: "Value of the audience restriction field of the assertion.\
@@ -71190,7 +71186,6 @@ components:
           type: array
         acs_url:
           format: uri
-          maxLength: 200
           minLength: 1
           type: string
         audience:
@@ -71402,12 +71397,10 @@ components:
         sso_url:
           description: URL that the initial Login request is sent to.
           format: uri
-          maxLength: 200
           type: string
         slo_url:
           description: Optional URL if your IDP supports Single-Logout.
           format: uri
-          maxLength: 200
           nullable: true
           type: string
         allow_idp_initiated:
@@ -71635,13 +71628,11 @@ components:
         sso_url:
           description: URL that the initial Login request is sent to.
           format: uri
-          maxLength: 200
           minLength: 1
           type: string
         slo_url:
           description: Optional URL if your IDP supports Single-Logout.
           format: uri
-          maxLength: 200
           nullable: true
           type: string
         allow_idp_initiated:
