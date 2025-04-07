@@ -18,19 +18,20 @@ import (
 
 // GroupSAMLSourceConnection Group Source Connection
 type GroupSAMLSourceConnection struct {
-	Pk         int32     `json:"pk"`
-	Group      string    `json:"group"`
-	Source     string    `json:"source"`
-	SourceObj  Source    `json:"source_obj"`
-	Identifier string    `json:"identifier"`
-	Created    time.Time `json:"created"`
+	Pk          int32     `json:"pk"`
+	Group       string    `json:"group"`
+	Source      string    `json:"source"`
+	SourceObj   Source    `json:"source_obj"`
+	Identifier  string    `json:"identifier"`
+	Created     time.Time `json:"created"`
+	LastUpdated time.Time `json:"last_updated"`
 }
 
 // NewGroupSAMLSourceConnection instantiates a new GroupSAMLSourceConnection object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupSAMLSourceConnection(pk int32, group string, source string, sourceObj Source, identifier string, created time.Time) *GroupSAMLSourceConnection {
+func NewGroupSAMLSourceConnection(pk int32, group string, source string, sourceObj Source, identifier string, created time.Time, lastUpdated time.Time) *GroupSAMLSourceConnection {
 	this := GroupSAMLSourceConnection{}
 	this.Pk = pk
 	this.Group = group
@@ -38,6 +39,7 @@ func NewGroupSAMLSourceConnection(pk int32, group string, source string, sourceO
 	this.SourceObj = sourceObj
 	this.Identifier = identifier
 	this.Created = created
+	this.LastUpdated = lastUpdated
 	return &this
 }
 
@@ -193,6 +195,30 @@ func (o *GroupSAMLSourceConnection) SetCreated(v time.Time) {
 	o.Created = v
 }
 
+// GetLastUpdated returns the LastUpdated field value
+func (o *GroupSAMLSourceConnection) GetLastUpdated() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.LastUpdated
+}
+
+// GetLastUpdatedOk returns a tuple with the LastUpdated field value
+// and a boolean to check if the value has been set.
+func (o *GroupSAMLSourceConnection) GetLastUpdatedOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LastUpdated, true
+}
+
+// SetLastUpdated sets field value
+func (o *GroupSAMLSourceConnection) SetLastUpdated(v time.Time) {
+	o.LastUpdated = v
+}
+
 func (o GroupSAMLSourceConnection) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -212,6 +238,9 @@ func (o GroupSAMLSourceConnection) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["created"] = o.Created
+	}
+	if true {
+		toSerialize["last_updated"] = o.LastUpdated
 	}
 	return json.Marshal(toSerialize)
 }

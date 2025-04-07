@@ -18,26 +18,28 @@ import (
 
 // UserSAMLSourceConnection User source connection
 type UserSAMLSourceConnection struct {
-	Pk         int32     `json:"pk"`
-	User       int32     `json:"user"`
-	Source     string    `json:"source"`
-	SourceObj  Source    `json:"source_obj"`
-	Created    time.Time `json:"created"`
-	Identifier string    `json:"identifier"`
+	Pk          int32     `json:"pk"`
+	User        int32     `json:"user"`
+	Source      string    `json:"source"`
+	SourceObj   Source    `json:"source_obj"`
+	Identifier  string    `json:"identifier"`
+	Created     time.Time `json:"created"`
+	LastUpdated time.Time `json:"last_updated"`
 }
 
 // NewUserSAMLSourceConnection instantiates a new UserSAMLSourceConnection object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserSAMLSourceConnection(pk int32, user int32, source string, sourceObj Source, created time.Time, identifier string) *UserSAMLSourceConnection {
+func NewUserSAMLSourceConnection(pk int32, user int32, source string, sourceObj Source, identifier string, created time.Time, lastUpdated time.Time) *UserSAMLSourceConnection {
 	this := UserSAMLSourceConnection{}
 	this.Pk = pk
 	this.User = user
 	this.Source = source
 	this.SourceObj = sourceObj
-	this.Created = created
 	this.Identifier = identifier
+	this.Created = created
+	this.LastUpdated = lastUpdated
 	return &this
 }
 
@@ -145,30 +147,6 @@ func (o *UserSAMLSourceConnection) SetSourceObj(v Source) {
 	o.SourceObj = v
 }
 
-// GetCreated returns the Created field value
-func (o *UserSAMLSourceConnection) GetCreated() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.Created
-}
-
-// GetCreatedOk returns a tuple with the Created field value
-// and a boolean to check if the value has been set.
-func (o *UserSAMLSourceConnection) GetCreatedOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Created, true
-}
-
-// SetCreated sets field value
-func (o *UserSAMLSourceConnection) SetCreated(v time.Time) {
-	o.Created = v
-}
-
 // GetIdentifier returns the Identifier field value
 func (o *UserSAMLSourceConnection) GetIdentifier() string {
 	if o == nil {
@@ -193,6 +171,54 @@ func (o *UserSAMLSourceConnection) SetIdentifier(v string) {
 	o.Identifier = v
 }
 
+// GetCreated returns the Created field value
+func (o *UserSAMLSourceConnection) GetCreated() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.Created
+}
+
+// GetCreatedOk returns a tuple with the Created field value
+// and a boolean to check if the value has been set.
+func (o *UserSAMLSourceConnection) GetCreatedOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Created, true
+}
+
+// SetCreated sets field value
+func (o *UserSAMLSourceConnection) SetCreated(v time.Time) {
+	o.Created = v
+}
+
+// GetLastUpdated returns the LastUpdated field value
+func (o *UserSAMLSourceConnection) GetLastUpdated() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.LastUpdated
+}
+
+// GetLastUpdatedOk returns a tuple with the LastUpdated field value
+// and a boolean to check if the value has been set.
+func (o *UserSAMLSourceConnection) GetLastUpdatedOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LastUpdated, true
+}
+
+// SetLastUpdated sets field value
+func (o *UserSAMLSourceConnection) SetLastUpdated(v time.Time) {
+	o.LastUpdated = v
+}
+
 func (o UserSAMLSourceConnection) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -208,10 +234,13 @@ func (o UserSAMLSourceConnection) MarshalJSON() ([]byte, error) {
 		toSerialize["source_obj"] = o.SourceObj
 	}
 	if true {
+		toSerialize["identifier"] = o.Identifier
+	}
+	if true {
 		toSerialize["created"] = o.Created
 	}
 	if true {
-		toSerialize["identifier"] = o.Identifier
+		toSerialize["last_updated"] = o.LastUpdated
 	}
 	return json.Marshal(toSerialize)
 }

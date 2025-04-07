@@ -18,19 +18,20 @@ import (
 
 // GroupSourceConnection Group Source Connection
 type GroupSourceConnection struct {
-	Pk         int32     `json:"pk"`
-	Group      string    `json:"group"`
-	Source     string    `json:"source"`
-	SourceObj  Source    `json:"source_obj"`
-	Identifier string    `json:"identifier"`
-	Created    time.Time `json:"created"`
+	Pk          int32     `json:"pk"`
+	Group       string    `json:"group"`
+	Source      string    `json:"source"`
+	SourceObj   Source    `json:"source_obj"`
+	Identifier  string    `json:"identifier"`
+	Created     time.Time `json:"created"`
+	LastUpdated time.Time `json:"last_updated"`
 }
 
 // NewGroupSourceConnection instantiates a new GroupSourceConnection object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupSourceConnection(pk int32, group string, source string, sourceObj Source, identifier string, created time.Time) *GroupSourceConnection {
+func NewGroupSourceConnection(pk int32, group string, source string, sourceObj Source, identifier string, created time.Time, lastUpdated time.Time) *GroupSourceConnection {
 	this := GroupSourceConnection{}
 	this.Pk = pk
 	this.Group = group
@@ -38,6 +39,7 @@ func NewGroupSourceConnection(pk int32, group string, source string, sourceObj S
 	this.SourceObj = sourceObj
 	this.Identifier = identifier
 	this.Created = created
+	this.LastUpdated = lastUpdated
 	return &this
 }
 
@@ -193,6 +195,30 @@ func (o *GroupSourceConnection) SetCreated(v time.Time) {
 	o.Created = v
 }
 
+// GetLastUpdated returns the LastUpdated field value
+func (o *GroupSourceConnection) GetLastUpdated() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.LastUpdated
+}
+
+// GetLastUpdatedOk returns a tuple with the LastUpdated field value
+// and a boolean to check if the value has been set.
+func (o *GroupSourceConnection) GetLastUpdatedOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LastUpdated, true
+}
+
+// SetLastUpdated sets field value
+func (o *GroupSourceConnection) SetLastUpdated(v time.Time) {
+	o.LastUpdated = v
+}
+
 func (o GroupSourceConnection) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -212,6 +238,9 @@ func (o GroupSourceConnection) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["created"] = o.Created
+	}
+	if true {
+		toSerialize["last_updated"] = o.LastUpdated
 	}
 	return json.Marshal(toSerialize)
 }

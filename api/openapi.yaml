@@ -50765,6 +50765,7 @@ components:
       description: Group Source Connection
       example:
         identifier: identifier
+        last_updated: 2000-01-23T04:56:07.000+00:00
         source_obj: ""
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
@@ -50791,10 +50792,15 @@ components:
           format: date-time
           readOnly: true
           type: string
+        last_updated:
+          format: date-time
+          readOnly: true
+          type: string
       required:
       - created
       - group
       - identifier
+      - last_updated
       - pk
       - source
       - source_obj
@@ -50917,6 +50923,7 @@ components:
       description: Group Source Connection
       example:
         identifier: identifier
+        last_updated: 2000-01-23T04:56:07.000+00:00
         source_obj: ""
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
@@ -50943,10 +50950,15 @@ components:
           format: date-time
           readOnly: true
           type: string
+        last_updated:
+          format: date-time
+          readOnly: true
+          type: string
       required:
       - created
       - group
       - identifier
+      - last_updated
       - pk
       - source
       - source_obj
@@ -50976,6 +50988,7 @@ components:
       description: Group Source Connection
       example:
         identifier: identifier
+        last_updated: 2000-01-23T04:56:07.000+00:00
         source_obj: ""
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
@@ -51002,10 +51015,15 @@ components:
           format: date-time
           readOnly: true
           type: string
+        last_updated:
+          format: date-time
+          readOnly: true
+          type: string
       required:
       - created
       - group
       - identifier
+      - last_updated
       - pk
       - source
       - source_obj
@@ -51075,6 +51093,7 @@ components:
       description: Group Source Connection
       example:
         identifier: identifier
+        last_updated: 2000-01-23T04:56:07.000+00:00
         source_obj: ""
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
@@ -51101,10 +51120,15 @@ components:
           format: date-time
           readOnly: true
           type: string
+        last_updated:
+          format: date-time
+          readOnly: true
+          type: string
       required:
       - created
       - group
       - identifier
+      - last_updated
       - pk
       - source
       - source_obj
@@ -51134,6 +51158,7 @@ components:
       description: Group Source Connection
       example:
         identifier: identifier
+        last_updated: 2000-01-23T04:56:07.000+00:00
         source_obj: ""
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
@@ -51160,10 +51185,15 @@ components:
           format: date-time
           readOnly: true
           type: string
+        last_updated:
+          format: date-time
+          readOnly: true
+          type: string
       required:
       - created
       - group
       - identifier
+      - last_updated
       - pk
       - source
       - source_obj
@@ -57855,12 +57885,14 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
           source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
           source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
           source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
@@ -57987,12 +58019,14 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
           source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
           source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
           source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
@@ -58021,12 +58055,14 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
           source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
           source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
           source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
@@ -58055,12 +58091,14 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
           source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
           source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
           source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
@@ -58089,12 +58127,14 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
           source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
           source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
           source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
@@ -62761,12 +62801,14 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
           source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
           source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 6
         - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
           source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
@@ -63065,12 +63107,14 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
           source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
           source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 6
         - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
           source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
@@ -63099,12 +63143,14 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
           source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
           source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 6
         - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
           source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
@@ -63133,12 +63179,14 @@ components:
           total_pages: 5.637376656633329
         results:
         - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
           source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
           source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 6
         - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
           source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
@@ -63166,12 +63214,16 @@ components:
           end_index: 7.061401241503109
           total_pages: 5.637376656633329
         results:
-        - source_obj: ""
+        - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
           source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 6
-        - source_obj: ""
+        - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
           source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -68212,7 +68264,6 @@ components:
           format: uuid
           type: string
         identifier:
-          maxLength: 255
           minLength: 1
           type: string
         access_token:
@@ -68311,6 +68362,7 @@ components:
     PatchedUserSourceConnectionRequest:
       description: User source connection
       example:
+        identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 0
       properties:
@@ -68318,6 +68370,9 @@ components:
           type: integer
         source:
           format: uuid
+          type: string
+        identifier:
+          minLength: 1
           type: string
       type: object
     PatchedUserWriteStageRequest:
@@ -75267,6 +75322,7 @@ components:
       description: User source connection
       example:
         identifier: identifier
+        last_updated: 2000-01-23T04:56:07.000+00:00
         source_obj: ""
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
@@ -75286,15 +75342,20 @@ components:
           allOf:
           - $ref: '#/components/schemas/Source'
           readOnly: true
+        identifier:
+          type: string
         created:
           format: date-time
           readOnly: true
           type: string
-        identifier:
+        last_updated:
+          format: date-time
+          readOnly: true
           type: string
       required:
       - created
       - identifier
+      - last_updated
       - pk
       - source
       - source_obj
@@ -75663,6 +75724,7 @@ components:
       description: User source connection
       example:
         identifier: identifier
+        last_updated: 2000-01-23T04:56:07.000+00:00
         source_obj: ""
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
@@ -75682,16 +75744,20 @@ components:
           allOf:
           - $ref: '#/components/schemas/Source'
           readOnly: true
+        identifier:
+          type: string
         created:
           format: date-time
           readOnly: true
           type: string
-        identifier:
-          maxLength: 255
+        last_updated:
+          format: date-time
+          readOnly: true
           type: string
       required:
       - created
       - identifier
+      - last_updated
       - pk
       - source
       - source_obj
@@ -75711,7 +75777,6 @@ components:
           format: uuid
           type: string
         identifier:
-          maxLength: 255
           minLength: 1
           type: string
         access_token:
@@ -75787,6 +75852,7 @@ components:
       description: User source connection
       example:
         identifier: identifier
+        last_updated: 2000-01-23T04:56:07.000+00:00
         source_obj: ""
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
@@ -75806,15 +75872,20 @@ components:
           allOf:
           - $ref: '#/components/schemas/Source'
           readOnly: true
+        identifier:
+          type: string
         created:
           format: date-time
           readOnly: true
           type: string
-        identifier:
+        last_updated:
+          format: date-time
+          readOnly: true
           type: string
       required:
       - created
       - identifier
+      - last_updated
       - pk
       - source
       - source_obj
@@ -75904,6 +75975,7 @@ components:
       description: User source connection
       example:
         identifier: identifier
+        last_updated: 2000-01-23T04:56:07.000+00:00
         source_obj: ""
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
@@ -75923,15 +75995,20 @@ components:
           allOf:
           - $ref: '#/components/schemas/Source'
           readOnly: true
+        identifier:
+          type: string
         created:
           format: date-time
           readOnly: true
           type: string
-        identifier:
+        last_updated:
+          format: date-time
+          readOnly: true
           type: string
       required:
       - created
       - identifier
+      - last_updated
       - pk
       - source
       - source_obj
@@ -76133,6 +76210,8 @@ components:
     UserSourceConnection:
       description: User source connection
       example:
+        identifier: identifier
+        last_updated: 2000-01-23T04:56:07.000+00:00
         source_obj: ""
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
@@ -76152,12 +76231,20 @@ components:
           allOf:
           - $ref: '#/components/schemas/Source'
           readOnly: true
+        identifier:
+          type: string
         created:
+          format: date-time
+          readOnly: true
+          type: string
+        last_updated:
           format: date-time
           readOnly: true
           type: string
       required:
       - created
+      - identifier
+      - last_updated
       - pk
       - source
       - source_obj
@@ -76166,6 +76253,7 @@ components:
     UserSourceConnectionRequest:
       description: User source connection
       example:
+        identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 0
       properties:
@@ -76174,7 +76262,11 @@ components:
         source:
           format: uuid
           type: string
+        identifier:
+          minLength: 1
+          type: string
       required:
+      - identifier
       - source
       - user
       type: object

@@ -8,13 +8,15 @@ Name | Type | Description | Notes
 **User** | **int32** |  | 
 **Source** | **string** |  | 
 **SourceObj** | [**Source**](Source.md) |  | [readonly] 
+**Identifier** | **string** |  | 
 **Created** | **time.Time** |  | [readonly] 
+**LastUpdated** | **time.Time** |  | [readonly] 
 
 ## Methods
 
 ### NewUserSourceConnection
 
-`func NewUserSourceConnection(pk int32, user int32, source string, sourceObj Source, created time.Time, ) *UserSourceConnection`
+`func NewUserSourceConnection(pk int32, user int32, source string, sourceObj Source, identifier string, created time.Time, lastUpdated time.Time, ) *UserSourceConnection`
 
 NewUserSourceConnection instantiates a new UserSourceConnection object
 This constructor will assign default values to properties that have it defined,
@@ -109,6 +111,26 @@ and a boolean to check if the value has been set.
 SetSourceObj sets SourceObj field to given value.
 
 
+### GetIdentifier
+
+`func (o *UserSourceConnection) GetIdentifier() string`
+
+GetIdentifier returns the Identifier field if non-nil, zero value otherwise.
+
+### GetIdentifierOk
+
+`func (o *UserSourceConnection) GetIdentifierOk() (*string, bool)`
+
+GetIdentifierOk returns a tuple with the Identifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdentifier
+
+`func (o *UserSourceConnection) SetIdentifier(v string)`
+
+SetIdentifier sets Identifier field to given value.
+
+
 ### GetCreated
 
 `func (o *UserSourceConnection) GetCreated() time.Time`
@@ -127,6 +149,26 @@ and a boolean to check if the value has been set.
 `func (o *UserSourceConnection) SetCreated(v time.Time)`
 
 SetCreated sets Created field to given value.
+
+
+### GetLastUpdated
+
+`func (o *UserSourceConnection) GetLastUpdated() time.Time`
+
+GetLastUpdated returns the LastUpdated field if non-nil, zero value otherwise.
+
+### GetLastUpdatedOk
+
+`func (o *UserSourceConnection) GetLastUpdatedOk() (*time.Time, bool)`
+
+GetLastUpdatedOk returns a tuple with the LastUpdated field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastUpdated
+
+`func (o *UserSourceConnection) SetLastUpdated(v time.Time)`
+
+SetLastUpdated sets LastUpdated field to given value.
 
 
 

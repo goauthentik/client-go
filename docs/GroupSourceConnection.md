@@ -10,12 +10,13 @@ Name | Type | Description | Notes
 **SourceObj** | [**Source**](Source.md) |  | [readonly] 
 **Identifier** | **string** |  | 
 **Created** | **time.Time** |  | [readonly] 
+**LastUpdated** | **time.Time** |  | [readonly] 
 
 ## Methods
 
 ### NewGroupSourceConnection
 
-`func NewGroupSourceConnection(pk int32, group string, source string, sourceObj Source, identifier string, created time.Time, ) *GroupSourceConnection`
+`func NewGroupSourceConnection(pk int32, group string, source string, sourceObj Source, identifier string, created time.Time, lastUpdated time.Time, ) *GroupSourceConnection`
 
 NewGroupSourceConnection instantiates a new GroupSourceConnection object
 This constructor will assign default values to properties that have it defined,
@@ -148,6 +149,26 @@ and a boolean to check if the value has been set.
 `func (o *GroupSourceConnection) SetCreated(v time.Time)`
 
 SetCreated sets Created field to given value.
+
+
+### GetLastUpdated
+
+`func (o *GroupSourceConnection) GetLastUpdated() time.Time`
+
+GetLastUpdated returns the LastUpdated field if non-nil, zero value otherwise.
+
+### GetLastUpdatedOk
+
+`func (o *GroupSourceConnection) GetLastUpdatedOk() (*time.Time, bool)`
+
+GetLastUpdatedOk returns a tuple with the LastUpdated field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastUpdated
+
+`func (o *GroupSourceConnection) SetLastUpdated(v time.Time)`
+
+SetLastUpdated sets LastUpdated field to given value.
 
 
 

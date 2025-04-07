@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **User** | **int32** |  | 
 **Source** | **string** |  | 
+**Identifier** | **string** |  | 
 
 ## Methods
 
 ### NewUserSourceConnectionRequest
 
-`func NewUserSourceConnectionRequest(user int32, source string, ) *UserSourceConnectionRequest`
+`func NewUserSourceConnectionRequest(user int32, source string, identifier string, ) *UserSourceConnectionRequest`
 
 NewUserSourceConnectionRequest instantiates a new UserSourceConnectionRequest object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *UserSourceConnectionRequest) SetSource(v string)`
 
 SetSource sets Source field to given value.
+
+
+### GetIdentifier
+
+`func (o *UserSourceConnectionRequest) GetIdentifier() string`
+
+GetIdentifier returns the Identifier field if non-nil, zero value otherwise.
+
+### GetIdentifierOk
+
+`func (o *UserSourceConnectionRequest) GetIdentifierOk() (*string, bool)`
+
+GetIdentifierOk returns a tuple with the Identifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdentifier
+
+`func (o *UserSourceConnectionRequest) SetIdentifier(v string)`
+
+SetIdentifier sets Identifier field to given value.
 
 
 

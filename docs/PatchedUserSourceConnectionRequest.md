@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **User** | Pointer to **int32** |  | [optional] 
 **Source** | Pointer to **string** |  | [optional] 
+**Identifier** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetSource sets Source field to given value.
 `func (o *PatchedUserSourceConnectionRequest) HasSource() bool`
 
 HasSource returns a boolean if a field has been set.
+
+### GetIdentifier
+
+`func (o *PatchedUserSourceConnectionRequest) GetIdentifier() string`
+
+GetIdentifier returns the Identifier field if non-nil, zero value otherwise.
+
+### GetIdentifierOk
+
+`func (o *PatchedUserSourceConnectionRequest) GetIdentifierOk() (*string, bool)`
+
+GetIdentifierOk returns a tuple with the Identifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdentifier
+
+`func (o *PatchedUserSourceConnectionRequest) SetIdentifier(v string)`
+
+SetIdentifier sets Identifier field to given value.
+
+### HasIdentifier
+
+`func (o *PatchedUserSourceConnectionRequest) HasIdentifier() bool`
+
+HasIdentifier returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

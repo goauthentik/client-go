@@ -18,24 +18,28 @@ import (
 
 // UserSourceConnection User source connection
 type UserSourceConnection struct {
-	Pk        int32     `json:"pk"`
-	User      int32     `json:"user"`
-	Source    string    `json:"source"`
-	SourceObj Source    `json:"source_obj"`
-	Created   time.Time `json:"created"`
+	Pk          int32     `json:"pk"`
+	User        int32     `json:"user"`
+	Source      string    `json:"source"`
+	SourceObj   Source    `json:"source_obj"`
+	Identifier  string    `json:"identifier"`
+	Created     time.Time `json:"created"`
+	LastUpdated time.Time `json:"last_updated"`
 }
 
 // NewUserSourceConnection instantiates a new UserSourceConnection object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserSourceConnection(pk int32, user int32, source string, sourceObj Source, created time.Time) *UserSourceConnection {
+func NewUserSourceConnection(pk int32, user int32, source string, sourceObj Source, identifier string, created time.Time, lastUpdated time.Time) *UserSourceConnection {
 	this := UserSourceConnection{}
 	this.Pk = pk
 	this.User = user
 	this.Source = source
 	this.SourceObj = sourceObj
+	this.Identifier = identifier
 	this.Created = created
+	this.LastUpdated = lastUpdated
 	return &this
 }
 
@@ -143,6 +147,30 @@ func (o *UserSourceConnection) SetSourceObj(v Source) {
 	o.SourceObj = v
 }
 
+// GetIdentifier returns the Identifier field value
+func (o *UserSourceConnection) GetIdentifier() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Identifier
+}
+
+// GetIdentifierOk returns a tuple with the Identifier field value
+// and a boolean to check if the value has been set.
+func (o *UserSourceConnection) GetIdentifierOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Identifier, true
+}
+
+// SetIdentifier sets field value
+func (o *UserSourceConnection) SetIdentifier(v string) {
+	o.Identifier = v
+}
+
 // GetCreated returns the Created field value
 func (o *UserSourceConnection) GetCreated() time.Time {
 	if o == nil {
@@ -167,6 +195,30 @@ func (o *UserSourceConnection) SetCreated(v time.Time) {
 	o.Created = v
 }
 
+// GetLastUpdated returns the LastUpdated field value
+func (o *UserSourceConnection) GetLastUpdated() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.LastUpdated
+}
+
+// GetLastUpdatedOk returns a tuple with the LastUpdated field value
+// and a boolean to check if the value has been set.
+func (o *UserSourceConnection) GetLastUpdatedOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LastUpdated, true
+}
+
+// SetLastUpdated sets field value
+func (o *UserSourceConnection) SetLastUpdated(v time.Time) {
+	o.LastUpdated = v
+}
+
 func (o UserSourceConnection) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -182,7 +234,13 @@ func (o UserSourceConnection) MarshalJSON() ([]byte, error) {
 		toSerialize["source_obj"] = o.SourceObj
 	}
 	if true {
+		toSerialize["identifier"] = o.Identifier
+	}
+	if true {
 		toSerialize["created"] = o.Created
+	}
+	if true {
+		toSerialize["last_updated"] = o.LastUpdated
 	}
 	return json.Marshal(toSerialize)
 }

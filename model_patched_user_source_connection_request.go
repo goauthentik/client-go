@@ -17,8 +17,9 @@ import (
 
 // PatchedUserSourceConnectionRequest User source connection
 type PatchedUserSourceConnectionRequest struct {
-	User   *int32  `json:"user,omitempty"`
-	Source *string `json:"source,omitempty"`
+	User       *int32  `json:"user,omitempty"`
+	Source     *string `json:"source,omitempty"`
+	Identifier *string `json:"identifier,omitempty"`
 }
 
 // NewPatchedUserSourceConnectionRequest instantiates a new PatchedUserSourceConnectionRequest object
@@ -102,6 +103,38 @@ func (o *PatchedUserSourceConnectionRequest) SetSource(v string) {
 	o.Source = &v
 }
 
+// GetIdentifier returns the Identifier field value if set, zero value otherwise.
+func (o *PatchedUserSourceConnectionRequest) GetIdentifier() string {
+	if o == nil || o.Identifier == nil {
+		var ret string
+		return ret
+	}
+	return *o.Identifier
+}
+
+// GetIdentifierOk returns a tuple with the Identifier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedUserSourceConnectionRequest) GetIdentifierOk() (*string, bool) {
+	if o == nil || o.Identifier == nil {
+		return nil, false
+	}
+	return o.Identifier, true
+}
+
+// HasIdentifier returns a boolean if a field has been set.
+func (o *PatchedUserSourceConnectionRequest) HasIdentifier() bool {
+	if o != nil && o.Identifier != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentifier gets a reference to the given string and assigns it to the Identifier field.
+func (o *PatchedUserSourceConnectionRequest) SetIdentifier(v string) {
+	o.Identifier = &v
+}
+
 func (o PatchedUserSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.User != nil {
@@ -109,6 +142,9 @@ func (o PatchedUserSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Source != nil {
 		toSerialize["source"] = o.Source
+	}
+	if o.Identifier != nil {
+		toSerialize["identifier"] = o.Identifier
 	}
 	return json.Marshal(toSerialize)
 }

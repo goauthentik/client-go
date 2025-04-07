@@ -7996,7 +7996,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this user source connection.
-    userSourceConnectionRequest := *openapiclient.NewUserSourceConnectionRequest(int32(123), "Source_example") // UserSourceConnectionRequest | 
+    userSourceConnectionRequest := *openapiclient.NewUserSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserSourceConnectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

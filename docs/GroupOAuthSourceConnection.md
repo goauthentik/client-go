@@ -10,12 +10,13 @@ Name | Type | Description | Notes
 **SourceObj** | [**Source**](Source.md) |  | [readonly] 
 **Identifier** | **string** |  | 
 **Created** | **time.Time** |  | [readonly] 
+**LastUpdated** | **time.Time** |  | [readonly] 
 
 ## Methods
 
 ### NewGroupOAuthSourceConnection
 
-`func NewGroupOAuthSourceConnection(pk int32, group string, source string, sourceObj Source, identifier string, created time.Time, ) *GroupOAuthSourceConnection`
+`func NewGroupOAuthSourceConnection(pk int32, group string, source string, sourceObj Source, identifier string, created time.Time, lastUpdated time.Time, ) *GroupOAuthSourceConnection`
 
 NewGroupOAuthSourceConnection instantiates a new GroupOAuthSourceConnection object
 This constructor will assign default values to properties that have it defined,
@@ -148,6 +149,26 @@ and a boolean to check if the value has been set.
 `func (o *GroupOAuthSourceConnection) SetCreated(v time.Time)`
 
 SetCreated sets Created field to given value.
+
+
+### GetLastUpdated
+
+`func (o *GroupOAuthSourceConnection) GetLastUpdated() time.Time`
+
+GetLastUpdated returns the LastUpdated field if non-nil, zero value otherwise.
+
+### GetLastUpdatedOk
+
+`func (o *GroupOAuthSourceConnection) GetLastUpdatedOk() (*time.Time, bool)`
+
+GetLastUpdatedOk returns a tuple with the LastUpdated field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastUpdated
+
+`func (o *GroupOAuthSourceConnection) SetLastUpdated(v time.Time)`
+
+SetLastUpdated sets LastUpdated field to given value.
 
 
 

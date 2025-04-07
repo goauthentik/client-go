@@ -18,19 +18,20 @@ import (
 
 // GroupKerberosSourceConnection Group Source Connection
 type GroupKerberosSourceConnection struct {
-	Pk         int32     `json:"pk"`
-	Group      string    `json:"group"`
-	Source     string    `json:"source"`
-	SourceObj  Source    `json:"source_obj"`
-	Identifier string    `json:"identifier"`
-	Created    time.Time `json:"created"`
+	Pk          int32     `json:"pk"`
+	Group       string    `json:"group"`
+	Source      string    `json:"source"`
+	SourceObj   Source    `json:"source_obj"`
+	Identifier  string    `json:"identifier"`
+	Created     time.Time `json:"created"`
+	LastUpdated time.Time `json:"last_updated"`
 }
 
 // NewGroupKerberosSourceConnection instantiates a new GroupKerberosSourceConnection object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupKerberosSourceConnection(pk int32, group string, source string, sourceObj Source, identifier string, created time.Time) *GroupKerberosSourceConnection {
+func NewGroupKerberosSourceConnection(pk int32, group string, source string, sourceObj Source, identifier string, created time.Time, lastUpdated time.Time) *GroupKerberosSourceConnection {
 	this := GroupKerberosSourceConnection{}
 	this.Pk = pk
 	this.Group = group
@@ -38,6 +39,7 @@ func NewGroupKerberosSourceConnection(pk int32, group string, source string, sou
 	this.SourceObj = sourceObj
 	this.Identifier = identifier
 	this.Created = created
+	this.LastUpdated = lastUpdated
 	return &this
 }
 
@@ -193,6 +195,30 @@ func (o *GroupKerberosSourceConnection) SetCreated(v time.Time) {
 	o.Created = v
 }
 
+// GetLastUpdated returns the LastUpdated field value
+func (o *GroupKerberosSourceConnection) GetLastUpdated() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.LastUpdated
+}
+
+// GetLastUpdatedOk returns a tuple with the LastUpdated field value
+// and a boolean to check if the value has been set.
+func (o *GroupKerberosSourceConnection) GetLastUpdatedOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LastUpdated, true
+}
+
+// SetLastUpdated sets field value
+func (o *GroupKerberosSourceConnection) SetLastUpdated(v time.Time) {
+	o.LastUpdated = v
+}
+
 func (o GroupKerberosSourceConnection) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -212,6 +238,9 @@ func (o GroupKerberosSourceConnection) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["created"] = o.Created
+	}
+	if true {
+		toSerialize["last_updated"] = o.LastUpdated
 	}
 	return json.Marshal(toSerialize)
 }

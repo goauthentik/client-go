@@ -10,12 +10,13 @@ Name | Type | Description | Notes
 **SourceObj** | [**Source**](Source.md) |  | [readonly] 
 **Identifier** | **string** |  | 
 **Created** | **time.Time** |  | [readonly] 
+**LastUpdated** | **time.Time** |  | [readonly] 
 
 ## Methods
 
 ### NewGroupSAMLSourceConnection
 
-`func NewGroupSAMLSourceConnection(pk int32, group string, source string, sourceObj Source, identifier string, created time.Time, ) *GroupSAMLSourceConnection`
+`func NewGroupSAMLSourceConnection(pk int32, group string, source string, sourceObj Source, identifier string, created time.Time, lastUpdated time.Time, ) *GroupSAMLSourceConnection`
 
 NewGroupSAMLSourceConnection instantiates a new GroupSAMLSourceConnection object
 This constructor will assign default values to properties that have it defined,
@@ -148,6 +149,26 @@ and a boolean to check if the value has been set.
 `func (o *GroupSAMLSourceConnection) SetCreated(v time.Time)`
 
 SetCreated sets Created field to given value.
+
+
+### GetLastUpdated
+
+`func (o *GroupSAMLSourceConnection) GetLastUpdated() time.Time`
+
+GetLastUpdated returns the LastUpdated field if non-nil, zero value otherwise.
+
+### GetLastUpdatedOk
+
+`func (o *GroupSAMLSourceConnection) GetLastUpdatedOk() (*time.Time, bool)`
+
+GetLastUpdatedOk returns a tuple with the LastUpdated field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastUpdated
+
+`func (o *GroupSAMLSourceConnection) SetLastUpdated(v time.Time)`
+
+SetLastUpdated sets LastUpdated field to given value.
 
 
 
