@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GroupPlexSourceConnectionRequest Plex Group-Source connection Serializer
+// GroupPlexSourceConnectionRequest Group Source Connection
 type GroupPlexSourceConnectionRequest struct {
 	Group      string `json:"group"`
 	Source     string `json:"source"`

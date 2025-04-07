@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// PatchedUserPlexSourceConnectionRequest Plex Source connection Serializer
+// PatchedUserPlexSourceConnectionRequest User source connection
 type PatchedUserPlexSourceConnectionRequest struct {
 	User       *int32  `json:"user,omitempty"`
 	Source     *string `json:"source,omitempty"`

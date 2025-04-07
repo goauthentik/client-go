@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UserKerberosSourceConnectionRequest Kerberos Source Serializer
+// UserKerberosSourceConnectionRequest User source connection
 type UserKerberosSourceConnectionRequest struct {
 	User       int32  `json:"user"`
 	Source     string `json:"source"`

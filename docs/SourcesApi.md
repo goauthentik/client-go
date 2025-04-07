@@ -12,6 +12,13 @@ Method | HTTP request | Description
 [**SourcesAllTypesList**](SourcesApi.md#SourcesAllTypesList) | **Get** /sources/all/types/ | 
 [**SourcesAllUsedByList**](SourcesApi.md#SourcesAllUsedByList) | **Get** /sources/all/{slug}/used_by/ | 
 [**SourcesAllUserSettingsList**](SourcesApi.md#SourcesAllUserSettingsList) | **Get** /sources/all/user_settings/ | 
+[**SourcesGroupConnectionsAllDestroy**](SourcesApi.md#SourcesGroupConnectionsAllDestroy) | **Delete** /sources/group_connections/all/{id}/ | 
+[**SourcesGroupConnectionsAllList**](SourcesApi.md#SourcesGroupConnectionsAllList) | **Get** /sources/group_connections/all/ | 
+[**SourcesGroupConnectionsAllPartialUpdate**](SourcesApi.md#SourcesGroupConnectionsAllPartialUpdate) | **Patch** /sources/group_connections/all/{id}/ | 
+[**SourcesGroupConnectionsAllRetrieve**](SourcesApi.md#SourcesGroupConnectionsAllRetrieve) | **Get** /sources/group_connections/all/{id}/ | 
+[**SourcesGroupConnectionsAllUpdate**](SourcesApi.md#SourcesGroupConnectionsAllUpdate) | **Put** /sources/group_connections/all/{id}/ | 
+[**SourcesGroupConnectionsAllUsedByList**](SourcesApi.md#SourcesGroupConnectionsAllUsedByList) | **Get** /sources/group_connections/all/{id}/used_by/ | 
+[**SourcesGroupConnectionsKerberosCreate**](SourcesApi.md#SourcesGroupConnectionsKerberosCreate) | **Post** /sources/group_connections/kerberos/ | 
 [**SourcesGroupConnectionsKerberosDestroy**](SourcesApi.md#SourcesGroupConnectionsKerberosDestroy) | **Delete** /sources/group_connections/kerberos/{id}/ | 
 [**SourcesGroupConnectionsKerberosList**](SourcesApi.md#SourcesGroupConnectionsKerberosList) | **Get** /sources/group_connections/kerberos/ | 
 [**SourcesGroupConnectionsKerberosPartialUpdate**](SourcesApi.md#SourcesGroupConnectionsKerberosPartialUpdate) | **Patch** /sources/group_connections/kerberos/{id}/ | 
@@ -32,6 +39,7 @@ Method | HTTP request | Description
 [**SourcesGroupConnectionsPlexRetrieve**](SourcesApi.md#SourcesGroupConnectionsPlexRetrieve) | **Get** /sources/group_connections/plex/{id}/ | 
 [**SourcesGroupConnectionsPlexUpdate**](SourcesApi.md#SourcesGroupConnectionsPlexUpdate) | **Put** /sources/group_connections/plex/{id}/ | 
 [**SourcesGroupConnectionsPlexUsedByList**](SourcesApi.md#SourcesGroupConnectionsPlexUsedByList) | **Get** /sources/group_connections/plex/{id}/used_by/ | 
+[**SourcesGroupConnectionsSamlCreate**](SourcesApi.md#SourcesGroupConnectionsSamlCreate) | **Post** /sources/group_connections/saml/ | 
 [**SourcesGroupConnectionsSamlDestroy**](SourcesApi.md#SourcesGroupConnectionsSamlDestroy) | **Delete** /sources/group_connections/saml/{id}/ | 
 [**SourcesGroupConnectionsSamlList**](SourcesApi.md#SourcesGroupConnectionsSamlList) | **Get** /sources/group_connections/saml/ | 
 [**SourcesGroupConnectionsSamlPartialUpdate**](SourcesApi.md#SourcesGroupConnectionsSamlPartialUpdate) | **Patch** /sources/group_connections/saml/{id}/ | 
@@ -683,6 +691,500 @@ Other parameters are passed through a pointer to a apiSourcesAllUserSettingsList
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsAllDestroy
+
+> SourcesGroupConnectionsAllDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this group source connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsAllDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsAllDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this group source connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsAllDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsAllList
+
+> PaginatedGroupSourceConnectionList SourcesGroupConnectionsAllList(ctx).Group(group).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    group := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsAllList(context.Background()).Group(group).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsAllList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsAllList`: PaginatedGroupSourceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsAllList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsAllListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+ **sourceSlug** | **string** |  | 
+
+### Return type
+
+[**PaginatedGroupSourceConnectionList**](PaginatedGroupSourceConnectionList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsAllPartialUpdate
+
+> GroupSourceConnection SourcesGroupConnectionsAllPartialUpdate(ctx, id).PatchedGroupSourceConnectionRequest(patchedGroupSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this group source connection.
+    patchedGroupSourceConnectionRequest := *openapiclient.NewPatchedGroupSourceConnectionRequest() // PatchedGroupSourceConnectionRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsAllPartialUpdate(context.Background(), id).PatchedGroupSourceConnectionRequest(patchedGroupSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsAllPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsAllPartialUpdate`: GroupSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsAllPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this group source connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsAllPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedGroupSourceConnectionRequest** | [**PatchedGroupSourceConnectionRequest**](PatchedGroupSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**GroupSourceConnection**](GroupSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsAllRetrieve
+
+> GroupSourceConnection SourcesGroupConnectionsAllRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this group source connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsAllRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsAllRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsAllRetrieve`: GroupSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsAllRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this group source connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsAllRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**GroupSourceConnection**](GroupSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsAllUpdate
+
+> GroupSourceConnection SourcesGroupConnectionsAllUpdate(ctx, id).GroupSourceConnectionRequest(groupSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this group source connection.
+    groupSourceConnectionRequest := *openapiclient.NewGroupSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupSourceConnectionRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsAllUpdate(context.Background(), id).GroupSourceConnectionRequest(groupSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsAllUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsAllUpdate`: GroupSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsAllUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this group source connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsAllUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **groupSourceConnectionRequest** | [**GroupSourceConnectionRequest**](GroupSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**GroupSourceConnection**](GroupSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsAllUsedByList
+
+> []UsedBy SourcesGroupConnectionsAllUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this group source connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsAllUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsAllUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsAllUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsAllUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this group source connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsAllUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsKerberosCreate
+
+> GroupKerberosSourceConnection SourcesGroupConnectionsKerberosCreate(ctx).GroupKerberosSourceConnectionRequest(groupKerberosSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    groupKerberosSourceConnectionRequest := *openapiclient.NewGroupKerberosSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupKerberosSourceConnectionRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsKerberosCreate(context.Background()).GroupKerberosSourceConnectionRequest(groupKerberosSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsKerberosCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsKerberosCreate`: GroupKerberosSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsKerberosCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsKerberosCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupKerberosSourceConnectionRequest** | [**GroupKerberosSourceConnectionRequest**](GroupKerberosSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**GroupKerberosSourceConnection**](GroupKerberosSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2099,6 +2601,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsSamlCreate
+
+> GroupSAMLSourceConnection SourcesGroupConnectionsSamlCreate(ctx).GroupSAMLSourceConnectionRequest(groupSAMLSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    groupSAMLSourceConnectionRequest := *openapiclient.NewGroupSAMLSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupSAMLSourceConnectionRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsSamlCreate(context.Background()).GroupSAMLSourceConnectionRequest(groupSAMLSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsSamlCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsSamlCreate`: GroupSAMLSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsSamlCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsSamlCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupSAMLSourceConnectionRequest** | [**GroupSAMLSourceConnectionRequest**](GroupSAMLSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**GroupSAMLSourceConnection**](GroupSAMLSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -7684,7 +8252,7 @@ Name | Type | Description  | Notes
 
 ## SourcesUserConnectionsKerberosList
 
-> PaginatedUserKerberosSourceConnectionList SourcesUserConnectionsKerberosList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+> PaginatedUserKerberosSourceConnectionList SourcesUserConnectionsKerberosList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).User(user).Execute()
 
 
 
@@ -7708,10 +8276,11 @@ func main() {
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     search := "search_example" // string | A search term. (optional)
     sourceSlug := "sourceSlug_example" // string |  (optional)
+    user := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsKerberosList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsKerberosList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).User(user).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsKerberosList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7737,6 +8306,7 @@ Name | Type | Description  | Notes
  **pageSize** | **int32** | Number of results to return per page. | 
  **search** | **string** | A search term. | 
  **sourceSlug** | **string** |  | 
+ **user** | **int32** |  | 
 
 ### Return type
 

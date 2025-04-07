@@ -16,7 +16,7 @@ import (
 	"time"
 )
 
-// UserSAMLSourceConnection SAML Source Serializer
+// UserSAMLSourceConnection User source connection
 type UserSAMLSourceConnection struct {
 	Pk         int32     `json:"pk"`
 	User       int32     `json:"user"`

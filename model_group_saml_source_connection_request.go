@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GroupSAMLSourceConnectionRequest OAuth Group-Source connection Serializer
+// GroupSAMLSourceConnectionRequest Group Source Connection
 type GroupSAMLSourceConnectionRequest struct {
 	Group      string `json:"group"`
 	Source     string `json:"source"`

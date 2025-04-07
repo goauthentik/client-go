@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// PatchedUserKerberosSourceConnectionRequest Kerberos Source Serializer
+// PatchedUserKerberosSourceConnectionRequest User source connection
 type PatchedUserKerberosSourceConnectionRequest struct {
 	User       *int32  `json:"user,omitempty"`
 	Source     *string `json:"source,omitempty"`

@@ -16,7 +16,7 @@ import (
 	"time"
 )
 
-// GroupSAMLSourceConnection OAuth Group-Source connection Serializer
+// GroupSAMLSourceConnection Group Source Connection
 type GroupSAMLSourceConnection struct {
 	Pk         int32     `json:"pk"`
 	Group      string    `json:"group"`

@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// PatchedGroupPlexSourceConnectionRequest Plex Group-Source connection Serializer
+// PatchedGroupPlexSourceConnectionRequest Group Source Connection
 type PatchedGroupPlexSourceConnectionRequest struct {
 	Group      *string `json:"group,omitempty"`
 	Source     *string `json:"source,omitempty"`

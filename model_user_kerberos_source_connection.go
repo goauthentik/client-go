@@ -16,7 +16,7 @@ import (
 	"time"
 )
 
-// UserKerberosSourceConnection Kerberos Source Serializer
+// UserKerberosSourceConnection User source connection
 type UserKerberosSourceConnection struct {
 	Pk         int32     `json:"pk"`
 	User       int32     `json:"user"`

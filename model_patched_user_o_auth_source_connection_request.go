@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// PatchedUserOAuthSourceConnectionRequest OAuth Source Serializer
+// PatchedUserOAuthSourceConnectionRequest User source connection
 type PatchedUserOAuthSourceConnectionRequest struct {
 	User        *int32         `json:"user,omitempty"`
 	Source      *string        `json:"source,omitempty"`

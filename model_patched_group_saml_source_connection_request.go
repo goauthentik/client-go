@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// PatchedGroupSAMLSourceConnectionRequest OAuth Group-Source connection Serializer
+// PatchedGroupSAMLSourceConnectionRequest Group Source Connection
 type PatchedGroupSAMLSourceConnectionRequest struct {
 	Group      *string `json:"group,omitempty"`
 	Source     *string `json:"source,omitempty"`

@@ -218,6 +218,8 @@ docs/GroupPlexSourceConnectionRequest.md
 docs/GroupRequest.md
 docs/GroupSAMLSourceConnection.md
 docs/GroupSAMLSourceConnectionRequest.md
+docs/GroupSourceConnection.md
+docs/GroupSourceConnectionRequest.md
 docs/IdentificationChallenge.md
 docs/IdentificationChallengeCaptchaStage.md
 docs/IdentificationChallengeResponseRequest.md
@@ -353,6 +355,7 @@ docs/PaginatedGroupList.md
 docs/PaginatedGroupOAuthSourceConnectionList.md
 docs/PaginatedGroupPlexSourceConnectionList.md
 docs/PaginatedGroupSAMLSourceConnectionList.md
+docs/PaginatedGroupSourceConnectionList.md
 docs/PaginatedIdentificationStageList.md
 docs/PaginatedInvitationList.md
 docs/PaginatedInvitationStageList.md
@@ -490,6 +493,7 @@ docs/PatchedGroupOAuthSourceConnectionRequest.md
 docs/PatchedGroupPlexSourceConnectionRequest.md
 docs/PatchedGroupRequest.md
 docs/PatchedGroupSAMLSourceConnectionRequest.md
+docs/PatchedGroupSourceConnectionRequest.md
 docs/PatchedIdentificationStageRequest.md
 docs/PatchedInvitationRequest.md
 docs/PatchedInvitationStageRequest.md
@@ -954,6 +958,8 @@ model_group_plex_source_connection_request.go
 model_group_request.go
 model_group_saml_source_connection.go
 model_group_saml_source_connection_request.go
+model_group_source_connection.go
+model_group_source_connection_request.go
 model_identification_challenge.go
 model_identification_challenge_captcha_stage.go
 model_identification_challenge_response_request.go
@@ -1086,6 +1092,7 @@ model_paginated_group_list.go
 model_paginated_group_o_auth_source_connection_list.go
 model_paginated_group_plex_source_connection_list.go
 model_paginated_group_saml_source_connection_list.go
+model_paginated_group_source_connection_list.go
 model_paginated_identification_stage_list.go
 model_paginated_invitation_list.go
 model_paginated_invitation_stage_list.go
@@ -1223,6 +1230,7 @@ model_patched_group_o_auth_source_connection_request.go
 model_patched_group_plex_source_connection_request.go
 model_patched_group_request.go
 model_patched_group_saml_source_connection_request.go
+model_patched_group_source_connection_request.go
 model_patched_identification_stage_request.go
 model_patched_invitation_request.go
 model_patched_invitation_stage_request.go

@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UserOAuthSourceConnectionRequest OAuth Source Serializer
+// UserOAuthSourceConnectionRequest User source connection
 type UserOAuthSourceConnectionRequest struct {
 	User        int32          `json:"user"`
 	Source      string         `json:"source"`

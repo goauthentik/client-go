@@ -15,32 +15,32 @@ import (
 	"encoding/json"
 )
 
-// PatchedGroupOAuthSourceConnectionRequest Group Source Connection
-type PatchedGroupOAuthSourceConnectionRequest struct {
+// PatchedGroupSourceConnectionRequest Group Source Connection
+type PatchedGroupSourceConnectionRequest struct {
 	Group      *string `json:"group,omitempty"`
 	Source     *string `json:"source,omitempty"`
 	Identifier *string `json:"identifier,omitempty"`
 }
 
-// NewPatchedGroupOAuthSourceConnectionRequest instantiates a new PatchedGroupOAuthSourceConnectionRequest object
+// NewPatchedGroupSourceConnectionRequest instantiates a new PatchedGroupSourceConnectionRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPatchedGroupOAuthSourceConnectionRequest() *PatchedGroupOAuthSourceConnectionRequest {
-	this := PatchedGroupOAuthSourceConnectionRequest{}
+func NewPatchedGroupSourceConnectionRequest() *PatchedGroupSourceConnectionRequest {
+	this := PatchedGroupSourceConnectionRequest{}
 	return &this
 }
 
-// NewPatchedGroupOAuthSourceConnectionRequestWithDefaults instantiates a new PatchedGroupOAuthSourceConnectionRequest object
+// NewPatchedGroupSourceConnectionRequestWithDefaults instantiates a new PatchedGroupSourceConnectionRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPatchedGroupOAuthSourceConnectionRequestWithDefaults() *PatchedGroupOAuthSourceConnectionRequest {
-	this := PatchedGroupOAuthSourceConnectionRequest{}
+func NewPatchedGroupSourceConnectionRequestWithDefaults() *PatchedGroupSourceConnectionRequest {
+	this := PatchedGroupSourceConnectionRequest{}
 	return &this
 }
 
 // GetGroup returns the Group field value if set, zero value otherwise.
-func (o *PatchedGroupOAuthSourceConnectionRequest) GetGroup() string {
+func (o *PatchedGroupSourceConnectionRequest) GetGroup() string {
 	if o == nil || o.Group == nil {
 		var ret string
 		return ret
@@ -50,7 +50,7 @@ func (o *PatchedGroupOAuthSourceConnectionRequest) GetGroup() string {
 
 // GetGroupOk returns a tuple with the Group field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedGroupOAuthSourceConnectionRequest) GetGroupOk() (*string, bool) {
+func (o *PatchedGroupSourceConnectionRequest) GetGroupOk() (*string, bool) {
 	if o == nil || o.Group == nil {
 		return nil, false
 	}
@@ -58,7 +58,7 @@ func (o *PatchedGroupOAuthSourceConnectionRequest) GetGroupOk() (*string, bool) 
 }
 
 // HasGroup returns a boolean if a field has been set.
-func (o *PatchedGroupOAuthSourceConnectionRequest) HasGroup() bool {
+func (o *PatchedGroupSourceConnectionRequest) HasGroup() bool {
 	if o != nil && o.Group != nil {
 		return true
 	}
@@ -67,12 +67,12 @@ func (o *PatchedGroupOAuthSourceConnectionRequest) HasGroup() bool {
 }
 
 // SetGroup gets a reference to the given string and assigns it to the Group field.
-func (o *PatchedGroupOAuthSourceConnectionRequest) SetGroup(v string) {
+func (o *PatchedGroupSourceConnectionRequest) SetGroup(v string) {
 	o.Group = &v
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
-func (o *PatchedGroupOAuthSourceConnectionRequest) GetSource() string {
+func (o *PatchedGroupSourceConnectionRequest) GetSource() string {
 	if o == nil || o.Source == nil {
 		var ret string
 		return ret
@@ -82,7 +82,7 @@ func (o *PatchedGroupOAuthSourceConnectionRequest) GetSource() string {
 
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedGroupOAuthSourceConnectionRequest) GetSourceOk() (*string, bool) {
+func (o *PatchedGroupSourceConnectionRequest) GetSourceOk() (*string, bool) {
 	if o == nil || o.Source == nil {
 		return nil, false
 	}
@@ -90,7 +90,7 @@ func (o *PatchedGroupOAuthSourceConnectionRequest) GetSourceOk() (*string, bool)
 }
 
 // HasSource returns a boolean if a field has been set.
-func (o *PatchedGroupOAuthSourceConnectionRequest) HasSource() bool {
+func (o *PatchedGroupSourceConnectionRequest) HasSource() bool {
 	if o != nil && o.Source != nil {
 		return true
 	}
@@ -99,12 +99,12 @@ func (o *PatchedGroupOAuthSourceConnectionRequest) HasSource() bool {
 }
 
 // SetSource gets a reference to the given string and assigns it to the Source field.
-func (o *PatchedGroupOAuthSourceConnectionRequest) SetSource(v string) {
+func (o *PatchedGroupSourceConnectionRequest) SetSource(v string) {
 	o.Source = &v
 }
 
 // GetIdentifier returns the Identifier field value if set, zero value otherwise.
-func (o *PatchedGroupOAuthSourceConnectionRequest) GetIdentifier() string {
+func (o *PatchedGroupSourceConnectionRequest) GetIdentifier() string {
 	if o == nil || o.Identifier == nil {
 		var ret string
 		return ret
@@ -114,7 +114,7 @@ func (o *PatchedGroupOAuthSourceConnectionRequest) GetIdentifier() string {
 
 // GetIdentifierOk returns a tuple with the Identifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedGroupOAuthSourceConnectionRequest) GetIdentifierOk() (*string, bool) {
+func (o *PatchedGroupSourceConnectionRequest) GetIdentifierOk() (*string, bool) {
 	if o == nil || o.Identifier == nil {
 		return nil, false
 	}
@@ -122,7 +122,7 @@ func (o *PatchedGroupOAuthSourceConnectionRequest) GetIdentifierOk() (*string, b
 }
 
 // HasIdentifier returns a boolean if a field has been set.
-func (o *PatchedGroupOAuthSourceConnectionRequest) HasIdentifier() bool {
+func (o *PatchedGroupSourceConnectionRequest) HasIdentifier() bool {
 	if o != nil && o.Identifier != nil {
 		return true
 	}
@@ -131,11 +131,11 @@ func (o *PatchedGroupOAuthSourceConnectionRequest) HasIdentifier() bool {
 }
 
 // SetIdentifier gets a reference to the given string and assigns it to the Identifier field.
-func (o *PatchedGroupOAuthSourceConnectionRequest) SetIdentifier(v string) {
+func (o *PatchedGroupSourceConnectionRequest) SetIdentifier(v string) {
 	o.Identifier = &v
 }
 
-func (o PatchedGroupOAuthSourceConnectionRequest) MarshalJSON() ([]byte, error) {
+func (o PatchedGroupSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Group != nil {
 		toSerialize["group"] = o.Group
@@ -149,38 +149,38 @@ func (o PatchedGroupOAuthSourceConnectionRequest) MarshalJSON() ([]byte, error) 
 	return json.Marshal(toSerialize)
 }
 
-type NullablePatchedGroupOAuthSourceConnectionRequest struct {
-	value *PatchedGroupOAuthSourceConnectionRequest
+type NullablePatchedGroupSourceConnectionRequest struct {
+	value *PatchedGroupSourceConnectionRequest
 	isSet bool
 }
 
-func (v NullablePatchedGroupOAuthSourceConnectionRequest) Get() *PatchedGroupOAuthSourceConnectionRequest {
+func (v NullablePatchedGroupSourceConnectionRequest) Get() *PatchedGroupSourceConnectionRequest {
 	return v.value
 }
 
-func (v *NullablePatchedGroupOAuthSourceConnectionRequest) Set(val *PatchedGroupOAuthSourceConnectionRequest) {
+func (v *NullablePatchedGroupSourceConnectionRequest) Set(val *PatchedGroupSourceConnectionRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePatchedGroupOAuthSourceConnectionRequest) IsSet() bool {
+func (v NullablePatchedGroupSourceConnectionRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePatchedGroupOAuthSourceConnectionRequest) Unset() {
+func (v *NullablePatchedGroupSourceConnectionRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePatchedGroupOAuthSourceConnectionRequest(val *PatchedGroupOAuthSourceConnectionRequest) *NullablePatchedGroupOAuthSourceConnectionRequest {
-	return &NullablePatchedGroupOAuthSourceConnectionRequest{value: val, isSet: true}
+func NewNullablePatchedGroupSourceConnectionRequest(val *PatchedGroupSourceConnectionRequest) *NullablePatchedGroupSourceConnectionRequest {
+	return &NullablePatchedGroupSourceConnectionRequest{value: val, isSet: true}
 }
 
-func (v NullablePatchedGroupOAuthSourceConnectionRequest) MarshalJSON() ([]byte, error) {
+func (v NullablePatchedGroupSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePatchedGroupOAuthSourceConnectionRequest) UnmarshalJSON(src []byte) error {
+func (v *NullablePatchedGroupSourceConnectionRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

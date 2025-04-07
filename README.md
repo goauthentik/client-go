@@ -673,6 +673,13 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**SourcesAllTypesList**](docs/SourcesApi.md#sourcesalltypeslist) | **Get** /sources/all/types/ | 
 *SourcesApi* | [**SourcesAllUsedByList**](docs/SourcesApi.md#sourcesallusedbylist) | **Get** /sources/all/{slug}/used_by/ | 
 *SourcesApi* | [**SourcesAllUserSettingsList**](docs/SourcesApi.md#sourcesallusersettingslist) | **Get** /sources/all/user_settings/ | 
+*SourcesApi* | [**SourcesGroupConnectionsAllDestroy**](docs/SourcesApi.md#sourcesgroupconnectionsalldestroy) | **Delete** /sources/group_connections/all/{id}/ | 
+*SourcesApi* | [**SourcesGroupConnectionsAllList**](docs/SourcesApi.md#sourcesgroupconnectionsalllist) | **Get** /sources/group_connections/all/ | 
+*SourcesApi* | [**SourcesGroupConnectionsAllPartialUpdate**](docs/SourcesApi.md#sourcesgroupconnectionsallpartialupdate) | **Patch** /sources/group_connections/all/{id}/ | 
+*SourcesApi* | [**SourcesGroupConnectionsAllRetrieve**](docs/SourcesApi.md#sourcesgroupconnectionsallretrieve) | **Get** /sources/group_connections/all/{id}/ | 
+*SourcesApi* | [**SourcesGroupConnectionsAllUpdate**](docs/SourcesApi.md#sourcesgroupconnectionsallupdate) | **Put** /sources/group_connections/all/{id}/ | 
+*SourcesApi* | [**SourcesGroupConnectionsAllUsedByList**](docs/SourcesApi.md#sourcesgroupconnectionsallusedbylist) | **Get** /sources/group_connections/all/{id}/used_by/ | 
+*SourcesApi* | [**SourcesGroupConnectionsKerberosCreate**](docs/SourcesApi.md#sourcesgroupconnectionskerberoscreate) | **Post** /sources/group_connections/kerberos/ | 
 *SourcesApi* | [**SourcesGroupConnectionsKerberosDestroy**](docs/SourcesApi.md#sourcesgroupconnectionskerberosdestroy) | **Delete** /sources/group_connections/kerberos/{id}/ | 
 *SourcesApi* | [**SourcesGroupConnectionsKerberosList**](docs/SourcesApi.md#sourcesgroupconnectionskerberoslist) | **Get** /sources/group_connections/kerberos/ | 
 *SourcesApi* | [**SourcesGroupConnectionsKerberosPartialUpdate**](docs/SourcesApi.md#sourcesgroupconnectionskerberospartialupdate) | **Patch** /sources/group_connections/kerberos/{id}/ | 
@@ -693,6 +700,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**SourcesGroupConnectionsPlexRetrieve**](docs/SourcesApi.md#sourcesgroupconnectionsplexretrieve) | **Get** /sources/group_connections/plex/{id}/ | 
 *SourcesApi* | [**SourcesGroupConnectionsPlexUpdate**](docs/SourcesApi.md#sourcesgroupconnectionsplexupdate) | **Put** /sources/group_connections/plex/{id}/ | 
 *SourcesApi* | [**SourcesGroupConnectionsPlexUsedByList**](docs/SourcesApi.md#sourcesgroupconnectionsplexusedbylist) | **Get** /sources/group_connections/plex/{id}/used_by/ | 
+*SourcesApi* | [**SourcesGroupConnectionsSamlCreate**](docs/SourcesApi.md#sourcesgroupconnectionssamlcreate) | **Post** /sources/group_connections/saml/ | 
 *SourcesApi* | [**SourcesGroupConnectionsSamlDestroy**](docs/SourcesApi.md#sourcesgroupconnectionssamldestroy) | **Delete** /sources/group_connections/saml/{id}/ | 
 *SourcesApi* | [**SourcesGroupConnectionsSamlList**](docs/SourcesApi.md#sourcesgroupconnectionssamllist) | **Get** /sources/group_connections/saml/ | 
 *SourcesApi* | [**SourcesGroupConnectionsSamlPartialUpdate**](docs/SourcesApi.md#sourcesgroupconnectionssamlpartialupdate) | **Patch** /sources/group_connections/saml/{id}/ | 
@@ -1190,6 +1198,8 @@ Class | Method | HTTP request | Description
  - [GroupRequest](docs/GroupRequest.md)
  - [GroupSAMLSourceConnection](docs/GroupSAMLSourceConnection.md)
  - [GroupSAMLSourceConnectionRequest](docs/GroupSAMLSourceConnectionRequest.md)
+ - [GroupSourceConnection](docs/GroupSourceConnection.md)
+ - [GroupSourceConnectionRequest](docs/GroupSourceConnectionRequest.md)
  - [IdentificationChallenge](docs/IdentificationChallenge.md)
  - [IdentificationChallengeCaptchaStage](docs/IdentificationChallengeCaptchaStage.md)
  - [IdentificationChallengeResponseRequest](docs/IdentificationChallengeResponseRequest.md)
@@ -1322,6 +1332,7 @@ Class | Method | HTTP request | Description
  - [PaginatedGroupOAuthSourceConnectionList](docs/PaginatedGroupOAuthSourceConnectionList.md)
  - [PaginatedGroupPlexSourceConnectionList](docs/PaginatedGroupPlexSourceConnectionList.md)
  - [PaginatedGroupSAMLSourceConnectionList](docs/PaginatedGroupSAMLSourceConnectionList.md)
+ - [PaginatedGroupSourceConnectionList](docs/PaginatedGroupSourceConnectionList.md)
  - [PaginatedIdentificationStageList](docs/PaginatedIdentificationStageList.md)
  - [PaginatedInvitationList](docs/PaginatedInvitationList.md)
  - [PaginatedInvitationStageList](docs/PaginatedInvitationStageList.md)
@@ -1459,6 +1470,7 @@ Class | Method | HTTP request | Description
  - [PatchedGroupPlexSourceConnectionRequest](docs/PatchedGroupPlexSourceConnectionRequest.md)
  - [PatchedGroupRequest](docs/PatchedGroupRequest.md)
  - [PatchedGroupSAMLSourceConnectionRequest](docs/PatchedGroupSAMLSourceConnectionRequest.md)
+ - [PatchedGroupSourceConnectionRequest](docs/PatchedGroupSourceConnectionRequest.md)
  - [PatchedIdentificationStageRequest](docs/PatchedIdentificationStageRequest.md)
  - [PatchedInvitationRequest](docs/PatchedInvitationRequest.md)
  - [PatchedInvitationStageRequest](docs/PatchedInvitationStageRequest.md)

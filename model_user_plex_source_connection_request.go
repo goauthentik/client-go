@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UserPlexSourceConnectionRequest Plex Source connection Serializer
+// UserPlexSourceConnectionRequest User source connection
 type UserPlexSourceConnectionRequest struct {
 	User       int32  `json:"user"`
 	Source     string `json:"source"`

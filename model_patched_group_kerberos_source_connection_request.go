@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// PatchedGroupKerberosSourceConnectionRequest OAuth Group-Source connection Serializer
+// PatchedGroupKerberosSourceConnectionRequest Group Source Connection
 type PatchedGroupKerberosSourceConnectionRequest struct {
 	Group      *string `json:"group,omitempty"`
 	Source     *string `json:"source,omitempty"`

@@ -16,8 +16,8 @@ import (
 	"time"
 )
 
-// GroupKerberosSourceConnection Group Source Connection
-type GroupKerberosSourceConnection struct {
+// GroupSourceConnection Group Source Connection
+type GroupSourceConnection struct {
 	Pk         int32     `json:"pk"`
 	Group      string    `json:"group"`
 	Source     string    `json:"source"`
@@ -26,12 +26,12 @@ type GroupKerberosSourceConnection struct {
 	Created    time.Time `json:"created"`
 }
 
-// NewGroupKerberosSourceConnection instantiates a new GroupKerberosSourceConnection object
+// NewGroupSourceConnection instantiates a new GroupSourceConnection object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupKerberosSourceConnection(pk int32, group string, source string, sourceObj Source, identifier string, created time.Time) *GroupKerberosSourceConnection {
-	this := GroupKerberosSourceConnection{}
+func NewGroupSourceConnection(pk int32, group string, source string, sourceObj Source, identifier string, created time.Time) *GroupSourceConnection {
+	this := GroupSourceConnection{}
 	this.Pk = pk
 	this.Group = group
 	this.Source = source
@@ -41,16 +41,16 @@ func NewGroupKerberosSourceConnection(pk int32, group string, source string, sou
 	return &this
 }
 
-// NewGroupKerberosSourceConnectionWithDefaults instantiates a new GroupKerberosSourceConnection object
+// NewGroupSourceConnectionWithDefaults instantiates a new GroupSourceConnection object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGroupKerberosSourceConnectionWithDefaults() *GroupKerberosSourceConnection {
-	this := GroupKerberosSourceConnection{}
+func NewGroupSourceConnectionWithDefaults() *GroupSourceConnection {
+	this := GroupSourceConnection{}
 	return &this
 }
 
 // GetPk returns the Pk field value
-func (o *GroupKerberosSourceConnection) GetPk() int32 {
+func (o *GroupSourceConnection) GetPk() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -61,7 +61,7 @@ func (o *GroupKerberosSourceConnection) GetPk() int32 {
 
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
-func (o *GroupKerberosSourceConnection) GetPkOk() (*int32, bool) {
+func (o *GroupSourceConnection) GetPkOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,12 +69,12 @@ func (o *GroupKerberosSourceConnection) GetPkOk() (*int32, bool) {
 }
 
 // SetPk sets field value
-func (o *GroupKerberosSourceConnection) SetPk(v int32) {
+func (o *GroupSourceConnection) SetPk(v int32) {
 	o.Pk = v
 }
 
 // GetGroup returns the Group field value
-func (o *GroupKerberosSourceConnection) GetGroup() string {
+func (o *GroupSourceConnection) GetGroup() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -85,7 +85,7 @@ func (o *GroupKerberosSourceConnection) GetGroup() string {
 
 // GetGroupOk returns a tuple with the Group field value
 // and a boolean to check if the value has been set.
-func (o *GroupKerberosSourceConnection) GetGroupOk() (*string, bool) {
+func (o *GroupSourceConnection) GetGroupOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,12 +93,12 @@ func (o *GroupKerberosSourceConnection) GetGroupOk() (*string, bool) {
 }
 
 // SetGroup sets field value
-func (o *GroupKerberosSourceConnection) SetGroup(v string) {
+func (o *GroupSourceConnection) SetGroup(v string) {
 	o.Group = v
 }
 
 // GetSource returns the Source field value
-func (o *GroupKerberosSourceConnection) GetSource() string {
+func (o *GroupSourceConnection) GetSource() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -109,7 +109,7 @@ func (o *GroupKerberosSourceConnection) GetSource() string {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *GroupKerberosSourceConnection) GetSourceOk() (*string, bool) {
+func (o *GroupSourceConnection) GetSourceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -117,12 +117,12 @@ func (o *GroupKerberosSourceConnection) GetSourceOk() (*string, bool) {
 }
 
 // SetSource sets field value
-func (o *GroupKerberosSourceConnection) SetSource(v string) {
+func (o *GroupSourceConnection) SetSource(v string) {
 	o.Source = v
 }
 
 // GetSourceObj returns the SourceObj field value
-func (o *GroupKerberosSourceConnection) GetSourceObj() Source {
+func (o *GroupSourceConnection) GetSourceObj() Source {
 	if o == nil {
 		var ret Source
 		return ret
@@ -133,7 +133,7 @@ func (o *GroupKerberosSourceConnection) GetSourceObj() Source {
 
 // GetSourceObjOk returns a tuple with the SourceObj field value
 // and a boolean to check if the value has been set.
-func (o *GroupKerberosSourceConnection) GetSourceObjOk() (*Source, bool) {
+func (o *GroupSourceConnection) GetSourceObjOk() (*Source, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -141,12 +141,12 @@ func (o *GroupKerberosSourceConnection) GetSourceObjOk() (*Source, bool) {
 }
 
 // SetSourceObj sets field value
-func (o *GroupKerberosSourceConnection) SetSourceObj(v Source) {
+func (o *GroupSourceConnection) SetSourceObj(v Source) {
 	o.SourceObj = v
 }
 
 // GetIdentifier returns the Identifier field value
-func (o *GroupKerberosSourceConnection) GetIdentifier() string {
+func (o *GroupSourceConnection) GetIdentifier() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -157,7 +157,7 @@ func (o *GroupKerberosSourceConnection) GetIdentifier() string {
 
 // GetIdentifierOk returns a tuple with the Identifier field value
 // and a boolean to check if the value has been set.
-func (o *GroupKerberosSourceConnection) GetIdentifierOk() (*string, bool) {
+func (o *GroupSourceConnection) GetIdentifierOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -165,12 +165,12 @@ func (o *GroupKerberosSourceConnection) GetIdentifierOk() (*string, bool) {
 }
 
 // SetIdentifier sets field value
-func (o *GroupKerberosSourceConnection) SetIdentifier(v string) {
+func (o *GroupSourceConnection) SetIdentifier(v string) {
 	o.Identifier = v
 }
 
 // GetCreated returns the Created field value
-func (o *GroupKerberosSourceConnection) GetCreated() time.Time {
+func (o *GroupSourceConnection) GetCreated() time.Time {
 	if o == nil {
 		var ret time.Time
 		return ret
@@ -181,7 +181,7 @@ func (o *GroupKerberosSourceConnection) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *GroupKerberosSourceConnection) GetCreatedOk() (*time.Time, bool) {
+func (o *GroupSourceConnection) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -189,11 +189,11 @@ func (o *GroupKerberosSourceConnection) GetCreatedOk() (*time.Time, bool) {
 }
 
 // SetCreated sets field value
-func (o *GroupKerberosSourceConnection) SetCreated(v time.Time) {
+func (o *GroupSourceConnection) SetCreated(v time.Time) {
 	o.Created = v
 }
 
-func (o GroupKerberosSourceConnection) MarshalJSON() ([]byte, error) {
+func (o GroupSourceConnection) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["pk"] = o.Pk
@@ -216,38 +216,38 @@ func (o GroupKerberosSourceConnection) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableGroupKerberosSourceConnection struct {
-	value *GroupKerberosSourceConnection
+type NullableGroupSourceConnection struct {
+	value *GroupSourceConnection
 	isSet bool
 }
 
-func (v NullableGroupKerberosSourceConnection) Get() *GroupKerberosSourceConnection {
+func (v NullableGroupSourceConnection) Get() *GroupSourceConnection {
 	return v.value
 }
 
-func (v *NullableGroupKerberosSourceConnection) Set(val *GroupKerberosSourceConnection) {
+func (v *NullableGroupSourceConnection) Set(val *GroupSourceConnection) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGroupKerberosSourceConnection) IsSet() bool {
+func (v NullableGroupSourceConnection) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGroupKerberosSourceConnection) Unset() {
+func (v *NullableGroupSourceConnection) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGroupKerberosSourceConnection(val *GroupKerberosSourceConnection) *NullableGroupKerberosSourceConnection {
-	return &NullableGroupKerberosSourceConnection{value: val, isSet: true}
+func NewNullableGroupSourceConnection(val *GroupSourceConnection) *NullableGroupSourceConnection {
+	return &NullableGroupSourceConnection{value: val, isSet: true}
 }
 
-func (v NullableGroupKerberosSourceConnection) MarshalJSON() ([]byte, error) {
+func (v NullableGroupSourceConnection) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGroupKerberosSourceConnection) UnmarshalJSON(src []byte) error {
+func (v *NullableGroupSourceConnection) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -1060,6 +1060,935 @@ func (a *SourcesApiService) SourcesAllUserSettingsListExecute(r ApiSourcesAllUse
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiSourcesGroupConnectionsAllDestroyRequest struct {
+	ctx        context.Context
+	ApiService *SourcesApiService
+	id         int32
+}
+
+func (r ApiSourcesGroupConnectionsAllDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.SourcesGroupConnectionsAllDestroyExecute(r)
+}
+
+/*
+SourcesGroupConnectionsAllDestroy Method for SourcesGroupConnectionsAllDestroy
+
+Group-source connection Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this group source connection.
+	@return ApiSourcesGroupConnectionsAllDestroyRequest
+*/
+func (a *SourcesApiService) SourcesGroupConnectionsAllDestroy(ctx context.Context, id int32) ApiSourcesGroupConnectionsAllDestroyRequest {
+	return ApiSourcesGroupConnectionsAllDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+func (a *SourcesApiService) SourcesGroupConnectionsAllDestroyExecute(r ApiSourcesGroupConnectionsAllDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsAllDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/group_connections/all/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSourcesGroupConnectionsAllListRequest struct {
+	ctx        context.Context
+	ApiService *SourcesApiService
+	group      *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
+	sourceSlug *string
+}
+
+func (r ApiSourcesGroupConnectionsAllListRequest) Group(group string) ApiSourcesGroupConnectionsAllListRequest {
+	r.group = &group
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiSourcesGroupConnectionsAllListRequest) Ordering(ordering string) ApiSourcesGroupConnectionsAllListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiSourcesGroupConnectionsAllListRequest) Page(page int32) ApiSourcesGroupConnectionsAllListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiSourcesGroupConnectionsAllListRequest) PageSize(pageSize int32) ApiSourcesGroupConnectionsAllListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// A search term.
+func (r ApiSourcesGroupConnectionsAllListRequest) Search(search string) ApiSourcesGroupConnectionsAllListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiSourcesGroupConnectionsAllListRequest) SourceSlug(sourceSlug string) ApiSourcesGroupConnectionsAllListRequest {
+	r.sourceSlug = &sourceSlug
+	return r
+}
+
+func (r ApiSourcesGroupConnectionsAllListRequest) Execute() (*PaginatedGroupSourceConnectionList, *http.Response, error) {
+	return r.ApiService.SourcesGroupConnectionsAllListExecute(r)
+}
+
+/*
+SourcesGroupConnectionsAllList Method for SourcesGroupConnectionsAllList
+
+Group-source connection Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesGroupConnectionsAllListRequest
+*/
+func (a *SourcesApiService) SourcesGroupConnectionsAllList(ctx context.Context) ApiSourcesGroupConnectionsAllListRequest {
+	return ApiSourcesGroupConnectionsAllListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedGroupSourceConnectionList
+func (a *SourcesApiService) SourcesGroupConnectionsAllListExecute(r ApiSourcesGroupConnectionsAllListRequest) (*PaginatedGroupSourceConnectionList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedGroupSourceConnectionList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsAllList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/group_connections/all/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.group != nil {
+		localVarQueryParams.Add("group", parameterToString(*r.group, ""))
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	if r.sourceSlug != nil {
+		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSourcesGroupConnectionsAllPartialUpdateRequest struct {
+	ctx                                 context.Context
+	ApiService                          *SourcesApiService
+	id                                  int32
+	patchedGroupSourceConnectionRequest *PatchedGroupSourceConnectionRequest
+}
+
+func (r ApiSourcesGroupConnectionsAllPartialUpdateRequest) PatchedGroupSourceConnectionRequest(patchedGroupSourceConnectionRequest PatchedGroupSourceConnectionRequest) ApiSourcesGroupConnectionsAllPartialUpdateRequest {
+	r.patchedGroupSourceConnectionRequest = &patchedGroupSourceConnectionRequest
+	return r
+}
+
+func (r ApiSourcesGroupConnectionsAllPartialUpdateRequest) Execute() (*GroupSourceConnection, *http.Response, error) {
+	return r.ApiService.SourcesGroupConnectionsAllPartialUpdateExecute(r)
+}
+
+/*
+SourcesGroupConnectionsAllPartialUpdate Method for SourcesGroupConnectionsAllPartialUpdate
+
+Group-source connection Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this group source connection.
+	@return ApiSourcesGroupConnectionsAllPartialUpdateRequest
+*/
+func (a *SourcesApiService) SourcesGroupConnectionsAllPartialUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsAllPartialUpdateRequest {
+	return ApiSourcesGroupConnectionsAllPartialUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GroupSourceConnection
+func (a *SourcesApiService) SourcesGroupConnectionsAllPartialUpdateExecute(r ApiSourcesGroupConnectionsAllPartialUpdateRequest) (*GroupSourceConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GroupSourceConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsAllPartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/group_connections/all/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedGroupSourceConnectionRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSourcesGroupConnectionsAllRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *SourcesApiService
+	id         int32
+}
+
+func (r ApiSourcesGroupConnectionsAllRetrieveRequest) Execute() (*GroupSourceConnection, *http.Response, error) {
+	return r.ApiService.SourcesGroupConnectionsAllRetrieveExecute(r)
+}
+
+/*
+SourcesGroupConnectionsAllRetrieve Method for SourcesGroupConnectionsAllRetrieve
+
+Group-source connection Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this group source connection.
+	@return ApiSourcesGroupConnectionsAllRetrieveRequest
+*/
+func (a *SourcesApiService) SourcesGroupConnectionsAllRetrieve(ctx context.Context, id int32) ApiSourcesGroupConnectionsAllRetrieveRequest {
+	return ApiSourcesGroupConnectionsAllRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GroupSourceConnection
+func (a *SourcesApiService) SourcesGroupConnectionsAllRetrieveExecute(r ApiSourcesGroupConnectionsAllRetrieveRequest) (*GroupSourceConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GroupSourceConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsAllRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/group_connections/all/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSourcesGroupConnectionsAllUpdateRequest struct {
+	ctx                          context.Context
+	ApiService                   *SourcesApiService
+	id                           int32
+	groupSourceConnectionRequest *GroupSourceConnectionRequest
+}
+
+func (r ApiSourcesGroupConnectionsAllUpdateRequest) GroupSourceConnectionRequest(groupSourceConnectionRequest GroupSourceConnectionRequest) ApiSourcesGroupConnectionsAllUpdateRequest {
+	r.groupSourceConnectionRequest = &groupSourceConnectionRequest
+	return r
+}
+
+func (r ApiSourcesGroupConnectionsAllUpdateRequest) Execute() (*GroupSourceConnection, *http.Response, error) {
+	return r.ApiService.SourcesGroupConnectionsAllUpdateExecute(r)
+}
+
+/*
+SourcesGroupConnectionsAllUpdate Method for SourcesGroupConnectionsAllUpdate
+
+Group-source connection Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this group source connection.
+	@return ApiSourcesGroupConnectionsAllUpdateRequest
+*/
+func (a *SourcesApiService) SourcesGroupConnectionsAllUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsAllUpdateRequest {
+	return ApiSourcesGroupConnectionsAllUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GroupSourceConnection
+func (a *SourcesApiService) SourcesGroupConnectionsAllUpdateExecute(r ApiSourcesGroupConnectionsAllUpdateRequest) (*GroupSourceConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GroupSourceConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsAllUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/group_connections/all/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.groupSourceConnectionRequest == nil {
+		return localVarReturnValue, nil, reportError("groupSourceConnectionRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.groupSourceConnectionRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSourcesGroupConnectionsAllUsedByListRequest struct {
+	ctx        context.Context
+	ApiService *SourcesApiService
+	id         int32
+}
+
+func (r ApiSourcesGroupConnectionsAllUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.SourcesGroupConnectionsAllUsedByListExecute(r)
+}
+
+/*
+SourcesGroupConnectionsAllUsedByList Method for SourcesGroupConnectionsAllUsedByList
+
+Get a list of all objects that use this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this group source connection.
+	@return ApiSourcesGroupConnectionsAllUsedByListRequest
+*/
+func (a *SourcesApiService) SourcesGroupConnectionsAllUsedByList(ctx context.Context, id int32) ApiSourcesGroupConnectionsAllUsedByListRequest {
+	return ApiSourcesGroupConnectionsAllUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []UsedBy
+func (a *SourcesApiService) SourcesGroupConnectionsAllUsedByListExecute(r ApiSourcesGroupConnectionsAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsAllUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/group_connections/all/{id}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSourcesGroupConnectionsKerberosCreateRequest struct {
+	ctx                                  context.Context
+	ApiService                           *SourcesApiService
+	groupKerberosSourceConnectionRequest *GroupKerberosSourceConnectionRequest
+}
+
+func (r ApiSourcesGroupConnectionsKerberosCreateRequest) GroupKerberosSourceConnectionRequest(groupKerberosSourceConnectionRequest GroupKerberosSourceConnectionRequest) ApiSourcesGroupConnectionsKerberosCreateRequest {
+	r.groupKerberosSourceConnectionRequest = &groupKerberosSourceConnectionRequest
+	return r
+}
+
+func (r ApiSourcesGroupConnectionsKerberosCreateRequest) Execute() (*GroupKerberosSourceConnection, *http.Response, error) {
+	return r.ApiService.SourcesGroupConnectionsKerberosCreateExecute(r)
+}
+
+/*
+SourcesGroupConnectionsKerberosCreate Method for SourcesGroupConnectionsKerberosCreate
+
+Group-source connection Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesGroupConnectionsKerberosCreateRequest
+*/
+func (a *SourcesApiService) SourcesGroupConnectionsKerberosCreate(ctx context.Context) ApiSourcesGroupConnectionsKerberosCreateRequest {
+	return ApiSourcesGroupConnectionsKerberosCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GroupKerberosSourceConnection
+func (a *SourcesApiService) SourcesGroupConnectionsKerberosCreateExecute(r ApiSourcesGroupConnectionsKerberosCreateRequest) (*GroupKerberosSourceConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GroupKerberosSourceConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsKerberosCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/group_connections/kerberos/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.groupKerberosSourceConnectionRequest == nil {
+		return localVarReturnValue, nil, reportError("groupKerberosSourceConnectionRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.groupKerberosSourceConnectionRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiSourcesGroupConnectionsKerberosDestroyRequest struct {
 	ctx        context.Context
 	ApiService *SourcesApiService
@@ -3661,6 +4590,136 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexUsedByListExecute(r ApiSo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSourcesGroupConnectionsSamlCreateRequest struct {
+	ctx                              context.Context
+	ApiService                       *SourcesApiService
+	groupSAMLSourceConnectionRequest *GroupSAMLSourceConnectionRequest
+}
+
+func (r ApiSourcesGroupConnectionsSamlCreateRequest) GroupSAMLSourceConnectionRequest(groupSAMLSourceConnectionRequest GroupSAMLSourceConnectionRequest) ApiSourcesGroupConnectionsSamlCreateRequest {
+	r.groupSAMLSourceConnectionRequest = &groupSAMLSourceConnectionRequest
+	return r
+}
+
+func (r ApiSourcesGroupConnectionsSamlCreateRequest) Execute() (*GroupSAMLSourceConnection, *http.Response, error) {
+	return r.ApiService.SourcesGroupConnectionsSamlCreateExecute(r)
+}
+
+/*
+SourcesGroupConnectionsSamlCreate Method for SourcesGroupConnectionsSamlCreate
+
+Group-source connection Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSourcesGroupConnectionsSamlCreateRequest
+*/
+func (a *SourcesApiService) SourcesGroupConnectionsSamlCreate(ctx context.Context) ApiSourcesGroupConnectionsSamlCreateRequest {
+	return ApiSourcesGroupConnectionsSamlCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GroupSAMLSourceConnection
+func (a *SourcesApiService) SourcesGroupConnectionsSamlCreateExecute(r ApiSourcesGroupConnectionsSamlCreateRequest) (*GroupSAMLSourceConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GroupSAMLSourceConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsSamlCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/group_connections/saml/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.groupSAMLSourceConnectionRequest == nil {
+		return localVarReturnValue, nil, reportError("groupSAMLSourceConnectionRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.groupSAMLSourceConnectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -14332,7 +15391,7 @@ func (r ApiSourcesUserConnectionsKerberosCreateRequest) Execute() (*UserKerberos
 /*
 SourcesUserConnectionsKerberosCreate Method for SourcesUserConnectionsKerberosCreate
 
-Source Viewset
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsKerberosCreateRequest
@@ -14457,7 +15516,7 @@ func (r ApiSourcesUserConnectionsKerberosDestroyRequest) Execute() (*http.Respon
 /*
 SourcesUserConnectionsKerberosDestroy Method for SourcesUserConnectionsKerberosDestroy
 
-Source Viewset
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User Kerberos Source Connection.
@@ -14563,6 +15622,7 @@ type ApiSourcesUserConnectionsKerberosListRequest struct {
 	pageSize   *int32
 	search     *string
 	sourceSlug *string
+	user       *int32
 }
 
 // Which field to use when ordering the results.
@@ -14594,6 +15654,11 @@ func (r ApiSourcesUserConnectionsKerberosListRequest) SourceSlug(sourceSlug stri
 	return r
 }
 
+func (r ApiSourcesUserConnectionsKerberosListRequest) User(user int32) ApiSourcesUserConnectionsKerberosListRequest {
+	r.user = &user
+	return r
+}
+
 func (r ApiSourcesUserConnectionsKerberosListRequest) Execute() (*PaginatedUserKerberosSourceConnectionList, *http.Response, error) {
 	return r.ApiService.SourcesUserConnectionsKerberosListExecute(r)
 }
@@ -14601,7 +15666,7 @@ func (r ApiSourcesUserConnectionsKerberosListRequest) Execute() (*PaginatedUserK
 /*
 SourcesUserConnectionsKerberosList Method for SourcesUserConnectionsKerberosList
 
-Source Viewset
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsKerberosListRequest
@@ -14649,6 +15714,9 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosListExecute(r ApiSourc
 	}
 	if r.sourceSlug != nil {
 		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+	}
+	if r.user != nil {
+		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -14742,7 +15810,7 @@ func (r ApiSourcesUserConnectionsKerberosPartialUpdateRequest) Execute() (*UserK
 /*
 SourcesUserConnectionsKerberosPartialUpdate Method for SourcesUserConnectionsKerberosPartialUpdate
 
-Source Viewset
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User Kerberos Source Connection.
@@ -14867,7 +15935,7 @@ func (r ApiSourcesUserConnectionsKerberosRetrieveRequest) Execute() (*UserKerber
 /*
 SourcesUserConnectionsKerberosRetrieve Method for SourcesUserConnectionsKerberosRetrieve
 
-Source Viewset
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User Kerberos Source Connection.
@@ -14996,7 +16064,7 @@ func (r ApiSourcesUserConnectionsKerberosUpdateRequest) Execute() (*UserKerberos
 /*
 SourcesUserConnectionsKerberosUpdate Method for SourcesUserConnectionsKerberosUpdate
 
-Source Viewset
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User Kerberos Source Connection.
@@ -15252,7 +16320,7 @@ func (r ApiSourcesUserConnectionsOauthCreateRequest) Execute() (*UserOAuthSource
 /*
 SourcesUserConnectionsOauthCreate Method for SourcesUserConnectionsOauthCreate
 
-Source Viewset
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsOauthCreateRequest
@@ -15377,7 +16445,7 @@ func (r ApiSourcesUserConnectionsOauthDestroyRequest) Execute() (*http.Response,
 /*
 SourcesUserConnectionsOauthDestroy Method for SourcesUserConnectionsOauthDestroy
 
-Source Viewset
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User OAuth Source Connection.
@@ -15527,7 +16595,7 @@ func (r ApiSourcesUserConnectionsOauthListRequest) Execute() (*PaginatedUserOAut
 /*
 SourcesUserConnectionsOauthList Method for SourcesUserConnectionsOauthList
 
-Source Viewset
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsOauthListRequest
@@ -15671,7 +16739,7 @@ func (r ApiSourcesUserConnectionsOauthPartialUpdateRequest) Execute() (*UserOAut
 /*
 SourcesUserConnectionsOauthPartialUpdate Method for SourcesUserConnectionsOauthPartialUpdate
 
-Source Viewset
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User OAuth Source Connection.
@@ -15796,7 +16864,7 @@ func (r ApiSourcesUserConnectionsOauthRetrieveRequest) Execute() (*UserOAuthSour
 /*
 SourcesUserConnectionsOauthRetrieve Method for SourcesUserConnectionsOauthRetrieve
 
-Source Viewset
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User OAuth Source Connection.
@@ -15925,7 +16993,7 @@ func (r ApiSourcesUserConnectionsOauthUpdateRequest) Execute() (*UserOAuthSource
 /*
 SourcesUserConnectionsOauthUpdate Method for SourcesUserConnectionsOauthUpdate
 
-Source Viewset
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User OAuth Source Connection.
@@ -16181,7 +17249,7 @@ func (r ApiSourcesUserConnectionsPlexCreateRequest) Execute() (*UserPlexSourceCo
 /*
 SourcesUserConnectionsPlexCreate Method for SourcesUserConnectionsPlexCreate
 
-Plex Source connection Serializer
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsPlexCreateRequest
@@ -16306,7 +17374,7 @@ func (r ApiSourcesUserConnectionsPlexDestroyRequest) Execute() (*http.Response, 
 /*
 SourcesUserConnectionsPlexDestroy Method for SourcesUserConnectionsPlexDestroy
 
-Plex Source connection Serializer
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User Plex Source Connection.
@@ -16456,7 +17524,7 @@ func (r ApiSourcesUserConnectionsPlexListRequest) Execute() (*PaginatedUserPlexS
 /*
 SourcesUserConnectionsPlexList Method for SourcesUserConnectionsPlexList
 
-Plex Source connection Serializer
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsPlexListRequest
@@ -16600,7 +17668,7 @@ func (r ApiSourcesUserConnectionsPlexPartialUpdateRequest) Execute() (*UserPlexS
 /*
 SourcesUserConnectionsPlexPartialUpdate Method for SourcesUserConnectionsPlexPartialUpdate
 
-Plex Source connection Serializer
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User Plex Source Connection.
@@ -16725,7 +17793,7 @@ func (r ApiSourcesUserConnectionsPlexRetrieveRequest) Execute() (*UserPlexSource
 /*
 SourcesUserConnectionsPlexRetrieve Method for SourcesUserConnectionsPlexRetrieve
 
-Plex Source connection Serializer
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User Plex Source Connection.
@@ -16854,7 +17922,7 @@ func (r ApiSourcesUserConnectionsPlexUpdateRequest) Execute() (*UserPlexSourceCo
 /*
 SourcesUserConnectionsPlexUpdate Method for SourcesUserConnectionsPlexUpdate
 
-Plex Source connection Serializer
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User Plex Source Connection.
@@ -17110,7 +18178,7 @@ func (r ApiSourcesUserConnectionsSamlCreateRequest) Execute() (*UserSAMLSourceCo
 /*
 SourcesUserConnectionsSamlCreate Method for SourcesUserConnectionsSamlCreate
 
-Source Viewset
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsSamlCreateRequest
@@ -17235,7 +18303,7 @@ func (r ApiSourcesUserConnectionsSamlDestroyRequest) Execute() (*http.Response, 
 /*
 SourcesUserConnectionsSamlDestroy Method for SourcesUserConnectionsSamlDestroy
 
-Source Viewset
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User SAML Source Connection.
@@ -17385,7 +18453,7 @@ func (r ApiSourcesUserConnectionsSamlListRequest) Execute() (*PaginatedUserSAMLS
 /*
 SourcesUserConnectionsSamlList Method for SourcesUserConnectionsSamlList
 
-Source Viewset
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsSamlListRequest
@@ -17529,7 +18597,7 @@ func (r ApiSourcesUserConnectionsSamlPartialUpdateRequest) Execute() (*UserSAMLS
 /*
 SourcesUserConnectionsSamlPartialUpdate Method for SourcesUserConnectionsSamlPartialUpdate
 
-Source Viewset
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User SAML Source Connection.
@@ -17654,7 +18722,7 @@ func (r ApiSourcesUserConnectionsSamlRetrieveRequest) Execute() (*UserSAMLSource
 /*
 SourcesUserConnectionsSamlRetrieve Method for SourcesUserConnectionsSamlRetrieve
 
-Source Viewset
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User SAML Source Connection.
@@ -17783,7 +18851,7 @@ func (r ApiSourcesUserConnectionsSamlUpdateRequest) Execute() (*UserSAMLSourceCo
 /*
 SourcesUserConnectionsSamlUpdate Method for SourcesUserConnectionsSamlUpdate
 
-Source Viewset
+User-source connection Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User SAML Source Connection.

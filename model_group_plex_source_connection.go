@@ -16,7 +16,7 @@ import (
 	"time"
 )
 
-// GroupPlexSourceConnection Plex Group-Source connection Serializer
+// GroupPlexSourceConnection Group Source Connection
 type GroupPlexSourceConnection struct {
 	Pk         int32     `json:"pk"`
 	Group      string    `json:"group"`

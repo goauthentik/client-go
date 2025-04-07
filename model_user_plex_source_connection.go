@@ -16,7 +16,7 @@ import (
 	"time"
 )
 
-// UserPlexSourceConnection Plex Source connection Serializer
+// UserPlexSourceConnection User source connection
 type UserPlexSourceConnection struct {
 	Pk         int32     `json:"pk"`
 	User       int32     `json:"user"`

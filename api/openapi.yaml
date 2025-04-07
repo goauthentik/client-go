@@ -28772,6 +28772,267 @@ paths:
       - authentik: []
       tags:
       - sources
+  /sources/group_connections/all/:
+    get:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_all_list
+      parameters:
+      - explode: true
+        in: query
+        name: group
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: source__slug
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedGroupSourceConnectionList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/group_connections/all/{id}/:
+    delete:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_all_destroy
+      parameters:
+      - description: A unique integer value identifying this group source connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    get:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_all_retrieve
+      parameters:
+      - description: A unique integer value identifying this group source connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    patch:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_all_partial_update
+      parameters:
+      - description: A unique integer value identifying this group source connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedGroupSourceConnectionRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    put:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_all_update
+      parameters:
+      - description: A unique integer value identifying this group source connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupSourceConnectionRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/group_connections/all/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: sources_group_connections_all_used_by_list
+      parameters:
+      - description: A unique integer value identifying this group source connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
   /sources/group_connections/kerberos/:
     get:
       description: Group-source connection Viewset
@@ -28830,6 +29091,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedGroupKerberosSourceConnectionList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    post:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_kerberos_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupKerberosSourceConnectionRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupKerberosSourceConnection'
           description: ""
         "400":
           content:
@@ -29682,6 +29975,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedGroupSAMLSourceConnectionList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    post:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_saml_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupSAMLSourceConnectionRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupSAMLSourceConnection'
           description: ""
         "400":
           content:
@@ -33381,7 +33706,7 @@ paths:
       - sources
   /sources/user_connections/kerberos/:
     get:
-      description: Source Viewset
+      description: User-source connection Viewset
       operationId: sources_user_connections_kerberos_list
       parameters:
       - description: Which field to use when ordering the results.
@@ -33423,6 +33748,13 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: user
+        required: false
+        schema:
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -33447,7 +33779,7 @@ paths:
       tags:
       - sources
     post:
-      description: Source Viewset
+      description: User-source connection Viewset
       operationId: sources_user_connections_kerberos_create
       requestBody:
         content:
@@ -33480,7 +33812,7 @@ paths:
       - sources
   /sources/user_connections/kerberos/{id}/:
     delete:
-      description: Source Viewset
+      description: User-source connection Viewset
       operationId: sources_user_connections_kerberos_destroy
       parameters:
       - description: A unique integer value identifying this User Kerberos Source
@@ -33512,7 +33844,7 @@ paths:
       tags:
       - sources
     get:
-      description: Source Viewset
+      description: User-source connection Viewset
       operationId: sources_user_connections_kerberos_retrieve
       parameters:
       - description: A unique integer value identifying this User Kerberos Source
@@ -33548,7 +33880,7 @@ paths:
       tags:
       - sources
     patch:
-      description: Source Viewset
+      description: User-source connection Viewset
       operationId: sources_user_connections_kerberos_partial_update
       parameters:
       - description: A unique integer value identifying this User Kerberos Source
@@ -33589,7 +33921,7 @@ paths:
       tags:
       - sources
     put:
-      description: Source Viewset
+      description: User-source connection Viewset
       operationId: sources_user_connections_kerberos_update
       parameters:
       - description: A unique integer value identifying this User Kerberos Source
@@ -33671,7 +34003,7 @@ paths:
       - sources
   /sources/user_connections/oauth/:
     get:
-      description: Source Viewset
+      description: User-source connection Viewset
       operationId: sources_user_connections_oauth_list
       parameters:
       - description: Which field to use when ordering the results.
@@ -33744,7 +34076,7 @@ paths:
       tags:
       - sources
     post:
-      description: Source Viewset
+      description: User-source connection Viewset
       operationId: sources_user_connections_oauth_create
       requestBody:
         content:
@@ -33777,7 +34109,7 @@ paths:
       - sources
   /sources/user_connections/oauth/{id}/:
     delete:
-      description: Source Viewset
+      description: User-source connection Viewset
       operationId: sources_user_connections_oauth_destroy
       parameters:
       - description: A unique integer value identifying this User OAuth Source Connection.
@@ -33808,7 +34140,7 @@ paths:
       tags:
       - sources
     get:
-      description: Source Viewset
+      description: User-source connection Viewset
       operationId: sources_user_connections_oauth_retrieve
       parameters:
       - description: A unique integer value identifying this User OAuth Source Connection.
@@ -33843,7 +34175,7 @@ paths:
       tags:
       - sources
     patch:
-      description: Source Viewset
+      description: User-source connection Viewset
       operationId: sources_user_connections_oauth_partial_update
       parameters:
       - description: A unique integer value identifying this User OAuth Source Connection.
@@ -33883,7 +34215,7 @@ paths:
       tags:
       - sources
     put:
-      description: Source Viewset
+      description: User-source connection Viewset
       operationId: sources_user_connections_oauth_update
       parameters:
       - description: A unique integer value identifying this User OAuth Source Connection.
@@ -33963,7 +34295,7 @@ paths:
       - sources
   /sources/user_connections/plex/:
     get:
-      description: Plex Source connection Serializer
+      description: User-source connection Viewset
       operationId: sources_user_connections_plex_list
       parameters:
       - description: Which field to use when ordering the results.
@@ -34036,7 +34368,7 @@ paths:
       tags:
       - sources
     post:
-      description: Plex Source connection Serializer
+      description: User-source connection Viewset
       operationId: sources_user_connections_plex_create
       requestBody:
         content:
@@ -34069,7 +34401,7 @@ paths:
       - sources
   /sources/user_connections/plex/{id}/:
     delete:
-      description: Plex Source connection Serializer
+      description: User-source connection Viewset
       operationId: sources_user_connections_plex_destroy
       parameters:
       - description: A unique integer value identifying this User Plex Source Connection.
@@ -34100,7 +34432,7 @@ paths:
       tags:
       - sources
     get:
-      description: Plex Source connection Serializer
+      description: User-source connection Viewset
       operationId: sources_user_connections_plex_retrieve
       parameters:
       - description: A unique integer value identifying this User Plex Source Connection.
@@ -34135,7 +34467,7 @@ paths:
       tags:
       - sources
     patch:
-      description: Plex Source connection Serializer
+      description: User-source connection Viewset
       operationId: sources_user_connections_plex_partial_update
       parameters:
       - description: A unique integer value identifying this User Plex Source Connection.
@@ -34175,7 +34507,7 @@ paths:
       tags:
       - sources
     put:
-      description: Plex Source connection Serializer
+      description: User-source connection Viewset
       operationId: sources_user_connections_plex_update
       parameters:
       - description: A unique integer value identifying this User Plex Source Connection.
@@ -34255,7 +34587,7 @@ paths:
       - sources
   /sources/user_connections/saml/:
     get:
-      description: Source Viewset
+      description: User-source connection Viewset
       operationId: sources_user_connections_saml_list
       parameters:
       - description: Which field to use when ordering the results.
@@ -34328,7 +34660,7 @@ paths:
       tags:
       - sources
     post:
-      description: Source Viewset
+      description: User-source connection Viewset
       operationId: sources_user_connections_saml_create
       requestBody:
         content:
@@ -34361,7 +34693,7 @@ paths:
       - sources
   /sources/user_connections/saml/{id}/:
     delete:
-      description: Source Viewset
+      description: User-source connection Viewset
       operationId: sources_user_connections_saml_destroy
       parameters:
       - description: A unique integer value identifying this User SAML Source Connection.
@@ -34392,7 +34724,7 @@ paths:
       tags:
       - sources
     get:
-      description: Source Viewset
+      description: User-source connection Viewset
       operationId: sources_user_connections_saml_retrieve
       parameters:
       - description: A unique integer value identifying this User SAML Source Connection.
@@ -34427,7 +34759,7 @@ paths:
       tags:
       - sources
     patch:
-      description: Source Viewset
+      description: User-source connection Viewset
       operationId: sources_user_connections_saml_partial_update
       parameters:
       - description: A unique integer value identifying this User SAML Source Connection.
@@ -34467,7 +34799,7 @@ paths:
       tags:
       - sources
     put:
-      description: Source Viewset
+      description: User-source connection Viewset
       operationId: sources_user_connections_saml_update
       parameters:
       - description: A unique integer value identifying this User SAML Source Connection.
@@ -50430,7 +50762,7 @@ components:
       - users_obj
       type: object
     GroupKerberosSourceConnection:
-      description: OAuth Group-Source connection Serializer
+      description: Group Source Connection
       example:
         identifier: identifier
         source_obj: ""
@@ -50468,7 +50800,7 @@ components:
       - source_obj
       type: object
     GroupKerberosSourceConnectionRequest:
-      description: OAuth Group-Source connection Serializer
+      description: Group Source Connection
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -50582,7 +50914,7 @@ components:
       - username
       type: object
     GroupOAuthSourceConnection:
-      description: OAuth Group-Source connection Serializer
+      description: Group Source Connection
       example:
         identifier: identifier
         source_obj: ""
@@ -50620,7 +50952,7 @@ components:
       - source_obj
       type: object
     GroupOAuthSourceConnectionRequest:
-      description: OAuth Group-Source connection Serializer
+      description: Group Source Connection
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -50641,7 +50973,7 @@ components:
       - source
       type: object
     GroupPlexSourceConnection:
-      description: Plex Group-Source connection Serializer
+      description: Group Source Connection
       example:
         identifier: identifier
         source_obj: ""
@@ -50679,7 +51011,7 @@ components:
       - source_obj
       type: object
     GroupPlexSourceConnectionRequest:
-      description: Plex Group-Source connection Serializer
+      description: Group Source Connection
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -50740,7 +51072,7 @@ components:
       - name
       type: object
     GroupSAMLSourceConnection:
-      description: OAuth Group-Source connection Serializer
+      description: Group Source Connection
       example:
         identifier: identifier
         source_obj: ""
@@ -50778,7 +51110,66 @@ components:
       - source_obj
       type: object
     GroupSAMLSourceConnectionRequest:
-      description: OAuth Group-Source connection Serializer
+      description: Group Source Connection
+      example:
+        identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        group:
+          format: uuid
+          type: string
+        source:
+          format: uuid
+          type: string
+        identifier:
+          minLength: 1
+          type: string
+      required:
+      - group
+      - identifier
+      - source
+      type: object
+    GroupSourceConnection:
+      description: Group Source Connection
+      example:
+        identifier: identifier
+        source_obj: ""
+        created: 2000-01-23T04:56:07.000+00:00
+        pk: 0
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          readOnly: true
+          title: ID
+          type: integer
+        group:
+          format: uuid
+          type: string
+        source:
+          format: uuid
+          type: string
+        source_obj:
+          allOf:
+          - $ref: '#/components/schemas/Source'
+          readOnly: true
+        identifier:
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - created
+      - group
+      - identifier
+      - pk
+      - source
+      - source_obj
+      type: object
+    GroupSourceConnectionRequest:
+      description: Group Source Connection
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -57681,6 +58072,40 @@ components:
         results:
           items:
             $ref: '#/components/schemas/GroupSAMLSourceConnection'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedGroupSourceConnectionList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - identifier: identifier
+          source_obj: ""
+          created: 2000-01-23T04:56:07.000+00:00
+          pk: 0
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - identifier: identifier
+          source_obj: ""
+          created: 2000-01-23T04:56:07.000+00:00
+          pk: 0
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/GroupSourceConnection'
           type: array
       required:
       - pagination
@@ -64871,7 +65296,7 @@ components:
           type: boolean
       type: object
     PatchedGroupKerberosSourceConnectionRequest:
-      description: OAuth Group-Source connection Serializer
+      description: Group Source Connection
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -64888,7 +65313,7 @@ components:
           type: string
       type: object
     PatchedGroupOAuthSourceConnectionRequest:
-      description: OAuth Group-Source connection Serializer
+      description: Group Source Connection
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -64905,7 +65330,7 @@ components:
           type: string
       type: object
     PatchedGroupPlexSourceConnectionRequest:
-      description: Plex Group-Source connection Serializer
+      description: Group Source Connection
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -64960,7 +65385,24 @@ components:
           type: array
       type: object
     PatchedGroupSAMLSourceConnectionRequest:
-      description: OAuth Group-Source connection Serializer
+      description: Group Source Connection
+      example:
+        identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        group:
+          format: uuid
+          type: string
+        source:
+          format: uuid
+          type: string
+        identifier:
+          minLength: 1
+          type: string
+      type: object
+    PatchedGroupSourceConnectionRequest:
+      description: Group Source Connection
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -67653,7 +68095,7 @@ components:
           type: array
       type: object
     PatchedUserKerberosSourceConnectionRequest:
-      description: Kerberos Source Serializer
+      description: User source connection
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -67757,7 +68199,7 @@ components:
           type: array
       type: object
     PatchedUserOAuthSourceConnectionRequest:
-      description: OAuth Source Serializer
+      description: User source connection
       example:
         access_token: access_token
         identifier: identifier
@@ -67779,7 +68221,7 @@ components:
           writeOnly: true
       type: object
     PatchedUserPlexSourceConnectionRequest:
-      description: Plex Source connection Serializer
+      description: User source connection
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -67851,7 +68293,7 @@ components:
           $ref: '#/components/schemas/UserTypeEnum'
       type: object
     PatchedUserSAMLSourceConnectionRequest:
-      description: SAML Source Serializer
+      description: User source connection
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -74822,7 +75264,7 @@ components:
       - name
       type: object
     UserKerberosSourceConnection:
-      description: Kerberos Source Serializer
+      description: User source connection
       example:
         identifier: identifier
         source_obj: ""
@@ -74859,7 +75301,7 @@ components:
       - user
       type: object
     UserKerberosSourceConnectionRequest:
-      description: Kerberos Source Serializer
+      description: User source connection
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -75218,7 +75660,7 @@ components:
       - logins_failed
       type: object
     UserOAuthSourceConnection:
-      description: OAuth Source Serializer
+      description: User source connection
       example:
         identifier: identifier
         source_obj: ""
@@ -75256,7 +75698,7 @@ components:
       - user
       type: object
     UserOAuthSourceConnectionRequest:
-      description: OAuth Source Serializer
+      description: User source connection
       example:
         access_token: access_token
         identifier: identifier
@@ -75342,7 +75784,7 @@ components:
       - paths
       type: object
     UserPlexSourceConnection:
-      description: Plex Source connection Serializer
+      description: User source connection
       example:
         identifier: identifier
         source_obj: ""
@@ -75379,7 +75821,7 @@ components:
       - user
       type: object
     UserPlexSourceConnectionRequest:
-      description: Plex Source connection Serializer
+      description: User source connection
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -75459,7 +75901,7 @@ components:
       - username
       type: object
     UserSAMLSourceConnection:
-      description: SAML Source Serializer
+      description: User source connection
       example:
         identifier: identifier
         source_obj: ""
@@ -75496,7 +75938,7 @@ components:
       - user
       type: object
     UserSAMLSourceConnectionRequest:
-      description: SAML Source Serializer
+      description: User source connection
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91

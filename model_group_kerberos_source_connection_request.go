@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// GroupKerberosSourceConnectionRequest OAuth Group-Source connection Serializer
+// GroupKerberosSourceConnectionRequest Group Source Connection
 type GroupKerberosSourceConnectionRequest struct {
 	Group      string `json:"group"`
 	Source     string `json:"source"`

@@ -16,7 +16,7 @@ import (
 	"time"
 )
 
-// UserOAuthSourceConnection OAuth Source Serializer
+// UserOAuthSourceConnection User source connection
 type UserOAuthSourceConnection struct {
 	Pk         int32     `json:"pk"`
 	User       int32     `json:"user"`

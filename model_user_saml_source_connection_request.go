@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UserSAMLSourceConnectionRequest SAML Source Serializer
+// UserSAMLSourceConnectionRequest User source connection
 type UserSAMLSourceConnectionRequest struct {
 	User       int32  `json:"user"`
 	Source     string `json:"source"`
