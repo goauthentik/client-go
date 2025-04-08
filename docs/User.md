@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Name** | **string** | User&#39;s display name. | 
 **IsActive** | Pointer to **bool** | Designates whether this user should be treated as active. Unselect this instead of deleting accounts. | [optional] 
 **LastLogin** | Pointer to **NullableTime** |  | [optional] 
+**DateJoined** | **time.Time** |  | [readonly] 
 **IsSuperuser** | **bool** |  | [readonly] 
 **Groups** | Pointer to **[]string** |  | [optional] 
 **GroupsObj** | [**[]UserGroup**](UserGroup.md) |  | [readonly] 
@@ -25,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewUser
 
-`func NewUser(pk int32, username string, name string, isSuperuser bool, groupsObj []UserGroup, avatar string, uid string, uuid string, passwordChangeDate time.Time, ) *User`
+`func NewUser(pk int32, username string, name string, dateJoined time.Time, isSuperuser bool, groupsObj []UserGroup, avatar string, uid string, uuid string, passwordChangeDate time.Time, ) *User`
 
 NewUser instantiates a new User object
 This constructor will assign default values to properties that have it defined,
@@ -160,6 +161,26 @@ HasLastLogin returns a boolean if a field has been set.
 `func (o *User) UnsetLastLogin()`
 
 UnsetLastLogin ensures that no value is present for LastLogin, not even an explicit nil
+### GetDateJoined
+
+`func (o *User) GetDateJoined() time.Time`
+
+GetDateJoined returns the DateJoined field if non-nil, zero value otherwise.
+
+### GetDateJoinedOk
+
+`func (o *User) GetDateJoinedOk() (*time.Time, bool)`
+
+GetDateJoinedOk returns a tuple with the DateJoined field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDateJoined
+
+`func (o *User) SetDateJoined(v time.Time)`
+
+SetDateJoined sets DateJoined field to given value.
+
+
 ### GetIsSuperuser
 
 `func (o *User) GetIsSuperuser() bool`

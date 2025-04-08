@@ -25,6 +25,7 @@ type User struct {
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
 	IsActive    *bool        `json:"is_active,omitempty"`
 	LastLogin   NullableTime `json:"last_login,omitempty"`
+	DateJoined  time.Time    `json:"date_joined"`
 	IsSuperuser bool         `json:"is_superuser"`
 	Groups      []string     `json:"groups,omitempty"`
 	GroupsObj   []UserGroup  `json:"groups_obj"`
@@ -43,11 +44,12 @@ type User struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUser(pk int32, username string, name string, isSuperuser bool, groupsObj []UserGroup, avatar string, uid string, uuid string, passwordChangeDate time.Time) *User {
+func NewUser(pk int32, username string, name string, dateJoined time.Time, isSuperuser bool, groupsObj []UserGroup, avatar string, uid string, uuid string, passwordChangeDate time.Time) *User {
 	this := User{}
 	this.Pk = pk
 	this.Username = username
 	this.Name = name
+	this.DateJoined = dateJoined
 	this.IsSuperuser = isSuperuser
 	this.GroupsObj = groupsObj
 	this.Avatar = avatar
@@ -210,6 +212,30 @@ func (o *User) SetLastLoginNil() {
 // UnsetLastLogin ensures that no value is present for LastLogin, not even an explicit nil
 func (o *User) UnsetLastLogin() {
 	o.LastLogin.Unset()
+}
+
+// GetDateJoined returns the DateJoined field value
+func (o *User) GetDateJoined() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.DateJoined
+}
+
+// GetDateJoinedOk returns a tuple with the DateJoined field value
+// and a boolean to check if the value has been set.
+func (o *User) GetDateJoinedOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DateJoined, true
+}
+
+// SetDateJoined sets field value
+func (o *User) SetDateJoined(v time.Time) {
+	o.DateJoined = v
 }
 
 // GetIsSuperuser returns the IsSuperuser field value
@@ -534,6 +560,9 @@ func (o User) MarshalJSON() ([]byte, error) {
 	}
 	if o.LastLogin.IsSet() {
 		toSerialize["last_login"] = o.LastLogin.Get()
+	}
+	if true {
+		toSerialize["date_joined"] = o.DateJoined
 	}
 	if true {
 		toSerialize["is_superuser"] = o.IsSuperuser
