@@ -30683,6 +30683,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: lookup_groups_from_user
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
         name: name
         required: false
         schema:
@@ -52704,6 +52711,7 @@ components:
         bind_cn: bind_cn
         user_path_template: user_path_template
         sync_groups: true
+        lookup_groups_from_user: true
         group_object_filter: group_object_filter
         sni: true
         password_login_update_internal_password: true
@@ -52861,6 +52869,11 @@ components:
           nullable: true
           readOnly: true
           type: object
+        lookup_groups_from_user:
+          description: Lookup group membership based on a user attribute instead of
+            a group attribute. This allows nested group resolution on systems like
+            FreeIPA and Active Directory
+          type: boolean
       required:
       - base_dn
       - component
@@ -52980,6 +52993,7 @@ components:
         bind_cn: bind_cn
         user_path_template: user_path_template
         sync_groups: true
+        lookup_groups_from_user: true
         group_object_filter: group_object_filter
         sni: true
         password_login_update_internal_password: true
@@ -53104,6 +53118,11 @@ components:
           format: uuid
           nullable: true
           type: string
+        lookup_groups_from_user:
+          description: Lookup group membership based on a user attribute instead of
+            a group attribute. This allows nested group resolution on systems like
+            FreeIPA and Active Directory
+          type: boolean
       required:
       - base_dn
       - name
@@ -58725,6 +58744,7 @@ components:
           bind_cn: bind_cn
           user_path_template: user_path_template
           sync_groups: true
+          lookup_groups_from_user: true
           group_object_filter: group_object_filter
           sni: true
           password_login_update_internal_password: true
@@ -58767,6 +58787,7 @@ components:
           bind_cn: bind_cn
           user_path_template: user_path_template
           sync_groups: true
+          lookup_groups_from_user: true
           group_object_filter: group_object_filter
           sni: true
           password_login_update_internal_password: true
@@ -65948,6 +65969,7 @@ components:
         bind_cn: bind_cn
         user_path_template: user_path_template
         sync_groups: true
+        lookup_groups_from_user: true
         group_object_filter: group_object_filter
         sni: true
         password_login_update_internal_password: true
@@ -66072,6 +66094,11 @@ components:
           format: uuid
           nullable: true
           type: string
+        lookup_groups_from_user:
+          description: Lookup group membership based on a user attribute instead of
+            a group attribute. This allows nested group resolution on systems like
+            FreeIPA and Active Directory
+          type: boolean
       type: object
     PatchedLicenseRequest:
       description: License Serializer

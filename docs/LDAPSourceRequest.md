@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **SyncUsersPassword** | Pointer to **bool** | When a user changes their password, sync it back to LDAP. This can only be enabled on a single LDAP source. | [optional] 
 **SyncGroups** | Pointer to **bool** |  | [optional] 
 **SyncParentGroup** | Pointer to **NullableString** |  | [optional] 
+**LookupGroupsFromUser** | Pointer to **bool** | Lookup group membership based on a user attribute instead of a group attribute. This allows nested group resolution on systems like FreeIPA and Active Directory | [optional] 
 
 ## Methods
 
@@ -808,6 +809,31 @@ HasSyncParentGroup returns a boolean if a field has been set.
 `func (o *LDAPSourceRequest) UnsetSyncParentGroup()`
 
 UnsetSyncParentGroup ensures that no value is present for SyncParentGroup, not even an explicit nil
+### GetLookupGroupsFromUser
+
+`func (o *LDAPSourceRequest) GetLookupGroupsFromUser() bool`
+
+GetLookupGroupsFromUser returns the LookupGroupsFromUser field if non-nil, zero value otherwise.
+
+### GetLookupGroupsFromUserOk
+
+`func (o *LDAPSourceRequest) GetLookupGroupsFromUserOk() (*bool, bool)`
+
+GetLookupGroupsFromUserOk returns a tuple with the LookupGroupsFromUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLookupGroupsFromUser
+
+`func (o *LDAPSourceRequest) SetLookupGroupsFromUser(v bool)`
+
+SetLookupGroupsFromUser sets LookupGroupsFromUser field to given value.
+
+### HasLookupGroupsFromUser
+
+`func (o *LDAPSourceRequest) HasLookupGroupsFromUser() bool`
+
+HasLookupGroupsFromUser returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

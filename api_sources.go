@@ -7085,6 +7085,7 @@ type ApiSourcesLdapListRequest struct {
 	groupMembershipField                *string
 	groupObjectFilter                   *string
 	groupPropertyMappings               *[]string
+	lookupGroupsFromUser                *bool
 	name                                *string
 	objectUniquenessField               *string
 	ordering                            *string
@@ -7148,6 +7149,11 @@ func (r ApiSourcesLdapListRequest) GroupObjectFilter(groupObjectFilter string) A
 
 func (r ApiSourcesLdapListRequest) GroupPropertyMappings(groupPropertyMappings []string) ApiSourcesLdapListRequest {
 	r.groupPropertyMappings = &groupPropertyMappings
+	return r
+}
+
+func (r ApiSourcesLdapListRequest) LookupGroupsFromUser(lookupGroupsFromUser bool) ApiSourcesLdapListRequest {
+	r.lookupGroupsFromUser = &lookupGroupsFromUser
 	return r
 }
 
@@ -7325,6 +7331,9 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 		} else {
 			localVarQueryParams.Add("group_property_mappings", parameterToString(t, "multi"))
 		}
+	}
+	if r.lookupGroupsFromUser != nil {
+		localVarQueryParams.Add("lookup_groups_from_user", parameterToString(*r.lookupGroupsFromUser, ""))
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))

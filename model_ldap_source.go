@@ -74,6 +74,8 @@ type LDAPSource struct {
 	SyncParentGroup   NullableString `json:"sync_parent_group,omitempty"`
 	// Get cached source connectivity
 	Connectivity map[string]map[string]string `json:"connectivity"`
+	// Lookup group membership based on a user attribute instead of a group attribute. This allows nested group resolution on systems like FreeIPA and Active Directory
+	LookupGroupsFromUser *bool `json:"lookup_groups_from_user,omitempty"`
 }
 
 // NewLDAPSource instantiates a new LDAPSource object
@@ -1220,6 +1222,38 @@ func (o *LDAPSource) SetConnectivity(v map[string]map[string]string) {
 	o.Connectivity = v
 }
 
+// GetLookupGroupsFromUser returns the LookupGroupsFromUser field value if set, zero value otherwise.
+func (o *LDAPSource) GetLookupGroupsFromUser() bool {
+	if o == nil || o.LookupGroupsFromUser == nil {
+		var ret bool
+		return ret
+	}
+	return *o.LookupGroupsFromUser
+}
+
+// GetLookupGroupsFromUserOk returns a tuple with the LookupGroupsFromUser field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LDAPSource) GetLookupGroupsFromUserOk() (*bool, bool) {
+	if o == nil || o.LookupGroupsFromUser == nil {
+		return nil, false
+	}
+	return o.LookupGroupsFromUser, true
+}
+
+// HasLookupGroupsFromUser returns a boolean if a field has been set.
+func (o *LDAPSource) HasLookupGroupsFromUser() bool {
+	if o != nil && o.LookupGroupsFromUser != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLookupGroupsFromUser gets a reference to the given bool and assigns it to the LookupGroupsFromUser field.
+func (o *LDAPSource) SetLookupGroupsFromUser(v bool) {
+	o.LookupGroupsFromUser = &v
+}
+
 func (o LDAPSource) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -1329,6 +1363,9 @@ func (o LDAPSource) MarshalJSON() ([]byte, error) {
 	}
 	if o.Connectivity != nil {
 		toSerialize["connectivity"] = o.Connectivity
+	}
+	if o.LookupGroupsFromUser != nil {
+		toSerialize["lookup_groups_from_user"] = o.LookupGroupsFromUser
 	}
 	return json.Marshal(toSerialize)
 }

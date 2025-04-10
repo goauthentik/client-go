@@ -3890,7 +3890,7 @@ Name | Type | Description  | Notes
 
 ## SourcesLdapList
 
-> PaginatedLDAPSourceList SourcesLdapList(ctx).AdditionalGroupDn(additionalGroupDn).AdditionalUserDn(additionalUserDn).BaseDn(baseDn).BindCn(bindCn).ClientCertificate(clientCertificate).Enabled(enabled).GroupMembershipField(groupMembershipField).GroupObjectFilter(groupObjectFilter).GroupPropertyMappings(groupPropertyMappings).Name(name).ObjectUniquenessField(objectUniquenessField).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).PbmUuid(pbmUuid).PeerCertificate(peerCertificate).Search(search).ServerUri(serverUri).Slug(slug).Sni(sni).StartTls(startTls).SyncGroups(syncGroups).SyncParentGroup(syncParentGroup).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).UserObjectFilter(userObjectFilter).UserPropertyMappings(userPropertyMappings).Execute()
+> PaginatedLDAPSourceList SourcesLdapList(ctx).AdditionalGroupDn(additionalGroupDn).AdditionalUserDn(additionalUserDn).BaseDn(baseDn).BindCn(bindCn).ClientCertificate(clientCertificate).Enabled(enabled).GroupMembershipField(groupMembershipField).GroupObjectFilter(groupObjectFilter).GroupPropertyMappings(groupPropertyMappings).LookupGroupsFromUser(lookupGroupsFromUser).Name(name).ObjectUniquenessField(objectUniquenessField).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).PbmUuid(pbmUuid).PeerCertificate(peerCertificate).Search(search).ServerUri(serverUri).Slug(slug).Sni(sni).StartTls(startTls).SyncGroups(syncGroups).SyncParentGroup(syncParentGroup).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).UserObjectFilter(userObjectFilter).UserPropertyMappings(userPropertyMappings).Execute()
 
 
 
@@ -3918,6 +3918,7 @@ func main() {
     groupMembershipField := "groupMembershipField_example" // string |  (optional)
     groupObjectFilter := "groupObjectFilter_example" // string |  (optional)
     groupPropertyMappings := []string{"Inner_example"} // []string |  (optional)
+    lookupGroupsFromUser := true // bool |  (optional)
     name := "name_example" // string |  (optional)
     objectUniquenessField := "objectUniquenessField_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
@@ -3940,7 +3941,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesLdapList(context.Background()).AdditionalGroupDn(additionalGroupDn).AdditionalUserDn(additionalUserDn).BaseDn(baseDn).BindCn(bindCn).ClientCertificate(clientCertificate).Enabled(enabled).GroupMembershipField(groupMembershipField).GroupObjectFilter(groupObjectFilter).GroupPropertyMappings(groupPropertyMappings).Name(name).ObjectUniquenessField(objectUniquenessField).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).PbmUuid(pbmUuid).PeerCertificate(peerCertificate).Search(search).ServerUri(serverUri).Slug(slug).Sni(sni).StartTls(startTls).SyncGroups(syncGroups).SyncParentGroup(syncParentGroup).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).UserObjectFilter(userObjectFilter).UserPropertyMappings(userPropertyMappings).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesLdapList(context.Background()).AdditionalGroupDn(additionalGroupDn).AdditionalUserDn(additionalUserDn).BaseDn(baseDn).BindCn(bindCn).ClientCertificate(clientCertificate).Enabled(enabled).GroupMembershipField(groupMembershipField).GroupObjectFilter(groupObjectFilter).GroupPropertyMappings(groupPropertyMappings).LookupGroupsFromUser(lookupGroupsFromUser).Name(name).ObjectUniquenessField(objectUniquenessField).Ordering(ordering).Page(page).PageSize(pageSize).PasswordLoginUpdateInternalPassword(passwordLoginUpdateInternalPassword).PbmUuid(pbmUuid).PeerCertificate(peerCertificate).Search(search).ServerUri(serverUri).Slug(slug).Sni(sni).StartTls(startTls).SyncGroups(syncGroups).SyncParentGroup(syncParentGroup).SyncUsers(syncUsers).SyncUsersPassword(syncUsersPassword).UserObjectFilter(userObjectFilter).UserPropertyMappings(userPropertyMappings).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesLdapList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3970,6 +3971,7 @@ Name | Type | Description  | Notes
  **groupMembershipField** | **string** |  | 
  **groupObjectFilter** | **string** |  | 
  **groupPropertyMappings** | **[]string** |  | 
+ **lookupGroupsFromUser** | **bool** |  | 
  **name** | **string** |  | 
  **objectUniquenessField** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 

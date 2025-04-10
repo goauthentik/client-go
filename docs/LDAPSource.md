@@ -40,6 +40,7 @@ Name | Type | Description | Notes
 **SyncGroups** | Pointer to **bool** |  | [optional] 
 **SyncParentGroup** | Pointer to **NullableString** |  | [optional] 
 **Connectivity** | **map[string]map[string]string** | Get cached source connectivity | [readonly] 
+**LookupGroupsFromUser** | Pointer to **bool** | Lookup group membership based on a user attribute instead of a group attribute. This allows nested group resolution on systems like FreeIPA and Active Directory | [optional] 
 
 ## Methods
 
@@ -970,6 +971,31 @@ SetConnectivity sets Connectivity field to given value.
 `func (o *LDAPSource) UnsetConnectivity()`
 
 UnsetConnectivity ensures that no value is present for Connectivity, not even an explicit nil
+### GetLookupGroupsFromUser
+
+`func (o *LDAPSource) GetLookupGroupsFromUser() bool`
+
+GetLookupGroupsFromUser returns the LookupGroupsFromUser field if non-nil, zero value otherwise.
+
+### GetLookupGroupsFromUserOk
+
+`func (o *LDAPSource) GetLookupGroupsFromUserOk() (*bool, bool)`
+
+GetLookupGroupsFromUserOk returns a tuple with the LookupGroupsFromUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLookupGroupsFromUser
+
+`func (o *LDAPSource) SetLookupGroupsFromUser(v bool)`
+
+SetLookupGroupsFromUser sets LookupGroupsFromUser field to given value.
+
+### HasLookupGroupsFromUser
+
+`func (o *LDAPSource) HasLookupGroupsFromUser() bool`
+
+HasLookupGroupsFromUser returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

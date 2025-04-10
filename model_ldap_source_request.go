@@ -61,6 +61,8 @@ type LDAPSourceRequest struct {
 	SyncUsersPassword *bool          `json:"sync_users_password,omitempty"`
 	SyncGroups        *bool          `json:"sync_groups,omitempty"`
 	SyncParentGroup   NullableString `json:"sync_parent_group,omitempty"`
+	// Lookup group membership based on a user attribute instead of a group attribute. This allows nested group resolution on systems like FreeIPA and Active Directory
+	LookupGroupsFromUser *bool `json:"lookup_groups_from_user,omitempty"`
 }
 
 // NewLDAPSourceRequest instantiates a new LDAPSourceRequest object
@@ -1035,6 +1037,38 @@ func (o *LDAPSourceRequest) UnsetSyncParentGroup() {
 	o.SyncParentGroup.Unset()
 }
 
+// GetLookupGroupsFromUser returns the LookupGroupsFromUser field value if set, zero value otherwise.
+func (o *LDAPSourceRequest) GetLookupGroupsFromUser() bool {
+	if o == nil || o.LookupGroupsFromUser == nil {
+		var ret bool
+		return ret
+	}
+	return *o.LookupGroupsFromUser
+}
+
+// GetLookupGroupsFromUserOk returns a tuple with the LookupGroupsFromUser field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LDAPSourceRequest) GetLookupGroupsFromUserOk() (*bool, bool) {
+	if o == nil || o.LookupGroupsFromUser == nil {
+		return nil, false
+	}
+	return o.LookupGroupsFromUser, true
+}
+
+// HasLookupGroupsFromUser returns a boolean if a field has been set.
+func (o *LDAPSourceRequest) HasLookupGroupsFromUser() bool {
+	if o != nil && o.LookupGroupsFromUser != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLookupGroupsFromUser gets a reference to the given bool and assigns it to the LookupGroupsFromUser field.
+func (o *LDAPSourceRequest) SetLookupGroupsFromUser(v bool) {
+	o.LookupGroupsFromUser = &v
+}
+
 func (o LDAPSourceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -1123,6 +1157,9 @@ func (o LDAPSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.SyncParentGroup.IsSet() {
 		toSerialize["sync_parent_group"] = o.SyncParentGroup.Get()
+	}
+	if o.LookupGroupsFromUser != nil {
+		toSerialize["lookup_groups_from_user"] = o.LookupGroupsFromUser
 	}
 	return json.Marshal(toSerialize)
 }
