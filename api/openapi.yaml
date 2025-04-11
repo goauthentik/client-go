@@ -27081,8 +27081,10 @@ paths:
           - authentik_sources_kerberos.kerberossource
           - authentik_sources_kerberos.kerberossourcepropertymapping
           - authentik_sources_kerberos.userkerberossourceconnection
+          - authentik_sources_ldap.groupldapsourceconnection
           - authentik_sources_ldap.ldapsource
           - authentik_sources_ldap.ldapsourcepropertymapping
+          - authentik_sources_ldap.userldapsourceconnection
           - authentik_sources_oauth.groupoauthsourceconnection
           - authentik_sources_oauth.oauthsource
           - authentik_sources_oauth.oauthsourcepropertymapping
@@ -27342,8 +27344,10 @@ paths:
           - authentik_sources_kerberos.kerberossource
           - authentik_sources_kerberos.kerberossourcepropertymapping
           - authentik_sources_kerberos.userkerberossourceconnection
+          - authentik_sources_ldap.groupldapsourceconnection
           - authentik_sources_ldap.ldapsource
           - authentik_sources_ldap.ldapsourcepropertymapping
+          - authentik_sources_ldap.userldapsourceconnection
           - authentik_sources_oauth.groupoauthsourceconnection
           - authentik_sources_oauth.oauthsource
           - authentik_sources_oauth.oauthsourcepropertymapping
@@ -29296,6 +29300,299 @@ paths:
       parameters:
       - description: A unique integer value identifying this Group Kerberos Source
           Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/group_connections/ldap/:
+    get:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_ldap_list
+      parameters:
+      - explode: true
+        in: query
+        name: group
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: source__slug
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedGroupLDAPSourceConnectionList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    post:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_ldap_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupLDAPSourceConnectionRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupLDAPSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/group_connections/ldap/{id}/:
+    delete:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_ldap_destroy
+      parameters:
+      - description: A unique integer value identifying this Group LDAP Source Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    get:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_ldap_retrieve
+      parameters:
+      - description: A unique integer value identifying this Group LDAP Source Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupLDAPSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    patch:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_ldap_partial_update
+      parameters:
+      - description: A unique integer value identifying this Group LDAP Source Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedGroupLDAPSourceConnectionRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupLDAPSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    put:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_ldap_update
+      parameters:
+      - description: A unique integer value identifying this Group LDAP Source Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupLDAPSourceConnectionRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupLDAPSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/group_connections/ldap/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: sources_group_connections_ldap_used_by_list
+      parameters:
+      - description: A unique integer value identifying this Group LDAP Source Connection.
         explode: false
         in: path
         name: id
@@ -33973,6 +34270,298 @@ paths:
       parameters:
       - description: A unique integer value identifying this User Kerberos Source
           Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/user_connections/ldap/:
+    get:
+      description: User-source connection Viewset
+      operationId: sources_user_connections_ldap_list
+      parameters:
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: source__slug
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: user
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedUserLDAPSourceConnectionList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    post:
+      description: User-source connection Viewset
+      operationId: sources_user_connections_ldap_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLDAPSourceConnectionRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserLDAPSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/user_connections/ldap/{id}/:
+    delete:
+      description: User-source connection Viewset
+      operationId: sources_user_connections_ldap_destroy
+      parameters:
+      - description: A unique integer value identifying this User LDAP Source Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    get:
+      description: User-source connection Viewset
+      operationId: sources_user_connections_ldap_retrieve
+      parameters:
+      - description: A unique integer value identifying this User LDAP Source Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserLDAPSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    patch:
+      description: User-source connection Viewset
+      operationId: sources_user_connections_ldap_partial_update
+      parameters:
+      - description: A unique integer value identifying this User LDAP Source Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUserLDAPSourceConnectionRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserLDAPSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    put:
+      description: User-source connection Viewset
+      operationId: sources_user_connections_ldap_update
+      parameters:
+      - description: A unique integer value identifying this User LDAP Source Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLDAPSourceConnectionRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserLDAPSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/user_connections/ldap/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: sources_user_connections_ldap_used_by_list
+      parameters:
+      - description: A unique integer value identifying this User LDAP Source Connection.
         explode: false
         in: path
         name: id
@@ -50835,6 +51424,71 @@ components:
       - identifier
       - source
       type: object
+    GroupLDAPSourceConnection:
+      description: Group Source Connection
+      example:
+        identifier: identifier
+        last_updated: 2000-01-23T04:56:07.000+00:00
+        source_obj: ""
+        created: 2000-01-23T04:56:07.000+00:00
+        pk: 0
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          readOnly: true
+          title: ID
+          type: integer
+        group:
+          format: uuid
+          type: string
+        source:
+          format: uuid
+          type: string
+        source_obj:
+          allOf:
+          - $ref: '#/components/schemas/Source'
+          readOnly: true
+        identifier:
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+        last_updated:
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - created
+      - group
+      - identifier
+      - last_updated
+      - pk
+      - source
+      - source_obj
+      type: object
+    GroupLDAPSourceConnectionRequest:
+      description: Group Source Connection
+      example:
+        identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        group:
+          format: uuid
+          type: string
+        source:
+          format: uuid
+          type: string
+        identifier:
+          minLength: 1
+          type: string
+      required:
+      - group
+      - identifier
+      - source
+      type: object
     GroupMatchingModeEnum:
       enum:
       - identifier
@@ -53764,6 +54418,8 @@ components:
       - authentik_sources_kerberos.groupkerberossourceconnection
       - authentik_sources_ldap.ldapsource
       - authentik_sources_ldap.ldapsourcepropertymapping
+      - authentik_sources_ldap.userldapsourceconnection
+      - authentik_sources_ldap.groupldapsourceconnection
       - authentik_sources_oauth.oauthsource
       - authentik_sources_oauth.oauthsourcepropertymapping
       - authentik_sources_oauth.useroauthsourceconnection
@@ -57927,6 +58583,42 @@ components:
         results:
           items:
             $ref: '#/components/schemas/GroupKerberosSourceConnection'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedGroupLDAPSourceConnectionList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          source_obj: ""
+          created: 2000-01-23T04:56:07.000+00:00
+          pk: 0
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          source_obj: ""
+          created: 2000-01-23T04:56:07.000+00:00
+          pk: 0
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/GroupLDAPSourceConnection'
           type: array
       required:
       - pagination
@@ -62854,6 +63546,42 @@ components:
       - pagination
       - results
       type: object
+    PaginatedUserLDAPSourceConnectionList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          source_obj: ""
+          created: 2000-01-23T04:56:07.000+00:00
+          pk: 0
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user: 6
+        - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          source_obj: ""
+          created: 2000-01-23T04:56:07.000+00:00
+          pk: 0
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user: 6
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/UserLDAPSourceConnection'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedUserList:
       example:
         pagination:
@@ -65379,6 +66107,23 @@ components:
           type: boolean
       type: object
     PatchedGroupKerberosSourceConnectionRequest:
+      description: Group Source Connection
+      example:
+        identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        group:
+          format: uuid
+          type: string
+        source:
+          format: uuid
+          type: string
+        identifier:
+          minLength: 1
+          type: string
+      type: object
+    PatchedGroupLDAPSourceConnectionRequest:
       description: Group Source Connection
       example:
         identifier: identifier
@@ -68184,6 +68929,22 @@ components:
           type: array
       type: object
     PatchedUserKerberosSourceConnectionRequest:
+      description: User source connection
+      example:
+        identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user: 0
+      properties:
+        user:
+          type: integer
+        source:
+          format: uuid
+          type: string
+        identifier:
+          minLength: 1
+          type: string
+      type: object
+    PatchedUserLDAPSourceConnectionRequest:
       description: User source connection
       example:
         identifier: identifier
@@ -75407,6 +76168,69 @@ components:
       - user
       type: object
     UserKerberosSourceConnectionRequest:
+      description: User source connection
+      example:
+        identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user: 0
+      properties:
+        user:
+          type: integer
+        source:
+          format: uuid
+          type: string
+        identifier:
+          minLength: 1
+          type: string
+      required:
+      - identifier
+      - source
+      - user
+      type: object
+    UserLDAPSourceConnection:
+      description: User source connection
+      example:
+        identifier: identifier
+        last_updated: 2000-01-23T04:56:07.000+00:00
+        source_obj: ""
+        created: 2000-01-23T04:56:07.000+00:00
+        pk: 0
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user: 6
+      properties:
+        pk:
+          readOnly: true
+          title: ID
+          type: integer
+        user:
+          type: integer
+        source:
+          format: uuid
+          type: string
+        source_obj:
+          allOf:
+          - $ref: '#/components/schemas/Source'
+          readOnly: true
+        identifier:
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+        last_updated:
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - created
+      - identifier
+      - last_updated
+      - pk
+      - source
+      - source_obj
+      - user
+      type: object
+    UserLDAPSourceConnectionRequest:
       description: User source connection
       example:
         identifier: identifier

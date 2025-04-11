@@ -208,6 +208,8 @@ docs/GoogleWorkspaceProviderUserRequest.md
 docs/Group.md
 docs/GroupKerberosSourceConnection.md
 docs/GroupKerberosSourceConnectionRequest.md
+docs/GroupLDAPSourceConnection.md
+docs/GroupLDAPSourceConnectionRequest.md
 docs/GroupMatchingModeEnum.md
 docs/GroupMember.md
 docs/GroupMemberRequest.md
@@ -351,6 +353,7 @@ docs/PaginatedGoogleWorkspaceProviderList.md
 docs/PaginatedGoogleWorkspaceProviderMappingList.md
 docs/PaginatedGoogleWorkspaceProviderUserList.md
 docs/PaginatedGroupKerberosSourceConnectionList.md
+docs/PaginatedGroupLDAPSourceConnectionList.md
 docs/PaginatedGroupList.md
 docs/PaginatedGroupOAuthSourceConnectionList.md
 docs/PaginatedGroupPlexSourceConnectionList.md
@@ -433,6 +436,7 @@ docs/PaginatedUserAssignedObjectPermissionList.md
 docs/PaginatedUserConsentList.md
 docs/PaginatedUserDeleteStageList.md
 docs/PaginatedUserKerberosSourceConnectionList.md
+docs/PaginatedUserLDAPSourceConnectionList.md
 docs/PaginatedUserList.md
 docs/PaginatedUserLoginStageList.md
 docs/PaginatedUserLogoutStageList.md
@@ -489,6 +493,7 @@ docs/PatchedGeoIPPolicyRequest.md
 docs/PatchedGoogleWorkspaceProviderMappingRequest.md
 docs/PatchedGoogleWorkspaceProviderRequest.md
 docs/PatchedGroupKerberosSourceConnectionRequest.md
+docs/PatchedGroupLDAPSourceConnectionRequest.md
 docs/PatchedGroupOAuthSourceConnectionRequest.md
 docs/PatchedGroupPlexSourceConnectionRequest.md
 docs/PatchedGroupRequest.md
@@ -552,6 +557,7 @@ docs/PatchedTenantRequest.md
 docs/PatchedTokenRequest.md
 docs/PatchedUserDeleteStageRequest.md
 docs/PatchedUserKerberosSourceConnectionRequest.md
+docs/PatchedUserLDAPSourceConnectionRequest.md
 docs/PatchedUserLoginStageRequest.md
 docs/PatchedUserLogoutStageRequest.md
 docs/PatchedUserOAuthSourceConnectionRequest.md
@@ -731,6 +737,8 @@ docs/UserGroup.md
 docs/UserGroupRequest.md
 docs/UserKerberosSourceConnection.md
 docs/UserKerberosSourceConnectionRequest.md
+docs/UserLDAPSourceConnection.md
+docs/UserLDAPSourceConnectionRequest.md
 docs/UserLoginChallenge.md
 docs/UserLoginChallengeResponseRequest.md
 docs/UserLoginStage.md
@@ -948,6 +956,8 @@ model_google_workspace_provider_user_request.go
 model_group.go
 model_group_kerberos_source_connection.go
 model_group_kerberos_source_connection_request.go
+model_group_ldap_source_connection.go
+model_group_ldap_source_connection_request.go
 model_group_matching_mode_enum.go
 model_group_member.go
 model_group_member_request.go
@@ -1088,6 +1098,7 @@ model_paginated_google_workspace_provider_list.go
 model_paginated_google_workspace_provider_mapping_list.go
 model_paginated_google_workspace_provider_user_list.go
 model_paginated_group_kerberos_source_connection_list.go
+model_paginated_group_ldap_source_connection_list.go
 model_paginated_group_list.go
 model_paginated_group_o_auth_source_connection_list.go
 model_paginated_group_plex_source_connection_list.go
@@ -1170,6 +1181,7 @@ model_paginated_user_assigned_object_permission_list.go
 model_paginated_user_consent_list.go
 model_paginated_user_delete_stage_list.go
 model_paginated_user_kerberos_source_connection_list.go
+model_paginated_user_ldap_source_connection_list.go
 model_paginated_user_list.go
 model_paginated_user_login_stage_list.go
 model_paginated_user_logout_stage_list.go
@@ -1226,6 +1238,7 @@ model_patched_geo_ip_policy_request.go
 model_patched_google_workspace_provider_mapping_request.go
 model_patched_google_workspace_provider_request.go
 model_patched_group_kerberos_source_connection_request.go
+model_patched_group_ldap_source_connection_request.go
 model_patched_group_o_auth_source_connection_request.go
 model_patched_group_plex_source_connection_request.go
 model_patched_group_request.go
@@ -1289,6 +1302,7 @@ model_patched_token_request.go
 model_patched_totp_device_request.go
 model_patched_user_delete_stage_request.go
 model_patched_user_kerberos_source_connection_request.go
+model_patched_user_ldap_source_connection_request.go
 model_patched_user_login_stage_request.go
 model_patched_user_logout_stage_request.go
 model_patched_user_o_auth_source_connection_request.go
@@ -1457,6 +1471,8 @@ model_user_group.go
 model_user_group_request.go
 model_user_kerberos_source_connection.go
 model_user_kerberos_source_connection_request.go
+model_user_ldap_source_connection.go
+model_user_ldap_source_connection_request.go
 model_user_login_challenge.go
 model_user_login_challenge_response_request.go
 model_user_login_stage.go

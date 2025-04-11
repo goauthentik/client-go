@@ -56,6 +56,8 @@ const (
 	MODELENUM_SOURCES_KERBEROS_GROUPKERBEROSSOURCECONNECTION                    ModelEnum = "authentik_sources_kerberos.groupkerberossourceconnection"
 	MODELENUM_SOURCES_LDAP_LDAPSOURCE                                           ModelEnum = "authentik_sources_ldap.ldapsource"
 	MODELENUM_SOURCES_LDAP_LDAPSOURCEPROPERTYMAPPING                            ModelEnum = "authentik_sources_ldap.ldapsourcepropertymapping"
+	MODELENUM_SOURCES_LDAP_USERLDAPSOURCECONNECTION                             ModelEnum = "authentik_sources_ldap.userldapsourceconnection"
+	MODELENUM_SOURCES_LDAP_GROUPLDAPSOURCECONNECTION                            ModelEnum = "authentik_sources_ldap.groupldapsourceconnection"
 	MODELENUM_SOURCES_OAUTH_OAUTHSOURCE                                         ModelEnum = "authentik_sources_oauth.oauthsource"
 	MODELENUM_SOURCES_OAUTH_OAUTHSOURCEPROPERTYMAPPING                          ModelEnum = "authentik_sources_oauth.oauthsourcepropertymapping"
 	MODELENUM_SOURCES_OAUTH_USEROAUTHSOURCECONNECTION                           ModelEnum = "authentik_sources_oauth.useroauthsourceconnection"
@@ -159,6 +161,8 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_sources_kerberos.groupkerberossourceconnection",
 	"authentik_sources_ldap.ldapsource",
 	"authentik_sources_ldap.ldapsourcepropertymapping",
+	"authentik_sources_ldap.userldapsourceconnection",
+	"authentik_sources_ldap.groupldapsourceconnection",
 	"authentik_sources_oauth.oauthsource",
 	"authentik_sources_oauth.oauthsourcepropertymapping",
 	"authentik_sources_oauth.useroauthsourceconnection",

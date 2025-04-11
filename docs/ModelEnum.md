@@ -73,6 +73,10 @@
 
 * `SOURCES_LDAP_LDAPSOURCEPROPERTYMAPPING` (value: `"authentik_sources_ldap.ldapsourcepropertymapping"`)
 
+* `SOURCES_LDAP_USERLDAPSOURCECONNECTION` (value: `"authentik_sources_ldap.userldapsourceconnection"`)
+
+* `SOURCES_LDAP_GROUPLDAPSOURCECONNECTION` (value: `"authentik_sources_ldap.groupldapsourceconnection"`)
+
 * `SOURCES_OAUTH_OAUTHSOURCE` (value: `"authentik_sources_oauth.oauthsource"`)
 
 * `SOURCES_OAUTH_OAUTHSOURCEPROPERTYMAPPING` (value: `"authentik_sources_oauth.oauthsourcepropertymapping"`)

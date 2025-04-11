@@ -686,6 +686,13 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**SourcesGroupConnectionsKerberosRetrieve**](docs/SourcesApi.md#sourcesgroupconnectionskerberosretrieve) | **Get** /sources/group_connections/kerberos/{id}/ | 
 *SourcesApi* | [**SourcesGroupConnectionsKerberosUpdate**](docs/SourcesApi.md#sourcesgroupconnectionskerberosupdate) | **Put** /sources/group_connections/kerberos/{id}/ | 
 *SourcesApi* | [**SourcesGroupConnectionsKerberosUsedByList**](docs/SourcesApi.md#sourcesgroupconnectionskerberosusedbylist) | **Get** /sources/group_connections/kerberos/{id}/used_by/ | 
+*SourcesApi* | [**SourcesGroupConnectionsLdapCreate**](docs/SourcesApi.md#sourcesgroupconnectionsldapcreate) | **Post** /sources/group_connections/ldap/ | 
+*SourcesApi* | [**SourcesGroupConnectionsLdapDestroy**](docs/SourcesApi.md#sourcesgroupconnectionsldapdestroy) | **Delete** /sources/group_connections/ldap/{id}/ | 
+*SourcesApi* | [**SourcesGroupConnectionsLdapList**](docs/SourcesApi.md#sourcesgroupconnectionsldaplist) | **Get** /sources/group_connections/ldap/ | 
+*SourcesApi* | [**SourcesGroupConnectionsLdapPartialUpdate**](docs/SourcesApi.md#sourcesgroupconnectionsldappartialupdate) | **Patch** /sources/group_connections/ldap/{id}/ | 
+*SourcesApi* | [**SourcesGroupConnectionsLdapRetrieve**](docs/SourcesApi.md#sourcesgroupconnectionsldapretrieve) | **Get** /sources/group_connections/ldap/{id}/ | 
+*SourcesApi* | [**SourcesGroupConnectionsLdapUpdate**](docs/SourcesApi.md#sourcesgroupconnectionsldapupdate) | **Put** /sources/group_connections/ldap/{id}/ | 
+*SourcesApi* | [**SourcesGroupConnectionsLdapUsedByList**](docs/SourcesApi.md#sourcesgroupconnectionsldapusedbylist) | **Get** /sources/group_connections/ldap/{id}/used_by/ | 
 *SourcesApi* | [**SourcesGroupConnectionsOauthCreate**](docs/SourcesApi.md#sourcesgroupconnectionsoauthcreate) | **Post** /sources/group_connections/oauth/ | 
 *SourcesApi* | [**SourcesGroupConnectionsOauthDestroy**](docs/SourcesApi.md#sourcesgroupconnectionsoauthdestroy) | **Delete** /sources/group_connections/oauth/{id}/ | 
 *SourcesApi* | [**SourcesGroupConnectionsOauthList**](docs/SourcesApi.md#sourcesgroupconnectionsoauthlist) | **Get** /sources/group_connections/oauth/ | 
@@ -783,6 +790,13 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**SourcesUserConnectionsKerberosRetrieve**](docs/SourcesApi.md#sourcesuserconnectionskerberosretrieve) | **Get** /sources/user_connections/kerberos/{id}/ | 
 *SourcesApi* | [**SourcesUserConnectionsKerberosUpdate**](docs/SourcesApi.md#sourcesuserconnectionskerberosupdate) | **Put** /sources/user_connections/kerberos/{id}/ | 
 *SourcesApi* | [**SourcesUserConnectionsKerberosUsedByList**](docs/SourcesApi.md#sourcesuserconnectionskerberosusedbylist) | **Get** /sources/user_connections/kerberos/{id}/used_by/ | 
+*SourcesApi* | [**SourcesUserConnectionsLdapCreate**](docs/SourcesApi.md#sourcesuserconnectionsldapcreate) | **Post** /sources/user_connections/ldap/ | 
+*SourcesApi* | [**SourcesUserConnectionsLdapDestroy**](docs/SourcesApi.md#sourcesuserconnectionsldapdestroy) | **Delete** /sources/user_connections/ldap/{id}/ | 
+*SourcesApi* | [**SourcesUserConnectionsLdapList**](docs/SourcesApi.md#sourcesuserconnectionsldaplist) | **Get** /sources/user_connections/ldap/ | 
+*SourcesApi* | [**SourcesUserConnectionsLdapPartialUpdate**](docs/SourcesApi.md#sourcesuserconnectionsldappartialupdate) | **Patch** /sources/user_connections/ldap/{id}/ | 
+*SourcesApi* | [**SourcesUserConnectionsLdapRetrieve**](docs/SourcesApi.md#sourcesuserconnectionsldapretrieve) | **Get** /sources/user_connections/ldap/{id}/ | 
+*SourcesApi* | [**SourcesUserConnectionsLdapUpdate**](docs/SourcesApi.md#sourcesuserconnectionsldapupdate) | **Put** /sources/user_connections/ldap/{id}/ | 
+*SourcesApi* | [**SourcesUserConnectionsLdapUsedByList**](docs/SourcesApi.md#sourcesuserconnectionsldapusedbylist) | **Get** /sources/user_connections/ldap/{id}/used_by/ | 
 *SourcesApi* | [**SourcesUserConnectionsOauthCreate**](docs/SourcesApi.md#sourcesuserconnectionsoauthcreate) | **Post** /sources/user_connections/oauth/ | 
 *SourcesApi* | [**SourcesUserConnectionsOauthDestroy**](docs/SourcesApi.md#sourcesuserconnectionsoauthdestroy) | **Delete** /sources/user_connections/oauth/{id}/ | 
 *SourcesApi* | [**SourcesUserConnectionsOauthList**](docs/SourcesApi.md#sourcesuserconnectionsoauthlist) | **Get** /sources/user_connections/oauth/ | 
@@ -1188,6 +1202,8 @@ Class | Method | HTTP request | Description
  - [Group](docs/Group.md)
  - [GroupKerberosSourceConnection](docs/GroupKerberosSourceConnection.md)
  - [GroupKerberosSourceConnectionRequest](docs/GroupKerberosSourceConnectionRequest.md)
+ - [GroupLDAPSourceConnection](docs/GroupLDAPSourceConnection.md)
+ - [GroupLDAPSourceConnectionRequest](docs/GroupLDAPSourceConnectionRequest.md)
  - [GroupMatchingModeEnum](docs/GroupMatchingModeEnum.md)
  - [GroupMember](docs/GroupMember.md)
  - [GroupMemberRequest](docs/GroupMemberRequest.md)
@@ -1328,6 +1344,7 @@ Class | Method | HTTP request | Description
  - [PaginatedGoogleWorkspaceProviderMappingList](docs/PaginatedGoogleWorkspaceProviderMappingList.md)
  - [PaginatedGoogleWorkspaceProviderUserList](docs/PaginatedGoogleWorkspaceProviderUserList.md)
  - [PaginatedGroupKerberosSourceConnectionList](docs/PaginatedGroupKerberosSourceConnectionList.md)
+ - [PaginatedGroupLDAPSourceConnectionList](docs/PaginatedGroupLDAPSourceConnectionList.md)
  - [PaginatedGroupList](docs/PaginatedGroupList.md)
  - [PaginatedGroupOAuthSourceConnectionList](docs/PaginatedGroupOAuthSourceConnectionList.md)
  - [PaginatedGroupPlexSourceConnectionList](docs/PaginatedGroupPlexSourceConnectionList.md)
@@ -1410,6 +1427,7 @@ Class | Method | HTTP request | Description
  - [PaginatedUserConsentList](docs/PaginatedUserConsentList.md)
  - [PaginatedUserDeleteStageList](docs/PaginatedUserDeleteStageList.md)
  - [PaginatedUserKerberosSourceConnectionList](docs/PaginatedUserKerberosSourceConnectionList.md)
+ - [PaginatedUserLDAPSourceConnectionList](docs/PaginatedUserLDAPSourceConnectionList.md)
  - [PaginatedUserList](docs/PaginatedUserList.md)
  - [PaginatedUserLoginStageList](docs/PaginatedUserLoginStageList.md)
  - [PaginatedUserLogoutStageList](docs/PaginatedUserLogoutStageList.md)
@@ -1466,6 +1484,7 @@ Class | Method | HTTP request | Description
  - [PatchedGoogleWorkspaceProviderMappingRequest](docs/PatchedGoogleWorkspaceProviderMappingRequest.md)
  - [PatchedGoogleWorkspaceProviderRequest](docs/PatchedGoogleWorkspaceProviderRequest.md)
  - [PatchedGroupKerberosSourceConnectionRequest](docs/PatchedGroupKerberosSourceConnectionRequest.md)
+ - [PatchedGroupLDAPSourceConnectionRequest](docs/PatchedGroupLDAPSourceConnectionRequest.md)
  - [PatchedGroupOAuthSourceConnectionRequest](docs/PatchedGroupOAuthSourceConnectionRequest.md)
  - [PatchedGroupPlexSourceConnectionRequest](docs/PatchedGroupPlexSourceConnectionRequest.md)
  - [PatchedGroupRequest](docs/PatchedGroupRequest.md)
@@ -1529,6 +1548,7 @@ Class | Method | HTTP request | Description
  - [PatchedTokenRequest](docs/PatchedTokenRequest.md)
  - [PatchedUserDeleteStageRequest](docs/PatchedUserDeleteStageRequest.md)
  - [PatchedUserKerberosSourceConnectionRequest](docs/PatchedUserKerberosSourceConnectionRequest.md)
+ - [PatchedUserLDAPSourceConnectionRequest](docs/PatchedUserLDAPSourceConnectionRequest.md)
  - [PatchedUserLoginStageRequest](docs/PatchedUserLoginStageRequest.md)
  - [PatchedUserLogoutStageRequest](docs/PatchedUserLogoutStageRequest.md)
  - [PatchedUserOAuthSourceConnectionRequest](docs/PatchedUserOAuthSourceConnectionRequest.md)
@@ -1697,6 +1717,8 @@ Class | Method | HTTP request | Description
  - [UserGroupRequest](docs/UserGroupRequest.md)
  - [UserKerberosSourceConnection](docs/UserKerberosSourceConnection.md)
  - [UserKerberosSourceConnectionRequest](docs/UserKerberosSourceConnectionRequest.md)
+ - [UserLDAPSourceConnection](docs/UserLDAPSourceConnection.md)
+ - [UserLDAPSourceConnectionRequest](docs/UserLDAPSourceConnectionRequest.md)
  - [UserLoginChallenge](docs/UserLoginChallenge.md)
  - [UserLoginChallengeResponseRequest](docs/UserLoginChallengeResponseRequest.md)
  - [UserLoginStage](docs/UserLoginStage.md)

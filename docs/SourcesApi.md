@@ -25,6 +25,13 @@ Method | HTTP request | Description
 [**SourcesGroupConnectionsKerberosRetrieve**](SourcesApi.md#SourcesGroupConnectionsKerberosRetrieve) | **Get** /sources/group_connections/kerberos/{id}/ | 
 [**SourcesGroupConnectionsKerberosUpdate**](SourcesApi.md#SourcesGroupConnectionsKerberosUpdate) | **Put** /sources/group_connections/kerberos/{id}/ | 
 [**SourcesGroupConnectionsKerberosUsedByList**](SourcesApi.md#SourcesGroupConnectionsKerberosUsedByList) | **Get** /sources/group_connections/kerberos/{id}/used_by/ | 
+[**SourcesGroupConnectionsLdapCreate**](SourcesApi.md#SourcesGroupConnectionsLdapCreate) | **Post** /sources/group_connections/ldap/ | 
+[**SourcesGroupConnectionsLdapDestroy**](SourcesApi.md#SourcesGroupConnectionsLdapDestroy) | **Delete** /sources/group_connections/ldap/{id}/ | 
+[**SourcesGroupConnectionsLdapList**](SourcesApi.md#SourcesGroupConnectionsLdapList) | **Get** /sources/group_connections/ldap/ | 
+[**SourcesGroupConnectionsLdapPartialUpdate**](SourcesApi.md#SourcesGroupConnectionsLdapPartialUpdate) | **Patch** /sources/group_connections/ldap/{id}/ | 
+[**SourcesGroupConnectionsLdapRetrieve**](SourcesApi.md#SourcesGroupConnectionsLdapRetrieve) | **Get** /sources/group_connections/ldap/{id}/ | 
+[**SourcesGroupConnectionsLdapUpdate**](SourcesApi.md#SourcesGroupConnectionsLdapUpdate) | **Put** /sources/group_connections/ldap/{id}/ | 
+[**SourcesGroupConnectionsLdapUsedByList**](SourcesApi.md#SourcesGroupConnectionsLdapUsedByList) | **Get** /sources/group_connections/ldap/{id}/used_by/ | 
 [**SourcesGroupConnectionsOauthCreate**](SourcesApi.md#SourcesGroupConnectionsOauthCreate) | **Post** /sources/group_connections/oauth/ | 
 [**SourcesGroupConnectionsOauthDestroy**](SourcesApi.md#SourcesGroupConnectionsOauthDestroy) | **Delete** /sources/group_connections/oauth/{id}/ | 
 [**SourcesGroupConnectionsOauthList**](SourcesApi.md#SourcesGroupConnectionsOauthList) | **Get** /sources/group_connections/oauth/ | 
@@ -122,6 +129,13 @@ Method | HTTP request | Description
 [**SourcesUserConnectionsKerberosRetrieve**](SourcesApi.md#SourcesUserConnectionsKerberosRetrieve) | **Get** /sources/user_connections/kerberos/{id}/ | 
 [**SourcesUserConnectionsKerberosUpdate**](SourcesApi.md#SourcesUserConnectionsKerberosUpdate) | **Put** /sources/user_connections/kerberos/{id}/ | 
 [**SourcesUserConnectionsKerberosUsedByList**](SourcesApi.md#SourcesUserConnectionsKerberosUsedByList) | **Get** /sources/user_connections/kerberos/{id}/used_by/ | 
+[**SourcesUserConnectionsLdapCreate**](SourcesApi.md#SourcesUserConnectionsLdapCreate) | **Post** /sources/user_connections/ldap/ | 
+[**SourcesUserConnectionsLdapDestroy**](SourcesApi.md#SourcesUserConnectionsLdapDestroy) | **Delete** /sources/user_connections/ldap/{id}/ | 
+[**SourcesUserConnectionsLdapList**](SourcesApi.md#SourcesUserConnectionsLdapList) | **Get** /sources/user_connections/ldap/ | 
+[**SourcesUserConnectionsLdapPartialUpdate**](SourcesApi.md#SourcesUserConnectionsLdapPartialUpdate) | **Patch** /sources/user_connections/ldap/{id}/ | 
+[**SourcesUserConnectionsLdapRetrieve**](SourcesApi.md#SourcesUserConnectionsLdapRetrieve) | **Get** /sources/user_connections/ldap/{id}/ | 
+[**SourcesUserConnectionsLdapUpdate**](SourcesApi.md#SourcesUserConnectionsLdapUpdate) | **Put** /sources/user_connections/ldap/{id}/ | 
+[**SourcesUserConnectionsLdapUsedByList**](SourcesApi.md#SourcesUserConnectionsLdapUsedByList) | **Get** /sources/user_connections/ldap/{id}/used_by/ | 
 [**SourcesUserConnectionsOauthCreate**](SourcesApi.md#SourcesUserConnectionsOauthCreate) | **Post** /sources/user_connections/oauth/ | 
 [**SourcesUserConnectionsOauthDestroy**](SourcesApi.md#SourcesUserConnectionsOauthDestroy) | **Delete** /sources/user_connections/oauth/{id}/ | 
 [**SourcesUserConnectionsOauthList**](SourcesApi.md#SourcesUserConnectionsOauthList) | **Get** /sources/user_connections/oauth/ | 
@@ -1596,6 +1610,500 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSourcesGroupConnectionsKerberosUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsLdapCreate
+
+> GroupLDAPSourceConnection SourcesGroupConnectionsLdapCreate(ctx).GroupLDAPSourceConnectionRequest(groupLDAPSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    groupLDAPSourceConnectionRequest := *openapiclient.NewGroupLDAPSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupLDAPSourceConnectionRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsLdapCreate(context.Background()).GroupLDAPSourceConnectionRequest(groupLDAPSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsLdapCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsLdapCreate`: GroupLDAPSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsLdapCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsLdapCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupLDAPSourceConnectionRequest** | [**GroupLDAPSourceConnectionRequest**](GroupLDAPSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**GroupLDAPSourceConnection**](GroupLDAPSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsLdapDestroy
+
+> SourcesGroupConnectionsLdapDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Group LDAP Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsLdapDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsLdapDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Group LDAP Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsLdapDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsLdapList
+
+> PaginatedGroupLDAPSourceConnectionList SourcesGroupConnectionsLdapList(ctx).Group(group).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    group := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsLdapList(context.Background()).Group(group).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsLdapList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsLdapList`: PaginatedGroupLDAPSourceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsLdapList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsLdapListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+ **sourceSlug** | **string** |  | 
+
+### Return type
+
+[**PaginatedGroupLDAPSourceConnectionList**](PaginatedGroupLDAPSourceConnectionList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsLdapPartialUpdate
+
+> GroupLDAPSourceConnection SourcesGroupConnectionsLdapPartialUpdate(ctx, id).PatchedGroupLDAPSourceConnectionRequest(patchedGroupLDAPSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Group LDAP Source Connection.
+    patchedGroupLDAPSourceConnectionRequest := *openapiclient.NewPatchedGroupLDAPSourceConnectionRequest() // PatchedGroupLDAPSourceConnectionRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsLdapPartialUpdate(context.Background(), id).PatchedGroupLDAPSourceConnectionRequest(patchedGroupLDAPSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsLdapPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsLdapPartialUpdate`: GroupLDAPSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsLdapPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Group LDAP Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsLdapPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedGroupLDAPSourceConnectionRequest** | [**PatchedGroupLDAPSourceConnectionRequest**](PatchedGroupLDAPSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**GroupLDAPSourceConnection**](GroupLDAPSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsLdapRetrieve
+
+> GroupLDAPSourceConnection SourcesGroupConnectionsLdapRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Group LDAP Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsLdapRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsLdapRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsLdapRetrieve`: GroupLDAPSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsLdapRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Group LDAP Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsLdapRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**GroupLDAPSourceConnection**](GroupLDAPSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsLdapUpdate
+
+> GroupLDAPSourceConnection SourcesGroupConnectionsLdapUpdate(ctx, id).GroupLDAPSourceConnectionRequest(groupLDAPSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Group LDAP Source Connection.
+    groupLDAPSourceConnectionRequest := *openapiclient.NewGroupLDAPSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupLDAPSourceConnectionRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsLdapUpdate(context.Background(), id).GroupLDAPSourceConnectionRequest(groupLDAPSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsLdapUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsLdapUpdate`: GroupLDAPSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsLdapUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Group LDAP Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsLdapUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **groupLDAPSourceConnectionRequest** | [**GroupLDAPSourceConnectionRequest**](GroupLDAPSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**GroupLDAPSourceConnection**](GroupLDAPSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsLdapUsedByList
+
+> []UsedBy SourcesGroupConnectionsLdapUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Group LDAP Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsLdapUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsLdapUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsLdapUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsLdapUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Group LDAP Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsLdapUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -8588,6 +9096,500 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSourcesUserConnectionsKerberosUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsLdapCreate
+
+> UserLDAPSourceConnection SourcesUserConnectionsLdapCreate(ctx).UserLDAPSourceConnectionRequest(userLDAPSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userLDAPSourceConnectionRequest := *openapiclient.NewUserLDAPSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserLDAPSourceConnectionRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsLdapCreate(context.Background()).UserLDAPSourceConnectionRequest(userLDAPSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsLdapCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsLdapCreate`: UserLDAPSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsLdapCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsLdapCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userLDAPSourceConnectionRequest** | [**UserLDAPSourceConnectionRequest**](UserLDAPSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**UserLDAPSourceConnection**](UserLDAPSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsLdapDestroy
+
+> SourcesUserConnectionsLdapDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User LDAP Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsLdapDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsLdapDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User LDAP Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsLdapDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsLdapList
+
+> PaginatedUserLDAPSourceConnectionList SourcesUserConnectionsLdapList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).User(user).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
+    user := int32(56) // int32 |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsLdapList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).User(user).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsLdapList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsLdapList`: PaginatedUserLDAPSourceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsLdapList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsLdapListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+ **sourceSlug** | **string** |  | 
+ **user** | **int32** |  | 
+
+### Return type
+
+[**PaginatedUserLDAPSourceConnectionList**](PaginatedUserLDAPSourceConnectionList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsLdapPartialUpdate
+
+> UserLDAPSourceConnection SourcesUserConnectionsLdapPartialUpdate(ctx, id).PatchedUserLDAPSourceConnectionRequest(patchedUserLDAPSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User LDAP Source Connection.
+    patchedUserLDAPSourceConnectionRequest := *openapiclient.NewPatchedUserLDAPSourceConnectionRequest() // PatchedUserLDAPSourceConnectionRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsLdapPartialUpdate(context.Background(), id).PatchedUserLDAPSourceConnectionRequest(patchedUserLDAPSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsLdapPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsLdapPartialUpdate`: UserLDAPSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsLdapPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User LDAP Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsLdapPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedUserLDAPSourceConnectionRequest** | [**PatchedUserLDAPSourceConnectionRequest**](PatchedUserLDAPSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**UserLDAPSourceConnection**](UserLDAPSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsLdapRetrieve
+
+> UserLDAPSourceConnection SourcesUserConnectionsLdapRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User LDAP Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsLdapRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsLdapRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsLdapRetrieve`: UserLDAPSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsLdapRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User LDAP Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsLdapRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**UserLDAPSourceConnection**](UserLDAPSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsLdapUpdate
+
+> UserLDAPSourceConnection SourcesUserConnectionsLdapUpdate(ctx, id).UserLDAPSourceConnectionRequest(userLDAPSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User LDAP Source Connection.
+    userLDAPSourceConnectionRequest := *openapiclient.NewUserLDAPSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserLDAPSourceConnectionRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsLdapUpdate(context.Background(), id).UserLDAPSourceConnectionRequest(userLDAPSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsLdapUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsLdapUpdate`: UserLDAPSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsLdapUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User LDAP Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsLdapUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **userLDAPSourceConnectionRequest** | [**UserLDAPSourceConnectionRequest**](UserLDAPSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**UserLDAPSourceConnection**](UserLDAPSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsLdapUsedByList
+
+> []UsedBy SourcesUserConnectionsLdapUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User LDAP Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsLdapUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsLdapUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsLdapUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsLdapUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User LDAP Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsLdapUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
