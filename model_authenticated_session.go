@@ -26,16 +26,16 @@ type AuthenticatedSession struct {
 	Asn           NullableAuthenticatedSessionAsn   `json:"asn"`
 	User          int32                             `json:"user"`
 	LastIp        string                            `json:"last_ip"`
-	LastUserAgent *string                           `json:"last_user_agent,omitempty"`
+	LastUserAgent string                            `json:"last_user_agent"`
 	LastUsed      time.Time                         `json:"last_used"`
-	Expires       NullableTime                      `json:"expires,omitempty"`
+	Expires       time.Time                         `json:"expires"`
 }
 
 // NewAuthenticatedSession instantiates a new AuthenticatedSession object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatedSession(current bool, userAgent AuthenticatedSessionUserAgent, geoIp NullableAuthenticatedSessionGeoIp, asn NullableAuthenticatedSessionAsn, user int32, lastIp string, lastUsed time.Time) *AuthenticatedSession {
+func NewAuthenticatedSession(current bool, userAgent AuthenticatedSessionUserAgent, geoIp NullableAuthenticatedSessionGeoIp, asn NullableAuthenticatedSessionAsn, user int32, lastIp string, lastUserAgent string, lastUsed time.Time, expires time.Time) *AuthenticatedSession {
 	this := AuthenticatedSession{}
 	this.Current = current
 	this.UserAgent = userAgent
@@ -43,7 +43,9 @@ func NewAuthenticatedSession(current bool, userAgent AuthenticatedSessionUserAge
 	this.Asn = asn
 	this.User = user
 	this.LastIp = lastIp
+	this.LastUserAgent = lastUserAgent
 	this.LastUsed = lastUsed
+	this.Expires = expires
 	return &this
 }
 
@@ -235,36 +237,28 @@ func (o *AuthenticatedSession) SetLastIp(v string) {
 	o.LastIp = v
 }
 
-// GetLastUserAgent returns the LastUserAgent field value if set, zero value otherwise.
+// GetLastUserAgent returns the LastUserAgent field value
 func (o *AuthenticatedSession) GetLastUserAgent() string {
-	if o == nil || o.LastUserAgent == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.LastUserAgent
+
+	return o.LastUserAgent
 }
 
-// GetLastUserAgentOk returns a tuple with the LastUserAgent field value if set, nil otherwise
+// GetLastUserAgentOk returns a tuple with the LastUserAgent field value
 // and a boolean to check if the value has been set.
 func (o *AuthenticatedSession) GetLastUserAgentOk() (*string, bool) {
-	if o == nil || o.LastUserAgent == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastUserAgent, true
+	return &o.LastUserAgent, true
 }
 
-// HasLastUserAgent returns a boolean if a field has been set.
-func (o *AuthenticatedSession) HasLastUserAgent() bool {
-	if o != nil && o.LastUserAgent != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLastUserAgent gets a reference to the given string and assigns it to the LastUserAgent field.
+// SetLastUserAgent sets field value
 func (o *AuthenticatedSession) SetLastUserAgent(v string) {
-	o.LastUserAgent = &v
+	o.LastUserAgent = v
 }
 
 // GetLastUsed returns the LastUsed field value
@@ -291,47 +285,28 @@ func (o *AuthenticatedSession) SetLastUsed(v time.Time) {
 	o.LastUsed = v
 }
 
-// GetExpires returns the Expires field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetExpires returns the Expires field value
 func (o *AuthenticatedSession) GetExpires() time.Time {
-	if o == nil || o.Expires.Get() == nil {
+	if o == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.Expires.Get()
+
+	return o.Expires
 }
 
-// GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
+// GetExpiresOk returns a tuple with the Expires field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatedSession) GetExpiresOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Expires.Get(), o.Expires.IsSet()
+	return &o.Expires, true
 }
 
-// HasExpires returns a boolean if a field has been set.
-func (o *AuthenticatedSession) HasExpires() bool {
-	if o != nil && o.Expires.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetExpires gets a reference to the given NullableTime and assigns it to the Expires field.
+// SetExpires sets field value
 func (o *AuthenticatedSession) SetExpires(v time.Time) {
-	o.Expires.Set(&v)
-}
-
-// SetExpiresNil sets the value for Expires to be an explicit nil
-func (o *AuthenticatedSession) SetExpiresNil() {
-	o.Expires.Set(nil)
-}
-
-// UnsetExpires ensures that no value is present for Expires, not even an explicit nil
-func (o *AuthenticatedSession) UnsetExpires() {
-	o.Expires.Unset()
+	o.Expires = v
 }
 
 func (o AuthenticatedSession) MarshalJSON() ([]byte, error) {
@@ -357,14 +332,14 @@ func (o AuthenticatedSession) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["last_ip"] = o.LastIp
 	}
-	if o.LastUserAgent != nil {
+	if true {
 		toSerialize["last_user_agent"] = o.LastUserAgent
 	}
 	if true {
 		toSerialize["last_used"] = o.LastUsed
 	}
-	if o.Expires.IsSet() {
-		toSerialize["expires"] = o.Expires.Get()
+	if true {
+		toSerialize["expires"] = o.Expires
 	}
 	return json.Marshal(toSerialize)
 }

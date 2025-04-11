@@ -4650,20 +4650,6 @@ paths:
       description: AuthenticatedSession Viewset
       operationId: core_authenticated_sessions_list
       parameters:
-      - explode: true
-        in: query
-        name: last_ip
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: last_user_agent
-        required: false
-        schema:
-          type: string
-        style: form
       - description: Which field to use when ordering the results.
         explode: true
         in: query
@@ -4692,6 +4678,20 @@ paths:
         explode: true
         in: query
         name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: session__last_ip
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: session__last_user_agent
         required: false
         schema:
           type: string
@@ -4731,8 +4731,7 @@ paths:
       description: AuthenticatedSession Viewset
       operationId: core_authenticated_sessions_destroy
       parameters:
-      - description: A UUID string identifying this Authenticated Session.
-        explode: false
+      - explode: false
         in: path
         name: uuid
         required: true
@@ -4763,8 +4762,7 @@ paths:
       description: AuthenticatedSession Viewset
       operationId: core_authenticated_sessions_retrieve
       parameters:
-      - description: A UUID string identifying this Authenticated Session.
-        explode: false
+      - explode: false
         in: path
         name: uuid
         required: true
@@ -4800,8 +4798,7 @@ paths:
       description: Get a list of all objects that use this object
       operationId: core_authenticated_sessions_used_by_list
       parameters:
-      - description: A UUID string identifying this Authenticated Session.
-        explode: false
+      - explode: false
         in: path
         name: uuid
         required: true
@@ -44613,8 +44610,10 @@ components:
         user:
           type: integer
         last_ip:
+          readOnly: true
           type: string
         last_user_agent:
+          readOnly: true
           type: string
         last_used:
           format: date-time
@@ -44622,14 +44621,16 @@ components:
           type: string
         expires:
           format: date-time
-          nullable: true
+          readOnly: true
           type: string
       required:
       - asn
       - current
+      - expires
       - geo_ip
       - last_ip
       - last_used
+      - last_user_agent
       - user
       - user_agent
       type: object

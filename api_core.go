@@ -2472,7 +2472,7 @@ CoreAuthenticatedSessionsDestroy Method for CoreAuthenticatedSessionsDestroy
 AuthenticatedSession Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param uuid A UUID string identifying this Authenticated Session.
+	@param uuid
 	@return ApiCoreAuthenticatedSessionsDestroyRequest
 */
 func (a *CoreApiService) CoreAuthenticatedSessionsDestroy(ctx context.Context, uuid string) ApiCoreAuthenticatedSessionsDestroyRequest {
@@ -2568,25 +2568,15 @@ func (a *CoreApiService) CoreAuthenticatedSessionsDestroyExecute(r ApiCoreAuthen
 }
 
 type ApiCoreAuthenticatedSessionsListRequest struct {
-	ctx           context.Context
-	ApiService    *CoreApiService
-	lastIp        *string
-	lastUserAgent *string
-	ordering      *string
-	page          *int32
-	pageSize      *int32
-	search        *string
-	userUsername  *string
-}
-
-func (r ApiCoreAuthenticatedSessionsListRequest) LastIp(lastIp string) ApiCoreAuthenticatedSessionsListRequest {
-	r.lastIp = &lastIp
-	return r
-}
-
-func (r ApiCoreAuthenticatedSessionsListRequest) LastUserAgent(lastUserAgent string) ApiCoreAuthenticatedSessionsListRequest {
-	r.lastUserAgent = &lastUserAgent
-	return r
+	ctx                  context.Context
+	ApiService           *CoreApiService
+	ordering             *string
+	page                 *int32
+	pageSize             *int32
+	search               *string
+	sessionLastIp        *string
+	sessionLastUserAgent *string
+	userUsername         *string
 }
 
 // Which field to use when ordering the results.
@@ -2610,6 +2600,16 @@ func (r ApiCoreAuthenticatedSessionsListRequest) PageSize(pageSize int32) ApiCor
 // A search term.
 func (r ApiCoreAuthenticatedSessionsListRequest) Search(search string) ApiCoreAuthenticatedSessionsListRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiCoreAuthenticatedSessionsListRequest) SessionLastIp(sessionLastIp string) ApiCoreAuthenticatedSessionsListRequest {
+	r.sessionLastIp = &sessionLastIp
+	return r
+}
+
+func (r ApiCoreAuthenticatedSessionsListRequest) SessionLastUserAgent(sessionLastUserAgent string) ApiCoreAuthenticatedSessionsListRequest {
+	r.sessionLastUserAgent = &sessionLastUserAgent
 	return r
 }
 
@@ -2659,12 +2659,6 @@ func (a *CoreApiService) CoreAuthenticatedSessionsListExecute(r ApiCoreAuthentic
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.lastIp != nil {
-		localVarQueryParams.Add("last_ip", parameterToString(*r.lastIp, ""))
-	}
-	if r.lastUserAgent != nil {
-		localVarQueryParams.Add("last_user_agent", parameterToString(*r.lastUserAgent, ""))
-	}
 	if r.ordering != nil {
 		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
@@ -2676,6 +2670,12 @@ func (a *CoreApiService) CoreAuthenticatedSessionsListExecute(r ApiCoreAuthentic
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	if r.sessionLastIp != nil {
+		localVarQueryParams.Add("session__last_ip", parameterToString(*r.sessionLastIp, ""))
+	}
+	if r.sessionLastUserAgent != nil {
+		localVarQueryParams.Add("session__last_user_agent", parameterToString(*r.sessionLastUserAgent, ""))
 	}
 	if r.userUsername != nil {
 		localVarQueryParams.Add("user__username", parameterToString(*r.userUsername, ""))
@@ -2769,7 +2769,7 @@ CoreAuthenticatedSessionsRetrieve Method for CoreAuthenticatedSessionsRetrieve
 AuthenticatedSession Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param uuid A UUID string identifying this Authenticated Session.
+	@param uuid
 	@return ApiCoreAuthenticatedSessionsRetrieveRequest
 */
 func (a *CoreApiService) CoreAuthenticatedSessionsRetrieve(ctx context.Context, uuid string) ApiCoreAuthenticatedSessionsRetrieveRequest {
@@ -2892,7 +2892,7 @@ CoreAuthenticatedSessionsUsedByList Method for CoreAuthenticatedSessionsUsedByLi
 Get a list of all objects that use this object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param uuid A UUID string identifying this Authenticated Session.
+	@param uuid
 	@return ApiCoreAuthenticatedSessionsUsedByListRequest
 */
 func (a *CoreApiService) CoreAuthenticatedSessionsUsedByList(ctx context.Context, uuid string) ApiCoreAuthenticatedSessionsUsedByListRequest {

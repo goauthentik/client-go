@@ -10,16 +10,16 @@ Name | Type | Description | Notes
 **GeoIp** | [**NullableAuthenticatedSessionGeoIp**](AuthenticatedSessionGeoIp.md) |  | 
 **Asn** | [**NullableAuthenticatedSessionAsn**](AuthenticatedSessionAsn.md) |  | 
 **User** | **int32** |  | 
-**LastIp** | **string** |  | 
-**LastUserAgent** | Pointer to **string** |  | [optional] 
+**LastIp** | **string** |  | [readonly] 
+**LastUserAgent** | **string** |  | [readonly] 
 **LastUsed** | **time.Time** |  | [readonly] 
-**Expires** | Pointer to **NullableTime** |  | [optional] 
+**Expires** | **time.Time** |  | [readonly] 
 
 ## Methods
 
 ### NewAuthenticatedSession
 
-`func NewAuthenticatedSession(current bool, userAgent AuthenticatedSessionUserAgent, geoIp NullableAuthenticatedSessionGeoIp, asn NullableAuthenticatedSessionAsn, user int32, lastIp string, lastUsed time.Time, ) *AuthenticatedSession`
+`func NewAuthenticatedSession(current bool, userAgent AuthenticatedSessionUserAgent, geoIp NullableAuthenticatedSessionGeoIp, asn NullableAuthenticatedSessionAsn, user int32, lastIp string, lastUserAgent string, lastUsed time.Time, expires time.Time, ) *AuthenticatedSession`
 
 NewAuthenticatedSession instantiates a new AuthenticatedSession object
 This constructor will assign default values to properties that have it defined,
@@ -218,11 +218,6 @@ and a boolean to check if the value has been set.
 
 SetLastUserAgent sets LastUserAgent field to given value.
 
-### HasLastUserAgent
-
-`func (o *AuthenticatedSession) HasLastUserAgent() bool`
-
-HasLastUserAgent returns a boolean if a field has been set.
 
 ### GetLastUsed
 
@@ -263,22 +258,7 @@ and a boolean to check if the value has been set.
 
 SetExpires sets Expires field to given value.
 
-### HasExpires
 
-`func (o *AuthenticatedSession) HasExpires() bool`
-
-HasExpires returns a boolean if a field has been set.
-
-### SetExpiresNil
-
-`func (o *AuthenticatedSession) SetExpiresNil(b bool)`
-
- SetExpiresNil sets the value for Expires to be an explicit nil
-
-### UnsetExpires
-`func (o *AuthenticatedSession) UnsetExpires()`
-
-UnsetExpires ensures that no value is present for Expires, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
