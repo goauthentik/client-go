@@ -26889,6 +26889,291 @@ paths:
       - authentik: []
       tags:
       - rac
+  /rbac/initial_permissions/:
+    get:
+      description: InitialPermissions viewset
+      operationId: rbac_initial_permissions_list
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedInitialPermissionsList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+    post:
+      description: InitialPermissions viewset
+      operationId: rbac_initial_permissions_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InitialPermissionsRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InitialPermissions'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+  /rbac/initial_permissions/{id}/:
+    delete:
+      description: InitialPermissions viewset
+      operationId: rbac_initial_permissions_destroy
+      parameters:
+      - description: A unique integer value identifying this Initial Permissions.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+    get:
+      description: InitialPermissions viewset
+      operationId: rbac_initial_permissions_retrieve
+      parameters:
+      - description: A unique integer value identifying this Initial Permissions.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InitialPermissions'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+    patch:
+      description: InitialPermissions viewset
+      operationId: rbac_initial_permissions_partial_update
+      parameters:
+      - description: A unique integer value identifying this Initial Permissions.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedInitialPermissionsRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InitialPermissions'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+    put:
+      description: InitialPermissions viewset
+      operationId: rbac_initial_permissions_update
+      parameters:
+      - description: A unique integer value identifying this Initial Permissions.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InitialPermissionsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InitialPermissions'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
+  /rbac/initial_permissions/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: rbac_initial_permissions_used_by_list
+      parameters:
+      - description: A unique integer value identifying this Initial Permissions.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - rbac
   /rbac/permissions/:
     get:
       description: "Read-only list of all permissions, filterable by model and app"
@@ -27076,6 +27361,7 @@ paths:
           - authentik_providers_scim.scimmapping
           - authentik_providers_scim.scimprovider
           - authentik_providers_ssf.ssfprovider
+          - authentik_rbac.initialpermissions
           - authentik_rbac.role
           - authentik_sources_kerberos.groupkerberossourceconnection
           - authentik_sources_kerberos.kerberossource
@@ -27339,6 +27625,7 @@ paths:
           - authentik_providers_scim.scimmapping
           - authentik_providers_scim.scimprovider
           - authentik_providers_ssf.ssfprovider
+          - authentik_rbac.initialpermissions
           - authentik_rbac.role
           - authentik_sources_kerberos.groupkerberossourceconnection
           - authentik_sources_kerberos.kerberossource
@@ -52208,6 +52495,93 @@ components:
       required:
       - reason
       type: object
+    InitialPermissions:
+      description: InitialPermissions serializer
+      example:
+        mode: null
+        role: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        permissions_obj:
+        - app_label: app_label
+          codename: codename
+          model_verbose: model_verbose
+          name: name
+          model: model
+          id: 1
+          app_label_verbose: app_label_verbose
+        - app_label: app_label
+          codename: codename
+          model_verbose: model_verbose
+          name: name
+          model: model
+          id: 1
+          app_label_verbose: app_label_verbose
+        permissions:
+        - 6
+        - 6
+        name: name
+        pk: 0
+      properties:
+        pk:
+          readOnly: true
+          title: ID
+          type: integer
+        name:
+          maxLength: 150
+          type: string
+        mode:
+          $ref: '#/components/schemas/InitialPermissionsModeEnum'
+        role:
+          format: uuid
+          type: string
+        permissions:
+          items:
+            type: integer
+          type: array
+        permissions_obj:
+          items:
+            $ref: '#/components/schemas/Permission'
+          readOnly: true
+          type: array
+      required:
+      - mode
+      - name
+      - permissions_obj
+      - pk
+      - role
+      type: object
+    InitialPermissionsModeEnum:
+      enum:
+      - user
+      - role
+      type: string
+    InitialPermissionsRequest:
+      description: InitialPermissions serializer
+      example:
+        mode: null
+        role: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        permissions:
+        - 0
+        - 0
+        name: name
+      properties:
+        name:
+          maxLength: 150
+          minLength: 1
+          type: string
+        mode:
+          $ref: '#/components/schemas/InitialPermissionsModeEnum'
+        role:
+          format: uuid
+          type: string
+        permissions:
+          items:
+            type: integer
+          type: array
+      required:
+      - mode
+      - name
+      - role
+      type: object
     InstallID:
       example:
         install_id: install_id
@@ -54412,6 +54786,7 @@ components:
       - authentik_providers_scim.scimprovider
       - authentik_providers_scim.scimmapping
       - authentik_rbac.role
+      - authentik_rbac.initialpermissions
       - authentik_sources_kerberos.kerberossource
       - authentik_sources_kerberos.kerberossourcepropertymapping
       - authentik_sources_kerberos.userkerberossourceconnection
@@ -58980,6 +59355,72 @@ components:
       - pagination
       - results
       type: object
+    PaginatedInitialPermissionsList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - mode: null
+          role: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          permissions_obj:
+          - app_label: app_label
+            codename: codename
+            model_verbose: model_verbose
+            name: name
+            model: model
+            id: 1
+            app_label_verbose: app_label_verbose
+          - app_label: app_label
+            codename: codename
+            model_verbose: model_verbose
+            name: name
+            model: model
+            id: 1
+            app_label_verbose: app_label_verbose
+          permissions:
+          - 6
+          - 6
+          name: name
+          pk: 0
+        - mode: null
+          role: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          permissions_obj:
+          - app_label: app_label
+            codename: codename
+            model_verbose: model_verbose
+            name: name
+            model: model
+            id: 1
+            app_label_verbose: app_label_verbose
+          - app_label: app_label
+            codename: codename
+            model_verbose: model_verbose
+            name: name
+            model: model
+            id: 1
+            app_label_verbose: app_label_verbose
+          permissions:
+          - 6
+          - 6
+          name: name
+          pk: 0
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/InitialPermissions'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedInvitationList:
       example:
         pagination:
@@ -60464,14 +60905,14 @@ components:
           model_verbose: model_verbose
           name: name
           model: model
-          id: 0
+          id: 1
           app_label_verbose: app_label_verbose
         - app_label: app_label
           codename: codename
           model_verbose: model_verbose
           name: name
           model: model
-          id: 0
+          id: 1
           app_label_verbose: app_label_verbose
       properties:
         pagination:
@@ -66348,6 +66789,30 @@ components:
             \ incorrect user info is entered."
           type: boolean
       type: object
+    PatchedInitialPermissionsRequest:
+      description: InitialPermissions serializer
+      example:
+        mode: null
+        role: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        permissions:
+        - 0
+        - 0
+        name: name
+      properties:
+        name:
+          maxLength: 150
+          minLength: 1
+          type: string
+        mode:
+          $ref: '#/components/schemas/InitialPermissionsModeEnum'
+        role:
+          format: uuid
+          type: string
+        permissions:
+          items:
+            type: integer
+          type: array
+      type: object
     PatchedInvitationRequest:
       description: Invitation Serializer
       example:
@@ -69253,7 +69718,7 @@ components:
         model_verbose: model_verbose
         name: name
         model: model
-        id: 0
+        id: 1
         app_label_verbose: app_label_verbose
       properties:
         id:
@@ -69320,6 +69785,21 @@ components:
           type: string
       required:
       - id
+      type: object
+    PermissionRequest:
+      description: Global permission
+      properties:
+        name:
+          maxLength: 255
+          minLength: 1
+          type: string
+        codename:
+          maxLength: 100
+          minLength: 1
+          type: string
+      required:
+      - codename
+      - name
       type: object
     PlexAuthenticationChallenge:
       description: Challenge shown to the user in identification stage

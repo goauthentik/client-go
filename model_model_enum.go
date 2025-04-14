@@ -50,6 +50,7 @@ const (
 	MODELENUM_PROVIDERS_SCIM_SCIMPROVIDER                                       ModelEnum = "authentik_providers_scim.scimprovider"
 	MODELENUM_PROVIDERS_SCIM_SCIMMAPPING                                        ModelEnum = "authentik_providers_scim.scimmapping"
 	MODELENUM_RBAC_ROLE                                                         ModelEnum = "authentik_rbac.role"
+	MODELENUM_RBAC_INITIALPERMISSIONS                                           ModelEnum = "authentik_rbac.initialpermissions"
 	MODELENUM_SOURCES_KERBEROS_KERBEROSSOURCE                                   ModelEnum = "authentik_sources_kerberos.kerberossource"
 	MODELENUM_SOURCES_KERBEROS_KERBEROSSOURCEPROPERTYMAPPING                    ModelEnum = "authentik_sources_kerberos.kerberossourcepropertymapping"
 	MODELENUM_SOURCES_KERBEROS_USERKERBEROSSOURCECONNECTION                     ModelEnum = "authentik_sources_kerberos.userkerberossourceconnection"
@@ -155,6 +156,7 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_providers_scim.scimprovider",
 	"authentik_providers_scim.scimmapping",
 	"authentik_rbac.role",
+	"authentik_rbac.initialpermissions",
 	"authentik_sources_kerberos.kerberossource",
 	"authentik_sources_kerberos.kerberossourcepropertymapping",
 	"authentik_sources_kerberos.userkerberossourceconnection",

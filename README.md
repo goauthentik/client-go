@@ -638,6 +638,13 @@ Class | Method | HTTP request | Description
 *RacApi* | [**RacEndpointsRetrieve**](docs/RacApi.md#racendpointsretrieve) | **Get** /rac/endpoints/{pbm_uuid}/ | 
 *RacApi* | [**RacEndpointsUpdate**](docs/RacApi.md#racendpointsupdate) | **Put** /rac/endpoints/{pbm_uuid}/ | 
 *RacApi* | [**RacEndpointsUsedByList**](docs/RacApi.md#racendpointsusedbylist) | **Get** /rac/endpoints/{pbm_uuid}/used_by/ | 
+*RbacApi* | [**RbacInitialPermissionsCreate**](docs/RbacApi.md#rbacinitialpermissionscreate) | **Post** /rbac/initial_permissions/ | 
+*RbacApi* | [**RbacInitialPermissionsDestroy**](docs/RbacApi.md#rbacinitialpermissionsdestroy) | **Delete** /rbac/initial_permissions/{id}/ | 
+*RbacApi* | [**RbacInitialPermissionsList**](docs/RbacApi.md#rbacinitialpermissionslist) | **Get** /rbac/initial_permissions/ | 
+*RbacApi* | [**RbacInitialPermissionsPartialUpdate**](docs/RbacApi.md#rbacinitialpermissionspartialupdate) | **Patch** /rbac/initial_permissions/{id}/ | 
+*RbacApi* | [**RbacInitialPermissionsRetrieve**](docs/RbacApi.md#rbacinitialpermissionsretrieve) | **Get** /rbac/initial_permissions/{id}/ | 
+*RbacApi* | [**RbacInitialPermissionsUpdate**](docs/RbacApi.md#rbacinitialpermissionsupdate) | **Put** /rbac/initial_permissions/{id}/ | 
+*RbacApi* | [**RbacInitialPermissionsUsedByList**](docs/RbacApi.md#rbacinitialpermissionsusedbylist) | **Get** /rbac/initial_permissions/{id}/used_by/ | 
 *RbacApi* | [**RbacPermissionsAssignedByRolesAssign**](docs/RbacApi.md#rbacpermissionsassignedbyrolesassign) | **Post** /rbac/permissions/assigned_by_roles/{uuid}/assign/ | 
 *RbacApi* | [**RbacPermissionsAssignedByRolesList**](docs/RbacApi.md#rbacpermissionsassignedbyroleslist) | **Get** /rbac/permissions/assigned_by_roles/ | 
 *RbacApi* | [**RbacPermissionsAssignedByRolesUnassignPartialUpdate**](docs/RbacApi.md#rbacpermissionsassignedbyrolesunassignpartialupdate) | **Patch** /rbac/permissions/assigned_by_roles/{uuid}/unassign/ | 
@@ -1222,6 +1229,9 @@ Class | Method | HTTP request | Description
  - [IdentificationStage](docs/IdentificationStage.md)
  - [IdentificationStageRequest](docs/IdentificationStageRequest.md)
  - [ImpersonationRequest](docs/ImpersonationRequest.md)
+ - [InitialPermissions](docs/InitialPermissions.md)
+ - [InitialPermissionsModeEnum](docs/InitialPermissionsModeEnum.md)
+ - [InitialPermissionsRequest](docs/InitialPermissionsRequest.md)
  - [InstallID](docs/InstallID.md)
  - [IntentEnum](docs/IntentEnum.md)
  - [InvalidResponseActionEnum](docs/InvalidResponseActionEnum.md)
@@ -1351,6 +1361,7 @@ Class | Method | HTTP request | Description
  - [PaginatedGroupSAMLSourceConnectionList](docs/PaginatedGroupSAMLSourceConnectionList.md)
  - [PaginatedGroupSourceConnectionList](docs/PaginatedGroupSourceConnectionList.md)
  - [PaginatedIdentificationStageList](docs/PaginatedIdentificationStageList.md)
+ - [PaginatedInitialPermissionsList](docs/PaginatedInitialPermissionsList.md)
  - [PaginatedInvitationList](docs/PaginatedInvitationList.md)
  - [PaginatedInvitationStageList](docs/PaginatedInvitationStageList.md)
  - [PaginatedKerberosSourceList](docs/PaginatedKerberosSourceList.md)
@@ -1491,6 +1502,7 @@ Class | Method | HTTP request | Description
  - [PatchedGroupSAMLSourceConnectionRequest](docs/PatchedGroupSAMLSourceConnectionRequest.md)
  - [PatchedGroupSourceConnectionRequest](docs/PatchedGroupSourceConnectionRequest.md)
  - [PatchedIdentificationStageRequest](docs/PatchedIdentificationStageRequest.md)
+ - [PatchedInitialPermissionsRequest](docs/PatchedInitialPermissionsRequest.md)
  - [PatchedInvitationRequest](docs/PatchedInvitationRequest.md)
  - [PatchedInvitationStageRequest](docs/PatchedInvitationStageRequest.md)
  - [PatchedKerberosSourcePropertyMappingRequest](docs/PatchedKerberosSourcePropertyMappingRequest.md)
@@ -1561,6 +1573,7 @@ Class | Method | HTTP request | Description
  - [Permission](docs/Permission.md)
  - [PermissionAssignRequest](docs/PermissionAssignRequest.md)
  - [PermissionAssignResult](docs/PermissionAssignResult.md)
+ - [PermissionRequest](docs/PermissionRequest.md)
  - [PlexAuthenticationChallenge](docs/PlexAuthenticationChallenge.md)
  - [PlexAuthenticationChallengeResponseRequest](docs/PlexAuthenticationChallengeResponseRequest.md)
  - [PlexSource](docs/PlexSource.md)

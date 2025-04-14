@@ -61,6 +61,8 @@
 
 * `RBAC_ROLE` (value: `"authentik_rbac.role"`)
 
+* `RBAC_INITIALPERMISSIONS` (value: `"authentik_rbac.initialpermissions"`)
+
 * `SOURCES_KERBEROS_KERBEROSSOURCE` (value: `"authentik_sources_kerberos.kerberossource"`)
 
 * `SOURCES_KERBEROS_KERBEROSSOURCEPROPERTYMAPPING` (value: `"authentik_sources_kerberos.kerberossourcepropertymapping"`)

@@ -228,6 +228,9 @@ docs/IdentificationChallengeResponseRequest.md
 docs/IdentificationStage.md
 docs/IdentificationStageRequest.md
 docs/ImpersonationRequest.md
+docs/InitialPermissions.md
+docs/InitialPermissionsModeEnum.md
+docs/InitialPermissionsRequest.md
 docs/InstallID.md
 docs/IntentEnum.md
 docs/InvalidResponseActionEnum.md
@@ -360,6 +363,7 @@ docs/PaginatedGroupPlexSourceConnectionList.md
 docs/PaginatedGroupSAMLSourceConnectionList.md
 docs/PaginatedGroupSourceConnectionList.md
 docs/PaginatedIdentificationStageList.md
+docs/PaginatedInitialPermissionsList.md
 docs/PaginatedInvitationList.md
 docs/PaginatedInvitationStageList.md
 docs/PaginatedKerberosSourceList.md
@@ -500,6 +504,7 @@ docs/PatchedGroupRequest.md
 docs/PatchedGroupSAMLSourceConnectionRequest.md
 docs/PatchedGroupSourceConnectionRequest.md
 docs/PatchedIdentificationStageRequest.md
+docs/PatchedInitialPermissionsRequest.md
 docs/PatchedInvitationRequest.md
 docs/PatchedInvitationStageRequest.md
 docs/PatchedKerberosSourcePropertyMappingRequest.md
@@ -570,6 +575,7 @@ docs/PatchedWebAuthnDeviceRequest.md
 docs/Permission.md
 docs/PermissionAssignRequest.md
 docs/PermissionAssignResult.md
+docs/PermissionRequest.md
 docs/PlexAuthenticationChallenge.md
 docs/PlexAuthenticationChallengeResponseRequest.md
 docs/PlexSource.md
@@ -976,6 +982,9 @@ model_identification_challenge_response_request.go
 model_identification_stage.go
 model_identification_stage_request.go
 model_impersonation_request.go
+model_initial_permissions.go
+model_initial_permissions_mode_enum.go
+model_initial_permissions_request.go
 model_install_id.go
 model_intent_enum.go
 model_invalid_response_action_enum.go
@@ -1105,6 +1114,7 @@ model_paginated_group_plex_source_connection_list.go
 model_paginated_group_saml_source_connection_list.go
 model_paginated_group_source_connection_list.go
 model_paginated_identification_stage_list.go
+model_paginated_initial_permissions_list.go
 model_paginated_invitation_list.go
 model_paginated_invitation_stage_list.go
 model_paginated_kerberos_source_list.go
@@ -1245,6 +1255,7 @@ model_patched_group_request.go
 model_patched_group_saml_source_connection_request.go
 model_patched_group_source_connection_request.go
 model_patched_identification_stage_request.go
+model_patched_initial_permissions_request.go
 model_patched_invitation_request.go
 model_patched_invitation_stage_request.go
 model_patched_kerberos_source_property_mapping_request.go
@@ -1315,6 +1326,7 @@ model_patched_web_authn_device_request.go
 model_permission.go
 model_permission_assign_request.go
 model_permission_assign_result.go
+model_permission_request.go
 model_plex_authentication_challenge.go
 model_plex_authentication_challenge_response_request.go
 model_plex_source.go
