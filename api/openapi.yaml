@@ -68728,14 +68728,16 @@ components:
     PatchedSettingsRequest:
       description: Settings Serializer
       example:
-        default_user_change_email: true
+        reputation_upper_limit: 1294386358
         default_user_change_name: true
         impersonation: true
         default_token_duration: default_token_duration
+        default_token_length: 314780941
+        event_retention: event_retention
+        default_user_change_email: true
+        reputation_lower_limit: -1975507103
         impersonation_require_reason: true
         default_user_change_username: true
-        default_token_length: 171976545
-        event_retention: event_retention
         footer_links: ""
         gdpr_compliance: true
         avatars: avatars
@@ -68757,6 +68759,17 @@ components:
           description: "Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2)."
           minLength: 1
           type: string
+        reputation_lower_limit:
+          description: Reputation cannot decrease lower than this value. Zero or negative.
+          maximum: 0
+          minimum: -2147483648
+          type: integer
+        reputation_upper_limit:
+          description: Reputation cannot increase higher than this value. Zero or
+            positive.
+          maximum: 2147483647
+          minimum: 0
+          type: integer
         footer_links:
           description: The option configures the footer links on the flow executor
             pages.
@@ -74120,14 +74133,16 @@ components:
     Settings:
       description: Settings Serializer
       example:
-        default_user_change_email: true
+        reputation_upper_limit: 1294386358
         default_user_change_name: true
         impersonation: true
         default_token_duration: default_token_duration
+        default_token_length: 314780941
+        event_retention: event_retention
+        default_user_change_email: true
+        reputation_lower_limit: -1975507103
         impersonation_require_reason: true
         default_user_change_username: true
-        default_token_length: 171976545
-        event_retention: event_retention
         footer_links: ""
         gdpr_compliance: true
         avatars: avatars
@@ -74147,6 +74162,17 @@ components:
         event_retention:
           description: "Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2)."
           type: string
+        reputation_lower_limit:
+          description: Reputation cannot decrease lower than this value. Zero or negative.
+          maximum: 0
+          minimum: -2147483648
+          type: integer
+        reputation_upper_limit:
+          description: Reputation cannot increase higher than this value. Zero or
+            positive.
+          maximum: 2147483647
+          minimum: 0
+          type: integer
         footer_links:
           description: The option configures the footer links on the flow executor
             pages.
@@ -74173,14 +74199,16 @@ components:
     SettingsRequest:
       description: Settings Serializer
       example:
-        default_user_change_email: true
+        reputation_upper_limit: 1294386358
         default_user_change_name: true
         impersonation: true
         default_token_duration: default_token_duration
+        default_token_length: 314780941
+        event_retention: event_retention
+        default_user_change_email: true
+        reputation_lower_limit: -1975507103
         impersonation_require_reason: true
         default_user_change_username: true
-        default_token_length: 171976545
-        event_retention: event_retention
         footer_links: ""
         gdpr_compliance: true
         avatars: avatars
@@ -74202,6 +74230,17 @@ components:
           description: "Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2)."
           minLength: 1
           type: string
+        reputation_lower_limit:
+          description: Reputation cannot decrease lower than this value. Zero or negative.
+          maximum: 0
+          minimum: -2147483648
+          type: integer
+        reputation_upper_limit:
+          description: Reputation cannot increase higher than this value. Zero or
+            positive.
+          maximum: 2147483647
+          minimum: 0
+          type: integer
         footer_links:
           description: The option configures the footer links on the flow executor
             pages.

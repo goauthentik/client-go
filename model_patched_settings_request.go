@@ -27,6 +27,10 @@ type PatchedSettingsRequest struct {
 	DefaultUserChangeUsername *bool `json:"default_user_change_username,omitempty"`
 	// Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2).
 	EventRetention *string `json:"event_retention,omitempty"`
+	// Reputation cannot decrease lower than this value. Zero or negative.
+	ReputationLowerLimit *int32 `json:"reputation_lower_limit,omitempty"`
+	// Reputation cannot increase higher than this value. Zero or positive.
+	ReputationUpperLimit *int32 `json:"reputation_upper_limit,omitempty"`
 	// The option configures the footer links on the flow executor pages.
 	FooterLinks interface{} `json:"footer_links,omitempty"`
 	// When enabled, all the events caused by a user will be deleted upon the user's deletion.
@@ -216,6 +220,70 @@ func (o *PatchedSettingsRequest) HasEventRetention() bool {
 // SetEventRetention gets a reference to the given string and assigns it to the EventRetention field.
 func (o *PatchedSettingsRequest) SetEventRetention(v string) {
 	o.EventRetention = &v
+}
+
+// GetReputationLowerLimit returns the ReputationLowerLimit field value if set, zero value otherwise.
+func (o *PatchedSettingsRequest) GetReputationLowerLimit() int32 {
+	if o == nil || o.ReputationLowerLimit == nil {
+		var ret int32
+		return ret
+	}
+	return *o.ReputationLowerLimit
+}
+
+// GetReputationLowerLimitOk returns a tuple with the ReputationLowerLimit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedSettingsRequest) GetReputationLowerLimitOk() (*int32, bool) {
+	if o == nil || o.ReputationLowerLimit == nil {
+		return nil, false
+	}
+	return o.ReputationLowerLimit, true
+}
+
+// HasReputationLowerLimit returns a boolean if a field has been set.
+func (o *PatchedSettingsRequest) HasReputationLowerLimit() bool {
+	if o != nil && o.ReputationLowerLimit != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetReputationLowerLimit gets a reference to the given int32 and assigns it to the ReputationLowerLimit field.
+func (o *PatchedSettingsRequest) SetReputationLowerLimit(v int32) {
+	o.ReputationLowerLimit = &v
+}
+
+// GetReputationUpperLimit returns the ReputationUpperLimit field value if set, zero value otherwise.
+func (o *PatchedSettingsRequest) GetReputationUpperLimit() int32 {
+	if o == nil || o.ReputationUpperLimit == nil {
+		var ret int32
+		return ret
+	}
+	return *o.ReputationUpperLimit
+}
+
+// GetReputationUpperLimitOk returns a tuple with the ReputationUpperLimit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedSettingsRequest) GetReputationUpperLimitOk() (*int32, bool) {
+	if o == nil || o.ReputationUpperLimit == nil {
+		return nil, false
+	}
+	return o.ReputationUpperLimit, true
+}
+
+// HasReputationUpperLimit returns a boolean if a field has been set.
+func (o *PatchedSettingsRequest) HasReputationUpperLimit() bool {
+	if o != nil && o.ReputationUpperLimit != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetReputationUpperLimit gets a reference to the given int32 and assigns it to the ReputationUpperLimit field.
+func (o *PatchedSettingsRequest) SetReputationUpperLimit(v int32) {
+	o.ReputationUpperLimit = &v
 }
 
 // GetFooterLinks returns the FooterLinks field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -427,6 +495,12 @@ func (o PatchedSettingsRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.EventRetention != nil {
 		toSerialize["event_retention"] = o.EventRetention
+	}
+	if o.ReputationLowerLimit != nil {
+		toSerialize["reputation_lower_limit"] = o.ReputationLowerLimit
+	}
+	if o.ReputationUpperLimit != nil {
+		toSerialize["reputation_upper_limit"] = o.ReputationUpperLimit
 	}
 	if o.FooterLinks != nil {
 		toSerialize["footer_links"] = o.FooterLinks

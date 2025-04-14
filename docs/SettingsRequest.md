@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **DefaultUserChangeEmail** | Pointer to **bool** | Enable the ability for users to change their email address. | [optional] 
 **DefaultUserChangeUsername** | Pointer to **bool** | Enable the ability for users to change their username. | [optional] 
 **EventRetention** | Pointer to **string** | Events will be deleted after this duration.(Format: weeks&#x3D;3;days&#x3D;2;hours&#x3D;3,seconds&#x3D;2). | [optional] 
+**ReputationLowerLimit** | Pointer to **int32** | Reputation cannot decrease lower than this value. Zero or negative. | [optional] 
+**ReputationUpperLimit** | Pointer to **int32** | Reputation cannot increase higher than this value. Zero or positive. | [optional] 
 **FooterLinks** | Pointer to **interface{}** | The option configures the footer links on the flow executor pages. | [optional] 
 **GdprCompliance** | Pointer to **bool** | When enabled, all the events caused by a user will be deleted upon the user&#39;s deletion. | [optional] 
 **Impersonation** | Pointer to **bool** | Globally enable/disable impersonation. | [optional] 
@@ -159,6 +161,56 @@ SetEventRetention sets EventRetention field to given value.
 `func (o *SettingsRequest) HasEventRetention() bool`
 
 HasEventRetention returns a boolean if a field has been set.
+
+### GetReputationLowerLimit
+
+`func (o *SettingsRequest) GetReputationLowerLimit() int32`
+
+GetReputationLowerLimit returns the ReputationLowerLimit field if non-nil, zero value otherwise.
+
+### GetReputationLowerLimitOk
+
+`func (o *SettingsRequest) GetReputationLowerLimitOk() (*int32, bool)`
+
+GetReputationLowerLimitOk returns a tuple with the ReputationLowerLimit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReputationLowerLimit
+
+`func (o *SettingsRequest) SetReputationLowerLimit(v int32)`
+
+SetReputationLowerLimit sets ReputationLowerLimit field to given value.
+
+### HasReputationLowerLimit
+
+`func (o *SettingsRequest) HasReputationLowerLimit() bool`
+
+HasReputationLowerLimit returns a boolean if a field has been set.
+
+### GetReputationUpperLimit
+
+`func (o *SettingsRequest) GetReputationUpperLimit() int32`
+
+GetReputationUpperLimit returns the ReputationUpperLimit field if non-nil, zero value otherwise.
+
+### GetReputationUpperLimitOk
+
+`func (o *SettingsRequest) GetReputationUpperLimitOk() (*int32, bool)`
+
+GetReputationUpperLimitOk returns a tuple with the ReputationUpperLimit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReputationUpperLimit
+
+`func (o *SettingsRequest) SetReputationUpperLimit(v int32)`
+
+SetReputationUpperLimit sets ReputationUpperLimit field to given value.
+
+### HasReputationUpperLimit
+
+`func (o *SettingsRequest) HasReputationUpperLimit() bool`
+
+HasReputationUpperLimit returns a boolean if a field has been set.
 
 ### GetFooterLinks
 
