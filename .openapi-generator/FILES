@@ -80,6 +80,7 @@ docs/AuthenticatorWebAuthnChallengeResponseRequest.md
 docs/AuthenticatorWebAuthnStage.md
 docs/AuthenticatorWebAuthnStageRequest.md
 docs/AuthenticatorsApi.md
+docs/AuthorizationCodeAuthMethodEnum.md
 docs/AutoSubmitChallengeResponseRequest.md
 docs/AutosubmitChallenge.md
 docs/BackendsEnum.md
@@ -839,6 +840,7 @@ model_authenticator_web_authn_challenge.go
 model_authenticator_web_authn_challenge_response_request.go
 model_authenticator_web_authn_stage.go
 model_authenticator_web_authn_stage_request.go
+model_authorization_code_auth_method_enum.go
 model_auto_submit_challenge_response_request.go
 model_autosubmit_challenge.go
 model_backends_enum.go

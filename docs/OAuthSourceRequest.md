@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **OidcWellKnownUrl** | Pointer to **string** |  | [optional] 
 **OidcJwksUrl** | Pointer to **string** |  | [optional] 
 **OidcJwks** | Pointer to **interface{}** |  | [optional] 
+**AuthorizationCodeAuthMethod** | Pointer to [**AuthorizationCodeAuthMethodEnum**](AuthorizationCodeAuthMethodEnum.md) | How to perform authentication during an authorization_code token request flow | [optional] 
 
 ## Methods
 
@@ -641,6 +642,31 @@ HasOidcJwks returns a boolean if a field has been set.
 `func (o *OAuthSourceRequest) UnsetOidcJwks()`
 
 UnsetOidcJwks ensures that no value is present for OidcJwks, not even an explicit nil
+### GetAuthorizationCodeAuthMethod
+
+`func (o *OAuthSourceRequest) GetAuthorizationCodeAuthMethod() AuthorizationCodeAuthMethodEnum`
+
+GetAuthorizationCodeAuthMethod returns the AuthorizationCodeAuthMethod field if non-nil, zero value otherwise.
+
+### GetAuthorizationCodeAuthMethodOk
+
+`func (o *OAuthSourceRequest) GetAuthorizationCodeAuthMethodOk() (*AuthorizationCodeAuthMethodEnum, bool)`
+
+GetAuthorizationCodeAuthMethodOk returns a tuple with the AuthorizationCodeAuthMethod field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthorizationCodeAuthMethod
+
+`func (o *OAuthSourceRequest) SetAuthorizationCodeAuthMethod(v AuthorizationCodeAuthMethodEnum)`
+
+SetAuthorizationCodeAuthMethod sets AuthorizationCodeAuthMethod field to given value.
+
+### HasAuthorizationCodeAuthMethod
+
+`func (o *OAuthSourceRequest) HasAuthorizationCodeAuthMethod() bool`
+
+HasAuthorizationCodeAuthMethod returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

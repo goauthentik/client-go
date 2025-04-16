@@ -49,6 +49,8 @@ type PatchedOAuthSourceRequest struct {
 	OidcWellKnownUrl *string        `json:"oidc_well_known_url,omitempty"`
 	OidcJwksUrl      *string        `json:"oidc_jwks_url,omitempty"`
 	OidcJwks         interface{}    `json:"oidc_jwks,omitempty"`
+	// How to perform authentication during an authorization_code token request flow
+	AuthorizationCodeAuthMethod *AuthorizationCodeAuthMethodEnum `json:"authorization_code_auth_method,omitempty"`
 }
 
 // NewPatchedOAuthSourceRequest instantiates a new PatchedOAuthSourceRequest object
@@ -839,6 +841,38 @@ func (o *PatchedOAuthSourceRequest) SetOidcJwks(v interface{}) {
 	o.OidcJwks = v
 }
 
+// GetAuthorizationCodeAuthMethod returns the AuthorizationCodeAuthMethod field value if set, zero value otherwise.
+func (o *PatchedOAuthSourceRequest) GetAuthorizationCodeAuthMethod() AuthorizationCodeAuthMethodEnum {
+	if o == nil || o.AuthorizationCodeAuthMethod == nil {
+		var ret AuthorizationCodeAuthMethodEnum
+		return ret
+	}
+	return *o.AuthorizationCodeAuthMethod
+}
+
+// GetAuthorizationCodeAuthMethodOk returns a tuple with the AuthorizationCodeAuthMethod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedOAuthSourceRequest) GetAuthorizationCodeAuthMethodOk() (*AuthorizationCodeAuthMethodEnum, bool) {
+	if o == nil || o.AuthorizationCodeAuthMethod == nil {
+		return nil, false
+	}
+	return o.AuthorizationCodeAuthMethod, true
+}
+
+// HasAuthorizationCodeAuthMethod returns a boolean if a field has been set.
+func (o *PatchedOAuthSourceRequest) HasAuthorizationCodeAuthMethod() bool {
+	if o != nil && o.AuthorizationCodeAuthMethod != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthorizationCodeAuthMethod gets a reference to the given AuthorizationCodeAuthMethodEnum and assigns it to the AuthorizationCodeAuthMethod field.
+func (o *PatchedOAuthSourceRequest) SetAuthorizationCodeAuthMethod(v AuthorizationCodeAuthMethodEnum) {
+	o.AuthorizationCodeAuthMethod = &v
+}
+
 func (o PatchedOAuthSourceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -906,6 +940,9 @@ func (o PatchedOAuthSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.OidcJwks != nil {
 		toSerialize["oidc_jwks"] = o.OidcJwks
+	}
+	if o.AuthorizationCodeAuthMethod != nil {
+		toSerialize["authorization_code_auth_method"] = o.AuthorizationCodeAuthMethod
 	}
 	return json.Marshal(toSerialize)
 }
