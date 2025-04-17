@@ -53,6 +53,7 @@ Name | Type | Description | Notes
 **PrimaryAction** | **string** |  | 
 **Sources** | Pointer to [**[]LoginSource**](LoginSource.md) |  | [optional] 
 **ShowSourceLabels** | **bool** |  | 
+**EnableRememberMe** | Pointer to **bool** |  | [optional] [default to true]
 **Slug** | **string** |  | 
 **Fields** | [**[]StagePrompt**](StagePrompt.md) |  | 
 **To** | **string** |  | 
@@ -1185,6 +1186,31 @@ and a boolean to check if the value has been set.
 
 SetShowSourceLabels sets ShowSourceLabels field to given value.
 
+
+### GetEnableRememberMe
+
+`func (o *ChallengeTypes) GetEnableRememberMe() bool`
+
+GetEnableRememberMe returns the EnableRememberMe field if non-nil, zero value otherwise.
+
+### GetEnableRememberMeOk
+
+`func (o *ChallengeTypes) GetEnableRememberMeOk() (*bool, bool)`
+
+GetEnableRememberMeOk returns a tuple with the EnableRememberMe field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableRememberMe
+
+`func (o *ChallengeTypes) SetEnableRememberMe(v bool)`
+
+SetEnableRememberMe sets EnableRememberMe field to given value.
+
+### HasEnableRememberMe
+
+`func (o *ChallengeTypes) HasEnableRememberMe() bool`
+
+HasEnableRememberMe returns a boolean if a field has been set.
 
 ### GetSlug
 

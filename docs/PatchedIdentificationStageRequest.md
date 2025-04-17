@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Sources** | Pointer to **[]string** | Specify which sources should be shown. | [optional] 
 **ShowSourceLabels** | Pointer to **bool** |  | [optional] 
 **PretendUserExists** | Pointer to **bool** | When enabled, the stage will succeed and continue even when incorrect user info is entered. | [optional] 
+**EnableRememberMe** | Pointer to **bool** | Show the user the &#39;Remember me on this device&#39; toggle, allowing repeat users to skip straight to entering their password. | [optional] 
 
 ## Methods
 
@@ -411,6 +412,31 @@ SetPretendUserExists sets PretendUserExists field to given value.
 `func (o *PatchedIdentificationStageRequest) HasPretendUserExists() bool`
 
 HasPretendUserExists returns a boolean if a field has been set.
+
+### GetEnableRememberMe
+
+`func (o *PatchedIdentificationStageRequest) GetEnableRememberMe() bool`
+
+GetEnableRememberMe returns the EnableRememberMe field if non-nil, zero value otherwise.
+
+### GetEnableRememberMeOk
+
+`func (o *PatchedIdentificationStageRequest) GetEnableRememberMeOk() (*bool, bool)`
+
+GetEnableRememberMeOk returns a tuple with the EnableRememberMe field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableRememberMe
+
+`func (o *PatchedIdentificationStageRequest) SetEnableRememberMe(v bool)`
+
+SetEnableRememberMe sets EnableRememberMe field to given value.
+
+### HasEnableRememberMe
+
+`func (o *PatchedIdentificationStageRequest) HasEnableRememberMe() bool`
+
+HasEnableRememberMe returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

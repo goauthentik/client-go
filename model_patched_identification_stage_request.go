@@ -40,6 +40,8 @@ type PatchedIdentificationStageRequest struct {
 	ShowSourceLabels *bool    `json:"show_source_labels,omitempty"`
 	// When enabled, the stage will succeed and continue even when incorrect user info is entered.
 	PretendUserExists *bool `json:"pretend_user_exists,omitempty"`
+	// Show the user the 'Remember me on this device' toggle, allowing repeat users to skip straight to entering their password.
+	EnableRememberMe *bool `json:"enable_remember_me,omitempty"`
 }
 
 // NewPatchedIdentificationStageRequest instantiates a new PatchedIdentificationStageRequest object
@@ -530,6 +532,38 @@ func (o *PatchedIdentificationStageRequest) SetPretendUserExists(v bool) {
 	o.PretendUserExists = &v
 }
 
+// GetEnableRememberMe returns the EnableRememberMe field value if set, zero value otherwise.
+func (o *PatchedIdentificationStageRequest) GetEnableRememberMe() bool {
+	if o == nil || o.EnableRememberMe == nil {
+		var ret bool
+		return ret
+	}
+	return *o.EnableRememberMe
+}
+
+// GetEnableRememberMeOk returns a tuple with the EnableRememberMe field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedIdentificationStageRequest) GetEnableRememberMeOk() (*bool, bool) {
+	if o == nil || o.EnableRememberMe == nil {
+		return nil, false
+	}
+	return o.EnableRememberMe, true
+}
+
+// HasEnableRememberMe returns a boolean if a field has been set.
+func (o *PatchedIdentificationStageRequest) HasEnableRememberMe() bool {
+	if o != nil && o.EnableRememberMe != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableRememberMe gets a reference to the given bool and assigns it to the EnableRememberMe field.
+func (o *PatchedIdentificationStageRequest) SetEnableRememberMe(v bool) {
+	o.EnableRememberMe = &v
+}
+
 func (o PatchedIdentificationStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -570,6 +604,9 @@ func (o PatchedIdentificationStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.PretendUserExists != nil {
 		toSerialize["pretend_user_exists"] = o.PretendUserExists
+	}
+	if o.EnableRememberMe != nil {
+		toSerialize["enable_remember_me"] = o.EnableRememberMe
 	}
 	return json.Marshal(toSerialize)
 }

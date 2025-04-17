@@ -32,6 +32,7 @@ type IdentificationChallenge struct {
 	PrimaryAction     string                                      `json:"primary_action"`
 	Sources           []LoginSource                               `json:"sources,omitempty"`
 	ShowSourceLabels  bool                                        `json:"show_source_labels"`
+	EnableRememberMe  *bool                                       `json:"enable_remember_me,omitempty"`
 }
 
 // NewIdentificationChallenge instantiates a new IdentificationChallenge object
@@ -49,6 +50,8 @@ func NewIdentificationChallenge(userFields []string, passwordFields bool, flowDe
 	this.FlowDesignation = flowDesignation
 	this.PrimaryAction = primaryAction
 	this.ShowSourceLabels = showSourceLabels
+	var enableRememberMe bool = true
+	this.EnableRememberMe = &enableRememberMe
 	return &this
 }
 
@@ -61,6 +64,8 @@ func NewIdentificationChallengeWithDefaults() *IdentificationChallenge {
 	this.Component = &component
 	var allowShowPassword bool = false
 	this.AllowShowPassword = &allowShowPassword
+	var enableRememberMe bool = true
+	this.EnableRememberMe = &enableRememberMe
 	return &this
 }
 
@@ -517,6 +522,38 @@ func (o *IdentificationChallenge) SetShowSourceLabels(v bool) {
 	o.ShowSourceLabels = v
 }
 
+// GetEnableRememberMe returns the EnableRememberMe field value if set, zero value otherwise.
+func (o *IdentificationChallenge) GetEnableRememberMe() bool {
+	if o == nil || o.EnableRememberMe == nil {
+		var ret bool
+		return ret
+	}
+	return *o.EnableRememberMe
+}
+
+// GetEnableRememberMeOk returns a tuple with the EnableRememberMe field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentificationChallenge) GetEnableRememberMeOk() (*bool, bool) {
+	if o == nil || o.EnableRememberMe == nil {
+		return nil, false
+	}
+	return o.EnableRememberMe, true
+}
+
+// HasEnableRememberMe returns a boolean if a field has been set.
+func (o *IdentificationChallenge) HasEnableRememberMe() bool {
+	if o != nil && o.EnableRememberMe != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableRememberMe gets a reference to the given bool and assigns it to the EnableRememberMe field.
+func (o *IdentificationChallenge) SetEnableRememberMe(v bool) {
+	o.EnableRememberMe = &v
+}
+
 func (o IdentificationChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.FlowInfo != nil {
@@ -563,6 +600,9 @@ func (o IdentificationChallenge) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["show_source_labels"] = o.ShowSourceLabels
+	}
+	if o.EnableRememberMe != nil {
+		toSerialize["enable_remember_me"] = o.EnableRememberMe
 	}
 	return json.Marshal(toSerialize)
 }

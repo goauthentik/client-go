@@ -52218,6 +52218,9 @@ components:
           type: array
         show_source_labels:
           type: boolean
+        enable_remember_me:
+          default: true
+          type: boolean
       required:
       - flow_designation
       - password_fields
@@ -52293,6 +52296,7 @@ components:
         captcha_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         recovery_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         case_insensitive_matching: true
+        enable_remember_me: true
       properties:
         pk:
           format: uuid
@@ -52378,6 +52382,10 @@ components:
           description: "When enabled, the stage will succeed and continue even when\
             \ incorrect user info is entered."
           type: boolean
+        enable_remember_me:
+          description: "Show the user the 'Remember me on this device' toggle, allowing\
+            \ repeat users to skip straight to entering their password."
+          type: boolean
       required:
       - component
       - meta_model_name
@@ -52422,6 +52430,7 @@ components:
         captcha_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         recovery_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         case_insensitive_matching: true
+        enable_remember_me: true
       properties:
         name:
           minLength: 1
@@ -52486,6 +52495,10 @@ components:
         pretend_user_exists:
           description: "When enabled, the stage will succeed and continue even when\
             \ incorrect user info is entered."
+          type: boolean
+        enable_remember_me:
+          description: "Show the user the 'Remember me on this device' toggle, allowing\
+            \ repeat users to skip straight to entering their password."
           type: boolean
       required:
       - name
@@ -59315,6 +59328,7 @@ components:
           captcha_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           recovery_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           case_insensitive_matching: true
+          enable_remember_me: true
         - show_source_labels: true
           verbose_name_plural: verbose_name_plural
           sources:
@@ -59361,6 +59375,7 @@ components:
           captcha_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           recovery_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           case_insensitive_matching: true
+          enable_remember_me: true
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -66742,6 +66757,7 @@ components:
         captcha_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         recovery_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         case_insensitive_matching: true
+        enable_remember_me: true
       properties:
         name:
           minLength: 1
@@ -66806,6 +66822,10 @@ components:
         pretend_user_exists:
           description: "When enabled, the stage will succeed and continue even when\
             \ incorrect user info is entered."
+          type: boolean
+        enable_remember_me:
+          description: "Show the user the 'Remember me on this device' toggle, allowing\
+            \ repeat users to skip straight to entering their password."
           type: boolean
       type: object
     PatchedInitialPermissionsRequest:

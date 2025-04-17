@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **PrimaryAction** | **string** |  | 
 **Sources** | Pointer to [**[]LoginSource**](LoginSource.md) |  | [optional] 
 **ShowSourceLabels** | **bool** |  | 
+**EnableRememberMe** | Pointer to **bool** |  | [optional] [default to true]
 
 ## Methods
 
@@ -408,6 +409,31 @@ and a boolean to check if the value has been set.
 
 SetShowSourceLabels sets ShowSourceLabels field to given value.
 
+
+### GetEnableRememberMe
+
+`func (o *IdentificationChallenge) GetEnableRememberMe() bool`
+
+GetEnableRememberMe returns the EnableRememberMe field if non-nil, zero value otherwise.
+
+### GetEnableRememberMeOk
+
+`func (o *IdentificationChallenge) GetEnableRememberMeOk() (*bool, bool)`
+
+GetEnableRememberMeOk returns a tuple with the EnableRememberMe field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableRememberMe
+
+`func (o *IdentificationChallenge) SetEnableRememberMe(v bool)`
+
+SetEnableRememberMe sets EnableRememberMe field to given value.
+
+### HasEnableRememberMe
+
+`func (o *IdentificationChallenge) HasEnableRememberMe() bool`
+
+HasEnableRememberMe returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
