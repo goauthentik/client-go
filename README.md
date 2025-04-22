@@ -405,6 +405,13 @@ Class | Method | HTTP request | Description
 *PoliciesApi* | [**PoliciesReputationScoresUsedByList**](docs/PoliciesApi.md#policiesreputationscoresusedbylist) | **Get** /policies/reputation/scores/{reputation_uuid}/used_by/ | 
 *PoliciesApi* | [**PoliciesReputationUpdate**](docs/PoliciesApi.md#policiesreputationupdate) | **Put** /policies/reputation/{policy_uuid}/ | 
 *PoliciesApi* | [**PoliciesReputationUsedByList**](docs/PoliciesApi.md#policiesreputationusedbylist) | **Get** /policies/reputation/{policy_uuid}/used_by/ | 
+*PoliciesApi* | [**PoliciesUniquePasswordCreate**](docs/PoliciesApi.md#policiesuniquepasswordcreate) | **Post** /policies/unique_password/ | 
+*PoliciesApi* | [**PoliciesUniquePasswordDestroy**](docs/PoliciesApi.md#policiesuniquepassworddestroy) | **Delete** /policies/unique_password/{policy_uuid}/ | 
+*PoliciesApi* | [**PoliciesUniquePasswordList**](docs/PoliciesApi.md#policiesuniquepasswordlist) | **Get** /policies/unique_password/ | 
+*PoliciesApi* | [**PoliciesUniquePasswordPartialUpdate**](docs/PoliciesApi.md#policiesuniquepasswordpartialupdate) | **Patch** /policies/unique_password/{policy_uuid}/ | 
+*PoliciesApi* | [**PoliciesUniquePasswordRetrieve**](docs/PoliciesApi.md#policiesuniquepasswordretrieve) | **Get** /policies/unique_password/{policy_uuid}/ | 
+*PoliciesApi* | [**PoliciesUniquePasswordUpdate**](docs/PoliciesApi.md#policiesuniquepasswordupdate) | **Put** /policies/unique_password/{policy_uuid}/ | 
+*PoliciesApi* | [**PoliciesUniquePasswordUsedByList**](docs/PoliciesApi.md#policiesuniquepasswordusedbylist) | **Get** /policies/unique_password/{policy_uuid}/used_by/ | 
 *PropertymappingsApi* | [**PropertymappingsAllDestroy**](docs/PropertymappingsApi.md#propertymappingsalldestroy) | **Delete** /propertymappings/all/{pm_uuid}/ | 
 *PropertymappingsApi* | [**PropertymappingsAllList**](docs/PropertymappingsApi.md#propertymappingsalllist) | **Get** /propertymappings/all/ | 
 *PropertymappingsApi* | [**PropertymappingsAllRetrieve**](docs/PropertymappingsApi.md#propertymappingsallretrieve) | **Get** /propertymappings/all/{pm_uuid}/ | 
@@ -1435,6 +1442,7 @@ Class | Method | HTTP request | Description
  - [PaginatedTenantList](docs/PaginatedTenantList.md)
  - [PaginatedTokenList](docs/PaginatedTokenList.md)
  - [PaginatedTokenModelList](docs/PaginatedTokenModelList.md)
+ - [PaginatedUniquePasswordPolicyList](docs/PaginatedUniquePasswordPolicyList.md)
  - [PaginatedUserAssignedObjectPermissionList](docs/PaginatedUserAssignedObjectPermissionList.md)
  - [PaginatedUserConsentList](docs/PaginatedUserConsentList.md)
  - [PaginatedUserDeleteStageList](docs/PaginatedUserDeleteStageList.md)
@@ -1559,6 +1567,7 @@ Class | Method | HTTP request | Description
  - [PatchedTOTPDeviceRequest](docs/PatchedTOTPDeviceRequest.md)
  - [PatchedTenantRequest](docs/PatchedTenantRequest.md)
  - [PatchedTokenRequest](docs/PatchedTokenRequest.md)
+ - [PatchedUniquePasswordPolicyRequest](docs/PatchedUniquePasswordPolicyRequest.md)
  - [PatchedUserDeleteStageRequest](docs/PatchedUserDeleteStageRequest.md)
  - [PatchedUserKerberosSourceConnectionRequest](docs/PatchedUserKerberosSourceConnectionRequest.md)
  - [PatchedUserLDAPSourceConnectionRequest](docs/PatchedUserLDAPSourceConnectionRequest.md)
@@ -1717,6 +1726,8 @@ Class | Method | HTTP request | Description
  - [TransactionPolicyBindingRequest](docs/TransactionPolicyBindingRequest.md)
  - [TypeCreate](docs/TypeCreate.md)
  - [UiThemeEnum](docs/UiThemeEnum.md)
+ - [UniquePasswordPolicy](docs/UniquePasswordPolicy.md)
+ - [UniquePasswordPolicyRequest](docs/UniquePasswordPolicyRequest.md)
  - [UsedBy](docs/UsedBy.md)
  - [UsedByActionEnum](docs/UsedByActionEnum.md)
  - [User](docs/User.md)

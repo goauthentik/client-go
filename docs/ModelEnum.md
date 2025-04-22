@@ -183,6 +183,8 @@
 
 * `ENTERPRISE_LICENSE` (value: `"authentik_enterprise.license"`)
 
+* `POLICIES_UNIQUE_PASSWORD_UNIQUEPASSWORDPOLICY` (value: `"authentik_policies_unique_password.uniquepasswordpolicy"`)
+
 * `PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDER` (value: `"authentik_providers_google_workspace.googleworkspaceprovider"`)
 
 * `PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDERMAPPING` (value: `"authentik_providers_google_workspace.googleworkspaceprovidermapping"`)

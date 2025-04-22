@@ -16358,6 +16358,341 @@ paths:
       - authentik: []
       tags:
       - policies
+  /policies/unique_password/:
+    get:
+      description: Password Uniqueness Policy Viewset
+      operationId: policies_unique_password_list
+      parameters:
+      - explode: true
+        in: query
+        name: created
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: execution_logging
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: last_updated
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: num_historical_passwords
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: password_field
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: policy_uuid
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedUniquePasswordPolicyList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - policies
+    post:
+      description: Password Uniqueness Policy Viewset
+      operationId: policies_unique_password_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UniquePasswordPolicyRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniquePasswordPolicy'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - policies
+  /policies/unique_password/{policy_uuid}/:
+    delete:
+      description: Password Uniqueness Policy Viewset
+      operationId: policies_unique_password_destroy
+      parameters:
+      - description: A UUID string identifying this Password Uniqueness Policy.
+        explode: false
+        in: path
+        name: policy_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - policies
+    get:
+      description: Password Uniqueness Policy Viewset
+      operationId: policies_unique_password_retrieve
+      parameters:
+      - description: A UUID string identifying this Password Uniqueness Policy.
+        explode: false
+        in: path
+        name: policy_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniquePasswordPolicy'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - policies
+    patch:
+      description: Password Uniqueness Policy Viewset
+      operationId: policies_unique_password_partial_update
+      parameters:
+      - description: A UUID string identifying this Password Uniqueness Policy.
+        explode: false
+        in: path
+        name: policy_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUniquePasswordPolicyRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniquePasswordPolicy'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - policies
+    put:
+      description: Password Uniqueness Policy Viewset
+      operationId: policies_unique_password_update
+      parameters:
+      - description: A UUID string identifying this Password Uniqueness Policy.
+        explode: false
+        in: path
+        name: policy_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UniquePasswordPolicyRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniquePasswordPolicy'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - policies
+  /policies/unique_password/{policy_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: policies_unique_password_used_by_list
+      parameters:
+      - description: A UUID string identifying this Password Uniqueness Policy.
+        explode: false
+        in: path
+        name: policy_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - policies
   /propertymappings/all/:
     get:
       description: PropertyMapping Viewset
@@ -27343,6 +27678,7 @@ paths:
           - authentik_policies_geoip.geoippolicy
           - authentik_policies_password.passwordpolicy
           - authentik_policies_reputation.reputationpolicy
+          - authentik_policies_unique_password.uniquepasswordpolicy
           - authentik_providers_google_workspace.googleworkspaceprovider
           - authentik_providers_google_workspace.googleworkspaceprovidermapping
           - authentik_providers_ldap.ldapprovider
@@ -27607,6 +27943,7 @@ paths:
           - authentik_policies_geoip.geoippolicy
           - authentik_policies_password.passwordpolicy
           - authentik_policies_reputation.reputationpolicy
+          - authentik_policies_unique_password.uniquepasswordpolicy
           - authentik_providers_google_workspace.googleworkspaceprovider
           - authentik_providers_google_workspace.googleworkspaceprovidermapping
           - authentik_providers_ldap.ldapprovider
@@ -45169,6 +45506,7 @@ components:
       - authentik.core
       - authentik.enterprise
       - authentik.enterprise.audit
+      - authentik.enterprise.policies.unique_password
       - authentik.enterprise.providers.google_workspace
       - authentik.enterprise.providers.microsoft_entra
       - authentik.enterprise.providers.ssf
@@ -54865,6 +55203,7 @@ components:
       - authentik_core.applicationentitlement
       - authentik_core.token
       - authentik_enterprise.license
+      - authentik_policies_unique_password.uniquepasswordpolicy
       - authentik_providers_google_workspace.googleworkspaceprovider
       - authentik_providers_google_workspace.googleworkspaceprovidermapping
       - authentik_providers_microsoft_entra.microsoftentraprovider
@@ -63629,6 +63968,48 @@ components:
       - pagination
       - results
       type: object
+    PaginatedUniquePasswordPolicyList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - password_field: password_field
+          num_historical_passwords: 1294386358
+          component: component
+          verbose_name: verbose_name
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          execution_logging: true
+          bound_to: 0
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - password_field: password_field
+          num_historical_passwords: 1294386358
+          component: component
+          verbose_name: verbose_name
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          execution_logging: true
+          bound_to: 0
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/UniquePasswordPolicy'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
     PaginatedUserAssignedObjectPermissionList:
       example:
         pagination:
@@ -69420,6 +69801,32 @@ components:
           type: string
         expiring:
           type: boolean
+      type: object
+    PatchedUniquePasswordPolicyRequest:
+      description: Password Uniqueness Policy Serializer
+      example:
+        password_field: password_field
+        num_historical_passwords: 171976544
+        execution_logging: true
+        name: name
+      properties:
+        name:
+          minLength: 1
+          type: string
+        execution_logging:
+          description: "When this option is enabled, all executions of this policy\
+            \ will be logged. By default, only execution errors are logged."
+          type: boolean
+        password_field:
+          description: "Field key to check, field keys defined in Prompt stages are\
+            \ available."
+          minLength: 1
+          type: string
+        num_historical_passwords:
+          description: Number of passwords to check against.
+          maximum: 2147483647
+          minimum: 0
+          type: integer
       type: object
     PatchedUserDeleteStageRequest:
       description: UserDeleteStage Serializer
@@ -76162,6 +76569,97 @@ components:
       - light
       - dark
       type: string
+    UniquePasswordPolicy:
+      description: Password Uniqueness Policy Serializer
+      example:
+        password_field: password_field
+        num_historical_passwords: 1294386358
+        component: component
+        verbose_name: verbose_name
+        verbose_name_plural: verbose_name_plural
+        meta_model_name: meta_model_name
+        execution_logging: true
+        bound_to: 0
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Policy uuid
+          type: string
+        name:
+          type: string
+        execution_logging:
+          description: "When this option is enabled, all executions of this policy\
+            \ will be logged. By default, only execution errors are logged."
+          type: boolean
+        component:
+          description: Get object component so that we know how to edit the object
+          readOnly: true
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+        bound_to:
+          description: Return objects policy is bound to
+          readOnly: true
+          type: integer
+        password_field:
+          description: "Field key to check, field keys defined in Prompt stages are\
+            \ available."
+          type: string
+        num_historical_passwords:
+          description: Number of passwords to check against.
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+      required:
+      - bound_to
+      - component
+      - meta_model_name
+      - name
+      - pk
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    UniquePasswordPolicyRequest:
+      description: Password Uniqueness Policy Serializer
+      example:
+        password_field: password_field
+        num_historical_passwords: 171976544
+        execution_logging: true
+        name: name
+      properties:
+        name:
+          minLength: 1
+          type: string
+        execution_logging:
+          description: "When this option is enabled, all executions of this policy\
+            \ will be logged. By default, only execution errors are logged."
+          type: boolean
+        password_field:
+          description: "Field key to check, field keys defined in Prompt stages are\
+            \ available."
+          minLength: 1
+          type: string
+        num_historical_passwords:
+          description: Number of passwords to check against.
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+      required:
+      - name
+      type: object
     UsedBy:
       description: A list of all objects referencing the queried object
       example:

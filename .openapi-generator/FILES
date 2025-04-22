@@ -437,6 +437,7 @@ docs/PaginatedTOTPDeviceList.md
 docs/PaginatedTenantList.md
 docs/PaginatedTokenList.md
 docs/PaginatedTokenModelList.md
+docs/PaginatedUniquePasswordPolicyList.md
 docs/PaginatedUserAssignedObjectPermissionList.md
 docs/PaginatedUserConsentList.md
 docs/PaginatedUserDeleteStageList.md
@@ -561,6 +562,7 @@ docs/PatchedStaticDeviceRequest.md
 docs/PatchedTOTPDeviceRequest.md
 docs/PatchedTenantRequest.md
 docs/PatchedTokenRequest.md
+docs/PatchedUniquePasswordPolicyRequest.md
 docs/PatchedUserDeleteStageRequest.md
 docs/PatchedUserKerberosSourceConnectionRequest.md
 docs/PatchedUserLDAPSourceConnectionRequest.md
@@ -730,6 +732,8 @@ docs/TransactionApplicationResponse.md
 docs/TransactionPolicyBindingRequest.md
 docs/TypeCreate.md
 docs/UiThemeEnum.md
+docs/UniquePasswordPolicy.md
+docs/UniquePasswordPolicyRequest.md
 docs/UsedBy.md
 docs/UsedByActionEnum.md
 docs/User.md
@@ -1189,6 +1193,7 @@ model_paginated_tenant_list.go
 model_paginated_token_list.go
 model_paginated_token_model_list.go
 model_paginated_totp_device_list.go
+model_paginated_unique_password_policy_list.go
 model_paginated_user_assigned_object_permission_list.go
 model_paginated_user_consent_list.go
 model_paginated_user_delete_stage_list.go
@@ -1313,6 +1318,7 @@ model_patched_static_device_request.go
 model_patched_tenant_request.go
 model_patched_token_request.go
 model_patched_totp_device_request.go
+model_patched_unique_password_policy_request.go
 model_patched_user_delete_stage_request.go
 model_patched_user_kerberos_source_connection_request.go
 model_patched_user_ldap_source_connection_request.go
@@ -1471,6 +1477,8 @@ model_transaction_application_response.go
 model_transaction_policy_binding_request.go
 model_type_create.go
 model_ui_theme_enum.go
+model_unique_password_policy.go
+model_unique_password_policy_request.go
 model_used_by.go
 model_used_by_action_enum.go
 model_user.go

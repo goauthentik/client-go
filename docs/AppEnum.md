@@ -115,6 +115,8 @@
 
 * `ENTERPRISE_AUDIT` (value: `"authentik.enterprise.audit"`)
 
+* `ENTERPRISE_POLICIES_UNIQUE_PASSWORD` (value: `"authentik.enterprise.policies.unique_password"`)
+
 * `ENTERPRISE_PROVIDERS_GOOGLE_WORKSPACE` (value: `"authentik.enterprise.providers.google_workspace"`)
 
 * `ENTERPRISE_PROVIDERS_MICROSOFT_ENTRA` (value: `"authentik.enterprise.providers.microsoft_entra"`)

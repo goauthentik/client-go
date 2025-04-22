@@ -9562,3 +9562,977 @@ func (a *PoliciesApiService) PoliciesReputationUsedByListExecute(r ApiPoliciesRe
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
+type ApiPoliciesUniquePasswordCreateRequest struct {
+	ctx                         context.Context
+	ApiService                  *PoliciesApiService
+	uniquePasswordPolicyRequest *UniquePasswordPolicyRequest
+}
+
+func (r ApiPoliciesUniquePasswordCreateRequest) UniquePasswordPolicyRequest(uniquePasswordPolicyRequest UniquePasswordPolicyRequest) ApiPoliciesUniquePasswordCreateRequest {
+	r.uniquePasswordPolicyRequest = &uniquePasswordPolicyRequest
+	return r
+}
+
+func (r ApiPoliciesUniquePasswordCreateRequest) Execute() (*UniquePasswordPolicy, *http.Response, error) {
+	return r.ApiService.PoliciesUniquePasswordCreateExecute(r)
+}
+
+/*
+PoliciesUniquePasswordCreate Method for PoliciesUniquePasswordCreate
+
+Password Uniqueness Policy Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesUniquePasswordCreateRequest
+*/
+func (a *PoliciesApiService) PoliciesUniquePasswordCreate(ctx context.Context) ApiPoliciesUniquePasswordCreateRequest {
+	return ApiPoliciesUniquePasswordCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return UniquePasswordPolicy
+func (a *PoliciesApiService) PoliciesUniquePasswordCreateExecute(r ApiPoliciesUniquePasswordCreateRequest) (*UniquePasswordPolicy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UniquePasswordPolicy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesUniquePasswordCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/policies/unique_password/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.uniquePasswordPolicyRequest == nil {
+		return localVarReturnValue, nil, reportError("uniquePasswordPolicyRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.uniquePasswordPolicyRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPoliciesUniquePasswordDestroyRequest struct {
+	ctx        context.Context
+	ApiService *PoliciesApiService
+	policyUuid string
+}
+
+func (r ApiPoliciesUniquePasswordDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PoliciesUniquePasswordDestroyExecute(r)
+}
+
+/*
+PoliciesUniquePasswordDestroy Method for PoliciesUniquePasswordDestroy
+
+Password Uniqueness Policy Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Password Uniqueness Policy.
+	@return ApiPoliciesUniquePasswordDestroyRequest
+*/
+func (a *PoliciesApiService) PoliciesUniquePasswordDestroy(ctx context.Context, policyUuid string) ApiPoliciesUniquePasswordDestroyRequest {
+	return ApiPoliciesUniquePasswordDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		policyUuid: policyUuid,
+	}
+}
+
+// Execute executes the request
+func (a *PoliciesApiService) PoliciesUniquePasswordDestroyExecute(r ApiPoliciesUniquePasswordDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesUniquePasswordDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/policies/unique_password/{policy_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiPoliciesUniquePasswordListRequest struct {
+	ctx                    context.Context
+	ApiService             *PoliciesApiService
+	created                *time.Time
+	executionLogging       *bool
+	lastUpdated            *time.Time
+	name                   *string
+	numHistoricalPasswords *int32
+	ordering               *string
+	page                   *int32
+	pageSize               *int32
+	passwordField          *string
+	policyUuid             *string
+	search                 *string
+}
+
+func (r ApiPoliciesUniquePasswordListRequest) Created(created time.Time) ApiPoliciesUniquePasswordListRequest {
+	r.created = &created
+	return r
+}
+
+func (r ApiPoliciesUniquePasswordListRequest) ExecutionLogging(executionLogging bool) ApiPoliciesUniquePasswordListRequest {
+	r.executionLogging = &executionLogging
+	return r
+}
+
+func (r ApiPoliciesUniquePasswordListRequest) LastUpdated(lastUpdated time.Time) ApiPoliciesUniquePasswordListRequest {
+	r.lastUpdated = &lastUpdated
+	return r
+}
+
+func (r ApiPoliciesUniquePasswordListRequest) Name(name string) ApiPoliciesUniquePasswordListRequest {
+	r.name = &name
+	return r
+}
+
+func (r ApiPoliciesUniquePasswordListRequest) NumHistoricalPasswords(numHistoricalPasswords int32) ApiPoliciesUniquePasswordListRequest {
+	r.numHistoricalPasswords = &numHistoricalPasswords
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiPoliciesUniquePasswordListRequest) Ordering(ordering string) ApiPoliciesUniquePasswordListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiPoliciesUniquePasswordListRequest) Page(page int32) ApiPoliciesUniquePasswordListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiPoliciesUniquePasswordListRequest) PageSize(pageSize int32) ApiPoliciesUniquePasswordListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiPoliciesUniquePasswordListRequest) PasswordField(passwordField string) ApiPoliciesUniquePasswordListRequest {
+	r.passwordField = &passwordField
+	return r
+}
+
+func (r ApiPoliciesUniquePasswordListRequest) PolicyUuid(policyUuid string) ApiPoliciesUniquePasswordListRequest {
+	r.policyUuid = &policyUuid
+	return r
+}
+
+// A search term.
+func (r ApiPoliciesUniquePasswordListRequest) Search(search string) ApiPoliciesUniquePasswordListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiPoliciesUniquePasswordListRequest) Execute() (*PaginatedUniquePasswordPolicyList, *http.Response, error) {
+	return r.ApiService.PoliciesUniquePasswordListExecute(r)
+}
+
+/*
+PoliciesUniquePasswordList Method for PoliciesUniquePasswordList
+
+Password Uniqueness Policy Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPoliciesUniquePasswordListRequest
+*/
+func (a *PoliciesApiService) PoliciesUniquePasswordList(ctx context.Context) ApiPoliciesUniquePasswordListRequest {
+	return ApiPoliciesUniquePasswordListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedUniquePasswordPolicyList
+func (a *PoliciesApiService) PoliciesUniquePasswordListExecute(r ApiPoliciesUniquePasswordListRequest) (*PaginatedUniquePasswordPolicyList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedUniquePasswordPolicyList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesUniquePasswordList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/policies/unique_password/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.created != nil {
+		localVarQueryParams.Add("created", parameterToString(*r.created, ""))
+	}
+	if r.executionLogging != nil {
+		localVarQueryParams.Add("execution_logging", parameterToString(*r.executionLogging, ""))
+	}
+	if r.lastUpdated != nil {
+		localVarQueryParams.Add("last_updated", parameterToString(*r.lastUpdated, ""))
+	}
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.numHistoricalPasswords != nil {
+		localVarQueryParams.Add("num_historical_passwords", parameterToString(*r.numHistoricalPasswords, ""))
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.passwordField != nil {
+		localVarQueryParams.Add("password_field", parameterToString(*r.passwordField, ""))
+	}
+	if r.policyUuid != nil {
+		localVarQueryParams.Add("policy_uuid", parameterToString(*r.policyUuid, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPoliciesUniquePasswordPartialUpdateRequest struct {
+	ctx                                context.Context
+	ApiService                         *PoliciesApiService
+	policyUuid                         string
+	patchedUniquePasswordPolicyRequest *PatchedUniquePasswordPolicyRequest
+}
+
+func (r ApiPoliciesUniquePasswordPartialUpdateRequest) PatchedUniquePasswordPolicyRequest(patchedUniquePasswordPolicyRequest PatchedUniquePasswordPolicyRequest) ApiPoliciesUniquePasswordPartialUpdateRequest {
+	r.patchedUniquePasswordPolicyRequest = &patchedUniquePasswordPolicyRequest
+	return r
+}
+
+func (r ApiPoliciesUniquePasswordPartialUpdateRequest) Execute() (*UniquePasswordPolicy, *http.Response, error) {
+	return r.ApiService.PoliciesUniquePasswordPartialUpdateExecute(r)
+}
+
+/*
+PoliciesUniquePasswordPartialUpdate Method for PoliciesUniquePasswordPartialUpdate
+
+Password Uniqueness Policy Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Password Uniqueness Policy.
+	@return ApiPoliciesUniquePasswordPartialUpdateRequest
+*/
+func (a *PoliciesApiService) PoliciesUniquePasswordPartialUpdate(ctx context.Context, policyUuid string) ApiPoliciesUniquePasswordPartialUpdateRequest {
+	return ApiPoliciesUniquePasswordPartialUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		policyUuid: policyUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return UniquePasswordPolicy
+func (a *PoliciesApiService) PoliciesUniquePasswordPartialUpdateExecute(r ApiPoliciesUniquePasswordPartialUpdateRequest) (*UniquePasswordPolicy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UniquePasswordPolicy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesUniquePasswordPartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/policies/unique_password/{policy_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedUniquePasswordPolicyRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPoliciesUniquePasswordRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *PoliciesApiService
+	policyUuid string
+}
+
+func (r ApiPoliciesUniquePasswordRetrieveRequest) Execute() (*UniquePasswordPolicy, *http.Response, error) {
+	return r.ApiService.PoliciesUniquePasswordRetrieveExecute(r)
+}
+
+/*
+PoliciesUniquePasswordRetrieve Method for PoliciesUniquePasswordRetrieve
+
+Password Uniqueness Policy Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Password Uniqueness Policy.
+	@return ApiPoliciesUniquePasswordRetrieveRequest
+*/
+func (a *PoliciesApiService) PoliciesUniquePasswordRetrieve(ctx context.Context, policyUuid string) ApiPoliciesUniquePasswordRetrieveRequest {
+	return ApiPoliciesUniquePasswordRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		policyUuid: policyUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return UniquePasswordPolicy
+func (a *PoliciesApiService) PoliciesUniquePasswordRetrieveExecute(r ApiPoliciesUniquePasswordRetrieveRequest) (*UniquePasswordPolicy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UniquePasswordPolicy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesUniquePasswordRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/policies/unique_password/{policy_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPoliciesUniquePasswordUpdateRequest struct {
+	ctx                         context.Context
+	ApiService                  *PoliciesApiService
+	policyUuid                  string
+	uniquePasswordPolicyRequest *UniquePasswordPolicyRequest
+}
+
+func (r ApiPoliciesUniquePasswordUpdateRequest) UniquePasswordPolicyRequest(uniquePasswordPolicyRequest UniquePasswordPolicyRequest) ApiPoliciesUniquePasswordUpdateRequest {
+	r.uniquePasswordPolicyRequest = &uniquePasswordPolicyRequest
+	return r
+}
+
+func (r ApiPoliciesUniquePasswordUpdateRequest) Execute() (*UniquePasswordPolicy, *http.Response, error) {
+	return r.ApiService.PoliciesUniquePasswordUpdateExecute(r)
+}
+
+/*
+PoliciesUniquePasswordUpdate Method for PoliciesUniquePasswordUpdate
+
+Password Uniqueness Policy Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Password Uniqueness Policy.
+	@return ApiPoliciesUniquePasswordUpdateRequest
+*/
+func (a *PoliciesApiService) PoliciesUniquePasswordUpdate(ctx context.Context, policyUuid string) ApiPoliciesUniquePasswordUpdateRequest {
+	return ApiPoliciesUniquePasswordUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		policyUuid: policyUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return UniquePasswordPolicy
+func (a *PoliciesApiService) PoliciesUniquePasswordUpdateExecute(r ApiPoliciesUniquePasswordUpdateRequest) (*UniquePasswordPolicy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UniquePasswordPolicy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesUniquePasswordUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/policies/unique_password/{policy_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.uniquePasswordPolicyRequest == nil {
+		return localVarReturnValue, nil, reportError("uniquePasswordPolicyRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.uniquePasswordPolicyRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPoliciesUniquePasswordUsedByListRequest struct {
+	ctx        context.Context
+	ApiService *PoliciesApiService
+	policyUuid string
+}
+
+func (r ApiPoliciesUniquePasswordUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.PoliciesUniquePasswordUsedByListExecute(r)
+}
+
+/*
+PoliciesUniquePasswordUsedByList Method for PoliciesUniquePasswordUsedByList
+
+Get a list of all objects that use this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param policyUuid A UUID string identifying this Password Uniqueness Policy.
+	@return ApiPoliciesUniquePasswordUsedByListRequest
+*/
+func (a *PoliciesApiService) PoliciesUniquePasswordUsedByList(ctx context.Context, policyUuid string) ApiPoliciesUniquePasswordUsedByListRequest {
+	return ApiPoliciesUniquePasswordUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		policyUuid: policyUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []UsedBy
+func (a *PoliciesApiService) PoliciesUniquePasswordUsedByListExecute(r ApiPoliciesUniquePasswordUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesApiService.PoliciesUniquePasswordUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/policies/unique_password/{policy_uuid}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_uuid"+"}", url.PathEscape(parameterToString(r.policyUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}

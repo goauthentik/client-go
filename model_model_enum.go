@@ -111,6 +111,7 @@ const (
 	MODELENUM_CORE_APPLICATIONENTITLEMENT                                       ModelEnum = "authentik_core.applicationentitlement"
 	MODELENUM_CORE_TOKEN                                                        ModelEnum = "authentik_core.token"
 	MODELENUM_ENTERPRISE_LICENSE                                                ModelEnum = "authentik_enterprise.license"
+	MODELENUM_POLICIES_UNIQUE_PASSWORD_UNIQUEPASSWORDPOLICY                     ModelEnum = "authentik_policies_unique_password.uniquepasswordpolicy"
 	MODELENUM_PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDER                ModelEnum = "authentik_providers_google_workspace.googleworkspaceprovider"
 	MODELENUM_PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDERMAPPING         ModelEnum = "authentik_providers_google_workspace.googleworkspaceprovidermapping"
 	MODELENUM_PROVIDERS_MICROSOFT_ENTRA_MICROSOFTENTRAPROVIDER                  ModelEnum = "authentik_providers_microsoft_entra.microsoftentraprovider"
@@ -217,6 +218,7 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_core.applicationentitlement",
 	"authentik_core.token",
 	"authentik_enterprise.license",
+	"authentik_policies_unique_password.uniquepasswordpolicy",
 	"authentik_providers_google_workspace.googleworkspaceprovider",
 	"authentik_providers_google_workspace.googleworkspaceprovidermapping",
 	"authentik_providers_microsoft_entra.microsoftentraprovider",

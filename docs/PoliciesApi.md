@@ -73,6 +73,13 @@ Method | HTTP request | Description
 [**PoliciesReputationScoresUsedByList**](PoliciesApi.md#PoliciesReputationScoresUsedByList) | **Get** /policies/reputation/scores/{reputation_uuid}/used_by/ | 
 [**PoliciesReputationUpdate**](PoliciesApi.md#PoliciesReputationUpdate) | **Put** /policies/reputation/{policy_uuid}/ | 
 [**PoliciesReputationUsedByList**](PoliciesApi.md#PoliciesReputationUsedByList) | **Get** /policies/reputation/{policy_uuid}/used_by/ | 
+[**PoliciesUniquePasswordCreate**](PoliciesApi.md#PoliciesUniquePasswordCreate) | **Post** /policies/unique_password/ | 
+[**PoliciesUniquePasswordDestroy**](PoliciesApi.md#PoliciesUniquePasswordDestroy) | **Delete** /policies/unique_password/{policy_uuid}/ | 
+[**PoliciesUniquePasswordList**](PoliciesApi.md#PoliciesUniquePasswordList) | **Get** /policies/unique_password/ | 
+[**PoliciesUniquePasswordPartialUpdate**](PoliciesApi.md#PoliciesUniquePasswordPartialUpdate) | **Patch** /policies/unique_password/{policy_uuid}/ | 
+[**PoliciesUniquePasswordRetrieve**](PoliciesApi.md#PoliciesUniquePasswordRetrieve) | **Get** /policies/unique_password/{policy_uuid}/ | 
+[**PoliciesUniquePasswordUpdate**](PoliciesApi.md#PoliciesUniquePasswordUpdate) | **Put** /policies/unique_password/{policy_uuid}/ | 
+[**PoliciesUniquePasswordUsedByList**](PoliciesApi.md#PoliciesUniquePasswordUsedByList) | **Get** /policies/unique_password/{policy_uuid}/used_by/ | 
 
 
 
@@ -4992,6 +4999,511 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPoliciesReputationUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PoliciesUniquePasswordCreate
+
+> UniquePasswordPolicy PoliciesUniquePasswordCreate(ctx).UniquePasswordPolicyRequest(uniquePasswordPolicyRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    uniquePasswordPolicyRequest := *openapiclient.NewUniquePasswordPolicyRequest("Name_example") // UniquePasswordPolicyRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesUniquePasswordCreate(context.Background()).UniquePasswordPolicyRequest(uniquePasswordPolicyRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesUniquePasswordCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PoliciesUniquePasswordCreate`: UniquePasswordPolicy
+    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesUniquePasswordCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesUniquePasswordCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uniquePasswordPolicyRequest** | [**UniquePasswordPolicyRequest**](UniquePasswordPolicyRequest.md) |  | 
+
+### Return type
+
+[**UniquePasswordPolicy**](UniquePasswordPolicy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PoliciesUniquePasswordDestroy
+
+> PoliciesUniquePasswordDestroy(ctx, policyUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Uniqueness Policy.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesUniquePasswordDestroy(context.Background(), policyUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesUniquePasswordDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**policyUuid** | **string** | A UUID string identifying this Password Uniqueness Policy. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesUniquePasswordDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PoliciesUniquePasswordList
+
+> PaginatedUniquePasswordPolicyList PoliciesUniquePasswordList(ctx).Created(created).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).Name(name).NumHistoricalPasswords(numHistoricalPasswords).Ordering(ordering).Page(page).PageSize(pageSize).PasswordField(passwordField).PolicyUuid(policyUuid).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "time"
+    openapiclient "./openapi"
+)
+
+func main() {
+    created := time.Now() // time.Time |  (optional)
+    executionLogging := true // bool |  (optional)
+    lastUpdated := time.Now() // time.Time |  (optional)
+    name := "name_example" // string |  (optional)
+    numHistoricalPasswords := int32(56) // int32 |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    passwordField := "passwordField_example" // string |  (optional)
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesUniquePasswordList(context.Background()).Created(created).ExecutionLogging(executionLogging).LastUpdated(lastUpdated).Name(name).NumHistoricalPasswords(numHistoricalPasswords).Ordering(ordering).Page(page).PageSize(pageSize).PasswordField(passwordField).PolicyUuid(policyUuid).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesUniquePasswordList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PoliciesUniquePasswordList`: PaginatedUniquePasswordPolicyList
+    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesUniquePasswordList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesUniquePasswordListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **created** | **time.Time** |  | 
+ **executionLogging** | **bool** |  | 
+ **lastUpdated** | **time.Time** |  | 
+ **name** | **string** |  | 
+ **numHistoricalPasswords** | **int32** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **passwordField** | **string** |  | 
+ **policyUuid** | **string** |  | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedUniquePasswordPolicyList**](PaginatedUniquePasswordPolicyList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PoliciesUniquePasswordPartialUpdate
+
+> UniquePasswordPolicy PoliciesUniquePasswordPartialUpdate(ctx, policyUuid).PatchedUniquePasswordPolicyRequest(patchedUniquePasswordPolicyRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Uniqueness Policy.
+    patchedUniquePasswordPolicyRequest := *openapiclient.NewPatchedUniquePasswordPolicyRequest() // PatchedUniquePasswordPolicyRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesUniquePasswordPartialUpdate(context.Background(), policyUuid).PatchedUniquePasswordPolicyRequest(patchedUniquePasswordPolicyRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesUniquePasswordPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PoliciesUniquePasswordPartialUpdate`: UniquePasswordPolicy
+    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesUniquePasswordPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**policyUuid** | **string** | A UUID string identifying this Password Uniqueness Policy. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesUniquePasswordPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedUniquePasswordPolicyRequest** | [**PatchedUniquePasswordPolicyRequest**](PatchedUniquePasswordPolicyRequest.md) |  | 
+
+### Return type
+
+[**UniquePasswordPolicy**](UniquePasswordPolicy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PoliciesUniquePasswordRetrieve
+
+> UniquePasswordPolicy PoliciesUniquePasswordRetrieve(ctx, policyUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Uniqueness Policy.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesUniquePasswordRetrieve(context.Background(), policyUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesUniquePasswordRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PoliciesUniquePasswordRetrieve`: UniquePasswordPolicy
+    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesUniquePasswordRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**policyUuid** | **string** | A UUID string identifying this Password Uniqueness Policy. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesUniquePasswordRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**UniquePasswordPolicy**](UniquePasswordPolicy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PoliciesUniquePasswordUpdate
+
+> UniquePasswordPolicy PoliciesUniquePasswordUpdate(ctx, policyUuid).UniquePasswordPolicyRequest(uniquePasswordPolicyRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Uniqueness Policy.
+    uniquePasswordPolicyRequest := *openapiclient.NewUniquePasswordPolicyRequest("Name_example") // UniquePasswordPolicyRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesUniquePasswordUpdate(context.Background(), policyUuid).UniquePasswordPolicyRequest(uniquePasswordPolicyRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesUniquePasswordUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PoliciesUniquePasswordUpdate`: UniquePasswordPolicy
+    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesUniquePasswordUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**policyUuid** | **string** | A UUID string identifying this Password Uniqueness Policy. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesUniquePasswordUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **uniquePasswordPolicyRequest** | [**UniquePasswordPolicyRequest**](UniquePasswordPolicyRequest.md) |  | 
+
+### Return type
+
+[**UniquePasswordPolicy**](UniquePasswordPolicy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PoliciesUniquePasswordUsedByList
+
+> []UsedBy PoliciesUniquePasswordUsedByList(ctx, policyUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    policyUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Password Uniqueness Policy.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PoliciesApi.PoliciesUniquePasswordUsedByList(context.Background(), policyUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesApi.PoliciesUniquePasswordUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PoliciesUniquePasswordUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `PoliciesApi.PoliciesUniquePasswordUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**policyUuid** | **string** | A UUID string identifying this Password Uniqueness Policy. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesUniquePasswordUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
