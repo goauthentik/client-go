@@ -22,15 +22,27 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ steps.generate_token.outputs.token }}
+          path: client-go
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          repository: goauthentik/authentik
+          token: ${{ steps.generate_token.outputs.token }}
+          ref: main
+          path: authentik
+          sparse-checkout: |
+            schema.yml
+          sparse-checkout-cone-mode: false
       - uses: actions/setup-go@v5
       - name: Check for updates
+        working-directory: client-go
         run: make
       - name: Push
-        id: push
         env:
           GH_TOKEN: ${{ steps.generate_token.outputs.token }}
-        # ID from https://api.github.com/users/authentik-automation[bot]
+        working-directory: client-go
         run: |
+          # ID from https://api.github.com/users/authentik-automation[bot]
           git config --global user.email "135050075+authentik-automation[bot]@users.noreply.github.com"
           git config --global user.name "authentik-automation[bot]"
           git add .
