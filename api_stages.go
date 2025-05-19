@@ -17038,6 +17038,979 @@ func (a *StagesApiService) StagesInvitationStagesUsedByListExecute(r ApiStagesIn
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiStagesMtlsCreateRequest struct {
+	ctx                   context.Context
+	ApiService            *StagesApiService
+	mutualTLSStageRequest *MutualTLSStageRequest
+}
+
+func (r ApiStagesMtlsCreateRequest) MutualTLSStageRequest(mutualTLSStageRequest MutualTLSStageRequest) ApiStagesMtlsCreateRequest {
+	r.mutualTLSStageRequest = &mutualTLSStageRequest
+	return r
+}
+
+func (r ApiStagesMtlsCreateRequest) Execute() (*MutualTLSStage, *http.Response, error) {
+	return r.ApiService.StagesMtlsCreateExecute(r)
+}
+
+/*
+StagesMtlsCreate Method for StagesMtlsCreate
+
+MutualTLSStage Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiStagesMtlsCreateRequest
+*/
+func (a *StagesApiService) StagesMtlsCreate(ctx context.Context) ApiStagesMtlsCreateRequest {
+	return ApiStagesMtlsCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return MutualTLSStage
+func (a *StagesApiService) StagesMtlsCreateExecute(r ApiStagesMtlsCreateRequest) (*MutualTLSStage, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MutualTLSStage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesMtlsCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/mtls/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.mutualTLSStageRequest == nil {
+		return localVarReturnValue, nil, reportError("mutualTLSStageRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.mutualTLSStageRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStagesMtlsDestroyRequest struct {
+	ctx        context.Context
+	ApiService *StagesApiService
+	stageUuid  string
+}
+
+func (r ApiStagesMtlsDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.StagesMtlsDestroyExecute(r)
+}
+
+/*
+StagesMtlsDestroy Method for StagesMtlsDestroy
+
+MutualTLSStage Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param stageUuid A UUID string identifying this Mutual TLS Stage.
+	@return ApiStagesMtlsDestroyRequest
+*/
+func (a *StagesApiService) StagesMtlsDestroy(ctx context.Context, stageUuid string) ApiStagesMtlsDestroyRequest {
+	return ApiStagesMtlsDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
+	}
+}
+
+// Execute executes the request
+func (a *StagesApiService) StagesMtlsDestroyExecute(r ApiStagesMtlsDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesMtlsDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/mtls/{stage_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiStagesMtlsListRequest struct {
+	ctx                    context.Context
+	ApiService             *StagesApiService
+	certAttribute          *string
+	certificateAuthorities *[]string
+	mode                   *string
+	name                   *string
+	ordering               *string
+	page                   *int32
+	pageSize               *int32
+	search                 *string
+	stageUuid              *string
+	userAttribute          *string
+}
+
+func (r ApiStagesMtlsListRequest) CertAttribute(certAttribute string) ApiStagesMtlsListRequest {
+	r.certAttribute = &certAttribute
+	return r
+}
+
+func (r ApiStagesMtlsListRequest) CertificateAuthorities(certificateAuthorities []string) ApiStagesMtlsListRequest {
+	r.certificateAuthorities = &certificateAuthorities
+	return r
+}
+
+func (r ApiStagesMtlsListRequest) Mode(mode string) ApiStagesMtlsListRequest {
+	r.mode = &mode
+	return r
+}
+
+func (r ApiStagesMtlsListRequest) Name(name string) ApiStagesMtlsListRequest {
+	r.name = &name
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiStagesMtlsListRequest) Ordering(ordering string) ApiStagesMtlsListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiStagesMtlsListRequest) Page(page int32) ApiStagesMtlsListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiStagesMtlsListRequest) PageSize(pageSize int32) ApiStagesMtlsListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// A search term.
+func (r ApiStagesMtlsListRequest) Search(search string) ApiStagesMtlsListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiStagesMtlsListRequest) StageUuid(stageUuid string) ApiStagesMtlsListRequest {
+	r.stageUuid = &stageUuid
+	return r
+}
+
+func (r ApiStagesMtlsListRequest) UserAttribute(userAttribute string) ApiStagesMtlsListRequest {
+	r.userAttribute = &userAttribute
+	return r
+}
+
+func (r ApiStagesMtlsListRequest) Execute() (*PaginatedMutualTLSStageList, *http.Response, error) {
+	return r.ApiService.StagesMtlsListExecute(r)
+}
+
+/*
+StagesMtlsList Method for StagesMtlsList
+
+MutualTLSStage Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiStagesMtlsListRequest
+*/
+func (a *StagesApiService) StagesMtlsList(ctx context.Context) ApiStagesMtlsListRequest {
+	return ApiStagesMtlsListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedMutualTLSStageList
+func (a *StagesApiService) StagesMtlsListExecute(r ApiStagesMtlsListRequest) (*PaginatedMutualTLSStageList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedMutualTLSStageList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesMtlsList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/mtls/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.certAttribute != nil {
+		localVarQueryParams.Add("cert_attribute", parameterToString(*r.certAttribute, ""))
+	}
+	if r.certificateAuthorities != nil {
+		t := *r.certificateAuthorities
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("certificate_authorities", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("certificate_authorities", parameterToString(t, "multi"))
+		}
+	}
+	if r.mode != nil {
+		localVarQueryParams.Add("mode", parameterToString(*r.mode, ""))
+	}
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	if r.stageUuid != nil {
+		localVarQueryParams.Add("stage_uuid", parameterToString(*r.stageUuid, ""))
+	}
+	if r.userAttribute != nil {
+		localVarQueryParams.Add("user_attribute", parameterToString(*r.userAttribute, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStagesMtlsPartialUpdateRequest struct {
+	ctx                          context.Context
+	ApiService                   *StagesApiService
+	stageUuid                    string
+	patchedMutualTLSStageRequest *PatchedMutualTLSStageRequest
+}
+
+func (r ApiStagesMtlsPartialUpdateRequest) PatchedMutualTLSStageRequest(patchedMutualTLSStageRequest PatchedMutualTLSStageRequest) ApiStagesMtlsPartialUpdateRequest {
+	r.patchedMutualTLSStageRequest = &patchedMutualTLSStageRequest
+	return r
+}
+
+func (r ApiStagesMtlsPartialUpdateRequest) Execute() (*MutualTLSStage, *http.Response, error) {
+	return r.ApiService.StagesMtlsPartialUpdateExecute(r)
+}
+
+/*
+StagesMtlsPartialUpdate Method for StagesMtlsPartialUpdate
+
+MutualTLSStage Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param stageUuid A UUID string identifying this Mutual TLS Stage.
+	@return ApiStagesMtlsPartialUpdateRequest
+*/
+func (a *StagesApiService) StagesMtlsPartialUpdate(ctx context.Context, stageUuid string) ApiStagesMtlsPartialUpdateRequest {
+	return ApiStagesMtlsPartialUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return MutualTLSStage
+func (a *StagesApiService) StagesMtlsPartialUpdateExecute(r ApiStagesMtlsPartialUpdateRequest) (*MutualTLSStage, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MutualTLSStage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesMtlsPartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/mtls/{stage_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedMutualTLSStageRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStagesMtlsRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *StagesApiService
+	stageUuid  string
+}
+
+func (r ApiStagesMtlsRetrieveRequest) Execute() (*MutualTLSStage, *http.Response, error) {
+	return r.ApiService.StagesMtlsRetrieveExecute(r)
+}
+
+/*
+StagesMtlsRetrieve Method for StagesMtlsRetrieve
+
+MutualTLSStage Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param stageUuid A UUID string identifying this Mutual TLS Stage.
+	@return ApiStagesMtlsRetrieveRequest
+*/
+func (a *StagesApiService) StagesMtlsRetrieve(ctx context.Context, stageUuid string) ApiStagesMtlsRetrieveRequest {
+	return ApiStagesMtlsRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return MutualTLSStage
+func (a *StagesApiService) StagesMtlsRetrieveExecute(r ApiStagesMtlsRetrieveRequest) (*MutualTLSStage, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MutualTLSStage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesMtlsRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/mtls/{stage_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStagesMtlsUpdateRequest struct {
+	ctx                   context.Context
+	ApiService            *StagesApiService
+	stageUuid             string
+	mutualTLSStageRequest *MutualTLSStageRequest
+}
+
+func (r ApiStagesMtlsUpdateRequest) MutualTLSStageRequest(mutualTLSStageRequest MutualTLSStageRequest) ApiStagesMtlsUpdateRequest {
+	r.mutualTLSStageRequest = &mutualTLSStageRequest
+	return r
+}
+
+func (r ApiStagesMtlsUpdateRequest) Execute() (*MutualTLSStage, *http.Response, error) {
+	return r.ApiService.StagesMtlsUpdateExecute(r)
+}
+
+/*
+StagesMtlsUpdate Method for StagesMtlsUpdate
+
+MutualTLSStage Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param stageUuid A UUID string identifying this Mutual TLS Stage.
+	@return ApiStagesMtlsUpdateRequest
+*/
+func (a *StagesApiService) StagesMtlsUpdate(ctx context.Context, stageUuid string) ApiStagesMtlsUpdateRequest {
+	return ApiStagesMtlsUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return MutualTLSStage
+func (a *StagesApiService) StagesMtlsUpdateExecute(r ApiStagesMtlsUpdateRequest) (*MutualTLSStage, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MutualTLSStage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesMtlsUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/mtls/{stage_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.mutualTLSStageRequest == nil {
+		return localVarReturnValue, nil, reportError("mutualTLSStageRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.mutualTLSStageRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStagesMtlsUsedByListRequest struct {
+	ctx        context.Context
+	ApiService *StagesApiService
+	stageUuid  string
+}
+
+func (r ApiStagesMtlsUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.StagesMtlsUsedByListExecute(r)
+}
+
+/*
+StagesMtlsUsedByList Method for StagesMtlsUsedByList
+
+Get a list of all objects that use this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param stageUuid A UUID string identifying this Mutual TLS Stage.
+	@return ApiStagesMtlsUsedByListRequest
+*/
+func (a *StagesApiService) StagesMtlsUsedByList(ctx context.Context, stageUuid string) ApiStagesMtlsUsedByListRequest {
+	return ApiStagesMtlsUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		stageUuid:  stageUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []UsedBy
+func (a *StagesApiService) StagesMtlsUsedByListExecute(r ApiStagesMtlsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StagesApiService.StagesMtlsUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/stages/mtls/{stage_uuid}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_uuid"+"}", url.PathEscape(parameterToString(r.stageUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiStagesPasswordCreateRequest struct {
 	ctx                  context.Context
 	ApiService           *StagesApiService

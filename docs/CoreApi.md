@@ -1847,7 +1847,7 @@ Name | Type | Description  | Notes
 
 ## CoreBrandsList
 
-> PaginatedBrandList CoreBrandsList(ctx).BrandUuid(brandUuid).BrandingDefaultFlowBackground(brandingDefaultFlowBackground).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).Default_(default_).Domain(domain).FlowAuthentication(flowAuthentication).FlowDeviceCode(flowDeviceCode).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).FlowUserSettings(flowUserSettings).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).WebCertificate(webCertificate).Execute()
+> PaginatedBrandList CoreBrandsList(ctx).BrandUuid(brandUuid).BrandingDefaultFlowBackground(brandingDefaultFlowBackground).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).ClientCertificates(clientCertificates).Default_(default_).Domain(domain).FlowAuthentication(flowAuthentication).FlowDeviceCode(flowDeviceCode).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).FlowUserSettings(flowUserSettings).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).WebCertificate(webCertificate).Execute()
 
 
 
@@ -1871,6 +1871,7 @@ func main() {
     brandingFavicon := "brandingFavicon_example" // string |  (optional)
     brandingLogo := "brandingLogo_example" // string |  (optional)
     brandingTitle := "brandingTitle_example" // string |  (optional)
+    clientCertificates := []string{"Inner_example"} // []string |  (optional)
     default_ := true // bool |  (optional)
     domain := "domain_example" // string |  (optional)
     flowAuthentication := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
@@ -1887,7 +1888,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreBrandsList(context.Background()).BrandUuid(brandUuid).BrandingDefaultFlowBackground(brandingDefaultFlowBackground).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).Default_(default_).Domain(domain).FlowAuthentication(flowAuthentication).FlowDeviceCode(flowDeviceCode).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).FlowUserSettings(flowUserSettings).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).WebCertificate(webCertificate).Execute()
+    resp, r, err := apiClient.CoreApi.CoreBrandsList(context.Background()).BrandUuid(brandUuid).BrandingDefaultFlowBackground(brandingDefaultFlowBackground).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).ClientCertificates(clientCertificates).Default_(default_).Domain(domain).FlowAuthentication(flowAuthentication).FlowDeviceCode(flowDeviceCode).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).FlowUserSettings(flowUserSettings).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).WebCertificate(webCertificate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreBrandsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1913,6 +1914,7 @@ Name | Type | Description  | Notes
  **brandingFavicon** | **string** |  | 
  **brandingLogo** | **string** |  | 
  **brandingTitle** | **string** |  | 
+ **clientCertificates** | **[]string** |  | 
  **default_** | **bool** |  | 
  **domain** | **string** |  | 
  **flowAuthentication** | **string** |  | 

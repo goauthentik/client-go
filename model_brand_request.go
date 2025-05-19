@@ -35,7 +35,9 @@ type BrandRequest struct {
 	DefaultApplication NullableString `json:"default_application,omitempty"`
 	// Web Certificate used by the authentik Core webserver.
 	WebCertificate NullableString `json:"web_certificate,omitempty"`
-	Attributes     interface{}    `json:"attributes,omitempty"`
+	// Certificates used for client authentication.
+	ClientCertificates []string    `json:"client_certificates,omitempty"`
+	Attributes         interface{} `json:"attributes,omitempty"`
 }
 
 // NewBrandRequest instantiates a new BrandRequest object
@@ -616,6 +618,38 @@ func (o *BrandRequest) UnsetWebCertificate() {
 	o.WebCertificate.Unset()
 }
 
+// GetClientCertificates returns the ClientCertificates field value if set, zero value otherwise.
+func (o *BrandRequest) GetClientCertificates() []string {
+	if o == nil || o.ClientCertificates == nil {
+		var ret []string
+		return ret
+	}
+	return o.ClientCertificates
+}
+
+// GetClientCertificatesOk returns a tuple with the ClientCertificates field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandRequest) GetClientCertificatesOk() ([]string, bool) {
+	if o == nil || o.ClientCertificates == nil {
+		return nil, false
+	}
+	return o.ClientCertificates, true
+}
+
+// HasClientCertificates returns a boolean if a field has been set.
+func (o *BrandRequest) HasClientCertificates() bool {
+	if o != nil && o.ClientCertificates != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClientCertificates gets a reference to the given []string and assigns it to the ClientCertificates field.
+func (o *BrandRequest) SetClientCertificates(v []string) {
+	o.ClientCertificates = v
+}
+
 // GetAttributes returns the Attributes field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BrandRequest) GetAttributes() interface{} {
 	if o == nil {
@@ -695,6 +729,9 @@ func (o BrandRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.WebCertificate.IsSet() {
 		toSerialize["web_certificate"] = o.WebCertificate.Get()
+	}
+	if o.ClientCertificates != nil {
+		toSerialize["client_certificates"] = o.ClientCertificates
 	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes

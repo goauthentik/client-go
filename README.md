@@ -958,6 +958,13 @@ Class | Method | HTTP request | Description
 *StagesApi* | [**StagesInvitationStagesRetrieve**](docs/StagesApi.md#stagesinvitationstagesretrieve) | **Get** /stages/invitation/stages/{stage_uuid}/ | 
 *StagesApi* | [**StagesInvitationStagesUpdate**](docs/StagesApi.md#stagesinvitationstagesupdate) | **Put** /stages/invitation/stages/{stage_uuid}/ | 
 *StagesApi* | [**StagesInvitationStagesUsedByList**](docs/StagesApi.md#stagesinvitationstagesusedbylist) | **Get** /stages/invitation/stages/{stage_uuid}/used_by/ | 
+*StagesApi* | [**StagesMtlsCreate**](docs/StagesApi.md#stagesmtlscreate) | **Post** /stages/mtls/ | 
+*StagesApi* | [**StagesMtlsDestroy**](docs/StagesApi.md#stagesmtlsdestroy) | **Delete** /stages/mtls/{stage_uuid}/ | 
+*StagesApi* | [**StagesMtlsList**](docs/StagesApi.md#stagesmtlslist) | **Get** /stages/mtls/ | 
+*StagesApi* | [**StagesMtlsPartialUpdate**](docs/StagesApi.md#stagesmtlspartialupdate) | **Patch** /stages/mtls/{stage_uuid}/ | 
+*StagesApi* | [**StagesMtlsRetrieve**](docs/StagesApi.md#stagesmtlsretrieve) | **Get** /stages/mtls/{stage_uuid}/ | 
+*StagesApi* | [**StagesMtlsUpdate**](docs/StagesApi.md#stagesmtlsupdate) | **Put** /stages/mtls/{stage_uuid}/ | 
+*StagesApi* | [**StagesMtlsUsedByList**](docs/StagesApi.md#stagesmtlsusedbylist) | **Get** /stages/mtls/{stage_uuid}/used_by/ | 
 *StagesApi* | [**StagesPasswordCreate**](docs/StagesApi.md#stagespasswordcreate) | **Post** /stages/password/ | 
 *StagesApi* | [**StagesPasswordDestroy**](docs/StagesApi.md#stagespassworddestroy) | **Delete** /stages/password/{stage_uuid}/ | 
 *StagesApi* | [**StagesPasswordList**](docs/StagesApi.md#stagespasswordlist) | **Get** /stages/password/ | 
@@ -1110,6 +1117,7 @@ Class | Method | HTTP request | Description
  - [CaptchaChallengeResponseRequest](docs/CaptchaChallengeResponseRequest.md)
  - [CaptchaStage](docs/CaptchaStage.md)
  - [CaptchaStageRequest](docs/CaptchaStageRequest.md)
+ - [CertAttributeEnum](docs/CertAttributeEnum.md)
  - [CertificateData](docs/CertificateData.md)
  - [CertificateGenerationRequest](docs/CertificateGenerationRequest.md)
  - [CertificateKeyPair](docs/CertificateKeyPair.md)
@@ -1290,6 +1298,9 @@ Class | Method | HTTP request | Description
  - [MicrosoftEntraProviderUserRequest](docs/MicrosoftEntraProviderUserRequest.md)
  - [ModelEnum](docs/ModelEnum.md)
  - [ModelRequest](docs/ModelRequest.md)
+ - [MutualTLSStage](docs/MutualTLSStage.md)
+ - [MutualTLSStageModeEnum](docs/MutualTLSStageModeEnum.md)
+ - [MutualTLSStageRequest](docs/MutualTLSStageRequest.md)
  - [NameIdPolicyEnum](docs/NameIdPolicyEnum.md)
  - [NetworkBindingEnum](docs/NetworkBindingEnum.md)
  - [NotConfiguredActionEnum](docs/NotConfiguredActionEnum.md)
@@ -1384,6 +1395,7 @@ Class | Method | HTTP request | Description
  - [PaginatedMicrosoftEntraProviderList](docs/PaginatedMicrosoftEntraProviderList.md)
  - [PaginatedMicrosoftEntraProviderMappingList](docs/PaginatedMicrosoftEntraProviderMappingList.md)
  - [PaginatedMicrosoftEntraProviderUserList](docs/PaginatedMicrosoftEntraProviderUserList.md)
+ - [PaginatedMutualTLSStageList](docs/PaginatedMutualTLSStageList.md)
  - [PaginatedNotificationList](docs/PaginatedNotificationList.md)
  - [PaginatedNotificationRuleList](docs/PaginatedNotificationRuleList.md)
  - [PaginatedNotificationTransportList](docs/PaginatedNotificationTransportList.md)
@@ -1523,6 +1535,7 @@ Class | Method | HTTP request | Description
  - [PatchedLicenseRequest](docs/PatchedLicenseRequest.md)
  - [PatchedMicrosoftEntraProviderMappingRequest](docs/PatchedMicrosoftEntraProviderMappingRequest.md)
  - [PatchedMicrosoftEntraProviderRequest](docs/PatchedMicrosoftEntraProviderRequest.md)
+ - [PatchedMutualTLSStageRequest](docs/PatchedMutualTLSStageRequest.md)
  - [PatchedNotificationRequest](docs/PatchedNotificationRequest.md)
  - [PatchedNotificationRuleRequest](docs/PatchedNotificationRuleRequest.md)
  - [PatchedNotificationTransportRequest](docs/PatchedNotificationTransportRequest.md)
@@ -1733,6 +1746,7 @@ Class | Method | HTTP request | Description
  - [User](docs/User.md)
  - [UserAccountRequest](docs/UserAccountRequest.md)
  - [UserAssignedObjectPermission](docs/UserAssignedObjectPermission.md)
+ - [UserAttributeEnum](docs/UserAttributeEnum.md)
  - [UserConsent](docs/UserConsent.md)
  - [UserCreationModeEnum](docs/UserCreationModeEnum.md)
  - [UserDeleteStage](docs/UserDeleteStage.md)

@@ -128,6 +128,13 @@ Method | HTTP request | Description
 [**StagesInvitationStagesRetrieve**](StagesApi.md#StagesInvitationStagesRetrieve) | **Get** /stages/invitation/stages/{stage_uuid}/ | 
 [**StagesInvitationStagesUpdate**](StagesApi.md#StagesInvitationStagesUpdate) | **Put** /stages/invitation/stages/{stage_uuid}/ | 
 [**StagesInvitationStagesUsedByList**](StagesApi.md#StagesInvitationStagesUsedByList) | **Get** /stages/invitation/stages/{stage_uuid}/used_by/ | 
+[**StagesMtlsCreate**](StagesApi.md#StagesMtlsCreate) | **Post** /stages/mtls/ | 
+[**StagesMtlsDestroy**](StagesApi.md#StagesMtlsDestroy) | **Delete** /stages/mtls/{stage_uuid}/ | 
+[**StagesMtlsList**](StagesApi.md#StagesMtlsList) | **Get** /stages/mtls/ | 
+[**StagesMtlsPartialUpdate**](StagesApi.md#StagesMtlsPartialUpdate) | **Patch** /stages/mtls/{stage_uuid}/ | 
+[**StagesMtlsRetrieve**](StagesApi.md#StagesMtlsRetrieve) | **Get** /stages/mtls/{stage_uuid}/ | 
+[**StagesMtlsUpdate**](StagesApi.md#StagesMtlsUpdate) | **Put** /stages/mtls/{stage_uuid}/ | 
+[**StagesMtlsUsedByList**](StagesApi.md#StagesMtlsUsedByList) | **Get** /stages/mtls/{stage_uuid}/used_by/ | 
 [**StagesPasswordCreate**](StagesApi.md#StagesPasswordCreate) | **Post** /stages/password/ | 
 [**StagesPasswordDestroy**](StagesApi.md#StagesPasswordDestroy) | **Delete** /stages/password/{stage_uuid}/ | 
 [**StagesPasswordList**](StagesApi.md#StagesPasswordList) | **Get** /stages/password/ | 
@@ -9031,6 +9038,508 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStagesInvitationStagesUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesMtlsCreate
+
+> MutualTLSStage StagesMtlsCreate(ctx).MutualTLSStageRequest(mutualTLSStageRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    mutualTLSStageRequest := *openapiclient.NewMutualTLSStageRequest("Name_example", openapiclient.MutualTLSStageModeEnum("optional"), openapiclient.CertAttributeEnum("subject"), openapiclient.UserAttributeEnum("username")) // MutualTLSStageRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesMtlsCreate(context.Background()).MutualTLSStageRequest(mutualTLSStageRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesMtlsCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesMtlsCreate`: MutualTLSStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesMtlsCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesMtlsCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mutualTLSStageRequest** | [**MutualTLSStageRequest**](MutualTLSStageRequest.md) |  | 
+
+### Return type
+
+[**MutualTLSStage**](MutualTLSStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesMtlsDestroy
+
+> StagesMtlsDestroy(ctx, stageUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Mutual TLS Stage.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesMtlsDestroy(context.Background(), stageUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesMtlsDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Mutual TLS Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesMtlsDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesMtlsList
+
+> PaginatedMutualTLSStageList StagesMtlsList(ctx).CertAttribute(certAttribute).CertificateAuthorities(certificateAuthorities).Mode(mode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).UserAttribute(userAttribute).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    certAttribute := "certAttribute_example" // string |  (optional)
+    certificateAuthorities := []string{"Inner_example"} // []string |  (optional)
+    mode := "mode_example" // string |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    userAttribute := "userAttribute_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesMtlsList(context.Background()).CertAttribute(certAttribute).CertificateAuthorities(certificateAuthorities).Mode(mode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).StageUuid(stageUuid).UserAttribute(userAttribute).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesMtlsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesMtlsList`: PaginatedMutualTLSStageList
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesMtlsList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesMtlsListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **certAttribute** | **string** |  | 
+ **certificateAuthorities** | **[]string** |  | 
+ **mode** | **string** |  | 
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+ **stageUuid** | **string** |  | 
+ **userAttribute** | **string** |  | 
+
+### Return type
+
+[**PaginatedMutualTLSStageList**](PaginatedMutualTLSStageList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesMtlsPartialUpdate
+
+> MutualTLSStage StagesMtlsPartialUpdate(ctx, stageUuid).PatchedMutualTLSStageRequest(patchedMutualTLSStageRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Mutual TLS Stage.
+    patchedMutualTLSStageRequest := *openapiclient.NewPatchedMutualTLSStageRequest() // PatchedMutualTLSStageRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesMtlsPartialUpdate(context.Background(), stageUuid).PatchedMutualTLSStageRequest(patchedMutualTLSStageRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesMtlsPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesMtlsPartialUpdate`: MutualTLSStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesMtlsPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Mutual TLS Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesMtlsPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedMutualTLSStageRequest** | [**PatchedMutualTLSStageRequest**](PatchedMutualTLSStageRequest.md) |  | 
+
+### Return type
+
+[**MutualTLSStage**](MutualTLSStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesMtlsRetrieve
+
+> MutualTLSStage StagesMtlsRetrieve(ctx, stageUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Mutual TLS Stage.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesMtlsRetrieve(context.Background(), stageUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesMtlsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesMtlsRetrieve`: MutualTLSStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesMtlsRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Mutual TLS Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesMtlsRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**MutualTLSStage**](MutualTLSStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesMtlsUpdate
+
+> MutualTLSStage StagesMtlsUpdate(ctx, stageUuid).MutualTLSStageRequest(mutualTLSStageRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Mutual TLS Stage.
+    mutualTLSStageRequest := *openapiclient.NewMutualTLSStageRequest("Name_example", openapiclient.MutualTLSStageModeEnum("optional"), openapiclient.CertAttributeEnum("subject"), openapiclient.UserAttributeEnum("username")) // MutualTLSStageRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesMtlsUpdate(context.Background(), stageUuid).MutualTLSStageRequest(mutualTLSStageRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesMtlsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesMtlsUpdate`: MutualTLSStage
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesMtlsUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Mutual TLS Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesMtlsUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **mutualTLSStageRequest** | [**MutualTLSStageRequest**](MutualTLSStageRequest.md) |  | 
+
+### Return type
+
+[**MutualTLSStage**](MutualTLSStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesMtlsUsedByList
+
+> []UsedBy StagesMtlsUsedByList(ctx, stageUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Mutual TLS Stage.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StagesApi.StagesMtlsUsedByList(context.Background(), stageUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesMtlsUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StagesMtlsUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `StagesApi.StagesMtlsUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**stageUuid** | **string** | A UUID string identifying this Mutual TLS Stage. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesMtlsUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

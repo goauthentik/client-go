@@ -197,6 +197,8 @@
 
 * `STAGES_AUTHENTICATOR_ENDPOINT_GDTC_AUTHENTICATORENDPOINTGDTCSTAGE` (value: `"authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage"`)
 
+* `STAGES_MTLS_MUTUALTLSSTAGE` (value: `"authentik_stages_mtls.mutualtlsstage"`)
+
 * `STAGES_SOURCE_SOURCESTAGE` (value: `"authentik_stages_source.sourcestage"`)
 
 * `EVENTS_EVENT` (value: `"authentik_events.event"`)

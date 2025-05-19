@@ -97,6 +97,7 @@ docs/CaptchaChallenge.md
 docs/CaptchaChallengeResponseRequest.md
 docs/CaptchaStage.md
 docs/CaptchaStageRequest.md
+docs/CertAttributeEnum.md
 docs/CertificateData.md
 docs/CertificateGenerationRequest.md
 docs/CertificateKeyPair.md
@@ -283,6 +284,9 @@ docs/MicrosoftEntraProviderUser.md
 docs/MicrosoftEntraProviderUserRequest.md
 docs/ModelEnum.md
 docs/ModelRequest.md
+docs/MutualTLSStage.md
+docs/MutualTLSStageModeEnum.md
+docs/MutualTLSStageRequest.md
 docs/NameIdPolicyEnum.md
 docs/NetworkBindingEnum.md
 docs/NotConfiguredActionEnum.md
@@ -379,6 +383,7 @@ docs/PaginatedMicrosoftEntraProviderGroupList.md
 docs/PaginatedMicrosoftEntraProviderList.md
 docs/PaginatedMicrosoftEntraProviderMappingList.md
 docs/PaginatedMicrosoftEntraProviderUserList.md
+docs/PaginatedMutualTLSStageList.md
 docs/PaginatedNotificationList.md
 docs/PaginatedNotificationRuleList.md
 docs/PaginatedNotificationTransportList.md
@@ -518,6 +523,7 @@ docs/PatchedLDAPSourceRequest.md
 docs/PatchedLicenseRequest.md
 docs/PatchedMicrosoftEntraProviderMappingRequest.md
 docs/PatchedMicrosoftEntraProviderRequest.md
+docs/PatchedMutualTLSStageRequest.md
 docs/PatchedNotificationRequest.md
 docs/PatchedNotificationRuleRequest.md
 docs/PatchedNotificationTransportRequest.md
@@ -739,6 +745,7 @@ docs/UsedByActionEnum.md
 docs/User.md
 docs/UserAccountRequest.md
 docs/UserAssignedObjectPermission.md
+docs/UserAttributeEnum.md
 docs/UserConsent.md
 docs/UserCreationModeEnum.md
 docs/UserDeleteStage.md
@@ -861,6 +868,7 @@ model_captcha_challenge.go
 model_captcha_challenge_response_request.go
 model_captcha_stage.go
 model_captcha_stage_request.go
+model_cert_attribute_enum.go
 model_certificate_data.go
 model_certificate_generation_request.go
 model_certificate_key_pair.go
@@ -1041,6 +1049,9 @@ model_microsoft_entra_provider_user.go
 model_microsoft_entra_provider_user_request.go
 model_model_enum.go
 model_model_request.go
+model_mutual_tls_stage.go
+model_mutual_tls_stage_mode_enum.go
+model_mutual_tls_stage_request.go
 model_name_id_policy_enum.go
 model_network_binding_enum.go
 model_not_configured_action_enum.go
@@ -1135,6 +1146,7 @@ model_paginated_microsoft_entra_provider_group_list.go
 model_paginated_microsoft_entra_provider_list.go
 model_paginated_microsoft_entra_provider_mapping_list.go
 model_paginated_microsoft_entra_provider_user_list.go
+model_paginated_mutual_tls_stage_list.go
 model_paginated_notification_list.go
 model_paginated_notification_rule_list.go
 model_paginated_notification_transport_list.go
@@ -1274,6 +1286,7 @@ model_patched_ldap_source_request.go
 model_patched_license_request.go
 model_patched_microsoft_entra_provider_mapping_request.go
 model_patched_microsoft_entra_provider_request.go
+model_patched_mutual_tls_stage_request.go
 model_patched_notification_request.go
 model_patched_notification_rule_request.go
 model_patched_notification_transport_request.go
@@ -1484,6 +1497,7 @@ model_used_by_action_enum.go
 model_user.go
 model_user_account_request.go
 model_user_assigned_object_permission.go
+model_user_attribute_enum.go
 model_user_consent.go
 model_user_creation_mode_enum.go
 model_user_delete_stage.go

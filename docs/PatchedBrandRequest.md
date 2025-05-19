@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **FlowDeviceCode** | Pointer to **NullableString** |  | [optional] 
 **DefaultApplication** | Pointer to **NullableString** | When set, external users will be redirected to this application after authenticating. | [optional] 
 **WebCertificate** | Pointer to **NullableString** | Web Certificate used by the authentik Core webserver. | [optional] 
+**ClientCertificates** | Pointer to **[]string** | Certificates used for client authentication. | [optional] 
 **Attributes** | Pointer to **interface{}** |  | [optional] 
 
 ## Methods
@@ -495,6 +496,31 @@ HasWebCertificate returns a boolean if a field has been set.
 `func (o *PatchedBrandRequest) UnsetWebCertificate()`
 
 UnsetWebCertificate ensures that no value is present for WebCertificate, not even an explicit nil
+### GetClientCertificates
+
+`func (o *PatchedBrandRequest) GetClientCertificates() []string`
+
+GetClientCertificates returns the ClientCertificates field if non-nil, zero value otherwise.
+
+### GetClientCertificatesOk
+
+`func (o *PatchedBrandRequest) GetClientCertificatesOk() (*[]string, bool)`
+
+GetClientCertificatesOk returns a tuple with the ClientCertificates field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientCertificates
+
+`func (o *PatchedBrandRequest) SetClientCertificates(v []string)`
+
+SetClientCertificates sets ClientCertificates field to given value.
+
+### HasClientCertificates
+
+`func (o *PatchedBrandRequest) HasClientCertificates() bool`
+
+HasClientCertificates returns a boolean if a field has been set.
+
 ### GetAttributes
 
 `func (o *PatchedBrandRequest) GetAttributes() interface{}`

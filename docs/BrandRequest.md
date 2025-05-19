@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **FlowDeviceCode** | Pointer to **NullableString** |  | [optional] 
 **DefaultApplication** | Pointer to **NullableString** | When set, external users will be redirected to this application after authenticating. | [optional] 
 **WebCertificate** | Pointer to **NullableString** | Web Certificate used by the authentik Core webserver. | [optional] 
+**ClientCertificates** | Pointer to **[]string** | Certificates used for client authentication. | [optional] 
 **Attributes** | Pointer to **interface{}** |  | [optional] 
 
 ## Methods
@@ -490,6 +491,31 @@ HasWebCertificate returns a boolean if a field has been set.
 `func (o *BrandRequest) UnsetWebCertificate()`
 
 UnsetWebCertificate ensures that no value is present for WebCertificate, not even an explicit nil
+### GetClientCertificates
+
+`func (o *BrandRequest) GetClientCertificates() []string`
+
+GetClientCertificates returns the ClientCertificates field if non-nil, zero value otherwise.
+
+### GetClientCertificatesOk
+
+`func (o *BrandRequest) GetClientCertificatesOk() (*[]string, bool)`
+
+GetClientCertificatesOk returns a tuple with the ClientCertificates field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientCertificates
+
+`func (o *BrandRequest) SetClientCertificates(v []string)`
+
+SetClientCertificates sets ClientCertificates field to given value.
+
+### HasClientCertificates
+
+`func (o *BrandRequest) HasClientCertificates() bool`
+
+HasClientCertificates returns a boolean if a field has been set.
+
 ### GetAttributes
 
 `func (o *BrandRequest) GetAttributes() interface{}`

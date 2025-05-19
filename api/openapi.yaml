@@ -4874,6 +4874,16 @@ paths:
         style: form
       - explode: true
         in: query
+        name: client_certificates
+        required: false
+        schema:
+          items:
+            format: uuid
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
         name: default
         required: false
         schema:
@@ -27744,6 +27754,7 @@ paths:
           - authentik_stages_identification.identificationstage
           - authentik_stages_invitation.invitation
           - authentik_stages_invitation.invitationstage
+          - authentik_stages_mtls.mutualtlsstage
           - authentik_stages_password.passwordstage
           - authentik_stages_prompt.prompt
           - authentik_stages_prompt.promptstage
@@ -28009,6 +28020,7 @@ paths:
           - authentik_stages_identification.identificationstage
           - authentik_stages_invitation.invitation
           - authentik_stages_invitation.invitationstage
+          - authentik_stages_mtls.mutualtlsstage
           - authentik_stages_password.passwordstage
           - authentik_stages_prompt.prompt
           - authentik_stages_prompt.promptstage
@@ -41978,6 +41990,345 @@ paths:
       - authentik: []
       tags:
       - stages
+  /stages/mtls/:
+    get:
+      description: MutualTLSStage Viewset
+      operationId: stages_mtls_list
+      parameters:
+      - explode: true
+        in: query
+        name: cert_attribute
+        required: false
+        schema:
+          enum:
+          - common_name
+          - email
+          - subject
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: certificate_authorities
+        required: false
+        schema:
+          items:
+            format: uuid
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: mode
+        required: false
+        schema:
+          enum:
+          - optional
+          - required
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: stage_uuid
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: user_attribute
+        required: false
+        schema:
+          enum:
+          - email
+          - username
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedMutualTLSStageList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    post:
+      description: MutualTLSStage Viewset
+      operationId: stages_mtls_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MutualTLSStageRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutualTLSStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+  /stages/mtls/{stage_uuid}/:
+    delete:
+      description: MutualTLSStage Viewset
+      operationId: stages_mtls_destroy
+      parameters:
+      - description: A UUID string identifying this Mutual TLS Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    get:
+      description: MutualTLSStage Viewset
+      operationId: stages_mtls_retrieve
+      parameters:
+      - description: A UUID string identifying this Mutual TLS Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutualTLSStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    patch:
+      description: MutualTLSStage Viewset
+      operationId: stages_mtls_partial_update
+      parameters:
+      - description: A UUID string identifying this Mutual TLS Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedMutualTLSStageRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutualTLSStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    put:
+      description: MutualTLSStage Viewset
+      operationId: stages_mtls_update
+      parameters:
+      - description: A UUID string identifying this Mutual TLS Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MutualTLSStageRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MutualTLSStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+  /stages/mtls/{stage_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: stages_mtls_used_by_list
+      parameters:
+      - description: A UUID string identifying this Mutual TLS Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
   /stages/password/:
     get:
       description: PasswordStage Viewset
@@ -45511,6 +45862,7 @@ components:
       - authentik.enterprise.providers.microsoft_entra
       - authentik.enterprise.providers.ssf
       - authentik.enterprise.stages.authenticator_endpoint_gdtc
+      - authentik.enterprise.stages.mtls
       - authentik.enterprise.stages.source
       - authentik.events
       type: string
@@ -47697,6 +48049,9 @@ components:
       example:
         branding_logo: branding_logo
         default_application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        client_certificates:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         branding_default_flow_background: branding_default_flow_background
         flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -47768,6 +48123,12 @@ components:
           format: uuid
           nullable: true
           type: string
+        client_certificates:
+          description: Certificates used for client authentication.
+          items:
+            format: uuid
+            type: string
+          type: array
         attributes: {}
       required:
       - brand_uuid
@@ -47778,6 +48139,9 @@ components:
       example:
         branding_logo: branding_logo
         default_application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        client_certificates:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         branding_default_flow_background: branding_default_flow_background
         flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -47849,6 +48213,12 @@ components:
           format: uuid
           nullable: true
           type: string
+        client_certificates:
+          description: Certificates used for client authentication.
+          items:
+            format: uuid
+            type: string
+          type: array
         attributes: {}
       required:
       - domain
@@ -48087,6 +48457,12 @@ components:
       - private_key
       - public_key
       type: object
+    CertAttributeEnum:
+      enum:
+      - subject
+      - common_name
+      - email
+      type: string
     CertificateData:
       description: Get CertificateKeyPair's data
       example:
@@ -55210,6 +55586,7 @@ components:
       - authentik_providers_microsoft_entra.microsoftentraprovidermapping
       - authentik_providers_ssf.ssfprovider
       - authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage
+      - authentik_stages_mtls.mutualtlsstage
       - authentik_stages_source.sourcestage
       - authentik_events.event
       - authentik_events.notificationtransport
@@ -55217,6 +55594,159 @@ components:
       - authentik_events.notificationrule
       - authentik_events.notificationwebhookmapping
       type: string
+    MutualTLSStage:
+      description: MutualTLSStage Serializer
+      example:
+        mode: null
+        component: component
+        verbose_name: verbose_name
+        certificate_authorities:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        verbose_name_plural: verbose_name_plural
+        meta_model_name: meta_model_name
+        user_attribute: null
+        name: name
+        cert_attribute: null
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        flow_set:
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          background: background
+          denied_action: ""
+          name: name
+          export_url: export_url
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          designation: ""
+          title: title
+          slug: slug
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          background: background
+          denied_action: ""
+          name: name
+          export_url: export_url
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          designation: ""
+          title: title
+          slug: slug
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Stage uuid
+          type: string
+        name:
+          type: string
+        component:
+          description: Get object type so that we know how to edit the object
+          readOnly: true
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/FlowSet'
+          type: array
+        mode:
+          $ref: '#/components/schemas/MutualTLSStageModeEnum'
+        certificate_authorities:
+          description: Configure certificate authorities to validate the certificate
+            against. This option has a higher priority than the `client_certificate`
+            option on `Brand`.
+          items:
+            format: uuid
+            type: string
+          type: array
+        cert_attribute:
+          $ref: '#/components/schemas/CertAttributeEnum'
+        user_attribute:
+          $ref: '#/components/schemas/UserAttributeEnum'
+      required:
+      - cert_attribute
+      - component
+      - meta_model_name
+      - mode
+      - name
+      - pk
+      - user_attribute
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    MutualTLSStageModeEnum:
+      enum:
+      - optional
+      - required
+      type: string
+    MutualTLSStageRequest:
+      description: MutualTLSStage Serializer
+      example:
+        mode: null
+        certificate_authorities:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user_attribute: null
+        name: name
+        cert_attribute: null
+        flow_set:
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+      properties:
+        name:
+          minLength: 1
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/FlowSetRequest'
+          type: array
+        mode:
+          $ref: '#/components/schemas/MutualTLSStageModeEnum'
+        certificate_authorities:
+          description: Configure certificate authorities to validate the certificate
+            against. This option has a higher priority than the `client_certificate`
+            option on `Brand`.
+          items:
+            format: uuid
+            type: string
+          type: array
+        cert_attribute:
+          $ref: '#/components/schemas/CertAttributeEnum'
+        user_attribute:
+          $ref: '#/components/schemas/UserAttributeEnum'
+      required:
+      - cert_attribute
+      - mode
+      - name
+      - user_attribute
+      type: object
     NameIdPolicyEnum:
       enum:
       - urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
@@ -57713,6 +58243,9 @@ components:
         results:
         - branding_logo: branding_logo
           default_application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          client_certificates:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           branding_default_flow_background: branding_default_flow_background
           flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -57730,6 +58263,9 @@ components:
           web_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - branding_logo: branding_logo
           default_application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          client_certificates:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           branding_default_flow_background: branding_default_flow_background
           flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -60557,6 +61093,102 @@ components:
         results:
           items:
             $ref: '#/components/schemas/MicrosoftEntraProviderUser'
+          type: array
+      required:
+      - pagination
+      - results
+      type: object
+    PaginatedMutualTLSStageList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        results:
+        - mode: null
+          component: component
+          verbose_name: verbose_name
+          certificate_authorities:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          user_attribute: null
+          name: name
+          cert_attribute: null
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          flow_set:
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+        - mode: null
+          component: component
+          verbose_name: verbose_name
+          certificate_authorities:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          user_attribute: null
+          name: name
+          cert_attribute: null
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          flow_set:
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/MutualTLSStage'
           type: array
       required:
       - pagination
@@ -66102,6 +66734,9 @@ components:
       example:
         branding_logo: branding_logo
         default_application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        client_certificates:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_device_code: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         branding_default_flow_background: branding_default_flow_background
         flow_authentication: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -66173,6 +66808,12 @@ components:
           format: uuid
           nullable: true
           type: string
+        client_certificates:
+          description: Certificates used for client authentication.
+          items:
+            format: uuid
+            type: string
+          type: array
         attributes: {}
       type: object
     PatchedCaptchaStageRequest:
@@ -67819,6 +68460,56 @@ components:
           description: "When enabled, provider will not modify or create objects in\
             \ the remote system."
           type: boolean
+      type: object
+    PatchedMutualTLSStageRequest:
+      description: MutualTLSStage Serializer
+      example:
+        mode: null
+        certificate_authorities:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user_attribute: null
+        name: name
+        cert_attribute: null
+        flow_set:
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+      properties:
+        name:
+          minLength: 1
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/FlowSetRequest'
+          type: array
+        mode:
+          $ref: '#/components/schemas/MutualTLSStageModeEnum'
+        certificate_authorities:
+          description: Configure certificate authorities to validate the certificate
+            against. This option has a higher priority than the `client_certificate`
+            option on `Brand`.
+          items:
+            format: uuid
+            type: string
+          type: array
+        cert_attribute:
+          $ref: '#/components/schemas/CertAttributeEnum'
+        user_attribute:
+          $ref: '#/components/schemas/UserAttributeEnum'
       type: object
     PatchedNotificationRequest:
       description: Notification Serializer
@@ -76893,6 +77584,11 @@ components:
       - uid
       - username
       type: object
+    UserAttributeEnum:
+      enum:
+      - username
+      - email
+      type: string
     UserConsent:
       description: UserConsent Serializer
       example:

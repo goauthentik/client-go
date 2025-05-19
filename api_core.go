@@ -3367,6 +3367,7 @@ type ApiCoreBrandsListRequest struct {
 	brandingFavicon               *string
 	brandingLogo                  *string
 	brandingTitle                 *string
+	clientCertificates            *[]string
 	default_                      *bool
 	domain                        *string
 	flowAuthentication            *string
@@ -3404,6 +3405,11 @@ func (r ApiCoreBrandsListRequest) BrandingLogo(brandingLogo string) ApiCoreBrand
 
 func (r ApiCoreBrandsListRequest) BrandingTitle(brandingTitle string) ApiCoreBrandsListRequest {
 	r.brandingTitle = &brandingTitle
+	return r
+}
+
+func (r ApiCoreBrandsListRequest) ClientCertificates(clientCertificates []string) ApiCoreBrandsListRequest {
+	r.clientCertificates = &clientCertificates
 	return r
 }
 
@@ -3531,6 +3537,17 @@ func (a *CoreApiService) CoreBrandsListExecute(r ApiCoreBrandsListRequest) (*Pag
 	}
 	if r.brandingTitle != nil {
 		localVarQueryParams.Add("branding_title", parameterToString(*r.brandingTitle, ""))
+	}
+	if r.clientCertificates != nil {
+		t := *r.clientCertificates
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("client_certificates", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("client_certificates", parameterToString(t, "multi"))
+		}
 	}
 	if r.default_ != nil {
 		localVarQueryParams.Add("default", parameterToString(*r.default_, ""))
