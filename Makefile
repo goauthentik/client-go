@@ -3,22 +3,17 @@ PWD = $(shell pwd)
 UID = $(shell id -u)
 GID = $(shell id -g)
 
-all: clean build
+all: clean update build diff
 
 clean:
 	rm -f *.go
 	rm -rf docs/
 
-build:
+update:
 	mv schema.yml schema-old.yml
 	cp ../authentik/schema.yml schema.yml
-	docker run \
-		--rm -v ${PWD}:/local \
-		--user ${UID}:${GID} \
-		docker.io/openapitools/openapi-diff:2.1.1 \
-		--markdown /local/diff.test \
-		/local/schema-old.yml /local/schema.yml || echo > diff.test
-	rm schema-old.yml
+
+build:
 	docker run \
 		--rm -v ${PWD}:/local \
 		--user ${UID}:${GID} \
@@ -31,6 +26,15 @@ build:
 	rm -f .travis.yml git_push.sh
 	go get
 	go fmt .
+
+diff:
+	docker run \
+		--rm -v ${PWD}:/local \
+		--user ${UID}:${GID} \
+		docker.io/openapitools/openapi-diff:2.1.1 \
+		--markdown /local/diff.test \
+		/local/schema-old.yml /local/schema.yml || echo > diff.test
+	rm schema-old.yml
 	mv diff.test /tmp/diff.test
 	echo "Update API Client\n\n" > diff.test
 	cat /tmp/diff.test >> diff.test
