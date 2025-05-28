@@ -63,6 +63,8 @@ type LDAPSourceRequest struct {
 	SyncParentGroup   NullableString `json:"sync_parent_group,omitempty"`
 	// Lookup group membership based on a user attribute instead of a group attribute. This allows nested group resolution on systems like FreeIPA and Active Directory
 	LookupGroupsFromUser *bool `json:"lookup_groups_from_user,omitempty"`
+	// Delete authentik users and groups which were previously supplied by this source, but are now missing from it.
+	DeleteNotFoundObjects *bool `json:"delete_not_found_objects,omitempty"`
 }
 
 // NewLDAPSourceRequest instantiates a new LDAPSourceRequest object
@@ -1069,6 +1071,38 @@ func (o *LDAPSourceRequest) SetLookupGroupsFromUser(v bool) {
 	o.LookupGroupsFromUser = &v
 }
 
+// GetDeleteNotFoundObjects returns the DeleteNotFoundObjects field value if set, zero value otherwise.
+func (o *LDAPSourceRequest) GetDeleteNotFoundObjects() bool {
+	if o == nil || o.DeleteNotFoundObjects == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DeleteNotFoundObjects
+}
+
+// GetDeleteNotFoundObjectsOk returns a tuple with the DeleteNotFoundObjects field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LDAPSourceRequest) GetDeleteNotFoundObjectsOk() (*bool, bool) {
+	if o == nil || o.DeleteNotFoundObjects == nil {
+		return nil, false
+	}
+	return o.DeleteNotFoundObjects, true
+}
+
+// HasDeleteNotFoundObjects returns a boolean if a field has been set.
+func (o *LDAPSourceRequest) HasDeleteNotFoundObjects() bool {
+	if o != nil && o.DeleteNotFoundObjects != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteNotFoundObjects gets a reference to the given bool and assigns it to the DeleteNotFoundObjects field.
+func (o *LDAPSourceRequest) SetDeleteNotFoundObjects(v bool) {
+	o.DeleteNotFoundObjects = &v
+}
+
 func (o LDAPSourceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -1160,6 +1194,9 @@ func (o LDAPSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.LookupGroupsFromUser != nil {
 		toSerialize["lookup_groups_from_user"] = o.LookupGroupsFromUser
+	}
+	if o.DeleteNotFoundObjects != nil {
+		toSerialize["delete_not_found_objects"] = o.DeleteNotFoundObjects
 	}
 	return json.Marshal(toSerialize)
 }

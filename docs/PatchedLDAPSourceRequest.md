@@ -34,6 +34,7 @@ Name | Type | Description | Notes
 **SyncGroups** | Pointer to **bool** |  | [optional] 
 **SyncParentGroup** | Pointer to **NullableString** |  | [optional] 
 **LookupGroupsFromUser** | Pointer to **bool** | Lookup group membership based on a user attribute instead of a group attribute. This allows nested group resolution on systems like FreeIPA and Active Directory | [optional] 
+**DeleteNotFoundObjects** | Pointer to **bool** | Delete authentik users and groups which were previously supplied by this source, but are now missing from it. | [optional] 
 
 ## Methods
 
@@ -853,6 +854,31 @@ SetLookupGroupsFromUser sets LookupGroupsFromUser field to given value.
 `func (o *PatchedLDAPSourceRequest) HasLookupGroupsFromUser() bool`
 
 HasLookupGroupsFromUser returns a boolean if a field has been set.
+
+### GetDeleteNotFoundObjects
+
+`func (o *PatchedLDAPSourceRequest) GetDeleteNotFoundObjects() bool`
+
+GetDeleteNotFoundObjects returns the DeleteNotFoundObjects field if non-nil, zero value otherwise.
+
+### GetDeleteNotFoundObjectsOk
+
+`func (o *PatchedLDAPSourceRequest) GetDeleteNotFoundObjectsOk() (*bool, bool)`
+
+GetDeleteNotFoundObjectsOk returns a tuple with the DeleteNotFoundObjects field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteNotFoundObjects
+
+`func (o *PatchedLDAPSourceRequest) SetDeleteNotFoundObjects(v bool)`
+
+SetDeleteNotFoundObjects sets DeleteNotFoundObjects field to given value.
+
+### HasDeleteNotFoundObjects
+
+`func (o *PatchedLDAPSourceRequest) HasDeleteNotFoundObjects() bool`
+
+HasDeleteNotFoundObjects returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -31582,6 +31582,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: delete_not_found_objects
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
         name: enabled
         required: false
         schema:
@@ -54455,6 +54462,7 @@ components:
         sync_users: true
         icon: icon
         enabled: true
+        delete_not_found_objects: true
         client_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         base_dn: base_dn
         connectivity:
@@ -54635,6 +54643,10 @@ components:
             a group attribute. This allows nested group resolution on systems like
             FreeIPA and Active Directory
           type: boolean
+        delete_not_found_objects:
+          description: "Delete authentik users and groups which were previously supplied\
+            \ by this source, but are now missing from it."
+          type: boolean
       required:
       - base_dn
       - component
@@ -54741,6 +54753,7 @@ components:
         additional_user_dn: additional_user_dn
         sync_users: true
         enabled: true
+        delete_not_found_objects: true
         client_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         base_dn: base_dn
         user_property_mappings:
@@ -54883,6 +54896,10 @@ components:
           description: Lookup group membership based on a user attribute instead of
             a group attribute. This allows nested group resolution on systems like
             FreeIPA and Active Directory
+          type: boolean
+        delete_not_found_objects:
+          description: "Delete authentik users and groups which were previously supplied\
+            \ by this source, but are now missing from it."
           type: boolean
       required:
       - base_dn
@@ -60768,6 +60785,7 @@ components:
           sync_users: true
           icon: icon
           enabled: true
+          delete_not_found_objects: true
           client_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           base_dn: base_dn
           connectivity:
@@ -60811,6 +60829,7 @@ components:
           sync_users: true
           icon: icon
           enabled: true
+          delete_not_found_objects: true
           client_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           base_dn: base_dn
           connectivity:
@@ -68228,6 +68247,7 @@ components:
         additional_user_dn: additional_user_dn
         sync_users: true
         enabled: true
+        delete_not_found_objects: true
         client_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         base_dn: base_dn
         user_property_mappings:
@@ -68370,6 +68390,10 @@ components:
           description: Lookup group membership based on a user attribute instead of
             a group attribute. This allows nested group resolution on systems like
             FreeIPA and Active Directory
+          type: boolean
+        delete_not_found_objects:
+          description: "Delete authentik users and groups which were previously supplied\
+            \ by this source, but are now missing from it."
           type: boolean
       type: object
     PatchedLicenseRequest:

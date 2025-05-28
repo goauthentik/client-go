@@ -8010,6 +8010,7 @@ type ApiSourcesLdapListRequest struct {
 	baseDn                              *string
 	bindCn                              *string
 	clientCertificate                   *string
+	deleteNotFoundObjects               *bool
 	enabled                             *bool
 	groupMembershipField                *string
 	groupObjectFilter                   *string
@@ -8058,6 +8059,11 @@ func (r ApiSourcesLdapListRequest) BindCn(bindCn string) ApiSourcesLdapListReque
 
 func (r ApiSourcesLdapListRequest) ClientCertificate(clientCertificate string) ApiSourcesLdapListRequest {
 	r.clientCertificate = &clientCertificate
+	return r
+}
+
+func (r ApiSourcesLdapListRequest) DeleteNotFoundObjects(deleteNotFoundObjects bool) ApiSourcesLdapListRequest {
+	r.deleteNotFoundObjects = &deleteNotFoundObjects
 	return r
 }
 
@@ -8240,6 +8246,9 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 	}
 	if r.clientCertificate != nil {
 		localVarQueryParams.Add("client_certificate", parameterToString(*r.clientCertificate, ""))
+	}
+	if r.deleteNotFoundObjects != nil {
+		localVarQueryParams.Add("delete_not_found_objects", parameterToString(*r.deleteNotFoundObjects, ""))
 	}
 	if r.enabled != nil {
 		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
