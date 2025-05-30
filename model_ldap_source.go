@@ -63,6 +63,8 @@ type LDAPSource struct {
 	GroupObjectFilter *string `json:"group_object_filter,omitempty"`
 	// Field which contains members of a group.
 	GroupMembershipField *string `json:"group_membership_field,omitempty"`
+	// Attribute which matches the value of `group_membership_field`.
+	UserMembershipAttribute *string `json:"user_membership_attribute,omitempty"`
 	// Field which contains a unique Identifier.
 	ObjectUniquenessField *string `json:"object_uniqueness_field,omitempty"`
 	// Update internal authentik password when login succeeds with LDAP
@@ -995,6 +997,38 @@ func (o *LDAPSource) SetGroupMembershipField(v string) {
 	o.GroupMembershipField = &v
 }
 
+// GetUserMembershipAttribute returns the UserMembershipAttribute field value if set, zero value otherwise.
+func (o *LDAPSource) GetUserMembershipAttribute() string {
+	if o == nil || o.UserMembershipAttribute == nil {
+		var ret string
+		return ret
+	}
+	return *o.UserMembershipAttribute
+}
+
+// GetUserMembershipAttributeOk returns a tuple with the UserMembershipAttribute field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LDAPSource) GetUserMembershipAttributeOk() (*string, bool) {
+	if o == nil || o.UserMembershipAttribute == nil {
+		return nil, false
+	}
+	return o.UserMembershipAttribute, true
+}
+
+// HasUserMembershipAttribute returns a boolean if a field has been set.
+func (o *LDAPSource) HasUserMembershipAttribute() bool {
+	if o != nil && o.UserMembershipAttribute != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserMembershipAttribute gets a reference to the given string and assigns it to the UserMembershipAttribute field.
+func (o *LDAPSource) SetUserMembershipAttribute(v string) {
+	o.UserMembershipAttribute = &v
+}
+
 // GetObjectUniquenessField returns the ObjectUniquenessField field value if set, zero value otherwise.
 func (o *LDAPSource) GetObjectUniquenessField() string {
 	if o == nil || o.ObjectUniquenessField == nil {
@@ -1376,6 +1410,9 @@ func (o LDAPSource) MarshalJSON() ([]byte, error) {
 	}
 	if o.GroupMembershipField != nil {
 		toSerialize["group_membership_field"] = o.GroupMembershipField
+	}
+	if o.UserMembershipAttribute != nil {
+		toSerialize["user_membership_attribute"] = o.UserMembershipAttribute
 	}
 	if o.ObjectUniquenessField != nil {
 		toSerialize["object_uniqueness_field"] = o.ObjectUniquenessField

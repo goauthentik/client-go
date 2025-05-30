@@ -8033,6 +8033,7 @@ type ApiSourcesLdapListRequest struct {
 	syncParentGroup                     *string
 	syncUsers                           *bool
 	syncUsersPassword                   *bool
+	userMembershipAttribute             *string
 	userObjectFilter                    *string
 	userPropertyMappings                *[]string
 }
@@ -8181,6 +8182,11 @@ func (r ApiSourcesLdapListRequest) SyncUsersPassword(syncUsersPassword bool) Api
 	return r
 }
 
+func (r ApiSourcesLdapListRequest) UserMembershipAttribute(userMembershipAttribute string) ApiSourcesLdapListRequest {
+	r.userMembershipAttribute = &userMembershipAttribute
+	return r
+}
+
 func (r ApiSourcesLdapListRequest) UserObjectFilter(userObjectFilter string) ApiSourcesLdapListRequest {
 	r.userObjectFilter = &userObjectFilter
 	return r
@@ -8323,6 +8329,9 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 	}
 	if r.syncUsersPassword != nil {
 		localVarQueryParams.Add("sync_users_password", parameterToString(*r.syncUsersPassword, ""))
+	}
+	if r.userMembershipAttribute != nil {
+		localVarQueryParams.Add("user_membership_attribute", parameterToString(*r.userMembershipAttribute, ""))
 	}
 	if r.userObjectFilter != nil {
 		localVarQueryParams.Add("user_object_filter", parameterToString(*r.userObjectFilter, ""))

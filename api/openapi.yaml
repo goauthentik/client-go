@@ -31753,6 +31753,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: user_membership_attribute
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: user_object_filter
         required: false
         schema:
@@ -54472,6 +54479,7 @@ components:
         user_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user_membership_attribute: user_membership_attribute
         additional_group_dn: additional_group_dn
         sync_parent_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         slug: slug
@@ -54609,6 +54617,9 @@ components:
           type: string
         group_membership_field:
           description: Field which contains members of a group.
+          type: string
+        user_membership_attribute:
+          description: Attribute which matches the value of `group_membership_field`.
           type: string
         object_uniqueness_field:
           description: Field which contains a unique Identifier.
@@ -54759,6 +54770,7 @@ components:
         user_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user_membership_attribute: user_membership_attribute
         additional_group_dn: additional_group_dn
         sync_parent_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         slug: slug
@@ -54870,6 +54882,10 @@ components:
           type: string
         group_membership_field:
           description: Field which contains members of a group.
+          minLength: 1
+          type: string
+        user_membership_attribute:
+          description: Attribute which matches the value of `group_membership_field`.
           minLength: 1
           type: string
         object_uniqueness_field:
@@ -60795,6 +60811,7 @@ components:
           user_property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user_membership_attribute: user_membership_attribute
           additional_group_dn: additional_group_dn
           sync_parent_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           slug: slug
@@ -60839,6 +60856,7 @@ components:
           user_property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user_membership_attribute: user_membership_attribute
           additional_group_dn: additional_group_dn
           sync_parent_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           slug: slug
@@ -68253,6 +68271,7 @@ components:
         user_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user_membership_attribute: user_membership_attribute
         additional_group_dn: additional_group_dn
         sync_parent_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         slug: slug
@@ -68364,6 +68383,10 @@ components:
           type: string
         group_membership_field:
           description: Field which contains members of a group.
+          minLength: 1
+          type: string
+        user_membership_attribute:
+          description: Attribute which matches the value of `group_membership_field`.
           minLength: 1
           type: string
         object_uniqueness_field:

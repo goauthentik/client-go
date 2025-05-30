@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **UserObjectFilter** | Pointer to **string** | Consider Objects matching this filter to be Users. | [optional] 
 **GroupObjectFilter** | Pointer to **string** | Consider Objects matching this filter to be Groups. | [optional] 
 **GroupMembershipField** | Pointer to **string** | Field which contains members of a group. | [optional] 
+**UserMembershipAttribute** | Pointer to **string** | Attribute which matches the value of &#x60;group_membership_field&#x60;. | [optional] 
 **ObjectUniquenessField** | Pointer to **string** | Field which contains a unique Identifier. | [optional] 
 **PasswordLoginUpdateInternalPassword** | Pointer to **bool** | Update internal authentik password when login succeeds with LDAP | [optional] 
 **SyncUsers** | Pointer to **bool** |  | [optional] 
@@ -669,6 +670,31 @@ SetGroupMembershipField sets GroupMembershipField field to given value.
 `func (o *PatchedLDAPSourceRequest) HasGroupMembershipField() bool`
 
 HasGroupMembershipField returns a boolean if a field has been set.
+
+### GetUserMembershipAttribute
+
+`func (o *PatchedLDAPSourceRequest) GetUserMembershipAttribute() string`
+
+GetUserMembershipAttribute returns the UserMembershipAttribute field if non-nil, zero value otherwise.
+
+### GetUserMembershipAttributeOk
+
+`func (o *PatchedLDAPSourceRequest) GetUserMembershipAttributeOk() (*string, bool)`
+
+GetUserMembershipAttributeOk returns a tuple with the UserMembershipAttribute field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserMembershipAttribute
+
+`func (o *PatchedLDAPSourceRequest) SetUserMembershipAttribute(v string)`
+
+SetUserMembershipAttribute sets UserMembershipAttribute field to given value.
+
+### HasUserMembershipAttribute
+
+`func (o *PatchedLDAPSourceRequest) HasUserMembershipAttribute() bool`
+
+HasUserMembershipAttribute returns a boolean if a field has been set.
 
 ### GetObjectUniquenessField
 
