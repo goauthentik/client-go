@@ -5,7 +5,6 @@ All URIs are relative to *http://localhost/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AdminAppsList**](AdminApi.md#AdminAppsList) | **Get** /admin/apps/ | 
-[**AdminMetricsRetrieve**](AdminApi.md#AdminMetricsRetrieve) | **Get** /admin/metrics/ | 
 [**AdminModelsList**](AdminApi.md#AdminModelsList) | **Get** /admin/models/ | 
 [**AdminSettingsPartialUpdate**](AdminApi.md#AdminSettingsPartialUpdate) | **Patch** /admin/settings/ | 
 [**AdminSettingsRetrieve**](AdminApi.md#AdminSettingsRetrieve) | **Get** /admin/settings/ | 
@@ -65,67 +64,6 @@ Other parameters are passed through a pointer to a apiAdminAppsListRequest struc
 ### Return type
 
 [**[]App**](App.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## AdminMetricsRetrieve
-
-> LoginMetrics AdminMetricsRetrieve(ctx).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AdminApi.AdminMetricsRetrieve(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminMetricsRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AdminMetricsRetrieve`: LoginMetrics
-    fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminMetricsRetrieve`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiAdminMetricsRetrieveRequest struct via the builder pattern
-
-
-### Return type
-
-[**LoginMetrics**](LoginMetrics.md)
 
 ### Authorization
 

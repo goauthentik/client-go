@@ -116,7 +116,6 @@ docs/ConsentStageModeEnum.md
 docs/ConsentStageRequest.md
 docs/ContextualFlowInfo.md
 docs/ContextualFlowInfoLayoutEnum.md
-docs/Coordinate.md
 docs/CoreApi.md
 docs/CountryCodeEnum.md
 docs/CryptoApi.md
@@ -167,6 +166,7 @@ docs/EventMatcherPolicy.md
 docs/EventMatcherPolicyRequest.md
 docs/EventRequest.md
 docs/EventTopPerUser.md
+docs/EventVolume.md
 docs/EventsApi.md
 docs/EventsRequestedEnum.md
 docs/ExpiringBaseGrantModel.md
@@ -269,7 +269,6 @@ docs/Link.md
 docs/LogEvent.md
 docs/LogLevelEnum.md
 docs/LoginChallengeTypes.md
-docs/LoginMetrics.md
 docs/LoginSource.md
 docs/ManagedApi.md
 docs/MatchingModeEnum.md
@@ -764,7 +763,6 @@ docs/UserLoginStageRequest.md
 docs/UserLogoutStage.md
 docs/UserLogoutStageRequest.md
 docs/UserMatchingModeEnum.md
-docs/UserMetrics.md
 docs/UserOAuthSourceConnection.md
 docs/UserOAuthSourceConnectionRequest.md
 docs/UserObjectPermission.md
@@ -887,7 +885,6 @@ model_consent_stage_mode_enum.go
 model_consent_stage_request.go
 model_contextual_flow_info.go
 model_contextual_flow_info_layout_enum.go
-model_coordinate.go
 model_country_code_enum.go
 model_current_brand.go
 model_delivery_method_enum.go
@@ -935,6 +932,7 @@ model_event_matcher_policy.go
 model_event_matcher_policy_request.go
 model_event_request.go
 model_event_top_per_user.go
+model_event_volume.go
 model_events_requested_enum.go
 model_expiring_base_grant_model.go
 model_expression_policy.go
@@ -1035,7 +1033,6 @@ model_link.go
 model_log_event.go
 model_log_level_enum.go
 model_login_challenge_types.go
-model_login_metrics.go
 model_login_source.go
 model_matching_mode_enum.go
 model_metadata.go
@@ -1516,7 +1513,6 @@ model_user_login_stage_request.go
 model_user_logout_stage.go
 model_user_logout_stage_request.go
 model_user_matching_mode_enum.go
-model_user_metrics.go
 model_user_o_auth_source_connection.go
 model_user_o_auth_source_connection_request.go
 model_user_object_permission.go

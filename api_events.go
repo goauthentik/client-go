@@ -17,6 +17,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"reflect"
 	"strings"
 	"time"
 )
@@ -388,6 +389,7 @@ type ApiEventsEventsListRequest struct {
 	ctx                  context.Context
 	ApiService           *EventsApiService
 	action               *string
+	actions              *[]string
 	brandName            *string
 	clientIp             *string
 	contextAuthorizedApp *string
@@ -403,6 +405,11 @@ type ApiEventsEventsListRequest struct {
 
 func (r ApiEventsEventsListRequest) Action(action string) ApiEventsEventsListRequest {
 	r.action = &action
+	return r
+}
+
+func (r ApiEventsEventsListRequest) Actions(actions []string) ApiEventsEventsListRequest {
+	r.actions = &actions
 	return r
 }
 
@@ -514,6 +521,17 @@ func (a *EventsApiService) EventsEventsListExecute(r ApiEventsEventsListRequest)
 
 	if r.action != nil {
 		localVarQueryParams.Add("action", parameterToString(*r.action, ""))
+	}
+	if r.actions != nil {
+		t := *r.actions
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("actions", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("actions", parameterToString(t, "multi"))
+		}
 	}
 	if r.brandName != nil {
 		localVarQueryParams.Add("brand_name", parameterToString(*r.brandName, ""))
@@ -696,143 +714,6 @@ func (a *EventsApiService) EventsEventsPartialUpdateExecute(r ApiEventsEventsPar
 	}
 	// body params
 	localVarPostBody = r.patchedEventRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiEventsEventsPerMonthListRequest struct {
-	ctx        context.Context
-	ApiService *EventsApiService
-	action     *string
-	query      *string
-}
-
-func (r ApiEventsEventsPerMonthListRequest) Action(action string) ApiEventsEventsPerMonthListRequest {
-	r.action = &action
-	return r
-}
-
-func (r ApiEventsEventsPerMonthListRequest) Query(query string) ApiEventsEventsPerMonthListRequest {
-	r.query = &query
-	return r
-}
-
-func (r ApiEventsEventsPerMonthListRequest) Execute() ([]Coordinate, *http.Response, error) {
-	return r.ApiService.EventsEventsPerMonthListExecute(r)
-}
-
-/*
-EventsEventsPerMonthList Method for EventsEventsPerMonthList
-
-Get the count of events per month
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiEventsEventsPerMonthListRequest
-*/
-func (a *EventsApiService) EventsEventsPerMonthList(ctx context.Context) ApiEventsEventsPerMonthListRequest {
-	return ApiEventsEventsPerMonthListRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return []Coordinate
-func (a *EventsApiService) EventsEventsPerMonthListExecute(r ApiEventsEventsPerMonthListRequest) ([]Coordinate, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Coordinate
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsEventsPerMonthList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/events/events/per_month/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.action != nil {
-		localVarQueryParams.Add("action", parameterToString(*r.action, ""))
-	}
-	if r.query != nil {
-		localVarQueryParams.Add("query", parameterToString(*r.query, ""))
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1287,12 +1168,14 @@ type ApiEventsEventsVolumeListRequest struct {
 	ctx                  context.Context
 	ApiService           *EventsApiService
 	action               *string
+	actions              *[]string
 	brandName            *string
 	clientIp             *string
 	contextAuthorizedApp *string
 	contextModelApp      *string
 	contextModelName     *string
 	contextModelPk       *string
+	historyDays          *float32
 	ordering             *string
 	search               *string
 	username             *string
@@ -1300,6 +1183,11 @@ type ApiEventsEventsVolumeListRequest struct {
 
 func (r ApiEventsEventsVolumeListRequest) Action(action string) ApiEventsEventsVolumeListRequest {
 	r.action = &action
+	return r
+}
+
+func (r ApiEventsEventsVolumeListRequest) Actions(actions []string) ApiEventsEventsVolumeListRequest {
+	r.actions = &actions
 	return r
 }
 
@@ -1338,6 +1226,11 @@ func (r ApiEventsEventsVolumeListRequest) ContextModelPk(contextModelPk string) 
 	return r
 }
 
+func (r ApiEventsEventsVolumeListRequest) HistoryDays(historyDays float32) ApiEventsEventsVolumeListRequest {
+	r.historyDays = &historyDays
+	return r
+}
+
 // Which field to use when ordering the results.
 func (r ApiEventsEventsVolumeListRequest) Ordering(ordering string) ApiEventsEventsVolumeListRequest {
 	r.ordering = &ordering
@@ -1356,7 +1249,7 @@ func (r ApiEventsEventsVolumeListRequest) Username(username string) ApiEventsEve
 	return r
 }
 
-func (r ApiEventsEventsVolumeListRequest) Execute() ([]Coordinate, *http.Response, error) {
+func (r ApiEventsEventsVolumeListRequest) Execute() ([]EventVolume, *http.Response, error) {
 	return r.ApiService.EventsEventsVolumeListExecute(r)
 }
 
@@ -1377,13 +1270,13 @@ func (a *EventsApiService) EventsEventsVolumeList(ctx context.Context) ApiEvents
 
 // Execute executes the request
 //
-//	@return []Coordinate
-func (a *EventsApiService) EventsEventsVolumeListExecute(r ApiEventsEventsVolumeListRequest) ([]Coordinate, *http.Response, error) {
+//	@return []EventVolume
+func (a *EventsApiService) EventsEventsVolumeListExecute(r ApiEventsEventsVolumeListRequest) ([]EventVolume, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []Coordinate
+		localVarReturnValue []EventVolume
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsEventsVolumeList")
@@ -1399,6 +1292,17 @@ func (a *EventsApiService) EventsEventsVolumeListExecute(r ApiEventsEventsVolume
 
 	if r.action != nil {
 		localVarQueryParams.Add("action", parameterToString(*r.action, ""))
+	}
+	if r.actions != nil {
+		t := *r.actions
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("actions", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("actions", parameterToString(t, "multi"))
+		}
 	}
 	if r.brandName != nil {
 		localVarQueryParams.Add("brand_name", parameterToString(*r.brandName, ""))
@@ -1417,6 +1321,9 @@ func (a *EventsApiService) EventsEventsVolumeListExecute(r ApiEventsEventsVolume
 	}
 	if r.contextModelPk != nil {
 		localVarQueryParams.Add("context_model_pk", parameterToString(*r.contextModelPk, ""))
+	}
+	if r.historyDays != nil {
+		localVarQueryParams.Add("history_days", parameterToString(*r.historyDays, ""))
 	}
 	if r.ordering != nil {
 		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))

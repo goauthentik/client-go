@@ -40,33 +40,6 @@ paths:
       - authentik: []
       tags:
       - admin
-  /admin/metrics/:
-    get:
-      description: Login Metrics per 1h
-      operationId: admin_metrics_retrieve
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LoginMetrics'
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - admin
   /admin/models/:
     get:
       description: Read-only view list all installed models
@@ -4502,44 +4475,6 @@ paths:
       - authentik: []
       tags:
       - core
-  /core/applications/{slug}/metrics/:
-    get:
-      description: Metrics for application logins
-      operationId: core_applications_metrics_list
-      parameters:
-      - explode: false
-        in: path
-        name: slug
-        required: true
-        schema:
-          description: "Internal application name, used in URLs."
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Coordinate'
-                type: array
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - core
   /core/applications/{slug}/set_icon/:
     post:
       description: Set application icon
@@ -6682,42 +6617,6 @@ paths:
       - authentik: []
       tags:
       - core
-  /core/users/{id}/metrics/:
-    get:
-      description: User metrics per 1h
-      operationId: core_users_metrics_retrieve
-      parameters:
-      - description: A unique integer value identifying this User.
-        explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UserMetrics'
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - core
   /core/users/{id}/recovery/:
     post:
       description: Create a temporary link that a user can use to recover their accounts
@@ -7805,6 +7704,43 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: actions
+        required: false
+        schema:
+          items:
+            enum:
+            - authorize_application
+            - configuration_error
+            - custom_
+            - email_sent
+            - flow_execution
+            - impersonation_ended
+            - impersonation_started
+            - invitation_used
+            - login
+            - login_failed
+            - logout
+            - model_created
+            - model_deleted
+            - model_updated
+            - password_set
+            - policy_exception
+            - policy_execution
+            - property_mapping_exception
+            - secret_rotate
+            - secret_view
+            - source_linked
+            - suspicious_request
+            - system_exception
+            - system_task_exception
+            - system_task_execution
+            - update_available
+            - user_write
+            type: string
+          type: array
+        style: form
       - description: Brand name
         explode: true
         in: query
@@ -8128,50 +8064,6 @@ paths:
       - authentik: []
       tags:
       - events
-  /events/events/per_month/:
-    get:
-      description: Get the count of events per month
-      operationId: events_events_per_month_list
-      parameters:
-      - explode: true
-        in: query
-        name: action
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: query
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Coordinate'
-                type: array
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - events
   /events/events/top_per_user/:
     get:
       description: Get the top_n events grouped by user count
@@ -8228,6 +8120,43 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: actions
+        required: false
+        schema:
+          items:
+            enum:
+            - authorize_application
+            - configuration_error
+            - custom_
+            - email_sent
+            - flow_execution
+            - impersonation_ended
+            - impersonation_started
+            - invitation_used
+            - login
+            - login_failed
+            - logout
+            - model_created
+            - model_deleted
+            - model_updated
+            - password_set
+            - policy_exception
+            - policy_execution
+            - property_mapping_exception
+            - secret_rotate
+            - secret_view
+            - source_linked
+            - suspicious_request
+            - system_exception
+            - system_task_exception
+            - system_task_execution
+            - update_available
+            - user_write
+            type: string
+          type: array
+        style: form
       - description: Brand name
         explode: true
         in: query
@@ -8275,6 +8204,14 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: history_days
+        required: false
+        schema:
+          default: 7
+          type: number
+        style: form
       - description: Which field to use when ordering the results.
         explode: true
         in: query
@@ -8305,7 +8242,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/Coordinate'
+                  $ref: '#/components/schemas/EventVolume'
                 type: array
           description: ""
         "400":
@@ -48995,22 +48932,6 @@ components:
       - sidebar_left
       - sidebar_right
       type: string
-    Coordinate:
-      description: Coordinates for diagrams
-      example:
-        y_cord: 6
-        x_cord: 0
-      properties:
-        x_cord:
-          readOnly: true
-          type: integer
-        y_cord:
-          readOnly: true
-          type: integer
-      required:
-      - x_cord
-      - y_cord
-      type: object
     CountryCodeEnum:
       enum:
       - AF
@@ -50747,6 +50668,25 @@ components:
       - application
       - counted_events
       - unique_users
+      type: object
+    EventVolume:
+      description: Count of events of action created on day
+      example:
+        count: 0
+        action: null
+        time: 2000-01-23T04:56:07.000+00:00
+      properties:
+        action:
+          $ref: '#/components/schemas/EventActions'
+        time:
+          format: date-time
+          type: string
+        count:
+          type: integer
+      required:
+      - action
+      - count
+      - time
       type: object
     EventsRequestedEnum:
       enum:
@@ -55100,45 +55040,6 @@ components:
       - $ref: '#/components/schemas/RedirectChallenge'
       - $ref: '#/components/schemas/AppleLoginChallenge'
       - $ref: '#/components/schemas/PlexAuthenticationChallenge'
-    LoginMetrics:
-      description: Login Metrics per 1h
-      example:
-        logins_failed:
-        - y_cord: 6
-          x_cord: 0
-        - y_cord: 6
-          x_cord: 0
-        authorizations:
-        - y_cord: 6
-          x_cord: 0
-        - y_cord: 6
-          x_cord: 0
-        logins:
-        - y_cord: 6
-          x_cord: 0
-        - y_cord: 6
-          x_cord: 0
-      properties:
-        logins:
-          items:
-            $ref: '#/components/schemas/Coordinate'
-          readOnly: true
-          type: array
-        logins_failed:
-          items:
-            $ref: '#/components/schemas/Coordinate'
-          readOnly: true
-          type: array
-        authorizations:
-          items:
-            $ref: '#/components/schemas/Coordinate'
-          readOnly: true
-          type: array
-      required:
-      - authorizations
-      - logins
-      - logins_failed
-      type: object
     LoginSource:
       description: Serializer for Login buttons of sources
       properties:
@@ -78355,45 +78256,6 @@ components:
       - username_link
       - username_deny
       type: string
-    UserMetrics:
-      description: User Metrics
-      example:
-        logins_failed:
-        - y_cord: 6
-          x_cord: 0
-        - y_cord: 6
-          x_cord: 0
-        authorizations:
-        - y_cord: 6
-          x_cord: 0
-        - y_cord: 6
-          x_cord: 0
-        logins:
-        - y_cord: 6
-          x_cord: 0
-        - y_cord: 6
-          x_cord: 0
-      properties:
-        logins:
-          items:
-            $ref: '#/components/schemas/Coordinate'
-          readOnly: true
-          type: array
-        logins_failed:
-          items:
-            $ref: '#/components/schemas/Coordinate'
-          readOnly: true
-          type: array
-        authorizations:
-          items:
-            $ref: '#/components/schemas/Coordinate'
-          readOnly: true
-          type: array
-      required:
-      - authorizations
-      - logins
-      - logins_failed
-      type: object
     UserOAuthSourceConnection:
       description: User source connection
       example:

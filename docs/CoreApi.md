@@ -15,7 +15,6 @@ Method | HTTP request | Description
 [**CoreApplicationsCreate**](CoreApi.md#CoreApplicationsCreate) | **Post** /core/applications/ | 
 [**CoreApplicationsDestroy**](CoreApi.md#CoreApplicationsDestroy) | **Delete** /core/applications/{slug}/ | 
 [**CoreApplicationsList**](CoreApi.md#CoreApplicationsList) | **Get** /core/applications/ | 
-[**CoreApplicationsMetricsList**](CoreApi.md#CoreApplicationsMetricsList) | **Get** /core/applications/{slug}/metrics/ | 
 [**CoreApplicationsPartialUpdate**](CoreApi.md#CoreApplicationsPartialUpdate) | **Patch** /core/applications/{slug}/ | 
 [**CoreApplicationsRetrieve**](CoreApi.md#CoreApplicationsRetrieve) | **Get** /core/applications/{slug}/ | 
 [**CoreApplicationsSetIconCreate**](CoreApi.md#CoreApplicationsSetIconCreate) | **Post** /core/applications/{slug}/set_icon/ | 
@@ -63,7 +62,6 @@ Method | HTTP request | Description
 [**CoreUsersImpersonateEndRetrieve**](CoreApi.md#CoreUsersImpersonateEndRetrieve) | **Get** /core/users/impersonate_end/ | 
 [**CoreUsersList**](CoreApi.md#CoreUsersList) | **Get** /core/users/ | 
 [**CoreUsersMeRetrieve**](CoreApi.md#CoreUsersMeRetrieve) | **Get** /core/users/me/ | 
-[**CoreUsersMetricsRetrieve**](CoreApi.md#CoreUsersMetricsRetrieve) | **Get** /core/users/{id}/metrics/ | 
 [**CoreUsersPartialUpdate**](CoreApi.md#CoreUsersPartialUpdate) | **Patch** /core/users/{id}/ | 
 [**CoreUsersPathsRetrieve**](CoreApi.md#CoreUsersPathsRetrieve) | **Get** /core/users/paths/ | 
 [**CoreUsersRecoveryCreate**](CoreApi.md#CoreUsersRecoveryCreate) | **Post** /core/users/{id}/recovery/ | 
@@ -853,76 +851,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PaginatedApplicationList**](PaginatedApplicationList.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CoreApplicationsMetricsList
-
-> []Coordinate CoreApplicationsMetricsList(ctx, slug).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    slug := "slug_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreApplicationsMetricsList(context.Background(), slug).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreApplicationsMetricsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CoreApplicationsMetricsList`: []Coordinate
-    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreApplicationsMetricsList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**slug** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCoreApplicationsMetricsListRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**[]Coordinate**](Coordinate.md)
 
 ### Authorization
 
@@ -4277,76 +4205,6 @@ Other parameters are passed through a pointer to a apiCoreUsersMeRetrieveRequest
 ### Return type
 
 [**SessionUser**](SessionUser.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CoreUsersMetricsRetrieve
-
-> UserMetrics CoreUsersMetricsRetrieve(ctx, id).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := int32(56) // int32 | A unique integer value identifying this User.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreUsersMetricsRetrieve(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersMetricsRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CoreUsersMetricsRetrieve`: UserMetrics
-    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreUsersMetricsRetrieve`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | A unique integer value identifying this User. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCoreUsersMetricsRetrieveRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**UserMetrics**](UserMetrics.md)
 
 ### Authorization
 

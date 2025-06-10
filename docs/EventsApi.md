@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**EventsEventsDestroy**](EventsApi.md#EventsEventsDestroy) | **Delete** /events/events/{event_uuid}/ | 
 [**EventsEventsList**](EventsApi.md#EventsEventsList) | **Get** /events/events/ | 
 [**EventsEventsPartialUpdate**](EventsApi.md#EventsEventsPartialUpdate) | **Patch** /events/events/{event_uuid}/ | 
-[**EventsEventsPerMonthList**](EventsApi.md#EventsEventsPerMonthList) | **Get** /events/events/per_month/ | 
 [**EventsEventsRetrieve**](EventsApi.md#EventsEventsRetrieve) | **Get** /events/events/{event_uuid}/ | 
 [**EventsEventsTopPerUserList**](EventsApi.md#EventsEventsTopPerUserList) | **Get** /events/events/top_per_user/ | 
 [**EventsEventsUpdate**](EventsApi.md#EventsEventsUpdate) | **Put** /events/events/{event_uuid}/ | 
@@ -239,7 +238,7 @@ Name | Type | Description  | Notes
 
 ## EventsEventsList
 
-> PaginatedEventList EventsEventsList(ctx).Action(action).BrandName(brandName).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Username(username).Execute()
+> PaginatedEventList EventsEventsList(ctx).Action(action).Actions(actions).BrandName(brandName).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Username(username).Execute()
 
 
 
@@ -259,6 +258,7 @@ import (
 
 func main() {
     action := "action_example" // string |  (optional)
+    actions := []string{"Actions_example"} // []string |  (optional)
     brandName := "brandName_example" // string | Brand name (optional)
     clientIp := "clientIp_example" // string |  (optional)
     contextAuthorizedApp := "contextAuthorizedApp_example" // string | Context Authorized application (optional)
@@ -273,7 +273,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EventsApi.EventsEventsList(context.Background()).Action(action).BrandName(brandName).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Username(username).Execute()
+    resp, r, err := apiClient.EventsApi.EventsEventsList(context.Background()).Action(action).Actions(actions).BrandName(brandName).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Username(username).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -295,6 +295,7 @@ Other parameters are passed through a pointer to a apiEventsEventsListRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **action** | **string** |  | 
+ **actions** | **[]string** |  | 
  **brandName** | **string** | Brand name | 
  **clientIp** | **string** |  | 
  **contextAuthorizedApp** | **string** | Context Authorized application | 
@@ -390,74 +391,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EventsEventsPerMonthList
-
-> []Coordinate EventsEventsPerMonthList(ctx).Action(action).Query(query).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    action := "action_example" // string |  (optional)
-    query := "query_example" // string |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EventsApi.EventsEventsPerMonthList(context.Background()).Action(action).Query(query).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsPerMonthList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EventsEventsPerMonthList`: []Coordinate
-    fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsEventsPerMonthList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiEventsEventsPerMonthListRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **action** | **string** |  | 
- **query** | **string** |  | 
-
-### Return type
-
-[**[]Coordinate**](Coordinate.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -677,7 +610,7 @@ Name | Type | Description  | Notes
 
 ## EventsEventsVolumeList
 
-> []Coordinate EventsEventsVolumeList(ctx).Action(action).BrandName(brandName).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Search(search).Username(username).Execute()
+> []EventVolume EventsEventsVolumeList(ctx).Action(action).Actions(actions).BrandName(brandName).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).HistoryDays(historyDays).Ordering(ordering).Search(search).Username(username).Execute()
 
 
 
@@ -697,24 +630,26 @@ import (
 
 func main() {
     action := "action_example" // string |  (optional)
+    actions := []string{"Actions_example"} // []string |  (optional)
     brandName := "brandName_example" // string | Brand name (optional)
     clientIp := "clientIp_example" // string |  (optional)
     contextAuthorizedApp := "contextAuthorizedApp_example" // string | Context Authorized application (optional)
     contextModelApp := "contextModelApp_example" // string | Context Model App (optional)
     contextModelName := "contextModelName_example" // string | Context Model Name (optional)
     contextModelPk := "contextModelPk_example" // string | Context Model Primary Key (optional)
+    historyDays := float32(8.14) // float32 |  (optional) (default to 7)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     search := "search_example" // string | A search term. (optional)
     username := "username_example" // string | Username (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EventsApi.EventsEventsVolumeList(context.Background()).Action(action).BrandName(brandName).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Search(search).Username(username).Execute()
+    resp, r, err := apiClient.EventsApi.EventsEventsVolumeList(context.Background()).Action(action).Actions(actions).BrandName(brandName).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).HistoryDays(historyDays).Ordering(ordering).Search(search).Username(username).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsEventsVolumeList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EventsEventsVolumeList`: []Coordinate
+    // response from `EventsEventsVolumeList`: []EventVolume
     fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsEventsVolumeList`: %v\n", resp)
 }
 ```
@@ -731,19 +666,21 @@ Other parameters are passed through a pointer to a apiEventsEventsVolumeListRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **action** | **string** |  | 
+ **actions** | **[]string** |  | 
  **brandName** | **string** | Brand name | 
  **clientIp** | **string** |  | 
  **contextAuthorizedApp** | **string** | Context Authorized application | 
  **contextModelApp** | **string** | Context Model App | 
  **contextModelName** | **string** | Context Model Name | 
  **contextModelPk** | **string** | Context Model Primary Key | 
+ **historyDays** | **float32** |  | [default to 7]
  **ordering** | **string** | Which field to use when ordering the results. | 
  **search** | **string** | A search term. | 
  **username** | **string** | Username | 
 
 ### Return type
 
-[**[]Coordinate**](Coordinate.md)
+[**[]EventVolume**](EventVolume.md)
 
 ### Authorization
 
