@@ -1328,7 +1328,7 @@ Name | Type | Description  | Notes
 
 ## EventsRulesList
 
-> PaginatedNotificationRuleList EventsRulesList(ctx).GroupName(groupName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Severity(severity).Execute()
+> PaginatedNotificationRuleList EventsRulesList(ctx).DestinationGroupName(destinationGroupName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Severity(severity).Execute()
 
 
 
@@ -1347,7 +1347,7 @@ import (
 )
 
 func main() {
-    groupName := "groupName_example" // string |  (optional)
+    destinationGroupName := "destinationGroupName_example" // string |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -1357,7 +1357,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EventsApi.EventsRulesList(context.Background()).GroupName(groupName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Severity(severity).Execute()
+    resp, r, err := apiClient.EventsApi.EventsRulesList(context.Background()).DestinationGroupName(destinationGroupName).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Severity(severity).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsRulesList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1378,7 +1378,7 @@ Other parameters are passed through a pointer to a apiEventsRulesListRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupName** | **string** |  | 
+ **destinationGroupName** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 

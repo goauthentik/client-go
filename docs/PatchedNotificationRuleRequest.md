@@ -7,7 +7,8 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **Transports** | Pointer to **[]string** | Select which transports should be used to notify the user. If none are selected, the notification will only be shown in the authentik UI. | [optional] 
 **Severity** | Pointer to [**SeverityEnum**](SeverityEnum.md) | Controls which severity level the created notifications will have. | [optional] 
-**Group** | Pointer to **NullableString** | Define which group of users this notification should be sent and shown to. If left empty, Notification won&#39;t ben sent. | [optional] 
+**DestinationGroup** | Pointer to **NullableString** | Define which group of users this notification should be sent and shown to. If left empty, Notification won&#39;t ben sent. | [optional] 
+**DestinationEventUser** | Pointer to **bool** | When enabled, notification will be sent to user the user that triggered the event.When destination_group is configured, notification is sent to both. | [optional] 
 
 ## Methods
 
@@ -103,41 +104,66 @@ SetSeverity sets Severity field to given value.
 
 HasSeverity returns a boolean if a field has been set.
 
-### GetGroup
+### GetDestinationGroup
 
-`func (o *PatchedNotificationRuleRequest) GetGroup() string`
+`func (o *PatchedNotificationRuleRequest) GetDestinationGroup() string`
 
-GetGroup returns the Group field if non-nil, zero value otherwise.
+GetDestinationGroup returns the DestinationGroup field if non-nil, zero value otherwise.
 
-### GetGroupOk
+### GetDestinationGroupOk
 
-`func (o *PatchedNotificationRuleRequest) GetGroupOk() (*string, bool)`
+`func (o *PatchedNotificationRuleRequest) GetDestinationGroupOk() (*string, bool)`
 
-GetGroupOk returns a tuple with the Group field if it's non-nil, zero value otherwise
+GetDestinationGroupOk returns a tuple with the DestinationGroup field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGroup
+### SetDestinationGroup
 
-`func (o *PatchedNotificationRuleRequest) SetGroup(v string)`
+`func (o *PatchedNotificationRuleRequest) SetDestinationGroup(v string)`
 
-SetGroup sets Group field to given value.
+SetDestinationGroup sets DestinationGroup field to given value.
 
-### HasGroup
+### HasDestinationGroup
 
-`func (o *PatchedNotificationRuleRequest) HasGroup() bool`
+`func (o *PatchedNotificationRuleRequest) HasDestinationGroup() bool`
 
-HasGroup returns a boolean if a field has been set.
+HasDestinationGroup returns a boolean if a field has been set.
 
-### SetGroupNil
+### SetDestinationGroupNil
 
-`func (o *PatchedNotificationRuleRequest) SetGroupNil(b bool)`
+`func (o *PatchedNotificationRuleRequest) SetDestinationGroupNil(b bool)`
 
- SetGroupNil sets the value for Group to be an explicit nil
+ SetDestinationGroupNil sets the value for DestinationGroup to be an explicit nil
 
-### UnsetGroup
-`func (o *PatchedNotificationRuleRequest) UnsetGroup()`
+### UnsetDestinationGroup
+`func (o *PatchedNotificationRuleRequest) UnsetDestinationGroup()`
 
-UnsetGroup ensures that no value is present for Group, not even an explicit nil
+UnsetDestinationGroup ensures that no value is present for DestinationGroup, not even an explicit nil
+### GetDestinationEventUser
+
+`func (o *PatchedNotificationRuleRequest) GetDestinationEventUser() bool`
+
+GetDestinationEventUser returns the DestinationEventUser field if non-nil, zero value otherwise.
+
+### GetDestinationEventUserOk
+
+`func (o *PatchedNotificationRuleRequest) GetDestinationEventUserOk() (*bool, bool)`
+
+GetDestinationEventUserOk returns a tuple with the DestinationEventUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDestinationEventUser
+
+`func (o *PatchedNotificationRuleRequest) SetDestinationEventUser(v bool)`
+
+SetDestinationEventUser sets DestinationEventUser field to given value.
+
+### HasDestinationEventUser
+
+`func (o *PatchedNotificationRuleRequest) HasDestinationEventUser() bool`
+
+HasDestinationEventUser returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

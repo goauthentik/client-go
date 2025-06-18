@@ -23,7 +23,9 @@ type PatchedNotificationRuleRequest struct {
 	// Controls which severity level the created notifications will have.
 	Severity *SeverityEnum `json:"severity,omitempty"`
 	// Define which group of users this notification should be sent and shown to. If left empty, Notification won't ben sent.
-	Group NullableString `json:"group,omitempty"`
+	DestinationGroup NullableString `json:"destination_group,omitempty"`
+	// When enabled, notification will be sent to user the user that triggered the event.When destination_group is configured, notification is sent to both.
+	DestinationEventUser *bool `json:"destination_event_user,omitempty"`
 }
 
 // NewPatchedNotificationRuleRequest instantiates a new PatchedNotificationRuleRequest object
@@ -139,47 +141,79 @@ func (o *PatchedNotificationRuleRequest) SetSeverity(v SeverityEnum) {
 	o.Severity = &v
 }
 
-// GetGroup returns the Group field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PatchedNotificationRuleRequest) GetGroup() string {
-	if o == nil || o.Group.Get() == nil {
+// GetDestinationGroup returns the DestinationGroup field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedNotificationRuleRequest) GetDestinationGroup() string {
+	if o == nil || o.DestinationGroup.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.Group.Get()
+	return *o.DestinationGroup.Get()
 }
 
-// GetGroupOk returns a tuple with the Group field value if set, nil otherwise
+// GetDestinationGroupOk returns a tuple with the DestinationGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PatchedNotificationRuleRequest) GetGroupOk() (*string, bool) {
+func (o *PatchedNotificationRuleRequest) GetDestinationGroupOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Group.Get(), o.Group.IsSet()
+	return o.DestinationGroup.Get(), o.DestinationGroup.IsSet()
 }
 
-// HasGroup returns a boolean if a field has been set.
-func (o *PatchedNotificationRuleRequest) HasGroup() bool {
-	if o != nil && o.Group.IsSet() {
+// HasDestinationGroup returns a boolean if a field has been set.
+func (o *PatchedNotificationRuleRequest) HasDestinationGroup() bool {
+	if o != nil && o.DestinationGroup.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGroup gets a reference to the given NullableString and assigns it to the Group field.
-func (o *PatchedNotificationRuleRequest) SetGroup(v string) {
-	o.Group.Set(&v)
+// SetDestinationGroup gets a reference to the given NullableString and assigns it to the DestinationGroup field.
+func (o *PatchedNotificationRuleRequest) SetDestinationGroup(v string) {
+	o.DestinationGroup.Set(&v)
 }
 
-// SetGroupNil sets the value for Group to be an explicit nil
-func (o *PatchedNotificationRuleRequest) SetGroupNil() {
-	o.Group.Set(nil)
+// SetDestinationGroupNil sets the value for DestinationGroup to be an explicit nil
+func (o *PatchedNotificationRuleRequest) SetDestinationGroupNil() {
+	o.DestinationGroup.Set(nil)
 }
 
-// UnsetGroup ensures that no value is present for Group, not even an explicit nil
-func (o *PatchedNotificationRuleRequest) UnsetGroup() {
-	o.Group.Unset()
+// UnsetDestinationGroup ensures that no value is present for DestinationGroup, not even an explicit nil
+func (o *PatchedNotificationRuleRequest) UnsetDestinationGroup() {
+	o.DestinationGroup.Unset()
+}
+
+// GetDestinationEventUser returns the DestinationEventUser field value if set, zero value otherwise.
+func (o *PatchedNotificationRuleRequest) GetDestinationEventUser() bool {
+	if o == nil || o.DestinationEventUser == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DestinationEventUser
+}
+
+// GetDestinationEventUserOk returns a tuple with the DestinationEventUser field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedNotificationRuleRequest) GetDestinationEventUserOk() (*bool, bool) {
+	if o == nil || o.DestinationEventUser == nil {
+		return nil, false
+	}
+	return o.DestinationEventUser, true
+}
+
+// HasDestinationEventUser returns a boolean if a field has been set.
+func (o *PatchedNotificationRuleRequest) HasDestinationEventUser() bool {
+	if o != nil && o.DestinationEventUser != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDestinationEventUser gets a reference to the given bool and assigns it to the DestinationEventUser field.
+func (o *PatchedNotificationRuleRequest) SetDestinationEventUser(v bool) {
+	o.DestinationEventUser = &v
 }
 
 func (o PatchedNotificationRuleRequest) MarshalJSON() ([]byte, error) {
@@ -193,8 +227,11 @@ func (o PatchedNotificationRuleRequest) MarshalJSON() ([]byte, error) {
 	if o.Severity != nil {
 		toSerialize["severity"] = o.Severity
 	}
-	if o.Group.IsSet() {
-		toSerialize["group"] = o.Group.Get()
+	if o.DestinationGroup.IsSet() {
+		toSerialize["destination_group"] = o.DestinationGroup.Get()
+	}
+	if o.DestinationEventUser != nil {
+		toSerialize["destination_event_user"] = o.DestinationEventUser
 	}
 	return json.Marshal(toSerialize)
 }

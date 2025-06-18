@@ -2588,19 +2588,19 @@ func (a *EventsApiService) EventsRulesDestroyExecute(r ApiEventsRulesDestroyRequ
 }
 
 type ApiEventsRulesListRequest struct {
-	ctx        context.Context
-	ApiService *EventsApiService
-	groupName  *string
-	name       *string
-	ordering   *string
-	page       *int32
-	pageSize   *int32
-	search     *string
-	severity   *string
+	ctx                  context.Context
+	ApiService           *EventsApiService
+	destinationGroupName *string
+	name                 *string
+	ordering             *string
+	page                 *int32
+	pageSize             *int32
+	search               *string
+	severity             *string
 }
 
-func (r ApiEventsRulesListRequest) GroupName(groupName string) ApiEventsRulesListRequest {
-	r.groupName = &groupName
+func (r ApiEventsRulesListRequest) DestinationGroupName(destinationGroupName string) ApiEventsRulesListRequest {
+	r.destinationGroupName = &destinationGroupName
 	return r
 }
 
@@ -2680,8 +2680,8 @@ func (a *EventsApiService) EventsRulesListExecute(r ApiEventsRulesListRequest) (
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.groupName != nil {
-		localVarQueryParams.Add("group__name", parameterToString(*r.groupName, ""))
+	if r.destinationGroupName != nil {
+		localVarQueryParams.Add("destination_group__name", parameterToString(*r.destinationGroupName, ""))
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))

@@ -8589,7 +8589,7 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: group__name
+        name: destination_group__name
         required: false
         schema:
           type: string
@@ -55776,10 +55776,11 @@ components:
         transports:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        group_obj: ""
+        destination_group_obj: ""
         name: name
+        destination_event_user: true
+        destination_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pk:
           format: uuid
@@ -55801,18 +55802,23 @@ components:
           - $ref: '#/components/schemas/SeverityEnum'
           description: Controls which severity level the created notifications will
             have.
-        group:
+        destination_group:
           description: "Define which group of users this notification should be sent\
             \ and shown to. If left empty, Notification won't ben sent."
           format: uuid
           nullable: true
           type: string
-        group_obj:
+        destination_group_obj:
           allOf:
           - $ref: '#/components/schemas/Group'
           readOnly: true
+        destination_event_user:
+          description: "When enabled, notification will be sent to user the user that\
+            \ triggered the event.When destination_group is configured, notification\
+            \ is sent to both."
+          type: boolean
       required:
-      - group_obj
+      - destination_group_obj
       - name
       - pk
       type: object
@@ -55824,7 +55830,8 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
-        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        destination_event_user: true
+        destination_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         name:
           minLength: 1
@@ -55842,12 +55849,17 @@ components:
           - $ref: '#/components/schemas/SeverityEnum'
           description: Controls which severity level the created notifications will
             have.
-        group:
+        destination_group:
           description: "Define which group of users this notification should be sent\
             \ and shown to. If left empty, Notification won't ben sent."
           format: uuid
           nullable: true
           type: string
+        destination_event_user:
+          description: "When enabled, notification will be sent to user the user that\
+            \ triggered the event.When destination_group is configured, notification\
+            \ is sent to both."
+          type: boolean
       required:
       - name
       type: object
@@ -61583,18 +61595,20 @@ components:
           transports:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          group_obj: ""
+          destination_group_obj: ""
           name: name
+          destination_event_user: true
+          destination_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - severity: ""
           transports:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          group_obj: ""
+          destination_group_obj: ""
           name: name
+          destination_event_user: true
+          destination_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -69305,7 +69319,8 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
-        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        destination_event_user: true
+        destination_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         name:
           minLength: 1
@@ -69323,12 +69338,17 @@ components:
           - $ref: '#/components/schemas/SeverityEnum'
           description: Controls which severity level the created notifications will
             have.
-        group:
+        destination_group:
           description: "Define which group of users this notification should be sent\
             \ and shown to. If left empty, Notification won't ben sent."
           format: uuid
           nullable: true
           type: string
+        destination_event_user:
+          description: "When enabled, notification will be sent to user the user that\
+            \ triggered the event.When destination_group is configured, notification\
+            \ is sent to both."
+          type: boolean
       type: object
     PatchedNotificationTransportRequest:
       description: NotificationTransport Serializer
