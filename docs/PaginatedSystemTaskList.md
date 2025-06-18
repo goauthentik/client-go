@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]SystemTask**](SystemTask.md) |  | 
+**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedSystemTaskList
 
-`func NewPaginatedSystemTaskList(pagination Pagination, results []SystemTask, ) *PaginatedSystemTaskList`
+`func NewPaginatedSystemTaskList(pagination Pagination, results []SystemTask, autocomplete map[string]interface{}, ) *PaginatedSystemTaskList`
 
 NewPaginatedSystemTaskList instantiates a new PaginatedSystemTaskList object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedSystemTaskList) SetResults(v []SystemTask)`
 
 SetResults sets Results field to given value.
+
+
+### GetAutocomplete
+
+`func (o *PaginatedSystemTaskList) GetAutocomplete() map[string]interface{}`
+
+GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
+
+### GetAutocompleteOk
+
+`func (o *PaginatedSystemTaskList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+
+GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutocomplete
+
+`func (o *PaginatedSystemTaskList) SetAutocomplete(v map[string]interface{})`
+
+SetAutocomplete sets Autocomplete field to given value.
 
 
 

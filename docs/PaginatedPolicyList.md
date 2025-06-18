@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]Policy**](Policy.md) |  | 
+**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedPolicyList
 
-`func NewPaginatedPolicyList(pagination Pagination, results []Policy, ) *PaginatedPolicyList`
+`func NewPaginatedPolicyList(pagination Pagination, results []Policy, autocomplete map[string]interface{}, ) *PaginatedPolicyList`
 
 NewPaginatedPolicyList instantiates a new PaginatedPolicyList object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedPolicyList) SetResults(v []Policy)`
 
 SetResults sets Results field to given value.
+
+
+### GetAutocomplete
+
+`func (o *PaginatedPolicyList) GetAutocomplete() map[string]interface{}`
+
+GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
+
+### GetAutocompleteOk
+
+`func (o *PaginatedPolicyList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+
+GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutocomplete
+
+`func (o *PaginatedPolicyList) SetAutocomplete(v map[string]interface{})`
+
+SetAutocomplete sets Autocomplete field to given value.
 
 
 

@@ -17,18 +17,20 @@ import (
 
 // PaginatedUserList struct for PaginatedUserList
 type PaginatedUserList struct {
-	Pagination Pagination `json:"pagination"`
-	Results    []User     `json:"results"`
+	Pagination   Pagination             `json:"pagination"`
+	Results      []User                 `json:"results"`
+	Autocomplete map[string]interface{} `json:"autocomplete"`
 }
 
 // NewPaginatedUserList instantiates a new PaginatedUserList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedUserList(pagination Pagination, results []User) *PaginatedUserList {
+func NewPaginatedUserList(pagination Pagination, results []User, autocomplete map[string]interface{}) *PaginatedUserList {
 	this := PaginatedUserList{}
 	this.Pagination = pagination
 	this.Results = results
+	this.Autocomplete = autocomplete
 	return &this
 }
 
@@ -88,6 +90,30 @@ func (o *PaginatedUserList) SetResults(v []User) {
 	o.Results = v
 }
 
+// GetAutocomplete returns the Autocomplete field value
+func (o *PaginatedUserList) GetAutocomplete() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Autocomplete
+}
+
+// GetAutocompleteOk returns a tuple with the Autocomplete field value
+// and a boolean to check if the value has been set.
+func (o *PaginatedUserList) GetAutocompleteOk() (map[string]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Autocomplete, true
+}
+
+// SetAutocomplete sets field value
+func (o *PaginatedUserList) SetAutocomplete(v map[string]interface{}) {
+	o.Autocomplete = v
+}
+
 func (o PaginatedUserList) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -95,6 +121,9 @@ func (o PaginatedUserList) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["results"] = o.Results
+	}
+	if true {
+		toSerialize["autocomplete"] = o.Autocomplete
 	}
 	return json.Marshal(toSerialize)
 }

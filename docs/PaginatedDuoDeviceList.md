@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]DuoDevice**](DuoDevice.md) |  | 
+**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedDuoDeviceList
 
-`func NewPaginatedDuoDeviceList(pagination Pagination, results []DuoDevice, ) *PaginatedDuoDeviceList`
+`func NewPaginatedDuoDeviceList(pagination Pagination, results []DuoDevice, autocomplete map[string]interface{}, ) *PaginatedDuoDeviceList`
 
 NewPaginatedDuoDeviceList instantiates a new PaginatedDuoDeviceList object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedDuoDeviceList) SetResults(v []DuoDevice)`
 
 SetResults sets Results field to given value.
+
+
+### GetAutocomplete
+
+`func (o *PaginatedDuoDeviceList) GetAutocomplete() map[string]interface{}`
+
+GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
+
+### GetAutocompleteOk
+
+`func (o *PaginatedDuoDeviceList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+
+GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutocomplete
+
+`func (o *PaginatedDuoDeviceList) SetAutocomplete(v map[string]interface{})`
+
+SetAutocomplete sets Autocomplete field to given value.
 
 
 

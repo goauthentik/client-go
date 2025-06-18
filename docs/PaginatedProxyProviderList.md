@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]ProxyProvider**](ProxyProvider.md) |  | 
+**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedProxyProviderList
 
-`func NewPaginatedProxyProviderList(pagination Pagination, results []ProxyProvider, ) *PaginatedProxyProviderList`
+`func NewPaginatedProxyProviderList(pagination Pagination, results []ProxyProvider, autocomplete map[string]interface{}, ) *PaginatedProxyProviderList`
 
 NewPaginatedProxyProviderList instantiates a new PaginatedProxyProviderList object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedProxyProviderList) SetResults(v []ProxyProvider)`
 
 SetResults sets Results field to given value.
+
+
+### GetAutocomplete
+
+`func (o *PaginatedProxyProviderList) GetAutocomplete() map[string]interface{}`
+
+GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
+
+### GetAutocompleteOk
+
+`func (o *PaginatedProxyProviderList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+
+GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutocomplete
+
+`func (o *PaginatedProxyProviderList) SetAutocomplete(v map[string]interface{})`
+
+SetAutocomplete sets Autocomplete field to given value.
 
 
 

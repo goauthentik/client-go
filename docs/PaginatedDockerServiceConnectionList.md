@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]DockerServiceConnection**](DockerServiceConnection.md) |  | 
+**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedDockerServiceConnectionList
 
-`func NewPaginatedDockerServiceConnectionList(pagination Pagination, results []DockerServiceConnection, ) *PaginatedDockerServiceConnectionList`
+`func NewPaginatedDockerServiceConnectionList(pagination Pagination, results []DockerServiceConnection, autocomplete map[string]interface{}, ) *PaginatedDockerServiceConnectionList`
 
 NewPaginatedDockerServiceConnectionList instantiates a new PaginatedDockerServiceConnectionList object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedDockerServiceConnectionList) SetResults(v []DockerServiceConnection)`
 
 SetResults sets Results field to given value.
+
+
+### GetAutocomplete
+
+`func (o *PaginatedDockerServiceConnectionList) GetAutocomplete() map[string]interface{}`
+
+GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
+
+### GetAutocompleteOk
+
+`func (o *PaginatedDockerServiceConnectionList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+
+GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutocomplete
+
+`func (o *PaginatedDockerServiceConnectionList) SetAutocomplete(v map[string]interface{})`
+
+SetAutocomplete sets Autocomplete field to given value.
 
 
 

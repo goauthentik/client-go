@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]PasswordPolicy**](PasswordPolicy.md) |  | 
+**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedPasswordPolicyList
 
-`func NewPaginatedPasswordPolicyList(pagination Pagination, results []PasswordPolicy, ) *PaginatedPasswordPolicyList`
+`func NewPaginatedPasswordPolicyList(pagination Pagination, results []PasswordPolicy, autocomplete map[string]interface{}, ) *PaginatedPasswordPolicyList`
 
 NewPaginatedPasswordPolicyList instantiates a new PaginatedPasswordPolicyList object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedPasswordPolicyList) SetResults(v []PasswordPolicy)`
 
 SetResults sets Results field to given value.
+
+
+### GetAutocomplete
+
+`func (o *PaginatedPasswordPolicyList) GetAutocomplete() map[string]interface{}`
+
+GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
+
+### GetAutocompleteOk
+
+`func (o *PaginatedPasswordPolicyList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+
+GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutocomplete
+
+`func (o *PaginatedPasswordPolicyList) SetAutocomplete(v map[string]interface{})`
+
+SetAutocomplete sets Autocomplete field to given value.
 
 
 

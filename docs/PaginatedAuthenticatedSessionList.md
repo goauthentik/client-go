@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]AuthenticatedSession**](AuthenticatedSession.md) |  | 
+**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedAuthenticatedSessionList
 
-`func NewPaginatedAuthenticatedSessionList(pagination Pagination, results []AuthenticatedSession, ) *PaginatedAuthenticatedSessionList`
+`func NewPaginatedAuthenticatedSessionList(pagination Pagination, results []AuthenticatedSession, autocomplete map[string]interface{}, ) *PaginatedAuthenticatedSessionList`
 
 NewPaginatedAuthenticatedSessionList instantiates a new PaginatedAuthenticatedSessionList object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedAuthenticatedSessionList) SetResults(v []AuthenticatedSession)`
 
 SetResults sets Results field to given value.
+
+
+### GetAutocomplete
+
+`func (o *PaginatedAuthenticatedSessionList) GetAutocomplete() map[string]interface{}`
+
+GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
+
+### GetAutocompleteOk
+
+`func (o *PaginatedAuthenticatedSessionList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+
+GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutocomplete
+
+`func (o *PaginatedAuthenticatedSessionList) SetAutocomplete(v map[string]interface{})`
+
+SetAutocomplete sets Autocomplete field to given value.
 
 
 

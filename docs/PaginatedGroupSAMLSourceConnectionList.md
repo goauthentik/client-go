@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]GroupSAMLSourceConnection**](GroupSAMLSourceConnection.md) |  | 
+**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedGroupSAMLSourceConnectionList
 
-`func NewPaginatedGroupSAMLSourceConnectionList(pagination Pagination, results []GroupSAMLSourceConnection, ) *PaginatedGroupSAMLSourceConnectionList`
+`func NewPaginatedGroupSAMLSourceConnectionList(pagination Pagination, results []GroupSAMLSourceConnection, autocomplete map[string]interface{}, ) *PaginatedGroupSAMLSourceConnectionList`
 
 NewPaginatedGroupSAMLSourceConnectionList instantiates a new PaginatedGroupSAMLSourceConnectionList object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedGroupSAMLSourceConnectionList) SetResults(v []GroupSAMLSourceConnection)`
 
 SetResults sets Results field to given value.
+
+
+### GetAutocomplete
+
+`func (o *PaginatedGroupSAMLSourceConnectionList) GetAutocomplete() map[string]interface{}`
+
+GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
+
+### GetAutocompleteOk
+
+`func (o *PaginatedGroupSAMLSourceConnectionList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+
+GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutocomplete
+
+`func (o *PaginatedGroupSAMLSourceConnectionList) SetAutocomplete(v map[string]interface{})`
+
+SetAutocomplete sets Autocomplete field to given value.
 
 
 

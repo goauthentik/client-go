@@ -17,18 +17,20 @@ import (
 
 // PaginatedKerberosSourceList struct for PaginatedKerberosSourceList
 type PaginatedKerberosSourceList struct {
-	Pagination Pagination       `json:"pagination"`
-	Results    []KerberosSource `json:"results"`
+	Pagination   Pagination             `json:"pagination"`
+	Results      []KerberosSource       `json:"results"`
+	Autocomplete map[string]interface{} `json:"autocomplete"`
 }
 
 // NewPaginatedKerberosSourceList instantiates a new PaginatedKerberosSourceList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedKerberosSourceList(pagination Pagination, results []KerberosSource) *PaginatedKerberosSourceList {
+func NewPaginatedKerberosSourceList(pagination Pagination, results []KerberosSource, autocomplete map[string]interface{}) *PaginatedKerberosSourceList {
 	this := PaginatedKerberosSourceList{}
 	this.Pagination = pagination
 	this.Results = results
+	this.Autocomplete = autocomplete
 	return &this
 }
 
@@ -88,6 +90,30 @@ func (o *PaginatedKerberosSourceList) SetResults(v []KerberosSource) {
 	o.Results = v
 }
 
+// GetAutocomplete returns the Autocomplete field value
+func (o *PaginatedKerberosSourceList) GetAutocomplete() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Autocomplete
+}
+
+// GetAutocompleteOk returns a tuple with the Autocomplete field value
+// and a boolean to check if the value has been set.
+func (o *PaginatedKerberosSourceList) GetAutocompleteOk() (map[string]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Autocomplete, true
+}
+
+// SetAutocomplete sets field value
+func (o *PaginatedKerberosSourceList) SetAutocomplete(v map[string]interface{}) {
+	o.Autocomplete = v
+}
+
 func (o PaginatedKerberosSourceList) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -95,6 +121,9 @@ func (o PaginatedKerberosSourceList) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["results"] = o.Results
+	}
+	if true {
+		toSerialize["autocomplete"] = o.Autocomplete
 	}
 	return json.Marshal(toSerialize)
 }

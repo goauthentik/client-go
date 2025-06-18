@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]SCIMSourceUser**](SCIMSourceUser.md) |  | 
+**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedSCIMSourceUserList
 
-`func NewPaginatedSCIMSourceUserList(pagination Pagination, results []SCIMSourceUser, ) *PaginatedSCIMSourceUserList`
+`func NewPaginatedSCIMSourceUserList(pagination Pagination, results []SCIMSourceUser, autocomplete map[string]interface{}, ) *PaginatedSCIMSourceUserList`
 
 NewPaginatedSCIMSourceUserList instantiates a new PaginatedSCIMSourceUserList object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedSCIMSourceUserList) SetResults(v []SCIMSourceUser)`
 
 SetResults sets Results field to given value.
+
+
+### GetAutocomplete
+
+`func (o *PaginatedSCIMSourceUserList) GetAutocomplete() map[string]interface{}`
+
+GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
+
+### GetAutocompleteOk
+
+`func (o *PaginatedSCIMSourceUserList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+
+GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutocomplete
+
+`func (o *PaginatedSCIMSourceUserList) SetAutocomplete(v map[string]interface{})`
+
+SetAutocomplete sets Autocomplete field to given value.
 
 
 

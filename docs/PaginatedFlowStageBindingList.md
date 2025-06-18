@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]FlowStageBinding**](FlowStageBinding.md) |  | 
+**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedFlowStageBindingList
 
-`func NewPaginatedFlowStageBindingList(pagination Pagination, results []FlowStageBinding, ) *PaginatedFlowStageBindingList`
+`func NewPaginatedFlowStageBindingList(pagination Pagination, results []FlowStageBinding, autocomplete map[string]interface{}, ) *PaginatedFlowStageBindingList`
 
 NewPaginatedFlowStageBindingList instantiates a new PaginatedFlowStageBindingList object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedFlowStageBindingList) SetResults(v []FlowStageBinding)`
 
 SetResults sets Results field to given value.
+
+
+### GetAutocomplete
+
+`func (o *PaginatedFlowStageBindingList) GetAutocomplete() map[string]interface{}`
+
+GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
+
+### GetAutocompleteOk
+
+`func (o *PaginatedFlowStageBindingList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+
+GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutocomplete
+
+`func (o *PaginatedFlowStageBindingList) SetAutocomplete(v map[string]interface{})`
+
+SetAutocomplete sets Autocomplete field to given value.
 
 
 

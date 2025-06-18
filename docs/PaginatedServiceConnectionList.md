@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]ServiceConnection**](ServiceConnection.md) |  | 
+**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedServiceConnectionList
 
-`func NewPaginatedServiceConnectionList(pagination Pagination, results []ServiceConnection, ) *PaginatedServiceConnectionList`
+`func NewPaginatedServiceConnectionList(pagination Pagination, results []ServiceConnection, autocomplete map[string]interface{}, ) *PaginatedServiceConnectionList`
 
 NewPaginatedServiceConnectionList instantiates a new PaginatedServiceConnectionList object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedServiceConnectionList) SetResults(v []ServiceConnection)`
 
 SetResults sets Results field to given value.
+
+
+### GetAutocomplete
+
+`func (o *PaginatedServiceConnectionList) GetAutocomplete() map[string]interface{}`
+
+GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
+
+### GetAutocompleteOk
+
+`func (o *PaginatedServiceConnectionList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+
+GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutocomplete
+
+`func (o *PaginatedServiceConnectionList) SetAutocomplete(v map[string]interface{})`
+
+SetAutocomplete sets Autocomplete field to given value.
 
 
 

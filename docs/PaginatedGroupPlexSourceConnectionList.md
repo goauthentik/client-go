@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]GroupPlexSourceConnection**](GroupPlexSourceConnection.md) |  | 
+**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedGroupPlexSourceConnectionList
 
-`func NewPaginatedGroupPlexSourceConnectionList(pagination Pagination, results []GroupPlexSourceConnection, ) *PaginatedGroupPlexSourceConnectionList`
+`func NewPaginatedGroupPlexSourceConnectionList(pagination Pagination, results []GroupPlexSourceConnection, autocomplete map[string]interface{}, ) *PaginatedGroupPlexSourceConnectionList`
 
 NewPaginatedGroupPlexSourceConnectionList instantiates a new PaginatedGroupPlexSourceConnectionList object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedGroupPlexSourceConnectionList) SetResults(v []GroupPlexSourceConnection)`
 
 SetResults sets Results field to given value.
+
+
+### GetAutocomplete
+
+`func (o *PaginatedGroupPlexSourceConnectionList) GetAutocomplete() map[string]interface{}`
+
+GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
+
+### GetAutocompleteOk
+
+`func (o *PaginatedGroupPlexSourceConnectionList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+
+GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutocomplete
+
+`func (o *PaginatedGroupPlexSourceConnectionList) SetAutocomplete(v map[string]interface{})`
+
+SetAutocomplete sets Autocomplete field to given value.
 
 
 

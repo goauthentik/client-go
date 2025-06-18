@@ -17,18 +17,20 @@ import (
 
 // PaginatedGoogleWorkspaceProviderUserList struct for PaginatedGoogleWorkspaceProviderUserList
 type PaginatedGoogleWorkspaceProviderUserList struct {
-	Pagination Pagination                    `json:"pagination"`
-	Results    []GoogleWorkspaceProviderUser `json:"results"`
+	Pagination   Pagination                    `json:"pagination"`
+	Results      []GoogleWorkspaceProviderUser `json:"results"`
+	Autocomplete map[string]interface{}        `json:"autocomplete"`
 }
 
 // NewPaginatedGoogleWorkspaceProviderUserList instantiates a new PaginatedGoogleWorkspaceProviderUserList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedGoogleWorkspaceProviderUserList(pagination Pagination, results []GoogleWorkspaceProviderUser) *PaginatedGoogleWorkspaceProviderUserList {
+func NewPaginatedGoogleWorkspaceProviderUserList(pagination Pagination, results []GoogleWorkspaceProviderUser, autocomplete map[string]interface{}) *PaginatedGoogleWorkspaceProviderUserList {
 	this := PaginatedGoogleWorkspaceProviderUserList{}
 	this.Pagination = pagination
 	this.Results = results
+	this.Autocomplete = autocomplete
 	return &this
 }
 
@@ -88,6 +90,30 @@ func (o *PaginatedGoogleWorkspaceProviderUserList) SetResults(v []GoogleWorkspac
 	o.Results = v
 }
 
+// GetAutocomplete returns the Autocomplete field value
+func (o *PaginatedGoogleWorkspaceProviderUserList) GetAutocomplete() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Autocomplete
+}
+
+// GetAutocompleteOk returns a tuple with the Autocomplete field value
+// and a boolean to check if the value has been set.
+func (o *PaginatedGoogleWorkspaceProviderUserList) GetAutocompleteOk() (map[string]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Autocomplete, true
+}
+
+// SetAutocomplete sets field value
+func (o *PaginatedGoogleWorkspaceProviderUserList) SetAutocomplete(v map[string]interface{}) {
+	o.Autocomplete = v
+}
+
 func (o PaginatedGoogleWorkspaceProviderUserList) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -95,6 +121,9 @@ func (o PaginatedGoogleWorkspaceProviderUserList) MarshalJSON() ([]byte, error) 
 	}
 	if true {
 		toSerialize["results"] = o.Results
+	}
+	if true {
+		toSerialize["autocomplete"] = o.Autocomplete
 	}
 	return json.Marshal(toSerialize)
 }

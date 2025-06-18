@@ -17,18 +17,20 @@ import (
 
 // PaginatedMutualTLSStageList struct for PaginatedMutualTLSStageList
 type PaginatedMutualTLSStageList struct {
-	Pagination Pagination       `json:"pagination"`
-	Results    []MutualTLSStage `json:"results"`
+	Pagination   Pagination             `json:"pagination"`
+	Results      []MutualTLSStage       `json:"results"`
+	Autocomplete map[string]interface{} `json:"autocomplete"`
 }
 
 // NewPaginatedMutualTLSStageList instantiates a new PaginatedMutualTLSStageList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedMutualTLSStageList(pagination Pagination, results []MutualTLSStage) *PaginatedMutualTLSStageList {
+func NewPaginatedMutualTLSStageList(pagination Pagination, results []MutualTLSStage, autocomplete map[string]interface{}) *PaginatedMutualTLSStageList {
 	this := PaginatedMutualTLSStageList{}
 	this.Pagination = pagination
 	this.Results = results
+	this.Autocomplete = autocomplete
 	return &this
 }
 
@@ -88,6 +90,30 @@ func (o *PaginatedMutualTLSStageList) SetResults(v []MutualTLSStage) {
 	o.Results = v
 }
 
+// GetAutocomplete returns the Autocomplete field value
+func (o *PaginatedMutualTLSStageList) GetAutocomplete() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Autocomplete
+}
+
+// GetAutocompleteOk returns a tuple with the Autocomplete field value
+// and a boolean to check if the value has been set.
+func (o *PaginatedMutualTLSStageList) GetAutocompleteOk() (map[string]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Autocomplete, true
+}
+
+// SetAutocomplete sets field value
+func (o *PaginatedMutualTLSStageList) SetAutocomplete(v map[string]interface{}) {
+	o.Autocomplete = v
+}
+
 func (o PaginatedMutualTLSStageList) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -95,6 +121,9 @@ func (o PaginatedMutualTLSStageList) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["results"] = o.Results
+	}
+	if true {
+		toSerialize["autocomplete"] = o.Autocomplete
 	}
 	return json.Marshal(toSerialize)
 }

@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]WebAuthnDevice**](WebAuthnDevice.md) |  | 
+**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedWebAuthnDeviceList
 
-`func NewPaginatedWebAuthnDeviceList(pagination Pagination, results []WebAuthnDevice, ) *PaginatedWebAuthnDeviceList`
+`func NewPaginatedWebAuthnDeviceList(pagination Pagination, results []WebAuthnDevice, autocomplete map[string]interface{}, ) *PaginatedWebAuthnDeviceList`
 
 NewPaginatedWebAuthnDeviceList instantiates a new PaginatedWebAuthnDeviceList object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedWebAuthnDeviceList) SetResults(v []WebAuthnDevice)`
 
 SetResults sets Results field to given value.
+
+
+### GetAutocomplete
+
+`func (o *PaginatedWebAuthnDeviceList) GetAutocomplete() map[string]interface{}`
+
+GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
+
+### GetAutocompleteOk
+
+`func (o *PaginatedWebAuthnDeviceList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+
+GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutocomplete
+
+`func (o *PaginatedWebAuthnDeviceList) SetAutocomplete(v map[string]interface{})`
+
+SetAutocomplete sets Autocomplete field to given value.
 
 
 

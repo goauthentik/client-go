@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]UserLoginStage**](UserLoginStage.md) |  | 
+**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedUserLoginStageList
 
-`func NewPaginatedUserLoginStageList(pagination Pagination, results []UserLoginStage, ) *PaginatedUserLoginStageList`
+`func NewPaginatedUserLoginStageList(pagination Pagination, results []UserLoginStage, autocomplete map[string]interface{}, ) *PaginatedUserLoginStageList`
 
 NewPaginatedUserLoginStageList instantiates a new PaginatedUserLoginStageList object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedUserLoginStageList) SetResults(v []UserLoginStage)`
 
 SetResults sets Results field to given value.
+
+
+### GetAutocomplete
+
+`func (o *PaginatedUserLoginStageList) GetAutocomplete() map[string]interface{}`
+
+GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
+
+### GetAutocompleteOk
+
+`func (o *PaginatedUserLoginStageList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+
+GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutocomplete
+
+`func (o *PaginatedUserLoginStageList) SetAutocomplete(v map[string]interface{})`
+
+SetAutocomplete sets Autocomplete field to given value.
 
 
 

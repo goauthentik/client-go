@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]AuthenticatorEmailStage**](AuthenticatorEmailStage.md) |  | 
+**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedAuthenticatorEmailStageList
 
-`func NewPaginatedAuthenticatorEmailStageList(pagination Pagination, results []AuthenticatorEmailStage, ) *PaginatedAuthenticatorEmailStageList`
+`func NewPaginatedAuthenticatorEmailStageList(pagination Pagination, results []AuthenticatorEmailStage, autocomplete map[string]interface{}, ) *PaginatedAuthenticatorEmailStageList`
 
 NewPaginatedAuthenticatorEmailStageList instantiates a new PaginatedAuthenticatorEmailStageList object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedAuthenticatorEmailStageList) SetResults(v []AuthenticatorEmailStage)`
 
 SetResults sets Results field to given value.
+
+
+### GetAutocomplete
+
+`func (o *PaginatedAuthenticatorEmailStageList) GetAutocomplete() map[string]interface{}`
+
+GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
+
+### GetAutocompleteOk
+
+`func (o *PaginatedAuthenticatorEmailStageList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+
+GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutocomplete
+
+`func (o *PaginatedAuthenticatorEmailStageList) SetAutocomplete(v map[string]interface{})`
+
+SetAutocomplete sets Autocomplete field to given value.
 
 
 

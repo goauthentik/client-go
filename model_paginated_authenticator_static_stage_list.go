@@ -17,18 +17,20 @@ import (
 
 // PaginatedAuthenticatorStaticStageList struct for PaginatedAuthenticatorStaticStageList
 type PaginatedAuthenticatorStaticStageList struct {
-	Pagination Pagination                 `json:"pagination"`
-	Results    []AuthenticatorStaticStage `json:"results"`
+	Pagination   Pagination                 `json:"pagination"`
+	Results      []AuthenticatorStaticStage `json:"results"`
+	Autocomplete map[string]interface{}     `json:"autocomplete"`
 }
 
 // NewPaginatedAuthenticatorStaticStageList instantiates a new PaginatedAuthenticatorStaticStageList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedAuthenticatorStaticStageList(pagination Pagination, results []AuthenticatorStaticStage) *PaginatedAuthenticatorStaticStageList {
+func NewPaginatedAuthenticatorStaticStageList(pagination Pagination, results []AuthenticatorStaticStage, autocomplete map[string]interface{}) *PaginatedAuthenticatorStaticStageList {
 	this := PaginatedAuthenticatorStaticStageList{}
 	this.Pagination = pagination
 	this.Results = results
+	this.Autocomplete = autocomplete
 	return &this
 }
 
@@ -88,6 +90,30 @@ func (o *PaginatedAuthenticatorStaticStageList) SetResults(v []AuthenticatorStat
 	o.Results = v
 }
 
+// GetAutocomplete returns the Autocomplete field value
+func (o *PaginatedAuthenticatorStaticStageList) GetAutocomplete() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Autocomplete
+}
+
+// GetAutocompleteOk returns a tuple with the Autocomplete field value
+// and a boolean to check if the value has been set.
+func (o *PaginatedAuthenticatorStaticStageList) GetAutocompleteOk() (map[string]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Autocomplete, true
+}
+
+// SetAutocomplete sets field value
+func (o *PaginatedAuthenticatorStaticStageList) SetAutocomplete(v map[string]interface{}) {
+	o.Autocomplete = v
+}
+
 func (o PaginatedAuthenticatorStaticStageList) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -95,6 +121,9 @@ func (o PaginatedAuthenticatorStaticStageList) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["results"] = o.Results
+	}
+	if true {
+		toSerialize["autocomplete"] = o.Autocomplete
 	}
 	return json.Marshal(toSerialize)
 }

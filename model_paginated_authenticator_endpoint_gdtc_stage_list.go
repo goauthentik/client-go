@@ -17,18 +17,20 @@ import (
 
 // PaginatedAuthenticatorEndpointGDTCStageList struct for PaginatedAuthenticatorEndpointGDTCStageList
 type PaginatedAuthenticatorEndpointGDTCStageList struct {
-	Pagination Pagination                       `json:"pagination"`
-	Results    []AuthenticatorEndpointGDTCStage `json:"results"`
+	Pagination   Pagination                       `json:"pagination"`
+	Results      []AuthenticatorEndpointGDTCStage `json:"results"`
+	Autocomplete map[string]interface{}           `json:"autocomplete"`
 }
 
 // NewPaginatedAuthenticatorEndpointGDTCStageList instantiates a new PaginatedAuthenticatorEndpointGDTCStageList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedAuthenticatorEndpointGDTCStageList(pagination Pagination, results []AuthenticatorEndpointGDTCStage) *PaginatedAuthenticatorEndpointGDTCStageList {
+func NewPaginatedAuthenticatorEndpointGDTCStageList(pagination Pagination, results []AuthenticatorEndpointGDTCStage, autocomplete map[string]interface{}) *PaginatedAuthenticatorEndpointGDTCStageList {
 	this := PaginatedAuthenticatorEndpointGDTCStageList{}
 	this.Pagination = pagination
 	this.Results = results
+	this.Autocomplete = autocomplete
 	return &this
 }
 
@@ -88,6 +90,30 @@ func (o *PaginatedAuthenticatorEndpointGDTCStageList) SetResults(v []Authenticat
 	o.Results = v
 }
 
+// GetAutocomplete returns the Autocomplete field value
+func (o *PaginatedAuthenticatorEndpointGDTCStageList) GetAutocomplete() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Autocomplete
+}
+
+// GetAutocompleteOk returns a tuple with the Autocomplete field value
+// and a boolean to check if the value has been set.
+func (o *PaginatedAuthenticatorEndpointGDTCStageList) GetAutocompleteOk() (map[string]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Autocomplete, true
+}
+
+// SetAutocomplete sets field value
+func (o *PaginatedAuthenticatorEndpointGDTCStageList) SetAutocomplete(v map[string]interface{}) {
+	o.Autocomplete = v
+}
+
 func (o PaginatedAuthenticatorEndpointGDTCStageList) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -95,6 +121,9 @@ func (o PaginatedAuthenticatorEndpointGDTCStageList) MarshalJSON() ([]byte, erro
 	}
 	if true {
 		toSerialize["results"] = o.Results
+	}
+	if true {
+		toSerialize["autocomplete"] = o.Autocomplete
 	}
 	return json.Marshal(toSerialize)
 }

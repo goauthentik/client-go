@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]SMSDevice**](SMSDevice.md) |  | 
+**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedSMSDeviceList
 
-`func NewPaginatedSMSDeviceList(pagination Pagination, results []SMSDevice, ) *PaginatedSMSDeviceList`
+`func NewPaginatedSMSDeviceList(pagination Pagination, results []SMSDevice, autocomplete map[string]interface{}, ) *PaginatedSMSDeviceList`
 
 NewPaginatedSMSDeviceList instantiates a new PaginatedSMSDeviceList object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedSMSDeviceList) SetResults(v []SMSDevice)`
 
 SetResults sets Results field to given value.
+
+
+### GetAutocomplete
+
+`func (o *PaginatedSMSDeviceList) GetAutocomplete() map[string]interface{}`
+
+GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
+
+### GetAutocompleteOk
+
+`func (o *PaginatedSMSDeviceList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+
+GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutocomplete
+
+`func (o *PaginatedSMSDeviceList) SetAutocomplete(v map[string]interface{})`
+
+SetAutocomplete sets Autocomplete field to given value.
 
 
 

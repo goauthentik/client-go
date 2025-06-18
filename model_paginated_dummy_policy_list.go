@@ -17,18 +17,20 @@ import (
 
 // PaginatedDummyPolicyList struct for PaginatedDummyPolicyList
 type PaginatedDummyPolicyList struct {
-	Pagination Pagination    `json:"pagination"`
-	Results    []DummyPolicy `json:"results"`
+	Pagination   Pagination             `json:"pagination"`
+	Results      []DummyPolicy          `json:"results"`
+	Autocomplete map[string]interface{} `json:"autocomplete"`
 }
 
 // NewPaginatedDummyPolicyList instantiates a new PaginatedDummyPolicyList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedDummyPolicyList(pagination Pagination, results []DummyPolicy) *PaginatedDummyPolicyList {
+func NewPaginatedDummyPolicyList(pagination Pagination, results []DummyPolicy, autocomplete map[string]interface{}) *PaginatedDummyPolicyList {
 	this := PaginatedDummyPolicyList{}
 	this.Pagination = pagination
 	this.Results = results
+	this.Autocomplete = autocomplete
 	return &this
 }
 
@@ -88,6 +90,30 @@ func (o *PaginatedDummyPolicyList) SetResults(v []DummyPolicy) {
 	o.Results = v
 }
 
+// GetAutocomplete returns the Autocomplete field value
+func (o *PaginatedDummyPolicyList) GetAutocomplete() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Autocomplete
+}
+
+// GetAutocompleteOk returns a tuple with the Autocomplete field value
+// and a boolean to check if the value has been set.
+func (o *PaginatedDummyPolicyList) GetAutocompleteOk() (map[string]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Autocomplete, true
+}
+
+// SetAutocomplete sets field value
+func (o *PaginatedDummyPolicyList) SetAutocomplete(v map[string]interface{}) {
+	o.Autocomplete = v
+}
+
 func (o PaginatedDummyPolicyList) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -95,6 +121,9 @@ func (o PaginatedDummyPolicyList) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["results"] = o.Results
+	}
+	if true {
+		toSerialize["autocomplete"] = o.Autocomplete
 	}
 	return json.Marshal(toSerialize)
 }

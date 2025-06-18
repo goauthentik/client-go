@@ -17,18 +17,20 @@ import (
 
 // PaginatedTOTPDeviceList struct for PaginatedTOTPDeviceList
 type PaginatedTOTPDeviceList struct {
-	Pagination Pagination   `json:"pagination"`
-	Results    []TOTPDevice `json:"results"`
+	Pagination   Pagination             `json:"pagination"`
+	Results      []TOTPDevice           `json:"results"`
+	Autocomplete map[string]interface{} `json:"autocomplete"`
 }
 
 // NewPaginatedTOTPDeviceList instantiates a new PaginatedTOTPDeviceList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedTOTPDeviceList(pagination Pagination, results []TOTPDevice) *PaginatedTOTPDeviceList {
+func NewPaginatedTOTPDeviceList(pagination Pagination, results []TOTPDevice, autocomplete map[string]interface{}) *PaginatedTOTPDeviceList {
 	this := PaginatedTOTPDeviceList{}
 	this.Pagination = pagination
 	this.Results = results
+	this.Autocomplete = autocomplete
 	return &this
 }
 
@@ -88,6 +90,30 @@ func (o *PaginatedTOTPDeviceList) SetResults(v []TOTPDevice) {
 	o.Results = v
 }
 
+// GetAutocomplete returns the Autocomplete field value
+func (o *PaginatedTOTPDeviceList) GetAutocomplete() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Autocomplete
+}
+
+// GetAutocompleteOk returns a tuple with the Autocomplete field value
+// and a boolean to check if the value has been set.
+func (o *PaginatedTOTPDeviceList) GetAutocompleteOk() (map[string]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Autocomplete, true
+}
+
+// SetAutocomplete sets field value
+func (o *PaginatedTOTPDeviceList) SetAutocomplete(v map[string]interface{}) {
+	o.Autocomplete = v
+}
+
 func (o PaginatedTOTPDeviceList) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -95,6 +121,9 @@ func (o PaginatedTOTPDeviceList) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["results"] = o.Results
+	}
+	if true {
+		toSerialize["autocomplete"] = o.Autocomplete
 	}
 	return json.Marshal(toSerialize)
 }

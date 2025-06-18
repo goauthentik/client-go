@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]GroupKerberosSourceConnection**](GroupKerberosSourceConnection.md) |  | 
+**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedGroupKerberosSourceConnectionList
 
-`func NewPaginatedGroupKerberosSourceConnectionList(pagination Pagination, results []GroupKerberosSourceConnection, ) *PaginatedGroupKerberosSourceConnectionList`
+`func NewPaginatedGroupKerberosSourceConnectionList(pagination Pagination, results []GroupKerberosSourceConnection, autocomplete map[string]interface{}, ) *PaginatedGroupKerberosSourceConnectionList`
 
 NewPaginatedGroupKerberosSourceConnectionList instantiates a new PaginatedGroupKerberosSourceConnectionList object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedGroupKerberosSourceConnectionList) SetResults(v []GroupKerberosSourceConnection)`
 
 SetResults sets Results field to given value.
+
+
+### GetAutocomplete
+
+`func (o *PaginatedGroupKerberosSourceConnectionList) GetAutocomplete() map[string]interface{}`
+
+GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
+
+### GetAutocompleteOk
+
+`func (o *PaginatedGroupKerberosSourceConnectionList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+
+GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutocomplete
+
+`func (o *PaginatedGroupKerberosSourceConnectionList) SetAutocomplete(v map[string]interface{})`
+
+SetAutocomplete sets Autocomplete field to given value.
 
 
 

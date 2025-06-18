@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]AuthenticatorSMSStage**](AuthenticatorSMSStage.md) |  | 
+**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedAuthenticatorSMSStageList
 
-`func NewPaginatedAuthenticatorSMSStageList(pagination Pagination, results []AuthenticatorSMSStage, ) *PaginatedAuthenticatorSMSStageList`
+`func NewPaginatedAuthenticatorSMSStageList(pagination Pagination, results []AuthenticatorSMSStage, autocomplete map[string]interface{}, ) *PaginatedAuthenticatorSMSStageList`
 
 NewPaginatedAuthenticatorSMSStageList instantiates a new PaginatedAuthenticatorSMSStageList object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedAuthenticatorSMSStageList) SetResults(v []AuthenticatorSMSStage)`
 
 SetResults sets Results field to given value.
+
+
+### GetAutocomplete
+
+`func (o *PaginatedAuthenticatorSMSStageList) GetAutocomplete() map[string]interface{}`
+
+GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
+
+### GetAutocompleteOk
+
+`func (o *PaginatedAuthenticatorSMSStageList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+
+GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutocomplete
+
+`func (o *PaginatedAuthenticatorSMSStageList) SetAutocomplete(v map[string]interface{})`
+
+SetAutocomplete sets Autocomplete field to given value.
 
 
 

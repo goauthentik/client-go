@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]CertificateKeyPair**](CertificateKeyPair.md) |  | 
+**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedCertificateKeyPairList
 
-`func NewPaginatedCertificateKeyPairList(pagination Pagination, results []CertificateKeyPair, ) *PaginatedCertificateKeyPairList`
+`func NewPaginatedCertificateKeyPairList(pagination Pagination, results []CertificateKeyPair, autocomplete map[string]interface{}, ) *PaginatedCertificateKeyPairList`
 
 NewPaginatedCertificateKeyPairList instantiates a new PaginatedCertificateKeyPairList object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedCertificateKeyPairList) SetResults(v []CertificateKeyPair)`
 
 SetResults sets Results field to given value.
+
+
+### GetAutocomplete
+
+`func (o *PaginatedCertificateKeyPairList) GetAutocomplete() map[string]interface{}`
+
+GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
+
+### GetAutocompleteOk
+
+`func (o *PaginatedCertificateKeyPairList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+
+GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutocomplete
+
+`func (o *PaginatedCertificateKeyPairList) SetAutocomplete(v map[string]interface{})`
+
+SetAutocomplete sets Autocomplete field to given value.
 
 
 

@@ -17,18 +17,20 @@ import (
 
 // PaginatedAuthenticatorDuoStageList struct for PaginatedAuthenticatorDuoStageList
 type PaginatedAuthenticatorDuoStageList struct {
-	Pagination Pagination              `json:"pagination"`
-	Results    []AuthenticatorDuoStage `json:"results"`
+	Pagination   Pagination              `json:"pagination"`
+	Results      []AuthenticatorDuoStage `json:"results"`
+	Autocomplete map[string]interface{}  `json:"autocomplete"`
 }
 
 // NewPaginatedAuthenticatorDuoStageList instantiates a new PaginatedAuthenticatorDuoStageList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedAuthenticatorDuoStageList(pagination Pagination, results []AuthenticatorDuoStage) *PaginatedAuthenticatorDuoStageList {
+func NewPaginatedAuthenticatorDuoStageList(pagination Pagination, results []AuthenticatorDuoStage, autocomplete map[string]interface{}) *PaginatedAuthenticatorDuoStageList {
 	this := PaginatedAuthenticatorDuoStageList{}
 	this.Pagination = pagination
 	this.Results = results
+	this.Autocomplete = autocomplete
 	return &this
 }
 
@@ -88,6 +90,30 @@ func (o *PaginatedAuthenticatorDuoStageList) SetResults(v []AuthenticatorDuoStag
 	o.Results = v
 }
 
+// GetAutocomplete returns the Autocomplete field value
+func (o *PaginatedAuthenticatorDuoStageList) GetAutocomplete() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Autocomplete
+}
+
+// GetAutocompleteOk returns a tuple with the Autocomplete field value
+// and a boolean to check if the value has been set.
+func (o *PaginatedAuthenticatorDuoStageList) GetAutocompleteOk() (map[string]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Autocomplete, true
+}
+
+// SetAutocomplete sets field value
+func (o *PaginatedAuthenticatorDuoStageList) SetAutocomplete(v map[string]interface{}) {
+	o.Autocomplete = v
+}
+
 func (o PaginatedAuthenticatorDuoStageList) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -95,6 +121,9 @@ func (o PaginatedAuthenticatorDuoStageList) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["results"] = o.Results
+	}
+	if true {
+		toSerialize["autocomplete"] = o.Autocomplete
 	}
 	return json.Marshal(toSerialize)
 }

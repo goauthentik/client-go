@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]TOTPDevice**](TOTPDevice.md) |  | 
+**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedTOTPDeviceList
 
-`func NewPaginatedTOTPDeviceList(pagination Pagination, results []TOTPDevice, ) *PaginatedTOTPDeviceList`
+`func NewPaginatedTOTPDeviceList(pagination Pagination, results []TOTPDevice, autocomplete map[string]interface{}, ) *PaginatedTOTPDeviceList`
 
 NewPaginatedTOTPDeviceList instantiates a new PaginatedTOTPDeviceList object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedTOTPDeviceList) SetResults(v []TOTPDevice)`
 
 SetResults sets Results field to given value.
+
+
+### GetAutocomplete
+
+`func (o *PaginatedTOTPDeviceList) GetAutocomplete() map[string]interface{}`
+
+GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
+
+### GetAutocompleteOk
+
+`func (o *PaginatedTOTPDeviceList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+
+GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutocomplete
+
+`func (o *PaginatedTOTPDeviceList) SetAutocomplete(v map[string]interface{})`
+
+SetAutocomplete sets Autocomplete field to given value.
 
 
 

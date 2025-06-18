@@ -17,18 +17,20 @@ import (
 
 // PaginatedRedirectStageList struct for PaginatedRedirectStageList
 type PaginatedRedirectStageList struct {
-	Pagination Pagination      `json:"pagination"`
-	Results    []RedirectStage `json:"results"`
+	Pagination   Pagination             `json:"pagination"`
+	Results      []RedirectStage        `json:"results"`
+	Autocomplete map[string]interface{} `json:"autocomplete"`
 }
 
 // NewPaginatedRedirectStageList instantiates a new PaginatedRedirectStageList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedRedirectStageList(pagination Pagination, results []RedirectStage) *PaginatedRedirectStageList {
+func NewPaginatedRedirectStageList(pagination Pagination, results []RedirectStage, autocomplete map[string]interface{}) *PaginatedRedirectStageList {
 	this := PaginatedRedirectStageList{}
 	this.Pagination = pagination
 	this.Results = results
+	this.Autocomplete = autocomplete
 	return &this
 }
 
@@ -88,6 +90,30 @@ func (o *PaginatedRedirectStageList) SetResults(v []RedirectStage) {
 	o.Results = v
 }
 
+// GetAutocomplete returns the Autocomplete field value
+func (o *PaginatedRedirectStageList) GetAutocomplete() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Autocomplete
+}
+
+// GetAutocompleteOk returns a tuple with the Autocomplete field value
+// and a boolean to check if the value has been set.
+func (o *PaginatedRedirectStageList) GetAutocompleteOk() (map[string]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Autocomplete, true
+}
+
+// SetAutocomplete sets field value
+func (o *PaginatedRedirectStageList) SetAutocomplete(v map[string]interface{}) {
+	o.Autocomplete = v
+}
+
 func (o PaginatedRedirectStageList) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -95,6 +121,9 @@ func (o PaginatedRedirectStageList) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["results"] = o.Results
+	}
+	if true {
+		toSerialize["autocomplete"] = o.Autocomplete
 	}
 	return json.Marshal(toSerialize)
 }

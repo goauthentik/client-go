@@ -17,18 +17,20 @@ import (
 
 // PaginatedUserSAMLSourceConnectionList struct for PaginatedUserSAMLSourceConnectionList
 type PaginatedUserSAMLSourceConnectionList struct {
-	Pagination Pagination                 `json:"pagination"`
-	Results    []UserSAMLSourceConnection `json:"results"`
+	Pagination   Pagination                 `json:"pagination"`
+	Results      []UserSAMLSourceConnection `json:"results"`
+	Autocomplete map[string]interface{}     `json:"autocomplete"`
 }
 
 // NewPaginatedUserSAMLSourceConnectionList instantiates a new PaginatedUserSAMLSourceConnectionList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedUserSAMLSourceConnectionList(pagination Pagination, results []UserSAMLSourceConnection) *PaginatedUserSAMLSourceConnectionList {
+func NewPaginatedUserSAMLSourceConnectionList(pagination Pagination, results []UserSAMLSourceConnection, autocomplete map[string]interface{}) *PaginatedUserSAMLSourceConnectionList {
 	this := PaginatedUserSAMLSourceConnectionList{}
 	this.Pagination = pagination
 	this.Results = results
+	this.Autocomplete = autocomplete
 	return &this
 }
 
@@ -88,6 +90,30 @@ func (o *PaginatedUserSAMLSourceConnectionList) SetResults(v []UserSAMLSourceCon
 	o.Results = v
 }
 
+// GetAutocomplete returns the Autocomplete field value
+func (o *PaginatedUserSAMLSourceConnectionList) GetAutocomplete() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Autocomplete
+}
+
+// GetAutocompleteOk returns a tuple with the Autocomplete field value
+// and a boolean to check if the value has been set.
+func (o *PaginatedUserSAMLSourceConnectionList) GetAutocompleteOk() (map[string]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Autocomplete, true
+}
+
+// SetAutocomplete sets field value
+func (o *PaginatedUserSAMLSourceConnectionList) SetAutocomplete(v map[string]interface{}) {
+	o.Autocomplete = v
+}
+
 func (o PaginatedUserSAMLSourceConnectionList) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -95,6 +121,9 @@ func (o PaginatedUserSAMLSourceConnectionList) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["results"] = o.Results
+	}
+	if true {
+		toSerialize["autocomplete"] = o.Autocomplete
 	}
 	return json.Marshal(toSerialize)
 }

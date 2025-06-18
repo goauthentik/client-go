@@ -17,18 +17,20 @@ import (
 
 // PaginatedGroupOAuthSourceConnectionList struct for PaginatedGroupOAuthSourceConnectionList
 type PaginatedGroupOAuthSourceConnectionList struct {
-	Pagination Pagination                   `json:"pagination"`
-	Results    []GroupOAuthSourceConnection `json:"results"`
+	Pagination   Pagination                   `json:"pagination"`
+	Results      []GroupOAuthSourceConnection `json:"results"`
+	Autocomplete map[string]interface{}       `json:"autocomplete"`
 }
 
 // NewPaginatedGroupOAuthSourceConnectionList instantiates a new PaginatedGroupOAuthSourceConnectionList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedGroupOAuthSourceConnectionList(pagination Pagination, results []GroupOAuthSourceConnection) *PaginatedGroupOAuthSourceConnectionList {
+func NewPaginatedGroupOAuthSourceConnectionList(pagination Pagination, results []GroupOAuthSourceConnection, autocomplete map[string]interface{}) *PaginatedGroupOAuthSourceConnectionList {
 	this := PaginatedGroupOAuthSourceConnectionList{}
 	this.Pagination = pagination
 	this.Results = results
+	this.Autocomplete = autocomplete
 	return &this
 }
 
@@ -88,6 +90,30 @@ func (o *PaginatedGroupOAuthSourceConnectionList) SetResults(v []GroupOAuthSourc
 	o.Results = v
 }
 
+// GetAutocomplete returns the Autocomplete field value
+func (o *PaginatedGroupOAuthSourceConnectionList) GetAutocomplete() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Autocomplete
+}
+
+// GetAutocompleteOk returns a tuple with the Autocomplete field value
+// and a boolean to check if the value has been set.
+func (o *PaginatedGroupOAuthSourceConnectionList) GetAutocompleteOk() (map[string]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Autocomplete, true
+}
+
+// SetAutocomplete sets field value
+func (o *PaginatedGroupOAuthSourceConnectionList) SetAutocomplete(v map[string]interface{}) {
+	o.Autocomplete = v
+}
+
 func (o PaginatedGroupOAuthSourceConnectionList) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -95,6 +121,9 @@ func (o PaginatedGroupOAuthSourceConnectionList) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["results"] = o.Results
+	}
+	if true {
+		toSerialize["autocomplete"] = o.Autocomplete
 	}
 	return json.Marshal(toSerialize)
 }
