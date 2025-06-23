@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **AuthenticatorAttachment** | Pointer to [**NullableAuthenticatorAttachmentEnum**](AuthenticatorAttachmentEnum.md) |  | [optional] 
 **ResidentKeyRequirement** | Pointer to [**ResidentKeyRequirementEnum**](ResidentKeyRequirementEnum.md) |  | [optional] 
 **DeviceTypeRestrictions** | Pointer to **[]string** |  | [optional] 
+**MaxAttempts** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -261,6 +262,31 @@ SetDeviceTypeRestrictions sets DeviceTypeRestrictions field to given value.
 `func (o *PatchedAuthenticatorWebAuthnStageRequest) HasDeviceTypeRestrictions() bool`
 
 HasDeviceTypeRestrictions returns a boolean if a field has been set.
+
+### GetMaxAttempts
+
+`func (o *PatchedAuthenticatorWebAuthnStageRequest) GetMaxAttempts() int32`
+
+GetMaxAttempts returns the MaxAttempts field if non-nil, zero value otherwise.
+
+### GetMaxAttemptsOk
+
+`func (o *PatchedAuthenticatorWebAuthnStageRequest) GetMaxAttemptsOk() (*int32, bool)`
+
+GetMaxAttemptsOk returns a tuple with the MaxAttempts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxAttempts
+
+`func (o *PatchedAuthenticatorWebAuthnStageRequest) SetMaxAttempts(v int32)`
+
+SetMaxAttempts sets MaxAttempts field to given value.
+
+### HasMaxAttempts
+
+`func (o *PatchedAuthenticatorWebAuthnStageRequest) HasMaxAttempts() bool`
+
+HasMaxAttempts returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

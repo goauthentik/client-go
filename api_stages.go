@@ -8510,6 +8510,7 @@ type ApiStagesAuthenticatorWebauthnListRequest struct {
 	configureFlow           *string
 	deviceTypeRestrictions  *[]string
 	friendlyName            *string
+	maxAttempts             *int32
 	name                    *string
 	ordering                *string
 	page                    *int32
@@ -8537,6 +8538,11 @@ func (r ApiStagesAuthenticatorWebauthnListRequest) DeviceTypeRestrictions(device
 
 func (r ApiStagesAuthenticatorWebauthnListRequest) FriendlyName(friendlyName string) ApiStagesAuthenticatorWebauthnListRequest {
 	r.friendlyName = &friendlyName
+	return r
+}
+
+func (r ApiStagesAuthenticatorWebauthnListRequest) MaxAttempts(maxAttempts int32) ApiStagesAuthenticatorWebauthnListRequest {
+	r.maxAttempts = &maxAttempts
 	return r
 }
 
@@ -8644,6 +8650,9 @@ func (a *StagesApiService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAut
 	}
 	if r.friendlyName != nil {
 		localVarQueryParams.Add("friendly_name", parameterToString(*r.friendlyName, ""))
+	}
+	if r.maxAttempts != nil {
+		localVarQueryParams.Add("max_attempts", parameterToString(*r.maxAttempts, ""))
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))

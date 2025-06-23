@@ -38908,6 +38908,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: max_attempts
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
         name: name
         required: false
         schema:
@@ -47701,6 +47708,7 @@ components:
         device_type_restrictions:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        max_attempts: 171976544
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -47758,6 +47766,10 @@ components:
             $ref: '#/components/schemas/WebAuthnDeviceType'
           readOnly: true
           type: array
+        max_attempts:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
       required:
       - component
       - device_type_restrictions_obj
@@ -47776,6 +47788,7 @@ components:
         device_type_restrictions:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        max_attempts: 171976544
         name: name
         user_verification: null
         flow_set:
@@ -47827,6 +47840,10 @@ components:
             format: uuid
             type: string
           type: array
+        max_attempts:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
       required:
       - name
       type: object
@@ -58137,6 +58154,7 @@ components:
           device_type_restrictions:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          max_attempts: 171976544
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -58181,6 +58199,7 @@ components:
           device_type_restrictions:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          max_attempts: 171976544
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -67428,6 +67447,7 @@ components:
         device_type_restrictions:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        max_attempts: 171976544
         name: name
         user_verification: null
         flow_set:
@@ -67479,6 +67499,10 @@ components:
             format: uuid
             type: string
           type: array
+        max_attempts:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
       type: object
     PatchedBlueprintInstanceRequest:
       description: Info about a single blueprint instance file

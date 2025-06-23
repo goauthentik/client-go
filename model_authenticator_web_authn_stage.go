@@ -36,6 +36,7 @@ type AuthenticatorWebAuthnStage struct {
 	ResidentKeyRequirement    *ResidentKeyRequirementEnum         `json:"resident_key_requirement,omitempty"`
 	DeviceTypeRestrictions    []string                            `json:"device_type_restrictions,omitempty"`
 	DeviceTypeRestrictionsObj []WebAuthnDeviceType                `json:"device_type_restrictions_obj"`
+	MaxAttempts               *int32                              `json:"max_attempts,omitempty"`
 }
 
 // NewAuthenticatorWebAuthnStage instantiates a new AuthenticatorWebAuthnStage object
@@ -487,6 +488,38 @@ func (o *AuthenticatorWebAuthnStage) SetDeviceTypeRestrictionsObj(v []WebAuthnDe
 	o.DeviceTypeRestrictionsObj = v
 }
 
+// GetMaxAttempts returns the MaxAttempts field value if set, zero value otherwise.
+func (o *AuthenticatorWebAuthnStage) GetMaxAttempts() int32 {
+	if o == nil || o.MaxAttempts == nil {
+		var ret int32
+		return ret
+	}
+	return *o.MaxAttempts
+}
+
+// GetMaxAttemptsOk returns a tuple with the MaxAttempts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthenticatorWebAuthnStage) GetMaxAttemptsOk() (*int32, bool) {
+	if o == nil || o.MaxAttempts == nil {
+		return nil, false
+	}
+	return o.MaxAttempts, true
+}
+
+// HasMaxAttempts returns a boolean if a field has been set.
+func (o *AuthenticatorWebAuthnStage) HasMaxAttempts() bool {
+	if o != nil && o.MaxAttempts != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxAttempts gets a reference to the given int32 and assigns it to the MaxAttempts field.
+func (o *AuthenticatorWebAuthnStage) SetMaxAttempts(v int32) {
+	o.MaxAttempts = &v
+}
+
 func (o AuthenticatorWebAuthnStage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -530,6 +563,9 @@ func (o AuthenticatorWebAuthnStage) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["device_type_restrictions_obj"] = o.DeviceTypeRestrictionsObj
+	}
+	if o.MaxAttempts != nil {
+		toSerialize["max_attempts"] = o.MaxAttempts
 	}
 	return json.Marshal(toSerialize)
 }
