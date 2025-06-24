@@ -49428,7 +49428,7 @@ components:
       - name
       type: object
     Device:
-      description: Serializer for Duo authenticator devices
+      description: Serializer for authenticator devices
       example:
         verbose_name: verbose_name
         last_updated: 2000-01-23T04:56:07.000+00:00
@@ -49438,6 +49438,7 @@ components:
         extra_description: extra_description
         last_used: 2000-01-23T04:56:07.000+00:00
         name: name
+        external_id: external_id
         pk: pk
         type: type
         confirmed: true
@@ -49479,11 +49480,18 @@ components:
           type: string
         extra_description:
           description: Get extra description
+          nullable: true
+          readOnly: true
+          type: string
+        external_id:
+          description: Get external Device ID
+          nullable: true
           readOnly: true
           type: string
       required:
       - confirmed
       - created
+      - external_id
       - extra_description
       - last_updated
       - last_used

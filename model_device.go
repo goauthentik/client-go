@@ -16,7 +16,7 @@ import (
 	"time"
 )
 
-// Device Serializer for Duo authenticator devices
+// Device Serializer for authenticator devices
 type Device struct {
 	// Return object's verbose_name
 	VerboseName string `json:"verbose_name"`
@@ -33,14 +33,16 @@ type Device struct {
 	LastUpdated time.Time    `json:"last_updated"`
 	LastUsed    NullableTime `json:"last_used"`
 	// Get extra description
-	ExtraDescription string `json:"extra_description"`
+	ExtraDescription NullableString `json:"extra_description"`
+	// Get external Device ID
+	ExternalId NullableString `json:"external_id"`
 }
 
 // NewDevice instantiates a new Device object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk string, name string, type_ string, confirmed bool, created time.Time, lastUpdated time.Time, lastUsed NullableTime, extraDescription string) *Device {
+func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk string, name string, type_ string, confirmed bool, created time.Time, lastUpdated time.Time, lastUsed NullableTime, extraDescription NullableString, externalId NullableString) *Device {
 	this := Device{}
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
@@ -53,6 +55,7 @@ func NewDevice(verboseName string, verboseNamePlural string, metaModelName strin
 	this.LastUpdated = lastUpdated
 	this.LastUsed = lastUsed
 	this.ExtraDescription = extraDescription
+	this.ExternalId = externalId
 	return &this
 }
 
@@ -307,27 +310,55 @@ func (o *Device) SetLastUsed(v time.Time) {
 }
 
 // GetExtraDescription returns the ExtraDescription field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *Device) GetExtraDescription() string {
-	if o == nil {
+	if o == nil || o.ExtraDescription.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.ExtraDescription
+	return *o.ExtraDescription.Get()
 }
 
 // GetExtraDescriptionOk returns a tuple with the ExtraDescription field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Device) GetExtraDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ExtraDescription, true
+	return o.ExtraDescription.Get(), o.ExtraDescription.IsSet()
 }
 
 // SetExtraDescription sets field value
 func (o *Device) SetExtraDescription(v string) {
-	o.ExtraDescription = v
+	o.ExtraDescription.Set(&v)
+}
+
+// GetExternalId returns the ExternalId field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *Device) GetExternalId() string {
+	if o == nil || o.ExternalId.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.ExternalId.Get()
+}
+
+// GetExternalIdOk returns a tuple with the ExternalId field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Device) GetExternalIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ExternalId.Get(), o.ExternalId.IsSet()
+}
+
+// SetExternalId sets field value
+func (o *Device) SetExternalId(v string) {
+	o.ExternalId.Set(&v)
 }
 
 func (o Device) MarshalJSON() ([]byte, error) {
@@ -363,7 +394,10 @@ func (o Device) MarshalJSON() ([]byte, error) {
 		toSerialize["last_used"] = o.LastUsed.Get()
 	}
 	if true {
-		toSerialize["extra_description"] = o.ExtraDescription
+		toSerialize["extra_description"] = o.ExtraDescription.Get()
+	}
+	if true {
+		toSerialize["external_id"] = o.ExternalId.Get()
 	}
 	return json.Marshal(toSerialize)
 }
