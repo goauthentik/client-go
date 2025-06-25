@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**Settings** | Pointer to **interface{}** |  | [optional] 
+**Settings** | Pointer to **map[string]interface{}** |  | [optional] 
 **OutpostSet** | **[]string** |  | [readonly] 
 **ConnectionExpiry** | Pointer to **string** | Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] 
 **DeleteTokenOnDisconnect** | Pointer to **bool** | When set to true, connection tokens will be deleted upon disconnect. | [optional] 
@@ -323,20 +323,20 @@ SetMetaModelName sets MetaModelName field to given value.
 
 ### GetSettings
 
-`func (o *RACProvider) GetSettings() interface{}`
+`func (o *RACProvider) GetSettings() map[string]interface{}`
 
 GetSettings returns the Settings field if non-nil, zero value otherwise.
 
 ### GetSettingsOk
 
-`func (o *RACProvider) GetSettingsOk() (*interface{}, bool)`
+`func (o *RACProvider) GetSettingsOk() (*map[string]interface{}, bool)`
 
 GetSettingsOk returns a tuple with the Settings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSettings
 
-`func (o *RACProvider) SetSettings(v interface{})`
+`func (o *RACProvider) SetSettings(v map[string]interface{})`
 
 SetSettings sets Settings field to given value.
 
@@ -346,16 +346,6 @@ SetSettings sets Settings field to given value.
 
 HasSettings returns a boolean if a field has been set.
 
-### SetSettingsNil
-
-`func (o *RACProvider) SetSettingsNil(b bool)`
-
- SetSettingsNil sets the value for Settings to be an explicit nil
-
-### UnsetSettings
-`func (o *RACProvider) UnsetSettings()`
-
-UnsetSettings ensures that no value is present for Settings, not even an explicit nil
 ### GetOutpostSet
 
 `func (o *RACProvider) GetOutpostSet() []string`

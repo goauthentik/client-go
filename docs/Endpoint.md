@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **ProviderObj** | [**RACProvider**](RACProvider.md) |  | [readonly] 
 **Protocol** | [**ProtocolEnum**](ProtocolEnum.md) |  | 
 **Host** | **string** |  | 
-**Settings** | Pointer to **interface{}** |  | [optional] 
+**Settings** | Pointer to **map[string]interface{}** |  | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **AuthMode** | [**AuthModeEnum**](AuthModeEnum.md) |  | 
 **LaunchUrl** | **NullableString** | Build actual launch URL (the provider itself does not have one, just individual endpoints) | [readonly] 
@@ -157,20 +157,20 @@ SetHost sets Host field to given value.
 
 ### GetSettings
 
-`func (o *Endpoint) GetSettings() interface{}`
+`func (o *Endpoint) GetSettings() map[string]interface{}`
 
 GetSettings returns the Settings field if non-nil, zero value otherwise.
 
 ### GetSettingsOk
 
-`func (o *Endpoint) GetSettingsOk() (*interface{}, bool)`
+`func (o *Endpoint) GetSettingsOk() (*map[string]interface{}, bool)`
 
 GetSettingsOk returns a tuple with the Settings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSettings
 
-`func (o *Endpoint) SetSettings(v interface{})`
+`func (o *Endpoint) SetSettings(v map[string]interface{})`
 
 SetSettings sets Settings field to given value.
 
@@ -180,16 +180,6 @@ SetSettings sets Settings field to given value.
 
 HasSettings returns a boolean if a field has been set.
 
-### SetSettingsNil
-
-`func (o *Endpoint) SetSettingsNil(b bool)`
-
- SetSettingsNil sets the value for Settings to be an explicit nil
-
-### UnsetSettings
-`func (o *Endpoint) UnsetSettings()`
-
-UnsetSettings ensures that no value is present for Settings, not even an explicit nil
 ### GetPropertyMappings
 
 `func (o *Endpoint) GetPropertyMappings() []string`

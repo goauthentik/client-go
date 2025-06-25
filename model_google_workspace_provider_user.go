@@ -17,19 +17,19 @@ import (
 
 // GoogleWorkspaceProviderUser GoogleWorkspaceProviderUser Serializer
 type GoogleWorkspaceProviderUser struct {
-	Id         string      `json:"id"`
-	GoogleId   string      `json:"google_id"`
-	User       int32       `json:"user"`
-	UserObj    GroupMember `json:"user_obj"`
-	Provider   int32       `json:"provider"`
-	Attributes interface{} `json:"attributes"`
+	Id         string                 `json:"id"`
+	GoogleId   string                 `json:"google_id"`
+	User       int32                  `json:"user"`
+	UserObj    GroupMember            `json:"user_obj"`
+	Provider   int32                  `json:"provider"`
+	Attributes map[string]interface{} `json:"attributes"`
 }
 
 // NewGoogleWorkspaceProviderUser instantiates a new GoogleWorkspaceProviderUser object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGoogleWorkspaceProviderUser(id string, googleId string, user int32, userObj GroupMember, provider int32, attributes interface{}) *GoogleWorkspaceProviderUser {
+func NewGoogleWorkspaceProviderUser(id string, googleId string, user int32, userObj GroupMember, provider int32, attributes map[string]interface{}) *GoogleWorkspaceProviderUser {
 	this := GoogleWorkspaceProviderUser{}
 	this.Id = id
 	this.GoogleId = googleId
@@ -169,10 +169,9 @@ func (o *GoogleWorkspaceProviderUser) SetProvider(v int32) {
 }
 
 // GetAttributes returns the Attributes field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *GoogleWorkspaceProviderUser) GetAttributes() interface{} {
+func (o *GoogleWorkspaceProviderUser) GetAttributes() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -181,16 +180,15 @@ func (o *GoogleWorkspaceProviderUser) GetAttributes() interface{} {
 
 // GetAttributesOk returns a tuple with the Attributes field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GoogleWorkspaceProviderUser) GetAttributesOk() (*interface{}, bool) {
-	if o == nil || o.Attributes == nil {
+func (o *GoogleWorkspaceProviderUser) GetAttributesOk() (map[string]interface{}, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Attributes, true
+	return o.Attributes, true
 }
 
 // SetAttributes sets field value
-func (o *GoogleWorkspaceProviderUser) SetAttributes(v interface{}) {
+func (o *GoogleWorkspaceProviderUser) SetAttributes(v map[string]interface{}) {
 	o.Attributes = v
 }
 
@@ -211,7 +209,7 @@ func (o GoogleWorkspaceProviderUser) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["provider"] = o.Provider
 	}
-	if o.Attributes != nil {
+	if true {
 		toSerialize["attributes"] = o.Attributes
 	}
 	return json.Marshal(toSerialize)

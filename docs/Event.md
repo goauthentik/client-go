@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **string** |  | [readonly] 
-**User** | Pointer to **interface{}** |  | [optional] 
+**User** | Pointer to **map[string]interface{}** |  | [optional] 
 **Action** | [**EventActions**](EventActions.md) |  | 
 **App** | **string** |  | 
-**Context** | Pointer to **interface{}** |  | [optional] 
+**Context** | Pointer to **map[string]interface{}** |  | [optional] 
 **ClientIp** | Pointer to **NullableString** |  | [optional] 
 **Created** | **time.Time** |  | [readonly] 
 **Expires** | Pointer to **time.Time** |  | [optional] 
-**Brand** | Pointer to **interface{}** |  | [optional] 
+**Brand** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -55,20 +55,20 @@ SetPk sets Pk field to given value.
 
 ### GetUser
 
-`func (o *Event) GetUser() interface{}`
+`func (o *Event) GetUser() map[string]interface{}`
 
 GetUser returns the User field if non-nil, zero value otherwise.
 
 ### GetUserOk
 
-`func (o *Event) GetUserOk() (*interface{}, bool)`
+`func (o *Event) GetUserOk() (*map[string]interface{}, bool)`
 
 GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUser
 
-`func (o *Event) SetUser(v interface{})`
+`func (o *Event) SetUser(v map[string]interface{})`
 
 SetUser sets User field to given value.
 
@@ -78,16 +78,6 @@ SetUser sets User field to given value.
 
 HasUser returns a boolean if a field has been set.
 
-### SetUserNil
-
-`func (o *Event) SetUserNil(b bool)`
-
- SetUserNil sets the value for User to be an explicit nil
-
-### UnsetUser
-`func (o *Event) UnsetUser()`
-
-UnsetUser ensures that no value is present for User, not even an explicit nil
 ### GetAction
 
 `func (o *Event) GetAction() EventActions`
@@ -130,20 +120,20 @@ SetApp sets App field to given value.
 
 ### GetContext
 
-`func (o *Event) GetContext() interface{}`
+`func (o *Event) GetContext() map[string]interface{}`
 
 GetContext returns the Context field if non-nil, zero value otherwise.
 
 ### GetContextOk
 
-`func (o *Event) GetContextOk() (*interface{}, bool)`
+`func (o *Event) GetContextOk() (*map[string]interface{}, bool)`
 
 GetContextOk returns a tuple with the Context field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContext
 
-`func (o *Event) SetContext(v interface{})`
+`func (o *Event) SetContext(v map[string]interface{})`
 
 SetContext sets Context field to given value.
 
@@ -153,16 +143,6 @@ SetContext sets Context field to given value.
 
 HasContext returns a boolean if a field has been set.
 
-### SetContextNil
-
-`func (o *Event) SetContextNil(b bool)`
-
- SetContextNil sets the value for Context to be an explicit nil
-
-### UnsetContext
-`func (o *Event) UnsetContext()`
-
-UnsetContext ensures that no value is present for Context, not even an explicit nil
 ### GetClientIp
 
 `func (o *Event) GetClientIp() string`
@@ -245,20 +225,20 @@ HasExpires returns a boolean if a field has been set.
 
 ### GetBrand
 
-`func (o *Event) GetBrand() interface{}`
+`func (o *Event) GetBrand() map[string]interface{}`
 
 GetBrand returns the Brand field if non-nil, zero value otherwise.
 
 ### GetBrandOk
 
-`func (o *Event) GetBrandOk() (*interface{}, bool)`
+`func (o *Event) GetBrandOk() (*map[string]interface{}, bool)`
 
 GetBrandOk returns a tuple with the Brand field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBrand
 
-`func (o *Event) SetBrand(v interface{})`
+`func (o *Event) SetBrand(v map[string]interface{})`
 
 SetBrand sets Brand field to given value.
 
@@ -268,16 +248,6 @@ SetBrand sets Brand field to given value.
 
 HasBrand returns a boolean if a field has been set.
 
-### SetBrandNil
-
-`func (o *Event) SetBrandNil(b bool)`
-
- SetBrandNil sets the value for Brand to be an explicit nil
-
-### UnsetBrand
-`func (o *Event) UnsetBrand()`
-
-UnsetBrand ensures that no value is present for Brand, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

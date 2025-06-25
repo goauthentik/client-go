@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **User** | **int32** |  | 
 **UserObj** | [**GroupMember**](GroupMember.md) |  | [readonly] 
 **Provider** | **int32** |  | 
-**Attributes** | **interface{}** |  | [readonly] 
+**Attributes** | **map[string]interface{}** |  | [readonly] 
 
 ## Methods
 
 ### NewMicrosoftEntraProviderUser
 
-`func NewMicrosoftEntraProviderUser(id string, microsoftId string, user int32, userObj GroupMember, provider int32, attributes interface{}, ) *MicrosoftEntraProviderUser`
+`func NewMicrosoftEntraProviderUser(id string, microsoftId string, user int32, userObj GroupMember, provider int32, attributes map[string]interface{}, ) *MicrosoftEntraProviderUser`
 
 NewMicrosoftEntraProviderUser instantiates a new MicrosoftEntraProviderUser object
 This constructor will assign default values to properties that have it defined,
@@ -132,34 +132,24 @@ SetProvider sets Provider field to given value.
 
 ### GetAttributes
 
-`func (o *MicrosoftEntraProviderUser) GetAttributes() interface{}`
+`func (o *MicrosoftEntraProviderUser) GetAttributes() map[string]interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *MicrosoftEntraProviderUser) GetAttributesOk() (*interface{}, bool)`
+`func (o *MicrosoftEntraProviderUser) GetAttributesOk() (*map[string]interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *MicrosoftEntraProviderUser) SetAttributes(v interface{})`
+`func (o *MicrosoftEntraProviderUser) SetAttributes(v map[string]interface{})`
 
 SetAttributes sets Attributes field to given value.
 
 
-### SetAttributesNil
-
-`func (o *MicrosoftEntraProviderUser) SetAttributesNil(b bool)`
-
- SetAttributesNil sets the value for Attributes to be an explicit nil
-
-### UnsetAttributes
-`func (o *MicrosoftEntraProviderUser) UnsetAttributes()`
-
-UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -17,11 +17,11 @@ import (
 
 // PatchedBlueprintInstanceRequest Info about a single blueprint instance file
 type PatchedBlueprintInstanceRequest struct {
-	Name    *string     `json:"name,omitempty"`
-	Path    *string     `json:"path,omitempty"`
-	Context interface{} `json:"context,omitempty"`
-	Enabled *bool       `json:"enabled,omitempty"`
-	Content *string     `json:"content,omitempty"`
+	Name    *string                `json:"name,omitempty"`
+	Path    *string                `json:"path,omitempty"`
+	Context map[string]interface{} `json:"context,omitempty"`
+	Enabled *bool                  `json:"enabled,omitempty"`
+	Content *string                `json:"content,omitempty"`
 }
 
 // NewPatchedBlueprintInstanceRequest instantiates a new PatchedBlueprintInstanceRequest object
@@ -109,10 +109,10 @@ func (o *PatchedBlueprintInstanceRequest) SetPath(v string) {
 	o.Path = &v
 }
 
-// GetContext returns the Context field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PatchedBlueprintInstanceRequest) GetContext() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetContext returns the Context field value if set, zero value otherwise.
+func (o *PatchedBlueprintInstanceRequest) GetContext() map[string]interface{} {
+	if o == nil || o.Context == nil {
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Context
@@ -120,12 +120,11 @@ func (o *PatchedBlueprintInstanceRequest) GetContext() interface{} {
 
 // GetContextOk returns a tuple with the Context field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PatchedBlueprintInstanceRequest) GetContextOk() (*interface{}, bool) {
+func (o *PatchedBlueprintInstanceRequest) GetContextOk() (map[string]interface{}, bool) {
 	if o == nil || o.Context == nil {
 		return nil, false
 	}
-	return &o.Context, true
+	return o.Context, true
 }
 
 // HasContext returns a boolean if a field has been set.
@@ -137,8 +136,8 @@ func (o *PatchedBlueprintInstanceRequest) HasContext() bool {
 	return false
 }
 
-// SetContext gets a reference to the given interface{} and assigns it to the Context field.
-func (o *PatchedBlueprintInstanceRequest) SetContext(v interface{}) {
+// SetContext gets a reference to the given map[string]interface{} and assigns it to the Context field.
+func (o *PatchedBlueprintInstanceRequest) SetContext(v map[string]interface{}) {
 	o.Context = v
 }
 

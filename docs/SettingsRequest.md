@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **EventRetention** | Pointer to **string** | Events will be deleted after this duration.(Format: weeks&#x3D;3;days&#x3D;2;hours&#x3D;3,seconds&#x3D;2). | [optional] 
 **ReputationLowerLimit** | Pointer to **int32** | Reputation cannot decrease lower than this value. Zero or negative. | [optional] 
 **ReputationUpperLimit** | Pointer to **int32** | Reputation cannot increase higher than this value. Zero or positive. | [optional] 
-**FooterLinks** | Pointer to **interface{}** | The option configures the footer links on the flow executor pages. | [optional] 
+**FooterLinks** | Pointer to **interface{}** |  | [optional] 
 **GdprCompliance** | Pointer to **bool** | When enabled, all the events caused by a user will be deleted upon the user&#39;s deletion. | [optional] 
 **Impersonation** | Pointer to **bool** | Globally enable/disable impersonation. | [optional] 
 **ImpersonationRequireReason** | Pointer to **bool** | Require administrators to provide a reason for impersonating a user. | [optional] 

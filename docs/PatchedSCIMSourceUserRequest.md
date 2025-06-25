@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **User** | Pointer to **int32** |  | [optional] 
 **Source** | Pointer to **string** |  | [optional] 
-**Attributes** | Pointer to **interface{}** |  | [optional] 
+**Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasSource returns a boolean if a field has been set.
 
 ### GetAttributes
 
-`func (o *PatchedSCIMSourceUserRequest) GetAttributes() interface{}`
+`func (o *PatchedSCIMSourceUserRequest) GetAttributes() map[string]interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *PatchedSCIMSourceUserRequest) GetAttributesOk() (*interface{}, bool)`
+`func (o *PatchedSCIMSourceUserRequest) GetAttributesOk() (*map[string]interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *PatchedSCIMSourceUserRequest) SetAttributes(v interface{})`
+`func (o *PatchedSCIMSourceUserRequest) SetAttributes(v map[string]interface{})`
 
 SetAttributes sets Attributes field to given value.
 
@@ -128,16 +128,6 @@ SetAttributes sets Attributes field to given value.
 
 HasAttributes returns a boolean if a field has been set.
 
-### SetAttributesNil
-
-`func (o *PatchedSCIMSourceUserRequest) SetAttributesNil(b bool)`
-
- SetAttributesNil sets the value for Attributes to be an explicit nil
-
-### UnsetAttributes
-`func (o *PatchedSCIMSourceUserRequest) UnsetAttributes()`
-
-UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

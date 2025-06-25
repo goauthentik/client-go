@@ -20,9 +20,9 @@ type PatchedAuthenticatorEndpointGDTCStageRequest struct {
 	Name    *string          `json:"name,omitempty"`
 	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
-	FriendlyName  NullableString `json:"friendly_name,omitempty"`
-	Credentials   interface{}    `json:"credentials,omitempty"`
+	ConfigureFlow NullableString         `json:"configure_flow,omitempty"`
+	FriendlyName  NullableString         `json:"friendly_name,omitempty"`
+	Credentials   map[string]interface{} `json:"credentials,omitempty"`
 }
 
 // NewPatchedAuthenticatorEndpointGDTCStageRequest instantiates a new PatchedAuthenticatorEndpointGDTCStageRequest object
@@ -192,10 +192,10 @@ func (o *PatchedAuthenticatorEndpointGDTCStageRequest) UnsetFriendlyName() {
 	o.FriendlyName.Unset()
 }
 
-// GetCredentials returns the Credentials field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetCredentials() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetCredentials returns the Credentials field value if set, zero value otherwise.
+func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetCredentials() map[string]interface{} {
+	if o == nil || o.Credentials == nil {
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Credentials
@@ -203,12 +203,11 @@ func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetCredentials() interfac
 
 // GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetCredentialsOk() (*interface{}, bool) {
+func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetCredentialsOk() (map[string]interface{}, bool) {
 	if o == nil || o.Credentials == nil {
 		return nil, false
 	}
-	return &o.Credentials, true
+	return o.Credentials, true
 }
 
 // HasCredentials returns a boolean if a field has been set.
@@ -220,8 +219,8 @@ func (o *PatchedAuthenticatorEndpointGDTCStageRequest) HasCredentials() bool {
 	return false
 }
 
-// SetCredentials gets a reference to the given interface{} and assigns it to the Credentials field.
-func (o *PatchedAuthenticatorEndpointGDTCStageRequest) SetCredentials(v interface{}) {
+// SetCredentials gets a reference to the given map[string]interface{} and assigns it to the Credentials field.
+func (o *PatchedAuthenticatorEndpointGDTCStageRequest) SetCredentials(v map[string]interface{}) {
 	o.Credentials = v
 }
 

@@ -489,7 +489,7 @@ import (
 )
 
 func main() {
-    googleWorkspaceProviderRequest := *openapiclient.NewGoogleWorkspaceProviderRequest("Name_example", "DelegatedSubject_example", interface{}(123), "DefaultGroupEmailDomain_example") // GoogleWorkspaceProviderRequest | 
+    googleWorkspaceProviderRequest := *openapiclient.NewGoogleWorkspaceProviderRequest("Name_example", "DelegatedSubject_example", map[string]interface{}{"key": interface{}(123)}, "DefaultGroupEmailDomain_example") // GoogleWorkspaceProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1340,7 +1340,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this Google Workspace Provider.
-    googleWorkspaceProviderRequest := *openapiclient.NewGoogleWorkspaceProviderRequest("Name_example", "DelegatedSubject_example", interface{}(123), "DefaultGroupEmailDomain_example") // GoogleWorkspaceProviderRequest | 
+    googleWorkspaceProviderRequest := *openapiclient.NewGoogleWorkspaceProviderRequest("Name_example", "DelegatedSubject_example", map[string]interface{}{"key": interface{}(123)}, "DefaultGroupEmailDomain_example") // GoogleWorkspaceProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

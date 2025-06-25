@@ -30,9 +30,8 @@ type PatchedSettingsRequest struct {
 	// Reputation cannot decrease lower than this value. Zero or negative.
 	ReputationLowerLimit *int32 `json:"reputation_lower_limit,omitempty"`
 	// Reputation cannot increase higher than this value. Zero or positive.
-	ReputationUpperLimit *int32 `json:"reputation_upper_limit,omitempty"`
-	// The option configures the footer links on the flow executor pages.
-	FooterLinks interface{} `json:"footer_links,omitempty"`
+	ReputationUpperLimit *int32      `json:"reputation_upper_limit,omitempty"`
+	FooterLinks          interface{} `json:"footer_links,omitempty"`
 	// When enabled, all the events caused by a user will be deleted upon the user's deletion.
 	GdprCompliance *bool `json:"gdpr_compliance,omitempty"`
 	// Globally enable/disable impersonation.

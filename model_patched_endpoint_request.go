@@ -17,14 +17,14 @@ import (
 
 // PatchedEndpointRequest Endpoint Serializer
 type PatchedEndpointRequest struct {
-	Name               *string       `json:"name,omitempty"`
-	Provider           *int32        `json:"provider,omitempty"`
-	Protocol           *ProtocolEnum `json:"protocol,omitempty"`
-	Host               *string       `json:"host,omitempty"`
-	Settings           interface{}   `json:"settings,omitempty"`
-	PropertyMappings   []string      `json:"property_mappings,omitempty"`
-	AuthMode           *AuthModeEnum `json:"auth_mode,omitempty"`
-	MaximumConnections *int32        `json:"maximum_connections,omitempty"`
+	Name               *string                `json:"name,omitempty"`
+	Provider           *int32                 `json:"provider,omitempty"`
+	Protocol           *ProtocolEnum          `json:"protocol,omitempty"`
+	Host               *string                `json:"host,omitempty"`
+	Settings           map[string]interface{} `json:"settings,omitempty"`
+	PropertyMappings   []string               `json:"property_mappings,omitempty"`
+	AuthMode           *AuthModeEnum          `json:"auth_mode,omitempty"`
+	MaximumConnections *int32                 `json:"maximum_connections,omitempty"`
 }
 
 // NewPatchedEndpointRequest instantiates a new PatchedEndpointRequest object
@@ -172,10 +172,10 @@ func (o *PatchedEndpointRequest) SetHost(v string) {
 	o.Host = &v
 }
 
-// GetSettings returns the Settings field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PatchedEndpointRequest) GetSettings() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetSettings returns the Settings field value if set, zero value otherwise.
+func (o *PatchedEndpointRequest) GetSettings() map[string]interface{} {
+	if o == nil || o.Settings == nil {
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Settings
@@ -183,12 +183,11 @@ func (o *PatchedEndpointRequest) GetSettings() interface{} {
 
 // GetSettingsOk returns a tuple with the Settings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PatchedEndpointRequest) GetSettingsOk() (*interface{}, bool) {
+func (o *PatchedEndpointRequest) GetSettingsOk() (map[string]interface{}, bool) {
 	if o == nil || o.Settings == nil {
 		return nil, false
 	}
-	return &o.Settings, true
+	return o.Settings, true
 }
 
 // HasSettings returns a boolean if a field has been set.
@@ -200,8 +199,8 @@ func (o *PatchedEndpointRequest) HasSettings() bool {
 	return false
 }
 
-// SetSettings gets a reference to the given interface{} and assigns it to the Settings field.
-func (o *PatchedEndpointRequest) SetSettings(v interface{}) {
+// SetSettings gets a reference to the given map[string]interface{} and assigns it to the Settings field.
+func (o *PatchedEndpointRequest) SetSettings(v map[string]interface{}) {
 	o.Settings = v
 }
 

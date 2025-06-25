@@ -3469,7 +3469,7 @@ import (
 )
 
 func main() {
-    transactionApplicationRequest := *openapiclient.NewTransactionApplicationRequest(*openapiclient.NewApplicationRequest("Name_example", "Slug_example"), openapiclient.ProviderModelEnum("authentik_providers_google_workspace.googleworkspaceprovider"), openapiclient.modelRequest{GoogleWorkspaceProviderRequest: openapiclient.NewGoogleWorkspaceProviderRequest("Name_example", "DelegatedSubject_example", interface{}(123), "DefaultGroupEmailDomain_example")}) // TransactionApplicationRequest | 
+    transactionApplicationRequest := *openapiclient.NewTransactionApplicationRequest(*openapiclient.NewApplicationRequest("Name_example", "Slug_example"), openapiclient.ProviderModelEnum("authentik_providers_google_workspace.googleworkspaceprovider"), openapiclient.modelRequest{GoogleWorkspaceProviderRequest: openapiclient.NewGoogleWorkspaceProviderRequest("Name_example", "DelegatedSubject_example", map[string]interface{}{"key": interface{}(123)}, "DefaultGroupEmailDomain_example")}) // TransactionApplicationRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

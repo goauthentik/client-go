@@ -21,7 +21,7 @@ type PatchedKubernetesServiceConnectionRequest struct {
 	// If enabled, use the local connection. Required Docker socket/Kubernetes Integration
 	Local *bool `json:"local,omitempty"`
 	// Paste your kubeconfig here. authentik will automatically use the currently selected context.
-	Kubeconfig interface{} `json:"kubeconfig,omitempty"`
+	Kubeconfig map[string]interface{} `json:"kubeconfig,omitempty"`
 	// Verify SSL Certificates of the Kubernetes API endpoint
 	VerifySsl *bool `json:"verify_ssl,omitempty"`
 }
@@ -107,10 +107,10 @@ func (o *PatchedKubernetesServiceConnectionRequest) SetLocal(v bool) {
 	o.Local = &v
 }
 
-// GetKubeconfig returns the Kubeconfig field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PatchedKubernetesServiceConnectionRequest) GetKubeconfig() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetKubeconfig returns the Kubeconfig field value if set, zero value otherwise.
+func (o *PatchedKubernetesServiceConnectionRequest) GetKubeconfig() map[string]interface{} {
+	if o == nil || o.Kubeconfig == nil {
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Kubeconfig
@@ -118,12 +118,11 @@ func (o *PatchedKubernetesServiceConnectionRequest) GetKubeconfig() interface{} 
 
 // GetKubeconfigOk returns a tuple with the Kubeconfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PatchedKubernetesServiceConnectionRequest) GetKubeconfigOk() (*interface{}, bool) {
+func (o *PatchedKubernetesServiceConnectionRequest) GetKubeconfigOk() (map[string]interface{}, bool) {
 	if o == nil || o.Kubeconfig == nil {
 		return nil, false
 	}
-	return &o.Kubeconfig, true
+	return o.Kubeconfig, true
 }
 
 // HasKubeconfig returns a boolean if a field has been set.
@@ -135,8 +134,8 @@ func (o *PatchedKubernetesServiceConnectionRequest) HasKubeconfig() bool {
 	return false
 }
 
-// SetKubeconfig gets a reference to the given interface{} and assigns it to the Kubeconfig field.
-func (o *PatchedKubernetesServiceConnectionRequest) SetKubeconfig(v interface{}) {
+// SetKubeconfig gets a reference to the given map[string]interface{} and assigns it to the Kubeconfig field.
+func (o *PatchedKubernetesServiceConnectionRequest) SetKubeconfig(v map[string]interface{}) {
 	o.Kubeconfig = v
 }
 

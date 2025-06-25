@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **Group** | **string** |  | 
 **GroupObj** | [**UserGroup**](UserGroup.md) |  | [readonly] 
 **Provider** | **int32** |  | 
-**Attributes** | **interface{}** |  | [readonly] 
+**Attributes** | **map[string]interface{}** |  | [readonly] 
 
 ## Methods
 
 ### NewMicrosoftEntraProviderGroup
 
-`func NewMicrosoftEntraProviderGroup(id string, microsoftId string, group string, groupObj UserGroup, provider int32, attributes interface{}, ) *MicrosoftEntraProviderGroup`
+`func NewMicrosoftEntraProviderGroup(id string, microsoftId string, group string, groupObj UserGroup, provider int32, attributes map[string]interface{}, ) *MicrosoftEntraProviderGroup`
 
 NewMicrosoftEntraProviderGroup instantiates a new MicrosoftEntraProviderGroup object
 This constructor will assign default values to properties that have it defined,
@@ -132,34 +132,24 @@ SetProvider sets Provider field to given value.
 
 ### GetAttributes
 
-`func (o *MicrosoftEntraProviderGroup) GetAttributes() interface{}`
+`func (o *MicrosoftEntraProviderGroup) GetAttributes() map[string]interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *MicrosoftEntraProviderGroup) GetAttributesOk() (*interface{}, bool)`
+`func (o *MicrosoftEntraProviderGroup) GetAttributesOk() (*map[string]interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *MicrosoftEntraProviderGroup) SetAttributes(v interface{})`
+`func (o *MicrosoftEntraProviderGroup) SetAttributes(v map[string]interface{})`
 
 SetAttributes sets Attributes field to given value.
 
 
-### SetAttributesNil
-
-`func (o *MicrosoftEntraProviderGroup) SetAttributesNil(b bool)`
-
- SetAttributesNil sets the value for Attributes to be an explicit nil
-
-### UnsetAttributes
-`func (o *MicrosoftEntraProviderGroup) UnsetAttributes()`
-
-UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

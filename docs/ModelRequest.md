@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **PropertyMappingsGroup** | Pointer to **[]string** | Property mappings used for group creation/updating. | [optional] 
 **DelegatedSubject** | **string** |  | 
-**Credentials** | **interface{}** |  | 
+**Credentials** | **map[string]interface{}** |  | 
 **Scopes** | Pointer to **string** |  | [optional] 
 **ExcludeUsersServiceAccount** | Pointer to **bool** |  | [optional] 
 **FilterGroup** | Pointer to **NullableString** |  | [optional] 
@@ -52,7 +52,7 @@ Name | Type | Description | Notes
 **Mode** | Pointer to [**ProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host. | [optional] 
 **InterceptHeaderAuth** | Pointer to **bool** | When enabled, this provider will intercept the authorization header and authenticate requests based on its value. | [optional] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
-**Settings** | Pointer to **interface{}** |  | [optional] 
+**Settings** | Pointer to **map[string]interface{}** |  | [optional] 
 **ConnectionExpiry** | Pointer to **string** | Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] 
 **DeleteTokenOnDisconnect** | Pointer to **bool** | When set to true, connection tokens will be deleted upon disconnect. | [optional] 
 **ClientNetworks** | Pointer to **string** | List of CIDRs (comma-separated) that clients can connect from. A more specific CIDR will match before a looser one. Clients connecting from a non-specified CIDR will be dropped. | [optional] 
@@ -85,7 +85,7 @@ Name | Type | Description | Notes
 
 ### NewModelRequest
 
-`func NewModelRequest(name string, delegatedSubject string, credentials interface{}, defaultGroupEmailDomain string, authorizationFlow string, invalidationFlow string, clientId string, clientSecret string, tenantId string, signingKey string, redirectUris []RedirectURIRequest, externalHost string, acsUrl string, url string, token string, ) *ModelRequest`
+`func NewModelRequest(name string, delegatedSubject string, credentials map[string]interface{}, defaultGroupEmailDomain string, authorizationFlow string, invalidationFlow string, clientId string, clientSecret string, tenantId string, signingKey string, redirectUris []RedirectURIRequest, externalHost string, acsUrl string, url string, token string, ) *ModelRequest`
 
 NewModelRequest instantiates a new ModelRequest object
 This constructor will assign default values to properties that have it defined,
@@ -192,34 +192,24 @@ SetDelegatedSubject sets DelegatedSubject field to given value.
 
 ### GetCredentials
 
-`func (o *ModelRequest) GetCredentials() interface{}`
+`func (o *ModelRequest) GetCredentials() map[string]interface{}`
 
 GetCredentials returns the Credentials field if non-nil, zero value otherwise.
 
 ### GetCredentialsOk
 
-`func (o *ModelRequest) GetCredentialsOk() (*interface{}, bool)`
+`func (o *ModelRequest) GetCredentialsOk() (*map[string]interface{}, bool)`
 
 GetCredentialsOk returns a tuple with the Credentials field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCredentials
 
-`func (o *ModelRequest) SetCredentials(v interface{})`
+`func (o *ModelRequest) SetCredentials(v map[string]interface{})`
 
 SetCredentials sets Credentials field to given value.
 
 
-### SetCredentialsNil
-
-`func (o *ModelRequest) SetCredentialsNil(b bool)`
-
- SetCredentialsNil sets the value for Credentials to be an explicit nil
-
-### UnsetCredentials
-`func (o *ModelRequest) UnsetCredentials()`
-
-UnsetCredentials ensures that no value is present for Credentials, not even an explicit nil
 ### GetScopes
 
 `func (o *ModelRequest) GetScopes() string`
@@ -1292,20 +1282,20 @@ HasCookieDomain returns a boolean if a field has been set.
 
 ### GetSettings
 
-`func (o *ModelRequest) GetSettings() interface{}`
+`func (o *ModelRequest) GetSettings() map[string]interface{}`
 
 GetSettings returns the Settings field if non-nil, zero value otherwise.
 
 ### GetSettingsOk
 
-`func (o *ModelRequest) GetSettingsOk() (*interface{}, bool)`
+`func (o *ModelRequest) GetSettingsOk() (*map[string]interface{}, bool)`
 
 GetSettingsOk returns a tuple with the Settings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSettings
 
-`func (o *ModelRequest) SetSettings(v interface{})`
+`func (o *ModelRequest) SetSettings(v map[string]interface{})`
 
 SetSettings sets Settings field to given value.
 
@@ -1315,16 +1305,6 @@ SetSettings sets Settings field to given value.
 
 HasSettings returns a boolean if a field has been set.
 
-### SetSettingsNil
-
-`func (o *ModelRequest) SetSettingsNil(b bool)`
-
- SetSettingsNil sets the value for Settings to be an explicit nil
-
-### UnsetSettings
-`func (o *ModelRequest) UnsetSettings()`
-
-UnsetSettings ensures that no value is present for Settings, not even an explicit nil
 ### GetConnectionExpiry
 
 `func (o *ModelRequest) GetConnectionExpiry() string`

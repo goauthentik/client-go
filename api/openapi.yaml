@@ -45985,7 +45985,8 @@ components:
         app: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
-        attributes: ""
+        attributes:
+          key: ""
       properties:
         pbm_uuid:
           format: uuid
@@ -45996,7 +45997,9 @@ components:
         app:
           format: uuid
           type: string
-        attributes: {}
+        attributes:
+          additionalProperties: {}
+          type: object
       required:
       - app
       - name
@@ -46007,7 +46010,8 @@ components:
       example:
         app: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
-        attributes: ""
+        attributes:
+          key: ""
       properties:
         name:
           minLength: 1
@@ -46015,7 +46019,9 @@ components:
         app:
           format: uuid
           type: string
-        attributes: {}
+        attributes:
+          additionalProperties: {}
+          type: object
       required:
       - app
       - name
@@ -46671,7 +46677,8 @@ components:
         friendly_name: friendly_name
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
-        credentials: ""
+        credentials:
+          key: ""
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
@@ -46736,7 +46743,9 @@ components:
         friendly_name:
           nullable: true
           type: string
-        credentials: {}
+        credentials:
+          additionalProperties: {}
+          type: object
       required:
       - component
       - credentials
@@ -46751,7 +46760,8 @@ components:
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         friendly_name: friendly_name
-        credentials: ""
+        credentials:
+          key: ""
         name: name
         flow_set:
         - policy_engine_mode: null
@@ -46788,7 +46798,9 @@ components:
           minLength: 1
           nullable: true
           type: string
-        credentials: {}
+        credentials:
+          additionalProperties: {}
+          type: object
       required:
       - credentials
       - name
@@ -47930,14 +47942,16 @@ components:
       description: Info about a single blueprint instance file
       example:
         path: path
-        metadata: ""
+        metadata:
+          key: ""
         last_applied_hash: last_applied_hash
         managed_models:
         - managed_models
         - managed_models
         last_applied: 2000-01-23T04:56:07.000+00:00
         name: name
-        context: ""
+        context:
+          key: ""
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enabled: true
         content: content
@@ -47953,7 +47967,9 @@ components:
         path:
           default: ""
           type: string
-        context: {}
+        context:
+          additionalProperties: {}
+          type: object
         last_applied:
           format: date-time
           readOnly: true
@@ -47973,7 +47989,9 @@ components:
           readOnly: true
           type: array
         metadata:
+          additionalProperties: {}
           readOnly: true
+          type: object
         content:
           type: string
       required:
@@ -47990,7 +48008,8 @@ components:
       example:
         path: path
         name: name
-        context: ""
+        context:
+          key: ""
         enabled: true
         content: content
       properties:
@@ -48000,7 +48019,9 @@ components:
         path:
           default: ""
           type: string
-        context: {}
+        context:
+          additionalProperties: {}
+          type: object
         enabled:
           type: boolean
         content:
@@ -48033,7 +48054,8 @@ components:
         flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         domain: domain
         flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        attributes: ""
+        attributes:
+          key: ""
         branding_title: branding_title
         branding_favicon: branding_favicon
         flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -48101,7 +48123,9 @@ components:
             format: uuid
             type: string
           type: array
-        attributes: {}
+        attributes:
+          additionalProperties: {}
+          type: object
       required:
       - brand_uuid
       - domain
@@ -48123,7 +48147,8 @@ components:
         flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         domain: domain
         flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        attributes: ""
+        attributes:
+          key: ""
         branding_title: branding_title
         branding_favicon: branding_favicon
         flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -48191,7 +48216,9 @@ components:
             format: uuid
             type: string
           type: array
-        attributes: {}
+        attributes:
+          additionalProperties: {}
+          type: object
       required:
       - domain
       type: object
@@ -50268,7 +50295,8 @@ components:
     Endpoint:
       description: Endpoint Serializer
       example:
-        settings: ""
+        settings:
+          key: ""
         protocol: null
         provider_obj: ""
         launch_url: launch_url
@@ -50299,7 +50327,9 @@ components:
           $ref: '#/components/schemas/ProtocolEnum'
         host:
           type: string
-        settings: {}
+        settings:
+          additionalProperties: {}
+          type: object
         property_mappings:
           items:
             format: uuid
@@ -50366,7 +50396,8 @@ components:
     EndpointRequest:
       description: Endpoint Serializer
       example:
-        settings: ""
+        settings:
+          key: ""
         protocol: null
         provider: 0
         maximum_connections: 441289069
@@ -50387,7 +50418,9 @@ components:
         host:
           minLength: 1
           type: string
-        settings: {}
+        settings:
+          additionalProperties: {}
+          type: object
         property_mappings:
           items:
             format: uuid
@@ -50458,24 +50491,31 @@ components:
         app: app
         expires: 2000-01-23T04:56:07.000+00:00
         created: 2000-01-23T04:56:07.000+00:00
-        context: ""
+        context:
+          key: ""
         action: null
         client_ip: client_ip
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        user: ""
-        brand: ""
+        user:
+          key: ""
+        brand:
+          key: ""
       properties:
         pk:
           format: uuid
           readOnly: true
           title: Event uuid
           type: string
-        user: {}
+        user:
+          additionalProperties: {}
+          type: object
         action:
           $ref: '#/components/schemas/EventActions'
         app:
           type: string
-        context: {}
+        context:
+          additionalProperties: {}
+          type: object
         client_ip:
           nullable: true
           type: string
@@ -50486,7 +50526,9 @@ components:
         expires:
           format: date-time
           type: string
-        brand: {}
+        brand:
+          additionalProperties: {}
+          type: object
       required:
       - action
       - app
@@ -50653,19 +50695,26 @@ components:
       example:
         app: app
         expires: 2000-01-23T04:56:07.000+00:00
-        context: ""
+        context:
+          key: ""
         action: null
         client_ip: client_ip
-        user: ""
-        brand: ""
+        user:
+          key: ""
+        brand:
+          key: ""
       properties:
-        user: {}
+        user:
+          additionalProperties: {}
+          type: object
         action:
           $ref: '#/components/schemas/EventActions'
         app:
           minLength: 1
           type: string
-        context: {}
+        context:
+          additionalProperties: {}
+          type: object
         client_ip:
           minLength: 1
           nullable: true
@@ -50673,7 +50722,9 @@ components:
         expires:
           format: date-time
           type: string
-        brand: {}
+        brand:
+          additionalProperties: {}
+          type: object
       required:
       - action
       - app
@@ -51904,7 +51955,8 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         verbose_name_plural: verbose_name_plural
-        credentials: ""
+        credentials:
+          key: ""
         user_delete_action: null
         exclude_users_service_account: true
         default_group_email_domain: default_group_email_domain
@@ -51968,7 +52020,9 @@ components:
           format: email
           maxLength: 254
           type: string
-        credentials: {}
+        credentials:
+          additionalProperties: {}
+          type: object
         scopes:
           type: string
         exclude_users_service_account:
@@ -52006,7 +52060,8 @@ components:
         google_id: google_id
         provider: 0
         group_obj: ""
-        attributes: ""
+        attributes:
+          key: ""
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -52026,7 +52081,9 @@ components:
         provider:
           type: integer
         attributes:
+          additionalProperties: {}
           readOnly: true
+          type: object
       required:
       - attributes
       - google_id
@@ -52143,7 +52200,8 @@ components:
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        credentials: ""
+        credentials:
+          key: ""
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         dry_run: true
@@ -52174,7 +52232,9 @@ components:
           maxLength: 254
           minLength: 1
           type: string
-        credentials: {}
+        credentials:
+          additionalProperties: {}
+          type: object
         scopes:
           minLength: 1
           type: string
@@ -52207,7 +52267,8 @@ components:
         user_obj: ""
         google_id: google_id
         provider: 6
-        attributes: ""
+        attributes:
+          key: ""
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 0
       properties:
@@ -52226,7 +52287,9 @@ components:
         provider:
           type: integer
         attributes:
+          additionalProperties: {}
           readOnly: true
+          type: object
       required:
       - attributes
       - google_id
@@ -53987,7 +54050,8 @@ components:
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         local: true
-        kubeconfig: ""
+        kubeconfig:
+          key: ""
       properties:
         pk:
           format: uuid
@@ -54016,8 +54080,10 @@ components:
           readOnly: true
           type: string
         kubeconfig:
+          additionalProperties: {}
           description: Paste your kubeconfig here. authentik will automatically use
             the currently selected context.
+          type: object
         verify_ssl:
           description: Verify SSL Certificates of the Kubernetes API endpoint
           type: boolean
@@ -54035,7 +54101,8 @@ components:
         verify_ssl: true
         name: name
         local: true
-        kubeconfig: ""
+        kubeconfig:
+          key: ""
       properties:
         name:
           minLength: 1
@@ -54045,8 +54112,10 @@ components:
             \ Integration"
           type: boolean
         kubeconfig:
+          additionalProperties: {}
           description: Paste your kubeconfig here. authentik will automatically use
             the currently selected context.
+          type: object
         verify_ssl:
           description: Verify SSL Certificates of the Kubernetes API endpoint
           type: boolean
@@ -55206,7 +55275,8 @@ components:
         microsoft_id: microsoft_id
         provider: 0
         group_obj: ""
-        attributes: ""
+        attributes:
+          key: ""
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -55226,7 +55296,9 @@ components:
         provider:
           type: integer
         attributes:
+          additionalProperties: {}
           readOnly: true
+          type: object
       required:
       - attributes
       - group
@@ -55403,7 +55475,8 @@ components:
         microsoft_id: microsoft_id
         user_obj: ""
         provider: 6
-        attributes: ""
+        attributes:
+          key: ""
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 0
       properties:
@@ -55422,7 +55495,9 @@ components:
         provider:
           type: integer
         attributes:
+          additionalProperties: {}
           readOnly: true
+          type: object
       required:
       - attributes
       - id
@@ -55742,12 +55817,15 @@ components:
           app: app
           expires: 2000-01-23T04:56:07.000+00:00
           created: 2000-01-23T04:56:07.000+00:00
-          context: ""
+          context:
+            key: ""
           action: null
           client_ip: client_ip
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          user: ""
-          brand: ""
+          user:
+            key: ""
+          brand:
+            key: ""
         seen: true
       properties:
         pk:
@@ -55782,11 +55860,14 @@ components:
         event:
           app: app
           expires: 2000-01-23T04:56:07.000+00:00
-          context: ""
+          context:
+            key: ""
           action: null
           client_ip: client_ip
-          user: ""
-          brand: ""
+          user:
+            key: ""
+          brand:
+            key: ""
         seen: true
       properties:
         event:
@@ -56441,7 +56522,8 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         profile_url: profile_url
         icon: icon
-        oidc_jwks: ""
+        oidc_jwks:
+          key: ""
         authorization_code_auth_method: ""
         type: ""
         additional_scopes: additional_scopes
@@ -56585,7 +56667,9 @@ components:
           type: string
         oidc_jwks_url:
           type: string
-        oidc_jwks: {}
+        oidc_jwks:
+          additionalProperties: {}
+          type: object
         authorization_code_auth_method:
           allOf:
           - $ref: '#/components/schemas/AuthorizationCodeAuthMethodEnum'
@@ -56700,7 +56784,8 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         profile_url: profile_url
         authorization_url: authorization_url
-        oidc_jwks: ""
+        oidc_jwks:
+          key: ""
         authorization_code_auth_method: ""
         additional_scopes: additional_scopes
         enabled: true
@@ -56800,7 +56885,9 @@ components:
           type: string
         oidc_jwks_url:
           type: string
-        oidc_jwks: {}
+        oidc_jwks:
+          additionalProperties: {}
+          type: object
         authorization_code_auth_method:
           allOf:
           - $ref: '#/components/schemas/AuthorizationCodeAuthMethodEnum'
@@ -57123,11 +57210,13 @@ components:
         - app: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
-          attributes: ""
+          attributes:
+            key: ""
         - app: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
-          attributes: ""
+          attributes:
+            key: ""
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -57602,7 +57691,8 @@ components:
           friendly_name: friendly_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
-          credentials: ""
+          credentials:
+            key: ""
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
@@ -57636,7 +57726,8 @@ components:
           friendly_name: friendly_name
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
-          credentials: ""
+          credentials:
+            key: ""
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
@@ -58239,27 +58330,31 @@ components:
           key: ""
         results:
         - path: path
-          metadata: ""
+          metadata:
+            key: ""
           last_applied_hash: last_applied_hash
           managed_models:
           - managed_models
           - managed_models
           last_applied: 2000-01-23T04:56:07.000+00:00
           name: name
-          context: ""
+          context:
+            key: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enabled: true
           content: content
           status: ""
         - path: path
-          metadata: ""
+          metadata:
+            key: ""
           last_applied_hash: last_applied_hash
           managed_models:
           - managed_models
           - managed_models
           last_applied: 2000-01-23T04:56:07.000+00:00
           name: name
-          context: ""
+          context:
+            key: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           enabled: true
           content: content
@@ -58306,7 +58401,8 @@ components:
           flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           domain: domain
           flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          attributes: ""
+          attributes:
+            key: ""
           branding_title: branding_title
           branding_favicon: branding_favicon
           flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -58326,7 +58422,8 @@ components:
           flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           domain: domain
           flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          attributes: ""
+          attributes:
+            key: ""
           branding_title: branding_title
           branding_favicon: branding_favicon
           flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -59182,7 +59279,8 @@ components:
         autocomplete:
           key: ""
         results:
-        - settings: ""
+        - settings:
+            key: ""
           protocol: null
           provider_obj: ""
           launch_url: launch_url
@@ -59195,7 +59293,8 @@ components:
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - settings: ""
+        - settings:
+            key: ""
           protocol: null
           provider_obj: ""
           launch_url: launch_url
@@ -59239,21 +59338,27 @@ components:
         - app: app
           expires: 2000-01-23T04:56:07.000+00:00
           created: 2000-01-23T04:56:07.000+00:00
-          context: ""
+          context:
+            key: ""
           action: null
           client_ip: client_ip
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          user: ""
-          brand: ""
+          user:
+            key: ""
+          brand:
+            key: ""
         - app: app
           expires: 2000-01-23T04:56:07.000+00:00
           created: 2000-01-23T04:56:07.000+00:00
-          context: ""
+          context:
+            key: ""
           action: null
           client_ip: client_ip
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          user: ""
-          brand: ""
+          user:
+            key: ""
+          brand:
+            key: ""
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -59855,13 +59960,15 @@ components:
         - google_id: google_id
           provider: 0
           group_obj: ""
-          attributes: ""
+          attributes:
+            key: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - google_id: google_id
           provider: 0
           group_obj: ""
-          attributes: ""
+          attributes:
+            key: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -59897,7 +60004,8 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
-          credentials: ""
+          credentials:
+            key: ""
           user_delete_action: null
           exclude_users_service_account: true
           default_group_email_domain: default_group_email_domain
@@ -59920,7 +60028,8 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
-          credentials: ""
+          credentials:
+            key: ""
           user_delete_action: null
           exclude_users_service_account: true
           default_group_email_domain: default_group_email_domain
@@ -60013,13 +60122,15 @@ components:
         - user_obj: ""
           google_id: google_id
           provider: 6
-          attributes: ""
+          attributes:
+            key: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 0
         - user_obj: ""
           google_id: google_id
           provider: 6
-          attributes: ""
+          attributes:
+            key: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 0
       properties:
@@ -60886,7 +60997,8 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           local: true
-          kubeconfig: ""
+          kubeconfig:
+            key: ""
         - component: component
           verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
@@ -60895,7 +61007,8 @@ components:
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           local: true
-          kubeconfig: ""
+          kubeconfig:
+            key: ""
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -61265,13 +61378,15 @@ components:
         - microsoft_id: microsoft_id
           provider: 0
           group_obj: ""
-          attributes: ""
+          attributes:
+            key: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - microsoft_id: microsoft_id
           provider: 0
           group_obj: ""
-          attributes: ""
+          attributes:
+            key: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -61421,13 +61536,15 @@ components:
         - microsoft_id: microsoft_id
           user_obj: ""
           provider: 6
-          attributes: ""
+          attributes:
+            key: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 0
         - microsoft_id: microsoft_id
           user_obj: ""
           provider: 6
-          attributes: ""
+          attributes:
+            key: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 0
       properties:
@@ -61568,12 +61685,15 @@ components:
             app: app
             expires: 2000-01-23T04:56:07.000+00:00
             created: 2000-01-23T04:56:07.000+00:00
-            context: ""
+            context:
+              key: ""
             action: null
             client_ip: client_ip
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            user: ""
-            brand: ""
+            user:
+              key: ""
+            brand:
+              key: ""
           seen: true
         - severity: ""
           created: 2000-01-23T04:56:07.000+00:00
@@ -61583,12 +61703,15 @@ components:
             app: app
             expires: 2000-01-23T04:56:07.000+00:00
             created: 2000-01-23T04:56:07.000+00:00
-            context: ""
+            context:
+              key: ""
             action: null
             client_ip: client_ip
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            user: ""
-            brand: ""
+            user:
+              key: ""
+            brand:
+              key: ""
           seen: true
       properties:
         pagination:
@@ -61855,7 +61978,8 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           profile_url: profile_url
           icon: icon
-          oidc_jwks: ""
+          oidc_jwks:
+            key: ""
           authorization_code_auth_method: ""
           type: ""
           additional_scopes: additional_scopes
@@ -61890,7 +62014,8 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           profile_url: profile_url
           icon: icon
-          oidc_jwks: ""
+          oidc_jwks:
+            key: ""
           authorization_code_auth_method: ""
           type: ""
           additional_scopes: additional_scopes
@@ -63218,7 +63343,8 @@ components:
         autocomplete:
           key: ""
         results:
-        - settings: ""
+        - settings:
+            key: ""
           verbose_name_plural: verbose_name_plural
           delete_token_on_disconnect: true
           assigned_application_slug: assigned_application_slug
@@ -63239,7 +63365,8 @@ components:
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - settings: ""
+        - settings:
+            key: ""
           verbose_name_plural: verbose_name_plural
           delete_token_on_disconnect: true
           assigned_application_slug: assigned_application_slug
@@ -63546,15 +63673,19 @@ components:
         results:
         - identifier: identifier
           score: -7746104769210155008
-          ip_asn_data: ""
-          ip_geo_data: ""
+          ip_asn_data:
+            key: ""
+          ip_geo_data:
+            key: ""
           ip: ip
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated: 2000-01-23T04:56:07.000+00:00
         - identifier: identifier
           score: -7746104769210155008
-          ip_asn_data: ""
-          ip_geo_data: ""
+          ip_asn_data:
+            key: ""
+          ip_geo_data:
+            key: ""
           ip: ip
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated: 2000-01-23T04:56:07.000+00:00
@@ -64069,13 +64200,15 @@ components:
         - scim_id: scim_id
           provider: 0
           group_obj: ""
-          attributes: ""
+          attributes:
+            key: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - scim_id: scim_id
           provider: 0
           group_obj: ""
-          attributes: ""
+          attributes:
+            key: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -64179,13 +64312,15 @@ components:
         - scim_id: scim_id
           user_obj: ""
           provider: 6
-          attributes: ""
+          attributes:
+            key: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 0
         - scim_id: scim_id
           user_obj: ""
           provider: 6
-          attributes: ""
+          attributes:
+            key: ""
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 0
       properties:
@@ -64217,12 +64352,14 @@ components:
           key: ""
         results:
         - group_obj: ""
-          attributes: ""
+          attributes:
+            key: ""
           id: id
           source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - group_obj: ""
-          attributes: ""
+          attributes:
+            key: ""
           id: id
           source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -64363,12 +64500,14 @@ components:
           key: ""
         results:
         - user_obj: ""
-          attributes: ""
+          attributes:
+            key: ""
           id: id
           source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 0
         - user_obj: ""
-          attributes: ""
+          attributes:
+            key: ""
           id: id
           source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 0
@@ -66947,7 +67086,8 @@ components:
       example:
         app: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
-        attributes: ""
+        attributes:
+          key: ""
       properties:
         name:
           minLength: 1
@@ -66955,7 +67095,9 @@ components:
         app:
           format: uuid
           type: string
-        attributes: {}
+        attributes:
+          additionalProperties: {}
+          type: object
       type: object
     PatchedApplicationRequest:
       description: Application Serializer
@@ -67164,7 +67306,8 @@ components:
       example:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         friendly_name: friendly_name
-        credentials: ""
+        credentials:
+          key: ""
         name: name
         flow_set:
         - policy_engine_mode: null
@@ -67201,7 +67344,9 @@ components:
           minLength: 1
           nullable: true
           type: string
-        credentials: {}
+        credentials:
+          additionalProperties: {}
+          type: object
       type: object
     PatchedAuthenticatorSMSStageRequest:
       description: AuthenticatorSMSStage Serializer
@@ -67517,7 +67662,8 @@ components:
       example:
         path: path
         name: name
-        context: ""
+        context:
+          key: ""
         enabled: true
         content: content
       properties:
@@ -67527,7 +67673,9 @@ components:
         path:
           default: ""
           type: string
-        context: {}
+        context:
+          additionalProperties: {}
+          type: object
         enabled:
           type: boolean
         content:
@@ -67550,7 +67698,8 @@ components:
         flow_invalidation: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         domain: domain
         flow_unenrollment: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        attributes: ""
+        attributes:
+          key: ""
         branding_title: branding_title
         branding_favicon: branding_favicon
         flow_user_settings: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -67618,7 +67767,9 @@ components:
             format: uuid
             type: string
           type: array
-        attributes: {}
+        attributes:
+          additionalProperties: {}
+          type: object
       type: object
     PatchedCaptchaStageRequest:
       description: CaptchaStage Serializer
@@ -68035,7 +68186,8 @@ components:
     PatchedEndpointRequest:
       description: Endpoint Serializer
       example:
-        settings: ""
+        settings:
+          key: ""
         protocol: null
         provider: 0
         maximum_connections: 441289069
@@ -68056,7 +68208,9 @@ components:
         host:
           minLength: 1
           type: string
-        settings: {}
+        settings:
+          additionalProperties: {}
+          type: object
         property_mappings:
           items:
             format: uuid
@@ -68117,19 +68271,26 @@ components:
       example:
         app: app
         expires: 2000-01-23T04:56:07.000+00:00
-        context: ""
+        context:
+          key: ""
         action: null
         client_ip: client_ip
-        user: ""
-        brand: ""
+        user:
+          key: ""
+        brand:
+          key: ""
       properties:
-        user: {}
+        user:
+          additionalProperties: {}
+          type: object
         action:
           $ref: '#/components/schemas/EventActions'
         app:
           minLength: 1
           type: string
-        context: {}
+        context:
+          additionalProperties: {}
+          type: object
         client_ip:
           minLength: 1
           nullable: true
@@ -68137,7 +68298,9 @@ components:
         expires:
           format: date-time
           type: string
-        brand: {}
+        brand:
+          additionalProperties: {}
+          type: object
       type: object
     PatchedExpressionPolicyRequest:
       description: Group Membership Policy Serializer
@@ -68354,7 +68517,8 @@ components:
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        credentials: ""
+        credentials:
+          key: ""
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         dry_run: true
@@ -68385,7 +68549,9 @@ components:
           maxLength: 254
           minLength: 1
           type: string
-        credentials: {}
+        credentials:
+          additionalProperties: {}
+          type: object
         scopes:
           minLength: 1
           type: string
@@ -68903,7 +69069,8 @@ components:
         verify_ssl: true
         name: name
         local: true
-        kubeconfig: ""
+        kubeconfig:
+          key: ""
       properties:
         name:
           minLength: 1
@@ -68913,8 +69080,10 @@ components:
             \ Integration"
           type: boolean
         kubeconfig:
+          additionalProperties: {}
           description: Paste your kubeconfig here. authentik will automatically use
             the currently selected context.
+          type: object
         verify_ssl:
           description: Verify SSL Certificates of the Kubernetes API endpoint
           type: boolean
@@ -69331,11 +69500,14 @@ components:
         event:
           app: app
           expires: 2000-01-23T04:56:07.000+00:00
-          context: ""
+          context:
+            key: ""
           action: null
           client_ip: client_ip
-          user: ""
-          brand: ""
+          user:
+            key: ""
+          brand:
+            key: ""
         seen: true
       properties:
         event:
@@ -69590,7 +69762,8 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         profile_url: profile_url
         authorization_url: authorization_url
-        oidc_jwks: ""
+        oidc_jwks:
+          key: ""
         authorization_code_auth_method: ""
         additional_scopes: additional_scopes
         enabled: true
@@ -69690,7 +69863,9 @@ components:
           type: string
         oidc_jwks_url:
           type: string
-        oidc_jwks: {}
+        oidc_jwks:
+          additionalProperties: {}
+          type: object
         authorization_code_auth_method:
           allOf:
           - $ref: '#/components/schemas/AuthorizationCodeAuthMethodEnum'
@@ -70357,7 +70532,8 @@ components:
       description: RACProvider Serializer
       example:
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        settings: ""
+        settings:
+          key: ""
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         delete_token_on_disconnect: true
         name: name
@@ -70384,7 +70560,9 @@ components:
             format: uuid
             type: string
           type: array
-        settings: {}
+        settings:
+          additionalProperties: {}
+          type: object
         connection_expiry:
           description: "Determines how long a session lasts. Default of 0 means that\
             \ the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)"
@@ -70961,7 +71139,8 @@ components:
     PatchedSCIMSourceGroupRequest:
       description: SCIMSourceGroup Serializer
       example:
-        attributes: ""
+        attributes:
+          key: ""
         id: id
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -70975,7 +71154,9 @@ components:
         source:
           format: uuid
           type: string
-        attributes: {}
+        attributes:
+          additionalProperties: {}
+          type: object
       type: object
     PatchedSCIMSourcePropertyMappingRequest:
       description: SCIMSourcePropertyMapping Serializer
@@ -71043,7 +71224,8 @@ components:
     PatchedSCIMSourceUserRequest:
       description: SCIMSourceUser Serializer
       example:
-        attributes: ""
+        attributes:
+          key: ""
         id: id
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 0
@@ -71056,7 +71238,9 @@ components:
         source:
           format: uuid
           type: string
-        attributes: {}
+        attributes:
+          additionalProperties: {}
+          type: object
       type: object
     PatchedSMSDeviceRequest:
       description: Serializer for sms authenticator devices
@@ -71172,9 +71356,7 @@ components:
           maximum: 2147483647
           minimum: 0
           type: integer
-        footer_links:
-          description: The option configures the footer links on the flow executor
-            pages.
+        footer_links: {}
         gdpr_compliance:
           description: "When enabled, all the events caused by a user will be deleted\
             \ upon the user's deletion."
@@ -73613,7 +73795,8 @@ components:
     RACProvider:
       description: RACProvider Serializer
       example:
-        settings: ""
+        settings:
+          key: ""
         verbose_name_plural: verbose_name_plural
         delete_token_on_disconnect: true
         assigned_application_slug: assigned_application_slug
@@ -73688,7 +73871,9 @@ components:
           description: Return internal model name
           readOnly: true
           type: string
-        settings: {}
+        settings:
+          additionalProperties: {}
+          type: object
         outpost_set:
           items:
             type: string
@@ -73719,7 +73904,8 @@ components:
       description: RACProvider Serializer
       example:
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        settings: ""
+        settings:
+          key: ""
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         delete_token_on_disconnect: true
         name: name
@@ -73746,7 +73932,9 @@ components:
             format: uuid
             type: string
           type: array
-        settings: {}
+        settings:
+          additionalProperties: {}
+          type: object
         connection_expiry:
           description: "Determines how long a session lasts. Default of 0 means that\
             \ the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)"
@@ -74304,8 +74492,10 @@ components:
       example:
         identifier: identifier
         score: -7746104769210155008
-        ip_asn_data: ""
-        ip_geo_data: ""
+        ip_asn_data:
+          key: ""
+        ip_geo_data:
+          key: ""
         ip: ip
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         updated: 2000-01-23T04:56:07.000+00:00
@@ -74318,8 +74508,12 @@ components:
           type: string
         ip:
           type: string
-        ip_geo_data: {}
-        ip_asn_data: {}
+        ip_geo_data:
+          additionalProperties: {}
+          type: object
+        ip_asn_data:
+          additionalProperties: {}
+          type: object
         score:
           format: int64
           maximum: 9223372036854775807
@@ -75623,7 +75817,8 @@ components:
         scim_id: scim_id
         provider: 0
         group_obj: ""
-        attributes: ""
+        attributes:
+          key: ""
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -75643,7 +75838,9 @@ components:
         provider:
           type: integer
         attributes:
+          additionalProperties: {}
           readOnly: true
+          type: object
       required:
       - attributes
       - group
@@ -75740,7 +75937,8 @@ components:
         scim_id: scim_id
         user_obj: ""
         provider: 6
-        attributes: ""
+        attributes:
+          key: ""
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 0
       properties:
@@ -75759,7 +75957,9 @@ components:
         provider:
           type: integer
         attributes:
+          additionalProperties: {}
           readOnly: true
+          type: object
       required:
       - attributes
       - id
@@ -75885,7 +76085,8 @@ components:
       description: SCIMSourceGroup Serializer
       example:
         group_obj: ""
-        attributes: ""
+        attributes:
+          key: ""
         id: id
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -75902,7 +76103,9 @@ components:
         source:
           format: uuid
           type: string
-        attributes: {}
+        attributes:
+          additionalProperties: {}
+          type: object
       required:
       - group
       - group_obj
@@ -75912,7 +76115,8 @@ components:
     SCIMSourceGroupRequest:
       description: SCIMSourceGroup Serializer
       example:
-        attributes: ""
+        attributes:
+          key: ""
         id: id
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -75926,7 +76130,9 @@ components:
         source:
           format: uuid
           type: string
-        attributes: {}
+        attributes:
+          additionalProperties: {}
+          type: object
       required:
       - group
       - id
@@ -76059,7 +76265,8 @@ components:
       description: SCIMSourceUser Serializer
       example:
         user_obj: ""
-        attributes: ""
+        attributes:
+          key: ""
         id: id
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 0
@@ -76075,7 +76282,9 @@ components:
         source:
           format: uuid
           type: string
-        attributes: {}
+        attributes:
+          additionalProperties: {}
+          type: object
       required:
       - id
       - source
@@ -76085,7 +76294,8 @@ components:
     SCIMSourceUserRequest:
       description: SCIMSourceUser Serializer
       example:
-        attributes: ""
+        attributes:
+          key: ""
         id: id
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 0
@@ -76098,7 +76308,9 @@ components:
         source:
           format: uuid
           type: string
-        attributes: {}
+        attributes:
+          additionalProperties: {}
+          type: object
       required:
       - id
       - source
@@ -76616,9 +76828,7 @@ components:
           maximum: 2147483647
           minimum: 0
           type: integer
-        footer_links:
-          description: The option configures the footer links on the flow executor
-            pages.
+        footer_links: {}
         gdpr_compliance:
           description: "When enabled, all the events caused by a user will be deleted\
             \ upon the user's deletion."
@@ -76684,9 +76894,7 @@ components:
           maximum: 2147483647
           minimum: 0
           type: integer
-        footer_links:
-          description: The option configures the footer links on the flow executor
-            pages.
+        footer_links: {}
         gdpr_compliance:
           description: "When enabled, all the events caused by a user will be deleted\
             \ upon the user's deletion."

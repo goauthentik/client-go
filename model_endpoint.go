@@ -17,15 +17,15 @@ import (
 
 // Endpoint Endpoint Serializer
 type Endpoint struct {
-	Pk               string       `json:"pk"`
-	Name             string       `json:"name"`
-	Provider         int32        `json:"provider"`
-	ProviderObj      RACProvider  `json:"provider_obj"`
-	Protocol         ProtocolEnum `json:"protocol"`
-	Host             string       `json:"host"`
-	Settings         interface{}  `json:"settings,omitempty"`
-	PropertyMappings []string     `json:"property_mappings,omitempty"`
-	AuthMode         AuthModeEnum `json:"auth_mode"`
+	Pk               string                 `json:"pk"`
+	Name             string                 `json:"name"`
+	Provider         int32                  `json:"provider"`
+	ProviderObj      RACProvider            `json:"provider_obj"`
+	Protocol         ProtocolEnum           `json:"protocol"`
+	Host             string                 `json:"host"`
+	Settings         map[string]interface{} `json:"settings,omitempty"`
+	PropertyMappings []string               `json:"property_mappings,omitempty"`
+	AuthMode         AuthModeEnum           `json:"auth_mode"`
 	// Build actual launch URL (the provider itself does not have one, just individual endpoints)
 	LaunchUrl          NullableString `json:"launch_url"`
 	MaximumConnections *int32         `json:"maximum_connections,omitempty"`
@@ -200,10 +200,10 @@ func (o *Endpoint) SetHost(v string) {
 	o.Host = v
 }
 
-// GetSettings returns the Settings field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Endpoint) GetSettings() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetSettings returns the Settings field value if set, zero value otherwise.
+func (o *Endpoint) GetSettings() map[string]interface{} {
+	if o == nil || o.Settings == nil {
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Settings
@@ -211,12 +211,11 @@ func (o *Endpoint) GetSettings() interface{} {
 
 // GetSettingsOk returns a tuple with the Settings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Endpoint) GetSettingsOk() (*interface{}, bool) {
+func (o *Endpoint) GetSettingsOk() (map[string]interface{}, bool) {
 	if o == nil || o.Settings == nil {
 		return nil, false
 	}
-	return &o.Settings, true
+	return o.Settings, true
 }
 
 // HasSettings returns a boolean if a field has been set.
@@ -228,8 +227,8 @@ func (o *Endpoint) HasSettings() bool {
 	return false
 }
 
-// SetSettings gets a reference to the given interface{} and assigns it to the Settings field.
-func (o *Endpoint) SetSettings(v interface{}) {
+// SetSettings gets a reference to the given map[string]interface{} and assigns it to the Settings field.
+func (o *Endpoint) SetSettings(v map[string]interface{}) {
 	o.Settings = v
 }
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Provider** | **int32** |  | 
 **Protocol** | [**ProtocolEnum**](ProtocolEnum.md) |  | 
 **Host** | **string** |  | 
-**Settings** | Pointer to **interface{}** |  | [optional] 
+**Settings** | Pointer to **map[string]interface{}** |  | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **AuthMode** | [**AuthModeEnum**](AuthModeEnum.md) |  | 
 **MaximumConnections** | Pointer to **int32** |  | [optional] 
@@ -114,20 +114,20 @@ SetHost sets Host field to given value.
 
 ### GetSettings
 
-`func (o *EndpointRequest) GetSettings() interface{}`
+`func (o *EndpointRequest) GetSettings() map[string]interface{}`
 
 GetSettings returns the Settings field if non-nil, zero value otherwise.
 
 ### GetSettingsOk
 
-`func (o *EndpointRequest) GetSettingsOk() (*interface{}, bool)`
+`func (o *EndpointRequest) GetSettingsOk() (*map[string]interface{}, bool)`
 
 GetSettingsOk returns a tuple with the Settings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSettings
 
-`func (o *EndpointRequest) SetSettings(v interface{})`
+`func (o *EndpointRequest) SetSettings(v map[string]interface{})`
 
 SetSettings sets Settings field to given value.
 
@@ -137,16 +137,6 @@ SetSettings sets Settings field to given value.
 
 HasSettings returns a boolean if a field has been set.
 
-### SetSettingsNil
-
-`func (o *EndpointRequest) SetSettingsNil(b bool)`
-
- SetSettingsNil sets the value for Settings to be an explicit nil
-
-### UnsetSettings
-`func (o *EndpointRequest) UnsetSettings()`
-
-UnsetSettings ensures that no value is present for Settings, not even an explicit nil
 ### GetPropertyMappings
 
 `func (o *EndpointRequest) GetPropertyMappings() []string`

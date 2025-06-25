@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **User** | **int32** |  | 
 **UserObj** | [**GroupMember**](GroupMember.md) |  | [readonly] 
 **Provider** | **int32** |  | 
-**Attributes** | **interface{}** |  | [readonly] 
+**Attributes** | **map[string]interface{}** |  | [readonly] 
 
 ## Methods
 
 ### NewSCIMProviderUser
 
-`func NewSCIMProviderUser(id string, scimId string, user int32, userObj GroupMember, provider int32, attributes interface{}, ) *SCIMProviderUser`
+`func NewSCIMProviderUser(id string, scimId string, user int32, userObj GroupMember, provider int32, attributes map[string]interface{}, ) *SCIMProviderUser`
 
 NewSCIMProviderUser instantiates a new SCIMProviderUser object
 This constructor will assign default values to properties that have it defined,
@@ -132,34 +132,24 @@ SetProvider sets Provider field to given value.
 
 ### GetAttributes
 
-`func (o *SCIMProviderUser) GetAttributes() interface{}`
+`func (o *SCIMProviderUser) GetAttributes() map[string]interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *SCIMProviderUser) GetAttributesOk() (*interface{}, bool)`
+`func (o *SCIMProviderUser) GetAttributesOk() (*map[string]interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *SCIMProviderUser) SetAttributes(v interface{})`
+`func (o *SCIMProviderUser) SetAttributes(v map[string]interface{})`
 
 SetAttributes sets Attributes field to given value.
 
 
-### SetAttributesNil
-
-`func (o *SCIMProviderUser) SetAttributesNil(b bool)`
-
- SetAttributesNil sets the value for Attributes to be an explicit nil
-
-### UnsetAttributes
-`func (o *SCIMProviderUser) UnsetAttributes()`
-
-UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **AdditionalScopes** | Pointer to **string** |  | [optional] 
 **OidcWellKnownUrl** | Pointer to **string** |  | [optional] 
 **OidcJwksUrl** | Pointer to **string** |  | [optional] 
-**OidcJwks** | Pointer to **interface{}** |  | [optional] 
+**OidcJwks** | Pointer to **map[string]interface{}** |  | [optional] 
 **AuthorizationCodeAuthMethod** | Pointer to [**AuthorizationCodeAuthMethodEnum**](AuthorizationCodeAuthMethodEnum.md) | How to perform authentication during an authorization_code token request flow | [optional] 
 
 ## Methods
@@ -609,20 +609,20 @@ HasOidcJwksUrl returns a boolean if a field has been set.
 
 ### GetOidcJwks
 
-`func (o *OAuthSourceRequest) GetOidcJwks() interface{}`
+`func (o *OAuthSourceRequest) GetOidcJwks() map[string]interface{}`
 
 GetOidcJwks returns the OidcJwks field if non-nil, zero value otherwise.
 
 ### GetOidcJwksOk
 
-`func (o *OAuthSourceRequest) GetOidcJwksOk() (*interface{}, bool)`
+`func (o *OAuthSourceRequest) GetOidcJwksOk() (*map[string]interface{}, bool)`
 
 GetOidcJwksOk returns a tuple with the OidcJwks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOidcJwks
 
-`func (o *OAuthSourceRequest) SetOidcJwks(v interface{})`
+`func (o *OAuthSourceRequest) SetOidcJwks(v map[string]interface{})`
 
 SetOidcJwks sets OidcJwks field to given value.
 
@@ -632,16 +632,6 @@ SetOidcJwks sets OidcJwks field to given value.
 
 HasOidcJwks returns a boolean if a field has been set.
 
-### SetOidcJwksNil
-
-`func (o *OAuthSourceRequest) SetOidcJwksNil(b bool)`
-
- SetOidcJwksNil sets the value for OidcJwks to be an explicit nil
-
-### UnsetOidcJwks
-`func (o *OAuthSourceRequest) UnsetOidcJwks()`
-
-UnsetOidcJwks ensures that no value is present for OidcJwks, not even an explicit nil
 ### GetAuthorizationCodeAuthMethod
 
 `func (o *OAuthSourceRequest) GetAuthorizationCodeAuthMethod() AuthorizationCodeAuthMethodEnum`

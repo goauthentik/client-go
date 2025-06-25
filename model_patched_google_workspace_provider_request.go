@@ -22,7 +22,7 @@ type PatchedGoogleWorkspaceProviderRequest struct {
 	// Property mappings used for group creation/updating.
 	PropertyMappingsGroup      []string                  `json:"property_mappings_group,omitempty"`
 	DelegatedSubject           *string                   `json:"delegated_subject,omitempty"`
-	Credentials                interface{}               `json:"credentials,omitempty"`
+	Credentials                map[string]interface{}    `json:"credentials,omitempty"`
 	Scopes                     *string                   `json:"scopes,omitempty"`
 	ExcludeUsersServiceAccount *bool                     `json:"exclude_users_service_account,omitempty"`
 	FilterGroup                NullableString            `json:"filter_group,omitempty"`
@@ -178,10 +178,10 @@ func (o *PatchedGoogleWorkspaceProviderRequest) SetDelegatedSubject(v string) {
 	o.DelegatedSubject = &v
 }
 
-// GetCredentials returns the Credentials field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PatchedGoogleWorkspaceProviderRequest) GetCredentials() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetCredentials returns the Credentials field value if set, zero value otherwise.
+func (o *PatchedGoogleWorkspaceProviderRequest) GetCredentials() map[string]interface{} {
+	if o == nil || o.Credentials == nil {
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Credentials
@@ -189,12 +189,11 @@ func (o *PatchedGoogleWorkspaceProviderRequest) GetCredentials() interface{} {
 
 // GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PatchedGoogleWorkspaceProviderRequest) GetCredentialsOk() (*interface{}, bool) {
+func (o *PatchedGoogleWorkspaceProviderRequest) GetCredentialsOk() (map[string]interface{}, bool) {
 	if o == nil || o.Credentials == nil {
 		return nil, false
 	}
-	return &o.Credentials, true
+	return o.Credentials, true
 }
 
 // HasCredentials returns a boolean if a field has been set.
@@ -206,8 +205,8 @@ func (o *PatchedGoogleWorkspaceProviderRequest) HasCredentials() bool {
 	return false
 }
 
-// SetCredentials gets a reference to the given interface{} and assigns it to the Credentials field.
-func (o *PatchedGoogleWorkspaceProviderRequest) SetCredentials(v interface{}) {
+// SetCredentials gets a reference to the given map[string]interface{} and assigns it to the Credentials field.
+func (o *PatchedGoogleWorkspaceProviderRequest) SetCredentials(v map[string]interface{}) {
 	o.Credentials = v
 }
 

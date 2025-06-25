@@ -35,7 +35,7 @@ type GoogleWorkspaceProvider struct {
 	// Return internal model name
 	MetaModelName              string                    `json:"meta_model_name"`
 	DelegatedSubject           string                    `json:"delegated_subject"`
-	Credentials                interface{}               `json:"credentials"`
+	Credentials                map[string]interface{}    `json:"credentials"`
 	Scopes                     *string                   `json:"scopes,omitempty"`
 	ExcludeUsersServiceAccount *bool                     `json:"exclude_users_service_account,omitempty"`
 	FilterGroup                NullableString            `json:"filter_group,omitempty"`
@@ -50,7 +50,7 @@ type GoogleWorkspaceProvider struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGoogleWorkspaceProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, delegatedSubject string, credentials interface{}, defaultGroupEmailDomain string) *GoogleWorkspaceProvider {
+func NewGoogleWorkspaceProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, delegatedSubject string, credentials map[string]interface{}, defaultGroupEmailDomain string) *GoogleWorkspaceProvider {
 	this := GoogleWorkspaceProvider{}
 	this.Pk = pk
 	this.Name = name
@@ -355,10 +355,9 @@ func (o *GoogleWorkspaceProvider) SetDelegatedSubject(v string) {
 }
 
 // GetCredentials returns the Credentials field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *GoogleWorkspaceProvider) GetCredentials() interface{} {
+func (o *GoogleWorkspaceProvider) GetCredentials() map[string]interface{} {
 	if o == nil {
-		var ret interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -367,16 +366,15 @@ func (o *GoogleWorkspaceProvider) GetCredentials() interface{} {
 
 // GetCredentialsOk returns a tuple with the Credentials field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GoogleWorkspaceProvider) GetCredentialsOk() (*interface{}, bool) {
-	if o == nil || o.Credentials == nil {
+func (o *GoogleWorkspaceProvider) GetCredentialsOk() (map[string]interface{}, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Credentials, true
+	return o.Credentials, true
 }
 
 // SetCredentials sets field value
-func (o *GoogleWorkspaceProvider) SetCredentials(v interface{}) {
+func (o *GoogleWorkspaceProvider) SetCredentials(v map[string]interface{}) {
 	o.Credentials = v
 }
 
@@ -642,7 +640,7 @@ func (o GoogleWorkspaceProvider) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["delegated_subject"] = o.DelegatedSubject
 	}
-	if o.Credentials != nil {
+	if true {
 		toSerialize["credentials"] = o.Credentials
 	}
 	if o.Scopes != nil {

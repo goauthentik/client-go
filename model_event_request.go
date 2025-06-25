@@ -18,13 +18,13 @@ import (
 
 // EventRequest Event Serializer
 type EventRequest struct {
-	User     interface{}    `json:"user,omitempty"`
-	Action   EventActions   `json:"action"`
-	App      string         `json:"app"`
-	Context  interface{}    `json:"context,omitempty"`
-	ClientIp NullableString `json:"client_ip,omitempty"`
-	Expires  *time.Time     `json:"expires,omitempty"`
-	Brand    interface{}    `json:"brand,omitempty"`
+	User     map[string]interface{} `json:"user,omitempty"`
+	Action   EventActions           `json:"action"`
+	App      string                 `json:"app"`
+	Context  map[string]interface{} `json:"context,omitempty"`
+	ClientIp NullableString         `json:"client_ip,omitempty"`
+	Expires  *time.Time             `json:"expires,omitempty"`
+	Brand    map[string]interface{} `json:"brand,omitempty"`
 }
 
 // NewEventRequest instantiates a new EventRequest object
@@ -46,10 +46,10 @@ func NewEventRequestWithDefaults() *EventRequest {
 	return &this
 }
 
-// GetUser returns the User field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *EventRequest) GetUser() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetUser returns the User field value if set, zero value otherwise.
+func (o *EventRequest) GetUser() map[string]interface{} {
+	if o == nil || o.User == nil {
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.User
@@ -57,12 +57,11 @@ func (o *EventRequest) GetUser() interface{} {
 
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EventRequest) GetUserOk() (*interface{}, bool) {
+func (o *EventRequest) GetUserOk() (map[string]interface{}, bool) {
 	if o == nil || o.User == nil {
 		return nil, false
 	}
-	return &o.User, true
+	return o.User, true
 }
 
 // HasUser returns a boolean if a field has been set.
@@ -74,8 +73,8 @@ func (o *EventRequest) HasUser() bool {
 	return false
 }
 
-// SetUser gets a reference to the given interface{} and assigns it to the User field.
-func (o *EventRequest) SetUser(v interface{}) {
+// SetUser gets a reference to the given map[string]interface{} and assigns it to the User field.
+func (o *EventRequest) SetUser(v map[string]interface{}) {
 	o.User = v
 }
 
@@ -127,10 +126,10 @@ func (o *EventRequest) SetApp(v string) {
 	o.App = v
 }
 
-// GetContext returns the Context field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *EventRequest) GetContext() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetContext returns the Context field value if set, zero value otherwise.
+func (o *EventRequest) GetContext() map[string]interface{} {
+	if o == nil || o.Context == nil {
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Context
@@ -138,12 +137,11 @@ func (o *EventRequest) GetContext() interface{} {
 
 // GetContextOk returns a tuple with the Context field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EventRequest) GetContextOk() (*interface{}, bool) {
+func (o *EventRequest) GetContextOk() (map[string]interface{}, bool) {
 	if o == nil || o.Context == nil {
 		return nil, false
 	}
-	return &o.Context, true
+	return o.Context, true
 }
 
 // HasContext returns a boolean if a field has been set.
@@ -155,8 +153,8 @@ func (o *EventRequest) HasContext() bool {
 	return false
 }
 
-// SetContext gets a reference to the given interface{} and assigns it to the Context field.
-func (o *EventRequest) SetContext(v interface{}) {
+// SetContext gets a reference to the given map[string]interface{} and assigns it to the Context field.
+func (o *EventRequest) SetContext(v map[string]interface{}) {
 	o.Context = v
 }
 
@@ -235,10 +233,10 @@ func (o *EventRequest) SetExpires(v time.Time) {
 	o.Expires = &v
 }
 
-// GetBrand returns the Brand field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *EventRequest) GetBrand() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetBrand returns the Brand field value if set, zero value otherwise.
+func (o *EventRequest) GetBrand() map[string]interface{} {
+	if o == nil || o.Brand == nil {
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Brand
@@ -246,12 +244,11 @@ func (o *EventRequest) GetBrand() interface{} {
 
 // GetBrandOk returns a tuple with the Brand field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EventRequest) GetBrandOk() (*interface{}, bool) {
+func (o *EventRequest) GetBrandOk() (map[string]interface{}, bool) {
 	if o == nil || o.Brand == nil {
 		return nil, false
 	}
-	return &o.Brand, true
+	return o.Brand, true
 }
 
 // HasBrand returns a boolean if a field has been set.
@@ -263,8 +260,8 @@ func (o *EventRequest) HasBrand() bool {
 	return false
 }
 
-// SetBrand gets a reference to the given interface{} and assigns it to the Brand field.
-func (o *EventRequest) SetBrand(v interface{}) {
+// SetBrand gets a reference to the given map[string]interface{} and assigns it to the Brand field.
+func (o *EventRequest) SetBrand(v map[string]interface{}) {
 	o.Brand = v
 }
 

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
 **DelegatedSubject** | **string** |  | 
-**Credentials** | **interface{}** |  | 
+**Credentials** | **map[string]interface{}** |  | 
 **Scopes** | Pointer to **string** |  | [optional] 
 **ExcludeUsersServiceAccount** | Pointer to **bool** |  | [optional] 
 **FilterGroup** | Pointer to **NullableString** |  | [optional] 
@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewGoogleWorkspaceProvider
 
-`func NewGoogleWorkspaceProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, delegatedSubject string, credentials interface{}, defaultGroupEmailDomain string, ) *GoogleWorkspaceProvider`
+`func NewGoogleWorkspaceProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, delegatedSubject string, credentials map[string]interface{}, defaultGroupEmailDomain string, ) *GoogleWorkspaceProvider`
 
 NewGoogleWorkspaceProvider instantiates a new GoogleWorkspaceProvider object
 This constructor will assign default values to properties that have it defined,
@@ -275,34 +275,24 @@ SetDelegatedSubject sets DelegatedSubject field to given value.
 
 ### GetCredentials
 
-`func (o *GoogleWorkspaceProvider) GetCredentials() interface{}`
+`func (o *GoogleWorkspaceProvider) GetCredentials() map[string]interface{}`
 
 GetCredentials returns the Credentials field if non-nil, zero value otherwise.
 
 ### GetCredentialsOk
 
-`func (o *GoogleWorkspaceProvider) GetCredentialsOk() (*interface{}, bool)`
+`func (o *GoogleWorkspaceProvider) GetCredentialsOk() (*map[string]interface{}, bool)`
 
 GetCredentialsOk returns a tuple with the Credentials field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCredentials
 
-`func (o *GoogleWorkspaceProvider) SetCredentials(v interface{})`
+`func (o *GoogleWorkspaceProvider) SetCredentials(v map[string]interface{})`
 
 SetCredentials sets Credentials field to given value.
 
 
-### SetCredentialsNil
-
-`func (o *GoogleWorkspaceProvider) SetCredentialsNil(b bool)`
-
- SetCredentialsNil sets the value for Credentials to be an explicit nil
-
-### UnsetCredentials
-`func (o *GoogleWorkspaceProvider) UnsetCredentials()`
-
-UnsetCredentials ensures that no value is present for Credentials, not even an explicit nil
 ### GetScopes
 
 `func (o *GoogleWorkspaceProvider) GetScopes() string`

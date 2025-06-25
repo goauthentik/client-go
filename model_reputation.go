@@ -18,13 +18,13 @@ import (
 
 // Reputation Reputation Serializer
 type Reputation struct {
-	Pk         *string     `json:"pk,omitempty"`
-	Identifier string      `json:"identifier"`
-	Ip         string      `json:"ip"`
-	IpGeoData  interface{} `json:"ip_geo_data,omitempty"`
-	IpAsnData  interface{} `json:"ip_asn_data,omitempty"`
-	Score      *int64      `json:"score,omitempty"`
-	Updated    time.Time   `json:"updated"`
+	Pk         *string                `json:"pk,omitempty"`
+	Identifier string                 `json:"identifier"`
+	Ip         string                 `json:"ip"`
+	IpGeoData  map[string]interface{} `json:"ip_geo_data,omitempty"`
+	IpAsnData  map[string]interface{} `json:"ip_asn_data,omitempty"`
+	Score      *int64                 `json:"score,omitempty"`
+	Updated    time.Time              `json:"updated"`
 }
 
 // NewReputation instantiates a new Reputation object
@@ -127,10 +127,10 @@ func (o *Reputation) SetIp(v string) {
 	o.Ip = v
 }
 
-// GetIpGeoData returns the IpGeoData field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Reputation) GetIpGeoData() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetIpGeoData returns the IpGeoData field value if set, zero value otherwise.
+func (o *Reputation) GetIpGeoData() map[string]interface{} {
+	if o == nil || o.IpGeoData == nil {
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.IpGeoData
@@ -138,12 +138,11 @@ func (o *Reputation) GetIpGeoData() interface{} {
 
 // GetIpGeoDataOk returns a tuple with the IpGeoData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Reputation) GetIpGeoDataOk() (*interface{}, bool) {
+func (o *Reputation) GetIpGeoDataOk() (map[string]interface{}, bool) {
 	if o == nil || o.IpGeoData == nil {
 		return nil, false
 	}
-	return &o.IpGeoData, true
+	return o.IpGeoData, true
 }
 
 // HasIpGeoData returns a boolean if a field has been set.
@@ -155,15 +154,15 @@ func (o *Reputation) HasIpGeoData() bool {
 	return false
 }
 
-// SetIpGeoData gets a reference to the given interface{} and assigns it to the IpGeoData field.
-func (o *Reputation) SetIpGeoData(v interface{}) {
+// SetIpGeoData gets a reference to the given map[string]interface{} and assigns it to the IpGeoData field.
+func (o *Reputation) SetIpGeoData(v map[string]interface{}) {
 	o.IpGeoData = v
 }
 
-// GetIpAsnData returns the IpAsnData field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Reputation) GetIpAsnData() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetIpAsnData returns the IpAsnData field value if set, zero value otherwise.
+func (o *Reputation) GetIpAsnData() map[string]interface{} {
+	if o == nil || o.IpAsnData == nil {
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.IpAsnData
@@ -171,12 +170,11 @@ func (o *Reputation) GetIpAsnData() interface{} {
 
 // GetIpAsnDataOk returns a tuple with the IpAsnData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Reputation) GetIpAsnDataOk() (*interface{}, bool) {
+func (o *Reputation) GetIpAsnDataOk() (map[string]interface{}, bool) {
 	if o == nil || o.IpAsnData == nil {
 		return nil, false
 	}
-	return &o.IpAsnData, true
+	return o.IpAsnData, true
 }
 
 // HasIpAsnData returns a boolean if a field has been set.
@@ -188,8 +186,8 @@ func (o *Reputation) HasIpAsnData() bool {
 	return false
 }
 
-// SetIpAsnData gets a reference to the given interface{} and assigns it to the IpAsnData field.
-func (o *Reputation) SetIpAsnData(v interface{}) {
+// SetIpAsnData gets a reference to the given map[string]interface{} and assigns it to the IpAsnData field.
+func (o *Reputation) SetIpAsnData(v map[string]interface{}) {
 	o.IpAsnData = v
 }
 

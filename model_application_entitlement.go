@@ -17,10 +17,10 @@ import (
 
 // ApplicationEntitlement ApplicationEntitlement Serializer
 type ApplicationEntitlement struct {
-	PbmUuid    string      `json:"pbm_uuid"`
-	Name       string      `json:"name"`
-	App        string      `json:"app"`
-	Attributes interface{} `json:"attributes,omitempty"`
+	PbmUuid    string                 `json:"pbm_uuid"`
+	Name       string                 `json:"name"`
+	App        string                 `json:"app"`
+	Attributes map[string]interface{} `json:"attributes,omitempty"`
 }
 
 // NewApplicationEntitlement instantiates a new ApplicationEntitlement object
@@ -115,10 +115,10 @@ func (o *ApplicationEntitlement) SetApp(v string) {
 	o.App = v
 }
 
-// GetAttributes returns the Attributes field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ApplicationEntitlement) GetAttributes() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetAttributes returns the Attributes field value if set, zero value otherwise.
+func (o *ApplicationEntitlement) GetAttributes() map[string]interface{} {
+	if o == nil || o.Attributes == nil {
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Attributes
@@ -126,12 +126,11 @@ func (o *ApplicationEntitlement) GetAttributes() interface{} {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ApplicationEntitlement) GetAttributesOk() (*interface{}, bool) {
+func (o *ApplicationEntitlement) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
-	return &o.Attributes, true
+	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
@@ -143,8 +142,8 @@ func (o *ApplicationEntitlement) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given interface{} and assigns it to the Attributes field.
-func (o *ApplicationEntitlement) SetAttributes(v interface{}) {
+// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
+func (o *ApplicationEntitlement) SetAttributes(v map[string]interface{}) {
 	o.Attributes = v
 }
 

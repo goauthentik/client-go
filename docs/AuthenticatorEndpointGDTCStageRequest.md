@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
 **FriendlyName** | Pointer to **NullableString** |  | [optional] 
-**Credentials** | **interface{}** |  | 
+**Credentials** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewAuthenticatorEndpointGDTCStageRequest
 
-`func NewAuthenticatorEndpointGDTCStageRequest(name string, credentials interface{}, ) *AuthenticatorEndpointGDTCStageRequest`
+`func NewAuthenticatorEndpointGDTCStageRequest(name string, credentials map[string]interface{}, ) *AuthenticatorEndpointGDTCStageRequest`
 
 NewAuthenticatorEndpointGDTCStageRequest instantiates a new AuthenticatorEndpointGDTCStageRequest object
 This constructor will assign default values to properties that have it defined,
@@ -146,34 +146,24 @@ HasFriendlyName returns a boolean if a field has been set.
 UnsetFriendlyName ensures that no value is present for FriendlyName, not even an explicit nil
 ### GetCredentials
 
-`func (o *AuthenticatorEndpointGDTCStageRequest) GetCredentials() interface{}`
+`func (o *AuthenticatorEndpointGDTCStageRequest) GetCredentials() map[string]interface{}`
 
 GetCredentials returns the Credentials field if non-nil, zero value otherwise.
 
 ### GetCredentialsOk
 
-`func (o *AuthenticatorEndpointGDTCStageRequest) GetCredentialsOk() (*interface{}, bool)`
+`func (o *AuthenticatorEndpointGDTCStageRequest) GetCredentialsOk() (*map[string]interface{}, bool)`
 
 GetCredentialsOk returns a tuple with the Credentials field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCredentials
 
-`func (o *AuthenticatorEndpointGDTCStageRequest) SetCredentials(v interface{})`
+`func (o *AuthenticatorEndpointGDTCStageRequest) SetCredentials(v map[string]interface{})`
 
 SetCredentials sets Credentials field to given value.
 
 
-### SetCredentialsNil
-
-`func (o *AuthenticatorEndpointGDTCStageRequest) SetCredentialsNil(b bool)`
-
- SetCredentialsNil sets the value for Credentials to be an explicit nil
-
-### UnsetCredentials
-`func (o *AuthenticatorEndpointGDTCStageRequest) UnsetCredentials()`
-
-UnsetCredentials ensures that no value is present for Credentials, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **User** | **int32** |  | 
 **UserObj** | [**GroupMember**](GroupMember.md) |  | [readonly] 
 **Source** | **string** |  | 
-**Attributes** | Pointer to **interface{}** |  | [optional] 
+**Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -111,20 +111,20 @@ SetSource sets Source field to given value.
 
 ### GetAttributes
 
-`func (o *SCIMSourceUser) GetAttributes() interface{}`
+`func (o *SCIMSourceUser) GetAttributes() map[string]interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *SCIMSourceUser) GetAttributesOk() (*interface{}, bool)`
+`func (o *SCIMSourceUser) GetAttributesOk() (*map[string]interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *SCIMSourceUser) SetAttributes(v interface{})`
+`func (o *SCIMSourceUser) SetAttributes(v map[string]interface{})`
 
 SetAttributes sets Attributes field to given value.
 
@@ -134,16 +134,6 @@ SetAttributes sets Attributes field to given value.
 
 HasAttributes returns a boolean if a field has been set.
 
-### SetAttributesNil
-
-`func (o *SCIMSourceUser) SetAttributesNil(b bool)`
-
- SetAttributesNil sets the value for Attributes to be an explicit nil
-
-### UnsetAttributes
-`func (o *SCIMSourceUser) UnsetAttributes()`
-
-UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

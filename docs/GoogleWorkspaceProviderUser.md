@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **User** | **int32** |  | 
 **UserObj** | [**GroupMember**](GroupMember.md) |  | [readonly] 
 **Provider** | **int32** |  | 
-**Attributes** | **interface{}** |  | [readonly] 
+**Attributes** | **map[string]interface{}** |  | [readonly] 
 
 ## Methods
 
 ### NewGoogleWorkspaceProviderUser
 
-`func NewGoogleWorkspaceProviderUser(id string, googleId string, user int32, userObj GroupMember, provider int32, attributes interface{}, ) *GoogleWorkspaceProviderUser`
+`func NewGoogleWorkspaceProviderUser(id string, googleId string, user int32, userObj GroupMember, provider int32, attributes map[string]interface{}, ) *GoogleWorkspaceProviderUser`
 
 NewGoogleWorkspaceProviderUser instantiates a new GoogleWorkspaceProviderUser object
 This constructor will assign default values to properties that have it defined,
@@ -132,34 +132,24 @@ SetProvider sets Provider field to given value.
 
 ### GetAttributes
 
-`func (o *GoogleWorkspaceProviderUser) GetAttributes() interface{}`
+`func (o *GoogleWorkspaceProviderUser) GetAttributes() map[string]interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *GoogleWorkspaceProviderUser) GetAttributesOk() (*interface{}, bool)`
+`func (o *GoogleWorkspaceProviderUser) GetAttributesOk() (*map[string]interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *GoogleWorkspaceProviderUser) SetAttributes(v interface{})`
+`func (o *GoogleWorkspaceProviderUser) SetAttributes(v map[string]interface{})`
 
 SetAttributes sets Attributes field to given value.
 
 
-### SetAttributesNil
-
-`func (o *GoogleWorkspaceProviderUser) SetAttributesNil(b bool)`
-
- SetAttributesNil sets the value for Attributes to be an explicit nil
-
-### UnsetAttributes
-`func (o *GoogleWorkspaceProviderUser) UnsetAttributes()`
-
-UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

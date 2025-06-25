@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | Pointer to **string** | Flow used when authorizing this provider. | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
-**Settings** | Pointer to **interface{}** |  | [optional] 
+**Settings** | Pointer to **map[string]interface{}** |  | [optional] 
 **ConnectionExpiry** | Pointer to **string** | Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] 
 **DeleteTokenOnDisconnect** | Pointer to **bool** | When set to true, connection tokens will be deleted upon disconnect. | [optional] 
 
@@ -143,20 +143,20 @@ HasPropertyMappings returns a boolean if a field has been set.
 
 ### GetSettings
 
-`func (o *PatchedRACProviderRequest) GetSettings() interface{}`
+`func (o *PatchedRACProviderRequest) GetSettings() map[string]interface{}`
 
 GetSettings returns the Settings field if non-nil, zero value otherwise.
 
 ### GetSettingsOk
 
-`func (o *PatchedRACProviderRequest) GetSettingsOk() (*interface{}, bool)`
+`func (o *PatchedRACProviderRequest) GetSettingsOk() (*map[string]interface{}, bool)`
 
 GetSettingsOk returns a tuple with the Settings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSettings
 
-`func (o *PatchedRACProviderRequest) SetSettings(v interface{})`
+`func (o *PatchedRACProviderRequest) SetSettings(v map[string]interface{})`
 
 SetSettings sets Settings field to given value.
 
@@ -166,16 +166,6 @@ SetSettings sets Settings field to given value.
 
 HasSettings returns a boolean if a field has been set.
 
-### SetSettingsNil
-
-`func (o *PatchedRACProviderRequest) SetSettingsNil(b bool)`
-
- SetSettingsNil sets the value for Settings to be an explicit nil
-
-### UnsetSettings
-`func (o *PatchedRACProviderRequest) UnsetSettings()`
-
-UnsetSettings ensures that no value is present for Settings, not even an explicit nil
 ### GetConnectionExpiry
 
 `func (o *PatchedRACProviderRequest) GetConnectionExpiry() string`

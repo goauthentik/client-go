@@ -21,9 +21,9 @@ type PatchedRACProviderRequest struct {
 	// Flow used for authentication when the associated application is accessed by an un-authenticated user.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow *string     `json:"authorization_flow,omitempty"`
-	PropertyMappings  []string    `json:"property_mappings,omitempty"`
-	Settings          interface{} `json:"settings,omitempty"`
+	AuthorizationFlow *string                `json:"authorization_flow,omitempty"`
+	PropertyMappings  []string               `json:"property_mappings,omitempty"`
+	Settings          map[string]interface{} `json:"settings,omitempty"`
 	// Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)
 	ConnectionExpiry *string `json:"connection_expiry,omitempty"`
 	// When set to true, connection tokens will be deleted upon disconnect.
@@ -186,10 +186,10 @@ func (o *PatchedRACProviderRequest) SetPropertyMappings(v []string) {
 	o.PropertyMappings = v
 }
 
-// GetSettings returns the Settings field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PatchedRACProviderRequest) GetSettings() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetSettings returns the Settings field value if set, zero value otherwise.
+func (o *PatchedRACProviderRequest) GetSettings() map[string]interface{} {
+	if o == nil || o.Settings == nil {
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Settings
@@ -197,12 +197,11 @@ func (o *PatchedRACProviderRequest) GetSettings() interface{} {
 
 // GetSettingsOk returns a tuple with the Settings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PatchedRACProviderRequest) GetSettingsOk() (*interface{}, bool) {
+func (o *PatchedRACProviderRequest) GetSettingsOk() (map[string]interface{}, bool) {
 	if o == nil || o.Settings == nil {
 		return nil, false
 	}
-	return &o.Settings, true
+	return o.Settings, true
 }
 
 // HasSettings returns a boolean if a field has been set.
@@ -214,8 +213,8 @@ func (o *PatchedRACProviderRequest) HasSettings() bool {
 	return false
 }
 
-// SetSettings gets a reference to the given interface{} and assigns it to the Settings field.
-func (o *PatchedRACProviderRequest) SetSettings(v interface{}) {
+// SetSettings gets a reference to the given map[string]interface{} and assigns it to the Settings field.
+func (o *PatchedRACProviderRequest) SetSettings(v map[string]interface{}) {
 	o.Settings = v
 }
 

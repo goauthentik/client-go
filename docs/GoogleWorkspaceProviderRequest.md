@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **PropertyMappingsGroup** | Pointer to **[]string** | Property mappings used for group creation/updating. | [optional] 
 **DelegatedSubject** | **string** |  | 
-**Credentials** | **interface{}** |  | 
+**Credentials** | **map[string]interface{}** |  | 
 **Scopes** | Pointer to **string** |  | [optional] 
 **ExcludeUsersServiceAccount** | Pointer to **bool** |  | [optional] 
 **FilterGroup** | Pointer to **NullableString** |  | [optional] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewGoogleWorkspaceProviderRequest
 
-`func NewGoogleWorkspaceProviderRequest(name string, delegatedSubject string, credentials interface{}, defaultGroupEmailDomain string, ) *GoogleWorkspaceProviderRequest`
+`func NewGoogleWorkspaceProviderRequest(name string, delegatedSubject string, credentials map[string]interface{}, defaultGroupEmailDomain string, ) *GoogleWorkspaceProviderRequest`
 
 NewGoogleWorkspaceProviderRequest instantiates a new GoogleWorkspaceProviderRequest object
 This constructor will assign default values to properties that have it defined,
@@ -128,34 +128,24 @@ SetDelegatedSubject sets DelegatedSubject field to given value.
 
 ### GetCredentials
 
-`func (o *GoogleWorkspaceProviderRequest) GetCredentials() interface{}`
+`func (o *GoogleWorkspaceProviderRequest) GetCredentials() map[string]interface{}`
 
 GetCredentials returns the Credentials field if non-nil, zero value otherwise.
 
 ### GetCredentialsOk
 
-`func (o *GoogleWorkspaceProviderRequest) GetCredentialsOk() (*interface{}, bool)`
+`func (o *GoogleWorkspaceProviderRequest) GetCredentialsOk() (*map[string]interface{}, bool)`
 
 GetCredentialsOk returns a tuple with the Credentials field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCredentials
 
-`func (o *GoogleWorkspaceProviderRequest) SetCredentials(v interface{})`
+`func (o *GoogleWorkspaceProviderRequest) SetCredentials(v map[string]interface{})`
 
 SetCredentials sets Credentials field to given value.
 
 
-### SetCredentialsNil
-
-`func (o *GoogleWorkspaceProviderRequest) SetCredentialsNil(b bool)`
-
- SetCredentialsNil sets the value for Credentials to be an explicit nil
-
-### UnsetCredentials
-`func (o *GoogleWorkspaceProviderRequest) UnsetCredentials()`
-
-UnsetCredentials ensures that no value is present for Credentials, not even an explicit nil
 ### GetScopes
 
 `func (o *GoogleWorkspaceProviderRequest) GetScopes() string`
