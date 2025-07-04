@@ -24062,6 +24062,7 @@ type ApiStagesUserLoginListRequest struct {
 	ordering               *string
 	page                   *int32
 	pageSize               *int32
+	rememberDevice         *string
 	rememberMeOffset       *string
 	search                 *string
 	sessionDuration        *string
@@ -24101,6 +24102,11 @@ func (r ApiStagesUserLoginListRequest) Page(page int32) ApiStagesUserLoginListRe
 // Number of results to return per page.
 func (r ApiStagesUserLoginListRequest) PageSize(pageSize int32) ApiStagesUserLoginListRequest {
 	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiStagesUserLoginListRequest) RememberDevice(rememberDevice string) ApiStagesUserLoginListRequest {
+	r.rememberDevice = &rememberDevice
 	return r
 }
 
@@ -24188,6 +24194,9 @@ func (a *StagesApiService) StagesUserLoginListExecute(r ApiStagesUserLoginListRe
 	}
 	if r.pageSize != nil {
 		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.rememberDevice != nil {
+		localVarQueryParams.Add("remember_device", parameterToString(*r.rememberDevice, ""))
 	}
 	if r.rememberMeOffset != nil {
 		localVarQueryParams.Add("remember_me_offset", parameterToString(*r.rememberMeOffset, ""))

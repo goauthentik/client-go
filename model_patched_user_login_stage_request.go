@@ -29,6 +29,8 @@ type PatchedUserLoginStageRequest struct {
 	NetworkBinding *NetworkBindingEnum `json:"network_binding,omitempty"`
 	// Bind sessions created by this stage to the configured GeoIP location
 	GeoipBinding *GeoipBindingEnum `json:"geoip_binding,omitempty"`
+	// When set to a non-zero value, authentik will save a cookie with a longer expiry,to remember the device the user is logging in from. (Format: hours=-1;minutes=-2;seconds=-3)
+	RememberDevice *string `json:"remember_device,omitempty"`
 }
 
 // NewPatchedUserLoginStageRequest instantiates a new PatchedUserLoginStageRequest object
@@ -272,6 +274,38 @@ func (o *PatchedUserLoginStageRequest) SetGeoipBinding(v GeoipBindingEnum) {
 	o.GeoipBinding = &v
 }
 
+// GetRememberDevice returns the RememberDevice field value if set, zero value otherwise.
+func (o *PatchedUserLoginStageRequest) GetRememberDevice() string {
+	if o == nil || o.RememberDevice == nil {
+		var ret string
+		return ret
+	}
+	return *o.RememberDevice
+}
+
+// GetRememberDeviceOk returns a tuple with the RememberDevice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedUserLoginStageRequest) GetRememberDeviceOk() (*string, bool) {
+	if o == nil || o.RememberDevice == nil {
+		return nil, false
+	}
+	return o.RememberDevice, true
+}
+
+// HasRememberDevice returns a boolean if a field has been set.
+func (o *PatchedUserLoginStageRequest) HasRememberDevice() bool {
+	if o != nil && o.RememberDevice != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRememberDevice gets a reference to the given string and assigns it to the RememberDevice field.
+func (o *PatchedUserLoginStageRequest) SetRememberDevice(v string) {
+	o.RememberDevice = &v
+}
+
 func (o PatchedUserLoginStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -294,6 +328,9 @@ func (o PatchedUserLoginStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.GeoipBinding != nil {
 		toSerialize["geoip_binding"] = o.GeoipBinding
+	}
+	if o.RememberDevice != nil {
+		toSerialize["remember_device"] = o.RememberDevice
 	}
 	return json.Marshal(toSerialize)
 }

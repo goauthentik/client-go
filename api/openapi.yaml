@@ -44256,6 +44256,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: remember_device
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: remember_me_offset
         required: false
         schema:
@@ -66062,14 +66069,8 @@ components:
           key: ""
         results:
         - terminate_other_sessions: true
-          component: component
-          verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
-          meta_model_name: meta_model_name
           remember_me_offset: remember_me_offset
-          name: name
-          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          network_binding: ""
           flow_set:
           - policy_engine_mode: null
             compatibility_mode: true
@@ -66095,17 +66096,18 @@ components:
             designation: ""
             title: title
             slug: slug
-          geoip_binding: ""
           session_duration: session_duration
+          component: component
+          verbose_name: verbose_name
+          meta_model_name: meta_model_name
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          network_binding: ""
+          remember_device: remember_device
+          geoip_binding: ""
         - terminate_other_sessions: true
-          component: component
-          verbose_name: verbose_name
           verbose_name_plural: verbose_name_plural
-          meta_model_name: meta_model_name
           remember_me_offset: remember_me_offset
-          name: name
-          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          network_binding: ""
           flow_set:
           - policy_engine_mode: null
             compatibility_mode: true
@@ -66131,8 +66133,15 @@ components:
             designation: ""
             title: title
             slug: slug
-          geoip_binding: ""
           session_duration: session_duration
+          component: component
+          verbose_name: verbose_name
+          meta_model_name: meta_model_name
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          network_binding: ""
+          remember_device: remember_device
+          geoip_binding: ""
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -71590,6 +71599,7 @@ components:
         remember_me_offset: remember_me_offset
         name: name
         network_binding: ""
+        remember_device: remember_device
         flow_set:
         - policy_engine_mode: null
           compatibility_mode: true
@@ -71640,6 +71650,12 @@ components:
           - $ref: '#/components/schemas/GeoipBindingEnum'
           description: Bind sessions created by this stage to the configured GeoIP
             location
+        remember_device:
+          description: "When set to a non-zero value, authentik will save a cookie\
+            \ with a longer expiry,to remember the device the user is logging in from.\
+            \ (Format: hours=-1;minutes=-2;seconds=-3)"
+          minLength: 1
+          type: string
       type: object
     PatchedUserLogoutStageRequest:
       description: UserLogoutStage Serializer
@@ -79074,14 +79090,8 @@ components:
       description: UserLoginStage Serializer
       example:
         terminate_other_sessions: true
-        component: component
-        verbose_name: verbose_name
         verbose_name_plural: verbose_name_plural
-        meta_model_name: meta_model_name
         remember_me_offset: remember_me_offset
-        name: name
-        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        network_binding: ""
         flow_set:
         - policy_engine_mode: null
           compatibility_mode: true
@@ -79107,8 +79117,15 @@ components:
           designation: ""
           title: title
           slug: slug
-        geoip_binding: ""
         session_duration: session_duration
+        component: component
+        verbose_name: verbose_name
+        meta_model_name: meta_model_name
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        network_binding: ""
+        remember_device: remember_device
+        geoip_binding: ""
       properties:
         pk:
           format: uuid
@@ -79158,6 +79175,11 @@ components:
           - $ref: '#/components/schemas/GeoipBindingEnum'
           description: Bind sessions created by this stage to the configured GeoIP
             location
+        remember_device:
+          description: "When set to a non-zero value, authentik will save a cookie\
+            \ with a longer expiry,to remember the device the user is logging in from.\
+            \ (Format: hours=-1;minutes=-2;seconds=-3)"
+          type: string
       required:
       - component
       - meta_model_name
@@ -79173,6 +79195,7 @@ components:
         remember_me_offset: remember_me_offset
         name: name
         network_binding: ""
+        remember_device: remember_device
         flow_set:
         - policy_engine_mode: null
           compatibility_mode: true
@@ -79223,6 +79246,12 @@ components:
           - $ref: '#/components/schemas/GeoipBindingEnum'
           description: Bind sessions created by this stage to the configured GeoIP
             location
+        remember_device:
+          description: "When set to a non-zero value, authentik will save a cookie\
+            \ with a longer expiry,to remember the device the user is logging in from.\
+            \ (Format: hours=-1;minutes=-2;seconds=-3)"
+          minLength: 1
+          type: string
       required:
       - name
       type: object

@@ -12748,7 +12748,7 @@ Name | Type | Description  | Notes
 
 ## StagesUserLoginList
 
-> PaginatedUserLoginStageList StagesUserLoginList(ctx).GeoipBinding(geoipBinding).Name(name).NetworkBinding(networkBinding).Ordering(ordering).Page(page).PageSize(pageSize).RememberMeOffset(rememberMeOffset).Search(search).SessionDuration(sessionDuration).StageUuid(stageUuid).TerminateOtherSessions(terminateOtherSessions).Execute()
+> PaginatedUserLoginStageList StagesUserLoginList(ctx).GeoipBinding(geoipBinding).Name(name).NetworkBinding(networkBinding).Ordering(ordering).Page(page).PageSize(pageSize).RememberDevice(rememberDevice).RememberMeOffset(rememberMeOffset).Search(search).SessionDuration(sessionDuration).StageUuid(stageUuid).TerminateOtherSessions(terminateOtherSessions).Execute()
 
 
 
@@ -12773,6 +12773,7 @@ func main() {
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    rememberDevice := "rememberDevice_example" // string |  (optional)
     rememberMeOffset := "rememberMeOffset_example" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     sessionDuration := "sessionDuration_example" // string |  (optional)
@@ -12781,7 +12782,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StagesApi.StagesUserLoginList(context.Background()).GeoipBinding(geoipBinding).Name(name).NetworkBinding(networkBinding).Ordering(ordering).Page(page).PageSize(pageSize).RememberMeOffset(rememberMeOffset).Search(search).SessionDuration(sessionDuration).StageUuid(stageUuid).TerminateOtherSessions(terminateOtherSessions).Execute()
+    resp, r, err := apiClient.StagesApi.StagesUserLoginList(context.Background()).GeoipBinding(geoipBinding).Name(name).NetworkBinding(networkBinding).Ordering(ordering).Page(page).PageSize(pageSize).RememberDevice(rememberDevice).RememberMeOffset(rememberMeOffset).Search(search).SessionDuration(sessionDuration).StageUuid(stageUuid).TerminateOtherSessions(terminateOtherSessions).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StagesApi.StagesUserLoginList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -12808,6 +12809,7 @@ Name | Type | Description  | Notes
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
+ **rememberDevice** | **string** |  | 
  **rememberMeOffset** | **string** |  | 
  **search** | **string** | A search term. | 
  **sessionDuration** | **string** |  | 
