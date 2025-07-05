@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeviceClass** | **string** |  | 
+**DeviceClass** | [**DeviceClassesEnum**](DeviceClassesEnum.md) |  | 
 **DeviceUid** | **string** |  | 
 **Challenge** | **map[string]interface{}** |  | 
 **LastUsed** | **NullableTime** |  | 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewDeviceChallengeRequest
 
-`func NewDeviceChallengeRequest(deviceClass string, deviceUid string, challenge map[string]interface{}, lastUsed NullableTime, ) *DeviceChallengeRequest`
+`func NewDeviceChallengeRequest(deviceClass DeviceClassesEnum, deviceUid string, challenge map[string]interface{}, lastUsed NullableTime, ) *DeviceChallengeRequest`
 
 NewDeviceChallengeRequest instantiates a new DeviceChallengeRequest object
 This constructor will assign default values to properties that have it defined,
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDeviceClass
 
-`func (o *DeviceChallengeRequest) GetDeviceClass() string`
+`func (o *DeviceChallengeRequest) GetDeviceClass() DeviceClassesEnum`
 
 GetDeviceClass returns the DeviceClass field if non-nil, zero value otherwise.
 
 ### GetDeviceClassOk
 
-`func (o *DeviceChallengeRequest) GetDeviceClassOk() (*string, bool)`
+`func (o *DeviceChallengeRequest) GetDeviceClassOk() (*DeviceClassesEnum, bool)`
 
 GetDeviceClassOk returns a tuple with the DeviceClass field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeviceClass
 
-`func (o *DeviceChallengeRequest) SetDeviceClass(v string)`
+`func (o *DeviceChallengeRequest) SetDeviceClass(v DeviceClassesEnum)`
 
 SetDeviceClass sets DeviceClass field to given value.
 

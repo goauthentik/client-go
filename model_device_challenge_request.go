@@ -18,7 +18,7 @@ import (
 
 // DeviceChallengeRequest Single device challenge
 type DeviceChallengeRequest struct {
-	DeviceClass string                 `json:"device_class"`
+	DeviceClass DeviceClassesEnum      `json:"device_class"`
 	DeviceUid   string                 `json:"device_uid"`
 	Challenge   map[string]interface{} `json:"challenge"`
 	LastUsed    NullableTime           `json:"last_used"`
@@ -28,7 +28,7 @@ type DeviceChallengeRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceChallengeRequest(deviceClass string, deviceUid string, challenge map[string]interface{}, lastUsed NullableTime) *DeviceChallengeRequest {
+func NewDeviceChallengeRequest(deviceClass DeviceClassesEnum, deviceUid string, challenge map[string]interface{}, lastUsed NullableTime) *DeviceChallengeRequest {
 	this := DeviceChallengeRequest{}
 	this.DeviceClass = deviceClass
 	this.DeviceUid = deviceUid
@@ -46,9 +46,9 @@ func NewDeviceChallengeRequestWithDefaults() *DeviceChallengeRequest {
 }
 
 // GetDeviceClass returns the DeviceClass field value
-func (o *DeviceChallengeRequest) GetDeviceClass() string {
+func (o *DeviceChallengeRequest) GetDeviceClass() DeviceClassesEnum {
 	if o == nil {
-		var ret string
+		var ret DeviceClassesEnum
 		return ret
 	}
 
@@ -57,7 +57,7 @@ func (o *DeviceChallengeRequest) GetDeviceClass() string {
 
 // GetDeviceClassOk returns a tuple with the DeviceClass field value
 // and a boolean to check if the value has been set.
-func (o *DeviceChallengeRequest) GetDeviceClassOk() (*string, bool) {
+func (o *DeviceChallengeRequest) GetDeviceClassOk() (*DeviceClassesEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *DeviceChallengeRequest) GetDeviceClassOk() (*string, bool) {
 }
 
 // SetDeviceClass sets field value
-func (o *DeviceChallengeRequest) SetDeviceClass(v string) {
+func (o *DeviceChallengeRequest) SetDeviceClass(v DeviceClassesEnum) {
 	o.DeviceClass = v
 }
 
