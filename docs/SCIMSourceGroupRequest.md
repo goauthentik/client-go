@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
+**ExternalId** | **string** |  | 
 **Group** | **string** |  | 
 **Source** | **string** |  | 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -13,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewSCIMSourceGroupRequest
 
-`func NewSCIMSourceGroupRequest(id string, group string, source string, ) *SCIMSourceGroupRequest`
+`func NewSCIMSourceGroupRequest(id string, externalId string, group string, source string, ) *SCIMSourceGroupRequest`
 
 NewSCIMSourceGroupRequest instantiates a new SCIMSourceGroupRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,6 +47,26 @@ and a boolean to check if the value has been set.
 `func (o *SCIMSourceGroupRequest) SetId(v string)`
 
 SetId sets Id field to given value.
+
+
+### GetExternalId
+
+`func (o *SCIMSourceGroupRequest) GetExternalId() string`
+
+GetExternalId returns the ExternalId field if non-nil, zero value otherwise.
+
+### GetExternalIdOk
+
+`func (o *SCIMSourceGroupRequest) GetExternalIdOk() (*string, bool)`
+
+GetExternalIdOk returns a tuple with the ExternalId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalId
+
+`func (o *SCIMSourceGroupRequest) SetExternalId(v string)`
+
+SetExternalId sets ExternalId field to given value.
 
 
 ### GetGroup

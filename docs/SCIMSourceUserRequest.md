@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
+**ExternalId** | **string** |  | 
 **User** | **int32** |  | 
 **Source** | **string** |  | 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -13,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewSCIMSourceUserRequest
 
-`func NewSCIMSourceUserRequest(id string, user int32, source string, ) *SCIMSourceUserRequest`
+`func NewSCIMSourceUserRequest(id string, externalId string, user int32, source string, ) *SCIMSourceUserRequest`
 
 NewSCIMSourceUserRequest instantiates a new SCIMSourceUserRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,6 +47,26 @@ and a boolean to check if the value has been set.
 `func (o *SCIMSourceUserRequest) SetId(v string)`
 
 SetId sets Id field to given value.
+
+
+### GetExternalId
+
+`func (o *SCIMSourceUserRequest) GetExternalId() string`
+
+GetExternalId returns the ExternalId field if non-nil, zero value otherwise.
+
+### GetExternalIdOk
+
+`func (o *SCIMSourceUserRequest) GetExternalIdOk() (*string, bool)`
+
+GetExternalIdOk returns a tuple with the ExternalId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalId
+
+`func (o *SCIMSourceUserRequest) SetExternalId(v string)`
+
+SetExternalId sets ExternalId field to given value.
 
 
 ### GetUser

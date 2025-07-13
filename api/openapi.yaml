@@ -64358,12 +64358,14 @@ components:
           key: ""
         results:
         - group_obj: ""
+          external_id: external_id
           attributes:
             key: ""
           id: id
           source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - group_obj: ""
+          external_id: external_id
           attributes:
             key: ""
           id: id
@@ -64506,12 +64508,14 @@ components:
           key: ""
         results:
         - user_obj: ""
+          external_id: external_id
           attributes:
             key: ""
           id: id
           source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user: 0
         - user_obj: ""
+          external_id: external_id
           attributes:
             key: ""
           id: id
@@ -71147,6 +71151,7 @@ components:
     PatchedSCIMSourceGroupRequest:
       description: SCIMSourceGroup Serializer
       example:
+        external_id: external_id
         attributes:
           key: ""
         id: id
@@ -71154,6 +71159,9 @@ components:
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         id:
+          minLength: 1
+          type: string
+        external_id:
           minLength: 1
           type: string
         group:
@@ -71232,6 +71240,7 @@ components:
     PatchedSCIMSourceUserRequest:
       description: SCIMSourceUser Serializer
       example:
+        external_id: external_id
         attributes:
           key: ""
         id: id
@@ -71239,6 +71248,9 @@ components:
         user: 0
       properties:
         id:
+          minLength: 1
+          type: string
+        external_id:
           minLength: 1
           type: string
         user:
@@ -76100,6 +76112,7 @@ components:
       description: SCIMSourceGroup Serializer
       example:
         group_obj: ""
+        external_id: external_id
         attributes:
           key: ""
         id: id
@@ -76107,6 +76120,8 @@ components:
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         id:
+          type: string
+        external_id:
           type: string
         group:
           format: uuid
@@ -76122,6 +76137,7 @@ components:
           additionalProperties: {}
           type: object
       required:
+      - external_id
       - group
       - group_obj
       - id
@@ -76130,6 +76146,7 @@ components:
     SCIMSourceGroupRequest:
       description: SCIMSourceGroup Serializer
       example:
+        external_id: external_id
         attributes:
           key: ""
         id: id
@@ -76137,6 +76154,9 @@ components:
         group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         id:
+          minLength: 1
+          type: string
+        external_id:
           minLength: 1
           type: string
         group:
@@ -76149,6 +76169,7 @@ components:
           additionalProperties: {}
           type: object
       required:
+      - external_id
       - group
       - id
       - source
@@ -76280,6 +76301,7 @@ components:
       description: SCIMSourceUser Serializer
       example:
         user_obj: ""
+        external_id: external_id
         attributes:
           key: ""
         id: id
@@ -76287,6 +76309,8 @@ components:
         user: 0
       properties:
         id:
+          type: string
+        external_id:
           type: string
         user:
           type: integer
@@ -76301,6 +76325,7 @@ components:
           additionalProperties: {}
           type: object
       required:
+      - external_id
       - id
       - source
       - user
@@ -76309,6 +76334,7 @@ components:
     SCIMSourceUserRequest:
       description: SCIMSourceUser Serializer
       example:
+        external_id: external_id
         attributes:
           key: ""
         id: id
@@ -76316,6 +76342,9 @@ components:
         user: 0
       properties:
         id:
+          minLength: 1
+          type: string
+        external_id:
           minLength: 1
           type: string
         user:
@@ -76327,6 +76356,7 @@ components:
           additionalProperties: {}
           type: object
       required:
+      - external_id
       - id
       - source
       - user

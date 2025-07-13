@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
+**ExternalId** | **string** |  | 
 **Group** | **string** |  | 
 **GroupObj** | [**UserGroup**](UserGroup.md) |  | [readonly] 
 **Source** | **string** |  | 
@@ -14,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewSCIMSourceGroup
 
-`func NewSCIMSourceGroup(id string, group string, groupObj UserGroup, source string, ) *SCIMSourceGroup`
+`func NewSCIMSourceGroup(id string, externalId string, group string, groupObj UserGroup, source string, ) *SCIMSourceGroup`
 
 NewSCIMSourceGroup instantiates a new SCIMSourceGroup object
 This constructor will assign default values to properties that have it defined,
@@ -47,6 +48,26 @@ and a boolean to check if the value has been set.
 `func (o *SCIMSourceGroup) SetId(v string)`
 
 SetId sets Id field to given value.
+
+
+### GetExternalId
+
+`func (o *SCIMSourceGroup) GetExternalId() string`
+
+GetExternalId returns the ExternalId field if non-nil, zero value otherwise.
+
+### GetExternalIdOk
+
+`func (o *SCIMSourceGroup) GetExternalIdOk() (*string, bool)`
+
+GetExternalIdOk returns a tuple with the ExternalId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalId
+
+`func (o *SCIMSourceGroup) SetExternalId(v string)`
+
+SetExternalId sets ExternalId field to given value.
 
 
 ### GetGroup

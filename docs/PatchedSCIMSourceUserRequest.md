@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
+**ExternalId** | Pointer to **string** |  | [optional] 
 **User** | Pointer to **int32** |  | [optional] 
 **Source** | Pointer to **string** |  | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -52,6 +53,31 @@ SetId sets Id field to given value.
 `func (o *PatchedSCIMSourceUserRequest) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetExternalId
+
+`func (o *PatchedSCIMSourceUserRequest) GetExternalId() string`
+
+GetExternalId returns the ExternalId field if non-nil, zero value otherwise.
+
+### GetExternalIdOk
+
+`func (o *PatchedSCIMSourceUserRequest) GetExternalIdOk() (*string, bool)`
+
+GetExternalIdOk returns a tuple with the ExternalId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalId
+
+`func (o *PatchedSCIMSourceUserRequest) SetExternalId(v string)`
+
+SetExternalId sets ExternalId field to given value.
+
+### HasExternalId
+
+`func (o *PatchedSCIMSourceUserRequest) HasExternalId() bool`
+
+HasExternalId returns a boolean if a field has been set.
 
 ### GetUser
 

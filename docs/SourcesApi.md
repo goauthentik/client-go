@@ -6869,7 +6869,7 @@ import (
 )
 
 func main() {
-    sCIMSourceGroupRequest := *openapiclient.NewSCIMSourceGroupRequest("Id_example", "Group_example", "Source_example") // SCIMSourceGroupRequest | 
+    sCIMSourceGroupRequest := *openapiclient.NewSCIMSourceGroupRequest("Id_example", "ExternalId_example", "Group_example", "Source_example") // SCIMSourceGroupRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -7224,7 +7224,7 @@ import (
 
 func main() {
     id := "id_example" // string | A unique value identifying this scim source group.
-    sCIMSourceGroupRequest := *openapiclient.NewSCIMSourceGroupRequest("Id_example", "Group_example", "Source_example") // SCIMSourceGroupRequest | 
+    sCIMSourceGroupRequest := *openapiclient.NewSCIMSourceGroupRequest("Id_example", "ExternalId_example", "Group_example", "Source_example") // SCIMSourceGroupRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -7727,7 +7727,7 @@ import (
 )
 
 func main() {
-    sCIMSourceUserRequest := *openapiclient.NewSCIMSourceUserRequest("Id_example", int32(123), "Source_example") // SCIMSourceUserRequest | 
+    sCIMSourceUserRequest := *openapiclient.NewSCIMSourceUserRequest("Id_example", "ExternalId_example", int32(123), "Source_example") // SCIMSourceUserRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -8082,7 +8082,7 @@ import (
 
 func main() {
     id := "id_example" // string | A unique value identifying this scim source user.
-    sCIMSourceUserRequest := *openapiclient.NewSCIMSourceUserRequest("Id_example", int32(123), "Source_example") // SCIMSourceUserRequest | 
+    sCIMSourceUserRequest := *openapiclient.NewSCIMSourceUserRequest("Id_example", "ExternalId_example", int32(123), "Source_example") // SCIMSourceUserRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

@@ -18,6 +18,7 @@ import (
 // SCIMSourceUserRequest SCIMSourceUser Serializer
 type SCIMSourceUserRequest struct {
 	Id         string                 `json:"id"`
+	ExternalId string                 `json:"external_id"`
 	User       int32                  `json:"user"`
 	Source     string                 `json:"source"`
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
@@ -27,9 +28,10 @@ type SCIMSourceUserRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSCIMSourceUserRequest(id string, user int32, source string) *SCIMSourceUserRequest {
+func NewSCIMSourceUserRequest(id string, externalId string, user int32, source string) *SCIMSourceUserRequest {
 	this := SCIMSourceUserRequest{}
 	this.Id = id
+	this.ExternalId = externalId
 	this.User = user
 	this.Source = source
 	return &this
@@ -65,6 +67,30 @@ func (o *SCIMSourceUserRequest) GetIdOk() (*string, bool) {
 // SetId sets field value
 func (o *SCIMSourceUserRequest) SetId(v string) {
 	o.Id = v
+}
+
+// GetExternalId returns the ExternalId field value
+func (o *SCIMSourceUserRequest) GetExternalId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ExternalId
+}
+
+// GetExternalIdOk returns a tuple with the ExternalId field value
+// and a boolean to check if the value has been set.
+func (o *SCIMSourceUserRequest) GetExternalIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ExternalId, true
+}
+
+// SetExternalId sets field value
+func (o *SCIMSourceUserRequest) SetExternalId(v string) {
+	o.ExternalId = v
 }
 
 // GetUser returns the User field value
@@ -151,6 +177,9 @@ func (o SCIMSourceUserRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["external_id"] = o.ExternalId
 	}
 	if true {
 		toSerialize["user"] = o.User

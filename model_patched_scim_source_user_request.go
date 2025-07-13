@@ -18,6 +18,7 @@ import (
 // PatchedSCIMSourceUserRequest SCIMSourceUser Serializer
 type PatchedSCIMSourceUserRequest struct {
 	Id         *string                `json:"id,omitempty"`
+	ExternalId *string                `json:"external_id,omitempty"`
 	User       *int32                 `json:"user,omitempty"`
 	Source     *string                `json:"source,omitempty"`
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
@@ -70,6 +71,38 @@ func (o *PatchedSCIMSourceUserRequest) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *PatchedSCIMSourceUserRequest) SetId(v string) {
 	o.Id = &v
+}
+
+// GetExternalId returns the ExternalId field value if set, zero value otherwise.
+func (o *PatchedSCIMSourceUserRequest) GetExternalId() string {
+	if o == nil || o.ExternalId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ExternalId
+}
+
+// GetExternalIdOk returns a tuple with the ExternalId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedSCIMSourceUserRequest) GetExternalIdOk() (*string, bool) {
+	if o == nil || o.ExternalId == nil {
+		return nil, false
+	}
+	return o.ExternalId, true
+}
+
+// HasExternalId returns a boolean if a field has been set.
+func (o *PatchedSCIMSourceUserRequest) HasExternalId() bool {
+	if o != nil && o.ExternalId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalId gets a reference to the given string and assigns it to the ExternalId field.
+func (o *PatchedSCIMSourceUserRequest) SetExternalId(v string) {
+	o.ExternalId = &v
 }
 
 // GetUser returns the User field value if set, zero value otherwise.
@@ -172,6 +205,9 @@ func (o PatchedSCIMSourceUserRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
+	}
+	if o.ExternalId != nil {
+		toSerialize["external_id"] = o.ExternalId
 	}
 	if o.User != nil {
 		toSerialize["user"] = o.User
