@@ -17,7 +17,7 @@ import (
 
 // SCIMSourceUser SCIMSourceUser Serializer
 type SCIMSourceUser struct {
-	Id         string                 `json:"id"`
+	Id         *string                `json:"id,omitempty"`
 	ExternalId string                 `json:"external_id"`
 	User       int32                  `json:"user"`
 	UserObj    GroupMember            `json:"user_obj"`
@@ -29,9 +29,8 @@ type SCIMSourceUser struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSCIMSourceUser(id string, externalId string, user int32, userObj GroupMember, source string) *SCIMSourceUser {
+func NewSCIMSourceUser(externalId string, user int32, userObj GroupMember, source string) *SCIMSourceUser {
 	this := SCIMSourceUser{}
-	this.Id = id
 	this.ExternalId = externalId
 	this.User = user
 	this.UserObj = userObj
@@ -47,28 +46,36 @@ func NewSCIMSourceUserWithDefaults() *SCIMSourceUser {
 	return &this
 }
 
-// GetId returns the Id field value
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *SCIMSourceUser) GetId() string {
-	if o == nil {
+	if o == nil || o.Id == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Id
+	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SCIMSourceUser) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Id == nil {
 		return nil, false
 	}
-	return &o.Id, true
+	return o.Id, true
 }
 
-// SetId sets field value
+// HasId returns a boolean if a field has been set.
+func (o *SCIMSourceUser) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *SCIMSourceUser) SetId(v string) {
-	o.Id = v
+	o.Id = &v
 }
 
 // GetExternalId returns the ExternalId field value
@@ -201,7 +208,7 @@ func (o *SCIMSourceUser) SetAttributes(v map[string]interface{}) {
 
 func (o SCIMSourceUser) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
 	if true {

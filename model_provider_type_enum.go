@@ -23,6 +23,7 @@ type ProviderTypeEnum string
 const (
 	PROVIDERTYPEENUM_APPLE         ProviderTypeEnum = "apple"
 	PROVIDERTYPEENUM_OPENIDCONNECT ProviderTypeEnum = "openidconnect"
+	PROVIDERTYPEENUM_ENTRAID       ProviderTypeEnum = "entraid"
 	PROVIDERTYPEENUM_AZUREAD       ProviderTypeEnum = "azuread"
 	PROVIDERTYPEENUM_DISCORD       ProviderTypeEnum = "discord"
 	PROVIDERTYPEENUM_FACEBOOK      ProviderTypeEnum = "facebook"
@@ -41,6 +42,7 @@ const (
 var AllowedProviderTypeEnumEnumValues = []ProviderTypeEnum{
 	"apple",
 	"openidconnect",
+	"entraid",
 	"azuread",
 	"discord",
 	"facebook",

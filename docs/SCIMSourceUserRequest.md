@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
+**Id** | Pointer to **string** |  | [optional] 
 **ExternalId** | **string** |  | 
 **User** | **int32** |  | 
 **Source** | **string** |  | 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewSCIMSourceUserRequest
 
-`func NewSCIMSourceUserRequest(id string, externalId string, user int32, source string, ) *SCIMSourceUserRequest`
+`func NewSCIMSourceUserRequest(externalId string, user int32, source string, ) *SCIMSourceUserRequest`
 
 NewSCIMSourceUserRequest instantiates a new SCIMSourceUserRequest object
 This constructor will assign default values to properties that have it defined,
@@ -48,6 +48,11 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+### HasId
+
+`func (o *SCIMSourceUserRequest) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetExternalId
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
+**Id** | Pointer to **string** |  | [optional] 
 **ExternalId** | **string** |  | 
 **Group** | **string** |  | 
 **GroupObj** | [**UserGroup**](UserGroup.md) |  | [readonly] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewSCIMSourceGroup
 
-`func NewSCIMSourceGroup(id string, externalId string, group string, groupObj UserGroup, source string, ) *SCIMSourceGroup`
+`func NewSCIMSourceGroup(externalId string, group string, groupObj UserGroup, source string, ) *SCIMSourceGroup`
 
 NewSCIMSourceGroup instantiates a new SCIMSourceGroup object
 This constructor will assign default values to properties that have it defined,
@@ -49,6 +49,11 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+### HasId
+
+`func (o *SCIMSourceGroup) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetExternalId
 

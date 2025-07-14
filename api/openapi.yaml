@@ -73268,6 +73268,7 @@ components:
       enum:
       - apple
       - openidconnect
+      - entraid
       - azuread
       - discord
       - facebook
@@ -76140,7 +76141,6 @@ components:
       - external_id
       - group
       - group_obj
-      - id
       - source
       type: object
     SCIMSourceGroupRequest:
@@ -76171,7 +76171,6 @@ components:
       required:
       - external_id
       - group
-      - id
       - source
       type: object
     SCIMSourcePropertyMapping:
@@ -76326,7 +76325,6 @@ components:
           type: object
       required:
       - external_id
-      - id
       - source
       - user
       - user_obj
@@ -76357,7 +76355,6 @@ components:
           type: object
       required:
       - external_id
-      - id
       - source
       - user
       type: object
