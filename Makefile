@@ -24,6 +24,7 @@ build:
 		-c /local/config.yaml
 	rm -rf ./test
 	rm -f .travis.yml git_push.sh
+	git checkout -- go.mod go.sum
 	go get
 	go fmt .
 
