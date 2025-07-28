@@ -5,11 +5,15 @@
 
 * `TENANTS` (value: `"authentik.tenants"`)
 
+* `TASKS` (value: `"authentik.tasks"`)
+
 * `ADMIN` (value: `"authentik.admin"`)
 
 * `API` (value: `"authentik.api"`)
 
 * `CRYPTO` (value: `"authentik.crypto"`)
+
+* `EVENTS` (value: `"authentik.events"`)
 
 * `FLOWS` (value: `"authentik.flows"`)
 
@@ -105,6 +109,8 @@
 
 * `STAGES_USER_WRITE` (value: `"authentik.stages.user_write"`)
 
+* `TASKS_SCHEDULES` (value: `"authentik.tasks.schedules"`)
+
 * `BRANDS` (value: `"authentik.brands"`)
 
 * `BLUEPRINTS` (value: `"authentik.blueprints"`)
@@ -130,8 +136,6 @@
 * `ENTERPRISE_STAGES_MTLS` (value: `"authentik.enterprise.stages.mtls"`)
 
 * `ENTERPRISE_STAGES_SOURCE` (value: `"authentik.enterprise.stages.source"`)
-
-* `EVENTS` (value: `"authentik.events"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

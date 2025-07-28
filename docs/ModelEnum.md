@@ -7,6 +7,16 @@
 
 * `CRYPTO_CERTIFICATEKEYPAIR` (value: `"authentik_crypto.certificatekeypair"`)
 
+* `EVENTS_EVENT` (value: `"authentik_events.event"`)
+
+* `EVENTS_NOTIFICATIONTRANSPORT` (value: `"authentik_events.notificationtransport"`)
+
+* `EVENTS_NOTIFICATION` (value: `"authentik_events.notification"`)
+
+* `EVENTS_NOTIFICATIONRULE` (value: `"authentik_events.notificationrule"`)
+
+* `EVENTS_NOTIFICATIONWEBHOOKMAPPING` (value: `"authentik_events.notificationwebhookmapping"`)
+
 * `FLOWS_FLOW` (value: `"authentik_flows.flow"`)
 
 * `FLOWS_FLOWSTAGEBINDING` (value: `"authentik_flows.flowstagebinding"`)
@@ -167,6 +177,8 @@
 
 * `STAGES_USER_WRITE_USERWRITESTAGE` (value: `"authentik_stages_user_write.userwritestage"`)
 
+* `TASKS_SCHEDULES_SCHEDULE` (value: `"authentik_tasks_schedules.schedule"`)
+
 * `BRANDS_BRAND` (value: `"authentik_brands.brand"`)
 
 * `BLUEPRINTS_BLUEPRINTINSTANCE` (value: `"authentik_blueprints.blueprintinstance"`)
@@ -200,16 +212,6 @@
 * `STAGES_MTLS_MUTUALTLSSTAGE` (value: `"authentik_stages_mtls.mutualtlsstage"`)
 
 * `STAGES_SOURCE_SOURCESTAGE` (value: `"authentik_stages_source.sourcestage"`)
-
-* `EVENTS_EVENT` (value: `"authentik_events.event"`)
-
-* `EVENTS_NOTIFICATIONTRANSPORT` (value: `"authentik_events.notificationtransport"`)
-
-* `EVENTS_NOTIFICATION` (value: `"authentik_events.notification"`)
-
-* `EVENTS_NOTIFICATIONRULE` (value: `"authentik_events.notificationrule"`)
-
-* `EVENTS_NOTIFICATIONWEBHOOKMAPPING` (value: `"authentik_events.notificationwebhookmapping"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

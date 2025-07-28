@@ -47,7 +47,6 @@ Class | Method | HTTP request | Description
 *AdminApi* | [**AdminVersionHistoryList**](docs/AdminApi.md#adminversionhistorylist) | **Get** /admin/version/history/ | 
 *AdminApi* | [**AdminVersionHistoryRetrieve**](docs/AdminApi.md#adminversionhistoryretrieve) | **Get** /admin/version/history/{id}/ | 
 *AdminApi* | [**AdminVersionRetrieve**](docs/AdminApi.md#adminversionretrieve) | **Get** /admin/version/ | 
-*AdminApi* | [**AdminWorkersList**](docs/AdminApi.md#adminworkerslist) | **Get** /admin/workers/ | 
 *AuthenticatorsApi* | [**AuthenticatorsAdminAllList**](docs/AuthenticatorsApi.md#authenticatorsadminalllist) | **Get** /authenticators/admin/all/ | 
 *AuthenticatorsApi* | [**AuthenticatorsAdminDuoCreate**](docs/AuthenticatorsApi.md#authenticatorsadminduocreate) | **Post** /authenticators/admin/duo/ | 
 *AuthenticatorsApi* | [**AuthenticatorsAdminDuoDestroy**](docs/AuthenticatorsApi.md#authenticatorsadminduodestroy) | **Delete** /authenticators/admin/duo/{id}/ | 
@@ -241,9 +240,6 @@ Class | Method | HTTP request | Description
 *EventsApi* | [**EventsRulesRetrieve**](docs/EventsApi.md#eventsrulesretrieve) | **Get** /events/rules/{pbm_uuid}/ | 
 *EventsApi* | [**EventsRulesUpdate**](docs/EventsApi.md#eventsrulesupdate) | **Put** /events/rules/{pbm_uuid}/ | 
 *EventsApi* | [**EventsRulesUsedByList**](docs/EventsApi.md#eventsrulesusedbylist) | **Get** /events/rules/{pbm_uuid}/used_by/ | 
-*EventsApi* | [**EventsSystemTasksList**](docs/EventsApi.md#eventssystemtaskslist) | **Get** /events/system_tasks/ | 
-*EventsApi* | [**EventsSystemTasksRetrieve**](docs/EventsApi.md#eventssystemtasksretrieve) | **Get** /events/system_tasks/{uuid}/ | 
-*EventsApi* | [**EventsSystemTasksRunCreate**](docs/EventsApi.md#eventssystemtasksruncreate) | **Post** /events/system_tasks/{uuid}/run/ | 
 *EventsApi* | [**EventsTransportsCreate**](docs/EventsApi.md#eventstransportscreate) | **Post** /events/transports/ | 
 *EventsApi* | [**EventsTransportsDestroy**](docs/EventsApi.md#eventstransportsdestroy) | **Delete** /events/transports/{uuid}/ | 
 *EventsApi* | [**EventsTransportsList**](docs/EventsApi.md#eventstransportslist) | **Get** /events/transports/ | 
@@ -1025,6 +1021,15 @@ Class | Method | HTTP request | Description
 *StagesApi* | [**StagesUserWriteRetrieve**](docs/StagesApi.md#stagesuserwriteretrieve) | **Get** /stages/user_write/{stage_uuid}/ | 
 *StagesApi* | [**StagesUserWriteUpdate**](docs/StagesApi.md#stagesuserwriteupdate) | **Put** /stages/user_write/{stage_uuid}/ | 
 *StagesApi* | [**StagesUserWriteUsedByList**](docs/StagesApi.md#stagesuserwriteusedbylist) | **Get** /stages/user_write/{stage_uuid}/used_by/ | 
+*TasksApi* | [**TasksSchedulesList**](docs/TasksApi.md#tasksscheduleslist) | **Get** /tasks/schedules/ | 
+*TasksApi* | [**TasksSchedulesPartialUpdate**](docs/TasksApi.md#tasksschedulespartialupdate) | **Patch** /tasks/schedules/{id}/ | 
+*TasksApi* | [**TasksSchedulesRetrieve**](docs/TasksApi.md#tasksschedulesretrieve) | **Get** /tasks/schedules/{id}/ | 
+*TasksApi* | [**TasksSchedulesSendCreate**](docs/TasksApi.md#tasksschedulessendcreate) | **Post** /tasks/schedules/{id}/send/ | 
+*TasksApi* | [**TasksSchedulesUpdate**](docs/TasksApi.md#tasksschedulesupdate) | **Put** /tasks/schedules/{id}/ | 
+*TasksApi* | [**TasksTasksList**](docs/TasksApi.md#taskstaskslist) | **Get** /tasks/tasks/ | 
+*TasksApi* | [**TasksTasksRetrieve**](docs/TasksApi.md#taskstasksretrieve) | **Get** /tasks/tasks/{message_id}/ | 
+*TasksApi* | [**TasksTasksRetryCreate**](docs/TasksApi.md#taskstasksretrycreate) | **Post** /tasks/tasks/{message_id}/retry/ | 
+*TasksApi* | [**TasksWorkersList**](docs/TasksApi.md#tasksworkerslist) | **Get** /tasks/workers | 
 *TenantsApi* | [**TenantsDomainsCreate**](docs/TenantsApi.md#tenantsdomainscreate) | **Post** /tenants/domains/ | 
 *TenantsApi* | [**TenantsDomainsDestroy**](docs/TenantsApi.md#tenantsdomainsdestroy) | **Delete** /tenants/domains/{id}/ | 
 *TenantsApi* | [**TenantsDomainsList**](docs/TenantsApi.md#tenantsdomainslist) | **Get** /tenants/domains/ | 
@@ -1257,7 +1262,6 @@ Class | Method | HTTP request | Description
  - [KerberosSourcePropertyMapping](docs/KerberosSourcePropertyMapping.md)
  - [KerberosSourcePropertyMappingRequest](docs/KerberosSourcePropertyMappingRequest.md)
  - [KerberosSourceRequest](docs/KerberosSourceRequest.md)
- - [KerberosSyncStatus](docs/KerberosSyncStatus.md)
  - [KubernetesServiceConnection](docs/KubernetesServiceConnection.md)
  - [KubernetesServiceConnectionRequest](docs/KubernetesServiceConnectionRequest.md)
  - [LDAPAPIAccessMode](docs/LDAPAPIAccessMode.md)
@@ -1270,6 +1274,7 @@ Class | Method | HTTP request | Description
  - [LDAPSourcePropertyMapping](docs/LDAPSourcePropertyMapping.md)
  - [LDAPSourcePropertyMappingRequest](docs/LDAPSourcePropertyMappingRequest.md)
  - [LDAPSourceRequest](docs/LDAPSourceRequest.md)
+ - [LastTaskStatusEnum](docs/LastTaskStatusEnum.md)
  - [License](docs/License.md)
  - [LicenseFlagsEnum](docs/LicenseFlagsEnum.md)
  - [LicenseForecast](docs/LicenseForecast.md)
@@ -1438,14 +1443,15 @@ Class | Method | HTTP request | Description
  - [PaginatedSMSDeviceList](docs/PaginatedSMSDeviceList.md)
  - [PaginatedSSFProviderList](docs/PaginatedSSFProviderList.md)
  - [PaginatedSSFStreamList](docs/PaginatedSSFStreamList.md)
+ - [PaginatedScheduleList](docs/PaginatedScheduleList.md)
  - [PaginatedScopeMappingList](docs/PaginatedScopeMappingList.md)
  - [PaginatedServiceConnectionList](docs/PaginatedServiceConnectionList.md)
  - [PaginatedSourceList](docs/PaginatedSourceList.md)
  - [PaginatedSourceStageList](docs/PaginatedSourceStageList.md)
  - [PaginatedStageList](docs/PaginatedStageList.md)
  - [PaginatedStaticDeviceList](docs/PaginatedStaticDeviceList.md)
- - [PaginatedSystemTaskList](docs/PaginatedSystemTaskList.md)
  - [PaginatedTOTPDeviceList](docs/PaginatedTOTPDeviceList.md)
+ - [PaginatedTaskList](docs/PaginatedTaskList.md)
  - [PaginatedTenantList](docs/PaginatedTenantList.md)
  - [PaginatedTokenList](docs/PaginatedTokenList.md)
  - [PaginatedTokenModelList](docs/PaginatedTokenModelList.md)
@@ -1568,6 +1574,7 @@ Class | Method | HTTP request | Description
  - [PatchedSCIMSourceUserRequest](docs/PatchedSCIMSourceUserRequest.md)
  - [PatchedSMSDeviceRequest](docs/PatchedSMSDeviceRequest.md)
  - [PatchedSSFProviderRequest](docs/PatchedSSFProviderRequest.md)
+ - [PatchedScheduleRequest](docs/PatchedScheduleRequest.md)
  - [PatchedScopeMappingRequest](docs/PatchedScopeMappingRequest.md)
  - [PatchedSettingsRequest](docs/PatchedSettingsRequest.md)
  - [PatchedSourceStageRequest](docs/PatchedSourceStageRequest.md)
@@ -1682,6 +1689,8 @@ Class | Method | HTTP request | Description
  - [SSFProvider](docs/SSFProvider.md)
  - [SSFProviderRequest](docs/SSFProviderRequest.md)
  - [SSFStream](docs/SSFStream.md)
+ - [Schedule](docs/Schedule.md)
+ - [ScheduleRequest](docs/ScheduleRequest.md)
  - [ScopeMapping](docs/ScopeMapping.md)
  - [ScopeMappingRequest](docs/ScopeMappingRequest.md)
  - [SelectableStage](docs/SelectableStage.md)
@@ -1704,6 +1713,7 @@ Class | Method | HTTP request | Description
  - [Stage](docs/Stage.md)
  - [StagePrompt](docs/StagePrompt.md)
  - [StageRequest](docs/StageRequest.md)
+ - [StateEnum](docs/StateEnum.md)
  - [StaticDevice](docs/StaticDevice.md)
  - [StaticDeviceRequest](docs/StaticDeviceRequest.md)
  - [StaticDeviceToken](docs/StaticDeviceToken.md)
@@ -1715,10 +1725,10 @@ Class | Method | HTTP request | Description
  - [SyncStatus](docs/SyncStatus.md)
  - [SystemInfo](docs/SystemInfo.md)
  - [SystemInfoRuntime](docs/SystemInfoRuntime.md)
- - [SystemTask](docs/SystemTask.md)
- - [SystemTaskStatusEnum](docs/SystemTaskStatusEnum.md)
  - [TOTPDevice](docs/TOTPDevice.md)
  - [TOTPDeviceRequest](docs/TOTPDeviceRequest.md)
+ - [Task](docs/Task.md)
+ - [TaskAggregatedStatusEnum](docs/TaskAggregatedStatusEnum.md)
  - [Tenant](docs/Tenant.md)
  - [TenantAdminGroupRequestRequest](docs/TenantAdminGroupRequestRequest.md)
  - [TenantRecoveryKeyRequestRequest](docs/TenantRecoveryKeyRequestRequest.md)

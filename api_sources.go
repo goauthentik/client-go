@@ -7264,14 +7264,14 @@ type ApiSourcesKerberosSyncStatusRetrieveRequest struct {
 	slug       string
 }
 
-func (r ApiSourcesKerberosSyncStatusRetrieveRequest) Execute() (*KerberosSyncStatus, *http.Response, error) {
+func (r ApiSourcesKerberosSyncStatusRetrieveRequest) Execute() (*SyncStatus, *http.Response, error) {
 	return r.ApiService.SourcesKerberosSyncStatusRetrieveExecute(r)
 }
 
 /*
 SourcesKerberosSyncStatusRetrieve Method for SourcesKerberosSyncStatusRetrieve
 
-Get source's sync status
+Get provider's sync status
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param slug
@@ -7287,13 +7287,13 @@ func (a *SourcesApiService) SourcesKerberosSyncStatusRetrieve(ctx context.Contex
 
 // Execute executes the request
 //
-//	@return KerberosSyncStatus
-func (a *SourcesApiService) SourcesKerberosSyncStatusRetrieveExecute(r ApiSourcesKerberosSyncStatusRetrieveRequest) (*KerberosSyncStatus, *http.Response, error) {
+//	@return SyncStatus
+func (a *SourcesApiService) SourcesKerberosSyncStatusRetrieveExecute(r ApiSourcesKerberosSyncStatusRetrieveRequest) (*SyncStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *KerberosSyncStatus
+		localVarReturnValue *SyncStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesKerberosSyncStatusRetrieve")
@@ -8687,7 +8687,7 @@ func (r ApiSourcesLdapSyncStatusRetrieveRequest) Execute() (*SyncStatus, *http.R
 /*
 SourcesLdapSyncStatusRetrieve Method for SourcesLdapSyncStatusRetrieve
 
-Get source's sync status
+Get provider's sync status
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param slug

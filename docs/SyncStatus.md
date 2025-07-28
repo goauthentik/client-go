@@ -4,14 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IsRunning** | **bool** |  | [readonly] 
-**Tasks** | [**[]SystemTask**](SystemTask.md) |  | [readonly] 
+**IsRunning** | **bool** |  | 
+**LastSuccessfulSync** | Pointer to **time.Time** |  | [optional] 
+**LastSyncStatus** | Pointer to [**TaskAggregatedStatusEnum**](TaskAggregatedStatusEnum.md) |  | [optional] 
 
 ## Methods
 
 ### NewSyncStatus
 
-`func NewSyncStatus(isRunning bool, tasks []SystemTask, ) *SyncStatus`
+`func NewSyncStatus(isRunning bool, ) *SyncStatus`
 
 NewSyncStatus instantiates a new SyncStatus object
 This constructor will assign default values to properties that have it defined,
@@ -46,25 +47,55 @@ and a boolean to check if the value has been set.
 SetIsRunning sets IsRunning field to given value.
 
 
-### GetTasks
+### GetLastSuccessfulSync
 
-`func (o *SyncStatus) GetTasks() []SystemTask`
+`func (o *SyncStatus) GetLastSuccessfulSync() time.Time`
 
-GetTasks returns the Tasks field if non-nil, zero value otherwise.
+GetLastSuccessfulSync returns the LastSuccessfulSync field if non-nil, zero value otherwise.
 
-### GetTasksOk
+### GetLastSuccessfulSyncOk
 
-`func (o *SyncStatus) GetTasksOk() (*[]SystemTask, bool)`
+`func (o *SyncStatus) GetLastSuccessfulSyncOk() (*time.Time, bool)`
 
-GetTasksOk returns a tuple with the Tasks field if it's non-nil, zero value otherwise
+GetLastSuccessfulSyncOk returns a tuple with the LastSuccessfulSync field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTasks
+### SetLastSuccessfulSync
 
-`func (o *SyncStatus) SetTasks(v []SystemTask)`
+`func (o *SyncStatus) SetLastSuccessfulSync(v time.Time)`
 
-SetTasks sets Tasks field to given value.
+SetLastSuccessfulSync sets LastSuccessfulSync field to given value.
 
+### HasLastSuccessfulSync
+
+`func (o *SyncStatus) HasLastSuccessfulSync() bool`
+
+HasLastSuccessfulSync returns a boolean if a field has been set.
+
+### GetLastSyncStatus
+
+`func (o *SyncStatus) GetLastSyncStatus() TaskAggregatedStatusEnum`
+
+GetLastSyncStatus returns the LastSyncStatus field if non-nil, zero value otherwise.
+
+### GetLastSyncStatusOk
+
+`func (o *SyncStatus) GetLastSyncStatusOk() (*TaskAggregatedStatusEnum, bool)`
+
+GetLastSyncStatusOk returns a tuple with the LastSyncStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastSyncStatus
+
+`func (o *SyncStatus) SetLastSyncStatus(v TaskAggregatedStatusEnum)`
+
+SetLastSyncStatus sets LastSyncStatus field to given value.
+
+### HasLastSyncStatus
+
+`func (o *SyncStatus) HasLastSyncStatus() bool`
+
+HasLastSyncStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

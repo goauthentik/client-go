@@ -3982,7 +3982,7 @@ Name | Type | Description  | Notes
 
 ## SourcesKerberosSyncStatusRetrieve
 
-> KerberosSyncStatus SourcesKerberosSyncStatusRetrieve(ctx, slug).Execute()
+> SyncStatus SourcesKerberosSyncStatusRetrieve(ctx, slug).Execute()
 
 
 
@@ -4010,7 +4010,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesKerberosSyncStatusRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SourcesKerberosSyncStatusRetrieve`: KerberosSyncStatus
+    // response from `SourcesKerberosSyncStatusRetrieve`: SyncStatus
     fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesKerberosSyncStatusRetrieve`: %v\n", resp)
 }
 ```
@@ -4034,7 +4034,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**KerberosSyncStatus**](KerberosSyncStatus.md)
+[**SyncStatus**](SyncStatus.md)
 
 ### Authorization
 

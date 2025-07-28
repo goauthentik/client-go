@@ -22,9 +22,11 @@ type AppEnum string
 // List of AppEnum
 const (
 	APPENUM_TENANTS                                       AppEnum = "authentik.tenants"
+	APPENUM_TASKS                                         AppEnum = "authentik.tasks"
 	APPENUM_ADMIN                                         AppEnum = "authentik.admin"
 	APPENUM_API                                           AppEnum = "authentik.api"
 	APPENUM_CRYPTO                                        AppEnum = "authentik.crypto"
+	APPENUM_EVENTS                                        AppEnum = "authentik.events"
 	APPENUM_FLOWS                                         AppEnum = "authentik.flows"
 	APPENUM_OUTPOSTS                                      AppEnum = "authentik.outposts"
 	APPENUM_POLICIES_DUMMY                                AppEnum = "authentik.policies.dummy"
@@ -72,6 +74,7 @@ const (
 	APPENUM_STAGES_USER_LOGIN                             AppEnum = "authentik.stages.user_login"
 	APPENUM_STAGES_USER_LOGOUT                            AppEnum = "authentik.stages.user_logout"
 	APPENUM_STAGES_USER_WRITE                             AppEnum = "authentik.stages.user_write"
+	APPENUM_TASKS_SCHEDULES                               AppEnum = "authentik.tasks.schedules"
 	APPENUM_BRANDS                                        AppEnum = "authentik.brands"
 	APPENUM_BLUEPRINTS                                    AppEnum = "authentik.blueprints"
 	APPENUM_CORE                                          AppEnum = "authentik.core"
@@ -85,15 +88,16 @@ const (
 	APPENUM_ENTERPRISE_STAGES_AUTHENTICATOR_ENDPOINT_GDTC AppEnum = "authentik.enterprise.stages.authenticator_endpoint_gdtc"
 	APPENUM_ENTERPRISE_STAGES_MTLS                        AppEnum = "authentik.enterprise.stages.mtls"
 	APPENUM_ENTERPRISE_STAGES_SOURCE                      AppEnum = "authentik.enterprise.stages.source"
-	APPENUM_EVENTS                                        AppEnum = "authentik.events"
 )
 
 // All allowed values of AppEnum enum
 var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.tenants",
+	"authentik.tasks",
 	"authentik.admin",
 	"authentik.api",
 	"authentik.crypto",
+	"authentik.events",
 	"authentik.flows",
 	"authentik.outposts",
 	"authentik.policies.dummy",
@@ -141,6 +145,7 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.stages.user_login",
 	"authentik.stages.user_logout",
 	"authentik.stages.user_write",
+	"authentik.tasks.schedules",
 	"authentik.brands",
 	"authentik.blueprints",
 	"authentik.core",
@@ -154,7 +159,6 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.enterprise.stages.authenticator_endpoint_gdtc",
 	"authentik.enterprise.stages.mtls",
 	"authentik.enterprise.stages.source",
-	"authentik.events",
 }
 
 func (v *AppEnum) UnmarshalJSON(src []byte) error {

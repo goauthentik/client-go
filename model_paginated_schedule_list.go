@@ -15,35 +15,35 @@ import (
 	"encoding/json"
 )
 
-// PaginatedSystemTaskList struct for PaginatedSystemTaskList
-type PaginatedSystemTaskList struct {
+// PaginatedScheduleList struct for PaginatedScheduleList
+type PaginatedScheduleList struct {
 	Pagination   Pagination             `json:"pagination"`
-	Results      []SystemTask           `json:"results"`
+	Results      []Schedule             `json:"results"`
 	Autocomplete map[string]interface{} `json:"autocomplete"`
 }
 
-// NewPaginatedSystemTaskList instantiates a new PaginatedSystemTaskList object
+// NewPaginatedScheduleList instantiates a new PaginatedScheduleList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedSystemTaskList(pagination Pagination, results []SystemTask, autocomplete map[string]interface{}) *PaginatedSystemTaskList {
-	this := PaginatedSystemTaskList{}
+func NewPaginatedScheduleList(pagination Pagination, results []Schedule, autocomplete map[string]interface{}) *PaginatedScheduleList {
+	this := PaginatedScheduleList{}
 	this.Pagination = pagination
 	this.Results = results
 	this.Autocomplete = autocomplete
 	return &this
 }
 
-// NewPaginatedSystemTaskListWithDefaults instantiates a new PaginatedSystemTaskList object
+// NewPaginatedScheduleListWithDefaults instantiates a new PaginatedScheduleList object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPaginatedSystemTaskListWithDefaults() *PaginatedSystemTaskList {
-	this := PaginatedSystemTaskList{}
+func NewPaginatedScheduleListWithDefaults() *PaginatedScheduleList {
+	this := PaginatedScheduleList{}
 	return &this
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedSystemTaskList) GetPagination() Pagination {
+func (o *PaginatedScheduleList) GetPagination() Pagination {
 	if o == nil {
 		var ret Pagination
 		return ret
@@ -54,7 +54,7 @@ func (o *PaginatedSystemTaskList) GetPagination() Pagination {
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedSystemTaskList) GetPaginationOk() (*Pagination, bool) {
+func (o *PaginatedScheduleList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -62,14 +62,14 @@ func (o *PaginatedSystemTaskList) GetPaginationOk() (*Pagination, bool) {
 }
 
 // SetPagination sets field value
-func (o *PaginatedSystemTaskList) SetPagination(v Pagination) {
+func (o *PaginatedScheduleList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 
 // GetResults returns the Results field value
-func (o *PaginatedSystemTaskList) GetResults() []SystemTask {
+func (o *PaginatedScheduleList) GetResults() []Schedule {
 	if o == nil {
-		var ret []SystemTask
+		var ret []Schedule
 		return ret
 	}
 
@@ -78,7 +78,7 @@ func (o *PaginatedSystemTaskList) GetResults() []SystemTask {
 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedSystemTaskList) GetResultsOk() ([]SystemTask, bool) {
+func (o *PaginatedScheduleList) GetResultsOk() ([]Schedule, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -86,12 +86,12 @@ func (o *PaginatedSystemTaskList) GetResultsOk() ([]SystemTask, bool) {
 }
 
 // SetResults sets field value
-func (o *PaginatedSystemTaskList) SetResults(v []SystemTask) {
+func (o *PaginatedScheduleList) SetResults(v []Schedule) {
 	o.Results = v
 }
 
 // GetAutocomplete returns the Autocomplete field value
-func (o *PaginatedSystemTaskList) GetAutocomplete() map[string]interface{} {
+func (o *PaginatedScheduleList) GetAutocomplete() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
 		return ret
@@ -102,7 +102,7 @@ func (o *PaginatedSystemTaskList) GetAutocomplete() map[string]interface{} {
 
 // GetAutocompleteOk returns a tuple with the Autocomplete field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedSystemTaskList) GetAutocompleteOk() (map[string]interface{}, bool) {
+func (o *PaginatedScheduleList) GetAutocompleteOk() (map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -110,11 +110,11 @@ func (o *PaginatedSystemTaskList) GetAutocompleteOk() (map[string]interface{}, b
 }
 
 // SetAutocomplete sets field value
-func (o *PaginatedSystemTaskList) SetAutocomplete(v map[string]interface{}) {
+func (o *PaginatedScheduleList) SetAutocomplete(v map[string]interface{}) {
 	o.Autocomplete = v
 }
 
-func (o PaginatedSystemTaskList) MarshalJSON() ([]byte, error) {
+func (o PaginatedScheduleList) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["pagination"] = o.Pagination
@@ -128,38 +128,38 @@ func (o PaginatedSystemTaskList) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullablePaginatedSystemTaskList struct {
-	value *PaginatedSystemTaskList
+type NullablePaginatedScheduleList struct {
+	value *PaginatedScheduleList
 	isSet bool
 }
 
-func (v NullablePaginatedSystemTaskList) Get() *PaginatedSystemTaskList {
+func (v NullablePaginatedScheduleList) Get() *PaginatedScheduleList {
 	return v.value
 }
 
-func (v *NullablePaginatedSystemTaskList) Set(val *PaginatedSystemTaskList) {
+func (v *NullablePaginatedScheduleList) Set(val *PaginatedScheduleList) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePaginatedSystemTaskList) IsSet() bool {
+func (v NullablePaginatedScheduleList) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePaginatedSystemTaskList) Unset() {
+func (v *NullablePaginatedScheduleList) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePaginatedSystemTaskList(val *PaginatedSystemTaskList) *NullablePaginatedSystemTaskList {
-	return &NullablePaginatedSystemTaskList{value: val, isSet: true}
+func NewNullablePaginatedScheduleList(val *PaginatedScheduleList) *NullablePaginatedScheduleList {
+	return &NullablePaginatedScheduleList{value: val, isSet: true}
 }
 
-func (v NullablePaginatedSystemTaskList) MarshalJSON() ([]byte, error) {
+func (v NullablePaginatedScheduleList) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePaginatedSystemTaskList) UnmarshalJSON(src []byte) error {
+func (v *NullablePaginatedScheduleList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

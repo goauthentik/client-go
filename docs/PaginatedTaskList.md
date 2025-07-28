@@ -1,88 +1,88 @@
-# PaginatedSystemTaskList
+# PaginatedTaskList
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
-**Results** | [**[]SystemTask**](SystemTask.md) |  | 
+**Results** | [**[]Task**](Task.md) |  | 
 **Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
-### NewPaginatedSystemTaskList
+### NewPaginatedTaskList
 
-`func NewPaginatedSystemTaskList(pagination Pagination, results []SystemTask, autocomplete map[string]interface{}, ) *PaginatedSystemTaskList`
+`func NewPaginatedTaskList(pagination Pagination, results []Task, autocomplete map[string]interface{}, ) *PaginatedTaskList`
 
-NewPaginatedSystemTaskList instantiates a new PaginatedSystemTaskList object
+NewPaginatedTaskList instantiates a new PaginatedTaskList object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewPaginatedSystemTaskListWithDefaults
+### NewPaginatedTaskListWithDefaults
 
-`func NewPaginatedSystemTaskListWithDefaults() *PaginatedSystemTaskList`
+`func NewPaginatedTaskListWithDefaults() *PaginatedTaskList`
 
-NewPaginatedSystemTaskListWithDefaults instantiates a new PaginatedSystemTaskList object
+NewPaginatedTaskListWithDefaults instantiates a new PaginatedTaskList object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedSystemTaskList) GetPagination() Pagination`
+`func (o *PaginatedTaskList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedSystemTaskList) GetPaginationOk() (*Pagination, bool)`
+`func (o *PaginatedTaskList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedSystemTaskList) SetPagination(v Pagination)`
+`func (o *PaginatedTaskList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 
 
 ### GetResults
 
-`func (o *PaginatedSystemTaskList) GetResults() []SystemTask`
+`func (o *PaginatedTaskList) GetResults() []Task`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *PaginatedSystemTaskList) GetResultsOk() (*[]SystemTask, bool)`
+`func (o *PaginatedTaskList) GetResultsOk() (*[]Task, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *PaginatedSystemTaskList) SetResults(v []SystemTask)`
+`func (o *PaginatedTaskList) SetResults(v []Task)`
 
 SetResults sets Results field to given value.
 
 
 ### GetAutocomplete
 
-`func (o *PaginatedSystemTaskList) GetAutocomplete() map[string]interface{}`
+`func (o *PaginatedTaskList) GetAutocomplete() map[string]interface{}`
 
 GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
 
 ### GetAutocompleteOk
 
-`func (o *PaginatedSystemTaskList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+`func (o *PaginatedTaskList) GetAutocompleteOk() (*map[string]interface{}, bool)`
 
 GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAutocomplete
 
-`func (o *PaginatedSystemTaskList) SetAutocomplete(v map[string]interface{})`
+`func (o *PaginatedTaskList) SetAutocomplete(v map[string]interface{})`
 
 SetAutocomplete sets Autocomplete field to given value.
 

@@ -23,6 +23,11 @@ type ModelEnum string
 const (
 	MODELENUM_TENANTS_DOMAIN                                                    ModelEnum = "authentik_tenants.domain"
 	MODELENUM_CRYPTO_CERTIFICATEKEYPAIR                                         ModelEnum = "authentik_crypto.certificatekeypair"
+	MODELENUM_EVENTS_EVENT                                                      ModelEnum = "authentik_events.event"
+	MODELENUM_EVENTS_NOTIFICATIONTRANSPORT                                      ModelEnum = "authentik_events.notificationtransport"
+	MODELENUM_EVENTS_NOTIFICATION                                               ModelEnum = "authentik_events.notification"
+	MODELENUM_EVENTS_NOTIFICATIONRULE                                           ModelEnum = "authentik_events.notificationrule"
+	MODELENUM_EVENTS_NOTIFICATIONWEBHOOKMAPPING                                 ModelEnum = "authentik_events.notificationwebhookmapping"
 	MODELENUM_FLOWS_FLOW                                                        ModelEnum = "authentik_flows.flow"
 	MODELENUM_FLOWS_FLOWSTAGEBINDING                                            ModelEnum = "authentik_flows.flowstagebinding"
 	MODELENUM_OUTPOSTS_DOCKERSERVICECONNECTION                                  ModelEnum = "authentik_outposts.dockerserviceconnection"
@@ -103,6 +108,7 @@ const (
 	MODELENUM_STAGES_USER_LOGIN_USERLOGINSTAGE                                  ModelEnum = "authentik_stages_user_login.userloginstage"
 	MODELENUM_STAGES_USER_LOGOUT_USERLOGOUTSTAGE                                ModelEnum = "authentik_stages_user_logout.userlogoutstage"
 	MODELENUM_STAGES_USER_WRITE_USERWRITESTAGE                                  ModelEnum = "authentik_stages_user_write.userwritestage"
+	MODELENUM_TASKS_SCHEDULES_SCHEDULE                                          ModelEnum = "authentik_tasks_schedules.schedule"
 	MODELENUM_BRANDS_BRAND                                                      ModelEnum = "authentik_brands.brand"
 	MODELENUM_BLUEPRINTS_BLUEPRINTINSTANCE                                      ModelEnum = "authentik_blueprints.blueprintinstance"
 	MODELENUM_CORE_GROUP                                                        ModelEnum = "authentik_core.group"
@@ -120,17 +126,17 @@ const (
 	MODELENUM_STAGES_AUTHENTICATOR_ENDPOINT_GDTC_AUTHENTICATORENDPOINTGDTCSTAGE ModelEnum = "authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage"
 	MODELENUM_STAGES_MTLS_MUTUALTLSSTAGE                                        ModelEnum = "authentik_stages_mtls.mutualtlsstage"
 	MODELENUM_STAGES_SOURCE_SOURCESTAGE                                         ModelEnum = "authentik_stages_source.sourcestage"
-	MODELENUM_EVENTS_EVENT                                                      ModelEnum = "authentik_events.event"
-	MODELENUM_EVENTS_NOTIFICATIONTRANSPORT                                      ModelEnum = "authentik_events.notificationtransport"
-	MODELENUM_EVENTS_NOTIFICATION                                               ModelEnum = "authentik_events.notification"
-	MODELENUM_EVENTS_NOTIFICATIONRULE                                           ModelEnum = "authentik_events.notificationrule"
-	MODELENUM_EVENTS_NOTIFICATIONWEBHOOKMAPPING                                 ModelEnum = "authentik_events.notificationwebhookmapping"
 )
 
 // All allowed values of ModelEnum enum
 var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_tenants.domain",
 	"authentik_crypto.certificatekeypair",
+	"authentik_events.event",
+	"authentik_events.notificationtransport",
+	"authentik_events.notification",
+	"authentik_events.notificationrule",
+	"authentik_events.notificationwebhookmapping",
 	"authentik_flows.flow",
 	"authentik_flows.flowstagebinding",
 	"authentik_outposts.dockerserviceconnection",
@@ -211,6 +217,7 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_stages_user_login.userloginstage",
 	"authentik_stages_user_logout.userlogoutstage",
 	"authentik_stages_user_write.userwritestage",
+	"authentik_tasks_schedules.schedule",
 	"authentik_brands.brand",
 	"authentik_blueprints.blueprintinstance",
 	"authentik_core.group",
@@ -228,11 +235,6 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage",
 	"authentik_stages_mtls.mutualtlsstage",
 	"authentik_stages_source.sourcestage",
-	"authentik_events.event",
-	"authentik_events.notificationtransport",
-	"authentik_events.notification",
-	"authentik_events.notificationrule",
-	"authentik_events.notificationwebhookmapping",
 }
 
 func (v *ModelEnum) UnmarshalJSON(src []byte) error {

@@ -13,22 +13,23 @@ package api
 
 import (
 	"encoding/json"
+	"time"
 )
 
-// SyncStatus Provider sync status
+// SyncStatus Provider/source sync status
 type SyncStatus struct {
-	IsRunning bool         `json:"is_running"`
-	Tasks     []SystemTask `json:"tasks"`
+	IsRunning          bool                      `json:"is_running"`
+	LastSuccessfulSync *time.Time                `json:"last_successful_sync,omitempty"`
+	LastSyncStatus     *TaskAggregatedStatusEnum `json:"last_sync_status,omitempty"`
 }
 
 // NewSyncStatus instantiates a new SyncStatus object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSyncStatus(isRunning bool, tasks []SystemTask) *SyncStatus {
+func NewSyncStatus(isRunning bool) *SyncStatus {
 	this := SyncStatus{}
 	this.IsRunning = isRunning
-	this.Tasks = tasks
 	return &this
 }
 
@@ -64,28 +65,68 @@ func (o *SyncStatus) SetIsRunning(v bool) {
 	o.IsRunning = v
 }
 
-// GetTasks returns the Tasks field value
-func (o *SyncStatus) GetTasks() []SystemTask {
-	if o == nil {
-		var ret []SystemTask
+// GetLastSuccessfulSync returns the LastSuccessfulSync field value if set, zero value otherwise.
+func (o *SyncStatus) GetLastSuccessfulSync() time.Time {
+	if o == nil || o.LastSuccessfulSync == nil {
+		var ret time.Time
 		return ret
 	}
-
-	return o.Tasks
+	return *o.LastSuccessfulSync
 }
 
-// GetTasksOk returns a tuple with the Tasks field value
+// GetLastSuccessfulSyncOk returns a tuple with the LastSuccessfulSync field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SyncStatus) GetTasksOk() ([]SystemTask, bool) {
-	if o == nil {
+func (o *SyncStatus) GetLastSuccessfulSyncOk() (*time.Time, bool) {
+	if o == nil || o.LastSuccessfulSync == nil {
 		return nil, false
 	}
-	return o.Tasks, true
+	return o.LastSuccessfulSync, true
 }
 
-// SetTasks sets field value
-func (o *SyncStatus) SetTasks(v []SystemTask) {
-	o.Tasks = v
+// HasLastSuccessfulSync returns a boolean if a field has been set.
+func (o *SyncStatus) HasLastSuccessfulSync() bool {
+	if o != nil && o.LastSuccessfulSync != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastSuccessfulSync gets a reference to the given time.Time and assigns it to the LastSuccessfulSync field.
+func (o *SyncStatus) SetLastSuccessfulSync(v time.Time) {
+	o.LastSuccessfulSync = &v
+}
+
+// GetLastSyncStatus returns the LastSyncStatus field value if set, zero value otherwise.
+func (o *SyncStatus) GetLastSyncStatus() TaskAggregatedStatusEnum {
+	if o == nil || o.LastSyncStatus == nil {
+		var ret TaskAggregatedStatusEnum
+		return ret
+	}
+	return *o.LastSyncStatus
+}
+
+// GetLastSyncStatusOk returns a tuple with the LastSyncStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SyncStatus) GetLastSyncStatusOk() (*TaskAggregatedStatusEnum, bool) {
+	if o == nil || o.LastSyncStatus == nil {
+		return nil, false
+	}
+	return o.LastSyncStatus, true
+}
+
+// HasLastSyncStatus returns a boolean if a field has been set.
+func (o *SyncStatus) HasLastSyncStatus() bool {
+	if o != nil && o.LastSyncStatus != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastSyncStatus gets a reference to the given TaskAggregatedStatusEnum and assigns it to the LastSyncStatus field.
+func (o *SyncStatus) SetLastSyncStatus(v TaskAggregatedStatusEnum) {
+	o.LastSyncStatus = &v
 }
 
 func (o SyncStatus) MarshalJSON() ([]byte, error) {
@@ -93,8 +134,11 @@ func (o SyncStatus) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["is_running"] = o.IsRunning
 	}
-	if true {
-		toSerialize["tasks"] = o.Tasks
+	if o.LastSuccessfulSync != nil {
+		toSerialize["last_successful_sync"] = o.LastSuccessfulSync
+	}
+	if o.LastSyncStatus != nil {
+		toSerialize["last_sync_status"] = o.LastSyncStatus
 	}
 	return json.Marshal(toSerialize)
 }

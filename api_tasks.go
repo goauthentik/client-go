@@ -17,906 +17,94 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"reflect"
 	"strings"
 )
 
-// AdminApiService AdminApi service
-type AdminApiService service
+// TasksApiService TasksApi service
+type TasksApiService service
 
-type ApiAdminAppsListRequest struct {
-	ctx        context.Context
-	ApiService *AdminApiService
+type ApiTasksSchedulesListRequest struct {
+	ctx                       context.Context
+	ApiService                *TasksApiService
+	actorName                 *string
+	ordering                  *string
+	page                      *int32
+	pageSize                  *int32
+	paused                    *bool
+	relObjContentTypeAppLabel *string
+	relObjContentTypeModel    *string
+	relObjId                  *string
+	relObjIdIsnull            *bool
+	search                    *string
 }
 
-func (r ApiAdminAppsListRequest) Execute() ([]App, *http.Response, error) {
-	return r.ApiService.AdminAppsListExecute(r)
-}
-
-/*
-AdminAppsList Method for AdminAppsList
-
-Read-only view list all installed apps
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminAppsListRequest
-*/
-func (a *AdminApiService) AdminAppsList(ctx context.Context) ApiAdminAppsListRequest {
-	return ApiAdminAppsListRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return []App
-func (a *AdminApiService) AdminAppsListExecute(r ApiAdminAppsListRequest) ([]App, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []App
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminAppsList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/admin/apps/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiAdminModelsListRequest struct {
-	ctx        context.Context
-	ApiService *AdminApiService
-}
-
-func (r ApiAdminModelsListRequest) Execute() ([]App, *http.Response, error) {
-	return r.ApiService.AdminModelsListExecute(r)
-}
-
-/*
-AdminModelsList Method for AdminModelsList
-
-Read-only view list all installed models
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminModelsListRequest
-*/
-func (a *AdminApiService) AdminModelsList(ctx context.Context) ApiAdminModelsListRequest {
-	return ApiAdminModelsListRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return []App
-func (a *AdminApiService) AdminModelsListExecute(r ApiAdminModelsListRequest) ([]App, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []App
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminModelsList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/admin/models/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiAdminSettingsPartialUpdateRequest struct {
-	ctx                    context.Context
-	ApiService             *AdminApiService
-	patchedSettingsRequest *PatchedSettingsRequest
-}
-
-func (r ApiAdminSettingsPartialUpdateRequest) PatchedSettingsRequest(patchedSettingsRequest PatchedSettingsRequest) ApiAdminSettingsPartialUpdateRequest {
-	r.patchedSettingsRequest = &patchedSettingsRequest
-	return r
-}
-
-func (r ApiAdminSettingsPartialUpdateRequest) Execute() (*Settings, *http.Response, error) {
-	return r.ApiService.AdminSettingsPartialUpdateExecute(r)
-}
-
-/*
-AdminSettingsPartialUpdate Method for AdminSettingsPartialUpdate
-
-Settings view
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminSettingsPartialUpdateRequest
-*/
-func (a *AdminApiService) AdminSettingsPartialUpdate(ctx context.Context) ApiAdminSettingsPartialUpdateRequest {
-	return ApiAdminSettingsPartialUpdateRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return Settings
-func (a *AdminApiService) AdminSettingsPartialUpdateExecute(r ApiAdminSettingsPartialUpdateRequest) (*Settings, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Settings
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminSettingsPartialUpdate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/admin/settings/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.patchedSettingsRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiAdminSettingsRetrieveRequest struct {
-	ctx        context.Context
-	ApiService *AdminApiService
-}
-
-func (r ApiAdminSettingsRetrieveRequest) Execute() (*Settings, *http.Response, error) {
-	return r.ApiService.AdminSettingsRetrieveExecute(r)
-}
-
-/*
-AdminSettingsRetrieve Method for AdminSettingsRetrieve
-
-Settings view
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminSettingsRetrieveRequest
-*/
-func (a *AdminApiService) AdminSettingsRetrieve(ctx context.Context) ApiAdminSettingsRetrieveRequest {
-	return ApiAdminSettingsRetrieveRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return Settings
-func (a *AdminApiService) AdminSettingsRetrieveExecute(r ApiAdminSettingsRetrieveRequest) (*Settings, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Settings
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminSettingsRetrieve")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/admin/settings/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiAdminSettingsUpdateRequest struct {
-	ctx             context.Context
-	ApiService      *AdminApiService
-	settingsRequest *SettingsRequest
-}
-
-func (r ApiAdminSettingsUpdateRequest) SettingsRequest(settingsRequest SettingsRequest) ApiAdminSettingsUpdateRequest {
-	r.settingsRequest = &settingsRequest
-	return r
-}
-
-func (r ApiAdminSettingsUpdateRequest) Execute() (*Settings, *http.Response, error) {
-	return r.ApiService.AdminSettingsUpdateExecute(r)
-}
-
-/*
-AdminSettingsUpdate Method for AdminSettingsUpdate
-
-Settings view
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminSettingsUpdateRequest
-*/
-func (a *AdminApiService) AdminSettingsUpdate(ctx context.Context) ApiAdminSettingsUpdateRequest {
-	return ApiAdminSettingsUpdateRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return Settings
-func (a *AdminApiService) AdminSettingsUpdateExecute(r ApiAdminSettingsUpdateRequest) (*Settings, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Settings
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminSettingsUpdate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/admin/settings/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.settingsRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiAdminSystemCreateRequest struct {
-	ctx        context.Context
-	ApiService *AdminApiService
-}
-
-func (r ApiAdminSystemCreateRequest) Execute() (*SystemInfo, *http.Response, error) {
-	return r.ApiService.AdminSystemCreateExecute(r)
-}
-
-/*
-AdminSystemCreate Method for AdminSystemCreate
-
-Get system information.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminSystemCreateRequest
-*/
-func (a *AdminApiService) AdminSystemCreate(ctx context.Context) ApiAdminSystemCreateRequest {
-	return ApiAdminSystemCreateRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return SystemInfo
-func (a *AdminApiService) AdminSystemCreateExecute(r ApiAdminSystemCreateRequest) (*SystemInfo, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *SystemInfo
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminSystemCreate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/admin/system/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiAdminSystemRetrieveRequest struct {
-	ctx        context.Context
-	ApiService *AdminApiService
-}
-
-func (r ApiAdminSystemRetrieveRequest) Execute() (*SystemInfo, *http.Response, error) {
-	return r.ApiService.AdminSystemRetrieveExecute(r)
-}
-
-/*
-AdminSystemRetrieve Method for AdminSystemRetrieve
-
-Get system information.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminSystemRetrieveRequest
-*/
-func (a *AdminApiService) AdminSystemRetrieve(ctx context.Context) ApiAdminSystemRetrieveRequest {
-	return ApiAdminSystemRetrieveRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return SystemInfo
-func (a *AdminApiService) AdminSystemRetrieveExecute(r ApiAdminSystemRetrieveRequest) (*SystemInfo, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *SystemInfo
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminSystemRetrieve")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/admin/system/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiAdminVersionHistoryListRequest struct {
-	ctx        context.Context
-	ApiService *AdminApiService
-	build      *string
-	ordering   *string
-	search     *string
-	version    *string
-}
-
-func (r ApiAdminVersionHistoryListRequest) Build(build string) ApiAdminVersionHistoryListRequest {
-	r.build = &build
+func (r ApiTasksSchedulesListRequest) ActorName(actorName string) ApiTasksSchedulesListRequest {
+	r.actorName = &actorName
 	return r
 }
 
 // Which field to use when ordering the results.
-func (r ApiAdminVersionHistoryListRequest) Ordering(ordering string) ApiAdminVersionHistoryListRequest {
+func (r ApiTasksSchedulesListRequest) Ordering(ordering string) ApiTasksSchedulesListRequest {
 	r.ordering = &ordering
 	return r
 }
 
+// A page number within the paginated result set.
+func (r ApiTasksSchedulesListRequest) Page(page int32) ApiTasksSchedulesListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiTasksSchedulesListRequest) PageSize(pageSize int32) ApiTasksSchedulesListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiTasksSchedulesListRequest) Paused(paused bool) ApiTasksSchedulesListRequest {
+	r.paused = &paused
+	return r
+}
+
+func (r ApiTasksSchedulesListRequest) RelObjContentTypeAppLabel(relObjContentTypeAppLabel string) ApiTasksSchedulesListRequest {
+	r.relObjContentTypeAppLabel = &relObjContentTypeAppLabel
+	return r
+}
+
+func (r ApiTasksSchedulesListRequest) RelObjContentTypeModel(relObjContentTypeModel string) ApiTasksSchedulesListRequest {
+	r.relObjContentTypeModel = &relObjContentTypeModel
+	return r
+}
+
+func (r ApiTasksSchedulesListRequest) RelObjId(relObjId string) ApiTasksSchedulesListRequest {
+	r.relObjId = &relObjId
+	return r
+}
+
+func (r ApiTasksSchedulesListRequest) RelObjIdIsnull(relObjIdIsnull bool) ApiTasksSchedulesListRequest {
+	r.relObjIdIsnull = &relObjIdIsnull
+	return r
+}
+
 // A search term.
-func (r ApiAdminVersionHistoryListRequest) Search(search string) ApiAdminVersionHistoryListRequest {
+func (r ApiTasksSchedulesListRequest) Search(search string) ApiTasksSchedulesListRequest {
 	r.search = &search
 	return r
 }
 
-func (r ApiAdminVersionHistoryListRequest) Version(version string) ApiAdminVersionHistoryListRequest {
-	r.version = &version
-	return r
-}
-
-func (r ApiAdminVersionHistoryListRequest) Execute() ([]VersionHistory, *http.Response, error) {
-	return r.ApiService.AdminVersionHistoryListExecute(r)
+func (r ApiTasksSchedulesListRequest) Execute() (*PaginatedScheduleList, *http.Response, error) {
+	return r.ApiService.TasksSchedulesListExecute(r)
 }
 
 /*
-AdminVersionHistoryList Method for AdminVersionHistoryList
-
-VersionHistory Viewset
+TasksSchedulesList Method for TasksSchedulesList
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminVersionHistoryListRequest
+	@return ApiTasksSchedulesListRequest
 */
-func (a *AdminApiService) AdminVersionHistoryList(ctx context.Context) ApiAdminVersionHistoryListRequest {
-	return ApiAdminVersionHistoryListRequest{
+func (a *TasksApiService) TasksSchedulesList(ctx context.Context) ApiTasksSchedulesListRequest {
+	return ApiTasksSchedulesListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -924,37 +112,55 @@ func (a *AdminApiService) AdminVersionHistoryList(ctx context.Context) ApiAdminV
 
 // Execute executes the request
 //
-//	@return []VersionHistory
-func (a *AdminApiService) AdminVersionHistoryListExecute(r ApiAdminVersionHistoryListRequest) ([]VersionHistory, *http.Response, error) {
+//	@return PaginatedScheduleList
+func (a *TasksApiService) TasksSchedulesListExecute(r ApiTasksSchedulesListRequest) (*PaginatedScheduleList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []VersionHistory
+		localVarReturnValue *PaginatedScheduleList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminVersionHistoryList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksApiService.TasksSchedulesList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/admin/version/history/"
+	localVarPath := localBasePath + "/tasks/schedules/"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.build != nil {
-		localVarQueryParams.Add("build", parameterToString(*r.build, ""))
+	if r.actorName != nil {
+		localVarQueryParams.Add("actor_name", parameterToString(*r.actorName, ""))
 	}
 	if r.ordering != nil {
 		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
 	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.paused != nil {
+		localVarQueryParams.Add("paused", parameterToString(*r.paused, ""))
+	}
+	if r.relObjContentTypeAppLabel != nil {
+		localVarQueryParams.Add("rel_obj_content_type__app_label", parameterToString(*r.relObjContentTypeAppLabel, ""))
+	}
+	if r.relObjContentTypeModel != nil {
+		localVarQueryParams.Add("rel_obj_content_type__model", parameterToString(*r.relObjContentTypeModel, ""))
+	}
+	if r.relObjId != nil {
+		localVarQueryParams.Add("rel_obj_id", parameterToString(*r.relObjId, ""))
+	}
+	if r.relObjIdIsnull != nil {
+		localVarQueryParams.Add("rel_obj_id__isnull", parameterToString(*r.relObjIdIsnull, ""))
+	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
-	}
-	if r.version != nil {
-		localVarQueryParams.Add("version", parameterToString(*r.version, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1029,27 +235,31 @@ func (a *AdminApiService) AdminVersionHistoryListExecute(r ApiAdminVersionHistor
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminVersionHistoryRetrieveRequest struct {
-	ctx        context.Context
-	ApiService *AdminApiService
-	id         int32
+type ApiTasksSchedulesPartialUpdateRequest struct {
+	ctx                    context.Context
+	ApiService             *TasksApiService
+	id                     string
+	patchedScheduleRequest *PatchedScheduleRequest
 }
 
-func (r ApiAdminVersionHistoryRetrieveRequest) Execute() (*VersionHistory, *http.Response, error) {
-	return r.ApiService.AdminVersionHistoryRetrieveExecute(r)
+func (r ApiTasksSchedulesPartialUpdateRequest) PatchedScheduleRequest(patchedScheduleRequest PatchedScheduleRequest) ApiTasksSchedulesPartialUpdateRequest {
+	r.patchedScheduleRequest = &patchedScheduleRequest
+	return r
+}
+
+func (r ApiTasksSchedulesPartialUpdateRequest) Execute() (*Schedule, *http.Response, error) {
+	return r.ApiService.TasksSchedulesPartialUpdateExecute(r)
 }
 
 /*
-AdminVersionHistoryRetrieve Method for AdminVersionHistoryRetrieve
-
-VersionHistory Viewset
+TasksSchedulesPartialUpdate Method for TasksSchedulesPartialUpdate
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this Version history.
-	@return ApiAdminVersionHistoryRetrieveRequest
+	@param id A UUID string identifying this Schedule.
+	@return ApiTasksSchedulesPartialUpdateRequest
 */
-func (a *AdminApiService) AdminVersionHistoryRetrieve(ctx context.Context, id int32) ApiAdminVersionHistoryRetrieveRequest {
-	return ApiAdminVersionHistoryRetrieveRequest{
+func (a *TasksApiService) TasksSchedulesPartialUpdate(ctx context.Context, id string) ApiTasksSchedulesPartialUpdateRequest {
+	return ApiTasksSchedulesPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -1058,21 +268,144 @@ func (a *AdminApiService) AdminVersionHistoryRetrieve(ctx context.Context, id in
 
 // Execute executes the request
 //
-//	@return VersionHistory
-func (a *AdminApiService) AdminVersionHistoryRetrieveExecute(r ApiAdminVersionHistoryRetrieveRequest) (*VersionHistory, *http.Response, error) {
+//	@return Schedule
+func (a *TasksApiService) TasksSchedulesPartialUpdateExecute(r ApiTasksSchedulesPartialUpdateRequest) (*Schedule, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
+		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *VersionHistory
+		localVarReturnValue *Schedule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminVersionHistoryRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksApiService.TasksSchedulesPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/admin/version/history/{id}/"
+	localVarPath := localBasePath + "/tasks/schedules/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedScheduleRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiTasksSchedulesRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *TasksApiService
+	id         string
+}
+
+func (r ApiTasksSchedulesRetrieveRequest) Execute() (*Schedule, *http.Response, error) {
+	return r.ApiService.TasksSchedulesRetrieveExecute(r)
+}
+
+/*
+TasksSchedulesRetrieve Method for TasksSchedulesRetrieve
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Schedule.
+	@return ApiTasksSchedulesRetrieveRequest
+*/
+func (a *TasksApiService) TasksSchedulesRetrieve(ctx context.Context, id string) ApiTasksSchedulesRetrieveRequest {
+	return ApiTasksSchedulesRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return Schedule
+func (a *TasksApiService) TasksSchedulesRetrieveExecute(r ApiTasksSchedulesRetrieveRequest) (*Schedule, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Schedule
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksApiService.TasksSchedulesRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/tasks/schedules/{id}/"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1152,25 +485,343 @@ func (a *AdminApiService) AdminVersionHistoryRetrieveExecute(r ApiAdminVersionHi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminVersionRetrieveRequest struct {
+type ApiTasksSchedulesSendCreateRequest struct {
 	ctx        context.Context
-	ApiService *AdminApiService
+	ApiService *TasksApiService
+	id         string
 }
 
-func (r ApiAdminVersionRetrieveRequest) Execute() (*Version, *http.Response, error) {
-	return r.ApiService.AdminVersionRetrieveExecute(r)
+func (r ApiTasksSchedulesSendCreateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.TasksSchedulesSendCreateExecute(r)
 }
 
 /*
-AdminVersionRetrieve Method for AdminVersionRetrieve
+TasksSchedulesSendCreate Method for TasksSchedulesSendCreate
 
-Get running and latest version.
+Trigger this schedule now
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminVersionRetrieveRequest
+	@param id A UUID string identifying this Schedule.
+	@return ApiTasksSchedulesSendCreateRequest
 */
-func (a *AdminApiService) AdminVersionRetrieve(ctx context.Context) ApiAdminVersionRetrieveRequest {
-	return ApiAdminVersionRetrieveRequest{
+func (a *TasksApiService) TasksSchedulesSendCreate(ctx context.Context, id string) ApiTasksSchedulesSendCreateRequest {
+	return ApiTasksSchedulesSendCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+func (a *TasksApiService) TasksSchedulesSendCreateExecute(r ApiTasksSchedulesSendCreateRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksApiService.TasksSchedulesSendCreate")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/tasks/schedules/{id}/send/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiTasksSchedulesUpdateRequest struct {
+	ctx             context.Context
+	ApiService      *TasksApiService
+	id              string
+	scheduleRequest *ScheduleRequest
+}
+
+func (r ApiTasksSchedulesUpdateRequest) ScheduleRequest(scheduleRequest ScheduleRequest) ApiTasksSchedulesUpdateRequest {
+	r.scheduleRequest = &scheduleRequest
+	return r
+}
+
+func (r ApiTasksSchedulesUpdateRequest) Execute() (*Schedule, *http.Response, error) {
+	return r.ApiService.TasksSchedulesUpdateExecute(r)
+}
+
+/*
+TasksSchedulesUpdate Method for TasksSchedulesUpdate
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A UUID string identifying this Schedule.
+	@return ApiTasksSchedulesUpdateRequest
+*/
+func (a *TasksApiService) TasksSchedulesUpdate(ctx context.Context, id string) ApiTasksSchedulesUpdateRequest {
+	return ApiTasksSchedulesUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return Schedule
+func (a *TasksApiService) TasksSchedulesUpdateExecute(r ApiTasksSchedulesUpdateRequest) (*Schedule, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Schedule
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksApiService.TasksSchedulesUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/tasks/schedules/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.scheduleRequest == nil {
+		return localVarReturnValue, nil, reportError("scheduleRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.scheduleRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiTasksTasksListRequest struct {
+	ctx                       context.Context
+	ApiService                *TasksApiService
+	actorName                 *string
+	aggregatedStatus          *[]string
+	ordering                  *string
+	page                      *int32
+	pageSize                  *int32
+	queueName                 *string
+	relObjContentTypeAppLabel *string
+	relObjContentTypeModel    *string
+	relObjId                  *string
+	relObjIdIsnull            *bool
+	search                    *string
+	state                     *string
+}
+
+func (r ApiTasksTasksListRequest) ActorName(actorName string) ApiTasksTasksListRequest {
+	r.actorName = &actorName
+	return r
+}
+
+func (r ApiTasksTasksListRequest) AggregatedStatus(aggregatedStatus []string) ApiTasksTasksListRequest {
+	r.aggregatedStatus = &aggregatedStatus
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiTasksTasksListRequest) Ordering(ordering string) ApiTasksTasksListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiTasksTasksListRequest) Page(page int32) ApiTasksTasksListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiTasksTasksListRequest) PageSize(pageSize int32) ApiTasksTasksListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiTasksTasksListRequest) QueueName(queueName string) ApiTasksTasksListRequest {
+	r.queueName = &queueName
+	return r
+}
+
+func (r ApiTasksTasksListRequest) RelObjContentTypeAppLabel(relObjContentTypeAppLabel string) ApiTasksTasksListRequest {
+	r.relObjContentTypeAppLabel = &relObjContentTypeAppLabel
+	return r
+}
+
+func (r ApiTasksTasksListRequest) RelObjContentTypeModel(relObjContentTypeModel string) ApiTasksTasksListRequest {
+	r.relObjContentTypeModel = &relObjContentTypeModel
+	return r
+}
+
+func (r ApiTasksTasksListRequest) RelObjId(relObjId string) ApiTasksTasksListRequest {
+	r.relObjId = &relObjId
+	return r
+}
+
+func (r ApiTasksTasksListRequest) RelObjIdIsnull(relObjIdIsnull bool) ApiTasksTasksListRequest {
+	r.relObjIdIsnull = &relObjIdIsnull
+	return r
+}
+
+// A search term.
+func (r ApiTasksTasksListRequest) Search(search string) ApiTasksTasksListRequest {
+	r.search = &search
+	return r
+}
+
+// Task status
+func (r ApiTasksTasksListRequest) State(state string) ApiTasksTasksListRequest {
+	r.state = &state
+	return r
+}
+
+func (r ApiTasksTasksListRequest) Execute() (*PaginatedTaskList, *http.Response, error) {
+	return r.ApiService.TasksTasksListExecute(r)
+}
+
+/*
+TasksTasksList Method for TasksTasksList
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiTasksTasksListRequest
+*/
+func (a *TasksApiService) TasksTasksList(ctx context.Context) ApiTasksTasksListRequest {
+	return ApiTasksTasksListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -1178,21 +829,406 @@ func (a *AdminApiService) AdminVersionRetrieve(ctx context.Context) ApiAdminVers
 
 // Execute executes the request
 //
-//	@return Version
-func (a *AdminApiService) AdminVersionRetrieveExecute(r ApiAdminVersionRetrieveRequest) (*Version, *http.Response, error) {
+//	@return PaginatedTaskList
+func (a *TasksApiService) TasksTasksListExecute(r ApiTasksTasksListRequest) (*PaginatedTaskList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Version
+		localVarReturnValue *PaginatedTaskList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminApiService.AdminVersionRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksApiService.TasksTasksList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/admin/version/"
+	localVarPath := localBasePath + "/tasks/tasks/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.actorName != nil {
+		localVarQueryParams.Add("actor_name", parameterToString(*r.actorName, ""))
+	}
+	if r.aggregatedStatus != nil {
+		t := *r.aggregatedStatus
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("aggregated_status", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("aggregated_status", parameterToString(t, "multi"))
+		}
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.queueName != nil {
+		localVarQueryParams.Add("queue_name", parameterToString(*r.queueName, ""))
+	}
+	if r.relObjContentTypeAppLabel != nil {
+		localVarQueryParams.Add("rel_obj_content_type__app_label", parameterToString(*r.relObjContentTypeAppLabel, ""))
+	}
+	if r.relObjContentTypeModel != nil {
+		localVarQueryParams.Add("rel_obj_content_type__model", parameterToString(*r.relObjContentTypeModel, ""))
+	}
+	if r.relObjId != nil {
+		localVarQueryParams.Add("rel_obj_id", parameterToString(*r.relObjId, ""))
+	}
+	if r.relObjIdIsnull != nil {
+		localVarQueryParams.Add("rel_obj_id__isnull", parameterToString(*r.relObjIdIsnull, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	if r.state != nil {
+		localVarQueryParams.Add("state", parameterToString(*r.state, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiTasksTasksRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *TasksApiService
+	messageId  string
+}
+
+func (r ApiTasksTasksRetrieveRequest) Execute() (*Task, *http.Response, error) {
+	return r.ApiService.TasksTasksRetrieveExecute(r)
+}
+
+/*
+TasksTasksRetrieve Method for TasksTasksRetrieve
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param messageId A UUID string identifying this Task.
+	@return ApiTasksTasksRetrieveRequest
+*/
+func (a *TasksApiService) TasksTasksRetrieve(ctx context.Context, messageId string) ApiTasksTasksRetrieveRequest {
+	return ApiTasksTasksRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		messageId:  messageId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return Task
+func (a *TasksApiService) TasksTasksRetrieveExecute(r ApiTasksTasksRetrieveRequest) (*Task, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Task
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksApiService.TasksTasksRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/tasks/tasks/{message_id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"message_id"+"}", url.PathEscape(parameterToString(r.messageId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiTasksTasksRetryCreateRequest struct {
+	ctx        context.Context
+	ApiService *TasksApiService
+	messageId  string
+}
+
+func (r ApiTasksTasksRetryCreateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.TasksTasksRetryCreateExecute(r)
+}
+
+/*
+TasksTasksRetryCreate Method for TasksTasksRetryCreate
+
+Retry task
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param messageId A UUID string identifying this Task.
+	@return ApiTasksTasksRetryCreateRequest
+*/
+func (a *TasksApiService) TasksTasksRetryCreate(ctx context.Context, messageId string) ApiTasksTasksRetryCreateRequest {
+	return ApiTasksTasksRetryCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		messageId:  messageId,
+	}
+}
+
+// Execute executes the request
+func (a *TasksApiService) TasksTasksRetryCreateExecute(r ApiTasksTasksRetryCreateRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksApiService.TasksTasksRetryCreate")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/tasks/tasks/{message_id}/retry/"
+	localVarPath = strings.Replace(localVarPath, "{"+"message_id"+"}", url.PathEscape(parameterToString(r.messageId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiTasksWorkersListRequest struct {
+	ctx        context.Context
+	ApiService *TasksApiService
+}
+
+func (r ApiTasksWorkersListRequest) Execute() ([]Worker, *http.Response, error) {
+	return r.ApiService.TasksWorkersListExecute(r)
+}
+
+/*
+TasksWorkersList Method for TasksWorkersList
+
+Get currently connected worker count.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiTasksWorkersListRequest
+*/
+func (a *TasksApiService) TasksWorkersList(ctx context.Context) ApiTasksWorkersListRequest {
+	return ApiTasksWorkersListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []Worker
+func (a *TasksApiService) TasksWorkersListExecute(r ApiTasksWorkersListRequest) ([]Worker, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []Worker
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksApiService.TasksWorkersList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/tasks/workers"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
