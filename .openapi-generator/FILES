@@ -287,7 +287,6 @@ docs/ModelRequest.md
 docs/MutualTLSStage.md
 docs/MutualTLSStageModeEnum.md
 docs/MutualTLSStageRequest.md
-docs/NameIdPolicyEnum.md
 docs/NetworkBindingEnum.md
 docs/NotConfiguredActionEnum.md
 docs/Notification.md
@@ -654,6 +653,7 @@ docs/RoleObjectPermission.md
 docs/RoleRequest.md
 docs/RootApi.md
 docs/SAMLMetadata.md
+docs/SAMLNameIDPolicyEnum.md
 docs/SAMLPropertyMapping.md
 docs/SAMLPropertyMappingRequest.md
 docs/SAMLProvider.md
@@ -1056,7 +1056,6 @@ model_model_request.go
 model_mutual_tls_stage.go
 model_mutual_tls_stage_mode_enum.go
 model_mutual_tls_stage_request.go
-model_name_id_policy_enum.go
 model_network_binding_enum.go
 model_not_configured_action_enum.go
 model_notification.go
@@ -1415,6 +1414,7 @@ model_role_assigned_object_permission.go
 model_role_object_permission.go
 model_role_request.go
 model_saml_metadata.go
+model_saml_name_id_policy_enum.go
 model_saml_property_mapping.go
 model_saml_property_mapping_request.go
 model_saml_provider.go

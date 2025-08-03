@@ -1,4 +1,4 @@
-# NameIdPolicyEnum
+# SAMLNameIDPolicyEnum
 
 ## Enum
 
@@ -12,6 +12,8 @@
 * `_2_0NAMEID_FORMATWINDOWS_DOMAIN_QUALIFIED_NAME` (value: `"urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName"`)
 
 * `_2_0NAMEID_FORMATTRANSIENT` (value: `"urn:oasis:names:tc:SAML:2.0:nameid-format:transient"`)
+
+* `_1_1NAMEID_FORMATUNSPECIFIED` (value: `"urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

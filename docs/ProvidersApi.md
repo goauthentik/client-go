@@ -6038,7 +6038,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersSamlList
 
-> PaginatedSAMLProviderList ProvidersSamlList(ctx).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthnContextClassRefMapping(authnContextClassRefMapping).AuthorizationFlow(authorizationFlow).BackchannelApplication(backchannelApplication).DefaultRelayState(defaultRelayState).DigestAlgorithm(digestAlgorithm).EncryptionKp(encryptionKp).InvalidationFlow(invalidationFlow).IsBackchannel(isBackchannel).Issuer(issuer).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignAssertion(signAssertion).SignResponse(signResponse).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
+> PaginatedSAMLProviderList ProvidersSamlList(ctx).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthnContextClassRefMapping(authnContextClassRefMapping).AuthorizationFlow(authorizationFlow).BackchannelApplication(backchannelApplication).DefaultNameIdPolicy(defaultNameIdPolicy).DefaultRelayState(defaultRelayState).DigestAlgorithm(digestAlgorithm).EncryptionKp(encryptionKp).InvalidationFlow(invalidationFlow).IsBackchannel(isBackchannel).Issuer(issuer).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignAssertion(signAssertion).SignResponse(signResponse).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
 
 
 
@@ -6065,6 +6065,7 @@ func main() {
     authnContextClassRefMapping := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     authorizationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     backchannelApplication := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    defaultNameIdPolicy := "defaultNameIdPolicy_example" // string |  (optional)
     defaultRelayState := "defaultRelayState_example" // string |  (optional)
     digestAlgorithm := "digestAlgorithm_example" // string |  (optional)
     encryptionKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
@@ -6088,7 +6089,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProvidersApi.ProvidersSamlList(context.Background()).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthnContextClassRefMapping(authnContextClassRefMapping).AuthorizationFlow(authorizationFlow).BackchannelApplication(backchannelApplication).DefaultRelayState(defaultRelayState).DigestAlgorithm(digestAlgorithm).EncryptionKp(encryptionKp).InvalidationFlow(invalidationFlow).IsBackchannel(isBackchannel).Issuer(issuer).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignAssertion(signAssertion).SignResponse(signResponse).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
+    resp, r, err := apiClient.ProvidersApi.ProvidersSamlList(context.Background()).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthnContextClassRefMapping(authnContextClassRefMapping).AuthorizationFlow(authorizationFlow).BackchannelApplication(backchannelApplication).DefaultNameIdPolicy(defaultNameIdPolicy).DefaultRelayState(defaultRelayState).DigestAlgorithm(digestAlgorithm).EncryptionKp(encryptionKp).InvalidationFlow(invalidationFlow).IsBackchannel(isBackchannel).Issuer(issuer).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignAssertion(signAssertion).SignResponse(signResponse).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSamlList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6117,6 +6118,7 @@ Name | Type | Description  | Notes
  **authnContextClassRefMapping** | **string** |  | 
  **authorizationFlow** | **string** |  | 
  **backchannelApplication** | **string** |  | 
+ **defaultNameIdPolicy** | **string** |  | 
  **defaultRelayState** | **string** |  | 
  **digestAlgorithm** | **string** |  | 
  **encryptionKp** | **string** |  | 

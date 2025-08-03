@@ -11381,6 +11381,7 @@ type ApiProvidersSamlListRequest struct {
 	authnContextClassRefMapping *string
 	authorizationFlow           *string
 	backchannelApplication      *string
+	defaultNameIdPolicy         *string
 	defaultRelayState           *string
 	digestAlgorithm             *string
 	encryptionKp                *string
@@ -11440,6 +11441,11 @@ func (r ApiProvidersSamlListRequest) AuthorizationFlow(authorizationFlow string)
 
 func (r ApiProvidersSamlListRequest) BackchannelApplication(backchannelApplication string) ApiProvidersSamlListRequest {
 	r.backchannelApplication = &backchannelApplication
+	return r
+}
+
+func (r ApiProvidersSamlListRequest) DefaultNameIdPolicy(defaultNameIdPolicy string) ApiProvidersSamlListRequest {
+	r.defaultNameIdPolicy = &defaultNameIdPolicy
 	return r
 }
 
@@ -11612,6 +11618,9 @@ func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 	}
 	if r.backchannelApplication != nil {
 		localVarQueryParams.Add("backchannel_application", parameterToString(*r.backchannelApplication, ""))
+	}
+	if r.defaultNameIdPolicy != nil {
+		localVarQueryParams.Add("default_name_id_policy", parameterToString(*r.defaultNameIdPolicy, ""))
 	}
 	if r.defaultRelayState != nil {
 		localVarQueryParams.Add("default_relay_state", parameterToString(*r.defaultRelayState, ""))

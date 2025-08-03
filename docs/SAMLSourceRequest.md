@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **SsoUrl** | **string** | URL that the initial Login request is sent to. | 
 **SloUrl** | Pointer to **NullableString** | Optional URL if your IDP supports Single-Logout. | [optional] 
 **AllowIdpInitiated** | Pointer to **bool** | Allows authentication flows initiated by the IdP. This can be a security risk, as no validation of the request ID is done. | [optional] 
-**NameIdPolicy** | Pointer to [**NameIdPolicyEnum**](NameIdPolicyEnum.md) | NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent. | [optional] 
+**NameIdPolicy** | Pointer to [**SAMLNameIDPolicyEnum**](SAMLNameIDPolicyEnum.md) | NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent. | [optional] 
 **BindingType** | Pointer to [**BindingTypeEnum**](BindingTypeEnum.md) |  | [optional] 
 **VerificationKp** | Pointer to **NullableString** | When selected, incoming assertion&#39;s Signatures will be validated against this certificate. To allow unsigned Requests, leave on default. | [optional] 
 **SigningKp** | Pointer to **NullableString** | Keypair used to sign outgoing Responses going to the Identity Provider. | [optional] 
@@ -460,20 +460,20 @@ HasAllowIdpInitiated returns a boolean if a field has been set.
 
 ### GetNameIdPolicy
 
-`func (o *SAMLSourceRequest) GetNameIdPolicy() NameIdPolicyEnum`
+`func (o *SAMLSourceRequest) GetNameIdPolicy() SAMLNameIDPolicyEnum`
 
 GetNameIdPolicy returns the NameIdPolicy field if non-nil, zero value otherwise.
 
 ### GetNameIdPolicyOk
 
-`func (o *SAMLSourceRequest) GetNameIdPolicyOk() (*NameIdPolicyEnum, bool)`
+`func (o *SAMLSourceRequest) GetNameIdPolicyOk() (*SAMLNameIDPolicyEnum, bool)`
 
 GetNameIdPolicyOk returns a tuple with the NameIdPolicy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNameIdPolicy
 
-`func (o *SAMLSourceRequest) SetNameIdPolicy(v NameIdPolicyEnum)`
+`func (o *SAMLSourceRequest) SetNameIdPolicy(v SAMLNameIDPolicyEnum)`
 
 SetNameIdPolicy sets NameIdPolicy field to given value.
 

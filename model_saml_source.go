@@ -57,8 +57,8 @@ type SAMLSource struct {
 	// Allows authentication flows initiated by the IdP. This can be a security risk, as no validation of the request ID is done.
 	AllowIdpInitiated *bool `json:"allow_idp_initiated,omitempty"`
 	// NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.
-	NameIdPolicy *NameIdPolicyEnum `json:"name_id_policy,omitempty"`
-	BindingType  *BindingTypeEnum  `json:"binding_type,omitempty"`
+	NameIdPolicy *SAMLNameIDPolicyEnum `json:"name_id_policy,omitempty"`
+	BindingType  *BindingTypeEnum      `json:"binding_type,omitempty"`
 	// When selected, incoming assertion's Signatures will be validated against this certificate. To allow unsigned Requests, leave on default.
 	VerificationKp NullableString `json:"verification_kp,omitempty"`
 	// Keypair used to sign outgoing Responses going to the Identity Provider.
@@ -783,9 +783,9 @@ func (o *SAMLSource) SetAllowIdpInitiated(v bool) {
 }
 
 // GetNameIdPolicy returns the NameIdPolicy field value if set, zero value otherwise.
-func (o *SAMLSource) GetNameIdPolicy() NameIdPolicyEnum {
+func (o *SAMLSource) GetNameIdPolicy() SAMLNameIDPolicyEnum {
 	if o == nil || o.NameIdPolicy == nil {
-		var ret NameIdPolicyEnum
+		var ret SAMLNameIDPolicyEnum
 		return ret
 	}
 	return *o.NameIdPolicy
@@ -793,7 +793,7 @@ func (o *SAMLSource) GetNameIdPolicy() NameIdPolicyEnum {
 
 // GetNameIdPolicyOk returns a tuple with the NameIdPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SAMLSource) GetNameIdPolicyOk() (*NameIdPolicyEnum, bool) {
+func (o *SAMLSource) GetNameIdPolicyOk() (*SAMLNameIDPolicyEnum, bool) {
 	if o == nil || o.NameIdPolicy == nil {
 		return nil, false
 	}
@@ -809,8 +809,8 @@ func (o *SAMLSource) HasNameIdPolicy() bool {
 	return false
 }
 
-// SetNameIdPolicy gets a reference to the given NameIdPolicyEnum and assigns it to the NameIdPolicy field.
-func (o *SAMLSource) SetNameIdPolicy(v NameIdPolicyEnum) {
+// SetNameIdPolicy gets a reference to the given SAMLNameIDPolicyEnum and assigns it to the NameIdPolicy field.
+func (o *SAMLSource) SetNameIdPolicy(v SAMLNameIDPolicyEnum) {
 	o.NameIdPolicy = &v
 }
 

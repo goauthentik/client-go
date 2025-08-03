@@ -53,7 +53,8 @@ type SAMLProviderRequest struct {
 	// This determines how authentik sends the response back to the Service Provider.
 	SpBinding *SpBindingEnum `json:"sp_binding,omitempty"`
 	// Default relay_state value for IDP-initiated logins
-	DefaultRelayState *string `json:"default_relay_state,omitempty"`
+	DefaultRelayState   *string               `json:"default_relay_state,omitempty"`
+	DefaultNameIdPolicy *SAMLNameIDPolicyEnum `json:"default_name_id_policy,omitempty"`
 }
 
 // NewSAMLProviderRequest instantiates a new SAMLProviderRequest object
@@ -815,6 +816,38 @@ func (o *SAMLProviderRequest) SetDefaultRelayState(v string) {
 	o.DefaultRelayState = &v
 }
 
+// GetDefaultNameIdPolicy returns the DefaultNameIdPolicy field value if set, zero value otherwise.
+func (o *SAMLProviderRequest) GetDefaultNameIdPolicy() SAMLNameIDPolicyEnum {
+	if o == nil || o.DefaultNameIdPolicy == nil {
+		var ret SAMLNameIDPolicyEnum
+		return ret
+	}
+	return *o.DefaultNameIdPolicy
+}
+
+// GetDefaultNameIdPolicyOk returns a tuple with the DefaultNameIdPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SAMLProviderRequest) GetDefaultNameIdPolicyOk() (*SAMLNameIDPolicyEnum, bool) {
+	if o == nil || o.DefaultNameIdPolicy == nil {
+		return nil, false
+	}
+	return o.DefaultNameIdPolicy, true
+}
+
+// HasDefaultNameIdPolicy returns a boolean if a field has been set.
+func (o *SAMLProviderRequest) HasDefaultNameIdPolicy() bool {
+	if o != nil && o.DefaultNameIdPolicy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultNameIdPolicy gets a reference to the given SAMLNameIDPolicyEnum and assigns it to the DefaultNameIdPolicy field.
+func (o *SAMLProviderRequest) SetDefaultNameIdPolicy(v SAMLNameIDPolicyEnum) {
+	o.DefaultNameIdPolicy = &v
+}
+
 func (o SAMLProviderRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -882,6 +915,9 @@ func (o SAMLProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.DefaultRelayState != nil {
 		toSerialize["default_relay_state"] = o.DefaultRelayState
+	}
+	if o.DefaultNameIdPolicy != nil {
+		toSerialize["default_name_id_policy"] = o.DefaultNameIdPolicy
 	}
 	return json.Marshal(toSerialize)
 }

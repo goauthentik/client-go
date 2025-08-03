@@ -74,6 +74,7 @@ Name | Type | Description | Notes
 **SignResponse** | Pointer to **bool** |  | [optional] 
 **SpBinding** | Pointer to [**SpBindingEnum**](SpBindingEnum.md) | This determines how authentik sends the response back to the Service Provider. | [optional] 
 **DefaultRelayState** | Pointer to **string** | Default relay_state value for IDP-initiated logins | [optional] 
+**DefaultNameIdPolicy** | Pointer to [**SAMLNameIDPolicyEnum**](SAMLNameIDPolicyEnum.md) |  | [optional] 
 **Url** | **string** | Base URL to SCIM requests, usually ends in /v2 | 
 **VerifyCertificates** | Pointer to **bool** |  | [optional] 
 **Token** | **string** | Authentication token | 
@@ -1874,6 +1875,31 @@ SetDefaultRelayState sets DefaultRelayState field to given value.
 `func (o *ModelRequest) HasDefaultRelayState() bool`
 
 HasDefaultRelayState returns a boolean if a field has been set.
+
+### GetDefaultNameIdPolicy
+
+`func (o *ModelRequest) GetDefaultNameIdPolicy() SAMLNameIDPolicyEnum`
+
+GetDefaultNameIdPolicy returns the DefaultNameIdPolicy field if non-nil, zero value otherwise.
+
+### GetDefaultNameIdPolicyOk
+
+`func (o *ModelRequest) GetDefaultNameIdPolicyOk() (*SAMLNameIDPolicyEnum, bool)`
+
+GetDefaultNameIdPolicyOk returns a tuple with the DefaultNameIdPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultNameIdPolicy
+
+`func (o *ModelRequest) SetDefaultNameIdPolicy(v SAMLNameIDPolicyEnum)`
+
+SetDefaultNameIdPolicy sets DefaultNameIdPolicy field to given value.
+
+### HasDefaultNameIdPolicy
+
+`func (o *ModelRequest) HasDefaultNameIdPolicy() bool`
+
+HasDefaultNameIdPolicy returns a boolean if a field has been set.
 
 ### GetUrl
 

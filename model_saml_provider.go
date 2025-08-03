@@ -70,7 +70,8 @@ type SAMLProvider struct {
 	// This determines how authentik sends the response back to the Service Provider.
 	SpBinding *SpBindingEnum `json:"sp_binding,omitempty"`
 	// Default relay_state value for IDP-initiated logins
-	DefaultRelayState *string `json:"default_relay_state,omitempty"`
+	DefaultRelayState   *string               `json:"default_relay_state,omitempty"`
+	DefaultNameIdPolicy *SAMLNameIDPolicyEnum `json:"default_name_id_policy,omitempty"`
 	// Get metadata download URL
 	UrlDownloadMetadata string `json:"url_download_metadata"`
 	// Get SSO Post URL
@@ -1075,6 +1076,38 @@ func (o *SAMLProvider) SetDefaultRelayState(v string) {
 	o.DefaultRelayState = &v
 }
 
+// GetDefaultNameIdPolicy returns the DefaultNameIdPolicy field value if set, zero value otherwise.
+func (o *SAMLProvider) GetDefaultNameIdPolicy() SAMLNameIDPolicyEnum {
+	if o == nil || o.DefaultNameIdPolicy == nil {
+		var ret SAMLNameIDPolicyEnum
+		return ret
+	}
+	return *o.DefaultNameIdPolicy
+}
+
+// GetDefaultNameIdPolicyOk returns a tuple with the DefaultNameIdPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SAMLProvider) GetDefaultNameIdPolicyOk() (*SAMLNameIDPolicyEnum, bool) {
+	if o == nil || o.DefaultNameIdPolicy == nil {
+		return nil, false
+	}
+	return o.DefaultNameIdPolicy, true
+}
+
+// HasDefaultNameIdPolicy returns a boolean if a field has been set.
+func (o *SAMLProvider) HasDefaultNameIdPolicy() bool {
+	if o != nil && o.DefaultNameIdPolicy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultNameIdPolicy gets a reference to the given SAMLNameIDPolicyEnum and assigns it to the DefaultNameIdPolicy field.
+func (o *SAMLProvider) SetDefaultNameIdPolicy(v SAMLNameIDPolicyEnum) {
+	o.DefaultNameIdPolicy = &v
+}
+
 // GetUrlDownloadMetadata returns the UrlDownloadMetadata field value
 func (o *SAMLProvider) GetUrlDownloadMetadata() string {
 	if o == nil {
@@ -1313,6 +1346,9 @@ func (o SAMLProvider) MarshalJSON() ([]byte, error) {
 	}
 	if o.DefaultRelayState != nil {
 		toSerialize["default_relay_state"] = o.DefaultRelayState
+	}
+	if o.DefaultNameIdPolicy != nil {
+		toSerialize["default_name_id_policy"] = o.DefaultNameIdPolicy
 	}
 	if true {
 		toSerialize["url_download_metadata"] = o.UrlDownloadMetadata
