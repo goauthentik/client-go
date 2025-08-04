@@ -6233,6 +6233,30 @@ paths:
         style: form
       - explode: true
         in: query
+        name: date_joined
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: date_joined__gt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: date_joined__lt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: email
         required: false
         schema:
@@ -6278,6 +6302,30 @@ paths:
         required: false
         schema:
           type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: last_updated
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: last_updated__gt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: last_updated__lt
+        required: false
+        schema:
+          format: date-time
+          type: string
         style: form
       - explode: true
         in: query
@@ -51153,6 +51201,7 @@ components:
         - scope
         pk: 0
         user:
+          last_updated: 2000-01-23T04:56:07.000+00:00
           is_active: true
           is_superuser: true
           last_login: 2000-01-23T04:56:07.000+00:00
@@ -59820,6 +59869,7 @@ components:
           - scope
           pk: 0
           user:
+            last_updated: 2000-01-23T04:56:07.000+00:00
             is_active: true
             is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
@@ -59902,6 +59952,7 @@ components:
           - scope
           pk: 0
           user:
+            last_updated: 2000-01-23T04:56:07.000+00:00
             is_active: true
             is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
@@ -65758,6 +65809,7 @@ components:
           pk: 0
           revoked: true
           user:
+            last_updated: 2000-01-23T04:56:07.000+00:00
             is_active: true
             is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
@@ -65842,6 +65894,7 @@ components:
           pk: 0
           revoked: true
           user:
+            last_updated: 2000-01-23T04:56:07.000+00:00
             is_active: true
             is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
@@ -66083,6 +66136,7 @@ components:
           permissions: permissions
           pk: 0
           user:
+            last_updated: 2000-01-23T04:56:07.000+00:00
             is_active: true
             is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
@@ -66174,6 +66228,7 @@ components:
           permissions: permissions
           pk: 0
           user:
+            last_updated: 2000-01-23T04:56:07.000+00:00
             is_active: true
             is_superuser: true
             last_login: 2000-01-23T04:56:07.000+00:00
@@ -66412,7 +66467,8 @@ components:
         autocomplete:
           key: ""
         results:
-        - is_active: true
+        - last_updated: 2000-01-23T04:56:07.000+00:00
+          is_active: true
           is_superuser: true
           last_login: 2000-01-23T04:56:07.000+00:00
           password_change_date: 2000-01-23T04:56:07.000+00:00
@@ -66448,7 +66504,8 @@ components:
           date_joined: 2000-01-23T04:56:07.000+00:00
           email: email
           username: username
-        - is_active: true
+        - last_updated: 2000-01-23T04:56:07.000+00:00
+          is_active: true
           is_superuser: true
           last_login: 2000-01-23T04:56:07.000+00:00
           password_change_date: 2000-01-23T04:56:07.000+00:00
@@ -78605,6 +78662,7 @@ components:
         pk: 0
         revoked: true
         user:
+          last_updated: 2000-01-23T04:56:07.000+00:00
           is_active: true
           is_superuser: true
           last_login: 2000-01-23T04:56:07.000+00:00
@@ -79012,6 +79070,7 @@ components:
     User:
       description: User Serializer
       example:
+        last_updated: 2000-01-23T04:56:07.000+00:00
         is_active: true
         is_superuser: true
         last_login: 2000-01-23T04:56:07.000+00:00
@@ -79113,11 +79172,16 @@ components:
           format: date-time
           readOnly: true
           type: string
+        last_updated:
+          format: date-time
+          readOnly: true
+          type: string
       required:
       - avatar
       - date_joined
       - groups_obj
       - is_superuser
+      - last_updated
       - name
       - password_change_date
       - pk
@@ -79272,6 +79336,7 @@ components:
         permissions: permissions
         pk: 0
         user:
+          last_updated: 2000-01-23T04:56:07.000+00:00
           is_active: true
           is_superuser: true
           last_login: 2000-01-23T04:56:07.000+00:00

@@ -4067,7 +4067,7 @@ Other parameters are passed through a pointer to a apiCoreUsersImpersonateEndRet
 
 ## CoreUsersList
 
-> PaginatedUserList CoreUsersList(ctx).Attributes(attributes).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IsActive(isActive).IsSuperuser(isSuperuser).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
+> PaginatedUserList CoreUsersList(ctx).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IsActive(isActive).IsSuperuser(isSuperuser).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
 
 
 
@@ -4082,17 +4082,24 @@ import (
     "context"
     "fmt"
     "os"
+    "time"
     openapiclient "./openapi"
 )
 
 func main() {
     attributes := "attributes_example" // string | Attributes (optional)
+    dateJoined := time.Now() // time.Time |  (optional)
+    dateJoinedGt := time.Now() // time.Time |  (optional)
+    dateJoinedLt := time.Now() // time.Time |  (optional)
     email := "email_example" // string |  (optional)
     groupsByName := []string{"Inner_example"} // []string |  (optional)
     groupsByPk := []string{"Inner_example"} // []string |  (optional)
     includeGroups := true // bool |  (optional) (default to true)
     isActive := true // bool |  (optional)
     isSuperuser := true // bool |  (optional)
+    lastUpdated := time.Now() // time.Time |  (optional)
+    lastUpdatedGt := time.Now() // time.Time |  (optional)
+    lastUpdatedLt := time.Now() // time.Time |  (optional)
     name := "name_example" // string |  (optional)
     ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -4106,7 +4113,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreUsersList(context.Background()).Attributes(attributes).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IsActive(isActive).IsSuperuser(isSuperuser).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
+    resp, r, err := apiClient.CoreApi.CoreUsersList(context.Background()).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IsActive(isActive).IsSuperuser(isSuperuser).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4128,12 +4135,18 @@ Other parameters are passed through a pointer to a apiCoreUsersListRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **attributes** | **string** | Attributes | 
+ **dateJoined** | **time.Time** |  | 
+ **dateJoinedGt** | **time.Time** |  | 
+ **dateJoinedLt** | **time.Time** |  | 
  **email** | **string** |  | 
  **groupsByName** | **[]string** |  | 
  **groupsByPk** | **[]string** |  | 
  **includeGroups** | **bool** |  | [default to true]
  **isActive** | **bool** |  | 
  **isSuperuser** | **bool** |  | 
+ **lastUpdated** | **time.Time** |  | 
+ **lastUpdatedGt** | **time.Time** |  | 
+ **lastUpdatedLt** | **time.Time** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 

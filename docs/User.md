@@ -21,12 +21,13 @@ Name | Type | Description | Notes
 **Type** | Pointer to [**UserTypeEnum**](UserTypeEnum.md) |  | [optional] 
 **Uuid** | **string** |  | [readonly] 
 **PasswordChangeDate** | **time.Time** |  | [readonly] 
+**LastUpdated** | **time.Time** |  | [readonly] 
 
 ## Methods
 
 ### NewUser
 
-`func NewUser(pk int32, username string, name string, dateJoined time.Time, isSuperuser bool, groupsObj []UserGroup, avatar string, uid string, uuid string, passwordChangeDate time.Time, ) *User`
+`func NewUser(pk int32, username string, name string, dateJoined time.Time, isSuperuser bool, groupsObj []UserGroup, avatar string, uid string, uuid string, passwordChangeDate time.Time, lastUpdated time.Time, ) *User`
 
 NewUser instantiates a new User object
 This constructor will assign default values to properties that have it defined,
@@ -434,6 +435,26 @@ and a boolean to check if the value has been set.
 `func (o *User) SetPasswordChangeDate(v time.Time)`
 
 SetPasswordChangeDate sets PasswordChangeDate field to given value.
+
+
+### GetLastUpdated
+
+`func (o *User) GetLastUpdated() time.Time`
+
+GetLastUpdated returns the LastUpdated field if non-nil, zero value otherwise.
+
+### GetLastUpdatedOk
+
+`func (o *User) GetLastUpdatedOk() (*time.Time, bool)`
+
+GetLastUpdatedOk returns a tuple with the LastUpdated field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastUpdated
+
+`func (o *User) SetLastUpdated(v time.Time)`
+
+SetLastUpdated sets LastUpdated field to given value.
 
 
 

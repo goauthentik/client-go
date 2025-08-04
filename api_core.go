@@ -7651,12 +7651,18 @@ type ApiCoreUsersListRequest struct {
 	ctx            context.Context
 	ApiService     *CoreApiService
 	attributes     *string
+	dateJoined     *time.Time
+	dateJoinedGt   *time.Time
+	dateJoinedLt   *time.Time
 	email          *string
 	groupsByName   *[]string
 	groupsByPk     *[]string
 	includeGroups  *bool
 	isActive       *bool
 	isSuperuser    *bool
+	lastUpdated    *time.Time
+	lastUpdatedGt  *time.Time
+	lastUpdatedLt  *time.Time
 	name           *string
 	ordering       *string
 	page           *int32
@@ -7672,6 +7678,21 @@ type ApiCoreUsersListRequest struct {
 // Attributes
 func (r ApiCoreUsersListRequest) Attributes(attributes string) ApiCoreUsersListRequest {
 	r.attributes = &attributes
+	return r
+}
+
+func (r ApiCoreUsersListRequest) DateJoined(dateJoined time.Time) ApiCoreUsersListRequest {
+	r.dateJoined = &dateJoined
+	return r
+}
+
+func (r ApiCoreUsersListRequest) DateJoinedGt(dateJoinedGt time.Time) ApiCoreUsersListRequest {
+	r.dateJoinedGt = &dateJoinedGt
+	return r
+}
+
+func (r ApiCoreUsersListRequest) DateJoinedLt(dateJoinedLt time.Time) ApiCoreUsersListRequest {
+	r.dateJoinedLt = &dateJoinedLt
 	return r
 }
 
@@ -7702,6 +7723,21 @@ func (r ApiCoreUsersListRequest) IsActive(isActive bool) ApiCoreUsersListRequest
 
 func (r ApiCoreUsersListRequest) IsSuperuser(isSuperuser bool) ApiCoreUsersListRequest {
 	r.isSuperuser = &isSuperuser
+	return r
+}
+
+func (r ApiCoreUsersListRequest) LastUpdated(lastUpdated time.Time) ApiCoreUsersListRequest {
+	r.lastUpdated = &lastUpdated
+	return r
+}
+
+func (r ApiCoreUsersListRequest) LastUpdatedGt(lastUpdatedGt time.Time) ApiCoreUsersListRequest {
+	r.lastUpdatedGt = &lastUpdatedGt
+	return r
+}
+
+func (r ApiCoreUsersListRequest) LastUpdatedLt(lastUpdatedLt time.Time) ApiCoreUsersListRequest {
+	r.lastUpdatedLt = &lastUpdatedLt
 	return r
 }
 
@@ -7803,6 +7839,15 @@ func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 	if r.attributes != nil {
 		localVarQueryParams.Add("attributes", parameterToString(*r.attributes, ""))
 	}
+	if r.dateJoined != nil {
+		localVarQueryParams.Add("date_joined", parameterToString(*r.dateJoined, ""))
+	}
+	if r.dateJoinedGt != nil {
+		localVarQueryParams.Add("date_joined__gt", parameterToString(*r.dateJoinedGt, ""))
+	}
+	if r.dateJoinedLt != nil {
+		localVarQueryParams.Add("date_joined__lt", parameterToString(*r.dateJoinedLt, ""))
+	}
 	if r.email != nil {
 		localVarQueryParams.Add("email", parameterToString(*r.email, ""))
 	}
@@ -7836,6 +7881,15 @@ func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 	}
 	if r.isSuperuser != nil {
 		localVarQueryParams.Add("is_superuser", parameterToString(*r.isSuperuser, ""))
+	}
+	if r.lastUpdated != nil {
+		localVarQueryParams.Add("last_updated", parameterToString(*r.lastUpdated, ""))
+	}
+	if r.lastUpdatedGt != nil {
+		localVarQueryParams.Add("last_updated__gt", parameterToString(*r.lastUpdatedGt, ""))
+	}
+	if r.lastUpdatedLt != nil {
+		localVarQueryParams.Add("last_updated__lt", parameterToString(*r.lastUpdatedLt, ""))
 	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
