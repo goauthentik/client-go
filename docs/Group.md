@@ -15,12 +15,14 @@ Name | Type | Description | Notes
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 **Roles** | Pointer to **[]string** |  | [optional] 
 **RolesObj** | [**[]Role**](Role.md) |  | [readonly] 
+**Children** | Pointer to **[]string** |  | [optional] 
+**ChildrenObj** | [**[]GroupChild**](GroupChild.md) |  | [readonly] 
 
 ## Methods
 
 ### NewGroup
 
-`func NewGroup(pk string, numPk int32, name string, parentName NullableString, usersObj []GroupMember, rolesObj []Role, ) *Group`
+`func NewGroup(pk string, numPk int32, name string, parentName NullableString, usersObj []GroupMember, rolesObj []Role, childrenObj []GroupChild, ) *Group`
 
 NewGroup instantiates a new Group object
 This constructor will assign default values to properties that have it defined,
@@ -310,6 +312,61 @@ and a boolean to check if the value has been set.
 SetRolesObj sets RolesObj field to given value.
 
 
+### GetChildren
+
+`func (o *Group) GetChildren() []string`
+
+GetChildren returns the Children field if non-nil, zero value otherwise.
+
+### GetChildrenOk
+
+`func (o *Group) GetChildrenOk() (*[]string, bool)`
+
+GetChildrenOk returns a tuple with the Children field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChildren
+
+`func (o *Group) SetChildren(v []string)`
+
+SetChildren sets Children field to given value.
+
+### HasChildren
+
+`func (o *Group) HasChildren() bool`
+
+HasChildren returns a boolean if a field has been set.
+
+### GetChildrenObj
+
+`func (o *Group) GetChildrenObj() []GroupChild`
+
+GetChildrenObj returns the ChildrenObj field if non-nil, zero value otherwise.
+
+### GetChildrenObjOk
+
+`func (o *Group) GetChildrenObjOk() (*[]GroupChild, bool)`
+
+GetChildrenObjOk returns a tuple with the ChildrenObj field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChildrenObj
+
+`func (o *Group) SetChildrenObj(v []GroupChild)`
+
+SetChildrenObj sets ChildrenObj field to given value.
+
+
+### SetChildrenObjNil
+
+`func (o *Group) SetChildrenObjNil(b bool)`
+
+ SetChildrenObjNil sets the value for ChildrenObj to be an explicit nil
+
+### UnsetChildrenObj
+`func (o *Group) UnsetChildrenObj()`
+
+UnsetChildrenObj ensures that no value is present for ChildrenObj, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

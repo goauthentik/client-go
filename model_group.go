@@ -29,13 +29,15 @@ type Group struct {
 	Attributes  map[string]interface{} `json:"attributes,omitempty"`
 	Roles       []string               `json:"roles,omitempty"`
 	RolesObj    []Role                 `json:"roles_obj"`
+	Children    []string               `json:"children,omitempty"`
+	ChildrenObj []GroupChild           `json:"children_obj"`
 }
 
 // NewGroup instantiates a new Group object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroup(pk string, numPk int32, name string, parentName NullableString, usersObj []GroupMember, rolesObj []Role) *Group {
+func NewGroup(pk string, numPk int32, name string, parentName NullableString, usersObj []GroupMember, rolesObj []Role, childrenObj []GroupChild) *Group {
 	this := Group{}
 	this.Pk = pk
 	this.NumPk = numPk
@@ -43,6 +45,7 @@ func NewGroup(pk string, numPk int32, name string, parentName NullableString, us
 	this.ParentName = parentName
 	this.UsersObj = usersObj
 	this.RolesObj = rolesObj
+	this.ChildrenObj = childrenObj
 	return &this
 }
 
@@ -373,6 +376,64 @@ func (o *Group) SetRolesObj(v []Role) {
 	o.RolesObj = v
 }
 
+// GetChildren returns the Children field value if set, zero value otherwise.
+func (o *Group) GetChildren() []string {
+	if o == nil || o.Children == nil {
+		var ret []string
+		return ret
+	}
+	return o.Children
+}
+
+// GetChildrenOk returns a tuple with the Children field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Group) GetChildrenOk() ([]string, bool) {
+	if o == nil || o.Children == nil {
+		return nil, false
+	}
+	return o.Children, true
+}
+
+// HasChildren returns a boolean if a field has been set.
+func (o *Group) HasChildren() bool {
+	if o != nil && o.Children != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetChildren gets a reference to the given []string and assigns it to the Children field.
+func (o *Group) SetChildren(v []string) {
+	o.Children = v
+}
+
+// GetChildrenObj returns the ChildrenObj field value
+// If the value is explicit nil, the zero value for []GroupChild will be returned
+func (o *Group) GetChildrenObj() []GroupChild {
+	if o == nil {
+		var ret []GroupChild
+		return ret
+	}
+
+	return o.ChildrenObj
+}
+
+// GetChildrenObjOk returns a tuple with the ChildrenObj field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Group) GetChildrenObjOk() ([]GroupChild, bool) {
+	if o == nil || o.ChildrenObj == nil {
+		return nil, false
+	}
+	return o.ChildrenObj, true
+}
+
+// SetChildrenObj sets field value
+func (o *Group) SetChildrenObj(v []GroupChild) {
+	o.ChildrenObj = v
+}
+
 func (o Group) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -407,6 +468,12 @@ func (o Group) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["roles_obj"] = o.RolesObj
+	}
+	if o.Children != nil {
+		toSerialize["children"] = o.Children
+	}
+	if o.ChildrenObj != nil {
+		toSerialize["children_obj"] = o.ChildrenObj
 	}
 	return json.Marshal(toSerialize)
 }

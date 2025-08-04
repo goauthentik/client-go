@@ -209,6 +209,7 @@ docs/GoogleWorkspaceProviderRequest.md
 docs/GoogleWorkspaceProviderUser.md
 docs/GoogleWorkspaceProviderUserRequest.md
 docs/Group.md
+docs/GroupChild.md
 docs/GroupKerberosSourceConnection.md
 docs/GroupKerberosSourceConnectionRequest.md
 docs/GroupLDAPSourceConnection.md
@@ -979,6 +980,7 @@ model_google_workspace_provider_request.go
 model_google_workspace_provider_user.go
 model_google_workspace_provider_user_request.go
 model_group.go
+model_group_child.go
 model_group_kerberos_source_connection.go
 model_group_kerberos_source_connection_request.go
 model_group_ldap_source_connection.go

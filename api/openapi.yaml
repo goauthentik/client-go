@@ -5179,6 +5179,14 @@ paths:
         style: form
       - explode: true
         in: query
+        name: include_children
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - explode: true
+        in: query
         name: include_users
         required: false
         schema:
@@ -5352,6 +5360,14 @@ paths:
           format: uuid
           type: string
         style: simple
+      - explode: true
+        in: query
+        name: include_children
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       - explode: true
         in: query
         name: include_users
@@ -52645,10 +52661,6 @@ components:
         roles:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
-        attributes:
-          key: ""
-        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         num_pk: 0
         users_obj:
         - uid: uid
@@ -52672,6 +52684,26 @@ components:
         users:
         - 6
         - 6
+        children:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        attributes:
+          key: ""
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        children_obj:
+        - is_superuser: true
+          name: name
+          attributes:
+            key: ""
+          group_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - is_superuser: true
+          name: name
+          attributes:
+            key: ""
+          group_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pk:
           format: uuid
@@ -52717,13 +52749,57 @@ components:
             $ref: '#/components/schemas/Role'
           readOnly: true
           type: array
+        children:
+          items:
+            format: uuid
+            type: string
+          type: array
+        children_obj:
+          items:
+            $ref: '#/components/schemas/GroupChild'
+          nullable: true
+          readOnly: true
+          type: array
       required:
+      - children_obj
       - name
       - num_pk
       - parent_name
       - pk
       - roles_obj
       - users_obj
+      type: object
+    GroupChild:
+      description: Stripped down group serializer to show relevant children for groups
+      example:
+        is_superuser: true
+        name: name
+        attributes:
+          key: ""
+        group_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Group uuid
+          type: string
+        name:
+          type: string
+        is_superuser:
+          description: Users added to this group will be superusers.
+          type: boolean
+        attributes:
+          additionalProperties: {}
+          type: object
+        group_uuid:
+          format: uuid
+          readOnly: true
+          type: string
+      required:
+      - group_uuid
+      - name
+      - pk
       type: object
     GroupKerberosSourceConnection:
       description: Group Source Connection
@@ -53083,6 +53159,9 @@ components:
       example:
         parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         is_superuser: true
+        children:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         roles:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -53111,6 +53190,11 @@ components:
           additionalProperties: {}
           type: object
         roles:
+          items:
+            format: uuid
+            type: string
+          type: array
+        children:
           items:
             format: uuid
             type: string
@@ -60507,10 +60591,6 @@ components:
           roles:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          name: name
-          attributes:
-            key: ""
-          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           num_pk: 0
           users_obj:
           - uid: uid
@@ -60534,6 +60614,26 @@ components:
           users:
           - 6
           - 6
+          children:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          attributes:
+            key: ""
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          children_obj:
+          - is_superuser: true
+            name: name
+            attributes:
+              key: ""
+            group_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - is_superuser: true
+            name: name
+            attributes:
+              key: ""
+            group_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - parent_name: parent_name
           parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           roles_obj:
@@ -60545,10 +60645,6 @@ components:
           roles:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          name: name
-          attributes:
-            key: ""
-          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           num_pk: 0
           users_obj:
           - uid: uid
@@ -60572,6 +60668,26 @@ components:
           users:
           - 6
           - 6
+          children:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          attributes:
+            key: ""
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          children_obj:
+          - is_superuser: true
+            name: name
+            attributes:
+              key: ""
+            group_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - is_superuser: true
+            name: name
+            attributes:
+              key: ""
+            group_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -68983,6 +69099,9 @@ components:
       example:
         parent: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         is_superuser: true
+        children:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         roles:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -69011,6 +69130,11 @@ components:
           additionalProperties: {}
           type: object
         roles:
+          items:
+            format: uuid
+            type: string
+          type: array
+        children:
           items:
             format: uuid
             type: string

@@ -2365,7 +2365,7 @@ Name | Type | Description  | Notes
 
 ## CoreGroupsList
 
-> PaginatedGroupList CoreGroupsList(ctx).Attributes(attributes).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedGroupList CoreGroupsList(ctx).Attributes(attributes).IncludeChildren(includeChildren).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -2385,6 +2385,7 @@ import (
 
 func main() {
     attributes := "attributes_example" // string | Attributes (optional)
+    includeChildren := true // bool |  (optional) (default to false)
     includeUsers := true // bool |  (optional) (default to true)
     isSuperuser := true // bool |  (optional)
     membersByPk := []int32{int32(123)} // []int32 |  (optional)
@@ -2397,7 +2398,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreGroupsList(context.Background()).Attributes(attributes).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    resp, r, err := apiClient.CoreApi.CoreGroupsList(context.Background()).Attributes(attributes).IncludeChildren(includeChildren).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreGroupsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2419,6 +2420,7 @@ Other parameters are passed through a pointer to a apiCoreGroupsListRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **attributes** | **string** | Attributes | 
+ **includeChildren** | **bool** |  | [default to false]
  **includeUsers** | **bool** |  | [default to true]
  **isSuperuser** | **bool** |  | 
  **membersByPk** | **[]int32** |  | 
@@ -2591,7 +2593,7 @@ Name | Type | Description  | Notes
 
 ## CoreGroupsRetrieve
 
-> Group CoreGroupsRetrieve(ctx, groupUuid).IncludeUsers(includeUsers).Execute()
+> Group CoreGroupsRetrieve(ctx, groupUuid).IncludeChildren(includeChildren).IncludeUsers(includeUsers).Execute()
 
 
 
@@ -2611,11 +2613,12 @@ import (
 
 func main() {
     groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Group.
+    includeChildren := true // bool |  (optional) (default to false)
     includeUsers := true // bool |  (optional) (default to true)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreGroupsRetrieve(context.Background(), groupUuid).IncludeUsers(includeUsers).Execute()
+    resp, r, err := apiClient.CoreApi.CoreGroupsRetrieve(context.Background(), groupUuid).IncludeChildren(includeChildren).IncludeUsers(includeUsers).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreGroupsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2641,6 +2644,7 @@ Other parameters are passed through a pointer to a apiCoreGroupsRetrieveRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **includeChildren** | **bool** |  | [default to false]
  **includeUsers** | **bool** |  | [default to true]
 
 ### Return type

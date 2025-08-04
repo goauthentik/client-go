@@ -4416,6 +4416,7 @@ type ApiCoreGroupsListRequest struct {
 	ctx               context.Context
 	ApiService        *CoreApiService
 	attributes        *string
+	includeChildren   *bool
 	includeUsers      *bool
 	isSuperuser       *bool
 	membersByPk       *[]int32
@@ -4430,6 +4431,11 @@ type ApiCoreGroupsListRequest struct {
 // Attributes
 func (r ApiCoreGroupsListRequest) Attributes(attributes string) ApiCoreGroupsListRequest {
 	r.attributes = &attributes
+	return r
+}
+
+func (r ApiCoreGroupsListRequest) IncludeChildren(includeChildren bool) ApiCoreGroupsListRequest {
+	r.includeChildren = &includeChildren
 	return r
 }
 
@@ -4526,6 +4532,9 @@ func (a *CoreApiService) CoreGroupsListExecute(r ApiCoreGroupsListRequest) (*Pag
 
 	if r.attributes != nil {
 		localVarQueryParams.Add("attributes", parameterToString(*r.attributes, ""))
+	}
+	if r.includeChildren != nil {
+		localVarQueryParams.Add("include_children", parameterToString(*r.includeChildren, ""))
 	}
 	if r.includeUsers != nil {
 		localVarQueryParams.Add("include_users", parameterToString(*r.includeUsers, ""))
@@ -4897,10 +4906,16 @@ func (a *CoreApiService) CoreGroupsRemoveUserCreateExecute(r ApiCoreGroupsRemove
 }
 
 type ApiCoreGroupsRetrieveRequest struct {
-	ctx          context.Context
-	ApiService   *CoreApiService
-	groupUuid    string
-	includeUsers *bool
+	ctx             context.Context
+	ApiService      *CoreApiService
+	groupUuid       string
+	includeChildren *bool
+	includeUsers    *bool
+}
+
+func (r ApiCoreGroupsRetrieveRequest) IncludeChildren(includeChildren bool) ApiCoreGroupsRetrieveRequest {
+	r.includeChildren = &includeChildren
+	return r
 }
 
 func (r ApiCoreGroupsRetrieveRequest) IncludeUsers(includeUsers bool) ApiCoreGroupsRetrieveRequest {
@@ -4952,6 +4967,9 @@ func (a *CoreApiService) CoreGroupsRetrieveExecute(r ApiCoreGroupsRetrieveReques
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.includeChildren != nil {
+		localVarQueryParams.Add("include_children", parameterToString(*r.includeChildren, ""))
+	}
 	if r.includeUsers != nil {
 		localVarQueryParams.Add("include_users", parameterToString(*r.includeUsers, ""))
 	}
