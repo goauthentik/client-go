@@ -40,8 +40,9 @@ type PatchedOAuth2ProviderRequest struct {
 	// Key used to sign the tokens.
 	SigningKey NullableString `json:"signing_key,omitempty"`
 	// Key used to encrypt the tokens. When set, tokens will be encrypted and returned as JWEs.
-	EncryptionKey NullableString       `json:"encryption_key,omitempty"`
-	RedirectUris  []RedirectURIRequest `json:"redirect_uris,omitempty"`
+	EncryptionKey        NullableString       `json:"encryption_key,omitempty"`
+	RedirectUris         []RedirectURIRequest `json:"redirect_uris,omitempty"`
+	BackchannelLogoutUri *string              `json:"backchannel_logout_uri,omitempty"`
 	// Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
 	SubMode *SubModeEnum `json:"sub_mode,omitempty"`
 	// Configure how the issuer field of the ID Token should be filled.
@@ -580,6 +581,38 @@ func (o *PatchedOAuth2ProviderRequest) SetRedirectUris(v []RedirectURIRequest) {
 	o.RedirectUris = v
 }
 
+// GetBackchannelLogoutUri returns the BackchannelLogoutUri field value if set, zero value otherwise.
+func (o *PatchedOAuth2ProviderRequest) GetBackchannelLogoutUri() string {
+	if o == nil || o.BackchannelLogoutUri == nil {
+		var ret string
+		return ret
+	}
+	return *o.BackchannelLogoutUri
+}
+
+// GetBackchannelLogoutUriOk returns a tuple with the BackchannelLogoutUri field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedOAuth2ProviderRequest) GetBackchannelLogoutUriOk() (*string, bool) {
+	if o == nil || o.BackchannelLogoutUri == nil {
+		return nil, false
+	}
+	return o.BackchannelLogoutUri, true
+}
+
+// HasBackchannelLogoutUri returns a boolean if a field has been set.
+func (o *PatchedOAuth2ProviderRequest) HasBackchannelLogoutUri() bool {
+	if o != nil && o.BackchannelLogoutUri != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBackchannelLogoutUri gets a reference to the given string and assigns it to the BackchannelLogoutUri field.
+func (o *PatchedOAuth2ProviderRequest) SetBackchannelLogoutUri(v string) {
+	o.BackchannelLogoutUri = &v
+}
+
 // GetSubMode returns the SubMode field value if set, zero value otherwise.
 func (o *PatchedOAuth2ProviderRequest) GetSubMode() SubModeEnum {
 	if o == nil || o.SubMode == nil {
@@ -754,6 +787,9 @@ func (o PatchedOAuth2ProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.RedirectUris != nil {
 		toSerialize["redirect_uris"] = o.RedirectUris
+	}
+	if o.BackchannelLogoutUri != nil {
+		toSerialize["backchannel_logout_uri"] = o.BackchannelLogoutUri
 	}
 	if o.SubMode != nil {
 		toSerialize["sub_mode"] = o.SubMode

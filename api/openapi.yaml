@@ -51175,6 +51175,7 @@ components:
           assigned_backchannel_application_name: assigned_backchannel_application_name
           issuer_mode: ""
           client_secret: client_secret
+          backchannel_logout_uri: https://openapi-generator.tech
           jwt_federation_providers:
           - 1
           - 1
@@ -56517,6 +56518,7 @@ components:
         assigned_backchannel_application_name: assigned_backchannel_application_name
         issuer_mode: ""
         client_secret: client_secret
+        backchannel_logout_uri: https://openapi-generator.tech
         jwt_federation_providers:
         - 1
         - 1
@@ -56638,6 +56640,10 @@ components:
           items:
             $ref: '#/components/schemas/RedirectURI'
           type: array
+        backchannel_logout_uri:
+          format: uri
+          title: Back-Channel Logout URI
+          type: string
         sub_mode:
           allOf:
           - $ref: '#/components/schemas/SubModeEnum'
@@ -56700,6 +56706,7 @@ components:
         name: name
         encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         client_secret: client_secret
+        backchannel_logout_uri: https://openapi-generator.tech
         jwt_federation_providers:
         - 0
         - 0
@@ -56775,6 +56782,10 @@ components:
           items:
             $ref: '#/components/schemas/RedirectURIRequest'
           type: array
+        backchannel_logout_uri:
+          format: uri
+          title: Back-Channel Logout URI
+          type: string
         sub_mode:
           allOf:
           - $ref: '#/components/schemas/SubModeEnum'
@@ -59843,6 +59854,7 @@ components:
             assigned_backchannel_application_name: assigned_backchannel_application_name
             issuer_mode: ""
             client_secret: client_secret
+            backchannel_logout_uri: https://openapi-generator.tech
             jwt_federation_providers:
             - 1
             - 1
@@ -59926,6 +59938,7 @@ components:
             assigned_backchannel_application_name: assigned_backchannel_application_name
             issuer_mode: ""
             client_secret: client_secret
+            backchannel_logout_uri: https://openapi-generator.tech
             jwt_federation_providers:
             - 1
             - 1
@@ -62300,6 +62313,7 @@ components:
           assigned_backchannel_application_name: assigned_backchannel_application_name
           issuer_mode: ""
           client_secret: client_secret
+          backchannel_logout_uri: https://openapi-generator.tech
           jwt_federation_providers:
           - 1
           - 1
@@ -62338,6 +62352,7 @@ components:
           assigned_backchannel_application_name: assigned_backchannel_application_name
           issuer_mode: ""
           client_secret: client_secret
+          backchannel_logout_uri: https://openapi-generator.tech
           jwt_federation_providers:
           - 1
           - 1
@@ -65781,6 +65796,7 @@ components:
             assigned_backchannel_application_name: assigned_backchannel_application_name
             issuer_mode: ""
             client_secret: client_secret
+            backchannel_logout_uri: https://openapi-generator.tech
             jwt_federation_providers:
             - 1
             - 1
@@ -65866,6 +65882,7 @@ components:
             assigned_backchannel_application_name: assigned_backchannel_application_name
             issuer_mode: ""
             client_secret: client_secret
+            backchannel_logout_uri: https://openapi-generator.tech
             jwt_federation_providers:
             - 1
             - 1
@@ -70146,6 +70163,7 @@ components:
         name: name
         encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         client_secret: client_secret
+        backchannel_logout_uri: https://openapi-generator.tech
         jwt_federation_providers:
         - 0
         - 0
@@ -70221,6 +70239,10 @@ components:
           items:
             $ref: '#/components/schemas/RedirectURIRequest'
           type: array
+        backchannel_logout_uri:
+          format: uri
+          title: Back-Channel Logout URI
+          type: string
         sub_mode:
           allOf:
           - $ref: '#/components/schemas/SubModeEnum'
@@ -78634,6 +78656,7 @@ components:
           assigned_backchannel_application_name: assigned_backchannel_application_name
           issuer_mode: ""
           client_secret: client_secret
+          backchannel_logout_uri: https://openapi-generator.tech
           jwt_federation_providers:
           - 1
           - 1

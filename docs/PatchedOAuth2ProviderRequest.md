@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **SigningKey** | Pointer to **NullableString** | Key used to sign the tokens. | [optional] 
 **EncryptionKey** | Pointer to **NullableString** | Key used to encrypt the tokens. When set, tokens will be encrypted and returned as JWEs. | [optional] 
 **RedirectUris** | Pointer to [**[]RedirectURIRequest**](RedirectURIRequest.md) |  | [optional] 
+**BackchannelLogoutUri** | Pointer to **string** |  | [optional] 
 **SubMode** | Pointer to [**SubModeEnum**](SubModeEnum.md) | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. | [optional] 
 **IssuerMode** | Pointer to [**IssuerModeEnum**](IssuerModeEnum.md) | Configure how the issuer field of the ID Token should be filled. | [optional] 
 **JwtFederationSources** | Pointer to **[]string** |  | [optional] 
@@ -447,6 +448,31 @@ SetRedirectUris sets RedirectUris field to given value.
 `func (o *PatchedOAuth2ProviderRequest) HasRedirectUris() bool`
 
 HasRedirectUris returns a boolean if a field has been set.
+
+### GetBackchannelLogoutUri
+
+`func (o *PatchedOAuth2ProviderRequest) GetBackchannelLogoutUri() string`
+
+GetBackchannelLogoutUri returns the BackchannelLogoutUri field if non-nil, zero value otherwise.
+
+### GetBackchannelLogoutUriOk
+
+`func (o *PatchedOAuth2ProviderRequest) GetBackchannelLogoutUriOk() (*string, bool)`
+
+GetBackchannelLogoutUriOk returns a tuple with the BackchannelLogoutUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBackchannelLogoutUri
+
+`func (o *PatchedOAuth2ProviderRequest) SetBackchannelLogoutUri(v string)`
+
+SetBackchannelLogoutUri sets BackchannelLogoutUri field to given value.
+
+### HasBackchannelLogoutUri
+
+`func (o *PatchedOAuth2ProviderRequest) HasBackchannelLogoutUri() bool`
+
+HasBackchannelLogoutUri returns a boolean if a field has been set.
 
 ### GetSubMode
 
