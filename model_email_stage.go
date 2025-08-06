@@ -42,7 +42,10 @@ type EmailStage struct {
 	Subject     *string `json:"subject,omitempty"`
 	Template    *string `json:"template,omitempty"`
 	// Activate users upon completion of stage.
-	ActivateUserOnSuccess *bool `json:"activate_user_on_success,omitempty"`
+	ActivateUserOnSuccess *bool  `json:"activate_user_on_success,omitempty"`
+	RecoveryMaxAttempts   *int32 `json:"recovery_max_attempts,omitempty"`
+	// The time window used to count recent account recovery attempts. If the number of attempts exceed recovery_max_attempts within this period, further attempts will be rate-limited. (Format: hours=1;minutes=2;seconds=3).
+	RecoveryCacheTimeout *string `json:"recovery_cache_timeout,omitempty"`
 }
 
 // NewEmailStage instantiates a new EmailStage object
@@ -628,6 +631,70 @@ func (o *EmailStage) SetActivateUserOnSuccess(v bool) {
 	o.ActivateUserOnSuccess = &v
 }
 
+// GetRecoveryMaxAttempts returns the RecoveryMaxAttempts field value if set, zero value otherwise.
+func (o *EmailStage) GetRecoveryMaxAttempts() int32 {
+	if o == nil || o.RecoveryMaxAttempts == nil {
+		var ret int32
+		return ret
+	}
+	return *o.RecoveryMaxAttempts
+}
+
+// GetRecoveryMaxAttemptsOk returns a tuple with the RecoveryMaxAttempts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EmailStage) GetRecoveryMaxAttemptsOk() (*int32, bool) {
+	if o == nil || o.RecoveryMaxAttempts == nil {
+		return nil, false
+	}
+	return o.RecoveryMaxAttempts, true
+}
+
+// HasRecoveryMaxAttempts returns a boolean if a field has been set.
+func (o *EmailStage) HasRecoveryMaxAttempts() bool {
+	if o != nil && o.RecoveryMaxAttempts != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRecoveryMaxAttempts gets a reference to the given int32 and assigns it to the RecoveryMaxAttempts field.
+func (o *EmailStage) SetRecoveryMaxAttempts(v int32) {
+	o.RecoveryMaxAttempts = &v
+}
+
+// GetRecoveryCacheTimeout returns the RecoveryCacheTimeout field value if set, zero value otherwise.
+func (o *EmailStage) GetRecoveryCacheTimeout() string {
+	if o == nil || o.RecoveryCacheTimeout == nil {
+		var ret string
+		return ret
+	}
+	return *o.RecoveryCacheTimeout
+}
+
+// GetRecoveryCacheTimeoutOk returns a tuple with the RecoveryCacheTimeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EmailStage) GetRecoveryCacheTimeoutOk() (*string, bool) {
+	if o == nil || o.RecoveryCacheTimeout == nil {
+		return nil, false
+	}
+	return o.RecoveryCacheTimeout, true
+}
+
+// HasRecoveryCacheTimeout returns a boolean if a field has been set.
+func (o *EmailStage) HasRecoveryCacheTimeout() bool {
+	if o != nil && o.RecoveryCacheTimeout != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRecoveryCacheTimeout gets a reference to the given string and assigns it to the RecoveryCacheTimeout field.
+func (o *EmailStage) SetRecoveryCacheTimeout(v string) {
+	o.RecoveryCacheTimeout = &v
+}
+
 func (o EmailStage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -686,6 +753,12 @@ func (o EmailStage) MarshalJSON() ([]byte, error) {
 	}
 	if o.ActivateUserOnSuccess != nil {
 		toSerialize["activate_user_on_success"] = o.ActivateUserOnSuccess
+	}
+	if o.RecoveryMaxAttempts != nil {
+		toSerialize["recovery_max_attempts"] = o.RecoveryMaxAttempts
+	}
+	if o.RecoveryCacheTimeout != nil {
+		toSerialize["recovery_cache_timeout"] = o.RecoveryCacheTimeout
 	}
 	return json.Marshal(toSerialize)
 }

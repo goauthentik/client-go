@@ -50501,6 +50501,7 @@ components:
           title: title
           slug: slug
         token_expiry: token_expiry
+        recovery_cache_timeout: recovery_cache_timeout
         timeout: 441289069
         use_tls: true
         component: component
@@ -50513,6 +50514,7 @@ components:
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         from_address: from_address
         username: username
+        recovery_max_attempts: 314780940
       properties:
         pk:
           format: uuid
@@ -50575,6 +50577,15 @@ components:
         activate_user_on_success:
           description: Activate users upon completion of stage.
           type: boolean
+        recovery_max_attempts:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        recovery_cache_timeout:
+          description: "The time window used to count recent account recovery attempts.\
+            \ If the number of attempts exceed recovery_max_attempts within this period,\
+            \ further attempts will be rate-limited. (Format: hours=1;minutes=2;seconds=3)."
+          type: string
       required:
       - component
       - meta_model_name
@@ -50608,6 +50619,7 @@ components:
           title: title
           slug: slug
         token_expiry: token_expiry
+        recovery_cache_timeout: recovery_cache_timeout
         timeout: 441289069
         use_tls: true
         password: password
@@ -50617,6 +50629,7 @@ components:
         host: host
         from_address: from_address
         username: username
+        recovery_max_attempts: 314780940
       properties:
         name:
           minLength: 1
@@ -50667,6 +50680,16 @@ components:
         activate_user_on_success:
           description: Activate users upon completion of stage.
           type: boolean
+        recovery_max_attempts:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        recovery_cache_timeout:
+          description: "The time window used to count recent account recovery attempts.\
+            \ If the number of attempts exceed recovery_max_attempts within this period,\
+            \ further attempts will be rate-limited. (Format: hours=1;minutes=2;seconds=3)."
+          minLength: 1
+          type: string
       required:
       - name
       type: object
@@ -59559,6 +59582,7 @@ components:
             title: title
             slug: slug
           token_expiry: token_expiry
+          recovery_cache_timeout: recovery_cache_timeout
           timeout: 441289069
           use_tls: true
           component: component
@@ -59571,6 +59595,7 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           from_address: from_address
           username: username
+          recovery_max_attempts: 314780940
         - template: template
           verbose_name_plural: verbose_name_plural
           use_global_settings: true
@@ -59602,6 +59627,7 @@ components:
             title: title
             slug: slug
           token_expiry: token_expiry
+          recovery_cache_timeout: recovery_cache_timeout
           timeout: 441289069
           use_tls: true
           component: component
@@ -59614,6 +59640,7 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           from_address: from_address
           username: username
+          recovery_max_attempts: 314780940
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -68634,6 +68661,7 @@ components:
           title: title
           slug: slug
         token_expiry: token_expiry
+        recovery_cache_timeout: recovery_cache_timeout
         timeout: 441289069
         use_tls: true
         password: password
@@ -68643,6 +68671,7 @@ components:
         host: host
         from_address: from_address
         username: username
+        recovery_max_attempts: 314780940
       properties:
         name:
           minLength: 1
@@ -68693,6 +68722,16 @@ components:
         activate_user_on_success:
           description: Activate users upon completion of stage.
           type: boolean
+        recovery_max_attempts:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        recovery_cache_timeout:
+          description: "The time window used to count recent account recovery attempts.\
+            \ If the number of attempts exceed recovery_max_attempts within this period,\
+            \ further attempts will be rate-limited. (Format: hours=1;minutes=2;seconds=3)."
+          minLength: 1
+          type: string
       type: object
     PatchedEndpointDeviceRequest:
       description: Serializer for Endpoint authenticator devices

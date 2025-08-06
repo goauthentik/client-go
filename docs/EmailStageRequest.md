@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **Subject** | Pointer to **string** |  | [optional] 
 **Template** | Pointer to **string** |  | [optional] 
 **ActivateUserOnSuccess** | Pointer to **bool** | Activate users upon completion of stage. | [optional] 
+**RecoveryMaxAttempts** | Pointer to **int32** |  | [optional] 
+**RecoveryCacheTimeout** | Pointer to **string** | The time window used to count recent account recovery attempts. If the number of attempts exceed recovery_max_attempts within this period, further attempts will be rate-limited. (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 
 ## Methods
 
@@ -408,6 +410,56 @@ SetActivateUserOnSuccess sets ActivateUserOnSuccess field to given value.
 `func (o *EmailStageRequest) HasActivateUserOnSuccess() bool`
 
 HasActivateUserOnSuccess returns a boolean if a field has been set.
+
+### GetRecoveryMaxAttempts
+
+`func (o *EmailStageRequest) GetRecoveryMaxAttempts() int32`
+
+GetRecoveryMaxAttempts returns the RecoveryMaxAttempts field if non-nil, zero value otherwise.
+
+### GetRecoveryMaxAttemptsOk
+
+`func (o *EmailStageRequest) GetRecoveryMaxAttemptsOk() (*int32, bool)`
+
+GetRecoveryMaxAttemptsOk returns a tuple with the RecoveryMaxAttempts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRecoveryMaxAttempts
+
+`func (o *EmailStageRequest) SetRecoveryMaxAttempts(v int32)`
+
+SetRecoveryMaxAttempts sets RecoveryMaxAttempts field to given value.
+
+### HasRecoveryMaxAttempts
+
+`func (o *EmailStageRequest) HasRecoveryMaxAttempts() bool`
+
+HasRecoveryMaxAttempts returns a boolean if a field has been set.
+
+### GetRecoveryCacheTimeout
+
+`func (o *EmailStageRequest) GetRecoveryCacheTimeout() string`
+
+GetRecoveryCacheTimeout returns the RecoveryCacheTimeout field if non-nil, zero value otherwise.
+
+### GetRecoveryCacheTimeoutOk
+
+`func (o *EmailStageRequest) GetRecoveryCacheTimeoutOk() (*string, bool)`
+
+GetRecoveryCacheTimeoutOk returns a tuple with the RecoveryCacheTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRecoveryCacheTimeout
+
+`func (o *EmailStageRequest) SetRecoveryCacheTimeout(v string)`
+
+SetRecoveryCacheTimeout sets RecoveryCacheTimeout field to given value.
+
+### HasRecoveryCacheTimeout
+
+`func (o *EmailStageRequest) HasRecoveryCacheTimeout() bool`
+
+HasRecoveryCacheTimeout returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
