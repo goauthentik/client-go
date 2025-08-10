@@ -121,6 +121,7 @@ docs/CoreApi.md
 docs/CountryCodeEnum.md
 docs/CryptoApi.md
 docs/CurrentBrand.md
+docs/CurrentBrandFlags.md
 docs/DeliveryMethodEnum.md
 docs/DeniedActionEnum.md
 docs/DenyStage.md
@@ -565,6 +566,7 @@ docs/PatchedSSFProviderRequest.md
 docs/PatchedScheduleRequest.md
 docs/PatchedScopeMappingRequest.md
 docs/PatchedSettingsRequest.md
+docs/PatchedSettingsRequestFlags.md
 docs/PatchedSourceStageRequest.md
 docs/PatchedStaticDeviceRequest.md
 docs/PatchedTOTPDeviceRequest.md
@@ -895,6 +897,7 @@ model_contextual_flow_info.go
 model_contextual_flow_info_layout_enum.go
 model_country_code_enum.go
 model_current_brand.go
+model_current_brand_flags.go
 model_delivery_method_enum.go
 model_denied_action_enum.go
 model_deny_stage.go
@@ -1331,6 +1334,7 @@ model_patched_scim_source_request.go
 model_patched_scim_source_user_request.go
 model_patched_scope_mapping_request.go
 model_patched_settings_request.go
+model_patched_settings_request_flags.go
 model_patched_sms_device_request.go
 model_patched_source_stage_request.go
 model_patched_ssf_provider_request.go

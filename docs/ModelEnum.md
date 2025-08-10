@@ -5,7 +5,19 @@
 
 * `TENANTS_DOMAIN` (value: `"authentik_tenants.domain"`)
 
+* `CORE_GROUP` (value: `"authentik_core.group"`)
+
+* `CORE_USER` (value: `"authentik_core.user"`)
+
+* `CORE_APPLICATION` (value: `"authentik_core.application"`)
+
+* `CORE_APPLICATIONENTITLEMENT` (value: `"authentik_core.applicationentitlement"`)
+
+* `CORE_TOKEN` (value: `"authentik_core.token"`)
+
 * `CRYPTO_CERTIFICATEKEYPAIR` (value: `"authentik_crypto.certificatekeypair"`)
+
+* `ENTERPRISE_LICENSE` (value: `"authentik_enterprise.license"`)
 
 * `EVENTS_EVENT` (value: `"authentik_events.event"`)
 
@@ -182,18 +194,6 @@
 * `BRANDS_BRAND` (value: `"authentik_brands.brand"`)
 
 * `BLUEPRINTS_BLUEPRINTINSTANCE` (value: `"authentik_blueprints.blueprintinstance"`)
-
-* `CORE_GROUP` (value: `"authentik_core.group"`)
-
-* `CORE_USER` (value: `"authentik_core.user"`)
-
-* `CORE_APPLICATION` (value: `"authentik_core.application"`)
-
-* `CORE_APPLICATIONENTITLEMENT` (value: `"authentik_core.applicationentitlement"`)
-
-* `CORE_TOKEN` (value: `"authentik_core.token"`)
-
-* `ENTERPRISE_LICENSE` (value: `"authentik_enterprise.license"`)
 
 * `POLICIES_UNIQUE_PASSWORD_UNIQUEPASSWORDPOLICY` (value: `"authentik_policies_unique_password.uniquepasswordpolicy"`)
 

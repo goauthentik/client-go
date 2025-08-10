@@ -22,7 +22,13 @@ type ModelEnum string
 // List of ModelEnum
 const (
 	MODELENUM_TENANTS_DOMAIN                                                    ModelEnum = "authentik_tenants.domain"
+	MODELENUM_CORE_GROUP                                                        ModelEnum = "authentik_core.group"
+	MODELENUM_CORE_USER                                                         ModelEnum = "authentik_core.user"
+	MODELENUM_CORE_APPLICATION                                                  ModelEnum = "authentik_core.application"
+	MODELENUM_CORE_APPLICATIONENTITLEMENT                                       ModelEnum = "authentik_core.applicationentitlement"
+	MODELENUM_CORE_TOKEN                                                        ModelEnum = "authentik_core.token"
 	MODELENUM_CRYPTO_CERTIFICATEKEYPAIR                                         ModelEnum = "authentik_crypto.certificatekeypair"
+	MODELENUM_ENTERPRISE_LICENSE                                                ModelEnum = "authentik_enterprise.license"
 	MODELENUM_EVENTS_EVENT                                                      ModelEnum = "authentik_events.event"
 	MODELENUM_EVENTS_NOTIFICATIONTRANSPORT                                      ModelEnum = "authentik_events.notificationtransport"
 	MODELENUM_EVENTS_NOTIFICATION                                               ModelEnum = "authentik_events.notification"
@@ -111,12 +117,6 @@ const (
 	MODELENUM_TASKS_SCHEDULES_SCHEDULE                                          ModelEnum = "authentik_tasks_schedules.schedule"
 	MODELENUM_BRANDS_BRAND                                                      ModelEnum = "authentik_brands.brand"
 	MODELENUM_BLUEPRINTS_BLUEPRINTINSTANCE                                      ModelEnum = "authentik_blueprints.blueprintinstance"
-	MODELENUM_CORE_GROUP                                                        ModelEnum = "authentik_core.group"
-	MODELENUM_CORE_USER                                                         ModelEnum = "authentik_core.user"
-	MODELENUM_CORE_APPLICATION                                                  ModelEnum = "authentik_core.application"
-	MODELENUM_CORE_APPLICATIONENTITLEMENT                                       ModelEnum = "authentik_core.applicationentitlement"
-	MODELENUM_CORE_TOKEN                                                        ModelEnum = "authentik_core.token"
-	MODELENUM_ENTERPRISE_LICENSE                                                ModelEnum = "authentik_enterprise.license"
 	MODELENUM_POLICIES_UNIQUE_PASSWORD_UNIQUEPASSWORDPOLICY                     ModelEnum = "authentik_policies_unique_password.uniquepasswordpolicy"
 	MODELENUM_PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDER                ModelEnum = "authentik_providers_google_workspace.googleworkspaceprovider"
 	MODELENUM_PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDERMAPPING         ModelEnum = "authentik_providers_google_workspace.googleworkspaceprovidermapping"
@@ -131,7 +131,13 @@ const (
 // All allowed values of ModelEnum enum
 var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_tenants.domain",
+	"authentik_core.group",
+	"authentik_core.user",
+	"authentik_core.application",
+	"authentik_core.applicationentitlement",
+	"authentik_core.token",
 	"authentik_crypto.certificatekeypair",
+	"authentik_enterprise.license",
 	"authentik_events.event",
 	"authentik_events.notificationtransport",
 	"authentik_events.notification",
@@ -220,12 +226,6 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_tasks_schedules.schedule",
 	"authentik_brands.brand",
 	"authentik_blueprints.blueprintinstance",
-	"authentik_core.group",
-	"authentik_core.user",
-	"authentik_core.application",
-	"authentik_core.applicationentitlement",
-	"authentik_core.token",
-	"authentik_enterprise.license",
 	"authentik_policies_unique_password.uniquepasswordpolicy",
 	"authentik_providers_google_workspace.googleworkspaceprovider",
 	"authentik_providers_google_workspace.googleworkspaceprovidermapping",

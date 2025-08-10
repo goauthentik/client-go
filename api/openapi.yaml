@@ -135,6 +135,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SettingsRequest'
+        required: true
       responses:
         "200":
           content:
@@ -46140,7 +46141,9 @@ components:
       - authentik.tasks
       - authentik.admin
       - authentik.api
+      - authentik.core
       - authentik.crypto
+      - authentik.enterprise
       - authentik.events
       - authentik.flows
       - authentik.outposts
@@ -46192,8 +46195,6 @@ components:
       - authentik.tasks.schedules
       - authentik.brands
       - authentik.blueprints
-      - authentik.core
-      - authentik.enterprise
       - authentik.enterprise.audit
       - authentik.enterprise.policies.unique_password
       - authentik.enterprise.providers.google_workspace
@@ -49620,6 +49621,8 @@ components:
           href: href
         - name: name
           href: href
+        flags:
+          policies_buffered_access_view: true
         flow_device_code: flow_device_code
         matched_domain: matched_domain
         flow_authentication: flow_authentication
@@ -49667,12 +49670,15 @@ components:
         default_locale:
           readOnly: true
           type: string
+        flags:
+          $ref: '#/components/schemas/CurrentBrand_flags'
       required:
       - branding_custom_css
       - branding_favicon
       - branding_logo
       - branding_title
       - default_locale
+      - flags
       - matched_domain
       - ui_footer_links
       - ui_theme
@@ -55943,7 +55949,13 @@ components:
     ModelEnum:
       enum:
       - authentik_tenants.domain
+      - authentik_core.group
+      - authentik_core.user
+      - authentik_core.application
+      - authentik_core.applicationentitlement
+      - authentik_core.token
       - authentik_crypto.certificatekeypair
+      - authentik_enterprise.license
       - authentik_events.event
       - authentik_events.notificationtransport
       - authentik_events.notification
@@ -56032,12 +56044,6 @@ components:
       - authentik_tasks_schedules.schedule
       - authentik_brands.brand
       - authentik_blueprints.blueprintinstance
-      - authentik_core.group
-      - authentik_core.user
-      - authentik_core.application
-      - authentik_core.applicationentitlement
-      - authentik_core.token
-      - authentik_enterprise.license
       - authentik_policies_unique_password.uniquepasswordpolicy
       - authentik_providers_google_workspace.googleworkspaceprovider
       - authentik_providers_google_workspace.googleworkspaceprovidermapping
@@ -71926,6 +71932,8 @@ components:
         default_user_change_name: true
         impersonation: true
         default_token_duration: default_token_duration
+        flags:
+          policies_buffered_access_view: true
         default_token_length: 314780941
         event_retention: event_retention
         default_user_change_email: true
@@ -71985,6 +71993,8 @@ components:
           maximum: 2147483647
           minimum: 1
           type: integer
+        flags:
+          $ref: '#/components/schemas/PatchedSettingsRequest_flags'
       type: object
     PatchedSourceStageRequest:
       description: SourceStage Serializer
@@ -77529,6 +77539,8 @@ components:
         default_user_change_name: true
         impersonation: true
         default_token_duration: default_token_duration
+        flags:
+          policies_buffered_access_view: true
         default_token_length: 314780941
         event_retention: event_retention
         default_user_change_email: true
@@ -77585,6 +77597,10 @@ components:
           maximum: 2147483647
           minimum: 1
           type: integer
+        flags:
+          $ref: '#/components/schemas/PatchedSettingsRequest_flags'
+      required:
+      - flags
       type: object
     SettingsRequest:
       description: Settings Serializer
@@ -77593,6 +77609,8 @@ components:
         default_user_change_name: true
         impersonation: true
         default_token_duration: default_token_duration
+        flags:
+          policies_buffered_access_view: true
         default_token_length: 314780941
         event_retention: event_retention
         default_user_change_email: true
@@ -77652,6 +77670,10 @@ components:
           maximum: 2147483647
           minimum: 1
           type: integer
+        flags:
+          $ref: '#/components/schemas/PatchedSettingsRequest_flags'
+      required:
+      - flags
       type: object
     SeverityEnum:
       enum:
@@ -81126,10 +81148,29 @@ components:
       - asn
       - network
       type: object
+    CurrentBrand_flags:
+      example:
+        policies_buffered_access_view: true
+      properties:
+        policies_buffered_access_view:
+          type: boolean
+      readOnly: true
+      required:
+      - policies_buffered_access_view
+      type: object
     IdentificationChallenge_captcha_stage:
       allOf:
       - $ref: '#/components/schemas/CaptchaChallenge'
       nullable: true
+    PatchedSettingsRequest_flags:
+      example:
+        policies_buffered_access_view: true
+      properties:
+        policies_buffered_access_view:
+          type: boolean
+      required:
+      - policies_buffered_access_view
+      type: object
     SystemInfo_runtime:
       description: Get versions
       example:

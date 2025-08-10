@@ -25,7 +25,9 @@ const (
 	APPENUM_TASKS                                         AppEnum = "authentik.tasks"
 	APPENUM_ADMIN                                         AppEnum = "authentik.admin"
 	APPENUM_API                                           AppEnum = "authentik.api"
+	APPENUM_CORE                                          AppEnum = "authentik.core"
 	APPENUM_CRYPTO                                        AppEnum = "authentik.crypto"
+	APPENUM_ENTERPRISE                                    AppEnum = "authentik.enterprise"
 	APPENUM_EVENTS                                        AppEnum = "authentik.events"
 	APPENUM_FLOWS                                         AppEnum = "authentik.flows"
 	APPENUM_OUTPOSTS                                      AppEnum = "authentik.outposts"
@@ -77,8 +79,6 @@ const (
 	APPENUM_TASKS_SCHEDULES                               AppEnum = "authentik.tasks.schedules"
 	APPENUM_BRANDS                                        AppEnum = "authentik.brands"
 	APPENUM_BLUEPRINTS                                    AppEnum = "authentik.blueprints"
-	APPENUM_CORE                                          AppEnum = "authentik.core"
-	APPENUM_ENTERPRISE                                    AppEnum = "authentik.enterprise"
 	APPENUM_ENTERPRISE_AUDIT                              AppEnum = "authentik.enterprise.audit"
 	APPENUM_ENTERPRISE_POLICIES_UNIQUE_PASSWORD           AppEnum = "authentik.enterprise.policies.unique_password"
 	APPENUM_ENTERPRISE_PROVIDERS_GOOGLE_WORKSPACE         AppEnum = "authentik.enterprise.providers.google_workspace"
@@ -96,7 +96,9 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.tasks",
 	"authentik.admin",
 	"authentik.api",
+	"authentik.core",
 	"authentik.crypto",
+	"authentik.enterprise",
 	"authentik.events",
 	"authentik.flows",
 	"authentik.outposts",
@@ -148,8 +150,6 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.tasks.schedules",
 	"authentik.brands",
 	"authentik.blueprints",
-	"authentik.core",
-	"authentik.enterprise",
 	"authentik.enterprise.audit",
 	"authentik.enterprise.policies.unique_password",
 	"authentik.enterprise.providers.google_workspace",

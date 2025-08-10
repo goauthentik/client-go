@@ -41,15 +41,17 @@ type SettingsRequest struct {
 	// Default token duration
 	DefaultTokenDuration *string `json:"default_token_duration,omitempty"`
 	// Default token length
-	DefaultTokenLength *int32 `json:"default_token_length,omitempty"`
+	DefaultTokenLength *int32                      `json:"default_token_length,omitempty"`
+	Flags              PatchedSettingsRequestFlags `json:"flags"`
 }
 
 // NewSettingsRequest instantiates a new SettingsRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSettingsRequest() *SettingsRequest {
+func NewSettingsRequest(flags PatchedSettingsRequestFlags) *SettingsRequest {
 	this := SettingsRequest{}
+	this.Flags = flags
 	return &this
 }
 
@@ -478,6 +480,30 @@ func (o *SettingsRequest) SetDefaultTokenLength(v int32) {
 	o.DefaultTokenLength = &v
 }
 
+// GetFlags returns the Flags field value
+func (o *SettingsRequest) GetFlags() PatchedSettingsRequestFlags {
+	if o == nil {
+		var ret PatchedSettingsRequestFlags
+		return ret
+	}
+
+	return o.Flags
+}
+
+// GetFlagsOk returns a tuple with the Flags field value
+// and a boolean to check if the value has been set.
+func (o *SettingsRequest) GetFlagsOk() (*PatchedSettingsRequestFlags, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Flags, true
+}
+
+// SetFlags sets field value
+func (o *SettingsRequest) SetFlags(v PatchedSettingsRequestFlags) {
+	o.Flags = v
+}
+
 func (o SettingsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Avatars != nil {
@@ -518,6 +544,9 @@ func (o SettingsRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.DefaultTokenLength != nil {
 		toSerialize["default_token_length"] = o.DefaultTokenLength
+	}
+	if true {
+		toSerialize["flags"] = o.Flags
 	}
 	return json.Marshal(toSerialize)
 }

@@ -17,12 +17,13 @@ Name | Type | Description | Notes
 **ImpersonationRequireReason** | Pointer to **bool** | Require administrators to provide a reason for impersonating a user. | [optional] 
 **DefaultTokenDuration** | Pointer to **string** | Default token duration | [optional] 
 **DefaultTokenLength** | Pointer to **int32** | Default token length | [optional] 
+**Flags** | [**PatchedSettingsRequestFlags**](PatchedSettingsRequestFlags.md) |  | 
 
 ## Methods
 
 ### NewSettings
 
-`func NewSettings() *Settings`
+`func NewSettings(flags PatchedSettingsRequestFlags, ) *Settings`
 
 NewSettings instantiates a new Settings object
 This constructor will assign default values to properties that have it defined,
@@ -371,6 +372,26 @@ SetDefaultTokenLength sets DefaultTokenLength field to given value.
 `func (o *Settings) HasDefaultTokenLength() bool`
 
 HasDefaultTokenLength returns a boolean if a field has been set.
+
+### GetFlags
+
+`func (o *Settings) GetFlags() PatchedSettingsRequestFlags`
+
+GetFlags returns the Flags field if non-nil, zero value otherwise.
+
+### GetFlagsOk
+
+`func (o *Settings) GetFlagsOk() (*PatchedSettingsRequestFlags, bool)`
+
+GetFlagsOk returns a tuple with the Flags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlags
+
+`func (o *Settings) SetFlags(v PatchedSettingsRequestFlags)`
+
+SetFlags sets Flags field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

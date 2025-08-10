@@ -41,7 +41,8 @@ type PatchedSettingsRequest struct {
 	// Default token duration
 	DefaultTokenDuration *string `json:"default_token_duration,omitempty"`
 	// Default token length
-	DefaultTokenLength *int32 `json:"default_token_length,omitempty"`
+	DefaultTokenLength *int32                       `json:"default_token_length,omitempty"`
+	Flags              *PatchedSettingsRequestFlags `json:"flags,omitempty"`
 }
 
 // NewPatchedSettingsRequest instantiates a new PatchedSettingsRequest object
@@ -478,6 +479,38 @@ func (o *PatchedSettingsRequest) SetDefaultTokenLength(v int32) {
 	o.DefaultTokenLength = &v
 }
 
+// GetFlags returns the Flags field value if set, zero value otherwise.
+func (o *PatchedSettingsRequest) GetFlags() PatchedSettingsRequestFlags {
+	if o == nil || o.Flags == nil {
+		var ret PatchedSettingsRequestFlags
+		return ret
+	}
+	return *o.Flags
+}
+
+// GetFlagsOk returns a tuple with the Flags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedSettingsRequest) GetFlagsOk() (*PatchedSettingsRequestFlags, bool) {
+	if o == nil || o.Flags == nil {
+		return nil, false
+	}
+	return o.Flags, true
+}
+
+// HasFlags returns a boolean if a field has been set.
+func (o *PatchedSettingsRequest) HasFlags() bool {
+	if o != nil && o.Flags != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFlags gets a reference to the given PatchedSettingsRequestFlags and assigns it to the Flags field.
+func (o *PatchedSettingsRequest) SetFlags(v PatchedSettingsRequestFlags) {
+	o.Flags = &v
+}
+
 func (o PatchedSettingsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Avatars != nil {
@@ -518,6 +551,9 @@ func (o PatchedSettingsRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.DefaultTokenLength != nil {
 		toSerialize["default_token_length"] = o.DefaultTokenLength
+	}
+	if o.Flags != nil {
+		toSerialize["flags"] = o.Flags
 	}
 	return json.Marshal(toSerialize)
 }

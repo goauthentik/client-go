@@ -11,7 +11,11 @@
 
 * `API` (value: `"authentik.api"`)
 
+* `CORE` (value: `"authentik.core"`)
+
 * `CRYPTO` (value: `"authentik.crypto"`)
+
+* `ENTERPRISE` (value: `"authentik.enterprise"`)
 
 * `EVENTS` (value: `"authentik.events"`)
 
@@ -114,10 +118,6 @@
 * `BRANDS` (value: `"authentik.brands"`)
 
 * `BLUEPRINTS` (value: `"authentik.blueprints"`)
-
-* `CORE` (value: `"authentik.core"`)
-
-* `ENTERPRISE` (value: `"authentik.enterprise"`)
 
 * `ENTERPRISE_AUDIT` (value: `"authentik.enterprise.audit"`)
 
