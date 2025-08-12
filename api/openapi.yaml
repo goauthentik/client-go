@@ -9,7 +9,7 @@ info:
   title: authentik
   version: 2025.6.4
 servers:
-- url: /api/v3/
+- url: /api/v3
 paths:
   /admin/apps/:
     get:
