@@ -6655,7 +6655,7 @@ paths:
       - core
   /core/users/{id}/recovery/:
     post:
-      description: Create a temporary link that a user can use to recover their accounts
+      description: Create a temporary link that a user can use to recover their account
       operationId: core_users_recovery_create
       parameters:
       - description: A unique integer value identifying this User.
@@ -6691,7 +6691,8 @@ paths:
       - core
   /core/users/{id}/recovery_email/:
     post:
-      description: Create a temporary link that a user can use to recover their accounts
+      description: Send an email with a temporary link that a user can use to recover
+        their account
       operationId: core_users_recovery_email_create
       parameters:
       - explode: true

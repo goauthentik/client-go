@@ -8393,7 +8393,7 @@ func (r ApiCoreUsersRecoveryCreateRequest) Execute() (*Link, *http.Response, err
 /*
 CoreUsersRecoveryCreate Method for CoreUsersRecoveryCreate
 
-Create a temporary link that a user can use to recover their accounts
+Create a temporary link that a user can use to recover their account
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User.
@@ -8522,7 +8522,7 @@ func (r ApiCoreUsersRecoveryEmailCreateRequest) Execute() (*http.Response, error
 /*
 CoreUsersRecoveryEmailCreate Method for CoreUsersRecoveryEmailCreate
 
-Create a temporary link that a user can use to recover their accounts
+Send an email with a temporary link that a user can use to recover their account
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User.
