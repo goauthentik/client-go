@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **WebhookUrl** | Pointer to **string** |  | [optional] 
 **WebhookMappingBody** | Pointer to **NullableString** | Customize the body of the request. Mapping should return data that is JSON-serializable. | [optional] 
 **WebhookMappingHeaders** | Pointer to **NullableString** | Configure additional headers to be sent. Mapping should return a dictionary of key-value pairs | [optional] 
+**EmailSubjectPrefix** | Pointer to **string** |  | [optional] 
+**EmailTemplate** | Pointer to **string** |  | [optional] 
 **SendOnce** | Pointer to **bool** | Only send notification once, for example when sending a webhook into a chat channel. | [optional] 
 
 ## Methods
@@ -212,6 +214,56 @@ HasWebhookMappingHeaders returns a boolean if a field has been set.
 `func (o *NotificationTransport) UnsetWebhookMappingHeaders()`
 
 UnsetWebhookMappingHeaders ensures that no value is present for WebhookMappingHeaders, not even an explicit nil
+### GetEmailSubjectPrefix
+
+`func (o *NotificationTransport) GetEmailSubjectPrefix() string`
+
+GetEmailSubjectPrefix returns the EmailSubjectPrefix field if non-nil, zero value otherwise.
+
+### GetEmailSubjectPrefixOk
+
+`func (o *NotificationTransport) GetEmailSubjectPrefixOk() (*string, bool)`
+
+GetEmailSubjectPrefixOk returns a tuple with the EmailSubjectPrefix field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmailSubjectPrefix
+
+`func (o *NotificationTransport) SetEmailSubjectPrefix(v string)`
+
+SetEmailSubjectPrefix sets EmailSubjectPrefix field to given value.
+
+### HasEmailSubjectPrefix
+
+`func (o *NotificationTransport) HasEmailSubjectPrefix() bool`
+
+HasEmailSubjectPrefix returns a boolean if a field has been set.
+
+### GetEmailTemplate
+
+`func (o *NotificationTransport) GetEmailTemplate() string`
+
+GetEmailTemplate returns the EmailTemplate field if non-nil, zero value otherwise.
+
+### GetEmailTemplateOk
+
+`func (o *NotificationTransport) GetEmailTemplateOk() (*string, bool)`
+
+GetEmailTemplateOk returns a tuple with the EmailTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmailTemplate
+
+`func (o *NotificationTransport) SetEmailTemplate(v string)`
+
+SetEmailTemplate sets EmailTemplate field to given value.
+
+### HasEmailTemplate
+
+`func (o *NotificationTransport) HasEmailTemplate() bool`
+
+HasEmailTemplate returns a boolean if a field has been set.
+
 ### GetSendOnce
 
 `func (o *NotificationTransport) GetSendOnce() bool`

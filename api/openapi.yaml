@@ -56391,10 +56391,12 @@ components:
         webhook_mapping_headers: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         webhook_url: https://openapi-generator.tech
         name: name
+        email_subject_prefix: email_subject_prefix
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mode_verbose: mode_verbose
         send_once: true
         webhook_mapping_body: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        email_template: email_template
       properties:
         pk:
           format: uuid
@@ -56424,6 +56426,10 @@ components:
           format: uuid
           nullable: true
           type: string
+        email_subject_prefix:
+          type: string
+        email_template:
+          type: string
         send_once:
           description: "Only send notification once, for example when sending a webhook\
             \ into a chat channel."
@@ -56447,8 +56453,10 @@ components:
         webhook_mapping_headers: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         webhook_url: https://openapi-generator.tech
         name: name
+        email_subject_prefix: email_subject_prefix
         send_once: true
         webhook_mapping_body: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        email_template: email_template
       properties:
         name:
           minLength: 1
@@ -56469,6 +56477,11 @@ components:
             a dictionary of key-value pairs
           format: uuid
           nullable: true
+          type: string
+        email_subject_prefix:
+          type: string
+        email_template:
+          minLength: 1
           type: string
         send_once:
           description: "Only send notification once, for example when sending a webhook\
@@ -62256,18 +62269,22 @@ components:
           webhook_mapping_headers: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           webhook_url: https://openapi-generator.tech
           name: name
+          email_subject_prefix: email_subject_prefix
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           mode_verbose: mode_verbose
           send_once: true
           webhook_mapping_body: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          email_template: email_template
         - mode: null
           webhook_mapping_headers: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           webhook_url: https://openapi-generator.tech
           name: name
+          email_subject_prefix: email_subject_prefix
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           mode_verbose: mode_verbose
           send_once: true
           webhook_mapping_body: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          email_template: email_template
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -70142,8 +70159,10 @@ components:
         webhook_mapping_headers: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         webhook_url: https://openapi-generator.tech
         name: name
+        email_subject_prefix: email_subject_prefix
         send_once: true
         webhook_mapping_body: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        email_template: email_template
       properties:
         name:
           minLength: 1
@@ -70164,6 +70183,11 @@ components:
             a dictionary of key-value pairs
           format: uuid
           nullable: true
+          type: string
+        email_subject_prefix:
+          type: string
+        email_template:
+          minLength: 1
           type: string
         send_once:
           description: "Only send notification once, for example when sending a webhook\
