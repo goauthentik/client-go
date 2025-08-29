@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// UserPasswordSetRequest struct for UserPasswordSetRequest
+// UserPasswordSetRequest Payload to set a users' password directly
 type UserPasswordSetRequest struct {
 	Password string `json:"password"`
 }

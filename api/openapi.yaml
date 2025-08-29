@@ -80225,6 +80225,7 @@ components:
       - object_pk
       type: object
     UserPasswordSetRequest:
+      description: Payload to set a users' password directly
       example:
         password: password
       properties:
