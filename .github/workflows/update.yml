@@ -33,7 +33,7 @@ jobs:
           sparse-checkout: |
             schema.yml
           sparse-checkout-cone-mode: false
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v6
       - name: Check for updates
         working-directory: client-go
         run: make
