@@ -4802,7 +4802,7 @@ func (r ApiCoreGroupsRemoveUserCreateRequest) Execute() (*http.Response, error) 
 /*
 CoreGroupsRemoveUserCreate Method for CoreGroupsRemoveUserCreate
 
-Add user to group
+Remove user from group
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupUuid A UUID string identifying this Group.
