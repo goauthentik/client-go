@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **MetaModelName** | **string** | Return internal model name | [readonly] 
 **FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
-**FriendlyName** | Pointer to **NullableString** |  | [optional] 
+**FriendlyName** | Pointer to **string** |  | [optional] 
 **Digits** | [**DigitsEnum**](DigitsEnum.md) |  | 
 
 ## Methods
@@ -239,16 +239,6 @@ SetFriendlyName sets FriendlyName field to given value.
 
 HasFriendlyName returns a boolean if a field has been set.
 
-### SetFriendlyNameNil
-
-`func (o *AuthenticatorTOTPStage) SetFriendlyNameNil(b bool)`
-
- SetFriendlyNameNil sets the value for FriendlyName to be an explicit nil
-
-### UnsetFriendlyName
-`func (o *AuthenticatorTOTPStage) UnsetFriendlyName()`
-
-UnsetFriendlyName ensures that no value is present for FriendlyName, not even an explicit nil
 ### GetDigits
 
 `func (o *AuthenticatorTOTPStage) GetDigits() DigitsEnum`

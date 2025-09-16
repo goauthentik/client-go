@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
-**FriendlyName** | Pointer to **NullableString** |  | [optional] 
+**FriendlyName** | Pointer to **string** |  | [optional] 
 **ClientId** | Pointer to **string** |  | [optional] 
 **ClientSecret** | Pointer to **string** |  | [optional] 
 **ApiHostname** | Pointer to **string** |  | [optional] 
@@ -143,16 +143,6 @@ SetFriendlyName sets FriendlyName field to given value.
 
 HasFriendlyName returns a boolean if a field has been set.
 
-### SetFriendlyNameNil
-
-`func (o *PatchedAuthenticatorDuoStageRequest) SetFriendlyNameNil(b bool)`
-
- SetFriendlyNameNil sets the value for FriendlyName to be an explicit nil
-
-### UnsetFriendlyName
-`func (o *PatchedAuthenticatorDuoStageRequest) UnsetFriendlyName()`
-
-UnsetFriendlyName ensures that no value is present for FriendlyName, not even an explicit nil
 ### GetClientId
 
 `func (o *PatchedAuthenticatorDuoStageRequest) GetClientId() string`

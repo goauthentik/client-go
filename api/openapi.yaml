@@ -46671,7 +46671,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          nullable: true
           type: string
         client_id:
           type: string
@@ -46762,8 +46761,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          minLength: 1
-          nullable: true
           type: string
         client_id:
           minLength: 1
@@ -46910,7 +46907,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          nullable: true
           type: string
         use_global_settings:
           description: "When enabled, global Email connection settings will be used\
@@ -47003,8 +46999,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          minLength: 1
-          nullable: true
           type: string
         use_global_settings:
           description: "When enabled, global Email connection settings will be used\
@@ -47120,7 +47114,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          nullable: true
           type: string
         credentials:
           additionalProperties: {}
@@ -47174,8 +47167,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          minLength: 1
-          nullable: true
           type: string
         credentials:
           additionalProperties: {}
@@ -47301,7 +47292,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          nullable: true
           type: string
         provider:
           $ref: '#/components/schemas/ProviderEnum'
@@ -47383,8 +47373,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          minLength: 1
-          nullable: true
           type: string
         provider:
           $ref: '#/components/schemas/ProviderEnum'
@@ -47526,7 +47514,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          nullable: true
           type: string
         token_count:
           maximum: 2147483647
@@ -47584,8 +47571,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          minLength: 1
-          nullable: true
           type: string
         token_count:
           maximum: 2147483647
@@ -47707,7 +47692,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          nullable: true
           type: string
         digits:
           $ref: '#/components/schemas/DigitsEnum'
@@ -47759,8 +47743,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          minLength: 1
-          nullable: true
           type: string
         digits:
           $ref: '#/components/schemas/DigitsEnum'
@@ -48137,7 +48119,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          nullable: true
           type: string
         user_verification:
           $ref: '#/components/schemas/UserVerificationEnum'
@@ -48215,8 +48196,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          minLength: 1
-          nullable: true
           type: string
         user_verification:
           $ref: '#/components/schemas/UserVerificationEnum'
@@ -67766,8 +67745,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          minLength: 1
-          nullable: true
           type: string
         client_id:
           minLength: 1
@@ -67835,8 +67812,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          minLength: 1
-          nullable: true
           type: string
         use_global_settings:
           description: "When enabled, global Email connection settings will be used\
@@ -67917,8 +67892,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          minLength: 1
-          nullable: true
           type: string
         credentials:
           additionalProperties: {}
@@ -67970,8 +67943,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          minLength: 1
-          nullable: true
           type: string
         provider:
           $ref: '#/components/schemas/ProviderEnum'
@@ -68039,8 +68010,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          minLength: 1
-          nullable: true
           type: string
         token_count:
           maximum: 2147483647
@@ -68090,8 +68059,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          minLength: 1
-          nullable: true
           type: string
         digits:
           $ref: '#/components/schemas/DigitsEnum'
@@ -68212,8 +68179,6 @@ components:
           nullable: true
           type: string
         friendly_name:
-          minLength: 1
-          nullable: true
           type: string
         user_verification:
           $ref: '#/components/schemas/UserVerificationEnum'
