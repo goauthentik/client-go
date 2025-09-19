@@ -4330,7 +4330,7 @@ import (
 )
 
 func main() {
-    search := "search_example" // string |  (optional)
+    search := "search_example" // string | A search term. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -4355,7 +4355,7 @@ Other parameters are passed through a pointer to a apiCoreUsersPathsRetrieveRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **search** | **string** |  | 
+ **search** | **string** | A search term. | 
 
 ### Return type
 

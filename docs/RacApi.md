@@ -610,7 +610,7 @@ func main() {
     page := int32(56) // int32 | A page number within the paginated result set. (optional)
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     provider := int32(56) // int32 |  (optional)
-    search := "search_example" // string |  (optional)
+    search := "search_example" // string | A search term. (optional)
     superuserFullList := true // bool |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -641,7 +641,7 @@ Name | Type | Description  | Notes
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **provider** | **int32** |  | 
- **search** | **string** |  | 
+ **search** | **string** | A search term. | 
  **superuserFullList** | **bool** |  | 
 
 ### Return type

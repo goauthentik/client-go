@@ -6854,7 +6854,8 @@ paths:
       description: Get all user paths
       operationId: core_users_paths_retrieve
       parameters:
-      - explode: true
+      - description: A search term.
+        explode: true
         in: query
         name: search
         required: false
@@ -26798,7 +26799,8 @@ paths:
         schema:
           type: integer
         style: form
-      - explode: true
+      - description: A search term.
+        explode: true
         in: query
         name: search
         required: false
@@ -46090,6 +46092,43 @@ paths:
       tags:
       - tenants
 components:
+  parameters:
+    QueryPaginationOrdering:
+      description: Which field to use when ordering the results.
+      explode: true
+      in: query
+      name: ordering
+      required: false
+      schema:
+        type: string
+      style: form
+    QueryPaginationPage:
+      description: A page number within the paginated result set.
+      explode: true
+      in: query
+      name: page
+      required: false
+      schema:
+        type: integer
+      style: form
+    QueryPaginationPageSize:
+      description: Number of results to return per page.
+      explode: true
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: integer
+      style: form
+    QuerySearch:
+      description: A search term.
+      explode: true
+      in: query
+      name: search
+      required: false
+      schema:
+        type: string
+      style: form
   schemas:
     AccessDeniedChallenge:
       description: Challenge when a flow's active stage calls `stage_invalid()`.

@@ -8258,6 +8258,7 @@ type ApiCoreUsersPathsRetrieveRequest struct {
 	search     *string
 }
 
+// A search term.
 func (r ApiCoreUsersPathsRetrieveRequest) Search(search string) ApiCoreUsersPathsRetrieveRequest {
 	r.search = &search
 	return r

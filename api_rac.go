@@ -1112,6 +1112,7 @@ func (r ApiRacEndpointsListRequest) Provider(provider int32) ApiRacEndpointsList
 	return r
 }
 
+// A search term.
 func (r ApiRacEndpointsListRequest) Search(search string) ApiRacEndpointsListRequest {
 	r.search = &search
 	return r
