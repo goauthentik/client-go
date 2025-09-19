@@ -99,7 +99,6 @@ const (
 	MODELENUM_STAGES_AUTHENTICATOR_WEBAUTHN_WEBAUTHNDEVICE                      ModelEnum = "authentik_stages_authenticator_webauthn.webauthndevice"
 	MODELENUM_STAGES_CAPTCHA_CAPTCHASTAGE                                       ModelEnum = "authentik_stages_captcha.captchastage"
 	MODELENUM_STAGES_CONSENT_CONSENTSTAGE                                       ModelEnum = "authentik_stages_consent.consentstage"
-	MODELENUM_STAGES_CONSENT_USERCONSENT                                        ModelEnum = "authentik_stages_consent.userconsent"
 	MODELENUM_STAGES_DENY_DENYSTAGE                                             ModelEnum = "authentik_stages_deny.denystage"
 	MODELENUM_STAGES_DUMMY_DUMMYSTAGE                                           ModelEnum = "authentik_stages_dummy.dummystage"
 	MODELENUM_STAGES_EMAIL_EMAILSTAGE                                           ModelEnum = "authentik_stages_email.emailstage"
@@ -208,7 +207,6 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_stages_authenticator_webauthn.webauthndevice",
 	"authentik_stages_captcha.captchastage",
 	"authentik_stages_consent.consentstage",
-	"authentik_stages_consent.userconsent",
 	"authentik_stages_deny.denystage",
 	"authentik_stages_dummy.dummystage",
 	"authentik_stages_email.emailstage",
