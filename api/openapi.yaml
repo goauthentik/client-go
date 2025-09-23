@@ -46235,6 +46235,7 @@ components:
       - authentik.enterprise.policies.unique_password
       - authentik.enterprise.providers.google_workspace
       - authentik.enterprise.providers.microsoft_entra
+      - authentik.enterprise.providers.scim
       - authentik.enterprise.providers.ssf
       - authentik.enterprise.search
       - authentik.enterprise.stages.authenticator_endpoint_gdtc
@@ -46493,11 +46494,6 @@ components:
       - name
       - slug
       type: object
-    AuthModeEnum:
-      enum:
-      - static
-      - prompt
-      type: string
     AuthTypeEnum:
       enum:
       - basic
@@ -50758,7 +50754,7 @@ components:
             type: string
           type: array
         auth_mode:
-          $ref: '#/components/schemas/AuthModeEnum'
+          $ref: '#/components/schemas/EndpointAuthModeEnum'
         launch_url:
           description: |-
             Build actual launch URL (the provider itself does not have one, just
@@ -50780,6 +50776,11 @@ components:
       - provider
       - provider_obj
       type: object
+    EndpointAuthModeEnum:
+      enum:
+      - static
+      - prompt
+      type: string
     EndpointDevice:
       description: Serializer for Endpoint authenticator devices
       example:
@@ -50849,7 +50850,7 @@ components:
             type: string
           type: array
         auth_mode:
-          $ref: '#/components/schemas/AuthModeEnum'
+          $ref: '#/components/schemas/EndpointAuthModeEnum'
         maximum_connections:
           maximum: 2147483647
           minimum: -2147483648
@@ -64743,9 +64744,13 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
+          auth_oauth_params:
+            key: ""
+          auth_mode: null
           url: url
           token: token
           exclude_users_service_account: true
+          auth_oauth: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
           meta_model_name: meta_model_name
@@ -64764,9 +64769,13 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
+          auth_oauth_params:
+            key: ""
+          auth_mode: null
           url: url
           token: token
           exclude_users_service_account: true
+          auth_oauth: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
           meta_model_name: meta_model_name
@@ -66844,6 +66853,7 @@ components:
         results:
         - identifier: identifier
           last_updated: 2000-01-23T04:56:07.000+00:00
+          expires: 2000-01-23T04:56:07.000+00:00
           source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
@@ -66851,6 +66861,7 @@ components:
           user: 6
         - identifier: identifier
           last_updated: 2000-01-23T04:56:07.000+00:00
+          expires: 2000-01-23T04:56:07.000+00:00
           source_obj: ""
           created: 2000-01-23T04:56:07.000+00:00
           pk: 0
@@ -68806,7 +68817,7 @@ components:
             type: string
           type: array
         auth_mode:
-          $ref: '#/components/schemas/AuthModeEnum'
+          $ref: '#/components/schemas/EndpointAuthModeEnum'
         maximum_connections:
           maximum: 2147483647
           minimum: -2147483648
@@ -71697,6 +71708,13 @@ components:
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        auth_oauth_params:
+          key: ""
+        auth_mode: null
+        url: url
+        token: token
+        exclude_users_service_account: true
+        auth_oauth: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         dry_run: true
@@ -71704,9 +71722,6 @@ components:
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        url: url
-        token: token
-        exclude_users_service_account: true
       properties:
         name:
           minLength: 1
@@ -71730,8 +71745,18 @@ components:
           type: boolean
         token:
           description: Authentication token
-          minLength: 1
           type: string
+        auth_mode:
+          $ref: '#/components/schemas/SCIMAuthenticationModeEnum'
+        auth_oauth:
+          description: OAuth Source used for authentication
+          format: uuid
+          nullable: true
+          type: string
+        auth_oauth_params:
+          additionalProperties: {}
+          description: "Additional OAuth parameters, such as grant_type"
+          type: object
         compatibility_mode:
           allOf:
           - $ref: '#/components/schemas/CompatibilityModeEnum'
@@ -72325,6 +72350,7 @@ components:
       example:
         access_token: access_token
         identifier: identifier
+        expires: 2000-01-23T04:56:07.000+00:00
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 0
       properties:
@@ -72340,6 +72366,9 @@ components:
           nullable: true
           type: string
           writeOnly: true
+        expires:
+          format: date-time
+          type: string
       type: object
     PatchedUserPlexSourceConnectionRequest:
       description: User source connection
@@ -76295,6 +76324,11 @@ components:
       - slug
       - sso_url
       type: object
+    SCIMAuthenticationModeEnum:
+      enum:
+      - token
+      - oauth
+      type: string
     SCIMMapping:
       description: SCIMMapping Serializer
       example:
@@ -76383,9 +76417,13 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         verbose_name_plural: verbose_name_plural
+        auth_oauth_params:
+          key: ""
+        auth_mode: null
         url: url
         token: token
         exclude_users_service_account: true
+        auth_oauth: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         component: component
         verbose_name: verbose_name
         meta_model_name: meta_model_name
@@ -76449,6 +76487,17 @@ components:
         token:
           description: Authentication token
           type: string
+        auth_mode:
+          $ref: '#/components/schemas/SCIMAuthenticationModeEnum'
+        auth_oauth:
+          description: OAuth Source used for authentication
+          format: uuid
+          nullable: true
+          type: string
+        auth_oauth_params:
+          additionalProperties: {}
+          description: "Additional OAuth parameters, such as grant_type"
+          type: object
         compatibility_mode:
           allOf:
           - $ref: '#/components/schemas/CompatibilityModeEnum'
@@ -76471,7 +76520,6 @@ components:
       - meta_model_name
       - name
       - pk
-      - token
       - url
       - verbose_name
       - verbose_name_plural
@@ -76541,6 +76589,13 @@ components:
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        auth_oauth_params:
+          key: ""
+        auth_mode: null
+        url: url
+        token: token
+        exclude_users_service_account: true
+        auth_oauth: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         dry_run: true
@@ -76548,9 +76603,6 @@ components:
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        url: url
-        token: token
-        exclude_users_service_account: true
       properties:
         name:
           minLength: 1
@@ -76574,8 +76626,18 @@ components:
           type: boolean
         token:
           description: Authentication token
-          minLength: 1
           type: string
+        auth_mode:
+          $ref: '#/components/schemas/SCIMAuthenticationModeEnum'
+        auth_oauth:
+          description: OAuth Source used for authentication
+          format: uuid
+          nullable: true
+          type: string
+        auth_oauth_params:
+          additionalProperties: {}
+          description: "Additional OAuth parameters, such as grant_type"
+          type: object
         compatibility_mode:
           allOf:
           - $ref: '#/components/schemas/CompatibilityModeEnum'
@@ -76593,7 +76655,6 @@ components:
           type: boolean
       required:
       - name
-      - token
       - url
       type: object
     SCIMProviderUser:
@@ -80124,6 +80185,7 @@ components:
       example:
         identifier: identifier
         last_updated: 2000-01-23T04:56:07.000+00:00
+        expires: 2000-01-23T04:56:07.000+00:00
         source_obj: ""
         created: 2000-01-23T04:56:07.000+00:00
         pk: 0
@@ -80153,6 +80215,9 @@ components:
           format: date-time
           readOnly: true
           type: string
+        expires:
+          format: date-time
+          type: string
       required:
       - created
       - identifier
@@ -80167,6 +80232,7 @@ components:
       example:
         access_token: access_token
         identifier: identifier
+        expires: 2000-01-23T04:56:07.000+00:00
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user: 0
       properties:
@@ -80182,6 +80248,9 @@ components:
           nullable: true
           type: string
           writeOnly: true
+        expires:
+          format: date-time
+          type: string
       required:
       - identifier
       - source

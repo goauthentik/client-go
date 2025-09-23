@@ -13,6 +13,7 @@ package api
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // PatchedUserOAuthSourceConnectionRequest User source connection
@@ -21,6 +22,7 @@ type PatchedUserOAuthSourceConnectionRequest struct {
 	Source      *string        `json:"source,omitempty"`
 	Identifier  *string        `json:"identifier,omitempty"`
 	AccessToken NullableString `json:"access_token,omitempty"`
+	Expires     *time.Time     `json:"expires,omitempty"`
 }
 
 // NewPatchedUserOAuthSourceConnectionRequest instantiates a new PatchedUserOAuthSourceConnectionRequest object
@@ -179,6 +181,38 @@ func (o *PatchedUserOAuthSourceConnectionRequest) UnsetAccessToken() {
 	o.AccessToken.Unset()
 }
 
+// GetExpires returns the Expires field value if set, zero value otherwise.
+func (o *PatchedUserOAuthSourceConnectionRequest) GetExpires() time.Time {
+	if o == nil || o.Expires == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.Expires
+}
+
+// GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedUserOAuthSourceConnectionRequest) GetExpiresOk() (*time.Time, bool) {
+	if o == nil || o.Expires == nil {
+		return nil, false
+	}
+	return o.Expires, true
+}
+
+// HasExpires returns a boolean if a field has been set.
+func (o *PatchedUserOAuthSourceConnectionRequest) HasExpires() bool {
+	if o != nil && o.Expires != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExpires gets a reference to the given time.Time and assigns it to the Expires field.
+func (o *PatchedUserOAuthSourceConnectionRequest) SetExpires(v time.Time) {
+	o.Expires = &v
+}
+
 func (o PatchedUserOAuthSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.User != nil {
@@ -192,6 +226,9 @@ func (o PatchedUserOAuthSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.AccessToken.IsSet() {
 		toSerialize["access_token"] = o.AccessToken.Get()
+	}
+	if o.Expires != nil {
+		toSerialize["expires"] = o.Expires
 	}
 	return json.Marshal(toSerialize)
 }

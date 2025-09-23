@@ -78,7 +78,10 @@ Name | Type | Description | Notes
 **DefaultNameIdPolicy** | Pointer to [**SAMLNameIDPolicyEnum**](SAMLNameIDPolicyEnum.md) |  | [optional] 
 **Url** | **string** | Base URL to SCIM requests, usually ends in /v2 | 
 **VerifyCertificates** | Pointer to **bool** |  | [optional] 
-**Token** | **string** | Authentication token | 
+**Token** | Pointer to **string** | Authentication token | [optional] 
+**AuthMode** | Pointer to [**SCIMAuthenticationModeEnum**](SCIMAuthenticationModeEnum.md) |  | [optional] 
+**AuthOauth** | Pointer to **NullableString** | OAuth Source used for authentication | [optional] 
+**AuthOauthParams** | Pointer to **map[string]interface{}** | Additional OAuth parameters, such as grant_type | [optional] 
 **CompatibilityMode** | Pointer to [**CompatibilityModeEnum**](CompatibilityModeEnum.md) | Alter authentik behavior for vendor-specific SCIM implementations. | [optional] 
 **OidcAuthProviders** | Pointer to **[]int32** |  | [optional] 
 **EventRetention** | Pointer to **string** |  | [optional] 
@@ -87,7 +90,7 @@ Name | Type | Description | Notes
 
 ### NewModelRequest
 
-`func NewModelRequest(name string, delegatedSubject string, credentials map[string]interface{}, defaultGroupEmailDomain string, authorizationFlow string, invalidationFlow string, clientId string, clientSecret string, tenantId string, signingKey string, redirectUris []RedirectURIRequest, externalHost string, acsUrl string, url string, token string, ) *ModelRequest`
+`func NewModelRequest(name string, delegatedSubject string, credentials map[string]interface{}, defaultGroupEmailDomain string, authorizationFlow string, invalidationFlow string, clientId string, clientSecret string, tenantId string, signingKey string, redirectUris []RedirectURIRequest, externalHost string, acsUrl string, url string, ) *ModelRequest`
 
 NewModelRequest instantiates a new ModelRequest object
 This constructor will assign default values to properties that have it defined,
@@ -1991,6 +1994,96 @@ and a boolean to check if the value has been set.
 
 SetToken sets Token field to given value.
 
+### HasToken
+
+`func (o *ModelRequest) HasToken() bool`
+
+HasToken returns a boolean if a field has been set.
+
+### GetAuthMode
+
+`func (o *ModelRequest) GetAuthMode() SCIMAuthenticationModeEnum`
+
+GetAuthMode returns the AuthMode field if non-nil, zero value otherwise.
+
+### GetAuthModeOk
+
+`func (o *ModelRequest) GetAuthModeOk() (*SCIMAuthenticationModeEnum, bool)`
+
+GetAuthModeOk returns a tuple with the AuthMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthMode
+
+`func (o *ModelRequest) SetAuthMode(v SCIMAuthenticationModeEnum)`
+
+SetAuthMode sets AuthMode field to given value.
+
+### HasAuthMode
+
+`func (o *ModelRequest) HasAuthMode() bool`
+
+HasAuthMode returns a boolean if a field has been set.
+
+### GetAuthOauth
+
+`func (o *ModelRequest) GetAuthOauth() string`
+
+GetAuthOauth returns the AuthOauth field if non-nil, zero value otherwise.
+
+### GetAuthOauthOk
+
+`func (o *ModelRequest) GetAuthOauthOk() (*string, bool)`
+
+GetAuthOauthOk returns a tuple with the AuthOauth field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthOauth
+
+`func (o *ModelRequest) SetAuthOauth(v string)`
+
+SetAuthOauth sets AuthOauth field to given value.
+
+### HasAuthOauth
+
+`func (o *ModelRequest) HasAuthOauth() bool`
+
+HasAuthOauth returns a boolean if a field has been set.
+
+### SetAuthOauthNil
+
+`func (o *ModelRequest) SetAuthOauthNil(b bool)`
+
+ SetAuthOauthNil sets the value for AuthOauth to be an explicit nil
+
+### UnsetAuthOauth
+`func (o *ModelRequest) UnsetAuthOauth()`
+
+UnsetAuthOauth ensures that no value is present for AuthOauth, not even an explicit nil
+### GetAuthOauthParams
+
+`func (o *ModelRequest) GetAuthOauthParams() map[string]interface{}`
+
+GetAuthOauthParams returns the AuthOauthParams field if non-nil, zero value otherwise.
+
+### GetAuthOauthParamsOk
+
+`func (o *ModelRequest) GetAuthOauthParamsOk() (*map[string]interface{}, bool)`
+
+GetAuthOauthParamsOk returns a tuple with the AuthOauthParams field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthOauthParams
+
+`func (o *ModelRequest) SetAuthOauthParams(v map[string]interface{})`
+
+SetAuthOauthParams sets AuthOauthParams field to given value.
+
+### HasAuthOauthParams
+
+`func (o *ModelRequest) HasAuthOauthParams() bool`
+
+HasAuthOauthParams returns a boolean if a field has been set.
 
 ### GetCompatibilityMode
 

@@ -10,6 +10,9 @@ Name | Type | Description | Notes
 **Url** | Pointer to **string** | Base URL to SCIM requests, usually ends in /v2 | [optional] 
 **VerifyCertificates** | Pointer to **bool** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token | [optional] 
+**AuthMode** | Pointer to [**SCIMAuthenticationModeEnum**](SCIMAuthenticationModeEnum.md) |  | [optional] 
+**AuthOauth** | Pointer to **NullableString** | OAuth Source used for authentication | [optional] 
+**AuthOauthParams** | Pointer to **map[string]interface{}** | Additional OAuth parameters, such as grant_type | [optional] 
 **CompatibilityMode** | Pointer to [**CompatibilityModeEnum**](CompatibilityModeEnum.md) | Alter authentik behavior for vendor-specific SCIM implementations. | [optional] 
 **ExcludeUsersServiceAccount** | Pointer to **bool** |  | [optional] 
 **FilterGroup** | Pointer to **NullableString** |  | [optional] 
@@ -183,6 +186,91 @@ SetToken sets Token field to given value.
 `func (o *PatchedSCIMProviderRequest) HasToken() bool`
 
 HasToken returns a boolean if a field has been set.
+
+### GetAuthMode
+
+`func (o *PatchedSCIMProviderRequest) GetAuthMode() SCIMAuthenticationModeEnum`
+
+GetAuthMode returns the AuthMode field if non-nil, zero value otherwise.
+
+### GetAuthModeOk
+
+`func (o *PatchedSCIMProviderRequest) GetAuthModeOk() (*SCIMAuthenticationModeEnum, bool)`
+
+GetAuthModeOk returns a tuple with the AuthMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthMode
+
+`func (o *PatchedSCIMProviderRequest) SetAuthMode(v SCIMAuthenticationModeEnum)`
+
+SetAuthMode sets AuthMode field to given value.
+
+### HasAuthMode
+
+`func (o *PatchedSCIMProviderRequest) HasAuthMode() bool`
+
+HasAuthMode returns a boolean if a field has been set.
+
+### GetAuthOauth
+
+`func (o *PatchedSCIMProviderRequest) GetAuthOauth() string`
+
+GetAuthOauth returns the AuthOauth field if non-nil, zero value otherwise.
+
+### GetAuthOauthOk
+
+`func (o *PatchedSCIMProviderRequest) GetAuthOauthOk() (*string, bool)`
+
+GetAuthOauthOk returns a tuple with the AuthOauth field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthOauth
+
+`func (o *PatchedSCIMProviderRequest) SetAuthOauth(v string)`
+
+SetAuthOauth sets AuthOauth field to given value.
+
+### HasAuthOauth
+
+`func (o *PatchedSCIMProviderRequest) HasAuthOauth() bool`
+
+HasAuthOauth returns a boolean if a field has been set.
+
+### SetAuthOauthNil
+
+`func (o *PatchedSCIMProviderRequest) SetAuthOauthNil(b bool)`
+
+ SetAuthOauthNil sets the value for AuthOauth to be an explicit nil
+
+### UnsetAuthOauth
+`func (o *PatchedSCIMProviderRequest) UnsetAuthOauth()`
+
+UnsetAuthOauth ensures that no value is present for AuthOauth, not even an explicit nil
+### GetAuthOauthParams
+
+`func (o *PatchedSCIMProviderRequest) GetAuthOauthParams() map[string]interface{}`
+
+GetAuthOauthParams returns the AuthOauthParams field if non-nil, zero value otherwise.
+
+### GetAuthOauthParamsOk
+
+`func (o *PatchedSCIMProviderRequest) GetAuthOauthParamsOk() (*map[string]interface{}, bool)`
+
+GetAuthOauthParamsOk returns a tuple with the AuthOauthParams field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthOauthParams
+
+`func (o *PatchedSCIMProviderRequest) SetAuthOauthParams(v map[string]interface{})`
+
+SetAuthOauthParams sets AuthOauthParams field to given value.
+
+### HasAuthOauthParams
+
+`func (o *PatchedSCIMProviderRequest) HasAuthOauthParams() bool`
+
+HasAuthOauthParams returns a boolean if a field has been set.
 
 ### GetCompatibilityMode
 

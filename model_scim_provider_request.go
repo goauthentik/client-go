@@ -25,7 +25,12 @@ type SCIMProviderRequest struct {
 	Url                string `json:"url"`
 	VerifyCertificates *bool  `json:"verify_certificates,omitempty"`
 	// Authentication token
-	Token string `json:"token"`
+	Token    *string                     `json:"token,omitempty"`
+	AuthMode *SCIMAuthenticationModeEnum `json:"auth_mode,omitempty"`
+	// OAuth Source used for authentication
+	AuthOauth NullableString `json:"auth_oauth,omitempty"`
+	// Additional OAuth parameters, such as grant_type
+	AuthOauthParams map[string]interface{} `json:"auth_oauth_params,omitempty"`
 	// Alter authentik behavior for vendor-specific SCIM implementations.
 	CompatibilityMode          *CompatibilityModeEnum `json:"compatibility_mode,omitempty"`
 	ExcludeUsersServiceAccount *bool                  `json:"exclude_users_service_account,omitempty"`
@@ -38,11 +43,10 @@ type SCIMProviderRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSCIMProviderRequest(name string, url string, token string) *SCIMProviderRequest {
+func NewSCIMProviderRequest(name string, url string) *SCIMProviderRequest {
 	this := SCIMProviderRequest{}
 	this.Name = name
 	this.Url = url
-	this.Token = token
 	return &this
 }
 
@@ -198,28 +202,143 @@ func (o *SCIMProviderRequest) SetVerifyCertificates(v bool) {
 	o.VerifyCertificates = &v
 }
 
-// GetToken returns the Token field value
+// GetToken returns the Token field value if set, zero value otherwise.
 func (o *SCIMProviderRequest) GetToken() string {
-	if o == nil {
+	if o == nil || o.Token == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Token
+	return *o.Token
 }
 
-// GetTokenOk returns a tuple with the Token field value
+// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SCIMProviderRequest) GetTokenOk() (*string, bool) {
+	if o == nil || o.Token == nil {
+		return nil, false
+	}
+	return o.Token, true
+}
+
+// HasToken returns a boolean if a field has been set.
+func (o *SCIMProviderRequest) HasToken() bool {
+	if o != nil && o.Token != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetToken gets a reference to the given string and assigns it to the Token field.
+func (o *SCIMProviderRequest) SetToken(v string) {
+	o.Token = &v
+}
+
+// GetAuthMode returns the AuthMode field value if set, zero value otherwise.
+func (o *SCIMProviderRequest) GetAuthMode() SCIMAuthenticationModeEnum {
+	if o == nil || o.AuthMode == nil {
+		var ret SCIMAuthenticationModeEnum
+		return ret
+	}
+	return *o.AuthMode
+}
+
+// GetAuthModeOk returns a tuple with the AuthMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SCIMProviderRequest) GetAuthModeOk() (*SCIMAuthenticationModeEnum, bool) {
+	if o == nil || o.AuthMode == nil {
+		return nil, false
+	}
+	return o.AuthMode, true
+}
+
+// HasAuthMode returns a boolean if a field has been set.
+func (o *SCIMProviderRequest) HasAuthMode() bool {
+	if o != nil && o.AuthMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthMode gets a reference to the given SCIMAuthenticationModeEnum and assigns it to the AuthMode field.
+func (o *SCIMProviderRequest) SetAuthMode(v SCIMAuthenticationModeEnum) {
+	o.AuthMode = &v
+}
+
+// GetAuthOauth returns the AuthOauth field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SCIMProviderRequest) GetAuthOauth() string {
+	if o == nil || o.AuthOauth.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.AuthOauth.Get()
+}
+
+// GetAuthOauthOk returns a tuple with the AuthOauth field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SCIMProviderRequest) GetAuthOauthOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Token, true
+	return o.AuthOauth.Get(), o.AuthOauth.IsSet()
 }
 
-// SetToken sets field value
-func (o *SCIMProviderRequest) SetToken(v string) {
-	o.Token = v
+// HasAuthOauth returns a boolean if a field has been set.
+func (o *SCIMProviderRequest) HasAuthOauth() bool {
+	if o != nil && o.AuthOauth.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthOauth gets a reference to the given NullableString and assigns it to the AuthOauth field.
+func (o *SCIMProviderRequest) SetAuthOauth(v string) {
+	o.AuthOauth.Set(&v)
+}
+
+// SetAuthOauthNil sets the value for AuthOauth to be an explicit nil
+func (o *SCIMProviderRequest) SetAuthOauthNil() {
+	o.AuthOauth.Set(nil)
+}
+
+// UnsetAuthOauth ensures that no value is present for AuthOauth, not even an explicit nil
+func (o *SCIMProviderRequest) UnsetAuthOauth() {
+	o.AuthOauth.Unset()
+}
+
+// GetAuthOauthParams returns the AuthOauthParams field value if set, zero value otherwise.
+func (o *SCIMProviderRequest) GetAuthOauthParams() map[string]interface{} {
+	if o == nil || o.AuthOauthParams == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.AuthOauthParams
+}
+
+// GetAuthOauthParamsOk returns a tuple with the AuthOauthParams field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SCIMProviderRequest) GetAuthOauthParamsOk() (map[string]interface{}, bool) {
+	if o == nil || o.AuthOauthParams == nil {
+		return nil, false
+	}
+	return o.AuthOauthParams, true
+}
+
+// HasAuthOauthParams returns a boolean if a field has been set.
+func (o *SCIMProviderRequest) HasAuthOauthParams() bool {
+	if o != nil && o.AuthOauthParams != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthOauthParams gets a reference to the given map[string]interface{} and assigns it to the AuthOauthParams field.
+func (o *SCIMProviderRequest) SetAuthOauthParams(v map[string]interface{}) {
+	o.AuthOauthParams = v
 }
 
 // GetCompatibilityMode returns the CompatibilityMode field value if set, zero value otherwise.
@@ -378,8 +497,17 @@ func (o SCIMProviderRequest) MarshalJSON() ([]byte, error) {
 	if o.VerifyCertificates != nil {
 		toSerialize["verify_certificates"] = o.VerifyCertificates
 	}
-	if true {
+	if o.Token != nil {
 		toSerialize["token"] = o.Token
+	}
+	if o.AuthMode != nil {
+		toSerialize["auth_mode"] = o.AuthMode
+	}
+	if o.AuthOauth.IsSet() {
+		toSerialize["auth_oauth"] = o.AuthOauth.Get()
+	}
+	if o.AuthOauthParams != nil {
+		toSerialize["auth_oauth_params"] = o.AuthOauthParams
 	}
 	if o.CompatibilityMode != nil {
 		toSerialize["compatibility_mode"] = o.CompatibilityMode

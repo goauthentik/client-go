@@ -10,14 +10,14 @@ Name | Type | Description | Notes
 **Host** | **string** |  | 
 **Settings** | Pointer to **map[string]interface{}** |  | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
-**AuthMode** | [**AuthModeEnum**](AuthModeEnum.md) |  | 
+**AuthMode** | [**EndpointAuthModeEnum**](EndpointAuthModeEnum.md) |  | 
 **MaximumConnections** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
 ### NewEndpointRequest
 
-`func NewEndpointRequest(name string, provider int32, protocol ProtocolEnum, host string, authMode AuthModeEnum, ) *EndpointRequest`
+`func NewEndpointRequest(name string, provider int32, protocol ProtocolEnum, host string, authMode EndpointAuthModeEnum, ) *EndpointRequest`
 
 NewEndpointRequest instantiates a new EndpointRequest object
 This constructor will assign default values to properties that have it defined,
@@ -164,20 +164,20 @@ HasPropertyMappings returns a boolean if a field has been set.
 
 ### GetAuthMode
 
-`func (o *EndpointRequest) GetAuthMode() AuthModeEnum`
+`func (o *EndpointRequest) GetAuthMode() EndpointAuthModeEnum`
 
 GetAuthMode returns the AuthMode field if non-nil, zero value otherwise.
 
 ### GetAuthModeOk
 
-`func (o *EndpointRequest) GetAuthModeOk() (*AuthModeEnum, bool)`
+`func (o *EndpointRequest) GetAuthModeOk() (*EndpointAuthModeEnum, bool)`
 
 GetAuthModeOk returns a tuple with the AuthMode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthMode
 
-`func (o *EndpointRequest) SetAuthMode(v AuthModeEnum)`
+`func (o *EndpointRequest) SetAuthMode(v EndpointAuthModeEnum)`
 
 SetAuthMode sets AuthMode field to given value.
 

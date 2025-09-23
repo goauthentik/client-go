@@ -6609,7 +6609,7 @@ import (
 )
 
 func main() {
-    sCIMProviderRequest := *openapiclient.NewSCIMProviderRequest("Name_example", "Url_example", "Token_example") // SCIMProviderRequest | 
+    sCIMProviderRequest := *openapiclient.NewSCIMProviderRequest("Name_example", "Url_example") // SCIMProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -7460,7 +7460,7 @@ import (
 
 func main() {
     id := int32(56) // int32 | A unique integer value identifying this SCIM Provider.
-    sCIMProviderRequest := *openapiclient.NewSCIMProviderRequest("Name_example", "Url_example", "Token_example") // SCIMProviderRequest | 
+    sCIMProviderRequest := *openapiclient.NewSCIMProviderRequest("Name_example", "Url_example") // SCIMProviderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

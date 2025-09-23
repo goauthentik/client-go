@@ -13,6 +13,7 @@ package api
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // UserOAuthSourceConnectionRequest User source connection
@@ -21,6 +22,7 @@ type UserOAuthSourceConnectionRequest struct {
 	Source      string         `json:"source"`
 	Identifier  string         `json:"identifier"`
 	AccessToken NullableString `json:"access_token,omitempty"`
+	Expires     *time.Time     `json:"expires,omitempty"`
 }
 
 // NewUserOAuthSourceConnectionRequest instantiates a new UserOAuthSourceConnectionRequest object
@@ -158,6 +160,38 @@ func (o *UserOAuthSourceConnectionRequest) UnsetAccessToken() {
 	o.AccessToken.Unset()
 }
 
+// GetExpires returns the Expires field value if set, zero value otherwise.
+func (o *UserOAuthSourceConnectionRequest) GetExpires() time.Time {
+	if o == nil || o.Expires == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.Expires
+}
+
+// GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserOAuthSourceConnectionRequest) GetExpiresOk() (*time.Time, bool) {
+	if o == nil || o.Expires == nil {
+		return nil, false
+	}
+	return o.Expires, true
+}
+
+// HasExpires returns a boolean if a field has been set.
+func (o *UserOAuthSourceConnectionRequest) HasExpires() bool {
+	if o != nil && o.Expires != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExpires gets a reference to the given time.Time and assigns it to the Expires field.
+func (o *UserOAuthSourceConnectionRequest) SetExpires(v time.Time) {
+	o.Expires = &v
+}
+
 func (o UserOAuthSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -171,6 +205,9 @@ func (o UserOAuthSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.AccessToken.IsSet() {
 		toSerialize["access_token"] = o.AccessToken.Get()
+	}
+	if o.Expires != nil {
+		toSerialize["expires"] = o.Expires
 	}
 	return json.Marshal(toSerialize)
 }

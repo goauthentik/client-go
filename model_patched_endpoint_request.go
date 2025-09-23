@@ -23,7 +23,7 @@ type PatchedEndpointRequest struct {
 	Host               *string                `json:"host,omitempty"`
 	Settings           map[string]interface{} `json:"settings,omitempty"`
 	PropertyMappings   []string               `json:"property_mappings,omitempty"`
-	AuthMode           *AuthModeEnum          `json:"auth_mode,omitempty"`
+	AuthMode           *EndpointAuthModeEnum  `json:"auth_mode,omitempty"`
 	MaximumConnections *int32                 `json:"maximum_connections,omitempty"`
 }
 
@@ -237,9 +237,9 @@ func (o *PatchedEndpointRequest) SetPropertyMappings(v []string) {
 }
 
 // GetAuthMode returns the AuthMode field value if set, zero value otherwise.
-func (o *PatchedEndpointRequest) GetAuthMode() AuthModeEnum {
+func (o *PatchedEndpointRequest) GetAuthMode() EndpointAuthModeEnum {
 	if o == nil || o.AuthMode == nil {
-		var ret AuthModeEnum
+		var ret EndpointAuthModeEnum
 		return ret
 	}
 	return *o.AuthMode
@@ -247,7 +247,7 @@ func (o *PatchedEndpointRequest) GetAuthMode() AuthModeEnum {
 
 // GetAuthModeOk returns a tuple with the AuthMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedEndpointRequest) GetAuthModeOk() (*AuthModeEnum, bool) {
+func (o *PatchedEndpointRequest) GetAuthModeOk() (*EndpointAuthModeEnum, bool) {
 	if o == nil || o.AuthMode == nil {
 		return nil, false
 	}
@@ -263,8 +263,8 @@ func (o *PatchedEndpointRequest) HasAuthMode() bool {
 	return false
 }
 
-// SetAuthMode gets a reference to the given AuthModeEnum and assigns it to the AuthMode field.
-func (o *PatchedEndpointRequest) SetAuthMode(v AuthModeEnum) {
+// SetAuthMode gets a reference to the given EndpointAuthModeEnum and assigns it to the AuthMode field.
+func (o *PatchedEndpointRequest) SetAuthMode(v EndpointAuthModeEnum) {
 	o.AuthMode = &v
 }
 

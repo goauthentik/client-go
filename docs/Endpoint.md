@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Host** | **string** |  | 
 **Settings** | Pointer to **map[string]interface{}** |  | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
-**AuthMode** | [**AuthModeEnum**](AuthModeEnum.md) |  | 
+**AuthMode** | [**EndpointAuthModeEnum**](EndpointAuthModeEnum.md) |  | 
 **LaunchUrl** | **NullableString** | Build actual launch URL (the provider itself does not have one, just individual endpoints) | [readonly] 
 **MaximumConnections** | Pointer to **int32** |  | [optional] 
 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewEndpoint
 
-`func NewEndpoint(pk string, name string, provider int32, providerObj RACProvider, protocol ProtocolEnum, host string, authMode AuthModeEnum, launchUrl NullableString, ) *Endpoint`
+`func NewEndpoint(pk string, name string, provider int32, providerObj RACProvider, protocol ProtocolEnum, host string, authMode EndpointAuthModeEnum, launchUrl NullableString, ) *Endpoint`
 
 NewEndpoint instantiates a new Endpoint object
 This constructor will assign default values to properties that have it defined,
@@ -207,20 +207,20 @@ HasPropertyMappings returns a boolean if a field has been set.
 
 ### GetAuthMode
 
-`func (o *Endpoint) GetAuthMode() AuthModeEnum`
+`func (o *Endpoint) GetAuthMode() EndpointAuthModeEnum`
 
 GetAuthMode returns the AuthMode field if non-nil, zero value otherwise.
 
 ### GetAuthModeOk
 
-`func (o *Endpoint) GetAuthModeOk() (*AuthModeEnum, bool)`
+`func (o *Endpoint) GetAuthModeOk() (*EndpointAuthModeEnum, bool)`
 
 GetAuthModeOk returns a tuple with the AuthMode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthMode
 
-`func (o *Endpoint) SetAuthMode(v AuthModeEnum)`
+`func (o *Endpoint) SetAuthMode(v EndpointAuthModeEnum)`
 
 SetAuthMode sets AuthMode field to given value.
 

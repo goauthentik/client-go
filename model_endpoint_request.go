@@ -23,7 +23,7 @@ type EndpointRequest struct {
 	Host               string                 `json:"host"`
 	Settings           map[string]interface{} `json:"settings,omitempty"`
 	PropertyMappings   []string               `json:"property_mappings,omitempty"`
-	AuthMode           AuthModeEnum           `json:"auth_mode"`
+	AuthMode           EndpointAuthModeEnum   `json:"auth_mode"`
 	MaximumConnections *int32                 `json:"maximum_connections,omitempty"`
 }
 
@@ -31,7 +31,7 @@ type EndpointRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEndpointRequest(name string, provider int32, protocol ProtocolEnum, host string, authMode AuthModeEnum) *EndpointRequest {
+func NewEndpointRequest(name string, provider int32, protocol ProtocolEnum, host string, authMode EndpointAuthModeEnum) *EndpointRequest {
 	this := EndpointRequest{}
 	this.Name = name
 	this.Provider = provider
@@ -210,9 +210,9 @@ func (o *EndpointRequest) SetPropertyMappings(v []string) {
 }
 
 // GetAuthMode returns the AuthMode field value
-func (o *EndpointRequest) GetAuthMode() AuthModeEnum {
+func (o *EndpointRequest) GetAuthMode() EndpointAuthModeEnum {
 	if o == nil {
-		var ret AuthModeEnum
+		var ret EndpointAuthModeEnum
 		return ret
 	}
 
@@ -221,7 +221,7 @@ func (o *EndpointRequest) GetAuthMode() AuthModeEnum {
 
 // GetAuthModeOk returns a tuple with the AuthMode field value
 // and a boolean to check if the value has been set.
-func (o *EndpointRequest) GetAuthModeOk() (*AuthModeEnum, bool) {
+func (o *EndpointRequest) GetAuthModeOk() (*EndpointAuthModeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -229,7 +229,7 @@ func (o *EndpointRequest) GetAuthModeOk() (*AuthModeEnum, bool) {
 }
 
 // SetAuthMode sets field value
-func (o *EndpointRequest) SetAuthMode(v AuthModeEnum) {
+func (o *EndpointRequest) SetAuthMode(v EndpointAuthModeEnum) {
 	o.AuthMode = v
 }
 

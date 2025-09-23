@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Host** | Pointer to **string** |  | [optional] 
 **Settings** | Pointer to **map[string]interface{}** |  | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
-**AuthMode** | Pointer to [**AuthModeEnum**](AuthModeEnum.md) |  | [optional] 
+**AuthMode** | Pointer to [**EndpointAuthModeEnum**](EndpointAuthModeEnum.md) |  | [optional] 
 **MaximumConnections** | Pointer to **int32** |  | [optional] 
 
 ## Methods
@@ -184,20 +184,20 @@ HasPropertyMappings returns a boolean if a field has been set.
 
 ### GetAuthMode
 
-`func (o *PatchedEndpointRequest) GetAuthMode() AuthModeEnum`
+`func (o *PatchedEndpointRequest) GetAuthMode() EndpointAuthModeEnum`
 
 GetAuthMode returns the AuthMode field if non-nil, zero value otherwise.
 
 ### GetAuthModeOk
 
-`func (o *PatchedEndpointRequest) GetAuthModeOk() (*AuthModeEnum, bool)`
+`func (o *PatchedEndpointRequest) GetAuthModeOk() (*EndpointAuthModeEnum, bool)`
 
 GetAuthModeOk returns a tuple with the AuthMode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthMode
 
-`func (o *PatchedEndpointRequest) SetAuthMode(v AuthModeEnum)`
+`func (o *PatchedEndpointRequest) SetAuthMode(v EndpointAuthModeEnum)`
 
 SetAuthMode sets AuthMode field to given value.
 
