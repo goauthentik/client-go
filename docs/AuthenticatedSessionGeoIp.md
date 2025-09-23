@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Continent** | **string** |  | 
-**Country** | **string** |  | 
-**Lat** | **float64** |  | 
-**Long** | **float64** |  | 
+**Continent** | **NullableString** |  | 
+**Country** | **NullableString** |  | 
+**Lat** | **NullableFloat64** |  | 
+**Long** | **NullableFloat64** |  | 
 **City** | **string** |  | 
 
 ## Methods
 
 ### NewAuthenticatedSessionGeoIp
 
-`func NewAuthenticatedSessionGeoIp(continent string, country string, lat float64, long float64, city string, ) *AuthenticatedSessionGeoIp`
+`func NewAuthenticatedSessionGeoIp(continent NullableString, country NullableString, lat NullableFloat64, long NullableFloat64, city string, ) *AuthenticatedSessionGeoIp`
 
 NewAuthenticatedSessionGeoIp instantiates a new AuthenticatedSessionGeoIp object
 This constructor will assign default values to properties that have it defined,
@@ -49,6 +49,16 @@ and a boolean to check if the value has been set.
 SetContinent sets Continent field to given value.
 
 
+### SetContinentNil
+
+`func (o *AuthenticatedSessionGeoIp) SetContinentNil(b bool)`
+
+ SetContinentNil sets the value for Continent to be an explicit nil
+
+### UnsetContinent
+`func (o *AuthenticatedSessionGeoIp) UnsetContinent()`
+
+UnsetContinent ensures that no value is present for Continent, not even an explicit nil
 ### GetCountry
 
 `func (o *AuthenticatedSessionGeoIp) GetCountry() string`
@@ -69,6 +79,16 @@ and a boolean to check if the value has been set.
 SetCountry sets Country field to given value.
 
 
+### SetCountryNil
+
+`func (o *AuthenticatedSessionGeoIp) SetCountryNil(b bool)`
+
+ SetCountryNil sets the value for Country to be an explicit nil
+
+### UnsetCountry
+`func (o *AuthenticatedSessionGeoIp) UnsetCountry()`
+
+UnsetCountry ensures that no value is present for Country, not even an explicit nil
 ### GetLat
 
 `func (o *AuthenticatedSessionGeoIp) GetLat() float64`
@@ -89,6 +109,16 @@ and a boolean to check if the value has been set.
 SetLat sets Lat field to given value.
 
 
+### SetLatNil
+
+`func (o *AuthenticatedSessionGeoIp) SetLatNil(b bool)`
+
+ SetLatNil sets the value for Lat to be an explicit nil
+
+### UnsetLat
+`func (o *AuthenticatedSessionGeoIp) UnsetLat()`
+
+UnsetLat ensures that no value is present for Lat, not even an explicit nil
 ### GetLong
 
 `func (o *AuthenticatedSessionGeoIp) GetLong() float64`
@@ -109,6 +139,16 @@ and a boolean to check if the value has been set.
 SetLong sets Long field to given value.
 
 
+### SetLongNil
+
+`func (o *AuthenticatedSessionGeoIp) SetLongNil(b bool)`
+
+ SetLongNil sets the value for Long to be an explicit nil
+
+### UnsetLong
+`func (o *AuthenticatedSessionGeoIp) UnsetLong()`
+
+UnsetLong ensures that no value is present for Long, not even an explicit nil
 ### GetCity
 
 `func (o *AuthenticatedSessionGeoIp) GetCity() string`

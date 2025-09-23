@@ -46235,6 +46235,7 @@ components:
       - authentik.enterprise.policies.unique_password
       - authentik.enterprise.providers.google_workspace
       - authentik.enterprise.providers.microsoft_entra
+      - authentik.enterprise.providers.radius
       - authentik.enterprise.providers.scim
       - authentik.enterprise.providers.ssf
       - authentik.enterprise.search
@@ -63916,6 +63917,7 @@ components:
         - application_slug: application_slug
           client_networks: client_networks
           name: name
+          certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           auth_flow_slug: auth_flow_slug
           shared_secret: shared_secret
           pk: 0
@@ -63923,6 +63925,7 @@ components:
         - application_slug: application_slug
           client_networks: client_networks
           name: name
+          certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           auth_flow_slug: auth_flow_slug
           shared_secret: shared_secret
           pk: 0
@@ -63957,6 +63960,7 @@ components:
         results:
         - client_networks: client_networks
           verbose_name_plural: verbose_name_plural
+          certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           shared_secret: shared_secret
           invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
@@ -63979,6 +63983,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - client_networks: client_networks
           verbose_name_plural: verbose_name_plural
+          certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           shared_secret: shared_secret
           invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
@@ -71222,6 +71227,7 @@ components:
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         client_networks: client_networks
         name: name
+        certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         shared_secret: shared_secret
         invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mfa_support: true
@@ -71268,6 +71274,10 @@ components:
             \ have a TOTP device configured, as otherwise a password may incorrectly\
             \ be rejected if it contains a semicolon."
           type: boolean
+        certificate:
+          format: uuid
+          nullable: true
+          type: string
       type: object
     PatchedRedirectStageRequest:
       description: RedirectStage Serializer
@@ -74662,6 +74672,7 @@ components:
         application_slug: application_slug
         client_networks: client_networks
         name: name
+        certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         auth_flow_slug: auth_flow_slug
         shared_secret: shared_secret
         pk: 0
@@ -74692,6 +74703,10 @@ components:
             \ have a TOTP device configured, as otherwise a password may incorrectly\
             \ be rejected if it contains a semicolon."
           type: boolean
+        certificate:
+          format: uuid
+          nullable: true
+          type: string
       required:
       - application_slug
       - auth_flow_slug
@@ -74703,6 +74718,7 @@ components:
       example:
         client_networks: client_networks
         verbose_name_plural: verbose_name_plural
+        certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         shared_secret: shared_secret
         invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         assigned_application_slug: assigned_application_slug
@@ -74801,6 +74817,10 @@ components:
             \ have a TOTP device configured, as otherwise a password may incorrectly\
             \ be rejected if it contains a semicolon."
           type: boolean
+        certificate:
+          format: uuid
+          nullable: true
+          type: string
       required:
       - assigned_application_name
       - assigned_application_slug
@@ -74903,6 +74923,7 @@ components:
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         client_networks: client_networks
         name: name
+        certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         shared_secret: shared_secret
         invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mfa_support: true
@@ -74949,6 +74970,10 @@ components:
             \ have a TOTP device configured, as otherwise a password may incorrectly\
             \ be rejected if it contains a semicolon."
           type: boolean
+        certificate:
+          format: uuid
+          nullable: true
+          type: string
       required:
       - authorization_flow
       - invalidation_flow
@@ -81201,14 +81226,18 @@ components:
       nullable: true
       properties:
         continent:
+          nullable: true
           type: string
         country:
+          nullable: true
           type: string
         lat:
           format: double
+          nullable: true
           type: number
         long:
           format: double
+          nullable: true
           type: number
         city:
           type: string
@@ -81229,6 +81258,7 @@ components:
       nullable: true
       properties:
         asn:
+          nullable: true
           type: integer
         as_org:
           nullable: true

@@ -48,7 +48,8 @@ type RadiusProvider struct {
 	SharedSecret *string  `json:"shared_secret,omitempty"`
 	OutpostSet   []string `json:"outpost_set"`
 	// When enabled, code-based multi-factor authentication can be used by appending a semicolon and the TOTP code to the password. This should only be enabled if all users that will bind to this provider have a TOTP device configured, as otherwise a password may incorrectly be rejected if it contains a semicolon.
-	MfaSupport *bool `json:"mfa_support,omitempty"`
+	MfaSupport  *bool          `json:"mfa_support,omitempty"`
+	Certificate NullableString `json:"certificate,omitempty"`
 }
 
 // NewRadiusProvider instantiates a new RadiusProvider object
@@ -564,6 +565,49 @@ func (o *RadiusProvider) SetMfaSupport(v bool) {
 	o.MfaSupport = &v
 }
 
+// GetCertificate returns the Certificate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RadiusProvider) GetCertificate() string {
+	if o == nil || o.Certificate.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.Certificate.Get()
+}
+
+// GetCertificateOk returns a tuple with the Certificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RadiusProvider) GetCertificateOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Certificate.Get(), o.Certificate.IsSet()
+}
+
+// HasCertificate returns a boolean if a field has been set.
+func (o *RadiusProvider) HasCertificate() bool {
+	if o != nil && o.Certificate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificate gets a reference to the given NullableString and assigns it to the Certificate field.
+func (o *RadiusProvider) SetCertificate(v string) {
+	o.Certificate.Set(&v)
+}
+
+// SetCertificateNil sets the value for Certificate to be an explicit nil
+func (o *RadiusProvider) SetCertificateNil() {
+	o.Certificate.Set(nil)
+}
+
+// UnsetCertificate ensures that no value is present for Certificate, not even an explicit nil
+func (o *RadiusProvider) UnsetCertificate() {
+	o.Certificate.Unset()
+}
+
 func (o RadiusProvider) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -619,6 +663,9 @@ func (o RadiusProvider) MarshalJSON() ([]byte, error) {
 	}
 	if o.MfaSupport != nil {
 		toSerialize["mfa_support"] = o.MfaSupport
+	}
+	if o.Certificate.IsSet() {
+		toSerialize["certificate"] = o.Certificate.Get()
 	}
 	return json.Marshal(toSerialize)
 }

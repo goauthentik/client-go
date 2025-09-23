@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **SharedSecret** | Pointer to **string** | Shared secret between clients and server to hash packets. | [optional] 
 **OutpostSet** | **[]string** |  | [readonly] 
 **MfaSupport** | Pointer to **bool** | When enabled, code-based multi-factor authentication can be used by appending a semicolon and the TOTP code to the password. This should only be enabled if all users that will bind to this provider have a TOTP device configured, as otherwise a password may incorrectly be rejected if it contains a semicolon. | [optional] 
+**Certificate** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -437,6 +438,41 @@ SetMfaSupport sets MfaSupport field to given value.
 
 HasMfaSupport returns a boolean if a field has been set.
 
+### GetCertificate
+
+`func (o *RadiusProvider) GetCertificate() string`
+
+GetCertificate returns the Certificate field if non-nil, zero value otherwise.
+
+### GetCertificateOk
+
+`func (o *RadiusProvider) GetCertificateOk() (*string, bool)`
+
+GetCertificateOk returns a tuple with the Certificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificate
+
+`func (o *RadiusProvider) SetCertificate(v string)`
+
+SetCertificate sets Certificate field to given value.
+
+### HasCertificate
+
+`func (o *RadiusProvider) HasCertificate() bool`
+
+HasCertificate returns a boolean if a field has been set.
+
+### SetCertificateNil
+
+`func (o *RadiusProvider) SetCertificateNil(b bool)`
+
+ SetCertificateNil sets the value for Certificate to be an explicit nil
+
+### UnsetCertificate
+`func (o *RadiusProvider) UnsetCertificate()`
+
+UnsetCertificate ensures that no value is present for Certificate, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

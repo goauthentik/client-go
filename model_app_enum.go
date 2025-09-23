@@ -83,6 +83,7 @@ const (
 	APPENUM_ENTERPRISE_POLICIES_UNIQUE_PASSWORD           AppEnum = "authentik.enterprise.policies.unique_password"
 	APPENUM_ENTERPRISE_PROVIDERS_GOOGLE_WORKSPACE         AppEnum = "authentik.enterprise.providers.google_workspace"
 	APPENUM_ENTERPRISE_PROVIDERS_MICROSOFT_ENTRA          AppEnum = "authentik.enterprise.providers.microsoft_entra"
+	APPENUM_ENTERPRISE_PROVIDERS_RADIUS                   AppEnum = "authentik.enterprise.providers.radius"
 	APPENUM_ENTERPRISE_PROVIDERS_SCIM                     AppEnum = "authentik.enterprise.providers.scim"
 	APPENUM_ENTERPRISE_PROVIDERS_SSF                      AppEnum = "authentik.enterprise.providers.ssf"
 	APPENUM_ENTERPRISE_SEARCH                             AppEnum = "authentik.enterprise.search"
@@ -155,6 +156,7 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.enterprise.policies.unique_password",
 	"authentik.enterprise.providers.google_workspace",
 	"authentik.enterprise.providers.microsoft_entra",
+	"authentik.enterprise.providers.radius",
 	"authentik.enterprise.providers.scim",
 	"authentik.enterprise.providers.ssf",
 	"authentik.enterprise.search",

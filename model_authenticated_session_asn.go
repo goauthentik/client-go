@@ -17,7 +17,7 @@ import (
 
 // AuthenticatedSessionAsn Get ASN Data
 type AuthenticatedSessionAsn struct {
-	Asn     int32          `json:"asn"`
+	Asn     NullableInt32  `json:"asn"`
 	AsOrg   NullableString `json:"as_org"`
 	Network NullableString `json:"network"`
 }
@@ -26,7 +26,7 @@ type AuthenticatedSessionAsn struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatedSessionAsn(asn int32, asOrg NullableString, network NullableString) *AuthenticatedSessionAsn {
+func NewAuthenticatedSessionAsn(asn NullableInt32, asOrg NullableString, network NullableString) *AuthenticatedSessionAsn {
 	this := AuthenticatedSessionAsn{}
 	this.Asn = asn
 	this.AsOrg = asOrg
@@ -43,27 +43,29 @@ func NewAuthenticatedSessionAsnWithDefaults() *AuthenticatedSessionAsn {
 }
 
 // GetAsn returns the Asn field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *AuthenticatedSessionAsn) GetAsn() int32 {
-	if o == nil {
+	if o == nil || o.Asn.Get() == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.Asn
+	return *o.Asn.Get()
 }
 
 // GetAsnOk returns a tuple with the Asn field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatedSessionAsn) GetAsnOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Asn, true
+	return o.Asn.Get(), o.Asn.IsSet()
 }
 
 // SetAsn sets field value
 func (o *AuthenticatedSessionAsn) SetAsn(v int32) {
-	o.Asn = v
+	o.Asn.Set(&v)
 }
 
 // GetAsOrg returns the AsOrg field value
@@ -121,7 +123,7 @@ func (o *AuthenticatedSessionAsn) SetNetwork(v string) {
 func (o AuthenticatedSessionAsn) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["asn"] = o.Asn
+		toSerialize["asn"] = o.Asn.Get()
 	}
 	if true {
 		toSerialize["as_org"] = o.AsOrg.Get()
