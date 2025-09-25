@@ -24,6 +24,7 @@ const (
 	COMPATIBILITYMODEENUM_DEFAULT CompatibilityModeEnum = "default"
 	COMPATIBILITYMODEENUM_AWS     CompatibilityModeEnum = "aws"
 	COMPATIBILITYMODEENUM_SLACK   CompatibilityModeEnum = "slack"
+	COMPATIBILITYMODEENUM_SFDC    CompatibilityModeEnum = "sfdc"
 )
 
 // All allowed values of CompatibilityModeEnum enum
@@ -31,6 +32,7 @@ var AllowedCompatibilityModeEnumEnumValues = []CompatibilityModeEnum{
 	"default",
 	"aws",
 	"slack",
+	"sfdc",
 }
 
 func (v *CompatibilityModeEnum) UnmarshalJSON(src []byte) error {

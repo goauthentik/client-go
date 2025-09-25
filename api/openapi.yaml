@@ -49060,6 +49060,7 @@ components:
       - default
       - aws
       - slack
+      - sfdc
       type: string
     Config:
       description: Serialize authentik Config into DRF Object
