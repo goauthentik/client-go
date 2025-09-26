@@ -32984,6 +32984,20 @@ paths:
         style: form
       - explode: true
         in: query
+        name: signed_assertion
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: signed_response
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
         name: signing_kp
         required: false
         schema:
@@ -64427,10 +64441,12 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon: icon
           sso_url: https://openapi-generator.tech
+          signed_assertion: true
           enabled: true
           issuer: issuer
           managed: managed
           name_id_policy: ""
+          signed_response: true
           user_property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -64462,10 +64478,12 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon: icon
           sso_url: https://openapi-generator.tech
+          signed_assertion: true
           enabled: true
           issuer: issuer
           managed: managed
           name_id_policy: ""
+          signed_response: true
           user_property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -71548,17 +71566,26 @@ components:
     PatchedSAMLSourceRequest:
       description: SAMLSource Serializer
       example:
-        binding_type: null
         allow_idp_initiated: true
         user_matching_mode: ""
-        user_path_template: user_path_template
         group_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        slo_url: https://openapi-generator.tech
         sso_url: https://openapi-generator.tech
+        signed_assertion: true
         enabled: true
         issuer: issuer
+        name_id_policy: ""
+        signed_response: true
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        signature_algorithm: null
+        slug: slug
+        signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        binding_type: null
+        user_path_template: user_path_template
+        slo_url: https://openapi-generator.tech
         group_matching_mode: ""
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
@@ -71566,15 +71593,8 @@ components:
         digest_algorithm: null
         pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         encryption_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name_id_policy: ""
         name: name
-        user_property_mappings:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         verification_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        signature_algorithm: null
-        slug: slug
-        signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         temporary_user_delete_after: temporary_user_delete_after
       properties:
         name:
@@ -71685,6 +71705,10 @@ components:
           nullable: true
           title: Encryption Keypair
           type: string
+        signed_assertion:
+          type: boolean
+        signed_response:
+          type: boolean
       type: object
     PatchedSCIMMappingRequest:
       description: SCIMMapping Serializer
@@ -75944,10 +75968,12 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         icon: icon
         sso_url: https://openapi-generator.tech
+        signed_assertion: true
         enabled: true
         issuer: issuer
         managed: managed
         name_id_policy: ""
+        signed_response: true
         user_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -76108,6 +76134,10 @@ components:
           nullable: true
           title: Encryption Keypair
           type: string
+        signed_assertion:
+          type: boolean
+        signed_response:
+          type: boolean
       required:
       - component
       - icon
@@ -76204,17 +76234,26 @@ components:
     SAMLSourceRequest:
       description: SAMLSource Serializer
       example:
-        binding_type: null
         allow_idp_initiated: true
         user_matching_mode: ""
-        user_path_template: user_path_template
         group_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        slo_url: https://openapi-generator.tech
         sso_url: https://openapi-generator.tech
+        signed_assertion: true
         enabled: true
         issuer: issuer
+        name_id_policy: ""
+        signed_response: true
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        signature_algorithm: null
+        slug: slug
+        signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        binding_type: null
+        user_path_template: user_path_template
+        slo_url: https://openapi-generator.tech
         group_matching_mode: ""
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
@@ -76222,15 +76261,8 @@ components:
         digest_algorithm: null
         pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         encryption_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name_id_policy: ""
         name: name
-        user_property_mappings:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         verification_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        signature_algorithm: null
-        slug: slug
-        signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         temporary_user_delete_after: temporary_user_delete_after
       properties:
         name:
@@ -76341,6 +76373,10 @@ components:
           nullable: true
           title: Encryption Keypair
           type: string
+        signed_assertion:
+          type: boolean
+        signed_response:
+          type: boolean
       required:
       - name
       - pre_authentication_flow

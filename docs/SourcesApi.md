@@ -6248,7 +6248,7 @@ Name | Type | Description  | Notes
 
 ## SourcesSamlList
 
-> PaginatedSAMLSourceList SourcesSamlList(ctx).AllowIdpInitiated(allowIdpInitiated).AuthenticationFlow(authenticationFlow).BindingType(bindingType).DigestAlgorithm(digestAlgorithm).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Issuer(issuer).Managed(managed).Name(name).NameIdPolicy(nameIdPolicy).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).PolicyEngineMode(policyEngineMode).PreAuthenticationFlow(preAuthenticationFlow).Search(search).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SloUrl(sloUrl).Slug(slug).SsoUrl(ssoUrl).TemporaryUserDeleteAfter(temporaryUserDeleteAfter).UserMatchingMode(userMatchingMode).VerificationKp(verificationKp).Execute()
+> PaginatedSAMLSourceList SourcesSamlList(ctx).AllowIdpInitiated(allowIdpInitiated).AuthenticationFlow(authenticationFlow).BindingType(bindingType).DigestAlgorithm(digestAlgorithm).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Issuer(issuer).Managed(managed).Name(name).NameIdPolicy(nameIdPolicy).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).PolicyEngineMode(policyEngineMode).PreAuthenticationFlow(preAuthenticationFlow).Search(search).SignatureAlgorithm(signatureAlgorithm).SignedAssertion(signedAssertion).SignedResponse(signedResponse).SigningKp(signingKp).SloUrl(sloUrl).Slug(slug).SsoUrl(ssoUrl).TemporaryUserDeleteAfter(temporaryUserDeleteAfter).UserMatchingMode(userMatchingMode).VerificationKp(verificationKp).Execute()
 
 
 
@@ -6285,6 +6285,8 @@ func main() {
     preAuthenticationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     search := "search_example" // string | A search term. (optional)
     signatureAlgorithm := "signatureAlgorithm_example" // string |  (optional)
+    signedAssertion := true // bool |  (optional)
+    signedResponse := true // bool |  (optional)
     signingKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     sloUrl := "sloUrl_example" // string |  (optional)
     slug := "slug_example" // string |  (optional)
@@ -6295,7 +6297,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.SourcesSamlList(context.Background()).AllowIdpInitiated(allowIdpInitiated).AuthenticationFlow(authenticationFlow).BindingType(bindingType).DigestAlgorithm(digestAlgorithm).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Issuer(issuer).Managed(managed).Name(name).NameIdPolicy(nameIdPolicy).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).PolicyEngineMode(policyEngineMode).PreAuthenticationFlow(preAuthenticationFlow).Search(search).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SloUrl(sloUrl).Slug(slug).SsoUrl(ssoUrl).TemporaryUserDeleteAfter(temporaryUserDeleteAfter).UserMatchingMode(userMatchingMode).VerificationKp(verificationKp).Execute()
+    resp, r, err := apiClient.SourcesApi.SourcesSamlList(context.Background()).AllowIdpInitiated(allowIdpInitiated).AuthenticationFlow(authenticationFlow).BindingType(bindingType).DigestAlgorithm(digestAlgorithm).Enabled(enabled).EnrollmentFlow(enrollmentFlow).Issuer(issuer).Managed(managed).Name(name).NameIdPolicy(nameIdPolicy).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).PolicyEngineMode(policyEngineMode).PreAuthenticationFlow(preAuthenticationFlow).Search(search).SignatureAlgorithm(signatureAlgorithm).SignedAssertion(signedAssertion).SignedResponse(signedResponse).SigningKp(signingKp).SloUrl(sloUrl).Slug(slug).SsoUrl(ssoUrl).TemporaryUserDeleteAfter(temporaryUserDeleteAfter).UserMatchingMode(userMatchingMode).VerificationKp(verificationKp).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesSamlList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6334,6 +6336,8 @@ Name | Type | Description  | Notes
  **preAuthenticationFlow** | **string** |  | 
  **search** | **string** | A search term. | 
  **signatureAlgorithm** | **string** |  | 
+ **signedAssertion** | **bool** |  | 
+ **signedResponse** | **bool** |  | 
  **signingKp** | **string** |  | 
  **sloUrl** | **string** |  | 
  **slug** | **string** |  | 

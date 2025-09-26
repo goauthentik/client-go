@@ -56,7 +56,9 @@ type PatchedSAMLSourceRequest struct {
 	// Time offset when temporary users should be deleted. This only applies if your IDP uses the NameID Format 'transient', and the user doesn't log out manually. (Format: hours=1;minutes=2;seconds=3).
 	TemporaryUserDeleteAfter *string `json:"temporary_user_delete_after,omitempty"`
 	// When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key.
-	EncryptionKp NullableString `json:"encryption_kp,omitempty"`
+	EncryptionKp    NullableString `json:"encryption_kp,omitempty"`
+	SignedAssertion *bool          `json:"signed_assertion,omitempty"`
+	SignedResponse  *bool          `json:"signed_response,omitempty"`
 }
 
 // NewPatchedSAMLSourceRequest instantiates a new PatchedSAMLSourceRequest object
@@ -910,6 +912,70 @@ func (o *PatchedSAMLSourceRequest) UnsetEncryptionKp() {
 	o.EncryptionKp.Unset()
 }
 
+// GetSignedAssertion returns the SignedAssertion field value if set, zero value otherwise.
+func (o *PatchedSAMLSourceRequest) GetSignedAssertion() bool {
+	if o == nil || o.SignedAssertion == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SignedAssertion
+}
+
+// GetSignedAssertionOk returns a tuple with the SignedAssertion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedSAMLSourceRequest) GetSignedAssertionOk() (*bool, bool) {
+	if o == nil || o.SignedAssertion == nil {
+		return nil, false
+	}
+	return o.SignedAssertion, true
+}
+
+// HasSignedAssertion returns a boolean if a field has been set.
+func (o *PatchedSAMLSourceRequest) HasSignedAssertion() bool {
+	if o != nil && o.SignedAssertion != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSignedAssertion gets a reference to the given bool and assigns it to the SignedAssertion field.
+func (o *PatchedSAMLSourceRequest) SetSignedAssertion(v bool) {
+	o.SignedAssertion = &v
+}
+
+// GetSignedResponse returns the SignedResponse field value if set, zero value otherwise.
+func (o *PatchedSAMLSourceRequest) GetSignedResponse() bool {
+	if o == nil || o.SignedResponse == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SignedResponse
+}
+
+// GetSignedResponseOk returns a tuple with the SignedResponse field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedSAMLSourceRequest) GetSignedResponseOk() (*bool, bool) {
+	if o == nil || o.SignedResponse == nil {
+		return nil, false
+	}
+	return o.SignedResponse, true
+}
+
+// HasSignedResponse returns a boolean if a field has been set.
+func (o *PatchedSAMLSourceRequest) HasSignedResponse() bool {
+	if o != nil && o.SignedResponse != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSignedResponse gets a reference to the given bool and assigns it to the SignedResponse field.
+func (o *PatchedSAMLSourceRequest) SetSignedResponse(v bool) {
+	o.SignedResponse = &v
+}
+
 func (o PatchedSAMLSourceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -983,6 +1049,12 @@ func (o PatchedSAMLSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.EncryptionKp.IsSet() {
 		toSerialize["encryption_kp"] = o.EncryptionKp.Get()
+	}
+	if o.SignedAssertion != nil {
+		toSerialize["signed_assertion"] = o.SignedAssertion
+	}
+	if o.SignedResponse != nil {
+		toSerialize["signed_response"] = o.SignedResponse
 	}
 	return json.Marshal(toSerialize)
 }

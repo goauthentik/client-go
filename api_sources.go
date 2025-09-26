@@ -11753,6 +11753,8 @@ type ApiSourcesSamlListRequest struct {
 	preAuthenticationFlow    *string
 	search                   *string
 	signatureAlgorithm       *string
+	signedAssertion          *bool
+	signedResponse           *bool
 	signingKp                *string
 	sloUrl                   *string
 	slug                     *string
@@ -11854,6 +11856,16 @@ func (r ApiSourcesSamlListRequest) Search(search string) ApiSourcesSamlListReque
 
 func (r ApiSourcesSamlListRequest) SignatureAlgorithm(signatureAlgorithm string) ApiSourcesSamlListRequest {
 	r.signatureAlgorithm = &signatureAlgorithm
+	return r
+}
+
+func (r ApiSourcesSamlListRequest) SignedAssertion(signedAssertion bool) ApiSourcesSamlListRequest {
+	r.signedAssertion = &signedAssertion
+	return r
+}
+
+func (r ApiSourcesSamlListRequest) SignedResponse(signedResponse bool) ApiSourcesSamlListRequest {
+	r.signedResponse = &signedResponse
 	return r
 }
 
@@ -11987,6 +11999,12 @@ func (a *SourcesApiService) SourcesSamlListExecute(r ApiSourcesSamlListRequest) 
 	}
 	if r.signatureAlgorithm != nil {
 		localVarQueryParams.Add("signature_algorithm", parameterToString(*r.signatureAlgorithm, ""))
+	}
+	if r.signedAssertion != nil {
+		localVarQueryParams.Add("signed_assertion", parameterToString(*r.signedAssertion, ""))
+	}
+	if r.signedResponse != nil {
+		localVarQueryParams.Add("signed_response", parameterToString(*r.signedResponse, ""))
 	}
 	if r.signingKp != nil {
 		localVarQueryParams.Add("signing_kp", parameterToString(*r.signingKp, ""))
