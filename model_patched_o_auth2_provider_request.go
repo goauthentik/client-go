@@ -35,6 +35,8 @@ type PatchedOAuth2ProviderRequest struct {
 	AccessTokenValidity *string `json:"access_token_validity,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	RefreshTokenValidity *string `json:"refresh_token_validity,omitempty"`
+	// When refreshing a token, if the refresh token is valid for less than this duration, it will be renewed. When set to seconds=0, token will always be renewed. (Format: hours=1;minutes=2;seconds=3).
+	RefreshTokenThreshold *string `json:"refresh_token_threshold,omitempty"`
 	// Include User claims from scopes in the id_token, for applications that don't access the userinfo endpoint.
 	IncludeClaimsInIdToken *bool `json:"include_claims_in_id_token,omitempty"`
 	// Key used to sign the tokens.
@@ -431,6 +433,38 @@ func (o *PatchedOAuth2ProviderRequest) SetRefreshTokenValidity(v string) {
 	o.RefreshTokenValidity = &v
 }
 
+// GetRefreshTokenThreshold returns the RefreshTokenThreshold field value if set, zero value otherwise.
+func (o *PatchedOAuth2ProviderRequest) GetRefreshTokenThreshold() string {
+	if o == nil || o.RefreshTokenThreshold == nil {
+		var ret string
+		return ret
+	}
+	return *o.RefreshTokenThreshold
+}
+
+// GetRefreshTokenThresholdOk returns a tuple with the RefreshTokenThreshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedOAuth2ProviderRequest) GetRefreshTokenThresholdOk() (*string, bool) {
+	if o == nil || o.RefreshTokenThreshold == nil {
+		return nil, false
+	}
+	return o.RefreshTokenThreshold, true
+}
+
+// HasRefreshTokenThreshold returns a boolean if a field has been set.
+func (o *PatchedOAuth2ProviderRequest) HasRefreshTokenThreshold() bool {
+	if o != nil && o.RefreshTokenThreshold != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRefreshTokenThreshold gets a reference to the given string and assigns it to the RefreshTokenThreshold field.
+func (o *PatchedOAuth2ProviderRequest) SetRefreshTokenThreshold(v string) {
+	o.RefreshTokenThreshold = &v
+}
+
 // GetIncludeClaimsInIdToken returns the IncludeClaimsInIdToken field value if set, zero value otherwise.
 func (o *PatchedOAuth2ProviderRequest) GetIncludeClaimsInIdToken() bool {
 	if o == nil || o.IncludeClaimsInIdToken == nil {
@@ -775,6 +809,9 @@ func (o PatchedOAuth2ProviderRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.RefreshTokenValidity != nil {
 		toSerialize["refresh_token_validity"] = o.RefreshTokenValidity
+	}
+	if o.RefreshTokenThreshold != nil {
+		toSerialize["refresh_token_threshold"] = o.RefreshTokenThreshold
 	}
 	if o.IncludeClaimsInIdToken != nil {
 		toSerialize["include_claims_in_id_token"] = o.IncludeClaimsInIdToken

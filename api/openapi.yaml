@@ -51224,6 +51224,7 @@ components:
           assigned_application_name: assigned_application_name
           assigned_backchannel_application_name: assigned_backchannel_application_name
           issuer_mode: ""
+          refresh_token_threshold: refresh_token_threshold
           client_secret: client_secret
           backchannel_logout_uri: https://openapi-generator.tech
           jwt_federation_providers:
@@ -56492,6 +56493,7 @@ components:
         assigned_application_name: assigned_application_name
         assigned_backchannel_application_name: assigned_backchannel_application_name
         issuer_mode: ""
+        refresh_token_threshold: refresh_token_threshold
         client_secret: client_secret
         backchannel_logout_uri: https://openapi-generator.tech
         jwt_federation_providers:
@@ -56596,6 +56598,11 @@ components:
           description: "Tokens not valid on or after current time + this value (Format:\
             \ hours=1;minutes=2;seconds=3)."
           type: string
+        refresh_token_threshold:
+          description: "When refreshing a token, if the refresh token is valid for\
+            \ less than this duration, it will be renewed. When set to seconds=0,\
+            \ token will always be renewed. (Format: hours=1;minutes=2;seconds=3)."
+          type: string
         include_claims_in_id_token:
           description: "Include User claims from scopes in the id_token, for applications\
             \ that don't access the userinfo endpoint."
@@ -56679,6 +56686,7 @@ components:
         access_token_validity: access_token_validity
         issuer_mode: ""
         name: name
+        refresh_token_threshold: refresh_token_threshold
         encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         client_secret: client_secret
         backchannel_logout_uri: https://openapi-generator.tech
@@ -56736,6 +56744,12 @@ components:
         refresh_token_validity:
           description: "Tokens not valid on or after current time + this value (Format:\
             \ hours=1;minutes=2;seconds=3)."
+          minLength: 1
+          type: string
+        refresh_token_threshold:
+          description: "When refreshing a token, if the refresh token is valid for\
+            \ less than this duration, it will be renewed. When set to seconds=0,\
+            \ token will always be renewed. (Format: hours=1;minutes=2;seconds=3)."
           minLength: 1
           type: string
         include_claims_in_id_token:
@@ -59832,6 +59846,7 @@ components:
             assigned_application_name: assigned_application_name
             assigned_backchannel_application_name: assigned_backchannel_application_name
             issuer_mode: ""
+            refresh_token_threshold: refresh_token_threshold
             client_secret: client_secret
             backchannel_logout_uri: https://openapi-generator.tech
             jwt_federation_providers:
@@ -59916,6 +59931,7 @@ components:
             assigned_application_name: assigned_application_name
             assigned_backchannel_application_name: assigned_backchannel_application_name
             issuer_mode: ""
+            refresh_token_threshold: refresh_token_threshold
             client_secret: client_secret
             backchannel_logout_uri: https://openapi-generator.tech
             jwt_federation_providers:
@@ -62295,6 +62311,7 @@ components:
           assigned_application_name: assigned_application_name
           assigned_backchannel_application_name: assigned_backchannel_application_name
           issuer_mode: ""
+          refresh_token_threshold: refresh_token_threshold
           client_secret: client_secret
           backchannel_logout_uri: https://openapi-generator.tech
           jwt_federation_providers:
@@ -62334,6 +62351,7 @@ components:
           assigned_application_name: assigned_application_name
           assigned_backchannel_application_name: assigned_backchannel_application_name
           issuer_mode: ""
+          refresh_token_threshold: refresh_token_threshold
           client_secret: client_secret
           backchannel_logout_uri: https://openapi-generator.tech
           jwt_federation_providers:
@@ -65794,6 +65812,7 @@ components:
             assigned_application_name: assigned_application_name
             assigned_backchannel_application_name: assigned_backchannel_application_name
             issuer_mode: ""
+            refresh_token_threshold: refresh_token_threshold
             client_secret: client_secret
             backchannel_logout_uri: https://openapi-generator.tech
             jwt_federation_providers:
@@ -65880,6 +65899,7 @@ components:
             assigned_application_name: assigned_application_name
             assigned_backchannel_application_name: assigned_backchannel_application_name
             issuer_mode: ""
+            refresh_token_threshold: refresh_token_threshold
             client_secret: client_secret
             backchannel_logout_uri: https://openapi-generator.tech
             jwt_federation_providers:
@@ -70262,6 +70282,7 @@ components:
         access_token_validity: access_token_validity
         issuer_mode: ""
         name: name
+        refresh_token_threshold: refresh_token_threshold
         encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         client_secret: client_secret
         backchannel_logout_uri: https://openapi-generator.tech
@@ -70319,6 +70340,12 @@ components:
         refresh_token_validity:
           description: "Tokens not valid on or after current time + this value (Format:\
             \ hours=1;minutes=2;seconds=3)."
+          minLength: 1
+          type: string
+        refresh_token_threshold:
+          description: "When refreshing a token, if the refresh token is valid for\
+            \ less than this duration, it will be renewed. When set to seconds=0,\
+            \ token will always be renewed. (Format: hours=1;minutes=2;seconds=3)."
           minLength: 1
           type: string
         include_claims_in_id_token:
@@ -78850,6 +78877,7 @@ components:
           assigned_application_name: assigned_application_name
           assigned_backchannel_application_name: assigned_backchannel_application_name
           issuer_mode: ""
+          refresh_token_threshold: refresh_token_threshold
           client_secret: client_secret
           backchannel_logout_uri: https://openapi-generator.tech
           jwt_federation_providers:

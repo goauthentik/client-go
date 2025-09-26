@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **AccessCodeValidity** | Pointer to **string** | Access codes not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **AccessTokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **RefreshTokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
+**RefreshTokenThreshold** | Pointer to **string** | When refreshing a token, if the refresh token is valid for less than this duration, it will be renewed. When set to seconds&#x3D;0, token will always be renewed. (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **IncludeClaimsInIdToken** | Pointer to **bool** | Include User claims from scopes in the id_token, for applications that don&#39;t access the userinfo endpoint. | [optional] 
 **SigningKey** | Pointer to **NullableString** | Key used to sign the tokens. | [optional] 
 **EncryptionKey** | Pointer to **NullableString** | Key used to encrypt the tokens. When set, tokens will be encrypted and returned as JWEs. | [optional] 
@@ -502,6 +503,31 @@ SetRefreshTokenValidity sets RefreshTokenValidity field to given value.
 `func (o *OAuth2Provider) HasRefreshTokenValidity() bool`
 
 HasRefreshTokenValidity returns a boolean if a field has been set.
+
+### GetRefreshTokenThreshold
+
+`func (o *OAuth2Provider) GetRefreshTokenThreshold() string`
+
+GetRefreshTokenThreshold returns the RefreshTokenThreshold field if non-nil, zero value otherwise.
+
+### GetRefreshTokenThresholdOk
+
+`func (o *OAuth2Provider) GetRefreshTokenThresholdOk() (*string, bool)`
+
+GetRefreshTokenThresholdOk returns a tuple with the RefreshTokenThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRefreshTokenThreshold
+
+`func (o *OAuth2Provider) SetRefreshTokenThreshold(v string)`
+
+SetRefreshTokenThreshold sets RefreshTokenThreshold field to given value.
+
+### HasRefreshTokenThreshold
+
+`func (o *OAuth2Provider) HasRefreshTokenThreshold() bool`
+
+HasRefreshTokenThreshold returns a boolean if a field has been set.
 
 ### GetIncludeClaimsInIdToken
 
