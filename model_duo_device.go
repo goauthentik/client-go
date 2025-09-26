@@ -20,14 +20,14 @@ type DuoDevice struct {
 	Pk int32 `json:"pk"`
 	// The human-readable name of this device.
 	Name string      `json:"name"`
-	User GroupMember `json:"user"`
+	User PartialUser `json:"user"`
 }
 
 // NewDuoDevice instantiates a new DuoDevice object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDuoDevice(pk int32, name string, user GroupMember) *DuoDevice {
+func NewDuoDevice(pk int32, name string, user PartialUser) *DuoDevice {
 	this := DuoDevice{}
 	this.Pk = pk
 	this.Name = name
@@ -92,9 +92,9 @@ func (o *DuoDevice) SetName(v string) {
 }
 
 // GetUser returns the User field value
-func (o *DuoDevice) GetUser() GroupMember {
+func (o *DuoDevice) GetUser() PartialUser {
 	if o == nil {
-		var ret GroupMember
+		var ret PartialUser
 		return ret
 	}
 
@@ -103,7 +103,7 @@ func (o *DuoDevice) GetUser() GroupMember {
 
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
-func (o *DuoDevice) GetUserOk() (*GroupMember, bool) {
+func (o *DuoDevice) GetUserOk() (*PartialUser, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -111,7 +111,7 @@ func (o *DuoDevice) GetUserOk() (*GroupMember, bool) {
 }
 
 // SetUser sets field value
-func (o *DuoDevice) SetUser(v GroupMember) {
+func (o *DuoDevice) SetUser(v PartialUser) {
 	o.User = v
 }
 

@@ -21,14 +21,14 @@ type EmailDevice struct {
 	Name  string      `json:"name"`
 	Pk    int32       `json:"pk"`
 	Email string      `json:"email"`
-	User  GroupMember `json:"user"`
+	User  PartialUser `json:"user"`
 }
 
 // NewEmailDevice instantiates a new EmailDevice object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEmailDevice(name string, pk int32, email string, user GroupMember) *EmailDevice {
+func NewEmailDevice(name string, pk int32, email string, user PartialUser) *EmailDevice {
 	this := EmailDevice{}
 	this.Name = name
 	this.Pk = pk
@@ -118,9 +118,9 @@ func (o *EmailDevice) SetEmail(v string) {
 }
 
 // GetUser returns the User field value
-func (o *EmailDevice) GetUser() GroupMember {
+func (o *EmailDevice) GetUser() PartialUser {
 	if o == nil {
-		var ret GroupMember
+		var ret PartialUser
 		return ret
 	}
 
@@ -129,7 +129,7 @@ func (o *EmailDevice) GetUser() GroupMember {
 
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
-func (o *EmailDevice) GetUserOk() (*GroupMember, bool) {
+func (o *EmailDevice) GetUserOk() (*PartialUser, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -137,7 +137,7 @@ func (o *EmailDevice) GetUserOk() (*GroupMember, bool) {
 }
 
 // SetUser sets field value
-func (o *EmailDevice) SetUser(v GroupMember) {
+func (o *EmailDevice) SetUser(v PartialUser) {
 	o.User = v
 }
 

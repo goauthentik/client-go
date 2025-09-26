@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **int32** |  | [readonly] 
 **Name** | **string** | The human-readable name of this device. | 
-**User** | [**GroupMember**](GroupMember.md) |  | [readonly] 
+**User** | [**PartialUser**](PartialUser.md) |  | [readonly] 
 
 ## Methods
 
 ### NewDuoDevice
 
-`func NewDuoDevice(pk int32, name string, user GroupMember, ) *DuoDevice`
+`func NewDuoDevice(pk int32, name string, user PartialUser, ) *DuoDevice`
 
 NewDuoDevice instantiates a new DuoDevice object
 This constructor will assign default values to properties that have it defined,
@@ -69,20 +69,20 @@ SetName sets Name field to given value.
 
 ### GetUser
 
-`func (o *DuoDevice) GetUser() GroupMember`
+`func (o *DuoDevice) GetUser() PartialUser`
 
 GetUser returns the User field if non-nil, zero value otherwise.
 
 ### GetUserOk
 
-`func (o *DuoDevice) GetUserOk() (*GroupMember, bool)`
+`func (o *DuoDevice) GetUserOk() (*PartialUser, bool)`
 
 GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUser
 
-`func (o *DuoDevice) SetUser(v GroupMember)`
+`func (o *DuoDevice) SetUser(v PartialUser)`
 
 SetUser sets User field to given value.
 

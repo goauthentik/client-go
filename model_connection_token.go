@@ -22,14 +22,14 @@ type ConnectionToken struct {
 	ProviderObj RACProvider `json:"provider_obj"`
 	Endpoint    string      `json:"endpoint"`
 	EndpointObj Endpoint    `json:"endpoint_obj"`
-	User        GroupMember `json:"user"`
+	User        PartialUser `json:"user"`
 }
 
 // NewConnectionToken instantiates a new ConnectionToken object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConnectionToken(provider int32, providerObj RACProvider, endpoint string, endpointObj Endpoint, user GroupMember) *ConnectionToken {
+func NewConnectionToken(provider int32, providerObj RACProvider, endpoint string, endpointObj Endpoint, user PartialUser) *ConnectionToken {
 	this := ConnectionToken{}
 	this.Provider = provider
 	this.ProviderObj = providerObj
@@ -176,9 +176,9 @@ func (o *ConnectionToken) SetEndpointObj(v Endpoint) {
 }
 
 // GetUser returns the User field value
-func (o *ConnectionToken) GetUser() GroupMember {
+func (o *ConnectionToken) GetUser() PartialUser {
 	if o == nil {
-		var ret GroupMember
+		var ret PartialUser
 		return ret
 	}
 
@@ -187,7 +187,7 @@ func (o *ConnectionToken) GetUser() GroupMember {
 
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
-func (o *ConnectionToken) GetUserOk() (*GroupMember, bool) {
+func (o *ConnectionToken) GetUserOk() (*PartialUser, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -195,7 +195,7 @@ func (o *ConnectionToken) GetUserOk() (*GroupMember, bool) {
 }
 
 // SetUser sets field value
-func (o *ConnectionToken) SetUser(v GroupMember) {
+func (o *ConnectionToken) SetUser(v PartialUser) {
 	o.User = v
 }
 

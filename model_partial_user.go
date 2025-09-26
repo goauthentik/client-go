@@ -16,8 +16,9 @@ import (
 	"time"
 )
 
-// GroupMemberRequest Stripped down user serializer to show relevant users for groups
-type GroupMemberRequest struct {
+// PartialUser Partial User Serializer, does not include child relations.
+type PartialUser struct {
+	Pk int32 `json:"pk"`
 	// Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
 	Username string `json:"username"`
 	// User's display name.
@@ -27,29 +28,56 @@ type GroupMemberRequest struct {
 	LastLogin  NullableTime           `json:"last_login,omitempty"`
 	Email      *string                `json:"email,omitempty"`
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Uid        string                 `json:"uid"`
 }
 
-// NewGroupMemberRequest instantiates a new GroupMemberRequest object
+// NewPartialUser instantiates a new PartialUser object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupMemberRequest(username string, name string) *GroupMemberRequest {
-	this := GroupMemberRequest{}
+func NewPartialUser(pk int32, username string, name string, uid string) *PartialUser {
+	this := PartialUser{}
+	this.Pk = pk
 	this.Username = username
 	this.Name = name
+	this.Uid = uid
 	return &this
 }
 
-// NewGroupMemberRequestWithDefaults instantiates a new GroupMemberRequest object
+// NewPartialUserWithDefaults instantiates a new PartialUser object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGroupMemberRequestWithDefaults() *GroupMemberRequest {
-	this := GroupMemberRequest{}
+func NewPartialUserWithDefaults() *PartialUser {
+	this := PartialUser{}
 	return &this
+}
+
+// GetPk returns the Pk field value
+func (o *PartialUser) GetPk() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Pk
+}
+
+// GetPkOk returns a tuple with the Pk field value
+// and a boolean to check if the value has been set.
+func (o *PartialUser) GetPkOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Pk, true
+}
+
+// SetPk sets field value
+func (o *PartialUser) SetPk(v int32) {
+	o.Pk = v
 }
 
 // GetUsername returns the Username field value
-func (o *GroupMemberRequest) GetUsername() string {
+func (o *PartialUser) GetUsername() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -60,7 +88,7 @@ func (o *GroupMemberRequest) GetUsername() string {
 
 // GetUsernameOk returns a tuple with the Username field value
 // and a boolean to check if the value has been set.
-func (o *GroupMemberRequest) GetUsernameOk() (*string, bool) {
+func (o *PartialUser) GetUsernameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -68,12 +96,12 @@ func (o *GroupMemberRequest) GetUsernameOk() (*string, bool) {
 }
 
 // SetUsername sets field value
-func (o *GroupMemberRequest) SetUsername(v string) {
+func (o *PartialUser) SetUsername(v string) {
 	o.Username = v
 }
 
 // GetName returns the Name field value
-func (o *GroupMemberRequest) GetName() string {
+func (o *PartialUser) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -84,7 +112,7 @@ func (o *GroupMemberRequest) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *GroupMemberRequest) GetNameOk() (*string, bool) {
+func (o *PartialUser) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -92,12 +120,12 @@ func (o *GroupMemberRequest) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *GroupMemberRequest) SetName(v string) {
+func (o *PartialUser) SetName(v string) {
 	o.Name = v
 }
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise.
-func (o *GroupMemberRequest) GetIsActive() bool {
+func (o *PartialUser) GetIsActive() bool {
 	if o == nil || o.IsActive == nil {
 		var ret bool
 		return ret
@@ -107,7 +135,7 @@ func (o *GroupMemberRequest) GetIsActive() bool {
 
 // GetIsActiveOk returns a tuple with the IsActive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupMemberRequest) GetIsActiveOk() (*bool, bool) {
+func (o *PartialUser) GetIsActiveOk() (*bool, bool) {
 	if o == nil || o.IsActive == nil {
 		return nil, false
 	}
@@ -115,7 +143,7 @@ func (o *GroupMemberRequest) GetIsActiveOk() (*bool, bool) {
 }
 
 // HasIsActive returns a boolean if a field has been set.
-func (o *GroupMemberRequest) HasIsActive() bool {
+func (o *PartialUser) HasIsActive() bool {
 	if o != nil && o.IsActive != nil {
 		return true
 	}
@@ -124,12 +152,12 @@ func (o *GroupMemberRequest) HasIsActive() bool {
 }
 
 // SetIsActive gets a reference to the given bool and assigns it to the IsActive field.
-func (o *GroupMemberRequest) SetIsActive(v bool) {
+func (o *PartialUser) SetIsActive(v bool) {
 	o.IsActive = &v
 }
 
 // GetLastLogin returns the LastLogin field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GroupMemberRequest) GetLastLogin() time.Time {
+func (o *PartialUser) GetLastLogin() time.Time {
 	if o == nil || o.LastLogin.Get() == nil {
 		var ret time.Time
 		return ret
@@ -140,7 +168,7 @@ func (o *GroupMemberRequest) GetLastLogin() time.Time {
 // GetLastLoginOk returns a tuple with the LastLogin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GroupMemberRequest) GetLastLoginOk() (*time.Time, bool) {
+func (o *PartialUser) GetLastLoginOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -148,7 +176,7 @@ func (o *GroupMemberRequest) GetLastLoginOk() (*time.Time, bool) {
 }
 
 // HasLastLogin returns a boolean if a field has been set.
-func (o *GroupMemberRequest) HasLastLogin() bool {
+func (o *PartialUser) HasLastLogin() bool {
 	if o != nil && o.LastLogin.IsSet() {
 		return true
 	}
@@ -157,22 +185,22 @@ func (o *GroupMemberRequest) HasLastLogin() bool {
 }
 
 // SetLastLogin gets a reference to the given NullableTime and assigns it to the LastLogin field.
-func (o *GroupMemberRequest) SetLastLogin(v time.Time) {
+func (o *PartialUser) SetLastLogin(v time.Time) {
 	o.LastLogin.Set(&v)
 }
 
 // SetLastLoginNil sets the value for LastLogin to be an explicit nil
-func (o *GroupMemberRequest) SetLastLoginNil() {
+func (o *PartialUser) SetLastLoginNil() {
 	o.LastLogin.Set(nil)
 }
 
 // UnsetLastLogin ensures that no value is present for LastLogin, not even an explicit nil
-func (o *GroupMemberRequest) UnsetLastLogin() {
+func (o *PartialUser) UnsetLastLogin() {
 	o.LastLogin.Unset()
 }
 
 // GetEmail returns the Email field value if set, zero value otherwise.
-func (o *GroupMemberRequest) GetEmail() string {
+func (o *PartialUser) GetEmail() string {
 	if o == nil || o.Email == nil {
 		var ret string
 		return ret
@@ -182,7 +210,7 @@ func (o *GroupMemberRequest) GetEmail() string {
 
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupMemberRequest) GetEmailOk() (*string, bool) {
+func (o *PartialUser) GetEmailOk() (*string, bool) {
 	if o == nil || o.Email == nil {
 		return nil, false
 	}
@@ -190,7 +218,7 @@ func (o *GroupMemberRequest) GetEmailOk() (*string, bool) {
 }
 
 // HasEmail returns a boolean if a field has been set.
-func (o *GroupMemberRequest) HasEmail() bool {
+func (o *PartialUser) HasEmail() bool {
 	if o != nil && o.Email != nil {
 		return true
 	}
@@ -199,12 +227,12 @@ func (o *GroupMemberRequest) HasEmail() bool {
 }
 
 // SetEmail gets a reference to the given string and assigns it to the Email field.
-func (o *GroupMemberRequest) SetEmail(v string) {
+func (o *PartialUser) SetEmail(v string) {
 	o.Email = &v
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *GroupMemberRequest) GetAttributes() map[string]interface{} {
+func (o *PartialUser) GetAttributes() map[string]interface{} {
 	if o == nil || o.Attributes == nil {
 		var ret map[string]interface{}
 		return ret
@@ -214,7 +242,7 @@ func (o *GroupMemberRequest) GetAttributes() map[string]interface{} {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupMemberRequest) GetAttributesOk() (map[string]interface{}, bool) {
+func (o *PartialUser) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
@@ -222,7 +250,7 @@ func (o *GroupMemberRequest) GetAttributesOk() (map[string]interface{}, bool) {
 }
 
 // HasAttributes returns a boolean if a field has been set.
-func (o *GroupMemberRequest) HasAttributes() bool {
+func (o *PartialUser) HasAttributes() bool {
 	if o != nil && o.Attributes != nil {
 		return true
 	}
@@ -231,12 +259,39 @@ func (o *GroupMemberRequest) HasAttributes() bool {
 }
 
 // SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
-func (o *GroupMemberRequest) SetAttributes(v map[string]interface{}) {
+func (o *PartialUser) SetAttributes(v map[string]interface{}) {
 	o.Attributes = v
 }
 
-func (o GroupMemberRequest) MarshalJSON() ([]byte, error) {
+// GetUid returns the Uid field value
+func (o *PartialUser) GetUid() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Uid
+}
+
+// GetUidOk returns a tuple with the Uid field value
+// and a boolean to check if the value has been set.
+func (o *PartialUser) GetUidOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Uid, true
+}
+
+// SetUid sets field value
+func (o *PartialUser) SetUid(v string) {
+	o.Uid = v
+}
+
+func (o PartialUser) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
 	if true {
 		toSerialize["username"] = o.Username
 	}
@@ -255,41 +310,44 @@ func (o GroupMemberRequest) MarshalJSON() ([]byte, error) {
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
+	if true {
+		toSerialize["uid"] = o.Uid
+	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableGroupMemberRequest struct {
-	value *GroupMemberRequest
+type NullablePartialUser struct {
+	value *PartialUser
 	isSet bool
 }
 
-func (v NullableGroupMemberRequest) Get() *GroupMemberRequest {
+func (v NullablePartialUser) Get() *PartialUser {
 	return v.value
 }
 
-func (v *NullableGroupMemberRequest) Set(val *GroupMemberRequest) {
+func (v *NullablePartialUser) Set(val *PartialUser) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGroupMemberRequest) IsSet() bool {
+func (v NullablePartialUser) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGroupMemberRequest) Unset() {
+func (v *NullablePartialUser) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGroupMemberRequest(val *GroupMemberRequest) *NullableGroupMemberRequest {
-	return &NullableGroupMemberRequest{value: val, isSet: true}
+func NewNullablePartialUser(val *PartialUser) *NullablePartialUser {
+	return &NullablePartialUser{value: val, isSet: true}
 }
 
-func (v NullableGroupMemberRequest) MarshalJSON() ([]byte, error) {
+func (v NullablePartialUser) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGroupMemberRequest) UnmarshalJSON(src []byte) error {
+func (v *NullablePartialUser) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

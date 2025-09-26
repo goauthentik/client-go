@@ -25,7 +25,7 @@ type Group struct {
 	Parent      NullableString         `json:"parent,omitempty"`
 	ParentName  NullableString         `json:"parent_name"`
 	Users       []int32                `json:"users,omitempty"`
-	UsersObj    []GroupMember          `json:"users_obj"`
+	UsersObj    []PartialUser          `json:"users_obj"`
 	Attributes  map[string]interface{} `json:"attributes,omitempty"`
 	Roles       []string               `json:"roles,omitempty"`
 	RolesObj    []Role                 `json:"roles_obj"`
@@ -37,7 +37,7 @@ type Group struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroup(pk string, numPk int32, name string, parentName NullableString, usersObj []GroupMember, rolesObj []Role, childrenObj []GroupChild) *Group {
+func NewGroup(pk string, numPk int32, name string, parentName NullableString, usersObj []PartialUser, rolesObj []Role, childrenObj []GroupChild) *Group {
 	this := Group{}
 	this.Pk = pk
 	this.NumPk = numPk
@@ -263,10 +263,10 @@ func (o *Group) SetUsers(v []int32) {
 }
 
 // GetUsersObj returns the UsersObj field value
-// If the value is explicit nil, the zero value for []GroupMember will be returned
-func (o *Group) GetUsersObj() []GroupMember {
+// If the value is explicit nil, the zero value for []PartialUser will be returned
+func (o *Group) GetUsersObj() []PartialUser {
 	if o == nil {
-		var ret []GroupMember
+		var ret []PartialUser
 		return ret
 	}
 
@@ -276,7 +276,7 @@ func (o *Group) GetUsersObj() []GroupMember {
 // GetUsersObjOk returns a tuple with the UsersObj field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Group) GetUsersObjOk() ([]GroupMember, bool) {
+func (o *Group) GetUsersObjOk() ([]PartialUser, bool) {
 	if o == nil || o.UsersObj == nil {
 		return nil, false
 	}
@@ -284,7 +284,7 @@ func (o *Group) GetUsersObjOk() ([]GroupMember, bool) {
 }
 
 // SetUsersObj sets field value
-func (o *Group) SetUsersObj(v []GroupMember) {
+func (o *Group) SetUsersObj(v []PartialUser) {
 	o.UsersObj = v
 }
 

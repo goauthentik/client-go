@@ -22,8 +22,8 @@ type PolicyBinding struct {
 	Group     NullableString `json:"group,omitempty"`
 	User      NullableInt32  `json:"user,omitempty"`
 	PolicyObj Policy         `json:"policy_obj"`
-	GroupObj  Group          `json:"group_obj"`
-	UserObj   User           `json:"user_obj"`
+	GroupObj  PartialGroup   `json:"group_obj"`
+	UserObj   PartialUser    `json:"user_obj"`
 	Target    string         `json:"target"`
 	// Negates the outcome of the policy. Messages are unaffected.
 	Negate  *bool `json:"negate,omitempty"`
@@ -39,7 +39,7 @@ type PolicyBinding struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPolicyBinding(pk string, policyObj Policy, groupObj Group, userObj User, target string, order int32) *PolicyBinding {
+func NewPolicyBinding(pk string, policyObj Policy, groupObj PartialGroup, userObj PartialUser, target string, order int32) *PolicyBinding {
 	this := PolicyBinding{}
 	this.Pk = pk
 	this.PolicyObj = policyObj
@@ -236,9 +236,9 @@ func (o *PolicyBinding) SetPolicyObj(v Policy) {
 }
 
 // GetGroupObj returns the GroupObj field value
-func (o *PolicyBinding) GetGroupObj() Group {
+func (o *PolicyBinding) GetGroupObj() PartialGroup {
 	if o == nil {
-		var ret Group
+		var ret PartialGroup
 		return ret
 	}
 
@@ -247,7 +247,7 @@ func (o *PolicyBinding) GetGroupObj() Group {
 
 // GetGroupObjOk returns a tuple with the GroupObj field value
 // and a boolean to check if the value has been set.
-func (o *PolicyBinding) GetGroupObjOk() (*Group, bool) {
+func (o *PolicyBinding) GetGroupObjOk() (*PartialGroup, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -255,14 +255,14 @@ func (o *PolicyBinding) GetGroupObjOk() (*Group, bool) {
 }
 
 // SetGroupObj sets field value
-func (o *PolicyBinding) SetGroupObj(v Group) {
+func (o *PolicyBinding) SetGroupObj(v PartialGroup) {
 	o.GroupObj = v
 }
 
 // GetUserObj returns the UserObj field value
-func (o *PolicyBinding) GetUserObj() User {
+func (o *PolicyBinding) GetUserObj() PartialUser {
 	if o == nil {
-		var ret User
+		var ret PartialUser
 		return ret
 	}
 
@@ -271,7 +271,7 @@ func (o *PolicyBinding) GetUserObj() User {
 
 // GetUserObjOk returns a tuple with the UserObj field value
 // and a boolean to check if the value has been set.
-func (o *PolicyBinding) GetUserObjOk() (*User, bool) {
+func (o *PolicyBinding) GetUserObjOk() (*PartialUser, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -279,7 +279,7 @@ func (o *PolicyBinding) GetUserObjOk() (*User, bool) {
 }
 
 // SetUserObj sets field value
-func (o *PolicyBinding) SetUserObj(v User) {
+func (o *PolicyBinding) SetUserObj(v PartialUser) {
 	o.UserObj = v
 }
 

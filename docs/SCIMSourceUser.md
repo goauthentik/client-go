@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **ExternalId** | **string** |  | 
 **User** | **int32** |  | 
-**UserObj** | [**GroupMember**](GroupMember.md) |  | [readonly] 
+**UserObj** | [**PartialUser**](PartialUser.md) |  | [readonly] 
 **Source** | **string** |  | 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewSCIMSourceUser
 
-`func NewSCIMSourceUser(externalId string, user int32, userObj GroupMember, source string, ) *SCIMSourceUser`
+`func NewSCIMSourceUser(externalId string, user int32, userObj PartialUser, source string, ) *SCIMSourceUser`
 
 NewSCIMSourceUser instantiates a new SCIMSourceUser object
 This constructor will assign default values to properties that have it defined,
@@ -97,20 +97,20 @@ SetUser sets User field to given value.
 
 ### GetUserObj
 
-`func (o *SCIMSourceUser) GetUserObj() GroupMember`
+`func (o *SCIMSourceUser) GetUserObj() PartialUser`
 
 GetUserObj returns the UserObj field if non-nil, zero value otherwise.
 
 ### GetUserObjOk
 
-`func (o *SCIMSourceUser) GetUserObjOk() (*GroupMember, bool)`
+`func (o *SCIMSourceUser) GetUserObjOk() (*PartialUser, bool)`
 
 GetUserObjOk returns a tuple with the UserObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserObj
 
-`func (o *SCIMSourceUser) SetUserObj(v GroupMember)`
+`func (o *SCIMSourceUser) SetUserObj(v PartialUser)`
 
 SetUserObj sets UserObj field to given value.
 

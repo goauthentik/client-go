@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Expires** | Pointer to **NullableTime** |  | [optional] 
 **FixedData** | Pointer to **map[string]interface{}** |  | [optional] 
-**CreatedBy** | [**GroupMember**](GroupMember.md) |  | [readonly] 
+**CreatedBy** | [**PartialUser**](PartialUser.md) |  | [readonly] 
 **SingleUse** | Pointer to **bool** | When enabled, the invitation will be deleted after usage. | [optional] 
 **Flow** | Pointer to **NullableString** | When set, only the configured flow can use this invitation. | [optional] 
 **FlowObj** | [**Flow**](Flow.md) |  | [readonly] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewInvitation
 
-`func NewInvitation(pk string, name string, createdBy GroupMember, flowObj Flow, ) *Invitation`
+`func NewInvitation(pk string, name string, createdBy PartialUser, flowObj Flow, ) *Invitation`
 
 NewInvitation instantiates a new Invitation object
 This constructor will assign default values to properties that have it defined,
@@ -134,20 +134,20 @@ HasFixedData returns a boolean if a field has been set.
 
 ### GetCreatedBy
 
-`func (o *Invitation) GetCreatedBy() GroupMember`
+`func (o *Invitation) GetCreatedBy() PartialUser`
 
 GetCreatedBy returns the CreatedBy field if non-nil, zero value otherwise.
 
 ### GetCreatedByOk
 
-`func (o *Invitation) GetCreatedByOk() (*GroupMember, bool)`
+`func (o *Invitation) GetCreatedByOk() (*PartialUser, bool)`
 
 GetCreatedByOk returns a tuple with the CreatedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedBy
 
-`func (o *Invitation) SetCreatedBy(v GroupMember)`
+`func (o *Invitation) SetCreatedBy(v PartialUser)`
 
 SetCreatedBy sets CreatedBy field to given value.
 

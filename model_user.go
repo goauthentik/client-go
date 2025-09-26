@@ -23,13 +23,13 @@ type User struct {
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-	IsActive    *bool        `json:"is_active,omitempty"`
-	LastLogin   NullableTime `json:"last_login,omitempty"`
-	DateJoined  time.Time    `json:"date_joined"`
-	IsSuperuser bool         `json:"is_superuser"`
-	Groups      []string     `json:"groups,omitempty"`
-	GroupsObj   []UserGroup  `json:"groups_obj"`
-	Email       *string      `json:"email,omitempty"`
+	IsActive    *bool          `json:"is_active,omitempty"`
+	LastLogin   NullableTime   `json:"last_login,omitempty"`
+	DateJoined  time.Time      `json:"date_joined"`
+	IsSuperuser bool           `json:"is_superuser"`
+	Groups      []string       `json:"groups,omitempty"`
+	GroupsObj   []PartialGroup `json:"groups_obj"`
+	Email       *string        `json:"email,omitempty"`
 	// User's avatar, either a http/https URL or a data URI
 	Avatar             string                 `json:"avatar"`
 	Attributes         map[string]interface{} `json:"attributes,omitempty"`
@@ -45,7 +45,7 @@ type User struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUser(pk int32, username string, name string, dateJoined time.Time, isSuperuser bool, groupsObj []UserGroup, avatar string, uid string, uuid string, passwordChangeDate time.Time, lastUpdated time.Time) *User {
+func NewUser(pk int32, username string, name string, dateJoined time.Time, isSuperuser bool, groupsObj []PartialGroup, avatar string, uid string, uuid string, passwordChangeDate time.Time, lastUpdated time.Time) *User {
 	this := User{}
 	this.Pk = pk
 	this.Username = username
@@ -297,10 +297,10 @@ func (o *User) SetGroups(v []string) {
 }
 
 // GetGroupsObj returns the GroupsObj field value
-// If the value is explicit nil, the zero value for []UserGroup will be returned
-func (o *User) GetGroupsObj() []UserGroup {
+// If the value is explicit nil, the zero value for []PartialGroup will be returned
+func (o *User) GetGroupsObj() []PartialGroup {
 	if o == nil {
-		var ret []UserGroup
+		var ret []PartialGroup
 		return ret
 	}
 
@@ -310,7 +310,7 @@ func (o *User) GetGroupsObj() []UserGroup {
 // GetGroupsObjOk returns a tuple with the GroupsObj field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *User) GetGroupsObjOk() ([]UserGroup, bool) {
+func (o *User) GetGroupsObjOk() ([]PartialGroup, bool) {
 	if o == nil || o.GroupsObj == nil {
 		return nil, false
 	}
@@ -318,7 +318,7 @@ func (o *User) GetGroupsObjOk() ([]UserGroup, bool) {
 }
 
 // SetGroupsObj sets field value
-func (o *User) SetGroupsObj(v []UserGroup) {
+func (o *User) SetGroupsObj(v []PartialGroup) {
 	o.GroupsObj = v
 }
 

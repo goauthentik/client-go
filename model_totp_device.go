@@ -20,14 +20,14 @@ type TOTPDevice struct {
 	// The human-readable name of this device.
 	Name string      `json:"name"`
 	Pk   int32       `json:"pk"`
-	User GroupMember `json:"user"`
+	User PartialUser `json:"user"`
 }
 
 // NewTOTPDevice instantiates a new TOTPDevice object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTOTPDevice(name string, pk int32, user GroupMember) *TOTPDevice {
+func NewTOTPDevice(name string, pk int32, user PartialUser) *TOTPDevice {
 	this := TOTPDevice{}
 	this.Name = name
 	this.Pk = pk
@@ -92,9 +92,9 @@ func (o *TOTPDevice) SetPk(v int32) {
 }
 
 // GetUser returns the User field value
-func (o *TOTPDevice) GetUser() GroupMember {
+func (o *TOTPDevice) GetUser() PartialUser {
 	if o == nil {
-		var ret GroupMember
+		var ret PartialUser
 		return ret
 	}
 
@@ -103,7 +103,7 @@ func (o *TOTPDevice) GetUser() GroupMember {
 
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
-func (o *TOTPDevice) GetUserOk() (*GroupMember, bool) {
+func (o *TOTPDevice) GetUserOk() (*PartialUser, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -111,7 +111,7 @@ func (o *TOTPDevice) GetUserOk() (*GroupMember, bool) {
 }
 
 // SetUser sets field value
-func (o *TOTPDevice) SetUser(v GroupMember) {
+func (o *TOTPDevice) SetUser(v PartialUser) {
 	o.User = v
 }
 

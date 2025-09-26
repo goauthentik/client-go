@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Name** | **string** | The human-readable name of this device. | 
 **TokenSet** | [**[]StaticDeviceToken**](StaticDeviceToken.md) |  | [readonly] 
 **Pk** | **int32** |  | [readonly] 
-**User** | [**GroupMember**](GroupMember.md) |  | [readonly] 
+**User** | [**PartialUser**](PartialUser.md) |  | [readonly] 
 
 ## Methods
 
 ### NewStaticDevice
 
-`func NewStaticDevice(name string, tokenSet []StaticDeviceToken, pk int32, user GroupMember, ) *StaticDevice`
+`func NewStaticDevice(name string, tokenSet []StaticDeviceToken, pk int32, user PartialUser, ) *StaticDevice`
 
 NewStaticDevice instantiates a new StaticDevice object
 This constructor will assign default values to properties that have it defined,
@@ -90,20 +90,20 @@ SetPk sets Pk field to given value.
 
 ### GetUser
 
-`func (o *StaticDevice) GetUser() GroupMember`
+`func (o *StaticDevice) GetUser() PartialUser`
 
 GetUser returns the User field if non-nil, zero value otherwise.
 
 ### GetUserOk
 
-`func (o *StaticDevice) GetUserOk() (*GroupMember, bool)`
+`func (o *StaticDevice) GetUserOk() (*PartialUser, bool)`
 
 GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUser
 
-`func (o *StaticDevice) SetUser(v GroupMember)`
+`func (o *StaticDevice) SetUser(v PartialUser)`
 
 SetUser sets User field to given value.
 

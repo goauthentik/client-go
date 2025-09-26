@@ -22,7 +22,7 @@ type Invitation struct {
 	Name      string                 `json:"name"`
 	Expires   NullableTime           `json:"expires,omitempty"`
 	FixedData map[string]interface{} `json:"fixed_data,omitempty"`
-	CreatedBy GroupMember            `json:"created_by"`
+	CreatedBy PartialUser            `json:"created_by"`
 	// When enabled, the invitation will be deleted after usage.
 	SingleUse *bool `json:"single_use,omitempty"`
 	// When set, only the configured flow can use this invitation.
@@ -34,7 +34,7 @@ type Invitation struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInvitation(pk string, name string, createdBy GroupMember, flowObj Flow) *Invitation {
+func NewInvitation(pk string, name string, createdBy PartialUser, flowObj Flow) *Invitation {
 	this := Invitation{}
 	this.Pk = pk
 	this.Name = name
@@ -175,9 +175,9 @@ func (o *Invitation) SetFixedData(v map[string]interface{}) {
 }
 
 // GetCreatedBy returns the CreatedBy field value
-func (o *Invitation) GetCreatedBy() GroupMember {
+func (o *Invitation) GetCreatedBy() PartialUser {
 	if o == nil {
-		var ret GroupMember
+		var ret PartialUser
 		return ret
 	}
 
@@ -186,7 +186,7 @@ func (o *Invitation) GetCreatedBy() GroupMember {
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-func (o *Invitation) GetCreatedByOk() (*GroupMember, bool) {
+func (o *Invitation) GetCreatedByOk() (*PartialUser, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -194,7 +194,7 @@ func (o *Invitation) GetCreatedByOk() (*GroupMember, bool) {
 }
 
 // SetCreatedBy sets field value
-func (o *Invitation) SetCreatedBy(v GroupMember) {
+func (o *Invitation) SetCreatedBy(v PartialUser) {
 	o.CreatedBy = v
 }
 

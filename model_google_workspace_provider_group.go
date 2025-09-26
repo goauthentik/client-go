@@ -20,7 +20,7 @@ type GoogleWorkspaceProviderGroup struct {
 	Id         string                 `json:"id"`
 	GoogleId   string                 `json:"google_id"`
 	Group      string                 `json:"group"`
-	GroupObj   UserGroup              `json:"group_obj"`
+	GroupObj   PartialGroup           `json:"group_obj"`
 	Provider   int32                  `json:"provider"`
 	Attributes map[string]interface{} `json:"attributes"`
 }
@@ -29,7 +29,7 @@ type GoogleWorkspaceProviderGroup struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGoogleWorkspaceProviderGroup(id string, googleId string, group string, groupObj UserGroup, provider int32, attributes map[string]interface{}) *GoogleWorkspaceProviderGroup {
+func NewGoogleWorkspaceProviderGroup(id string, googleId string, group string, groupObj PartialGroup, provider int32, attributes map[string]interface{}) *GoogleWorkspaceProviderGroup {
 	this := GoogleWorkspaceProviderGroup{}
 	this.Id = id
 	this.GoogleId = googleId
@@ -121,9 +121,9 @@ func (o *GoogleWorkspaceProviderGroup) SetGroup(v string) {
 }
 
 // GetGroupObj returns the GroupObj field value
-func (o *GoogleWorkspaceProviderGroup) GetGroupObj() UserGroup {
+func (o *GoogleWorkspaceProviderGroup) GetGroupObj() PartialGroup {
 	if o == nil {
-		var ret UserGroup
+		var ret PartialGroup
 		return ret
 	}
 
@@ -132,7 +132,7 @@ func (o *GoogleWorkspaceProviderGroup) GetGroupObj() UserGroup {
 
 // GetGroupObjOk returns a tuple with the GroupObj field value
 // and a boolean to check if the value has been set.
-func (o *GoogleWorkspaceProviderGroup) GetGroupObjOk() (*UserGroup, bool) {
+func (o *GoogleWorkspaceProviderGroup) GetGroupObjOk() (*PartialGroup, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -140,7 +140,7 @@ func (o *GoogleWorkspaceProviderGroup) GetGroupObjOk() (*UserGroup, bool) {
 }
 
 // SetGroupObj sets field value
-func (o *GoogleWorkspaceProviderGroup) SetGroupObj(v UserGroup) {
+func (o *GoogleWorkspaceProviderGroup) SetGroupObj(v PartialGroup) {
 	o.GroupObj = v
 }
 

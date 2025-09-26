@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **ProviderObj** | [**RACProvider**](RACProvider.md) |  | [readonly] 
 **Endpoint** | **string** |  | 
 **EndpointObj** | [**Endpoint**](Endpoint.md) |  | [readonly] 
-**User** | [**GroupMember**](GroupMember.md) |  | [readonly] 
+**User** | [**PartialUser**](PartialUser.md) |  | [readonly] 
 
 ## Methods
 
 ### NewConnectionToken
 
-`func NewConnectionToken(provider int32, providerObj RACProvider, endpoint string, endpointObj Endpoint, user GroupMember, ) *ConnectionToken`
+`func NewConnectionToken(provider int32, providerObj RACProvider, endpoint string, endpointObj Endpoint, user PartialUser, ) *ConnectionToken`
 
 NewConnectionToken instantiates a new ConnectionToken object
 This constructor will assign default values to properties that have it defined,
@@ -137,20 +137,20 @@ SetEndpointObj sets EndpointObj field to given value.
 
 ### GetUser
 
-`func (o *ConnectionToken) GetUser() GroupMember`
+`func (o *ConnectionToken) GetUser() PartialUser`
 
 GetUser returns the User field if non-nil, zero value otherwise.
 
 ### GetUserOk
 
-`func (o *ConnectionToken) GetUserOk() (*GroupMember, bool)`
+`func (o *ConnectionToken) GetUserOk() (*PartialUser, bool)`
 
 GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUser
 
-`func (o *ConnectionToken) SetUser(v GroupMember)`
+`func (o *ConnectionToken) SetUser(v PartialUser)`
 
 SetUser sets User field to given value.
 

@@ -127,7 +127,6 @@ docs/DenyStage.md
 docs/DenyStageRequest.md
 docs/DetailedCountry.md
 docs/DetailedCountryField.md
-docs/DetailedCountryFieldRequest.md
 docs/Device.md
 docs/DeviceChallenge.md
 docs/DeviceChallengeRequest.md
@@ -216,8 +215,6 @@ docs/GroupKerberosSourceConnectionRequest.md
 docs/GroupLDAPSourceConnection.md
 docs/GroupLDAPSourceConnectionRequest.md
 docs/GroupMatchingModeEnum.md
-docs/GroupMember.md
-docs/GroupMemberRequest.md
 docs/GroupOAuthSourceConnection.md
 docs/GroupOAuthSourceConnectionRequest.md
 docs/GroupPlexSourceConnection.md
@@ -461,6 +458,8 @@ docs/PaginatedUserWriteStageList.md
 docs/PaginatedWebAuthnDeviceList.md
 docs/PaginatedWebAuthnDeviceTypeList.md
 docs/Pagination.md
+docs/PartialGroup.md
+docs/PartialUser.md
 docs/PasswordChallenge.md
 docs/PasswordChallengeResponseRequest.md
 docs/PasswordExpiryPolicy.md
@@ -719,7 +718,6 @@ docs/StateEnum.md
 docs/StaticDevice.md
 docs/StaticDeviceRequest.md
 docs/StaticDeviceToken.md
-docs/StaticDeviceTokenRequest.md
 docs/SubModeEnum.md
 docs/SyncObjectModelEnum.md
 docs/SyncObjectRequest.md
@@ -761,8 +759,6 @@ docs/UserCreationModeEnum.md
 docs/UserDeleteStage.md
 docs/UserDeleteStageRequest.md
 docs/UserFieldsEnum.md
-docs/UserGroup.md
-docs/UserGroupRequest.md
 docs/UserKerberosSourceConnection.md
 docs/UserKerberosSourceConnectionRequest.md
 docs/UserLDAPSourceConnection.md
@@ -802,7 +798,6 @@ docs/WebAuthnDevice.md
 docs/WebAuthnDeviceDeviceType.md
 docs/WebAuthnDeviceRequest.md
 docs/WebAuthnDeviceType.md
-docs/WebAuthnDeviceTypeRequest.md
 docs/Worker.md
 git_push.sh
 go.mod
@@ -904,7 +899,6 @@ model_deny_stage.go
 model_deny_stage_request.go
 model_detailed_country.go
 model_detailed_country_field.go
-model_detailed_country_field_request.go
 model_device.go
 model_device_challenge.go
 model_device_challenge_request.go
@@ -990,8 +984,6 @@ model_group_kerberos_source_connection_request.go
 model_group_ldap_source_connection.go
 model_group_ldap_source_connection_request.go
 model_group_matching_mode_enum.go
-model_group_member.go
-model_group_member_request.go
 model_group_o_auth_source_connection.go
 model_group_o_auth_source_connection_request.go
 model_group_plex_source_connection.go
@@ -1232,6 +1224,8 @@ model_paginated_user_write_stage_list.go
 model_paginated_web_authn_device_list.go
 model_paginated_web_authn_device_type_list.go
 model_pagination.go
+model_partial_group.go
+model_partial_user.go
 model_password_challenge.go
 model_password_challenge_response_request.go
 model_password_expiry_policy.go
@@ -1480,7 +1474,6 @@ model_state_enum.go
 model_static_device.go
 model_static_device_request.go
 model_static_device_token.go
-model_static_device_token_request.go
 model_sub_mode_enum.go
 model_sync_object_model_enum.go
 model_sync_object_request.go
@@ -1520,8 +1513,6 @@ model_user_creation_mode_enum.go
 model_user_delete_stage.go
 model_user_delete_stage_request.go
 model_user_fields_enum.go
-model_user_group.go
-model_user_group_request.go
 model_user_kerberos_source_connection.go
 model_user_kerberos_source_connection_request.go
 model_user_ldap_source_connection.go
@@ -1561,7 +1552,6 @@ model_web_authn_device.go
 model_web_authn_device_device_type.go
 model_web_authn_device_request.go
 model_web_authn_device_type.go
-model_web_authn_device_type_request.go
 model_worker.go
 response.go
 utils.go

@@ -20,7 +20,7 @@ type SCIMSourceGroup struct {
 	Id         *string                `json:"id,omitempty"`
 	ExternalId string                 `json:"external_id"`
 	Group      string                 `json:"group"`
-	GroupObj   UserGroup              `json:"group_obj"`
+	GroupObj   PartialGroup           `json:"group_obj"`
 	Source     string                 `json:"source"`
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 }
@@ -29,7 +29,7 @@ type SCIMSourceGroup struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSCIMSourceGroup(externalId string, group string, groupObj UserGroup, source string) *SCIMSourceGroup {
+func NewSCIMSourceGroup(externalId string, group string, groupObj PartialGroup, source string) *SCIMSourceGroup {
 	this := SCIMSourceGroup{}
 	this.ExternalId = externalId
 	this.Group = group
@@ -127,9 +127,9 @@ func (o *SCIMSourceGroup) SetGroup(v string) {
 }
 
 // GetGroupObj returns the GroupObj field value
-func (o *SCIMSourceGroup) GetGroupObj() UserGroup {
+func (o *SCIMSourceGroup) GetGroupObj() PartialGroup {
 	if o == nil {
-		var ret UserGroup
+		var ret PartialGroup
 		return ret
 	}
 
@@ -138,7 +138,7 @@ func (o *SCIMSourceGroup) GetGroupObj() UserGroup {
 
 // GetGroupObjOk returns a tuple with the GroupObj field value
 // and a boolean to check if the value has been set.
-func (o *SCIMSourceGroup) GetGroupObjOk() (*UserGroup, bool) {
+func (o *SCIMSourceGroup) GetGroupObjOk() (*PartialGroup, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -146,7 +146,7 @@ func (o *SCIMSourceGroup) GetGroupObjOk() (*UserGroup, bool) {
 }
 
 // SetGroupObj sets field value
-func (o *SCIMSourceGroup) SetGroupObj(v UserGroup) {
+func (o *SCIMSourceGroup) SetGroupObj(v PartialGroup) {
 	o.GroupObj = v
 }
 

@@ -20,7 +20,7 @@ type SCIMProviderUser struct {
 	Id         string                 `json:"id"`
 	ScimId     string                 `json:"scim_id"`
 	User       int32                  `json:"user"`
-	UserObj    GroupMember            `json:"user_obj"`
+	UserObj    PartialUser            `json:"user_obj"`
 	Provider   int32                  `json:"provider"`
 	Attributes map[string]interface{} `json:"attributes"`
 }
@@ -29,7 +29,7 @@ type SCIMProviderUser struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSCIMProviderUser(id string, scimId string, user int32, userObj GroupMember, provider int32, attributes map[string]interface{}) *SCIMProviderUser {
+func NewSCIMProviderUser(id string, scimId string, user int32, userObj PartialUser, provider int32, attributes map[string]interface{}) *SCIMProviderUser {
 	this := SCIMProviderUser{}
 	this.Id = id
 	this.ScimId = scimId
@@ -121,9 +121,9 @@ func (o *SCIMProviderUser) SetUser(v int32) {
 }
 
 // GetUserObj returns the UserObj field value
-func (o *SCIMProviderUser) GetUserObj() GroupMember {
+func (o *SCIMProviderUser) GetUserObj() PartialUser {
 	if o == nil {
-		var ret GroupMember
+		var ret PartialUser
 		return ret
 	}
 
@@ -132,7 +132,7 @@ func (o *SCIMProviderUser) GetUserObj() GroupMember {
 
 // GetUserObjOk returns a tuple with the UserObj field value
 // and a boolean to check if the value has been set.
-func (o *SCIMProviderUser) GetUserObjOk() (*GroupMember, bool) {
+func (o *SCIMProviderUser) GetUserObjOk() (*PartialUser, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -140,7 +140,7 @@ func (o *SCIMProviderUser) GetUserObjOk() (*GroupMember, bool) {
 }
 
 // SetUserObj sets field value
-func (o *SCIMProviderUser) SetUserObj(v GroupMember) {
+func (o *SCIMProviderUser) SetUserObj(v PartialUser) {
 	o.UserObj = v
 }
 

@@ -15,35 +15,90 @@ import (
 	"encoding/json"
 )
 
-// UserGroupRequest Simplified Group Serializer for user's groups
-type UserGroupRequest struct {
-	Name string `json:"name"`
+// PartialGroup Partial Group Serializer, does not include child relations.
+type PartialGroup struct {
+	Pk string `json:"pk"`
+	// Get a numerical, int32 ID for the group
+	NumPk int32  `json:"num_pk"`
+	Name  string `json:"name"`
 	// Users added to this group will be superusers.
 	IsSuperuser *bool                  `json:"is_superuser,omitempty"`
 	Parent      NullableString         `json:"parent,omitempty"`
+	ParentName  NullableString         `json:"parent_name"`
 	Attributes  map[string]interface{} `json:"attributes,omitempty"`
 }
 
-// NewUserGroupRequest instantiates a new UserGroupRequest object
+// NewPartialGroup instantiates a new PartialGroup object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserGroupRequest(name string) *UserGroupRequest {
-	this := UserGroupRequest{}
+func NewPartialGroup(pk string, numPk int32, name string, parentName NullableString) *PartialGroup {
+	this := PartialGroup{}
+	this.Pk = pk
+	this.NumPk = numPk
 	this.Name = name
+	this.ParentName = parentName
 	return &this
 }
 
-// NewUserGroupRequestWithDefaults instantiates a new UserGroupRequest object
+// NewPartialGroupWithDefaults instantiates a new PartialGroup object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewUserGroupRequestWithDefaults() *UserGroupRequest {
-	this := UserGroupRequest{}
+func NewPartialGroupWithDefaults() *PartialGroup {
+	this := PartialGroup{}
 	return &this
+}
+
+// GetPk returns the Pk field value
+func (o *PartialGroup) GetPk() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Pk
+}
+
+// GetPkOk returns a tuple with the Pk field value
+// and a boolean to check if the value has been set.
+func (o *PartialGroup) GetPkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Pk, true
+}
+
+// SetPk sets field value
+func (o *PartialGroup) SetPk(v string) {
+	o.Pk = v
+}
+
+// GetNumPk returns the NumPk field value
+func (o *PartialGroup) GetNumPk() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.NumPk
+}
+
+// GetNumPkOk returns a tuple with the NumPk field value
+// and a boolean to check if the value has been set.
+func (o *PartialGroup) GetNumPkOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.NumPk, true
+}
+
+// SetNumPk sets field value
+func (o *PartialGroup) SetNumPk(v int32) {
+	o.NumPk = v
 }
 
 // GetName returns the Name field value
-func (o *UserGroupRequest) GetName() string {
+func (o *PartialGroup) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -54,7 +109,7 @@ func (o *UserGroupRequest) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *UserGroupRequest) GetNameOk() (*string, bool) {
+func (o *PartialGroup) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -62,12 +117,12 @@ func (o *UserGroupRequest) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *UserGroupRequest) SetName(v string) {
+func (o *PartialGroup) SetName(v string) {
 	o.Name = v
 }
 
 // GetIsSuperuser returns the IsSuperuser field value if set, zero value otherwise.
-func (o *UserGroupRequest) GetIsSuperuser() bool {
+func (o *PartialGroup) GetIsSuperuser() bool {
 	if o == nil || o.IsSuperuser == nil {
 		var ret bool
 		return ret
@@ -77,7 +132,7 @@ func (o *UserGroupRequest) GetIsSuperuser() bool {
 
 // GetIsSuperuserOk returns a tuple with the IsSuperuser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserGroupRequest) GetIsSuperuserOk() (*bool, bool) {
+func (o *PartialGroup) GetIsSuperuserOk() (*bool, bool) {
 	if o == nil || o.IsSuperuser == nil {
 		return nil, false
 	}
@@ -85,7 +140,7 @@ func (o *UserGroupRequest) GetIsSuperuserOk() (*bool, bool) {
 }
 
 // HasIsSuperuser returns a boolean if a field has been set.
-func (o *UserGroupRequest) HasIsSuperuser() bool {
+func (o *PartialGroup) HasIsSuperuser() bool {
 	if o != nil && o.IsSuperuser != nil {
 		return true
 	}
@@ -94,12 +149,12 @@ func (o *UserGroupRequest) HasIsSuperuser() bool {
 }
 
 // SetIsSuperuser gets a reference to the given bool and assigns it to the IsSuperuser field.
-func (o *UserGroupRequest) SetIsSuperuser(v bool) {
+func (o *PartialGroup) SetIsSuperuser(v bool) {
 	o.IsSuperuser = &v
 }
 
 // GetParent returns the Parent field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *UserGroupRequest) GetParent() string {
+func (o *PartialGroup) GetParent() string {
 	if o == nil || o.Parent.Get() == nil {
 		var ret string
 		return ret
@@ -110,7 +165,7 @@ func (o *UserGroupRequest) GetParent() string {
 // GetParentOk returns a tuple with the Parent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *UserGroupRequest) GetParentOk() (*string, bool) {
+func (o *PartialGroup) GetParentOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -118,7 +173,7 @@ func (o *UserGroupRequest) GetParentOk() (*string, bool) {
 }
 
 // HasParent returns a boolean if a field has been set.
-func (o *UserGroupRequest) HasParent() bool {
+func (o *PartialGroup) HasParent() bool {
 	if o != nil && o.Parent.IsSet() {
 		return true
 	}
@@ -127,22 +182,48 @@ func (o *UserGroupRequest) HasParent() bool {
 }
 
 // SetParent gets a reference to the given NullableString and assigns it to the Parent field.
-func (o *UserGroupRequest) SetParent(v string) {
+func (o *PartialGroup) SetParent(v string) {
 	o.Parent.Set(&v)
 }
 
 // SetParentNil sets the value for Parent to be an explicit nil
-func (o *UserGroupRequest) SetParentNil() {
+func (o *PartialGroup) SetParentNil() {
 	o.Parent.Set(nil)
 }
 
 // UnsetParent ensures that no value is present for Parent, not even an explicit nil
-func (o *UserGroupRequest) UnsetParent() {
+func (o *PartialGroup) UnsetParent() {
 	o.Parent.Unset()
 }
 
+// GetParentName returns the ParentName field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *PartialGroup) GetParentName() string {
+	if o == nil || o.ParentName.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.ParentName.Get()
+}
+
+// GetParentNameOk returns a tuple with the ParentName field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PartialGroup) GetParentNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ParentName.Get(), o.ParentName.IsSet()
+}
+
+// SetParentName sets field value
+func (o *PartialGroup) SetParentName(v string) {
+	o.ParentName.Set(&v)
+}
+
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *UserGroupRequest) GetAttributes() map[string]interface{} {
+func (o *PartialGroup) GetAttributes() map[string]interface{} {
 	if o == nil || o.Attributes == nil {
 		var ret map[string]interface{}
 		return ret
@@ -152,7 +233,7 @@ func (o *UserGroupRequest) GetAttributes() map[string]interface{} {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserGroupRequest) GetAttributesOk() (map[string]interface{}, bool) {
+func (o *PartialGroup) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
@@ -160,7 +241,7 @@ func (o *UserGroupRequest) GetAttributesOk() (map[string]interface{}, bool) {
 }
 
 // HasAttributes returns a boolean if a field has been set.
-func (o *UserGroupRequest) HasAttributes() bool {
+func (o *PartialGroup) HasAttributes() bool {
 	if o != nil && o.Attributes != nil {
 		return true
 	}
@@ -169,12 +250,18 @@ func (o *UserGroupRequest) HasAttributes() bool {
 }
 
 // SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
-func (o *UserGroupRequest) SetAttributes(v map[string]interface{}) {
+func (o *PartialGroup) SetAttributes(v map[string]interface{}) {
 	o.Attributes = v
 }
 
-func (o UserGroupRequest) MarshalJSON() ([]byte, error) {
+func (o PartialGroup) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["pk"] = o.Pk
+	}
+	if true {
+		toSerialize["num_pk"] = o.NumPk
+	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
@@ -184,44 +271,47 @@ func (o UserGroupRequest) MarshalJSON() ([]byte, error) {
 	if o.Parent.IsSet() {
 		toSerialize["parent"] = o.Parent.Get()
 	}
+	if true {
+		toSerialize["parent_name"] = o.ParentName.Get()
+	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableUserGroupRequest struct {
-	value *UserGroupRequest
+type NullablePartialGroup struct {
+	value *PartialGroup
 	isSet bool
 }
 
-func (v NullableUserGroupRequest) Get() *UserGroupRequest {
+func (v NullablePartialGroup) Get() *PartialGroup {
 	return v.value
 }
 
-func (v *NullableUserGroupRequest) Set(val *UserGroupRequest) {
+func (v *NullablePartialGroup) Set(val *PartialGroup) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableUserGroupRequest) IsSet() bool {
+func (v NullablePartialGroup) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableUserGroupRequest) Unset() {
+func (v *NullablePartialGroup) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableUserGroupRequest(val *UserGroupRequest) *NullableUserGroupRequest {
-	return &NullableUserGroupRequest{value: val, isSet: true}
+func NewNullablePartialGroup(val *PartialGroup) *NullablePartialGroup {
+	return &NullablePartialGroup{value: val, isSet: true}
 }
 
-func (v NullableUserGroupRequest) MarshalJSON() ([]byte, error) {
+func (v NullablePartialGroup) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableUserGroupRequest) UnmarshalJSON(src []byte) error {
+func (v *NullablePartialGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

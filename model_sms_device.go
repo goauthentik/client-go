@@ -21,14 +21,14 @@ type SMSDevice struct {
 	Name        string      `json:"name"`
 	Pk          int32       `json:"pk"`
 	PhoneNumber string      `json:"phone_number"`
-	User        GroupMember `json:"user"`
+	User        PartialUser `json:"user"`
 }
 
 // NewSMSDevice instantiates a new SMSDevice object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSMSDevice(name string, pk int32, phoneNumber string, user GroupMember) *SMSDevice {
+func NewSMSDevice(name string, pk int32, phoneNumber string, user PartialUser) *SMSDevice {
 	this := SMSDevice{}
 	this.Name = name
 	this.Pk = pk
@@ -118,9 +118,9 @@ func (o *SMSDevice) SetPhoneNumber(v string) {
 }
 
 // GetUser returns the User field value
-func (o *SMSDevice) GetUser() GroupMember {
+func (o *SMSDevice) GetUser() PartialUser {
 	if o == nil {
-		var ret GroupMember
+		var ret PartialUser
 		return ret
 	}
 
@@ -129,7 +129,7 @@ func (o *SMSDevice) GetUser() GroupMember {
 
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
-func (o *SMSDevice) GetUserOk() (*GroupMember, bool) {
+func (o *SMSDevice) GetUserOk() (*PartialUser, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -137,7 +137,7 @@ func (o *SMSDevice) GetUserOk() (*GroupMember, bool) {
 }
 
 // SetUser sets field value
-func (o *SMSDevice) SetUser(v GroupMember) {
+func (o *SMSDevice) SetUser(v PartialUser) {
 	o.User = v
 }
 

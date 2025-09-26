@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | [readonly] 
 **GoogleId** | **string** |  | 
 **User** | **int32** |  | 
-**UserObj** | [**GroupMember**](GroupMember.md) |  | [readonly] 
+**UserObj** | [**PartialUser**](PartialUser.md) |  | [readonly] 
 **Provider** | **int32** |  | 
 **Attributes** | **map[string]interface{}** |  | [readonly] 
 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewGoogleWorkspaceProviderUser
 
-`func NewGoogleWorkspaceProviderUser(id string, googleId string, user int32, userObj GroupMember, provider int32, attributes map[string]interface{}, ) *GoogleWorkspaceProviderUser`
+`func NewGoogleWorkspaceProviderUser(id string, googleId string, user int32, userObj PartialUser, provider int32, attributes map[string]interface{}, ) *GoogleWorkspaceProviderUser`
 
 NewGoogleWorkspaceProviderUser instantiates a new GoogleWorkspaceProviderUser object
 This constructor will assign default values to properties that have it defined,
@@ -92,20 +92,20 @@ SetUser sets User field to given value.
 
 ### GetUserObj
 
-`func (o *GoogleWorkspaceProviderUser) GetUserObj() GroupMember`
+`func (o *GoogleWorkspaceProviderUser) GetUserObj() PartialUser`
 
 GetUserObj returns the UserObj field if non-nil, zero value otherwise.
 
 ### GetUserObjOk
 
-`func (o *GoogleWorkspaceProviderUser) GetUserObjOk() (*GroupMember, bool)`
+`func (o *GoogleWorkspaceProviderUser) GetUserObjOk() (*PartialUser, bool)`
 
 GetUserObjOk returns a tuple with the UserObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserObj
 
-`func (o *GoogleWorkspaceProviderUser) SetUserObj(v GroupMember)`
+`func (o *GoogleWorkspaceProviderUser) SetUserObj(v PartialUser)`
 
 SetUserObj sets UserObj field to given value.
 

@@ -20,7 +20,7 @@ type SCIMSourceUser struct {
 	Id         *string                `json:"id,omitempty"`
 	ExternalId string                 `json:"external_id"`
 	User       int32                  `json:"user"`
-	UserObj    GroupMember            `json:"user_obj"`
+	UserObj    PartialUser            `json:"user_obj"`
 	Source     string                 `json:"source"`
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 }
@@ -29,7 +29,7 @@ type SCIMSourceUser struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSCIMSourceUser(externalId string, user int32, userObj GroupMember, source string) *SCIMSourceUser {
+func NewSCIMSourceUser(externalId string, user int32, userObj PartialUser, source string) *SCIMSourceUser {
 	this := SCIMSourceUser{}
 	this.ExternalId = externalId
 	this.User = user
@@ -127,9 +127,9 @@ func (o *SCIMSourceUser) SetUser(v int32) {
 }
 
 // GetUserObj returns the UserObj field value
-func (o *SCIMSourceUser) GetUserObj() GroupMember {
+func (o *SCIMSourceUser) GetUserObj() PartialUser {
 	if o == nil {
-		var ret GroupMember
+		var ret PartialUser
 		return ret
 	}
 
@@ -138,7 +138,7 @@ func (o *SCIMSourceUser) GetUserObj() GroupMember {
 
 // GetUserObjOk returns a tuple with the UserObj field value
 // and a boolean to check if the value has been set.
-func (o *SCIMSourceUser) GetUserObjOk() (*GroupMember, bool) {
+func (o *SCIMSourceUser) GetUserObjOk() (*PartialUser, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -146,7 +146,7 @@ func (o *SCIMSourceUser) GetUserObjOk() (*GroupMember, bool) {
 }
 
 // SetUserObj sets field value
-func (o *SCIMSourceUser) SetUserObj(v GroupMember) {
+func (o *SCIMSourceUser) SetUserObj(v PartialUser) {
 	o.UserObj = v
 }
 

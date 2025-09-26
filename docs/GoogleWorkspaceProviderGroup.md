@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | [readonly] 
 **GoogleId** | **string** |  | 
 **Group** | **string** |  | 
-**GroupObj** | [**UserGroup**](UserGroup.md) |  | [readonly] 
+**GroupObj** | [**PartialGroup**](PartialGroup.md) |  | [readonly] 
 **Provider** | **int32** |  | 
 **Attributes** | **map[string]interface{}** |  | [readonly] 
 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewGoogleWorkspaceProviderGroup
 
-`func NewGoogleWorkspaceProviderGroup(id string, googleId string, group string, groupObj UserGroup, provider int32, attributes map[string]interface{}, ) *GoogleWorkspaceProviderGroup`
+`func NewGoogleWorkspaceProviderGroup(id string, googleId string, group string, groupObj PartialGroup, provider int32, attributes map[string]interface{}, ) *GoogleWorkspaceProviderGroup`
 
 NewGoogleWorkspaceProviderGroup instantiates a new GoogleWorkspaceProviderGroup object
 This constructor will assign default values to properties that have it defined,
@@ -92,20 +92,20 @@ SetGroup sets Group field to given value.
 
 ### GetGroupObj
 
-`func (o *GoogleWorkspaceProviderGroup) GetGroupObj() UserGroup`
+`func (o *GoogleWorkspaceProviderGroup) GetGroupObj() PartialGroup`
 
 GetGroupObj returns the GroupObj field if non-nil, zero value otherwise.
 
 ### GetGroupObjOk
 
-`func (o *GoogleWorkspaceProviderGroup) GetGroupObjOk() (*UserGroup, bool)`
+`func (o *GoogleWorkspaceProviderGroup) GetGroupObjOk() (*PartialGroup, bool)`
 
 GetGroupObjOk returns a tuple with the GroupObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroupObj
 
-`func (o *GoogleWorkspaceProviderGroup) SetGroupObj(v UserGroup)`
+`func (o *GoogleWorkspaceProviderGroup) SetGroupObj(v PartialGroup)`
 
 SetGroupObj sets GroupObj field to given value.
 

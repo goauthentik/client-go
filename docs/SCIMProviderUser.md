@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | [readonly] 
 **ScimId** | **string** |  | 
 **User** | **int32** |  | 
-**UserObj** | [**GroupMember**](GroupMember.md) |  | [readonly] 
+**UserObj** | [**PartialUser**](PartialUser.md) |  | [readonly] 
 **Provider** | **int32** |  | 
 **Attributes** | **map[string]interface{}** |  | [readonly] 
 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewSCIMProviderUser
 
-`func NewSCIMProviderUser(id string, scimId string, user int32, userObj GroupMember, provider int32, attributes map[string]interface{}, ) *SCIMProviderUser`
+`func NewSCIMProviderUser(id string, scimId string, user int32, userObj PartialUser, provider int32, attributes map[string]interface{}, ) *SCIMProviderUser`
 
 NewSCIMProviderUser instantiates a new SCIMProviderUser object
 This constructor will assign default values to properties that have it defined,
@@ -92,20 +92,20 @@ SetUser sets User field to given value.
 
 ### GetUserObj
 
-`func (o *SCIMProviderUser) GetUserObj() GroupMember`
+`func (o *SCIMProviderUser) GetUserObj() PartialUser`
 
 GetUserObj returns the UserObj field if non-nil, zero value otherwise.
 
 ### GetUserObjOk
 
-`func (o *SCIMProviderUser) GetUserObjOk() (*GroupMember, bool)`
+`func (o *SCIMProviderUser) GetUserObjOk() (*PartialUser, bool)`
 
 GetUserObjOk returns a tuple with the UserObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserObj
 
-`func (o *SCIMProviderUser) SetUserObj(v GroupMember)`
+`func (o *SCIMProviderUser) SetUserObj(v PartialUser)`
 
 SetUserObj sets UserObj field to given value.
 

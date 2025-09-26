@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **DateJoined** | **time.Time** |  | [readonly] 
 **IsSuperuser** | **bool** |  | [readonly] 
 **Groups** | Pointer to **[]string** |  | [optional] 
-**GroupsObj** | [**[]UserGroup**](UserGroup.md) |  | [readonly] 
+**GroupsObj** | [**[]PartialGroup**](PartialGroup.md) |  | [readonly] 
 **Email** | Pointer to **string** |  | [optional] 
 **Avatar** | **string** | User&#39;s avatar, either a http/https URL or a data URI | [readonly] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewUser
 
-`func NewUser(pk int32, username string, name string, dateJoined time.Time, isSuperuser bool, groupsObj []UserGroup, avatar string, uid string, uuid string, passwordChangeDate time.Time, lastUpdated time.Time, ) *User`
+`func NewUser(pk int32, username string, name string, dateJoined time.Time, isSuperuser bool, groupsObj []PartialGroup, avatar string, uid string, uuid string, passwordChangeDate time.Time, lastUpdated time.Time, ) *User`
 
 NewUser instantiates a new User object
 This constructor will assign default values to properties that have it defined,
@@ -229,20 +229,20 @@ HasGroups returns a boolean if a field has been set.
 
 ### GetGroupsObj
 
-`func (o *User) GetGroupsObj() []UserGroup`
+`func (o *User) GetGroupsObj() []PartialGroup`
 
 GetGroupsObj returns the GroupsObj field if non-nil, zero value otherwise.
 
 ### GetGroupsObjOk
 
-`func (o *User) GetGroupsObjOk() (*[]UserGroup, bool)`
+`func (o *User) GetGroupsObjOk() (*[]PartialGroup, bool)`
 
 GetGroupsObjOk returns a tuple with the GroupsObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroupsObj
 
-`func (o *User) SetGroupsObj(v []UserGroup)`
+`func (o *User) SetGroupsObj(v []PartialGroup)`
 
 SetGroupsObj sets GroupsObj field to given value.
 

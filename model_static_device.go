@@ -21,14 +21,14 @@ type StaticDevice struct {
 	Name     string              `json:"name"`
 	TokenSet []StaticDeviceToken `json:"token_set"`
 	Pk       int32               `json:"pk"`
-	User     GroupMember         `json:"user"`
+	User     PartialUser         `json:"user"`
 }
 
 // NewStaticDevice instantiates a new StaticDevice object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStaticDevice(name string, tokenSet []StaticDeviceToken, pk int32, user GroupMember) *StaticDevice {
+func NewStaticDevice(name string, tokenSet []StaticDeviceToken, pk int32, user PartialUser) *StaticDevice {
 	this := StaticDevice{}
 	this.Name = name
 	this.TokenSet = tokenSet
@@ -118,9 +118,9 @@ func (o *StaticDevice) SetPk(v int32) {
 }
 
 // GetUser returns the User field value
-func (o *StaticDevice) GetUser() GroupMember {
+func (o *StaticDevice) GetUser() PartialUser {
 	if o == nil {
-		var ret GroupMember
+		var ret PartialUser
 		return ret
 	}
 
@@ -129,7 +129,7 @@ func (o *StaticDevice) GetUser() GroupMember {
 
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
-func (o *StaticDevice) GetUserOk() (*GroupMember, bool) {
+func (o *StaticDevice) GetUserOk() (*PartialUser, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -137,7 +137,7 @@ func (o *StaticDevice) GetUserOk() (*GroupMember, bool) {
 }
 
 // SetUser sets field value
-func (o *StaticDevice) SetUser(v GroupMember) {
+func (o *StaticDevice) SetUser(v PartialUser) {
 	o.User = v
 }
 
