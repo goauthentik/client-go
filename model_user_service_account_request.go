@@ -16,7 +16,7 @@ import (
 	"time"
 )
 
-// UserServiceAccountRequest struct for UserServiceAccountRequest
+// UserServiceAccountRequest Payload to create a service account
 type UserServiceAccountRequest struct {
 	Name        string `json:"name"`
 	CreateGroup *bool  `json:"create_group,omitempty"`

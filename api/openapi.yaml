@@ -80621,6 +80621,7 @@ components:
       - pk
       type: object
     UserServiceAccountRequest:
+      description: Payload to create a service account
       example:
         create_group: false
         expiring: true
