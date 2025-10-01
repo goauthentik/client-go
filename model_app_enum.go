@@ -54,6 +54,7 @@ const (
 	APPENUM_SOURCES_PLEX                                  AppEnum = "authentik.sources.plex"
 	APPENUM_SOURCES_SAML                                  AppEnum = "authentik.sources.saml"
 	APPENUM_SOURCES_SCIM                                  AppEnum = "authentik.sources.scim"
+	APPENUM_SOURCES_TELEGRAM                              AppEnum = "authentik.sources.telegram"
 	APPENUM_STAGES_AUTHENTICATOR                          AppEnum = "authentik.stages.authenticator"
 	APPENUM_STAGES_AUTHENTICATOR_DUO                      AppEnum = "authentik.stages.authenticator_duo"
 	APPENUM_STAGES_AUTHENTICATOR_EMAIL                    AppEnum = "authentik.stages.authenticator_email"
@@ -127,6 +128,7 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.sources.plex",
 	"authentik.sources.saml",
 	"authentik.sources.scim",
+	"authentik.sources.telegram",
 	"authentik.stages.authenticator",
 	"authentik.stages.authenticator_duo",
 	"authentik.stages.authenticator_email",

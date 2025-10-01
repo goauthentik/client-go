@@ -21,6 +21,7 @@ type LoginChallengeTypes struct {
 	AppleLoginChallenge         *AppleLoginChallenge
 	PlexAuthenticationChallenge *PlexAuthenticationChallenge
 	RedirectChallenge           *RedirectChallenge
+	TelegramLoginChallenge      *TelegramLoginChallenge
 }
 
 // AppleLoginChallengeAsLoginChallengeTypes is a convenience function that returns AppleLoginChallenge wrapped in LoginChallengeTypes
@@ -41,6 +42,13 @@ func PlexAuthenticationChallengeAsLoginChallengeTypes(v *PlexAuthenticationChall
 func RedirectChallengeAsLoginChallengeTypes(v *RedirectChallenge) LoginChallengeTypes {
 	return LoginChallengeTypes{
 		RedirectChallenge: v,
+	}
+}
+
+// TelegramLoginChallengeAsLoginChallengeTypes is a convenience function that returns TelegramLoginChallenge wrapped in LoginChallengeTypes
+func TelegramLoginChallengeAsLoginChallengeTypes(v *TelegramLoginChallenge) LoginChallengeTypes {
+	return LoginChallengeTypes{
+		TelegramLoginChallenge: v,
 	}
 }
 
@@ -90,6 +98,18 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'TelegramLoginChallenge'
+	if jsonDict["component"] == "TelegramLoginChallenge" {
+		// try to unmarshal JSON data into TelegramLoginChallenge
+		err = json.Unmarshal(data, &dst.TelegramLoginChallenge)
+		if err == nil {
+			return nil // data stored in dst.TelegramLoginChallenge, return on the first match
+		} else {
+			dst.TelegramLoginChallenge = nil
+			return fmt.Errorf("Failed to unmarshal LoginChallengeTypes as TelegramLoginChallenge: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'ak-source-oauth-apple'
 	if jsonDict["component"] == "ak-source-oauth-apple" {
 		// try to unmarshal JSON data into AppleLoginChallenge
@@ -111,6 +131,18 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.PlexAuthenticationChallenge = nil
 			return fmt.Errorf("Failed to unmarshal LoginChallengeTypes as PlexAuthenticationChallenge: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-source-telegram'
+	if jsonDict["component"] == "ak-source-telegram" {
+		// try to unmarshal JSON data into TelegramLoginChallenge
+		err = json.Unmarshal(data, &dst.TelegramLoginChallenge)
+		if err == nil {
+			return nil // data stored in dst.TelegramLoginChallenge, return on the first match
+		} else {
+			dst.TelegramLoginChallenge = nil
+			return fmt.Errorf("Failed to unmarshal LoginChallengeTypes as TelegramLoginChallenge: %s", err.Error())
 		}
 	}
 
@@ -143,6 +175,10 @@ func (src LoginChallengeTypes) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.RedirectChallenge)
 	}
 
+	if src.TelegramLoginChallenge != nil {
+		return json.Marshal(&src.TelegramLoginChallenge)
+	}
+
 	return nil, nil // no data in oneOf schemas
 }
 
@@ -161,6 +197,10 @@ func (obj *LoginChallengeTypes) GetActualInstance() interface{} {
 
 	if obj.RedirectChallenge != nil {
 		return obj.RedirectChallenge
+	}
+
+	if obj.TelegramLoginChallenge != nil {
+		return obj.TelegramLoginChallenge
 	}
 
 	// all schemas are nil

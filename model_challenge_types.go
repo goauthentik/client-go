@@ -43,6 +43,7 @@ type ChallengeTypes struct {
 	RedirectChallenge                *RedirectChallenge
 	SessionEndChallenge              *SessionEndChallenge
 	ShellChallenge                   *ShellChallenge
+	TelegramLoginChallenge           *TelegramLoginChallenge
 	UserLoginChallenge               *UserLoginChallenge
 }
 
@@ -218,6 +219,13 @@ func SessionEndChallengeAsChallengeTypes(v *SessionEndChallenge) ChallengeTypes 
 func ShellChallengeAsChallengeTypes(v *ShellChallenge) ChallengeTypes {
 	return ChallengeTypes{
 		ShellChallenge: v,
+	}
+}
+
+// TelegramLoginChallengeAsChallengeTypes is a convenience function that returns TelegramLoginChallenge wrapped in ChallengeTypes
+func TelegramLoginChallengeAsChallengeTypes(v *TelegramLoginChallenge) ChallengeTypes {
+	return ChallengeTypes{
+		TelegramLoginChallenge: v,
 	}
 }
 
@@ -538,6 +546,18 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'TelegramLoginChallenge'
+	if jsonDict["component"] == "TelegramLoginChallenge" {
+		// try to unmarshal JSON data into TelegramLoginChallenge
+		err = json.Unmarshal(data, &dst.TelegramLoginChallenge)
+		if err == nil {
+			return nil // data stored in dst.TelegramLoginChallenge, return on the first match
+		} else {
+			dst.TelegramLoginChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as TelegramLoginChallenge: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'UserLoginChallenge'
 	if jsonDict["component"] == "UserLoginChallenge" {
 		// try to unmarshal JSON data into UserLoginChallenge
@@ -595,6 +615,18 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.PlexAuthenticationChallenge = nil
 			return fmt.Errorf("Failed to unmarshal ChallengeTypes as PlexAuthenticationChallenge: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-source-telegram'
+	if jsonDict["component"] == "ak-source-telegram" {
+		// try to unmarshal JSON data into TelegramLoginChallenge
+		err = json.Unmarshal(data, &dst.TelegramLoginChallenge)
+		if err == nil {
+			return nil // data stored in dst.TelegramLoginChallenge, return on the first match
+		} else {
+			dst.TelegramLoginChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as TelegramLoginChallenge: %s", err.Error())
 		}
 	}
 
@@ -967,6 +999,10 @@ func (src ChallengeTypes) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.ShellChallenge)
 	}
 
+	if src.TelegramLoginChallenge != nil {
+		return json.Marshal(&src.TelegramLoginChallenge)
+	}
+
 	if src.UserLoginChallenge != nil {
 		return json.Marshal(&src.UserLoginChallenge)
 	}
@@ -1077,6 +1113,10 @@ func (obj *ChallengeTypes) GetActualInstance() interface{} {
 
 	if obj.ShellChallenge != nil {
 		return obj.ShellChallenge
+	}
+
+	if obj.TelegramLoginChallenge != nil {
+		return obj.TelegramLoginChallenge
 	}
 
 	if obj.UserLoginChallenge != nil {

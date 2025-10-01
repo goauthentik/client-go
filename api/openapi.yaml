@@ -21079,6 +21079,312 @@ paths:
       - authentik: []
       tags:
       - propertymappings
+  /propertymappings/source/telegram/:
+    get:
+      description: TelegramSourcePropertyMapping Viewset
+      operationId: propertymappings_source_telegram_list
+      parameters:
+      - explode: true
+        in: query
+        name: managed
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: managed__isnull
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTelegramSourcePropertyMappingList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    post:
+      description: TelegramSourcePropertyMapping Viewset
+      operationId: propertymappings_source_telegram_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TelegramSourcePropertyMappingRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelegramSourcePropertyMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+  /propertymappings/source/telegram/{pm_uuid}/:
+    delete:
+      description: TelegramSourcePropertyMapping Viewset
+      operationId: propertymappings_source_telegram_destroy
+      parameters:
+      - description: A UUID string identifying this Telegram Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    get:
+      description: TelegramSourcePropertyMapping Viewset
+      operationId: propertymappings_source_telegram_retrieve
+      parameters:
+      - description: A UUID string identifying this Telegram Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelegramSourcePropertyMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    patch:
+      description: TelegramSourcePropertyMapping Viewset
+      operationId: propertymappings_source_telegram_partial_update
+      parameters:
+      - description: A UUID string identifying this Telegram Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTelegramSourcePropertyMappingRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelegramSourcePropertyMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+    put:
+      description: TelegramSourcePropertyMapping Viewset
+      operationId: propertymappings_source_telegram_update
+      parameters:
+      - description: A UUID string identifying this Telegram Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TelegramSourcePropertyMappingRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelegramSourcePropertyMapping'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
+  /propertymappings/source/telegram/{pm_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: propertymappings_source_telegram_used_by_list
+      parameters:
+      - description: A UUID string identifying this Telegram Source Property Mapping.
+        explode: false
+        in: path
+        name: pm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - propertymappings
   /providers/all/:
     get:
       description: Provider Viewset
@@ -27553,6 +27859,10 @@ paths:
           - authentik_sources_saml.usersamlsourceconnection
           - authentik_sources_scim.scimsource
           - authentik_sources_scim.scimsourcepropertymapping
+          - authentik_sources_telegram.grouptelegramsourceconnection
+          - authentik_sources_telegram.telegramsource
+          - authentik_sources_telegram.telegramsourcepropertymapping
+          - authentik_sources_telegram.usertelegramsourceconnection
           - authentik_stages_authenticator_duo.authenticatorduostage
           - authentik_stages_authenticator_duo.duodevice
           - authentik_stages_authenticator_email.authenticatoremailstage
@@ -27819,6 +28129,10 @@ paths:
           - authentik_sources_saml.usersamlsourceconnection
           - authentik_sources_scim.scimsource
           - authentik_sources_scim.scimsourcepropertymapping
+          - authentik_sources_telegram.grouptelegramsourceconnection
+          - authentik_sources_telegram.telegramsource
+          - authentik_sources_telegram.telegramsourcepropertymapping
+          - authentik_sources_telegram.usertelegramsourceconnection
           - authentik_stages_authenticator_duo.authenticatorduostage
           - authentik_stages_authenticator_duo.duodevice
           - authentik_stages_authenticator_email.authenticatoremailstage
@@ -30930,6 +31244,304 @@ paths:
       operationId: sources_group_connections_saml_used_by_list
       parameters:
       - description: A unique integer value identifying this Group SAML Source Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/group_connections/telegram/:
+    get:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_telegram_list
+      parameters:
+      - explode: true
+        in: query
+        name: group
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: source__slug
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedGroupTelegramSourceConnectionList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    post:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_telegram_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupTelegramSourceConnectionRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupTelegramSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/group_connections/telegram/{id}/:
+    delete:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_telegram_destroy
+      parameters:
+      - description: A unique integer value identifying this Group Telegram Source
+          Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    get:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_telegram_retrieve
+      parameters:
+      - description: A unique integer value identifying this Group Telegram Source
+          Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupTelegramSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    patch:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_telegram_partial_update
+      parameters:
+      - description: A unique integer value identifying this Group Telegram Source
+          Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedGroupTelegramSourceConnectionRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupTelegramSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    put:
+      description: Group-source connection Viewset
+      operationId: sources_group_connections_telegram_update
+      parameters:
+      - description: A unique integer value identifying this Group Telegram Source
+          Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupTelegramSourceConnectionRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupTelegramSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/group_connections/telegram/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: sources_group_connections_telegram_used_by_list
+      parameters:
+      - description: A unique integer value identifying this Group Telegram Source
+          Connection.
         explode: false
         in: path
         name: id
@@ -34232,6 +34844,389 @@ paths:
       - authentik: []
       tags:
       - sources
+  /sources/telegram/:
+    get:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: sources_telegram_list
+      parameters:
+      - explode: true
+        in: query
+        name: authentication_flow
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: bot_username
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: enabled
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: enrollment_flow
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: |+
+          How the source determines if an existing group should be used or a new group created.
+
+        explode: true
+        in: query
+        name: group_matching_mode
+        required: false
+        schema:
+          enum:
+          - identifier
+          - name_deny
+          - name_link
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: pbm_uuid
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: policy_engine_mode
+        required: false
+        schema:
+          enum:
+          - all
+          - any
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: request_message_access
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: slug
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |+
+          How the source determines if an existing user should be authenticated or a new user enrolled.
+
+        explode: true
+        in: query
+        name: user_matching_mode
+        required: false
+        schema:
+          enum:
+          - email_deny
+          - email_link
+          - identifier
+          - username_deny
+          - username_link
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTelegramSourceList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    post:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: sources_telegram_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TelegramSourceRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelegramSource'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/telegram/{slug}/:
+    delete:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: sources_telegram_destroy
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          description: "Internal source name, used in URLs."
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    get:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: sources_telegram_retrieve
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          description: "Internal source name, used in URLs."
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelegramSource'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    patch:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: sources_telegram_partial_update
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          description: "Internal source name, used in URLs."
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTelegramSourceRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelegramSource'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    put:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: sources_telegram_update
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          description: "Internal source name, used in URLs."
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TelegramSourceRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelegramSource'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/telegram/{slug}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: sources_telegram_used_by_list
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          description: "Internal source name, used in URLs."
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
   /sources/user_connections/all/:
     get:
       description: User-source connection Viewset
@@ -35925,6 +36920,303 @@ paths:
       operationId: sources_user_connections_saml_used_by_list
       parameters:
       - description: A unique integer value identifying this User SAML Source Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/user_connections/telegram/:
+    get:
+      description: User-source connection Viewset
+      operationId: sources_user_connections_telegram_list
+      parameters:
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: source__slug
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: user
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedUserTelegramSourceConnectionList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    post:
+      description: User-source connection Viewset
+      operationId: sources_user_connections_telegram_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserTelegramSourceConnectionRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserTelegramSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/user_connections/telegram/{id}/:
+    delete:
+      description: User-source connection Viewset
+      operationId: sources_user_connections_telegram_destroy
+      parameters:
+      - description: A unique integer value identifying this User Telegram Source
+          Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    get:
+      description: User-source connection Viewset
+      operationId: sources_user_connections_telegram_retrieve
+      parameters:
+      - description: A unique integer value identifying this User Telegram Source
+          Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserTelegramSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    patch:
+      description: User-source connection Viewset
+      operationId: sources_user_connections_telegram_partial_update
+      parameters:
+      - description: A unique integer value identifying this User Telegram Source
+          Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUserTelegramSourceConnectionRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserTelegramSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+    put:
+      description: User-source connection Viewset
+      operationId: sources_user_connections_telegram_update
+      parameters:
+      - description: A unique integer value identifying this User Telegram Source
+          Connection.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserTelegramSourceConnectionRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserTelegramSourceConnection'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
+  /sources/user_connections/telegram/{id}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: sources_user_connections_telegram_used_by_list
+      parameters:
+      - description: A unique integer value identifying this User Telegram Source
+          Connection.
         explode: false
         in: path
         name: id
@@ -46220,6 +47512,7 @@ components:
       - authentik.sources.plex
       - authentik.sources.saml
       - authentik.sources.scim
+      - authentik.sources.telegram
       - authentik.stages.authenticator
       - authentik.stages.authenticator_duo
       - authentik.stages.authenticator_email
@@ -49035,6 +50328,7 @@ components:
           xak-flow-redirect: '#/components/schemas/RedirectChallenge'
           ak-stage-session-end: '#/components/schemas/SessionEndChallenge'
           xak-flow-shell: '#/components/schemas/ShellChallenge'
+          ak-source-telegram: '#/components/schemas/TelegramLoginChallenge'
           ak-stage-user-login: '#/components/schemas/UserLoginChallenge'
         propertyName: component
       oneOf:
@@ -49063,6 +50357,7 @@ components:
       - $ref: '#/components/schemas/RedirectChallenge'
       - $ref: '#/components/schemas/SessionEndChallenge'
       - $ref: '#/components/schemas/ShellChallenge'
+      - $ref: '#/components/schemas/TelegramLoginChallenge'
       - $ref: '#/components/schemas/UserLoginChallenge'
     ClientTypeEnum:
       enum:
@@ -51683,6 +52978,7 @@ components:
           ak-source-plex: '#/components/schemas/PlexAuthenticationChallengeResponseRequest'
           ak-stage-prompt: '#/components/schemas/PromptChallengeResponseRequest'
           xak-flow-redirect: '#/components/schemas/RedirectChallengeResponseRequest'
+          ak-source-telegram: '#/components/schemas/TelegramChallengeResponseRequest'
           ak-stage-user-login: '#/components/schemas/UserLoginChallengeResponseRequest'
         propertyName: component
       oneOf:
@@ -51707,6 +53003,7 @@ components:
       - $ref: '#/components/schemas/PlexAuthenticationChallengeResponseRequest'
       - $ref: '#/components/schemas/PromptChallengeResponseRequest'
       - $ref: '#/components/schemas/RedirectChallengeResponseRequest'
+      - $ref: '#/components/schemas/TelegramChallengeResponseRequest'
       - $ref: '#/components/schemas/UserLoginChallengeResponseRequest'
     FlowDesignationEnum:
       enum:
@@ -53326,6 +54623,71 @@ components:
       - source_obj
       type: object
     GroupSourceConnectionRequest:
+      description: Group Source Connection
+      example:
+        identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        group:
+          format: uuid
+          type: string
+        source:
+          format: uuid
+          type: string
+        identifier:
+          minLength: 1
+          type: string
+      required:
+      - group
+      - identifier
+      - source
+      type: object
+    GroupTelegramSourceConnection:
+      description: Group Source Connection
+      example:
+        identifier: identifier
+        last_updated: 2000-01-23T04:56:07.000+00:00
+        source_obj: ""
+        created: 2000-01-23T04:56:07.000+00:00
+        pk: 0
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          readOnly: true
+          title: ID
+          type: integer
+        group:
+          format: uuid
+          type: string
+        source:
+          format: uuid
+          type: string
+        source_obj:
+          allOf:
+          - $ref: '#/components/schemas/Source'
+          readOnly: true
+        identifier:
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+        last_updated:
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - created
+      - group
+      - identifier
+      - last_updated
+      - pk
+      - source
+      - source_obj
+      type: object
+    GroupTelegramSourceConnectionRequest:
       description: Group Source Connection
       example:
         identifier: identifier
@@ -55489,11 +56851,13 @@ components:
           xak-flow-redirect: '#/components/schemas/RedirectChallenge'
           ak-source-oauth-apple: '#/components/schemas/AppleLoginChallenge'
           ak-source-plex: '#/components/schemas/PlexAuthenticationChallenge'
+          ak-source-telegram: '#/components/schemas/TelegramLoginChallenge'
         propertyName: component
       oneOf:
       - $ref: '#/components/schemas/RedirectChallenge'
       - $ref: '#/components/schemas/AppleLoginChallenge'
       - $ref: '#/components/schemas/PlexAuthenticationChallenge'
+      - $ref: '#/components/schemas/TelegramLoginChallenge'
     LoginSource:
       description: Serializer for Login buttons of sources
       properties:
@@ -55946,6 +57310,10 @@ components:
       - authentik_sources_saml.groupsamlsourceconnection
       - authentik_sources_scim.scimsource
       - authentik_sources_scim.scimsourcepropertymapping
+      - authentik_sources_telegram.telegramsource
+      - authentik_sources_telegram.telegramsourcepropertymapping
+      - authentik_sources_telegram.usertelegramsourceconnection
+      - authentik_sources_telegram.grouptelegramsourceconnection
       - authentik_stages_authenticator_duo.authenticatorduostage
       - authentik_stages_authenticator_duo.duodevice
       - authentik_stages_authenticator_email.authenticatoremailstage
@@ -60930,6 +62298,48 @@ components:
       - pagination
       - results
       type: object
+    PaginatedGroupTelegramSourceConnectionList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        autocomplete:
+          key: ""
+        results:
+        - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          source_obj: ""
+          created: 2000-01-23T04:56:07.000+00:00
+          pk: 0
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          source_obj: ""
+          created: 2000-01-23T04:56:07.000+00:00
+          pk: 0
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/GroupTelegramSourceConnection'
+          type: array
+        autocomplete:
+          additionalProperties: {}
+          type: object
+      required:
+      - autocomplete
+      - pagination
+      - results
+      type: object
     PaginatedIdentificationStageList:
       example:
         pagination:
@@ -65698,6 +67108,126 @@ components:
       - pagination
       - results
       type: object
+    PaginatedTelegramSourceList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        autocomplete:
+          key: ""
+        results:
+        - user_matching_mode: ""
+          verbose_name_plural: verbose_name_plural
+          user_path_template: user_path_template
+          group_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          request_message_access: true
+          icon: icon
+          enabled: true
+          bot_username: bot_username
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          policy_engine_mode: null
+          enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          component: component
+          verbose_name: verbose_name
+          meta_model_name: meta_model_name
+          pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          managed: managed
+          name: name
+          user_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          slug: slug
+        - user_matching_mode: ""
+          verbose_name_plural: verbose_name_plural
+          user_path_template: user_path_template
+          group_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          request_message_access: true
+          icon: icon
+          enabled: true
+          bot_username: bot_username
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          policy_engine_mode: null
+          enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          component: component
+          verbose_name: verbose_name
+          meta_model_name: meta_model_name
+          pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          managed: managed
+          name: name
+          user_property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          slug: slug
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/TelegramSource'
+          type: array
+        autocomplete:
+          additionalProperties: {}
+          type: object
+      required:
+      - autocomplete
+      - pagination
+      - results
+      type: object
+    PaginatedTelegramSourcePropertyMappingList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        autocomplete:
+          key: ""
+        results:
+        - component: component
+          verbose_name: verbose_name
+          expression: expression
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          managed: managed
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - component: component
+          verbose_name: verbose_name
+          expression: expression
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          managed: managed
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/TelegramSourcePropertyMapping'
+          type: array
+        autocomplete:
+          additionalProperties: {}
+          type: object
+      required:
+      - autocomplete
+      - pagination
+      - results
+      type: object
     PaginatedTenantList:
       example:
         pagination:
@@ -66945,6 +68475,48 @@ components:
         results:
           items:
             $ref: '#/components/schemas/UserSourceConnection'
+          type: array
+        autocomplete:
+          additionalProperties: {}
+          type: object
+      required:
+      - autocomplete
+      - pagination
+      - results
+      type: object
+    PaginatedUserTelegramSourceConnectionList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        autocomplete:
+          key: ""
+        results:
+        - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          source_obj: ""
+          created: 2000-01-23T04:56:07.000+00:00
+          pk: 0
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user: 6
+        - identifier: identifier
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          source_obj: ""
+          created: 2000-01-23T04:56:07.000+00:00
+          pk: 0
+          source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user: 6
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/UserTelegramSourceConnection'
           type: array
         autocomplete:
           additionalProperties: {}
@@ -69346,6 +70918,23 @@ components:
           type: string
       type: object
     PatchedGroupSourceConnectionRequest:
+      description: Group Source Connection
+      example:
+        identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        group:
+          format: uuid
+          type: string
+        source:
+          format: uuid
+          type: string
+        identifier:
+          minLength: 1
+          type: string
+      type: object
+    PatchedGroupTelegramSourceConnectionRequest:
       description: Group Source Connection
       example:
         identifier: identifier
@@ -72166,6 +73755,110 @@ components:
           minLength: 1
           type: string
       type: object
+    PatchedTelegramSourcePropertyMappingRequest:
+      description: TelegramSourcePropertyMapping Serializer
+      example:
+        expression: expression
+        managed: managed
+        name: name
+      properties:
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          minLength: 1
+          nullable: true
+          title: Managed by authentik
+          type: string
+        name:
+          minLength: 1
+          type: string
+        expression:
+          minLength: 1
+          type: string
+      type: object
+    PatchedTelegramSourceRequest:
+      description: Source Serializer
+      example:
+        user_matching_mode: ""
+        user_path_template: user_path_template
+        group_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        request_message_access: true
+        enabled: true
+        bot_username: bot_username
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        policy_engine_mode: null
+        enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        bot_token: bot_token
+        slug: slug
+      properties:
+        name:
+          description: Source's display Name.
+          minLength: 1
+          type: string
+        slug:
+          description: "Internal source name, used in URLs."
+          maxLength: 50
+          minLength: 1
+          pattern: "^[-a-zA-Z0-9_]+$"
+          type: string
+        enabled:
+          type: boolean
+        authentication_flow:
+          description: Flow to use when authenticating existing users.
+          format: uuid
+          nullable: true
+          type: string
+        enrollment_flow:
+          description: Flow to use when enrolling new users.
+          format: uuid
+          nullable: true
+          type: string
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        policy_engine_mode:
+          $ref: '#/components/schemas/PolicyEngineMode'
+        user_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/UserMatchingModeEnum'
+          description: How the source determines if an existing user should be authenticated
+            or a new user enrolled.
+        user_path_template:
+          minLength: 1
+          type: string
+        bot_username:
+          description: Telegram bot username
+          minLength: 1
+          type: string
+        bot_token:
+          description: Telegram bot token
+          minLength: 1
+          type: string
+          writeOnly: true
+        request_message_access:
+          description: Request access to send messages from your bot.
+          type: boolean
+        pre_authentication_flow:
+          description: Flow used before authentication.
+          format: uuid
+          type: string
+      type: object
     PatchedTenantRequest:
       description: Tenant Serializer
       example:
@@ -72518,6 +74211,22 @@ components:
           type: string
       type: object
     PatchedUserSourceConnectionRequest:
+      description: User source connection
+      example:
+        identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user: 0
+      properties:
+        user:
+          type: integer
+        source:
+          format: uuid
+          type: string
+        identifier:
+          minLength: 1
+          type: string
+      type: object
+    PatchedUserTelegramSourceConnectionRequest:
       description: User source connection
       example:
         identifier: identifier
@@ -78719,6 +80428,356 @@ components:
       - warning
       - error
       type: string
+    TelegramChallengeResponseRequest:
+      description: Base class for all challenge responses
+      properties:
+        component:
+          default: ak-source-telegram
+          minLength: 1
+          type: string
+        id:
+          type: integer
+        first_name:
+          maxLength: 255
+          minLength: 1
+          type: string
+        last_name:
+          maxLength: 255
+          minLength: 1
+          type: string
+        username:
+          maxLength: 255
+          minLength: 1
+          type: string
+        photo_url:
+          format: uri
+          minLength: 1
+          type: string
+        auth_date:
+          type: integer
+        hash:
+          maxLength: 64
+          minLength: 1
+          type: string
+      required:
+      - auth_date
+      - hash
+      - id
+      type: object
+    TelegramLoginChallenge:
+      description: Base login challenge for Identification stage
+      properties:
+        flow_info:
+          $ref: '#/components/schemas/ContextualFlowInfo'
+        component:
+          default: ak-source-telegram
+          type: string
+        response_errors:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/ErrorDetail'
+            type: array
+          type: object
+        bot_username:
+          description: Telegram bot username
+          type: string
+        request_message_access:
+          type: boolean
+      required:
+      - bot_username
+      - request_message_access
+      type: object
+    TelegramSource:
+      description: Source Serializer
+      example:
+        user_matching_mode: ""
+        verbose_name_plural: verbose_name_plural
+        user_path_template: user_path_template
+        group_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        request_message_access: true
+        icon: icon
+        enabled: true
+        bot_username: bot_username
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        policy_engine_mode: null
+        enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        component: component
+        verbose_name: verbose_name
+        meta_model_name: meta_model_name
+        pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        managed: managed
+        name: name
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        slug: slug
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Pbm uuid
+          type: string
+        name:
+          description: Source's display Name.
+          type: string
+        slug:
+          description: "Internal source name, used in URLs."
+          maxLength: 50
+          pattern: "^[-a-zA-Z0-9_]+$"
+          type: string
+        enabled:
+          type: boolean
+        authentication_flow:
+          description: Flow to use when authenticating existing users.
+          format: uuid
+          nullable: true
+          type: string
+        enrollment_flow:
+          description: Flow to use when enrolling new users.
+          format: uuid
+          nullable: true
+          type: string
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        component:
+          description: Get object component so that we know how to edit the object
+          readOnly: true
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+        policy_engine_mode:
+          $ref: '#/components/schemas/PolicyEngineMode'
+        user_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/UserMatchingModeEnum'
+          description: How the source determines if an existing user should be authenticated
+            or a new user enrolled.
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          nullable: true
+          readOnly: true
+          title: Managed by authentik
+          type: string
+        user_path_template:
+          type: string
+        icon:
+          nullable: true
+          readOnly: true
+          type: string
+        bot_username:
+          description: Telegram bot username
+          type: string
+        request_message_access:
+          description: Request access to send messages from your bot.
+          type: boolean
+        pre_authentication_flow:
+          description: Flow used before authentication.
+          format: uuid
+          type: string
+      required:
+      - bot_username
+      - component
+      - icon
+      - managed
+      - meta_model_name
+      - name
+      - pk
+      - pre_authentication_flow
+      - slug
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    TelegramSourcePropertyMapping:
+      description: TelegramSourcePropertyMapping Serializer
+      example:
+        component: component
+        verbose_name: verbose_name
+        expression: expression
+        verbose_name_plural: verbose_name_plural
+        meta_model_name: meta_model_name
+        managed: managed
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Pm uuid
+          type: string
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          nullable: true
+          title: Managed by authentik
+          type: string
+        name:
+          type: string
+        expression:
+          type: string
+        component:
+          description: Get object's component so that we know how to edit the object
+          readOnly: true
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+      required:
+      - component
+      - expression
+      - meta_model_name
+      - name
+      - pk
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    TelegramSourcePropertyMappingRequest:
+      description: TelegramSourcePropertyMapping Serializer
+      example:
+        expression: expression
+        managed: managed
+        name: name
+      properties:
+        managed:
+          description: "Objects that are managed by authentik. These objects are created\
+            \ and updated automatically. This flag only indicates that an object can\
+            \ be overwritten by migrations. You can still modify the objects via the\
+            \ API, but expect changes to be overwritten in a later update."
+          minLength: 1
+          nullable: true
+          title: Managed by authentik
+          type: string
+        name:
+          minLength: 1
+          type: string
+        expression:
+          minLength: 1
+          type: string
+      required:
+      - expression
+      - name
+      type: object
+    TelegramSourceRequest:
+      description: Source Serializer
+      example:
+        user_matching_mode: ""
+        user_path_template: user_path_template
+        group_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        request_message_access: true
+        enabled: true
+        bot_username: bot_username
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        policy_engine_mode: null
+        enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        pre_authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        bot_token: bot_token
+        slug: slug
+      properties:
+        name:
+          description: Source's display Name.
+          minLength: 1
+          type: string
+        slug:
+          description: "Internal source name, used in URLs."
+          maxLength: 50
+          minLength: 1
+          pattern: "^[-a-zA-Z0-9_]+$"
+          type: string
+        enabled:
+          type: boolean
+        authentication_flow:
+          description: Flow to use when authenticating existing users.
+          format: uuid
+          nullable: true
+          type: string
+        enrollment_flow:
+          description: Flow to use when enrolling new users.
+          format: uuid
+          nullable: true
+          type: string
+        user_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        group_property_mappings:
+          items:
+            format: uuid
+            type: string
+          type: array
+        policy_engine_mode:
+          $ref: '#/components/schemas/PolicyEngineMode'
+        user_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/UserMatchingModeEnum'
+          description: How the source determines if an existing user should be authenticated
+            or a new user enrolled.
+        user_path_template:
+          minLength: 1
+          type: string
+        bot_username:
+          description: Telegram bot username
+          minLength: 1
+          type: string
+        bot_token:
+          description: Telegram bot token
+          minLength: 1
+          type: string
+          writeOnly: true
+        request_message_access:
+          description: Request access to send messages from your bot.
+          type: boolean
+        pre_authentication_flow:
+          description: Flow used before authentication.
+          format: uuid
+          type: string
+      required:
+      - bot_token
+      - bot_username
+      - name
+      - pre_authentication_flow
+      - slug
+      type: object
     Tenant:
       description: Tenant Serializer
       example:
@@ -80736,6 +82795,69 @@ components:
       - user
       type: object
     UserSourceConnectionRequest:
+      description: User source connection
+      example:
+        identifier: identifier
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user: 0
+      properties:
+        user:
+          type: integer
+        source:
+          format: uuid
+          type: string
+        identifier:
+          minLength: 1
+          type: string
+      required:
+      - identifier
+      - source
+      - user
+      type: object
+    UserTelegramSourceConnection:
+      description: User source connection
+      example:
+        identifier: identifier
+        last_updated: 2000-01-23T04:56:07.000+00:00
+        source_obj: ""
+        created: 2000-01-23T04:56:07.000+00:00
+        pk: 0
+        source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user: 6
+      properties:
+        pk:
+          readOnly: true
+          title: ID
+          type: integer
+        user:
+          type: integer
+        source:
+          format: uuid
+          type: string
+        source_obj:
+          allOf:
+          - $ref: '#/components/schemas/Source'
+          readOnly: true
+        identifier:
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+        last_updated:
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - created
+      - identifier
+      - last_updated
+      - pk
+      - source
+      - source_obj
+      - user
+      type: object
+    UserTelegramSourceConnectionRequest:
       description: User source connection
       example:
         identifier: identifier

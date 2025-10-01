@@ -62,12 +62,14 @@ Name | Type | Description | Notes
 **InvalidationFlowUrl** | Pointer to **string** |  | [optional] 
 **BrandName** | **string** |  | 
 **Body** | **string** |  | 
+**BotUsername** | **string** | Telegram bot username | 
+**RequestMessageAccess** | **bool** |  | 
 
 ## Methods
 
 ### NewChallengeTypes
 
-`func NewChallengeTypes(pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, interactive bool, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, name string, requestId string, loadingText string, userFields []string, passwordFields bool, flowDesignation FlowDesignationEnum, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, brandName string, body string, ) *ChallengeTypes`
+`func NewChallengeTypes(pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, interactive bool, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, name string, requestId string, loadingText string, userFields []string, passwordFields bool, flowDesignation FlowDesignationEnum, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, brandName string, body string, botUsername string, requestMessageAccess bool, ) *ChallengeTypes`
 
 NewChallengeTypes instantiates a new ChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -1385,6 +1387,46 @@ and a boolean to check if the value has been set.
 `func (o *ChallengeTypes) SetBody(v string)`
 
 SetBody sets Body field to given value.
+
+
+### GetBotUsername
+
+`func (o *ChallengeTypes) GetBotUsername() string`
+
+GetBotUsername returns the BotUsername field if non-nil, zero value otherwise.
+
+### GetBotUsernameOk
+
+`func (o *ChallengeTypes) GetBotUsernameOk() (*string, bool)`
+
+GetBotUsernameOk returns a tuple with the BotUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBotUsername
+
+`func (o *ChallengeTypes) SetBotUsername(v string)`
+
+SetBotUsername sets BotUsername field to given value.
+
+
+### GetRequestMessageAccess
+
+`func (o *ChallengeTypes) GetRequestMessageAccess() bool`
+
+GetRequestMessageAccess returns the RequestMessageAccess field if non-nil, zero value otherwise.
+
+### GetRequestMessageAccessOk
+
+`func (o *ChallengeTypes) GetRequestMessageAccessOk() (*bool, bool)`
+
+GetRequestMessageAccessOk returns a tuple with the RequestMessageAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestMessageAccess
+
+`func (o *ChallengeTypes) SetRequestMessageAccess(v bool)`
+
+SetRequestMessageAccess sets RequestMessageAccess field to given value.
 
 
 

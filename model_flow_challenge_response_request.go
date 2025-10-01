@@ -39,6 +39,7 @@ type FlowChallengeResponseRequest struct {
 	PlexAuthenticationChallengeResponseRequest      *PlexAuthenticationChallengeResponseRequest
 	PromptChallengeResponseRequest                  *PromptChallengeResponseRequest
 	RedirectChallengeResponseRequest                *RedirectChallengeResponseRequest
+	TelegramChallengeResponseRequest                *TelegramChallengeResponseRequest
 	UserLoginChallengeResponseRequest               *UserLoginChallengeResponseRequest
 }
 
@@ -186,6 +187,13 @@ func PromptChallengeResponseRequestAsFlowChallengeResponseRequest(v *PromptChall
 func RedirectChallengeResponseRequestAsFlowChallengeResponseRequest(v *RedirectChallengeResponseRequest) FlowChallengeResponseRequest {
 	return FlowChallengeResponseRequest{
 		RedirectChallengeResponseRequest: v,
+	}
+}
+
+// TelegramChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns TelegramChallengeResponseRequest wrapped in FlowChallengeResponseRequest
+func TelegramChallengeResponseRequestAsFlowChallengeResponseRequest(v *TelegramChallengeResponseRequest) FlowChallengeResponseRequest {
+	return FlowChallengeResponseRequest{
+		TelegramChallengeResponseRequest: v,
 	}
 }
 
@@ -458,6 +466,18 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'TelegramChallengeResponseRequest'
+	if jsonDict["component"] == "TelegramChallengeResponseRequest" {
+		// try to unmarshal JSON data into TelegramChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.TelegramChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.TelegramChallengeResponseRequest, return on the first match
+		} else {
+			dst.TelegramChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as TelegramChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'UserLoginChallengeResponseRequest'
 	if jsonDict["component"] == "UserLoginChallengeResponseRequest" {
 		// try to unmarshal JSON data into UserLoginChallengeResponseRequest
@@ -515,6 +535,18 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.PlexAuthenticationChallengeResponseRequest = nil
 			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as PlexAuthenticationChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-source-telegram'
+	if jsonDict["component"] == "ak-source-telegram" {
+		// try to unmarshal JSON data into TelegramChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.TelegramChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.TelegramChallengeResponseRequest, return on the first match
+		} else {
+			dst.TelegramChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as TelegramChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -823,6 +855,10 @@ func (src FlowChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.RedirectChallengeResponseRequest)
 	}
 
+	if src.TelegramChallengeResponseRequest != nil {
+		return json.Marshal(&src.TelegramChallengeResponseRequest)
+	}
+
 	if src.UserLoginChallengeResponseRequest != nil {
 		return json.Marshal(&src.UserLoginChallengeResponseRequest)
 	}
@@ -917,6 +953,10 @@ func (obj *FlowChallengeResponseRequest) GetActualInstance() interface{} {
 
 	if obj.RedirectChallengeResponseRequest != nil {
 		return obj.RedirectChallengeResponseRequest
+	}
+
+	if obj.TelegramChallengeResponseRequest != nil {
+		return obj.TelegramChallengeResponseRequest
 	}
 
 	if obj.UserLoginChallengeResponseRequest != nil {

@@ -224,6 +224,8 @@ docs/GroupSAMLSourceConnection.md
 docs/GroupSAMLSourceConnectionRequest.md
 docs/GroupSourceConnection.md
 docs/GroupSourceConnectionRequest.md
+docs/GroupTelegramSourceConnection.md
+docs/GroupTelegramSourceConnectionRequest.md
 docs/IdentificationChallenge.md
 docs/IdentificationChallengeCaptchaStage.md
 docs/IdentificationChallengeResponseRequest.md
@@ -365,6 +367,7 @@ docs/PaginatedGroupOAuthSourceConnectionList.md
 docs/PaginatedGroupPlexSourceConnectionList.md
 docs/PaginatedGroupSAMLSourceConnectionList.md
 docs/PaginatedGroupSourceConnectionList.md
+docs/PaginatedGroupTelegramSourceConnectionList.md
 docs/PaginatedIdentificationStageList.md
 docs/PaginatedInitialPermissionsList.md
 docs/PaginatedInvitationList.md
@@ -438,6 +441,8 @@ docs/PaginatedStageList.md
 docs/PaginatedStaticDeviceList.md
 docs/PaginatedTOTPDeviceList.md
 docs/PaginatedTaskList.md
+docs/PaginatedTelegramSourceList.md
+docs/PaginatedTelegramSourcePropertyMappingList.md
 docs/PaginatedTenantList.md
 docs/PaginatedTokenList.md
 docs/PaginatedTokenModelList.md
@@ -454,6 +459,7 @@ docs/PaginatedUserOAuthSourceConnectionList.md
 docs/PaginatedUserPlexSourceConnectionList.md
 docs/PaginatedUserSAMLSourceConnectionList.md
 docs/PaginatedUserSourceConnectionList.md
+docs/PaginatedUserTelegramSourceConnectionList.md
 docs/PaginatedUserWriteStageList.md
 docs/PaginatedWebAuthnDeviceList.md
 docs/PaginatedWebAuthnDeviceTypeList.md
@@ -511,6 +517,7 @@ docs/PatchedGroupPlexSourceConnectionRequest.md
 docs/PatchedGroupRequest.md
 docs/PatchedGroupSAMLSourceConnectionRequest.md
 docs/PatchedGroupSourceConnectionRequest.md
+docs/PatchedGroupTelegramSourceConnectionRequest.md
 docs/PatchedIdentificationStageRequest.md
 docs/PatchedInitialPermissionsRequest.md
 docs/PatchedInvitationRequest.md
@@ -569,6 +576,8 @@ docs/PatchedSettingsRequestFlags.md
 docs/PatchedSourceStageRequest.md
 docs/PatchedStaticDeviceRequest.md
 docs/PatchedTOTPDeviceRequest.md
+docs/PatchedTelegramSourcePropertyMappingRequest.md
+docs/PatchedTelegramSourceRequest.md
 docs/PatchedTenantRequest.md
 docs/PatchedTokenRequest.md
 docs/PatchedUniquePasswordPolicyRequest.md
@@ -582,6 +591,7 @@ docs/PatchedUserPlexSourceConnectionRequest.md
 docs/PatchedUserRequest.md
 docs/PatchedUserSAMLSourceConnectionRequest.md
 docs/PatchedUserSourceConnectionRequest.md
+docs/PatchedUserTelegramSourceConnectionRequest.md
 docs/PatchedUserWriteStageRequest.md
 docs/PatchedWebAuthnDeviceRequest.md
 docs/Permission.md
@@ -730,6 +740,12 @@ docs/TOTPDeviceRequest.md
 docs/Task.md
 docs/TaskAggregatedStatusEnum.md
 docs/TasksApi.md
+docs/TelegramChallengeResponseRequest.md
+docs/TelegramLoginChallenge.md
+docs/TelegramSource.md
+docs/TelegramSourcePropertyMapping.md
+docs/TelegramSourcePropertyMappingRequest.md
+docs/TelegramSourceRequest.md
 docs/Tenant.md
 docs/TenantAdminGroupRequestRequest.md
 docs/TenantRecoveryKeyRequestRequest.md
@@ -787,6 +803,8 @@ docs/UserServiceAccountResponse.md
 docs/UserSetting.md
 docs/UserSourceConnection.md
 docs/UserSourceConnectionRequest.md
+docs/UserTelegramSourceConnection.md
+docs/UserTelegramSourceConnectionRequest.md
 docs/UserTypeEnum.md
 docs/UserVerificationEnum.md
 docs/UserWriteStage.md
@@ -993,6 +1011,8 @@ model_group_saml_source_connection.go
 model_group_saml_source_connection_request.go
 model_group_source_connection.go
 model_group_source_connection_request.go
+model_group_telegram_source_connection.go
+model_group_telegram_source_connection_request.go
 model_identification_challenge.go
 model_identification_challenge_captcha_stage.go
 model_identification_challenge_response_request.go
@@ -1131,6 +1151,7 @@ model_paginated_group_o_auth_source_connection_list.go
 model_paginated_group_plex_source_connection_list.go
 model_paginated_group_saml_source_connection_list.go
 model_paginated_group_source_connection_list.go
+model_paginated_group_telegram_source_connection_list.go
 model_paginated_identification_stage_list.go
 model_paginated_initial_permissions_list.go
 model_paginated_invitation_list.go
@@ -1203,6 +1224,8 @@ model_paginated_ssf_stream_list.go
 model_paginated_stage_list.go
 model_paginated_static_device_list.go
 model_paginated_task_list.go
+model_paginated_telegram_source_list.go
+model_paginated_telegram_source_property_mapping_list.go
 model_paginated_tenant_list.go
 model_paginated_token_list.go
 model_paginated_token_model_list.go
@@ -1220,6 +1243,7 @@ model_paginated_user_o_auth_source_connection_list.go
 model_paginated_user_plex_source_connection_list.go
 model_paginated_user_saml_source_connection_list.go
 model_paginated_user_source_connection_list.go
+model_paginated_user_telegram_source_connection_list.go
 model_paginated_user_write_stage_list.go
 model_paginated_web_authn_device_list.go
 model_paginated_web_authn_device_type_list.go
@@ -1277,6 +1301,7 @@ model_patched_group_plex_source_connection_request.go
 model_patched_group_request.go
 model_patched_group_saml_source_connection_request.go
 model_patched_group_source_connection_request.go
+model_patched_group_telegram_source_connection_request.go
 model_patched_identification_stage_request.go
 model_patched_initial_permissions_request.go
 model_patched_invitation_request.go
@@ -1334,6 +1359,8 @@ model_patched_sms_device_request.go
 model_patched_source_stage_request.go
 model_patched_ssf_provider_request.go
 model_patched_static_device_request.go
+model_patched_telegram_source_property_mapping_request.go
+model_patched_telegram_source_request.go
 model_patched_tenant_request.go
 model_patched_token_request.go
 model_patched_totp_device_request.go
@@ -1348,6 +1375,7 @@ model_patched_user_plex_source_connection_request.go
 model_patched_user_request.go
 model_patched_user_saml_source_connection_request.go
 model_patched_user_source_connection_request.go
+model_patched_user_telegram_source_connection_request.go
 model_patched_user_write_stage_request.go
 model_patched_web_authn_device_request.go
 model_permission.go
@@ -1483,6 +1511,12 @@ model_system_info.go
 model_system_info_runtime.go
 model_task.go
 model_task_aggregated_status_enum.go
+model_telegram_challenge_response_request.go
+model_telegram_login_challenge.go
+model_telegram_source.go
+model_telegram_source_property_mapping.go
+model_telegram_source_property_mapping_request.go
+model_telegram_source_request.go
 model_tenant.go
 model_tenant_admin_group_request_request.go
 model_tenant_recovery_key_request_request.go
@@ -1541,6 +1575,8 @@ model_user_service_account_response.go
 model_user_setting.go
 model_user_source_connection.go
 model_user_source_connection_request.go
+model_user_telegram_source_connection.go
+model_user_telegram_source_connection_request.go
 model_user_type_enum.go
 model_user_verification_enum.go
 model_user_write_stage.go

@@ -84,6 +84,10 @@ const (
 	MODELENUM_SOURCES_SAML_GROUPSAMLSOURCECONNECTION                            ModelEnum = "authentik_sources_saml.groupsamlsourceconnection"
 	MODELENUM_SOURCES_SCIM_SCIMSOURCE                                           ModelEnum = "authentik_sources_scim.scimsource"
 	MODELENUM_SOURCES_SCIM_SCIMSOURCEPROPERTYMAPPING                            ModelEnum = "authentik_sources_scim.scimsourcepropertymapping"
+	MODELENUM_SOURCES_TELEGRAM_TELEGRAMSOURCE                                   ModelEnum = "authentik_sources_telegram.telegramsource"
+	MODELENUM_SOURCES_TELEGRAM_TELEGRAMSOURCEPROPERTYMAPPING                    ModelEnum = "authentik_sources_telegram.telegramsourcepropertymapping"
+	MODELENUM_SOURCES_TELEGRAM_USERTELEGRAMSOURCECONNECTION                     ModelEnum = "authentik_sources_telegram.usertelegramsourceconnection"
+	MODELENUM_SOURCES_TELEGRAM_GROUPTELEGRAMSOURCECONNECTION                    ModelEnum = "authentik_sources_telegram.grouptelegramsourceconnection"
 	MODELENUM_STAGES_AUTHENTICATOR_DUO_AUTHENTICATORDUOSTAGE                    ModelEnum = "authentik_stages_authenticator_duo.authenticatorduostage"
 	MODELENUM_STAGES_AUTHENTICATOR_DUO_DUODEVICE                                ModelEnum = "authentik_stages_authenticator_duo.duodevice"
 	MODELENUM_STAGES_AUTHENTICATOR_EMAIL_AUTHENTICATOREMAILSTAGE                ModelEnum = "authentik_stages_authenticator_email.authenticatoremailstage"
@@ -192,6 +196,10 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_sources_saml.groupsamlsourceconnection",
 	"authentik_sources_scim.scimsource",
 	"authentik_sources_scim.scimsourcepropertymapping",
+	"authentik_sources_telegram.telegramsource",
+	"authentik_sources_telegram.telegramsourcepropertymapping",
+	"authentik_sources_telegram.usertelegramsourceconnection",
+	"authentik_sources_telegram.grouptelegramsourceconnection",
 	"authentik_stages_authenticator_duo.authenticatorduostage",
 	"authentik_stages_authenticator_duo.duodevice",
 	"authentik_stages_authenticator_email.authenticatoremailstage",

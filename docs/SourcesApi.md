@@ -53,6 +53,13 @@ Method | HTTP request | Description
 [**SourcesGroupConnectionsSamlRetrieve**](SourcesApi.md#SourcesGroupConnectionsSamlRetrieve) | **Get** /sources/group_connections/saml/{id}/ | 
 [**SourcesGroupConnectionsSamlUpdate**](SourcesApi.md#SourcesGroupConnectionsSamlUpdate) | **Put** /sources/group_connections/saml/{id}/ | 
 [**SourcesGroupConnectionsSamlUsedByList**](SourcesApi.md#SourcesGroupConnectionsSamlUsedByList) | **Get** /sources/group_connections/saml/{id}/used_by/ | 
+[**SourcesGroupConnectionsTelegramCreate**](SourcesApi.md#SourcesGroupConnectionsTelegramCreate) | **Post** /sources/group_connections/telegram/ | 
+[**SourcesGroupConnectionsTelegramDestroy**](SourcesApi.md#SourcesGroupConnectionsTelegramDestroy) | **Delete** /sources/group_connections/telegram/{id}/ | 
+[**SourcesGroupConnectionsTelegramList**](SourcesApi.md#SourcesGroupConnectionsTelegramList) | **Get** /sources/group_connections/telegram/ | 
+[**SourcesGroupConnectionsTelegramPartialUpdate**](SourcesApi.md#SourcesGroupConnectionsTelegramPartialUpdate) | **Patch** /sources/group_connections/telegram/{id}/ | 
+[**SourcesGroupConnectionsTelegramRetrieve**](SourcesApi.md#SourcesGroupConnectionsTelegramRetrieve) | **Get** /sources/group_connections/telegram/{id}/ | 
+[**SourcesGroupConnectionsTelegramUpdate**](SourcesApi.md#SourcesGroupConnectionsTelegramUpdate) | **Put** /sources/group_connections/telegram/{id}/ | 
+[**SourcesGroupConnectionsTelegramUsedByList**](SourcesApi.md#SourcesGroupConnectionsTelegramUsedByList) | **Get** /sources/group_connections/telegram/{id}/used_by/ | 
 [**SourcesKerberosCreate**](SourcesApi.md#SourcesKerberosCreate) | **Post** /sources/kerberos/ | 
 [**SourcesKerberosDestroy**](SourcesApi.md#SourcesKerberosDestroy) | **Delete** /sources/kerberos/{slug}/ | 
 [**SourcesKerberosList**](SourcesApi.md#SourcesKerberosList) | **Get** /sources/kerberos/ | 
@@ -116,6 +123,13 @@ Method | HTTP request | Description
 [**SourcesScimUsersRetrieve**](SourcesApi.md#SourcesScimUsersRetrieve) | **Get** /sources/scim_users/{id}/ | 
 [**SourcesScimUsersUpdate**](SourcesApi.md#SourcesScimUsersUpdate) | **Put** /sources/scim_users/{id}/ | 
 [**SourcesScimUsersUsedByList**](SourcesApi.md#SourcesScimUsersUsedByList) | **Get** /sources/scim_users/{id}/used_by/ | 
+[**SourcesTelegramCreate**](SourcesApi.md#SourcesTelegramCreate) | **Post** /sources/telegram/ | 
+[**SourcesTelegramDestroy**](SourcesApi.md#SourcesTelegramDestroy) | **Delete** /sources/telegram/{slug}/ | 
+[**SourcesTelegramList**](SourcesApi.md#SourcesTelegramList) | **Get** /sources/telegram/ | 
+[**SourcesTelegramPartialUpdate**](SourcesApi.md#SourcesTelegramPartialUpdate) | **Patch** /sources/telegram/{slug}/ | 
+[**SourcesTelegramRetrieve**](SourcesApi.md#SourcesTelegramRetrieve) | **Get** /sources/telegram/{slug}/ | 
+[**SourcesTelegramUpdate**](SourcesApi.md#SourcesTelegramUpdate) | **Put** /sources/telegram/{slug}/ | 
+[**SourcesTelegramUsedByList**](SourcesApi.md#SourcesTelegramUsedByList) | **Get** /sources/telegram/{slug}/used_by/ | 
 [**SourcesUserConnectionsAllDestroy**](SourcesApi.md#SourcesUserConnectionsAllDestroy) | **Delete** /sources/user_connections/all/{id}/ | 
 [**SourcesUserConnectionsAllList**](SourcesApi.md#SourcesUserConnectionsAllList) | **Get** /sources/user_connections/all/ | 
 [**SourcesUserConnectionsAllPartialUpdate**](SourcesApi.md#SourcesUserConnectionsAllPartialUpdate) | **Patch** /sources/user_connections/all/{id}/ | 
@@ -157,6 +171,13 @@ Method | HTTP request | Description
 [**SourcesUserConnectionsSamlRetrieve**](SourcesApi.md#SourcesUserConnectionsSamlRetrieve) | **Get** /sources/user_connections/saml/{id}/ | 
 [**SourcesUserConnectionsSamlUpdate**](SourcesApi.md#SourcesUserConnectionsSamlUpdate) | **Put** /sources/user_connections/saml/{id}/ | 
 [**SourcesUserConnectionsSamlUsedByList**](SourcesApi.md#SourcesUserConnectionsSamlUsedByList) | **Get** /sources/user_connections/saml/{id}/used_by/ | 
+[**SourcesUserConnectionsTelegramCreate**](SourcesApi.md#SourcesUserConnectionsTelegramCreate) | **Post** /sources/user_connections/telegram/ | 
+[**SourcesUserConnectionsTelegramDestroy**](SourcesApi.md#SourcesUserConnectionsTelegramDestroy) | **Delete** /sources/user_connections/telegram/{id}/ | 
+[**SourcesUserConnectionsTelegramList**](SourcesApi.md#SourcesUserConnectionsTelegramList) | **Get** /sources/user_connections/telegram/ | 
+[**SourcesUserConnectionsTelegramPartialUpdate**](SourcesApi.md#SourcesUserConnectionsTelegramPartialUpdate) | **Patch** /sources/user_connections/telegram/{id}/ | 
+[**SourcesUserConnectionsTelegramRetrieve**](SourcesApi.md#SourcesUserConnectionsTelegramRetrieve) | **Get** /sources/user_connections/telegram/{id}/ | 
+[**SourcesUserConnectionsTelegramUpdate**](SourcesApi.md#SourcesUserConnectionsTelegramUpdate) | **Put** /sources/user_connections/telegram/{id}/ | 
+[**SourcesUserConnectionsTelegramUsedByList**](SourcesApi.md#SourcesUserConnectionsTelegramUsedByList) | **Get** /sources/user_connections/telegram/{id}/used_by/ | 
 
 
 
@@ -3586,6 +3607,500 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSourcesGroupConnectionsSamlUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsTelegramCreate
+
+> GroupTelegramSourceConnection SourcesGroupConnectionsTelegramCreate(ctx).GroupTelegramSourceConnectionRequest(groupTelegramSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    groupTelegramSourceConnectionRequest := *openapiclient.NewGroupTelegramSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupTelegramSourceConnectionRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsTelegramCreate(context.Background()).GroupTelegramSourceConnectionRequest(groupTelegramSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsTelegramCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsTelegramCreate`: GroupTelegramSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsTelegramCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsTelegramCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupTelegramSourceConnectionRequest** | [**GroupTelegramSourceConnectionRequest**](GroupTelegramSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**GroupTelegramSourceConnection**](GroupTelegramSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsTelegramDestroy
+
+> SourcesGroupConnectionsTelegramDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Group Telegram Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsTelegramDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsTelegramDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Group Telegram Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsTelegramDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsTelegramList
+
+> PaginatedGroupTelegramSourceConnectionList SourcesGroupConnectionsTelegramList(ctx).Group(group).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    group := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsTelegramList(context.Background()).Group(group).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsTelegramList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsTelegramList`: PaginatedGroupTelegramSourceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsTelegramList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsTelegramListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+ **sourceSlug** | **string** |  | 
+
+### Return type
+
+[**PaginatedGroupTelegramSourceConnectionList**](PaginatedGroupTelegramSourceConnectionList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsTelegramPartialUpdate
+
+> GroupTelegramSourceConnection SourcesGroupConnectionsTelegramPartialUpdate(ctx, id).PatchedGroupTelegramSourceConnectionRequest(patchedGroupTelegramSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Group Telegram Source Connection.
+    patchedGroupTelegramSourceConnectionRequest := *openapiclient.NewPatchedGroupTelegramSourceConnectionRequest() // PatchedGroupTelegramSourceConnectionRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsTelegramPartialUpdate(context.Background(), id).PatchedGroupTelegramSourceConnectionRequest(patchedGroupTelegramSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsTelegramPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsTelegramPartialUpdate`: GroupTelegramSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsTelegramPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Group Telegram Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsTelegramPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedGroupTelegramSourceConnectionRequest** | [**PatchedGroupTelegramSourceConnectionRequest**](PatchedGroupTelegramSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**GroupTelegramSourceConnection**](GroupTelegramSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsTelegramRetrieve
+
+> GroupTelegramSourceConnection SourcesGroupConnectionsTelegramRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Group Telegram Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsTelegramRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsTelegramRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsTelegramRetrieve`: GroupTelegramSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsTelegramRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Group Telegram Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsTelegramRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**GroupTelegramSourceConnection**](GroupTelegramSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsTelegramUpdate
+
+> GroupTelegramSourceConnection SourcesGroupConnectionsTelegramUpdate(ctx, id).GroupTelegramSourceConnectionRequest(groupTelegramSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Group Telegram Source Connection.
+    groupTelegramSourceConnectionRequest := *openapiclient.NewGroupTelegramSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupTelegramSourceConnectionRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsTelegramUpdate(context.Background(), id).GroupTelegramSourceConnectionRequest(groupTelegramSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsTelegramUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsTelegramUpdate`: GroupTelegramSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsTelegramUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Group Telegram Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsTelegramUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **groupTelegramSourceConnectionRequest** | [**GroupTelegramSourceConnectionRequest**](GroupTelegramSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**GroupTelegramSourceConnection**](GroupTelegramSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesGroupConnectionsTelegramUsedByList
+
+> []UsedBy SourcesGroupConnectionsTelegramUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this Group Telegram Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesGroupConnectionsTelegramUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesGroupConnectionsTelegramUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesGroupConnectionsTelegramUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesGroupConnectionsTelegramUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this Group Telegram Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesGroupConnectionsTelegramUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -8206,6 +8721,518 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## SourcesTelegramCreate
+
+> TelegramSource SourcesTelegramCreate(ctx).TelegramSourceRequest(telegramSourceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    telegramSourceRequest := *openapiclient.NewTelegramSourceRequest("Name_example", "Slug_example", "BotUsername_example", "BotToken_example", "PreAuthenticationFlow_example") // TelegramSourceRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesTelegramCreate(context.Background()).TelegramSourceRequest(telegramSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesTelegramCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesTelegramCreate`: TelegramSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesTelegramCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesTelegramCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **telegramSourceRequest** | [**TelegramSourceRequest**](TelegramSourceRequest.md) |  | 
+
+### Return type
+
+[**TelegramSource**](TelegramSource.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesTelegramDestroy
+
+> SourcesTelegramDestroy(ctx, slug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    slug := "slug_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesTelegramDestroy(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesTelegramDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesTelegramDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesTelegramList
+
+> PaginatedTelegramSourceList SourcesTelegramList(ctx).AuthenticationFlow(authenticationFlow).BotUsername(botUsername).Enabled(enabled).EnrollmentFlow(enrollmentFlow).GroupMatchingMode(groupMatchingMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).PolicyEngineMode(policyEngineMode).RequestMessageAccess(requestMessageAccess).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    authenticationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    botUsername := "botUsername_example" // string |  (optional)
+    enabled := true // bool |  (optional)
+    enrollmentFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    groupMatchingMode := "groupMatchingMode_example" // string | How the source determines if an existing group should be used or a new group created.   (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    policyEngineMode := "policyEngineMode_example" // string |  (optional)
+    requestMessageAccess := true // bool |  (optional)
+    search := "search_example" // string | A search term. (optional)
+    slug := "slug_example" // string |  (optional)
+    userMatchingMode := "userMatchingMode_example" // string | How the source determines if an existing user should be authenticated or a new user enrolled.   (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesTelegramList(context.Background()).AuthenticationFlow(authenticationFlow).BotUsername(botUsername).Enabled(enabled).EnrollmentFlow(enrollmentFlow).GroupMatchingMode(groupMatchingMode).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).PolicyEngineMode(policyEngineMode).RequestMessageAccess(requestMessageAccess).Search(search).Slug(slug).UserMatchingMode(userMatchingMode).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesTelegramList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesTelegramList`: PaginatedTelegramSourceList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesTelegramList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesTelegramListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authenticationFlow** | **string** |  | 
+ **botUsername** | **string** |  | 
+ **enabled** | **bool** |  | 
+ **enrollmentFlow** | **string** |  | 
+ **groupMatchingMode** | **string** | How the source determines if an existing group should be used or a new group created.   | 
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **pbmUuid** | **string** |  | 
+ **policyEngineMode** | **string** |  | 
+ **requestMessageAccess** | **bool** |  | 
+ **search** | **string** | A search term. | 
+ **slug** | **string** |  | 
+ **userMatchingMode** | **string** | How the source determines if an existing user should be authenticated or a new user enrolled.   | 
+
+### Return type
+
+[**PaginatedTelegramSourceList**](PaginatedTelegramSourceList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesTelegramPartialUpdate
+
+> TelegramSource SourcesTelegramPartialUpdate(ctx, slug).PatchedTelegramSourceRequest(patchedTelegramSourceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    slug := "slug_example" // string | 
+    patchedTelegramSourceRequest := *openapiclient.NewPatchedTelegramSourceRequest() // PatchedTelegramSourceRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesTelegramPartialUpdate(context.Background(), slug).PatchedTelegramSourceRequest(patchedTelegramSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesTelegramPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesTelegramPartialUpdate`: TelegramSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesTelegramPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesTelegramPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedTelegramSourceRequest** | [**PatchedTelegramSourceRequest**](PatchedTelegramSourceRequest.md) |  | 
+
+### Return type
+
+[**TelegramSource**](TelegramSource.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesTelegramRetrieve
+
+> TelegramSource SourcesTelegramRetrieve(ctx, slug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    slug := "slug_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesTelegramRetrieve(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesTelegramRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesTelegramRetrieve`: TelegramSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesTelegramRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesTelegramRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**TelegramSource**](TelegramSource.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesTelegramUpdate
+
+> TelegramSource SourcesTelegramUpdate(ctx, slug).TelegramSourceRequest(telegramSourceRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    slug := "slug_example" // string | 
+    telegramSourceRequest := *openapiclient.NewTelegramSourceRequest("Name_example", "Slug_example", "BotUsername_example", "BotToken_example", "PreAuthenticationFlow_example") // TelegramSourceRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesTelegramUpdate(context.Background(), slug).TelegramSourceRequest(telegramSourceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesTelegramUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesTelegramUpdate`: TelegramSource
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesTelegramUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesTelegramUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **telegramSourceRequest** | [**TelegramSourceRequest**](TelegramSourceRequest.md) |  | 
+
+### Return type
+
+[**TelegramSource**](TelegramSource.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesTelegramUsedByList
+
+> []UsedBy SourcesTelegramUsedByList(ctx, slug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    slug := "slug_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesTelegramUsedByList(context.Background(), slug).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesTelegramUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesTelegramUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesTelegramUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesTelegramUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SourcesUserConnectionsAllDestroy
 
 > SourcesUserConnectionsAllDestroy(ctx, id).Execute()
@@ -11080,6 +12107,500 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSourcesUserConnectionsSamlUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsTelegramCreate
+
+> UserTelegramSourceConnection SourcesUserConnectionsTelegramCreate(ctx).UserTelegramSourceConnectionRequest(userTelegramSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userTelegramSourceConnectionRequest := *openapiclient.NewUserTelegramSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserTelegramSourceConnectionRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsTelegramCreate(context.Background()).UserTelegramSourceConnectionRequest(userTelegramSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsTelegramCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsTelegramCreate`: UserTelegramSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsTelegramCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsTelegramCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userTelegramSourceConnectionRequest** | [**UserTelegramSourceConnectionRequest**](UserTelegramSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**UserTelegramSourceConnection**](UserTelegramSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsTelegramDestroy
+
+> SourcesUserConnectionsTelegramDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User Telegram Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsTelegramDestroy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsTelegramDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User Telegram Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsTelegramDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsTelegramList
+
+> PaginatedUserTelegramSourceConnectionList SourcesUserConnectionsTelegramList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).User(user).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+    sourceSlug := "sourceSlug_example" // string |  (optional)
+    user := int32(56) // int32 |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsTelegramList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).SourceSlug(sourceSlug).User(user).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsTelegramList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsTelegramList`: PaginatedUserTelegramSourceConnectionList
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsTelegramList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsTelegramListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+ **sourceSlug** | **string** |  | 
+ **user** | **int32** |  | 
+
+### Return type
+
+[**PaginatedUserTelegramSourceConnectionList**](PaginatedUserTelegramSourceConnectionList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsTelegramPartialUpdate
+
+> UserTelegramSourceConnection SourcesUserConnectionsTelegramPartialUpdate(ctx, id).PatchedUserTelegramSourceConnectionRequest(patchedUserTelegramSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User Telegram Source Connection.
+    patchedUserTelegramSourceConnectionRequest := *openapiclient.NewPatchedUserTelegramSourceConnectionRequest() // PatchedUserTelegramSourceConnectionRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsTelegramPartialUpdate(context.Background(), id).PatchedUserTelegramSourceConnectionRequest(patchedUserTelegramSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsTelegramPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsTelegramPartialUpdate`: UserTelegramSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsTelegramPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User Telegram Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsTelegramPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedUserTelegramSourceConnectionRequest** | [**PatchedUserTelegramSourceConnectionRequest**](PatchedUserTelegramSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**UserTelegramSourceConnection**](UserTelegramSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsTelegramRetrieve
+
+> UserTelegramSourceConnection SourcesUserConnectionsTelegramRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User Telegram Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsTelegramRetrieve(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsTelegramRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsTelegramRetrieve`: UserTelegramSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsTelegramRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User Telegram Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsTelegramRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**UserTelegramSourceConnection**](UserTelegramSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsTelegramUpdate
+
+> UserTelegramSourceConnection SourcesUserConnectionsTelegramUpdate(ctx, id).UserTelegramSourceConnectionRequest(userTelegramSourceConnectionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User Telegram Source Connection.
+    userTelegramSourceConnectionRequest := *openapiclient.NewUserTelegramSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserTelegramSourceConnectionRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsTelegramUpdate(context.Background(), id).UserTelegramSourceConnectionRequest(userTelegramSourceConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsTelegramUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsTelegramUpdate`: UserTelegramSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsTelegramUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User Telegram Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsTelegramUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **userTelegramSourceConnectionRequest** | [**UserTelegramSourceConnectionRequest**](UserTelegramSourceConnectionRequest.md) |  | 
+
+### Return type
+
+[**UserTelegramSourceConnection**](UserTelegramSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesUserConnectionsTelegramUsedByList
+
+> []UsedBy SourcesUserConnectionsTelegramUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | A unique integer value identifying this User Telegram Source Connection.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesUserConnectionsTelegramUsedByList(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesUserConnectionsTelegramUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesUserConnectionsTelegramUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesUserConnectionsTelegramUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User Telegram Source Connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesUserConnectionsTelegramUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
