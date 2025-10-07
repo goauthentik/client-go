@@ -46838,6 +46838,33 @@ paths:
       - authentik: []
       tags:
       - tasks
+  /tasks/tasks/status/:
+    get:
+      description: Global status summary for all tasks
+      operationId: tasks_tasks_status_retrieve
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GlobalTaskStatus'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - tasks
   /tasks/workers:
     get:
       description: Get currently connected worker count.
@@ -53682,6 +53709,61 @@ components:
       - bind_continent_country
       - bind_continent_country_city
       type: string
+    GlobalTaskStatus:
+      example:
+        consumed: 6
+        running: 5
+        preprocess: 1
+        rejected: 2
+        postprocess: 5
+        queued: 0
+        warning: 3
+        error: 2
+        done: 7
+        info: 9
+      properties:
+        queued:
+          readOnly: true
+          type: integer
+        consumed:
+          readOnly: true
+          type: integer
+        preprocess:
+          readOnly: true
+          type: integer
+        running:
+          readOnly: true
+          type: integer
+        postprocess:
+          readOnly: true
+          type: integer
+        rejected:
+          readOnly: true
+          type: integer
+        done:
+          readOnly: true
+          type: integer
+        info:
+          readOnly: true
+          type: integer
+        warning:
+          readOnly: true
+          type: integer
+        error:
+          readOnly: true
+          type: integer
+      required:
+      - consumed
+      - done
+      - error
+      - info
+      - postprocess
+      - preprocess
+      - queued
+      - rejected
+      - running
+      - warning
+      type: object
     GoogleWorkspaceProvider:
       description: GoogleWorkspaceProvider Serializer
       example:

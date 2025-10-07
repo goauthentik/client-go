@@ -1057,6 +1057,7 @@ Class | Method | HTTP request | Description
 *TasksApi* | [**TasksTasksList**](docs/TasksApi.md#taskstaskslist) | **Get** /tasks/tasks/ | 
 *TasksApi* | [**TasksTasksRetrieve**](docs/TasksApi.md#taskstasksretrieve) | **Get** /tasks/tasks/{message_id}/ | 
 *TasksApi* | [**TasksTasksRetryCreate**](docs/TasksApi.md#taskstasksretrycreate) | **Post** /tasks/tasks/{message_id}/retry/ | 
+*TasksApi* | [**TasksTasksStatusRetrieve**](docs/TasksApi.md#taskstasksstatusretrieve) | **Get** /tasks/tasks/status/ | 
 *TasksApi* | [**TasksWorkersList**](docs/TasksApi.md#tasksworkerslist) | **Get** /tasks/workers | 
 *TenantsApi* | [**TenantsDomainsCreate**](docs/TenantsApi.md#tenantsdomainscreate) | **Post** /tenants/domains/ | 
 *TenantsApi* | [**TenantsDomainsDestroy**](docs/TenantsApi.md#tenantsdomainsdestroy) | **Delete** /tenants/domains/{id}/ | 
@@ -1243,6 +1244,7 @@ Class | Method | HTTP request | Description
  - [GeoIPPolicy](docs/GeoIPPolicy.md)
  - [GeoIPPolicyRequest](docs/GeoIPPolicyRequest.md)
  - [GeoipBindingEnum](docs/GeoipBindingEnum.md)
+ - [GlobalTaskStatus](docs/GlobalTaskStatus.md)
  - [GoogleWorkspaceProvider](docs/GoogleWorkspaceProvider.md)
  - [GoogleWorkspaceProviderGroup](docs/GoogleWorkspaceProviderGroup.md)
  - [GoogleWorkspaceProviderGroupRequest](docs/GoogleWorkspaceProviderGroupRequest.md)
