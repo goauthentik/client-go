@@ -21,6 +21,7 @@ type AppEnum string
 
 // List of AppEnum
 const (
+	APPENUM_COMMANDS                                      AppEnum = "authentik.commands"
 	APPENUM_TENANTS                                       AppEnum = "authentik.tenants"
 	APPENUM_TASKS                                         AppEnum = "authentik.tasks"
 	APPENUM_ADMIN                                         AppEnum = "authentik.admin"
@@ -95,6 +96,7 @@ const (
 
 // All allowed values of AppEnum enum
 var AllowedAppEnumEnumValues = []AppEnum{
+	"authentik.commands",
 	"authentik.tenants",
 	"authentik.tasks",
 	"authentik.admin",

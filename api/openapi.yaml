@@ -46654,8 +46654,11 @@ paths:
             - done
             - error
             - info
+            - postprocess
+            - preprocess
             - queued
             - rejected
+            - running
             - warning
             type: string
           type: array
@@ -46738,8 +46741,11 @@ paths:
           enum:
           - consumed
           - done
+          - postprocess
+          - preprocess
           - queued
           - rejected
+          - running
           type: string
         style: form
       responses:
@@ -47479,6 +47485,7 @@ components:
       type: object
     AppEnum:
       enum:
+      - authentik.commands
       - authentik.tenants
       - authentik.tasks
       - authentik.admin
@@ -56673,6 +56680,9 @@ components:
       enum:
       - queued
       - consumed
+      - preprocess
+      - running
+      - postprocess
       - rejected
       - done
       - info
@@ -80088,6 +80098,9 @@ components:
       enum:
       - queued
       - consumed
+      - preprocess
+      - running
+      - postprocess
       - rejected
       - done
       type: string
@@ -80422,6 +80435,9 @@ components:
       enum:
       - queued
       - consumed
+      - preprocess
+      - running
+      - postprocess
       - rejected
       - done
       - info

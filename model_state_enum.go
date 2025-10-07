@@ -21,16 +21,22 @@ type StateEnum string
 
 // List of StateEnum
 const (
-	STATEENUM_QUEUED   StateEnum = "queued"
-	STATEENUM_CONSUMED StateEnum = "consumed"
-	STATEENUM_REJECTED StateEnum = "rejected"
-	STATEENUM_DONE     StateEnum = "done"
+	STATEENUM_QUEUED      StateEnum = "queued"
+	STATEENUM_CONSUMED    StateEnum = "consumed"
+	STATEENUM_PREPROCESS  StateEnum = "preprocess"
+	STATEENUM_RUNNING     StateEnum = "running"
+	STATEENUM_POSTPROCESS StateEnum = "postprocess"
+	STATEENUM_REJECTED    StateEnum = "rejected"
+	STATEENUM_DONE        StateEnum = "done"
 )
 
 // All allowed values of StateEnum enum
 var AllowedStateEnumEnumValues = []StateEnum{
 	"queued",
 	"consumed",
+	"preprocess",
+	"running",
+	"postprocess",
 	"rejected",
 	"done",
 }

@@ -7,6 +7,12 @@
 
 * `CONSUMED` (value: `"consumed"`)
 
+* `PREPROCESS` (value: `"preprocess"`)
+
+* `RUNNING` (value: `"running"`)
+
+* `POSTPROCESS` (value: `"postprocess"`)
+
 * `REJECTED` (value: `"rejected"`)
 
 * `DONE` (value: `"done"`)
