@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Placeholder** | Pointer to **string** | Optionally provide a short hint that describes the expected input value. When creating a fixed choice field, enable interpreting as expression and return a list to return multiple choices. | [optional] 
 **InitialValue** | Pointer to **string** | Optionally pre-fill the input with an initial value. When creating a fixed choice field, enable interpreting as expression and return a list to return multiple default choices. | [optional] 
 **Order** | Pointer to **int32** |  | [optional] 
-**PromptstageSet** | Pointer to [**[]Stage**](Stage.md) |  | [optional] 
+**PromptStagesObj** | [**[]PromptStage**](PromptStage.md) |  | [readonly] 
 **SubText** | Pointer to **string** |  | [optional] 
 **PlaceholderExpression** | Pointer to **bool** |  | [optional] 
 **InitialValueExpression** | Pointer to **bool** |  | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewPrompt
 
-`func NewPrompt(pk string, name string, fieldKey string, label string, type_ PromptTypeEnum, ) *Prompt`
+`func NewPrompt(pk string, name string, fieldKey string, label string, type_ PromptTypeEnum, promptStagesObj []PromptStage, ) *Prompt`
 
 NewPrompt instantiates a new Prompt object
 This constructor will assign default values to properties that have it defined,
@@ -237,30 +237,25 @@ SetOrder sets Order field to given value.
 
 HasOrder returns a boolean if a field has been set.
 
-### GetPromptstageSet
+### GetPromptStagesObj
 
-`func (o *Prompt) GetPromptstageSet() []Stage`
+`func (o *Prompt) GetPromptStagesObj() []PromptStage`
 
-GetPromptstageSet returns the PromptstageSet field if non-nil, zero value otherwise.
+GetPromptStagesObj returns the PromptStagesObj field if non-nil, zero value otherwise.
 
-### GetPromptstageSetOk
+### GetPromptStagesObjOk
 
-`func (o *Prompt) GetPromptstageSetOk() (*[]Stage, bool)`
+`func (o *Prompt) GetPromptStagesObjOk() (*[]PromptStage, bool)`
 
-GetPromptstageSetOk returns a tuple with the PromptstageSet field if it's non-nil, zero value otherwise
+GetPromptStagesObjOk returns a tuple with the PromptStagesObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPromptstageSet
+### SetPromptStagesObj
 
-`func (o *Prompt) SetPromptstageSet(v []Stage)`
+`func (o *Prompt) SetPromptStagesObj(v []PromptStage)`
 
-SetPromptstageSet sets PromptstageSet field to given value.
+SetPromptStagesObj sets PromptStagesObj field to given value.
 
-### HasPromptstageSet
-
-`func (o *Prompt) HasPromptstageSet() bool`
-
-HasPromptstageSet returns a boolean if a field has been set.
 
 ### GetSubText
 

@@ -47430,6 +47430,14 @@ paths:
       - tenants
 components:
   parameters:
+    QueryName:
+      explode: true
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+      style: form
     QueryPaginationOrdering:
       description: Which field to use when ordering the results.
       explode: true
@@ -47466,6 +47474,19 @@ components:
       schema:
         type: string
       style: form
+  responses:
+    GenericErrorResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GenericError'
+      description: ""
+    ValidationErrorResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ValidationError'
+      description: ""
   schemas:
     AccessDeniedChallenge:
       description: Challenge when a flow's active stage calls `stage_invalid()`.
@@ -64664,73 +64685,85 @@ components:
           type: null
           placeholder_expression: true
           required: true
-          promptstage_set:
-          - component: component
-            verbose_name: verbose_name
-            verbose_name_plural: verbose_name_plural
-            meta_model_name: meta_model_name
-            name: name
-            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            flow_set:
-            - policy_engine_mode: null
-              compatibility_mode: true
-              layout: null
-              policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              background: background
-              denied_action: ""
-              name: name
-              export_url: export_url
-              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              designation: ""
-              title: title
-              slug: slug
-            - policy_engine_mode: null
-              compatibility_mode: true
-              layout: null
-              policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              background: background
-              denied_action: ""
-              name: name
-              export_url: export_url
-              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              designation: ""
-              title: title
-              slug: slug
-          - component: component
-            verbose_name: verbose_name
-            verbose_name_plural: verbose_name_plural
-            meta_model_name: meta_model_name
-            name: name
-            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            flow_set:
-            - policy_engine_mode: null
-              compatibility_mode: true
-              layout: null
-              policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              background: background
-              denied_action: ""
-              name: name
-              export_url: export_url
-              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              designation: ""
-              title: title
-              slug: slug
-            - policy_engine_mode: null
-              compatibility_mode: true
-              layout: null
-              policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              background: background
-              denied_action: ""
-              name: name
-              export_url: export_url
-              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              designation: ""
-              title: title
-              slug: slug
           field_key: field_key
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           placeholder: placeholder
+          prompt_stages_obj:
+          - component: component
+            verbose_name: verbose_name
+            verbose_name_plural: verbose_name_plural
+            meta_model_name: meta_model_name
+            name: name
+            validation_policies:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fields:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            flow_set:
+            - policy_engine_mode: null
+              compatibility_mode: true
+              layout: null
+              policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              background: background
+              denied_action: ""
+              name: name
+              export_url: export_url
+              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              designation: ""
+              title: title
+              slug: slug
+            - policy_engine_mode: null
+              compatibility_mode: true
+              layout: null
+              policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              background: background
+              denied_action: ""
+              name: name
+              export_url: export_url
+              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              designation: ""
+              title: title
+              slug: slug
+          - component: component
+            verbose_name: verbose_name
+            verbose_name_plural: verbose_name_plural
+            meta_model_name: meta_model_name
+            name: name
+            validation_policies:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fields:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            flow_set:
+            - policy_engine_mode: null
+              compatibility_mode: true
+              layout: null
+              policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              background: background
+              denied_action: ""
+              name: name
+              export_url: export_url
+              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              designation: ""
+              title: title
+              slug: slug
+            - policy_engine_mode: null
+              compatibility_mode: true
+              layout: null
+              policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              background: background
+              denied_action: ""
+              name: name
+              export_url: export_url
+              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              designation: ""
+              title: title
+              slug: slug
           order: -1803530559
         - sub_text: sub_text
           initial_value: initial_value
@@ -64739,73 +64772,85 @@ components:
           type: null
           placeholder_expression: true
           required: true
-          promptstage_set:
-          - component: component
-            verbose_name: verbose_name
-            verbose_name_plural: verbose_name_plural
-            meta_model_name: meta_model_name
-            name: name
-            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            flow_set:
-            - policy_engine_mode: null
-              compatibility_mode: true
-              layout: null
-              policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              background: background
-              denied_action: ""
-              name: name
-              export_url: export_url
-              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              designation: ""
-              title: title
-              slug: slug
-            - policy_engine_mode: null
-              compatibility_mode: true
-              layout: null
-              policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              background: background
-              denied_action: ""
-              name: name
-              export_url: export_url
-              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              designation: ""
-              title: title
-              slug: slug
-          - component: component
-            verbose_name: verbose_name
-            verbose_name_plural: verbose_name_plural
-            meta_model_name: meta_model_name
-            name: name
-            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            flow_set:
-            - policy_engine_mode: null
-              compatibility_mode: true
-              layout: null
-              policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              background: background
-              denied_action: ""
-              name: name
-              export_url: export_url
-              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              designation: ""
-              title: title
-              slug: slug
-            - policy_engine_mode: null
-              compatibility_mode: true
-              layout: null
-              policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              background: background
-              denied_action: ""
-              name: name
-              export_url: export_url
-              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              designation: ""
-              title: title
-              slug: slug
           field_key: field_key
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           placeholder: placeholder
+          prompt_stages_obj:
+          - component: component
+            verbose_name: verbose_name
+            verbose_name_plural: verbose_name_plural
+            meta_model_name: meta_model_name
+            name: name
+            validation_policies:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fields:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            flow_set:
+            - policy_engine_mode: null
+              compatibility_mode: true
+              layout: null
+              policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              background: background
+              denied_action: ""
+              name: name
+              export_url: export_url
+              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              designation: ""
+              title: title
+              slug: slug
+            - policy_engine_mode: null
+              compatibility_mode: true
+              layout: null
+              policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              background: background
+              denied_action: ""
+              name: name
+              export_url: export_url
+              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              designation: ""
+              title: title
+              slug: slug
+          - component: component
+            verbose_name: verbose_name
+            verbose_name_plural: verbose_name_plural
+            meta_model_name: meta_model_name
+            name: name
+            validation_policies:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fields:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            flow_set:
+            - policy_engine_mode: null
+              compatibility_mode: true
+              layout: null
+              policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              background: background
+              denied_action: ""
+              name: name
+              export_url: export_url
+              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              designation: ""
+              title: title
+              slug: slug
+            - policy_engine_mode: null
+              compatibility_mode: true
+              layout: null
+              policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              background: background
+              denied_action: ""
+              name: name
+              export_url: export_url
+              pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              designation: ""
+              title: title
+              slug: slug
           order: -1803530559
       properties:
         pagination:
@@ -72602,43 +72647,6 @@ components:
       description: Prompt Serializer
       example:
         sub_text: sub_text
-        promptstage_set:
-        - name: name
-          flow_set:
-          - policy_engine_mode: null
-            compatibility_mode: true
-            layout: null
-            denied_action: ""
-            name: name
-            designation: ""
-            title: title
-            slug: slug
-          - policy_engine_mode: null
-            compatibility_mode: true
-            layout: null
-            denied_action: ""
-            name: name
-            designation: ""
-            title: title
-            slug: slug
-        - name: name
-          flow_set:
-          - policy_engine_mode: null
-            compatibility_mode: true
-            layout: null
-            denied_action: ""
-            name: name
-            designation: ""
-            title: title
-            slug: slug
-          - policy_engine_mode: null
-            compatibility_mode: true
-            layout: null
-            denied_action: ""
-            name: name
-            designation: ""
-            title: title
-            slug: slug
         initial_value: initial_value
         initial_value_expression: true
         field_key: field_key
@@ -72678,10 +72686,6 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: integer
-        promptstage_set:
-          items:
-            $ref: '#/components/schemas/StageRequest'
-          type: array
         sub_text:
           type: string
         placeholder_expression:
@@ -74473,21 +74477,6 @@ components:
       required:
       - id
       type: object
-    PermissionRequest:
-      description: Global permission
-      properties:
-        name:
-          maxLength: 255
-          minLength: 1
-          type: string
-        codename:
-          maxLength: 100
-          minLength: 1
-          type: string
-      required:
-      - codename
-      - name
-      type: object
     PlexAuthenticationChallenge:
       description: Challenge shown to the user in identification stage
       properties:
@@ -75018,19 +75007,6 @@ components:
       - all
       - any
       type: string
-    PolicyRequest:
-      description: Policy Serializer
-      properties:
-        name:
-          minLength: 1
-          type: string
-        execution_logging:
-          description: "When this option is enabled, all executions of this policy\
-            \ will be logged. By default, only execution errors are logged."
-          type: boolean
-      required:
-      - name
-      type: object
     PolicyTestRequest:
       description: Test policy execution for a user with context
       example:
@@ -75094,73 +75070,85 @@ components:
         type: null
         placeholder_expression: true
         required: true
-        promptstage_set:
-        - component: component
-          verbose_name: verbose_name
-          verbose_name_plural: verbose_name_plural
-          meta_model_name: meta_model_name
-          name: name
-          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          flow_set:
-          - policy_engine_mode: null
-            compatibility_mode: true
-            layout: null
-            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
-            denied_action: ""
-            name: name
-            export_url: export_url
-            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            designation: ""
-            title: title
-            slug: slug
-          - policy_engine_mode: null
-            compatibility_mode: true
-            layout: null
-            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
-            denied_action: ""
-            name: name
-            export_url: export_url
-            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            designation: ""
-            title: title
-            slug: slug
-        - component: component
-          verbose_name: verbose_name
-          verbose_name_plural: verbose_name_plural
-          meta_model_name: meta_model_name
-          name: name
-          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          flow_set:
-          - policy_engine_mode: null
-            compatibility_mode: true
-            layout: null
-            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
-            denied_action: ""
-            name: name
-            export_url: export_url
-            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            designation: ""
-            title: title
-            slug: slug
-          - policy_engine_mode: null
-            compatibility_mode: true
-            layout: null
-            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
-            denied_action: ""
-            name: name
-            export_url: export_url
-            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            designation: ""
-            title: title
-            slug: slug
         field_key: field_key
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         placeholder: placeholder
+        prompt_stages_obj:
+        - component: component
+          verbose_name: verbose_name
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          name: name
+          validation_policies:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          fields:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          flow_set:
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+        - component: component
+          verbose_name: verbose_name
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          name: name
+          validation_policies:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          fields:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          flow_set:
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
         order: -1803530559
       properties:
         pk:
@@ -75193,9 +75181,10 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: integer
-        promptstage_set:
+        prompt_stages_obj:
           items:
-            $ref: '#/components/schemas/Stage'
+            $ref: '#/components/schemas/PromptStage'
+          readOnly: true
           type: array
         sub_text:
           type: string
@@ -75208,6 +75197,7 @@ components:
       - label
       - name
       - pk
+      - prompt_stages_obj
       - type
       type: object
     PromptChallenge:
@@ -75282,43 +75272,6 @@ components:
       description: Prompt Serializer
       example:
         sub_text: sub_text
-        promptstage_set:
-        - name: name
-          flow_set:
-          - policy_engine_mode: null
-            compatibility_mode: true
-            layout: null
-            denied_action: ""
-            name: name
-            designation: ""
-            title: title
-            slug: slug
-          - policy_engine_mode: null
-            compatibility_mode: true
-            layout: null
-            denied_action: ""
-            name: name
-            designation: ""
-            title: title
-            slug: slug
-        - name: name
-          flow_set:
-          - policy_engine_mode: null
-            compatibility_mode: true
-            layout: null
-            denied_action: ""
-            name: name
-            designation: ""
-            title: title
-            slug: slug
-          - policy_engine_mode: null
-            compatibility_mode: true
-            layout: null
-            denied_action: ""
-            name: name
-            designation: ""
-            title: title
-            slug: slug
         initial_value: initial_value
         initial_value_expression: true
         field_key: field_key
@@ -75358,10 +75311,6 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: integer
-        promptstage_set:
-          items:
-            $ref: '#/components/schemas/StageRequest'
-          type: array
         sub_text:
           type: string
         placeholder_expression:
@@ -75749,36 +75698,6 @@ components:
       - authentik_providers_scim.scimprovider
       - authentik_providers_ssf.ssfprovider
       type: string
-    ProviderRequest:
-      description: Provider Serializer
-      properties:
-        name:
-          minLength: 1
-          type: string
-        authentication_flow:
-          description: Flow used for authentication when the associated application
-            is accessed by an un-authenticated user.
-          format: uuid
-          nullable: true
-          type: string
-        authorization_flow:
-          description: Flow used when authorizing this provider.
-          format: uuid
-          type: string
-        invalidation_flow:
-          description: Flow used ending the session from a provider.
-          format: uuid
-          type: string
-        property_mappings:
-          items:
-            format: uuid
-            type: string
-          type: array
-      required:
-      - authorization_flow
-      - invalidation_flow
-      - name
-      type: object
     ProviderTypeEnum:
       enum:
       - apple
@@ -79395,19 +79314,6 @@ components:
       - verbose_name
       - verbose_name_plural
       type: object
-    ServiceConnectionRequest:
-      description: ServiceConnection Serializer
-      properties:
-        name:
-          minLength: 1
-          type: string
-        local:
-          description: "If enabled, use the local connection. Required Docker socket/Kubernetes\
-            \ Integration"
-          type: boolean
-      required:
-      - name
-      type: object
     ServiceConnectionState:
       description: Serializer for Service connection state
       example:
@@ -79800,55 +79706,6 @@ components:
       - verbose_name
       - verbose_name_plural
       type: object
-    SourceRequest:
-      description: Source Serializer
-      properties:
-        name:
-          description: Source's display Name.
-          minLength: 1
-          type: string
-        slug:
-          description: "Internal source name, used in URLs."
-          maxLength: 50
-          minLength: 1
-          pattern: "^[-a-zA-Z0-9_]+$"
-          type: string
-        enabled:
-          type: boolean
-        authentication_flow:
-          description: Flow to use when authenticating existing users.
-          format: uuid
-          nullable: true
-          type: string
-        enrollment_flow:
-          description: Flow to use when enrolling new users.
-          format: uuid
-          nullable: true
-          type: string
-        user_property_mappings:
-          items:
-            format: uuid
-            type: string
-          type: array
-        group_property_mappings:
-          items:
-            format: uuid
-            type: string
-          type: array
-        policy_engine_mode:
-          $ref: '#/components/schemas/PolicyEngineMode'
-        user_matching_mode:
-          allOf:
-          - $ref: '#/components/schemas/UserMatchingModeEnum'
-          description: How the source determines if an existing user should be authenticated
-            or a new user enrolled.
-        user_path_template:
-          minLength: 1
-          type: string
-      required:
-      - name
-      - slug
-      type: object
     SourceStage:
       description: SourceStage Serializer
       example:
@@ -80147,38 +80004,6 @@ components:
       - required
       - sub_text
       - type
-      type: object
-    StageRequest:
-      description: Stage Serializer
-      example:
-        name: name
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-      properties:
-        name:
-          minLength: 1
-          type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
-      required:
-      - name
       type: object
     StateEnum:
       enum:

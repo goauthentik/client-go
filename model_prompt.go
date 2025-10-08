@@ -27,25 +27,26 @@ type Prompt struct {
 	// Optionally provide a short hint that describes the expected input value. When creating a fixed choice field, enable interpreting as expression and return a list to return multiple choices.
 	Placeholder *string `json:"placeholder,omitempty"`
 	// Optionally pre-fill the input with an initial value. When creating a fixed choice field, enable interpreting as expression and return a list to return multiple default choices.
-	InitialValue           *string `json:"initial_value,omitempty"`
-	Order                  *int32  `json:"order,omitempty"`
-	PromptstageSet         []Stage `json:"promptstage_set,omitempty"`
-	SubText                *string `json:"sub_text,omitempty"`
-	PlaceholderExpression  *bool   `json:"placeholder_expression,omitempty"`
-	InitialValueExpression *bool   `json:"initial_value_expression,omitempty"`
+	InitialValue           *string       `json:"initial_value,omitempty"`
+	Order                  *int32        `json:"order,omitempty"`
+	PromptStagesObj        []PromptStage `json:"prompt_stages_obj"`
+	SubText                *string       `json:"sub_text,omitempty"`
+	PlaceholderExpression  *bool         `json:"placeholder_expression,omitempty"`
+	InitialValueExpression *bool         `json:"initial_value_expression,omitempty"`
 }
 
 // NewPrompt instantiates a new Prompt object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrompt(pk string, name string, fieldKey string, label string, type_ PromptTypeEnum) *Prompt {
+func NewPrompt(pk string, name string, fieldKey string, label string, type_ PromptTypeEnum, promptStagesObj []PromptStage) *Prompt {
 	this := Prompt{}
 	this.Pk = pk
 	this.Name = name
 	this.FieldKey = fieldKey
 	this.Label = label
 	this.Type = type_
+	this.PromptStagesObj = promptStagesObj
 	return &this
 }
 
@@ -305,36 +306,28 @@ func (o *Prompt) SetOrder(v int32) {
 	o.Order = &v
 }
 
-// GetPromptstageSet returns the PromptstageSet field value if set, zero value otherwise.
-func (o *Prompt) GetPromptstageSet() []Stage {
-	if o == nil || o.PromptstageSet == nil {
-		var ret []Stage
+// GetPromptStagesObj returns the PromptStagesObj field value
+func (o *Prompt) GetPromptStagesObj() []PromptStage {
+	if o == nil {
+		var ret []PromptStage
 		return ret
 	}
-	return o.PromptstageSet
+
+	return o.PromptStagesObj
 }
 
-// GetPromptstageSetOk returns a tuple with the PromptstageSet field value if set, nil otherwise
+// GetPromptStagesObjOk returns a tuple with the PromptStagesObj field value
 // and a boolean to check if the value has been set.
-func (o *Prompt) GetPromptstageSetOk() ([]Stage, bool) {
-	if o == nil || o.PromptstageSet == nil {
+func (o *Prompt) GetPromptStagesObjOk() ([]PromptStage, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PromptstageSet, true
+	return o.PromptStagesObj, true
 }
 
-// HasPromptstageSet returns a boolean if a field has been set.
-func (o *Prompt) HasPromptstageSet() bool {
-	if o != nil && o.PromptstageSet != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPromptstageSet gets a reference to the given []Stage and assigns it to the PromptstageSet field.
-func (o *Prompt) SetPromptstageSet(v []Stage) {
-	o.PromptstageSet = v
+// SetPromptStagesObj sets field value
+func (o *Prompt) SetPromptStagesObj(v []PromptStage) {
+	o.PromptStagesObj = v
 }
 
 // GetSubText returns the SubText field value if set, zero value otherwise.
@@ -462,8 +455,8 @@ func (o Prompt) MarshalJSON() ([]byte, error) {
 	if o.Order != nil {
 		toSerialize["order"] = o.Order
 	}
-	if o.PromptstageSet != nil {
-		toSerialize["promptstage_set"] = o.PromptstageSet
+	if true {
+		toSerialize["prompt_stages_obj"] = o.PromptStagesObj
 	}
 	if o.SubText != nil {
 		toSerialize["sub_text"] = o.SubText
