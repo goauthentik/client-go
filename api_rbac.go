@@ -3713,15 +3713,15 @@ func (a *RbacApiService) RbacRolesDestroyExecute(r ApiRbacRolesDestroyRequest) (
 type ApiRbacRolesListRequest struct {
 	ctx        context.Context
 	ApiService *RbacApiService
-	groupName  *string
+	name       *string
 	ordering   *string
 	page       *int32
 	pageSize   *int32
 	search     *string
 }
 
-func (r ApiRbacRolesListRequest) GroupName(groupName string) ApiRbacRolesListRequest {
-	r.groupName = &groupName
+func (r ApiRbacRolesListRequest) Name(name string) ApiRbacRolesListRequest {
+	r.name = &name
 	return r
 }
 
@@ -3790,8 +3790,8 @@ func (a *RbacApiService) RbacRolesListExecute(r ApiRbacRolesListRequest) (*Pagin
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.groupName != nil {
-		localVarQueryParams.Add("group__name", parameterToString(*r.groupName, ""))
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.ordering != nil {
 		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))

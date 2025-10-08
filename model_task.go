@@ -26,7 +26,11 @@ type Task struct {
 	// Task status
 	State *StateEnum `json:"state,omitempty"`
 	// Task last modified time
-	Mtime            *time.Time               `json:"mtime,omitempty"`
+	Mtime *time.Time `json:"mtime,omitempty"`
+	// Number of retries
+	Retries *int64 `json:"retries,omitempty"`
+	// Planned execution time
+	Eta              NullableTime             `json:"eta,omitempty"`
 	RelObjAppLabel   string                   `json:"rel_obj_app_label"`
 	RelObjModel      string                   `json:"rel_obj_model"`
 	RelObjId         NullableString           `json:"rel_obj_id,omitempty"`
@@ -212,6 +216,81 @@ func (o *Task) HasMtime() bool {
 // SetMtime gets a reference to the given time.Time and assigns it to the Mtime field.
 func (o *Task) SetMtime(v time.Time) {
 	o.Mtime = &v
+}
+
+// GetRetries returns the Retries field value if set, zero value otherwise.
+func (o *Task) GetRetries() int64 {
+	if o == nil || o.Retries == nil {
+		var ret int64
+		return ret
+	}
+	return *o.Retries
+}
+
+// GetRetriesOk returns a tuple with the Retries field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Task) GetRetriesOk() (*int64, bool) {
+	if o == nil || o.Retries == nil {
+		return nil, false
+	}
+	return o.Retries, true
+}
+
+// HasRetries returns a boolean if a field has been set.
+func (o *Task) HasRetries() bool {
+	if o != nil && o.Retries != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRetries gets a reference to the given int64 and assigns it to the Retries field.
+func (o *Task) SetRetries(v int64) {
+	o.Retries = &v
+}
+
+// GetEta returns the Eta field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Task) GetEta() time.Time {
+	if o == nil || o.Eta.Get() == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.Eta.Get()
+}
+
+// GetEtaOk returns a tuple with the Eta field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Task) GetEtaOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Eta.Get(), o.Eta.IsSet()
+}
+
+// HasEta returns a boolean if a field has been set.
+func (o *Task) HasEta() bool {
+	if o != nil && o.Eta.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEta gets a reference to the given NullableTime and assigns it to the Eta field.
+func (o *Task) SetEta(v time.Time) {
+	o.Eta.Set(&v)
+}
+
+// SetEtaNil sets the value for Eta to be an explicit nil
+func (o *Task) SetEtaNil() {
+	o.Eta.Set(nil)
+}
+
+// UnsetEta ensures that no value is present for Eta, not even an explicit nil
+func (o *Task) UnsetEta() {
+	o.Eta.Unset()
 }
 
 // GetRelObjAppLabel returns the RelObjAppLabel field value
@@ -443,6 +522,12 @@ func (o Task) MarshalJSON() ([]byte, error) {
 	}
 	if o.Mtime != nil {
 		toSerialize["mtime"] = o.Mtime
+	}
+	if o.Retries != nil {
+		toSerialize["retries"] = o.Retries
+	}
+	if o.Eta.IsSet() {
+		toSerialize["eta"] = o.Eta.Get()
 	}
 	if true {
 		toSerialize["rel_obj_app_label"] = o.RelObjAppLabel

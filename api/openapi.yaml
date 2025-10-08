@@ -28752,7 +28752,7 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: group__name
+        name: name
         required: false
         schema:
           type: string
@@ -67131,7 +67131,9 @@ components:
           aggregated_status: null
           mtime: 2000-01-23T04:56:07.000+00:00
           queue_name: queue_name
+          retries: 738633633822310400
           uid: uid
+          eta: 2000-01-23T04:56:07.000+00:00
           rel_obj_app_label: rel_obj_app_label
           rel_obj_model: rel_obj_model
           messages:
@@ -67168,7 +67170,9 @@ components:
           aggregated_status: null
           mtime: 2000-01-23T04:56:07.000+00:00
           queue_name: queue_name
+          retries: 738633633822310400
           uid: uid
+          eta: 2000-01-23T04:56:07.000+00:00
           rel_obj_app_label: rel_obj_app_label
           rel_obj_model: rel_obj_model
           messages:
@@ -80441,7 +80445,9 @@ components:
         aggregated_status: null
         mtime: 2000-01-23T04:56:07.000+00:00
         queue_name: queue_name
+        retries: 738633633822310400
         uid: uid
+        eta: 2000-01-23T04:56:07.000+00:00
         rel_obj_app_label: rel_obj_app_label
         rel_obj_model: rel_obj_model
         messages:
@@ -80475,6 +80481,17 @@ components:
         mtime:
           description: Task last modified time
           format: date-time
+          type: string
+        retries:
+          description: Number of retries
+          format: int64
+          maximum: 9223372036854775807
+          minimum: 0
+          type: integer
+        eta:
+          description: Planned execution time
+          format: date-time
+          nullable: true
           type: string
         rel_obj_app_label:
           readOnly: true
