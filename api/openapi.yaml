@@ -67299,46 +67299,33 @@ components:
         autocomplete:
           key: ""
         results:
-        - previous_messages:
-          - logger: logger
-            log_level: null
-            attributes:
-              key: ""
-            event: event
-            timestamp: 2000-01-23T04:56:07.000+00:00
-          - logger: logger
-            log_level: null
-            attributes:
-              key: ""
-            event: event
-            timestamp: 2000-01-23T04:56:07.000+00:00
-          actor_name: actor_name
+        - actor_name: actor_name
           description: description
           message_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           rel_obj_id: rel_obj_id
           aggregated_status: null
           mtime: 2000-01-23T04:56:07.000+00:00
+          previous_logs:
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
           queue_name: queue_name
           retries: 738633633822310400
           uid: uid
           eta: 2000-01-23T04:56:07.000+00:00
           rel_obj_app_label: rel_obj_app_label
           rel_obj_model: rel_obj_model
-          messages:
-          - logger: logger
-            log_level: null
-            attributes:
-              key: ""
-            event: event
-            timestamp: 2000-01-23T04:56:07.000+00:00
-          - logger: logger
-            log_level: null
-            attributes:
-              key: ""
-            event: event
-            timestamp: 2000-01-23T04:56:07.000+00:00
           state: ""
-        - previous_messages:
+          logs:
           - logger: logger
             log_level: null
             attributes:
@@ -67351,32 +67338,45 @@ components:
               key: ""
             event: event
             timestamp: 2000-01-23T04:56:07.000+00:00
-          actor_name: actor_name
+        - actor_name: actor_name
           description: description
           message_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           rel_obj_id: rel_obj_id
           aggregated_status: null
           mtime: 2000-01-23T04:56:07.000+00:00
+          previous_logs:
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
           queue_name: queue_name
           retries: 738633633822310400
           uid: uid
           eta: 2000-01-23T04:56:07.000+00:00
           rel_obj_app_label: rel_obj_app_label
           rel_obj_model: rel_obj_model
-          messages:
-          - logger: logger
-            log_level: null
-            attributes:
-              key: ""
-            event: event
-            timestamp: 2000-01-23T04:56:07.000+00:00
-          - logger: logger
-            log_level: null
-            attributes:
-              key: ""
-            event: event
-            timestamp: 2000-01-23T04:56:07.000+00:00
           state: ""
+          logs:
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - logger: logger
+            log_level: null
+            attributes:
+              key: ""
+            event: event
+            timestamp: 2000-01-23T04:56:07.000+00:00
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -80478,45 +80478,45 @@ components:
       type: object
     Task:
       example:
-        previous_messages:
-        - logger: logger
-          log_level: null
-          attributes:
-            key: ""
-          event: event
-          timestamp: 2000-01-23T04:56:07.000+00:00
-        - logger: logger
-          log_level: null
-          attributes:
-            key: ""
-          event: event
-          timestamp: 2000-01-23T04:56:07.000+00:00
         actor_name: actor_name
         description: description
         message_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         rel_obj_id: rel_obj_id
         aggregated_status: null
         mtime: 2000-01-23T04:56:07.000+00:00
+        previous_logs:
+        - logger: logger
+          log_level: null
+          attributes:
+            key: ""
+          event: event
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - logger: logger
+          log_level: null
+          attributes:
+            key: ""
+          event: event
+          timestamp: 2000-01-23T04:56:07.000+00:00
         queue_name: queue_name
         retries: 738633633822310400
         uid: uid
         eta: 2000-01-23T04:56:07.000+00:00
         rel_obj_app_label: rel_obj_app_label
         rel_obj_model: rel_obj_model
-        messages:
-        - logger: logger
-          log_level: null
-          attributes:
-            key: ""
-          event: event
-          timestamp: 2000-01-23T04:56:07.000+00:00
-        - logger: logger
-          log_level: null
-          attributes:
-            key: ""
-          event: event
-          timestamp: 2000-01-23T04:56:07.000+00:00
         state: ""
+        logs:
+        - logger: logger
+          log_level: null
+          attributes:
+            key: ""
+          event: event
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - logger: logger
+          log_level: null
+          attributes:
+            key: ""
+          event: event
+          timestamp: 2000-01-23T04:56:07.000+00:00
       properties:
         message_id:
           format: uuid
@@ -80559,13 +80559,15 @@ components:
         uid:
           readOnly: true
           type: string
-        messages:
+        logs:
           items:
             $ref: '#/components/schemas/LogEvent'
+          readOnly: true
           type: array
-        previous_messages:
+        previous_logs:
           items:
             $ref: '#/components/schemas/LogEvent'
+          readOnly: true
           type: array
         aggregated_status:
           $ref: '#/components/schemas/TaskAggregatedStatusEnum'
@@ -80577,8 +80579,8 @@ components:
       - actor_name
       - aggregated_status
       - description
-      - messages
-      - previous_messages
+      - logs
+      - previous_logs
       - rel_obj_app_label
       - rel_obj_model
       - uid

@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 **RelObjModel** | **string** |  | [readonly] 
 **RelObjId** | Pointer to **NullableString** |  | [optional] 
 **Uid** | **string** |  | [readonly] 
-**Messages** | [**[]LogEvent**](LogEvent.md) |  | 
-**PreviousMessages** | [**[]LogEvent**](LogEvent.md) |  | 
+**Logs** | [**[]LogEvent**](LogEvent.md) |  | [readonly] 
+**PreviousLogs** | [**[]LogEvent**](LogEvent.md) |  | [readonly] 
 **AggregatedStatus** | [**TaskAggregatedStatusEnum**](TaskAggregatedStatusEnum.md) |  | 
 **Description** | **NullableString** |  | [readonly] 
 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewTask
 
-`func NewTask(actorName string, relObjAppLabel string, relObjModel string, uid string, messages []LogEvent, previousMessages []LogEvent, aggregatedStatus TaskAggregatedStatusEnum, description NullableString, ) *Task`
+`func NewTask(actorName string, relObjAppLabel string, relObjModel string, uid string, logs []LogEvent, previousLogs []LogEvent, aggregatedStatus TaskAggregatedStatusEnum, description NullableString, ) *Task`
 
 NewTask instantiates a new Task object
 This constructor will assign default values to properties that have it defined,
@@ -314,44 +314,44 @@ and a boolean to check if the value has been set.
 SetUid sets Uid field to given value.
 
 
-### GetMessages
+### GetLogs
 
-`func (o *Task) GetMessages() []LogEvent`
+`func (o *Task) GetLogs() []LogEvent`
 
-GetMessages returns the Messages field if non-nil, zero value otherwise.
+GetLogs returns the Logs field if non-nil, zero value otherwise.
 
-### GetMessagesOk
+### GetLogsOk
 
-`func (o *Task) GetMessagesOk() (*[]LogEvent, bool)`
+`func (o *Task) GetLogsOk() (*[]LogEvent, bool)`
 
-GetMessagesOk returns a tuple with the Messages field if it's non-nil, zero value otherwise
+GetLogsOk returns a tuple with the Logs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMessages
+### SetLogs
 
-`func (o *Task) SetMessages(v []LogEvent)`
+`func (o *Task) SetLogs(v []LogEvent)`
 
-SetMessages sets Messages field to given value.
+SetLogs sets Logs field to given value.
 
 
-### GetPreviousMessages
+### GetPreviousLogs
 
-`func (o *Task) GetPreviousMessages() []LogEvent`
+`func (o *Task) GetPreviousLogs() []LogEvent`
 
-GetPreviousMessages returns the PreviousMessages field if non-nil, zero value otherwise.
+GetPreviousLogs returns the PreviousLogs field if non-nil, zero value otherwise.
 
-### GetPreviousMessagesOk
+### GetPreviousLogsOk
 
-`func (o *Task) GetPreviousMessagesOk() (*[]LogEvent, bool)`
+`func (o *Task) GetPreviousLogsOk() (*[]LogEvent, bool)`
 
-GetPreviousMessagesOk returns a tuple with the PreviousMessages field if it's non-nil, zero value otherwise
+GetPreviousLogsOk returns a tuple with the PreviousLogs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPreviousMessages
+### SetPreviousLogs
 
-`func (o *Task) SetPreviousMessages(v []LogEvent)`
+`func (o *Task) SetPreviousLogs(v []LogEvent)`
 
-SetPreviousMessages sets PreviousMessages field to given value.
+SetPreviousLogs sets PreviousLogs field to given value.
 
 
 ### GetAggregatedStatus

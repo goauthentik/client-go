@@ -35,8 +35,8 @@ type Task struct {
 	RelObjModel      string                   `json:"rel_obj_model"`
 	RelObjId         NullableString           `json:"rel_obj_id,omitempty"`
 	Uid              string                   `json:"uid"`
-	Messages         []LogEvent               `json:"messages"`
-	PreviousMessages []LogEvent               `json:"previous_messages"`
+	Logs             []LogEvent               `json:"logs"`
+	PreviousLogs     []LogEvent               `json:"previous_logs"`
 	AggregatedStatus TaskAggregatedStatusEnum `json:"aggregated_status"`
 	Description      NullableString           `json:"description"`
 }
@@ -45,14 +45,14 @@ type Task struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTask(actorName string, relObjAppLabel string, relObjModel string, uid string, messages []LogEvent, previousMessages []LogEvent, aggregatedStatus TaskAggregatedStatusEnum, description NullableString) *Task {
+func NewTask(actorName string, relObjAppLabel string, relObjModel string, uid string, logs []LogEvent, previousLogs []LogEvent, aggregatedStatus TaskAggregatedStatusEnum, description NullableString) *Task {
 	this := Task{}
 	this.ActorName = actorName
 	this.RelObjAppLabel = relObjAppLabel
 	this.RelObjModel = relObjModel
 	this.Uid = uid
-	this.Messages = messages
-	this.PreviousMessages = previousMessages
+	this.Logs = logs
+	this.PreviousLogs = previousLogs
 	this.AggregatedStatus = aggregatedStatus
 	this.Description = description
 	return &this
@@ -408,52 +408,52 @@ func (o *Task) SetUid(v string) {
 	o.Uid = v
 }
 
-// GetMessages returns the Messages field value
-func (o *Task) GetMessages() []LogEvent {
+// GetLogs returns the Logs field value
+func (o *Task) GetLogs() []LogEvent {
 	if o == nil {
 		var ret []LogEvent
 		return ret
 	}
 
-	return o.Messages
+	return o.Logs
 }
 
-// GetMessagesOk returns a tuple with the Messages field value
+// GetLogsOk returns a tuple with the Logs field value
 // and a boolean to check if the value has been set.
-func (o *Task) GetMessagesOk() ([]LogEvent, bool) {
+func (o *Task) GetLogsOk() ([]LogEvent, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Messages, true
+	return o.Logs, true
 }
 
-// SetMessages sets field value
-func (o *Task) SetMessages(v []LogEvent) {
-	o.Messages = v
+// SetLogs sets field value
+func (o *Task) SetLogs(v []LogEvent) {
+	o.Logs = v
 }
 
-// GetPreviousMessages returns the PreviousMessages field value
-func (o *Task) GetPreviousMessages() []LogEvent {
+// GetPreviousLogs returns the PreviousLogs field value
+func (o *Task) GetPreviousLogs() []LogEvent {
 	if o == nil {
 		var ret []LogEvent
 		return ret
 	}
 
-	return o.PreviousMessages
+	return o.PreviousLogs
 }
 
-// GetPreviousMessagesOk returns a tuple with the PreviousMessages field value
+// GetPreviousLogsOk returns a tuple with the PreviousLogs field value
 // and a boolean to check if the value has been set.
-func (o *Task) GetPreviousMessagesOk() ([]LogEvent, bool) {
+func (o *Task) GetPreviousLogsOk() ([]LogEvent, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.PreviousMessages, true
+	return o.PreviousLogs, true
 }
 
-// SetPreviousMessages sets field value
-func (o *Task) SetPreviousMessages(v []LogEvent) {
-	o.PreviousMessages = v
+// SetPreviousLogs sets field value
+func (o *Task) SetPreviousLogs(v []LogEvent) {
+	o.PreviousLogs = v
 }
 
 // GetAggregatedStatus returns the AggregatedStatus field value
@@ -542,10 +542,10 @@ func (o Task) MarshalJSON() ([]byte, error) {
 		toSerialize["uid"] = o.Uid
 	}
 	if true {
-		toSerialize["messages"] = o.Messages
+		toSerialize["logs"] = o.Logs
 	}
 	if true {
-		toSerialize["previous_messages"] = o.PreviousMessages
+		toSerialize["previous_logs"] = o.PreviousLogs
 	}
 	if true {
 		toSerialize["aggregated_status"] = o.AggregatedStatus
