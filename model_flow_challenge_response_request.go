@@ -33,6 +33,8 @@ type FlowChallengeResponseRequest struct {
 	EmailChallengeResponseRequest                   *EmailChallengeResponseRequest
 	FrameChallengeResponseRequest                   *FrameChallengeResponseRequest
 	IdentificationChallengeResponseRequest          *IdentificationChallengeResponseRequest
+	IframeLogoutChallengeResponseRequest            *IframeLogoutChallengeResponseRequest
+	NativeLogoutChallengeResponseRequest            *NativeLogoutChallengeResponseRequest
 	OAuthDeviceCodeChallengeResponseRequest         *OAuthDeviceCodeChallengeResponseRequest
 	OAuthDeviceCodeFinishChallengeResponseRequest   *OAuthDeviceCodeFinishChallengeResponseRequest
 	PasswordChallengeResponseRequest                *PasswordChallengeResponseRequest
@@ -145,6 +147,20 @@ func FrameChallengeResponseRequestAsFlowChallengeResponseRequest(v *FrameChallen
 func IdentificationChallengeResponseRequestAsFlowChallengeResponseRequest(v *IdentificationChallengeResponseRequest) FlowChallengeResponseRequest {
 	return FlowChallengeResponseRequest{
 		IdentificationChallengeResponseRequest: v,
+	}
+}
+
+// IframeLogoutChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns IframeLogoutChallengeResponseRequest wrapped in FlowChallengeResponseRequest
+func IframeLogoutChallengeResponseRequestAsFlowChallengeResponseRequest(v *IframeLogoutChallengeResponseRequest) FlowChallengeResponseRequest {
+	return FlowChallengeResponseRequest{
+		IframeLogoutChallengeResponseRequest: v,
+	}
+}
+
+// NativeLogoutChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns NativeLogoutChallengeResponseRequest wrapped in FlowChallengeResponseRequest
+func NativeLogoutChallengeResponseRequestAsFlowChallengeResponseRequest(v *NativeLogoutChallengeResponseRequest) FlowChallengeResponseRequest {
+	return FlowChallengeResponseRequest{
+		NativeLogoutChallengeResponseRequest: v,
 	}
 }
 
@@ -394,6 +410,30 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'IframeLogoutChallengeResponseRequest'
+	if jsonDict["component"] == "IframeLogoutChallengeResponseRequest" {
+		// try to unmarshal JSON data into IframeLogoutChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.IframeLogoutChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.IframeLogoutChallengeResponseRequest, return on the first match
+		} else {
+			dst.IframeLogoutChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as IframeLogoutChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'NativeLogoutChallengeResponseRequest'
+	if jsonDict["component"] == "NativeLogoutChallengeResponseRequest" {
+		// try to unmarshal JSON data into NativeLogoutChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.NativeLogoutChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.NativeLogoutChallengeResponseRequest, return on the first match
+		} else {
+			dst.NativeLogoutChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as NativeLogoutChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'OAuthDeviceCodeChallengeResponseRequest'
 	if jsonDict["component"] == "OAuthDeviceCodeChallengeResponseRequest" {
 		// try to unmarshal JSON data into OAuthDeviceCodeChallengeResponseRequest
@@ -490,6 +530,18 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'ak-provider-iframe-logout'
+	if jsonDict["component"] == "ak-provider-iframe-logout" {
+		// try to unmarshal JSON data into IframeLogoutChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.IframeLogoutChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.IframeLogoutChallengeResponseRequest, return on the first match
+		} else {
+			dst.IframeLogoutChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as IframeLogoutChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'ak-provider-oauth2-device-code'
 	if jsonDict["component"] == "ak-provider-oauth2-device-code" {
 		// try to unmarshal JSON data into OAuthDeviceCodeChallengeResponseRequest
@@ -511,6 +563,18 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.OAuthDeviceCodeFinishChallengeResponseRequest = nil
 			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as OAuthDeviceCodeFinishChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-provider-saml-native-logout'
+	if jsonDict["component"] == "ak-provider-saml-native-logout" {
+		// try to unmarshal JSON data into NativeLogoutChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.NativeLogoutChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.NativeLogoutChallengeResponseRequest, return on the first match
+		} else {
+			dst.NativeLogoutChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as NativeLogoutChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -831,6 +895,14 @@ func (src FlowChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.IdentificationChallengeResponseRequest)
 	}
 
+	if src.IframeLogoutChallengeResponseRequest != nil {
+		return json.Marshal(&src.IframeLogoutChallengeResponseRequest)
+	}
+
+	if src.NativeLogoutChallengeResponseRequest != nil {
+		return json.Marshal(&src.NativeLogoutChallengeResponseRequest)
+	}
+
 	if src.OAuthDeviceCodeChallengeResponseRequest != nil {
 		return json.Marshal(&src.OAuthDeviceCodeChallengeResponseRequest)
 	}
@@ -929,6 +1001,14 @@ func (obj *FlowChallengeResponseRequest) GetActualInstance() interface{} {
 
 	if obj.IdentificationChallengeResponseRequest != nil {
 		return obj.IdentificationChallengeResponseRequest
+	}
+
+	if obj.IframeLogoutChallengeResponseRequest != nil {
+		return obj.IframeLogoutChallengeResponseRequest
+	}
+
+	if obj.NativeLogoutChallengeResponseRequest != nil {
+		return obj.NativeLogoutChallengeResponseRequest
 	}
 
 	if obj.OAuthDeviceCodeChallengeResponseRequest != nil {

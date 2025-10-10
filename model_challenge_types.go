@@ -35,6 +35,8 @@ type ChallengeTypes struct {
 	FlowErrorChallenge               *FlowErrorChallenge
 	FrameChallenge                   *FrameChallenge
 	IdentificationChallenge          *IdentificationChallenge
+	IframeLogoutChallenge            *IframeLogoutChallenge
+	NativeLogoutChallenge            *NativeLogoutChallenge
 	OAuthDeviceCodeChallenge         *OAuthDeviceCodeChallenge
 	OAuthDeviceCodeFinishChallenge   *OAuthDeviceCodeFinishChallenge
 	PasswordChallenge                *PasswordChallenge
@@ -163,6 +165,20 @@ func FrameChallengeAsChallengeTypes(v *FrameChallenge) ChallengeTypes {
 func IdentificationChallengeAsChallengeTypes(v *IdentificationChallenge) ChallengeTypes {
 	return ChallengeTypes{
 		IdentificationChallenge: v,
+	}
+}
+
+// IframeLogoutChallengeAsChallengeTypes is a convenience function that returns IframeLogoutChallenge wrapped in ChallengeTypes
+func IframeLogoutChallengeAsChallengeTypes(v *IframeLogoutChallenge) ChallengeTypes {
+	return ChallengeTypes{
+		IframeLogoutChallenge: v,
+	}
+}
+
+// NativeLogoutChallengeAsChallengeTypes is a convenience function that returns NativeLogoutChallenge wrapped in ChallengeTypes
+func NativeLogoutChallengeAsChallengeTypes(v *NativeLogoutChallenge) ChallengeTypes {
+	return ChallengeTypes{
+		NativeLogoutChallenge: v,
 	}
 }
 
@@ -450,6 +466,30 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'IframeLogoutChallenge'
+	if jsonDict["component"] == "IframeLogoutChallenge" {
+		// try to unmarshal JSON data into IframeLogoutChallenge
+		err = json.Unmarshal(data, &dst.IframeLogoutChallenge)
+		if err == nil {
+			return nil // data stored in dst.IframeLogoutChallenge, return on the first match
+		} else {
+			dst.IframeLogoutChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as IframeLogoutChallenge: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'NativeLogoutChallenge'
+	if jsonDict["component"] == "NativeLogoutChallenge" {
+		// try to unmarshal JSON data into NativeLogoutChallenge
+		err = json.Unmarshal(data, &dst.NativeLogoutChallenge)
+		if err == nil {
+			return nil // data stored in dst.NativeLogoutChallenge, return on the first match
+		} else {
+			dst.NativeLogoutChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as NativeLogoutChallenge: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'OAuthDeviceCodeChallenge'
 	if jsonDict["component"] == "OAuthDeviceCodeChallenge" {
 		// try to unmarshal JSON data into OAuthDeviceCodeChallenge
@@ -570,6 +610,18 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'ak-provider-iframe-logout'
+	if jsonDict["component"] == "ak-provider-iframe-logout" {
+		// try to unmarshal JSON data into IframeLogoutChallenge
+		err = json.Unmarshal(data, &dst.IframeLogoutChallenge)
+		if err == nil {
+			return nil // data stored in dst.IframeLogoutChallenge, return on the first match
+		} else {
+			dst.IframeLogoutChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as IframeLogoutChallenge: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'ak-provider-oauth2-device-code'
 	if jsonDict["component"] == "ak-provider-oauth2-device-code" {
 		// try to unmarshal JSON data into OAuthDeviceCodeChallenge
@@ -591,6 +643,18 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.OAuthDeviceCodeFinishChallenge = nil
 			return fmt.Errorf("Failed to unmarshal ChallengeTypes as OAuthDeviceCodeFinishChallenge: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ak-provider-saml-native-logout'
+	if jsonDict["component"] == "ak-provider-saml-native-logout" {
+		// try to unmarshal JSON data into NativeLogoutChallenge
+		err = json.Unmarshal(data, &dst.NativeLogoutChallenge)
+		if err == nil {
+			return nil // data stored in dst.NativeLogoutChallenge, return on the first match
+		} else {
+			dst.NativeLogoutChallenge = nil
+			return fmt.Errorf("Failed to unmarshal ChallengeTypes as NativeLogoutChallenge: %s", err.Error())
 		}
 	}
 
@@ -967,6 +1031,14 @@ func (src ChallengeTypes) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.IdentificationChallenge)
 	}
 
+	if src.IframeLogoutChallenge != nil {
+		return json.Marshal(&src.IframeLogoutChallenge)
+	}
+
+	if src.NativeLogoutChallenge != nil {
+		return json.Marshal(&src.NativeLogoutChallenge)
+	}
+
 	if src.OAuthDeviceCodeChallenge != nil {
 		return json.Marshal(&src.OAuthDeviceCodeChallenge)
 	}
@@ -1081,6 +1153,14 @@ func (obj *ChallengeTypes) GetActualInstance() interface{} {
 
 	if obj.IdentificationChallenge != nil {
 		return obj.IdentificationChallenge
+	}
+
+	if obj.IframeLogoutChallenge != nil {
+		return obj.IframeLogoutChallenge
+	}
+
+	if obj.NativeLogoutChallenge != nil {
+		return obj.NativeLogoutChallenge
 	}
 
 	if obj.OAuthDeviceCodeChallenge != nil {

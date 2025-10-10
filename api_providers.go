@@ -11388,6 +11388,7 @@ type ApiProvidersSamlListRequest struct {
 	invalidationFlow            *string
 	isBackchannel               *bool
 	issuer                      *string
+	logoutMethod                *string
 	name                        *string
 	nameIdMapping               *string
 	ordering                    *string
@@ -11397,9 +11398,12 @@ type ApiProvidersSamlListRequest struct {
 	search                      *string
 	sessionValidNotOnOrAfter    *string
 	signAssertion               *bool
+	signLogoutRequest           *bool
 	signResponse                *bool
 	signatureAlgorithm          *string
 	signingKp                   *string
+	slsBinding                  *string
+	slsUrl                      *string
 	spBinding                   *string
 	verificationKp              *string
 }
@@ -11479,6 +11483,12 @@ func (r ApiProvidersSamlListRequest) Issuer(issuer string) ApiProvidersSamlListR
 	return r
 }
 
+// Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).
+func (r ApiProvidersSamlListRequest) LogoutMethod(logoutMethod string) ApiProvidersSamlListRequest {
+	r.logoutMethod = &logoutMethod
+	return r
+}
+
 func (r ApiProvidersSamlListRequest) Name(name string) ApiProvidersSamlListRequest {
 	r.name = &name
 	return r
@@ -11528,6 +11538,11 @@ func (r ApiProvidersSamlListRequest) SignAssertion(signAssertion bool) ApiProvid
 	return r
 }
 
+func (r ApiProvidersSamlListRequest) SignLogoutRequest(signLogoutRequest bool) ApiProvidersSamlListRequest {
+	r.signLogoutRequest = &signLogoutRequest
+	return r
+}
+
 func (r ApiProvidersSamlListRequest) SignResponse(signResponse bool) ApiProvidersSamlListRequest {
 	r.signResponse = &signResponse
 	return r
@@ -11540,6 +11555,17 @@ func (r ApiProvidersSamlListRequest) SignatureAlgorithm(signatureAlgorithm strin
 
 func (r ApiProvidersSamlListRequest) SigningKp(signingKp string) ApiProvidersSamlListRequest {
 	r.signingKp = &signingKp
+	return r
+}
+
+// This determines how authentik sends the logout response back to the Service Provider.
+func (r ApiProvidersSamlListRequest) SlsBinding(slsBinding string) ApiProvidersSamlListRequest {
+	r.slsBinding = &slsBinding
+	return r
+}
+
+func (r ApiProvidersSamlListRequest) SlsUrl(slsUrl string) ApiProvidersSamlListRequest {
+	r.slsUrl = &slsUrl
 	return r
 }
 
@@ -11640,6 +11666,9 @@ func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 	if r.issuer != nil {
 		localVarQueryParams.Add("issuer", parameterToString(*r.issuer, ""))
 	}
+	if r.logoutMethod != nil {
+		localVarQueryParams.Add("logout_method", parameterToString(*r.logoutMethod, ""))
+	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
@@ -11675,6 +11704,9 @@ func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 	if r.signAssertion != nil {
 		localVarQueryParams.Add("sign_assertion", parameterToString(*r.signAssertion, ""))
 	}
+	if r.signLogoutRequest != nil {
+		localVarQueryParams.Add("sign_logout_request", parameterToString(*r.signLogoutRequest, ""))
+	}
 	if r.signResponse != nil {
 		localVarQueryParams.Add("sign_response", parameterToString(*r.signResponse, ""))
 	}
@@ -11683,6 +11715,12 @@ func (a *ProvidersApiService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 	}
 	if r.signingKp != nil {
 		localVarQueryParams.Add("signing_kp", parameterToString(*r.signingKp, ""))
+	}
+	if r.slsBinding != nil {
+		localVarQueryParams.Add("sls_binding", parameterToString(*r.slsBinding, ""))
+	}
+	if r.slsUrl != nil {
+		localVarQueryParams.Add("sls_url", parameterToString(*r.slsUrl, ""))
 	}
 	if r.spBinding != nil {
 		localVarQueryParams.Add("sp_binding", parameterToString(*r.spBinding, ""))

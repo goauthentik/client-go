@@ -232,6 +232,8 @@ docs/IdentificationChallengeCaptchaStage.md
 docs/IdentificationChallengeResponseRequest.md
 docs/IdentificationStage.md
 docs/IdentificationStageRequest.md
+docs/IframeLogoutChallenge.md
+docs/IframeLogoutChallengeResponseRequest.md
 docs/ImpersonationRequest.md
 docs/InitialPermissions.md
 docs/InitialPermissionsModeEnum.md
@@ -289,6 +291,8 @@ docs/ModelRequest.md
 docs/MutualTLSStage.md
 docs/MutualTLSStageModeEnum.md
 docs/MutualTLSStageRequest.md
+docs/NativeLogoutChallenge.md
+docs/NativeLogoutChallengeResponseRequest.md
 docs/NetworkBindingEnum.md
 docs/NotConfiguredActionEnum.md
 docs/Notification.md
@@ -302,6 +306,7 @@ docs/NotificationTransportTest.md
 docs/NotificationWebhookMapping.md
 docs/NotificationWebhookMappingRequest.md
 docs/OAuth2Provider.md
+docs/OAuth2ProviderLogoutMethodEnum.md
 docs/OAuth2ProviderRequest.md
 docs/OAuth2ProviderSetupURLs.md
 docs/OAuthDeviceCodeChallenge.md
@@ -662,11 +667,13 @@ docs/RoleAssignedObjectPermission.md
 docs/RoleObjectPermission.md
 docs/RoleRequest.md
 docs/RootApi.md
+docs/SAMLBindingsEnum.md
 docs/SAMLMetadata.md
 docs/SAMLNameIDPolicyEnum.md
 docs/SAMLPropertyMapping.md
 docs/SAMLPropertyMappingRequest.md
 docs/SAMLProvider.md
+docs/SAMLProviderLogoutMethodEnum.md
 docs/SAMLProviderRequest.md
 docs/SAMLSource.md
 docs/SAMLSourcePropertyMapping.md
@@ -714,7 +721,6 @@ docs/SourceStage.md
 docs/SourceStageRequest.md
 docs/SourceType.md
 docs/SourcesApi.md
-docs/SpBindingEnum.md
 docs/SsfApi.md
 docs/Stage.md
 docs/StagePrompt.md
@@ -1014,6 +1020,8 @@ model_identification_challenge_captcha_stage.go
 model_identification_challenge_response_request.go
 model_identification_stage.go
 model_identification_stage_request.go
+model_iframe_logout_challenge.go
+model_iframe_logout_challenge_response_request.go
 model_impersonation_request.go
 model_initial_permissions.go
 model_initial_permissions_mode_enum.go
@@ -1070,6 +1078,8 @@ model_model_request.go
 model_mutual_tls_stage.go
 model_mutual_tls_stage_mode_enum.go
 model_mutual_tls_stage_request.go
+model_native_logout_challenge.go
+model_native_logout_challenge_response_request.go
 model_network_binding_enum.go
 model_not_configured_action_enum.go
 model_notification.go
@@ -1083,6 +1093,7 @@ model_notification_transport_test_.go
 model_notification_webhook_mapping.go
 model_notification_webhook_mapping_request.go
 model_o_auth2_provider.go
+model_o_auth2_provider_logout_method_enum.go
 model_o_auth2_provider_request.go
 model_o_auth2_provider_setup_urls.go
 model_o_auth_device_code_challenge.go
@@ -1435,11 +1446,13 @@ model_role.go
 model_role_assigned_object_permission.go
 model_role_object_permission.go
 model_role_request.go
+model_saml_bindings_enum.go
 model_saml_metadata.go
 model_saml_name_id_policy_enum.go
 model_saml_property_mapping.go
 model_saml_property_mapping_request.go
 model_saml_provider.go
+model_saml_provider_logout_method_enum.go
 model_saml_provider_request.go
 model_saml_source.go
 model_saml_source_property_mapping.go
@@ -1482,7 +1495,6 @@ model_source.go
 model_source_stage.go
 model_source_stage_request.go
 model_source_type.go
-model_sp_binding_enum.go
 model_ssf_provider.go
 model_ssf_provider_request.go
 model_ssf_stream.go

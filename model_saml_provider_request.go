@@ -26,6 +26,8 @@ type SAMLProviderRequest struct {
 	InvalidationFlow string   `json:"invalidation_flow"`
 	PropertyMappings []string `json:"property_mappings,omitempty"`
 	AcsUrl           string   `json:"acs_url"`
+	// Single Logout Service URL where the logout response should be sent.
+	SlsUrl *string `json:"sls_url,omitempty"`
 	// Value of the audience restriction field of the assertion. When left empty, no audience restriction will be added.
 	Audience *string `json:"audience,omitempty"`
 	// Also known as EntityID
@@ -47,11 +49,16 @@ type SAMLProviderRequest struct {
 	// When selected, incoming assertion's Signatures will be validated against this certificate. To allow unsigned Requests, leave on default.
 	VerificationKp NullableString `json:"verification_kp,omitempty"`
 	// When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key.
-	EncryptionKp  NullableString `json:"encryption_kp,omitempty"`
-	SignAssertion *bool          `json:"sign_assertion,omitempty"`
-	SignResponse  *bool          `json:"sign_response,omitempty"`
+	EncryptionKp      NullableString `json:"encryption_kp,omitempty"`
+	SignAssertion     *bool          `json:"sign_assertion,omitempty"`
+	SignResponse      *bool          `json:"sign_response,omitempty"`
+	SignLogoutRequest *bool          `json:"sign_logout_request,omitempty"`
 	// This determines how authentik sends the response back to the Service Provider.
-	SpBinding *SpBindingEnum `json:"sp_binding,omitempty"`
+	SpBinding *SAMLBindingsEnum `json:"sp_binding,omitempty"`
+	// This determines how authentik sends the logout response back to the Service Provider.
+	SlsBinding *SAMLBindingsEnum `json:"sls_binding,omitempty"`
+	// Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).
+	LogoutMethod *SAMLProviderLogoutMethodEnum `json:"logout_method,omitempty"`
 	// Default relay_state value for IDP-initiated logins
 	DefaultRelayState   *string               `json:"default_relay_state,omitempty"`
 	DefaultNameIdPolicy *SAMLNameIDPolicyEnum `json:"default_name_id_policy,omitempty"`
@@ -247,6 +254,38 @@ func (o *SAMLProviderRequest) GetAcsUrlOk() (*string, bool) {
 // SetAcsUrl sets field value
 func (o *SAMLProviderRequest) SetAcsUrl(v string) {
 	o.AcsUrl = v
+}
+
+// GetSlsUrl returns the SlsUrl field value if set, zero value otherwise.
+func (o *SAMLProviderRequest) GetSlsUrl() string {
+	if o == nil || o.SlsUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.SlsUrl
+}
+
+// GetSlsUrlOk returns a tuple with the SlsUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SAMLProviderRequest) GetSlsUrlOk() (*string, bool) {
+	if o == nil || o.SlsUrl == nil {
+		return nil, false
+	}
+	return o.SlsUrl, true
+}
+
+// HasSlsUrl returns a boolean if a field has been set.
+func (o *SAMLProviderRequest) HasSlsUrl() bool {
+	if o != nil && o.SlsUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSlsUrl gets a reference to the given string and assigns it to the SlsUrl field.
+func (o *SAMLProviderRequest) SetSlsUrl(v string) {
+	o.SlsUrl = &v
 }
 
 // GetAudience returns the Audience field value if set, zero value otherwise.
@@ -752,10 +791,42 @@ func (o *SAMLProviderRequest) SetSignResponse(v bool) {
 	o.SignResponse = &v
 }
 
+// GetSignLogoutRequest returns the SignLogoutRequest field value if set, zero value otherwise.
+func (o *SAMLProviderRequest) GetSignLogoutRequest() bool {
+	if o == nil || o.SignLogoutRequest == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SignLogoutRequest
+}
+
+// GetSignLogoutRequestOk returns a tuple with the SignLogoutRequest field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SAMLProviderRequest) GetSignLogoutRequestOk() (*bool, bool) {
+	if o == nil || o.SignLogoutRequest == nil {
+		return nil, false
+	}
+	return o.SignLogoutRequest, true
+}
+
+// HasSignLogoutRequest returns a boolean if a field has been set.
+func (o *SAMLProviderRequest) HasSignLogoutRequest() bool {
+	if o != nil && o.SignLogoutRequest != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSignLogoutRequest gets a reference to the given bool and assigns it to the SignLogoutRequest field.
+func (o *SAMLProviderRequest) SetSignLogoutRequest(v bool) {
+	o.SignLogoutRequest = &v
+}
+
 // GetSpBinding returns the SpBinding field value if set, zero value otherwise.
-func (o *SAMLProviderRequest) GetSpBinding() SpBindingEnum {
+func (o *SAMLProviderRequest) GetSpBinding() SAMLBindingsEnum {
 	if o == nil || o.SpBinding == nil {
-		var ret SpBindingEnum
+		var ret SAMLBindingsEnum
 		return ret
 	}
 	return *o.SpBinding
@@ -763,7 +834,7 @@ func (o *SAMLProviderRequest) GetSpBinding() SpBindingEnum {
 
 // GetSpBindingOk returns a tuple with the SpBinding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetSpBindingOk() (*SpBindingEnum, bool) {
+func (o *SAMLProviderRequest) GetSpBindingOk() (*SAMLBindingsEnum, bool) {
 	if o == nil || o.SpBinding == nil {
 		return nil, false
 	}
@@ -779,9 +850,73 @@ func (o *SAMLProviderRequest) HasSpBinding() bool {
 	return false
 }
 
-// SetSpBinding gets a reference to the given SpBindingEnum and assigns it to the SpBinding field.
-func (o *SAMLProviderRequest) SetSpBinding(v SpBindingEnum) {
+// SetSpBinding gets a reference to the given SAMLBindingsEnum and assigns it to the SpBinding field.
+func (o *SAMLProviderRequest) SetSpBinding(v SAMLBindingsEnum) {
 	o.SpBinding = &v
+}
+
+// GetSlsBinding returns the SlsBinding field value if set, zero value otherwise.
+func (o *SAMLProviderRequest) GetSlsBinding() SAMLBindingsEnum {
+	if o == nil || o.SlsBinding == nil {
+		var ret SAMLBindingsEnum
+		return ret
+	}
+	return *o.SlsBinding
+}
+
+// GetSlsBindingOk returns a tuple with the SlsBinding field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SAMLProviderRequest) GetSlsBindingOk() (*SAMLBindingsEnum, bool) {
+	if o == nil || o.SlsBinding == nil {
+		return nil, false
+	}
+	return o.SlsBinding, true
+}
+
+// HasSlsBinding returns a boolean if a field has been set.
+func (o *SAMLProviderRequest) HasSlsBinding() bool {
+	if o != nil && o.SlsBinding != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSlsBinding gets a reference to the given SAMLBindingsEnum and assigns it to the SlsBinding field.
+func (o *SAMLProviderRequest) SetSlsBinding(v SAMLBindingsEnum) {
+	o.SlsBinding = &v
+}
+
+// GetLogoutMethod returns the LogoutMethod field value if set, zero value otherwise.
+func (o *SAMLProviderRequest) GetLogoutMethod() SAMLProviderLogoutMethodEnum {
+	if o == nil || o.LogoutMethod == nil {
+		var ret SAMLProviderLogoutMethodEnum
+		return ret
+	}
+	return *o.LogoutMethod
+}
+
+// GetLogoutMethodOk returns a tuple with the LogoutMethod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SAMLProviderRequest) GetLogoutMethodOk() (*SAMLProviderLogoutMethodEnum, bool) {
+	if o == nil || o.LogoutMethod == nil {
+		return nil, false
+	}
+	return o.LogoutMethod, true
+}
+
+// HasLogoutMethod returns a boolean if a field has been set.
+func (o *SAMLProviderRequest) HasLogoutMethod() bool {
+	if o != nil && o.LogoutMethod != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLogoutMethod gets a reference to the given SAMLProviderLogoutMethodEnum and assigns it to the LogoutMethod field.
+func (o *SAMLProviderRequest) SetLogoutMethod(v SAMLProviderLogoutMethodEnum) {
+	o.LogoutMethod = &v
 }
 
 // GetDefaultRelayState returns the DefaultRelayState field value if set, zero value otherwise.
@@ -868,6 +1003,9 @@ func (o SAMLProviderRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["acs_url"] = o.AcsUrl
 	}
+	if o.SlsUrl != nil {
+		toSerialize["sls_url"] = o.SlsUrl
+	}
 	if o.Audience != nil {
 		toSerialize["audience"] = o.Audience
 	}
@@ -910,8 +1048,17 @@ func (o SAMLProviderRequest) MarshalJSON() ([]byte, error) {
 	if o.SignResponse != nil {
 		toSerialize["sign_response"] = o.SignResponse
 	}
+	if o.SignLogoutRequest != nil {
+		toSerialize["sign_logout_request"] = o.SignLogoutRequest
+	}
 	if o.SpBinding != nil {
 		toSerialize["sp_binding"] = o.SpBinding
+	}
+	if o.SlsBinding != nil {
+		toSerialize["sls_binding"] = o.SlsBinding
+	}
+	if o.LogoutMethod != nil {
+		toSerialize["logout_method"] = o.LogoutMethod
 	}
 	if o.DefaultRelayState != nil {
 		toSerialize["default_relay_state"] = o.DefaultRelayState

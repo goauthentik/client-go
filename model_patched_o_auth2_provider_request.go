@@ -42,9 +42,11 @@ type PatchedOAuth2ProviderRequest struct {
 	// Key used to sign the tokens.
 	SigningKey NullableString `json:"signing_key,omitempty"`
 	// Key used to encrypt the tokens. When set, tokens will be encrypted and returned as JWEs.
-	EncryptionKey        NullableString       `json:"encryption_key,omitempty"`
-	RedirectUris         []RedirectURIRequest `json:"redirect_uris,omitempty"`
-	BackchannelLogoutUri *string              `json:"backchannel_logout_uri,omitempty"`
+	EncryptionKey NullableString       `json:"encryption_key,omitempty"`
+	RedirectUris  []RedirectURIRequest `json:"redirect_uris,omitempty"`
+	LogoutUri     *string              `json:"logout_uri,omitempty"`
+	// Backchannel logs out with server to server calls. Frontchannel uses iframes in your browser
+	LogoutMethod *OAuth2ProviderLogoutMethodEnum `json:"logout_method,omitempty"`
 	// Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
 	SubMode *SubModeEnum `json:"sub_mode,omitempty"`
 	// Configure how the issuer field of the ID Token should be filled.
@@ -615,36 +617,68 @@ func (o *PatchedOAuth2ProviderRequest) SetRedirectUris(v []RedirectURIRequest) {
 	o.RedirectUris = v
 }
 
-// GetBackchannelLogoutUri returns the BackchannelLogoutUri field value if set, zero value otherwise.
-func (o *PatchedOAuth2ProviderRequest) GetBackchannelLogoutUri() string {
-	if o == nil || o.BackchannelLogoutUri == nil {
+// GetLogoutUri returns the LogoutUri field value if set, zero value otherwise.
+func (o *PatchedOAuth2ProviderRequest) GetLogoutUri() string {
+	if o == nil || o.LogoutUri == nil {
 		var ret string
 		return ret
 	}
-	return *o.BackchannelLogoutUri
+	return *o.LogoutUri
 }
 
-// GetBackchannelLogoutUriOk returns a tuple with the BackchannelLogoutUri field value if set, nil otherwise
+// GetLogoutUriOk returns a tuple with the LogoutUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedOAuth2ProviderRequest) GetBackchannelLogoutUriOk() (*string, bool) {
-	if o == nil || o.BackchannelLogoutUri == nil {
+func (o *PatchedOAuth2ProviderRequest) GetLogoutUriOk() (*string, bool) {
+	if o == nil || o.LogoutUri == nil {
 		return nil, false
 	}
-	return o.BackchannelLogoutUri, true
+	return o.LogoutUri, true
 }
 
-// HasBackchannelLogoutUri returns a boolean if a field has been set.
-func (o *PatchedOAuth2ProviderRequest) HasBackchannelLogoutUri() bool {
-	if o != nil && o.BackchannelLogoutUri != nil {
+// HasLogoutUri returns a boolean if a field has been set.
+func (o *PatchedOAuth2ProviderRequest) HasLogoutUri() bool {
+	if o != nil && o.LogoutUri != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetBackchannelLogoutUri gets a reference to the given string and assigns it to the BackchannelLogoutUri field.
-func (o *PatchedOAuth2ProviderRequest) SetBackchannelLogoutUri(v string) {
-	o.BackchannelLogoutUri = &v
+// SetLogoutUri gets a reference to the given string and assigns it to the LogoutUri field.
+func (o *PatchedOAuth2ProviderRequest) SetLogoutUri(v string) {
+	o.LogoutUri = &v
+}
+
+// GetLogoutMethod returns the LogoutMethod field value if set, zero value otherwise.
+func (o *PatchedOAuth2ProviderRequest) GetLogoutMethod() OAuth2ProviderLogoutMethodEnum {
+	if o == nil || o.LogoutMethod == nil {
+		var ret OAuth2ProviderLogoutMethodEnum
+		return ret
+	}
+	return *o.LogoutMethod
+}
+
+// GetLogoutMethodOk returns a tuple with the LogoutMethod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedOAuth2ProviderRequest) GetLogoutMethodOk() (*OAuth2ProviderLogoutMethodEnum, bool) {
+	if o == nil || o.LogoutMethod == nil {
+		return nil, false
+	}
+	return o.LogoutMethod, true
+}
+
+// HasLogoutMethod returns a boolean if a field has been set.
+func (o *PatchedOAuth2ProviderRequest) HasLogoutMethod() bool {
+	if o != nil && o.LogoutMethod != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLogoutMethod gets a reference to the given OAuth2ProviderLogoutMethodEnum and assigns it to the LogoutMethod field.
+func (o *PatchedOAuth2ProviderRequest) SetLogoutMethod(v OAuth2ProviderLogoutMethodEnum) {
+	o.LogoutMethod = &v
 }
 
 // GetSubMode returns the SubMode field value if set, zero value otherwise.
@@ -825,8 +859,11 @@ func (o PatchedOAuth2ProviderRequest) MarshalJSON() ([]byte, error) {
 	if o.RedirectUris != nil {
 		toSerialize["redirect_uris"] = o.RedirectUris
 	}
-	if o.BackchannelLogoutUri != nil {
-		toSerialize["backchannel_logout_uri"] = o.BackchannelLogoutUri
+	if o.LogoutUri != nil {
+		toSerialize["logout_uri"] = o.LogoutUri
+	}
+	if o.LogoutMethod != nil {
+		toSerialize["logout_method"] = o.LogoutMethod
 	}
 	if o.SubMode != nil {
 		toSerialize["sub_mode"] = o.SubMode

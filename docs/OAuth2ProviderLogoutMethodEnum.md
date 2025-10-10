@@ -1,11 +1,11 @@
-# SpBindingEnum
+# OAuth2ProviderLogoutMethodEnum
 
 ## Enum
 
 
-* `REDIRECT` (value: `"redirect"`)
+* `BACKCHANNEL` (value: `"backchannel"`)
 
-* `POST` (value: `"post"`)
+* `FRONTCHANNEL` (value: `"frontchannel"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

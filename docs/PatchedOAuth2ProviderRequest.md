@@ -20,7 +20,8 @@ Name | Type | Description | Notes
 **SigningKey** | Pointer to **NullableString** | Key used to sign the tokens. | [optional] 
 **EncryptionKey** | Pointer to **NullableString** | Key used to encrypt the tokens. When set, tokens will be encrypted and returned as JWEs. | [optional] 
 **RedirectUris** | Pointer to [**[]RedirectURIRequest**](RedirectURIRequest.md) |  | [optional] 
-**BackchannelLogoutUri** | Pointer to **string** |  | [optional] 
+**LogoutUri** | Pointer to **string** |  | [optional] 
+**LogoutMethod** | Pointer to [**OAuth2ProviderLogoutMethodEnum**](OAuth2ProviderLogoutMethodEnum.md) | Backchannel logs out with server to server calls. Frontchannel uses iframes in your browser | [optional] 
 **SubMode** | Pointer to [**SubModeEnum**](SubModeEnum.md) | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. | [optional] 
 **IssuerMode** | Pointer to [**IssuerModeEnum**](IssuerModeEnum.md) | Configure how the issuer field of the ID Token should be filled. | [optional] 
 **JwtFederationSources** | Pointer to **[]string** |  | [optional] 
@@ -475,30 +476,55 @@ SetRedirectUris sets RedirectUris field to given value.
 
 HasRedirectUris returns a boolean if a field has been set.
 
-### GetBackchannelLogoutUri
+### GetLogoutUri
 
-`func (o *PatchedOAuth2ProviderRequest) GetBackchannelLogoutUri() string`
+`func (o *PatchedOAuth2ProviderRequest) GetLogoutUri() string`
 
-GetBackchannelLogoutUri returns the BackchannelLogoutUri field if non-nil, zero value otherwise.
+GetLogoutUri returns the LogoutUri field if non-nil, zero value otherwise.
 
-### GetBackchannelLogoutUriOk
+### GetLogoutUriOk
 
-`func (o *PatchedOAuth2ProviderRequest) GetBackchannelLogoutUriOk() (*string, bool)`
+`func (o *PatchedOAuth2ProviderRequest) GetLogoutUriOk() (*string, bool)`
 
-GetBackchannelLogoutUriOk returns a tuple with the BackchannelLogoutUri field if it's non-nil, zero value otherwise
+GetLogoutUriOk returns a tuple with the LogoutUri field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBackchannelLogoutUri
+### SetLogoutUri
 
-`func (o *PatchedOAuth2ProviderRequest) SetBackchannelLogoutUri(v string)`
+`func (o *PatchedOAuth2ProviderRequest) SetLogoutUri(v string)`
 
-SetBackchannelLogoutUri sets BackchannelLogoutUri field to given value.
+SetLogoutUri sets LogoutUri field to given value.
 
-### HasBackchannelLogoutUri
+### HasLogoutUri
 
-`func (o *PatchedOAuth2ProviderRequest) HasBackchannelLogoutUri() bool`
+`func (o *PatchedOAuth2ProviderRequest) HasLogoutUri() bool`
 
-HasBackchannelLogoutUri returns a boolean if a field has been set.
+HasLogoutUri returns a boolean if a field has been set.
+
+### GetLogoutMethod
+
+`func (o *PatchedOAuth2ProviderRequest) GetLogoutMethod() OAuth2ProviderLogoutMethodEnum`
+
+GetLogoutMethod returns the LogoutMethod field if non-nil, zero value otherwise.
+
+### GetLogoutMethodOk
+
+`func (o *PatchedOAuth2ProviderRequest) GetLogoutMethodOk() (*OAuth2ProviderLogoutMethodEnum, bool)`
+
+GetLogoutMethodOk returns a tuple with the LogoutMethod field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLogoutMethod
+
+`func (o *PatchedOAuth2ProviderRequest) SetLogoutMethod(v OAuth2ProviderLogoutMethodEnum)`
+
+SetLogoutMethod sets LogoutMethod field to given value.
+
+### HasLogoutMethod
+
+`func (o *PatchedOAuth2ProviderRequest) HasLogoutMethod() bool`
+
+HasLogoutMethod returns a boolean if a field has been set.
 
 ### GetSubMode
 

@@ -39,7 +39,8 @@ Name | Type | Description | Notes
 **SigningKey** | **string** | Key used to sign the SSF Events. | 
 **EncryptionKey** | Pointer to **NullableString** | Key used to encrypt the tokens. When set, tokens will be encrypted and returned as JWEs. | [optional] 
 **RedirectUris** | [**[]RedirectURIRequest**](RedirectURIRequest.md) |  | 
-**BackchannelLogoutUri** | Pointer to **string** |  | [optional] 
+**LogoutUri** | Pointer to **string** |  | [optional] 
+**LogoutMethod** | Pointer to [**SAMLProviderLogoutMethodEnum**](SAMLProviderLogoutMethodEnum.md) | Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding). | [optional] 
 **SubMode** | Pointer to [**SubModeEnum**](SubModeEnum.md) | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. | [optional] 
 **IssuerMode** | Pointer to [**IssuerModeEnum**](IssuerModeEnum.md) | Configure how the issuer field of the ID Token should be filled. | [optional] 
 **JwtFederationSources** | Pointer to **[]string** |  | [optional] 
@@ -60,6 +61,7 @@ Name | Type | Description | Notes
 **ClientNetworks** | Pointer to **string** | List of CIDRs (comma-separated) that clients can connect from. A more specific CIDR will match before a looser one. Clients connecting from a non-specified CIDR will be dropped. | [optional] 
 **SharedSecret** | Pointer to **string** | Shared secret between clients and server to hash packets. | [optional] 
 **AcsUrl** | **string** |  | 
+**SlsUrl** | Pointer to **string** | Single Logout Service URL where the logout response should be sent. | [optional] 
 **Audience** | Pointer to **string** | Value of the audience restriction field of the assertion. When left empty, no audience restriction will be added. | [optional] 
 **Issuer** | Pointer to **string** | Also known as EntityID | [optional] 
 **AssertionValidNotBefore** | Pointer to **string** | Assertion valid not before current time + this value (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3). | [optional] 
@@ -74,7 +76,9 @@ Name | Type | Description | Notes
 **EncryptionKp** | Pointer to **NullableString** | When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key. | [optional] 
 **SignAssertion** | Pointer to **bool** |  | [optional] 
 **SignResponse** | Pointer to **bool** |  | [optional] 
-**SpBinding** | Pointer to [**SpBindingEnum**](SpBindingEnum.md) | This determines how authentik sends the response back to the Service Provider. | [optional] 
+**SignLogoutRequest** | Pointer to **bool** |  | [optional] 
+**SpBinding** | Pointer to [**SAMLBindingsEnum**](SAMLBindingsEnum.md) | This determines how authentik sends the response back to the Service Provider. | [optional] 
+**SlsBinding** | Pointer to [**SAMLBindingsEnum**](SAMLBindingsEnum.md) | This determines how authentik sends the logout response back to the Service Provider. | [optional] 
 **DefaultRelayState** | Pointer to **string** | Default relay_state value for IDP-initiated logins | [optional] 
 **DefaultNameIdPolicy** | Pointer to [**SAMLNameIDPolicyEnum**](SAMLNameIDPolicyEnum.md) |  | [optional] 
 **Url** | **string** | Base URL to SCIM requests, usually ends in /v2 | 
@@ -966,30 +970,55 @@ and a boolean to check if the value has been set.
 SetRedirectUris sets RedirectUris field to given value.
 
 
-### GetBackchannelLogoutUri
+### GetLogoutUri
 
-`func (o *ModelRequest) GetBackchannelLogoutUri() string`
+`func (o *ModelRequest) GetLogoutUri() string`
 
-GetBackchannelLogoutUri returns the BackchannelLogoutUri field if non-nil, zero value otherwise.
+GetLogoutUri returns the LogoutUri field if non-nil, zero value otherwise.
 
-### GetBackchannelLogoutUriOk
+### GetLogoutUriOk
 
-`func (o *ModelRequest) GetBackchannelLogoutUriOk() (*string, bool)`
+`func (o *ModelRequest) GetLogoutUriOk() (*string, bool)`
 
-GetBackchannelLogoutUriOk returns a tuple with the BackchannelLogoutUri field if it's non-nil, zero value otherwise
+GetLogoutUriOk returns a tuple with the LogoutUri field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBackchannelLogoutUri
+### SetLogoutUri
 
-`func (o *ModelRequest) SetBackchannelLogoutUri(v string)`
+`func (o *ModelRequest) SetLogoutUri(v string)`
 
-SetBackchannelLogoutUri sets BackchannelLogoutUri field to given value.
+SetLogoutUri sets LogoutUri field to given value.
 
-### HasBackchannelLogoutUri
+### HasLogoutUri
 
-`func (o *ModelRequest) HasBackchannelLogoutUri() bool`
+`func (o *ModelRequest) HasLogoutUri() bool`
 
-HasBackchannelLogoutUri returns a boolean if a field has been set.
+HasLogoutUri returns a boolean if a field has been set.
+
+### GetLogoutMethod
+
+`func (o *ModelRequest) GetLogoutMethod() SAMLProviderLogoutMethodEnum`
+
+GetLogoutMethod returns the LogoutMethod field if non-nil, zero value otherwise.
+
+### GetLogoutMethodOk
+
+`func (o *ModelRequest) GetLogoutMethodOk() (*SAMLProviderLogoutMethodEnum, bool)`
+
+GetLogoutMethodOk returns a tuple with the LogoutMethod field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLogoutMethod
+
+`func (o *ModelRequest) SetLogoutMethod(v SAMLProviderLogoutMethodEnum)`
+
+SetLogoutMethod sets LogoutMethod field to given value.
+
+### HasLogoutMethod
+
+`func (o *ModelRequest) HasLogoutMethod() bool`
+
+HasLogoutMethod returns a boolean if a field has been set.
 
 ### GetSubMode
 
@@ -1481,6 +1510,31 @@ and a boolean to check if the value has been set.
 SetAcsUrl sets AcsUrl field to given value.
 
 
+### GetSlsUrl
+
+`func (o *ModelRequest) GetSlsUrl() string`
+
+GetSlsUrl returns the SlsUrl field if non-nil, zero value otherwise.
+
+### GetSlsUrlOk
+
+`func (o *ModelRequest) GetSlsUrlOk() (*string, bool)`
+
+GetSlsUrlOk returns a tuple with the SlsUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSlsUrl
+
+`func (o *ModelRequest) SetSlsUrl(v string)`
+
+SetSlsUrl sets SlsUrl field to given value.
+
+### HasSlsUrl
+
+`func (o *ModelRequest) HasSlsUrl() bool`
+
+HasSlsUrl returns a boolean if a field has been set.
+
 ### GetAudience
 
 `func (o *ModelRequest) GetAudience() string`
@@ -1881,22 +1935,47 @@ SetSignResponse sets SignResponse field to given value.
 
 HasSignResponse returns a boolean if a field has been set.
 
+### GetSignLogoutRequest
+
+`func (o *ModelRequest) GetSignLogoutRequest() bool`
+
+GetSignLogoutRequest returns the SignLogoutRequest field if non-nil, zero value otherwise.
+
+### GetSignLogoutRequestOk
+
+`func (o *ModelRequest) GetSignLogoutRequestOk() (*bool, bool)`
+
+GetSignLogoutRequestOk returns a tuple with the SignLogoutRequest field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSignLogoutRequest
+
+`func (o *ModelRequest) SetSignLogoutRequest(v bool)`
+
+SetSignLogoutRequest sets SignLogoutRequest field to given value.
+
+### HasSignLogoutRequest
+
+`func (o *ModelRequest) HasSignLogoutRequest() bool`
+
+HasSignLogoutRequest returns a boolean if a field has been set.
+
 ### GetSpBinding
 
-`func (o *ModelRequest) GetSpBinding() SpBindingEnum`
+`func (o *ModelRequest) GetSpBinding() SAMLBindingsEnum`
 
 GetSpBinding returns the SpBinding field if non-nil, zero value otherwise.
 
 ### GetSpBindingOk
 
-`func (o *ModelRequest) GetSpBindingOk() (*SpBindingEnum, bool)`
+`func (o *ModelRequest) GetSpBindingOk() (*SAMLBindingsEnum, bool)`
 
 GetSpBindingOk returns a tuple with the SpBinding field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSpBinding
 
-`func (o *ModelRequest) SetSpBinding(v SpBindingEnum)`
+`func (o *ModelRequest) SetSpBinding(v SAMLBindingsEnum)`
 
 SetSpBinding sets SpBinding field to given value.
 
@@ -1905,6 +1984,31 @@ SetSpBinding sets SpBinding field to given value.
 `func (o *ModelRequest) HasSpBinding() bool`
 
 HasSpBinding returns a boolean if a field has been set.
+
+### GetSlsBinding
+
+`func (o *ModelRequest) GetSlsBinding() SAMLBindingsEnum`
+
+GetSlsBinding returns the SlsBinding field if non-nil, zero value otherwise.
+
+### GetSlsBindingOk
+
+`func (o *ModelRequest) GetSlsBindingOk() (*SAMLBindingsEnum, bool)`
+
+GetSlsBindingOk returns a tuple with the SlsBinding field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSlsBinding
+
+`func (o *ModelRequest) SetSlsBinding(v SAMLBindingsEnum)`
+
+SetSlsBinding sets SlsBinding field to given value.
+
+### HasSlsBinding
+
+`func (o *ModelRequest) HasSlsBinding() bool`
+
+HasSlsBinding returns a boolean if a field has been set.
 
 ### GetDefaultRelayState
 

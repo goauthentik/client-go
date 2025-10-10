@@ -54,6 +54,14 @@ Name | Type | Description | Notes
 **Sources** | Pointer to [**[]LoginSource**](LoginSource.md) |  | [optional] 
 **ShowSourceLabels** | **bool** |  | 
 **EnableRememberMe** | Pointer to **bool** |  | [optional] [default to true]
+**LogoutUrls** | Pointer to **[]map[string]interface{}** |  | [optional] 
+**PostUrl** | Pointer to **string** |  | [optional] 
+**SamlRequest** | Pointer to **string** |  | [optional] 
+**RelayState** | Pointer to **string** |  | [optional] 
+**ProviderName** | Pointer to **string** |  | [optional] 
+**Binding** | Pointer to **string** |  | [optional] 
+**RedirectUrl** | Pointer to **string** |  | [optional] 
+**IsComplete** | Pointer to **bool** |  | [optional] [default to false]
 **Slug** | **string** |  | 
 **Fields** | [**[]StagePrompt**](StagePrompt.md) |  | 
 **To** | **string** |  | 
@@ -1213,6 +1221,206 @@ SetEnableRememberMe sets EnableRememberMe field to given value.
 `func (o *ChallengeTypes) HasEnableRememberMe() bool`
 
 HasEnableRememberMe returns a boolean if a field has been set.
+
+### GetLogoutUrls
+
+`func (o *ChallengeTypes) GetLogoutUrls() []map[string]interface{}`
+
+GetLogoutUrls returns the LogoutUrls field if non-nil, zero value otherwise.
+
+### GetLogoutUrlsOk
+
+`func (o *ChallengeTypes) GetLogoutUrlsOk() (*[]map[string]interface{}, bool)`
+
+GetLogoutUrlsOk returns a tuple with the LogoutUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLogoutUrls
+
+`func (o *ChallengeTypes) SetLogoutUrls(v []map[string]interface{})`
+
+SetLogoutUrls sets LogoutUrls field to given value.
+
+### HasLogoutUrls
+
+`func (o *ChallengeTypes) HasLogoutUrls() bool`
+
+HasLogoutUrls returns a boolean if a field has been set.
+
+### GetPostUrl
+
+`func (o *ChallengeTypes) GetPostUrl() string`
+
+GetPostUrl returns the PostUrl field if non-nil, zero value otherwise.
+
+### GetPostUrlOk
+
+`func (o *ChallengeTypes) GetPostUrlOk() (*string, bool)`
+
+GetPostUrlOk returns a tuple with the PostUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPostUrl
+
+`func (o *ChallengeTypes) SetPostUrl(v string)`
+
+SetPostUrl sets PostUrl field to given value.
+
+### HasPostUrl
+
+`func (o *ChallengeTypes) HasPostUrl() bool`
+
+HasPostUrl returns a boolean if a field has been set.
+
+### GetSamlRequest
+
+`func (o *ChallengeTypes) GetSamlRequest() string`
+
+GetSamlRequest returns the SamlRequest field if non-nil, zero value otherwise.
+
+### GetSamlRequestOk
+
+`func (o *ChallengeTypes) GetSamlRequestOk() (*string, bool)`
+
+GetSamlRequestOk returns a tuple with the SamlRequest field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSamlRequest
+
+`func (o *ChallengeTypes) SetSamlRequest(v string)`
+
+SetSamlRequest sets SamlRequest field to given value.
+
+### HasSamlRequest
+
+`func (o *ChallengeTypes) HasSamlRequest() bool`
+
+HasSamlRequest returns a boolean if a field has been set.
+
+### GetRelayState
+
+`func (o *ChallengeTypes) GetRelayState() string`
+
+GetRelayState returns the RelayState field if non-nil, zero value otherwise.
+
+### GetRelayStateOk
+
+`func (o *ChallengeTypes) GetRelayStateOk() (*string, bool)`
+
+GetRelayStateOk returns a tuple with the RelayState field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRelayState
+
+`func (o *ChallengeTypes) SetRelayState(v string)`
+
+SetRelayState sets RelayState field to given value.
+
+### HasRelayState
+
+`func (o *ChallengeTypes) HasRelayState() bool`
+
+HasRelayState returns a boolean if a field has been set.
+
+### GetProviderName
+
+`func (o *ChallengeTypes) GetProviderName() string`
+
+GetProviderName returns the ProviderName field if non-nil, zero value otherwise.
+
+### GetProviderNameOk
+
+`func (o *ChallengeTypes) GetProviderNameOk() (*string, bool)`
+
+GetProviderNameOk returns a tuple with the ProviderName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProviderName
+
+`func (o *ChallengeTypes) SetProviderName(v string)`
+
+SetProviderName sets ProviderName field to given value.
+
+### HasProviderName
+
+`func (o *ChallengeTypes) HasProviderName() bool`
+
+HasProviderName returns a boolean if a field has been set.
+
+### GetBinding
+
+`func (o *ChallengeTypes) GetBinding() string`
+
+GetBinding returns the Binding field if non-nil, zero value otherwise.
+
+### GetBindingOk
+
+`func (o *ChallengeTypes) GetBindingOk() (*string, bool)`
+
+GetBindingOk returns a tuple with the Binding field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBinding
+
+`func (o *ChallengeTypes) SetBinding(v string)`
+
+SetBinding sets Binding field to given value.
+
+### HasBinding
+
+`func (o *ChallengeTypes) HasBinding() bool`
+
+HasBinding returns a boolean if a field has been set.
+
+### GetRedirectUrl
+
+`func (o *ChallengeTypes) GetRedirectUrl() string`
+
+GetRedirectUrl returns the RedirectUrl field if non-nil, zero value otherwise.
+
+### GetRedirectUrlOk
+
+`func (o *ChallengeTypes) GetRedirectUrlOk() (*string, bool)`
+
+GetRedirectUrlOk returns a tuple with the RedirectUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRedirectUrl
+
+`func (o *ChallengeTypes) SetRedirectUrl(v string)`
+
+SetRedirectUrl sets RedirectUrl field to given value.
+
+### HasRedirectUrl
+
+`func (o *ChallengeTypes) HasRedirectUrl() bool`
+
+HasRedirectUrl returns a boolean if a field has been set.
+
+### GetIsComplete
+
+`func (o *ChallengeTypes) GetIsComplete() bool`
+
+GetIsComplete returns the IsComplete field if non-nil, zero value otherwise.
+
+### GetIsCompleteOk
+
+`func (o *ChallengeTypes) GetIsCompleteOk() (*bool, bool)`
+
+GetIsCompleteOk returns a tuple with the IsComplete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsComplete
+
+`func (o *ChallengeTypes) SetIsComplete(v bool)`
+
+SetIsComplete sets IsComplete field to given value.
+
+### HasIsComplete
+
+`func (o *ChallengeTypes) HasIsComplete() bool`
+
+HasIsComplete returns a boolean if a field has been set.
 
 ### GetSlug
 
