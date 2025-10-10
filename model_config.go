@@ -17,26 +17,24 @@ import (
 
 // Config Serialize authentik Config into DRF Object
 type Config struct {
-	ErrorReporting         ErrorReportingConfig `json:"error_reporting"`
-	Capabilities           []CapabilitiesEnum   `json:"capabilities"`
-	CacheTimeout           int32                `json:"cache_timeout"`
-	CacheTimeoutFlows      int32                `json:"cache_timeout_flows"`
-	CacheTimeoutPolicies   int32                `json:"cache_timeout_policies"`
-	CacheTimeoutReputation int32                `json:"cache_timeout_reputation"`
+	ErrorReporting       ErrorReportingConfig `json:"error_reporting"`
+	Capabilities         []CapabilitiesEnum   `json:"capabilities"`
+	CacheTimeout         int32                `json:"cache_timeout"`
+	CacheTimeoutFlows    int32                `json:"cache_timeout_flows"`
+	CacheTimeoutPolicies int32                `json:"cache_timeout_policies"`
 }
 
 // NewConfig instantiates a new Config object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConfig(errorReporting ErrorReportingConfig, capabilities []CapabilitiesEnum, cacheTimeout int32, cacheTimeoutFlows int32, cacheTimeoutPolicies int32, cacheTimeoutReputation int32) *Config {
+func NewConfig(errorReporting ErrorReportingConfig, capabilities []CapabilitiesEnum, cacheTimeout int32, cacheTimeoutFlows int32, cacheTimeoutPolicies int32) *Config {
 	this := Config{}
 	this.ErrorReporting = errorReporting
 	this.Capabilities = capabilities
 	this.CacheTimeout = cacheTimeout
 	this.CacheTimeoutFlows = cacheTimeoutFlows
 	this.CacheTimeoutPolicies = cacheTimeoutPolicies
-	this.CacheTimeoutReputation = cacheTimeoutReputation
 	return &this
 }
 
@@ -168,30 +166,6 @@ func (o *Config) SetCacheTimeoutPolicies(v int32) {
 	o.CacheTimeoutPolicies = v
 }
 
-// GetCacheTimeoutReputation returns the CacheTimeoutReputation field value
-func (o *Config) GetCacheTimeoutReputation() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.CacheTimeoutReputation
-}
-
-// GetCacheTimeoutReputationOk returns a tuple with the CacheTimeoutReputation field value
-// and a boolean to check if the value has been set.
-func (o *Config) GetCacheTimeoutReputationOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CacheTimeoutReputation, true
-}
-
-// SetCacheTimeoutReputation sets field value
-func (o *Config) SetCacheTimeoutReputation(v int32) {
-	o.CacheTimeoutReputation = v
-}
-
 func (o Config) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -208,9 +182,6 @@ func (o Config) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["cache_timeout_policies"] = o.CacheTimeoutPolicies
-	}
-	if true {
-		toSerialize["cache_timeout_reputation"] = o.CacheTimeoutReputation
 	}
 	return json.Marshal(toSerialize)
 }

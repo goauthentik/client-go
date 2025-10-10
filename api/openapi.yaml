@@ -50478,7 +50478,6 @@ components:
         capabilities:
         - null
         - null
-        cache_timeout_reputation: 5
         cache_timeout: 6
         error_reporting:
           environment: environment
@@ -50500,13 +50499,10 @@ components:
           type: integer
         cache_timeout_policies:
           type: integer
-        cache_timeout_reputation:
-          type: integer
       required:
       - cache_timeout
       - cache_timeout_flows
       - cache_timeout_policies
-      - cache_timeout_reputation
       - capabilities
       - error_reporting
       type: object
