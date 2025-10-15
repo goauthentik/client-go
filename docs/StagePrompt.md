@@ -12,13 +12,13 @@ Name | Type | Description | Notes
 **InitialValue** | **string** |  | 
 **Order** | **int32** |  | 
 **SubText** | **string** |  | 
-**Choices** | **[]string** |  | 
+**Choices** | [**[]PromptChoice**](PromptChoice.md) |  | 
 
 ## Methods
 
 ### NewStagePrompt
 
-`func NewStagePrompt(fieldKey string, label string, type_ PromptTypeEnum, required bool, placeholder string, initialValue string, order int32, subText string, choices []string, ) *StagePrompt`
+`func NewStagePrompt(fieldKey string, label string, type_ PromptTypeEnum, required bool, placeholder string, initialValue string, order int32, subText string, choices []PromptChoice, ) *StagePrompt`
 
 NewStagePrompt instantiates a new StagePrompt object
 This constructor will assign default values to properties that have it defined,
@@ -195,20 +195,20 @@ SetSubText sets SubText field to given value.
 
 ### GetChoices
 
-`func (o *StagePrompt) GetChoices() []string`
+`func (o *StagePrompt) GetChoices() []PromptChoice`
 
 GetChoices returns the Choices field if non-nil, zero value otherwise.
 
 ### GetChoicesOk
 
-`func (o *StagePrompt) GetChoicesOk() (*[]string, bool)`
+`func (o *StagePrompt) GetChoicesOk() (*[]PromptChoice, bool)`
 
 GetChoicesOk returns a tuple with the Choices field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetChoices
 
-`func (o *StagePrompt) SetChoices(v []string)`
+`func (o *StagePrompt) SetChoices(v []PromptChoice)`
 
 SetChoices sets Choices field to given value.
 

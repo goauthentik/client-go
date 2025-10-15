@@ -25,14 +25,14 @@ type StagePrompt struct {
 	InitialValue string         `json:"initial_value"`
 	Order        int32          `json:"order"`
 	SubText      string         `json:"sub_text"`
-	Choices      []string       `json:"choices"`
+	Choices      []PromptChoice `json:"choices"`
 }
 
 // NewStagePrompt instantiates a new StagePrompt object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStagePrompt(fieldKey string, label string, type_ PromptTypeEnum, required bool, placeholder string, initialValue string, order int32, subText string, choices []string) *StagePrompt {
+func NewStagePrompt(fieldKey string, label string, type_ PromptTypeEnum, required bool, placeholder string, initialValue string, order int32, subText string, choices []PromptChoice) *StagePrompt {
 	this := StagePrompt{}
 	this.FieldKey = fieldKey
 	this.Label = label
@@ -247,10 +247,10 @@ func (o *StagePrompt) SetSubText(v string) {
 }
 
 // GetChoices returns the Choices field value
-// If the value is explicit nil, the zero value for []string will be returned
-func (o *StagePrompt) GetChoices() []string {
+// If the value is explicit nil, the zero value for []PromptChoice will be returned
+func (o *StagePrompt) GetChoices() []PromptChoice {
 	if o == nil {
-		var ret []string
+		var ret []PromptChoice
 		return ret
 	}
 
@@ -260,7 +260,7 @@ func (o *StagePrompt) GetChoices() []string {
 // GetChoicesOk returns a tuple with the Choices field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StagePrompt) GetChoicesOk() ([]string, bool) {
+func (o *StagePrompt) GetChoicesOk() ([]PromptChoice, bool) {
 	if o == nil || o.Choices == nil {
 		return nil, false
 	}
@@ -268,7 +268,7 @@ func (o *StagePrompt) GetChoicesOk() ([]string, bool) {
 }
 
 // SetChoices sets field value
-func (o *StagePrompt) SetChoices(v []string) {
+func (o *StagePrompt) SetChoices(v []PromptChoice) {
 	o.Choices = v
 }
 

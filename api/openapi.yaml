@@ -75393,8 +75393,10 @@ components:
           placeholder: placeholder
           type: null
           choices:
-          - choices
-          - choices
+          - label: label
+            value: value
+          - label: label
+            value: value
           required: true
           order: 0
         - sub_text: sub_text
@@ -75404,8 +75406,10 @@ components:
           placeholder: placeholder
           type: null
           choices:
-          - choices
-          - choices
+          - label: label
+            value: value
+          - label: label
+            value: value
           required: true
           order: 0
       properties:
@@ -75437,6 +75441,20 @@ components:
           default: ak-stage-prompt
           minLength: 1
           type: string
+      type: object
+    PromptChoice:
+      description: Serializer for a single Choice field
+      example:
+        label: label
+        value: value
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+      required:
+      - label
+      - value
       type: object
     PromptRequest:
       description: Prompt Serializer
@@ -80192,8 +80210,10 @@ components:
         placeholder: placeholder
         type: null
         choices:
-        - choices
-        - choices
+        - label: label
+          value: value
+        - label: label
+          value: value
         required: true
         order: 0
       properties:
@@ -80215,7 +80235,7 @@ components:
           type: string
         choices:
           items:
-            type: string
+            $ref: '#/components/schemas/PromptChoice'
           nullable: true
           type: array
       required:

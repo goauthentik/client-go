@@ -620,6 +620,7 @@ docs/PolicyTestResult.md
 docs/Prompt.md
 docs/PromptChallenge.md
 docs/PromptChallengeResponseRequest.md
+docs/PromptChoice.md
 docs/PromptRequest.md
 docs/PromptStage.md
 docs/PromptStageRequest.md
@@ -1404,6 +1405,7 @@ model_policy_test_result.go
 model_prompt.go
 model_prompt_challenge.go
 model_prompt_challenge_response_request.go
+model_prompt_choice.go
 model_prompt_request.go
 model_prompt_stage.go
 model_prompt_stage_request.go
