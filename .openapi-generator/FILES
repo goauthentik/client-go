@@ -326,6 +326,7 @@ docs/OutpostHealth.md
 docs/OutpostRequest.md
 docs/OutpostTypeEnum.md
 docs/OutpostsApi.md
+docs/PKCEMethodEnum.md
 docs/PaginatedApplicationEntitlementList.md
 docs/PaginatedApplicationList.md
 docs/PaginatedAuthenticatedSessionList.md
@@ -1389,6 +1390,7 @@ model_patched_web_authn_device_request.go
 model_permission.go
 model_permission_assign_request.go
 model_permission_assign_result.go
+model_pkce_method_enum.go
 model_plex_authentication_challenge.go
 model_plex_authentication_challenge_response_request.go
 model_plex_source.go

@@ -43,6 +43,7 @@ type OAuthSourceRequest struct {
 	AccessTokenUrl NullableString `json:"access_token_url,omitempty"`
 	// URL used by authentik to get user information.
 	ProfileUrl       NullableString         `json:"profile_url,omitempty"`
+	Pkce             *PKCEMethodEnum        `json:"pkce,omitempty"`
 	ConsumerKey      string                 `json:"consumer_key"`
 	ConsumerSecret   string                 `json:"consumer_secret"`
 	AdditionalScopes *string                `json:"additional_scopes,omitempty"`
@@ -629,6 +630,38 @@ func (o *OAuthSourceRequest) UnsetProfileUrl() {
 	o.ProfileUrl.Unset()
 }
 
+// GetPkce returns the Pkce field value if set, zero value otherwise.
+func (o *OAuthSourceRequest) GetPkce() PKCEMethodEnum {
+	if o == nil || o.Pkce == nil {
+		var ret PKCEMethodEnum
+		return ret
+	}
+	return *o.Pkce
+}
+
+// GetPkceOk returns a tuple with the Pkce field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthSourceRequest) GetPkceOk() (*PKCEMethodEnum, bool) {
+	if o == nil || o.Pkce == nil {
+		return nil, false
+	}
+	return o.Pkce, true
+}
+
+// HasPkce returns a boolean if a field has been set.
+func (o *OAuthSourceRequest) HasPkce() bool {
+	if o != nil && o.Pkce != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPkce gets a reference to the given PKCEMethodEnum and assigns it to the Pkce field.
+func (o *OAuthSourceRequest) SetPkce(v PKCEMethodEnum) {
+	o.Pkce = &v
+}
+
 // GetConsumerKey returns the ConsumerKey field value
 func (o *OAuthSourceRequest) GetConsumerKey() string {
 	if o == nil {
@@ -886,6 +919,9 @@ func (o OAuthSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProfileUrl.IsSet() {
 		toSerialize["profile_url"] = o.ProfileUrl.Get()
+	}
+	if o.Pkce != nil {
+		toSerialize["pkce"] = o.Pkce
 	}
 	if true {
 		toSerialize["consumer_key"] = o.ConsumerKey

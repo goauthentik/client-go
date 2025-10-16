@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **AuthorizationUrl** | Pointer to **NullableString** | URL the user is redirect to to conest the flow. | [optional] 
 **AccessTokenUrl** | Pointer to **NullableString** | URL used by authentik to retrieve tokens. | [optional] 
 **ProfileUrl** | Pointer to **NullableString** | URL used by authentik to get user information. | [optional] 
+**Pkce** | Pointer to [**PKCEMethodEnum**](PKCEMethodEnum.md) |  | [optional] 
 **ConsumerKey** | **string** |  | 
 **CallbackUrl** | **string** | Get OAuth Callback URL | [readonly] 
 **AdditionalScopes** | Pointer to **string** |  | [optional] 
@@ -660,6 +661,31 @@ HasProfileUrl returns a boolean if a field has been set.
 `func (o *OAuthSource) UnsetProfileUrl()`
 
 UnsetProfileUrl ensures that no value is present for ProfileUrl, not even an explicit nil
+### GetPkce
+
+`func (o *OAuthSource) GetPkce() PKCEMethodEnum`
+
+GetPkce returns the Pkce field if non-nil, zero value otherwise.
+
+### GetPkceOk
+
+`func (o *OAuthSource) GetPkceOk() (*PKCEMethodEnum, bool)`
+
+GetPkceOk returns a tuple with the Pkce field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPkce
+
+`func (o *OAuthSource) SetPkce(v PKCEMethodEnum)`
+
+SetPkce sets Pkce field to given value.
+
+### HasPkce
+
+`func (o *OAuthSource) HasPkce() bool`
+
+HasPkce returns a boolean if a field has been set.
+
 ### GetConsumerKey
 
 `func (o *OAuthSource) GetConsumerKey() string`

@@ -58530,6 +58530,7 @@ components:
         oidc_jwks_url: oidc_jwks_url
         user_path_template: user_path_template
         authorization_url: authorization_url
+        pkce: null
         group_matching_mode: ""
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
@@ -58643,6 +58644,8 @@ components:
           maxLength: 255
           nullable: true
           type: string
+        pkce:
+          $ref: '#/components/schemas/PKCEMethodEnum'
         consumer_key:
           type: string
         callback_url:
@@ -58778,6 +58781,7 @@ components:
         authorization_url: authorization_url
         oidc_jwks:
           key: ""
+        pkce: null
         authorization_code_auth_method: ""
         additional_scopes: additional_scopes
         enabled: true
@@ -58864,6 +58868,8 @@ components:
           maxLength: 255
           nullable: true
           type: string
+        pkce:
+          $ref: '#/components/schemas/PKCEMethodEnum'
         consumer_key:
           minLength: 1
           type: string
@@ -59185,6 +59191,12 @@ components:
       - ldap
       - radius
       - rac
+      type: string
+    PKCEMethodEnum:
+      enum:
+      - none
+      - plain
+      - S256
       type: string
     PaginatedApplicationEntitlementList:
       example:
@@ -64082,6 +64094,7 @@ components:
           oidc_jwks_url: oidc_jwks_url
           user_path_template: user_path_template
           authorization_url: authorization_url
+          pkce: null
           group_matching_mode: ""
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
@@ -64118,6 +64131,7 @@ components:
           oidc_jwks_url: oidc_jwks_url
           user_path_template: user_path_template
           authorization_url: authorization_url
+          pkce: null
           group_matching_mode: ""
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
@@ -72308,6 +72322,7 @@ components:
         authorization_url: authorization_url
         oidc_jwks:
           key: ""
+        pkce: null
         authorization_code_auth_method: ""
         additional_scopes: additional_scopes
         enabled: true
@@ -72394,6 +72409,8 @@ components:
           maxLength: 255
           nullable: true
           type: string
+        pkce:
+          $ref: '#/components/schemas/PKCEMethodEnum'
         consumer_key:
           minLength: 1
           type: string
