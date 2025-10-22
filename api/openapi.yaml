@@ -53834,6 +53834,7 @@ components:
     GoogleWorkspaceProvider:
       description: GoogleWorkspaceProvider Serializer
       example:
+        sync_page_timeout: sync_page_timeout
         delegated_subject: delegated_subject
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -53841,6 +53842,7 @@ components:
         verbose_name_plural: verbose_name_plural
         credentials:
           key: ""
+        sync_page_size: 1294386359
         user_delete_action: null
         exclude_users_service_account: true
         default_group_email_domain: default_group_email_domain
@@ -53920,6 +53922,14 @@ components:
         group_delete_action:
           $ref: '#/components/schemas/OutgoingSyncDeleteAction'
         default_group_email_domain:
+          type: string
+        sync_page_size:
+          description: Controls the number of objects synced in a single task
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        sync_page_timeout:
+          description: Timeout for synchronization of a single page
           type: string
         dry_run:
           description: "When enabled, provider will not modify or create objects in\
@@ -54079,23 +54089,25 @@ components:
     GoogleWorkspaceProviderRequest:
       description: GoogleWorkspaceProvider Serializer
       example:
-        default_group_email_domain: default_group_email_domain
+        sync_page_timeout: sync_page_timeout
         delegated_subject: delegated_subject
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         credentials:
           key: ""
+        sync_page_size: 171976545
+        user_delete_action: null
+        exclude_users_service_account: true
+        default_group_email_domain: default_group_email_domain
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         dry_run: true
         scopes: scopes
-        user_delete_action: null
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         group_delete_action: null
-        exclude_users_service_account: true
       properties:
         name:
           minLength: 1
@@ -54133,6 +54145,15 @@ components:
         group_delete_action:
           $ref: '#/components/schemas/OutgoingSyncDeleteAction'
         default_group_email_domain:
+          minLength: 1
+          type: string
+        sync_page_size:
+          description: Controls the number of objects synced in a single task
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        sync_page_timeout:
+          description: Timeout for synchronization of a single page
           minLength: 1
           type: string
         dry_run:
@@ -57080,10 +57101,12 @@ components:
       description: MicrosoftEntraProvider Serializer
       example:
         tenant_id: tenant_id
+        sync_page_timeout: sync_page_timeout
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         verbose_name_plural: verbose_name_plural
+        sync_page_size: 1294386359
         user_delete_action: null
         client_id: client_id
         exclude_users_service_account: true
@@ -57159,6 +57182,14 @@ components:
           $ref: '#/components/schemas/OutgoingSyncDeleteAction'
         group_delete_action:
           $ref: '#/components/schemas/OutgoingSyncDeleteAction'
+        sync_page_size:
+          description: Controls the number of objects synced in a single task
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        sync_page_timeout:
+          description: Timeout for synchronization of a single page
+          type: string
         dry_run:
           description: "When enabled, provider will not modify or create objects in\
             \ the remote system."
@@ -57318,20 +57349,22 @@ components:
       description: MicrosoftEntraProvider Serializer
       example:
         tenant_id: tenant_id
+        sync_page_timeout: sync_page_timeout
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        sync_page_size: 171976545
+        user_delete_action: null
+        client_id: client_id
+        exclude_users_service_account: true
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         dry_run: true
         client_secret: client_secret
-        user_delete_action: null
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        client_id: client_id
         group_delete_action: null
-        exclude_users_service_account: true
       properties:
         name:
           minLength: 1
@@ -57366,6 +57399,15 @@ components:
           $ref: '#/components/schemas/OutgoingSyncDeleteAction'
         group_delete_action:
           $ref: '#/components/schemas/OutgoingSyncDeleteAction'
+        sync_page_size:
+          description: Controls the number of objects synced in a single task
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        sync_page_timeout:
+          description: Timeout for synchronization of a single page
+          minLength: 1
+          type: string
         dry_run:
           description: "When enabled, provider will not modify or create objects in\
             \ the remote system."
@@ -62015,13 +62057,15 @@ components:
         autocomplete:
           key: ""
         results:
-        - delegated_subject: delegated_subject
+        - sync_page_timeout: sync_page_timeout
+          delegated_subject: delegated_subject
           property_mappings_group:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
           credentials:
             key: ""
+          sync_page_size: 1294386359
           user_delete_action: null
           exclude_users_service_account: true
           default_group_email_domain: default_group_email_domain
@@ -62039,13 +62083,15 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group_delete_action: null
-        - delegated_subject: delegated_subject
+        - sync_page_timeout: sync_page_timeout
+          delegated_subject: delegated_subject
           property_mappings_group:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
           credentials:
             key: ""
+          sync_page_size: 1294386359
           user_delete_action: null
           exclude_users_service_account: true
           default_group_email_domain: default_group_email_domain
@@ -63508,10 +63554,12 @@ components:
           key: ""
         results:
         - tenant_id: tenant_id
+          sync_page_timeout: sync_page_timeout
           property_mappings_group:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
+          sync_page_size: 1294386359
           user_delete_action: null
           client_id: client_id
           exclude_users_service_account: true
@@ -63530,10 +63578,12 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group_delete_action: null
         - tenant_id: tenant_id
+          sync_page_timeout: sync_page_timeout
           property_mappings_group:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
+          sync_page_size: 1294386359
           user_delete_action: null
           client_id: client_id
           exclude_users_service_account: true
@@ -66384,12 +66434,14 @@ components:
           key: ""
         results:
         - compatibility_mode: ""
+          sync_page_timeout: sync_page_timeout
           property_mappings_group:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
           auth_oauth_params:
             key: ""
+          sync_page_size: 1294386359
           auth_mode: null
           url: url
           token: token
@@ -66409,12 +66461,14 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - compatibility_mode: ""
+          sync_page_timeout: sync_page_timeout
           property_mappings_group:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
           auth_oauth_params:
             key: ""
+          sync_page_size: 1294386359
           auth_mode: null
           url: url
           token: token
@@ -71021,23 +71075,25 @@ components:
     PatchedGoogleWorkspaceProviderRequest:
       description: GoogleWorkspaceProvider Serializer
       example:
-        default_group_email_domain: default_group_email_domain
+        sync_page_timeout: sync_page_timeout
         delegated_subject: delegated_subject
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         credentials:
           key: ""
+        sync_page_size: 171976545
+        user_delete_action: null
+        exclude_users_service_account: true
+        default_group_email_domain: default_group_email_domain
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         dry_run: true
         scopes: scopes
-        user_delete_action: null
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         group_delete_action: null
-        exclude_users_service_account: true
       properties:
         name:
           minLength: 1
@@ -71075,6 +71131,15 @@ components:
         group_delete_action:
           $ref: '#/components/schemas/OutgoingSyncDeleteAction'
         default_group_email_domain:
+          minLength: 1
+          type: string
+        sync_page_size:
+          description: Controls the number of objects synced in a single task
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        sync_page_timeout:
+          description: Timeout for synchronization of a single page
           minLength: 1
           type: string
         dry_run:
@@ -71925,20 +71990,22 @@ components:
       description: MicrosoftEntraProvider Serializer
       example:
         tenant_id: tenant_id
+        sync_page_timeout: sync_page_timeout
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        sync_page_size: 171976545
+        user_delete_action: null
+        client_id: client_id
+        exclude_users_service_account: true
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         dry_run: true
         client_secret: client_secret
-        user_delete_action: null
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        client_id: client_id
         group_delete_action: null
-        exclude_users_service_account: true
       properties:
         name:
           minLength: 1
@@ -71973,6 +72040,15 @@ components:
           $ref: '#/components/schemas/OutgoingSyncDeleteAction'
         group_delete_action:
           $ref: '#/components/schemas/OutgoingSyncDeleteAction'
+        sync_page_size:
+          description: Controls the number of objects synced in a single task
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        sync_page_timeout:
+          description: Timeout for synchronization of a single page
+          minLength: 1
+          type: string
         dry_run:
           description: "When enabled, provider will not modify or create objects in\
             \ the remote system."
@@ -73640,11 +73716,13 @@ components:
       description: SCIMProvider Serializer
       example:
         compatibility_mode: ""
+        sync_page_timeout: sync_page_timeout
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         auth_oauth_params:
           key: ""
+        sync_page_size: 171976545
         auth_mode: null
         url: url
         token: token
@@ -73702,6 +73780,15 @@ components:
         filter_group:
           format: uuid
           nullable: true
+          type: string
+        sync_page_size:
+          description: Controls the number of objects synced in a single task
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        sync_page_timeout:
+          description: Timeout for synchronization of a single page
+          minLength: 1
           type: string
         dry_run:
           description: "When enabled, provider will not modify or create objects in\
@@ -78487,12 +78574,14 @@ components:
       description: SCIMProvider Serializer
       example:
         compatibility_mode: ""
+        sync_page_timeout: sync_page_timeout
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         verbose_name_plural: verbose_name_plural
         auth_oauth_params:
           key: ""
+        sync_page_size: 1294386359
         auth_mode: null
         url: url
         token: token
@@ -78583,6 +78672,14 @@ components:
           format: uuid
           nullable: true
           type: string
+        sync_page_size:
+          description: Controls the number of objects synced in a single task
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        sync_page_timeout:
+          description: Timeout for synchronization of a single page
+          type: string
         dry_run:
           description: "When enabled, provider will not modify or create objects in\
             \ the remote system."
@@ -78660,11 +78757,13 @@ components:
       description: SCIMProvider Serializer
       example:
         compatibility_mode: ""
+        sync_page_timeout: sync_page_timeout
         property_mappings_group:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         auth_oauth_params:
           key: ""
+        sync_page_size: 171976545
         auth_mode: null
         url: url
         token: token
@@ -78722,6 +78821,15 @@ components:
         filter_group:
           format: uuid
           nullable: true
+          type: string
+        sync_page_size:
+          description: Controls the number of objects synced in a single task
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        sync_page_timeout:
+          description: Timeout for synchronization of a single page
+          minLength: 1
           type: string
         dry_run:
           description: "When enabled, provider will not modify or create objects in\

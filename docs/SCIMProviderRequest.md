@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **CompatibilityMode** | Pointer to [**CompatibilityModeEnum**](CompatibilityModeEnum.md) | Alter authentik behavior for vendor-specific SCIM implementations. | [optional] 
 **ExcludeUsersServiceAccount** | Pointer to **bool** |  | [optional] 
 **FilterGroup** | Pointer to **NullableString** |  | [optional] 
+**SyncPageSize** | Pointer to **int32** | Controls the number of objects synced in a single task | [optional] 
+**SyncPageTimeout** | Pointer to **string** | Timeout for synchronization of a single page | [optional] 
 **DryRun** | Pointer to **bool** | When enabled, provider will not modify or create objects in the remote system. | [optional] 
 
 ## Methods
@@ -347,6 +349,56 @@ HasFilterGroup returns a boolean if a field has been set.
 `func (o *SCIMProviderRequest) UnsetFilterGroup()`
 
 UnsetFilterGroup ensures that no value is present for FilterGroup, not even an explicit nil
+### GetSyncPageSize
+
+`func (o *SCIMProviderRequest) GetSyncPageSize() int32`
+
+GetSyncPageSize returns the SyncPageSize field if non-nil, zero value otherwise.
+
+### GetSyncPageSizeOk
+
+`func (o *SCIMProviderRequest) GetSyncPageSizeOk() (*int32, bool)`
+
+GetSyncPageSizeOk returns a tuple with the SyncPageSize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSyncPageSize
+
+`func (o *SCIMProviderRequest) SetSyncPageSize(v int32)`
+
+SetSyncPageSize sets SyncPageSize field to given value.
+
+### HasSyncPageSize
+
+`func (o *SCIMProviderRequest) HasSyncPageSize() bool`
+
+HasSyncPageSize returns a boolean if a field has been set.
+
+### GetSyncPageTimeout
+
+`func (o *SCIMProviderRequest) GetSyncPageTimeout() string`
+
+GetSyncPageTimeout returns the SyncPageTimeout field if non-nil, zero value otherwise.
+
+### GetSyncPageTimeoutOk
+
+`func (o *SCIMProviderRequest) GetSyncPageTimeoutOk() (*string, bool)`
+
+GetSyncPageTimeoutOk returns a tuple with the SyncPageTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSyncPageTimeout
+
+`func (o *SCIMProviderRequest) SetSyncPageTimeout(v string)`
+
+SetSyncPageTimeout sets SyncPageTimeout field to given value.
+
+### HasSyncPageTimeout
+
+`func (o *SCIMProviderRequest) HasSyncPageTimeout() bool`
+
+HasSyncPageTimeout returns a boolean if a field has been set.
+
 ### GetDryRun
 
 `func (o *SCIMProviderRequest) GetDryRun() bool`
