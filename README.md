@@ -1295,6 +1295,7 @@ Class | Method | HTTP request | Description
  - [KerberosSourcePropertyMapping](docs/KerberosSourcePropertyMapping.md)
  - [KerberosSourcePropertyMappingRequest](docs/KerberosSourcePropertyMappingRequest.md)
  - [KerberosSourceRequest](docs/KerberosSourceRequest.md)
+ - [KeyTypeEnum](docs/KeyTypeEnum.md)
  - [KubernetesServiceConnection](docs/KubernetesServiceConnection.md)
  - [KubernetesServiceConnectionRequest](docs/KubernetesServiceConnectionRequest.md)
  - [LDAPAPIAccessMode](docs/LDAPAPIAccessMode.md)

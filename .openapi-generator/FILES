@@ -251,6 +251,7 @@ docs/KerberosSource.md
 docs/KerberosSourcePropertyMapping.md
 docs/KerberosSourcePropertyMappingRequest.md
 docs/KerberosSourceRequest.md
+docs/KeyTypeEnum.md
 docs/KubernetesServiceConnection.md
 docs/KubernetesServiceConnectionRequest.md
 docs/LDAPAPIAccessMode.md
@@ -1041,6 +1042,7 @@ model_kerberos_source.go
 model_kerberos_source_property_mapping.go
 model_kerberos_source_property_mapping_request.go
 model_kerberos_source_request.go
+model_key_type_enum.go
 model_kubernetes_service_connection.go
 model_kubernetes_service_connection_request.go
 model_last_task_status_enum.go

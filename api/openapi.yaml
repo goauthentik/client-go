@@ -6939,6 +6939,23 @@ paths:
           default: true
           type: boolean
         style: form
+      - description: "Filter by key algorithm type (RSA, EC, DSA, etc). Can be specified\
+          \ multiple times (e.g. '?key_type=rsa&key_type=ec')"
+        explode: true
+        in: query
+        name: key_type
+        required: false
+        schema:
+          items:
+            enum:
+            - dsa
+            - ec
+            - ed25519
+            - ed448
+            - rsa
+            type: string
+          type: array
+        style: form
       - explode: true
         in: query
         name: managed
@@ -50294,9 +50311,9 @@ components:
       description: CertificateKeyPair Serializer
       example:
         certificate_download_url: certificate_download_url
+        key_type: ""
         fingerprint_sha1: fingerprint_sha1
         managed: managed
-        private_key_type: private_key_type
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         cert_expiry: 2000-01-23T04:56:07.000+00:00
@@ -50337,11 +50354,11 @@ components:
           description: Show if this keypair has a private key configured or not
           readOnly: true
           type: boolean
-        private_key_type:
-          description: "Get the private key's type, if set"
+        key_type:
+          allOf:
+          - $ref: '#/components/schemas/KeyTypeEnum'
           nullable: true
           readOnly: true
-          type: string
         certificate_download_url:
           description: Get URL to download certificate
           readOnly: true
@@ -50365,12 +50382,12 @@ components:
       - certificate_download_url
       - fingerprint_sha1
       - fingerprint_sha256
+      - key_type
       - managed
       - name
       - pk
       - private_key_available
       - private_key_download_url
-      - private_key_type
       type: object
     CertificateKeyPairRequest:
       description: CertificateKeyPair Serializer
@@ -55952,6 +55969,14 @@ components:
       - realm
       - slug
       type: object
+    KeyTypeEnum:
+      enum:
+      - rsa
+      - ec
+      - dsa
+      - ed25519
+      - ed448
+      type: string
     KubernetesServiceConnection:
       description: KubernetesServiceConnection Serializer
       example:
@@ -60608,9 +60633,9 @@ components:
           key: ""
         results:
         - certificate_download_url: certificate_download_url
+          key_type: ""
           fingerprint_sha1: fingerprint_sha1
           managed: managed
-          private_key_type: private_key_type
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           cert_expiry: 2000-01-23T04:56:07.000+00:00
@@ -60619,9 +60644,9 @@ components:
           fingerprint_sha256: fingerprint_sha256
           cert_subject: cert_subject
         - certificate_download_url: certificate_download_url
+          key_type: ""
           fingerprint_sha1: fingerprint_sha1
           managed: managed
-          private_key_type: private_key_type
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           cert_expiry: 2000-01-23T04:56:07.000+00:00

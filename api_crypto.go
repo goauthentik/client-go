@@ -17,6 +17,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"reflect"
 	"strings"
 )
 
@@ -389,6 +390,7 @@ type ApiCryptoCertificatekeypairsListRequest struct {
 	ApiService     *CryptoApiService
 	hasKey         *bool
 	includeDetails *bool
+	keyType        *[]string
 	managed        *string
 	name           *string
 	ordering       *string
@@ -405,6 +407,12 @@ func (r ApiCryptoCertificatekeypairsListRequest) HasKey(hasKey bool) ApiCryptoCe
 
 func (r ApiCryptoCertificatekeypairsListRequest) IncludeDetails(includeDetails bool) ApiCryptoCertificatekeypairsListRequest {
 	r.includeDetails = &includeDetails
+	return r
+}
+
+// Filter by key algorithm type (RSA, EC, DSA, etc). Can be specified multiple times (e.g. &#39;?key_type&#x3D;rsa&amp;key_type&#x3D;ec&#39;)
+func (r ApiCryptoCertificatekeypairsListRequest) KeyType(keyType []string) ApiCryptoCertificatekeypairsListRequest {
+	r.keyType = &keyType
 	return r
 }
 
@@ -488,6 +496,17 @@ func (a *CryptoApiService) CryptoCertificatekeypairsListExecute(r ApiCryptoCerti
 	}
 	if r.includeDetails != nil {
 		localVarQueryParams.Add("include_details", parameterToString(*r.includeDetails, ""))
+	}
+	if r.keyType != nil {
+		t := *r.keyType
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("key_type", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("key_type", parameterToString(t, "multi"))
+		}
 	}
 	if r.managed != nil {
 		localVarQueryParams.Add("managed", parameterToString(*r.managed, ""))
