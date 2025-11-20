@@ -915,7 +915,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedEndpointDeviceList'
+                $ref: '#/components/schemas/PaginatedGoogleEndpointDeviceList'
           description: ""
         "400":
           content:
@@ -940,14 +940,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/EndpointDeviceRequest'
+              $ref: '#/components/schemas/GoogleEndpointDeviceRequest'
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EndpointDevice'
+                $ref: '#/components/schemas/GoogleEndpointDevice'
           description: ""
         "400":
           content:
@@ -1016,7 +1016,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EndpointDevice'
+                $ref: '#/components/schemas/GoogleEndpointDevice'
           description: ""
         "400":
           content:
@@ -1051,13 +1051,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedEndpointDeviceRequest'
+              $ref: '#/components/schemas/PatchedGoogleEndpointDeviceRequest'
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EndpointDevice'
+                $ref: '#/components/schemas/GoogleEndpointDevice'
           description: ""
         "400":
           content:
@@ -1092,14 +1092,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/EndpointDeviceRequest'
+              $ref: '#/components/schemas/GoogleEndpointDeviceRequest'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EndpointDevice'
+                $ref: '#/components/schemas/GoogleEndpointDevice'
           description: ""
         "400":
           content:
@@ -2689,7 +2689,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedEndpointDeviceList'
+                $ref: '#/components/schemas/PaginatedGoogleEndpointDeviceList'
           description: ""
         "400":
           content:
@@ -2726,7 +2726,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EndpointDevice'
+                $ref: '#/components/schemas/GoogleEndpointDevice'
           description: ""
         "400":
           content:
@@ -7365,6 +7365,1883 @@ paths:
       - authentik: []
       tags:
       - crypto
+  /endpoints/agents/connectors/:
+    get:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: endpoints_agents_connectors_list
+      parameters:
+      - explode: true
+        in: query
+        name: enabled
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAgentConnectorList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    post:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: endpoints_agents_connectors_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentConnectorRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentConnector'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/agents/connectors/{connector_uuid}/:
+    delete:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: endpoints_agents_connectors_destroy
+      parameters:
+      - description: A UUID string identifying this Agent Connector.
+        explode: false
+        in: path
+        name: connector_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    get:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: endpoints_agents_connectors_retrieve
+      parameters:
+      - description: A UUID string identifying this Agent Connector.
+        explode: false
+        in: path
+        name: connector_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentConnector'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    patch:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: endpoints_agents_connectors_partial_update
+      parameters:
+      - description: A UUID string identifying this Agent Connector.
+        explode: false
+        in: path
+        name: connector_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAgentConnectorRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentConnector'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    put:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: endpoints_agents_connectors_update
+      parameters:
+      - description: A UUID string identifying this Agent Connector.
+        explode: false
+        in: path
+        name: connector_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentConnectorRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentConnector'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/agents/connectors/{connector_uuid}/mdm_config/:
+    post:
+      description: Generate configuration for MDM systems to deploy authentik Agent
+      operationId: endpoints_agents_connectors_mdm_config_create
+      parameters:
+      - description: A UUID string identifying this Agent Connector.
+        explode: false
+        in: path
+        name: connector_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MDMConfigRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MDMConfigResponse'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/agents/connectors/{connector_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: endpoints_agents_connectors_used_by_list
+      parameters:
+      - description: A UUID string identifying this Agent Connector.
+        explode: false
+        in: path
+        name: connector_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/agents/connectors/agent_config/:
+    get:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: endpoints_agents_connectors_agent_config_retrieve
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentConfig'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - endpoints
+  /endpoints/agents/connectors/check_in/:
+    post:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: endpoints_agents_connectors_check_in_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceFactsRequest'
+      responses:
+        "204":
+          description: Successfully checked in
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - endpoints
+  /endpoints/agents/connectors/enroll/:
+    post:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: endpoints_agents_connectors_enroll_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnrollRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollResponse'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - endpoints
+  /endpoints/agents/enrollment_tokens/:
+    get:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: endpoints_agents_enrollment_tokens_list
+      parameters:
+      - explode: true
+        in: query
+        name: connector
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: token_uuid
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedEnrollmentTokenList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    post:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: endpoints_agents_enrollment_tokens_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnrollmentTokenRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentToken'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/agents/enrollment_tokens/{token_uuid}/:
+    delete:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: endpoints_agents_enrollment_tokens_destroy
+      parameters:
+      - description: A UUID string identifying this Enrollment Token.
+        explode: false
+        in: path
+        name: token_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    get:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: endpoints_agents_enrollment_tokens_retrieve
+      parameters:
+      - description: A UUID string identifying this Enrollment Token.
+        explode: false
+        in: path
+        name: token_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentToken'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    patch:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: endpoints_agents_enrollment_tokens_partial_update
+      parameters:
+      - description: A UUID string identifying this Enrollment Token.
+        explode: false
+        in: path
+        name: token_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedEnrollmentTokenRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentToken'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    put:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: endpoints_agents_enrollment_tokens_update
+      parameters:
+      - description: A UUID string identifying this Enrollment Token.
+        explode: false
+        in: path
+        name: token_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnrollmentTokenRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentToken'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/agents/enrollment_tokens/{token_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: endpoints_agents_enrollment_tokens_used_by_list
+      parameters:
+      - description: A UUID string identifying this Enrollment Token.
+        explode: false
+        in: path
+        name: token_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/agents/enrollment_tokens/{token_uuid}/view_key/:
+    get:
+      description: Return token key and log access
+      operationId: endpoints_agents_enrollment_tokens_view_key_retrieve
+      parameters:
+      - description: A UUID string identifying this Enrollment Token.
+        explode: false
+        in: path
+        name: token_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenView'
+          description: ""
+        "404":
+          description: Token not found or expired
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/connectors/:
+    get:
+      description: Connector Viewset
+      operationId: endpoints_connectors_list
+      parameters:
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedConnectorList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/connectors/{connector_uuid}/:
+    delete:
+      description: Connector Viewset
+      operationId: endpoints_connectors_destroy
+      parameters:
+      - description: A UUID string identifying this connector.
+        explode: false
+        in: path
+        name: connector_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    get:
+      description: Connector Viewset
+      operationId: endpoints_connectors_retrieve
+      parameters:
+      - description: A UUID string identifying this connector.
+        explode: false
+        in: path
+        name: connector_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connector'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/connectors/{connector_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: endpoints_connectors_used_by_list
+      parameters:
+      - description: A UUID string identifying this connector.
+        explode: false
+        in: path
+        name: connector_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/connectors/types/:
+    get:
+      description: Get all creatable types
+      operationId: endpoints_connectors_types_list
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TypeCreate'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/device_bindings/:
+    get:
+      description: PolicyBinding Viewset
+      operationId: endpoints_device_bindings_list
+      parameters:
+      - explode: true
+        in: query
+        name: enabled
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: order
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: policy
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: policy__isnull
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: target
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: target_in
+        required: false
+        schema:
+          items:
+            format: uuid
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: timeout
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPolicyBindingList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    post:
+      description: PolicyBinding Viewset
+      operationId: endpoints_device_bindings_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PolicyBindingRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PolicyBinding'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/device_bindings/{policy_binding_uuid}/:
+    delete:
+      description: PolicyBinding Viewset
+      operationId: endpoints_device_bindings_destroy
+      parameters:
+      - description: A UUID string identifying this device user binding.
+        explode: false
+        in: path
+        name: policy_binding_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    get:
+      description: PolicyBinding Viewset
+      operationId: endpoints_device_bindings_retrieve
+      parameters:
+      - description: A UUID string identifying this device user binding.
+        explode: false
+        in: path
+        name: policy_binding_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PolicyBinding'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    patch:
+      description: PolicyBinding Viewset
+      operationId: endpoints_device_bindings_partial_update
+      parameters:
+      - description: A UUID string identifying this device user binding.
+        explode: false
+        in: path
+        name: policy_binding_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPolicyBindingRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PolicyBinding'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    put:
+      description: PolicyBinding Viewset
+      operationId: endpoints_device_bindings_update
+      parameters:
+      - description: A UUID string identifying this device user binding.
+        explode: false
+        in: path
+        name: policy_binding_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PolicyBindingRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PolicyBinding'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/device_bindings/{policy_binding_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: endpoints_device_bindings_used_by_list
+      parameters:
+      - description: A UUID string identifying this device user binding.
+        explode: false
+        in: path
+        name: policy_binding_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/device_groups/:
+    get:
+      description: DeviceGroup Viewset
+      operationId: endpoints_device_groups_list
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: pbm_uuid
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDeviceGroupList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    post:
+      description: DeviceGroup Viewset
+      operationId: endpoints_device_groups_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceGroupRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceGroup'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/device_groups/{pbm_uuid}/:
+    delete:
+      description: DeviceGroup Viewset
+      operationId: endpoints_device_groups_destroy
+      parameters:
+      - description: A UUID string identifying this device group.
+        explode: false
+        in: path
+        name: pbm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    get:
+      description: DeviceGroup Viewset
+      operationId: endpoints_device_groups_retrieve
+      parameters:
+      - description: A UUID string identifying this device group.
+        explode: false
+        in: path
+        name: pbm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceGroup'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    patch:
+      description: DeviceGroup Viewset
+      operationId: endpoints_device_groups_partial_update
+      parameters:
+      - description: A UUID string identifying this device group.
+        explode: false
+        in: path
+        name: pbm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDeviceGroupRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceGroup'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    put:
+      description: DeviceGroup Viewset
+      operationId: endpoints_device_groups_update
+      parameters:
+      - description: A UUID string identifying this device group.
+        explode: false
+        in: path
+        name: pbm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceGroupRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceGroup'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/device_groups/{pbm_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: endpoints_device_groups_used_by_list
+      parameters:
+      - description: A UUID string identifying this device group.
+        explode: false
+        in: path
+        name: pbm_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/devices/:
+    get:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: endpoints_devices_list
+      parameters:
+      - explode: true
+        in: query
+        name: identifier
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedEndpointDeviceList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/devices/{device_uuid}/:
+    delete:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: endpoints_devices_destroy
+      parameters:
+      - description: A UUID string identifying this device.
+        explode: false
+        in: path
+        name: device_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    get:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: endpoints_devices_retrieve
+      parameters:
+      - description: A UUID string identifying this device.
+        explode: false
+        in: path
+        name: device_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointDeviceDetails'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    patch:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: endpoints_devices_partial_update
+      parameters:
+      - description: A UUID string identifying this device.
+        explode: false
+        in: path
+        name: device_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedEndpointDeviceRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointDevice'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    put:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: endpoints_devices_update
+      parameters:
+      - description: A UUID string identifying this device.
+        explode: false
+        in: path
+        name: device_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EndpointDeviceRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointDevice'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/devices/{device_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: endpoints_devices_used_by_list
+      parameters:
+      - description: A UUID string identifying this device.
+        explode: false
+        in: path
+        name: device_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
   /enterprise/license/:
     get:
       description: License Viewset
@@ -27855,6 +29732,10 @@ paths:
           - authentik_core.token
           - authentik_core.user
           - authentik_crypto.certificatekeypair
+          - authentik_endpoints.deviceuserbinding
+          - authentik_endpoints.endpointstage
+          - authentik_endpoints_connectors_agent.agentconnector
+          - authentik_endpoints_connectors_agent.enrollmenttoken
           - authentik_enterprise.license
           - authentik_events.event
           - authentik_events.notification
@@ -28125,6 +30006,10 @@ paths:
           - authentik_core.token
           - authentik_core.user
           - authentik_crypto.certificatekeypair
+          - authentik_endpoints.deviceuserbinding
+          - authentik_endpoints.endpointstage
+          - authentik_endpoints_connectors_agent.agentconnector
+          - authentik_endpoints_connectors_agent.enrollmenttoken
           - authentik_enterprise.license
           - authentik_events.event
           - authentik_events.notification
@@ -47570,6 +49455,150 @@ components:
       - pending_user
       - pending_user_avatar
       type: object
+    AgentConfig:
+      description: Base serializer class which doesn't implement create/update methods
+      example:
+        nss_uid_offset: 0
+        authentication_flow: authentication_flow
+        auth_terminate_session_on_expiry: true
+        refresh_interval: 1
+        nss_gid_offset: 6
+      properties:
+        nss_uid_offset:
+          type: integer
+        nss_gid_offset:
+          type: integer
+        authentication_flow:
+          type: string
+        auth_terminate_session_on_expiry:
+          type: boolean
+        refresh_interval:
+          readOnly: true
+          type: integer
+      required:
+      - auth_terminate_session_on_expiry
+      - authentication_flow
+      - nss_gid_offset
+      - nss_uid_offset
+      - refresh_interval
+      type: object
+    AgentConnector:
+      example:
+        nss_uid_offset: 171976544
+        refresh_interval: refresh_interval
+        verbose_name_plural: verbose_name_plural
+        enabled: true
+        nss_gid_offset: 1294386358
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        verbose_name: verbose_name
+        component: component
+        auth_terminate_session_on_expiry: true
+        meta_model_name: meta_model_name
+        snapshot_expiry: snapshot_expiry
+        connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        challenge_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        connector_uuid:
+          format: uuid
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+        component:
+          description: Get object component so that we know how to edit the object
+          readOnly: true
+          type: string
+        name:
+          type: string
+        enabled:
+          type: boolean
+        snapshot_expiry:
+          type: string
+        nss_uid_offset:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        nss_gid_offset:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        auth_terminate_session_on_expiry:
+          type: boolean
+        refresh_interval:
+          type: string
+        authentication_flow:
+          format: uuid
+          nullable: true
+          type: string
+        challenge_key:
+          format: uuid
+          nullable: true
+          type: string
+      required:
+      - component
+      - meta_model_name
+      - name
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    AgentConnectorRequest:
+      example:
+        nss_uid_offset: 171976544
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        auth_terminate_session_on_expiry: true
+        refresh_interval: refresh_interval
+        snapshot_expiry: snapshot_expiry
+        connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        enabled: true
+        nss_gid_offset: 1294386358
+        challenge_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        connector_uuid:
+          format: uuid
+          type: string
+        name:
+          minLength: 1
+          type: string
+        enabled:
+          type: boolean
+        snapshot_expiry:
+          minLength: 1
+          type: string
+        nss_uid_offset:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        nss_gid_offset:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        auth_terminate_session_on_expiry:
+          type: boolean
+        refresh_interval:
+          minLength: 1
+          type: string
+        authentication_flow:
+          format: uuid
+          nullable: true
+          type: string
+        challenge_key:
+          format: uuid
+          nullable: true
+          type: string
+      required:
+      - name
+      type: object
     AlgEnum:
       enum:
       - rsa
@@ -47598,6 +49627,8 @@ components:
       - authentik.api
       - authentik.core
       - authentik.crypto
+      - authentik.endpoints
+      - authentik.endpoints.connectors.agent
       - authentik.enterprise
       - authentik.events
       - authentik.flows
@@ -47652,6 +49683,7 @@ components:
       - authentik.brands
       - authentik.blueprints
       - authentik.enterprise.audit
+      - authentik.enterprise.endpoints.connectors.agent
       - authentik.enterprise.policies.unique_password
       - authentik.enterprise.providers.google_workspace
       - authentik.enterprise.providers.microsoft_entra
@@ -50581,6 +52613,46 @@ components:
       - endpoint
       - provider
       type: object
+    Connector:
+      example:
+        component: component
+        verbose_name: verbose_name
+        verbose_name_plural: verbose_name_plural
+        meta_model_name: meta_model_name
+        connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        enabled: true
+      properties:
+        connector_uuid:
+          format: uuid
+          type: string
+        name:
+          type: string
+        enabled:
+          type: boolean
+        component:
+          description: Get object component so that we know how to edit the object
+          readOnly: true
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+      required:
+      - component
+      - meta_model_name
+      - name
+      - verbose_name
+      - verbose_name_plural
+      type: object
     ConsentChallenge:
       description: Challenge info for consent screens
       properties:
@@ -51388,6 +53460,178 @@ components:
       - sms
       - email
       type: string
+    DeviceConnection:
+      example:
+        connector: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        connector_obj: ""
+        device: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        latest_snapshot: null
+      properties:
+        device:
+          format: uuid
+          type: string
+        connector:
+          format: uuid
+          type: string
+        connector_obj:
+          allOf:
+          - $ref: '#/components/schemas/Connector'
+          readOnly: true
+        latest_snapshot:
+          $ref: '#/components/schemas/DeviceConnection_latest_snapshot'
+      required:
+      - connector
+      - connector_obj
+      - device
+      - latest_snapshot
+      type: object
+    DeviceFactSnapshot:
+      properties:
+        data:
+          $ref: '#/components/schemas/DeviceFacts'
+        connection:
+          format: uuid
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+        expires:
+          format: date-time
+          nullable: true
+          readOnly: true
+          type: string
+      required:
+      - connection
+      - created
+      - data
+      - expires
+      type: object
+    DeviceFacts:
+      properties:
+        os:
+          $ref: '#/components/schemas/DeviceFacts_os'
+        disks:
+          items:
+            $ref: '#/components/schemas/Disk'
+          nullable: true
+          type: array
+        network:
+          $ref: '#/components/schemas/DeviceFacts_network'
+        hardware:
+          $ref: '#/components/schemas/DeviceFacts_hardware'
+        software:
+          items:
+            $ref: '#/components/schemas/Software'
+          nullable: true
+          type: array
+        processes:
+          items:
+            $ref: '#/components/schemas/Process'
+          nullable: true
+          type: array
+        vendor:
+          additionalProperties: {}
+          type: object
+      type: object
+    DeviceFactsOSFamily:
+      enum:
+      - linux
+      - unix
+      - bsd
+      - windows
+      - mac_os
+      - android
+      - i_os
+      - other
+      type: string
+    DeviceFactsRequest:
+      example:
+        processes:
+        - name: name
+          id: 1
+          user: user
+        - name: name
+          id: 1
+          user: user
+        os: null
+        disks:
+        - capacity_total_bytes: 0
+          name: name
+          encryption_enabled: false
+          label: label
+          capacity_used_bytes: 6
+          mountpoint: mountpoint
+        - capacity_total_bytes: 0
+          name: name
+          encryption_enabled: false
+          label: label
+          capacity_used_bytes: 6
+          mountpoint: mountpoint
+        software:
+        - path: path
+          name: name
+          source: source
+          version: version
+        - path: path
+          name: name
+          source: source
+          version: version
+        vendor:
+          key: ""
+        network: null
+        hardware: null
+      properties:
+        os:
+          $ref: '#/components/schemas/DeviceFactsRequest_os'
+        disks:
+          items:
+            $ref: '#/components/schemas/DiskRequest'
+          nullable: true
+          type: array
+        network:
+          $ref: '#/components/schemas/DeviceFactsRequest_network'
+        hardware:
+          $ref: '#/components/schemas/DeviceFactsRequest_hardware'
+        software:
+          items:
+            $ref: '#/components/schemas/SoftwareRequest'
+          nullable: true
+          type: array
+        processes:
+          items:
+            $ref: '#/components/schemas/ProcessRequest'
+          nullable: true
+          type: array
+        vendor:
+          additionalProperties: {}
+          type: object
+      type: object
+    DeviceGroup:
+      example:
+        pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+      properties:
+        pbm_uuid:
+          format: uuid
+          readOnly: true
+          type: string
+        name:
+          type: string
+      required:
+      - name
+      - pbm_uuid
+      type: object
+    DeviceGroupRequest:
+      example:
+        name: name
+      properties:
+        name:
+          minLength: 1
+          type: string
+      required:
+      - name
+      type: object
     DigestAlgorithmEnum:
       enum:
       - http://www.w3.org/2000/09/xmldsig#sha1
@@ -51400,6 +53644,57 @@ components:
       - "6"
       - "8"
       type: string
+    Disk:
+      properties:
+        name:
+          type: string
+        mountpoint:
+          type: string
+        label:
+          type: string
+        capacity_total_bytes:
+          format: int64
+          type: integer
+        capacity_used_bytes:
+          format: int64
+          type: integer
+        encryption_enabled:
+          default: false
+          type: boolean
+      required:
+      - mountpoint
+      - name
+      type: object
+    DiskRequest:
+      example:
+        capacity_total_bytes: 0
+        name: name
+        encryption_enabled: false
+        label: label
+        capacity_used_bytes: 6
+        mountpoint: mountpoint
+      properties:
+        name:
+          minLength: 1
+          type: string
+        mountpoint:
+          minLength: 1
+          type: string
+        label:
+          type: string
+        capacity_total_bytes:
+          format: int64
+          type: integer
+        capacity_used_bytes:
+          format: int64
+          type: integer
+        encryption_enabled:
+          default: false
+          type: boolean
+      required:
+      - mountpoint
+      - name
+      type: object
     DockerServiceConnection:
       description: DockerServiceConnection Serializer
       example:
@@ -52195,38 +54490,172 @@ components:
       - prompt
       type: string
     EndpointDevice:
-      description: Serializer for Endpoint authenticator devices
       example:
+        expiring: true
+        expires: 2000-01-23T04:56:07.000+00:00
+        pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group_obj:
+          pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
         name: name
-        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        attributes:
+          key: ""
+        facts: ""
+        device_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        pk:
+        device_uuid:
           format: uuid
-          title: Uuid
+          type: string
+        pbm_uuid:
+          format: uuid
+          readOnly: true
           type: string
         name:
-          description: The human-readable name of this device.
-          maxLength: 64
           type: string
+        group:
+          format: uuid
+          nullable: true
+          type: string
+        group_obj:
+          $ref: '#/components/schemas/DeviceGroup'
+        expiring:
+          type: boolean
+        expires:
+          format: date-time
+          nullable: true
+          type: string
+        facts:
+          allOf:
+          - $ref: '#/components/schemas/DeviceFactSnapshot'
+          readOnly: true
+        attributes:
+          additionalProperties: {}
+          type: object
       required:
+      - facts
+      - group_obj
       - name
+      - pbm_uuid
+      type: object
+    EndpointDeviceDetails:
+      example:
+        expiring: true
+        expires: 2000-01-23T04:56:07.000+00:00
+        connections_obj:
+        - connector: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          connector_obj: ""
+          device: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          latest_snapshot: null
+        - connector: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          connector_obj: ""
+          device: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          latest_snapshot: null
+        pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group_obj:
+          pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+        name: name
+        policies:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        attributes:
+          key: ""
+        facts: ""
+        device_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        connections:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        device_uuid:
+          format: uuid
+          type: string
+        pbm_uuid:
+          format: uuid
+          readOnly: true
+          type: string
+        name:
+          type: string
+        group:
+          format: uuid
+          nullable: true
+          type: string
+        group_obj:
+          $ref: '#/components/schemas/DeviceGroup'
+        expiring:
+          type: boolean
+        expires:
+          format: date-time
+          nullable: true
+          type: string
+        facts:
+          allOf:
+          - $ref: '#/components/schemas/DeviceFactSnapshot'
+          readOnly: true
+        attributes:
+          additionalProperties: {}
+          type: object
+        connections_obj:
+          items:
+            $ref: '#/components/schemas/DeviceConnection'
+          type: array
+        policies:
+          items:
+            format: uuid
+            type: string
+          readOnly: true
+          type: array
+        connections:
+          items:
+            format: uuid
+            type: string
+          readOnly: true
+          type: array
+      required:
+      - connections
+      - connections_obj
+      - facts
+      - group_obj
+      - name
+      - pbm_uuid
+      - policies
       type: object
     EndpointDeviceRequest:
-      description: Serializer for Endpoint authenticator devices
       example:
+        expiring: true
+        expires: 2000-01-23T04:56:07.000+00:00
+        group_obj:
+          name: name
         name: name
-        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        attributes:
+          key: ""
+        device_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        pk:
+        device_uuid:
           format: uuid
-          title: Uuid
           type: string
         name:
-          description: The human-readable name of this device.
-          maxLength: 64
           minLength: 1
           type: string
+        group:
+          format: uuid
+          nullable: true
+          type: string
+        group_obj:
+          $ref: '#/components/schemas/DeviceGroupRequest'
+        expiring:
+          type: boolean
+        expires:
+          format: date-time
+          nullable: true
+          type: string
+        attributes:
+          additionalProperties: {}
+          type: object
       required:
+      - group_obj
       - name
       type: object
     EndpointRequest:
@@ -52274,6 +54703,99 @@ components:
       - name
       - protocol
       - provider
+      type: object
+    EnrollRequest:
+      description: Base serializer class which doesn't implement create/update methods
+      example:
+        device_name: device_name
+        device_serial: device_serial
+      properties:
+        device_serial:
+          minLength: 1
+          type: string
+        device_name:
+          minLength: 1
+          type: string
+      required:
+      - device_name
+      - device_serial
+      type: object
+    EnrollResponse:
+      description: Base serializer class which doesn't implement create/update methods
+      example:
+        token: token
+      properties:
+        token:
+          type: string
+      required:
+      - token
+      type: object
+    EnrollmentToken:
+      example:
+        expiring: true
+        expires: 2000-01-23T04:56:07.000+00:00
+        connector: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        device_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        token_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        device_group_obj: ""
+      properties:
+        token_uuid:
+          format: uuid
+          readOnly: true
+          type: string
+        device_group:
+          format: uuid
+          nullable: true
+          type: string
+        device_group_obj:
+          allOf:
+          - $ref: '#/components/schemas/DeviceGroup'
+          readOnly: true
+        connector:
+          format: uuid
+          type: string
+        name:
+          type: string
+        expiring:
+          type: boolean
+        expires:
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - connector
+      - device_group_obj
+      - name
+      - token_uuid
+      type: object
+    EnrollmentTokenRequest:
+      example:
+        expiring: true
+        expires: 2000-01-23T04:56:07.000+00:00
+        connector: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        device_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+      properties:
+        device_group:
+          format: uuid
+          nullable: true
+          type: string
+        connector:
+          format: uuid
+          type: string
+        name:
+          minLength: 1
+          type: string
+        expiring:
+          type: boolean
+        expires:
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - connector
+      - name
       type: object
     ErrorDetail:
       description: Serializer for rest_framework's error messages
@@ -53848,6 +56370,41 @@ components:
       - running
       - warning
       type: object
+    GoogleEndpointDevice:
+      description: Serializer for Endpoint authenticator devices
+      example:
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          format: uuid
+          title: Uuid
+          type: string
+        name:
+          description: The human-readable name of this device.
+          maxLength: 64
+          type: string
+      required:
+      - name
+      type: object
+    GoogleEndpointDeviceRequest:
+      description: Serializer for Endpoint authenticator devices
+      example:
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          format: uuid
+          title: Uuid
+          type: string
+        name:
+          description: The human-readable name of this device.
+          maxLength: 64
+          minLength: 1
+          type: string
+      required:
+      - name
+      type: object
     GoogleWorkspaceProvider:
       description: GoogleWorkspaceProvider Serializer
       example:
@@ -54901,6 +57458,49 @@ components:
       - group
       - identifier
       - source
+      type: object
+    Hardware:
+      properties:
+        model:
+          type: string
+        manufacturer:
+          type: string
+        serial:
+          type: string
+        cpu_name:
+          type: string
+        cpu_count:
+          type: integer
+        memory_bytes:
+          format: int64
+          type: integer
+      required:
+      - manufacturer
+      - model
+      - serial
+      type: object
+    HardwareRequest:
+      properties:
+        model:
+          minLength: 1
+          type: string
+        manufacturer:
+          minLength: 1
+          type: string
+        serial:
+          type: string
+        cpu_name:
+          minLength: 1
+          type: string
+        cpu_count:
+          type: integer
+        memory_bytes:
+          format: int64
+          type: integer
+      required:
+      - manufacturer
+      - model
+      - serial
       type: object
     IdentificationChallenge:
       description: Identification challenges with all UI elements
@@ -57105,6 +59705,31 @@ components:
       - challenge
       - name
       type: object
+    MDMConfigRequest:
+      description: Base serializer class which doesn't implement create/update methods
+      example:
+        platform: null
+        enrollment_token: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        platform:
+          $ref: '#/components/schemas/DeviceFactsOSFamily'
+        enrollment_token:
+          format: uuid
+          type: string
+      required:
+      - enrollment_token
+      - platform
+      type: object
+    MDMConfigResponse:
+      description: Base serializer class which doesn't implement create/update methods
+      example:
+        config: config
+      properties:
+        config:
+          type: string
+      required:
+      - config
+      type: object
     MatchingModeEnum:
       enum:
       - strict
@@ -57508,6 +60133,10 @@ components:
       - authentik_core.applicationentitlement
       - authentik_core.token
       - authentik_crypto.certificatekeypair
+      - authentik_endpoints.deviceuserbinding
+      - authentik_endpoints.endpointstage
+      - authentik_endpoints_connectors_agent.agentconnector
+      - authentik_endpoints_connectors_agent.enrollmenttoken
       - authentik_enterprise.license
       - authentik_events.event
       - authentik_events.notificationtransport
@@ -57801,6 +60430,22 @@ components:
           minLength: 1
           type: string
       type: object
+    Network:
+      properties:
+        hostname:
+          type: string
+        firewall_enabled:
+          type: boolean
+        interfaces:
+          items:
+            $ref: '#/components/schemas/NetworkInterface'
+          type: array
+        gateway:
+          type: string
+      required:
+      - hostname
+      - interfaces
+      type: object
     NetworkBindingEnum:
       enum:
       - no_binding
@@ -57808,6 +60453,64 @@ components:
       - bind_asn_network
       - bind_asn_network_ip
       type: string
+    NetworkInterface:
+      properties:
+        name:
+          type: string
+        hardware_address:
+          type: string
+        ip_addresses:
+          items:
+            type: string
+          type: array
+        dns_servers:
+          items:
+            type: string
+          type: array
+      required:
+      - hardware_address
+      - name
+      type: object
+    NetworkInterfaceRequest:
+      properties:
+        name:
+          minLength: 1
+          type: string
+        hardware_address:
+          minLength: 1
+          type: string
+        ip_addresses:
+          items:
+            minLength: 1
+            type: string
+          type: array
+        dns_servers:
+          items:
+            minLength: 1
+            type: string
+          type: array
+      required:
+      - hardware_address
+      - name
+      type: object
+    NetworkRequest:
+      properties:
+        hostname:
+          minLength: 1
+          type: string
+        firewall_enabled:
+          type: boolean
+        interfaces:
+          items:
+            $ref: '#/components/schemas/NetworkInterfaceRequest'
+          type: array
+        gateway:
+          minLength: 1
+          type: string
+      required:
+      - hostname
+      - interfaces
+      type: object
     NotConfiguredActionEnum:
       enum:
       - skip
@@ -59011,6 +61714,37 @@ components:
       - token_endpoint_auth_methods_supported
       - userinfo_endpoint
       type: object
+    OperatingSystem:
+      properties:
+        family:
+          $ref: '#/components/schemas/DeviceFactsOSFamily'
+        name:
+          type: string
+        version:
+          type: string
+        arch:
+          type: string
+      required:
+      - arch
+      - family
+      type: object
+    OperatingSystemRequest:
+      properties:
+        family:
+          $ref: '#/components/schemas/DeviceFactsOSFamily'
+        name:
+          minLength: 1
+          type: string
+        version:
+          minLength: 1
+          type: string
+        arch:
+          minLength: 1
+          type: string
+      required:
+      - arch
+      - family
+      type: object
     OutgoingSyncDeleteAction:
       enum:
       - do_nothing
@@ -59265,6 +61999,62 @@ components:
       - plain
       - S256
       type: string
+    PaginatedAgentConnectorList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        autocomplete:
+          key: ""
+        results:
+        - nss_uid_offset: 171976544
+          refresh_interval: refresh_interval
+          verbose_name_plural: verbose_name_plural
+          enabled: true
+          nss_gid_offset: 1294386358
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          verbose_name: verbose_name
+          component: component
+          auth_terminate_session_on_expiry: true
+          meta_model_name: meta_model_name
+          snapshot_expiry: snapshot_expiry
+          connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          challenge_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - nss_uid_offset: 171976544
+          refresh_interval: refresh_interval
+          verbose_name_plural: verbose_name_plural
+          enabled: true
+          nss_gid_offset: 1294386358
+          authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          verbose_name: verbose_name
+          component: component
+          auth_terminate_session_on_expiry: true
+          meta_model_name: meta_model_name
+          snapshot_expiry: snapshot_expiry
+          connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          challenge_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/AgentConnector'
+          type: array
+        autocomplete:
+          additionalProperties: {}
+          type: object
+      required:
+      - autocomplete
+      - pagination
+      - results
+      type: object
     PaginatedApplicationEntitlementList:
       example:
         pagination:
@@ -60709,6 +63499,48 @@ components:
       - pagination
       - results
       type: object
+    PaginatedConnectorList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        autocomplete:
+          key: ""
+        results:
+        - component: component
+          verbose_name: verbose_name
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          enabled: true
+        - component: component
+          verbose_name: verbose_name
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          enabled: true
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/Connector'
+          type: array
+        autocomplete:
+          additionalProperties: {}
+          type: object
+      required:
+      - autocomplete
+      - pagination
+      - results
+      type: object
     PaginatedConsentStageList:
       example:
         pagination:
@@ -60886,6 +63718,38 @@ components:
         results:
           items:
             $ref: '#/components/schemas/DenyStage'
+          type: array
+        autocomplete:
+          additionalProperties: {}
+          type: object
+      required:
+      - autocomplete
+      - pagination
+      - results
+      type: object
+    PaginatedDeviceGroupList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        autocomplete:
+          key: ""
+        results:
+        - pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+        - pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/DeviceGroup'
           type: array
         autocomplete:
           additionalProperties: {}
@@ -61322,10 +64186,30 @@ components:
         autocomplete:
           key: ""
         results:
-        - name: name
-          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - name: name
-          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - expiring: true
+          expires: 2000-01-23T04:56:07.000+00:00
+          pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group_obj:
+            pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+          name: name
+          attributes:
+            key: ""
+          facts: ""
+          device_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - expiring: true
+          expires: 2000-01-23T04:56:07.000+00:00
+          pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group_obj:
+            pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+          name: name
+          attributes:
+            key: ""
+          facts: ""
+          device_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -61388,6 +64272,48 @@ components:
         results:
           items:
             $ref: '#/components/schemas/Endpoint'
+          type: array
+        autocomplete:
+          additionalProperties: {}
+          type: object
+      required:
+      - autocomplete
+      - pagination
+      - results
+      type: object
+    PaginatedEnrollmentTokenList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        autocomplete:
+          key: ""
+        results:
+        - expiring: true
+          expires: 2000-01-23T04:56:07.000+00:00
+          connector: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          device_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          token_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          device_group_obj: ""
+        - expiring: true
+          expires: 2000-01-23T04:56:07.000+00:00
+          connector: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          device_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          token_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          device_group_obj: ""
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/EnrollmentToken'
           type: array
         autocomplete:
           additionalProperties: {}
@@ -62018,6 +64944,38 @@ components:
         results:
           items:
             $ref: '#/components/schemas/GeoIPPolicy'
+          type: array
+        autocomplete:
+          additionalProperties: {}
+          type: object
+      required:
+      - autocomplete
+      - pagination
+      - results
+      type: object
+    PaginatedGoogleEndpointDeviceList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        autocomplete:
+          key: ""
+        results:
+        - name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/GoogleEndpointDevice'
           type: array
         autocomplete:
           additionalProperties: {}
@@ -69671,6 +72629,52 @@ components:
       - backends
       - name
       type: object
+    PatchedAgentConnectorRequest:
+      example:
+        nss_uid_offset: 171976544
+        authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        auth_terminate_session_on_expiry: true
+        refresh_interval: refresh_interval
+        snapshot_expiry: snapshot_expiry
+        connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        enabled: true
+        nss_gid_offset: 1294386358
+        challenge_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        connector_uuid:
+          format: uuid
+          type: string
+        name:
+          minLength: 1
+          type: string
+        enabled:
+          type: boolean
+        snapshot_expiry:
+          minLength: 1
+          type: string
+        nss_uid_offset:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        nss_gid_offset:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        auth_terminate_session_on_expiry:
+          type: boolean
+        refresh_interval:
+          minLength: 1
+          type: string
+        authentication_flow:
+          format: uuid
+          nullable: true
+          type: string
+        challenge_key:
+          format: uuid
+          nullable: true
+          type: string
+      type: object
     PatchedApplicationEntitlementRequest:
       description: ApplicationEntitlement Serializer
       example:
@@ -70524,6 +73528,14 @@ components:
         deny_message:
           type: string
       type: object
+    PatchedDeviceGroupRequest:
+      example:
+        name: name
+      properties:
+        name:
+          minLength: 1
+          type: string
+      type: object
     PatchedDockerServiceConnectionRequest:
       description: DockerServiceConnection Serializer
       example:
@@ -70756,20 +73768,38 @@ components:
           type: string
       type: object
     PatchedEndpointDeviceRequest:
-      description: Serializer for Endpoint authenticator devices
       example:
+        expiring: true
+        expires: 2000-01-23T04:56:07.000+00:00
+        group_obj:
+          name: name
         name: name
-        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        attributes:
+          key: ""
+        device_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        pk:
+        device_uuid:
           format: uuid
-          title: Uuid
           type: string
         name:
-          description: The human-readable name of this device.
-          maxLength: 64
           minLength: 1
           type: string
+        group:
+          format: uuid
+          nullable: true
+          type: string
+        group_obj:
+          $ref: '#/components/schemas/DeviceGroupRequest'
+        expiring:
+          type: boolean
+        expires:
+          format: date-time
+          nullable: true
+          type: string
+        attributes:
+          additionalProperties: {}
+          type: object
       type: object
     PatchedEndpointRequest:
       description: Endpoint Serializer
@@ -70810,6 +73840,31 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           type: integer
+      type: object
+    PatchedEnrollmentTokenRequest:
+      example:
+        expiring: true
+        expires: 2000-01-23T04:56:07.000+00:00
+        connector: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        device_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+      properties:
+        device_group:
+          format: uuid
+          nullable: true
+          type: string
+        connector:
+          format: uuid
+          type: string
+        name:
+          minLength: 1
+          type: string
+        expiring:
+          type: boolean
+        expires:
+          format: date-time
+          nullable: true
+          type: string
       type: object
     PatchedEventMatcherPolicyRequest:
       description: Event Matcher Policy Serializer
@@ -71073,6 +74128,22 @@ components:
           maximum: 2147483647
           minimum: 0
           type: integer
+      type: object
+    PatchedGoogleEndpointDeviceRequest:
+      description: Serializer for Endpoint authenticator devices
+      example:
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          format: uuid
+          title: Uuid
+          type: string
+        name:
+          description: The human-readable name of this device.
+          maxLength: 64
+          minLength: 1
+          type: string
       type: object
     PatchedGoogleWorkspaceProviderMappingRequest:
       description: GoogleWorkspaceProviderMapping Serializer
@@ -75358,6 +78429,36 @@ components:
       - log_messages
       - messages
       - passing
+      type: object
+    Process:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        user:
+          type: string
+      required:
+      - id
+      - name
+      type: object
+    ProcessRequest:
+      example:
+        name: name
+        id: 1
+        user: user
+      properties:
+        id:
+          type: integer
+        name:
+          minLength: 1
+          type: string
+        user:
+          minLength: 1
+          type: string
+      required:
+      - id
+      - name
       type: object
     Prompt:
       description: Prompt Serializer
@@ -79991,6 +83092,42 @@ components:
       - http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha512
       - http://www.w3.org/2000/09/xmldsig#dsa-sha1
       type: string
+    Software:
+      properties:
+        name:
+          type: string
+        version:
+          type: string
+        source:
+          type: string
+        path:
+          type: string
+      required:
+      - name
+      - source
+      type: object
+    SoftwareRequest:
+      example:
+        path: path
+        name: name
+        source: source
+        version: version
+      properties:
+        name:
+          minLength: 1
+          type: string
+        version:
+          type: string
+        source:
+          minLength: 1
+          type: string
+        path:
+          minLength: 1
+          type: string
+      required:
+      - name
+      - source
+      type: object
     Source:
       description: Source Serializer
       example:
@@ -83719,6 +86856,35 @@ components:
       required:
       - policies_buffered_access_view
       type: object
+    DeviceConnection_latest_snapshot:
+      allOf:
+      - $ref: '#/components/schemas/DeviceFactSnapshot'
+      nullable: true
+      readOnly: true
+    DeviceFacts_os:
+      allOf:
+      - $ref: '#/components/schemas/OperatingSystem'
+      nullable: true
+    DeviceFacts_network:
+      allOf:
+      - $ref: '#/components/schemas/Network'
+      nullable: true
+    DeviceFacts_hardware:
+      allOf:
+      - $ref: '#/components/schemas/Hardware'
+      nullable: true
+    DeviceFactsRequest_os:
+      allOf:
+      - $ref: '#/components/schemas/OperatingSystemRequest'
+      nullable: true
+    DeviceFactsRequest_network:
+      allOf:
+      - $ref: '#/components/schemas/NetworkRequest'
+      nullable: true
+    DeviceFactsRequest_hardware:
+      allOf:
+      - $ref: '#/components/schemas/HardwareRequest'
+      nullable: true
     IdentificationChallenge_captcha_stage:
       allOf:
       - $ref: '#/components/schemas/CaptchaChallenge'

@@ -28,6 +28,10 @@ const (
 	MODELENUM_CORE_APPLICATIONENTITLEMENT                                       ModelEnum = "authentik_core.applicationentitlement"
 	MODELENUM_CORE_TOKEN                                                        ModelEnum = "authentik_core.token"
 	MODELENUM_CRYPTO_CERTIFICATEKEYPAIR                                         ModelEnum = "authentik_crypto.certificatekeypair"
+	MODELENUM_ENDPOINTS_DEVICEUSERBINDING                                       ModelEnum = "authentik_endpoints.deviceuserbinding"
+	MODELENUM_ENDPOINTS_ENDPOINTSTAGE                                           ModelEnum = "authentik_endpoints.endpointstage"
+	MODELENUM_ENDPOINTS_CONNECTORS_AGENT_AGENTCONNECTOR                         ModelEnum = "authentik_endpoints_connectors_agent.agentconnector"
+	MODELENUM_ENDPOINTS_CONNECTORS_AGENT_ENROLLMENTTOKEN                        ModelEnum = "authentik_endpoints_connectors_agent.enrollmenttoken"
 	MODELENUM_ENTERPRISE_LICENSE                                                ModelEnum = "authentik_enterprise.license"
 	MODELENUM_EVENTS_EVENT                                                      ModelEnum = "authentik_events.event"
 	MODELENUM_EVENTS_NOTIFICATIONTRANSPORT                                      ModelEnum = "authentik_events.notificationtransport"
@@ -140,6 +144,10 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_core.applicationentitlement",
 	"authentik_core.token",
 	"authentik_crypto.certificatekeypair",
+	"authentik_endpoints.deviceuserbinding",
+	"authentik_endpoints.endpointstage",
+	"authentik_endpoints_connectors_agent.agentconnector",
+	"authentik_endpoints_connectors_agent.enrollmenttoken",
 	"authentik_enterprise.license",
 	"authentik_events.event",
 	"authentik_events.notificationtransport",

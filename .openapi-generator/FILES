@@ -6,6 +6,7 @@ api_admin.go
 api_authenticators.go
 api_core.go
 api_crypto.go
+api_endpoints.go
 api_enterprise.go
 api_events.go
 api_flows.go
@@ -28,6 +29,9 @@ client.go
 configuration.go
 docs/AccessDeniedChallenge.md
 docs/AdminApi.md
+docs/AgentConfig.md
+docs/AgentConnector.md
+docs/AgentConnectorRequest.md
 docs/AlgEnum.md
 docs/App.md
 docs/AppEnum.md
@@ -108,6 +112,7 @@ docs/CompatibilityModeEnum.md
 docs/Config.md
 docs/ConnectionToken.md
 docs/ConnectionTokenRequest.md
+docs/Connector.md
 docs/ConsentChallenge.md
 docs/ConsentChallengeResponseRequest.md
 docs/ConsentPermission.md
@@ -131,8 +136,24 @@ docs/Device.md
 docs/DeviceChallenge.md
 docs/DeviceChallengeRequest.md
 docs/DeviceClassesEnum.md
+docs/DeviceConnection.md
+docs/DeviceConnectionLatestSnapshot.md
+docs/DeviceFactSnapshot.md
+docs/DeviceFacts.md
+docs/DeviceFactsHardware.md
+docs/DeviceFactsNetwork.md
+docs/DeviceFactsOSFamily.md
+docs/DeviceFactsOs.md
+docs/DeviceFactsRequest.md
+docs/DeviceFactsRequestHardware.md
+docs/DeviceFactsRequestNetwork.md
+docs/DeviceFactsRequestOs.md
+docs/DeviceGroup.md
+docs/DeviceGroupRequest.md
 docs/DigestAlgorithmEnum.md
 docs/DigitsEnum.md
+docs/Disk.md
+docs/DiskRequest.md
 docs/DockerServiceConnection.md
 docs/DockerServiceConnectionRequest.md
 docs/Domain.md
@@ -156,8 +177,14 @@ docs/EmailStageRequest.md
 docs/Endpoint.md
 docs/EndpointAuthModeEnum.md
 docs/EndpointDevice.md
+docs/EndpointDeviceDetails.md
 docs/EndpointDeviceRequest.md
 docs/EndpointRequest.md
+docs/EndpointsApi.md
+docs/EnrollRequest.md
+docs/EnrollResponse.md
+docs/EnrollmentToken.md
+docs/EnrollmentTokenRequest.md
 docs/EnterpriseApi.md
 docs/ErrorDetail.md
 docs/ErrorReportingConfig.md
@@ -201,6 +228,8 @@ docs/GeoIPPolicy.md
 docs/GeoIPPolicyRequest.md
 docs/GeoipBindingEnum.md
 docs/GlobalTaskStatus.md
+docs/GoogleEndpointDevice.md
+docs/GoogleEndpointDeviceRequest.md
 docs/GoogleWorkspaceProvider.md
 docs/GoogleWorkspaceProviderGroup.md
 docs/GoogleWorkspaceProviderGroupRequest.md
@@ -227,6 +256,8 @@ docs/GroupSourceConnection.md
 docs/GroupSourceConnectionRequest.md
 docs/GroupTelegramSourceConnection.md
 docs/GroupTelegramSourceConnectionRequest.md
+docs/Hardware.md
+docs/HardwareRequest.md
 docs/IdentificationChallenge.md
 docs/IdentificationChallengeCaptchaStage.md
 docs/IdentificationChallengeResponseRequest.md
@@ -276,6 +307,8 @@ docs/LogEvent.md
 docs/LogLevelEnum.md
 docs/LoginChallengeTypes.md
 docs/LoginSource.md
+docs/MDMConfigRequest.md
+docs/MDMConfigResponse.md
 docs/ManagedApi.md
 docs/MatchingModeEnum.md
 docs/Metadata.md
@@ -294,7 +327,11 @@ docs/MutualTLSStageModeEnum.md
 docs/MutualTLSStageRequest.md
 docs/NativeLogoutChallenge.md
 docs/NativeLogoutChallengeResponseRequest.md
+docs/Network.md
 docs/NetworkBindingEnum.md
+docs/NetworkInterface.md
+docs/NetworkInterfaceRequest.md
+docs/NetworkRequest.md
 docs/NotConfiguredActionEnum.md
 docs/Notification.md
 docs/NotificationRequest.md
@@ -320,6 +357,8 @@ docs/OAuthSourcePropertyMappingRequest.md
 docs/OAuthSourceRequest.md
 docs/Oauth2Api.md
 docs/OpenIDConnectConfiguration.md
+docs/OperatingSystem.md
+docs/OperatingSystemRequest.md
 docs/OutgoingSyncDeleteAction.md
 docs/Outpost.md
 docs/OutpostDefaultConfig.md
@@ -328,6 +367,7 @@ docs/OutpostRequest.md
 docs/OutpostTypeEnum.md
 docs/OutpostsApi.md
 docs/PKCEMethodEnum.md
+docs/PaginatedAgentConnectorList.md
 docs/PaginatedApplicationEntitlementList.md
 docs/PaginatedApplicationList.md
 docs/PaginatedAuthenticatedSessionList.md
@@ -344,8 +384,10 @@ docs/PaginatedBrandList.md
 docs/PaginatedCaptchaStageList.md
 docs/PaginatedCertificateKeyPairList.md
 docs/PaginatedConnectionTokenList.md
+docs/PaginatedConnectorList.md
 docs/PaginatedConsentStageList.md
 docs/PaginatedDenyStageList.md
+docs/PaginatedDeviceGroupList.md
 docs/PaginatedDockerServiceConnectionList.md
 docs/PaginatedDomainList.md
 docs/PaginatedDummyPolicyList.md
@@ -355,6 +397,7 @@ docs/PaginatedEmailDeviceList.md
 docs/PaginatedEmailStageList.md
 docs/PaginatedEndpointDeviceList.md
 docs/PaginatedEndpointList.md
+docs/PaginatedEnrollmentTokenList.md
 docs/PaginatedEventList.md
 docs/PaginatedEventMatcherPolicyList.md
 docs/PaginatedExpiringBaseGrantModelList.md
@@ -364,6 +407,7 @@ docs/PaginatedExtraUserObjectPermissionList.md
 docs/PaginatedFlowList.md
 docs/PaginatedFlowStageBindingList.md
 docs/PaginatedGeoIPPolicyList.md
+docs/PaginatedGoogleEndpointDeviceList.md
 docs/PaginatedGoogleWorkspaceProviderGroupList.md
 docs/PaginatedGoogleWorkspaceProviderList.md
 docs/PaginatedGoogleWorkspaceProviderMappingList.md
@@ -482,6 +526,7 @@ docs/PasswordPolicy.md
 docs/PasswordPolicyRequest.md
 docs/PasswordStage.md
 docs/PasswordStageRequest.md
+docs/PatchedAgentConnectorRequest.md
 docs/PatchedApplicationEntitlementRequest.md
 docs/PatchedApplicationRequest.md
 docs/PatchedAuthenticatorDuoStageRequest.md
@@ -499,6 +544,7 @@ docs/PatchedCertificateKeyPairRequest.md
 docs/PatchedConnectionTokenRequest.md
 docs/PatchedConsentStageRequest.md
 docs/PatchedDenyStageRequest.md
+docs/PatchedDeviceGroupRequest.md
 docs/PatchedDockerServiceConnectionRequest.md
 docs/PatchedDomainRequest.md
 docs/PatchedDummyPolicyRequest.md
@@ -508,6 +554,7 @@ docs/PatchedEmailDeviceRequest.md
 docs/PatchedEmailStageRequest.md
 docs/PatchedEndpointDeviceRequest.md
 docs/PatchedEndpointRequest.md
+docs/PatchedEnrollmentTokenRequest.md
 docs/PatchedEventMatcherPolicyRequest.md
 docs/PatchedEventRequest.md
 docs/PatchedExpressionPolicyRequest.md
@@ -516,6 +563,7 @@ docs/PatchedExtraUserObjectPermissionRequest.md
 docs/PatchedFlowRequest.md
 docs/PatchedFlowStageBindingRequest.md
 docs/PatchedGeoIPPolicyRequest.md
+docs/PatchedGoogleEndpointDeviceRequest.md
 docs/PatchedGoogleWorkspaceProviderMappingRequest.md
 docs/PatchedGoogleWorkspaceProviderRequest.md
 docs/PatchedGroupKerberosSourceConnectionRequest.md
@@ -619,6 +667,8 @@ docs/PolicyBindingRequest.md
 docs/PolicyEngineMode.md
 docs/PolicyTestRequest.md
 docs/PolicyTestResult.md
+docs/Process.md
+docs/ProcessRequest.md
 docs/Prompt.md
 docs/PromptChallenge.md
 docs/PromptChallengeResponseRequest.md
@@ -719,6 +769,8 @@ docs/SettingsRequest.md
 docs/SeverityEnum.md
 docs/ShellChallenge.md
 docs/SignatureAlgorithmEnum.md
+docs/Software.md
+docs/SoftwareRequest.md
 docs/Source.md
 docs/SourceStage.md
 docs/SourceStageRequest.md
@@ -825,6 +877,9 @@ git_push.sh
 go.mod
 go.sum
 model_access_denied_challenge.go
+model_agent_config.go
+model_agent_connector.go
+model_agent_connector_request.go
 model_alg_enum.go
 model_app.go
 model_app_enum.go
@@ -904,6 +959,7 @@ model_compatibility_mode_enum.go
 model_config.go
 model_connection_token.go
 model_connection_token_request.go
+model_connector.go
 model_consent_challenge.go
 model_consent_challenge_response_request.go
 model_consent_permission.go
@@ -925,8 +981,24 @@ model_device.go
 model_device_challenge.go
 model_device_challenge_request.go
 model_device_classes_enum.go
+model_device_connection.go
+model_device_connection_latest_snapshot.go
+model_device_fact_snapshot.go
+model_device_facts.go
+model_device_facts_hardware.go
+model_device_facts_network.go
+model_device_facts_os.go
+model_device_facts_os_family.go
+model_device_facts_request.go
+model_device_facts_request_hardware.go
+model_device_facts_request_network.go
+model_device_facts_request_os.go
+model_device_group.go
+model_device_group_request.go
 model_digest_algorithm_enum.go
 model_digits_enum.go
+model_disk.go
+model_disk_request.go
 model_docker_service_connection.go
 model_docker_service_connection_request.go
 model_domain.go
@@ -950,8 +1022,13 @@ model_email_stage_request.go
 model_endpoint.go
 model_endpoint_auth_mode_enum.go
 model_endpoint_device.go
+model_endpoint_device_details.go
 model_endpoint_device_request.go
 model_endpoint_request.go
+model_enroll_request.go
+model_enroll_response.go
+model_enrollment_token.go
+model_enrollment_token_request.go
 model_error_detail.go
 model_error_reporting_config.go
 model_event.go
@@ -992,6 +1069,8 @@ model_geo_ip_policy.go
 model_geo_ip_policy_request.go
 model_geoip_binding_enum.go
 model_global_task_status.go
+model_google_endpoint_device.go
+model_google_endpoint_device_request.go
 model_google_workspace_provider.go
 model_google_workspace_provider_group.go
 model_google_workspace_provider_group_request.go
@@ -1018,6 +1097,8 @@ model_group_source_connection.go
 model_group_source_connection_request.go
 model_group_telegram_source_connection.go
 model_group_telegram_source_connection_request.go
+model_hardware.go
+model_hardware_request.go
 model_identification_challenge.go
 model_identification_challenge_captcha_stage.go
 model_identification_challenge_response_request.go
@@ -1068,6 +1149,8 @@ model_log_level_enum.go
 model_login_challenge_types.go
 model_login_source.go
 model_matching_mode_enum.go
+model_mdm_config_request.go
+model_mdm_config_response.go
 model_metadata.go
 model_microsoft_entra_provider.go
 model_microsoft_entra_provider_group.go
@@ -1084,7 +1167,11 @@ model_mutual_tls_stage_mode_enum.go
 model_mutual_tls_stage_request.go
 model_native_logout_challenge.go
 model_native_logout_challenge_response_request.go
+model_network.go
 model_network_binding_enum.go
+model_network_interface.go
+model_network_interface_request.go
+model_network_request.go
 model_not_configured_action_enum.go
 model_notification.go
 model_notification_request.go
@@ -1109,12 +1196,15 @@ model_o_auth_source_property_mapping.go
 model_o_auth_source_property_mapping_request.go
 model_o_auth_source_request.go
 model_open_id_connect_configuration.go
+model_operating_system.go
+model_operating_system_request.go
 model_outgoing_sync_delete_action.go
 model_outpost.go
 model_outpost_default_config.go
 model_outpost_health.go
 model_outpost_request.go
 model_outpost_type_enum.go
+model_paginated_agent_connector_list.go
 model_paginated_application_entitlement_list.go
 model_paginated_application_list.go
 model_paginated_authenticated_session_list.go
@@ -1131,8 +1221,10 @@ model_paginated_brand_list.go
 model_paginated_captcha_stage_list.go
 model_paginated_certificate_key_pair_list.go
 model_paginated_connection_token_list.go
+model_paginated_connector_list.go
 model_paginated_consent_stage_list.go
 model_paginated_deny_stage_list.go
+model_paginated_device_group_list.go
 model_paginated_docker_service_connection_list.go
 model_paginated_domain_list.go
 model_paginated_dummy_policy_list.go
@@ -1142,6 +1234,7 @@ model_paginated_email_device_list.go
 model_paginated_email_stage_list.go
 model_paginated_endpoint_device_list.go
 model_paginated_endpoint_list.go
+model_paginated_enrollment_token_list.go
 model_paginated_event_list.go
 model_paginated_event_matcher_policy_list.go
 model_paginated_expiring_base_grant_model_list.go
@@ -1151,6 +1244,7 @@ model_paginated_extra_user_object_permission_list.go
 model_paginated_flow_list.go
 model_paginated_flow_stage_binding_list.go
 model_paginated_geo_ip_policy_list.go
+model_paginated_google_endpoint_device_list.go
 model_paginated_google_workspace_provider_group_list.go
 model_paginated_google_workspace_provider_list.go
 model_paginated_google_workspace_provider_mapping_list.go
@@ -1269,6 +1363,7 @@ model_password_policy.go
 model_password_policy_request.go
 model_password_stage.go
 model_password_stage_request.go
+model_patched_agent_connector_request.go
 model_patched_application_entitlement_request.go
 model_patched_application_request.go
 model_patched_authenticator_duo_stage_request.go
@@ -1286,6 +1381,7 @@ model_patched_certificate_key_pair_request.go
 model_patched_connection_token_request.go
 model_patched_consent_stage_request.go
 model_patched_deny_stage_request.go
+model_patched_device_group_request.go
 model_patched_docker_service_connection_request.go
 model_patched_domain_request.go
 model_patched_dummy_policy_request.go
@@ -1295,6 +1391,7 @@ model_patched_email_device_request.go
 model_patched_email_stage_request.go
 model_patched_endpoint_device_request.go
 model_patched_endpoint_request.go
+model_patched_enrollment_token_request.go
 model_patched_event_matcher_policy_request.go
 model_patched_event_request.go
 model_patched_expression_policy_request.go
@@ -1303,6 +1400,7 @@ model_patched_extra_user_object_permission_request.go
 model_patched_flow_request.go
 model_patched_flow_stage_binding_request.go
 model_patched_geo_ip_policy_request.go
+model_patched_google_endpoint_device_request.go
 model_patched_google_workspace_provider_mapping_request.go
 model_patched_google_workspace_provider_request.go
 model_patched_group_kerberos_source_connection_request.go
@@ -1406,6 +1504,8 @@ model_policy_binding_request.go
 model_policy_engine_mode.go
 model_policy_test_request.go
 model_policy_test_result.go
+model_process.go
+model_process_request.go
 model_prompt.go
 model_prompt_challenge.go
 model_prompt_challenge_response_request.go
@@ -1497,6 +1597,8 @@ model_shell_challenge.go
 model_signature_algorithm_enum.go
 model_sms_device.go
 model_sms_device_request.go
+model_software.go
+model_software_request.go
 model_source.go
 model_source_stage.go
 model_source_stage_request.go

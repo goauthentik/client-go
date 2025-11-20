@@ -28,6 +28,8 @@ const (
 	APPENUM_API                                           AppEnum = "authentik.api"
 	APPENUM_CORE                                          AppEnum = "authentik.core"
 	APPENUM_CRYPTO                                        AppEnum = "authentik.crypto"
+	APPENUM_ENDPOINTS                                     AppEnum = "authentik.endpoints"
+	APPENUM_ENDPOINTS_CONNECTORS_AGENT                    AppEnum = "authentik.endpoints.connectors.agent"
 	APPENUM_ENTERPRISE                                    AppEnum = "authentik.enterprise"
 	APPENUM_EVENTS                                        AppEnum = "authentik.events"
 	APPENUM_FLOWS                                         AppEnum = "authentik.flows"
@@ -82,6 +84,7 @@ const (
 	APPENUM_BRANDS                                        AppEnum = "authentik.brands"
 	APPENUM_BLUEPRINTS                                    AppEnum = "authentik.blueprints"
 	APPENUM_ENTERPRISE_AUDIT                              AppEnum = "authentik.enterprise.audit"
+	APPENUM_ENTERPRISE_ENDPOINTS_CONNECTORS_AGENT         AppEnum = "authentik.enterprise.endpoints.connectors.agent"
 	APPENUM_ENTERPRISE_POLICIES_UNIQUE_PASSWORD           AppEnum = "authentik.enterprise.policies.unique_password"
 	APPENUM_ENTERPRISE_PROVIDERS_GOOGLE_WORKSPACE         AppEnum = "authentik.enterprise.providers.google_workspace"
 	APPENUM_ENTERPRISE_PROVIDERS_MICROSOFT_ENTRA          AppEnum = "authentik.enterprise.providers.microsoft_entra"
@@ -103,6 +106,8 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.api",
 	"authentik.core",
 	"authentik.crypto",
+	"authentik.endpoints",
+	"authentik.endpoints.connectors.agent",
 	"authentik.enterprise",
 	"authentik.events",
 	"authentik.flows",
@@ -157,6 +162,7 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.brands",
 	"authentik.blueprints",
 	"authentik.enterprise.audit",
+	"authentik.enterprise.endpoints.connectors.agent",
 	"authentik.enterprise.policies.unique_password",
 	"authentik.enterprise.providers.google_workspace",
 	"authentik.enterprise.providers.microsoft_entra",

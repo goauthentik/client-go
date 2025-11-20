@@ -1746,17 +1746,17 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailUpdateExecute(r ApiAu
 }
 
 type ApiAuthenticatorsAdminEndpointCreateRequest struct {
-	ctx                   context.Context
-	ApiService            *AuthenticatorsApiService
-	endpointDeviceRequest *EndpointDeviceRequest
+	ctx                         context.Context
+	ApiService                  *AuthenticatorsApiService
+	googleEndpointDeviceRequest *GoogleEndpointDeviceRequest
 }
 
-func (r ApiAuthenticatorsAdminEndpointCreateRequest) EndpointDeviceRequest(endpointDeviceRequest EndpointDeviceRequest) ApiAuthenticatorsAdminEndpointCreateRequest {
-	r.endpointDeviceRequest = &endpointDeviceRequest
+func (r ApiAuthenticatorsAdminEndpointCreateRequest) GoogleEndpointDeviceRequest(googleEndpointDeviceRequest GoogleEndpointDeviceRequest) ApiAuthenticatorsAdminEndpointCreateRequest {
+	r.googleEndpointDeviceRequest = &googleEndpointDeviceRequest
 	return r
 }
 
-func (r ApiAuthenticatorsAdminEndpointCreateRequest) Execute() (*EndpointDevice, *http.Response, error) {
+func (r ApiAuthenticatorsAdminEndpointCreateRequest) Execute() (*GoogleEndpointDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsAdminEndpointCreateExecute(r)
 }
 
@@ -1777,13 +1777,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointCreate(ctx context
 
 // Execute executes the request
 //
-//	@return EndpointDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointCreateExecute(r ApiAuthenticatorsAdminEndpointCreateRequest) (*EndpointDevice, *http.Response, error) {
+//	@return GoogleEndpointDevice
+func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointCreateExecute(r ApiAuthenticatorsAdminEndpointCreateRequest) (*GoogleEndpointDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EndpointDevice
+		localVarReturnValue *GoogleEndpointDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminEndpointCreate")
@@ -1796,8 +1796,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointCreateExecute(r Ap
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.endpointDeviceRequest == nil {
-		return localVarReturnValue, nil, reportError("endpointDeviceRequest is required and must be specified")
+	if r.googleEndpointDeviceRequest == nil {
+		return localVarReturnValue, nil, reportError("googleEndpointDeviceRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1818,7 +1818,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointCreateExecute(r Ap
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.endpointDeviceRequest
+	localVarPostBody = r.googleEndpointDeviceRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2025,7 +2025,7 @@ func (r ApiAuthenticatorsAdminEndpointListRequest) Search(search string) ApiAuth
 	return r
 }
 
-func (r ApiAuthenticatorsAdminEndpointListRequest) Execute() (*PaginatedEndpointDeviceList, *http.Response, error) {
+func (r ApiAuthenticatorsAdminEndpointListRequest) Execute() (*PaginatedGoogleEndpointDeviceList, *http.Response, error) {
 	return r.ApiService.AuthenticatorsAdminEndpointListExecute(r)
 }
 
@@ -2046,13 +2046,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointList(ctx context.C
 
 // Execute executes the request
 //
-//	@return PaginatedEndpointDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointListExecute(r ApiAuthenticatorsAdminEndpointListRequest) (*PaginatedEndpointDeviceList, *http.Response, error) {
+//	@return PaginatedGoogleEndpointDeviceList
+func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointListExecute(r ApiAuthenticatorsAdminEndpointListRequest) (*PaginatedGoogleEndpointDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PaginatedEndpointDeviceList
+		localVarReturnValue *PaginatedGoogleEndpointDeviceList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminEndpointList")
@@ -2155,18 +2155,18 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointListExecute(r ApiA
 }
 
 type ApiAuthenticatorsAdminEndpointPartialUpdateRequest struct {
-	ctx                          context.Context
-	ApiService                   *AuthenticatorsApiService
-	uuid                         string
-	patchedEndpointDeviceRequest *PatchedEndpointDeviceRequest
+	ctx                                context.Context
+	ApiService                         *AuthenticatorsApiService
+	uuid                               string
+	patchedGoogleEndpointDeviceRequest *PatchedGoogleEndpointDeviceRequest
 }
 
-func (r ApiAuthenticatorsAdminEndpointPartialUpdateRequest) PatchedEndpointDeviceRequest(patchedEndpointDeviceRequest PatchedEndpointDeviceRequest) ApiAuthenticatorsAdminEndpointPartialUpdateRequest {
-	r.patchedEndpointDeviceRequest = &patchedEndpointDeviceRequest
+func (r ApiAuthenticatorsAdminEndpointPartialUpdateRequest) PatchedGoogleEndpointDeviceRequest(patchedGoogleEndpointDeviceRequest PatchedGoogleEndpointDeviceRequest) ApiAuthenticatorsAdminEndpointPartialUpdateRequest {
+	r.patchedGoogleEndpointDeviceRequest = &patchedGoogleEndpointDeviceRequest
 	return r
 }
 
-func (r ApiAuthenticatorsAdminEndpointPartialUpdateRequest) Execute() (*EndpointDevice, *http.Response, error) {
+func (r ApiAuthenticatorsAdminEndpointPartialUpdateRequest) Execute() (*GoogleEndpointDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsAdminEndpointPartialUpdateExecute(r)
 }
 
@@ -2189,13 +2189,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointPartialUpdate(ctx 
 
 // Execute executes the request
 //
-//	@return EndpointDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointPartialUpdateExecute(r ApiAuthenticatorsAdminEndpointPartialUpdateRequest) (*EndpointDevice, *http.Response, error) {
+//	@return GoogleEndpointDevice
+func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointPartialUpdateExecute(r ApiAuthenticatorsAdminEndpointPartialUpdateRequest) (*GoogleEndpointDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EndpointDevice
+		localVarReturnValue *GoogleEndpointDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminEndpointPartialUpdate")
@@ -2228,7 +2228,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointPartialUpdateExecu
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.patchedEndpointDeviceRequest
+	localVarPostBody = r.patchedGoogleEndpointDeviceRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2291,7 +2291,7 @@ type ApiAuthenticatorsAdminEndpointRetrieveRequest struct {
 	uuid       string
 }
 
-func (r ApiAuthenticatorsAdminEndpointRetrieveRequest) Execute() (*EndpointDevice, *http.Response, error) {
+func (r ApiAuthenticatorsAdminEndpointRetrieveRequest) Execute() (*GoogleEndpointDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsAdminEndpointRetrieveExecute(r)
 }
 
@@ -2314,13 +2314,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointRetrieve(ctx conte
 
 // Execute executes the request
 //
-//	@return EndpointDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointRetrieveExecute(r ApiAuthenticatorsAdminEndpointRetrieveRequest) (*EndpointDevice, *http.Response, error) {
+//	@return GoogleEndpointDevice
+func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointRetrieveExecute(r ApiAuthenticatorsAdminEndpointRetrieveRequest) (*GoogleEndpointDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EndpointDevice
+		localVarReturnValue *GoogleEndpointDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminEndpointRetrieve")
@@ -2409,18 +2409,18 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointRetrieveExecute(r 
 }
 
 type ApiAuthenticatorsAdminEndpointUpdateRequest struct {
-	ctx                   context.Context
-	ApiService            *AuthenticatorsApiService
-	uuid                  string
-	endpointDeviceRequest *EndpointDeviceRequest
+	ctx                         context.Context
+	ApiService                  *AuthenticatorsApiService
+	uuid                        string
+	googleEndpointDeviceRequest *GoogleEndpointDeviceRequest
 }
 
-func (r ApiAuthenticatorsAdminEndpointUpdateRequest) EndpointDeviceRequest(endpointDeviceRequest EndpointDeviceRequest) ApiAuthenticatorsAdminEndpointUpdateRequest {
-	r.endpointDeviceRequest = &endpointDeviceRequest
+func (r ApiAuthenticatorsAdminEndpointUpdateRequest) GoogleEndpointDeviceRequest(googleEndpointDeviceRequest GoogleEndpointDeviceRequest) ApiAuthenticatorsAdminEndpointUpdateRequest {
+	r.googleEndpointDeviceRequest = &googleEndpointDeviceRequest
 	return r
 }
 
-func (r ApiAuthenticatorsAdminEndpointUpdateRequest) Execute() (*EndpointDevice, *http.Response, error) {
+func (r ApiAuthenticatorsAdminEndpointUpdateRequest) Execute() (*GoogleEndpointDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsAdminEndpointUpdateExecute(r)
 }
 
@@ -2443,13 +2443,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointUpdate(ctx context
 
 // Execute executes the request
 //
-//	@return EndpointDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointUpdateExecute(r ApiAuthenticatorsAdminEndpointUpdateRequest) (*EndpointDevice, *http.Response, error) {
+//	@return GoogleEndpointDevice
+func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointUpdateExecute(r ApiAuthenticatorsAdminEndpointUpdateRequest) (*GoogleEndpointDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EndpointDevice
+		localVarReturnValue *GoogleEndpointDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminEndpointUpdate")
@@ -2463,8 +2463,8 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointUpdateExecute(r Ap
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.endpointDeviceRequest == nil {
-		return localVarReturnValue, nil, reportError("endpointDeviceRequest is required and must be specified")
+	if r.googleEndpointDeviceRequest == nil {
+		return localVarReturnValue, nil, reportError("googleEndpointDeviceRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2485,7 +2485,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointUpdateExecute(r Ap
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.endpointDeviceRequest
+	localVarPostBody = r.googleEndpointDeviceRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -7468,7 +7468,7 @@ func (r ApiAuthenticatorsEndpointListRequest) Search(search string) ApiAuthentic
 	return r
 }
 
-func (r ApiAuthenticatorsEndpointListRequest) Execute() (*PaginatedEndpointDeviceList, *http.Response, error) {
+func (r ApiAuthenticatorsEndpointListRequest) Execute() (*PaginatedGoogleEndpointDeviceList, *http.Response, error) {
 	return r.ApiService.AuthenticatorsEndpointListExecute(r)
 }
 
@@ -7489,13 +7489,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointList(ctx context.Contex
 
 // Execute executes the request
 //
-//	@return PaginatedEndpointDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsEndpointListExecute(r ApiAuthenticatorsEndpointListRequest) (*PaginatedEndpointDeviceList, *http.Response, error) {
+//	@return PaginatedGoogleEndpointDeviceList
+func (a *AuthenticatorsApiService) AuthenticatorsEndpointListExecute(r ApiAuthenticatorsEndpointListRequest) (*PaginatedGoogleEndpointDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PaginatedEndpointDeviceList
+		localVarReturnValue *PaginatedGoogleEndpointDeviceList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsEndpointList")
@@ -7603,7 +7603,7 @@ type ApiAuthenticatorsEndpointRetrieveRequest struct {
 	uuid       string
 }
 
-func (r ApiAuthenticatorsEndpointRetrieveRequest) Execute() (*EndpointDevice, *http.Response, error) {
+func (r ApiAuthenticatorsEndpointRetrieveRequest) Execute() (*GoogleEndpointDevice, *http.Response, error) {
 	return r.ApiService.AuthenticatorsEndpointRetrieveExecute(r)
 }
 
@@ -7626,13 +7626,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointRetrieve(ctx context.Co
 
 // Execute executes the request
 //
-//	@return EndpointDevice
-func (a *AuthenticatorsApiService) AuthenticatorsEndpointRetrieveExecute(r ApiAuthenticatorsEndpointRetrieveRequest) (*EndpointDevice, *http.Response, error) {
+//	@return GoogleEndpointDevice
+func (a *AuthenticatorsApiService) AuthenticatorsEndpointRetrieveExecute(r ApiAuthenticatorsEndpointRetrieveRequest) (*GoogleEndpointDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EndpointDevice
+		localVarReturnValue *GoogleEndpointDevice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsEndpointRetrieve")

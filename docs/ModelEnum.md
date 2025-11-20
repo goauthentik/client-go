@@ -17,6 +17,14 @@
 
 * `CRYPTO_CERTIFICATEKEYPAIR` (value: `"authentik_crypto.certificatekeypair"`)
 
+* `ENDPOINTS_DEVICEUSERBINDING` (value: `"authentik_endpoints.deviceuserbinding"`)
+
+* `ENDPOINTS_ENDPOINTSTAGE` (value: `"authentik_endpoints.endpointstage"`)
+
+* `ENDPOINTS_CONNECTORS_AGENT_AGENTCONNECTOR` (value: `"authentik_endpoints_connectors_agent.agentconnector"`)
+
+* `ENDPOINTS_CONNECTORS_AGENT_ENROLLMENTTOKEN` (value: `"authentik_endpoints_connectors_agent.enrollmenttoken"`)
+
 * `ENTERPRISE_LICENSE` (value: `"authentik_enterprise.license"`)
 
 * `EVENTS_EVENT` (value: `"authentik_events.event"`)

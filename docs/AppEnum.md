@@ -17,6 +17,10 @@
 
 * `CRYPTO` (value: `"authentik.crypto"`)
 
+* `ENDPOINTS` (value: `"authentik.endpoints"`)
+
+* `ENDPOINTS_CONNECTORS_AGENT` (value: `"authentik.endpoints.connectors.agent"`)
+
 * `ENTERPRISE` (value: `"authentik.enterprise"`)
 
 * `EVENTS` (value: `"authentik.events"`)
@@ -124,6 +128,8 @@
 * `BLUEPRINTS` (value: `"authentik.blueprints"`)
 
 * `ENTERPRISE_AUDIT` (value: `"authentik.enterprise.audit"`)
+
+* `ENTERPRISE_ENDPOINTS_CONNECTORS_AGENT` (value: `"authentik.enterprise.endpoints.connectors.agent"`)
 
 * `ENTERPRISE_POLICIES_UNIQUE_PASSWORD` (value: `"authentik.enterprise.policies.unique_password"`)
 

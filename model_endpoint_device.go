@@ -13,22 +13,32 @@ package api
 
 import (
 	"encoding/json"
+	"time"
 )
 
-// EndpointDevice Serializer for Endpoint authenticator devices
+// EndpointDevice struct for EndpointDevice
 type EndpointDevice struct {
-	Pk *string `json:"pk,omitempty"`
-	// The human-readable name of this device.
-	Name string `json:"name"`
+	DeviceUuid *string                `json:"device_uuid,omitempty"`
+	PbmUuid    string                 `json:"pbm_uuid"`
+	Name       string                 `json:"name"`
+	Group      NullableString         `json:"group,omitempty"`
+	GroupObj   DeviceGroup            `json:"group_obj"`
+	Expiring   *bool                  `json:"expiring,omitempty"`
+	Expires    NullableTime           `json:"expires,omitempty"`
+	Facts      DeviceFactSnapshot     `json:"facts"`
+	Attributes map[string]interface{} `json:"attributes,omitempty"`
 }
 
 // NewEndpointDevice instantiates a new EndpointDevice object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEndpointDevice(name string) *EndpointDevice {
+func NewEndpointDevice(pbmUuid string, name string, groupObj DeviceGroup, facts DeviceFactSnapshot) *EndpointDevice {
 	this := EndpointDevice{}
+	this.PbmUuid = pbmUuid
 	this.Name = name
+	this.GroupObj = groupObj
+	this.Facts = facts
 	return &this
 }
 
@@ -40,36 +50,60 @@ func NewEndpointDeviceWithDefaults() *EndpointDevice {
 	return &this
 }
 
-// GetPk returns the Pk field value if set, zero value otherwise.
-func (o *EndpointDevice) GetPk() string {
-	if o == nil || o.Pk == nil {
+// GetDeviceUuid returns the DeviceUuid field value if set, zero value otherwise.
+func (o *EndpointDevice) GetDeviceUuid() string {
+	if o == nil || o.DeviceUuid == nil {
 		var ret string
 		return ret
 	}
-	return *o.Pk
+	return *o.DeviceUuid
 }
 
-// GetPkOk returns a tuple with the Pk field value if set, nil otherwise
+// GetDeviceUuidOk returns a tuple with the DeviceUuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EndpointDevice) GetPkOk() (*string, bool) {
-	if o == nil || o.Pk == nil {
+func (o *EndpointDevice) GetDeviceUuidOk() (*string, bool) {
+	if o == nil || o.DeviceUuid == nil {
 		return nil, false
 	}
-	return o.Pk, true
+	return o.DeviceUuid, true
 }
 
-// HasPk returns a boolean if a field has been set.
-func (o *EndpointDevice) HasPk() bool {
-	if o != nil && o.Pk != nil {
+// HasDeviceUuid returns a boolean if a field has been set.
+func (o *EndpointDevice) HasDeviceUuid() bool {
+	if o != nil && o.DeviceUuid != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPk gets a reference to the given string and assigns it to the Pk field.
-func (o *EndpointDevice) SetPk(v string) {
-	o.Pk = &v
+// SetDeviceUuid gets a reference to the given string and assigns it to the DeviceUuid field.
+func (o *EndpointDevice) SetDeviceUuid(v string) {
+	o.DeviceUuid = &v
+}
+
+// GetPbmUuid returns the PbmUuid field value
+func (o *EndpointDevice) GetPbmUuid() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.PbmUuid
+}
+
+// GetPbmUuidOk returns a tuple with the PbmUuid field value
+// and a boolean to check if the value has been set.
+func (o *EndpointDevice) GetPbmUuidOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PbmUuid, true
+}
+
+// SetPbmUuid sets field value
+func (o *EndpointDevice) SetPbmUuid(v string) {
+	o.PbmUuid = v
 }
 
 // GetName returns the Name field value
@@ -96,13 +130,232 @@ func (o *EndpointDevice) SetName(v string) {
 	o.Name = v
 }
 
+// GetGroup returns the Group field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EndpointDevice) GetGroup() string {
+	if o == nil || o.Group.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.Group.Get()
+}
+
+// GetGroupOk returns a tuple with the Group field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EndpointDevice) GetGroupOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Group.Get(), o.Group.IsSet()
+}
+
+// HasGroup returns a boolean if a field has been set.
+func (o *EndpointDevice) HasGroup() bool {
+	if o != nil && o.Group.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGroup gets a reference to the given NullableString and assigns it to the Group field.
+func (o *EndpointDevice) SetGroup(v string) {
+	o.Group.Set(&v)
+}
+
+// SetGroupNil sets the value for Group to be an explicit nil
+func (o *EndpointDevice) SetGroupNil() {
+	o.Group.Set(nil)
+}
+
+// UnsetGroup ensures that no value is present for Group, not even an explicit nil
+func (o *EndpointDevice) UnsetGroup() {
+	o.Group.Unset()
+}
+
+// GetGroupObj returns the GroupObj field value
+func (o *EndpointDevice) GetGroupObj() DeviceGroup {
+	if o == nil {
+		var ret DeviceGroup
+		return ret
+	}
+
+	return o.GroupObj
+}
+
+// GetGroupObjOk returns a tuple with the GroupObj field value
+// and a boolean to check if the value has been set.
+func (o *EndpointDevice) GetGroupObjOk() (*DeviceGroup, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.GroupObj, true
+}
+
+// SetGroupObj sets field value
+func (o *EndpointDevice) SetGroupObj(v DeviceGroup) {
+	o.GroupObj = v
+}
+
+// GetExpiring returns the Expiring field value if set, zero value otherwise.
+func (o *EndpointDevice) GetExpiring() bool {
+	if o == nil || o.Expiring == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Expiring
+}
+
+// GetExpiringOk returns a tuple with the Expiring field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointDevice) GetExpiringOk() (*bool, bool) {
+	if o == nil || o.Expiring == nil {
+		return nil, false
+	}
+	return o.Expiring, true
+}
+
+// HasExpiring returns a boolean if a field has been set.
+func (o *EndpointDevice) HasExpiring() bool {
+	if o != nil && o.Expiring != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExpiring gets a reference to the given bool and assigns it to the Expiring field.
+func (o *EndpointDevice) SetExpiring(v bool) {
+	o.Expiring = &v
+}
+
+// GetExpires returns the Expires field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EndpointDevice) GetExpires() time.Time {
+	if o == nil || o.Expires.Get() == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.Expires.Get()
+}
+
+// GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EndpointDevice) GetExpiresOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Expires.Get(), o.Expires.IsSet()
+}
+
+// HasExpires returns a boolean if a field has been set.
+func (o *EndpointDevice) HasExpires() bool {
+	if o != nil && o.Expires.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetExpires gets a reference to the given NullableTime and assigns it to the Expires field.
+func (o *EndpointDevice) SetExpires(v time.Time) {
+	o.Expires.Set(&v)
+}
+
+// SetExpiresNil sets the value for Expires to be an explicit nil
+func (o *EndpointDevice) SetExpiresNil() {
+	o.Expires.Set(nil)
+}
+
+// UnsetExpires ensures that no value is present for Expires, not even an explicit nil
+func (o *EndpointDevice) UnsetExpires() {
+	o.Expires.Unset()
+}
+
+// GetFacts returns the Facts field value
+func (o *EndpointDevice) GetFacts() DeviceFactSnapshot {
+	if o == nil {
+		var ret DeviceFactSnapshot
+		return ret
+	}
+
+	return o.Facts
+}
+
+// GetFactsOk returns a tuple with the Facts field value
+// and a boolean to check if the value has been set.
+func (o *EndpointDevice) GetFactsOk() (*DeviceFactSnapshot, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Facts, true
+}
+
+// SetFacts sets field value
+func (o *EndpointDevice) SetFacts(v DeviceFactSnapshot) {
+	o.Facts = v
+}
+
+// GetAttributes returns the Attributes field value if set, zero value otherwise.
+func (o *EndpointDevice) GetAttributes() map[string]interface{} {
+	if o == nil || o.Attributes == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointDevice) GetAttributesOk() (map[string]interface{}, bool) {
+	if o == nil || o.Attributes == nil {
+		return nil, false
+	}
+	return o.Attributes, true
+}
+
+// HasAttributes returns a boolean if a field has been set.
+func (o *EndpointDevice) HasAttributes() bool {
+	if o != nil && o.Attributes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
+func (o *EndpointDevice) SetAttributes(v map[string]interface{}) {
+	o.Attributes = v
+}
+
 func (o EndpointDevice) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Pk != nil {
-		toSerialize["pk"] = o.Pk
+	if o.DeviceUuid != nil {
+		toSerialize["device_uuid"] = o.DeviceUuid
+	}
+	if true {
+		toSerialize["pbm_uuid"] = o.PbmUuid
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.Group.IsSet() {
+		toSerialize["group"] = o.Group.Get()
+	}
+	if true {
+		toSerialize["group_obj"] = o.GroupObj
+	}
+	if o.Expiring != nil {
+		toSerialize["expiring"] = o.Expiring
+	}
+	if o.Expires.IsSet() {
+		toSerialize["expires"] = o.Expires.Get()
+	}
+	if true {
+		toSerialize["facts"] = o.Facts
+	}
+	if o.Attributes != nil {
+		toSerialize["attributes"] = o.Attributes
 	}
 	return json.Marshal(toSerialize)
 }

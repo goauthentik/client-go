@@ -1002,7 +1002,7 @@ Name | Type | Description  | Notes
 
 ## AuthenticatorsAdminEndpointCreate
 
-> EndpointDevice AuthenticatorsAdminEndpointCreate(ctx).EndpointDeviceRequest(endpointDeviceRequest).Execute()
+> GoogleEndpointDevice AuthenticatorsAdminEndpointCreate(ctx).GoogleEndpointDeviceRequest(googleEndpointDeviceRequest).Execute()
 
 
 
@@ -1021,16 +1021,16 @@ import (
 )
 
 func main() {
-    endpointDeviceRequest := *openapiclient.NewEndpointDeviceRequest("Name_example") // EndpointDeviceRequest | 
+    googleEndpointDeviceRequest := *openapiclient.NewGoogleEndpointDeviceRequest("Name_example") // GoogleEndpointDeviceRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEndpointCreate(context.Background()).EndpointDeviceRequest(endpointDeviceRequest).Execute()
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEndpointCreate(context.Background()).GoogleEndpointDeviceRequest(googleEndpointDeviceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEndpointCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AuthenticatorsAdminEndpointCreate`: EndpointDevice
+    // response from `AuthenticatorsAdminEndpointCreate`: GoogleEndpointDevice
     fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminEndpointCreate`: %v\n", resp)
 }
 ```
@@ -1046,11 +1046,11 @@ Other parameters are passed through a pointer to a apiAuthenticatorsAdminEndpoin
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **endpointDeviceRequest** | [**EndpointDeviceRequest**](EndpointDeviceRequest.md) |  | 
+ **googleEndpointDeviceRequest** | [**GoogleEndpointDeviceRequest**](GoogleEndpointDeviceRequest.md) |  | 
 
 ### Return type
 
-[**EndpointDevice**](EndpointDevice.md)
+[**GoogleEndpointDevice**](GoogleEndpointDevice.md)
 
 ### Authorization
 
@@ -1136,7 +1136,7 @@ Name | Type | Description  | Notes
 
 ## AuthenticatorsAdminEndpointList
 
-> PaginatedEndpointDeviceList AuthenticatorsAdminEndpointList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedGoogleEndpointDeviceList AuthenticatorsAdminEndpointList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -1168,7 +1168,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEndpointList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AuthenticatorsAdminEndpointList`: PaginatedEndpointDeviceList
+    // response from `AuthenticatorsAdminEndpointList`: PaginatedGoogleEndpointDeviceList
     fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminEndpointList`: %v\n", resp)
 }
 ```
@@ -1192,7 +1192,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginatedEndpointDeviceList**](PaginatedEndpointDeviceList.md)
+[**PaginatedGoogleEndpointDeviceList**](PaginatedGoogleEndpointDeviceList.md)
 
 ### Authorization
 
@@ -1210,7 +1210,7 @@ Name | Type | Description  | Notes
 
 ## AuthenticatorsAdminEndpointPartialUpdate
 
-> EndpointDevice AuthenticatorsAdminEndpointPartialUpdate(ctx, uuid).PatchedEndpointDeviceRequest(patchedEndpointDeviceRequest).Execute()
+> GoogleEndpointDevice AuthenticatorsAdminEndpointPartialUpdate(ctx, uuid).PatchedGoogleEndpointDeviceRequest(patchedGoogleEndpointDeviceRequest).Execute()
 
 
 
@@ -1230,16 +1230,16 @@ import (
 
 func main() {
     uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Device.
-    patchedEndpointDeviceRequest := *openapiclient.NewPatchedEndpointDeviceRequest() // PatchedEndpointDeviceRequest |  (optional)
+    patchedGoogleEndpointDeviceRequest := *openapiclient.NewPatchedGoogleEndpointDeviceRequest() // PatchedGoogleEndpointDeviceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEndpointPartialUpdate(context.Background(), uuid).PatchedEndpointDeviceRequest(patchedEndpointDeviceRequest).Execute()
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEndpointPartialUpdate(context.Background(), uuid).PatchedGoogleEndpointDeviceRequest(patchedGoogleEndpointDeviceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEndpointPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AuthenticatorsAdminEndpointPartialUpdate`: EndpointDevice
+    // response from `AuthenticatorsAdminEndpointPartialUpdate`: GoogleEndpointDevice
     fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminEndpointPartialUpdate`: %v\n", resp)
 }
 ```
@@ -1260,11 +1260,11 @@ Other parameters are passed through a pointer to a apiAuthenticatorsAdminEndpoin
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **patchedEndpointDeviceRequest** | [**PatchedEndpointDeviceRequest**](PatchedEndpointDeviceRequest.md) |  | 
+ **patchedGoogleEndpointDeviceRequest** | [**PatchedGoogleEndpointDeviceRequest**](PatchedGoogleEndpointDeviceRequest.md) |  | 
 
 ### Return type
 
-[**EndpointDevice**](EndpointDevice.md)
+[**GoogleEndpointDevice**](GoogleEndpointDevice.md)
 
 ### Authorization
 
@@ -1282,7 +1282,7 @@ Name | Type | Description  | Notes
 
 ## AuthenticatorsAdminEndpointRetrieve
 
-> EndpointDevice AuthenticatorsAdminEndpointRetrieve(ctx, uuid).Execute()
+> GoogleEndpointDevice AuthenticatorsAdminEndpointRetrieve(ctx, uuid).Execute()
 
 
 
@@ -1310,7 +1310,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEndpointRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AuthenticatorsAdminEndpointRetrieve`: EndpointDevice
+    // response from `AuthenticatorsAdminEndpointRetrieve`: GoogleEndpointDevice
     fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminEndpointRetrieve`: %v\n", resp)
 }
 ```
@@ -1334,7 +1334,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EndpointDevice**](EndpointDevice.md)
+[**GoogleEndpointDevice**](GoogleEndpointDevice.md)
 
 ### Authorization
 
@@ -1352,7 +1352,7 @@ Name | Type | Description  | Notes
 
 ## AuthenticatorsAdminEndpointUpdate
 
-> EndpointDevice AuthenticatorsAdminEndpointUpdate(ctx, uuid).EndpointDeviceRequest(endpointDeviceRequest).Execute()
+> GoogleEndpointDevice AuthenticatorsAdminEndpointUpdate(ctx, uuid).GoogleEndpointDeviceRequest(googleEndpointDeviceRequest).Execute()
 
 
 
@@ -1372,16 +1372,16 @@ import (
 
 func main() {
     uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Device.
-    endpointDeviceRequest := *openapiclient.NewEndpointDeviceRequest("Name_example") // EndpointDeviceRequest | 
+    googleEndpointDeviceRequest := *openapiclient.NewGoogleEndpointDeviceRequest("Name_example") // GoogleEndpointDeviceRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEndpointUpdate(context.Background(), uuid).EndpointDeviceRequest(endpointDeviceRequest).Execute()
+    resp, r, err := apiClient.AuthenticatorsApi.AuthenticatorsAdminEndpointUpdate(context.Background(), uuid).GoogleEndpointDeviceRequest(googleEndpointDeviceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsAdminEndpointUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AuthenticatorsAdminEndpointUpdate`: EndpointDevice
+    // response from `AuthenticatorsAdminEndpointUpdate`: GoogleEndpointDevice
     fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsAdminEndpointUpdate`: %v\n", resp)
 }
 ```
@@ -1402,11 +1402,11 @@ Other parameters are passed through a pointer to a apiAuthenticatorsAdminEndpoin
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **endpointDeviceRequest** | [**EndpointDeviceRequest**](EndpointDeviceRequest.md) |  | 
+ **googleEndpointDeviceRequest** | [**GoogleEndpointDeviceRequest**](GoogleEndpointDeviceRequest.md) |  | 
 
 ### Return type
 
-[**EndpointDevice**](EndpointDevice.md)
+[**GoogleEndpointDevice**](GoogleEndpointDevice.md)
 
 ### Authorization
 
@@ -4025,7 +4025,7 @@ Name | Type | Description  | Notes
 
 ## AuthenticatorsEndpointList
 
-> PaginatedEndpointDeviceList AuthenticatorsEndpointList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedGoogleEndpointDeviceList AuthenticatorsEndpointList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -4057,7 +4057,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsEndpointList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AuthenticatorsEndpointList`: PaginatedEndpointDeviceList
+    // response from `AuthenticatorsEndpointList`: PaginatedGoogleEndpointDeviceList
     fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsEndpointList`: %v\n", resp)
 }
 ```
@@ -4081,7 +4081,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginatedEndpointDeviceList**](PaginatedEndpointDeviceList.md)
+[**PaginatedGoogleEndpointDeviceList**](PaginatedGoogleEndpointDeviceList.md)
 
 ### Authorization
 
@@ -4099,7 +4099,7 @@ Name | Type | Description  | Notes
 
 ## AuthenticatorsEndpointRetrieve
 
-> EndpointDevice AuthenticatorsEndpointRetrieve(ctx, uuid).Execute()
+> GoogleEndpointDevice AuthenticatorsEndpointRetrieve(ctx, uuid).Execute()
 
 
 
@@ -4127,7 +4127,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthenticatorsApi.AuthenticatorsEndpointRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AuthenticatorsEndpointRetrieve`: EndpointDevice
+    // response from `AuthenticatorsEndpointRetrieve`: GoogleEndpointDevice
     fmt.Fprintf(os.Stdout, "Response from `AuthenticatorsApi.AuthenticatorsEndpointRetrieve`: %v\n", resp)
 }
 ```
@@ -4151,7 +4151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EndpointDevice**](EndpointDevice.md)
+[**GoogleEndpointDevice**](GoogleEndpointDevice.md)
 
 ### Authorization
 
