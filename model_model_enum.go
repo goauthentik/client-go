@@ -31,6 +31,8 @@ const (
 	MODELENUM_ENDPOINTS_DEVICEUSERBINDING                                       ModelEnum = "authentik_endpoints.deviceuserbinding"
 	MODELENUM_ENDPOINTS_ENDPOINTSTAGE                                           ModelEnum = "authentik_endpoints.endpointstage"
 	MODELENUM_ENDPOINTS_CONNECTORS_AGENT_AGENTCONNECTOR                         ModelEnum = "authentik_endpoints_connectors_agent.agentconnector"
+	MODELENUM_ENDPOINTS_CONNECTORS_AGENT_AGENTDEVICECONNECTION                  ModelEnum = "authentik_endpoints_connectors_agent.agentdeviceconnection"
+	MODELENUM_ENDPOINTS_CONNECTORS_AGENT_AGENTDEVICEUSERBINDING                 ModelEnum = "authentik_endpoints_connectors_agent.agentdeviceuserbinding"
 	MODELENUM_ENDPOINTS_CONNECTORS_AGENT_ENROLLMENTTOKEN                        ModelEnum = "authentik_endpoints_connectors_agent.enrollmenttoken"
 	MODELENUM_ENTERPRISE_LICENSE                                                ModelEnum = "authentik_enterprise.license"
 	MODELENUM_EVENTS_EVENT                                                      ModelEnum = "authentik_events.event"
@@ -147,6 +149,8 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_endpoints.deviceuserbinding",
 	"authentik_endpoints.endpointstage",
 	"authentik_endpoints_connectors_agent.agentconnector",
+	"authentik_endpoints_connectors_agent.agentdeviceconnection",
+	"authentik_endpoints_connectors_agent.agentdeviceuserbinding",
 	"authentik_endpoints_connectors_agent.enrollmenttoken",
 	"authentik_enterprise.license",
 	"authentik_events.event",

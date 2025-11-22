@@ -21,11 +21,12 @@ type AgentConnectorRequest struct {
 	Name                         string         `json:"name"`
 	Enabled                      *bool          `json:"enabled,omitempty"`
 	SnapshotExpiry               *string        `json:"snapshot_expiry,omitempty"`
-	NssUidOffset                 *int32         `json:"nss_uid_offset,omitempty"`
-	NssGidOffset                 *int32         `json:"nss_gid_offset,omitempty"`
+	DomainName                   string         `json:"domain_name"`
 	AuthTerminateSessionOnExpiry *bool          `json:"auth_terminate_session_on_expiry,omitempty"`
 	RefreshInterval              *string        `json:"refresh_interval,omitempty"`
-	AuthenticationFlow           NullableString `json:"authentication_flow,omitempty"`
+	AuthorizationFlow            NullableString `json:"authorization_flow,omitempty"`
+	NssUidOffset                 *int32         `json:"nss_uid_offset,omitempty"`
+	NssGidOffset                 *int32         `json:"nss_gid_offset,omitempty"`
 	ChallengeKey                 NullableString `json:"challenge_key,omitempty"`
 }
 
@@ -33,9 +34,10 @@ type AgentConnectorRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgentConnectorRequest(name string) *AgentConnectorRequest {
+func NewAgentConnectorRequest(name string, domainName string) *AgentConnectorRequest {
 	this := AgentConnectorRequest{}
 	this.Name = name
+	this.DomainName = domainName
 	return &this
 }
 
@@ -167,68 +169,28 @@ func (o *AgentConnectorRequest) SetSnapshotExpiry(v string) {
 	o.SnapshotExpiry = &v
 }
 
-// GetNssUidOffset returns the NssUidOffset field value if set, zero value otherwise.
-func (o *AgentConnectorRequest) GetNssUidOffset() int32 {
-	if o == nil || o.NssUidOffset == nil {
-		var ret int32
+// GetDomainName returns the DomainName field value
+func (o *AgentConnectorRequest) GetDomainName() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
-	return *o.NssUidOffset
+
+	return o.DomainName
 }
 
-// GetNssUidOffsetOk returns a tuple with the NssUidOffset field value if set, nil otherwise
+// GetDomainNameOk returns a tuple with the DomainName field value
 // and a boolean to check if the value has been set.
-func (o *AgentConnectorRequest) GetNssUidOffsetOk() (*int32, bool) {
-	if o == nil || o.NssUidOffset == nil {
+func (o *AgentConnectorRequest) GetDomainNameOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.NssUidOffset, true
+	return &o.DomainName, true
 }
 
-// HasNssUidOffset returns a boolean if a field has been set.
-func (o *AgentConnectorRequest) HasNssUidOffset() bool {
-	if o != nil && o.NssUidOffset != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNssUidOffset gets a reference to the given int32 and assigns it to the NssUidOffset field.
-func (o *AgentConnectorRequest) SetNssUidOffset(v int32) {
-	o.NssUidOffset = &v
-}
-
-// GetNssGidOffset returns the NssGidOffset field value if set, zero value otherwise.
-func (o *AgentConnectorRequest) GetNssGidOffset() int32 {
-	if o == nil || o.NssGidOffset == nil {
-		var ret int32
-		return ret
-	}
-	return *o.NssGidOffset
-}
-
-// GetNssGidOffsetOk returns a tuple with the NssGidOffset field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AgentConnectorRequest) GetNssGidOffsetOk() (*int32, bool) {
-	if o == nil || o.NssGidOffset == nil {
-		return nil, false
-	}
-	return o.NssGidOffset, true
-}
-
-// HasNssGidOffset returns a boolean if a field has been set.
-func (o *AgentConnectorRequest) HasNssGidOffset() bool {
-	if o != nil && o.NssGidOffset != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNssGidOffset gets a reference to the given int32 and assigns it to the NssGidOffset field.
-func (o *AgentConnectorRequest) SetNssGidOffset(v int32) {
-	o.NssGidOffset = &v
+// SetDomainName sets field value
+func (o *AgentConnectorRequest) SetDomainName(v string) {
+	o.DomainName = v
 }
 
 // GetAuthTerminateSessionOnExpiry returns the AuthTerminateSessionOnExpiry field value if set, zero value otherwise.
@@ -295,47 +257,111 @@ func (o *AgentConnectorRequest) SetRefreshInterval(v string) {
 	o.RefreshInterval = &v
 }
 
-// GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AgentConnectorRequest) GetAuthenticationFlow() string {
-	if o == nil || o.AuthenticationFlow.Get() == nil {
+// GetAuthorizationFlow returns the AuthorizationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AgentConnectorRequest) GetAuthorizationFlow() string {
+	if o == nil || o.AuthorizationFlow.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.AuthenticationFlow.Get()
+	return *o.AuthorizationFlow.Get()
 }
 
-// GetAuthenticationFlowOk returns a tuple with the AuthenticationFlow field value if set, nil otherwise
+// GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AgentConnectorRequest) GetAuthenticationFlowOk() (*string, bool) {
+func (o *AgentConnectorRequest) GetAuthorizationFlowOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AuthenticationFlow.Get(), o.AuthenticationFlow.IsSet()
+	return o.AuthorizationFlow.Get(), o.AuthorizationFlow.IsSet()
 }
 
-// HasAuthenticationFlow returns a boolean if a field has been set.
-func (o *AgentConnectorRequest) HasAuthenticationFlow() bool {
-	if o != nil && o.AuthenticationFlow.IsSet() {
+// HasAuthorizationFlow returns a boolean if a field has been set.
+func (o *AgentConnectorRequest) HasAuthorizationFlow() bool {
+	if o != nil && o.AuthorizationFlow.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAuthenticationFlow gets a reference to the given NullableString and assigns it to the AuthenticationFlow field.
-func (o *AgentConnectorRequest) SetAuthenticationFlow(v string) {
-	o.AuthenticationFlow.Set(&v)
+// SetAuthorizationFlow gets a reference to the given NullableString and assigns it to the AuthorizationFlow field.
+func (o *AgentConnectorRequest) SetAuthorizationFlow(v string) {
+	o.AuthorizationFlow.Set(&v)
 }
 
-// SetAuthenticationFlowNil sets the value for AuthenticationFlow to be an explicit nil
-func (o *AgentConnectorRequest) SetAuthenticationFlowNil() {
-	o.AuthenticationFlow.Set(nil)
+// SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
+func (o *AgentConnectorRequest) SetAuthorizationFlowNil() {
+	o.AuthorizationFlow.Set(nil)
 }
 
-// UnsetAuthenticationFlow ensures that no value is present for AuthenticationFlow, not even an explicit nil
-func (o *AgentConnectorRequest) UnsetAuthenticationFlow() {
-	o.AuthenticationFlow.Unset()
+// UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
+func (o *AgentConnectorRequest) UnsetAuthorizationFlow() {
+	o.AuthorizationFlow.Unset()
+}
+
+// GetNssUidOffset returns the NssUidOffset field value if set, zero value otherwise.
+func (o *AgentConnectorRequest) GetNssUidOffset() int32 {
+	if o == nil || o.NssUidOffset == nil {
+		var ret int32
+		return ret
+	}
+	return *o.NssUidOffset
+}
+
+// GetNssUidOffsetOk returns a tuple with the NssUidOffset field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AgentConnectorRequest) GetNssUidOffsetOk() (*int32, bool) {
+	if o == nil || o.NssUidOffset == nil {
+		return nil, false
+	}
+	return o.NssUidOffset, true
+}
+
+// HasNssUidOffset returns a boolean if a field has been set.
+func (o *AgentConnectorRequest) HasNssUidOffset() bool {
+	if o != nil && o.NssUidOffset != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNssUidOffset gets a reference to the given int32 and assigns it to the NssUidOffset field.
+func (o *AgentConnectorRequest) SetNssUidOffset(v int32) {
+	o.NssUidOffset = &v
+}
+
+// GetNssGidOffset returns the NssGidOffset field value if set, zero value otherwise.
+func (o *AgentConnectorRequest) GetNssGidOffset() int32 {
+	if o == nil || o.NssGidOffset == nil {
+		var ret int32
+		return ret
+	}
+	return *o.NssGidOffset
+}
+
+// GetNssGidOffsetOk returns a tuple with the NssGidOffset field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AgentConnectorRequest) GetNssGidOffsetOk() (*int32, bool) {
+	if o == nil || o.NssGidOffset == nil {
+		return nil, false
+	}
+	return o.NssGidOffset, true
+}
+
+// HasNssGidOffset returns a boolean if a field has been set.
+func (o *AgentConnectorRequest) HasNssGidOffset() bool {
+	if o != nil && o.NssGidOffset != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNssGidOffset gets a reference to the given int32 and assigns it to the NssGidOffset field.
+func (o *AgentConnectorRequest) SetNssGidOffset(v int32) {
+	o.NssGidOffset = &v
 }
 
 // GetChallengeKey returns the ChallengeKey field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -395,11 +421,8 @@ func (o AgentConnectorRequest) MarshalJSON() ([]byte, error) {
 	if o.SnapshotExpiry != nil {
 		toSerialize["snapshot_expiry"] = o.SnapshotExpiry
 	}
-	if o.NssUidOffset != nil {
-		toSerialize["nss_uid_offset"] = o.NssUidOffset
-	}
-	if o.NssGidOffset != nil {
-		toSerialize["nss_gid_offset"] = o.NssGidOffset
+	if true {
+		toSerialize["domain_name"] = o.DomainName
 	}
 	if o.AuthTerminateSessionOnExpiry != nil {
 		toSerialize["auth_terminate_session_on_expiry"] = o.AuthTerminateSessionOnExpiry
@@ -407,8 +430,14 @@ func (o AgentConnectorRequest) MarshalJSON() ([]byte, error) {
 	if o.RefreshInterval != nil {
 		toSerialize["refresh_interval"] = o.RefreshInterval
 	}
-	if o.AuthenticationFlow.IsSet() {
-		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
+	if o.AuthorizationFlow.IsSet() {
+		toSerialize["authorization_flow"] = o.AuthorizationFlow.Get()
+	}
+	if o.NssUidOffset != nil {
+		toSerialize["nss_uid_offset"] = o.NssUidOffset
+	}
+	if o.NssGidOffset != nil {
+		toSerialize["nss_gid_offset"] = o.NssGidOffset
 	}
 	if o.ChallengeKey.IsSet() {
 		toSerialize["challenge_key"] = o.ChallengeKey.Get()

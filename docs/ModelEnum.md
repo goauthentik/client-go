@@ -23,6 +23,10 @@
 
 * `ENDPOINTS_CONNECTORS_AGENT_AGENTCONNECTOR` (value: `"authentik_endpoints_connectors_agent.agentconnector"`)
 
+* `ENDPOINTS_CONNECTORS_AGENT_AGENTDEVICECONNECTION` (value: `"authentik_endpoints_connectors_agent.agentdeviceconnection"`)
+
+* `ENDPOINTS_CONNECTORS_AGENT_AGENTDEVICEUSERBINDING` (value: `"authentik_endpoints_connectors_agent.agentdeviceuserbinding"`)
+
 * `ENDPOINTS_CONNECTORS_AGENT_ENROLLMENTTOKEN` (value: `"authentik_endpoints_connectors_agent.enrollmenttoken"`)
 
 * `ENTERPRISE_LICENSE` (value: `"authentik_enterprise.license"`)

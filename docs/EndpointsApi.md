@@ -5,6 +5,7 @@ All URIs are relative to */api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**EndpointsAgentsConnectorsAgentConfigRetrieve**](EndpointsApi.md#EndpointsAgentsConnectorsAgentConfigRetrieve) | **Get** /endpoints/agents/connectors/agent_config/ | 
+[**EndpointsAgentsConnectorsAuthenticateInteractiveCreate**](EndpointsApi.md#EndpointsAgentsConnectorsAuthenticateInteractiveCreate) | **Post** /endpoints/agents/connectors/authenticate_interactive/ | 
 [**EndpointsAgentsConnectorsCheckInCreate**](EndpointsApi.md#EndpointsAgentsConnectorsCheckInCreate) | **Post** /endpoints/agents/connectors/check_in/ | 
 [**EndpointsAgentsConnectorsCreate**](EndpointsApi.md#EndpointsAgentsConnectorsCreate) | **Post** /endpoints/agents/connectors/ | 
 [**EndpointsAgentsConnectorsDestroy**](EndpointsApi.md#EndpointsAgentsConnectorsDestroy) | **Delete** /endpoints/agents/connectors/{connector_uuid}/ | 
@@ -112,6 +113,67 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## EndpointsAgentsConnectorsAuthenticateInteractiveCreate
+
+> AgentAuthenticationResponse EndpointsAgentsConnectorsAuthenticateInteractiveCreate(ctx).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndpointsApi.EndpointsAgentsConnectorsAuthenticateInteractiveCreate(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsAgentsConnectorsAuthenticateInteractiveCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndpointsAgentsConnectorsAuthenticateInteractiveCreate`: AgentAuthenticationResponse
+    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsAgentsConnectorsAuthenticateInteractiveCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsAgentsConnectorsAuthenticateInteractiveCreateRequest struct via the builder pattern
+
+
+### Return type
+
+[**AgentAuthenticationResponse**](AgentAuthenticationResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## EndpointsAgentsConnectorsCheckInCreate
 
 > EndpointsAgentsConnectorsCheckInCreate(ctx).DeviceFactsRequest(deviceFactsRequest).Execute()
@@ -197,7 +259,7 @@ import (
 )
 
 func main() {
-    agentConnectorRequest := *openapiclient.NewAgentConnectorRequest("Name_example") // AgentConnectorRequest | 
+    agentConnectorRequest := *openapiclient.NewAgentConnectorRequest("Name_example", "DomainName_example") // AgentConnectorRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -688,7 +750,7 @@ import (
 
 func main() {
     connectorUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Agent Connector.
-    agentConnectorRequest := *openapiclient.NewAgentConnectorRequest("Name_example") // AgentConnectorRequest | 
+    agentConnectorRequest := *openapiclient.NewAgentConnectorRequest("Name_example", "DomainName_example") // AgentConnectorRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

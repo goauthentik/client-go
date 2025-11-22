@@ -29,6 +29,7 @@ client.go
 configuration.go
 docs/AccessDeniedChallenge.md
 docs/AdminApi.md
+docs/AgentAuthenticationResponse.md
 docs/AgentConfig.md
 docs/AgentConnector.md
 docs/AgentConnectorRequest.md
@@ -877,6 +878,7 @@ git_push.sh
 go.mod
 go.sum
 model_access_denied_challenge.go
+model_agent_authentication_response.go
 model_agent_config.go
 model_agent_connector.go
 model_agent_connector_request.go

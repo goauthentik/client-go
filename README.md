@@ -208,6 +208,7 @@ Class | Method | HTTP request | Description
 *CryptoApi* | [**CryptoCertificatekeypairsViewCertificateRetrieve**](docs/CryptoApi.md#cryptocertificatekeypairsviewcertificateretrieve) | **Get** /crypto/certificatekeypairs/{kp_uuid}/view_certificate/ | 
 *CryptoApi* | [**CryptoCertificatekeypairsViewPrivateKeyRetrieve**](docs/CryptoApi.md#cryptocertificatekeypairsviewprivatekeyretrieve) | **Get** /crypto/certificatekeypairs/{kp_uuid}/view_private_key/ | 
 *EndpointsApi* | [**EndpointsAgentsConnectorsAgentConfigRetrieve**](docs/EndpointsApi.md#endpointsagentsconnectorsagentconfigretrieve) | **Get** /endpoints/agents/connectors/agent_config/ | 
+*EndpointsApi* | [**EndpointsAgentsConnectorsAuthenticateInteractiveCreate**](docs/EndpointsApi.md#endpointsagentsconnectorsauthenticateinteractivecreate) | **Post** /endpoints/agents/connectors/authenticate_interactive/ | 
 *EndpointsApi* | [**EndpointsAgentsConnectorsCheckInCreate**](docs/EndpointsApi.md#endpointsagentsconnectorscheckincreate) | **Post** /endpoints/agents/connectors/check_in/ | 
 *EndpointsApi* | [**EndpointsAgentsConnectorsCreate**](docs/EndpointsApi.md#endpointsagentsconnectorscreate) | **Post** /endpoints/agents/connectors/ | 
 *EndpointsApi* | [**EndpointsAgentsConnectorsDestroy**](docs/EndpointsApi.md#endpointsagentsconnectorsdestroy) | **Delete** /endpoints/agents/connectors/{connector_uuid}/ | 
@@ -1122,6 +1123,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AccessDeniedChallenge](docs/AccessDeniedChallenge.md)
+ - [AgentAuthenticationResponse](docs/AgentAuthenticationResponse.md)
  - [AgentConfig](docs/AgentConfig.md)
  - [AgentConnector](docs/AgentConnector.md)
  - [AgentConnectorRequest](docs/AgentConnectorRequest.md)

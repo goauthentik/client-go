@@ -17,24 +17,28 @@ import (
 
 // AgentConfig Base serializer class which doesn't implement create/update methods
 type AgentConfig struct {
+	DomainName                   string `json:"domain_name"`
+	RefreshInterval              int32  `json:"refresh_interval"`
+	AuthorizationFlow            string `json:"authorization_flow"`
+	JwksUrl                      string `json:"jwks_url"`
 	NssUidOffset                 int32  `json:"nss_uid_offset"`
 	NssGidOffset                 int32  `json:"nss_gid_offset"`
-	AuthenticationFlow           string `json:"authentication_flow"`
 	AuthTerminateSessionOnExpiry bool   `json:"auth_terminate_session_on_expiry"`
-	RefreshInterval              int32  `json:"refresh_interval"`
 }
 
 // NewAgentConfig instantiates a new AgentConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgentConfig(nssUidOffset int32, nssGidOffset int32, authenticationFlow string, authTerminateSessionOnExpiry bool, refreshInterval int32) *AgentConfig {
+func NewAgentConfig(domainName string, refreshInterval int32, authorizationFlow string, jwksUrl string, nssUidOffset int32, nssGidOffset int32, authTerminateSessionOnExpiry bool) *AgentConfig {
 	this := AgentConfig{}
+	this.DomainName = domainName
+	this.RefreshInterval = refreshInterval
+	this.AuthorizationFlow = authorizationFlow
+	this.JwksUrl = jwksUrl
 	this.NssUidOffset = nssUidOffset
 	this.NssGidOffset = nssGidOffset
-	this.AuthenticationFlow = authenticationFlow
 	this.AuthTerminateSessionOnExpiry = authTerminateSessionOnExpiry
-	this.RefreshInterval = refreshInterval
 	return &this
 }
 
@@ -44,6 +48,102 @@ func NewAgentConfig(nssUidOffset int32, nssGidOffset int32, authenticationFlow s
 func NewAgentConfigWithDefaults() *AgentConfig {
 	this := AgentConfig{}
 	return &this
+}
+
+// GetDomainName returns the DomainName field value
+func (o *AgentConfig) GetDomainName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.DomainName
+}
+
+// GetDomainNameOk returns a tuple with the DomainName field value
+// and a boolean to check if the value has been set.
+func (o *AgentConfig) GetDomainNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DomainName, true
+}
+
+// SetDomainName sets field value
+func (o *AgentConfig) SetDomainName(v string) {
+	o.DomainName = v
+}
+
+// GetRefreshInterval returns the RefreshInterval field value
+func (o *AgentConfig) GetRefreshInterval() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.RefreshInterval
+}
+
+// GetRefreshIntervalOk returns a tuple with the RefreshInterval field value
+// and a boolean to check if the value has been set.
+func (o *AgentConfig) GetRefreshIntervalOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RefreshInterval, true
+}
+
+// SetRefreshInterval sets field value
+func (o *AgentConfig) SetRefreshInterval(v int32) {
+	o.RefreshInterval = v
+}
+
+// GetAuthorizationFlow returns the AuthorizationFlow field value
+func (o *AgentConfig) GetAuthorizationFlow() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.AuthorizationFlow
+}
+
+// GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field value
+// and a boolean to check if the value has been set.
+func (o *AgentConfig) GetAuthorizationFlowOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AuthorizationFlow, true
+}
+
+// SetAuthorizationFlow sets field value
+func (o *AgentConfig) SetAuthorizationFlow(v string) {
+	o.AuthorizationFlow = v
+}
+
+// GetJwksUrl returns the JwksUrl field value
+func (o *AgentConfig) GetJwksUrl() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.JwksUrl
+}
+
+// GetJwksUrlOk returns a tuple with the JwksUrl field value
+// and a boolean to check if the value has been set.
+func (o *AgentConfig) GetJwksUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.JwksUrl, true
+}
+
+// SetJwksUrl sets field value
+func (o *AgentConfig) SetJwksUrl(v string) {
+	o.JwksUrl = v
 }
 
 // GetNssUidOffset returns the NssUidOffset field value
@@ -94,30 +194,6 @@ func (o *AgentConfig) SetNssGidOffset(v int32) {
 	o.NssGidOffset = v
 }
 
-// GetAuthenticationFlow returns the AuthenticationFlow field value
-func (o *AgentConfig) GetAuthenticationFlow() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.AuthenticationFlow
-}
-
-// GetAuthenticationFlowOk returns a tuple with the AuthenticationFlow field value
-// and a boolean to check if the value has been set.
-func (o *AgentConfig) GetAuthenticationFlowOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AuthenticationFlow, true
-}
-
-// SetAuthenticationFlow sets field value
-func (o *AgentConfig) SetAuthenticationFlow(v string) {
-	o.AuthenticationFlow = v
-}
-
 // GetAuthTerminateSessionOnExpiry returns the AuthTerminateSessionOnExpiry field value
 func (o *AgentConfig) GetAuthTerminateSessionOnExpiry() bool {
 	if o == nil {
@@ -142,32 +218,20 @@ func (o *AgentConfig) SetAuthTerminateSessionOnExpiry(v bool) {
 	o.AuthTerminateSessionOnExpiry = v
 }
 
-// GetRefreshInterval returns the RefreshInterval field value
-func (o *AgentConfig) GetRefreshInterval() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.RefreshInterval
-}
-
-// GetRefreshIntervalOk returns a tuple with the RefreshInterval field value
-// and a boolean to check if the value has been set.
-func (o *AgentConfig) GetRefreshIntervalOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.RefreshInterval, true
-}
-
-// SetRefreshInterval sets field value
-func (o *AgentConfig) SetRefreshInterval(v int32) {
-	o.RefreshInterval = v
-}
-
 func (o AgentConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["domain_name"] = o.DomainName
+	}
+	if true {
+		toSerialize["refresh_interval"] = o.RefreshInterval
+	}
+	if true {
+		toSerialize["authorization_flow"] = o.AuthorizationFlow
+	}
+	if true {
+		toSerialize["jwks_url"] = o.JwksUrl
+	}
 	if true {
 		toSerialize["nss_uid_offset"] = o.NssUidOffset
 	}
@@ -175,13 +239,7 @@ func (o AgentConfig) MarshalJSON() ([]byte, error) {
 		toSerialize["nss_gid_offset"] = o.NssGidOffset
 	}
 	if true {
-		toSerialize["authentication_flow"] = o.AuthenticationFlow
-	}
-	if true {
 		toSerialize["auth_terminate_session_on_expiry"] = o.AuthTerminateSessionOnExpiry
-	}
-	if true {
-		toSerialize["refresh_interval"] = o.RefreshInterval
 	}
 	return json.Marshal(toSerialize)
 }
