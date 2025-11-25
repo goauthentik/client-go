@@ -49797,7 +49797,6 @@ components:
           type: string
         slug:
           description: "Internal application name, used in URLs."
-          maxLength: 50
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         provider:
@@ -49920,7 +49919,6 @@ components:
           type: string
         slug:
           description: "Internal application name, used in URLs."
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
@@ -55524,7 +55522,6 @@ components:
           type: string
         slug:
           description: Visible in the URL.
-          maxLength: 50
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         title:
@@ -55815,7 +55812,6 @@ components:
           type: string
         slug:
           description: Visible in the URL.
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
@@ -55881,7 +55877,6 @@ components:
           type: string
         slug:
           description: Visible in the URL.
-          maxLength: 50
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         title:
@@ -55942,7 +55937,6 @@ components:
           type: string
         slug:
           description: Visible in the URL.
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
@@ -57999,7 +57993,6 @@ components:
           title: Invite uuid
           type: string
         name:
-          maxLength: 50
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         expires:
@@ -58042,7 +58035,6 @@ components:
         flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         name:
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
@@ -58238,7 +58230,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
@@ -58482,7 +58473,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
@@ -59103,7 +59093,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
@@ -59392,7 +59381,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
@@ -61350,7 +61338,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
@@ -61606,7 +61593,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
@@ -72765,7 +72751,6 @@ components:
           type: string
         slug:
           description: "Internal application name, used in URLs."
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
@@ -74049,7 +74034,6 @@ components:
           type: string
         slug:
           description: Visible in the URL.
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
@@ -74600,7 +74584,6 @@ components:
         flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         name:
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
@@ -74718,7 +74701,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
@@ -74986,7 +74968,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
@@ -75578,7 +75559,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
@@ -75939,7 +75919,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
@@ -76749,7 +76728,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
@@ -77035,7 +77013,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
@@ -77352,7 +77329,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
@@ -78000,7 +77976,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
@@ -78210,7 +78185,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
@@ -81327,7 +81301,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
@@ -81595,7 +81568,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
@@ -82153,7 +82125,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
@@ -82379,7 +82350,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
@@ -83264,7 +83234,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
@@ -84104,7 +84073,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
@@ -84303,7 +84271,6 @@ components:
           type: string
         slug:
           description: "Internal source name, used in URLs."
-          maxLength: 50
           minLength: 1
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
