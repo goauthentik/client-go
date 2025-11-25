@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Source&#39;s display Name. | [optional] 
 **Slug** | Pointer to **string** | Internal source name, used in URLs. | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
+**Promoted** | Pointer to **bool** | When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon. | [optional] 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow to use when authenticating existing users. | [optional] 
 **EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
 **UserPropertyMappings** | Pointer to **[]string** |  | [optional] 
@@ -130,6 +131,31 @@ SetEnabled sets Enabled field to given value.
 `func (o *PatchedLDAPSourceRequest) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
+
+### GetPromoted
+
+`func (o *PatchedLDAPSourceRequest) GetPromoted() bool`
+
+GetPromoted returns the Promoted field if non-nil, zero value otherwise.
+
+### GetPromotedOk
+
+`func (o *PatchedLDAPSourceRequest) GetPromotedOk() (*bool, bool)`
+
+GetPromotedOk returns a tuple with the Promoted field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPromoted
+
+`func (o *PatchedLDAPSourceRequest) SetPromoted(v bool)`
+
+SetPromoted sets Promoted field to given value.
+
+### HasPromoted
+
+`func (o *PatchedLDAPSourceRequest) HasPromoted() bool`
+
+HasPromoted returns a boolean if a field has been set.
 
 ### GetAuthenticationFlow
 

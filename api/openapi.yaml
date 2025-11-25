@@ -58199,6 +58199,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         sync_users: true
         icon: icon
+        promoted: true
         sync_ccache: sync_ccache
         enabled: true
         kadmin_type: ""
@@ -58241,6 +58242,10 @@ components:
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
+          type: boolean
+        promoted:
+          description: "When enabled, this source will be displayed as a prominent\
+            \ button on the login page, instead of a small icon."
           type: boolean
         authentication_flow:
           description: Flow to use when authenticating existing users.
@@ -58442,33 +58447,34 @@ components:
       description: Kerberos Source Serializer
       example:
         user_matching_mode: ""
-        user_path_template: user_path_template
         group_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         sync_users: true
         sync_keytab: sync_keytab
+        promoted: true
         sync_ccache: sync_ccache
         enabled: true
-        group_matching_mode: ""
         kadmin_type: ""
+        sync_password: sync_password
+        spnego_server_name: spnego_server_name
+        krb5_conf: krb5_conf
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        spnego_ccache: spnego_ccache
+        slug: slug
+        sync_principal: sync_principal
+        user_path_template: user_path_template
+        group_matching_mode: ""
         password_login_update_internal_password: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         sync_users_password: true
-        sync_password: sync_password
-        spnego_server_name: spnego_server_name
-        krb5_conf: krb5_conf
         spnego_keytab: spnego_keytab
         name: name
-        user_property_mappings:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         realm: realm
-        spnego_ccache: spnego_ccache
-        slug: slug
-        sync_principal: sync_principal
       properties:
         name:
           description: Source's display Name.
@@ -58481,6 +58487,10 @@ components:
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
+          type: boolean
+        promoted:
+          description: "When enabled, this source will be displayed as a prominent\
+            \ button on the login page, instead of a small icon."
           type: boolean
         authentication_flow:
           description: Flow to use when authenticating existing users.
@@ -59046,6 +59056,7 @@ components:
         additional_user_dn: additional_user_dn
         sync_users: true
         icon: icon
+        promoted: true
         enabled: true
         delete_not_found_objects: true
         client_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -59096,6 +59107,10 @@ components:
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
+          type: boolean
+        promoted:
+          description: "When enabled, this source will be displayed as a prominent\
+            \ button on the login page, instead of a small icon."
           type: boolean
         authentication_flow:
           description: Flow to use when authenticating existing users.
@@ -59341,6 +59356,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         additional_user_dn: additional_user_dn
         sync_users: true
+        promoted: true
         enabled: true
         delete_not_found_objects: true
         client_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -59381,6 +59397,10 @@ components:
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
+          type: boolean
+        promoted:
+          description: "When enabled, this source will be displayed as a prominent\
+            \ button on the login page, instead of a small icon."
           type: boolean
         authentication_flow:
           description: Flow to use when authenticating existing users.
@@ -59701,6 +59721,9 @@ components:
         icon_url:
           nullable: true
           type: string
+        promoted:
+          default: false
+          type: boolean
         challenge:
           $ref: '#/components/schemas/LoginChallengeTypes'
       required:
@@ -61290,6 +61313,7 @@ components:
         oidc_jwks:
           key: ""
         authorization_code_auth_method: ""
+        promoted: true
         type: ""
         additional_scopes: additional_scopes
         enabled: true
@@ -61330,6 +61354,10 @@ components:
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
+          type: boolean
+        promoted:
+          description: "When enabled, this source will be displayed as a prominent\
+            \ button on the login page, instead of a small icon."
           type: boolean
         authentication_flow:
           description: Flow to use when authenticating existing users.
@@ -61544,20 +61572,26 @@ components:
         provider_type: null
         user_matching_mode: ""
         consumer_secret: consumer_secret
-        oidc_jwks_url: oidc_jwks_url
-        user_path_template: user_path_template
         request_token_url: request_token_url
         group_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         profile_url: profile_url
-        authorization_url: authorization_url
         oidc_jwks:
           key: ""
-        pkce: null
         authorization_code_auth_method: ""
+        promoted: true
         additional_scopes: additional_scopes
         enabled: true
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        access_token_url: access_token_url
+        slug: slug
+        oidc_jwks_url: oidc_jwks_url
+        user_path_template: user_path_template
+        authorization_url: authorization_url
+        pkce: null
         group_matching_mode: ""
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
@@ -61565,11 +61599,6 @@ components:
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         oidc_well_known_url: oidc_well_known_url
         name: name
-        user_property_mappings:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        access_token_url: access_token_url
-        slug: slug
       properties:
         name:
           description: Source's display Name.
@@ -61582,6 +61611,10 @@ components:
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
+          type: boolean
+        promoted:
+          description: "When enabled, this source will be displayed as a prominent\
+            \ button on the login page, instead of a small icon."
           type: boolean
         authentication_flow:
           description: Flow to use when authenticating existing users.
@@ -65978,6 +66011,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           sync_users: true
           icon: icon
+          promoted: true
           sync_ccache: sync_ccache
           enabled: true
           kadmin_type: ""
@@ -66012,6 +66046,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           sync_users: true
           icon: icon
+          promoted: true
           sync_ccache: sync_ccache
           enabled: true
           kadmin_type: ""
@@ -66305,6 +66340,7 @@ components:
           additional_user_dn: additional_user_dn
           sync_users: true
           icon: icon
+          promoted: true
           enabled: true
           delete_not_found_objects: true
           client_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -66350,6 +66386,7 @@ components:
           additional_user_dn: additional_user_dn
           sync_users: true
           icon: icon
+          promoted: true
           enabled: true
           delete_not_found_objects: true
           client_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -67117,6 +67154,7 @@ components:
           oidc_jwks:
             key: ""
           authorization_code_auth_method: ""
+          promoted: true
           type: ""
           additional_scopes: additional_scopes
           enabled: true
@@ -67154,6 +67192,7 @@ components:
           oidc_jwks:
             key: ""
           authorization_code_auth_method: ""
+          promoted: true
           type: ""
           additional_scopes: additional_scopes
           enabled: true
@@ -67643,6 +67682,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon: icon
+          promoted: true
           enabled: true
           client_id: client_id
           group_matching_mode: ""
@@ -67671,6 +67711,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon: icon
+          promoted: true
           enabled: true
           client_id: client_id
           group_matching_mode: ""
@@ -69194,6 +69235,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon: icon
+          promoted: true
           sso_url: https://openapi-generator.tech
           signed_assertion: true
           enabled: true
@@ -69231,6 +69273,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon: icon
+          promoted: true
           sso_url: https://openapi-generator.tech
           signed_assertion: true
           enabled: true
@@ -70028,6 +70071,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon: icon
+          promoted: true
           enabled: true
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
@@ -70049,6 +70093,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon: icon
+          promoted: true
           enabled: true
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           policy_engine_mode: null
@@ -70463,6 +70508,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           request_message_access: true
           icon: icon
+          promoted: true
           enabled: true
           bot_username: bot_username
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -70487,6 +70533,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           request_message_access: true
           icon: icon
+          promoted: true
           enabled: true
           bot_username: bot_username
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -74636,33 +74683,34 @@ components:
       description: Kerberos Source Serializer
       example:
         user_matching_mode: ""
-        user_path_template: user_path_template
         group_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         sync_users: true
         sync_keytab: sync_keytab
+        promoted: true
         sync_ccache: sync_ccache
         enabled: true
-        group_matching_mode: ""
         kadmin_type: ""
+        sync_password: sync_password
+        spnego_server_name: spnego_server_name
+        krb5_conf: krb5_conf
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        spnego_ccache: spnego_ccache
+        slug: slug
+        sync_principal: sync_principal
+        user_path_template: user_path_template
+        group_matching_mode: ""
         password_login_update_internal_password: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         sync_users_password: true
-        sync_password: sync_password
-        spnego_server_name: spnego_server_name
-        krb5_conf: krb5_conf
         spnego_keytab: spnego_keytab
         name: name
-        user_property_mappings:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         realm: realm
-        spnego_ccache: spnego_ccache
-        slug: slug
-        sync_principal: sync_principal
       properties:
         name:
           description: Source's display Name.
@@ -74675,6 +74723,10 @@ components:
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
+          type: boolean
+        promoted:
+          description: "When enabled, this source will be displayed as a prominent\
+            \ button on the login page, instead of a small icon."
           type: boolean
         authentication_flow:
           description: Flow to use when authenticating existing users.
@@ -74898,6 +74950,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         additional_user_dn: additional_user_dn
         sync_users: true
+        promoted: true
         enabled: true
         delete_not_found_objects: true
         client_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -74938,6 +74991,10 @@ components:
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
+          type: boolean
+        promoted:
+          description: "When enabled, this source will be displayed as a prominent\
+            \ button on the login page, instead of a small icon."
           type: boolean
         authentication_flow:
           description: Flow to use when authenticating existing users.
@@ -75487,20 +75544,26 @@ components:
         provider_type: null
         user_matching_mode: ""
         consumer_secret: consumer_secret
-        oidc_jwks_url: oidc_jwks_url
-        user_path_template: user_path_template
         request_token_url: request_token_url
         group_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         profile_url: profile_url
-        authorization_url: authorization_url
         oidc_jwks:
           key: ""
-        pkce: null
         authorization_code_auth_method: ""
+        promoted: true
         additional_scopes: additional_scopes
         enabled: true
+        user_property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        access_token_url: access_token_url
+        slug: slug
+        oidc_jwks_url: oidc_jwks_url
+        user_path_template: user_path_template
+        authorization_url: authorization_url
+        pkce: null
         group_matching_mode: ""
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
@@ -75508,11 +75571,6 @@ components:
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         oidc_well_known_url: oidc_well_known_url
         name: name
-        user_property_mappings:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        access_token_url: access_token_url
-        slug: slug
       properties:
         name:
           description: Source's display Name.
@@ -75525,6 +75583,10 @@ components:
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
+          type: boolean
+        promoted:
+          description: "When enabled, this source will be displayed as a prominent\
+            \ button on the login page, instead of a small icon."
           type: boolean
         authentication_flow:
           description: Flow to use when authenticating existing users.
@@ -75856,6 +75918,7 @@ components:
         group_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        promoted: true
         enabled: true
         client_id: client_id
         group_matching_mode: ""
@@ -75881,6 +75944,10 @@ components:
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
+          type: boolean
+        promoted:
+          description: "When enabled, this source will be displayed as a prominent\
+            \ button on the login page, instead of a small icon."
           type: boolean
         authentication_flow:
           description: Flow to use when authenticating existing users.
@@ -76649,6 +76716,7 @@ components:
         group_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        promoted: true
         sso_url: https://openapi-generator.tech
         signed_assertion: true
         enabled: true
@@ -76686,6 +76754,10 @@ components:
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
+          type: boolean
+        promoted:
+          description: "When enabled, this source will be displayed as a prominent\
+            \ button on the login page, instead of a small icon."
           type: boolean
         authentication_flow:
           description: Flow to use when authenticating existing users.
@@ -77260,6 +77332,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         request_message_access: true
+        promoted: true
         enabled: true
         bot_username: bot_username
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -77284,6 +77357,10 @@ components:
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
+          type: boolean
+        promoted:
+          description: "When enabled, this source will be displayed as a prominent\
+            \ button on the login page, instead of a small icon."
           type: boolean
         authentication_flow:
           description: Flow to use when authenticating existing users.
@@ -77893,6 +77970,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         icon: icon
+        promoted: true
         enabled: true
         client_id: client_id
         group_matching_mode: ""
@@ -77926,6 +78004,10 @@ components:
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
+          type: boolean
+        promoted:
+          description: "When enabled, this source will be displayed as a prominent\
+            \ button on the login page, instead of a small icon."
           type: boolean
         authentication_flow:
           description: Flow to use when authenticating existing users.
@@ -78107,6 +78189,7 @@ components:
         group_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        promoted: true
         enabled: true
         client_id: client_id
         group_matching_mode: ""
@@ -78132,6 +78215,10 @@ components:
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
+          type: boolean
+        promoted:
+          description: "When enabled, this source will be displayed as a prominent\
+            \ button on the login page, instead of a small icon."
           type: boolean
         authentication_flow:
           description: Flow to use when authenticating existing users.
@@ -81198,6 +81285,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         icon: icon
+        promoted: true
         sso_url: https://openapi-generator.tech
         signed_assertion: true
         enabled: true
@@ -81243,6 +81331,10 @@ components:
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
+          type: boolean
+        promoted:
+          description: "When enabled, this source will be displayed as a prominent\
+            \ button on the login page, instead of a small icon."
           type: boolean
         authentication_flow:
           description: Flow to use when authenticating existing users.
@@ -81470,6 +81562,7 @@ components:
         group_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        promoted: true
         sso_url: https://openapi-generator.tech
         signed_assertion: true
         enabled: true
@@ -81507,6 +81600,10 @@ components:
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
+          type: boolean
+        promoted:
+          description: "When enabled, this source will be displayed as a prominent\
+            \ button on the login page, instead of a small icon."
           type: boolean
         authentication_flow:
           description: Flow to use when authenticating existing users.
@@ -83141,6 +83238,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         icon: icon
+        promoted: true
         enabled: true
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         policy_engine_mode: null
@@ -83170,6 +83268,10 @@ components:
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
+          type: boolean
+        promoted:
+          description: "When enabled, this source will be displayed as a prominent\
+            \ button on the login page, instead of a small icon."
           type: boolean
         authentication_flow:
           description: Flow to use when authenticating existing users.
@@ -83974,6 +84076,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         request_message_access: true
         icon: icon
+        promoted: true
         enabled: true
         bot_username: bot_username
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -84005,6 +84108,10 @@ components:
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
+          type: boolean
+        promoted:
+          description: "When enabled, this source will be displayed as a prominent\
+            \ button on the login page, instead of a small icon."
           type: boolean
         authentication_flow:
           description: Flow to use when authenticating existing users.
@@ -84176,6 +84283,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         request_message_access: true
+        promoted: true
         enabled: true
         bot_username: bot_username
         authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -84200,6 +84308,10 @@ components:
           pattern: "^[-a-zA-Z0-9_]+$"
           type: string
         enabled:
+          type: boolean
+        promoted:
+          description: "When enabled, this source will be displayed as a prominent\
+            \ button on the login page, instead of a small icon."
           type: boolean
         authentication_flow:
           description: Flow to use when authenticating existing users.

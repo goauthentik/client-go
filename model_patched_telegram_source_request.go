@@ -22,6 +22,8 @@ type PatchedTelegramSourceRequest struct {
 	// Internal source name, used in URLs.
 	Slug    *string `json:"slug,omitempty"`
 	Enabled *bool   `json:"enabled,omitempty"`
+	// When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon.
+	Promoted *bool `json:"promoted,omitempty"`
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
@@ -153,6 +155,38 @@ func (o *PatchedTelegramSourceRequest) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *PatchedTelegramSourceRequest) SetEnabled(v bool) {
 	o.Enabled = &v
+}
+
+// GetPromoted returns the Promoted field value if set, zero value otherwise.
+func (o *PatchedTelegramSourceRequest) GetPromoted() bool {
+	if o == nil || o.Promoted == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Promoted
+}
+
+// GetPromotedOk returns a tuple with the Promoted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedTelegramSourceRequest) GetPromotedOk() (*bool, bool) {
+	if o == nil || o.Promoted == nil {
+		return nil, false
+	}
+	return o.Promoted, true
+}
+
+// HasPromoted returns a boolean if a field has been set.
+func (o *PatchedTelegramSourceRequest) HasPromoted() bool {
+	if o != nil && o.Promoted != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPromoted gets a reference to the given bool and assigns it to the Promoted field.
+func (o *PatchedTelegramSourceRequest) SetPromoted(v bool) {
+	o.Promoted = &v
 }
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -539,6 +573,9 @@ func (o PatchedTelegramSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Enabled != nil {
 		toSerialize["enabled"] = o.Enabled
+	}
+	if o.Promoted != nil {
+		toSerialize["promoted"] = o.Promoted
 	}
 	if o.AuthenticationFlow.IsSet() {
 		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
