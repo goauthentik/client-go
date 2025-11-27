@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// TokenSetKeyRequest struct for TokenSetKeyRequest
+// TokenSetKeyRequest Set token's key
 type TokenSetKeyRequest struct {
 	Key string `json:"key"`
 }

@@ -17,6 +17,7 @@ import (
 
 // AgentConfig Base serializer class which doesn't implement create/update methods
 type AgentConfig struct {
+	DeviceId                     string                 `json:"device_id"`
 	RefreshInterval              int32                  `json:"refresh_interval"`
 	AuthorizationFlow            string                 `json:"authorization_flow"`
 	Jwks                         map[string]interface{} `json:"jwks"`
@@ -30,8 +31,9 @@ type AgentConfig struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgentConfig(refreshInterval int32, authorizationFlow string, jwks map[string]interface{}, nssUidOffset int32, nssGidOffset int32, authTerminateSessionOnExpiry bool, systemConfig Config) *AgentConfig {
+func NewAgentConfig(deviceId string, refreshInterval int32, authorizationFlow string, jwks map[string]interface{}, nssUidOffset int32, nssGidOffset int32, authTerminateSessionOnExpiry bool, systemConfig Config) *AgentConfig {
 	this := AgentConfig{}
+	this.DeviceId = deviceId
 	this.RefreshInterval = refreshInterval
 	this.AuthorizationFlow = authorizationFlow
 	this.Jwks = jwks
@@ -48,6 +50,30 @@ func NewAgentConfig(refreshInterval int32, authorizationFlow string, jwks map[st
 func NewAgentConfigWithDefaults() *AgentConfig {
 	this := AgentConfig{}
 	return &this
+}
+
+// GetDeviceId returns the DeviceId field value
+func (o *AgentConfig) GetDeviceId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.DeviceId
+}
+
+// GetDeviceIdOk returns a tuple with the DeviceId field value
+// and a boolean to check if the value has been set.
+func (o *AgentConfig) GetDeviceIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DeviceId, true
+}
+
+// SetDeviceId sets field value
+func (o *AgentConfig) SetDeviceId(v string) {
+	o.DeviceId = v
 }
 
 // GetRefreshInterval returns the RefreshInterval field value
@@ -220,6 +246,9 @@ func (o *AgentConfig) SetSystemConfig(v Config) {
 
 func (o AgentConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["device_id"] = o.DeviceId
+	}
 	if true {
 		toSerialize["refresh_interval"] = o.RefreshInterval
 	}

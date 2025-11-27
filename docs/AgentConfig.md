@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeviceId** | **string** |  | [readonly] 
 **RefreshInterval** | **int32** |  | [readonly] 
 **AuthorizationFlow** | **string** |  | 
 **Jwks** | **map[string]interface{}** |  | [readonly] 
@@ -16,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewAgentConfig
 
-`func NewAgentConfig(refreshInterval int32, authorizationFlow string, jwks map[string]interface{}, nssUidOffset int32, nssGidOffset int32, authTerminateSessionOnExpiry bool, systemConfig Config, ) *AgentConfig`
+`func NewAgentConfig(deviceId string, refreshInterval int32, authorizationFlow string, jwks map[string]interface{}, nssUidOffset int32, nssGidOffset int32, authTerminateSessionOnExpiry bool, systemConfig Config, ) *AgentConfig`
 
 NewAgentConfig instantiates a new AgentConfig object
 This constructor will assign default values to properties that have it defined,
@@ -30,6 +31,26 @@ will change when the set of required properties is changed
 NewAgentConfigWithDefaults instantiates a new AgentConfig object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDeviceId
+
+`func (o *AgentConfig) GetDeviceId() string`
+
+GetDeviceId returns the DeviceId field if non-nil, zero value otherwise.
+
+### GetDeviceIdOk
+
+`func (o *AgentConfig) GetDeviceIdOk() (*string, bool)`
+
+GetDeviceIdOk returns a tuple with the DeviceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeviceId
+
+`func (o *AgentConfig) SetDeviceId(v string)`
+
+SetDeviceId sets DeviceId field to given value.
+
 
 ### GetRefreshInterval
 

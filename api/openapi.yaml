@@ -49536,11 +49536,15 @@ components:
         auth_terminate_session_on_expiry: true
         refresh_interval: 0
         authorization_flow: authorization_flow
+        device_id: device_id
         jwks:
           key: ""
         system_config: ""
         nss_gid_offset: 1
       properties:
+        device_id:
+          readOnly: true
+          type: string
         refresh_interval:
           readOnly: true
           type: integer
@@ -49563,6 +49567,7 @@ components:
       required:
       - auth_terminate_session_on_expiry
       - authorization_flow
+      - device_id
       - jwks
       - nss_gid_offset
       - nss_uid_offset
@@ -84843,6 +84848,7 @@ components:
       - identifier
       type: object
     TokenSetKeyRequest:
+      description: Set token's key
       example:
         key: key
       properties:
