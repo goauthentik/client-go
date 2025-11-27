@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeviceUuid** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Group** | Pointer to **NullableString** |  | [optional] 
-**GroupObj** | Pointer to [**DeviceGroupRequest**](DeviceGroupRequest.md) |  | [optional] 
+**AccessGroup** | Pointer to **NullableString** |  | [optional] 
+**AccessGroupObj** | Pointer to [**DeviceAccessGroupRequest**](DeviceAccessGroupRequest.md) |  | [optional] 
 **Expiring** | Pointer to **bool** |  | [optional] 
 **Expires** | Pointer to **NullableTime** |  | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -81,65 +81,65 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
-### GetGroup
+### GetAccessGroup
 
-`func (o *PatchedEndpointDeviceRequest) GetGroup() string`
+`func (o *PatchedEndpointDeviceRequest) GetAccessGroup() string`
 
-GetGroup returns the Group field if non-nil, zero value otherwise.
+GetAccessGroup returns the AccessGroup field if non-nil, zero value otherwise.
 
-### GetGroupOk
+### GetAccessGroupOk
 
-`func (o *PatchedEndpointDeviceRequest) GetGroupOk() (*string, bool)`
+`func (o *PatchedEndpointDeviceRequest) GetAccessGroupOk() (*string, bool)`
 
-GetGroupOk returns a tuple with the Group field if it's non-nil, zero value otherwise
+GetAccessGroupOk returns a tuple with the AccessGroup field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGroup
+### SetAccessGroup
 
-`func (o *PatchedEndpointDeviceRequest) SetGroup(v string)`
+`func (o *PatchedEndpointDeviceRequest) SetAccessGroup(v string)`
 
-SetGroup sets Group field to given value.
+SetAccessGroup sets AccessGroup field to given value.
 
-### HasGroup
+### HasAccessGroup
 
-`func (o *PatchedEndpointDeviceRequest) HasGroup() bool`
+`func (o *PatchedEndpointDeviceRequest) HasAccessGroup() bool`
 
-HasGroup returns a boolean if a field has been set.
+HasAccessGroup returns a boolean if a field has been set.
 
-### SetGroupNil
+### SetAccessGroupNil
 
-`func (o *PatchedEndpointDeviceRequest) SetGroupNil(b bool)`
+`func (o *PatchedEndpointDeviceRequest) SetAccessGroupNil(b bool)`
 
- SetGroupNil sets the value for Group to be an explicit nil
+ SetAccessGroupNil sets the value for AccessGroup to be an explicit nil
 
-### UnsetGroup
-`func (o *PatchedEndpointDeviceRequest) UnsetGroup()`
+### UnsetAccessGroup
+`func (o *PatchedEndpointDeviceRequest) UnsetAccessGroup()`
 
-UnsetGroup ensures that no value is present for Group, not even an explicit nil
-### GetGroupObj
+UnsetAccessGroup ensures that no value is present for AccessGroup, not even an explicit nil
+### GetAccessGroupObj
 
-`func (o *PatchedEndpointDeviceRequest) GetGroupObj() DeviceGroupRequest`
+`func (o *PatchedEndpointDeviceRequest) GetAccessGroupObj() DeviceAccessGroupRequest`
 
-GetGroupObj returns the GroupObj field if non-nil, zero value otherwise.
+GetAccessGroupObj returns the AccessGroupObj field if non-nil, zero value otherwise.
 
-### GetGroupObjOk
+### GetAccessGroupObjOk
 
-`func (o *PatchedEndpointDeviceRequest) GetGroupObjOk() (*DeviceGroupRequest, bool)`
+`func (o *PatchedEndpointDeviceRequest) GetAccessGroupObjOk() (*DeviceAccessGroupRequest, bool)`
 
-GetGroupObjOk returns a tuple with the GroupObj field if it's non-nil, zero value otherwise
+GetAccessGroupObjOk returns a tuple with the AccessGroupObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGroupObj
+### SetAccessGroupObj
 
-`func (o *PatchedEndpointDeviceRequest) SetGroupObj(v DeviceGroupRequest)`
+`func (o *PatchedEndpointDeviceRequest) SetAccessGroupObj(v DeviceAccessGroupRequest)`
 
-SetGroupObj sets GroupObj field to given value.
+SetAccessGroupObj sets AccessGroupObj field to given value.
 
-### HasGroupObj
+### HasAccessGroupObj
 
-`func (o *PatchedEndpointDeviceRequest) HasGroupObj() bool`
+`func (o *PatchedEndpointDeviceRequest) HasAccessGroupObj() bool`
 
-HasGroupObj returns a boolean if a field has been set.
+HasAccessGroupObj returns a boolean if a field has been set.
 
 ### GetExpiring
 

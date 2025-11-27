@@ -18,23 +18,23 @@ import (
 
 // EndpointDeviceRequest struct for EndpointDeviceRequest
 type EndpointDeviceRequest struct {
-	DeviceUuid *string                `json:"device_uuid,omitempty"`
-	Name       string                 `json:"name"`
-	Group      NullableString         `json:"group,omitempty"`
-	GroupObj   DeviceGroupRequest     `json:"group_obj"`
-	Expiring   *bool                  `json:"expiring,omitempty"`
-	Expires    NullableTime           `json:"expires,omitempty"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	DeviceUuid     *string                  `json:"device_uuid,omitempty"`
+	Name           string                   `json:"name"`
+	AccessGroup    NullableString           `json:"access_group,omitempty"`
+	AccessGroupObj DeviceAccessGroupRequest `json:"access_group_obj"`
+	Expiring       *bool                    `json:"expiring,omitempty"`
+	Expires        NullableTime             `json:"expires,omitempty"`
+	Attributes     map[string]interface{}   `json:"attributes,omitempty"`
 }
 
 // NewEndpointDeviceRequest instantiates a new EndpointDeviceRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEndpointDeviceRequest(name string, groupObj DeviceGroupRequest) *EndpointDeviceRequest {
+func NewEndpointDeviceRequest(name string, accessGroupObj DeviceAccessGroupRequest) *EndpointDeviceRequest {
 	this := EndpointDeviceRequest{}
 	this.Name = name
-	this.GroupObj = groupObj
+	this.AccessGroupObj = accessGroupObj
 	return &this
 }
 
@@ -102,71 +102,71 @@ func (o *EndpointDeviceRequest) SetName(v string) {
 	o.Name = v
 }
 
-// GetGroup returns the Group field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *EndpointDeviceRequest) GetGroup() string {
-	if o == nil || o.Group.Get() == nil {
+// GetAccessGroup returns the AccessGroup field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EndpointDeviceRequest) GetAccessGroup() string {
+	if o == nil || o.AccessGroup.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.Group.Get()
+	return *o.AccessGroup.Get()
 }
 
-// GetGroupOk returns a tuple with the Group field value if set, nil otherwise
+// GetAccessGroupOk returns a tuple with the AccessGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EndpointDeviceRequest) GetGroupOk() (*string, bool) {
+func (o *EndpointDeviceRequest) GetAccessGroupOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Group.Get(), o.Group.IsSet()
+	return o.AccessGroup.Get(), o.AccessGroup.IsSet()
 }
 
-// HasGroup returns a boolean if a field has been set.
-func (o *EndpointDeviceRequest) HasGroup() bool {
-	if o != nil && o.Group.IsSet() {
+// HasAccessGroup returns a boolean if a field has been set.
+func (o *EndpointDeviceRequest) HasAccessGroup() bool {
+	if o != nil && o.AccessGroup.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGroup gets a reference to the given NullableString and assigns it to the Group field.
-func (o *EndpointDeviceRequest) SetGroup(v string) {
-	o.Group.Set(&v)
+// SetAccessGroup gets a reference to the given NullableString and assigns it to the AccessGroup field.
+func (o *EndpointDeviceRequest) SetAccessGroup(v string) {
+	o.AccessGroup.Set(&v)
 }
 
-// SetGroupNil sets the value for Group to be an explicit nil
-func (o *EndpointDeviceRequest) SetGroupNil() {
-	o.Group.Set(nil)
+// SetAccessGroupNil sets the value for AccessGroup to be an explicit nil
+func (o *EndpointDeviceRequest) SetAccessGroupNil() {
+	o.AccessGroup.Set(nil)
 }
 
-// UnsetGroup ensures that no value is present for Group, not even an explicit nil
-func (o *EndpointDeviceRequest) UnsetGroup() {
-	o.Group.Unset()
+// UnsetAccessGroup ensures that no value is present for AccessGroup, not even an explicit nil
+func (o *EndpointDeviceRequest) UnsetAccessGroup() {
+	o.AccessGroup.Unset()
 }
 
-// GetGroupObj returns the GroupObj field value
-func (o *EndpointDeviceRequest) GetGroupObj() DeviceGroupRequest {
+// GetAccessGroupObj returns the AccessGroupObj field value
+func (o *EndpointDeviceRequest) GetAccessGroupObj() DeviceAccessGroupRequest {
 	if o == nil {
-		var ret DeviceGroupRequest
+		var ret DeviceAccessGroupRequest
 		return ret
 	}
 
-	return o.GroupObj
+	return o.AccessGroupObj
 }
 
-// GetGroupObjOk returns a tuple with the GroupObj field value
+// GetAccessGroupObjOk returns a tuple with the AccessGroupObj field value
 // and a boolean to check if the value has been set.
-func (o *EndpointDeviceRequest) GetGroupObjOk() (*DeviceGroupRequest, bool) {
+func (o *EndpointDeviceRequest) GetAccessGroupObjOk() (*DeviceAccessGroupRequest, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.GroupObj, true
+	return &o.AccessGroupObj, true
 }
 
-// SetGroupObj sets field value
-func (o *EndpointDeviceRequest) SetGroupObj(v DeviceGroupRequest) {
-	o.GroupObj = v
+// SetAccessGroupObj sets field value
+func (o *EndpointDeviceRequest) SetAccessGroupObj(v DeviceAccessGroupRequest) {
+	o.AccessGroupObj = v
 }
 
 // GetExpiring returns the Expiring field value if set, zero value otherwise.
@@ -284,11 +284,11 @@ func (o EndpointDeviceRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Group.IsSet() {
-		toSerialize["group"] = o.Group.Get()
+	if o.AccessGroup.IsSet() {
+		toSerialize["access_group"] = o.AccessGroup.Get()
 	}
 	if true {
-		toSerialize["group_obj"] = o.GroupObj
+		toSerialize["access_group_obj"] = o.AccessGroupObj
 	}
 	if o.Expiring != nil {
 		toSerialize["expiring"] = o.Expiring

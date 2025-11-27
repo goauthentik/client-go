@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TokenUuid** | **string** |  | [readonly] 
 **DeviceGroup** | Pointer to **NullableString** |  | [optional] 
-**DeviceGroupObj** | [**DeviceGroup**](DeviceGroup.md) |  | [readonly] 
+**DeviceGroupObj** | [**DeviceAccessGroup**](DeviceAccessGroup.md) |  | [readonly] 
 **Connector** | **string** |  | 
 **Name** | **string** |  | 
 **Expiring** | Pointer to **bool** |  | [optional] 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewEnrollmentToken
 
-`func NewEnrollmentToken(tokenUuid string, deviceGroupObj DeviceGroup, connector string, name string, ) *EnrollmentToken`
+`func NewEnrollmentToken(tokenUuid string, deviceGroupObj DeviceAccessGroup, connector string, name string, ) *EnrollmentToken`
 
 NewEnrollmentToken instantiates a new EnrollmentToken object
 This constructor will assign default values to properties that have it defined,
@@ -88,20 +88,20 @@ HasDeviceGroup returns a boolean if a field has been set.
 UnsetDeviceGroup ensures that no value is present for DeviceGroup, not even an explicit nil
 ### GetDeviceGroupObj
 
-`func (o *EnrollmentToken) GetDeviceGroupObj() DeviceGroup`
+`func (o *EnrollmentToken) GetDeviceGroupObj() DeviceAccessGroup`
 
 GetDeviceGroupObj returns the DeviceGroupObj field if non-nil, zero value otherwise.
 
 ### GetDeviceGroupObjOk
 
-`func (o *EnrollmentToken) GetDeviceGroupObjOk() (*DeviceGroup, bool)`
+`func (o *EnrollmentToken) GetDeviceGroupObjOk() (*DeviceAccessGroup, bool)`
 
 GetDeviceGroupObjOk returns a tuple with the DeviceGroupObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeviceGroupObj
 
-`func (o *EnrollmentToken) SetDeviceGroupObj(v DeviceGroup)`
+`func (o *EnrollmentToken) SetDeviceGroupObj(v DeviceAccessGroup)`
 
 SetDeviceGroupObj sets DeviceGroupObj field to given value.
 

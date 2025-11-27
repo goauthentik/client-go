@@ -18,20 +18,20 @@ import (
 
 // EnrollmentToken struct for EnrollmentToken
 type EnrollmentToken struct {
-	TokenUuid      string         `json:"token_uuid"`
-	DeviceGroup    NullableString `json:"device_group,omitempty"`
-	DeviceGroupObj DeviceGroup    `json:"device_group_obj"`
-	Connector      string         `json:"connector"`
-	Name           string         `json:"name"`
-	Expiring       *bool          `json:"expiring,omitempty"`
-	Expires        NullableTime   `json:"expires,omitempty"`
+	TokenUuid      string            `json:"token_uuid"`
+	DeviceGroup    NullableString    `json:"device_group,omitempty"`
+	DeviceGroupObj DeviceAccessGroup `json:"device_group_obj"`
+	Connector      string            `json:"connector"`
+	Name           string            `json:"name"`
+	Expiring       *bool             `json:"expiring,omitempty"`
+	Expires        NullableTime      `json:"expires,omitempty"`
 }
 
 // NewEnrollmentToken instantiates a new EnrollmentToken object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnrollmentToken(tokenUuid string, deviceGroupObj DeviceGroup, connector string, name string) *EnrollmentToken {
+func NewEnrollmentToken(tokenUuid string, deviceGroupObj DeviceAccessGroup, connector string, name string) *EnrollmentToken {
 	this := EnrollmentToken{}
 	this.TokenUuid = tokenUuid
 	this.DeviceGroupObj = deviceGroupObj
@@ -116,9 +116,9 @@ func (o *EnrollmentToken) UnsetDeviceGroup() {
 }
 
 // GetDeviceGroupObj returns the DeviceGroupObj field value
-func (o *EnrollmentToken) GetDeviceGroupObj() DeviceGroup {
+func (o *EnrollmentToken) GetDeviceGroupObj() DeviceAccessGroup {
 	if o == nil {
-		var ret DeviceGroup
+		var ret DeviceAccessGroup
 		return ret
 	}
 
@@ -127,7 +127,7 @@ func (o *EnrollmentToken) GetDeviceGroupObj() DeviceGroup {
 
 // GetDeviceGroupObjOk returns a tuple with the DeviceGroupObj field value
 // and a boolean to check if the value has been set.
-func (o *EnrollmentToken) GetDeviceGroupObjOk() (*DeviceGroup, bool) {
+func (o *EnrollmentToken) GetDeviceGroupObjOk() (*DeviceAccessGroup, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -135,7 +135,7 @@ func (o *EnrollmentToken) GetDeviceGroupObjOk() (*DeviceGroup, bool) {
 }
 
 // SetDeviceGroupObj sets field value
-func (o *EnrollmentToken) SetDeviceGroupObj(v DeviceGroup) {
+func (o *EnrollmentToken) SetDeviceGroupObj(v DeviceAccessGroup) {
 	o.DeviceGroupObj = v
 }
 

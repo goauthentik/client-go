@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **DeviceUuid** | Pointer to **string** |  | [optional] 
 **PbmUuid** | **string** |  | [readonly] 
 **Name** | **string** |  | 
-**Group** | Pointer to **NullableString** |  | [optional] 
-**GroupObj** | [**DeviceGroup**](DeviceGroup.md) |  | 
+**AccessGroup** | Pointer to **NullableString** |  | [optional] 
+**AccessGroupObj** | [**DeviceAccessGroup**](DeviceAccessGroup.md) |  | 
 **Expiring** | Pointer to **bool** |  | [optional] 
 **Expires** | Pointer to **NullableTime** |  | [optional] 
 **Facts** | [**DeviceFactSnapshot**](DeviceFactSnapshot.md) |  | [readonly] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewEndpointDeviceDetails
 
-`func NewEndpointDeviceDetails(pbmUuid string, name string, groupObj DeviceGroup, facts DeviceFactSnapshot, connectionsObj []DeviceConnection, policies []string, connections []string, ) *EndpointDeviceDetails`
+`func NewEndpointDeviceDetails(pbmUuid string, name string, accessGroupObj DeviceAccessGroup, facts DeviceFactSnapshot, connectionsObj []DeviceConnection, policies []string, connections []string, ) *EndpointDeviceDetails`
 
 NewEndpointDeviceDetails instantiates a new EndpointDeviceDetails object
 This constructor will assign default values to properties that have it defined,
@@ -101,59 +101,59 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetGroup
+### GetAccessGroup
 
-`func (o *EndpointDeviceDetails) GetGroup() string`
+`func (o *EndpointDeviceDetails) GetAccessGroup() string`
 
-GetGroup returns the Group field if non-nil, zero value otherwise.
+GetAccessGroup returns the AccessGroup field if non-nil, zero value otherwise.
 
-### GetGroupOk
+### GetAccessGroupOk
 
-`func (o *EndpointDeviceDetails) GetGroupOk() (*string, bool)`
+`func (o *EndpointDeviceDetails) GetAccessGroupOk() (*string, bool)`
 
-GetGroupOk returns a tuple with the Group field if it's non-nil, zero value otherwise
+GetAccessGroupOk returns a tuple with the AccessGroup field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGroup
+### SetAccessGroup
 
-`func (o *EndpointDeviceDetails) SetGroup(v string)`
+`func (o *EndpointDeviceDetails) SetAccessGroup(v string)`
 
-SetGroup sets Group field to given value.
+SetAccessGroup sets AccessGroup field to given value.
 
-### HasGroup
+### HasAccessGroup
 
-`func (o *EndpointDeviceDetails) HasGroup() bool`
+`func (o *EndpointDeviceDetails) HasAccessGroup() bool`
 
-HasGroup returns a boolean if a field has been set.
+HasAccessGroup returns a boolean if a field has been set.
 
-### SetGroupNil
+### SetAccessGroupNil
 
-`func (o *EndpointDeviceDetails) SetGroupNil(b bool)`
+`func (o *EndpointDeviceDetails) SetAccessGroupNil(b bool)`
 
- SetGroupNil sets the value for Group to be an explicit nil
+ SetAccessGroupNil sets the value for AccessGroup to be an explicit nil
 
-### UnsetGroup
-`func (o *EndpointDeviceDetails) UnsetGroup()`
+### UnsetAccessGroup
+`func (o *EndpointDeviceDetails) UnsetAccessGroup()`
 
-UnsetGroup ensures that no value is present for Group, not even an explicit nil
-### GetGroupObj
+UnsetAccessGroup ensures that no value is present for AccessGroup, not even an explicit nil
+### GetAccessGroupObj
 
-`func (o *EndpointDeviceDetails) GetGroupObj() DeviceGroup`
+`func (o *EndpointDeviceDetails) GetAccessGroupObj() DeviceAccessGroup`
 
-GetGroupObj returns the GroupObj field if non-nil, zero value otherwise.
+GetAccessGroupObj returns the AccessGroupObj field if non-nil, zero value otherwise.
 
-### GetGroupObjOk
+### GetAccessGroupObjOk
 
-`func (o *EndpointDeviceDetails) GetGroupObjOk() (*DeviceGroup, bool)`
+`func (o *EndpointDeviceDetails) GetAccessGroupObjOk() (*DeviceAccessGroup, bool)`
 
-GetGroupObjOk returns a tuple with the GroupObj field if it's non-nil, zero value otherwise
+GetAccessGroupObjOk returns a tuple with the AccessGroupObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGroupObj
+### SetAccessGroupObj
 
-`func (o *EndpointDeviceDetails) SetGroupObj(v DeviceGroup)`
+`func (o *EndpointDeviceDetails) SetAccessGroupObj(v DeviceAccessGroup)`
 
-SetGroupObj sets GroupObj field to given value.
+SetAccessGroupObj sets AccessGroupObj field to given value.
 
 
 ### GetExpiring

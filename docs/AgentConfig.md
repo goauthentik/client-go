@@ -4,17 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**RefreshInterval** | **int32** |  | [readonly] 
+**AuthorizationFlow** | **string** |  | 
+**Jwks** | **map[string]interface{}** |  | [readonly] 
 **NssUidOffset** | **int32** |  | 
 **NssGidOffset** | **int32** |  | 
-**AuthenticationFlow** | **string** |  | 
 **AuthTerminateSessionOnExpiry** | **bool** |  | 
-**RefreshInterval** | **int32** |  | [readonly] 
+**SystemConfig** | [**Config**](Config.md) |  | [readonly] 
 
 ## Methods
 
 ### NewAgentConfig
 
-`func NewAgentConfig(nssUidOffset int32, nssGidOffset int32, authenticationFlow string, authTerminateSessionOnExpiry bool, refreshInterval int32, ) *AgentConfig`
+`func NewAgentConfig(refreshInterval int32, authorizationFlow string, jwks map[string]interface{}, nssUidOffset int32, nssGidOffset int32, authTerminateSessionOnExpiry bool, systemConfig Config, ) *AgentConfig`
 
 NewAgentConfig instantiates a new AgentConfig object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +30,66 @@ will change when the set of required properties is changed
 NewAgentConfigWithDefaults instantiates a new AgentConfig object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetRefreshInterval
+
+`func (o *AgentConfig) GetRefreshInterval() int32`
+
+GetRefreshInterval returns the RefreshInterval field if non-nil, zero value otherwise.
+
+### GetRefreshIntervalOk
+
+`func (o *AgentConfig) GetRefreshIntervalOk() (*int32, bool)`
+
+GetRefreshIntervalOk returns a tuple with the RefreshInterval field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRefreshInterval
+
+`func (o *AgentConfig) SetRefreshInterval(v int32)`
+
+SetRefreshInterval sets RefreshInterval field to given value.
+
+
+### GetAuthorizationFlow
+
+`func (o *AgentConfig) GetAuthorizationFlow() string`
+
+GetAuthorizationFlow returns the AuthorizationFlow field if non-nil, zero value otherwise.
+
+### GetAuthorizationFlowOk
+
+`func (o *AgentConfig) GetAuthorizationFlowOk() (*string, bool)`
+
+GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthorizationFlow
+
+`func (o *AgentConfig) SetAuthorizationFlow(v string)`
+
+SetAuthorizationFlow sets AuthorizationFlow field to given value.
+
+
+### GetJwks
+
+`func (o *AgentConfig) GetJwks() map[string]interface{}`
+
+GetJwks returns the Jwks field if non-nil, zero value otherwise.
+
+### GetJwksOk
+
+`func (o *AgentConfig) GetJwksOk() (*map[string]interface{}, bool)`
+
+GetJwksOk returns a tuple with the Jwks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwks
+
+`func (o *AgentConfig) SetJwks(v map[string]interface{})`
+
+SetJwks sets Jwks field to given value.
+
 
 ### GetNssUidOffset
 
@@ -69,26 +131,6 @@ and a boolean to check if the value has been set.
 SetNssGidOffset sets NssGidOffset field to given value.
 
 
-### GetAuthenticationFlow
-
-`func (o *AgentConfig) GetAuthenticationFlow() string`
-
-GetAuthenticationFlow returns the AuthenticationFlow field if non-nil, zero value otherwise.
-
-### GetAuthenticationFlowOk
-
-`func (o *AgentConfig) GetAuthenticationFlowOk() (*string, bool)`
-
-GetAuthenticationFlowOk returns a tuple with the AuthenticationFlow field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAuthenticationFlow
-
-`func (o *AgentConfig) SetAuthenticationFlow(v string)`
-
-SetAuthenticationFlow sets AuthenticationFlow field to given value.
-
-
 ### GetAuthTerminateSessionOnExpiry
 
 `func (o *AgentConfig) GetAuthTerminateSessionOnExpiry() bool`
@@ -109,24 +151,24 @@ and a boolean to check if the value has been set.
 SetAuthTerminateSessionOnExpiry sets AuthTerminateSessionOnExpiry field to given value.
 
 
-### GetRefreshInterval
+### GetSystemConfig
 
-`func (o *AgentConfig) GetRefreshInterval() int32`
+`func (o *AgentConfig) GetSystemConfig() Config`
 
-GetRefreshInterval returns the RefreshInterval field if non-nil, zero value otherwise.
+GetSystemConfig returns the SystemConfig field if non-nil, zero value otherwise.
 
-### GetRefreshIntervalOk
+### GetSystemConfigOk
 
-`func (o *AgentConfig) GetRefreshIntervalOk() (*int32, bool)`
+`func (o *AgentConfig) GetSystemConfigOk() (*Config, bool)`
 
-GetRefreshIntervalOk returns a tuple with the RefreshInterval field if it's non-nil, zero value otherwise
+GetSystemConfigOk returns a tuple with the SystemConfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRefreshInterval
+### SetSystemConfig
 
-`func (o *AgentConfig) SetRefreshInterval(v int32)`
+`func (o *AgentConfig) SetSystemConfig(v Config)`
 
-SetRefreshInterval sets RefreshInterval field to given value.
+SetSystemConfig sets SystemConfig field to given value.
 
 
 

@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **Hardware** | Pointer to [**NullableDeviceFactsRequestHardware**](DeviceFactsRequestHardware.md) |  | [optional] 
 **Software** | Pointer to [**[]SoftwareRequest**](SoftwareRequest.md) |  | [optional] 
 **Processes** | Pointer to [**[]ProcessRequest**](ProcessRequest.md) |  | [optional] 
+**Users** | Pointer to [**[]DeviceUserRequest**](DeviceUserRequest.md) |  | [optional] 
+**Groups** | Pointer to [**[]DeviceGroupRequest**](DeviceGroupRequest.md) |  | [optional] 
 **Vendor** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
@@ -241,6 +243,76 @@ HasProcesses returns a boolean if a field has been set.
 `func (o *DeviceFactsRequest) UnsetProcesses()`
 
 UnsetProcesses ensures that no value is present for Processes, not even an explicit nil
+### GetUsers
+
+`func (o *DeviceFactsRequest) GetUsers() []DeviceUserRequest`
+
+GetUsers returns the Users field if non-nil, zero value otherwise.
+
+### GetUsersOk
+
+`func (o *DeviceFactsRequest) GetUsersOk() (*[]DeviceUserRequest, bool)`
+
+GetUsersOk returns a tuple with the Users field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsers
+
+`func (o *DeviceFactsRequest) SetUsers(v []DeviceUserRequest)`
+
+SetUsers sets Users field to given value.
+
+### HasUsers
+
+`func (o *DeviceFactsRequest) HasUsers() bool`
+
+HasUsers returns a boolean if a field has been set.
+
+### SetUsersNil
+
+`func (o *DeviceFactsRequest) SetUsersNil(b bool)`
+
+ SetUsersNil sets the value for Users to be an explicit nil
+
+### UnsetUsers
+`func (o *DeviceFactsRequest) UnsetUsers()`
+
+UnsetUsers ensures that no value is present for Users, not even an explicit nil
+### GetGroups
+
+`func (o *DeviceFactsRequest) GetGroups() []DeviceGroupRequest`
+
+GetGroups returns the Groups field if non-nil, zero value otherwise.
+
+### GetGroupsOk
+
+`func (o *DeviceFactsRequest) GetGroupsOk() (*[]DeviceGroupRequest, bool)`
+
+GetGroupsOk returns a tuple with the Groups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroups
+
+`func (o *DeviceFactsRequest) SetGroups(v []DeviceGroupRequest)`
+
+SetGroups sets Groups field to given value.
+
+### HasGroups
+
+`func (o *DeviceFactsRequest) HasGroups() bool`
+
+HasGroups returns a boolean if a field has been set.
+
+### SetGroupsNil
+
+`func (o *DeviceFactsRequest) SetGroupsNil(b bool)`
+
+ SetGroupsNil sets the value for Groups to be an explicit nil
+
+### UnsetGroups
+`func (o *DeviceFactsRequest) UnsetGroups()`
+
+UnsetGroups ensures that no value is present for Groups, not even an explicit nil
 ### GetVendor
 
 `func (o *DeviceFactsRequest) GetVendor() map[string]interface{}`

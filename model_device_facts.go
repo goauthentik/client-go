@@ -23,6 +23,8 @@ type DeviceFacts struct {
 	Hardware  NullableDeviceFactsHardware `json:"hardware,omitempty"`
 	Software  []Software                  `json:"software,omitempty"`
 	Processes []Process                   `json:"processes,omitempty"`
+	Users     []DeviceUser                `json:"users,omitempty"`
+	Groups    []DeviceGroup               `json:"groups,omitempty"`
 	Vendor    map[string]interface{}      `json:"vendor,omitempty"`
 }
 
@@ -271,6 +273,72 @@ func (o *DeviceFacts) SetProcesses(v []Process) {
 	o.Processes = v
 }
 
+// GetUsers returns the Users field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DeviceFacts) GetUsers() []DeviceUser {
+	if o == nil {
+		var ret []DeviceUser
+		return ret
+	}
+	return o.Users
+}
+
+// GetUsersOk returns a tuple with the Users field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DeviceFacts) GetUsersOk() ([]DeviceUser, bool) {
+	if o == nil || o.Users == nil {
+		return nil, false
+	}
+	return o.Users, true
+}
+
+// HasUsers returns a boolean if a field has been set.
+func (o *DeviceFacts) HasUsers() bool {
+	if o != nil && o.Users != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsers gets a reference to the given []DeviceUser and assigns it to the Users field.
+func (o *DeviceFacts) SetUsers(v []DeviceUser) {
+	o.Users = v
+}
+
+// GetGroups returns the Groups field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DeviceFacts) GetGroups() []DeviceGroup {
+	if o == nil {
+		var ret []DeviceGroup
+		return ret
+	}
+	return o.Groups
+}
+
+// GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DeviceFacts) GetGroupsOk() ([]DeviceGroup, bool) {
+	if o == nil || o.Groups == nil {
+		return nil, false
+	}
+	return o.Groups, true
+}
+
+// HasGroups returns a boolean if a field has been set.
+func (o *DeviceFacts) HasGroups() bool {
+	if o != nil && o.Groups != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGroups gets a reference to the given []DeviceGroup and assigns it to the Groups field.
+func (o *DeviceFacts) SetGroups(v []DeviceGroup) {
+	o.Groups = v
+}
+
 // GetVendor returns the Vendor field value if set, zero value otherwise.
 func (o *DeviceFacts) GetVendor() map[string]interface{} {
 	if o == nil || o.Vendor == nil {
@@ -322,6 +390,12 @@ func (o DeviceFacts) MarshalJSON() ([]byte, error) {
 	}
 	if o.Processes != nil {
 		toSerialize["processes"] = o.Processes
+	}
+	if o.Users != nil {
+		toSerialize["users"] = o.Users
+	}
+	if o.Groups != nil {
+		toSerialize["groups"] = o.Groups
 	}
 	if o.Vendor != nil {
 		toSerialize["vendor"] = o.Vendor

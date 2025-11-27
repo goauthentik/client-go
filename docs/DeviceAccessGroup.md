@@ -1,75 +1,70 @@
-# DeviceGroup
+# DeviceAccessGroup
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Name** | Pointer to **string** |  | [optional] 
+**PbmUuid** | **string** |  | [readonly] 
+**Name** | **string** |  | 
 
 ## Methods
 
-### NewDeviceGroup
+### NewDeviceAccessGroup
 
-`func NewDeviceGroup(id string, ) *DeviceGroup`
+`func NewDeviceAccessGroup(pbmUuid string, name string, ) *DeviceAccessGroup`
 
-NewDeviceGroup instantiates a new DeviceGroup object
+NewDeviceAccessGroup instantiates a new DeviceAccessGroup object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewDeviceGroupWithDefaults
+### NewDeviceAccessGroupWithDefaults
 
-`func NewDeviceGroupWithDefaults() *DeviceGroup`
+`func NewDeviceAccessGroupWithDefaults() *DeviceAccessGroup`
 
-NewDeviceGroupWithDefaults instantiates a new DeviceGroup object
+NewDeviceAccessGroupWithDefaults instantiates a new DeviceAccessGroup object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetPbmUuid
 
-`func (o *DeviceGroup) GetId() string`
+`func (o *DeviceAccessGroup) GetPbmUuid() string`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetPbmUuid returns the PbmUuid field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetPbmUuidOk
 
-`func (o *DeviceGroup) GetIdOk() (*string, bool)`
+`func (o *DeviceAccessGroup) GetPbmUuidOk() (*string, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetPbmUuidOk returns a tuple with the PbmUuid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetPbmUuid
 
-`func (o *DeviceGroup) SetId(v string)`
+`func (o *DeviceAccessGroup) SetPbmUuid(v string)`
 
-SetId sets Id field to given value.
+SetPbmUuid sets PbmUuid field to given value.
 
 
 ### GetName
 
-`func (o *DeviceGroup) GetName() string`
+`func (o *DeviceAccessGroup) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *DeviceGroup) GetNameOk() (*string, bool)`
+`func (o *DeviceAccessGroup) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *DeviceGroup) SetName(v string)`
+`func (o *DeviceAccessGroup) SetName(v string)`
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *DeviceGroup) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

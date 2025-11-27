@@ -5,6 +5,8 @@ All URIs are relative to */api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**EndpointsAgentsConnectorsAgentConfigRetrieve**](EndpointsApi.md#EndpointsAgentsConnectorsAgentConfigRetrieve) | **Get** /endpoints/agents/connectors/agent_config/ | 
+[**EndpointsAgentsConnectorsAuthFedCreate**](EndpointsApi.md#EndpointsAgentsConnectorsAuthFedCreate) | **Post** /endpoints/agents/connectors/auth_fed/ | 
+[**EndpointsAgentsConnectorsAuthIaCreate**](EndpointsApi.md#EndpointsAgentsConnectorsAuthIaCreate) | **Post** /endpoints/agents/connectors/auth_ia/ | 
 [**EndpointsAgentsConnectorsCheckInCreate**](EndpointsApi.md#EndpointsAgentsConnectorsCheckInCreate) | **Post** /endpoints/agents/connectors/check_in/ | 
 [**EndpointsAgentsConnectorsCreate**](EndpointsApi.md#EndpointsAgentsConnectorsCreate) | **Post** /endpoints/agents/connectors/ | 
 [**EndpointsAgentsConnectorsDestroy**](EndpointsApi.md#EndpointsAgentsConnectorsDestroy) | **Delete** /endpoints/agents/connectors/{connector_uuid}/ | 
@@ -28,6 +30,13 @@ Method | HTTP request | Description
 [**EndpointsConnectorsRetrieve**](EndpointsApi.md#EndpointsConnectorsRetrieve) | **Get** /endpoints/connectors/{connector_uuid}/ | 
 [**EndpointsConnectorsTypesList**](EndpointsApi.md#EndpointsConnectorsTypesList) | **Get** /endpoints/connectors/types/ | 
 [**EndpointsConnectorsUsedByList**](EndpointsApi.md#EndpointsConnectorsUsedByList) | **Get** /endpoints/connectors/{connector_uuid}/used_by/ | 
+[**EndpointsDeviceAccessGroupsCreate**](EndpointsApi.md#EndpointsDeviceAccessGroupsCreate) | **Post** /endpoints/device_access_groups/ | 
+[**EndpointsDeviceAccessGroupsDestroy**](EndpointsApi.md#EndpointsDeviceAccessGroupsDestroy) | **Delete** /endpoints/device_access_groups/{pbm_uuid}/ | 
+[**EndpointsDeviceAccessGroupsList**](EndpointsApi.md#EndpointsDeviceAccessGroupsList) | **Get** /endpoints/device_access_groups/ | 
+[**EndpointsDeviceAccessGroupsPartialUpdate**](EndpointsApi.md#EndpointsDeviceAccessGroupsPartialUpdate) | **Patch** /endpoints/device_access_groups/{pbm_uuid}/ | 
+[**EndpointsDeviceAccessGroupsRetrieve**](EndpointsApi.md#EndpointsDeviceAccessGroupsRetrieve) | **Get** /endpoints/device_access_groups/{pbm_uuid}/ | 
+[**EndpointsDeviceAccessGroupsUpdate**](EndpointsApi.md#EndpointsDeviceAccessGroupsUpdate) | **Put** /endpoints/device_access_groups/{pbm_uuid}/ | 
+[**EndpointsDeviceAccessGroupsUsedByList**](EndpointsApi.md#EndpointsDeviceAccessGroupsUsedByList) | **Get** /endpoints/device_access_groups/{pbm_uuid}/used_by/ | 
 [**EndpointsDeviceBindingsCreate**](EndpointsApi.md#EndpointsDeviceBindingsCreate) | **Post** /endpoints/device_bindings/ | 
 [**EndpointsDeviceBindingsDestroy**](EndpointsApi.md#EndpointsDeviceBindingsDestroy) | **Delete** /endpoints/device_bindings/{policy_binding_uuid}/ | 
 [**EndpointsDeviceBindingsList**](EndpointsApi.md#EndpointsDeviceBindingsList) | **Get** /endpoints/device_bindings/ | 
@@ -35,13 +44,6 @@ Method | HTTP request | Description
 [**EndpointsDeviceBindingsRetrieve**](EndpointsApi.md#EndpointsDeviceBindingsRetrieve) | **Get** /endpoints/device_bindings/{policy_binding_uuid}/ | 
 [**EndpointsDeviceBindingsUpdate**](EndpointsApi.md#EndpointsDeviceBindingsUpdate) | **Put** /endpoints/device_bindings/{policy_binding_uuid}/ | 
 [**EndpointsDeviceBindingsUsedByList**](EndpointsApi.md#EndpointsDeviceBindingsUsedByList) | **Get** /endpoints/device_bindings/{policy_binding_uuid}/used_by/ | 
-[**EndpointsDeviceGroupsCreate**](EndpointsApi.md#EndpointsDeviceGroupsCreate) | **Post** /endpoints/device_groups/ | 
-[**EndpointsDeviceGroupsDestroy**](EndpointsApi.md#EndpointsDeviceGroupsDestroy) | **Delete** /endpoints/device_groups/{pbm_uuid}/ | 
-[**EndpointsDeviceGroupsList**](EndpointsApi.md#EndpointsDeviceGroupsList) | **Get** /endpoints/device_groups/ | 
-[**EndpointsDeviceGroupsPartialUpdate**](EndpointsApi.md#EndpointsDeviceGroupsPartialUpdate) | **Patch** /endpoints/device_groups/{pbm_uuid}/ | 
-[**EndpointsDeviceGroupsRetrieve**](EndpointsApi.md#EndpointsDeviceGroupsRetrieve) | **Get** /endpoints/device_groups/{pbm_uuid}/ | 
-[**EndpointsDeviceGroupsUpdate**](EndpointsApi.md#EndpointsDeviceGroupsUpdate) | **Put** /endpoints/device_groups/{pbm_uuid}/ | 
-[**EndpointsDeviceGroupsUsedByList**](EndpointsApi.md#EndpointsDeviceGroupsUsedByList) | **Get** /endpoints/device_groups/{pbm_uuid}/used_by/ | 
 [**EndpointsDevicesDestroy**](EndpointsApi.md#EndpointsDevicesDestroy) | **Delete** /endpoints/devices/{device_uuid}/ | 
 [**EndpointsDevicesList**](EndpointsApi.md#EndpointsDevicesList) | **Get** /endpoints/devices/ | 
 [**EndpointsDevicesPartialUpdate**](EndpointsApi.md#EndpointsDevicesPartialUpdate) | **Patch** /endpoints/devices/{device_uuid}/ | 
@@ -97,6 +99,133 @@ Other parameters are passed through a pointer to a apiEndpointsAgentsConnectorsA
 ### Return type
 
 [**AgentConfig**](AgentConfig.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsAgentsConnectorsAuthFedCreate
+
+> AgentTokenResponse EndpointsAgentsConnectorsAuthFedCreate(ctx).Device(device).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    device := "device_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndpointsApi.EndpointsAgentsConnectorsAuthFedCreate(context.Background()).Device(device).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsAgentsConnectorsAuthFedCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndpointsAgentsConnectorsAuthFedCreate`: AgentTokenResponse
+    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsAgentsConnectorsAuthFedCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsAgentsConnectorsAuthFedCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **device** | **string** |  | 
+
+### Return type
+
+[**AgentTokenResponse**](AgentTokenResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsAgentsConnectorsAuthIaCreate
+
+> AgentAuthenticationResponse EndpointsAgentsConnectorsAuthIaCreate(ctx).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndpointsApi.EndpointsAgentsConnectorsAuthIaCreate(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsAgentsConnectorsAuthIaCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndpointsAgentsConnectorsAuthIaCreate`: AgentAuthenticationResponse
+    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsAgentsConnectorsAuthIaCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsAgentsConnectorsAuthIaCreateRequest struct via the builder pattern
+
+
+### Return type
+
+[**AgentAuthenticationResponse**](AgentAuthenticationResponse.md)
 
 ### Authorization
 
@@ -312,7 +441,7 @@ Name | Type | Description  | Notes
 
 ## EndpointsAgentsConnectorsEnrollCreate
 
-> EnrollResponse EndpointsAgentsConnectorsEnrollCreate(ctx).EnrollRequest(enrollRequest).Execute()
+> AgentTokenResponse EndpointsAgentsConnectorsEnrollCreate(ctx).EnrollRequest(enrollRequest).Execute()
 
 
 
@@ -340,7 +469,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsAgentsConnectorsEnrollCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EndpointsAgentsConnectorsEnrollCreate`: EnrollResponse
+    // response from `EndpointsAgentsConnectorsEnrollCreate`: AgentTokenResponse
     fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsAgentsConnectorsEnrollCreate`: %v\n", resp)
 }
 ```
@@ -360,7 +489,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnrollResponse**](EnrollResponse.md)
+[**AgentTokenResponse**](AgentTokenResponse.md)
 
 ### Authorization
 
@@ -1713,6 +1842,500 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## EndpointsDeviceAccessGroupsCreate
+
+> DeviceAccessGroup EndpointsDeviceAccessGroupsCreate(ctx).DeviceAccessGroupRequest(deviceAccessGroupRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    deviceAccessGroupRequest := *openapiclient.NewDeviceAccessGroupRequest("Name_example") // DeviceAccessGroupRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndpointsApi.EndpointsDeviceAccessGroupsCreate(context.Background()).DeviceAccessGroupRequest(deviceAccessGroupRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsDeviceAccessGroupsCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndpointsDeviceAccessGroupsCreate`: DeviceAccessGroup
+    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsDeviceAccessGroupsCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsDeviceAccessGroupsCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **deviceAccessGroupRequest** | [**DeviceAccessGroupRequest**](DeviceAccessGroupRequest.md) |  | 
+
+### Return type
+
+[**DeviceAccessGroup**](DeviceAccessGroup.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsDeviceAccessGroupsDestroy
+
+> EndpointsDeviceAccessGroupsDestroy(ctx, pbmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Device access group.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndpointsApi.EndpointsDeviceAccessGroupsDestroy(context.Background(), pbmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsDeviceAccessGroupsDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pbmUuid** | **string** | A UUID string identifying this Device access group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsDeviceAccessGroupsDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsDeviceAccessGroupsList
+
+> PaginatedDeviceAccessGroupList EndpointsDeviceAccessGroupsList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndpointsApi.EndpointsDeviceAccessGroupsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsDeviceAccessGroupsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndpointsDeviceAccessGroupsList`: PaginatedDeviceAccessGroupList
+    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsDeviceAccessGroupsList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsDeviceAccessGroupsListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **pbmUuid** | **string** |  | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedDeviceAccessGroupList**](PaginatedDeviceAccessGroupList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsDeviceAccessGroupsPartialUpdate
+
+> DeviceAccessGroup EndpointsDeviceAccessGroupsPartialUpdate(ctx, pbmUuid).PatchedDeviceAccessGroupRequest(patchedDeviceAccessGroupRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Device access group.
+    patchedDeviceAccessGroupRequest := *openapiclient.NewPatchedDeviceAccessGroupRequest() // PatchedDeviceAccessGroupRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndpointsApi.EndpointsDeviceAccessGroupsPartialUpdate(context.Background(), pbmUuid).PatchedDeviceAccessGroupRequest(patchedDeviceAccessGroupRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsDeviceAccessGroupsPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndpointsDeviceAccessGroupsPartialUpdate`: DeviceAccessGroup
+    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsDeviceAccessGroupsPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pbmUuid** | **string** | A UUID string identifying this Device access group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsDeviceAccessGroupsPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedDeviceAccessGroupRequest** | [**PatchedDeviceAccessGroupRequest**](PatchedDeviceAccessGroupRequest.md) |  | 
+
+### Return type
+
+[**DeviceAccessGroup**](DeviceAccessGroup.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsDeviceAccessGroupsRetrieve
+
+> DeviceAccessGroup EndpointsDeviceAccessGroupsRetrieve(ctx, pbmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Device access group.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndpointsApi.EndpointsDeviceAccessGroupsRetrieve(context.Background(), pbmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsDeviceAccessGroupsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndpointsDeviceAccessGroupsRetrieve`: DeviceAccessGroup
+    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsDeviceAccessGroupsRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pbmUuid** | **string** | A UUID string identifying this Device access group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsDeviceAccessGroupsRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**DeviceAccessGroup**](DeviceAccessGroup.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsDeviceAccessGroupsUpdate
+
+> DeviceAccessGroup EndpointsDeviceAccessGroupsUpdate(ctx, pbmUuid).DeviceAccessGroupRequest(deviceAccessGroupRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Device access group.
+    deviceAccessGroupRequest := *openapiclient.NewDeviceAccessGroupRequest("Name_example") // DeviceAccessGroupRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndpointsApi.EndpointsDeviceAccessGroupsUpdate(context.Background(), pbmUuid).DeviceAccessGroupRequest(deviceAccessGroupRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsDeviceAccessGroupsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndpointsDeviceAccessGroupsUpdate`: DeviceAccessGroup
+    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsDeviceAccessGroupsUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pbmUuid** | **string** | A UUID string identifying this Device access group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsDeviceAccessGroupsUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **deviceAccessGroupRequest** | [**DeviceAccessGroupRequest**](DeviceAccessGroupRequest.md) |  | 
+
+### Return type
+
+[**DeviceAccessGroup**](DeviceAccessGroup.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsDeviceAccessGroupsUsedByList
+
+> []UsedBy EndpointsDeviceAccessGroupsUsedByList(ctx, pbmUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Device access group.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndpointsApi.EndpointsDeviceAccessGroupsUsedByList(context.Background(), pbmUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsDeviceAccessGroupsUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndpointsDeviceAccessGroupsUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsDeviceAccessGroupsUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**pbmUuid** | **string** | A UUID string identifying this Device access group. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsDeviceAccessGroupsUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## EndpointsDeviceBindingsCreate
 
 > PolicyBinding EndpointsDeviceBindingsCreate(ctx).PolicyBindingRequest(policyBindingRequest).Execute()
@@ -1800,7 +2423,7 @@ import (
 )
 
 func main() {
-    policyBindingUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this device user binding.
+    policyBindingUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Device User binding.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1818,7 +2441,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyBindingUuid** | **string** | A UUID string identifying this device user binding. | 
+**policyBindingUuid** | **string** | A UUID string identifying this Device User binding. | 
 
 ### Other Parameters
 
@@ -1954,7 +2577,7 @@ import (
 )
 
 func main() {
-    policyBindingUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this device user binding.
+    policyBindingUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Device User binding.
     patchedPolicyBindingRequest := *openapiclient.NewPatchedPolicyBindingRequest() // PatchedPolicyBindingRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -1975,7 +2598,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyBindingUuid** | **string** | A UUID string identifying this device user binding. | 
+**policyBindingUuid** | **string** | A UUID string identifying this Device User binding. | 
 
 ### Other Parameters
 
@@ -2026,7 +2649,7 @@ import (
 )
 
 func main() {
-    policyBindingUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this device user binding.
+    policyBindingUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Device User binding.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2046,7 +2669,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyBindingUuid** | **string** | A UUID string identifying this device user binding. | 
+**policyBindingUuid** | **string** | A UUID string identifying this Device User binding. | 
 
 ### Other Parameters
 
@@ -2096,7 +2719,7 @@ import (
 )
 
 func main() {
-    policyBindingUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this device user binding.
+    policyBindingUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Device User binding.
     policyBindingRequest := *openapiclient.NewPolicyBindingRequest("Target_example", int32(123)) // PolicyBindingRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -2117,7 +2740,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyBindingUuid** | **string** | A UUID string identifying this device user binding. | 
+**policyBindingUuid** | **string** | A UUID string identifying this Device User binding. | 
 
 ### Other Parameters
 
@@ -2168,7 +2791,7 @@ import (
 )
 
 func main() {
-    policyBindingUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this device user binding.
+    policyBindingUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Device User binding.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2188,505 +2811,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**policyBindingUuid** | **string** | A UUID string identifying this device user binding. | 
+**policyBindingUuid** | **string** | A UUID string identifying this Device User binding. | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiEndpointsDeviceBindingsUsedByListRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**[]UsedBy**](UsedBy.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EndpointsDeviceGroupsCreate
-
-> DeviceGroup EndpointsDeviceGroupsCreate(ctx).DeviceGroupRequest(deviceGroupRequest).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    deviceGroupRequest := *openapiclient.NewDeviceGroupRequest("Name_example") // DeviceGroupRequest | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EndpointsApi.EndpointsDeviceGroupsCreate(context.Background()).DeviceGroupRequest(deviceGroupRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsDeviceGroupsCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EndpointsDeviceGroupsCreate`: DeviceGroup
-    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsDeviceGroupsCreate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiEndpointsDeviceGroupsCreateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deviceGroupRequest** | [**DeviceGroupRequest**](DeviceGroupRequest.md) |  | 
-
-### Return type
-
-[**DeviceGroup**](DeviceGroup.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EndpointsDeviceGroupsDestroy
-
-> EndpointsDeviceGroupsDestroy(ctx, pbmUuid).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this device group.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EndpointsApi.EndpointsDeviceGroupsDestroy(context.Background(), pbmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsDeviceGroupsDestroy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pbmUuid** | **string** | A UUID string identifying this device group. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiEndpointsDeviceGroupsDestroyRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EndpointsDeviceGroupsList
-
-> PaginatedDeviceGroupList EndpointsDeviceGroupsList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).Search(search).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    name := "name_example" // string |  (optional)
-    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-    page := int32(56) // int32 | A page number within the paginated result set. (optional)
-    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-    search := "search_example" // string | A search term. (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EndpointsApi.EndpointsDeviceGroupsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PbmUuid(pbmUuid).Search(search).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsDeviceGroupsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EndpointsDeviceGroupsList`: PaginatedDeviceGroupList
-    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsDeviceGroupsList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiEndpointsDeviceGroupsListRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string** |  | 
- **ordering** | **string** | Which field to use when ordering the results. | 
- **page** | **int32** | A page number within the paginated result set. | 
- **pageSize** | **int32** | Number of results to return per page. | 
- **pbmUuid** | **string** |  | 
- **search** | **string** | A search term. | 
-
-### Return type
-
-[**PaginatedDeviceGroupList**](PaginatedDeviceGroupList.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EndpointsDeviceGroupsPartialUpdate
-
-> DeviceGroup EndpointsDeviceGroupsPartialUpdate(ctx, pbmUuid).PatchedDeviceGroupRequest(patchedDeviceGroupRequest).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this device group.
-    patchedDeviceGroupRequest := *openapiclient.NewPatchedDeviceGroupRequest() // PatchedDeviceGroupRequest |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EndpointsApi.EndpointsDeviceGroupsPartialUpdate(context.Background(), pbmUuid).PatchedDeviceGroupRequest(patchedDeviceGroupRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsDeviceGroupsPartialUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EndpointsDeviceGroupsPartialUpdate`: DeviceGroup
-    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsDeviceGroupsPartialUpdate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pbmUuid** | **string** | A UUID string identifying this device group. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiEndpointsDeviceGroupsPartialUpdateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **patchedDeviceGroupRequest** | [**PatchedDeviceGroupRequest**](PatchedDeviceGroupRequest.md) |  | 
-
-### Return type
-
-[**DeviceGroup**](DeviceGroup.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EndpointsDeviceGroupsRetrieve
-
-> DeviceGroup EndpointsDeviceGroupsRetrieve(ctx, pbmUuid).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this device group.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EndpointsApi.EndpointsDeviceGroupsRetrieve(context.Background(), pbmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsDeviceGroupsRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EndpointsDeviceGroupsRetrieve`: DeviceGroup
-    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsDeviceGroupsRetrieve`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pbmUuid** | **string** | A UUID string identifying this device group. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiEndpointsDeviceGroupsRetrieveRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**DeviceGroup**](DeviceGroup.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EndpointsDeviceGroupsUpdate
-
-> DeviceGroup EndpointsDeviceGroupsUpdate(ctx, pbmUuid).DeviceGroupRequest(deviceGroupRequest).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this device group.
-    deviceGroupRequest := *openapiclient.NewDeviceGroupRequest("Name_example") // DeviceGroupRequest | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EndpointsApi.EndpointsDeviceGroupsUpdate(context.Background(), pbmUuid).DeviceGroupRequest(deviceGroupRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsDeviceGroupsUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EndpointsDeviceGroupsUpdate`: DeviceGroup
-    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsDeviceGroupsUpdate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pbmUuid** | **string** | A UUID string identifying this device group. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiEndpointsDeviceGroupsUpdateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **deviceGroupRequest** | [**DeviceGroupRequest**](DeviceGroupRequest.md) |  | 
-
-### Return type
-
-[**DeviceGroup**](DeviceGroup.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EndpointsDeviceGroupsUsedByList
-
-> []UsedBy EndpointsDeviceGroupsUsedByList(ctx, pbmUuid).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this device group.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EndpointsApi.EndpointsDeviceGroupsUsedByList(context.Background(), pbmUuid).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsDeviceGroupsUsedByList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EndpointsDeviceGroupsUsedByList`: []UsedBy
-    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsDeviceGroupsUsedByList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**pbmUuid** | **string** | A UUID string identifying this device group. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiEndpointsDeviceGroupsUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -2732,7 +2861,7 @@ import (
 )
 
 func main() {
-    deviceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this device.
+    deviceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Device.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2750,7 +2879,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**deviceUuid** | **string** | A UUID string identifying this device. | 
+**deviceUuid** | **string** | A UUID string identifying this Device. | 
 
 ### Other Parameters
 
@@ -2876,7 +3005,7 @@ import (
 )
 
 func main() {
-    deviceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this device.
+    deviceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Device.
     patchedEndpointDeviceRequest := *openapiclient.NewPatchedEndpointDeviceRequest() // PatchedEndpointDeviceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -2897,7 +3026,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**deviceUuid** | **string** | A UUID string identifying this device. | 
+**deviceUuid** | **string** | A UUID string identifying this Device. | 
 
 ### Other Parameters
 
@@ -2948,7 +3077,7 @@ import (
 )
 
 func main() {
-    deviceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this device.
+    deviceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Device.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2968,7 +3097,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**deviceUuid** | **string** | A UUID string identifying this device. | 
+**deviceUuid** | **string** | A UUID string identifying this Device. | 
 
 ### Other Parameters
 
@@ -3018,8 +3147,8 @@ import (
 )
 
 func main() {
-    deviceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this device.
-    endpointDeviceRequest := *openapiclient.NewEndpointDeviceRequest("Name_example", *openapiclient.NewDeviceGroupRequest("Name_example")) // EndpointDeviceRequest | 
+    deviceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Device.
+    endpointDeviceRequest := *openapiclient.NewEndpointDeviceRequest("Name_example", *openapiclient.NewDeviceAccessGroupRequest("Name_example")) // EndpointDeviceRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -3039,7 +3168,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**deviceUuid** | **string** | A UUID string identifying this device. | 
+**deviceUuid** | **string** | A UUID string identifying this Device. | 
 
 ### Other Parameters
 
@@ -3090,7 +3219,7 @@ import (
 )
 
 func main() {
-    deviceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this device.
+    deviceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Device.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -3110,7 +3239,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**deviceUuid** | **string** | A UUID string identifying this device. | 
+**deviceUuid** | **string** | A UUID string identifying this Device. | 
 
 ### Other Parameters
 

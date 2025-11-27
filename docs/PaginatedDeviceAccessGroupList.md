@@ -1,88 +1,88 @@
-# PaginatedDeviceGroupList
+# PaginatedDeviceAccessGroupList
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
-**Results** | [**[]DeviceGroup**](DeviceGroup.md) |  | 
+**Results** | [**[]DeviceAccessGroup**](DeviceAccessGroup.md) |  | 
 **Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
-### NewPaginatedDeviceGroupList
+### NewPaginatedDeviceAccessGroupList
 
-`func NewPaginatedDeviceGroupList(pagination Pagination, results []DeviceGroup, autocomplete map[string]interface{}, ) *PaginatedDeviceGroupList`
+`func NewPaginatedDeviceAccessGroupList(pagination Pagination, results []DeviceAccessGroup, autocomplete map[string]interface{}, ) *PaginatedDeviceAccessGroupList`
 
-NewPaginatedDeviceGroupList instantiates a new PaginatedDeviceGroupList object
+NewPaginatedDeviceAccessGroupList instantiates a new PaginatedDeviceAccessGroupList object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewPaginatedDeviceGroupListWithDefaults
+### NewPaginatedDeviceAccessGroupListWithDefaults
 
-`func NewPaginatedDeviceGroupListWithDefaults() *PaginatedDeviceGroupList`
+`func NewPaginatedDeviceAccessGroupListWithDefaults() *PaginatedDeviceAccessGroupList`
 
-NewPaginatedDeviceGroupListWithDefaults instantiates a new PaginatedDeviceGroupList object
+NewPaginatedDeviceAccessGroupListWithDefaults instantiates a new PaginatedDeviceAccessGroupList object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetPagination
 
-`func (o *PaginatedDeviceGroupList) GetPagination() Pagination`
+`func (o *PaginatedDeviceAccessGroupList) GetPagination() Pagination`
 
 GetPagination returns the Pagination field if non-nil, zero value otherwise.
 
 ### GetPaginationOk
 
-`func (o *PaginatedDeviceGroupList) GetPaginationOk() (*Pagination, bool)`
+`func (o *PaginatedDeviceAccessGroupList) GetPaginationOk() (*Pagination, bool)`
 
 GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPagination
 
-`func (o *PaginatedDeviceGroupList) SetPagination(v Pagination)`
+`func (o *PaginatedDeviceAccessGroupList) SetPagination(v Pagination)`
 
 SetPagination sets Pagination field to given value.
 
 
 ### GetResults
 
-`func (o *PaginatedDeviceGroupList) GetResults() []DeviceGroup`
+`func (o *PaginatedDeviceAccessGroupList) GetResults() []DeviceAccessGroup`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *PaginatedDeviceGroupList) GetResultsOk() (*[]DeviceGroup, bool)`
+`func (o *PaginatedDeviceAccessGroupList) GetResultsOk() (*[]DeviceAccessGroup, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *PaginatedDeviceGroupList) SetResults(v []DeviceGroup)`
+`func (o *PaginatedDeviceAccessGroupList) SetResults(v []DeviceAccessGroup)`
 
 SetResults sets Results field to given value.
 
 
 ### GetAutocomplete
 
-`func (o *PaginatedDeviceGroupList) GetAutocomplete() map[string]interface{}`
+`func (o *PaginatedDeviceAccessGroupList) GetAutocomplete() map[string]interface{}`
 
 GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
 
 ### GetAutocompleteOk
 
-`func (o *PaginatedDeviceGroupList) GetAutocompleteOk() (*map[string]interface{}, bool)`
+`func (o *PaginatedDeviceAccessGroupList) GetAutocompleteOk() (*map[string]interface{}, bool)`
 
 GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAutocomplete
 
-`func (o *PaginatedDeviceGroupList) SetAutocomplete(v map[string]interface{})`
+`func (o *PaginatedDeviceAccessGroupList) SetAutocomplete(v map[string]interface{})`
 
 SetAutocomplete sets Autocomplete field to given value.
 

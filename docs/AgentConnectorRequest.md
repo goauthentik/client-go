@@ -8,12 +8,13 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Enabled** | Pointer to **bool** |  | [optional] 
 **SnapshotExpiry** | Pointer to **string** |  | [optional] 
-**NssUidOffset** | Pointer to **int32** |  | [optional] 
-**NssGidOffset** | Pointer to **int32** |  | [optional] 
 **AuthTerminateSessionOnExpiry** | Pointer to **bool** |  | [optional] 
 **RefreshInterval** | Pointer to **string** |  | [optional] 
-**AuthenticationFlow** | Pointer to **NullableString** |  | [optional] 
+**AuthorizationFlow** | Pointer to **NullableString** |  | [optional] 
+**NssUidOffset** | Pointer to **int32** |  | [optional] 
+**NssGidOffset** | Pointer to **int32** |  | [optional] 
 **ChallengeKey** | Pointer to **NullableString** |  | [optional] 
+**JwtFederationProviders** | Pointer to **[]int32** |  | [optional] 
 
 ## Methods
 
@@ -129,56 +130,6 @@ SetSnapshotExpiry sets SnapshotExpiry field to given value.
 
 HasSnapshotExpiry returns a boolean if a field has been set.
 
-### GetNssUidOffset
-
-`func (o *AgentConnectorRequest) GetNssUidOffset() int32`
-
-GetNssUidOffset returns the NssUidOffset field if non-nil, zero value otherwise.
-
-### GetNssUidOffsetOk
-
-`func (o *AgentConnectorRequest) GetNssUidOffsetOk() (*int32, bool)`
-
-GetNssUidOffsetOk returns a tuple with the NssUidOffset field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNssUidOffset
-
-`func (o *AgentConnectorRequest) SetNssUidOffset(v int32)`
-
-SetNssUidOffset sets NssUidOffset field to given value.
-
-### HasNssUidOffset
-
-`func (o *AgentConnectorRequest) HasNssUidOffset() bool`
-
-HasNssUidOffset returns a boolean if a field has been set.
-
-### GetNssGidOffset
-
-`func (o *AgentConnectorRequest) GetNssGidOffset() int32`
-
-GetNssGidOffset returns the NssGidOffset field if non-nil, zero value otherwise.
-
-### GetNssGidOffsetOk
-
-`func (o *AgentConnectorRequest) GetNssGidOffsetOk() (*int32, bool)`
-
-GetNssGidOffsetOk returns a tuple with the NssGidOffset field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNssGidOffset
-
-`func (o *AgentConnectorRequest) SetNssGidOffset(v int32)`
-
-SetNssGidOffset sets NssGidOffset field to given value.
-
-### HasNssGidOffset
-
-`func (o *AgentConnectorRequest) HasNssGidOffset() bool`
-
-HasNssGidOffset returns a boolean if a field has been set.
-
 ### GetAuthTerminateSessionOnExpiry
 
 `func (o *AgentConnectorRequest) GetAuthTerminateSessionOnExpiry() bool`
@@ -229,41 +180,91 @@ SetRefreshInterval sets RefreshInterval field to given value.
 
 HasRefreshInterval returns a boolean if a field has been set.
 
-### GetAuthenticationFlow
+### GetAuthorizationFlow
 
-`func (o *AgentConnectorRequest) GetAuthenticationFlow() string`
+`func (o *AgentConnectorRequest) GetAuthorizationFlow() string`
 
-GetAuthenticationFlow returns the AuthenticationFlow field if non-nil, zero value otherwise.
+GetAuthorizationFlow returns the AuthorizationFlow field if non-nil, zero value otherwise.
 
-### GetAuthenticationFlowOk
+### GetAuthorizationFlowOk
 
-`func (o *AgentConnectorRequest) GetAuthenticationFlowOk() (*string, bool)`
+`func (o *AgentConnectorRequest) GetAuthorizationFlowOk() (*string, bool)`
 
-GetAuthenticationFlowOk returns a tuple with the AuthenticationFlow field if it's non-nil, zero value otherwise
+GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAuthenticationFlow
+### SetAuthorizationFlow
 
-`func (o *AgentConnectorRequest) SetAuthenticationFlow(v string)`
+`func (o *AgentConnectorRequest) SetAuthorizationFlow(v string)`
 
-SetAuthenticationFlow sets AuthenticationFlow field to given value.
+SetAuthorizationFlow sets AuthorizationFlow field to given value.
 
-### HasAuthenticationFlow
+### HasAuthorizationFlow
 
-`func (o *AgentConnectorRequest) HasAuthenticationFlow() bool`
+`func (o *AgentConnectorRequest) HasAuthorizationFlow() bool`
 
-HasAuthenticationFlow returns a boolean if a field has been set.
+HasAuthorizationFlow returns a boolean if a field has been set.
 
-### SetAuthenticationFlowNil
+### SetAuthorizationFlowNil
 
-`func (o *AgentConnectorRequest) SetAuthenticationFlowNil(b bool)`
+`func (o *AgentConnectorRequest) SetAuthorizationFlowNil(b bool)`
 
- SetAuthenticationFlowNil sets the value for AuthenticationFlow to be an explicit nil
+ SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
 
-### UnsetAuthenticationFlow
-`func (o *AgentConnectorRequest) UnsetAuthenticationFlow()`
+### UnsetAuthorizationFlow
+`func (o *AgentConnectorRequest) UnsetAuthorizationFlow()`
 
-UnsetAuthenticationFlow ensures that no value is present for AuthenticationFlow, not even an explicit nil
+UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
+### GetNssUidOffset
+
+`func (o *AgentConnectorRequest) GetNssUidOffset() int32`
+
+GetNssUidOffset returns the NssUidOffset field if non-nil, zero value otherwise.
+
+### GetNssUidOffsetOk
+
+`func (o *AgentConnectorRequest) GetNssUidOffsetOk() (*int32, bool)`
+
+GetNssUidOffsetOk returns a tuple with the NssUidOffset field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNssUidOffset
+
+`func (o *AgentConnectorRequest) SetNssUidOffset(v int32)`
+
+SetNssUidOffset sets NssUidOffset field to given value.
+
+### HasNssUidOffset
+
+`func (o *AgentConnectorRequest) HasNssUidOffset() bool`
+
+HasNssUidOffset returns a boolean if a field has been set.
+
+### GetNssGidOffset
+
+`func (o *AgentConnectorRequest) GetNssGidOffset() int32`
+
+GetNssGidOffset returns the NssGidOffset field if non-nil, zero value otherwise.
+
+### GetNssGidOffsetOk
+
+`func (o *AgentConnectorRequest) GetNssGidOffsetOk() (*int32, bool)`
+
+GetNssGidOffsetOk returns a tuple with the NssGidOffset field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNssGidOffset
+
+`func (o *AgentConnectorRequest) SetNssGidOffset(v int32)`
+
+SetNssGidOffset sets NssGidOffset field to given value.
+
+### HasNssGidOffset
+
+`func (o *AgentConnectorRequest) HasNssGidOffset() bool`
+
+HasNssGidOffset returns a boolean if a field has been set.
+
 ### GetChallengeKey
 
 `func (o *AgentConnectorRequest) GetChallengeKey() string`
@@ -299,6 +300,31 @@ HasChallengeKey returns a boolean if a field has been set.
 `func (o *AgentConnectorRequest) UnsetChallengeKey()`
 
 UnsetChallengeKey ensures that no value is present for ChallengeKey, not even an explicit nil
+### GetJwtFederationProviders
+
+`func (o *AgentConnectorRequest) GetJwtFederationProviders() []int32`
+
+GetJwtFederationProviders returns the JwtFederationProviders field if non-nil, zero value otherwise.
+
+### GetJwtFederationProvidersOk
+
+`func (o *AgentConnectorRequest) GetJwtFederationProvidersOk() (*[]int32, bool)`
+
+GetJwtFederationProvidersOk returns a tuple with the JwtFederationProviders field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwtFederationProviders
+
+`func (o *AgentConnectorRequest) SetJwtFederationProviders(v []int32)`
+
+SetJwtFederationProviders sets JwtFederationProviders field to given value.
+
+### HasJwtFederationProviders
+
+`func (o *AgentConnectorRequest) HasJwtFederationProviders() bool`
+
+HasJwtFederationProviders returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -143,6 +143,254 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsAgentConfigRetrieveExecut
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiEndpointsAgentsConnectorsAuthFedCreateRequest struct {
+	ctx        context.Context
+	ApiService *EndpointsApiService
+	device     *string
+}
+
+func (r ApiEndpointsAgentsConnectorsAuthFedCreateRequest) Device(device string) ApiEndpointsAgentsConnectorsAuthFedCreateRequest {
+	r.device = &device
+	return r
+}
+
+func (r ApiEndpointsAgentsConnectorsAuthFedCreateRequest) Execute() (*AgentTokenResponse, *http.Response, error) {
+	return r.ApiService.EndpointsAgentsConnectorsAuthFedCreateExecute(r)
+}
+
+/*
+EndpointsAgentsConnectorsAuthFedCreate Method for EndpointsAgentsConnectorsAuthFedCreate
+
+Mixin to add a used_by endpoint to return a list of all objects using this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiEndpointsAgentsConnectorsAuthFedCreateRequest
+*/
+func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthFedCreate(ctx context.Context) ApiEndpointsAgentsConnectorsAuthFedCreateRequest {
+	return ApiEndpointsAgentsConnectorsAuthFedCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return AgentTokenResponse
+func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthFedCreateExecute(r ApiEndpointsAgentsConnectorsAuthFedCreateRequest) (*AgentTokenResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AgentTokenResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsConnectorsAuthFedCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/endpoints/agents/connectors/auth_fed/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.device == nil {
+		return localVarReturnValue, nil, reportError("device is required and must be specified")
+	}
+
+	localVarQueryParams.Add("device", parameterToString(*r.device, ""))
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiEndpointsAgentsConnectorsAuthIaCreateRequest struct {
+	ctx        context.Context
+	ApiService *EndpointsApiService
+}
+
+func (r ApiEndpointsAgentsConnectorsAuthIaCreateRequest) Execute() (*AgentAuthenticationResponse, *http.Response, error) {
+	return r.ApiService.EndpointsAgentsConnectorsAuthIaCreateExecute(r)
+}
+
+/*
+EndpointsAgentsConnectorsAuthIaCreate Method for EndpointsAgentsConnectorsAuthIaCreate
+
+Mixin to add a used_by endpoint to return a list of all objects using this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiEndpointsAgentsConnectorsAuthIaCreateRequest
+*/
+func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthIaCreate(ctx context.Context) ApiEndpointsAgentsConnectorsAuthIaCreateRequest {
+	return ApiEndpointsAgentsConnectorsAuthIaCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return AgentAuthenticationResponse
+func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthIaCreateExecute(r ApiEndpointsAgentsConnectorsAuthIaCreateRequest) (*AgentAuthenticationResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AgentAuthenticationResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsConnectorsAuthIaCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/endpoints/agents/connectors/auth_ia/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiEndpointsAgentsConnectorsCheckInCreateRequest struct {
 	ctx                context.Context
 	ApiService         *EndpointsApiService
@@ -510,7 +758,7 @@ func (r ApiEndpointsAgentsConnectorsEnrollCreateRequest) EnrollRequest(enrollReq
 	return r
 }
 
-func (r ApiEndpointsAgentsConnectorsEnrollCreateRequest) Execute() (*EnrollResponse, *http.Response, error) {
+func (r ApiEndpointsAgentsConnectorsEnrollCreateRequest) Execute() (*AgentTokenResponse, *http.Response, error) {
 	return r.ApiService.EndpointsAgentsConnectorsEnrollCreateExecute(r)
 }
 
@@ -531,13 +779,13 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsEnrollCreate(ctx context.
 
 // Execute executes the request
 //
-//	@return EnrollResponse
-func (a *EndpointsApiService) EndpointsAgentsConnectorsEnrollCreateExecute(r ApiEndpointsAgentsConnectorsEnrollCreateRequest) (*EnrollResponse, *http.Response, error) {
+//	@return AgentTokenResponse
+func (a *EndpointsApiService) EndpointsAgentsConnectorsEnrollCreateExecute(r ApiEndpointsAgentsConnectorsEnrollCreateRequest) (*AgentTokenResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnrollResponse
+		localVarReturnValue *AgentTokenResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsConnectorsEnrollCreate")
@@ -3138,6 +3386,935 @@ func (a *EndpointsApiService) EndpointsConnectorsUsedByListExecute(r ApiEndpoint
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiEndpointsDeviceAccessGroupsCreateRequest struct {
+	ctx                      context.Context
+	ApiService               *EndpointsApiService
+	deviceAccessGroupRequest *DeviceAccessGroupRequest
+}
+
+func (r ApiEndpointsDeviceAccessGroupsCreateRequest) DeviceAccessGroupRequest(deviceAccessGroupRequest DeviceAccessGroupRequest) ApiEndpointsDeviceAccessGroupsCreateRequest {
+	r.deviceAccessGroupRequest = &deviceAccessGroupRequest
+	return r
+}
+
+func (r ApiEndpointsDeviceAccessGroupsCreateRequest) Execute() (*DeviceAccessGroup, *http.Response, error) {
+	return r.ApiService.EndpointsDeviceAccessGroupsCreateExecute(r)
+}
+
+/*
+EndpointsDeviceAccessGroupsCreate Method for EndpointsDeviceAccessGroupsCreate
+
+DeviceAccessGroup Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiEndpointsDeviceAccessGroupsCreateRequest
+*/
+func (a *EndpointsApiService) EndpointsDeviceAccessGroupsCreate(ctx context.Context) ApiEndpointsDeviceAccessGroupsCreateRequest {
+	return ApiEndpointsDeviceAccessGroupsCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return DeviceAccessGroup
+func (a *EndpointsApiService) EndpointsDeviceAccessGroupsCreateExecute(r ApiEndpointsDeviceAccessGroupsCreateRequest) (*DeviceAccessGroup, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DeviceAccessGroup
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceAccessGroupsCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/endpoints/device_access_groups/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.deviceAccessGroupRequest == nil {
+		return localVarReturnValue, nil, reportError("deviceAccessGroupRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.deviceAccessGroupRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiEndpointsDeviceAccessGroupsDestroyRequest struct {
+	ctx        context.Context
+	ApiService *EndpointsApiService
+	pbmUuid    string
+}
+
+func (r ApiEndpointsDeviceAccessGroupsDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.EndpointsDeviceAccessGroupsDestroyExecute(r)
+}
+
+/*
+EndpointsDeviceAccessGroupsDestroy Method for EndpointsDeviceAccessGroupsDestroy
+
+DeviceAccessGroup Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pbmUuid A UUID string identifying this Device access group.
+	@return ApiEndpointsDeviceAccessGroupsDestroyRequest
+*/
+func (a *EndpointsApiService) EndpointsDeviceAccessGroupsDestroy(ctx context.Context, pbmUuid string) ApiEndpointsDeviceAccessGroupsDestroyRequest {
+	return ApiEndpointsDeviceAccessGroupsDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pbmUuid:    pbmUuid,
+	}
+}
+
+// Execute executes the request
+func (a *EndpointsApiService) EndpointsDeviceAccessGroupsDestroyExecute(r ApiEndpointsDeviceAccessGroupsDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceAccessGroupsDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/endpoints/device_access_groups/{pbm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiEndpointsDeviceAccessGroupsListRequest struct {
+	ctx        context.Context
+	ApiService *EndpointsApiService
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	pbmUuid    *string
+	search     *string
+}
+
+func (r ApiEndpointsDeviceAccessGroupsListRequest) Name(name string) ApiEndpointsDeviceAccessGroupsListRequest {
+	r.name = &name
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiEndpointsDeviceAccessGroupsListRequest) Ordering(ordering string) ApiEndpointsDeviceAccessGroupsListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiEndpointsDeviceAccessGroupsListRequest) Page(page int32) ApiEndpointsDeviceAccessGroupsListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiEndpointsDeviceAccessGroupsListRequest) PageSize(pageSize int32) ApiEndpointsDeviceAccessGroupsListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiEndpointsDeviceAccessGroupsListRequest) PbmUuid(pbmUuid string) ApiEndpointsDeviceAccessGroupsListRequest {
+	r.pbmUuid = &pbmUuid
+	return r
+}
+
+// A search term.
+func (r ApiEndpointsDeviceAccessGroupsListRequest) Search(search string) ApiEndpointsDeviceAccessGroupsListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiEndpointsDeviceAccessGroupsListRequest) Execute() (*PaginatedDeviceAccessGroupList, *http.Response, error) {
+	return r.ApiService.EndpointsDeviceAccessGroupsListExecute(r)
+}
+
+/*
+EndpointsDeviceAccessGroupsList Method for EndpointsDeviceAccessGroupsList
+
+DeviceAccessGroup Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiEndpointsDeviceAccessGroupsListRequest
+*/
+func (a *EndpointsApiService) EndpointsDeviceAccessGroupsList(ctx context.Context) ApiEndpointsDeviceAccessGroupsListRequest {
+	return ApiEndpointsDeviceAccessGroupsListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedDeviceAccessGroupList
+func (a *EndpointsApiService) EndpointsDeviceAccessGroupsListExecute(r ApiEndpointsDeviceAccessGroupsListRequest) (*PaginatedDeviceAccessGroupList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedDeviceAccessGroupList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceAccessGroupsList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/endpoints/device_access_groups/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.page != nil {
+		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+	}
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+	}
+	if r.pbmUuid != nil {
+		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiEndpointsDeviceAccessGroupsPartialUpdateRequest struct {
+	ctx                             context.Context
+	ApiService                      *EndpointsApiService
+	pbmUuid                         string
+	patchedDeviceAccessGroupRequest *PatchedDeviceAccessGroupRequest
+}
+
+func (r ApiEndpointsDeviceAccessGroupsPartialUpdateRequest) PatchedDeviceAccessGroupRequest(patchedDeviceAccessGroupRequest PatchedDeviceAccessGroupRequest) ApiEndpointsDeviceAccessGroupsPartialUpdateRequest {
+	r.patchedDeviceAccessGroupRequest = &patchedDeviceAccessGroupRequest
+	return r
+}
+
+func (r ApiEndpointsDeviceAccessGroupsPartialUpdateRequest) Execute() (*DeviceAccessGroup, *http.Response, error) {
+	return r.ApiService.EndpointsDeviceAccessGroupsPartialUpdateExecute(r)
+}
+
+/*
+EndpointsDeviceAccessGroupsPartialUpdate Method for EndpointsDeviceAccessGroupsPartialUpdate
+
+DeviceAccessGroup Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pbmUuid A UUID string identifying this Device access group.
+	@return ApiEndpointsDeviceAccessGroupsPartialUpdateRequest
+*/
+func (a *EndpointsApiService) EndpointsDeviceAccessGroupsPartialUpdate(ctx context.Context, pbmUuid string) ApiEndpointsDeviceAccessGroupsPartialUpdateRequest {
+	return ApiEndpointsDeviceAccessGroupsPartialUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pbmUuid:    pbmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return DeviceAccessGroup
+func (a *EndpointsApiService) EndpointsDeviceAccessGroupsPartialUpdateExecute(r ApiEndpointsDeviceAccessGroupsPartialUpdateRequest) (*DeviceAccessGroup, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DeviceAccessGroup
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceAccessGroupsPartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/endpoints/device_access_groups/{pbm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedDeviceAccessGroupRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiEndpointsDeviceAccessGroupsRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *EndpointsApiService
+	pbmUuid    string
+}
+
+func (r ApiEndpointsDeviceAccessGroupsRetrieveRequest) Execute() (*DeviceAccessGroup, *http.Response, error) {
+	return r.ApiService.EndpointsDeviceAccessGroupsRetrieveExecute(r)
+}
+
+/*
+EndpointsDeviceAccessGroupsRetrieve Method for EndpointsDeviceAccessGroupsRetrieve
+
+DeviceAccessGroup Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pbmUuid A UUID string identifying this Device access group.
+	@return ApiEndpointsDeviceAccessGroupsRetrieveRequest
+*/
+func (a *EndpointsApiService) EndpointsDeviceAccessGroupsRetrieve(ctx context.Context, pbmUuid string) ApiEndpointsDeviceAccessGroupsRetrieveRequest {
+	return ApiEndpointsDeviceAccessGroupsRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pbmUuid:    pbmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return DeviceAccessGroup
+func (a *EndpointsApiService) EndpointsDeviceAccessGroupsRetrieveExecute(r ApiEndpointsDeviceAccessGroupsRetrieveRequest) (*DeviceAccessGroup, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DeviceAccessGroup
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceAccessGroupsRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/endpoints/device_access_groups/{pbm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiEndpointsDeviceAccessGroupsUpdateRequest struct {
+	ctx                      context.Context
+	ApiService               *EndpointsApiService
+	pbmUuid                  string
+	deviceAccessGroupRequest *DeviceAccessGroupRequest
+}
+
+func (r ApiEndpointsDeviceAccessGroupsUpdateRequest) DeviceAccessGroupRequest(deviceAccessGroupRequest DeviceAccessGroupRequest) ApiEndpointsDeviceAccessGroupsUpdateRequest {
+	r.deviceAccessGroupRequest = &deviceAccessGroupRequest
+	return r
+}
+
+func (r ApiEndpointsDeviceAccessGroupsUpdateRequest) Execute() (*DeviceAccessGroup, *http.Response, error) {
+	return r.ApiService.EndpointsDeviceAccessGroupsUpdateExecute(r)
+}
+
+/*
+EndpointsDeviceAccessGroupsUpdate Method for EndpointsDeviceAccessGroupsUpdate
+
+DeviceAccessGroup Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pbmUuid A UUID string identifying this Device access group.
+	@return ApiEndpointsDeviceAccessGroupsUpdateRequest
+*/
+func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUpdate(ctx context.Context, pbmUuid string) ApiEndpointsDeviceAccessGroupsUpdateRequest {
+	return ApiEndpointsDeviceAccessGroupsUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pbmUuid:    pbmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return DeviceAccessGroup
+func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUpdateExecute(r ApiEndpointsDeviceAccessGroupsUpdateRequest) (*DeviceAccessGroup, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DeviceAccessGroup
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceAccessGroupsUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/endpoints/device_access_groups/{pbm_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.deviceAccessGroupRequest == nil {
+		return localVarReturnValue, nil, reportError("deviceAccessGroupRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.deviceAccessGroupRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiEndpointsDeviceAccessGroupsUsedByListRequest struct {
+	ctx        context.Context
+	ApiService *EndpointsApiService
+	pbmUuid    string
+}
+
+func (r ApiEndpointsDeviceAccessGroupsUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.EndpointsDeviceAccessGroupsUsedByListExecute(r)
+}
+
+/*
+EndpointsDeviceAccessGroupsUsedByList Method for EndpointsDeviceAccessGroupsUsedByList
+
+Get a list of all objects that use this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param pbmUuid A UUID string identifying this Device access group.
+	@return ApiEndpointsDeviceAccessGroupsUsedByListRequest
+*/
+func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUsedByList(ctx context.Context, pbmUuid string) ApiEndpointsDeviceAccessGroupsUsedByListRequest {
+	return ApiEndpointsDeviceAccessGroupsUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		pbmUuid:    pbmUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []UsedBy
+func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUsedByListExecute(r ApiEndpointsDeviceAccessGroupsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceAccessGroupsUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/endpoints/device_access_groups/{pbm_uuid}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiEndpointsDeviceBindingsCreateRequest struct {
 	ctx                  context.Context
 	ApiService           *EndpointsApiService
@@ -3284,7 +4461,7 @@ EndpointsDeviceBindingsDestroy Method for EndpointsDeviceBindingsDestroy
 PolicyBinding Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param policyBindingUuid A UUID string identifying this device user binding.
+	@param policyBindingUuid A UUID string identifying this Device User binding.
 	@return ApiEndpointsDeviceBindingsDestroyRequest
 */
 func (a *EndpointsApiService) EndpointsDeviceBindingsDestroy(ctx context.Context, policyBindingUuid string) ApiEndpointsDeviceBindingsDestroyRequest {
@@ -3631,7 +4808,7 @@ EndpointsDeviceBindingsPartialUpdate Method for EndpointsDeviceBindingsPartialUp
 PolicyBinding Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param policyBindingUuid A UUID string identifying this device user binding.
+	@param policyBindingUuid A UUID string identifying this Device User binding.
 	@return ApiEndpointsDeviceBindingsPartialUpdateRequest
 */
 func (a *EndpointsApiService) EndpointsDeviceBindingsPartialUpdate(ctx context.Context, policyBindingUuid string) ApiEndpointsDeviceBindingsPartialUpdateRequest {
@@ -3756,7 +4933,7 @@ EndpointsDeviceBindingsRetrieve Method for EndpointsDeviceBindingsRetrieve
 PolicyBinding Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param policyBindingUuid A UUID string identifying this device user binding.
+	@param policyBindingUuid A UUID string identifying this Device User binding.
 	@return ApiEndpointsDeviceBindingsRetrieveRequest
 */
 func (a *EndpointsApiService) EndpointsDeviceBindingsRetrieve(ctx context.Context, policyBindingUuid string) ApiEndpointsDeviceBindingsRetrieveRequest {
@@ -3885,7 +5062,7 @@ EndpointsDeviceBindingsUpdate Method for EndpointsDeviceBindingsUpdate
 PolicyBinding Viewset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param policyBindingUuid A UUID string identifying this device user binding.
+	@param policyBindingUuid A UUID string identifying this Device User binding.
 	@return ApiEndpointsDeviceBindingsUpdateRequest
 */
 func (a *EndpointsApiService) EndpointsDeviceBindingsUpdate(ctx context.Context, policyBindingUuid string) ApiEndpointsDeviceBindingsUpdateRequest {
@@ -4013,7 +5190,7 @@ EndpointsDeviceBindingsUsedByList Method for EndpointsDeviceBindingsUsedByList
 Get a list of all objects that use this object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param policyBindingUuid A UUID string identifying this device user binding.
+	@param policyBindingUuid A UUID string identifying this Device User binding.
 	@return ApiEndpointsDeviceBindingsUsedByListRequest
 */
 func (a *EndpointsApiService) EndpointsDeviceBindingsUsedByList(ctx context.Context, policyBindingUuid string) ApiEndpointsDeviceBindingsUsedByListRequest {
@@ -4120,935 +5297,6 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsUsedByListExecute(r ApiEndp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiEndpointsDeviceGroupsCreateRequest struct {
-	ctx                context.Context
-	ApiService         *EndpointsApiService
-	deviceGroupRequest *DeviceGroupRequest
-}
-
-func (r ApiEndpointsDeviceGroupsCreateRequest) DeviceGroupRequest(deviceGroupRequest DeviceGroupRequest) ApiEndpointsDeviceGroupsCreateRequest {
-	r.deviceGroupRequest = &deviceGroupRequest
-	return r
-}
-
-func (r ApiEndpointsDeviceGroupsCreateRequest) Execute() (*DeviceGroup, *http.Response, error) {
-	return r.ApiService.EndpointsDeviceGroupsCreateExecute(r)
-}
-
-/*
-EndpointsDeviceGroupsCreate Method for EndpointsDeviceGroupsCreate
-
-DeviceGroup Viewset
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiEndpointsDeviceGroupsCreateRequest
-*/
-func (a *EndpointsApiService) EndpointsDeviceGroupsCreate(ctx context.Context) ApiEndpointsDeviceGroupsCreateRequest {
-	return ApiEndpointsDeviceGroupsCreateRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return DeviceGroup
-func (a *EndpointsApiService) EndpointsDeviceGroupsCreateExecute(r ApiEndpointsDeviceGroupsCreateRequest) (*DeviceGroup, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *DeviceGroup
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceGroupsCreate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/endpoints/device_groups/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.deviceGroupRequest == nil {
-		return localVarReturnValue, nil, reportError("deviceGroupRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.deviceGroupRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiEndpointsDeviceGroupsDestroyRequest struct {
-	ctx        context.Context
-	ApiService *EndpointsApiService
-	pbmUuid    string
-}
-
-func (r ApiEndpointsDeviceGroupsDestroyRequest) Execute() (*http.Response, error) {
-	return r.ApiService.EndpointsDeviceGroupsDestroyExecute(r)
-}
-
-/*
-EndpointsDeviceGroupsDestroy Method for EndpointsDeviceGroupsDestroy
-
-DeviceGroup Viewset
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pbmUuid A UUID string identifying this device group.
-	@return ApiEndpointsDeviceGroupsDestroyRequest
-*/
-func (a *EndpointsApiService) EndpointsDeviceGroupsDestroy(ctx context.Context, pbmUuid string) ApiEndpointsDeviceGroupsDestroyRequest {
-	return ApiEndpointsDeviceGroupsDestroyRequest{
-		ApiService: a,
-		ctx:        ctx,
-		pbmUuid:    pbmUuid,
-	}
-}
-
-// Execute executes the request
-func (a *EndpointsApiService) EndpointsDeviceGroupsDestroyExecute(r ApiEndpointsDeviceGroupsDestroyRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceGroupsDestroy")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/endpoints/device_groups/{pbm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiEndpointsDeviceGroupsListRequest struct {
-	ctx        context.Context
-	ApiService *EndpointsApiService
-	name       *string
-	ordering   *string
-	page       *int32
-	pageSize   *int32
-	pbmUuid    *string
-	search     *string
-}
-
-func (r ApiEndpointsDeviceGroupsListRequest) Name(name string) ApiEndpointsDeviceGroupsListRequest {
-	r.name = &name
-	return r
-}
-
-// Which field to use when ordering the results.
-func (r ApiEndpointsDeviceGroupsListRequest) Ordering(ordering string) ApiEndpointsDeviceGroupsListRequest {
-	r.ordering = &ordering
-	return r
-}
-
-// A page number within the paginated result set.
-func (r ApiEndpointsDeviceGroupsListRequest) Page(page int32) ApiEndpointsDeviceGroupsListRequest {
-	r.page = &page
-	return r
-}
-
-// Number of results to return per page.
-func (r ApiEndpointsDeviceGroupsListRequest) PageSize(pageSize int32) ApiEndpointsDeviceGroupsListRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-func (r ApiEndpointsDeviceGroupsListRequest) PbmUuid(pbmUuid string) ApiEndpointsDeviceGroupsListRequest {
-	r.pbmUuid = &pbmUuid
-	return r
-}
-
-// A search term.
-func (r ApiEndpointsDeviceGroupsListRequest) Search(search string) ApiEndpointsDeviceGroupsListRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiEndpointsDeviceGroupsListRequest) Execute() (*PaginatedDeviceGroupList, *http.Response, error) {
-	return r.ApiService.EndpointsDeviceGroupsListExecute(r)
-}
-
-/*
-EndpointsDeviceGroupsList Method for EndpointsDeviceGroupsList
-
-DeviceGroup Viewset
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiEndpointsDeviceGroupsListRequest
-*/
-func (a *EndpointsApiService) EndpointsDeviceGroupsList(ctx context.Context) ApiEndpointsDeviceGroupsListRequest {
-	return ApiEndpointsDeviceGroupsListRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return PaginatedDeviceGroupList
-func (a *EndpointsApiService) EndpointsDeviceGroupsListExecute(r ApiEndpointsDeviceGroupsListRequest) (*PaginatedDeviceGroupList, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *PaginatedDeviceGroupList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceGroupsList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/endpoints/device_groups/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
-	}
-	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
-	}
-	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
-	}
-	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
-	}
-	if r.pbmUuid != nil {
-		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
-	}
-	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiEndpointsDeviceGroupsPartialUpdateRequest struct {
-	ctx                       context.Context
-	ApiService                *EndpointsApiService
-	pbmUuid                   string
-	patchedDeviceGroupRequest *PatchedDeviceGroupRequest
-}
-
-func (r ApiEndpointsDeviceGroupsPartialUpdateRequest) PatchedDeviceGroupRequest(patchedDeviceGroupRequest PatchedDeviceGroupRequest) ApiEndpointsDeviceGroupsPartialUpdateRequest {
-	r.patchedDeviceGroupRequest = &patchedDeviceGroupRequest
-	return r
-}
-
-func (r ApiEndpointsDeviceGroupsPartialUpdateRequest) Execute() (*DeviceGroup, *http.Response, error) {
-	return r.ApiService.EndpointsDeviceGroupsPartialUpdateExecute(r)
-}
-
-/*
-EndpointsDeviceGroupsPartialUpdate Method for EndpointsDeviceGroupsPartialUpdate
-
-DeviceGroup Viewset
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pbmUuid A UUID string identifying this device group.
-	@return ApiEndpointsDeviceGroupsPartialUpdateRequest
-*/
-func (a *EndpointsApiService) EndpointsDeviceGroupsPartialUpdate(ctx context.Context, pbmUuid string) ApiEndpointsDeviceGroupsPartialUpdateRequest {
-	return ApiEndpointsDeviceGroupsPartialUpdateRequest{
-		ApiService: a,
-		ctx:        ctx,
-		pbmUuid:    pbmUuid,
-	}
-}
-
-// Execute executes the request
-//
-//	@return DeviceGroup
-func (a *EndpointsApiService) EndpointsDeviceGroupsPartialUpdateExecute(r ApiEndpointsDeviceGroupsPartialUpdateRequest) (*DeviceGroup, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *DeviceGroup
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceGroupsPartialUpdate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/endpoints/device_groups/{pbm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.patchedDeviceGroupRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiEndpointsDeviceGroupsRetrieveRequest struct {
-	ctx        context.Context
-	ApiService *EndpointsApiService
-	pbmUuid    string
-}
-
-func (r ApiEndpointsDeviceGroupsRetrieveRequest) Execute() (*DeviceGroup, *http.Response, error) {
-	return r.ApiService.EndpointsDeviceGroupsRetrieveExecute(r)
-}
-
-/*
-EndpointsDeviceGroupsRetrieve Method for EndpointsDeviceGroupsRetrieve
-
-DeviceGroup Viewset
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pbmUuid A UUID string identifying this device group.
-	@return ApiEndpointsDeviceGroupsRetrieveRequest
-*/
-func (a *EndpointsApiService) EndpointsDeviceGroupsRetrieve(ctx context.Context, pbmUuid string) ApiEndpointsDeviceGroupsRetrieveRequest {
-	return ApiEndpointsDeviceGroupsRetrieveRequest{
-		ApiService: a,
-		ctx:        ctx,
-		pbmUuid:    pbmUuid,
-	}
-}
-
-// Execute executes the request
-//
-//	@return DeviceGroup
-func (a *EndpointsApiService) EndpointsDeviceGroupsRetrieveExecute(r ApiEndpointsDeviceGroupsRetrieveRequest) (*DeviceGroup, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *DeviceGroup
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceGroupsRetrieve")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/endpoints/device_groups/{pbm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiEndpointsDeviceGroupsUpdateRequest struct {
-	ctx                context.Context
-	ApiService         *EndpointsApiService
-	pbmUuid            string
-	deviceGroupRequest *DeviceGroupRequest
-}
-
-func (r ApiEndpointsDeviceGroupsUpdateRequest) DeviceGroupRequest(deviceGroupRequest DeviceGroupRequest) ApiEndpointsDeviceGroupsUpdateRequest {
-	r.deviceGroupRequest = &deviceGroupRequest
-	return r
-}
-
-func (r ApiEndpointsDeviceGroupsUpdateRequest) Execute() (*DeviceGroup, *http.Response, error) {
-	return r.ApiService.EndpointsDeviceGroupsUpdateExecute(r)
-}
-
-/*
-EndpointsDeviceGroupsUpdate Method for EndpointsDeviceGroupsUpdate
-
-DeviceGroup Viewset
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pbmUuid A UUID string identifying this device group.
-	@return ApiEndpointsDeviceGroupsUpdateRequest
-*/
-func (a *EndpointsApiService) EndpointsDeviceGroupsUpdate(ctx context.Context, pbmUuid string) ApiEndpointsDeviceGroupsUpdateRequest {
-	return ApiEndpointsDeviceGroupsUpdateRequest{
-		ApiService: a,
-		ctx:        ctx,
-		pbmUuid:    pbmUuid,
-	}
-}
-
-// Execute executes the request
-//
-//	@return DeviceGroup
-func (a *EndpointsApiService) EndpointsDeviceGroupsUpdateExecute(r ApiEndpointsDeviceGroupsUpdateRequest) (*DeviceGroup, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *DeviceGroup
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceGroupsUpdate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/endpoints/device_groups/{pbm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.deviceGroupRequest == nil {
-		return localVarReturnValue, nil, reportError("deviceGroupRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.deviceGroupRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiEndpointsDeviceGroupsUsedByListRequest struct {
-	ctx        context.Context
-	ApiService *EndpointsApiService
-	pbmUuid    string
-}
-
-func (r ApiEndpointsDeviceGroupsUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
-	return r.ApiService.EndpointsDeviceGroupsUsedByListExecute(r)
-}
-
-/*
-EndpointsDeviceGroupsUsedByList Method for EndpointsDeviceGroupsUsedByList
-
-Get a list of all objects that use this object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param pbmUuid A UUID string identifying this device group.
-	@return ApiEndpointsDeviceGroupsUsedByListRequest
-*/
-func (a *EndpointsApiService) EndpointsDeviceGroupsUsedByList(ctx context.Context, pbmUuid string) ApiEndpointsDeviceGroupsUsedByListRequest {
-	return ApiEndpointsDeviceGroupsUsedByListRequest{
-		ApiService: a,
-		ctx:        ctx,
-		pbmUuid:    pbmUuid,
-	}
-}
-
-// Execute executes the request
-//
-//	@return []UsedBy
-func (a *EndpointsApiService) EndpointsDeviceGroupsUsedByListExecute(r ApiEndpointsDeviceGroupsUsedByListRequest) ([]UsedBy, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []UsedBy
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceGroupsUsedByList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/endpoints/device_groups/{pbm_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiEndpointsDevicesDestroyRequest struct {
 	ctx        context.Context
 	ApiService *EndpointsApiService
@@ -5065,7 +5313,7 @@ EndpointsDevicesDestroy Method for EndpointsDevicesDestroy
 Mixin to add a used_by endpoint to return a list of all objects using this object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param deviceUuid A UUID string identifying this device.
+	@param deviceUuid A UUID string identifying this Device.
 	@return ApiEndpointsDevicesDestroyRequest
 */
 func (a *EndpointsApiService) EndpointsDevicesDestroy(ctx context.Context, deviceUuid string) ApiEndpointsDevicesDestroyRequest {
@@ -5359,7 +5607,7 @@ EndpointsDevicesPartialUpdate Method for EndpointsDevicesPartialUpdate
 Mixin to add a used_by endpoint to return a list of all objects using this object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param deviceUuid A UUID string identifying this device.
+	@param deviceUuid A UUID string identifying this Device.
 	@return ApiEndpointsDevicesPartialUpdateRequest
 */
 func (a *EndpointsApiService) EndpointsDevicesPartialUpdate(ctx context.Context, deviceUuid string) ApiEndpointsDevicesPartialUpdateRequest {
@@ -5484,7 +5732,7 @@ EndpointsDevicesRetrieve Method for EndpointsDevicesRetrieve
 Mixin to add a used_by endpoint to return a list of all objects using this object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param deviceUuid A UUID string identifying this device.
+	@param deviceUuid A UUID string identifying this Device.
 	@return ApiEndpointsDevicesRetrieveRequest
 */
 func (a *EndpointsApiService) EndpointsDevicesRetrieve(ctx context.Context, deviceUuid string) ApiEndpointsDevicesRetrieveRequest {
@@ -5613,7 +5861,7 @@ EndpointsDevicesUpdate Method for EndpointsDevicesUpdate
 Mixin to add a used_by endpoint to return a list of all objects using this object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param deviceUuid A UUID string identifying this device.
+	@param deviceUuid A UUID string identifying this Device.
 	@return ApiEndpointsDevicesUpdateRequest
 */
 func (a *EndpointsApiService) EndpointsDevicesUpdate(ctx context.Context, deviceUuid string) ApiEndpointsDevicesUpdateRequest {
@@ -5741,7 +5989,7 @@ EndpointsDevicesUsedByList Method for EndpointsDevicesUsedByList
 Get a list of all objects that use this object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param deviceUuid A UUID string identifying this device.
+	@param deviceUuid A UUID string identifying this Device.
 	@return ApiEndpointsDevicesUsedByListRequest
 */
 func (a *EndpointsApiService) EndpointsDevicesUsedByList(ctx context.Context, deviceUuid string) ApiEndpointsDevicesUsedByListRequest {

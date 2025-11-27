@@ -29,9 +29,11 @@ client.go
 configuration.go
 docs/AccessDeniedChallenge.md
 docs/AdminApi.md
+docs/AgentAuthenticationResponse.md
 docs/AgentConfig.md
 docs/AgentConnector.md
 docs/AgentConnectorRequest.md
+docs/AgentTokenResponse.md
 docs/AlgEnum.md
 docs/App.md
 docs/AppEnum.md
@@ -133,6 +135,8 @@ docs/DenyStageRequest.md
 docs/DetailedCountry.md
 docs/DetailedCountryField.md
 docs/Device.md
+docs/DeviceAccessGroup.md
+docs/DeviceAccessGroupRequest.md
 docs/DeviceChallenge.md
 docs/DeviceChallengeRequest.md
 docs/DeviceClassesEnum.md
@@ -150,6 +154,8 @@ docs/DeviceFactsRequestNetwork.md
 docs/DeviceFactsRequestOs.md
 docs/DeviceGroup.md
 docs/DeviceGroupRequest.md
+docs/DeviceUser.md
+docs/DeviceUserRequest.md
 docs/DigestAlgorithmEnum.md
 docs/DigitsEnum.md
 docs/Disk.md
@@ -182,7 +188,6 @@ docs/EndpointDeviceRequest.md
 docs/EndpointRequest.md
 docs/EndpointsApi.md
 docs/EnrollRequest.md
-docs/EnrollResponse.md
 docs/EnrollmentToken.md
 docs/EnrollmentTokenRequest.md
 docs/EnterpriseApi.md
@@ -387,7 +392,7 @@ docs/PaginatedConnectionTokenList.md
 docs/PaginatedConnectorList.md
 docs/PaginatedConsentStageList.md
 docs/PaginatedDenyStageList.md
-docs/PaginatedDeviceGroupList.md
+docs/PaginatedDeviceAccessGroupList.md
 docs/PaginatedDockerServiceConnectionList.md
 docs/PaginatedDomainList.md
 docs/PaginatedDummyPolicyList.md
@@ -544,7 +549,7 @@ docs/PatchedCertificateKeyPairRequest.md
 docs/PatchedConnectionTokenRequest.md
 docs/PatchedConsentStageRequest.md
 docs/PatchedDenyStageRequest.md
-docs/PatchedDeviceGroupRequest.md
+docs/PatchedDeviceAccessGroupRequest.md
 docs/PatchedDockerServiceConnectionRequest.md
 docs/PatchedDomainRequest.md
 docs/PatchedDummyPolicyRequest.md
@@ -877,9 +882,11 @@ git_push.sh
 go.mod
 go.sum
 model_access_denied_challenge.go
+model_agent_authentication_response.go
 model_agent_config.go
 model_agent_connector.go
 model_agent_connector_request.go
+model_agent_token_response.go
 model_alg_enum.go
 model_app.go
 model_app_enum.go
@@ -978,6 +985,8 @@ model_deny_stage_request.go
 model_detailed_country.go
 model_detailed_country_field.go
 model_device.go
+model_device_access_group.go
+model_device_access_group_request.go
 model_device_challenge.go
 model_device_challenge_request.go
 model_device_classes_enum.go
@@ -995,6 +1004,8 @@ model_device_facts_request_network.go
 model_device_facts_request_os.go
 model_device_group.go
 model_device_group_request.go
+model_device_user.go
+model_device_user_request.go
 model_digest_algorithm_enum.go
 model_digits_enum.go
 model_disk.go
@@ -1026,7 +1037,6 @@ model_endpoint_device_details.go
 model_endpoint_device_request.go
 model_endpoint_request.go
 model_enroll_request.go
-model_enroll_response.go
 model_enrollment_token.go
 model_enrollment_token_request.go
 model_error_detail.go
@@ -1224,7 +1234,7 @@ model_paginated_connection_token_list.go
 model_paginated_connector_list.go
 model_paginated_consent_stage_list.go
 model_paginated_deny_stage_list.go
-model_paginated_device_group_list.go
+model_paginated_device_access_group_list.go
 model_paginated_docker_service_connection_list.go
 model_paginated_domain_list.go
 model_paginated_dummy_policy_list.go
@@ -1381,7 +1391,7 @@ model_patched_certificate_key_pair_request.go
 model_patched_connection_token_request.go
 model_patched_consent_stage_request.go
 model_patched_deny_stage_request.go
-model_patched_device_group_request.go
+model_patched_device_access_group_request.go
 model_patched_docker_service_connection_request.go
 model_patched_domain_request.go
 model_patched_dummy_policy_request.go

@@ -15,35 +15,35 @@ import (
 	"encoding/json"
 )
 
-// PaginatedDeviceGroupList struct for PaginatedDeviceGroupList
-type PaginatedDeviceGroupList struct {
+// PaginatedDeviceAccessGroupList struct for PaginatedDeviceAccessGroupList
+type PaginatedDeviceAccessGroupList struct {
 	Pagination   Pagination             `json:"pagination"`
-	Results      []DeviceGroup          `json:"results"`
+	Results      []DeviceAccessGroup    `json:"results"`
 	Autocomplete map[string]interface{} `json:"autocomplete"`
 }
 
-// NewPaginatedDeviceGroupList instantiates a new PaginatedDeviceGroupList object
+// NewPaginatedDeviceAccessGroupList instantiates a new PaginatedDeviceAccessGroupList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedDeviceGroupList(pagination Pagination, results []DeviceGroup, autocomplete map[string]interface{}) *PaginatedDeviceGroupList {
-	this := PaginatedDeviceGroupList{}
+func NewPaginatedDeviceAccessGroupList(pagination Pagination, results []DeviceAccessGroup, autocomplete map[string]interface{}) *PaginatedDeviceAccessGroupList {
+	this := PaginatedDeviceAccessGroupList{}
 	this.Pagination = pagination
 	this.Results = results
 	this.Autocomplete = autocomplete
 	return &this
 }
 
-// NewPaginatedDeviceGroupListWithDefaults instantiates a new PaginatedDeviceGroupList object
+// NewPaginatedDeviceAccessGroupListWithDefaults instantiates a new PaginatedDeviceAccessGroupList object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPaginatedDeviceGroupListWithDefaults() *PaginatedDeviceGroupList {
-	this := PaginatedDeviceGroupList{}
+func NewPaginatedDeviceAccessGroupListWithDefaults() *PaginatedDeviceAccessGroupList {
+	this := PaginatedDeviceAccessGroupList{}
 	return &this
 }
 
 // GetPagination returns the Pagination field value
-func (o *PaginatedDeviceGroupList) GetPagination() Pagination {
+func (o *PaginatedDeviceAccessGroupList) GetPagination() Pagination {
 	if o == nil {
 		var ret Pagination
 		return ret
@@ -54,7 +54,7 @@ func (o *PaginatedDeviceGroupList) GetPagination() Pagination {
 
 // GetPaginationOk returns a tuple with the Pagination field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedDeviceGroupList) GetPaginationOk() (*Pagination, bool) {
+func (o *PaginatedDeviceAccessGroupList) GetPaginationOk() (*Pagination, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -62,14 +62,14 @@ func (o *PaginatedDeviceGroupList) GetPaginationOk() (*Pagination, bool) {
 }
 
 // SetPagination sets field value
-func (o *PaginatedDeviceGroupList) SetPagination(v Pagination) {
+func (o *PaginatedDeviceAccessGroupList) SetPagination(v Pagination) {
 	o.Pagination = v
 }
 
 // GetResults returns the Results field value
-func (o *PaginatedDeviceGroupList) GetResults() []DeviceGroup {
+func (o *PaginatedDeviceAccessGroupList) GetResults() []DeviceAccessGroup {
 	if o == nil {
-		var ret []DeviceGroup
+		var ret []DeviceAccessGroup
 		return ret
 	}
 
@@ -78,7 +78,7 @@ func (o *PaginatedDeviceGroupList) GetResults() []DeviceGroup {
 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedDeviceGroupList) GetResultsOk() ([]DeviceGroup, bool) {
+func (o *PaginatedDeviceAccessGroupList) GetResultsOk() ([]DeviceAccessGroup, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -86,12 +86,12 @@ func (o *PaginatedDeviceGroupList) GetResultsOk() ([]DeviceGroup, bool) {
 }
 
 // SetResults sets field value
-func (o *PaginatedDeviceGroupList) SetResults(v []DeviceGroup) {
+func (o *PaginatedDeviceAccessGroupList) SetResults(v []DeviceAccessGroup) {
 	o.Results = v
 }
 
 // GetAutocomplete returns the Autocomplete field value
-func (o *PaginatedDeviceGroupList) GetAutocomplete() map[string]interface{} {
+func (o *PaginatedDeviceAccessGroupList) GetAutocomplete() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
 		return ret
@@ -102,7 +102,7 @@ func (o *PaginatedDeviceGroupList) GetAutocomplete() map[string]interface{} {
 
 // GetAutocompleteOk returns a tuple with the Autocomplete field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedDeviceGroupList) GetAutocompleteOk() (map[string]interface{}, bool) {
+func (o *PaginatedDeviceAccessGroupList) GetAutocompleteOk() (map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -110,11 +110,11 @@ func (o *PaginatedDeviceGroupList) GetAutocompleteOk() (map[string]interface{}, 
 }
 
 // SetAutocomplete sets field value
-func (o *PaginatedDeviceGroupList) SetAutocomplete(v map[string]interface{}) {
+func (o *PaginatedDeviceAccessGroupList) SetAutocomplete(v map[string]interface{}) {
 	o.Autocomplete = v
 }
 
-func (o PaginatedDeviceGroupList) MarshalJSON() ([]byte, error) {
+func (o PaginatedDeviceAccessGroupList) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["pagination"] = o.Pagination
@@ -128,38 +128,38 @@ func (o PaginatedDeviceGroupList) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullablePaginatedDeviceGroupList struct {
-	value *PaginatedDeviceGroupList
+type NullablePaginatedDeviceAccessGroupList struct {
+	value *PaginatedDeviceAccessGroupList
 	isSet bool
 }
 
-func (v NullablePaginatedDeviceGroupList) Get() *PaginatedDeviceGroupList {
+func (v NullablePaginatedDeviceAccessGroupList) Get() *PaginatedDeviceAccessGroupList {
 	return v.value
 }
 
-func (v *NullablePaginatedDeviceGroupList) Set(val *PaginatedDeviceGroupList) {
+func (v *NullablePaginatedDeviceAccessGroupList) Set(val *PaginatedDeviceAccessGroupList) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePaginatedDeviceGroupList) IsSet() bool {
+func (v NullablePaginatedDeviceAccessGroupList) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePaginatedDeviceGroupList) Unset() {
+func (v *NullablePaginatedDeviceAccessGroupList) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePaginatedDeviceGroupList(val *PaginatedDeviceGroupList) *NullablePaginatedDeviceGroupList {
-	return &NullablePaginatedDeviceGroupList{value: val, isSet: true}
+func NewNullablePaginatedDeviceAccessGroupList(val *PaginatedDeviceAccessGroupList) *NullablePaginatedDeviceAccessGroupList {
+	return &NullablePaginatedDeviceAccessGroupList{value: val, isSet: true}
 }
 
-func (v NullablePaginatedDeviceGroupList) MarshalJSON() ([]byte, error) {
+func (v NullablePaginatedDeviceAccessGroupList) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePaginatedDeviceGroupList) UnmarshalJSON(src []byte) error {
+func (v *NullablePaginatedDeviceAccessGroupList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

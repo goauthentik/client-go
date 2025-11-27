@@ -17,18 +17,17 @@ import (
 
 // DeviceGroup struct for DeviceGroup
 type DeviceGroup struct {
-	PbmUuid string `json:"pbm_uuid"`
-	Name    string `json:"name"`
+	Id   string  `json:"id"`
+	Name *string `json:"name,omitempty"`
 }
 
 // NewDeviceGroup instantiates a new DeviceGroup object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceGroup(pbmUuid string, name string) *DeviceGroup {
+func NewDeviceGroup(id string) *DeviceGroup {
 	this := DeviceGroup{}
-	this.PbmUuid = pbmUuid
-	this.Name = name
+	this.Id = id
 	return &this
 }
 
@@ -40,60 +39,68 @@ func NewDeviceGroupWithDefaults() *DeviceGroup {
 	return &this
 }
 
-// GetPbmUuid returns the PbmUuid field value
-func (o *DeviceGroup) GetPbmUuid() string {
+// GetId returns the Id field value
+func (o *DeviceGroup) GetId() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.PbmUuid
+	return o.Id
 }
 
-// GetPbmUuidOk returns a tuple with the PbmUuid field value
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *DeviceGroup) GetPbmUuidOk() (*string, bool) {
+func (o *DeviceGroup) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.PbmUuid, true
+	return &o.Id, true
 }
 
-// SetPbmUuid sets field value
-func (o *DeviceGroup) SetPbmUuid(v string) {
-	o.PbmUuid = v
+// SetId sets field value
+func (o *DeviceGroup) SetId(v string) {
+	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *DeviceGroup) GetName() string {
-	if o == nil {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceGroup) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *DeviceGroup) HasName() bool {
+	if o != nil && o.Name != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DeviceGroup) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 func (o DeviceGroup) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["pbm_uuid"] = o.PbmUuid
+		toSerialize["id"] = o.Id
 	}
-	if true {
+	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
 	return json.Marshal(toSerialize)
