@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeviceId** | **string** |  | [readonly] 
 **RefreshInterval** | **int32** |  | [readonly] 
-**AuthorizationFlow** | **string** |  | 
+**AuthorizationFlow** | **NullableString** |  | [readonly] 
 **Jwks** | **map[string]interface{}** |  | [readonly] 
 **NssUidOffset** | **int32** |  | 
 **NssGidOffset** | **int32** |  | 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewAgentConfig
 
-`func NewAgentConfig(deviceId string, refreshInterval int32, authorizationFlow string, jwks map[string]interface{}, nssUidOffset int32, nssGidOffset int32, authTerminateSessionOnExpiry bool, systemConfig Config, ) *AgentConfig`
+`func NewAgentConfig(deviceId string, refreshInterval int32, authorizationFlow NullableString, jwks map[string]interface{}, nssUidOffset int32, nssGidOffset int32, authTerminateSessionOnExpiry bool, systemConfig Config, ) *AgentConfig`
 
 NewAgentConfig instantiates a new AgentConfig object
 This constructor will assign default values to properties that have it defined,
@@ -92,6 +92,16 @@ and a boolean to check if the value has been set.
 SetAuthorizationFlow sets AuthorizationFlow field to given value.
 
 
+### SetAuthorizationFlowNil
+
+`func (o *AgentConfig) SetAuthorizationFlowNil(b bool)`
+
+ SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
+
+### UnsetAuthorizationFlow
+`func (o *AgentConfig) UnsetAuthorizationFlow()`
+
+UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
 ### GetJwks
 
 `func (o *AgentConfig) GetJwks() map[string]interface{}`

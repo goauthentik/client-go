@@ -3148,7 +3148,7 @@ import (
 
 func main() {
     deviceUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Device.
-    endpointDeviceRequest := *openapiclient.NewEndpointDeviceRequest("Name_example", *openapiclient.NewDeviceAccessGroupRequest("Name_example")) // EndpointDeviceRequest | 
+    endpointDeviceRequest := *openapiclient.NewEndpointDeviceRequest("Name_example") // EndpointDeviceRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

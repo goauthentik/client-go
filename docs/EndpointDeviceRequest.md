@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **DeviceUuid** | Pointer to **string** |  | [optional] 
 **Name** | **string** |  | 
 **AccessGroup** | Pointer to **NullableString** |  | [optional] 
-**AccessGroupObj** | [**DeviceAccessGroupRequest**](DeviceAccessGroupRequest.md) |  | 
+**AccessGroupObj** | Pointer to [**DeviceAccessGroupRequest**](DeviceAccessGroupRequest.md) |  | [optional] 
 **Expiring** | Pointer to **bool** |  | [optional] 
 **Expires** | Pointer to **NullableTime** |  | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewEndpointDeviceRequest
 
-`func NewEndpointDeviceRequest(name string, accessGroupObj DeviceAccessGroupRequest, ) *EndpointDeviceRequest`
+`func NewEndpointDeviceRequest(name string, ) *EndpointDeviceRequest`
 
 NewEndpointDeviceRequest instantiates a new EndpointDeviceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -130,6 +130,11 @@ and a boolean to check if the value has been set.
 
 SetAccessGroupObj sets AccessGroupObj field to given value.
 
+### HasAccessGroupObj
+
+`func (o *EndpointDeviceRequest) HasAccessGroupObj() bool`
+
+HasAccessGroupObj returns a boolean if a field has been set.
 
 ### GetExpiring
 

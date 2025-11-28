@@ -17,8 +17,8 @@ import (
 
 // HardwareRequest struct for HardwareRequest
 type HardwareRequest struct {
-	Model        string  `json:"model"`
-	Manufacturer string  `json:"manufacturer"`
+	Model        *string `json:"model,omitempty"`
+	Manufacturer *string `json:"manufacturer,omitempty"`
 	Serial       string  `json:"serial"`
 	CpuName      *string `json:"cpu_name,omitempty"`
 	CpuCount     *int32  `json:"cpu_count,omitempty"`
@@ -29,10 +29,8 @@ type HardwareRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHardwareRequest(model string, manufacturer string, serial string) *HardwareRequest {
+func NewHardwareRequest(serial string) *HardwareRequest {
 	this := HardwareRequest{}
-	this.Model = model
-	this.Manufacturer = manufacturer
 	this.Serial = serial
 	return &this
 }
@@ -45,52 +43,68 @@ func NewHardwareRequestWithDefaults() *HardwareRequest {
 	return &this
 }
 
-// GetModel returns the Model field value
+// GetModel returns the Model field value if set, zero value otherwise.
 func (o *HardwareRequest) GetModel() string {
-	if o == nil {
+	if o == nil || o.Model == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Model
+	return *o.Model
 }
 
-// GetModelOk returns a tuple with the Model field value
+// GetModelOk returns a tuple with the Model field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *HardwareRequest) GetModelOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Model == nil {
 		return nil, false
 	}
-	return &o.Model, true
+	return o.Model, true
 }
 
-// SetModel sets field value
+// HasModel returns a boolean if a field has been set.
+func (o *HardwareRequest) HasModel() bool {
+	if o != nil && o.Model != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetModel gets a reference to the given string and assigns it to the Model field.
 func (o *HardwareRequest) SetModel(v string) {
-	o.Model = v
+	o.Model = &v
 }
 
-// GetManufacturer returns the Manufacturer field value
+// GetManufacturer returns the Manufacturer field value if set, zero value otherwise.
 func (o *HardwareRequest) GetManufacturer() string {
-	if o == nil {
+	if o == nil || o.Manufacturer == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Manufacturer
+	return *o.Manufacturer
 }
 
-// GetManufacturerOk returns a tuple with the Manufacturer field value
+// GetManufacturerOk returns a tuple with the Manufacturer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *HardwareRequest) GetManufacturerOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Manufacturer == nil {
 		return nil, false
 	}
-	return &o.Manufacturer, true
+	return o.Manufacturer, true
 }
 
-// SetManufacturer sets field value
+// HasManufacturer returns a boolean if a field has been set.
+func (o *HardwareRequest) HasManufacturer() bool {
+	if o != nil && o.Manufacturer != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetManufacturer gets a reference to the given string and assigns it to the Manufacturer field.
 func (o *HardwareRequest) SetManufacturer(v string) {
-	o.Manufacturer = v
+	o.Manufacturer = &v
 }
 
 // GetSerial returns the Serial field value
@@ -215,10 +229,10 @@ func (o *HardwareRequest) SetMemoryBytes(v int64) {
 
 func (o HardwareRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.Model != nil {
 		toSerialize["model"] = o.Model
 	}
-	if true {
+	if o.Manufacturer != nil {
 		toSerialize["manufacturer"] = o.Manufacturer
 	}
 	if true {

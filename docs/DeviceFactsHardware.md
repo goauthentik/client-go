@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Model** | **string** |  | 
-**Manufacturer** | **string** |  | 
+**Model** | Pointer to **string** |  | [optional] 
+**Manufacturer** | Pointer to **string** |  | [optional] 
 **Serial** | **string** |  | 
 **CpuName** | Pointer to **string** |  | [optional] 
 **CpuCount** | Pointer to **int32** |  | [optional] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewDeviceFactsHardware
 
-`func NewDeviceFactsHardware(model string, manufacturer string, serial string, ) *DeviceFactsHardware`
+`func NewDeviceFactsHardware(serial string, ) *DeviceFactsHardware`
 
 NewDeviceFactsHardware instantiates a new DeviceFactsHardware object
 This constructor will assign default values to properties that have it defined,
@@ -49,6 +49,11 @@ and a boolean to check if the value has been set.
 
 SetModel sets Model field to given value.
 
+### HasModel
+
+`func (o *DeviceFactsHardware) HasModel() bool`
+
+HasModel returns a boolean if a field has been set.
 
 ### GetManufacturer
 
@@ -69,6 +74,11 @@ and a boolean to check if the value has been set.
 
 SetManufacturer sets Manufacturer field to given value.
 
+### HasManufacturer
+
+`func (o *DeviceFactsHardware) HasManufacturer() bool`
+
+HasManufacturer returns a boolean if a field has been set.
 
 ### GetSerial
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **PbmUuid** | **string** |  | [readonly] 
 **Name** | **string** |  | 
 **AccessGroup** | Pointer to **NullableString** |  | [optional] 
-**AccessGroupObj** | [**DeviceAccessGroup**](DeviceAccessGroup.md) |  | 
+**AccessGroupObj** | Pointer to [**DeviceAccessGroup**](DeviceAccessGroup.md) |  | [optional] 
 **Expiring** | Pointer to **bool** |  | [optional] 
 **Expires** | Pointer to **NullableTime** |  | [optional] 
 **Facts** | [**DeviceFactSnapshot**](DeviceFactSnapshot.md) |  | [readonly] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewEndpointDevice
 
-`func NewEndpointDevice(pbmUuid string, name string, accessGroupObj DeviceAccessGroup, facts DeviceFactSnapshot, ) *EndpointDevice`
+`func NewEndpointDevice(pbmUuid string, name string, facts DeviceFactSnapshot, ) *EndpointDevice`
 
 NewEndpointDevice instantiates a new EndpointDevice object
 This constructor will assign default values to properties that have it defined,
@@ -152,6 +152,11 @@ and a boolean to check if the value has been set.
 
 SetAccessGroupObj sets AccessGroupObj field to given value.
 
+### HasAccessGroupObj
+
+`func (o *EndpointDevice) HasAccessGroupObj() bool`
+
+HasAccessGroupObj returns a boolean if a field has been set.
 
 ### GetExpiring
 

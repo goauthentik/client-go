@@ -49549,6 +49549,8 @@ components:
           readOnly: true
           type: integer
         authorization_flow:
+          nullable: true
+          readOnly: true
           type: string
         jwks:
           additionalProperties: {}
@@ -54742,7 +54744,6 @@ components:
           additionalProperties: {}
           type: object
       required:
-      - access_group_obj
       - facts
       - name
       - pbm_uuid
@@ -54822,7 +54823,6 @@ components:
           readOnly: true
           type: array
       required:
-      - access_group_obj
       - connections
       - connections_obj
       - facts
@@ -54864,7 +54864,6 @@ components:
           additionalProperties: {}
           type: object
       required:
-      - access_group_obj
       - name
       type: object
     EndpointRequest:
@@ -57670,8 +57669,6 @@ components:
           format: int64
           type: integer
       required:
-      - manufacturer
-      - model
       - serial
       type: object
     HardwareRequest:
@@ -57683,6 +57680,7 @@ components:
           minLength: 1
           type: string
         serial:
+          minLength: 1
           type: string
         cpu_name:
           minLength: 1
@@ -57693,8 +57691,6 @@ components:
           format: int64
           type: integer
       required:
-      - manufacturer
-      - model
       - serial
       type: object
     IdentificationChallenge:

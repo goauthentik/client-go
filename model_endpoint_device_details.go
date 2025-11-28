@@ -22,7 +22,7 @@ type EndpointDeviceDetails struct {
 	PbmUuid        string                 `json:"pbm_uuid"`
 	Name           string                 `json:"name"`
 	AccessGroup    NullableString         `json:"access_group,omitempty"`
-	AccessGroupObj DeviceAccessGroup      `json:"access_group_obj"`
+	AccessGroupObj *DeviceAccessGroup     `json:"access_group_obj,omitempty"`
 	Expiring       *bool                  `json:"expiring,omitempty"`
 	Expires        NullableTime           `json:"expires,omitempty"`
 	Facts          DeviceFactSnapshot     `json:"facts"`
@@ -36,11 +36,10 @@ type EndpointDeviceDetails struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEndpointDeviceDetails(pbmUuid string, name string, accessGroupObj DeviceAccessGroup, facts DeviceFactSnapshot, connectionsObj []DeviceConnection, policies []string, connections []string) *EndpointDeviceDetails {
+func NewEndpointDeviceDetails(pbmUuid string, name string, facts DeviceFactSnapshot, connectionsObj []DeviceConnection, policies []string, connections []string) *EndpointDeviceDetails {
 	this := EndpointDeviceDetails{}
 	this.PbmUuid = pbmUuid
 	this.Name = name
-	this.AccessGroupObj = accessGroupObj
 	this.Facts = facts
 	this.ConnectionsObj = connectionsObj
 	this.Policies = policies
@@ -179,28 +178,36 @@ func (o *EndpointDeviceDetails) UnsetAccessGroup() {
 	o.AccessGroup.Unset()
 }
 
-// GetAccessGroupObj returns the AccessGroupObj field value
+// GetAccessGroupObj returns the AccessGroupObj field value if set, zero value otherwise.
 func (o *EndpointDeviceDetails) GetAccessGroupObj() DeviceAccessGroup {
-	if o == nil {
+	if o == nil || o.AccessGroupObj == nil {
 		var ret DeviceAccessGroup
 		return ret
 	}
-
-	return o.AccessGroupObj
+	return *o.AccessGroupObj
 }
 
-// GetAccessGroupObjOk returns a tuple with the AccessGroupObj field value
+// GetAccessGroupObjOk returns a tuple with the AccessGroupObj field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EndpointDeviceDetails) GetAccessGroupObjOk() (*DeviceAccessGroup, bool) {
-	if o == nil {
+	if o == nil || o.AccessGroupObj == nil {
 		return nil, false
 	}
-	return &o.AccessGroupObj, true
+	return o.AccessGroupObj, true
 }
 
-// SetAccessGroupObj sets field value
+// HasAccessGroupObj returns a boolean if a field has been set.
+func (o *EndpointDeviceDetails) HasAccessGroupObj() bool {
+	if o != nil && o.AccessGroupObj != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessGroupObj gets a reference to the given DeviceAccessGroup and assigns it to the AccessGroupObj field.
 func (o *EndpointDeviceDetails) SetAccessGroupObj(v DeviceAccessGroup) {
-	o.AccessGroupObj = v
+	o.AccessGroupObj = &v
 }
 
 // GetExpiring returns the Expiring field value if set, zero value otherwise.
@@ -420,7 +427,7 @@ func (o EndpointDeviceDetails) MarshalJSON() ([]byte, error) {
 	if o.AccessGroup.IsSet() {
 		toSerialize["access_group"] = o.AccessGroup.Get()
 	}
-	if true {
+	if o.AccessGroupObj != nil {
 		toSerialize["access_group_obj"] = o.AccessGroupObj
 	}
 	if o.Expiring != nil {

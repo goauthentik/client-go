@@ -19,7 +19,7 @@ import (
 type AgentConfig struct {
 	DeviceId                     string                 `json:"device_id"`
 	RefreshInterval              int32                  `json:"refresh_interval"`
-	AuthorizationFlow            string                 `json:"authorization_flow"`
+	AuthorizationFlow            NullableString         `json:"authorization_flow"`
 	Jwks                         map[string]interface{} `json:"jwks"`
 	NssUidOffset                 int32                  `json:"nss_uid_offset"`
 	NssGidOffset                 int32                  `json:"nss_gid_offset"`
@@ -31,7 +31,7 @@ type AgentConfig struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgentConfig(deviceId string, refreshInterval int32, authorizationFlow string, jwks map[string]interface{}, nssUidOffset int32, nssGidOffset int32, authTerminateSessionOnExpiry bool, systemConfig Config) *AgentConfig {
+func NewAgentConfig(deviceId string, refreshInterval int32, authorizationFlow NullableString, jwks map[string]interface{}, nssUidOffset int32, nssGidOffset int32, authTerminateSessionOnExpiry bool, systemConfig Config) *AgentConfig {
 	this := AgentConfig{}
 	this.DeviceId = deviceId
 	this.RefreshInterval = refreshInterval
@@ -101,27 +101,29 @@ func (o *AgentConfig) SetRefreshInterval(v int32) {
 }
 
 // GetAuthorizationFlow returns the AuthorizationFlow field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *AgentConfig) GetAuthorizationFlow() string {
-	if o == nil {
+	if o == nil || o.AuthorizationFlow.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AuthorizationFlow
+	return *o.AuthorizationFlow.Get()
 }
 
 // GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AgentConfig) GetAuthorizationFlowOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AuthorizationFlow, true
+	return o.AuthorizationFlow.Get(), o.AuthorizationFlow.IsSet()
 }
 
 // SetAuthorizationFlow sets field value
 func (o *AgentConfig) SetAuthorizationFlow(v string) {
-	o.AuthorizationFlow = v
+	o.AuthorizationFlow.Set(&v)
 }
 
 // GetJwks returns the Jwks field value
@@ -253,7 +255,7 @@ func (o AgentConfig) MarshalJSON() ([]byte, error) {
 		toSerialize["refresh_interval"] = o.RefreshInterval
 	}
 	if true {
-		toSerialize["authorization_flow"] = o.AuthorizationFlow
+		toSerialize["authorization_flow"] = o.AuthorizationFlow.Get()
 	}
 	if true {
 		toSerialize["jwks"] = o.Jwks
