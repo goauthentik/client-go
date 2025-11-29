@@ -228,6 +228,8 @@ Class | Method | HTTP request | Description
 *EndpointsApi* | [**EndpointsAgentsEnrollmentTokensUpdate**](docs/EndpointsApi.md#endpointsagentsenrollmenttokensupdate) | **Put** /endpoints/agents/enrollment_tokens/{token_uuid}/ | 
 *EndpointsApi* | [**EndpointsAgentsEnrollmentTokensUsedByList**](docs/EndpointsApi.md#endpointsagentsenrollmenttokensusedbylist) | **Get** /endpoints/agents/enrollment_tokens/{token_uuid}/used_by/ | 
 *EndpointsApi* | [**EndpointsAgentsEnrollmentTokensViewKeyRetrieve**](docs/EndpointsApi.md#endpointsagentsenrollmenttokensviewkeyretrieve) | **Get** /endpoints/agents/enrollment_tokens/{token_uuid}/view_key/ | 
+*EndpointsApi* | [**EndpointsAgentsPssoRegisterDeviceCreate**](docs/EndpointsApi.md#endpointsagentspssoregisterdevicecreate) | **Post** /endpoints/agents/psso/register/device/ | 
+*EndpointsApi* | [**EndpointsAgentsPssoRegisterUserCreate**](docs/EndpointsApi.md#endpointsagentspssoregisterusercreate) | **Post** /endpoints/agents/psso/register/user/ | 
 *EndpointsApi* | [**EndpointsConnectorsDestroy**](docs/EndpointsApi.md#endpointsconnectorsdestroy) | **Delete** /endpoints/connectors/{connector_uuid}/ | 
 *EndpointsApi* | [**EndpointsConnectorsList**](docs/EndpointsApi.md#endpointsconnectorslist) | **Get** /endpoints/connectors/ | 
 *EndpointsApi* | [**EndpointsConnectorsRetrieve**](docs/EndpointsApi.md#endpointsconnectorsretrieve) | **Get** /endpoints/connectors/{connector_uuid}/ | 
@@ -1128,6 +1130,9 @@ Class | Method | HTTP request | Description
  - [AgentConfig](docs/AgentConfig.md)
  - [AgentConnector](docs/AgentConnector.md)
  - [AgentConnectorRequest](docs/AgentConnectorRequest.md)
+ - [AgentPSSODeviceRegistrationRequest](docs/AgentPSSODeviceRegistrationRequest.md)
+ - [AgentPSSODeviceRegistrationResponse](docs/AgentPSSODeviceRegistrationResponse.md)
+ - [AgentPSSOUserRegistrationRequest](docs/AgentPSSOUserRegistrationRequest.md)
  - [AgentTokenResponse](docs/AgentTokenResponse.md)
  - [AlgEnum](docs/AlgEnum.md)
  - [App](docs/App.md)

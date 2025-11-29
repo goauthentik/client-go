@@ -8202,6 +8202,66 @@ paths:
       - authentik: []
       tags:
       - endpoints
+  /endpoints/agents/psso/register/device/:
+    post:
+      operationId: endpoints_agents_psso_register_device_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentPSSODeviceRegistrationRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentPSSODeviceRegistrationResponse'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - endpoints
+  /endpoints/agents/psso/register/user/:
+    post:
+      operationId: endpoints_agents_psso_register_user_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentPSSOUserRegistrationRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSelf'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - endpoints
   /endpoints/connectors/:
     get:
       description: Connector Viewset
@@ -49706,6 +49766,83 @@ components:
           type: array
       required:
       - name
+      type: object
+    AgentPSSODeviceRegistrationRequest:
+      description: Base serializer class which doesn't implement create/update methods
+      example:
+        device_encryption_key: device_encryption_key
+        device_signing_key: device_signing_key
+        enc_key_id: enc_key_id
+        sign_key_id: sign_key_id
+      properties:
+        device_signing_key:
+          minLength: 1
+          type: string
+        device_encryption_key:
+          minLength: 1
+          type: string
+        sign_key_id:
+          minLength: 1
+          type: string
+        enc_key_id:
+          minLength: 1
+          type: string
+      required:
+      - device_encryption_key
+      - device_signing_key
+      - enc_key_id
+      - sign_key_id
+      type: object
+    AgentPSSODeviceRegistrationResponse:
+      description: Base serializer class which doesn't implement create/update methods
+      example:
+        audience: audience
+        jwks_endpoint: jwks_endpoint
+        nonce_endpoint: nonce_endpoint
+        client_id: client_id
+        issuer: issuer
+        token_endpoint: token_endpoint
+      properties:
+        client_id:
+          type: string
+        issuer:
+          type: string
+        token_endpoint:
+          type: string
+        jwks_endpoint:
+          type: string
+        audience:
+          type: string
+        nonce_endpoint:
+          type: string
+      required:
+      - audience
+      - client_id
+      - issuer
+      - jwks_endpoint
+      - nonce_endpoint
+      - token_endpoint
+      type: object
+    AgentPSSOUserRegistrationRequest:
+      description: Base serializer class which doesn't implement create/update methods
+      example:
+        enclave_key_id: enclave_key_id
+        user_auth: user_auth
+        user_secure_enclave_key: user_secure_enclave_key
+      properties:
+        user_auth:
+          minLength: 1
+          type: string
+        user_secure_enclave_key:
+          minLength: 1
+          type: string
+        enclave_key_id:
+          minLength: 1
+          type: string
+      required:
+      - enclave_key_id
+      - user_auth
+      - user_secure_enclave_key
       type: object
     AgentTokenResponse:
       description: Base serializer class which doesn't implement create/update methods

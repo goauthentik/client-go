@@ -33,6 +33,9 @@ docs/AgentAuthenticationResponse.md
 docs/AgentConfig.md
 docs/AgentConnector.md
 docs/AgentConnectorRequest.md
+docs/AgentPSSODeviceRegistrationRequest.md
+docs/AgentPSSODeviceRegistrationResponse.md
+docs/AgentPSSOUserRegistrationRequest.md
 docs/AgentTokenResponse.md
 docs/AlgEnum.md
 docs/App.md
@@ -886,6 +889,9 @@ model_agent_authentication_response.go
 model_agent_config.go
 model_agent_connector.go
 model_agent_connector_request.go
+model_agent_psso_device_registration_request.go
+model_agent_psso_device_registration_response.go
+model_agent_psso_user_registration_request.go
 model_agent_token_response.go
 model_alg_enum.go
 model_app.go
