@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
 **SnapshotExpiry** | Pointer to **string** |  | [optional] 
+**AuthSessionDuration** | Pointer to **string** |  | [optional] 
 **AuthTerminateSessionOnExpiry** | Pointer to **bool** |  | [optional] 
 **RefreshInterval** | Pointer to **string** |  | [optional] 
 **AuthorizationFlow** | Pointer to **NullableString** |  | [optional] 
@@ -213,6 +214,31 @@ SetSnapshotExpiry sets SnapshotExpiry field to given value.
 `func (o *AgentConnector) HasSnapshotExpiry() bool`
 
 HasSnapshotExpiry returns a boolean if a field has been set.
+
+### GetAuthSessionDuration
+
+`func (o *AgentConnector) GetAuthSessionDuration() string`
+
+GetAuthSessionDuration returns the AuthSessionDuration field if non-nil, zero value otherwise.
+
+### GetAuthSessionDurationOk
+
+`func (o *AgentConnector) GetAuthSessionDurationOk() (*string, bool)`
+
+GetAuthSessionDurationOk returns a tuple with the AuthSessionDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthSessionDuration
+
+`func (o *AgentConnector) SetAuthSessionDuration(v string)`
+
+SetAuthSessionDuration sets AuthSessionDuration field to given value.
+
+### HasAuthSessionDuration
+
+`func (o *AgentConnector) HasAuthSessionDuration() bool`
+
+HasAuthSessionDuration returns a boolean if a field has been set.
 
 ### GetAuthTerminateSessionOnExpiry
 

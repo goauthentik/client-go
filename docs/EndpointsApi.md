@@ -25,6 +25,8 @@ Method | HTTP request | Description
 [**EndpointsAgentsEnrollmentTokensUpdate**](EndpointsApi.md#EndpointsAgentsEnrollmentTokensUpdate) | **Put** /endpoints/agents/enrollment_tokens/{token_uuid}/ | 
 [**EndpointsAgentsEnrollmentTokensUsedByList**](EndpointsApi.md#EndpointsAgentsEnrollmentTokensUsedByList) | **Get** /endpoints/agents/enrollment_tokens/{token_uuid}/used_by/ | 
 [**EndpointsAgentsEnrollmentTokensViewKeyRetrieve**](EndpointsApi.md#EndpointsAgentsEnrollmentTokensViewKeyRetrieve) | **Get** /endpoints/agents/enrollment_tokens/{token_uuid}/view_key/ | 
+[**EndpointsAgentsPssoRegisterDeviceCreate**](EndpointsApi.md#EndpointsAgentsPssoRegisterDeviceCreate) | **Post** /endpoints/agents/psso/register/device/ | 
+[**EndpointsAgentsPssoRegisterUserCreate**](EndpointsApi.md#EndpointsAgentsPssoRegisterUserCreate) | **Post** /endpoints/agents/psso/register/user/ | 
 [**EndpointsConnectorsDestroy**](EndpointsApi.md#EndpointsConnectorsDestroy) | **Delete** /endpoints/connectors/{connector_uuid}/ | 
 [**EndpointsConnectorsList**](EndpointsApi.md#EndpointsConnectorsList) | **Get** /endpoints/connectors/ | 
 [**EndpointsConnectorsRetrieve**](EndpointsApi.md#EndpointsConnectorsRetrieve) | **Get** /endpoints/connectors/{connector_uuid}/ | 
@@ -1494,6 +1496,134 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsAgentsPssoRegisterDeviceCreate
+
+> AgentPSSODeviceRegistrationResponse EndpointsAgentsPssoRegisterDeviceCreate(ctx).AgentPSSODeviceRegistrationRequest(agentPSSODeviceRegistrationRequest).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    agentPSSODeviceRegistrationRequest := *openapiclient.NewAgentPSSODeviceRegistrationRequest("DeviceSigningKey_example", "DeviceEncryptionKey_example", "SignKeyId_example", "EncKeyId_example") // AgentPSSODeviceRegistrationRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndpointsApi.EndpointsAgentsPssoRegisterDeviceCreate(context.Background()).AgentPSSODeviceRegistrationRequest(agentPSSODeviceRegistrationRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsAgentsPssoRegisterDeviceCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndpointsAgentsPssoRegisterDeviceCreate`: AgentPSSODeviceRegistrationResponse
+    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsAgentsPssoRegisterDeviceCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsAgentsPssoRegisterDeviceCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **agentPSSODeviceRegistrationRequest** | [**AgentPSSODeviceRegistrationRequest**](AgentPSSODeviceRegistrationRequest.md) |  | 
+
+### Return type
+
+[**AgentPSSODeviceRegistrationResponse**](AgentPSSODeviceRegistrationResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsAgentsPssoRegisterUserCreate
+
+> UserSelf EndpointsAgentsPssoRegisterUserCreate(ctx).AgentPSSOUserRegistrationRequest(agentPSSOUserRegistrationRequest).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    agentPSSOUserRegistrationRequest := *openapiclient.NewAgentPSSOUserRegistrationRequest("UserAuth_example", "UserSecureEnclaveKey_example", "EnclaveKeyId_example") // AgentPSSOUserRegistrationRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndpointsApi.EndpointsAgentsPssoRegisterUserCreate(context.Background()).AgentPSSOUserRegistrationRequest(agentPSSOUserRegistrationRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsAgentsPssoRegisterUserCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndpointsAgentsPssoRegisterUserCreate`: UserSelf
+    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsAgentsPssoRegisterUserCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsAgentsPssoRegisterUserCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **agentPSSOUserRegistrationRequest** | [**AgentPSSOUserRegistrationRequest**](AgentPSSOUserRegistrationRequest.md) |  | 
+
+### Return type
+
+[**UserSelf**](UserSelf.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

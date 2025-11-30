@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
 **SnapshotExpiry** | Pointer to **string** |  | [optional] 
+**AuthSessionDuration** | Pointer to **string** |  | [optional] 
 **AuthTerminateSessionOnExpiry** | Pointer to **bool** |  | [optional] 
 **RefreshInterval** | Pointer to **string** |  | [optional] 
 **AuthorizationFlow** | Pointer to **NullableString** |  | [optional] 
@@ -134,6 +135,31 @@ SetSnapshotExpiry sets SnapshotExpiry field to given value.
 `func (o *PatchedAgentConnectorRequest) HasSnapshotExpiry() bool`
 
 HasSnapshotExpiry returns a boolean if a field has been set.
+
+### GetAuthSessionDuration
+
+`func (o *PatchedAgentConnectorRequest) GetAuthSessionDuration() string`
+
+GetAuthSessionDuration returns the AuthSessionDuration field if non-nil, zero value otherwise.
+
+### GetAuthSessionDurationOk
+
+`func (o *PatchedAgentConnectorRequest) GetAuthSessionDurationOk() (*string, bool)`
+
+GetAuthSessionDurationOk returns a tuple with the AuthSessionDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthSessionDuration
+
+`func (o *PatchedAgentConnectorRequest) SetAuthSessionDuration(v string)`
+
+SetAuthSessionDuration sets AuthSessionDuration field to given value.
+
+### HasAuthSessionDuration
+
+`func (o *PatchedAgentConnectorRequest) HasAuthSessionDuration() bool`
+
+HasAuthSessionDuration returns a boolean if a field has been set.
 
 ### GetAuthTerminateSessionOnExpiry
 

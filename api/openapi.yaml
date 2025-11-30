@@ -8202,6 +8202,66 @@ paths:
       - authentik: []
       tags:
       - endpoints
+  /endpoints/agents/psso/register/device/:
+    post:
+      operationId: endpoints_agents_psso_register_device_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentPSSODeviceRegistrationRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentPSSODeviceRegistrationResponse'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - endpoints
+  /endpoints/agents/psso/register/user/:
+    post:
+      operationId: endpoints_agents_psso_register_user_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentPSSOUserRegistrationRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSelf'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      tags:
+      - endpoints
   /endpoints/connectors/:
     get:
       description: Connector Viewset
@@ -49589,6 +49649,7 @@ components:
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         meta_model_name: meta_model_name
         snapshot_expiry: snapshot_expiry
+        auth_session_duration: auth_session_duration
         connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         jwt_federation_providers:
@@ -49620,6 +49681,8 @@ components:
           readOnly: true
           type: string
         snapshot_expiry:
+          type: string
+        auth_session_duration:
           type: string
         auth_terminate_session_on_expiry:
           type: boolean
@@ -49659,6 +49722,7 @@ components:
         refresh_interval: refresh_interval
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         snapshot_expiry: snapshot_expiry
+        auth_session_duration: auth_session_duration
         connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         jwt_federation_providers:
@@ -49677,6 +49741,9 @@ components:
         enabled:
           type: boolean
         snapshot_expiry:
+          minLength: 1
+          type: string
+        auth_session_duration:
           minLength: 1
           type: string
         auth_terminate_session_on_expiry:
@@ -49706,6 +49773,83 @@ components:
           type: array
       required:
       - name
+      type: object
+    AgentPSSODeviceRegistrationRequest:
+      description: Register Apple device via Platform SSO
+      example:
+        device_encryption_key: device_encryption_key
+        device_signing_key: device_signing_key
+        enc_key_id: enc_key_id
+        sign_key_id: sign_key_id
+      properties:
+        device_signing_key:
+          minLength: 1
+          type: string
+        device_encryption_key:
+          minLength: 1
+          type: string
+        sign_key_id:
+          minLength: 1
+          type: string
+        enc_key_id:
+          minLength: 1
+          type: string
+      required:
+      - device_encryption_key
+      - device_signing_key
+      - enc_key_id
+      - sign_key_id
+      type: object
+    AgentPSSODeviceRegistrationResponse:
+      description: authentik settings for Platform SSO tokens
+      example:
+        audience: audience
+        jwks_endpoint: jwks_endpoint
+        nonce_endpoint: nonce_endpoint
+        client_id: client_id
+        issuer: issuer
+        token_endpoint: token_endpoint
+      properties:
+        client_id:
+          type: string
+        issuer:
+          type: string
+        token_endpoint:
+          type: string
+        jwks_endpoint:
+          type: string
+        audience:
+          type: string
+        nonce_endpoint:
+          type: string
+      required:
+      - audience
+      - client_id
+      - issuer
+      - jwks_endpoint
+      - nonce_endpoint
+      - token_endpoint
+      type: object
+    AgentPSSOUserRegistrationRequest:
+      description: Register Apple device user via Platform SSO
+      example:
+        enclave_key_id: enclave_key_id
+        user_auth: user_auth
+        user_secure_enclave_key: user_secure_enclave_key
+      properties:
+        user_auth:
+          minLength: 1
+          type: string
+        user_secure_enclave_key:
+          minLength: 1
+          type: string
+        enclave_key_id:
+          minLength: 1
+          type: string
+      required:
+      - enclave_key_id
+      - user_auth
+      - user_secure_enclave_key
       type: object
     AgentTokenResponse:
       description: Base serializer class which doesn't implement create/update methods
@@ -62240,6 +62384,7 @@ components:
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           meta_model_name: meta_model_name
           snapshot_expiry: snapshot_expiry
+          auth_session_duration: auth_session_duration
           connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           jwt_federation_providers:
@@ -62257,6 +62402,7 @@ components:
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           meta_model_name: meta_model_name
           snapshot_expiry: snapshot_expiry
+          auth_session_duration: auth_session_duration
           connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           jwt_federation_providers:
@@ -72873,6 +73019,7 @@ components:
         refresh_interval: refresh_interval
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         snapshot_expiry: snapshot_expiry
+        auth_session_duration: auth_session_duration
         connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         jwt_federation_providers:
@@ -72891,6 +73038,9 @@ components:
         enabled:
           type: boolean
         snapshot_expiry:
+          minLength: 1
+          type: string
+        auth_session_duration:
           minLength: 1
           type: string
         auth_terminate_session_on_expiry:

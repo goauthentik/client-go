@@ -2751,6 +2751,262 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensViewKeyRetrieveExec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiEndpointsAgentsPssoRegisterDeviceCreateRequest struct {
+	ctx                                context.Context
+	ApiService                         *EndpointsApiService
+	agentPSSODeviceRegistrationRequest *AgentPSSODeviceRegistrationRequest
+}
+
+func (r ApiEndpointsAgentsPssoRegisterDeviceCreateRequest) AgentPSSODeviceRegistrationRequest(agentPSSODeviceRegistrationRequest AgentPSSODeviceRegistrationRequest) ApiEndpointsAgentsPssoRegisterDeviceCreateRequest {
+	r.agentPSSODeviceRegistrationRequest = &agentPSSODeviceRegistrationRequest
+	return r
+}
+
+func (r ApiEndpointsAgentsPssoRegisterDeviceCreateRequest) Execute() (*AgentPSSODeviceRegistrationResponse, *http.Response, error) {
+	return r.ApiService.EndpointsAgentsPssoRegisterDeviceCreateExecute(r)
+}
+
+/*
+EndpointsAgentsPssoRegisterDeviceCreate Method for EndpointsAgentsPssoRegisterDeviceCreate
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiEndpointsAgentsPssoRegisterDeviceCreateRequest
+*/
+func (a *EndpointsApiService) EndpointsAgentsPssoRegisterDeviceCreate(ctx context.Context) ApiEndpointsAgentsPssoRegisterDeviceCreateRequest {
+	return ApiEndpointsAgentsPssoRegisterDeviceCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return AgentPSSODeviceRegistrationResponse
+func (a *EndpointsApiService) EndpointsAgentsPssoRegisterDeviceCreateExecute(r ApiEndpointsAgentsPssoRegisterDeviceCreateRequest) (*AgentPSSODeviceRegistrationResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AgentPSSODeviceRegistrationResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsPssoRegisterDeviceCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/endpoints/agents/psso/register/device/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.agentPSSODeviceRegistrationRequest == nil {
+		return localVarReturnValue, nil, reportError("agentPSSODeviceRegistrationRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.agentPSSODeviceRegistrationRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiEndpointsAgentsPssoRegisterUserCreateRequest struct {
+	ctx                              context.Context
+	ApiService                       *EndpointsApiService
+	agentPSSOUserRegistrationRequest *AgentPSSOUserRegistrationRequest
+}
+
+func (r ApiEndpointsAgentsPssoRegisterUserCreateRequest) AgentPSSOUserRegistrationRequest(agentPSSOUserRegistrationRequest AgentPSSOUserRegistrationRequest) ApiEndpointsAgentsPssoRegisterUserCreateRequest {
+	r.agentPSSOUserRegistrationRequest = &agentPSSOUserRegistrationRequest
+	return r
+}
+
+func (r ApiEndpointsAgentsPssoRegisterUserCreateRequest) Execute() (*UserSelf, *http.Response, error) {
+	return r.ApiService.EndpointsAgentsPssoRegisterUserCreateExecute(r)
+}
+
+/*
+EndpointsAgentsPssoRegisterUserCreate Method for EndpointsAgentsPssoRegisterUserCreate
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiEndpointsAgentsPssoRegisterUserCreateRequest
+*/
+func (a *EndpointsApiService) EndpointsAgentsPssoRegisterUserCreate(ctx context.Context) ApiEndpointsAgentsPssoRegisterUserCreateRequest {
+	return ApiEndpointsAgentsPssoRegisterUserCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return UserSelf
+func (a *EndpointsApiService) EndpointsAgentsPssoRegisterUserCreateExecute(r ApiEndpointsAgentsPssoRegisterUserCreateRequest) (*UserSelf, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserSelf
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsPssoRegisterUserCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/endpoints/agents/psso/register/user/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.agentPSSOUserRegistrationRequest == nil {
+		return localVarReturnValue, nil, reportError("agentPSSOUserRegistrationRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.agentPSSOUserRegistrationRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiEndpointsConnectorsDestroyRequest struct {
 	ctx           context.Context
 	ApiService    *EndpointsApiService

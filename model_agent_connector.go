@@ -29,6 +29,7 @@ type AgentConnector struct {
 	// Return internal model name
 	MetaModelName                string         `json:"meta_model_name"`
 	SnapshotExpiry               *string        `json:"snapshot_expiry,omitempty"`
+	AuthSessionDuration          *string        `json:"auth_session_duration,omitempty"`
 	AuthTerminateSessionOnExpiry *bool          `json:"auth_terminate_session_on_expiry,omitempty"`
 	RefreshInterval              *string        `json:"refresh_interval,omitempty"`
 	AuthorizationFlow            NullableString `json:"authorization_flow,omitempty"`
@@ -274,6 +275,38 @@ func (o *AgentConnector) HasSnapshotExpiry() bool {
 // SetSnapshotExpiry gets a reference to the given string and assigns it to the SnapshotExpiry field.
 func (o *AgentConnector) SetSnapshotExpiry(v string) {
 	o.SnapshotExpiry = &v
+}
+
+// GetAuthSessionDuration returns the AuthSessionDuration field value if set, zero value otherwise.
+func (o *AgentConnector) GetAuthSessionDuration() string {
+	if o == nil || o.AuthSessionDuration == nil {
+		var ret string
+		return ret
+	}
+	return *o.AuthSessionDuration
+}
+
+// GetAuthSessionDurationOk returns a tuple with the AuthSessionDuration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AgentConnector) GetAuthSessionDurationOk() (*string, bool) {
+	if o == nil || o.AuthSessionDuration == nil {
+		return nil, false
+	}
+	return o.AuthSessionDuration, true
+}
+
+// HasAuthSessionDuration returns a boolean if a field has been set.
+func (o *AgentConnector) HasAuthSessionDuration() bool {
+	if o != nil && o.AuthSessionDuration != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthSessionDuration gets a reference to the given string and assigns it to the AuthSessionDuration field.
+func (o *AgentConnector) SetAuthSessionDuration(v string) {
+	o.AuthSessionDuration = &v
 }
 
 // GetAuthTerminateSessionOnExpiry returns the AuthTerminateSessionOnExpiry field value if set, zero value otherwise.
@@ -547,6 +580,9 @@ func (o AgentConnector) MarshalJSON() ([]byte, error) {
 	}
 	if o.SnapshotExpiry != nil {
 		toSerialize["snapshot_expiry"] = o.SnapshotExpiry
+	}
+	if o.AuthSessionDuration != nil {
+		toSerialize["auth_session_duration"] = o.AuthSessionDuration
 	}
 	if o.AuthTerminateSessionOnExpiry != nil {
 		toSerialize["auth_terminate_session_on_expiry"] = o.AuthTerminateSessionOnExpiry
