@@ -44232,6 +44232,296 @@ paths:
       - authentik: []
       tags:
       - stages
+  /stages/endpoints/:
+    get:
+      description: EndpointStage Viewset
+      operationId: stages_endpoints_list
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedEndpointStageList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    post:
+      description: EndpointStage Viewset
+      operationId: stages_endpoints_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EndpointStageRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+  /stages/endpoints/{stage_uuid}/:
+    delete:
+      description: EndpointStage Viewset
+      operationId: stages_endpoints_destroy
+      parameters:
+      - description: A UUID string identifying this Endpoint Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    get:
+      description: EndpointStage Viewset
+      operationId: stages_endpoints_retrieve
+      parameters:
+      - description: A UUID string identifying this Endpoint Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    patch:
+      description: EndpointStage Viewset
+      operationId: stages_endpoints_partial_update
+      parameters:
+      - description: A UUID string identifying this Endpoint Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedEndpointStageRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+    put:
+      description: EndpointStage Viewset
+      operationId: stages_endpoints_update
+      parameters:
+      - description: A UUID string identifying this Endpoint Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EndpointStageRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointStage'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
+  /stages/endpoints/{stage_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: stages_endpoints_used_by_list
+      parameters:
+      - description: A UUID string identifying this Endpoint Stage.
+        explode: false
+        in: path
+        name: stage_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - stages
   /stages/identification/:
     get:
       description: IdentificationStage Viewset
@@ -49592,14 +49882,16 @@ components:
     AgentConfig:
       description: Base serializer class which doesn't implement create/update methods
       example:
+        jwks_auth:
+          key: ""
         nss_uid_offset: 6
         auth_terminate_session_on_expiry: true
         refresh_interval: 0
         authorization_flow: authorization_flow
         device_id: device_id
-        jwks:
-          key: ""
         system_config: ""
+        jwks_challenge:
+          key: ""
         nss_gid_offset: 1
       properties:
         device_id:
@@ -49612,7 +49904,11 @@ components:
           nullable: true
           readOnly: true
           type: string
-        jwks:
+        jwks_auth:
+          additionalProperties: {}
+          readOnly: true
+          type: object
+        jwks_challenge:
           additionalProperties: {}
           readOnly: true
           type: object
@@ -49630,7 +49926,8 @@ components:
       - auth_terminate_session_on_expiry
       - authorization_flow
       - device_id
-      - jwks
+      - jwks_auth
+      - jwks_challenge
       - nss_gid_offset
       - nss_uid_offset
       - refresh_interval
@@ -52725,6 +53022,7 @@ components:
           ak-stage-consent: '#/components/schemas/ConsentChallenge'
           ak-stage-dummy: '#/components/schemas/DummyChallenge'
           ak-stage-email: '#/components/schemas/EmailChallenge'
+          ak-stage-endpoint-agent: '#/components/schemas/EndpointAgentChallenge'
           ak-stage-flow-error: '#/components/schemas/FlowErrorChallenge'
           xak-flow-frame: '#/components/schemas/FrameChallenge'
           ak-stage-identification: '#/components/schemas/IdentificationChallenge'
@@ -52756,6 +53054,7 @@ components:
       - $ref: '#/components/schemas/ConsentChallenge'
       - $ref: '#/components/schemas/DummyChallenge'
       - $ref: '#/components/schemas/EmailChallenge'
+      - $ref: '#/components/schemas/EndpointAgentChallenge'
       - $ref: '#/components/schemas/FlowErrorChallenge'
       - $ref: '#/components/schemas/FrameChallenge'
       - $ref: '#/components/schemas/IdentificationChallenge'
@@ -54839,6 +55138,37 @@ components:
       - provider
       - provider_obj
       type: object
+    EndpointAgentChallenge:
+      description: Signed challenge for authentik agent to respond to
+      properties:
+        flow_info:
+          $ref: '#/components/schemas/ContextualFlowInfo'
+        component:
+          default: ak-stage-endpoint-agent
+          type: string
+        response_errors:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/ErrorDetail'
+            type: array
+          type: object
+        challenge:
+          type: string
+      required:
+      - challenge
+      type: object
+    EndpointAgentChallengeResponseRequest:
+      description: Response to signed challenge
+      properties:
+        component:
+          default: ak-stage-endpoint-agent
+          minLength: 1
+          type: string
+        response:
+          minLength: 1
+          nullable: true
+          type: string
+      type: object
     EndpointAuthModeEnum:
       enum:
       - static
@@ -55055,6 +55385,130 @@ components:
       - name
       - protocol
       - provider
+      type: object
+    EndpointStage:
+      description: EndpointStage Serializer
+      example:
+        mode: null
+        component: component
+        verbose_name: verbose_name
+        verbose_name_plural: verbose_name_plural
+        meta_model_name: meta_model_name
+        connector: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        connector_obj: ""
+        flow_set:
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          background: background
+          denied_action: ""
+          name: name
+          export_url: export_url
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          designation: ""
+          title: title
+          slug: slug
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          background: background
+          denied_action: ""
+          name: name
+          export_url: export_url
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          designation: ""
+          title: title
+          slug: slug
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Stage uuid
+          type: string
+        name:
+          type: string
+        component:
+          description: Get object type so that we know how to edit the object
+          readOnly: true
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/FlowSet'
+          type: array
+        connector:
+          format: uuid
+          type: string
+        connector_obj:
+          allOf:
+          - $ref: '#/components/schemas/Connector'
+          readOnly: true
+        mode:
+          $ref: '#/components/schemas/StageModeEnum'
+      required:
+      - component
+      - connector
+      - connector_obj
+      - meta_model_name
+      - name
+      - pk
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    EndpointStageRequest:
+      description: EndpointStage Serializer
+      example:
+        mode: null
+        connector: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        flow_set:
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+      properties:
+        name:
+          minLength: 1
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/FlowSetRequest'
+          type: array
+        connector:
+          format: uuid
+          type: string
+        mode:
+          $ref: '#/components/schemas/StageModeEnum'
+      required:
+      - connector
+      - name
       type: object
     EnrollRequest:
       description: Base serializer class which doesn't implement create/update methods
@@ -55947,6 +56401,7 @@ components:
           ak-stage-consent: '#/components/schemas/ConsentChallengeResponseRequest'
           ak-stage-dummy: '#/components/schemas/DummyChallengeResponseRequest'
           ak-stage-email: '#/components/schemas/EmailChallengeResponseRequest'
+          ak-stage-endpoint-agent: '#/components/schemas/EndpointAgentChallengeResponseRequest'
           xak-flow-frame: '#/components/schemas/FrameChallengeResponseRequest'
           ak-stage-identification: '#/components/schemas/IdentificationChallengeResponseRequest'
           ak-provider-iframe-logout: '#/components/schemas/IframeLogoutChallengeResponseRequest'
@@ -55974,6 +56429,7 @@ components:
       - $ref: '#/components/schemas/ConsentChallengeResponseRequest'
       - $ref: '#/components/schemas/DummyChallengeResponseRequest'
       - $ref: '#/components/schemas/EmailChallengeResponseRequest'
+      - $ref: '#/components/schemas/EndpointAgentChallengeResponseRequest'
       - $ref: '#/components/schemas/FrameChallengeResponseRequest'
       - $ref: '#/components/schemas/IdentificationChallengeResponseRequest'
       - $ref: '#/components/schemas/IframeLogoutChallengeResponseRequest'
@@ -60661,7 +61117,7 @@ components:
             $ref: '#/components/schemas/FlowSet'
           type: array
         mode:
-          $ref: '#/components/schemas/MutualTLSStageModeEnum'
+          $ref: '#/components/schemas/StageModeEnum'
         certificate_authorities:
           description: Configure certificate authorities to validate the certificate
             against. This option has a higher priority than the `client_certificate`
@@ -60685,11 +61141,6 @@ components:
       - verbose_name
       - verbose_name_plural
       type: object
-    MutualTLSStageModeEnum:
-      enum:
-      - optional
-      - required
-      type: string
     MutualTLSStageRequest:
       description: MutualTLSStage Serializer
       example:
@@ -60726,7 +61177,7 @@ components:
             $ref: '#/components/schemas/FlowSetRequest'
           type: array
         mode:
-          $ref: '#/components/schemas/MutualTLSStageModeEnum'
+          $ref: '#/components/schemas/StageModeEnum'
         certificate_authorities:
           description: Configure certificate authorities to validate the certificate
             against. This option has a higher priority than the `client_certificate`
@@ -64641,6 +65092,102 @@ components:
         results:
           items:
             $ref: '#/components/schemas/Endpoint'
+          type: array
+        autocomplete:
+          additionalProperties: {}
+          type: object
+      required:
+      - autocomplete
+      - pagination
+      - results
+      type: object
+    PaginatedEndpointStageList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        autocomplete:
+          key: ""
+        results:
+        - mode: null
+          component: component
+          verbose_name: verbose_name
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          connector: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          connector_obj: ""
+          flow_set:
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+        - mode: null
+          component: component
+          verbose_name: verbose_name
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          connector: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          connector_obj: ""
+          flow_set:
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+          - policy_engine_mode: null
+            compatibility_mode: true
+            layout: null
+            policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            background: background
+            denied_action: ""
+            name: name
+            export_url: export_url
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            designation: ""
+            title: title
+            slug: slug
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/EndpointStage'
           type: array
         autocomplete:
           additionalProperties: {}
@@ -74234,6 +74781,43 @@ components:
           minimum: -2147483648
           type: integer
       type: object
+    PatchedEndpointStageRequest:
+      description: EndpointStage Serializer
+      example:
+        mode: null
+        connector: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        flow_set:
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+        - policy_engine_mode: null
+          compatibility_mode: true
+          layout: null
+          denied_action: ""
+          name: name
+          designation: ""
+          title: title
+          slug: slug
+      properties:
+        name:
+          minLength: 1
+          type: string
+        flow_set:
+          items:
+            $ref: '#/components/schemas/FlowSetRequest'
+          type: array
+        connector:
+          format: uuid
+          type: string
+        mode:
+          $ref: '#/components/schemas/StageModeEnum'
+      type: object
     PatchedEnrollmentTokenRequest:
       example:
         expiring: true
@@ -75585,7 +76169,7 @@ components:
             $ref: '#/components/schemas/FlowSetRequest'
           type: array
         mode:
-          $ref: '#/components/schemas/MutualTLSStageModeEnum'
+          $ref: '#/components/schemas/StageModeEnum'
         certificate_authorities:
           description: Configure certificate authorities to validate the certificate
             against. This option has a higher priority than the `client_certificate`
@@ -83919,6 +84503,11 @@ components:
       - verbose_name
       - verbose_name_plural
       type: object
+    StageModeEnum:
+      enum:
+      - optional
+      - required
+      type: string
     StagePrompt:
       description: Serializer for a single Prompt field
       example:
@@ -85134,6 +85723,7 @@ components:
         icon_url: icon_url
         component: component
         model_name: model_name
+        deprecated: false
         name: name
         description: description
         requires_enterprise: false
@@ -85149,6 +85739,9 @@ components:
         icon_url:
           type: string
         requires_enterprise:
+          default: false
+          type: boolean
+        deprecated:
           default: false
           type: boolean
       required:

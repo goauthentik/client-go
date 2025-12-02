@@ -17,9 +17,9 @@ import (
 
 // PatchedMutualTLSStageRequest MutualTLSStage Serializer
 type PatchedMutualTLSStageRequest struct {
-	Name    *string                 `json:"name,omitempty"`
-	FlowSet []FlowSetRequest        `json:"flow_set,omitempty"`
-	Mode    *MutualTLSStageModeEnum `json:"mode,omitempty"`
+	Name    *string          `json:"name,omitempty"`
+	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
+	Mode    *StageModeEnum   `json:"mode,omitempty"`
 	// Configure certificate authorities to validate the certificate against. This option has a higher priority than the `client_certificate` option on `Brand`.
 	CertificateAuthorities []string           `json:"certificate_authorities,omitempty"`
 	CertAttribute          *CertAttributeEnum `json:"cert_attribute,omitempty"`
@@ -108,9 +108,9 @@ func (o *PatchedMutualTLSStageRequest) SetFlowSet(v []FlowSetRequest) {
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise.
-func (o *PatchedMutualTLSStageRequest) GetMode() MutualTLSStageModeEnum {
+func (o *PatchedMutualTLSStageRequest) GetMode() StageModeEnum {
 	if o == nil || o.Mode == nil {
-		var ret MutualTLSStageModeEnum
+		var ret StageModeEnum
 		return ret
 	}
 	return *o.Mode
@@ -118,7 +118,7 @@ func (o *PatchedMutualTLSStageRequest) GetMode() MutualTLSStageModeEnum {
 
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedMutualTLSStageRequest) GetModeOk() (*MutualTLSStageModeEnum, bool) {
+func (o *PatchedMutualTLSStageRequest) GetModeOk() (*StageModeEnum, bool) {
 	if o == nil || o.Mode == nil {
 		return nil, false
 	}
@@ -134,8 +134,8 @@ func (o *PatchedMutualTLSStageRequest) HasMode() bool {
 	return false
 }
 
-// SetMode gets a reference to the given MutualTLSStageModeEnum and assigns it to the Mode field.
-func (o *PatchedMutualTLSStageRequest) SetMode(v MutualTLSStageModeEnum) {
+// SetMode gets a reference to the given StageModeEnum and assigns it to the Mode field.
+func (o *PatchedMutualTLSStageRequest) SetMode(v StageModeEnum) {
 	o.Mode = &v
 }
 

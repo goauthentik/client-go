@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
-**Mode** | [**MutualTLSStageModeEnum**](MutualTLSStageModeEnum.md) |  | 
+**Mode** | [**StageModeEnum**](StageModeEnum.md) |  | 
 **CertificateAuthorities** | Pointer to **[]string** | Configure certificate authorities to validate the certificate against. This option has a higher priority than the &#x60;client_certificate&#x60; option on &#x60;Brand&#x60;. | [optional] 
 **CertAttribute** | [**CertAttributeEnum**](CertAttributeEnum.md) |  | 
 **UserAttribute** | [**UserAttributeEnum**](UserAttributeEnum.md) |  | 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewMutualTLSStageRequest
 
-`func NewMutualTLSStageRequest(name string, mode MutualTLSStageModeEnum, certAttribute CertAttributeEnum, userAttribute UserAttributeEnum, ) *MutualTLSStageRequest`
+`func NewMutualTLSStageRequest(name string, mode StageModeEnum, certAttribute CertAttributeEnum, userAttribute UserAttributeEnum, ) *MutualTLSStageRequest`
 
 NewMutualTLSStageRequest instantiates a new MutualTLSStageRequest object
 This constructor will assign default values to properties that have it defined,
@@ -77,20 +77,20 @@ HasFlowSet returns a boolean if a field has been set.
 
 ### GetMode
 
-`func (o *MutualTLSStageRequest) GetMode() MutualTLSStageModeEnum`
+`func (o *MutualTLSStageRequest) GetMode() StageModeEnum`
 
 GetMode returns the Mode field if non-nil, zero value otherwise.
 
 ### GetModeOk
 
-`func (o *MutualTLSStageRequest) GetModeOk() (*MutualTLSStageModeEnum, bool)`
+`func (o *MutualTLSStageRequest) GetModeOk() (*StageModeEnum, bool)`
 
 GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMode
 
-`func (o *MutualTLSStageRequest) SetMode(v MutualTLSStageModeEnum)`
+`func (o *MutualTLSStageRequest) SetMode(v StageModeEnum)`
 
 SetMode sets Mode field to given value.
 

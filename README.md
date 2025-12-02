@@ -1005,6 +1005,13 @@ Class | Method | HTTP request | Description
 *StagesApi* | [**StagesEmailTemplatesList**](docs/StagesApi.md#stagesemailtemplateslist) | **Get** /stages/email/templates/ | 
 *StagesApi* | [**StagesEmailUpdate**](docs/StagesApi.md#stagesemailupdate) | **Put** /stages/email/{stage_uuid}/ | 
 *StagesApi* | [**StagesEmailUsedByList**](docs/StagesApi.md#stagesemailusedbylist) | **Get** /stages/email/{stage_uuid}/used_by/ | 
+*StagesApi* | [**StagesEndpointsCreate**](docs/StagesApi.md#stagesendpointscreate) | **Post** /stages/endpoints/ | 
+*StagesApi* | [**StagesEndpointsDestroy**](docs/StagesApi.md#stagesendpointsdestroy) | **Delete** /stages/endpoints/{stage_uuid}/ | 
+*StagesApi* | [**StagesEndpointsList**](docs/StagesApi.md#stagesendpointslist) | **Get** /stages/endpoints/ | 
+*StagesApi* | [**StagesEndpointsPartialUpdate**](docs/StagesApi.md#stagesendpointspartialupdate) | **Patch** /stages/endpoints/{stage_uuid}/ | 
+*StagesApi* | [**StagesEndpointsRetrieve**](docs/StagesApi.md#stagesendpointsretrieve) | **Get** /stages/endpoints/{stage_uuid}/ | 
+*StagesApi* | [**StagesEndpointsUpdate**](docs/StagesApi.md#stagesendpointsupdate) | **Put** /stages/endpoints/{stage_uuid}/ | 
+*StagesApi* | [**StagesEndpointsUsedByList**](docs/StagesApi.md#stagesendpointsusedbylist) | **Get** /stages/endpoints/{stage_uuid}/used_by/ | 
 *StagesApi* | [**StagesIdentificationCreate**](docs/StagesApi.md#stagesidentificationcreate) | **Post** /stages/identification/ | 
 *StagesApi* | [**StagesIdentificationDestroy**](docs/StagesApi.md#stagesidentificationdestroy) | **Delete** /stages/identification/{stage_uuid}/ | 
 *StagesApi* | [**StagesIdentificationList**](docs/StagesApi.md#stagesidentificationlist) | **Get** /stages/identification/ | 
@@ -1278,11 +1285,15 @@ Class | Method | HTTP request | Description
  - [EmailStage](docs/EmailStage.md)
  - [EmailStageRequest](docs/EmailStageRequest.md)
  - [Endpoint](docs/Endpoint.md)
+ - [EndpointAgentChallenge](docs/EndpointAgentChallenge.md)
+ - [EndpointAgentChallengeResponseRequest](docs/EndpointAgentChallengeResponseRequest.md)
  - [EndpointAuthModeEnum](docs/EndpointAuthModeEnum.md)
  - [EndpointDevice](docs/EndpointDevice.md)
  - [EndpointDeviceDetails](docs/EndpointDeviceDetails.md)
  - [EndpointDeviceRequest](docs/EndpointDeviceRequest.md)
  - [EndpointRequest](docs/EndpointRequest.md)
+ - [EndpointStage](docs/EndpointStage.md)
+ - [EndpointStageRequest](docs/EndpointStageRequest.md)
  - [EnrollRequest](docs/EnrollRequest.md)
  - [EnrollmentToken](docs/EnrollmentToken.md)
  - [EnrollmentTokenRequest](docs/EnrollmentTokenRequest.md)
@@ -1420,7 +1431,6 @@ Class | Method | HTTP request | Description
  - [ModelEnum](docs/ModelEnum.md)
  - [ModelRequest](docs/ModelRequest.md)
  - [MutualTLSStage](docs/MutualTLSStage.md)
- - [MutualTLSStageModeEnum](docs/MutualTLSStageModeEnum.md)
  - [MutualTLSStageRequest](docs/MutualTLSStageRequest.md)
  - [NativeLogoutChallenge](docs/NativeLogoutChallenge.md)
  - [NativeLogoutChallengeResponseRequest](docs/NativeLogoutChallengeResponseRequest.md)
@@ -1492,6 +1502,7 @@ Class | Method | HTTP request | Description
  - [PaginatedEmailStageList](docs/PaginatedEmailStageList.md)
  - [PaginatedEndpointDeviceList](docs/PaginatedEndpointDeviceList.md)
  - [PaginatedEndpointList](docs/PaginatedEndpointList.md)
+ - [PaginatedEndpointStageList](docs/PaginatedEndpointStageList.md)
  - [PaginatedEnrollmentTokenList](docs/PaginatedEnrollmentTokenList.md)
  - [PaginatedEventList](docs/PaginatedEventList.md)
  - [PaginatedEventMatcherPolicyList](docs/PaginatedEventMatcherPolicyList.md)
@@ -1649,6 +1660,7 @@ Class | Method | HTTP request | Description
  - [PatchedEmailStageRequest](docs/PatchedEmailStageRequest.md)
  - [PatchedEndpointDeviceRequest](docs/PatchedEndpointDeviceRequest.md)
  - [PatchedEndpointRequest](docs/PatchedEndpointRequest.md)
+ - [PatchedEndpointStageRequest](docs/PatchedEndpointStageRequest.md)
  - [PatchedEnrollmentTokenRequest](docs/PatchedEnrollmentTokenRequest.md)
  - [PatchedEventMatcherPolicyRequest](docs/PatchedEventMatcherPolicyRequest.md)
  - [PatchedEventRequest](docs/PatchedEventRequest.md)
@@ -1864,6 +1876,7 @@ Class | Method | HTTP request | Description
  - [SourceStageRequest](docs/SourceStageRequest.md)
  - [SourceType](docs/SourceType.md)
  - [Stage](docs/Stage.md)
+ - [StageModeEnum](docs/StageModeEnum.md)
  - [StagePrompt](docs/StagePrompt.md)
  - [StateEnum](docs/StateEnum.md)
  - [StaticDevice](docs/StaticDevice.md)

@@ -7,7 +7,8 @@ Name | Type | Description | Notes
 **DeviceId** | **string** |  | [readonly] 
 **RefreshInterval** | **int32** |  | [readonly] 
 **AuthorizationFlow** | **NullableString** |  | [readonly] 
-**Jwks** | **map[string]interface{}** |  | [readonly] 
+**JwksAuth** | **map[string]interface{}** |  | [readonly] 
+**JwksChallenge** | **map[string]interface{}** |  | [readonly] 
 **NssUidOffset** | **int32** |  | 
 **NssGidOffset** | **int32** |  | 
 **AuthTerminateSessionOnExpiry** | **bool** |  | 
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewAgentConfig
 
-`func NewAgentConfig(deviceId string, refreshInterval int32, authorizationFlow NullableString, jwks map[string]interface{}, nssUidOffset int32, nssGidOffset int32, authTerminateSessionOnExpiry bool, systemConfig Config, ) *AgentConfig`
+`func NewAgentConfig(deviceId string, refreshInterval int32, authorizationFlow NullableString, jwksAuth map[string]interface{}, jwksChallenge map[string]interface{}, nssUidOffset int32, nssGidOffset int32, authTerminateSessionOnExpiry bool, systemConfig Config, ) *AgentConfig`
 
 NewAgentConfig instantiates a new AgentConfig object
 This constructor will assign default values to properties that have it defined,
@@ -102,24 +103,44 @@ SetAuthorizationFlow sets AuthorizationFlow field to given value.
 `func (o *AgentConfig) UnsetAuthorizationFlow()`
 
 UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
-### GetJwks
+### GetJwksAuth
 
-`func (o *AgentConfig) GetJwks() map[string]interface{}`
+`func (o *AgentConfig) GetJwksAuth() map[string]interface{}`
 
-GetJwks returns the Jwks field if non-nil, zero value otherwise.
+GetJwksAuth returns the JwksAuth field if non-nil, zero value otherwise.
 
-### GetJwksOk
+### GetJwksAuthOk
 
-`func (o *AgentConfig) GetJwksOk() (*map[string]interface{}, bool)`
+`func (o *AgentConfig) GetJwksAuthOk() (*map[string]interface{}, bool)`
 
-GetJwksOk returns a tuple with the Jwks field if it's non-nil, zero value otherwise
+GetJwksAuthOk returns a tuple with the JwksAuth field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetJwks
+### SetJwksAuth
 
-`func (o *AgentConfig) SetJwks(v map[string]interface{})`
+`func (o *AgentConfig) SetJwksAuth(v map[string]interface{})`
 
-SetJwks sets Jwks field to given value.
+SetJwksAuth sets JwksAuth field to given value.
+
+
+### GetJwksChallenge
+
+`func (o *AgentConfig) GetJwksChallenge() map[string]interface{}`
+
+GetJwksChallenge returns the JwksChallenge field if non-nil, zero value otherwise.
+
+### GetJwksChallengeOk
+
+`func (o *AgentConfig) GetJwksChallengeOk() (*map[string]interface{}, bool)`
+
+GetJwksChallengeOk returns a tuple with the JwksChallenge field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwksChallenge
+
+`func (o *AgentConfig) SetJwksChallenge(v map[string]interface{})`
+
+SetJwksChallenge sets JwksChallenge field to given value.
 
 
 ### GetNssUidOffset

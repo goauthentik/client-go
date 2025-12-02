@@ -184,11 +184,15 @@ docs/EmailDeviceRequest.md
 docs/EmailStage.md
 docs/EmailStageRequest.md
 docs/Endpoint.md
+docs/EndpointAgentChallenge.md
+docs/EndpointAgentChallengeResponseRequest.md
 docs/EndpointAuthModeEnum.md
 docs/EndpointDevice.md
 docs/EndpointDeviceDetails.md
 docs/EndpointDeviceRequest.md
 docs/EndpointRequest.md
+docs/EndpointStage.md
+docs/EndpointStageRequest.md
 docs/EndpointsApi.md
 docs/EnrollRequest.md
 docs/EnrollmentToken.md
@@ -331,7 +335,6 @@ docs/MicrosoftEntraProviderUserRequest.md
 docs/ModelEnum.md
 docs/ModelRequest.md
 docs/MutualTLSStage.md
-docs/MutualTLSStageModeEnum.md
 docs/MutualTLSStageRequest.md
 docs/NativeLogoutChallenge.md
 docs/NativeLogoutChallengeResponseRequest.md
@@ -405,6 +408,7 @@ docs/PaginatedEmailDeviceList.md
 docs/PaginatedEmailStageList.md
 docs/PaginatedEndpointDeviceList.md
 docs/PaginatedEndpointList.md
+docs/PaginatedEndpointStageList.md
 docs/PaginatedEnrollmentTokenList.md
 docs/PaginatedEventList.md
 docs/PaginatedEventMatcherPolicyList.md
@@ -562,6 +566,7 @@ docs/PatchedEmailDeviceRequest.md
 docs/PatchedEmailStageRequest.md
 docs/PatchedEndpointDeviceRequest.md
 docs/PatchedEndpointRequest.md
+docs/PatchedEndpointStageRequest.md
 docs/PatchedEnrollmentTokenRequest.md
 docs/PatchedEventMatcherPolicyRequest.md
 docs/PatchedEventRequest.md
@@ -786,6 +791,7 @@ docs/SourceType.md
 docs/SourcesApi.md
 docs/SsfApi.md
 docs/Stage.md
+docs/StageModeEnum.md
 docs/StagePrompt.md
 docs/StagesApi.md
 docs/StateEnum.md
@@ -1037,11 +1043,15 @@ model_email_device_request.go
 model_email_stage.go
 model_email_stage_request.go
 model_endpoint.go
+model_endpoint_agent_challenge.go
+model_endpoint_agent_challenge_response_request.go
 model_endpoint_auth_mode_enum.go
 model_endpoint_device.go
 model_endpoint_device_details.go
 model_endpoint_device_request.go
 model_endpoint_request.go
+model_endpoint_stage.go
+model_endpoint_stage_request.go
 model_enroll_request.go
 model_enrollment_token.go
 model_enrollment_token_request.go
@@ -1179,7 +1189,6 @@ model_microsoft_entra_provider_user_request.go
 model_model_enum.go
 model_model_request.go
 model_mutual_tls_stage.go
-model_mutual_tls_stage_mode_enum.go
 model_mutual_tls_stage_request.go
 model_native_logout_challenge.go
 model_native_logout_challenge_response_request.go
@@ -1250,6 +1259,7 @@ model_paginated_email_device_list.go
 model_paginated_email_stage_list.go
 model_paginated_endpoint_device_list.go
 model_paginated_endpoint_list.go
+model_paginated_endpoint_stage_list.go
 model_paginated_enrollment_token_list.go
 model_paginated_event_list.go
 model_paginated_event_matcher_policy_list.go
@@ -1407,6 +1417,7 @@ model_patched_email_device_request.go
 model_patched_email_stage_request.go
 model_patched_endpoint_device_request.go
 model_patched_endpoint_request.go
+model_patched_endpoint_stage_request.go
 model_patched_enrollment_token_request.go
 model_patched_event_matcher_policy_request.go
 model_patched_event_request.go
@@ -1623,6 +1634,7 @@ model_ssf_provider.go
 model_ssf_provider_request.go
 model_ssf_stream.go
 model_stage.go
+model_stage_mode_enum.go
 model_stage_prompt.go
 model_state_enum.go
 model_static_device.go

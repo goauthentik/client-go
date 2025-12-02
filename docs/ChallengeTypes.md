@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **AdditionalPermissions** | [**[]ConsentPermission**](ConsentPermission.md) |  | 
 **Token** | **string** |  | 
 **Name** | **string** |  | 
+**Challenge** | **string** |  | 
 **RequestId** | **string** |  | 
 **Error** | Pointer to **string** |  | [optional] 
 **Traceback** | Pointer to **string** |  | [optional] 
@@ -77,7 +78,7 @@ Name | Type | Description | Notes
 
 ### NewChallengeTypes
 
-`func NewChallengeTypes(pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, interactive bool, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, name string, requestId string, loadingText string, userFields []string, passwordFields bool, flowDesignation FlowDesignationEnum, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, brandName string, body string, botUsername string, requestMessageAccess bool, ) *ChallengeTypes`
+`func NewChallengeTypes(pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, interactive bool, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, name string, challenge string, requestId string, loadingText string, userFields []string, passwordFields bool, flowDesignation FlowDesignationEnum, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, brandName string, body string, botUsername string, requestMessageAccess bool, ) *ChallengeTypes`
 
 NewChallengeTypes instantiates a new ChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -785,6 +786,26 @@ and a boolean to check if the value has been set.
 `func (o *ChallengeTypes) SetName(v string)`
 
 SetName sets Name field to given value.
+
+
+### GetChallenge
+
+`func (o *ChallengeTypes) GetChallenge() string`
+
+GetChallenge returns the Challenge field if non-nil, zero value otherwise.
+
+### GetChallengeOk
+
+`func (o *ChallengeTypes) GetChallengeOk() (*string, bool)`
+
+GetChallengeOk returns a tuple with the Challenge field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChallenge
+
+`func (o *ChallengeTypes) SetChallenge(v string)`
+
+SetChallenge sets Challenge field to given value.
 
 
 ### GetRequestId
