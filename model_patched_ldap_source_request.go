@@ -34,6 +34,7 @@ type PatchedLDAPSourceRequest struct {
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	UserPathTemplate *string               `json:"user_path_template,omitempty"`
+	Icon             *string               `json:"icon,omitempty"`
 	ServerUri        *string               `json:"server_uri,omitempty"`
 	// Optionally verify the LDAP Server's Certificate against the CA Chain in this keypair.
 	PeerCertificate NullableString `json:"peer_certificate,omitempty"`
@@ -460,6 +461,38 @@ func (o *PatchedLDAPSourceRequest) HasUserPathTemplate() bool {
 // SetUserPathTemplate gets a reference to the given string and assigns it to the UserPathTemplate field.
 func (o *PatchedLDAPSourceRequest) SetUserPathTemplate(v string) {
 	o.UserPathTemplate = &v
+}
+
+// GetIcon returns the Icon field value if set, zero value otherwise.
+func (o *PatchedLDAPSourceRequest) GetIcon() string {
+	if o == nil || o.Icon == nil {
+		var ret string
+		return ret
+	}
+	return *o.Icon
+}
+
+// GetIconOk returns a tuple with the Icon field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedLDAPSourceRequest) GetIconOk() (*string, bool) {
+	if o == nil || o.Icon == nil {
+		return nil, false
+	}
+	return o.Icon, true
+}
+
+// HasIcon returns a boolean if a field has been set.
+func (o *PatchedLDAPSourceRequest) HasIcon() bool {
+	if o != nil && o.Icon != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIcon gets a reference to the given string and assigns it to the Icon field.
+func (o *PatchedLDAPSourceRequest) SetIcon(v string) {
+	o.Icon = &v
 }
 
 // GetServerUri returns the ServerUri field value if set, zero value otherwise.
@@ -1233,6 +1266,9 @@ func (o PatchedLDAPSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.UserPathTemplate != nil {
 		toSerialize["user_path_template"] = o.UserPathTemplate
+	}
+	if o.Icon != nil {
+		toSerialize["icon"] = o.Icon
 	}
 	if o.ServerUri != nil {
 		toSerialize["server_uri"] = o.ServerUri

@@ -5,6 +5,10 @@ All URIs are relative to */api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AdminAppsList**](AdminApi.md#AdminAppsList) | **Get** /admin/apps/ | 
+[**AdminFileCreate**](AdminApi.md#AdminFileCreate) | **Post** /admin/file/ | 
+[**AdminFileDestroy**](AdminApi.md#AdminFileDestroy) | **Delete** /admin/file/ | 
+[**AdminFileList**](AdminApi.md#AdminFileList) | **Get** /admin/file/ | 
+[**AdminFileUsedByList**](AdminApi.md#AdminFileUsedByList) | **Get** /admin/file/used_by/ | 
 [**AdminModelsList**](AdminApi.md#AdminModelsList) | **Get** /admin/models/ | 
 [**AdminSettingsPartialUpdate**](AdminApi.md#AdminSettingsPartialUpdate) | **Patch** /admin/settings/ | 
 [**AdminSettingsRetrieve**](AdminApi.md#AdminSettingsRetrieve) | **Get** /admin/settings/ | 
@@ -63,6 +67,274 @@ Other parameters are passed through a pointer to a apiAdminAppsListRequest struc
 ### Return type
 
 [**[]App**](App.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AdminFileCreate
+
+> AdminFileCreate(ctx).File(file).Name(name).Usage(usage).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    file := os.NewFile(1234, "some_file") // *os.File | 
+    name := "name_example" // string |  (optional)
+    usage := "usage_example" // string |  (optional) (default to "media")
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AdminApi.AdminFileCreate(context.Background()).File(file).Name(name).Usage(usage).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminFileCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAdminFileCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **file** | ***os.File** |  | 
+ **name** | **string** |  | 
+ **usage** | **string** |  | [default to &quot;media&quot;]
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AdminFileDestroy
+
+> AdminFileDestroy(ctx).Name(name).Usage(usage).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string |  (optional)
+    usage := "usage_example" // string |  (optional) (default to "media")
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AdminApi.AdminFileDestroy(context.Background()).Name(name).Usage(usage).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminFileDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAdminFileDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string** |  | 
+ **usage** | **string** |  | [default to &quot;media&quot;]
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AdminFileList
+
+> []FileList AdminFileList(ctx).ManageableOnly(manageableOnly).Search(search).Usage(usage).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    manageableOnly := true // bool |  (optional) (default to false)
+    search := "search_example" // string | A search term. (optional)
+    usage := "usage_example" // string |  (optional) (default to "media")
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AdminApi.AdminFileList(context.Background()).ManageableOnly(manageableOnly).Search(search).Usage(usage).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminFileList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AdminFileList`: []FileList
+    fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminFileList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAdminFileListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **manageableOnly** | **bool** |  | [default to false]
+ **search** | **string** | A search term. | 
+ **usage** | **string** |  | [default to &quot;media&quot;]
+
+### Return type
+
+[**[]FileList**](FileList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AdminFileUsedByList
+
+> []UsedBy AdminFileUsedByList(ctx).Name(name).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AdminApi.AdminFileUsedByList(context.Background()).Name(name).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AdminApi.AdminFileUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AdminFileUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `AdminApi.AdminFileUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAdminFileUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string** |  | 
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
 
 ### Authorization
 

@@ -21,13 +21,14 @@ Name | Type | Description | Notes
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **Managed** | **NullableString** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
-**Icon** | **NullableString** | Get the URL to the Icon. If the name is /static or starts with http it is returned as-is | [readonly] 
+**Icon** | Pointer to **string** |  | [optional] 
+**IconUrl** | **NullableString** | Get the URL to the source icon | [readonly] 
 
 ## Methods
 
 ### NewSource
 
-`func NewSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon NullableString, ) *Source`
+`func NewSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl NullableString, ) *Source`
 
 NewSource instantiates a new Source object
 This constructor will assign default values to properties that have it defined,
@@ -476,17 +477,42 @@ and a boolean to check if the value has been set.
 
 SetIcon sets Icon field to given value.
 
+### HasIcon
 
-### SetIconNil
+`func (o *Source) HasIcon() bool`
 
-`func (o *Source) SetIconNil(b bool)`
+HasIcon returns a boolean if a field has been set.
 
- SetIconNil sets the value for Icon to be an explicit nil
+### GetIconUrl
 
-### UnsetIcon
-`func (o *Source) UnsetIcon()`
+`func (o *Source) GetIconUrl() string`
 
-UnsetIcon ensures that no value is present for Icon, not even an explicit nil
+GetIconUrl returns the IconUrl field if non-nil, zero value otherwise.
+
+### GetIconUrlOk
+
+`func (o *Source) GetIconUrlOk() (*string, bool)`
+
+GetIconUrlOk returns a tuple with the IconUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconUrl
+
+`func (o *Source) SetIconUrl(v string)`
+
+SetIconUrl sets IconUrl field to given value.
+
+
+### SetIconUrlNil
+
+`func (o *Source) SetIconUrlNil(b bool)`
+
+ SetIconUrlNil sets the value for IconUrl to be an explicit nil
+
+### UnsetIconUrl
+`func (o *Source) UnsetIconUrl()`
+
+UnsetIconUrl ensures that no value is present for IconUrl, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

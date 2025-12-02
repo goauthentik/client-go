@@ -26,6 +26,7 @@ type PatchedApplicationRequest struct {
 	// Open launch URL in a new browser tab or window.
 	OpenInNewTab     *bool             `json:"open_in_new_tab,omitempty"`
 	MetaLaunchUrl    *string           `json:"meta_launch_url,omitempty"`
+	MetaIcon         *string           `json:"meta_icon,omitempty"`
 	MetaDescription  *string           `json:"meta_description,omitempty"`
 	MetaPublisher    *string           `json:"meta_publisher,omitempty"`
 	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
@@ -252,6 +253,38 @@ func (o *PatchedApplicationRequest) SetMetaLaunchUrl(v string) {
 	o.MetaLaunchUrl = &v
 }
 
+// GetMetaIcon returns the MetaIcon field value if set, zero value otherwise.
+func (o *PatchedApplicationRequest) GetMetaIcon() string {
+	if o == nil || o.MetaIcon == nil {
+		var ret string
+		return ret
+	}
+	return *o.MetaIcon
+}
+
+// GetMetaIconOk returns a tuple with the MetaIcon field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedApplicationRequest) GetMetaIconOk() (*string, bool) {
+	if o == nil || o.MetaIcon == nil {
+		return nil, false
+	}
+	return o.MetaIcon, true
+}
+
+// HasMetaIcon returns a boolean if a field has been set.
+func (o *PatchedApplicationRequest) HasMetaIcon() bool {
+	if o != nil && o.MetaIcon != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetaIcon gets a reference to the given string and assigns it to the MetaIcon field.
+func (o *PatchedApplicationRequest) SetMetaIcon(v string) {
+	o.MetaIcon = &v
+}
+
 // GetMetaDescription returns the MetaDescription field value if set, zero value otherwise.
 func (o *PatchedApplicationRequest) GetMetaDescription() string {
 	if o == nil || o.MetaDescription == nil {
@@ -399,6 +432,9 @@ func (o PatchedApplicationRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.MetaLaunchUrl != nil {
 		toSerialize["meta_launch_url"] = o.MetaLaunchUrl
+	}
+	if o.MetaIcon != nil {
+		toSerialize["meta_icon"] = o.MetaIcon
 	}
 	if o.MetaDescription != nil {
 		toSerialize["meta_description"] = o.MetaDescription

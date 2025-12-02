@@ -21,7 +21,8 @@ Name | Type | Description | Notes
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **Managed** | **NullableString** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
-**Icon** | **NullableString** |  | [readonly] 
+**Icon** | Pointer to **string** |  | [optional] 
+**IconUrl** | **NullableString** |  | [readonly] 
 **BotUsername** | **string** | Telegram bot username | 
 **RequestMessageAccess** | Pointer to **bool** | Request access to send messages from your bot. | [optional] 
 **PreAuthenticationFlow** | **string** | Flow used before authentication. | 
@@ -30,7 +31,7 @@ Name | Type | Description | Notes
 
 ### NewTelegramSource
 
-`func NewTelegramSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon NullableString, botUsername string, preAuthenticationFlow string, ) *TelegramSource`
+`func NewTelegramSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl NullableString, botUsername string, preAuthenticationFlow string, ) *TelegramSource`
 
 NewTelegramSource instantiates a new TelegramSource object
 This constructor will assign default values to properties that have it defined,
@@ -479,17 +480,42 @@ and a boolean to check if the value has been set.
 
 SetIcon sets Icon field to given value.
 
+### HasIcon
 
-### SetIconNil
+`func (o *TelegramSource) HasIcon() bool`
 
-`func (o *TelegramSource) SetIconNil(b bool)`
+HasIcon returns a boolean if a field has been set.
 
- SetIconNil sets the value for Icon to be an explicit nil
+### GetIconUrl
 
-### UnsetIcon
-`func (o *TelegramSource) UnsetIcon()`
+`func (o *TelegramSource) GetIconUrl() string`
 
-UnsetIcon ensures that no value is present for Icon, not even an explicit nil
+GetIconUrl returns the IconUrl field if non-nil, zero value otherwise.
+
+### GetIconUrlOk
+
+`func (o *TelegramSource) GetIconUrlOk() (*string, bool)`
+
+GetIconUrlOk returns a tuple with the IconUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconUrl
+
+`func (o *TelegramSource) SetIconUrl(v string)`
+
+SetIconUrl sets IconUrl field to given value.
+
+
+### SetIconUrlNil
+
+`func (o *TelegramSource) SetIconUrlNil(b bool)`
+
+ SetIconUrlNil sets the value for IconUrl to be an explicit nil
+
+### UnsetIconUrl
+`func (o *TelegramSource) UnsetIconUrl()`
+
+UnsetIconUrl ensures that no value is present for IconUrl, not even an explicit nil
 ### GetBotUsername
 
 `func (o *TelegramSource) GetBotUsername() string`

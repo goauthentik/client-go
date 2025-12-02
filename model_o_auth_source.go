@@ -45,7 +45,8 @@ type OAuthSource struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed          NullableString `json:"managed"`
 	UserPathTemplate *string        `json:"user_path_template,omitempty"`
-	Icon             NullableString `json:"icon"`
+	Icon             *string        `json:"icon,omitempty"`
+	IconUrl          NullableString `json:"icon_url"`
 	// How the source determines if an existing group should be used or a new group created.
 	GroupMatchingMode *GroupMatchingModeEnum `json:"group_matching_mode,omitempty"`
 	ProviderType      ProviderTypeEnum       `json:"provider_type"`
@@ -74,7 +75,7 @@ type OAuthSource struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuthSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon NullableString, providerType ProviderTypeEnum, consumerKey string, callbackUrl string, type_ SourceType) *OAuthSource {
+func NewOAuthSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl NullableString, providerType ProviderTypeEnum, consumerKey string, callbackUrl string, type_ SourceType) *OAuthSource {
 	this := OAuthSource{}
 	this.Pk = pk
 	this.Name = name
@@ -84,7 +85,7 @@ func NewOAuthSource(pk string, name string, slug string, component string, verbo
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
 	this.Managed = managed
-	this.Icon = icon
+	this.IconUrl = iconUrl
 	this.ProviderType = providerType
 	this.ConsumerKey = consumerKey
 	this.CallbackUrl = callbackUrl
@@ -604,30 +605,62 @@ func (o *OAuthSource) SetUserPathTemplate(v string) {
 	o.UserPathTemplate = &v
 }
 
-// GetIcon returns the Icon field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetIcon returns the Icon field value if set, zero value otherwise.
 func (o *OAuthSource) GetIcon() string {
-	if o == nil || o.Icon.Get() == nil {
+	if o == nil || o.Icon == nil {
+		var ret string
+		return ret
+	}
+	return *o.Icon
+}
+
+// GetIconOk returns a tuple with the Icon field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OAuthSource) GetIconOk() (*string, bool) {
+	if o == nil || o.Icon == nil {
+		return nil, false
+	}
+	return o.Icon, true
+}
+
+// HasIcon returns a boolean if a field has been set.
+func (o *OAuthSource) HasIcon() bool {
+	if o != nil && o.Icon != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIcon gets a reference to the given string and assigns it to the Icon field.
+func (o *OAuthSource) SetIcon(v string) {
+	o.Icon = &v
+}
+
+// GetIconUrl returns the IconUrl field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *OAuthSource) GetIconUrl() string {
+	if o == nil || o.IconUrl.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Icon.Get()
+	return *o.IconUrl.Get()
 }
 
-// GetIconOk returns a tuple with the Icon field value
+// GetIconUrlOk returns a tuple with the IconUrl field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OAuthSource) GetIconOk() (*string, bool) {
+func (o *OAuthSource) GetIconUrlOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Icon.Get(), o.Icon.IsSet()
+	return o.IconUrl.Get(), o.IconUrl.IsSet()
 }
 
-// SetIcon sets field value
-func (o *OAuthSource) SetIcon(v string) {
-	o.Icon.Set(&v)
+// SetIconUrl sets field value
+func (o *OAuthSource) SetIconUrl(v string) {
+	o.IconUrl.Set(&v)
 }
 
 // GetGroupMatchingMode returns the GroupMatchingMode field value if set, zero value otherwise.
@@ -1175,8 +1208,11 @@ func (o OAuthSource) MarshalJSON() ([]byte, error) {
 	if o.UserPathTemplate != nil {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
+	if o.Icon != nil {
+		toSerialize["icon"] = o.Icon
+	}
 	if true {
-		toSerialize["icon"] = o.Icon.Get()
+		toSerialize["icon_url"] = o.IconUrl.Get()
 	}
 	if o.GroupMatchingMode != nil {
 		toSerialize["group_matching_mode"] = o.GroupMatchingMode

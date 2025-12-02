@@ -23,8 +23,10 @@ type FlowRequest struct {
 	// Shown as the Title in Flow pages.
 	Title string `json:"title"`
 	// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
-	Designation      FlowDesignationEnum `json:"designation"`
-	PolicyEngineMode *PolicyEngineMode   `json:"policy_engine_mode,omitempty"`
+	Designation FlowDesignationEnum `json:"designation"`
+	// Background shown during execution
+	Background       *string           `json:"background,omitempty"`
+	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// Enable compatibility mode, increases compatibility with password managers on mobile devices.
 	CompatibilityMode *bool           `json:"compatibility_mode,omitempty"`
 	Layout            *FlowLayoutEnum `json:"layout,omitempty"`
@@ -149,6 +151,38 @@ func (o *FlowRequest) GetDesignationOk() (*FlowDesignationEnum, bool) {
 // SetDesignation sets field value
 func (o *FlowRequest) SetDesignation(v FlowDesignationEnum) {
 	o.Designation = v
+}
+
+// GetBackground returns the Background field value if set, zero value otherwise.
+func (o *FlowRequest) GetBackground() string {
+	if o == nil || o.Background == nil {
+		var ret string
+		return ret
+	}
+	return *o.Background
+}
+
+// GetBackgroundOk returns a tuple with the Background field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FlowRequest) GetBackgroundOk() (*string, bool) {
+	if o == nil || o.Background == nil {
+		return nil, false
+	}
+	return o.Background, true
+}
+
+// HasBackground returns a boolean if a field has been set.
+func (o *FlowRequest) HasBackground() bool {
+	if o != nil && o.Background != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBackground gets a reference to the given string and assigns it to the Background field.
+func (o *FlowRequest) SetBackground(v string) {
+	o.Background = &v
 }
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
@@ -324,6 +358,9 @@ func (o FlowRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["designation"] = o.Designation
+	}
+	if o.Background != nil {
+		toSerialize["background"] = o.Background
 	}
 	if o.PolicyEngineMode != nil {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode

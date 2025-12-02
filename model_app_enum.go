@@ -32,6 +32,7 @@ const (
 	APPENUM_ENDPOINTS_CONNECTORS_AGENT                    AppEnum = "authentik.endpoints.connectors.agent"
 	APPENUM_ENTERPRISE                                    AppEnum = "authentik.enterprise"
 	APPENUM_EVENTS                                        AppEnum = "authentik.events"
+	APPENUM_ADMIN_FILES                                   AppEnum = "authentik.admin.files"
 	APPENUM_FLOWS                                         AppEnum = "authentik.flows"
 	APPENUM_OUTPOSTS                                      AppEnum = "authentik.outposts"
 	APPENUM_POLICIES_DUMMY                                AppEnum = "authentik.policies.dummy"
@@ -110,6 +111,7 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.endpoints.connectors.agent",
 	"authentik.enterprise",
 	"authentik.events",
+	"authentik.admin.files",
 	"authentik.flows",
 	"authentik.outposts",
 	"authentik.policies.dummy",

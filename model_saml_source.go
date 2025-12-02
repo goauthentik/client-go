@@ -45,7 +45,8 @@ type SAMLSource struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed          NullableString `json:"managed"`
 	UserPathTemplate *string        `json:"user_path_template,omitempty"`
-	Icon             string         `json:"icon"`
+	Icon             *string        `json:"icon,omitempty"`
+	IconUrl          string         `json:"icon_url"`
 	// How the source determines if an existing group should be used or a new group created.
 	GroupMatchingMode *GroupMatchingModeEnum `json:"group_matching_mode,omitempty"`
 	// Flow used before authentication.
@@ -79,7 +80,7 @@ type SAMLSource struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSAMLSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon string, preAuthenticationFlow string, ssoUrl string) *SAMLSource {
+func NewSAMLSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl string, preAuthenticationFlow string, ssoUrl string) *SAMLSource {
 	this := SAMLSource{}
 	this.Pk = pk
 	this.Name = name
@@ -89,7 +90,7 @@ func NewSAMLSource(pk string, name string, slug string, component string, verbos
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
 	this.Managed = managed
-	this.Icon = icon
+	this.IconUrl = iconUrl
 	this.PreAuthenticationFlow = preAuthenticationFlow
 	this.SsoUrl = ssoUrl
 	return &this
@@ -607,28 +608,60 @@ func (o *SAMLSource) SetUserPathTemplate(v string) {
 	o.UserPathTemplate = &v
 }
 
-// GetIcon returns the Icon field value
+// GetIcon returns the Icon field value if set, zero value otherwise.
 func (o *SAMLSource) GetIcon() string {
+	if o == nil || o.Icon == nil {
+		var ret string
+		return ret
+	}
+	return *o.Icon
+}
+
+// GetIconOk returns a tuple with the Icon field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SAMLSource) GetIconOk() (*string, bool) {
+	if o == nil || o.Icon == nil {
+		return nil, false
+	}
+	return o.Icon, true
+}
+
+// HasIcon returns a boolean if a field has been set.
+func (o *SAMLSource) HasIcon() bool {
+	if o != nil && o.Icon != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIcon gets a reference to the given string and assigns it to the Icon field.
+func (o *SAMLSource) SetIcon(v string) {
+	o.Icon = &v
+}
+
+// GetIconUrl returns the IconUrl field value
+func (o *SAMLSource) GetIconUrl() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Icon
+	return o.IconUrl
 }
 
-// GetIconOk returns a tuple with the Icon field value
+// GetIconUrlOk returns a tuple with the IconUrl field value
 // and a boolean to check if the value has been set.
-func (o *SAMLSource) GetIconOk() (*string, bool) {
+func (o *SAMLSource) GetIconUrlOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Icon, true
+	return &o.IconUrl, true
 }
 
-// SetIcon sets field value
-func (o *SAMLSource) SetIcon(v string) {
-	o.Icon = v
+// SetIconUrl sets field value
+func (o *SAMLSource) SetIconUrl(v string) {
+	o.IconUrl = v
 }
 
 // GetGroupMatchingMode returns the GroupMatchingMode field value if set, zero value otherwise.
@@ -1224,8 +1257,11 @@ func (o SAMLSource) MarshalJSON() ([]byte, error) {
 	if o.UserPathTemplate != nil {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
-	if true {
+	if o.Icon != nil {
 		toSerialize["icon"] = o.Icon
+	}
+	if true {
+		toSerialize["icon_url"] = o.IconUrl
 	}
 	if o.GroupMatchingMode != nil {
 		toSerialize["group_matching_mode"] = o.GroupMatchingMode

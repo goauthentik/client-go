@@ -21,7 +21,8 @@ Name | Type | Description | Notes
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **Managed** | **NullableString** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
-**Icon** | **string** |  | [readonly] 
+**Icon** | Pointer to **string** |  | [optional] 
+**IconUrl** | **string** |  | [readonly] 
 **GroupMatchingMode** | Pointer to [**GroupMatchingModeEnum**](GroupMatchingModeEnum.md) | How the source determines if an existing group should be used or a new group created. | [optional] 
 **Realm** | **string** | Kerberos realm | 
 **Krb5Conf** | Pointer to **string** | Custom krb5.conf to use. Uses the system one by default | [optional] 
@@ -39,7 +40,7 @@ Name | Type | Description | Notes
 
 ### NewKerberosSource
 
-`func NewKerberosSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon string, realm string, connectivity map[string]string, ) *KerberosSource`
+`func NewKerberosSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl string, realm string, connectivity map[string]string, ) *KerberosSource`
 
 NewKerberosSource instantiates a new KerberosSource object
 This constructor will assign default values to properties that have it defined,
@@ -487,6 +488,31 @@ and a boolean to check if the value has been set.
 `func (o *KerberosSource) SetIcon(v string)`
 
 SetIcon sets Icon field to given value.
+
+### HasIcon
+
+`func (o *KerberosSource) HasIcon() bool`
+
+HasIcon returns a boolean if a field has been set.
+
+### GetIconUrl
+
+`func (o *KerberosSource) GetIconUrl() string`
+
+GetIconUrl returns the IconUrl field if non-nil, zero value otherwise.
+
+### GetIconUrlOk
+
+`func (o *KerberosSource) GetIconUrlOk() (*string, bool)`
+
+GetIconUrlOk returns a tuple with the IconUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconUrl
+
+`func (o *KerberosSource) SetIconUrl(v string)`
+
+SetIconUrl sets IconUrl field to given value.
 
 
 ### GetGroupMatchingMode

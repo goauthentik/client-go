@@ -40,6 +40,168 @@ paths:
       - authentik: []
       tags:
       - admin
+  /admin/file/:
+    delete:
+      description: Delete file from storage backend.
+      operationId: admin_file_destroy
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: usage
+        required: false
+        schema:
+          default: media
+          enum:
+          - media
+          minLength: 1
+          type: string
+        style: form
+      responses:
+        "200":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - admin
+    get:
+      description: List files from storage backend.
+      operationId: admin_file_list
+      parameters:
+      - explode: true
+        in: query
+        name: manageable_only
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: usage
+        required: false
+        schema:
+          default: media
+          enum:
+          - media
+          minLength: 1
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/FileList'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - admin
+    post:
+      description: Upload file to storage backend.
+      operationId: admin_file_create
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FileUploadRequest'
+        required: true
+      responses:
+        "200":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - admin
+  /admin/file/used_by/:
+    get:
+      operationId: admin_file_used_by_list
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - admin
   /admin/models/:
     get:
       description: Read-only view list all installed models
@@ -4437,73 +4599,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ValidationError'
           description: ""
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - core
-  /core/applications/{slug}/set_icon/:
-    post:
-      description: Set application icon
-      operationId: core_applications_set_icon_create
-      parameters:
-      - explode: false
-        in: path
-        name: slug
-        required: true
-        schema:
-          description: "Internal application name, used in URLs."
-          type: string
-        style: simple
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/FileUploadRequest'
-      responses:
-        "200":
-          description: Success
-        "400":
-          description: Bad request
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - core
-  /core/applications/{slug}/set_icon_url/:
-    post:
-      description: Set application icon (as URL)
-      operationId: core_applications_set_icon_url_create
-      parameters:
-      - explode: false
-        in: path
-        name: slug
-        required: true
-        schema:
-          description: "Internal application name, used in URLs."
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/FilePathRequest'
-        required: true
-      responses:
-        "200":
-          description: Success
-        "400":
-          description: Bad request
         "403":
           content:
             application/json:
@@ -12196,73 +12291,6 @@ paths:
       - authentik: []
       tags:
       - flows
-  /flows/instances/{slug}/set_background/:
-    post:
-      description: Set Flow background
-      operationId: flows_instances_set_background_create
-      parameters:
-      - explode: false
-        in: path
-        name: slug
-        required: true
-        schema:
-          description: Visible in the URL.
-          type: string
-        style: simple
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/FileUploadRequest'
-      responses:
-        "200":
-          description: Success
-        "400":
-          description: Bad request
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - flows
-  /flows/instances/{slug}/set_background_url/:
-    post:
-      description: Set Flow background (as URL)
-      operationId: flows_instances_set_background_url_create
-      parameters:
-      - explode: false
-        in: path
-        name: slug
-        required: true
-        schema:
-          description: Visible in the URL.
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/FilePathRequest'
-        required: true
-      responses:
-        "200":
-          description: Success
-        "400":
-          description: Bad request
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - flows
   /flows/instances/{slug}/used_by/:
     get:
       description: Get a list of all objects that use this object
@@ -12355,7 +12383,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/FileUploadRequest'
+              $ref: '#/components/schemas/FlowUploadRequest'
       responses:
         "204":
           content:
@@ -31449,73 +31477,6 @@ paths:
       - authentik: []
       tags:
       - sources
-  /sources/all/{slug}/set_icon/:
-    post:
-      description: Set source icon
-      operationId: sources_all_set_icon_create
-      parameters:
-      - explode: false
-        in: path
-        name: slug
-        required: true
-        schema:
-          description: "Internal source name, used in URLs."
-          type: string
-        style: simple
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/FileUploadRequest'
-      responses:
-        "200":
-          description: Success
-        "400":
-          description: Bad request
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - sources
-  /sources/all/{slug}/set_icon_url/:
-    post:
-      description: Set source icon (as URL)
-      operationId: sources_all_set_icon_url_create
-      parameters:
-      - explode: false
-        in: path
-        name: slug
-        required: true
-        schema:
-          description: "Internal source name, used in URLs."
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/FilePathRequest'
-        required: true
-      responses:
-        "200":
-          description: Success
-        "400":
-          description: Bad request
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ""
-      security:
-      - authentik: []
-      tags:
-      - sources
   /sources/all/{slug}/used_by/:
     get:
       description: Get a list of all objects that use this object
@@ -49896,6 +49857,7 @@ components:
       - authentik.endpoints.connectors.agent
       - authentik.enterprise
       - authentik.events
+      - authentik.admin.files
       - authentik.flows
       - authentik.outposts
       - authentik.policies.dummy
@@ -50000,6 +49962,7 @@ components:
     Application:
       description: Application Serializer
       example:
+        meta_icon_url: meta_icon_url
         provider_obj: ""
         backchannel_providers:
         - 6
@@ -50090,9 +50053,9 @@ components:
           format: uri
           type: string
         meta_icon:
-          description: |-
-            Get the URL to the App Icon image. If the name is /static or starts with http
-            it is returned as-is
+          type: string
+        meta_icon_url:
+          description: Get the URL to the App Icon image
           nullable: true
           readOnly: true
           type: string
@@ -50107,7 +50070,7 @@ components:
       required:
       - backchannel_providers_obj
       - launch_url
-      - meta_icon
+      - meta_icon_url
       - name
       - pk
       - provider_obj
@@ -50172,6 +50135,7 @@ components:
         open_in_new_tab: true
         name: name
         meta_launch_url: https://openapi-generator.tech
+        meta_icon: meta_icon
         slug: slug
         meta_publisher: meta_publisher
         group: group
@@ -50197,6 +50161,8 @@ components:
           type: boolean
         meta_launch_url:
           format: uri
+          type: string
+        meta_icon:
           type: string
         meta_description:
           type: string
@@ -50364,7 +50330,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -50376,7 +50342,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -50588,7 +50554,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -50600,7 +50566,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -50808,7 +50774,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -50820,7 +50786,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -50977,7 +50943,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -50989,7 +50955,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -51208,7 +51174,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -51220,7 +51186,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -51386,7 +51352,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -51398,7 +51364,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -51521,7 +51487,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -51533,7 +51499,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -51802,7 +51768,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -51814,7 +51780,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -52407,7 +52373,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -52419,7 +52385,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -52993,7 +52959,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -53005,7 +52971,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -53479,7 +53445,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -53491,7 +53457,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -54334,7 +54300,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -54346,7 +54312,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -54560,7 +54526,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -54572,7 +54538,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -55806,31 +55772,44 @@ components:
       required:
       - object_pk
       type: object
-    FilePathRequest:
-      description: Serializer to upload file
+    FileList:
+      description: Base serializer class which doesn't implement create/update methods
       example:
+        mime_type: mime_type
+        name: name
         url: url
       properties:
+        name:
+          type: string
+        mime_type:
+          type: string
         url:
-          minLength: 1
           type: string
       required:
+      - mime_type
+      - name
       - url
       type: object
     FileUploadRequest:
-      description: Serializer to upload file
+      description: Base serializer class which doesn't implement create/update methods
       properties:
         file:
           format: binary
           type: string
-        clear:
-          default: false
-          type: boolean
+        name:
+          type: string
+        usage:
+          default: media
+          minLength: 1
+          type: string
+      required:
+      - file
       type: object
     Flow:
       description: Flow Serializer
       example:
         compatibility_mode: true
+        background_url: background_url
         denied_action: ""
         policies:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -55875,9 +55854,10 @@ components:
           description: "Decides what this Flow is used for. For example, the Authentication\
             \ flow is redirect to when an un-authenticated user visits authentik."
         background:
-          description: |-
-            Get the URL to the background image. If the name is /static or starts with http
-            it is returned as-is
+          description: Background shown during execution
+          type: string
+        background_url:
+          description: Get the URL to the background image
           readOnly: true
           type: string
         stages:
@@ -55919,7 +55899,7 @@ components:
           description: Required level of authentication and authorization to access
             a flow.
       required:
-      - background
+      - background_url
       - cache_count
       - designation
       - export_url
@@ -56142,6 +56122,7 @@ components:
         policy_engine_mode: null
         compatibility_mode: true
         layout: null
+        background: background
         denied_action: ""
         name: name
         designation: ""
@@ -56166,6 +56147,9 @@ components:
           - $ref: '#/components/schemas/FlowDesignationEnum'
           description: "Decides what this Flow is used for. For example, the Authentication\
             \ flow is redirect to when an un-authenticated user visits authentik."
+        background:
+          description: Background shown during execution
+          type: string
         policy_engine_mode:
           $ref: '#/components/schemas/PolicyEngineMode'
         compatibility_mode:
@@ -56197,7 +56181,7 @@ components:
         compatibility_mode: true
         layout: null
         policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        background: background
+        background_url: background_url
         denied_action: ""
         name: name
         export_url: export_url
@@ -56229,10 +56213,8 @@ components:
           - $ref: '#/components/schemas/FlowDesignationEnum'
           description: "Decides what this Flow is used for. For example, the Authentication\
             \ flow is redirect to when an un-authenticated user visits authentik."
-        background:
-          description: |-
-            Get the URL to the background image. If the name is /static or starts with http
-            it is returned as-is
+        background_url:
+          description: Get the URL to the background image
           readOnly: true
           type: string
         policy_engine_mode:
@@ -56253,7 +56235,7 @@ components:
           description: Configure what should happen when a flow denies access to a
             user.
       required:
-      - background
+      - background_url
       - designation
       - export_url
       - name
@@ -56410,6 +56392,16 @@ components:
       - order
       - stage
       - target
+      type: object
+    FlowUploadRequest:
+      description: Serializer to upload file
+      properties:
+        file:
+          format: binary
+          type: string
+        clear:
+          default: false
+          type: boolean
       type: object
     FooterLink:
       description: Links returned in Config API
@@ -57923,7 +57915,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -57935,7 +57927,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -58410,7 +58402,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -58422,7 +58414,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -58545,6 +58537,7 @@ components:
         spnego_ccache: spnego_ccache
         slug: slug
         sync_principal: sync_principal
+        icon_url: icon_url
         user_path_template: user_path_template
         group_matching_mode: ""
         password_login_update_internal_password: true
@@ -58632,6 +58625,8 @@ components:
         user_path_template:
           type: string
         icon:
+          type: string
+        icon_url:
           readOnly: true
           type: string
         group_matching_mode:
@@ -58683,7 +58678,7 @@ components:
       required:
       - component
       - connectivity
-      - icon
+      - icon_url
       - managed
       - meta_model_name
       - name
@@ -58782,6 +58777,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         sync_users: true
         sync_keytab: sync_keytab
+        icon: icon
         promoted: true
         sync_ccache: sync_ccache
         enabled: true
@@ -58850,6 +58846,8 @@ components:
             or a new user enrolled.
         user_path_template:
           minLength: 1
+          type: string
+        icon:
           type: string
         group_matching_mode:
           allOf:
@@ -59403,6 +59401,7 @@ components:
         slug: slug
         group_membership_field: group_membership_field
         server_uri: https://openapi-generator.tech
+        icon_url: icon_url
         bind_cn: bind_cn
         user_path_template: user_path_template
         sync_groups: true
@@ -59495,6 +59494,8 @@ components:
         user_path_template:
           type: string
         icon:
+          type: string
+        icon_url:
           readOnly: true
           type: string
         server_uri:
@@ -59583,7 +59584,7 @@ components:
       - base_dn
       - component
       - connectivity
-      - icon
+      - icon_url
       - managed
       - meta_model_name
       - name
@@ -59684,6 +59685,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         additional_user_dn: additional_user_dn
         sync_users: true
+        icon: icon
         promoted: true
         enabled: true
         delete_not_found_objects: true
@@ -59758,6 +59760,8 @@ components:
             or a new user enrolled.
         user_path_template:
           minLength: 1
+          type: string
+        icon:
           type: string
         server_uri:
           format: uri
@@ -60612,7 +60616,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -60624,7 +60628,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -61651,6 +61655,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         access_token_url: access_token_url
         slug: slug
+        icon_url: icon_url
         oidc_jwks_url: oidc_jwks_url
         user_path_template: user_path_template
         authorization_url: authorization_url
@@ -61740,6 +61745,8 @@ components:
         user_path_template:
           type: string
         icon:
+          type: string
+        icon_url:
           nullable: true
           readOnly: true
           type: string
@@ -61801,7 +61808,7 @@ components:
       - callback_url
       - component
       - consumer_key
-      - icon
+      - icon_url
       - managed
       - meta_model_name
       - name
@@ -61903,6 +61910,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         profile_url: profile_url
+        icon: icon
         oidc_jwks:
           key: ""
         authorization_code_auth_method: ""
@@ -61970,6 +61978,8 @@ components:
             or a new user enrolled.
         user_path_template:
           minLength: 1
+          type: string
+        icon:
           type: string
         group_matching_mode:
           allOf:
@@ -62475,7 +62485,8 @@ components:
         autocomplete:
           key: ""
         results:
-        - provider_obj: ""
+        - meta_icon_url: meta_icon_url
+          provider_obj: ""
           backchannel_providers:
           - 6
           - 6
@@ -62524,7 +62535,8 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           slug: slug
           group: group
-        - provider_obj: ""
+        - meta_icon_url: meta_icon_url
+          provider_obj: ""
           backchannel_providers:
           - 6
           - 6
@@ -62712,7 +62724,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -62724,7 +62736,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -62748,7 +62760,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -62760,7 +62772,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -62809,7 +62821,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -62821,7 +62833,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -62854,7 +62866,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -62866,7 +62878,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -62930,7 +62942,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -62942,7 +62954,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -62965,7 +62977,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -62977,7 +62989,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63025,7 +63037,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63037,7 +63049,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63066,7 +63078,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63078,7 +63090,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63138,7 +63150,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63150,7 +63162,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63173,7 +63185,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63185,7 +63197,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63235,7 +63247,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63247,7 +63259,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63269,7 +63281,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63281,7 +63293,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63336,7 +63348,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63348,7 +63360,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63384,7 +63396,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63396,7 +63408,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63455,7 +63467,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63467,7 +63479,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63500,7 +63512,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63512,7 +63524,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63698,7 +63710,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63710,7 +63722,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63736,7 +63748,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63748,7 +63760,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63936,7 +63948,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63948,7 +63960,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63969,7 +63981,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -63981,7 +63993,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -64029,7 +64041,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -64041,7 +64053,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -64061,7 +64073,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -64073,7 +64085,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -64287,7 +64299,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -64299,7 +64311,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -64319,7 +64331,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -64331,7 +64343,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -64447,7 +64459,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -64459,7 +64471,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -64492,7 +64504,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -64504,7 +64516,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -65136,6 +65148,7 @@ components:
           key: ""
         results:
         - compatibility_mode: true
+          background_url: background_url
           denied_action: ""
           policies:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -65156,6 +65169,7 @@ components:
           slug: slug
           authentication: ""
         - compatibility_mode: true
+          background_url: background_url
           denied_action: ""
           policies:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -66015,7 +66029,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -66027,7 +66041,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -66062,7 +66076,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -66074,7 +66088,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -66257,7 +66271,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -66269,7 +66283,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -66289,7 +66303,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -66301,7 +66315,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -66359,6 +66373,7 @@ components:
           spnego_ccache: spnego_ccache
           slug: slug
           sync_principal: sync_principal
+          icon_url: icon_url
           user_path_template: user_path_template
           group_matching_mode: ""
           password_login_update_internal_password: true
@@ -66394,6 +66409,7 @@ components:
           spnego_ccache: spnego_ccache
           slug: slug
           sync_principal: sync_principal
+          icon_url: icon_url
           user_path_template: user_path_template
           group_matching_mode: ""
           password_login_update_internal_password: true
@@ -66691,6 +66707,7 @@ components:
           slug: slug
           group_membership_field: group_membership_field
           server_uri: https://openapi-generator.tech
+          icon_url: icon_url
           bind_cn: bind_cn
           user_path_template: user_path_template
           sync_groups: true
@@ -66737,6 +66754,7 @@ components:
           slug: slug
           group_membership_field: group_membership_field
           server_uri: https://openapi-generator.tech
+          icon_url: icon_url
           bind_cn: bind_cn
           user_path_template: user_path_template
           sync_groups: true
@@ -67088,7 +67106,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -67100,7 +67118,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -67125,7 +67143,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -67137,7 +67155,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -67498,6 +67516,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           access_token_url: access_token_url
           slug: slug
+          icon_url: icon_url
           oidc_jwks_url: oidc_jwks_url
           user_path_template: user_path_template
           authorization_url: authorization_url
@@ -67536,6 +67555,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           access_token_url: access_token_url
           slug: slug
+          icon_url: icon_url
           oidc_jwks_url: oidc_jwks_url
           user_path_template: user_path_template
           authorization_url: authorization_url
@@ -67875,7 +67895,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -67887,7 +67907,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -67912,7 +67932,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -67924,7 +67944,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -68005,7 +68025,8 @@ components:
         autocomplete:
           key: ""
         results:
-        - allowed_servers:
+        - icon_url: icon_url
+          allowed_servers:
           - allowed_servers
           - allowed_servers
           user_matching_mode: ""
@@ -68034,7 +68055,8 @@ components:
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           plex_token: plex_token
           slug: slug
-        - allowed_servers:
+        - icon_url: icon_url
+          allowed_servers:
           - allowed_servers
           - allowed_servers
           user_matching_mode: ""
@@ -68262,7 +68284,7 @@ components:
               compatibility_mode: true
               layout: null
               policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              background: background
+              background_url: background_url
               denied_action: ""
               name: name
               export_url: export_url
@@ -68274,7 +68296,7 @@ components:
               compatibility_mode: true
               layout: null
               policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              background: background
+              background_url: background_url
               denied_action: ""
               name: name
               export_url: export_url
@@ -68299,7 +68321,7 @@ components:
               compatibility_mode: true
               layout: null
               policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              background: background
+              background_url: background_url
               denied_action: ""
               name: name
               export_url: export_url
@@ -68311,7 +68333,7 @@ components:
               compatibility_mode: true
               layout: null
               policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              background: background
+              background_url: background_url
               denied_action: ""
               name: name
               export_url: export_url
@@ -68349,7 +68371,7 @@ components:
               compatibility_mode: true
               layout: null
               policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              background: background
+              background_url: background_url
               denied_action: ""
               name: name
               export_url: export_url
@@ -68361,7 +68383,7 @@ components:
               compatibility_mode: true
               layout: null
               policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              background: background
+              background_url: background_url
               denied_action: ""
               name: name
               export_url: export_url
@@ -68386,7 +68408,7 @@ components:
               compatibility_mode: true
               layout: null
               policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              background: background
+              background_url: background_url
               denied_action: ""
               name: name
               export_url: export_url
@@ -68398,7 +68420,7 @@ components:
               compatibility_mode: true
               layout: null
               policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              background: background
+              background_url: background_url
               denied_action: ""
               name: name
               export_url: export_url
@@ -68452,7 +68474,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -68464,7 +68486,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -68489,7 +68511,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -68501,7 +68523,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -69127,7 +69149,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -69139,7 +69161,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -69162,7 +69184,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -69174,7 +69196,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -69582,6 +69604,7 @@ components:
           signature_algorithm: null
           slug: slug
           signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          icon_url: icon_url
           binding_type: null
           user_path_template: user_path_template
           slo_url: https://openapi-generator.tech
@@ -69620,6 +69643,7 @@ components:
           signature_algorithm: null
           slug: slug
           signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          icon_url: icon_url
           binding_type: null
           user_path_template: user_path_template
           slo_url: https://openapi-generator.tech
@@ -70397,7 +70421,8 @@ components:
         autocomplete:
           key: ""
         results:
-        - user_matching_mode: ""
+        - icon_url: icon_url
+          user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           user_path_template: user_path_template
           group_property_mappings:
@@ -70419,7 +70444,8 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           slug: slug
-        - user_matching_mode: ""
+        - icon_url: icon_url
+          user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           user_path_template: user_path_template
           group_property_mappings:
@@ -70482,7 +70508,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -70494,7 +70520,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -70515,7 +70541,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -70527,7 +70553,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -70574,7 +70600,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -70586,7 +70612,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -70605,7 +70631,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -70617,7 +70643,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -70833,7 +70859,8 @@ components:
         autocomplete:
           key: ""
         results:
-        - user_matching_mode: ""
+        - icon_url: icon_url
+          user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           user_path_template: user_path_template
           group_property_mappings:
@@ -70858,7 +70885,8 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           slug: slug
-        - user_matching_mode: ""
+        - icon_url: icon_url
+          user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           user_path_template: user_path_template
           group_property_mappings:
@@ -71366,6 +71394,7 @@ components:
         - expires: 2000-01-23T04:56:07.000+00:00
           expiring: true
           application:
+            meta_icon_url: meta_icon_url
             provider_obj: ""
             backchannel_providers:
             - 6
@@ -71458,6 +71487,7 @@ components:
         - expires: 2000-01-23T04:56:07.000+00:00
           expiring: true
           application:
+            meta_icon_url: meta_icon_url
             provider_obj: ""
             backchannel_providers:
             - 6
@@ -71586,7 +71616,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -71598,7 +71628,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -71617,7 +71647,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -71629,7 +71659,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -71859,7 +71889,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -71871,7 +71901,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -71896,7 +71926,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -71908,7 +71938,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -71964,7 +71994,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -71976,7 +72006,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -71995,7 +72025,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -72007,7 +72037,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -72270,7 +72300,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -72282,7 +72312,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -72306,7 +72336,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -72318,7 +72348,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -72871,7 +72901,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -72883,7 +72913,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -73099,6 +73129,7 @@ components:
         open_in_new_tab: true
         name: name
         meta_launch_url: https://openapi-generator.tech
+        meta_icon: meta_icon
         slug: slug
         meta_publisher: meta_publisher
         group: group
@@ -73124,6 +73155,8 @@ components:
           type: boolean
         meta_launch_url:
           format: uri
+          type: string
+        meta_icon:
           type: string
         meta_description:
           type: string
@@ -74380,6 +74413,7 @@ components:
         policy_engine_mode: null
         compatibility_mode: true
         layout: null
+        background: background
         denied_action: ""
         name: name
         designation: ""
@@ -74404,6 +74438,9 @@ components:
           - $ref: '#/components/schemas/FlowDesignationEnum'
           description: "Decides what this Flow is used for. For example, the Authentication\
             \ flow is redirect to when an un-authenticated user visits authentik."
+        background:
+          description: Background shown during execution
+          type: string
         policy_engine_mode:
           $ref: '#/components/schemas/PolicyEngineMode'
         compatibility_mode:
@@ -75029,6 +75066,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         sync_users: true
         sync_keytab: sync_keytab
+        icon: icon
         promoted: true
         sync_ccache: sync_ccache
         enabled: true
@@ -75097,6 +75135,8 @@ components:
             or a new user enrolled.
         user_path_template:
           minLength: 1
+          type: string
+        icon:
           type: string
         group_matching_mode:
           allOf:
@@ -75290,6 +75330,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         additional_user_dn: additional_user_dn
         sync_users: true
+        icon: icon
         promoted: true
         enabled: true
         delete_not_found_objects: true
@@ -75364,6 +75405,8 @@ components:
             or a new user enrolled.
         user_path_template:
           minLength: 1
+          type: string
+        icon:
           type: string
         server_uri:
           format: uri
@@ -75888,6 +75931,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         profile_url: profile_url
+        icon: icon
         oidc_jwks:
           key: ""
         authorization_code_auth_method: ""
@@ -75955,6 +75999,8 @@ components:
             or a new user enrolled.
         user_path_template:
           minLength: 1
+          type: string
+        icon:
           type: string
         group_matching_mode:
           allOf:
@@ -76256,6 +76302,7 @@ components:
         group_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        icon: icon
         promoted: true
         enabled: true
         client_id: client_id
@@ -76315,6 +76362,8 @@ components:
             or a new user enrolled.
         user_path_template:
           minLength: 1
+          type: string
+        icon:
           type: string
         group_matching_mode:
           allOf:
@@ -77053,6 +77102,7 @@ components:
         group_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        icon: icon
         promoted: true
         sso_url: https://openapi-generator.tech
         signed_assertion: true
@@ -77124,6 +77174,8 @@ components:
             or a new user enrolled.
         user_path_template:
           minLength: 1
+          type: string
+        icon:
           type: string
         group_matching_mode:
           allOf:
@@ -77667,6 +77719,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         request_message_access: true
+        icon: icon
         promoted: true
         enabled: true
         bot_username: bot_username
@@ -77725,6 +77778,8 @@ components:
             or a new user enrolled.
         user_path_template:
           minLength: 1
+          type: string
+        icon:
           type: string
         bot_username:
           description: Telegram bot username
@@ -78294,6 +78349,7 @@ components:
     PlexSource:
       description: Plex Source Serializer
       example:
+        icon_url: icon_url
         allowed_servers:
         - allowed_servers
         - allowed_servers
@@ -78397,6 +78453,8 @@ components:
         user_path_template:
           type: string
         icon:
+          type: string
+        icon_url:
           readOnly: true
           type: string
         group_matching_mode:
@@ -78421,7 +78479,7 @@ components:
           type: string
       required:
       - component
-      - icon
+      - icon_url
       - managed
       - meta_model_name
       - name
@@ -78522,6 +78580,7 @@ components:
         group_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        icon: icon
         promoted: true
         enabled: true
         client_id: client_id
@@ -78581,6 +78640,8 @@ components:
             or a new user enrolled.
         user_path_template:
           minLength: 1
+          type: string
+        icon:
           type: string
         group_matching_mode:
           allOf:
@@ -78914,7 +78975,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -78926,7 +78987,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -78951,7 +79012,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -78963,7 +79024,7 @@ components:
             compatibility_mode: true
             layout: null
             policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            background: background
+            background_url: background_url
             denied_action: ""
             name: name
             export_url: export_url
@@ -79183,7 +79244,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -79195,7 +79256,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -80655,7 +80716,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -80667,7 +80728,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -81631,6 +81692,7 @@ components:
         signature_algorithm: null
         slug: slug
         signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        icon_url: icon_url
         binding_type: null
         user_path_template: user_path_template
         slo_url: https://openapi-generator.tech
@@ -81722,6 +81784,8 @@ components:
         user_path_template:
           type: string
         icon:
+          type: string
+        icon_url:
           readOnly: true
           type: string
         group_matching_mode:
@@ -81794,7 +81858,7 @@ components:
           type: boolean
       required:
       - component
-      - icon
+      - icon_url
       - managed
       - meta_model_name
       - name
@@ -81893,6 +81957,7 @@ components:
         group_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        icon: icon
         promoted: true
         sso_url: https://openapi-generator.tech
         signed_assertion: true
@@ -81964,6 +82029,8 @@ components:
             or a new user enrolled.
         user_path_template:
           minLength: 1
+          type: string
+        icon:
           type: string
         group_matching_mode:
           allOf:
@@ -83559,6 +83626,7 @@ components:
     Source:
       description: Source Serializer
       example:
+        icon_url: icon_url
         user_matching_mode: ""
         verbose_name_plural: verbose_name_plural
         user_path_template: user_path_template
@@ -83655,15 +83723,15 @@ components:
         user_path_template:
           type: string
         icon:
-          description: |-
-            Get the URL to the Icon. If the name is /static or
-            starts with http it is returned as-is
+          type: string
+        icon_url:
+          description: Get the URL to the source icon
           nullable: true
           readOnly: true
           type: string
       required:
       - component
-      - icon
+      - icon_url
       - managed
       - meta_model_name
       - name
@@ -83688,7 +83756,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -83700,7 +83768,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -83863,7 +83931,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -83875,7 +83943,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -84395,6 +84463,7 @@ components:
     TelegramSource:
       description: Source Serializer
       example:
+        icon_url: icon_url
         user_matching_mode: ""
         verbose_name_plural: verbose_name_plural
         user_path_template: user_path_template
@@ -84494,6 +84563,8 @@ components:
         user_path_template:
           type: string
         icon:
+          type: string
+        icon_url:
           nullable: true
           readOnly: true
           type: string
@@ -84510,7 +84581,7 @@ components:
       required:
       - bot_username
       - component
-      - icon
+      - icon_url
       - managed
       - meta_model_name
       - name
@@ -84609,6 +84680,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         request_message_access: true
+        icon: icon
         promoted: true
         enabled: true
         bot_username: bot_username
@@ -84667,6 +84739,8 @@ components:
             or a new user enrolled.
         user_path_template:
           minLength: 1
+          type: string
+        icon:
           type: string
         bot_username:
           description: Telegram bot username
@@ -85028,6 +85102,7 @@ components:
           open_in_new_tab: true
           name: name
           meta_launch_url: https://openapi-generator.tech
+          meta_icon: meta_icon
           slug: slug
           meta_publisher: meta_publisher
           group: group
@@ -85286,6 +85361,7 @@ components:
       - cascade_many
       - set_null
       - set_default
+      - left_dangling
       type: string
     User:
       description: User Serializer
@@ -85504,6 +85580,7 @@ components:
         expires: 2000-01-23T04:56:07.000+00:00
         expiring: true
         application:
+          meta_icon_url: meta_icon_url
           provider_obj: ""
           backchannel_providers:
           - 6
@@ -85636,7 +85713,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -85648,7 +85725,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -85901,7 +85978,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -85913,7 +85990,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -86073,7 +86150,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -86085,7 +86162,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -86823,7 +86900,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url
@@ -86835,7 +86912,7 @@ components:
           compatibility_mode: true
           layout: null
           policybindingmodel_ptr_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          background: background
+          background_url: background_url
           denied_action: ""
           name: name
           export_url: export_url

@@ -14,7 +14,8 @@ Name | Type | Description | Notes
 **LaunchUrl** | **NullableString** | Allow formatting of launch URL | [readonly] 
 **OpenInNewTab** | Pointer to **bool** | Open launch URL in a new browser tab or window. | [optional] 
 **MetaLaunchUrl** | Pointer to **string** |  | [optional] 
-**MetaIcon** | **NullableString** | Get the URL to the App Icon image. If the name is /static or starts with http it is returned as-is | [readonly] 
+**MetaIcon** | Pointer to **string** |  | [optional] 
+**MetaIconUrl** | **NullableString** | Get the URL to the App Icon image | [readonly] 
 **MetaDescription** | Pointer to **string** |  | [optional] 
 **MetaPublisher** | Pointer to **string** |  | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
@@ -24,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewApplication
 
-`func NewApplication(pk string, name string, slug string, providerObj Provider, backchannelProvidersObj []Provider, launchUrl NullableString, metaIcon NullableString, ) *Application`
+`func NewApplication(pk string, name string, slug string, providerObj Provider, backchannelProvidersObj []Provider, launchUrl NullableString, metaIconUrl NullableString, ) *Application`
 
 NewApplication instantiates a new Application object
 This constructor will assign default values to properties that have it defined,
@@ -298,17 +299,42 @@ and a boolean to check if the value has been set.
 
 SetMetaIcon sets MetaIcon field to given value.
 
+### HasMetaIcon
 
-### SetMetaIconNil
+`func (o *Application) HasMetaIcon() bool`
 
-`func (o *Application) SetMetaIconNil(b bool)`
+HasMetaIcon returns a boolean if a field has been set.
 
- SetMetaIconNil sets the value for MetaIcon to be an explicit nil
+### GetMetaIconUrl
 
-### UnsetMetaIcon
-`func (o *Application) UnsetMetaIcon()`
+`func (o *Application) GetMetaIconUrl() string`
 
-UnsetMetaIcon ensures that no value is present for MetaIcon, not even an explicit nil
+GetMetaIconUrl returns the MetaIconUrl field if non-nil, zero value otherwise.
+
+### GetMetaIconUrlOk
+
+`func (o *Application) GetMetaIconUrlOk() (*string, bool)`
+
+GetMetaIconUrlOk returns a tuple with the MetaIconUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaIconUrl
+
+`func (o *Application) SetMetaIconUrl(v string)`
+
+SetMetaIconUrl sets MetaIconUrl field to given value.
+
+
+### SetMetaIconUrlNil
+
+`func (o *Application) SetMetaIconUrlNil(b bool)`
+
+ SetMetaIconUrlNil sets the value for MetaIconUrl to be an explicit nil
+
+### UnsetMetaIconUrl
+`func (o *Application) UnsetMetaIconUrl()`
+
+UnsetMetaIconUrl ensures that no value is present for MetaIconUrl, not even an explicit nil
 ### GetMetaDescription
 
 `func (o *Application) GetMetaDescription() string`

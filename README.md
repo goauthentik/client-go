@@ -38,6 +38,10 @@ All URIs are relative to */api/v3*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AdminApi* | [**AdminAppsList**](docs/AdminApi.md#adminappslist) | **Get** /admin/apps/ | 
+*AdminApi* | [**AdminFileCreate**](docs/AdminApi.md#adminfilecreate) | **Post** /admin/file/ | 
+*AdminApi* | [**AdminFileDestroy**](docs/AdminApi.md#adminfiledestroy) | **Delete** /admin/file/ | 
+*AdminApi* | [**AdminFileList**](docs/AdminApi.md#adminfilelist) | **Get** /admin/file/ | 
+*AdminApi* | [**AdminFileUsedByList**](docs/AdminApi.md#adminfileusedbylist) | **Get** /admin/file/used_by/ | 
 *AdminApi* | [**AdminModelsList**](docs/AdminApi.md#adminmodelslist) | **Get** /admin/models/ | 
 *AdminApi* | [**AdminSettingsPartialUpdate**](docs/AdminApi.md#adminsettingspartialupdate) | **Patch** /admin/settings/ | 
 *AdminApi* | [**AdminSettingsRetrieve**](docs/AdminApi.md#adminsettingsretrieve) | **Get** /admin/settings/ | 
@@ -143,8 +147,6 @@ Class | Method | HTTP request | Description
 *CoreApi* | [**CoreApplicationsList**](docs/CoreApi.md#coreapplicationslist) | **Get** /core/applications/ | 
 *CoreApi* | [**CoreApplicationsPartialUpdate**](docs/CoreApi.md#coreapplicationspartialupdate) | **Patch** /core/applications/{slug}/ | 
 *CoreApi* | [**CoreApplicationsRetrieve**](docs/CoreApi.md#coreapplicationsretrieve) | **Get** /core/applications/{slug}/ | 
-*CoreApi* | [**CoreApplicationsSetIconCreate**](docs/CoreApi.md#coreapplicationsseticoncreate) | **Post** /core/applications/{slug}/set_icon/ | 
-*CoreApi* | [**CoreApplicationsSetIconUrlCreate**](docs/CoreApi.md#coreapplicationsseticonurlcreate) | **Post** /core/applications/{slug}/set_icon_url/ | 
 *CoreApi* | [**CoreApplicationsUpdate**](docs/CoreApi.md#coreapplicationsupdate) | **Put** /core/applications/{slug}/ | 
 *CoreApi* | [**CoreApplicationsUsedByList**](docs/CoreApi.md#coreapplicationsusedbylist) | **Get** /core/applications/{slug}/used_by/ | 
 *CoreApi* | [**CoreAuthenticatedSessionsDestroy**](docs/CoreApi.md#coreauthenticatedsessionsdestroy) | **Delete** /core/authenticated_sessions/{uuid}/ | 
@@ -317,8 +319,6 @@ Class | Method | HTTP request | Description
 *FlowsApi* | [**FlowsInstancesList**](docs/FlowsApi.md#flowsinstanceslist) | **Get** /flows/instances/ | 
 *FlowsApi* | [**FlowsInstancesPartialUpdate**](docs/FlowsApi.md#flowsinstancespartialupdate) | **Patch** /flows/instances/{slug}/ | 
 *FlowsApi* | [**FlowsInstancesRetrieve**](docs/FlowsApi.md#flowsinstancesretrieve) | **Get** /flows/instances/{slug}/ | 
-*FlowsApi* | [**FlowsInstancesSetBackgroundCreate**](docs/FlowsApi.md#flowsinstancessetbackgroundcreate) | **Post** /flows/instances/{slug}/set_background/ | 
-*FlowsApi* | [**FlowsInstancesSetBackgroundUrlCreate**](docs/FlowsApi.md#flowsinstancessetbackgroundurlcreate) | **Post** /flows/instances/{slug}/set_background_url/ | 
 *FlowsApi* | [**FlowsInstancesUpdate**](docs/FlowsApi.md#flowsinstancesupdate) | **Put** /flows/instances/{slug}/ | 
 *FlowsApi* | [**FlowsInstancesUsedByList**](docs/FlowsApi.md#flowsinstancesusedbylist) | **Get** /flows/instances/{slug}/used_by/ | 
 *ManagedApi* | [**ManagedBlueprintsApplyCreate**](docs/ManagedApi.md#managedblueprintsapplycreate) | **Post** /managed/blueprints/{instance_uuid}/apply/ | 
@@ -729,8 +729,6 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**SourcesAllDestroy**](docs/SourcesApi.md#sourcesalldestroy) | **Delete** /sources/all/{slug}/ | 
 *SourcesApi* | [**SourcesAllList**](docs/SourcesApi.md#sourcesalllist) | **Get** /sources/all/ | 
 *SourcesApi* | [**SourcesAllRetrieve**](docs/SourcesApi.md#sourcesallretrieve) | **Get** /sources/all/{slug}/ | 
-*SourcesApi* | [**SourcesAllSetIconCreate**](docs/SourcesApi.md#sourcesallseticoncreate) | **Post** /sources/all/{slug}/set_icon/ | 
-*SourcesApi* | [**SourcesAllSetIconUrlCreate**](docs/SourcesApi.md#sourcesallseticonurlcreate) | **Post** /sources/all/{slug}/set_icon_url/ | 
 *SourcesApi* | [**SourcesAllTypesList**](docs/SourcesApi.md#sourcesalltypeslist) | **Get** /sources/all/types/ | 
 *SourcesApi* | [**SourcesAllUsedByList**](docs/SourcesApi.md#sourcesallusedbylist) | **Get** /sources/all/{slug}/used_by/ | 
 *SourcesApi* | [**SourcesAllUserSettingsList**](docs/SourcesApi.md#sourcesallusersettingslist) | **Get** /sources/all/user_settings/ | 
@@ -1303,7 +1301,7 @@ Class | Method | HTTP request | Description
  - [ExtraRoleObjectPermissionRequest](docs/ExtraRoleObjectPermissionRequest.md)
  - [ExtraUserObjectPermission](docs/ExtraUserObjectPermission.md)
  - [ExtraUserObjectPermissionRequest](docs/ExtraUserObjectPermissionRequest.md)
- - [FilePathRequest](docs/FilePathRequest.md)
+ - [FileList](docs/FileList.md)
  - [Flow](docs/Flow.md)
  - [FlowChallengeResponseRequest](docs/FlowChallengeResponseRequest.md)
  - [FlowDesignationEnum](docs/FlowDesignationEnum.md)

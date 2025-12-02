@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
+**Icon** | Pointer to **string** |  | [optional] 
 **GroupMatchingMode** | Pointer to [**GroupMatchingModeEnum**](GroupMatchingModeEnum.md) | How the source determines if an existing group should be used or a new group created. | [optional] 
 **ClientId** | Pointer to **string** | Client identifier used to talk to Plex. | [optional] 
 **AllowedServers** | Pointer to **[]string** | Which servers a user has to be a member of to be granted access. Empty list allows every server. | [optional] 
@@ -324,6 +325,31 @@ SetUserPathTemplate sets UserPathTemplate field to given value.
 `func (o *PlexSourceRequest) HasUserPathTemplate() bool`
 
 HasUserPathTemplate returns a boolean if a field has been set.
+
+### GetIcon
+
+`func (o *PlexSourceRequest) GetIcon() string`
+
+GetIcon returns the Icon field if non-nil, zero value otherwise.
+
+### GetIconOk
+
+`func (o *PlexSourceRequest) GetIconOk() (*string, bool)`
+
+GetIconOk returns a tuple with the Icon field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIcon
+
+`func (o *PlexSourceRequest) SetIcon(v string)`
+
+SetIcon sets Icon field to given value.
+
+### HasIcon
+
+`func (o *PlexSourceRequest) HasIcon() bool`
+
+HasIcon returns a boolean if a field has been set.
 
 ### GetGroupMatchingMode
 

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
+**Icon** | Pointer to **string** |  | [optional] 
 **GroupMatchingMode** | Pointer to [**GroupMatchingModeEnum**](GroupMatchingModeEnum.md) | How the source determines if an existing group should be used or a new group created. | [optional] 
 **ProviderType** | Pointer to [**ProviderTypeEnum**](ProviderTypeEnum.md) |  | [optional] 
 **RequestTokenUrl** | Pointer to **NullableString** | URL used to request the initial token. This URL is only required for OAuth 1. | [optional] 
@@ -343,6 +344,31 @@ SetUserPathTemplate sets UserPathTemplate field to given value.
 `func (o *PatchedOAuthSourceRequest) HasUserPathTemplate() bool`
 
 HasUserPathTemplate returns a boolean if a field has been set.
+
+### GetIcon
+
+`func (o *PatchedOAuthSourceRequest) GetIcon() string`
+
+GetIcon returns the Icon field if non-nil, zero value otherwise.
+
+### GetIconOk
+
+`func (o *PatchedOAuthSourceRequest) GetIconOk() (*string, bool)`
+
+GetIconOk returns a tuple with the Icon field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIcon
+
+`func (o *PatchedOAuthSourceRequest) SetIcon(v string)`
+
+SetIcon sets Icon field to given value.
+
+### HasIcon
+
+`func (o *PatchedOAuthSourceRequest) HasIcon() bool`
+
+HasIcon returns a boolean if a field has been set.
 
 ### GetGroupMatchingMode
 

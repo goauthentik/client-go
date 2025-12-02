@@ -25,6 +25,8 @@
 
 * `EVENTS` (value: `"authentik.events"`)
 
+* `ADMIN_FILES` (value: `"authentik.admin.files"`)
+
 * `FLOWS` (value: `"authentik.flows"`)
 
 * `OUTPOSTS` (value: `"authentik.outposts"`)

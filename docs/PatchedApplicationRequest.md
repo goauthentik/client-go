@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **BackchannelProviders** | Pointer to **[]int32** |  | [optional] 
 **OpenInNewTab** | Pointer to **bool** | Open launch URL in a new browser tab or window. | [optional] 
 **MetaLaunchUrl** | Pointer to **string** |  | [optional] 
+**MetaIcon** | Pointer to **string** |  | [optional] 
 **MetaDescription** | Pointer to **string** |  | [optional] 
 **MetaPublisher** | Pointer to **string** |  | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
@@ -193,6 +194,31 @@ SetMetaLaunchUrl sets MetaLaunchUrl field to given value.
 `func (o *PatchedApplicationRequest) HasMetaLaunchUrl() bool`
 
 HasMetaLaunchUrl returns a boolean if a field has been set.
+
+### GetMetaIcon
+
+`func (o *PatchedApplicationRequest) GetMetaIcon() string`
+
+GetMetaIcon returns the MetaIcon field if non-nil, zero value otherwise.
+
+### GetMetaIconOk
+
+`func (o *PatchedApplicationRequest) GetMetaIconOk() (*string, bool)`
+
+GetMetaIconOk returns a tuple with the MetaIcon field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaIcon
+
+`func (o *PatchedApplicationRequest) SetMetaIcon(v string)`
+
+SetMetaIcon sets MetaIcon field to given value.
+
+### HasMetaIcon
+
+`func (o *PatchedApplicationRequest) HasMetaIcon() bool`
+
+HasMetaIcon returns a boolean if a field has been set.
 
 ### GetMetaDescription
 

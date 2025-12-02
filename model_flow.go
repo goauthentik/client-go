@@ -26,10 +26,12 @@ type Flow struct {
 	Title string `json:"title"`
 	// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
 	Designation FlowDesignationEnum `json:"designation"`
-	// Get the URL to the background image. If the name is /static or starts with http it is returned as-is
-	Background string   `json:"background"`
-	Stages     []string `json:"stages"`
-	Policies   []string `json:"policies"`
+	// Background shown during execution
+	Background *string `json:"background,omitempty"`
+	// Get the URL to the background image
+	BackgroundUrl string   `json:"background_url"`
+	Stages        []string `json:"stages"`
+	Policies      []string `json:"policies"`
 	// Get count of cached flows
 	CacheCount       int32             `json:"cache_count"`
 	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
@@ -48,7 +50,7 @@ type Flow struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFlow(pk string, policybindingmodelPtrId string, name string, slug string, title string, designation FlowDesignationEnum, background string, stages []string, policies []string, cacheCount int32, exportUrl string) *Flow {
+func NewFlow(pk string, policybindingmodelPtrId string, name string, slug string, title string, designation FlowDesignationEnum, backgroundUrl string, stages []string, policies []string, cacheCount int32, exportUrl string) *Flow {
 	this := Flow{}
 	this.Pk = pk
 	this.PolicybindingmodelPtrId = policybindingmodelPtrId
@@ -56,7 +58,7 @@ func NewFlow(pk string, policybindingmodelPtrId string, name string, slug string
 	this.Slug = slug
 	this.Title = title
 	this.Designation = designation
-	this.Background = background
+	this.BackgroundUrl = backgroundUrl
 	this.Stages = stages
 	this.Policies = policies
 	this.CacheCount = cacheCount
@@ -216,28 +218,60 @@ func (o *Flow) SetDesignation(v FlowDesignationEnum) {
 	o.Designation = v
 }
 
-// GetBackground returns the Background field value
+// GetBackground returns the Background field value if set, zero value otherwise.
 func (o *Flow) GetBackground() string {
+	if o == nil || o.Background == nil {
+		var ret string
+		return ret
+	}
+	return *o.Background
+}
+
+// GetBackgroundOk returns a tuple with the Background field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Flow) GetBackgroundOk() (*string, bool) {
+	if o == nil || o.Background == nil {
+		return nil, false
+	}
+	return o.Background, true
+}
+
+// HasBackground returns a boolean if a field has been set.
+func (o *Flow) HasBackground() bool {
+	if o != nil && o.Background != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBackground gets a reference to the given string and assigns it to the Background field.
+func (o *Flow) SetBackground(v string) {
+	o.Background = &v
+}
+
+// GetBackgroundUrl returns the BackgroundUrl field value
+func (o *Flow) GetBackgroundUrl() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Background
+	return o.BackgroundUrl
 }
 
-// GetBackgroundOk returns a tuple with the Background field value
+// GetBackgroundUrlOk returns a tuple with the BackgroundUrl field value
 // and a boolean to check if the value has been set.
-func (o *Flow) GetBackgroundOk() (*string, bool) {
+func (o *Flow) GetBackgroundUrlOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Background, true
+	return &o.BackgroundUrl, true
 }
 
-// SetBackground sets field value
-func (o *Flow) SetBackground(v string) {
-	o.Background = v
+// SetBackgroundUrl sets field value
+func (o *Flow) SetBackgroundUrl(v string) {
+	o.BackgroundUrl = v
 }
 
 // GetStages returns the Stages field value
@@ -516,8 +550,11 @@ func (o Flow) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["designation"] = o.Designation
 	}
-	if true {
+	if o.Background != nil {
 		toSerialize["background"] = o.Background
+	}
+	if true {
+		toSerialize["background_url"] = o.BackgroundUrl
 	}
 	if true {
 		toSerialize["stages"] = o.Stages

@@ -212,7 +212,7 @@ docs/ExtraRoleObjectPermission.md
 docs/ExtraRoleObjectPermissionRequest.md
 docs/ExtraUserObjectPermission.md
 docs/ExtraUserObjectPermissionRequest.md
-docs/FilePathRequest.md
+docs/FileList.md
 docs/Flow.md
 docs/FlowChallengeResponseRequest.md
 docs/FlowDesignationEnum.md
@@ -1062,7 +1062,7 @@ model_extra_role_object_permission.go
 model_extra_role_object_permission_request.go
 model_extra_user_object_permission.go
 model_extra_user_object_permission_request.go
-model_file_path_request.go
+model_file_list.go
 model_flow.go
 model_flow_challenge_response_request.go
 model_flow_designation_enum.go

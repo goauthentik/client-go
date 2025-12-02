@@ -21,7 +21,8 @@ Name | Type | Description | Notes
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **Managed** | **NullableString** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
-**Icon** | **NullableString** |  | [readonly] 
+**Icon** | Pointer to **string** |  | [optional] 
+**IconUrl** | **NullableString** |  | [readonly] 
 **GroupMatchingMode** | Pointer to [**GroupMatchingModeEnum**](GroupMatchingModeEnum.md) | How the source determines if an existing group should be used or a new group created. | [optional] 
 **ProviderType** | [**ProviderTypeEnum**](ProviderTypeEnum.md) |  | 
 **RequestTokenUrl** | Pointer to **NullableString** | URL used to request the initial token. This URL is only required for OAuth 1. | [optional] 
@@ -42,7 +43,7 @@ Name | Type | Description | Notes
 
 ### NewOAuthSource
 
-`func NewOAuthSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon NullableString, providerType ProviderTypeEnum, consumerKey string, callbackUrl string, type_ SourceType, ) *OAuthSource`
+`func NewOAuthSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl NullableString, providerType ProviderTypeEnum, consumerKey string, callbackUrl string, type_ SourceType, ) *OAuthSource`
 
 NewOAuthSource instantiates a new OAuthSource object
 This constructor will assign default values to properties that have it defined,
@@ -491,17 +492,42 @@ and a boolean to check if the value has been set.
 
 SetIcon sets Icon field to given value.
 
+### HasIcon
 
-### SetIconNil
+`func (o *OAuthSource) HasIcon() bool`
 
-`func (o *OAuthSource) SetIconNil(b bool)`
+HasIcon returns a boolean if a field has been set.
 
- SetIconNil sets the value for Icon to be an explicit nil
+### GetIconUrl
 
-### UnsetIcon
-`func (o *OAuthSource) UnsetIcon()`
+`func (o *OAuthSource) GetIconUrl() string`
 
-UnsetIcon ensures that no value is present for Icon, not even an explicit nil
+GetIconUrl returns the IconUrl field if non-nil, zero value otherwise.
+
+### GetIconUrlOk
+
+`func (o *OAuthSource) GetIconUrlOk() (*string, bool)`
+
+GetIconUrlOk returns a tuple with the IconUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconUrl
+
+`func (o *OAuthSource) SetIconUrl(v string)`
+
+SetIconUrl sets IconUrl field to given value.
+
+
+### SetIconUrlNil
+
+`func (o *OAuthSource) SetIconUrlNil(b bool)`
+
+ SetIconUrlNil sets the value for IconUrl to be an explicit nil
+
+### UnsetIconUrl
+`func (o *OAuthSource) UnsetIconUrl()`
+
+UnsetIconUrl ensures that no value is present for IconUrl, not even an explicit nil
 ### GetGroupMatchingMode
 
 `func (o *OAuthSource) GetGroupMatchingMode() GroupMatchingModeEnum`

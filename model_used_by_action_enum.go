@@ -21,10 +21,11 @@ type UsedByActionEnum string
 
 // List of UsedByActionEnum
 const (
-	USEDBYACTIONENUM_CASCADE      UsedByActionEnum = "cascade"
-	USEDBYACTIONENUM_CASCADE_MANY UsedByActionEnum = "cascade_many"
-	USEDBYACTIONENUM_SET_NULL     UsedByActionEnum = "set_null"
-	USEDBYACTIONENUM_SET_DEFAULT  UsedByActionEnum = "set_default"
+	USEDBYACTIONENUM_CASCADE       UsedByActionEnum = "cascade"
+	USEDBYACTIONENUM_CASCADE_MANY  UsedByActionEnum = "cascade_many"
+	USEDBYACTIONENUM_SET_NULL      UsedByActionEnum = "set_null"
+	USEDBYACTIONENUM_SET_DEFAULT   UsedByActionEnum = "set_default"
+	USEDBYACTIONENUM_LEFT_DANGLING UsedByActionEnum = "left_dangling"
 )
 
 // All allowed values of UsedByActionEnum enum
@@ -33,6 +34,7 @@ var AllowedUsedByActionEnumEnumValues = []UsedByActionEnum{
 	"cascade_many",
 	"set_null",
 	"set_default",
+	"left_dangling",
 }
 
 func (v *UsedByActionEnum) UnmarshalJSON(src []byte) error {
