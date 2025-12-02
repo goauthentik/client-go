@@ -29,6 +29,8 @@
 
 * `REDDIT` (value: `"reddit"`)
 
+* `SLACK` (value: `"slack"`)
+
 * `TWITCH` (value: `"twitch"`)
 
 * `TWITTER` (value: `"twitter"`)

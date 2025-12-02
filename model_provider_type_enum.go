@@ -34,6 +34,7 @@ const (
 	PROVIDERTYPEENUM_OKTA          ProviderTypeEnum = "okta"
 	PROVIDERTYPEENUM_PATREON       ProviderTypeEnum = "patreon"
 	PROVIDERTYPEENUM_REDDIT        ProviderTypeEnum = "reddit"
+	PROVIDERTYPEENUM_SLACK         ProviderTypeEnum = "slack"
 	PROVIDERTYPEENUM_TWITCH        ProviderTypeEnum = "twitch"
 	PROVIDERTYPEENUM_TWITTER       ProviderTypeEnum = "twitter"
 )
@@ -53,6 +54,7 @@ var AllowedProviderTypeEnumEnumValues = []ProviderTypeEnum{
 	"okta",
 	"patreon",
 	"reddit",
+	"slack",
 	"twitch",
 	"twitter",
 }
