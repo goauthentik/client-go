@@ -8,12 +8,13 @@ Name | Type | Description | Notes
 **Component** | Pointer to **string** |  | [optional] [default to "ak-stage-endpoint-agent"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **Challenge** | **string** |  | 
+**ChallengeIdleTimeout** | **int32** |  | 
 
 ## Methods
 
 ### NewEndpointAgentChallenge
 
-`func NewEndpointAgentChallenge(challenge string, ) *EndpointAgentChallenge`
+`func NewEndpointAgentChallenge(challenge string, challengeIdleTimeout int32, ) *EndpointAgentChallenge`
 
 NewEndpointAgentChallenge instantiates a new EndpointAgentChallenge object
 This constructor will assign default values to properties that have it defined,
@@ -121,6 +122,26 @@ and a boolean to check if the value has been set.
 `func (o *EndpointAgentChallenge) SetChallenge(v string)`
 
 SetChallenge sets Challenge field to given value.
+
+
+### GetChallengeIdleTimeout
+
+`func (o *EndpointAgentChallenge) GetChallengeIdleTimeout() int32`
+
+GetChallengeIdleTimeout returns the ChallengeIdleTimeout field if non-nil, zero value otherwise.
+
+### GetChallengeIdleTimeoutOk
+
+`func (o *EndpointAgentChallenge) GetChallengeIdleTimeoutOk() (*int32, bool)`
+
+GetChallengeIdleTimeoutOk returns a tuple with the ChallengeIdleTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChallengeIdleTimeout
+
+`func (o *EndpointAgentChallenge) SetChallengeIdleTimeout(v int32)`
+
+SetChallengeIdleTimeout sets ChallengeIdleTimeout field to given value.
 
 
 

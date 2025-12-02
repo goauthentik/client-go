@@ -17,21 +17,23 @@ import (
 
 // EndpointAgentChallenge Signed challenge for authentik agent to respond to
 type EndpointAgentChallenge struct {
-	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component      *string                   `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	Challenge      string                    `json:"challenge"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	Challenge            string                    `json:"challenge"`
+	ChallengeIdleTimeout int32                     `json:"challenge_idle_timeout"`
 }
 
 // NewEndpointAgentChallenge instantiates a new EndpointAgentChallenge object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEndpointAgentChallenge(challenge string) *EndpointAgentChallenge {
+func NewEndpointAgentChallenge(challenge string, challengeIdleTimeout int32) *EndpointAgentChallenge {
 	this := EndpointAgentChallenge{}
 	var component string = "ak-stage-endpoint-agent"
 	this.Component = &component
 	this.Challenge = challenge
+	this.ChallengeIdleTimeout = challengeIdleTimeout
 	return &this
 }
 
@@ -165,6 +167,30 @@ func (o *EndpointAgentChallenge) SetChallenge(v string) {
 	o.Challenge = v
 }
 
+// GetChallengeIdleTimeout returns the ChallengeIdleTimeout field value
+func (o *EndpointAgentChallenge) GetChallengeIdleTimeout() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.ChallengeIdleTimeout
+}
+
+// GetChallengeIdleTimeoutOk returns a tuple with the ChallengeIdleTimeout field value
+// and a boolean to check if the value has been set.
+func (o *EndpointAgentChallenge) GetChallengeIdleTimeoutOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ChallengeIdleTimeout, true
+}
+
+// SetChallengeIdleTimeout sets field value
+func (o *EndpointAgentChallenge) SetChallengeIdleTimeout(v int32) {
+	o.ChallengeIdleTimeout = v
+}
+
 func (o EndpointAgentChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.FlowInfo != nil {
@@ -178,6 +204,9 @@ func (o EndpointAgentChallenge) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["challenge"] = o.Challenge
+	}
+	if true {
+		toSerialize["challenge_idle_timeout"] = o.ChallengeIdleTimeout
 	}
 	return json.Marshal(toSerialize)
 }

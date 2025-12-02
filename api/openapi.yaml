@@ -49933,12 +49933,14 @@ components:
         component: component
         verbose_name: verbose_name
         auth_terminate_session_on_expiry: true
+        challenge_idle_timeout: challenge_idle_timeout
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         meta_model_name: meta_model_name
         snapshot_expiry: snapshot_expiry
         auth_session_duration: auth_session_duration
         connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        challenge_trigger_check_in: true
         jwt_federation_providers:
         - 1
         - 1
@@ -49991,6 +49993,10 @@ components:
           format: uuid
           nullable: true
           type: string
+        challenge_idle_timeout:
+          type: string
+        challenge_trigger_check_in:
+          type: boolean
         jwt_federation_providers:
           items:
             type: integer
@@ -50005,18 +50011,20 @@ components:
     AgentConnectorRequest:
       example:
         nss_uid_offset: 171976544
-        auth_terminate_session_on_expiry: true
         refresh_interval: refresh_interval
+        enabled: true
+        nss_gid_offset: 1294386358
+        auth_terminate_session_on_expiry: true
+        challenge_idle_timeout: challenge_idle_timeout
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         snapshot_expiry: snapshot_expiry
         auth_session_duration: auth_session_duration
         connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        challenge_trigger_check_in: true
         jwt_federation_providers:
         - 1
         - 1
-        enabled: true
-        nss_gid_offset: 1294386358
         challenge_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         connector_uuid:
@@ -50054,6 +50062,11 @@ components:
           format: uuid
           nullable: true
           type: string
+        challenge_idle_timeout:
+          minLength: 1
+          type: string
+        challenge_trigger_check_in:
+          type: boolean
         jwt_federation_providers:
           items:
             type: integer
@@ -55167,8 +55180,11 @@ components:
           type: object
         challenge:
           type: string
+        challenge_idle_timeout:
+          type: integer
       required:
       - challenge
+      - challenge_idle_timeout
       type: object
     EndpointAgentChallengeResponseRequest:
       description: Response to signed challenge
@@ -62889,12 +62905,14 @@ components:
           component: component
           verbose_name: verbose_name
           auth_terminate_session_on_expiry: true
+          challenge_idle_timeout: challenge_idle_timeout
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           meta_model_name: meta_model_name
           snapshot_expiry: snapshot_expiry
           auth_session_duration: auth_session_duration
           connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
+          challenge_trigger_check_in: true
           jwt_federation_providers:
           - 1
           - 1
@@ -62907,12 +62925,14 @@ components:
           component: component
           verbose_name: verbose_name
           auth_terminate_session_on_expiry: true
+          challenge_idle_timeout: challenge_idle_timeout
           authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           meta_model_name: meta_model_name
           snapshot_expiry: snapshot_expiry
           auth_session_duration: auth_session_duration
           connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
+          challenge_trigger_check_in: true
           jwt_federation_providers:
           - 1
           - 1
@@ -73639,18 +73659,20 @@ components:
     PatchedAgentConnectorRequest:
       example:
         nss_uid_offset: 171976544
-        auth_terminate_session_on_expiry: true
         refresh_interval: refresh_interval
+        enabled: true
+        nss_gid_offset: 1294386358
+        auth_terminate_session_on_expiry: true
+        challenge_idle_timeout: challenge_idle_timeout
         authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         snapshot_expiry: snapshot_expiry
         auth_session_duration: auth_session_duration
         connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        challenge_trigger_check_in: true
         jwt_federation_providers:
         - 1
         - 1
-        enabled: true
-        nss_gid_offset: 1294386358
         challenge_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         connector_uuid:
@@ -73688,6 +73710,11 @@ components:
           format: uuid
           nullable: true
           type: string
+        challenge_idle_timeout:
+          minLength: 1
+          type: string
+        challenge_trigger_check_in:
+          type: boolean
         jwt_federation_providers:
           items:
             type: integer

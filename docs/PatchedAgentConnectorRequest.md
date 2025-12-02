@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **NssUidOffset** | Pointer to **int32** |  | [optional] 
 **NssGidOffset** | Pointer to **int32** |  | [optional] 
 **ChallengeKey** | Pointer to **NullableString** |  | [optional] 
+**ChallengeIdleTimeout** | Pointer to **string** |  | [optional] 
+**ChallengeTriggerCheckIn** | Pointer to **bool** |  | [optional] 
 **JwtFederationProviders** | Pointer to **[]int32** |  | [optional] 
 
 ## Methods
@@ -331,6 +333,56 @@ HasChallengeKey returns a boolean if a field has been set.
 `func (o *PatchedAgentConnectorRequest) UnsetChallengeKey()`
 
 UnsetChallengeKey ensures that no value is present for ChallengeKey, not even an explicit nil
+### GetChallengeIdleTimeout
+
+`func (o *PatchedAgentConnectorRequest) GetChallengeIdleTimeout() string`
+
+GetChallengeIdleTimeout returns the ChallengeIdleTimeout field if non-nil, zero value otherwise.
+
+### GetChallengeIdleTimeoutOk
+
+`func (o *PatchedAgentConnectorRequest) GetChallengeIdleTimeoutOk() (*string, bool)`
+
+GetChallengeIdleTimeoutOk returns a tuple with the ChallengeIdleTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChallengeIdleTimeout
+
+`func (o *PatchedAgentConnectorRequest) SetChallengeIdleTimeout(v string)`
+
+SetChallengeIdleTimeout sets ChallengeIdleTimeout field to given value.
+
+### HasChallengeIdleTimeout
+
+`func (o *PatchedAgentConnectorRequest) HasChallengeIdleTimeout() bool`
+
+HasChallengeIdleTimeout returns a boolean if a field has been set.
+
+### GetChallengeTriggerCheckIn
+
+`func (o *PatchedAgentConnectorRequest) GetChallengeTriggerCheckIn() bool`
+
+GetChallengeTriggerCheckIn returns the ChallengeTriggerCheckIn field if non-nil, zero value otherwise.
+
+### GetChallengeTriggerCheckInOk
+
+`func (o *PatchedAgentConnectorRequest) GetChallengeTriggerCheckInOk() (*bool, bool)`
+
+GetChallengeTriggerCheckInOk returns a tuple with the ChallengeTriggerCheckIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChallengeTriggerCheckIn
+
+`func (o *PatchedAgentConnectorRequest) SetChallengeTriggerCheckIn(v bool)`
+
+SetChallengeTriggerCheckIn sets ChallengeTriggerCheckIn field to given value.
+
+### HasChallengeTriggerCheckIn
+
+`func (o *PatchedAgentConnectorRequest) HasChallengeTriggerCheckIn() bool`
+
+HasChallengeTriggerCheckIn returns a boolean if a field has been set.
+
 ### GetJwtFederationProviders
 
 `func (o *PatchedAgentConnectorRequest) GetJwtFederationProviders() []int32`

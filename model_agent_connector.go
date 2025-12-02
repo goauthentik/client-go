@@ -36,6 +36,8 @@ type AgentConnector struct {
 	NssUidOffset                 *int32         `json:"nss_uid_offset,omitempty"`
 	NssGidOffset                 *int32         `json:"nss_gid_offset,omitempty"`
 	ChallengeKey                 NullableString `json:"challenge_key,omitempty"`
+	ChallengeIdleTimeout         *string        `json:"challenge_idle_timeout,omitempty"`
+	ChallengeTriggerCheckIn      *bool          `json:"challenge_trigger_check_in,omitempty"`
 	JwtFederationProviders       []int32        `json:"jwt_federation_providers,omitempty"`
 }
 
@@ -523,6 +525,70 @@ func (o *AgentConnector) UnsetChallengeKey() {
 	o.ChallengeKey.Unset()
 }
 
+// GetChallengeIdleTimeout returns the ChallengeIdleTimeout field value if set, zero value otherwise.
+func (o *AgentConnector) GetChallengeIdleTimeout() string {
+	if o == nil || o.ChallengeIdleTimeout == nil {
+		var ret string
+		return ret
+	}
+	return *o.ChallengeIdleTimeout
+}
+
+// GetChallengeIdleTimeoutOk returns a tuple with the ChallengeIdleTimeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AgentConnector) GetChallengeIdleTimeoutOk() (*string, bool) {
+	if o == nil || o.ChallengeIdleTimeout == nil {
+		return nil, false
+	}
+	return o.ChallengeIdleTimeout, true
+}
+
+// HasChallengeIdleTimeout returns a boolean if a field has been set.
+func (o *AgentConnector) HasChallengeIdleTimeout() bool {
+	if o != nil && o.ChallengeIdleTimeout != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetChallengeIdleTimeout gets a reference to the given string and assigns it to the ChallengeIdleTimeout field.
+func (o *AgentConnector) SetChallengeIdleTimeout(v string) {
+	o.ChallengeIdleTimeout = &v
+}
+
+// GetChallengeTriggerCheckIn returns the ChallengeTriggerCheckIn field value if set, zero value otherwise.
+func (o *AgentConnector) GetChallengeTriggerCheckIn() bool {
+	if o == nil || o.ChallengeTriggerCheckIn == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ChallengeTriggerCheckIn
+}
+
+// GetChallengeTriggerCheckInOk returns a tuple with the ChallengeTriggerCheckIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AgentConnector) GetChallengeTriggerCheckInOk() (*bool, bool) {
+	if o == nil || o.ChallengeTriggerCheckIn == nil {
+		return nil, false
+	}
+	return o.ChallengeTriggerCheckIn, true
+}
+
+// HasChallengeTriggerCheckIn returns a boolean if a field has been set.
+func (o *AgentConnector) HasChallengeTriggerCheckIn() bool {
+	if o != nil && o.ChallengeTriggerCheckIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetChallengeTriggerCheckIn gets a reference to the given bool and assigns it to the ChallengeTriggerCheckIn field.
+func (o *AgentConnector) SetChallengeTriggerCheckIn(v bool) {
+	o.ChallengeTriggerCheckIn = &v
+}
+
 // GetJwtFederationProviders returns the JwtFederationProviders field value if set, zero value otherwise.
 func (o *AgentConnector) GetJwtFederationProviders() []int32 {
 	if o == nil || o.JwtFederationProviders == nil {
@@ -601,6 +667,12 @@ func (o AgentConnector) MarshalJSON() ([]byte, error) {
 	}
 	if o.ChallengeKey.IsSet() {
 		toSerialize["challenge_key"] = o.ChallengeKey.Get()
+	}
+	if o.ChallengeIdleTimeout != nil {
+		toSerialize["challenge_idle_timeout"] = o.ChallengeIdleTimeout
+	}
+	if o.ChallengeTriggerCheckIn != nil {
+		toSerialize["challenge_trigger_check_in"] = o.ChallengeTriggerCheckIn
 	}
 	if o.JwtFederationProviders != nil {
 		toSerialize["jwt_federation_providers"] = o.JwtFederationProviders
