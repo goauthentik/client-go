@@ -50,6 +50,7 @@ Method | HTTP request | Description
 [**EndpointsDevicesList**](EndpointsApi.md#EndpointsDevicesList) | **Get** /endpoints/devices/ | 
 [**EndpointsDevicesPartialUpdate**](EndpointsApi.md#EndpointsDevicesPartialUpdate) | **Patch** /endpoints/devices/{device_uuid}/ | 
 [**EndpointsDevicesRetrieve**](EndpointsApi.md#EndpointsDevicesRetrieve) | **Get** /endpoints/devices/{device_uuid}/ | 
+[**EndpointsDevicesSummaryRetrieve**](EndpointsApi.md#EndpointsDevicesSummaryRetrieve) | **Get** /endpoints/devices/summary/ | 
 [**EndpointsDevicesUpdate**](EndpointsApi.md#EndpointsDevicesUpdate) | **Put** /endpoints/devices/{device_uuid}/ | 
 [**EndpointsDevicesUsedByList**](EndpointsApi.md#EndpointsDevicesUsedByList) | **Get** /endpoints/devices/{device_uuid}/used_by/ | 
 
@@ -3241,6 +3242,67 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EndpointDeviceDetails**](EndpointDeviceDetails.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsDevicesSummaryRetrieve
+
+> DeviceSummary EndpointsDevicesSummaryRetrieve(ctx).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndpointsApi.EndpointsDevicesSummaryRetrieve(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsDevicesSummaryRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndpointsDevicesSummaryRetrieve`: DeviceSummary
+    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsDevicesSummaryRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsDevicesSummaryRetrieveRequest struct via the builder pattern
+
+
+### Return type
+
+[**DeviceSummary**](DeviceSummary.md)
 
 ### Authorization
 

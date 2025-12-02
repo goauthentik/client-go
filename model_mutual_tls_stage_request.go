@@ -17,9 +17,9 @@ import (
 
 // MutualTLSStageRequest MutualTLSStage Serializer
 type MutualTLSStageRequest struct {
-	Name    string                 `json:"name"`
-	FlowSet []FlowSetRequest       `json:"flow_set,omitempty"`
-	Mode    MutualTLSStageModeEnum `json:"mode"`
+	Name    string           `json:"name"`
+	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
+	Mode    StageModeEnum    `json:"mode"`
 	// Configure certificate authorities to validate the certificate against. This option has a higher priority than the `client_certificate` option on `Brand`.
 	CertificateAuthorities []string          `json:"certificate_authorities,omitempty"`
 	CertAttribute          CertAttributeEnum `json:"cert_attribute"`
@@ -30,7 +30,7 @@ type MutualTLSStageRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMutualTLSStageRequest(name string, mode MutualTLSStageModeEnum, certAttribute CertAttributeEnum, userAttribute UserAttributeEnum) *MutualTLSStageRequest {
+func NewMutualTLSStageRequest(name string, mode StageModeEnum, certAttribute CertAttributeEnum, userAttribute UserAttributeEnum) *MutualTLSStageRequest {
 	this := MutualTLSStageRequest{}
 	this.Name = name
 	this.Mode = mode
@@ -104,9 +104,9 @@ func (o *MutualTLSStageRequest) SetFlowSet(v []FlowSetRequest) {
 }
 
 // GetMode returns the Mode field value
-func (o *MutualTLSStageRequest) GetMode() MutualTLSStageModeEnum {
+func (o *MutualTLSStageRequest) GetMode() StageModeEnum {
 	if o == nil {
-		var ret MutualTLSStageModeEnum
+		var ret StageModeEnum
 		return ret
 	}
 
@@ -115,7 +115,7 @@ func (o *MutualTLSStageRequest) GetMode() MutualTLSStageModeEnum {
 
 // GetModeOk returns a tuple with the Mode field value
 // and a boolean to check if the value has been set.
-func (o *MutualTLSStageRequest) GetModeOk() (*MutualTLSStageModeEnum, bool) {
+func (o *MutualTLSStageRequest) GetModeOk() (*StageModeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -123,7 +123,7 @@ func (o *MutualTLSStageRequest) GetModeOk() (*MutualTLSStageModeEnum, bool) {
 }
 
 // SetMode sets field value
-func (o *MutualTLSStageRequest) SetMode(v MutualTLSStageModeEnum) {
+func (o *MutualTLSStageRequest) SetMode(v StageModeEnum) {
 	o.Mode = v
 }
 

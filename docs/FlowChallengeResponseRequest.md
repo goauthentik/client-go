@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **SelectedStage** | Pointer to **string** |  | [optional] 
 **Webauthn** | Pointer to **map[string]interface{}** |  | [optional] 
 **Duo** | Pointer to **int32** |  | [optional] 
-**Response** | **map[string]interface{}** |  | 
+**Response** | **NullableString** |  | 
 **Token** | **string** |  | 
 **UidField** | **string** |  | 
 **Password** | **string** |  | 
@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 
 ### NewFlowChallengeResponseRequest
 
-`func NewFlowChallengeResponseRequest(code string, response map[string]interface{}, token string, uidField string, password string, to string, id int32, authDate int32, hash string, rememberMe bool, ) *FlowChallengeResponseRequest`
+`func NewFlowChallengeResponseRequest(code string, response NullableString, token string, uidField string, password string, to string, id int32, authDate int32, hash string, rememberMe bool, ) *FlowChallengeResponseRequest`
 
 NewFlowChallengeResponseRequest instantiates a new FlowChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -243,24 +243,34 @@ HasDuo returns a boolean if a field has been set.
 
 ### GetResponse
 
-`func (o *FlowChallengeResponseRequest) GetResponse() map[string]interface{}`
+`func (o *FlowChallengeResponseRequest) GetResponse() string`
 
 GetResponse returns the Response field if non-nil, zero value otherwise.
 
 ### GetResponseOk
 
-`func (o *FlowChallengeResponseRequest) GetResponseOk() (*map[string]interface{}, bool)`
+`func (o *FlowChallengeResponseRequest) GetResponseOk() (*string, bool)`
 
 GetResponseOk returns a tuple with the Response field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResponse
 
-`func (o *FlowChallengeResponseRequest) SetResponse(v map[string]interface{})`
+`func (o *FlowChallengeResponseRequest) SetResponse(v string)`
 
 SetResponse sets Response field to given value.
 
 
+### SetResponseNil
+
+`func (o *FlowChallengeResponseRequest) SetResponseNil(b bool)`
+
+ SetResponseNil sets the value for Response to be an explicit nil
+
+### UnsetResponse
+`func (o *FlowChallengeResponseRequest) UnsetResponse()`
+
+UnsetResponse ensures that no value is present for Response, not even an explicit nil
 ### GetToken
 
 `func (o *FlowChallengeResponseRequest) GetToken() string`

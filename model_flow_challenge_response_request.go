@@ -31,6 +31,7 @@ type FlowChallengeResponseRequest struct {
 	ConsentChallengeResponseRequest                 *ConsentChallengeResponseRequest
 	DummyChallengeResponseRequest                   *DummyChallengeResponseRequest
 	EmailChallengeResponseRequest                   *EmailChallengeResponseRequest
+	EndpointAgentChallengeResponseRequest           *EndpointAgentChallengeResponseRequest
 	FrameChallengeResponseRequest                   *FrameChallengeResponseRequest
 	IdentificationChallengeResponseRequest          *IdentificationChallengeResponseRequest
 	IframeLogoutChallengeResponseRequest            *IframeLogoutChallengeResponseRequest
@@ -133,6 +134,13 @@ func DummyChallengeResponseRequestAsFlowChallengeResponseRequest(v *DummyChallen
 func EmailChallengeResponseRequestAsFlowChallengeResponseRequest(v *EmailChallengeResponseRequest) FlowChallengeResponseRequest {
 	return FlowChallengeResponseRequest{
 		EmailChallengeResponseRequest: v,
+	}
+}
+
+// EndpointAgentChallengeResponseRequestAsFlowChallengeResponseRequest is a convenience function that returns EndpointAgentChallengeResponseRequest wrapped in FlowChallengeResponseRequest
+func EndpointAgentChallengeResponseRequestAsFlowChallengeResponseRequest(v *EndpointAgentChallengeResponseRequest) FlowChallengeResponseRequest {
+	return FlowChallengeResponseRequest{
+		EndpointAgentChallengeResponseRequest: v,
 	}
 }
 
@@ -383,6 +391,18 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.EmailChallengeResponseRequest = nil
 			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as EmailChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'EndpointAgentChallengeResponseRequest'
+	if jsonDict["component"] == "EndpointAgentChallengeResponseRequest" {
+		// try to unmarshal JSON data into EndpointAgentChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.EndpointAgentChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.EndpointAgentChallengeResponseRequest, return on the first match
+		} else {
+			dst.EndpointAgentChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as EndpointAgentChallengeResponseRequest: %s", err.Error())
 		}
 	}
 
@@ -758,6 +778,18 @@ func (dst *FlowChallengeResponseRequest) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'ak-stage-endpoint-agent'
+	if jsonDict["component"] == "ak-stage-endpoint-agent" {
+		// try to unmarshal JSON data into EndpointAgentChallengeResponseRequest
+		err = json.Unmarshal(data, &dst.EndpointAgentChallengeResponseRequest)
+		if err == nil {
+			return nil // data stored in dst.EndpointAgentChallengeResponseRequest, return on the first match
+		} else {
+			dst.EndpointAgentChallengeResponseRequest = nil
+			return fmt.Errorf("Failed to unmarshal FlowChallengeResponseRequest as EndpointAgentChallengeResponseRequest: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'ak-stage-identification'
 	if jsonDict["component"] == "ak-stage-identification" {
 		// try to unmarshal JSON data into IdentificationChallengeResponseRequest
@@ -887,6 +919,10 @@ func (src FlowChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.EmailChallengeResponseRequest)
 	}
 
+	if src.EndpointAgentChallengeResponseRequest != nil {
+		return json.Marshal(&src.EndpointAgentChallengeResponseRequest)
+	}
+
 	if src.FrameChallengeResponseRequest != nil {
 		return json.Marshal(&src.FrameChallengeResponseRequest)
 	}
@@ -993,6 +1029,10 @@ func (obj *FlowChallengeResponseRequest) GetActualInstance() interface{} {
 
 	if obj.EmailChallengeResponseRequest != nil {
 		return obj.EmailChallengeResponseRequest
+	}
+
+	if obj.EndpointAgentChallengeResponseRequest != nil {
+		return obj.EndpointAgentChallengeResponseRequest
 	}
 
 	if obj.FrameChallengeResponseRequest != nil {

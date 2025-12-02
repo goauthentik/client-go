@@ -20,7 +20,8 @@ type AgentConfig struct {
 	DeviceId                     string                 `json:"device_id"`
 	RefreshInterval              int32                  `json:"refresh_interval"`
 	AuthorizationFlow            NullableString         `json:"authorization_flow"`
-	Jwks                         map[string]interface{} `json:"jwks"`
+	JwksAuth                     map[string]interface{} `json:"jwks_auth"`
+	JwksChallenge                map[string]interface{} `json:"jwks_challenge"`
 	NssUidOffset                 int32                  `json:"nss_uid_offset"`
 	NssGidOffset                 int32                  `json:"nss_gid_offset"`
 	AuthTerminateSessionOnExpiry bool                   `json:"auth_terminate_session_on_expiry"`
@@ -31,12 +32,13 @@ type AgentConfig struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgentConfig(deviceId string, refreshInterval int32, authorizationFlow NullableString, jwks map[string]interface{}, nssUidOffset int32, nssGidOffset int32, authTerminateSessionOnExpiry bool, systemConfig Config) *AgentConfig {
+func NewAgentConfig(deviceId string, refreshInterval int32, authorizationFlow NullableString, jwksAuth map[string]interface{}, jwksChallenge map[string]interface{}, nssUidOffset int32, nssGidOffset int32, authTerminateSessionOnExpiry bool, systemConfig Config) *AgentConfig {
 	this := AgentConfig{}
 	this.DeviceId = deviceId
 	this.RefreshInterval = refreshInterval
 	this.AuthorizationFlow = authorizationFlow
-	this.Jwks = jwks
+	this.JwksAuth = jwksAuth
+	this.JwksChallenge = jwksChallenge
 	this.NssUidOffset = nssUidOffset
 	this.NssGidOffset = nssGidOffset
 	this.AuthTerminateSessionOnExpiry = authTerminateSessionOnExpiry
@@ -126,28 +128,54 @@ func (o *AgentConfig) SetAuthorizationFlow(v string) {
 	o.AuthorizationFlow.Set(&v)
 }
 
-// GetJwks returns the Jwks field value
-func (o *AgentConfig) GetJwks() map[string]interface{} {
+// GetJwksAuth returns the JwksAuth field value
+func (o *AgentConfig) GetJwksAuth() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
 
-	return o.Jwks
+	return o.JwksAuth
 }
 
-// GetJwksOk returns a tuple with the Jwks field value
+// GetJwksAuthOk returns a tuple with the JwksAuth field value
 // and a boolean to check if the value has been set.
-func (o *AgentConfig) GetJwksOk() (map[string]interface{}, bool) {
+func (o *AgentConfig) GetJwksAuthOk() (map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Jwks, true
+	return o.JwksAuth, true
 }
 
-// SetJwks sets field value
-func (o *AgentConfig) SetJwks(v map[string]interface{}) {
-	o.Jwks = v
+// SetJwksAuth sets field value
+func (o *AgentConfig) SetJwksAuth(v map[string]interface{}) {
+	o.JwksAuth = v
+}
+
+// GetJwksChallenge returns the JwksChallenge field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *AgentConfig) GetJwksChallenge() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.JwksChallenge
+}
+
+// GetJwksChallengeOk returns a tuple with the JwksChallenge field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AgentConfig) GetJwksChallengeOk() (map[string]interface{}, bool) {
+	if o == nil || o.JwksChallenge == nil {
+		return nil, false
+	}
+	return o.JwksChallenge, true
+}
+
+// SetJwksChallenge sets field value
+func (o *AgentConfig) SetJwksChallenge(v map[string]interface{}) {
+	o.JwksChallenge = v
 }
 
 // GetNssUidOffset returns the NssUidOffset field value
@@ -258,7 +286,10 @@ func (o AgentConfig) MarshalJSON() ([]byte, error) {
 		toSerialize["authorization_flow"] = o.AuthorizationFlow.Get()
 	}
 	if true {
-		toSerialize["jwks"] = o.Jwks
+		toSerialize["jwks_auth"] = o.JwksAuth
+	}
+	if o.JwksChallenge != nil {
+		toSerialize["jwks_challenge"] = o.JwksChallenge
 	}
 	if true {
 		toSerialize["nss_uid_offset"] = o.NssUidOffset

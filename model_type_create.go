@@ -23,6 +23,7 @@ type TypeCreate struct {
 	ModelName          string  `json:"model_name"`
 	IconUrl            *string `json:"icon_url,omitempty"`
 	RequiresEnterprise *bool   `json:"requires_enterprise,omitempty"`
+	Deprecated         *bool   `json:"deprecated,omitempty"`
 }
 
 // NewTypeCreate instantiates a new TypeCreate object
@@ -37,6 +38,8 @@ func NewTypeCreate(name string, description string, component string, modelName 
 	this.ModelName = modelName
 	var requiresEnterprise bool = false
 	this.RequiresEnterprise = &requiresEnterprise
+	var deprecated bool = false
+	this.Deprecated = &deprecated
 	return &this
 }
 
@@ -47,6 +50,8 @@ func NewTypeCreateWithDefaults() *TypeCreate {
 	this := TypeCreate{}
 	var requiresEnterprise bool = false
 	this.RequiresEnterprise = &requiresEnterprise
+	var deprecated bool = false
+	this.Deprecated = &deprecated
 	return &this
 }
 
@@ -210,6 +215,38 @@ func (o *TypeCreate) SetRequiresEnterprise(v bool) {
 	o.RequiresEnterprise = &v
 }
 
+// GetDeprecated returns the Deprecated field value if set, zero value otherwise.
+func (o *TypeCreate) GetDeprecated() bool {
+	if o == nil || o.Deprecated == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Deprecated
+}
+
+// GetDeprecatedOk returns a tuple with the Deprecated field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TypeCreate) GetDeprecatedOk() (*bool, bool) {
+	if o == nil || o.Deprecated == nil {
+		return nil, false
+	}
+	return o.Deprecated, true
+}
+
+// HasDeprecated returns a boolean if a field has been set.
+func (o *TypeCreate) HasDeprecated() bool {
+	if o != nil && o.Deprecated != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeprecated gets a reference to the given bool and assigns it to the Deprecated field.
+func (o *TypeCreate) SetDeprecated(v bool) {
+	o.Deprecated = &v
+}
+
 func (o TypeCreate) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -229,6 +266,9 @@ func (o TypeCreate) MarshalJSON() ([]byte, error) {
 	}
 	if o.RequiresEnterprise != nil {
 		toSerialize["requires_enterprise"] = o.RequiresEnterprise
+	}
+	if o.Deprecated != nil {
+		toSerialize["deprecated"] = o.Deprecated
 	}
 	return json.Marshal(toSerialize)
 }

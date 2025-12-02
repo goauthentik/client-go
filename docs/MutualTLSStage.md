@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
 **FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
-**Mode** | [**MutualTLSStageModeEnum**](MutualTLSStageModeEnum.md) |  | 
+**Mode** | [**StageModeEnum**](StageModeEnum.md) |  | 
 **CertificateAuthorities** | Pointer to **[]string** | Configure certificate authorities to validate the certificate against. This option has a higher priority than the &#x60;client_certificate&#x60; option on &#x60;Brand&#x60;. | [optional] 
 **CertAttribute** | [**CertAttributeEnum**](CertAttributeEnum.md) |  | 
 **UserAttribute** | [**UserAttributeEnum**](UserAttributeEnum.md) |  | 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewMutualTLSStage
 
-`func NewMutualTLSStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, mode MutualTLSStageModeEnum, certAttribute CertAttributeEnum, userAttribute UserAttributeEnum, ) *MutualTLSStage`
+`func NewMutualTLSStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, mode StageModeEnum, certAttribute CertAttributeEnum, userAttribute UserAttributeEnum, ) *MutualTLSStage`
 
 NewMutualTLSStage instantiates a new MutualTLSStage object
 This constructor will assign default values to properties that have it defined,
@@ -182,20 +182,20 @@ HasFlowSet returns a boolean if a field has been set.
 
 ### GetMode
 
-`func (o *MutualTLSStage) GetMode() MutualTLSStageModeEnum`
+`func (o *MutualTLSStage) GetMode() StageModeEnum`
 
 GetMode returns the Mode field if non-nil, zero value otherwise.
 
 ### GetModeOk
 
-`func (o *MutualTLSStage) GetModeOk() (*MutualTLSStageModeEnum, bool)`
+`func (o *MutualTLSStage) GetModeOk() (*StageModeEnum, bool)`
 
 GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMode
 
-`func (o *MutualTLSStage) SetMode(v MutualTLSStageModeEnum)`
+`func (o *MutualTLSStage) SetMode(v StageModeEnum)`
 
 SetMode sets Mode field to given value.
 
