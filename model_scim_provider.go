@@ -45,9 +45,11 @@ type SCIMProvider struct {
 	// Additional OAuth parameters, such as grant_type
 	AuthOauthParams map[string]interface{} `json:"auth_oauth_params,omitempty"`
 	// Alter authentik behavior for vendor-specific SCIM implementations.
-	CompatibilityMode          *CompatibilityModeEnum `json:"compatibility_mode,omitempty"`
-	ExcludeUsersServiceAccount *bool                  `json:"exclude_users_service_account,omitempty"`
-	FilterGroup                NullableString         `json:"filter_group,omitempty"`
+	CompatibilityMode *CompatibilityModeEnum `json:"compatibility_mode,omitempty"`
+	// Cache duration for ServiceProviderConfig responses. Set minutes=0 to disable.
+	ServiceProviderConfigCacheTimeout *string        `json:"service_provider_config_cache_timeout,omitempty"`
+	ExcludeUsersServiceAccount        *bool          `json:"exclude_users_service_account,omitempty"`
+	FilterGroup                       NullableString `json:"filter_group,omitempty"`
 	// Controls the number of objects synced in a single task
 	SyncPageSize *int32 `json:"sync_page_size,omitempty"`
 	// Timeout for synchronization of a single page
@@ -565,6 +567,38 @@ func (o *SCIMProvider) SetCompatibilityMode(v CompatibilityModeEnum) {
 	o.CompatibilityMode = &v
 }
 
+// GetServiceProviderConfigCacheTimeout returns the ServiceProviderConfigCacheTimeout field value if set, zero value otherwise.
+func (o *SCIMProvider) GetServiceProviderConfigCacheTimeout() string {
+	if o == nil || o.ServiceProviderConfigCacheTimeout == nil {
+		var ret string
+		return ret
+	}
+	return *o.ServiceProviderConfigCacheTimeout
+}
+
+// GetServiceProviderConfigCacheTimeoutOk returns a tuple with the ServiceProviderConfigCacheTimeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SCIMProvider) GetServiceProviderConfigCacheTimeoutOk() (*string, bool) {
+	if o == nil || o.ServiceProviderConfigCacheTimeout == nil {
+		return nil, false
+	}
+	return o.ServiceProviderConfigCacheTimeout, true
+}
+
+// HasServiceProviderConfigCacheTimeout returns a boolean if a field has been set.
+func (o *SCIMProvider) HasServiceProviderConfigCacheTimeout() bool {
+	if o != nil && o.ServiceProviderConfigCacheTimeout != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceProviderConfigCacheTimeout gets a reference to the given string and assigns it to the ServiceProviderConfigCacheTimeout field.
+func (o *SCIMProvider) SetServiceProviderConfigCacheTimeout(v string) {
+	o.ServiceProviderConfigCacheTimeout = &v
+}
+
 // GetExcludeUsersServiceAccount returns the ExcludeUsersServiceAccount field value if set, zero value otherwise.
 func (o *SCIMProvider) GetExcludeUsersServiceAccount() bool {
 	if o == nil || o.ExcludeUsersServiceAccount == nil {
@@ -788,6 +822,9 @@ func (o SCIMProvider) MarshalJSON() ([]byte, error) {
 	}
 	if o.CompatibilityMode != nil {
 		toSerialize["compatibility_mode"] = o.CompatibilityMode
+	}
+	if o.ServiceProviderConfigCacheTimeout != nil {
+		toSerialize["service_provider_config_cache_timeout"] = o.ServiceProviderConfigCacheTimeout
 	}
 	if o.ExcludeUsersServiceAccount != nil {
 		toSerialize["exclude_users_service_account"] = o.ExcludeUsersServiceAccount

@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **AuthOauth** | Pointer to **NullableString** | OAuth Source used for authentication | [optional] 
 **AuthOauthParams** | Pointer to **map[string]interface{}** | Additional OAuth parameters, such as grant_type | [optional] 
 **CompatibilityMode** | Pointer to [**CompatibilityModeEnum**](CompatibilityModeEnum.md) | Alter authentik behavior for vendor-specific SCIM implementations. | [optional] 
+**ServiceProviderConfigCacheTimeout** | Pointer to **string** | Cache duration for ServiceProviderConfig responses. Set minutes&#x3D;0 to disable. | [optional] 
 **ExcludeUsersServiceAccount** | Pointer to **bool** |  | [optional] 
 **FilterGroup** | Pointer to **NullableString** |  | [optional] 
 **SyncPageSize** | Pointer to **int32** | Controls the number of objects synced in a single task | [optional] 
@@ -435,6 +436,31 @@ SetCompatibilityMode sets CompatibilityMode field to given value.
 `func (o *SCIMProvider) HasCompatibilityMode() bool`
 
 HasCompatibilityMode returns a boolean if a field has been set.
+
+### GetServiceProviderConfigCacheTimeout
+
+`func (o *SCIMProvider) GetServiceProviderConfigCacheTimeout() string`
+
+GetServiceProviderConfigCacheTimeout returns the ServiceProviderConfigCacheTimeout field if non-nil, zero value otherwise.
+
+### GetServiceProviderConfigCacheTimeoutOk
+
+`func (o *SCIMProvider) GetServiceProviderConfigCacheTimeoutOk() (*string, bool)`
+
+GetServiceProviderConfigCacheTimeoutOk returns a tuple with the ServiceProviderConfigCacheTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceProviderConfigCacheTimeout
+
+`func (o *SCIMProvider) SetServiceProviderConfigCacheTimeout(v string)`
+
+SetServiceProviderConfigCacheTimeout sets ServiceProviderConfigCacheTimeout field to given value.
+
+### HasServiceProviderConfigCacheTimeout
+
+`func (o *SCIMProvider) HasServiceProviderConfigCacheTimeout() bool`
+
+HasServiceProviderConfigCacheTimeout returns a boolean if a field has been set.
 
 ### GetExcludeUsersServiceAccount
 

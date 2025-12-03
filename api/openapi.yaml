@@ -70460,6 +70460,7 @@ components:
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          service_provider_config_cache_timeout: service_provider_config_cache_timeout
         - compatibility_mode: ""
           sync_page_timeout: sync_page_timeout
           property_mappings_group:
@@ -70487,6 +70488,7 @@ components:
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          service_provider_config_cache_timeout: service_provider_config_cache_timeout
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -77952,6 +77954,7 @@ components:
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        service_provider_config_cache_timeout: service_provider_config_cache_timeout
       properties:
         name:
           minLength: 1
@@ -77992,6 +77995,11 @@ components:
           - $ref: '#/components/schemas/CompatibilityModeEnum'
           description: Alter authentik behavior for vendor-specific SCIM implementations.
           title: SCIM Compatibility Mode
+        service_provider_config_cache_timeout:
+          description: Cache duration for ServiceProviderConfig responses. Set minutes=0
+            to disable.
+          minLength: 1
+          type: string
         exclude_users_service_account:
           type: boolean
         filter_group:
@@ -82882,6 +82890,7 @@ components:
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        service_provider_config_cache_timeout: service_provider_config_cache_timeout
       properties:
         pk:
           readOnly: true
@@ -82948,6 +82957,10 @@ components:
           - $ref: '#/components/schemas/CompatibilityModeEnum'
           description: Alter authentik behavior for vendor-specific SCIM implementations.
           title: SCIM Compatibility Mode
+        service_provider_config_cache_timeout:
+          description: Cache duration for ServiceProviderConfig responses. Set minutes=0
+            to disable.
+          type: string
         exclude_users_service_account:
           type: boolean
         filter_group:
@@ -83058,6 +83071,7 @@ components:
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        service_provider_config_cache_timeout: service_provider_config_cache_timeout
       properties:
         name:
           minLength: 1
@@ -83098,6 +83112,11 @@ components:
           - $ref: '#/components/schemas/CompatibilityModeEnum'
           description: Alter authentik behavior for vendor-specific SCIM implementations.
           title: SCIM Compatibility Mode
+        service_provider_config_cache_timeout:
+          description: Cache duration for ServiceProviderConfig responses. Set minutes=0
+            to disable.
+          minLength: 1
+          type: string
         exclude_users_service_account:
           type: boolean
         filter_group:
