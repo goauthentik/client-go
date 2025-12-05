@@ -53700,6 +53700,7 @@ components:
           href: href
         flags:
           policies_buffered_access_view: true
+          flows_refresh_others: true
         flow_device_code: flow_device_code
         matched_domain: matched_domain
         flow_authentication: flow_authentication
@@ -78229,6 +78230,7 @@ components:
         default_token_duration: default_token_duration
         flags:
           policies_buffered_access_view: true
+          flows_refresh_others: true
         default_token_length: 314780941
         event_retention: event_retention
         default_user_change_email: true
@@ -84094,6 +84096,7 @@ components:
         default_token_duration: default_token_duration
         flags:
           policies_buffered_access_view: true
+          flows_refresh_others: true
         default_token_length: 314780941
         event_retention: event_retention
         default_user_change_email: true
@@ -84164,6 +84167,7 @@ components:
         default_token_duration: default_token_duration
         flags:
           policies_buffered_access_view: true
+          flows_refresh_others: true
         default_token_length: 314780941
         event_retention: event_retention
         default_user_change_email: true
@@ -88054,11 +88058,15 @@ components:
     CurrentBrand_flags:
       example:
         policies_buffered_access_view: true
+        flows_refresh_others: true
       properties:
         policies_buffered_access_view:
           type: boolean
+        flows_refresh_others:
+          type: boolean
       readOnly: true
       required:
+      - flows_refresh_others
       - policies_buffered_access_view
       type: object
     DeviceConnection_latest_snapshot:
@@ -88097,10 +88105,14 @@ components:
     PatchedSettingsRequest_flags:
       example:
         policies_buffered_access_view: true
+        flows_refresh_others: true
       properties:
         policies_buffered_access_view:
           type: boolean
+        flows_refresh_others:
+          type: boolean
       required:
+      - flows_refresh_others
       - policies_buffered_access_view
       type: object
     SystemInfo_runtime:

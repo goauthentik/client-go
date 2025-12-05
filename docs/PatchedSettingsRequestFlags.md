@@ -5,12 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PoliciesBufferedAccessView** | **bool** |  | 
+**FlowsRefreshOthers** | **bool** |  | 
 
 ## Methods
 
 ### NewPatchedSettingsRequestFlags
 
-`func NewPatchedSettingsRequestFlags(policiesBufferedAccessView bool, ) *PatchedSettingsRequestFlags`
+`func NewPatchedSettingsRequestFlags(policiesBufferedAccessView bool, flowsRefreshOthers bool, ) *PatchedSettingsRequestFlags`
 
 NewPatchedSettingsRequestFlags instantiates a new PatchedSettingsRequestFlags object
 This constructor will assign default values to properties that have it defined,
@@ -43,6 +44,26 @@ and a boolean to check if the value has been set.
 `func (o *PatchedSettingsRequestFlags) SetPoliciesBufferedAccessView(v bool)`
 
 SetPoliciesBufferedAccessView sets PoliciesBufferedAccessView field to given value.
+
+
+### GetFlowsRefreshOthers
+
+`func (o *PatchedSettingsRequestFlags) GetFlowsRefreshOthers() bool`
+
+GetFlowsRefreshOthers returns the FlowsRefreshOthers field if non-nil, zero value otherwise.
+
+### GetFlowsRefreshOthersOk
+
+`func (o *PatchedSettingsRequestFlags) GetFlowsRefreshOthersOk() (*bool, bool)`
+
+GetFlowsRefreshOthersOk returns a tuple with the FlowsRefreshOthers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowsRefreshOthers
+
+`func (o *PatchedSettingsRequestFlags) SetFlowsRefreshOthers(v bool)`
+
+SetFlowsRefreshOthers sets FlowsRefreshOthers field to given value.
 
 
 
