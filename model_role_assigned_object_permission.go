@@ -17,20 +17,22 @@ import (
 
 // RoleAssignedObjectPermission Roles assigned object permission serializer
 type RoleAssignedObjectPermission struct {
-	RolePk      string                 `json:"role_pk"`
-	Name        string                 `json:"name"`
-	Permissions []RoleObjectPermission `json:"permissions"`
+	RolePk            string                 `json:"role_pk"`
+	Name              string                 `json:"name"`
+	ObjectPermissions []RoleObjectPermission `json:"object_permissions"`
+	ModelPermissions  []RoleModelPermission  `json:"model_permissions"`
 }
 
 // NewRoleAssignedObjectPermission instantiates a new RoleAssignedObjectPermission object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRoleAssignedObjectPermission(rolePk string, name string, permissions []RoleObjectPermission) *RoleAssignedObjectPermission {
+func NewRoleAssignedObjectPermission(rolePk string, name string, objectPermissions []RoleObjectPermission, modelPermissions []RoleModelPermission) *RoleAssignedObjectPermission {
 	this := RoleAssignedObjectPermission{}
 	this.RolePk = rolePk
 	this.Name = name
-	this.Permissions = permissions
+	this.ObjectPermissions = objectPermissions
+	this.ModelPermissions = modelPermissions
 	return &this
 }
 
@@ -90,28 +92,52 @@ func (o *RoleAssignedObjectPermission) SetName(v string) {
 	o.Name = v
 }
 
-// GetPermissions returns the Permissions field value
-func (o *RoleAssignedObjectPermission) GetPermissions() []RoleObjectPermission {
+// GetObjectPermissions returns the ObjectPermissions field value
+func (o *RoleAssignedObjectPermission) GetObjectPermissions() []RoleObjectPermission {
 	if o == nil {
 		var ret []RoleObjectPermission
 		return ret
 	}
 
-	return o.Permissions
+	return o.ObjectPermissions
 }
 
-// GetPermissionsOk returns a tuple with the Permissions field value
+// GetObjectPermissionsOk returns a tuple with the ObjectPermissions field value
 // and a boolean to check if the value has been set.
-func (o *RoleAssignedObjectPermission) GetPermissionsOk() ([]RoleObjectPermission, bool) {
+func (o *RoleAssignedObjectPermission) GetObjectPermissionsOk() ([]RoleObjectPermission, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Permissions, true
+	return o.ObjectPermissions, true
 }
 
-// SetPermissions sets field value
-func (o *RoleAssignedObjectPermission) SetPermissions(v []RoleObjectPermission) {
-	o.Permissions = v
+// SetObjectPermissions sets field value
+func (o *RoleAssignedObjectPermission) SetObjectPermissions(v []RoleObjectPermission) {
+	o.ObjectPermissions = v
+}
+
+// GetModelPermissions returns the ModelPermissions field value
+func (o *RoleAssignedObjectPermission) GetModelPermissions() []RoleModelPermission {
+	if o == nil {
+		var ret []RoleModelPermission
+		return ret
+	}
+
+	return o.ModelPermissions
+}
+
+// GetModelPermissionsOk returns a tuple with the ModelPermissions field value
+// and a boolean to check if the value has been set.
+func (o *RoleAssignedObjectPermission) GetModelPermissionsOk() ([]RoleModelPermission, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ModelPermissions, true
+}
+
+// SetModelPermissions sets field value
+func (o *RoleAssignedObjectPermission) SetModelPermissions(v []RoleModelPermission) {
+	o.ModelPermissions = v
 }
 
 func (o RoleAssignedObjectPermission) MarshalJSON() ([]byte, error) {
@@ -123,7 +149,10 @@ func (o RoleAssignedObjectPermission) MarshalJSON() ([]byte, error) {
 		toSerialize["name"] = o.Name
 	}
 	if true {
-		toSerialize["permissions"] = o.Permissions
+		toSerialize["object_permissions"] = o.ObjectPermissions
+	}
+	if true {
+		toSerialize["model_permissions"] = o.ModelPermissions
 	}
 	return json.Marshal(toSerialize)
 }

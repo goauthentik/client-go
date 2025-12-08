@@ -15,8 +15,8 @@ import (
 	"encoding/json"
 )
 
-// GroupChild Stripped down group serializer to show relevant children for groups
-type GroupChild struct {
+// RelatedGroup Stripped down group serializer to show relevant children/parents for groups
+type RelatedGroup struct {
 	Pk   string `json:"pk"`
 	Name string `json:"name"`
 	// Users added to this group will be superusers.
@@ -25,28 +25,28 @@ type GroupChild struct {
 	GroupUuid   string                 `json:"group_uuid"`
 }
 
-// NewGroupChild instantiates a new GroupChild object
+// NewRelatedGroup instantiates a new RelatedGroup object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupChild(pk string, name string, groupUuid string) *GroupChild {
-	this := GroupChild{}
+func NewRelatedGroup(pk string, name string, groupUuid string) *RelatedGroup {
+	this := RelatedGroup{}
 	this.Pk = pk
 	this.Name = name
 	this.GroupUuid = groupUuid
 	return &this
 }
 
-// NewGroupChildWithDefaults instantiates a new GroupChild object
+// NewRelatedGroupWithDefaults instantiates a new RelatedGroup object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGroupChildWithDefaults() *GroupChild {
-	this := GroupChild{}
+func NewRelatedGroupWithDefaults() *RelatedGroup {
+	this := RelatedGroup{}
 	return &this
 }
 
 // GetPk returns the Pk field value
-func (o *GroupChild) GetPk() string {
+func (o *RelatedGroup) GetPk() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -57,7 +57,7 @@ func (o *GroupChild) GetPk() string {
 
 // GetPkOk returns a tuple with the Pk field value
 // and a boolean to check if the value has been set.
-func (o *GroupChild) GetPkOk() (*string, bool) {
+func (o *RelatedGroup) GetPkOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,12 +65,12 @@ func (o *GroupChild) GetPkOk() (*string, bool) {
 }
 
 // SetPk sets field value
-func (o *GroupChild) SetPk(v string) {
+func (o *RelatedGroup) SetPk(v string) {
 	o.Pk = v
 }
 
 // GetName returns the Name field value
-func (o *GroupChild) GetName() string {
+func (o *RelatedGroup) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -81,7 +81,7 @@ func (o *GroupChild) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *GroupChild) GetNameOk() (*string, bool) {
+func (o *RelatedGroup) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -89,12 +89,12 @@ func (o *GroupChild) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *GroupChild) SetName(v string) {
+func (o *RelatedGroup) SetName(v string) {
 	o.Name = v
 }
 
 // GetIsSuperuser returns the IsSuperuser field value if set, zero value otherwise.
-func (o *GroupChild) GetIsSuperuser() bool {
+func (o *RelatedGroup) GetIsSuperuser() bool {
 	if o == nil || o.IsSuperuser == nil {
 		var ret bool
 		return ret
@@ -104,7 +104,7 @@ func (o *GroupChild) GetIsSuperuser() bool {
 
 // GetIsSuperuserOk returns a tuple with the IsSuperuser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupChild) GetIsSuperuserOk() (*bool, bool) {
+func (o *RelatedGroup) GetIsSuperuserOk() (*bool, bool) {
 	if o == nil || o.IsSuperuser == nil {
 		return nil, false
 	}
@@ -112,7 +112,7 @@ func (o *GroupChild) GetIsSuperuserOk() (*bool, bool) {
 }
 
 // HasIsSuperuser returns a boolean if a field has been set.
-func (o *GroupChild) HasIsSuperuser() bool {
+func (o *RelatedGroup) HasIsSuperuser() bool {
 	if o != nil && o.IsSuperuser != nil {
 		return true
 	}
@@ -121,12 +121,12 @@ func (o *GroupChild) HasIsSuperuser() bool {
 }
 
 // SetIsSuperuser gets a reference to the given bool and assigns it to the IsSuperuser field.
-func (o *GroupChild) SetIsSuperuser(v bool) {
+func (o *RelatedGroup) SetIsSuperuser(v bool) {
 	o.IsSuperuser = &v
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *GroupChild) GetAttributes() map[string]interface{} {
+func (o *RelatedGroup) GetAttributes() map[string]interface{} {
 	if o == nil || o.Attributes == nil {
 		var ret map[string]interface{}
 		return ret
@@ -136,7 +136,7 @@ func (o *GroupChild) GetAttributes() map[string]interface{} {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupChild) GetAttributesOk() (map[string]interface{}, bool) {
+func (o *RelatedGroup) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil || o.Attributes == nil {
 		return nil, false
 	}
@@ -144,7 +144,7 @@ func (o *GroupChild) GetAttributesOk() (map[string]interface{}, bool) {
 }
 
 // HasAttributes returns a boolean if a field has been set.
-func (o *GroupChild) HasAttributes() bool {
+func (o *RelatedGroup) HasAttributes() bool {
 	if o != nil && o.Attributes != nil {
 		return true
 	}
@@ -153,12 +153,12 @@ func (o *GroupChild) HasAttributes() bool {
 }
 
 // SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
-func (o *GroupChild) SetAttributes(v map[string]interface{}) {
+func (o *RelatedGroup) SetAttributes(v map[string]interface{}) {
 	o.Attributes = v
 }
 
 // GetGroupUuid returns the GroupUuid field value
-func (o *GroupChild) GetGroupUuid() string {
+func (o *RelatedGroup) GetGroupUuid() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -169,7 +169,7 @@ func (o *GroupChild) GetGroupUuid() string {
 
 // GetGroupUuidOk returns a tuple with the GroupUuid field value
 // and a boolean to check if the value has been set.
-func (o *GroupChild) GetGroupUuidOk() (*string, bool) {
+func (o *RelatedGroup) GetGroupUuidOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -177,11 +177,11 @@ func (o *GroupChild) GetGroupUuidOk() (*string, bool) {
 }
 
 // SetGroupUuid sets field value
-func (o *GroupChild) SetGroupUuid(v string) {
+func (o *RelatedGroup) SetGroupUuid(v string) {
 	o.GroupUuid = v
 }
 
-func (o GroupChild) MarshalJSON() ([]byte, error) {
+func (o RelatedGroup) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["pk"] = o.Pk
@@ -201,38 +201,38 @@ func (o GroupChild) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableGroupChild struct {
-	value *GroupChild
+type NullableRelatedGroup struct {
+	value *RelatedGroup
 	isSet bool
 }
 
-func (v NullableGroupChild) Get() *GroupChild {
+func (v NullableRelatedGroup) Get() *RelatedGroup {
 	return v.value
 }
 
-func (v *NullableGroupChild) Set(val *GroupChild) {
+func (v *NullableRelatedGroup) Set(val *RelatedGroup) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGroupChild) IsSet() bool {
+func (v NullableRelatedGroup) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGroupChild) Unset() {
+func (v *NullableRelatedGroup) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGroupChild(val *GroupChild) *NullableGroupChild {
-	return &NullableGroupChild{value: val, isSet: true}
+func NewNullableRelatedGroup(val *RelatedGroup) *NullableRelatedGroup {
+	return &NullableRelatedGroup{value: val, isSet: true}
 }
 
-func (v NullableGroupChild) MarshalJSON() ([]byte, error) {
+func (v NullableRelatedGroup) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGroupChild) UnmarshalJSON(src []byte) error {
+func (v *NullableRelatedGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

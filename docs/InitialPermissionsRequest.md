@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**Mode** | [**InitialPermissionsModeEnum**](InitialPermissionsModeEnum.md) |  | 
 **Role** | **string** |  | 
 **Permissions** | Pointer to **[]int32** |  | [optional] 
 
@@ -13,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewInitialPermissionsRequest
 
-`func NewInitialPermissionsRequest(name string, mode InitialPermissionsModeEnum, role string, ) *InitialPermissionsRequest`
+`func NewInitialPermissionsRequest(name string, role string, ) *InitialPermissionsRequest`
 
 NewInitialPermissionsRequest instantiates a new InitialPermissionsRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,26 +45,6 @@ and a boolean to check if the value has been set.
 `func (o *InitialPermissionsRequest) SetName(v string)`
 
 SetName sets Name field to given value.
-
-
-### GetMode
-
-`func (o *InitialPermissionsRequest) GetMode() InitialPermissionsModeEnum`
-
-GetMode returns the Mode field if non-nil, zero value otherwise.
-
-### GetModeOk
-
-`func (o *InitialPermissionsRequest) GetModeOk() (*InitialPermissionsModeEnum, bool)`
-
-GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMode
-
-`func (o *InitialPermissionsRequest) SetMode(v InitialPermissionsModeEnum)`
-
-SetMode sets Mode field to given value.
 
 
 ### GetRole

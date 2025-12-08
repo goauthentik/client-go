@@ -20,11 +20,10 @@ type PatchedGroupRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Users added to this group will be superusers.
 	IsSuperuser *bool                  `json:"is_superuser,omitempty"`
-	Parent      NullableString         `json:"parent,omitempty"`
+	Parents     []string               `json:"parents,omitempty"`
 	Users       []int32                `json:"users,omitempty"`
 	Attributes  map[string]interface{} `json:"attributes,omitempty"`
 	Roles       []string               `json:"roles,omitempty"`
-	Children    []string               `json:"children,omitempty"`
 }
 
 // NewPatchedGroupRequest instantiates a new PatchedGroupRequest object
@@ -108,47 +107,36 @@ func (o *PatchedGroupRequest) SetIsSuperuser(v bool) {
 	o.IsSuperuser = &v
 }
 
-// GetParent returns the Parent field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PatchedGroupRequest) GetParent() string {
-	if o == nil || o.Parent.Get() == nil {
-		var ret string
+// GetParents returns the Parents field value if set, zero value otherwise.
+func (o *PatchedGroupRequest) GetParents() []string {
+	if o == nil || o.Parents == nil {
+		var ret []string
 		return ret
 	}
-	return *o.Parent.Get()
+	return o.Parents
 }
 
-// GetParentOk returns a tuple with the Parent field value if set, nil otherwise
+// GetParentsOk returns a tuple with the Parents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PatchedGroupRequest) GetParentOk() (*string, bool) {
-	if o == nil {
+func (o *PatchedGroupRequest) GetParentsOk() ([]string, bool) {
+	if o == nil || o.Parents == nil {
 		return nil, false
 	}
-	return o.Parent.Get(), o.Parent.IsSet()
+	return o.Parents, true
 }
 
-// HasParent returns a boolean if a field has been set.
-func (o *PatchedGroupRequest) HasParent() bool {
-	if o != nil && o.Parent.IsSet() {
+// HasParents returns a boolean if a field has been set.
+func (o *PatchedGroupRequest) HasParents() bool {
+	if o != nil && o.Parents != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetParent gets a reference to the given NullableString and assigns it to the Parent field.
-func (o *PatchedGroupRequest) SetParent(v string) {
-	o.Parent.Set(&v)
-}
-
-// SetParentNil sets the value for Parent to be an explicit nil
-func (o *PatchedGroupRequest) SetParentNil() {
-	o.Parent.Set(nil)
-}
-
-// UnsetParent ensures that no value is present for Parent, not even an explicit nil
-func (o *PatchedGroupRequest) UnsetParent() {
-	o.Parent.Unset()
+// SetParents gets a reference to the given []string and assigns it to the Parents field.
+func (o *PatchedGroupRequest) SetParents(v []string) {
+	o.Parents = v
 }
 
 // GetUsers returns the Users field value if set, zero value otherwise.
@@ -247,38 +235,6 @@ func (o *PatchedGroupRequest) SetRoles(v []string) {
 	o.Roles = v
 }
 
-// GetChildren returns the Children field value if set, zero value otherwise.
-func (o *PatchedGroupRequest) GetChildren() []string {
-	if o == nil || o.Children == nil {
-		var ret []string
-		return ret
-	}
-	return o.Children
-}
-
-// GetChildrenOk returns a tuple with the Children field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedGroupRequest) GetChildrenOk() ([]string, bool) {
-	if o == nil || o.Children == nil {
-		return nil, false
-	}
-	return o.Children, true
-}
-
-// HasChildren returns a boolean if a field has been set.
-func (o *PatchedGroupRequest) HasChildren() bool {
-	if o != nil && o.Children != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetChildren gets a reference to the given []string and assigns it to the Children field.
-func (o *PatchedGroupRequest) SetChildren(v []string) {
-	o.Children = v
-}
-
 func (o PatchedGroupRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -287,8 +243,8 @@ func (o PatchedGroupRequest) MarshalJSON() ([]byte, error) {
 	if o.IsSuperuser != nil {
 		toSerialize["is_superuser"] = o.IsSuperuser
 	}
-	if o.Parent.IsSet() {
-		toSerialize["parent"] = o.Parent.Get()
+	if o.Parents != nil {
+		toSerialize["parents"] = o.Parents
 	}
 	if o.Users != nil {
 		toSerialize["users"] = o.Users
@@ -298,9 +254,6 @@ func (o PatchedGroupRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Roles != nil {
 		toSerialize["roles"] = o.Roles
-	}
-	if o.Children != nil {
-		toSerialize["children"] = o.Children
 	}
 	return json.Marshal(toSerialize)
 }

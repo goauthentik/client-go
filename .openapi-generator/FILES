@@ -216,9 +216,6 @@ docs/ExpiringBaseGrantModel.md
 docs/ExpressionPolicy.md
 docs/ExpressionPolicyRequest.md
 docs/ExtraRoleObjectPermission.md
-docs/ExtraRoleObjectPermissionRequest.md
-docs/ExtraUserObjectPermission.md
-docs/ExtraUserObjectPermissionRequest.md
 docs/FileList.md
 docs/Flow.md
 docs/FlowChallengeResponseRequest.md
@@ -254,7 +251,6 @@ docs/GoogleWorkspaceProviderRequest.md
 docs/GoogleWorkspaceProviderUser.md
 docs/GoogleWorkspaceProviderUserRequest.md
 docs/Group.md
-docs/GroupChild.md
 docs/GroupKerberosSourceConnection.md
 docs/GroupKerberosSourceConnectionRequest.md
 docs/GroupLDAPSourceConnection.md
@@ -282,7 +278,6 @@ docs/IframeLogoutChallenge.md
 docs/IframeLogoutChallengeResponseRequest.md
 docs/ImpersonationRequest.md
 docs/InitialPermissions.md
-docs/InitialPermissionsModeEnum.md
 docs/InitialPermissionsRequest.md
 docs/InstallID.md
 docs/IntentEnum.md
@@ -419,7 +414,6 @@ docs/PaginatedEventMatcherPolicyList.md
 docs/PaginatedExpiringBaseGrantModelList.md
 docs/PaginatedExpressionPolicyList.md
 docs/PaginatedExtraRoleObjectPermissionList.md
-docs/PaginatedExtraUserObjectPermissionList.md
 docs/PaginatedFlowList.md
 docs/PaginatedFlowStageBindingList.md
 docs/PaginatedGeoIPPolicyList.md
@@ -515,7 +509,6 @@ docs/PaginatedTenantList.md
 docs/PaginatedTokenList.md
 docs/PaginatedTokenModelList.md
 docs/PaginatedUniquePasswordPolicyList.md
-docs/PaginatedUserAssignedObjectPermissionList.md
 docs/PaginatedUserConsentList.md
 docs/PaginatedUserDeleteStageList.md
 docs/PaginatedUserKerberosSourceConnectionList.md
@@ -576,8 +569,6 @@ docs/PatchedEnrollmentTokenRequest.md
 docs/PatchedEventMatcherPolicyRequest.md
 docs/PatchedEventRequest.md
 docs/PatchedExpressionPolicyRequest.md
-docs/PatchedExtraRoleObjectPermissionRequest.md
-docs/PatchedExtraUserObjectPermissionRequest.md
 docs/PatchedFlowRequest.md
 docs/PatchedFlowStageBindingRequest.md
 docs/PatchedGeoIPPolicyRequest.md
@@ -729,12 +720,14 @@ docs/RedirectStageModeEnum.md
 docs/RedirectStageRequest.md
 docs/RedirectURI.md
 docs/RedirectURIRequest.md
+docs/RelatedGroup.md
 docs/Reputation.md
 docs/ReputationPolicy.md
 docs/ReputationPolicyRequest.md
 docs/ResidentKeyRequirementEnum.md
 docs/Role.md
 docs/RoleAssignedObjectPermission.md
+docs/RoleModelPermission.md
 docs/RoleObjectPermission.md
 docs/RoleRequest.md
 docs/RootApi.md
@@ -843,7 +836,7 @@ docs/UsedBy.md
 docs/UsedByActionEnum.md
 docs/User.md
 docs/UserAccountRequest.md
-docs/UserAssignedObjectPermission.md
+docs/UserAccountSerializerForRoleRequest.md
 docs/UserAttributeEnum.md
 docs/UserConsent.md
 docs/UserCreationModeEnum.md
@@ -863,7 +856,6 @@ docs/UserLogoutStageRequest.md
 docs/UserMatchingModeEnum.md
 docs/UserOAuthSourceConnection.md
 docs/UserOAuthSourceConnectionRequest.md
-docs/UserObjectPermission.md
 docs/UserPasswordSetRequest.md
 docs/UserPath.md
 docs/UserPlexSourceConnection.md
@@ -873,6 +865,7 @@ docs/UserSAMLSourceConnection.md
 docs/UserSAMLSourceConnectionRequest.md
 docs/UserSelf.md
 docs/UserSelfGroups.md
+docs/UserSelfRoles.md
 docs/UserServiceAccountRequest.md
 docs/UserServiceAccountResponse.md
 docs/UserSetting.md
@@ -1077,9 +1070,6 @@ model_expiring_base_grant_model.go
 model_expression_policy.go
 model_expression_policy_request.go
 model_extra_role_object_permission.go
-model_extra_role_object_permission_request.go
-model_extra_user_object_permission.go
-model_extra_user_object_permission_request.go
 model_file_list.go
 model_flow.go
 model_flow_challenge_response_request.go
@@ -1114,7 +1104,6 @@ model_google_workspace_provider_request.go
 model_google_workspace_provider_user.go
 model_google_workspace_provider_user_request.go
 model_group.go
-model_group_child.go
 model_group_kerberos_source_connection.go
 model_group_kerberos_source_connection_request.go
 model_group_ldap_source_connection.go
@@ -1142,7 +1131,6 @@ model_iframe_logout_challenge.go
 model_iframe_logout_challenge_response_request.go
 model_impersonation_request.go
 model_initial_permissions.go
-model_initial_permissions_mode_enum.go
 model_initial_permissions_request.go
 model_install_id.go
 model_intent_enum.go
@@ -1275,7 +1263,6 @@ model_paginated_event_matcher_policy_list.go
 model_paginated_expiring_base_grant_model_list.go
 model_paginated_expression_policy_list.go
 model_paginated_extra_role_object_permission_list.go
-model_paginated_extra_user_object_permission_list.go
 model_paginated_flow_list.go
 model_paginated_flow_stage_binding_list.go
 model_paginated_geo_ip_policy_list.go
@@ -1371,7 +1358,6 @@ model_paginated_token_list.go
 model_paginated_token_model_list.go
 model_paginated_totp_device_list.go
 model_paginated_unique_password_policy_list.go
-model_paginated_user_assigned_object_permission_list.go
 model_paginated_user_consent_list.go
 model_paginated_user_delete_stage_list.go
 model_paginated_user_kerberos_source_connection_list.go
@@ -1432,8 +1418,6 @@ model_patched_enrollment_token_request.go
 model_patched_event_matcher_policy_request.go
 model_patched_event_request.go
 model_patched_expression_policy_request.go
-model_patched_extra_role_object_permission_request.go
-model_patched_extra_user_object_permission_request.go
 model_patched_flow_request.go
 model_patched_flow_stage_binding_request.go
 model_patched_geo_ip_policy_request.go
@@ -1581,12 +1565,14 @@ model_redirect_stage_mode_enum.go
 model_redirect_stage_request.go
 model_redirect_uri.go
 model_redirect_uri_request.go
+model_related_group.go
 model_reputation.go
 model_reputation_policy.go
 model_reputation_policy_request.go
 model_resident_key_requirement_enum.go
 model_role.go
 model_role_assigned_object_permission.go
+model_role_model_permission.go
 model_role_object_permission.go
 model_role_request.go
 model_saml_bindings_enum.go
@@ -1688,7 +1674,7 @@ model_used_by.go
 model_used_by_action_enum.go
 model_user.go
 model_user_account_request.go
-model_user_assigned_object_permission.go
+model_user_account_serializer_for_role_request.go
 model_user_attribute_enum.go
 model_user_consent.go
 model_user_creation_mode_enum.go
@@ -1708,7 +1694,6 @@ model_user_logout_stage_request.go
 model_user_matching_mode_enum.go
 model_user_o_auth_source_connection.go
 model_user_o_auth_source_connection_request.go
-model_user_object_permission.go
 model_user_password_set_request.go
 model_user_path.go
 model_user_plex_source_connection.go
@@ -1718,6 +1703,7 @@ model_user_saml_source_connection.go
 model_user_saml_source_connection_request.go
 model_user_self.go
 model_user_self_groups.go
+model_user_self_roles.go
 model_user_service_account_request.go
 model_user_service_account_response.go
 model_user_setting.go

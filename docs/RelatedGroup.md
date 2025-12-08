@@ -1,4 +1,4 @@
-# GroupChild
+# RelatedGroup
 
 ## Properties
 
@@ -12,129 +12,129 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewGroupChild
+### NewRelatedGroup
 
-`func NewGroupChild(pk string, name string, groupUuid string, ) *GroupChild`
+`func NewRelatedGroup(pk string, name string, groupUuid string, ) *RelatedGroup`
 
-NewGroupChild instantiates a new GroupChild object
+NewRelatedGroup instantiates a new RelatedGroup object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewGroupChildWithDefaults
+### NewRelatedGroupWithDefaults
 
-`func NewGroupChildWithDefaults() *GroupChild`
+`func NewRelatedGroupWithDefaults() *RelatedGroup`
 
-NewGroupChildWithDefaults instantiates a new GroupChild object
+NewRelatedGroupWithDefaults instantiates a new RelatedGroup object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetPk
 
-`func (o *GroupChild) GetPk() string`
+`func (o *RelatedGroup) GetPk() string`
 
 GetPk returns the Pk field if non-nil, zero value otherwise.
 
 ### GetPkOk
 
-`func (o *GroupChild) GetPkOk() (*string, bool)`
+`func (o *RelatedGroup) GetPkOk() (*string, bool)`
 
 GetPkOk returns a tuple with the Pk field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPk
 
-`func (o *GroupChild) SetPk(v string)`
+`func (o *RelatedGroup) SetPk(v string)`
 
 SetPk sets Pk field to given value.
 
 
 ### GetName
 
-`func (o *GroupChild) GetName() string`
+`func (o *RelatedGroup) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *GroupChild) GetNameOk() (*string, bool)`
+`func (o *RelatedGroup) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *GroupChild) SetName(v string)`
+`func (o *RelatedGroup) SetName(v string)`
 
 SetName sets Name field to given value.
 
 
 ### GetIsSuperuser
 
-`func (o *GroupChild) GetIsSuperuser() bool`
+`func (o *RelatedGroup) GetIsSuperuser() bool`
 
 GetIsSuperuser returns the IsSuperuser field if non-nil, zero value otherwise.
 
 ### GetIsSuperuserOk
 
-`func (o *GroupChild) GetIsSuperuserOk() (*bool, bool)`
+`func (o *RelatedGroup) GetIsSuperuserOk() (*bool, bool)`
 
 GetIsSuperuserOk returns a tuple with the IsSuperuser field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIsSuperuser
 
-`func (o *GroupChild) SetIsSuperuser(v bool)`
+`func (o *RelatedGroup) SetIsSuperuser(v bool)`
 
 SetIsSuperuser sets IsSuperuser field to given value.
 
 ### HasIsSuperuser
 
-`func (o *GroupChild) HasIsSuperuser() bool`
+`func (o *RelatedGroup) HasIsSuperuser() bool`
 
 HasIsSuperuser returns a boolean if a field has been set.
 
 ### GetAttributes
 
-`func (o *GroupChild) GetAttributes() map[string]interface{}`
+`func (o *RelatedGroup) GetAttributes() map[string]interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *GroupChild) GetAttributesOk() (*map[string]interface{}, bool)`
+`func (o *RelatedGroup) GetAttributesOk() (*map[string]interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *GroupChild) SetAttributes(v map[string]interface{})`
+`func (o *RelatedGroup) SetAttributes(v map[string]interface{})`
 
 SetAttributes sets Attributes field to given value.
 
 ### HasAttributes
 
-`func (o *GroupChild) HasAttributes() bool`
+`func (o *RelatedGroup) HasAttributes() bool`
 
 HasAttributes returns a boolean if a field has been set.
 
 ### GetGroupUuid
 
-`func (o *GroupChild) GetGroupUuid() string`
+`func (o *RelatedGroup) GetGroupUuid() string`
 
 GetGroupUuid returns the GroupUuid field if non-nil, zero value otherwise.
 
 ### GetGroupUuidOk
 
-`func (o *GroupChild) GetGroupUuidOk() (*string, bool)`
+`func (o *RelatedGroup) GetGroupUuidOk() (*string, bool)`
 
 GetGroupUuidOk returns a tuple with the GroupUuid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroupUuid
 
-`func (o *GroupChild) SetGroupUuid(v string)`
+`func (o *RelatedGroup) SetGroupUuid(v string)`
 
 SetGroupUuid sets GroupUuid field to given value.
 

@@ -15,41 +15,39 @@ import (
 	"encoding/json"
 )
 
-// UserObjectPermission User-bound object level permission
-type UserObjectPermission struct {
+// RoleModelPermission Role-bound object level permission
+type RoleModelPermission struct {
 	Id       int32  `json:"id"`
 	Codename string `json:"codename"`
 	Model    string `json:"model"`
 	AppLabel string `json:"app_label"`
-	ObjectPk string `json:"object_pk"`
 	Name     string `json:"name"`
 }
 
-// NewUserObjectPermission instantiates a new UserObjectPermission object
+// NewRoleModelPermission instantiates a new RoleModelPermission object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserObjectPermission(id int32, codename string, model string, appLabel string, objectPk string, name string) *UserObjectPermission {
-	this := UserObjectPermission{}
+func NewRoleModelPermission(id int32, codename string, model string, appLabel string, name string) *RoleModelPermission {
+	this := RoleModelPermission{}
 	this.Id = id
 	this.Codename = codename
 	this.Model = model
 	this.AppLabel = appLabel
-	this.ObjectPk = objectPk
 	this.Name = name
 	return &this
 }
 
-// NewUserObjectPermissionWithDefaults instantiates a new UserObjectPermission object
+// NewRoleModelPermissionWithDefaults instantiates a new RoleModelPermission object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewUserObjectPermissionWithDefaults() *UserObjectPermission {
-	this := UserObjectPermission{}
+func NewRoleModelPermissionWithDefaults() *RoleModelPermission {
+	this := RoleModelPermission{}
 	return &this
 }
 
 // GetId returns the Id field value
-func (o *UserObjectPermission) GetId() int32 {
+func (o *RoleModelPermission) GetId() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -60,7 +58,7 @@ func (o *UserObjectPermission) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *UserObjectPermission) GetIdOk() (*int32, bool) {
+func (o *RoleModelPermission) GetIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -68,12 +66,12 @@ func (o *UserObjectPermission) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *UserObjectPermission) SetId(v int32) {
+func (o *RoleModelPermission) SetId(v int32) {
 	o.Id = v
 }
 
 // GetCodename returns the Codename field value
-func (o *UserObjectPermission) GetCodename() string {
+func (o *RoleModelPermission) GetCodename() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -84,7 +82,7 @@ func (o *UserObjectPermission) GetCodename() string {
 
 // GetCodenameOk returns a tuple with the Codename field value
 // and a boolean to check if the value has been set.
-func (o *UserObjectPermission) GetCodenameOk() (*string, bool) {
+func (o *RoleModelPermission) GetCodenameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -92,12 +90,12 @@ func (o *UserObjectPermission) GetCodenameOk() (*string, bool) {
 }
 
 // SetCodename sets field value
-func (o *UserObjectPermission) SetCodename(v string) {
+func (o *RoleModelPermission) SetCodename(v string) {
 	o.Codename = v
 }
 
 // GetModel returns the Model field value
-func (o *UserObjectPermission) GetModel() string {
+func (o *RoleModelPermission) GetModel() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -108,7 +106,7 @@ func (o *UserObjectPermission) GetModel() string {
 
 // GetModelOk returns a tuple with the Model field value
 // and a boolean to check if the value has been set.
-func (o *UserObjectPermission) GetModelOk() (*string, bool) {
+func (o *RoleModelPermission) GetModelOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -116,12 +114,12 @@ func (o *UserObjectPermission) GetModelOk() (*string, bool) {
 }
 
 // SetModel sets field value
-func (o *UserObjectPermission) SetModel(v string) {
+func (o *RoleModelPermission) SetModel(v string) {
 	o.Model = v
 }
 
 // GetAppLabel returns the AppLabel field value
-func (o *UserObjectPermission) GetAppLabel() string {
+func (o *RoleModelPermission) GetAppLabel() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -132,7 +130,7 @@ func (o *UserObjectPermission) GetAppLabel() string {
 
 // GetAppLabelOk returns a tuple with the AppLabel field value
 // and a boolean to check if the value has been set.
-func (o *UserObjectPermission) GetAppLabelOk() (*string, bool) {
+func (o *RoleModelPermission) GetAppLabelOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -140,36 +138,12 @@ func (o *UserObjectPermission) GetAppLabelOk() (*string, bool) {
 }
 
 // SetAppLabel sets field value
-func (o *UserObjectPermission) SetAppLabel(v string) {
+func (o *RoleModelPermission) SetAppLabel(v string) {
 	o.AppLabel = v
 }
 
-// GetObjectPk returns the ObjectPk field value
-func (o *UserObjectPermission) GetObjectPk() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ObjectPk
-}
-
-// GetObjectPkOk returns a tuple with the ObjectPk field value
-// and a boolean to check if the value has been set.
-func (o *UserObjectPermission) GetObjectPkOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ObjectPk, true
-}
-
-// SetObjectPk sets field value
-func (o *UserObjectPermission) SetObjectPk(v string) {
-	o.ObjectPk = v
-}
-
 // GetName returns the Name field value
-func (o *UserObjectPermission) GetName() string {
+func (o *RoleModelPermission) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -180,7 +154,7 @@ func (o *UserObjectPermission) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *UserObjectPermission) GetNameOk() (*string, bool) {
+func (o *RoleModelPermission) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -188,11 +162,11 @@ func (o *UserObjectPermission) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *UserObjectPermission) SetName(v string) {
+func (o *RoleModelPermission) SetName(v string) {
 	o.Name = v
 }
 
-func (o UserObjectPermission) MarshalJSON() ([]byte, error) {
+func (o RoleModelPermission) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["id"] = o.Id
@@ -207,46 +181,43 @@ func (o UserObjectPermission) MarshalJSON() ([]byte, error) {
 		toSerialize["app_label"] = o.AppLabel
 	}
 	if true {
-		toSerialize["object_pk"] = o.ObjectPk
-	}
-	if true {
 		toSerialize["name"] = o.Name
 	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableUserObjectPermission struct {
-	value *UserObjectPermission
+type NullableRoleModelPermission struct {
+	value *RoleModelPermission
 	isSet bool
 }
 
-func (v NullableUserObjectPermission) Get() *UserObjectPermission {
+func (v NullableRoleModelPermission) Get() *RoleModelPermission {
 	return v.value
 }
 
-func (v *NullableUserObjectPermission) Set(val *UserObjectPermission) {
+func (v *NullableRoleModelPermission) Set(val *RoleModelPermission) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableUserObjectPermission) IsSet() bool {
+func (v NullableRoleModelPermission) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableUserObjectPermission) Unset() {
+func (v *NullableRoleModelPermission) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableUserObjectPermission(val *UserObjectPermission) *NullableUserObjectPermission {
-	return &NullableUserObjectPermission{value: val, isSet: true}
+func NewNullableRoleModelPermission(val *RoleModelPermission) *NullableRoleModelPermission {
+	return &NullableRoleModelPermission{value: val, isSet: true}
 }
 
-func (v NullableUserObjectPermission) MarshalJSON() ([]byte, error) {
+func (v NullableRoleModelPermission) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableUserObjectPermission) UnmarshalJSON(src []byte) error {
+func (v *NullableRoleModelPermission) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

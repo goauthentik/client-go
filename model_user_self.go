@@ -26,6 +26,7 @@ type UserSelf struct {
 	IsActive    bool             `json:"is_active"`
 	IsSuperuser bool             `json:"is_superuser"`
 	Groups      []UserSelfGroups `json:"groups"`
+	Roles       []UserSelfRoles  `json:"roles"`
 	Email       *string          `json:"email,omitempty"`
 	// User's avatar, either a http/https URL or a data URI
 	Avatar string `json:"avatar"`
@@ -41,7 +42,7 @@ type UserSelf struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserSelf(pk int32, username string, name string, isActive bool, isSuperuser bool, groups []UserSelfGroups, avatar string, uid string, settings map[string]interface{}, systemPermissions []string) *UserSelf {
+func NewUserSelf(pk int32, username string, name string, isActive bool, isSuperuser bool, groups []UserSelfGroups, roles []UserSelfRoles, avatar string, uid string, settings map[string]interface{}, systemPermissions []string) *UserSelf {
 	this := UserSelf{}
 	this.Pk = pk
 	this.Username = username
@@ -49,6 +50,7 @@ func NewUserSelf(pk int32, username string, name string, isActive bool, isSuperu
 	this.IsActive = isActive
 	this.IsSuperuser = isSuperuser
 	this.Groups = groups
+	this.Roles = roles
 	this.Avatar = avatar
 	this.Uid = uid
 	this.Settings = settings
@@ -206,6 +208,30 @@ func (o *UserSelf) GetGroupsOk() ([]UserSelfGroups, bool) {
 // SetGroups sets field value
 func (o *UserSelf) SetGroups(v []UserSelfGroups) {
 	o.Groups = v
+}
+
+// GetRoles returns the Roles field value
+func (o *UserSelf) GetRoles() []UserSelfRoles {
+	if o == nil {
+		var ret []UserSelfRoles
+		return ret
+	}
+
+	return o.Roles
+}
+
+// GetRolesOk returns a tuple with the Roles field value
+// and a boolean to check if the value has been set.
+func (o *UserSelf) GetRolesOk() ([]UserSelfRoles, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Roles, true
+}
+
+// SetRoles sets field value
+func (o *UserSelf) SetRoles(v []UserSelfRoles) {
+	o.Roles = v
 }
 
 // GetEmail returns the Email field value if set, zero value otherwise.
@@ -387,6 +413,9 @@ func (o UserSelf) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["groups"] = o.Groups
+	}
+	if true {
+		toSerialize["roles"] = o.Roles
 	}
 	if o.Email != nil {
 		toSerialize["email"] = o.Email

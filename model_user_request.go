@@ -25,6 +25,7 @@ type UserRequest struct {
 	IsActive   *bool                  `json:"is_active,omitempty"`
 	LastLogin  NullableTime           `json:"last_login,omitempty"`
 	Groups     []string               `json:"groups,omitempty"`
+	Roles      []string               `json:"roles,omitempty"`
 	Email      *string                `json:"email,omitempty"`
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	Path       *string                `json:"path,omitempty"`
@@ -205,6 +206,38 @@ func (o *UserRequest) SetGroups(v []string) {
 	o.Groups = v
 }
 
+// GetRoles returns the Roles field value if set, zero value otherwise.
+func (o *UserRequest) GetRoles() []string {
+	if o == nil || o.Roles == nil {
+		var ret []string
+		return ret
+	}
+	return o.Roles
+}
+
+// GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserRequest) GetRolesOk() ([]string, bool) {
+	if o == nil || o.Roles == nil {
+		return nil, false
+	}
+	return o.Roles, true
+}
+
+// HasRoles returns a boolean if a field has been set.
+func (o *UserRequest) HasRoles() bool {
+	if o != nil && o.Roles != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRoles gets a reference to the given []string and assigns it to the Roles field.
+func (o *UserRequest) SetRoles(v []string) {
+	o.Roles = v
+}
+
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *UserRequest) GetEmail() string {
 	if o == nil || o.Email == nil {
@@ -349,6 +382,9 @@ func (o UserRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Groups != nil {
 		toSerialize["groups"] = o.Groups
+	}
+	if o.Roles != nil {
+		toSerialize["roles"] = o.Roles
 	}
 	if o.Email != nil {
 		toSerialize["email"] = o.Email

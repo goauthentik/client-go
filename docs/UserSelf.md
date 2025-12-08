@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **IsActive** | **bool** | Designates whether this user should be treated as active. Unselect this instead of deleting accounts. | [readonly] 
 **IsSuperuser** | **bool** |  | [readonly] 
 **Groups** | [**[]UserSelfGroups**](UserSelfGroups.md) |  | [readonly] 
+**Roles** | [**[]UserSelfRoles**](UserSelfRoles.md) |  | [readonly] 
 **Email** | Pointer to **string** |  | [optional] 
 **Avatar** | **string** | User&#39;s avatar, either a http/https URL or a data URI | [readonly] 
 **Uid** | **string** |  | [readonly] 
@@ -21,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewUserSelf
 
-`func NewUserSelf(pk int32, username string, name string, isActive bool, isSuperuser bool, groups []UserSelfGroups, avatar string, uid string, settings map[string]interface{}, systemPermissions []string, ) *UserSelf`
+`func NewUserSelf(pk int32, username string, name string, isActive bool, isSuperuser bool, groups []UserSelfGroups, roles []UserSelfRoles, avatar string, uid string, settings map[string]interface{}, systemPermissions []string, ) *UserSelf`
 
 NewUserSelf instantiates a new UserSelf object
 This constructor will assign default values to properties that have it defined,
@@ -154,6 +155,26 @@ and a boolean to check if the value has been set.
 `func (o *UserSelf) SetGroups(v []UserSelfGroups)`
 
 SetGroups sets Groups field to given value.
+
+
+### GetRoles
+
+`func (o *UserSelf) GetRoles() []UserSelfRoles`
+
+GetRoles returns the Roles field if non-nil, zero value otherwise.
+
+### GetRolesOk
+
+`func (o *UserSelf) GetRolesOk() (*[]UserSelfRoles, bool)`
+
+GetRolesOk returns a tuple with the Roles field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoles
+
+`func (o *UserSelf) SetRoles(v []UserSelfRoles)`
+
+SetRoles sets Roles field to given value.
 
 
 ### GetEmail

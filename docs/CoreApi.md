@@ -2221,7 +2221,7 @@ Name | Type | Description  | Notes
 
 ## CoreGroupsList
 
-> PaginatedGroupList CoreGroupsList(ctx).Attributes(attributes).IncludeChildren(includeChildren).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedGroupList CoreGroupsList(ctx).Attributes(attributes).IncludeChildren(includeChildren).IncludeParents(includeParents).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -2242,6 +2242,7 @@ import (
 func main() {
     attributes := "attributes_example" // string | Attributes (optional)
     includeChildren := true // bool |  (optional) (default to false)
+    includeParents := true // bool |  (optional) (default to false)
     includeUsers := true // bool |  (optional) (default to true)
     isSuperuser := true // bool |  (optional)
     membersByPk := []int32{int32(123)} // []int32 |  (optional)
@@ -2254,7 +2255,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreGroupsList(context.Background()).Attributes(attributes).IncludeChildren(includeChildren).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    resp, r, err := apiClient.CoreApi.CoreGroupsList(context.Background()).Attributes(attributes).IncludeChildren(includeChildren).IncludeParents(includeParents).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreGroupsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2277,6 +2278,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **attributes** | **string** | Attributes | 
  **includeChildren** | **bool** |  | [default to false]
+ **includeParents** | **bool** |  | [default to false]
  **includeUsers** | **bool** |  | [default to true]
  **isSuperuser** | **bool** |  | 
  **membersByPk** | **[]int32** |  | 
@@ -2449,7 +2451,7 @@ Name | Type | Description  | Notes
 
 ## CoreGroupsRetrieve
 
-> Group CoreGroupsRetrieve(ctx, groupUuid).IncludeChildren(includeChildren).IncludeUsers(includeUsers).Execute()
+> Group CoreGroupsRetrieve(ctx, groupUuid).IncludeChildren(includeChildren).IncludeParents(includeParents).IncludeUsers(includeUsers).Execute()
 
 
 
@@ -2470,11 +2472,12 @@ import (
 func main() {
     groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Group.
     includeChildren := true // bool |  (optional) (default to false)
+    includeParents := true // bool |  (optional) (default to false)
     includeUsers := true // bool |  (optional) (default to true)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreGroupsRetrieve(context.Background(), groupUuid).IncludeChildren(includeChildren).IncludeUsers(includeUsers).Execute()
+    resp, r, err := apiClient.CoreApi.CoreGroupsRetrieve(context.Background(), groupUuid).IncludeChildren(includeChildren).IncludeParents(includeParents).IncludeUsers(includeUsers).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreGroupsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2501,6 +2504,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **includeChildren** | **bool** |  | [default to false]
+ **includeParents** | **bool** |  | [default to false]
  **includeUsers** | **bool** |  | [default to true]
 
 ### Return type
@@ -3923,7 +3927,7 @@ Other parameters are passed through a pointer to a apiCoreUsersImpersonateEndRet
 
 ## CoreUsersList
 
-> PaginatedUserList CoreUsersList(ctx).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IsActive(isActive).IsSuperuser(isSuperuser).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
+> PaginatedUserList CoreUsersList(ctx).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IncludeRoles(includeRoles).IsActive(isActive).IsSuperuser(isSuperuser).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
 
 
 
@@ -3951,6 +3955,7 @@ func main() {
     groupsByName := []string{"Inner_example"} // []string |  (optional)
     groupsByPk := []string{"Inner_example"} // []string |  (optional)
     includeGroups := true // bool |  (optional) (default to true)
+    includeRoles := true // bool |  (optional) (default to true)
     isActive := true // bool |  (optional)
     isSuperuser := true // bool |  (optional)
     lastUpdated := time.Now() // time.Time |  (optional)
@@ -3962,6 +3967,8 @@ func main() {
     pageSize := int32(56) // int32 | Number of results to return per page. (optional)
     path := "path_example" // string |  (optional)
     pathStartswith := "pathStartswith_example" // string |  (optional)
+    rolesByName := []string{"Inner_example"} // []string |  (optional)
+    rolesByPk := []string{"Inner_example"} // []string |  (optional)
     search := "search_example" // string | A search term. (optional)
     type_ := []string{"Type_example"} // []string |  (optional)
     username := "username_example" // string |  (optional)
@@ -3969,7 +3976,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreUsersList(context.Background()).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IsActive(isActive).IsSuperuser(isSuperuser).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
+    resp, r, err := apiClient.CoreApi.CoreUsersList(context.Background()).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IncludeRoles(includeRoles).IsActive(isActive).IsSuperuser(isSuperuser).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3998,6 +4005,7 @@ Name | Type | Description  | Notes
  **groupsByName** | **[]string** |  | 
  **groupsByPk** | **[]string** |  | 
  **includeGroups** | **bool** |  | [default to true]
+ **includeRoles** | **bool** |  | [default to true]
  **isActive** | **bool** |  | 
  **isSuperuser** | **bool** |  | 
  **lastUpdated** | **time.Time** |  | 
@@ -4009,6 +4017,8 @@ Name | Type | Description  | Notes
  **pageSize** | **int32** | Number of results to return per page. | 
  **path** | **string** |  | 
  **pathStartswith** | **string** |  | 
+ **rolesByName** | **[]string** |  | 
+ **rolesByPk** | **[]string** |  | 
  **search** | **string** | A search term. | 
  **type_** | **[]string** |  | 
  **username** | **string** |  | 

@@ -17,20 +17,18 @@ import (
 
 // InitialPermissionsRequest InitialPermissions serializer
 type InitialPermissionsRequest struct {
-	Name        string                     `json:"name"`
-	Mode        InitialPermissionsModeEnum `json:"mode"`
-	Role        string                     `json:"role"`
-	Permissions []int32                    `json:"permissions,omitempty"`
+	Name        string  `json:"name"`
+	Role        string  `json:"role"`
+	Permissions []int32 `json:"permissions,omitempty"`
 }
 
 // NewInitialPermissionsRequest instantiates a new InitialPermissionsRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInitialPermissionsRequest(name string, mode InitialPermissionsModeEnum, role string) *InitialPermissionsRequest {
+func NewInitialPermissionsRequest(name string, role string) *InitialPermissionsRequest {
 	this := InitialPermissionsRequest{}
 	this.Name = name
-	this.Mode = mode
 	this.Role = role
 	return &this
 }
@@ -65,30 +63,6 @@ func (o *InitialPermissionsRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *InitialPermissionsRequest) SetName(v string) {
 	o.Name = v
-}
-
-// GetMode returns the Mode field value
-func (o *InitialPermissionsRequest) GetMode() InitialPermissionsModeEnum {
-	if o == nil {
-		var ret InitialPermissionsModeEnum
-		return ret
-	}
-
-	return o.Mode
-}
-
-// GetModeOk returns a tuple with the Mode field value
-// and a boolean to check if the value has been set.
-func (o *InitialPermissionsRequest) GetModeOk() (*InitialPermissionsModeEnum, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Mode, true
-}
-
-// SetMode sets field value
-func (o *InitialPermissionsRequest) SetMode(v InitialPermissionsModeEnum) {
-	o.Mode = v
 }
 
 // GetRole returns the Role field value
@@ -151,9 +125,6 @@ func (o InitialPermissionsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["mode"] = o.Mode
 	}
 	if true {
 		toSerialize["role"] = o.Role

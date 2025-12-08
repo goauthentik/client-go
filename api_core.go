@@ -4171,6 +4171,7 @@ type ApiCoreGroupsListRequest struct {
 	ApiService        *CoreApiService
 	attributes        *string
 	includeChildren   *bool
+	includeParents    *bool
 	includeUsers      *bool
 	isSuperuser       *bool
 	membersByPk       *[]int32
@@ -4190,6 +4191,11 @@ func (r ApiCoreGroupsListRequest) Attributes(attributes string) ApiCoreGroupsLis
 
 func (r ApiCoreGroupsListRequest) IncludeChildren(includeChildren bool) ApiCoreGroupsListRequest {
 	r.includeChildren = &includeChildren
+	return r
+}
+
+func (r ApiCoreGroupsListRequest) IncludeParents(includeParents bool) ApiCoreGroupsListRequest {
+	r.includeParents = &includeParents
 	return r
 }
 
@@ -4289,6 +4295,9 @@ func (a *CoreApiService) CoreGroupsListExecute(r ApiCoreGroupsListRequest) (*Pag
 	}
 	if r.includeChildren != nil {
 		localVarQueryParams.Add("include_children", parameterToString(*r.includeChildren, ""))
+	}
+	if r.includeParents != nil {
+		localVarQueryParams.Add("include_parents", parameterToString(*r.includeParents, ""))
 	}
 	if r.includeUsers != nil {
 		localVarQueryParams.Add("include_users", parameterToString(*r.includeUsers, ""))
@@ -4664,11 +4673,17 @@ type ApiCoreGroupsRetrieveRequest struct {
 	ApiService      *CoreApiService
 	groupUuid       string
 	includeChildren *bool
+	includeParents  *bool
 	includeUsers    *bool
 }
 
 func (r ApiCoreGroupsRetrieveRequest) IncludeChildren(includeChildren bool) ApiCoreGroupsRetrieveRequest {
 	r.includeChildren = &includeChildren
+	return r
+}
+
+func (r ApiCoreGroupsRetrieveRequest) IncludeParents(includeParents bool) ApiCoreGroupsRetrieveRequest {
+	r.includeParents = &includeParents
 	return r
 }
 
@@ -4723,6 +4738,9 @@ func (a *CoreApiService) CoreGroupsRetrieveExecute(r ApiCoreGroupsRetrieveReques
 
 	if r.includeChildren != nil {
 		localVarQueryParams.Add("include_children", parameterToString(*r.includeChildren, ""))
+	}
+	if r.includeParents != nil {
+		localVarQueryParams.Add("include_parents", parameterToString(*r.includeParents, ""))
 	}
 	if r.includeUsers != nil {
 		localVarQueryParams.Add("include_users", parameterToString(*r.includeUsers, ""))
@@ -7412,6 +7430,7 @@ type ApiCoreUsersListRequest struct {
 	groupsByName   *[]string
 	groupsByPk     *[]string
 	includeGroups  *bool
+	includeRoles   *bool
 	isActive       *bool
 	isSuperuser    *bool
 	lastUpdated    *time.Time
@@ -7423,6 +7442,8 @@ type ApiCoreUsersListRequest struct {
 	pageSize       *int32
 	path           *string
 	pathStartswith *string
+	rolesByName    *[]string
+	rolesByPk      *[]string
 	search         *string
 	type_          *[]string
 	username       *string
@@ -7467,6 +7488,11 @@ func (r ApiCoreUsersListRequest) GroupsByPk(groupsByPk []string) ApiCoreUsersLis
 
 func (r ApiCoreUsersListRequest) IncludeGroups(includeGroups bool) ApiCoreUsersListRequest {
 	r.includeGroups = &includeGroups
+	return r
+}
+
+func (r ApiCoreUsersListRequest) IncludeRoles(includeRoles bool) ApiCoreUsersListRequest {
+	r.includeRoles = &includeRoles
 	return r
 }
 
@@ -7525,6 +7551,16 @@ func (r ApiCoreUsersListRequest) Path(path string) ApiCoreUsersListRequest {
 
 func (r ApiCoreUsersListRequest) PathStartswith(pathStartswith string) ApiCoreUsersListRequest {
 	r.pathStartswith = &pathStartswith
+	return r
+}
+
+func (r ApiCoreUsersListRequest) RolesByName(rolesByName []string) ApiCoreUsersListRequest {
+	r.rolesByName = &rolesByName
+	return r
+}
+
+func (r ApiCoreUsersListRequest) RolesByPk(rolesByPk []string) ApiCoreUsersListRequest {
+	r.rolesByPk = &rolesByPk
 	return r
 }
 
@@ -7630,6 +7666,9 @@ func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 	if r.includeGroups != nil {
 		localVarQueryParams.Add("include_groups", parameterToString(*r.includeGroups, ""))
 	}
+	if r.includeRoles != nil {
+		localVarQueryParams.Add("include_roles", parameterToString(*r.includeRoles, ""))
+	}
 	if r.isActive != nil {
 		localVarQueryParams.Add("is_active", parameterToString(*r.isActive, ""))
 	}
@@ -7662,6 +7701,28 @@ func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 	}
 	if r.pathStartswith != nil {
 		localVarQueryParams.Add("path_startswith", parameterToString(*r.pathStartswith, ""))
+	}
+	if r.rolesByName != nil {
+		t := *r.rolesByName
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("roles_by_name", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("roles_by_name", parameterToString(t, "multi"))
+		}
+	}
+	if r.rolesByPk != nil {
+		t := *r.rolesByPk
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("roles_by_pk", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("roles_by_pk", parameterToString(t, "multi"))
+		}
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))

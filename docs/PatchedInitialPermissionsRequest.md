@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**Mode** | Pointer to [**InitialPermissionsModeEnum**](InitialPermissionsModeEnum.md) |  | [optional] 
 **Role** | Pointer to **string** |  | [optional] 
 **Permissions** | Pointer to **[]int32** |  | [optional] 
 
@@ -52,31 +51,6 @@ SetName sets Name field to given value.
 `func (o *PatchedInitialPermissionsRequest) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
-### GetMode
-
-`func (o *PatchedInitialPermissionsRequest) GetMode() InitialPermissionsModeEnum`
-
-GetMode returns the Mode field if non-nil, zero value otherwise.
-
-### GetModeOk
-
-`func (o *PatchedInitialPermissionsRequest) GetModeOk() (*InitialPermissionsModeEnum, bool)`
-
-GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMode
-
-`func (o *PatchedInitialPermissionsRequest) SetMode(v InitialPermissionsModeEnum)`
-
-SetMode sets Mode field to given value.
-
-### HasMode
-
-`func (o *PatchedInitialPermissionsRequest) HasMode() bool`
-
-HasMode returns a boolean if a field has been set.
 
 ### GetRole
 

@@ -17,6 +17,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"reflect"
 	"strings"
 )
 
@@ -1376,438 +1377,6 @@ func (a *RbacApiService) RbacPermissionsAssignedByRolesUnassignPartialUpdateExec
 	return localVarHTTPResponse, nil
 }
 
-type ApiRbacPermissionsAssignedByUsersAssignRequest struct {
-	ctx                     context.Context
-	ApiService              *RbacApiService
-	id                      int32
-	permissionAssignRequest *PermissionAssignRequest
-}
-
-func (r ApiRbacPermissionsAssignedByUsersAssignRequest) PermissionAssignRequest(permissionAssignRequest PermissionAssignRequest) ApiRbacPermissionsAssignedByUsersAssignRequest {
-	r.permissionAssignRequest = &permissionAssignRequest
-	return r
-}
-
-func (r ApiRbacPermissionsAssignedByUsersAssignRequest) Execute() ([]PermissionAssignResult, *http.Response, error) {
-	return r.ApiService.RbacPermissionsAssignedByUsersAssignExecute(r)
-}
-
-/*
-RbacPermissionsAssignedByUsersAssign Method for RbacPermissionsAssignedByUsersAssign
-
-Assign permission(s) to user
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this User.
-	@return ApiRbacPermissionsAssignedByUsersAssignRequest
-*/
-func (a *RbacApiService) RbacPermissionsAssignedByUsersAssign(ctx context.Context, id int32) ApiRbacPermissionsAssignedByUsersAssignRequest {
-	return ApiRbacPermissionsAssignedByUsersAssignRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-//
-//	@return []PermissionAssignResult
-func (a *RbacApiService) RbacPermissionsAssignedByUsersAssignExecute(r ApiRbacPermissionsAssignedByUsersAssignRequest) ([]PermissionAssignResult, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []PermissionAssignResult
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RbacApiService.RbacPermissionsAssignedByUsersAssign")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/rbac/permissions/assigned_by_users/{id}/assign/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.permissionAssignRequest == nil {
-		return localVarReturnValue, nil, reportError("permissionAssignRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.permissionAssignRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiRbacPermissionsAssignedByUsersListRequest struct {
-	ctx        context.Context
-	ApiService *RbacApiService
-	model      *string
-	objectPk   *string
-	ordering   *string
-	page       *int32
-	pageSize   *int32
-	search     *string
-}
-
-func (r ApiRbacPermissionsAssignedByUsersListRequest) Model(model string) ApiRbacPermissionsAssignedByUsersListRequest {
-	r.model = &model
-	return r
-}
-
-func (r ApiRbacPermissionsAssignedByUsersListRequest) ObjectPk(objectPk string) ApiRbacPermissionsAssignedByUsersListRequest {
-	r.objectPk = &objectPk
-	return r
-}
-
-// Which field to use when ordering the results.
-func (r ApiRbacPermissionsAssignedByUsersListRequest) Ordering(ordering string) ApiRbacPermissionsAssignedByUsersListRequest {
-	r.ordering = &ordering
-	return r
-}
-
-// A page number within the paginated result set.
-func (r ApiRbacPermissionsAssignedByUsersListRequest) Page(page int32) ApiRbacPermissionsAssignedByUsersListRequest {
-	r.page = &page
-	return r
-}
-
-// Number of results to return per page.
-func (r ApiRbacPermissionsAssignedByUsersListRequest) PageSize(pageSize int32) ApiRbacPermissionsAssignedByUsersListRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-// A search term.
-func (r ApiRbacPermissionsAssignedByUsersListRequest) Search(search string) ApiRbacPermissionsAssignedByUsersListRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiRbacPermissionsAssignedByUsersListRequest) Execute() (*PaginatedUserAssignedObjectPermissionList, *http.Response, error) {
-	return r.ApiService.RbacPermissionsAssignedByUsersListExecute(r)
-}
-
-/*
-RbacPermissionsAssignedByUsersList Method for RbacPermissionsAssignedByUsersList
-
-Get assigned object permissions for a single object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiRbacPermissionsAssignedByUsersListRequest
-*/
-func (a *RbacApiService) RbacPermissionsAssignedByUsersList(ctx context.Context) ApiRbacPermissionsAssignedByUsersListRequest {
-	return ApiRbacPermissionsAssignedByUsersListRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return PaginatedUserAssignedObjectPermissionList
-func (a *RbacApiService) RbacPermissionsAssignedByUsersListExecute(r ApiRbacPermissionsAssignedByUsersListRequest) (*PaginatedUserAssignedObjectPermissionList, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *PaginatedUserAssignedObjectPermissionList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RbacApiService.RbacPermissionsAssignedByUsersList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/rbac/permissions/assigned_by_users/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.model == nil {
-		return localVarReturnValue, nil, reportError("model is required and must be specified")
-	}
-
-	localVarQueryParams.Add("model", parameterToString(*r.model, ""))
-	if r.objectPk != nil {
-		localVarQueryParams.Add("object_pk", parameterToString(*r.objectPk, ""))
-	}
-	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
-	}
-	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
-	}
-	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
-	}
-	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiRbacPermissionsAssignedByUsersUnassignPartialUpdateRequest struct {
-	ctx                            context.Context
-	ApiService                     *RbacApiService
-	id                             int32
-	patchedPermissionAssignRequest *PatchedPermissionAssignRequest
-}
-
-func (r ApiRbacPermissionsAssignedByUsersUnassignPartialUpdateRequest) PatchedPermissionAssignRequest(patchedPermissionAssignRequest PatchedPermissionAssignRequest) ApiRbacPermissionsAssignedByUsersUnassignPartialUpdateRequest {
-	r.patchedPermissionAssignRequest = &patchedPermissionAssignRequest
-	return r
-}
-
-func (r ApiRbacPermissionsAssignedByUsersUnassignPartialUpdateRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RbacPermissionsAssignedByUsersUnassignPartialUpdateExecute(r)
-}
-
-/*
-RbacPermissionsAssignedByUsersUnassignPartialUpdate Method for RbacPermissionsAssignedByUsersUnassignPartialUpdate
-
-Unassign permission(s) to user. When `object_pk` is set, the permissions
-are only assigned to the specific object, otherwise they are assigned globally.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this User.
-	@return ApiRbacPermissionsAssignedByUsersUnassignPartialUpdateRequest
-*/
-func (a *RbacApiService) RbacPermissionsAssignedByUsersUnassignPartialUpdate(ctx context.Context, id int32) ApiRbacPermissionsAssignedByUsersUnassignPartialUpdateRequest {
-	return ApiRbacPermissionsAssignedByUsersUnassignPartialUpdateRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-func (a *RbacApiService) RbacPermissionsAssignedByUsersUnassignPartialUpdateExecute(r ApiRbacPermissionsAssignedByUsersUnassignPartialUpdateRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodPatch
-		localVarPostBody   interface{}
-		formFiles          []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RbacApiService.RbacPermissionsAssignedByUsersUnassignPartialUpdate")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/rbac/permissions/assigned_by_users/{id}/unassign/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.patchedPermissionAssignRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
 type ApiRbacPermissionsListRequest struct {
 	ctx                 context.Context
 	ApiService          *RbacApiService
@@ -2135,117 +1704,6 @@ func (a *RbacApiService) RbacPermissionsRetrieveExecute(r ApiRbacPermissionsRetr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRbacPermissionsRolesDestroyRequest struct {
-	ctx        context.Context
-	ApiService *RbacApiService
-	id         int32
-}
-
-func (r ApiRbacPermissionsRolesDestroyRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RbacPermissionsRolesDestroyExecute(r)
-}
-
-/*
-RbacPermissionsRolesDestroy Method for RbacPermissionsRolesDestroy
-
-Get a role's assigned object permissions
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this group object permission.
-	@return ApiRbacPermissionsRolesDestroyRequest
-*/
-func (a *RbacApiService) RbacPermissionsRolesDestroy(ctx context.Context, id int32) ApiRbacPermissionsRolesDestroyRequest {
-	return ApiRbacPermissionsRolesDestroyRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-func (a *RbacApiService) RbacPermissionsRolesDestroyExecute(r ApiRbacPermissionsRolesDestroyRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RbacApiService.RbacPermissionsRolesDestroy")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/rbac/permissions/roles/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
 type ApiRbacPermissionsRolesListRequest struct {
 	ctx        context.Context
 	ApiService *RbacApiService
@@ -2414,443 +1872,64 @@ func (a *RbacApiService) RbacPermissionsRolesListExecute(r ApiRbacPermissionsRol
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRbacPermissionsRolesPartialUpdateRequest struct {
-	ctx                                     context.Context
-	ApiService                              *RbacApiService
-	id                                      int32
-	patchedExtraRoleObjectPermissionRequest *PatchedExtraRoleObjectPermissionRequest
+type ApiRbacRolesAddUserCreateRequest struct {
+	ctx                                 context.Context
+	ApiService                          *RbacApiService
+	uuid                                string
+	userAccountSerializerForRoleRequest *UserAccountSerializerForRoleRequest
 }
 
-func (r ApiRbacPermissionsRolesPartialUpdateRequest) PatchedExtraRoleObjectPermissionRequest(patchedExtraRoleObjectPermissionRequest PatchedExtraRoleObjectPermissionRequest) ApiRbacPermissionsRolesPartialUpdateRequest {
-	r.patchedExtraRoleObjectPermissionRequest = &patchedExtraRoleObjectPermissionRequest
+func (r ApiRbacRolesAddUserCreateRequest) UserAccountSerializerForRoleRequest(userAccountSerializerForRoleRequest UserAccountSerializerForRoleRequest) ApiRbacRolesAddUserCreateRequest {
+	r.userAccountSerializerForRoleRequest = &userAccountSerializerForRoleRequest
 	return r
 }
 
-func (r ApiRbacPermissionsRolesPartialUpdateRequest) Execute() (*ExtraRoleObjectPermission, *http.Response, error) {
-	return r.ApiService.RbacPermissionsRolesPartialUpdateExecute(r)
+func (r ApiRbacRolesAddUserCreateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.RbacRolesAddUserCreateExecute(r)
 }
 
 /*
-RbacPermissionsRolesPartialUpdate Method for RbacPermissionsRolesPartialUpdate
+RbacRolesAddUserCreate Method for RbacRolesAddUserCreate
 
-Get a role's assigned object permissions
+Add user to role
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this group object permission.
-	@return ApiRbacPermissionsRolesPartialUpdateRequest
+	@param uuid A UUID string identifying this Role.
+	@return ApiRbacRolesAddUserCreateRequest
 */
-func (a *RbacApiService) RbacPermissionsRolesPartialUpdate(ctx context.Context, id int32) ApiRbacPermissionsRolesPartialUpdateRequest {
-	return ApiRbacPermissionsRolesPartialUpdateRequest{
+func (a *RbacApiService) RbacRolesAddUserCreate(ctx context.Context, uuid string) ApiRbacRolesAddUserCreateRequest {
+	return ApiRbacRolesAddUserCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
-		id:         id,
+		uuid:       uuid,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ExtraRoleObjectPermission
-func (a *RbacApiService) RbacPermissionsRolesPartialUpdateExecute(r ApiRbacPermissionsRolesPartialUpdateRequest) (*ExtraRoleObjectPermission, *http.Response, error) {
+func (a *RbacApiService) RbacRolesAddUserCreateExecute(r ApiRbacRolesAddUserCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ExtraRoleObjectPermission
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RbacApiService.RbacPermissionsRolesPartialUpdate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/rbac/permissions/roles/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.patchedExtraRoleObjectPermissionRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiRbacPermissionsRolesRetrieveRequest struct {
-	ctx        context.Context
-	ApiService *RbacApiService
-	id         int32
-}
-
-func (r ApiRbacPermissionsRolesRetrieveRequest) Execute() (*ExtraRoleObjectPermission, *http.Response, error) {
-	return r.ApiService.RbacPermissionsRolesRetrieveExecute(r)
-}
-
-/*
-RbacPermissionsRolesRetrieve Method for RbacPermissionsRolesRetrieve
-
-Get a role's assigned object permissions
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this group object permission.
-	@return ApiRbacPermissionsRolesRetrieveRequest
-*/
-func (a *RbacApiService) RbacPermissionsRolesRetrieve(ctx context.Context, id int32) ApiRbacPermissionsRolesRetrieveRequest {
-	return ApiRbacPermissionsRolesRetrieveRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ExtraRoleObjectPermission
-func (a *RbacApiService) RbacPermissionsRolesRetrieveExecute(r ApiRbacPermissionsRolesRetrieveRequest) (*ExtraRoleObjectPermission, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ExtraRoleObjectPermission
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RbacApiService.RbacPermissionsRolesRetrieve")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/rbac/permissions/roles/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiRbacPermissionsRolesUpdateRequest struct {
-	ctx                              context.Context
-	ApiService                       *RbacApiService
-	id                               int32
-	extraRoleObjectPermissionRequest *ExtraRoleObjectPermissionRequest
-}
-
-func (r ApiRbacPermissionsRolesUpdateRequest) ExtraRoleObjectPermissionRequest(extraRoleObjectPermissionRequest ExtraRoleObjectPermissionRequest) ApiRbacPermissionsRolesUpdateRequest {
-	r.extraRoleObjectPermissionRequest = &extraRoleObjectPermissionRequest
-	return r
-}
-
-func (r ApiRbacPermissionsRolesUpdateRequest) Execute() (*ExtraRoleObjectPermission, *http.Response, error) {
-	return r.ApiService.RbacPermissionsRolesUpdateExecute(r)
-}
-
-/*
-RbacPermissionsRolesUpdate Method for RbacPermissionsRolesUpdate
-
-Get a role's assigned object permissions
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this group object permission.
-	@return ApiRbacPermissionsRolesUpdateRequest
-*/
-func (a *RbacApiService) RbacPermissionsRolesUpdate(ctx context.Context, id int32) ApiRbacPermissionsRolesUpdateRequest {
-	return ApiRbacPermissionsRolesUpdateRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ExtraRoleObjectPermission
-func (a *RbacApiService) RbacPermissionsRolesUpdateExecute(r ApiRbacPermissionsRolesUpdateRequest) (*ExtraRoleObjectPermission, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ExtraRoleObjectPermission
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RbacApiService.RbacPermissionsRolesUpdate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/rbac/permissions/roles/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.extraRoleObjectPermissionRequest == nil {
-		return localVarReturnValue, nil, reportError("extraRoleObjectPermissionRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.extraRoleObjectPermissionRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiRbacPermissionsUsersDestroyRequest struct {
-	ctx        context.Context
-	ApiService *RbacApiService
-	id         int32
-}
-
-func (r ApiRbacPermissionsUsersDestroyRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RbacPermissionsUsersDestroyExecute(r)
-}
-
-/*
-RbacPermissionsUsersDestroy Method for RbacPermissionsUsersDestroy
-
-Get a users's assigned object permissions
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this user object permission.
-	@return ApiRbacPermissionsUsersDestroyRequest
-*/
-func (a *RbacApiService) RbacPermissionsUsersDestroy(ctx context.Context, id int32) ApiRbacPermissionsUsersDestroyRequest {
-	return ApiRbacPermissionsUsersDestroyRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-func (a *RbacApiService) RbacPermissionsUsersDestroyExecute(r ApiRbacPermissionsUsersDestroyRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
+		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RbacApiService.RbacPermissionsUsersDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RbacApiService.RbacRolesAddUserCreate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/rbac/permissions/users/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath := localBasePath + "/rbac/roles/{uuid}/add_user/"
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.userAccountSerializerForRoleRequest == nil {
+		return nil, reportError("userAccountSerializerForRoleRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -2866,6 +1945,8 @@ func (a *RbacApiService) RbacPermissionsUsersDestroyExecute(r ApiRbacPermissions
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.userAccountSerializerForRoleRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -2911,562 +1992,6 @@ func (a *RbacApiService) RbacPermissionsUsersDestroyExecute(r ApiRbacPermissions
 	}
 
 	return localVarHTTPResponse, nil
-}
-
-type ApiRbacPermissionsUsersListRequest struct {
-	ctx        context.Context
-	ApiService *RbacApiService
-	ordering   *string
-	page       *int32
-	pageSize   *int32
-	search     *string
-	userId     *int32
-}
-
-// Which field to use when ordering the results.
-func (r ApiRbacPermissionsUsersListRequest) Ordering(ordering string) ApiRbacPermissionsUsersListRequest {
-	r.ordering = &ordering
-	return r
-}
-
-// A page number within the paginated result set.
-func (r ApiRbacPermissionsUsersListRequest) Page(page int32) ApiRbacPermissionsUsersListRequest {
-	r.page = &page
-	return r
-}
-
-// Number of results to return per page.
-func (r ApiRbacPermissionsUsersListRequest) PageSize(pageSize int32) ApiRbacPermissionsUsersListRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-// A search term.
-func (r ApiRbacPermissionsUsersListRequest) Search(search string) ApiRbacPermissionsUsersListRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiRbacPermissionsUsersListRequest) UserId(userId int32) ApiRbacPermissionsUsersListRequest {
-	r.userId = &userId
-	return r
-}
-
-func (r ApiRbacPermissionsUsersListRequest) Execute() (*PaginatedExtraUserObjectPermissionList, *http.Response, error) {
-	return r.ApiService.RbacPermissionsUsersListExecute(r)
-}
-
-/*
-RbacPermissionsUsersList Method for RbacPermissionsUsersList
-
-Get a users's assigned object permissions
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiRbacPermissionsUsersListRequest
-*/
-func (a *RbacApiService) RbacPermissionsUsersList(ctx context.Context) ApiRbacPermissionsUsersListRequest {
-	return ApiRbacPermissionsUsersListRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return PaginatedExtraUserObjectPermissionList
-func (a *RbacApiService) RbacPermissionsUsersListExecute(r ApiRbacPermissionsUsersListRequest) (*PaginatedExtraUserObjectPermissionList, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *PaginatedExtraUserObjectPermissionList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RbacApiService.RbacPermissionsUsersList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/rbac/permissions/users/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
-	}
-	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
-	}
-	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
-	}
-	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
-	}
-	if r.userId != nil {
-		localVarQueryParams.Add("user_id", parameterToString(*r.userId, ""))
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiRbacPermissionsUsersPartialUpdateRequest struct {
-	ctx                                     context.Context
-	ApiService                              *RbacApiService
-	id                                      int32
-	patchedExtraUserObjectPermissionRequest *PatchedExtraUserObjectPermissionRequest
-}
-
-func (r ApiRbacPermissionsUsersPartialUpdateRequest) PatchedExtraUserObjectPermissionRequest(patchedExtraUserObjectPermissionRequest PatchedExtraUserObjectPermissionRequest) ApiRbacPermissionsUsersPartialUpdateRequest {
-	r.patchedExtraUserObjectPermissionRequest = &patchedExtraUserObjectPermissionRequest
-	return r
-}
-
-func (r ApiRbacPermissionsUsersPartialUpdateRequest) Execute() (*ExtraUserObjectPermission, *http.Response, error) {
-	return r.ApiService.RbacPermissionsUsersPartialUpdateExecute(r)
-}
-
-/*
-RbacPermissionsUsersPartialUpdate Method for RbacPermissionsUsersPartialUpdate
-
-Get a users's assigned object permissions
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this user object permission.
-	@return ApiRbacPermissionsUsersPartialUpdateRequest
-*/
-func (a *RbacApiService) RbacPermissionsUsersPartialUpdate(ctx context.Context, id int32) ApiRbacPermissionsUsersPartialUpdateRequest {
-	return ApiRbacPermissionsUsersPartialUpdateRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ExtraUserObjectPermission
-func (a *RbacApiService) RbacPermissionsUsersPartialUpdateExecute(r ApiRbacPermissionsUsersPartialUpdateRequest) (*ExtraUserObjectPermission, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ExtraUserObjectPermission
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RbacApiService.RbacPermissionsUsersPartialUpdate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/rbac/permissions/users/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.patchedExtraUserObjectPermissionRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiRbacPermissionsUsersRetrieveRequest struct {
-	ctx        context.Context
-	ApiService *RbacApiService
-	id         int32
-}
-
-func (r ApiRbacPermissionsUsersRetrieveRequest) Execute() (*ExtraUserObjectPermission, *http.Response, error) {
-	return r.ApiService.RbacPermissionsUsersRetrieveExecute(r)
-}
-
-/*
-RbacPermissionsUsersRetrieve Method for RbacPermissionsUsersRetrieve
-
-Get a users's assigned object permissions
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this user object permission.
-	@return ApiRbacPermissionsUsersRetrieveRequest
-*/
-func (a *RbacApiService) RbacPermissionsUsersRetrieve(ctx context.Context, id int32) ApiRbacPermissionsUsersRetrieveRequest {
-	return ApiRbacPermissionsUsersRetrieveRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ExtraUserObjectPermission
-func (a *RbacApiService) RbacPermissionsUsersRetrieveExecute(r ApiRbacPermissionsUsersRetrieveRequest) (*ExtraUserObjectPermission, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ExtraUserObjectPermission
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RbacApiService.RbacPermissionsUsersRetrieve")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/rbac/permissions/users/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiRbacPermissionsUsersUpdateRequest struct {
-	ctx                              context.Context
-	ApiService                       *RbacApiService
-	id                               int32
-	extraUserObjectPermissionRequest *ExtraUserObjectPermissionRequest
-}
-
-func (r ApiRbacPermissionsUsersUpdateRequest) ExtraUserObjectPermissionRequest(extraUserObjectPermissionRequest ExtraUserObjectPermissionRequest) ApiRbacPermissionsUsersUpdateRequest {
-	r.extraUserObjectPermissionRequest = &extraUserObjectPermissionRequest
-	return r
-}
-
-func (r ApiRbacPermissionsUsersUpdateRequest) Execute() (*ExtraUserObjectPermission, *http.Response, error) {
-	return r.ApiService.RbacPermissionsUsersUpdateExecute(r)
-}
-
-/*
-RbacPermissionsUsersUpdate Method for RbacPermissionsUsersUpdate
-
-Get a users's assigned object permissions
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this user object permission.
-	@return ApiRbacPermissionsUsersUpdateRequest
-*/
-func (a *RbacApiService) RbacPermissionsUsersUpdate(ctx context.Context, id int32) ApiRbacPermissionsUsersUpdateRequest {
-	return ApiRbacPermissionsUsersUpdateRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ExtraUserObjectPermission
-func (a *RbacApiService) RbacPermissionsUsersUpdateExecute(r ApiRbacPermissionsUsersUpdateRequest) (*ExtraUserObjectPermission, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ExtraUserObjectPermission
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RbacApiService.RbacPermissionsUsersUpdate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/rbac/permissions/users/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.extraUserObjectPermissionRequest == nil {
-		return localVarReturnValue, nil, reportError("extraUserObjectPermissionRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.extraUserObjectPermissionRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiRbacRolesCreateRequest struct {
@@ -3711,13 +2236,26 @@ func (a *RbacApiService) RbacRolesDestroyExecute(r ApiRbacRolesDestroyRequest) (
 }
 
 type ApiRbacRolesListRequest struct {
-	ctx        context.Context
-	ApiService *RbacApiService
-	name       *string
-	ordering   *string
-	page       *int32
-	pageSize   *int32
-	search     *string
+	ctx           context.Context
+	ApiService    *RbacApiService
+	managed       *[]string
+	managedIsnull *bool
+	name          *string
+	ordering      *string
+	page          *int32
+	pageSize      *int32
+	search        *string
+	users         *[]int32
+}
+
+func (r ApiRbacRolesListRequest) Managed(managed []string) ApiRbacRolesListRequest {
+	r.managed = &managed
+	return r
+}
+
+func (r ApiRbacRolesListRequest) ManagedIsnull(managedIsnull bool) ApiRbacRolesListRequest {
+	r.managedIsnull = &managedIsnull
+	return r
 }
 
 func (r ApiRbacRolesListRequest) Name(name string) ApiRbacRolesListRequest {
@@ -3746,6 +2284,11 @@ func (r ApiRbacRolesListRequest) PageSize(pageSize int32) ApiRbacRolesListReques
 // A search term.
 func (r ApiRbacRolesListRequest) Search(search string) ApiRbacRolesListRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiRbacRolesListRequest) Users(users []int32) ApiRbacRolesListRequest {
+	r.users = &users
 	return r
 }
 
@@ -3790,6 +2333,20 @@ func (a *RbacApiService) RbacRolesListExecute(r ApiRbacRolesListRequest) (*Pagin
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.managed != nil {
+		t := *r.managed
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("managed", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("managed", parameterToString(t, "multi"))
+		}
+	}
+	if r.managedIsnull != nil {
+		localVarQueryParams.Add("managed__isnull", parameterToString(*r.managedIsnull, ""))
+	}
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
@@ -3804,6 +2361,17 @@ func (a *RbacApiService) RbacRolesListExecute(r ApiRbacRolesListRequest) (*Pagin
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	if r.users != nil {
+		t := *r.users
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("users", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("users", parameterToString(t, "multi"))
+		}
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4007,6 +2575,128 @@ func (a *RbacApiService) RbacRolesPartialUpdateExecute(r ApiRbacRolesPartialUpda
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiRbacRolesRemoveUserCreateRequest struct {
+	ctx                                 context.Context
+	ApiService                          *RbacApiService
+	uuid                                string
+	userAccountSerializerForRoleRequest *UserAccountSerializerForRoleRequest
+}
+
+func (r ApiRbacRolesRemoveUserCreateRequest) UserAccountSerializerForRoleRequest(userAccountSerializerForRoleRequest UserAccountSerializerForRoleRequest) ApiRbacRolesRemoveUserCreateRequest {
+	r.userAccountSerializerForRoleRequest = &userAccountSerializerForRoleRequest
+	return r
+}
+
+func (r ApiRbacRolesRemoveUserCreateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.RbacRolesRemoveUserCreateExecute(r)
+}
+
+/*
+RbacRolesRemoveUserCreate Method for RbacRolesRemoveUserCreate
+
+Remove user from role
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid A UUID string identifying this Role.
+	@return ApiRbacRolesRemoveUserCreateRequest
+*/
+func (a *RbacApiService) RbacRolesRemoveUserCreate(ctx context.Context, uuid string) ApiRbacRolesRemoveUserCreateRequest {
+	return ApiRbacRolesRemoveUserCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		uuid:       uuid,
+	}
+}
+
+// Execute executes the request
+func (a *RbacApiService) RbacRolesRemoveUserCreateExecute(r ApiRbacRolesRemoveUserCreateRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RbacApiService.RbacRolesRemoveUserCreate")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/rbac/roles/{uuid}/remove_user/"
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.userAccountSerializerForRoleRequest == nil {
+		return nil, reportError("userAccountSerializerForRoleRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.userAccountSerializerForRoleRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }
 
 type ApiRbacRolesRetrieveRequest struct {

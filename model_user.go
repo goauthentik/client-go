@@ -29,6 +29,8 @@ type User struct {
 	IsSuperuser bool           `json:"is_superuser"`
 	Groups      []string       `json:"groups,omitempty"`
 	GroupsObj   []PartialGroup `json:"groups_obj"`
+	Roles       []string       `json:"roles,omitempty"`
+	RolesObj    []Role         `json:"roles_obj"`
 	Email       *string        `json:"email,omitempty"`
 	// User's avatar, either a http/https URL or a data URI
 	Avatar             string                 `json:"avatar"`
@@ -45,7 +47,7 @@ type User struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUser(pk int32, username string, name string, dateJoined time.Time, isSuperuser bool, groupsObj []PartialGroup, avatar string, uid string, uuid string, passwordChangeDate time.Time, lastUpdated time.Time) *User {
+func NewUser(pk int32, username string, name string, dateJoined time.Time, isSuperuser bool, groupsObj []PartialGroup, rolesObj []Role, avatar string, uid string, uuid string, passwordChangeDate time.Time, lastUpdated time.Time) *User {
 	this := User{}
 	this.Pk = pk
 	this.Username = username
@@ -53,6 +55,7 @@ func NewUser(pk int32, username string, name string, dateJoined time.Time, isSup
 	this.DateJoined = dateJoined
 	this.IsSuperuser = isSuperuser
 	this.GroupsObj = groupsObj
+	this.RolesObj = rolesObj
 	this.Avatar = avatar
 	this.Uid = uid
 	this.Uuid = uuid
@@ -320,6 +323,64 @@ func (o *User) GetGroupsObjOk() ([]PartialGroup, bool) {
 // SetGroupsObj sets field value
 func (o *User) SetGroupsObj(v []PartialGroup) {
 	o.GroupsObj = v
+}
+
+// GetRoles returns the Roles field value if set, zero value otherwise.
+func (o *User) GetRoles() []string {
+	if o == nil || o.Roles == nil {
+		var ret []string
+		return ret
+	}
+	return o.Roles
+}
+
+// GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *User) GetRolesOk() ([]string, bool) {
+	if o == nil || o.Roles == nil {
+		return nil, false
+	}
+	return o.Roles, true
+}
+
+// HasRoles returns a boolean if a field has been set.
+func (o *User) HasRoles() bool {
+	if o != nil && o.Roles != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRoles gets a reference to the given []string and assigns it to the Roles field.
+func (o *User) SetRoles(v []string) {
+	o.Roles = v
+}
+
+// GetRolesObj returns the RolesObj field value
+// If the value is explicit nil, the zero value for []Role will be returned
+func (o *User) GetRolesObj() []Role {
+	if o == nil {
+		var ret []Role
+		return ret
+	}
+
+	return o.RolesObj
+}
+
+// GetRolesObjOk returns a tuple with the RolesObj field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *User) GetRolesObjOk() ([]Role, bool) {
+	if o == nil || o.RolesObj == nil {
+		return nil, false
+	}
+	return o.RolesObj, true
+}
+
+// SetRolesObj sets field value
+func (o *User) SetRolesObj(v []Role) {
+	o.RolesObj = v
 }
 
 // GetEmail returns the Email field value if set, zero value otherwise.
@@ -598,6 +659,12 @@ func (o User) MarshalJSON() ([]byte, error) {
 	}
 	if o.GroupsObj != nil {
 		toSerialize["groups_obj"] = o.GroupsObj
+	}
+	if o.Roles != nil {
+		toSerialize["roles"] = o.Roles
+	}
+	if o.RolesObj != nil {
+		toSerialize["roles_obj"] = o.RolesObj
 	}
 	if o.Email != nil {
 		toSerialize["email"] = o.Email
