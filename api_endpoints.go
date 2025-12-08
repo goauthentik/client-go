@@ -4572,17 +4572,17 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUsedByListExecute(r Api
 }
 
 type ApiEndpointsDeviceBindingsCreateRequest struct {
-	ctx                  context.Context
-	ApiService           *EndpointsApiService
-	policyBindingRequest *PolicyBindingRequest
+	ctx                      context.Context
+	ApiService               *EndpointsApiService
+	deviceUserBindingRequest *DeviceUserBindingRequest
 }
 
-func (r ApiEndpointsDeviceBindingsCreateRequest) PolicyBindingRequest(policyBindingRequest PolicyBindingRequest) ApiEndpointsDeviceBindingsCreateRequest {
-	r.policyBindingRequest = &policyBindingRequest
+func (r ApiEndpointsDeviceBindingsCreateRequest) DeviceUserBindingRequest(deviceUserBindingRequest DeviceUserBindingRequest) ApiEndpointsDeviceBindingsCreateRequest {
+	r.deviceUserBindingRequest = &deviceUserBindingRequest
 	return r
 }
 
-func (r ApiEndpointsDeviceBindingsCreateRequest) Execute() (*PolicyBinding, *http.Response, error) {
+func (r ApiEndpointsDeviceBindingsCreateRequest) Execute() (*DeviceUserBinding, *http.Response, error) {
 	return r.ApiService.EndpointsDeviceBindingsCreateExecute(r)
 }
 
@@ -4603,13 +4603,13 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsCreate(ctx context.Context)
 
 // Execute executes the request
 //
-//	@return PolicyBinding
-func (a *EndpointsApiService) EndpointsDeviceBindingsCreateExecute(r ApiEndpointsDeviceBindingsCreateRequest) (*PolicyBinding, *http.Response, error) {
+//	@return DeviceUserBinding
+func (a *EndpointsApiService) EndpointsDeviceBindingsCreateExecute(r ApiEndpointsDeviceBindingsCreateRequest) (*DeviceUserBinding, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PolicyBinding
+		localVarReturnValue *DeviceUserBinding
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceBindingsCreate")
@@ -4622,8 +4622,8 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsCreateExecute(r ApiEndpoint
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.policyBindingRequest == nil {
-		return localVarReturnValue, nil, reportError("policyBindingRequest is required and must be specified")
+	if r.deviceUserBindingRequest == nil {
+		return localVarReturnValue, nil, reportError("deviceUserBindingRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -4644,7 +4644,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsCreateExecute(r ApiEndpoint
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.policyBindingRequest
+	localVarPostBody = r.deviceUserBindingRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -4887,7 +4887,7 @@ func (r ApiEndpointsDeviceBindingsListRequest) Timeout(timeout int32) ApiEndpoin
 	return r
 }
 
-func (r ApiEndpointsDeviceBindingsListRequest) Execute() (*PaginatedPolicyBindingList, *http.Response, error) {
+func (r ApiEndpointsDeviceBindingsListRequest) Execute() (*PaginatedDeviceUserBindingList, *http.Response, error) {
 	return r.ApiService.EndpointsDeviceBindingsListExecute(r)
 }
 
@@ -4908,13 +4908,13 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsList(ctx context.Context) A
 
 // Execute executes the request
 //
-//	@return PaginatedPolicyBindingList
-func (a *EndpointsApiService) EndpointsDeviceBindingsListExecute(r ApiEndpointsDeviceBindingsListRequest) (*PaginatedPolicyBindingList, *http.Response, error) {
+//	@return PaginatedDeviceUserBindingList
+func (a *EndpointsApiService) EndpointsDeviceBindingsListExecute(r ApiEndpointsDeviceBindingsListRequest) (*PaginatedDeviceUserBindingList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PaginatedPolicyBindingList
+		localVarReturnValue *PaginatedDeviceUserBindingList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceBindingsList")
@@ -5043,18 +5043,18 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsListExecute(r ApiEndpointsD
 }
 
 type ApiEndpointsDeviceBindingsPartialUpdateRequest struct {
-	ctx                         context.Context
-	ApiService                  *EndpointsApiService
-	policyBindingUuid           string
-	patchedPolicyBindingRequest *PatchedPolicyBindingRequest
+	ctx                             context.Context
+	ApiService                      *EndpointsApiService
+	policyBindingUuid               string
+	patchedDeviceUserBindingRequest *PatchedDeviceUserBindingRequest
 }
 
-func (r ApiEndpointsDeviceBindingsPartialUpdateRequest) PatchedPolicyBindingRequest(patchedPolicyBindingRequest PatchedPolicyBindingRequest) ApiEndpointsDeviceBindingsPartialUpdateRequest {
-	r.patchedPolicyBindingRequest = &patchedPolicyBindingRequest
+func (r ApiEndpointsDeviceBindingsPartialUpdateRequest) PatchedDeviceUserBindingRequest(patchedDeviceUserBindingRequest PatchedDeviceUserBindingRequest) ApiEndpointsDeviceBindingsPartialUpdateRequest {
+	r.patchedDeviceUserBindingRequest = &patchedDeviceUserBindingRequest
 	return r
 }
 
-func (r ApiEndpointsDeviceBindingsPartialUpdateRequest) Execute() (*PolicyBinding, *http.Response, error) {
+func (r ApiEndpointsDeviceBindingsPartialUpdateRequest) Execute() (*DeviceUserBinding, *http.Response, error) {
 	return r.ApiService.EndpointsDeviceBindingsPartialUpdateExecute(r)
 }
 
@@ -5077,13 +5077,13 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsPartialUpdate(ctx context.C
 
 // Execute executes the request
 //
-//	@return PolicyBinding
-func (a *EndpointsApiService) EndpointsDeviceBindingsPartialUpdateExecute(r ApiEndpointsDeviceBindingsPartialUpdateRequest) (*PolicyBinding, *http.Response, error) {
+//	@return DeviceUserBinding
+func (a *EndpointsApiService) EndpointsDeviceBindingsPartialUpdateExecute(r ApiEndpointsDeviceBindingsPartialUpdateRequest) (*DeviceUserBinding, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PolicyBinding
+		localVarReturnValue *DeviceUserBinding
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceBindingsPartialUpdate")
@@ -5116,7 +5116,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsPartialUpdateExecute(r ApiE
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.patchedPolicyBindingRequest
+	localVarPostBody = r.patchedDeviceUserBindingRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -5179,7 +5179,7 @@ type ApiEndpointsDeviceBindingsRetrieveRequest struct {
 	policyBindingUuid string
 }
 
-func (r ApiEndpointsDeviceBindingsRetrieveRequest) Execute() (*PolicyBinding, *http.Response, error) {
+func (r ApiEndpointsDeviceBindingsRetrieveRequest) Execute() (*DeviceUserBinding, *http.Response, error) {
 	return r.ApiService.EndpointsDeviceBindingsRetrieveExecute(r)
 }
 
@@ -5202,13 +5202,13 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsRetrieve(ctx context.Contex
 
 // Execute executes the request
 //
-//	@return PolicyBinding
-func (a *EndpointsApiService) EndpointsDeviceBindingsRetrieveExecute(r ApiEndpointsDeviceBindingsRetrieveRequest) (*PolicyBinding, *http.Response, error) {
+//	@return DeviceUserBinding
+func (a *EndpointsApiService) EndpointsDeviceBindingsRetrieveExecute(r ApiEndpointsDeviceBindingsRetrieveRequest) (*DeviceUserBinding, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PolicyBinding
+		localVarReturnValue *DeviceUserBinding
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceBindingsRetrieve")
@@ -5297,18 +5297,18 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsRetrieveExecute(r ApiEndpoi
 }
 
 type ApiEndpointsDeviceBindingsUpdateRequest struct {
-	ctx                  context.Context
-	ApiService           *EndpointsApiService
-	policyBindingUuid    string
-	policyBindingRequest *PolicyBindingRequest
+	ctx                      context.Context
+	ApiService               *EndpointsApiService
+	policyBindingUuid        string
+	deviceUserBindingRequest *DeviceUserBindingRequest
 }
 
-func (r ApiEndpointsDeviceBindingsUpdateRequest) PolicyBindingRequest(policyBindingRequest PolicyBindingRequest) ApiEndpointsDeviceBindingsUpdateRequest {
-	r.policyBindingRequest = &policyBindingRequest
+func (r ApiEndpointsDeviceBindingsUpdateRequest) DeviceUserBindingRequest(deviceUserBindingRequest DeviceUserBindingRequest) ApiEndpointsDeviceBindingsUpdateRequest {
+	r.deviceUserBindingRequest = &deviceUserBindingRequest
 	return r
 }
 
-func (r ApiEndpointsDeviceBindingsUpdateRequest) Execute() (*PolicyBinding, *http.Response, error) {
+func (r ApiEndpointsDeviceBindingsUpdateRequest) Execute() (*DeviceUserBinding, *http.Response, error) {
 	return r.ApiService.EndpointsDeviceBindingsUpdateExecute(r)
 }
 
@@ -5331,13 +5331,13 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsUpdate(ctx context.Context,
 
 // Execute executes the request
 //
-//	@return PolicyBinding
-func (a *EndpointsApiService) EndpointsDeviceBindingsUpdateExecute(r ApiEndpointsDeviceBindingsUpdateRequest) (*PolicyBinding, *http.Response, error) {
+//	@return DeviceUserBinding
+func (a *EndpointsApiService) EndpointsDeviceBindingsUpdateExecute(r ApiEndpointsDeviceBindingsUpdateRequest) (*DeviceUserBinding, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PolicyBinding
+		localVarReturnValue *DeviceUserBinding
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceBindingsUpdate")
@@ -5351,8 +5351,8 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsUpdateExecute(r ApiEndpoint
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.policyBindingRequest == nil {
-		return localVarReturnValue, nil, reportError("policyBindingRequest is required and must be specified")
+	if r.deviceUserBindingRequest == nil {
+		return localVarReturnValue, nil, reportError("deviceUserBindingRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -5373,7 +5373,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsUpdateExecute(r ApiEndpoint
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.policyBindingRequest
+	localVarPostBody = r.deviceUserBindingRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

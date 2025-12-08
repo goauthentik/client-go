@@ -5,12 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Config** | **string** |  | 
+**MimeType** | **string** |  | 
+**Filename** | **string** |  | 
 
 ## Methods
 
 ### NewMDMConfigResponse
 
-`func NewMDMConfigResponse(config string, ) *MDMConfigResponse`
+`func NewMDMConfigResponse(config string, mimeType string, filename string, ) *MDMConfigResponse`
 
 NewMDMConfigResponse instantiates a new MDMConfigResponse object
 This constructor will assign default values to properties that have it defined,
@@ -43,6 +45,46 @@ and a boolean to check if the value has been set.
 `func (o *MDMConfigResponse) SetConfig(v string)`
 
 SetConfig sets Config field to given value.
+
+
+### GetMimeType
+
+`func (o *MDMConfigResponse) GetMimeType() string`
+
+GetMimeType returns the MimeType field if non-nil, zero value otherwise.
+
+### GetMimeTypeOk
+
+`func (o *MDMConfigResponse) GetMimeTypeOk() (*string, bool)`
+
+GetMimeTypeOk returns a tuple with the MimeType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMimeType
+
+`func (o *MDMConfigResponse) SetMimeType(v string)`
+
+SetMimeType sets MimeType field to given value.
+
+
+### GetFilename
+
+`func (o *MDMConfigResponse) GetFilename() string`
+
+GetFilename returns the Filename field if non-nil, zero value otherwise.
+
+### GetFilenameOk
+
+`func (o *MDMConfigResponse) GetFilenameOk() (*string, bool)`
+
+GetFilenameOk returns a tuple with the Filename field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilename
+
+`func (o *MDMConfigResponse) SetFilename(v string)`
+
+SetFilename sets Filename field to given value.
 
 
 

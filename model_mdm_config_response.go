@@ -17,16 +17,20 @@ import (
 
 // MDMConfigResponse Base serializer class which doesn't implement create/update methods
 type MDMConfigResponse struct {
-	Config string `json:"config"`
+	Config   string `json:"config"`
+	MimeType string `json:"mime_type"`
+	Filename string `json:"filename"`
 }
 
 // NewMDMConfigResponse instantiates a new MDMConfigResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMDMConfigResponse(config string) *MDMConfigResponse {
+func NewMDMConfigResponse(config string, mimeType string, filename string) *MDMConfigResponse {
 	this := MDMConfigResponse{}
 	this.Config = config
+	this.MimeType = mimeType
+	this.Filename = filename
 	return &this
 }
 
@@ -62,10 +66,64 @@ func (o *MDMConfigResponse) SetConfig(v string) {
 	o.Config = v
 }
 
+// GetMimeType returns the MimeType field value
+func (o *MDMConfigResponse) GetMimeType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MimeType
+}
+
+// GetMimeTypeOk returns a tuple with the MimeType field value
+// and a boolean to check if the value has been set.
+func (o *MDMConfigResponse) GetMimeTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MimeType, true
+}
+
+// SetMimeType sets field value
+func (o *MDMConfigResponse) SetMimeType(v string) {
+	o.MimeType = v
+}
+
+// GetFilename returns the Filename field value
+func (o *MDMConfigResponse) GetFilename() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Filename
+}
+
+// GetFilenameOk returns a tuple with the Filename field value
+// and a boolean to check if the value has been set.
+func (o *MDMConfigResponse) GetFilenameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Filename, true
+}
+
+// SetFilename sets field value
+func (o *MDMConfigResponse) SetFilename(v string) {
+	o.Filename = v
+}
+
 func (o MDMConfigResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["config"] = o.Config
+	}
+	if true {
+		toSerialize["mime_type"] = o.MimeType
+	}
+	if true {
+		toSerialize["filename"] = o.Filename
 	}
 	return json.Marshal(toSerialize)
 }

@@ -159,6 +159,8 @@ docs/DeviceGroup.md
 docs/DeviceGroupRequest.md
 docs/DeviceSummary.md
 docs/DeviceUser.md
+docs/DeviceUserBinding.md
+docs/DeviceUserBindingRequest.md
 docs/DeviceUserRequest.md
 docs/DigestAlgorithmEnum.md
 docs/DigitsEnum.md
@@ -400,6 +402,7 @@ docs/PaginatedConnectorList.md
 docs/PaginatedConsentStageList.md
 docs/PaginatedDenyStageList.md
 docs/PaginatedDeviceAccessGroupList.md
+docs/PaginatedDeviceUserBindingList.md
 docs/PaginatedDockerServiceConnectionList.md
 docs/PaginatedDomainList.md
 docs/PaginatedDummyPolicyList.md
@@ -558,6 +561,7 @@ docs/PatchedConnectionTokenRequest.md
 docs/PatchedConsentStageRequest.md
 docs/PatchedDenyStageRequest.md
 docs/PatchedDeviceAccessGroupRequest.md
+docs/PatchedDeviceUserBindingRequest.md
 docs/PatchedDockerServiceConnectionRequest.md
 docs/PatchedDomainRequest.md
 docs/PatchedDummyPolicyRequest.md
@@ -1019,6 +1023,8 @@ model_device_group.go
 model_device_group_request.go
 model_device_summary.go
 model_device_user.go
+model_device_user_binding.go
+model_device_user_binding_request.go
 model_device_user_request.go
 model_digest_algorithm_enum.go
 model_digits_enum.go
@@ -1252,6 +1258,7 @@ model_paginated_connector_list.go
 model_paginated_consent_stage_list.go
 model_paginated_deny_stage_list.go
 model_paginated_device_access_group_list.go
+model_paginated_device_user_binding_list.go
 model_paginated_docker_service_connection_list.go
 model_paginated_domain_list.go
 model_paginated_dummy_policy_list.go
@@ -1410,6 +1417,7 @@ model_patched_connection_token_request.go
 model_patched_consent_stage_request.go
 model_patched_deny_stage_request.go
 model_patched_device_access_group_request.go
+model_patched_device_user_binding_request.go
 model_patched_docker_service_connection_request.go
 model_patched_domain_request.go
 model_patched_dummy_policy_request.go

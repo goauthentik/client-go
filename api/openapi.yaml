@@ -8948,7 +8948,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedPolicyBindingList'
+                $ref: '#/components/schemas/PaginatedDeviceUserBindingList'
           description: ""
         "400":
           content:
@@ -8973,14 +8973,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PolicyBindingRequest'
+              $ref: '#/components/schemas/DeviceUserBindingRequest'
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PolicyBinding'
+                $ref: '#/components/schemas/DeviceUserBinding'
           description: ""
         "400":
           content:
@@ -9049,7 +9049,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PolicyBinding'
+                $ref: '#/components/schemas/DeviceUserBinding'
           description: ""
         "400":
           content:
@@ -9084,13 +9084,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedPolicyBindingRequest'
+              $ref: '#/components/schemas/PatchedDeviceUserBindingRequest'
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PolicyBinding'
+                $ref: '#/components/schemas/DeviceUserBinding'
           description: ""
         "400":
           content:
@@ -9125,14 +9125,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PolicyBindingRequest'
+              $ref: '#/components/schemas/DeviceUserBindingRequest'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PolicyBinding'
+                $ref: '#/components/schemas/DeviceUserBinding'
           description: ""
         "400":
           content:
@@ -54291,6 +54291,146 @@ components:
       required:
       - id
       type: object
+    DeviceUserBinding:
+      description: PolicyBinding Serializer
+      example:
+        user_obj: ""
+        is_primary: true
+        failure_result: true
+        policy_obj: ""
+        connector_obj: ""
+        enabled: true
+        timeout: 314780940
+        target: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        connector: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        negate: true
+        group_obj: ""
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user: 0
+        policy: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        order: 441289069
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Policy binding uuid
+          type: string
+        policy:
+          format: uuid
+          nullable: true
+          type: string
+        group:
+          format: uuid
+          nullable: true
+          type: string
+        user:
+          nullable: true
+          type: integer
+        policy_obj:
+          allOf:
+          - $ref: '#/components/schemas/Policy'
+          readOnly: true
+        group_obj:
+          allOf:
+          - $ref: '#/components/schemas/PartialGroup'
+          readOnly: true
+        user_obj:
+          allOf:
+          - $ref: '#/components/schemas/PartialUser'
+          readOnly: true
+        target:
+          format: uuid
+          type: string
+        negate:
+          description: Negates the outcome of the policy. Messages are unaffected.
+          type: boolean
+        enabled:
+          type: boolean
+        order:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        timeout:
+          description: Timeout after which Policy execution is terminated.
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        failure_result:
+          description: Result if the Policy execution fails.
+          type: boolean
+        is_primary:
+          type: boolean
+        connector:
+          format: uuid
+          nullable: true
+          readOnly: true
+          type: string
+        connector_obj:
+          allOf:
+          - $ref: '#/components/schemas/Connector'
+          readOnly: true
+      required:
+      - connector
+      - connector_obj
+      - group_obj
+      - order
+      - pk
+      - policy_obj
+      - target
+      - user_obj
+      type: object
+    DeviceUserBindingRequest:
+      description: PolicyBinding Serializer
+      example:
+        is_primary: true
+        negate: true
+        failure_result: true
+        user: 0
+        enabled: true
+        timeout: 314780940
+        policy: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        target: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        order: 441289069
+      properties:
+        policy:
+          format: uuid
+          nullable: true
+          type: string
+        group:
+          format: uuid
+          nullable: true
+          type: string
+        user:
+          nullable: true
+          type: integer
+        target:
+          format: uuid
+          type: string
+        negate:
+          description: Negates the outcome of the policy. Messages are unaffected.
+          type: boolean
+        enabled:
+          type: boolean
+        order:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        timeout:
+          description: Timeout after which Policy execution is terminated.
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        failure_result:
+          description: Result if the Policy execution fails.
+          type: boolean
+        is_primary:
+          type: boolean
+      required:
+      - order
+      - target
+      type: object
     DeviceUserRequest:
       example:
         name: name
@@ -60599,12 +60739,20 @@ components:
     MDMConfigResponse:
       description: Base serializer class which doesn't implement create/update methods
       example:
+        filename: filename
+        mime_type: mime_type
         config: config
       properties:
         config:
           type: string
+        mime_type:
+          type: string
+        filename:
+          type: string
       required:
       - config
+      - filename
+      - mime_type
       type: object
     MatchingModeEnum:
       enum:
@@ -64650,6 +64798,66 @@ components:
         results:
           items:
             $ref: '#/components/schemas/DeviceAccessGroup'
+          type: array
+        autocomplete:
+          additionalProperties: {}
+          type: object
+      required:
+      - autocomplete
+      - pagination
+      - results
+      type: object
+    PaginatedDeviceUserBindingList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        autocomplete:
+          key: ""
+        results:
+        - user_obj: ""
+          is_primary: true
+          failure_result: true
+          policy_obj: ""
+          connector_obj: ""
+          enabled: true
+          timeout: 314780940
+          target: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          connector: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          negate: true
+          group_obj: ""
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user: 0
+          policy: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          order: 441289069
+        - user_obj: ""
+          is_primary: true
+          failure_result: true
+          policy_obj: ""
+          connector_obj: ""
+          enabled: true
+          timeout: 314780940
+          target: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          connector: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          negate: true
+          group_obj: ""
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user: 0
+          policy: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          order: 441289069
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/DeviceUserBinding'
           type: array
         autocomplete:
           additionalProperties: {}
@@ -74585,6 +74793,54 @@ components:
         name:
           minLength: 1
           type: string
+      type: object
+    PatchedDeviceUserBindingRequest:
+      description: PolicyBinding Serializer
+      example:
+        is_primary: true
+        negate: true
+        failure_result: true
+        user: 0
+        enabled: true
+        timeout: 314780940
+        policy: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        target: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        order: 441289069
+      properties:
+        policy:
+          format: uuid
+          nullable: true
+          type: string
+        group:
+          format: uuid
+          nullable: true
+          type: string
+        user:
+          nullable: true
+          type: integer
+        target:
+          format: uuid
+          type: string
+        negate:
+          description: Negates the outcome of the policy. Messages are unaffected.
+          type: boolean
+        enabled:
+          type: boolean
+        order:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        timeout:
+          description: Timeout after which Policy execution is terminated.
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        failure_result:
+          description: Result if the Policy execution fails.
+          type: boolean
+        is_primary:
+          type: boolean
       type: object
     PatchedDockerServiceConnectionRequest:
       description: DockerServiceConnection Serializer

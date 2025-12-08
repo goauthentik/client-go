@@ -2469,7 +2469,7 @@ Name | Type | Description  | Notes
 
 ## EndpointsDeviceBindingsCreate
 
-> PolicyBinding EndpointsDeviceBindingsCreate(ctx).PolicyBindingRequest(policyBindingRequest).Execute()
+> DeviceUserBinding EndpointsDeviceBindingsCreate(ctx).DeviceUserBindingRequest(deviceUserBindingRequest).Execute()
 
 
 
@@ -2488,16 +2488,16 @@ import (
 )
 
 func main() {
-    policyBindingRequest := *openapiclient.NewPolicyBindingRequest("Target_example", int32(123)) // PolicyBindingRequest | 
+    deviceUserBindingRequest := *openapiclient.NewDeviceUserBindingRequest("Target_example", int32(123)) // DeviceUserBindingRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EndpointsApi.EndpointsDeviceBindingsCreate(context.Background()).PolicyBindingRequest(policyBindingRequest).Execute()
+    resp, r, err := apiClient.EndpointsApi.EndpointsDeviceBindingsCreate(context.Background()).DeviceUserBindingRequest(deviceUserBindingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsDeviceBindingsCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EndpointsDeviceBindingsCreate`: PolicyBinding
+    // response from `EndpointsDeviceBindingsCreate`: DeviceUserBinding
     fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsDeviceBindingsCreate`: %v\n", resp)
 }
 ```
@@ -2513,11 +2513,11 @@ Other parameters are passed through a pointer to a apiEndpointsDeviceBindingsCre
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **policyBindingRequest** | [**PolicyBindingRequest**](PolicyBindingRequest.md) |  | 
+ **deviceUserBindingRequest** | [**DeviceUserBindingRequest**](DeviceUserBindingRequest.md) |  | 
 
 ### Return type
 
-[**PolicyBinding**](PolicyBinding.md)
+[**DeviceUserBinding**](DeviceUserBinding.md)
 
 ### Authorization
 
@@ -2603,7 +2603,7 @@ Name | Type | Description  | Notes
 
 ## EndpointsDeviceBindingsList
 
-> PaginatedPolicyBindingList EndpointsDeviceBindingsList(ctx).Enabled(enabled).Order(order).Ordering(ordering).Page(page).PageSize(pageSize).Policy(policy).PolicyIsnull(policyIsnull).Search(search).Target(target).TargetIn(targetIn).Timeout(timeout).Execute()
+> PaginatedDeviceUserBindingList EndpointsDeviceBindingsList(ctx).Enabled(enabled).Order(order).Ordering(ordering).Page(page).PageSize(pageSize).Policy(policy).PolicyIsnull(policyIsnull).Search(search).Target(target).TargetIn(targetIn).Timeout(timeout).Execute()
 
 
 
@@ -2641,7 +2641,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsDeviceBindingsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EndpointsDeviceBindingsList`: PaginatedPolicyBindingList
+    // response from `EndpointsDeviceBindingsList`: PaginatedDeviceUserBindingList
     fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsDeviceBindingsList`: %v\n", resp)
 }
 ```
@@ -2671,7 +2671,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginatedPolicyBindingList**](PaginatedPolicyBindingList.md)
+[**PaginatedDeviceUserBindingList**](PaginatedDeviceUserBindingList.md)
 
 ### Authorization
 
@@ -2689,7 +2689,7 @@ Name | Type | Description  | Notes
 
 ## EndpointsDeviceBindingsPartialUpdate
 
-> PolicyBinding EndpointsDeviceBindingsPartialUpdate(ctx, policyBindingUuid).PatchedPolicyBindingRequest(patchedPolicyBindingRequest).Execute()
+> DeviceUserBinding EndpointsDeviceBindingsPartialUpdate(ctx, policyBindingUuid).PatchedDeviceUserBindingRequest(patchedDeviceUserBindingRequest).Execute()
 
 
 
@@ -2709,16 +2709,16 @@ import (
 
 func main() {
     policyBindingUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Device User binding.
-    patchedPolicyBindingRequest := *openapiclient.NewPatchedPolicyBindingRequest() // PatchedPolicyBindingRequest |  (optional)
+    patchedDeviceUserBindingRequest := *openapiclient.NewPatchedDeviceUserBindingRequest() // PatchedDeviceUserBindingRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EndpointsApi.EndpointsDeviceBindingsPartialUpdate(context.Background(), policyBindingUuid).PatchedPolicyBindingRequest(patchedPolicyBindingRequest).Execute()
+    resp, r, err := apiClient.EndpointsApi.EndpointsDeviceBindingsPartialUpdate(context.Background(), policyBindingUuid).PatchedDeviceUserBindingRequest(patchedDeviceUserBindingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsDeviceBindingsPartialUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EndpointsDeviceBindingsPartialUpdate`: PolicyBinding
+    // response from `EndpointsDeviceBindingsPartialUpdate`: DeviceUserBinding
     fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsDeviceBindingsPartialUpdate`: %v\n", resp)
 }
 ```
@@ -2739,11 +2739,11 @@ Other parameters are passed through a pointer to a apiEndpointsDeviceBindingsPar
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **patchedPolicyBindingRequest** | [**PatchedPolicyBindingRequest**](PatchedPolicyBindingRequest.md) |  | 
+ **patchedDeviceUserBindingRequest** | [**PatchedDeviceUserBindingRequest**](PatchedDeviceUserBindingRequest.md) |  | 
 
 ### Return type
 
-[**PolicyBinding**](PolicyBinding.md)
+[**DeviceUserBinding**](DeviceUserBinding.md)
 
 ### Authorization
 
@@ -2761,7 +2761,7 @@ Name | Type | Description  | Notes
 
 ## EndpointsDeviceBindingsRetrieve
 
-> PolicyBinding EndpointsDeviceBindingsRetrieve(ctx, policyBindingUuid).Execute()
+> DeviceUserBinding EndpointsDeviceBindingsRetrieve(ctx, policyBindingUuid).Execute()
 
 
 
@@ -2789,7 +2789,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsDeviceBindingsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EndpointsDeviceBindingsRetrieve`: PolicyBinding
+    // response from `EndpointsDeviceBindingsRetrieve`: DeviceUserBinding
     fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsDeviceBindingsRetrieve`: %v\n", resp)
 }
 ```
@@ -2813,7 +2813,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PolicyBinding**](PolicyBinding.md)
+[**DeviceUserBinding**](DeviceUserBinding.md)
 
 ### Authorization
 
@@ -2831,7 +2831,7 @@ Name | Type | Description  | Notes
 
 ## EndpointsDeviceBindingsUpdate
 
-> PolicyBinding EndpointsDeviceBindingsUpdate(ctx, policyBindingUuid).PolicyBindingRequest(policyBindingRequest).Execute()
+> DeviceUserBinding EndpointsDeviceBindingsUpdate(ctx, policyBindingUuid).DeviceUserBindingRequest(deviceUserBindingRequest).Execute()
 
 
 
@@ -2851,16 +2851,16 @@ import (
 
 func main() {
     policyBindingUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Device User binding.
-    policyBindingRequest := *openapiclient.NewPolicyBindingRequest("Target_example", int32(123)) // PolicyBindingRequest | 
+    deviceUserBindingRequest := *openapiclient.NewDeviceUserBindingRequest("Target_example", int32(123)) // DeviceUserBindingRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EndpointsApi.EndpointsDeviceBindingsUpdate(context.Background(), policyBindingUuid).PolicyBindingRequest(policyBindingRequest).Execute()
+    resp, r, err := apiClient.EndpointsApi.EndpointsDeviceBindingsUpdate(context.Background(), policyBindingUuid).DeviceUserBindingRequest(deviceUserBindingRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsDeviceBindingsUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EndpointsDeviceBindingsUpdate`: PolicyBinding
+    // response from `EndpointsDeviceBindingsUpdate`: DeviceUserBinding
     fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsDeviceBindingsUpdate`: %v\n", resp)
 }
 ```
@@ -2881,11 +2881,11 @@ Other parameters are passed through a pointer to a apiEndpointsDeviceBindingsUpd
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **policyBindingRequest** | [**PolicyBindingRequest**](PolicyBindingRequest.md) |  | 
+ **deviceUserBindingRequest** | [**DeviceUserBindingRequest**](DeviceUserBindingRequest.md) |  | 
 
 ### Return type
 
-[**PolicyBinding**](PolicyBinding.md)
+[**DeviceUserBinding**](DeviceUserBinding.md)
 
 ### Authorization
 
