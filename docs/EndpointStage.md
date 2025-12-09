@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
+**FlowSet** | [**[]FlowSet**](FlowSet.md) |  | [readonly] 
 **Connector** | **string** |  | 
 **ConnectorObj** | [**Connector**](Connector.md) |  | [readonly] 
 **Mode** | Pointer to [**StageModeEnum**](StageModeEnum.md) |  | [optional] 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewEndpointStage
 
-`func NewEndpointStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, connector string, connectorObj Connector, ) *EndpointStage`
+`func NewEndpointStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, connector string, connectorObj Connector, ) *EndpointStage`
 
 NewEndpointStage instantiates a new EndpointStage object
 This constructor will assign default values to properties that have it defined,
@@ -173,11 +173,6 @@ and a boolean to check if the value has been set.
 
 SetFlowSet sets FlowSet field to given value.
 
-### HasFlowSet
-
-`func (o *EndpointStage) HasFlowSet() bool`
-
-HasFlowSet returns a boolean if a field has been set.
 
 ### GetConnector
 

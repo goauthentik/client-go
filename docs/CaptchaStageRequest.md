@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **PublicKey** | **string** | Public key, acquired your captcha Provider. | 
 **PrivateKey** | **string** | Private key, acquired your captcha Provider. | 
 **JsUrl** | Pointer to **string** |  | [optional] 
@@ -53,31 +52,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
-### GetFlowSet
-
-`func (o *CaptchaStageRequest) GetFlowSet() []FlowSetRequest`
-
-GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
-
-### GetFlowSetOk
-
-`func (o *CaptchaStageRequest) GetFlowSetOk() (*[]FlowSetRequest, bool)`
-
-GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFlowSet
-
-`func (o *CaptchaStageRequest) SetFlowSet(v []FlowSetRequest)`
-
-SetFlowSet sets FlowSet field to given value.
-
-### HasFlowSet
-
-`func (o *CaptchaStageRequest) HasFlowSet() bool`
-
-HasFlowSet returns a boolean if a field has been set.
 
 ### GetPublicKey
 

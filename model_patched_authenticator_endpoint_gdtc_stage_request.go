@@ -17,8 +17,7 @@ import (
 
 // PatchedAuthenticatorEndpointGDTCStageRequest AuthenticatorEndpointGDTCStage Serializer
 type PatchedAuthenticatorEndpointGDTCStageRequest struct {
-	Name    *string          `json:"name,omitempty"`
-	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow NullableString         `json:"configure_flow,omitempty"`
 	FriendlyName  *string                `json:"friendly_name,omitempty"`
@@ -72,38 +71,6 @@ func (o *PatchedAuthenticatorEndpointGDTCStageRequest) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *PatchedAuthenticatorEndpointGDTCStageRequest) SetName(v string) {
 	o.Name = &v
-}
-
-// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || o.FlowSet == nil {
-		var ret []FlowSetRequest
-		return ret
-	}
-	return o.FlowSet
-}
-
-// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || o.FlowSet == nil {
-		return nil, false
-	}
-	return o.FlowSet, true
-}
-
-// HasFlowSet returns a boolean if a field has been set.
-func (o *PatchedAuthenticatorEndpointGDTCStageRequest) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
-func (o *PatchedAuthenticatorEndpointGDTCStageRequest) SetFlowSet(v []FlowSetRequest) {
-	o.FlowSet = v
 }
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -217,9 +184,6 @@ func (o PatchedAuthenticatorEndpointGDTCStageRequest) MarshalJSON() ([]byte, err
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
-	}
-	if o.FlowSet != nil {
-		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()

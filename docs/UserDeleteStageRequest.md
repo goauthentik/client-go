@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 
 ## Methods
 
@@ -45,31 +44,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
-### GetFlowSet
-
-`func (o *UserDeleteStageRequest) GetFlowSet() []FlowSetRequest`
-
-GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
-
-### GetFlowSetOk
-
-`func (o *UserDeleteStageRequest) GetFlowSetOk() (*[]FlowSetRequest, bool)`
-
-GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFlowSet
-
-`func (o *UserDeleteStageRequest) SetFlowSet(v []FlowSetRequest)`
-
-SetFlowSet sets FlowSet field to given value.
-
-### HasFlowSet
-
-`func (o *UserDeleteStageRequest) HasFlowSet() bool`
-
-HasFlowSet returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

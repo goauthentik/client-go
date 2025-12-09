@@ -17,10 +17,9 @@ import (
 
 // EndpointStageRequest EndpointStage Serializer
 type EndpointStageRequest struct {
-	Name      string           `json:"name"`
-	FlowSet   []FlowSetRequest `json:"flow_set,omitempty"`
-	Connector string           `json:"connector"`
-	Mode      *StageModeEnum   `json:"mode,omitempty"`
+	Name      string         `json:"name"`
+	Connector string         `json:"connector"`
+	Mode      *StageModeEnum `json:"mode,omitempty"`
 }
 
 // NewEndpointStageRequest instantiates a new EndpointStageRequest object
@@ -64,38 +63,6 @@ func (o *EndpointStageRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *EndpointStageRequest) SetName(v string) {
 	o.Name = v
-}
-
-// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *EndpointStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || o.FlowSet == nil {
-		var ret []FlowSetRequest
-		return ret
-	}
-	return o.FlowSet
-}
-
-// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EndpointStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || o.FlowSet == nil {
-		return nil, false
-	}
-	return o.FlowSet, true
-}
-
-// HasFlowSet returns a boolean if a field has been set.
-func (o *EndpointStageRequest) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
-func (o *EndpointStageRequest) SetFlowSet(v []FlowSetRequest) {
-	o.FlowSet = v
 }
 
 // GetConnector returns the Connector field value
@@ -158,9 +125,6 @@ func (o EndpointStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
-	}
-	if o.FlowSet != nil {
-		toSerialize["flow_set"] = o.FlowSet
 	}
 	if true {
 		toSerialize["connector"] = o.Connector

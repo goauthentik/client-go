@@ -231,7 +231,6 @@ docs/FlowInspectorPlan.md
 docs/FlowLayoutEnum.md
 docs/FlowRequest.md
 docs/FlowSet.md
-docs/FlowSetRequest.md
 docs/FlowStageBinding.md
 docs/FlowStageBindingRequest.md
 docs/FlowsApi.md
@@ -1090,7 +1089,6 @@ model_flow_inspector_plan.go
 model_flow_layout_enum.go
 model_flow_request.go
 model_flow_set.go
-model_flow_set_request.go
 model_flow_stage_binding.go
 model_flow_stage_binding_request.go
 model_footer_link.go

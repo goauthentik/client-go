@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
+**FlowSet** | [**[]FlowSet**](FlowSet.md) |  | [readonly] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
 **FriendlyName** | Pointer to **string** |  | [optional] 
 **Provider** | [**ProviderEnum**](ProviderEnum.md) |  | 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewAuthenticatorSMSStage
 
-`func NewAuthenticatorSMSStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, provider ProviderEnum, fromNumber string, accountSid string, auth string, ) *AuthenticatorSMSStage`
+`func NewAuthenticatorSMSStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, provider ProviderEnum, fromNumber string, accountSid string, auth string, ) *AuthenticatorSMSStage`
 
 NewAuthenticatorSMSStage instantiates a new AuthenticatorSMSStage object
 This constructor will assign default values to properties that have it defined,
@@ -180,11 +180,6 @@ and a boolean to check if the value has been set.
 
 SetFlowSet sets FlowSet field to given value.
 
-### HasFlowSet
-
-`func (o *AuthenticatorSMSStage) HasFlowSet() bool`
-
-HasFlowSet returns a boolean if a field has been set.
 
 ### GetConfigureFlow
 

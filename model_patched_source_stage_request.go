@@ -17,9 +17,8 @@ import (
 
 // PatchedSourceStageRequest SourceStage Serializer
 type PatchedSourceStageRequest struct {
-	Name    *string          `json:"name,omitempty"`
-	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
-	Source  *string          `json:"source,omitempty"`
+	Name   *string `json:"name,omitempty"`
+	Source *string `json:"source,omitempty"`
 	// Amount of time a user can take to return from the source to continue the flow (Format: hours=-1;minutes=-2;seconds=-3)
 	ResumeTimeout *string `json:"resume_timeout,omitempty"`
 }
@@ -71,38 +70,6 @@ func (o *PatchedSourceStageRequest) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *PatchedSourceStageRequest) SetName(v string) {
 	o.Name = &v
-}
-
-// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *PatchedSourceStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || o.FlowSet == nil {
-		var ret []FlowSetRequest
-		return ret
-	}
-	return o.FlowSet
-}
-
-// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedSourceStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || o.FlowSet == nil {
-		return nil, false
-	}
-	return o.FlowSet, true
-}
-
-// HasFlowSet returns a boolean if a field has been set.
-func (o *PatchedSourceStageRequest) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
-func (o *PatchedSourceStageRequest) SetFlowSet(v []FlowSetRequest) {
-	o.FlowSet = v
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
@@ -173,9 +140,6 @@ func (o PatchedSourceStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
-	}
-	if o.FlowSet != nil {
-		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.Source != nil {
 		toSerialize["source"] = o.Source

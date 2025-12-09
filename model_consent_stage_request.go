@@ -17,9 +17,8 @@ import (
 
 // ConsentStageRequest ConsentStage Serializer
 type ConsentStageRequest struct {
-	Name    string                `json:"name"`
-	FlowSet []FlowSetRequest      `json:"flow_set,omitempty"`
-	Mode    *ConsentStageModeEnum `json:"mode,omitempty"`
+	Name string                `json:"name"`
+	Mode *ConsentStageModeEnum `json:"mode,omitempty"`
 	// Offset after which consent expires. (Format: hours=1;minutes=2;seconds=3).
 	ConsentExpireIn *string `json:"consent_expire_in,omitempty"`
 }
@@ -64,38 +63,6 @@ func (o *ConsentStageRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *ConsentStageRequest) SetName(v string) {
 	o.Name = v
-}
-
-// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *ConsentStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || o.FlowSet == nil {
-		var ret []FlowSetRequest
-		return ret
-	}
-	return o.FlowSet
-}
-
-// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConsentStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || o.FlowSet == nil {
-		return nil, false
-	}
-	return o.FlowSet, true
-}
-
-// HasFlowSet returns a boolean if a field has been set.
-func (o *ConsentStageRequest) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
-func (o *ConsentStageRequest) SetFlowSet(v []FlowSetRequest) {
-	o.FlowSet = v
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise.
@@ -166,9 +133,6 @@ func (o ConsentStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
-	}
-	if o.FlowSet != nil {
-		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.Mode != nil {
 		toSerialize["mode"] = o.Mode

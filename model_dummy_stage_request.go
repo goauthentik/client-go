@@ -17,9 +17,8 @@ import (
 
 // DummyStageRequest DummyStage Serializer
 type DummyStageRequest struct {
-	Name       string           `json:"name"`
-	FlowSet    []FlowSetRequest `json:"flow_set,omitempty"`
-	ThrowError *bool            `json:"throw_error,omitempty"`
+	Name       string `json:"name"`
+	ThrowError *bool  `json:"throw_error,omitempty"`
 }
 
 // NewDummyStageRequest instantiates a new DummyStageRequest object
@@ -64,38 +63,6 @@ func (o *DummyStageRequest) SetName(v string) {
 	o.Name = v
 }
 
-// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *DummyStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || o.FlowSet == nil {
-		var ret []FlowSetRequest
-		return ret
-	}
-	return o.FlowSet
-}
-
-// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DummyStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || o.FlowSet == nil {
-		return nil, false
-	}
-	return o.FlowSet, true
-}
-
-// HasFlowSet returns a boolean if a field has been set.
-func (o *DummyStageRequest) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
-func (o *DummyStageRequest) SetFlowSet(v []FlowSetRequest) {
-	o.FlowSet = v
-}
-
 // GetThrowError returns the ThrowError field value if set, zero value otherwise.
 func (o *DummyStageRequest) GetThrowError() bool {
 	if o == nil || o.ThrowError == nil {
@@ -132,9 +99,6 @@ func (o DummyStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
-	}
-	if o.FlowSet != nil {
-		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.ThrowError != nil {
 		toSerialize["throw_error"] = o.ThrowError

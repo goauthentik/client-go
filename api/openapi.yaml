@@ -30319,6 +30319,7 @@ paths:
           - authentik_core.token
           - authentik_core.user
           - authentik_crypto.certificatekeypair
+          - authentik_endpoints.deviceaccessgroup
           - authentik_endpoints.deviceuserbinding
           - authentik_endpoints.endpointstage
           - authentik_endpoints_connectors_agent.agentconnector
@@ -50727,6 +50728,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -50746,6 +50748,7 @@ components:
       - api_hostname
       - client_id
       - component
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -50792,32 +50795,11 @@ components:
         api_hostname: api_hostname
         admin_integration_key: admin_integration_key
         admin_secret_key: admin_secret_key
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         client_id: client_id
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
             \ If empty, user will not be able to configure this stage."
@@ -50963,6 +50945,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -51007,6 +50990,7 @@ components:
           type: string
       required:
       - component
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -51022,23 +51006,6 @@ components:
         use_global_settings: true
         use_ssl: true
         subject: subject
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         token_expiry: token_expiry
         timeout: 441289069
         use_tls: true
@@ -51052,10 +51019,6 @@ components:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
             \ If empty, user will not be able to configure this stage."
@@ -51170,6 +51133,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -51185,6 +51149,7 @@ components:
       required:
       - component
       - credentials
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -51199,31 +51164,10 @@ components:
         credentials:
           key: ""
         name: name
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
             \ If empty, user will not be able to configure this stage."
@@ -51348,6 +51292,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -51383,6 +51328,7 @@ components:
       - account_sid
       - auth
       - component
+      - flow_set
       - from_number
       - meta_model_name
       - name
@@ -51404,32 +51350,11 @@ components:
         name: name
         account_sid: account_sid
         auth_password: auth_password
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         verify_only: true
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
             \ If empty, user will not be able to configure this stage."
@@ -51570,6 +51495,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -51589,6 +51515,7 @@ components:
           type: integer
       required:
       - component
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -51603,31 +51530,10 @@ components:
         token_count: 171976544
         token_length: 1294386358
         name: name
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
             \ If empty, user will not be able to configure this stage."
@@ -51748,6 +51654,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -51762,6 +51669,7 @@ components:
       required:
       - component
       - digits
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -51775,31 +51683,10 @@ components:
         friendly_name: friendly_name
         name: name
         digits: null
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
             \ If empty, user will not be able to configure this stage."
@@ -51892,6 +51779,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         not_configured_action:
           $ref: '#/components/schemas/NotConfiguredActionEnum'
@@ -51928,6 +51816,7 @@ components:
           type: array
       required:
       - component
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -51948,23 +51837,6 @@ components:
         - null
         name: name
         last_auth_threshold: last_auth_threshold
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         configuration_stages:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -51972,10 +51844,6 @@ components:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         not_configured_action:
           $ref: '#/components/schemas/NotConfiguredActionEnum'
         device_classes:
@@ -52175,6 +52043,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
@@ -52209,6 +52078,7 @@ components:
       required:
       - component
       - device_type_restrictions_obj
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -52227,32 +52097,11 @@ components:
         max_attempts: 171976544
         name: name
         user_verification: null
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         authenticator_attachment: ""
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
             \ If empty, user will not be able to configure this stage."
@@ -52776,6 +52625,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         public_key:
           description: "Public key, acquired your captcha Provider."
@@ -52800,6 +52650,7 @@ components:
           type: boolean
       required:
       - component
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -52819,31 +52670,10 @@ components:
         js_url: js_url
         score_min_threshold: 0.8008281904610115
         score_max_threshold: 6.027456183070403
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         public_key:
           description: "Public key, acquired your captcha Provider."
           minLength: 1
@@ -53357,6 +53187,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         mode:
           $ref: '#/components/schemas/ConsentStageModeEnum'
@@ -53366,6 +53197,7 @@ components:
           type: string
       required:
       - component
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -53384,31 +53216,10 @@ components:
         mode: null
         name: name
         consent_expire_in: consent_expire_in
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         mode:
           $ref: '#/components/schemas/ConsentStageModeEnum'
         consent_expire_in:
@@ -53908,11 +53719,13 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         deny_message:
           type: string
       required:
       - component
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -53924,31 +53737,10 @@ components:
       example:
         deny_message: deny_message
         name: name
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         deny_message:
           type: string
       required:
@@ -54921,11 +54713,13 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         throw_error:
           type: boolean
       required:
       - component
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -54937,31 +54731,10 @@ components:
       example:
         throw_error: true
         name: name
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         throw_error:
           type: boolean
       required:
@@ -55162,6 +54935,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         use_global_settings:
           description: "When enabled, global Email connection settings will be used\
@@ -55208,6 +54982,7 @@ components:
           type: string
       required:
       - component
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -55221,23 +54996,6 @@ components:
         use_global_settings: true
         use_ssl: true
         subject: subject
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         token_expiry: token_expiry
         recovery_cache_timeout: recovery_cache_timeout
         timeout: 441289069
@@ -55254,10 +55012,6 @@ components:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         use_global_settings:
           description: "When enabled, global Email connection settings will be used\
             \ and connection settings below will be ignored."
@@ -55694,6 +55448,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         connector:
           format: uuid
@@ -55708,6 +55463,7 @@ components:
       - component
       - connector
       - connector_obj
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -55720,31 +55476,10 @@ components:
         mode: null
         connector: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         connector:
           format: uuid
           type: string
@@ -56900,54 +56635,6 @@ components:
       - name
       - pk
       - policybindingmodel_ptr_id
-      - slug
-      - title
-      type: object
-    FlowSetRequest:
-      description: Stripped down flow serializer
-      example:
-        policy_engine_mode: null
-        compatibility_mode: true
-        layout: null
-        denied_action: ""
-        name: name
-        designation: ""
-        title: title
-        slug: slug
-      properties:
-        name:
-          minLength: 1
-          type: string
-        slug:
-          description: Visible in the URL.
-          minLength: 1
-          pattern: "^[-a-zA-Z0-9_]+$"
-          type: string
-        title:
-          description: Shown as the Title in Flow pages.
-          minLength: 1
-          type: string
-        designation:
-          allOf:
-          - $ref: '#/components/schemas/FlowDesignationEnum'
-          description: "Decides what this Flow is used for. For example, the Authentication\
-            \ flow is redirect to when an un-authenticated user visits authentik."
-        policy_engine_mode:
-          $ref: '#/components/schemas/PolicyEngineMode'
-        compatibility_mode:
-          description: "Enable compatibility mode, increases compatibility with password\
-            \ managers on mobile devices."
-          type: boolean
-        layout:
-          $ref: '#/components/schemas/FlowLayoutEnum'
-        denied_action:
-          allOf:
-          - $ref: '#/components/schemas/DeniedActionEnum'
-          description: Configure what should happen when a flow denies access to a
-            user.
-      required:
-      - designation
-      - name
       - slug
       - title
       type: object
@@ -58620,6 +58307,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         user_fields:
           description: Fields of the user object to match against. (Hold shift to
@@ -58684,6 +58372,7 @@ components:
           type: boolean
       required:
       - component
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -58697,23 +58386,6 @@ components:
         sources:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         pretend_user_exists: true
         passwordless_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -58731,10 +58403,6 @@ components:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         user_fields:
           description: Fields of the user object to match against. (Hold shift to
             select multiple options)
@@ -59077,6 +58745,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         continue_flow_without_invitation:
           description: "If this flag is set, this Stage will jump to the next Stage\
@@ -59085,6 +58754,7 @@ components:
           type: boolean
       required:
       - component
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -59096,31 +58766,10 @@ components:
       example:
         continue_flow_without_invitation: true
         name: name
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         continue_flow_without_invitation:
           description: "If this flag is set, this Stage will jump to the next Stage\
             \ when no Invitation is given. By default this Stage will cancel the Flow\
@@ -61126,6 +60775,7 @@ components:
       - authentik_core.token
       - authentik_crypto.certificatekeypair
       - authentik_endpoints.deviceuserbinding
+      - authentik_endpoints.deviceaccessgroup
       - authentik_endpoints.endpointstage
       - authentik_endpoints_connectors_agent.agentconnector
       - authentik_endpoints_connectors_agent.agentdeviceuserbinding
@@ -61300,6 +60950,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         mode:
           $ref: '#/components/schemas/StageModeEnum'
@@ -61318,6 +60969,7 @@ components:
       required:
       - cert_attribute
       - component
+      - flow_set
       - meta_model_name
       - mode
       - name
@@ -61336,31 +60988,10 @@ components:
         user_attribute: null
         name: name
         cert_attribute: null
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         mode:
           $ref: '#/components/schemas/StageModeEnum'
         certificate_authorities:
@@ -73766,6 +73397,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         backends:
           description: Selection of backends to test the password against.
@@ -73791,6 +73423,7 @@ components:
       required:
       - backends
       - component
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -73804,23 +73437,6 @@ components:
         allow_show_password: true
         name: name
         failed_attempts_before_cancel: -1803530559
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         backends:
         - null
         - null
@@ -73828,10 +73444,6 @@ components:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         backends:
           description: Selection of backends to test the password against.
           items:
@@ -73999,32 +73611,11 @@ components:
         api_hostname: api_hostname
         admin_integration_key: admin_integration_key
         admin_secret_key: admin_secret_key
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         client_id: client_id
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
             \ If empty, user will not be able to configure this stage."
@@ -74058,23 +73649,6 @@ components:
         use_global_settings: true
         use_ssl: true
         subject: subject
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         token_expiry: token_expiry
         timeout: 441289069
         use_tls: true
@@ -74088,10 +73662,6 @@ components:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
             \ If empty, user will not be able to configure this stage."
@@ -74147,31 +73717,10 @@ components:
         credentials:
           key: ""
         name: name
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
             \ If empty, user will not be able to configure this stage."
@@ -74197,32 +73746,11 @@ components:
         name: name
         account_sid: account_sid
         auth_password: auth_password
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         verify_only: true
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
             \ If empty, user will not be able to configure this stage."
@@ -74265,31 +73793,10 @@ components:
         token_count: 171976544
         token_length: 1294386358
         name: name
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
             \ If empty, user will not be able to configure this stage."
@@ -74314,31 +73821,10 @@ components:
         friendly_name: friendly_name
         name: name
         digits: null
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
             \ If empty, user will not be able to configure this stage."
@@ -74363,23 +73849,6 @@ components:
         - null
         name: name
         last_auth_threshold: last_auth_threshold
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         configuration_stages:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -74387,10 +73856,6 @@ components:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         not_configured_action:
           $ref: '#/components/schemas/NotConfiguredActionEnum'
         device_classes:
@@ -74433,32 +73898,11 @@ components:
         max_attempts: 171976544
         name: name
         user_verification: null
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         authenticator_attachment: ""
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         configure_flow:
           description: "Flow used by an authenticated user to configure this Stage.\
             \ If empty, user will not be able to configure this stage."
@@ -74611,31 +74055,10 @@ components:
         js_url: js_url
         score_min_threshold: 0.8008281904610115
         score_max_threshold: 6.027456183070403
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         public_key:
           description: "Public key, acquired your captcha Provider."
           minLength: 1
@@ -74710,31 +74133,10 @@ components:
         mode: null
         name: name
         consent_expire_in: consent_expire_in
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         mode:
           $ref: '#/components/schemas/ConsentStageModeEnum'
         consent_expire_in:
@@ -74748,31 +74150,10 @@ components:
       example:
         deny_message: deny_message
         name: name
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         deny_message:
           type: string
       type: object
@@ -74916,31 +74297,10 @@ components:
       example:
         throw_error: true
         name: name
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         throw_error:
           type: boolean
       type: object
@@ -74973,23 +74333,6 @@ components:
         use_global_settings: true
         use_ssl: true
         subject: subject
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         token_expiry: token_expiry
         recovery_cache_timeout: recovery_cache_timeout
         timeout: 441289069
@@ -75006,10 +74349,6 @@ components:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         use_global_settings:
           description: "When enabled, global Email connection settings will be used\
             \ and connection settings below will be ignored."
@@ -75143,31 +74482,10 @@ components:
         mode: null
         connector: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         connector:
           format: uuid
           type: string
@@ -75728,23 +75046,6 @@ components:
         sources:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         pretend_user_exists: true
         passwordless_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -75762,10 +75063,6 @@ components:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         user_fields:
           description: Fields of the user object to match against. (Hold shift to
             select multiple options)
@@ -75884,31 +75181,10 @@ components:
       example:
         continue_flow_without_invitation: true
         name: name
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         continue_flow_without_invitation:
           description: "If this flag is set, this Stage will jump to the next Stage\
             \ when no Invitation is given. By default this Stage will cancel the Flow\
@@ -76483,31 +75759,10 @@ components:
         user_attribute: null
         name: name
         cert_attribute: null
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         mode:
           $ref: '#/components/schemas/StageModeEnum'
         certificate_authorities:
@@ -77088,23 +76343,6 @@ components:
         allow_show_password: true
         name: name
         failed_attempts_before_cancel: -1803530559
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         backends:
         - null
         - null
@@ -77112,10 +76350,6 @@ components:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         backends:
           description: Selection of backends to test the password against.
           items:
@@ -77384,31 +76618,10 @@ components:
         fields:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         fields:
           items:
             format: uuid
@@ -77699,32 +76912,11 @@ components:
         target_static: target_static
         target_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         keep_context: true
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         keep_context:
           type: boolean
         mode:
@@ -78528,31 +77720,10 @@ components:
         resume_timeout: resume_timeout
         name: name
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         source:
           format: uuid
           type: string
@@ -78780,31 +77951,10 @@ components:
       description: UserDeleteStage Serializer
       example:
         name: name
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
       type: object
     PatchedUserKerberosSourceConnectionRequest:
       description: User source connection
@@ -78846,33 +77996,12 @@ components:
         name: name
         network_binding: ""
         remember_device: remember_device
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         geoip_binding: ""
         session_duration: session_duration
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         session_duration:
           description: "Determines how long a session lasts. Default of 0 means that\
             \ the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)"
@@ -78907,31 +78036,10 @@ components:
       description: UserLogoutStage Serializer
       example:
         name: name
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
       type: object
     PatchedUserOAuthSourceConnectionRequest:
       description: User source connection
@@ -79094,32 +78202,11 @@ components:
         name: name
         create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user_creation_mode: null
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         create_users_as_inactive: true
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         user_creation_mode:
           $ref: '#/components/schemas/UserCreationModeEnum'
         create_users_as_inactive:
@@ -80196,6 +79283,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         fields:
           items:
@@ -80210,6 +79298,7 @@ components:
       required:
       - component
       - fields
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -80226,31 +79315,10 @@ components:
         fields:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         fields:
           items:
             format: uuid
@@ -81670,6 +80738,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         keep_context:
           type: boolean
@@ -81683,6 +80752,7 @@ components:
           type: string
       required:
       - component
+      - flow_set
       - meta_model_name
       - mode
       - name
@@ -81702,32 +80772,11 @@ components:
         target_static: target_static
         target_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         keep_context: true
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         keep_context:
           type: boolean
         mode:
@@ -84829,6 +83878,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         source:
           format: uuid
@@ -84839,6 +83889,7 @@ components:
           type: string
       required:
       - component
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -84852,31 +83903,10 @@ components:
         resume_timeout: resume_timeout
         name: name
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         source:
           format: uuid
           type: string
@@ -85004,9 +84034,11 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
       required:
       - component
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -86755,9 +85787,11 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
       required:
       - component
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -86768,31 +85802,10 @@ components:
       description: UserDeleteStage Serializer
       example:
         name: name
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
       required:
       - name
       type: object
@@ -87029,6 +86042,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         session_duration:
           description: "Determines how long a session lasts. Default of 0 means that\
@@ -87058,6 +86072,7 @@ components:
           type: string
       required:
       - component
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -87072,33 +86087,12 @@ components:
         name: name
         network_binding: ""
         remember_device: remember_device
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         geoip_binding: ""
         session_duration: session_duration
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         session_duration:
           description: "Determines how long a session lasts. Default of 0 means that\
             \ the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)"
@@ -87192,9 +86186,11 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
       required:
       - component
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -87205,31 +86201,10 @@ components:
       description: UserLogoutStage Serializer
       example:
         name: name
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
       required:
       - name
       type: object
@@ -87941,6 +86916,7 @@ components:
         flow_set:
           items:
             $ref: '#/components/schemas/FlowSet'
+          readOnly: true
           type: array
         user_creation_mode:
           $ref: '#/components/schemas/UserCreationModeEnum'
@@ -87958,6 +86934,7 @@ components:
           type: string
       required:
       - component
+      - flow_set
       - meta_model_name
       - name
       - pk
@@ -87972,32 +86949,11 @@ components:
         name: name
         create_users_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user_creation_mode: null
-        flow_set:
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
-        - policy_engine_mode: null
-          compatibility_mode: true
-          layout: null
-          denied_action: ""
-          name: name
-          designation: ""
-          title: title
-          slug: slug
         create_users_as_inactive: true
       properties:
         name:
           minLength: 1
           type: string
-        flow_set:
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-          type: array
         user_creation_mode:
           $ref: '#/components/schemas/UserCreationModeEnum'
         create_users_as_inactive:

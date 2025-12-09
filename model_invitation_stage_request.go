@@ -17,8 +17,7 @@ import (
 
 // InvitationStageRequest InvitationStage Serializer
 type InvitationStageRequest struct {
-	Name    string           `json:"name"`
-	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
+	Name string `json:"name"`
 	// If this flag is set, this Stage will jump to the next Stage when no Invitation is given. By default this Stage will cancel the Flow when no invitation is given.
 	ContinueFlowWithoutInvitation *bool `json:"continue_flow_without_invitation,omitempty"`
 }
@@ -65,38 +64,6 @@ func (o *InvitationStageRequest) SetName(v string) {
 	o.Name = v
 }
 
-// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *InvitationStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || o.FlowSet == nil {
-		var ret []FlowSetRequest
-		return ret
-	}
-	return o.FlowSet
-}
-
-// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InvitationStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || o.FlowSet == nil {
-		return nil, false
-	}
-	return o.FlowSet, true
-}
-
-// HasFlowSet returns a boolean if a field has been set.
-func (o *InvitationStageRequest) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
-func (o *InvitationStageRequest) SetFlowSet(v []FlowSetRequest) {
-	o.FlowSet = v
-}
-
 // GetContinueFlowWithoutInvitation returns the ContinueFlowWithoutInvitation field value if set, zero value otherwise.
 func (o *InvitationStageRequest) GetContinueFlowWithoutInvitation() bool {
 	if o == nil || o.ContinueFlowWithoutInvitation == nil {
@@ -133,9 +100,6 @@ func (o InvitationStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
-	}
-	if o.FlowSet != nil {
-		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.ContinueFlowWithoutInvitation != nil {
 		toSerialize["continue_flow_without_invitation"] = o.ContinueFlowWithoutInvitation

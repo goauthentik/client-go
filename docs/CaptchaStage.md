@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
+**FlowSet** | [**[]FlowSet**](FlowSet.md) |  | [readonly] 
 **PublicKey** | **string** | Public key, acquired your captcha Provider. | 
 **JsUrl** | Pointer to **string** |  | [optional] 
 **ApiUrl** | Pointer to **string** |  | [optional] 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewCaptchaStage
 
-`func NewCaptchaStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, publicKey string, ) *CaptchaStage`
+`func NewCaptchaStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, publicKey string, ) *CaptchaStage`
 
 NewCaptchaStage instantiates a new CaptchaStage object
 This constructor will assign default values to properties that have it defined,
@@ -177,11 +177,6 @@ and a boolean to check if the value has been set.
 
 SetFlowSet sets FlowSet field to given value.
 
-### HasFlowSet
-
-`func (o *CaptchaStage) HasFlowSet() bool`
-
-HasFlowSet returns a boolean if a field has been set.
 
 ### GetPublicKey
 

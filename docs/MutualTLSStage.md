@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
+**FlowSet** | [**[]FlowSet**](FlowSet.md) |  | [readonly] 
 **Mode** | [**StageModeEnum**](StageModeEnum.md) |  | 
 **CertificateAuthorities** | Pointer to **[]string** | Configure certificate authorities to validate the certificate against. This option has a higher priority than the &#x60;client_certificate&#x60; option on &#x60;Brand&#x60;. | [optional] 
 **CertAttribute** | [**CertAttributeEnum**](CertAttributeEnum.md) |  | 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewMutualTLSStage
 
-`func NewMutualTLSStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, mode StageModeEnum, certAttribute CertAttributeEnum, userAttribute UserAttributeEnum, ) *MutualTLSStage`
+`func NewMutualTLSStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, mode StageModeEnum, certAttribute CertAttributeEnum, userAttribute UserAttributeEnum, ) *MutualTLSStage`
 
 NewMutualTLSStage instantiates a new MutualTLSStage object
 This constructor will assign default values to properties that have it defined,
@@ -174,11 +174,6 @@ and a boolean to check if the value has been set.
 
 SetFlowSet sets FlowSet field to given value.
 
-### HasFlowSet
-
-`func (o *MutualTLSStage) HasFlowSet() bool`
-
-HasFlowSet returns a boolean if a field has been set.
 
 ### GetMode
 

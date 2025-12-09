@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **Connector** | Pointer to **string** |  | [optional] 
 **Mode** | Pointer to [**StageModeEnum**](StageModeEnum.md) |  | [optional] 
 
@@ -52,31 +51,6 @@ SetName sets Name field to given value.
 `func (o *PatchedEndpointStageRequest) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
-### GetFlowSet
-
-`func (o *PatchedEndpointStageRequest) GetFlowSet() []FlowSetRequest`
-
-GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
-
-### GetFlowSetOk
-
-`func (o *PatchedEndpointStageRequest) GetFlowSetOk() (*[]FlowSetRequest, bool)`
-
-GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFlowSet
-
-`func (o *PatchedEndpointStageRequest) SetFlowSet(v []FlowSetRequest)`
-
-SetFlowSet sets FlowSet field to given value.
-
-### HasFlowSet
-
-`func (o *PatchedEndpointStageRequest) HasFlowSet() bool`
-
-HasFlowSet returns a boolean if a field has been set.
 
 ### GetConnector
 

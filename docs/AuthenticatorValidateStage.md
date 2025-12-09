@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
+**FlowSet** | [**[]FlowSet**](FlowSet.md) |  | [readonly] 
 **NotConfiguredAction** | Pointer to [**NotConfiguredActionEnum**](NotConfiguredActionEnum.md) |  | [optional] 
 **DeviceClasses** | Pointer to [**[]DeviceClassesEnum**](DeviceClassesEnum.md) | Device classes which can be used to authenticate | [optional] 
 **ConfigurationStages** | Pointer to **[]string** | Stages used to configure Authenticator when user doesn&#39;t have any compatible devices. After this configuration Stage passes, the user is not prompted again. | [optional] 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewAuthenticatorValidateStage
 
-`func NewAuthenticatorValidateStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, webauthnAllowedDeviceTypesObj []WebAuthnDeviceType, ) *AuthenticatorValidateStage`
+`func NewAuthenticatorValidateStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, webauthnAllowedDeviceTypesObj []WebAuthnDeviceType, ) *AuthenticatorValidateStage`
 
 NewAuthenticatorValidateStage instantiates a new AuthenticatorValidateStage object
 This constructor will assign default values to properties that have it defined,
@@ -177,11 +177,6 @@ and a boolean to check if the value has been set.
 
 SetFlowSet sets FlowSet field to given value.
 
-### HasFlowSet
-
-`func (o *AuthenticatorValidateStage) HasFlowSet() bool`
-
-HasFlowSet returns a boolean if a field has been set.
 
 ### GetNotConfiguredAction
 

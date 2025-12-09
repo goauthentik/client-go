@@ -19,6 +19,8 @@
 
 * `ENDPOINTS_DEVICEUSERBINDING` (value: `"authentik_endpoints.deviceuserbinding"`)
 
+* `ENDPOINTS_DEVICEACCESSGROUP` (value: `"authentik_endpoints.deviceaccessgroup"`)
+
 * `ENDPOINTS_ENDPOINTSTAGE` (value: `"authentik_endpoints.endpointstage"`)
 
 * `ENDPOINTS_CONNECTORS_AGENT_AGENTCONNECTOR` (value: `"authentik_endpoints_connectors_agent.agentconnector"`)

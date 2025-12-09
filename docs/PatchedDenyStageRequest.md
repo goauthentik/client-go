@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **DenyMessage** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -51,31 +50,6 @@ SetName sets Name field to given value.
 `func (o *PatchedDenyStageRequest) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
-### GetFlowSet
-
-`func (o *PatchedDenyStageRequest) GetFlowSet() []FlowSetRequest`
-
-GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
-
-### GetFlowSetOk
-
-`func (o *PatchedDenyStageRequest) GetFlowSetOk() (*[]FlowSetRequest, bool)`
-
-GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFlowSet
-
-`func (o *PatchedDenyStageRequest) SetFlowSet(v []FlowSetRequest)`
-
-SetFlowSet sets FlowSet field to given value.
-
-### HasFlowSet
-
-`func (o *PatchedDenyStageRequest) HasFlowSet() bool`
-
-HasFlowSet returns a boolean if a field has been set.
 
 ### GetDenyMessage
 

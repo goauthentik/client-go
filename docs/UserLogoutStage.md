@@ -10,13 +10,13 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
+**FlowSet** | [**[]FlowSet**](FlowSet.md) |  | [readonly] 
 
 ## Methods
 
 ### NewUserLogoutStage
 
-`func NewUserLogoutStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, ) *UserLogoutStage`
+`func NewUserLogoutStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, ) *UserLogoutStage`
 
 NewUserLogoutStage instantiates a new UserLogoutStage object
 This constructor will assign default values to properties that have it defined,
@@ -170,11 +170,6 @@ and a boolean to check if the value has been set.
 
 SetFlowSet sets FlowSet field to given value.
 
-### HasFlowSet
-
-`func (o *UserLogoutStage) HasFlowSet() bool`
-
-HasFlowSet returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

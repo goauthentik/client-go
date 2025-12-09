@@ -29,6 +29,7 @@ const (
 	MODELENUM_CORE_TOKEN                                                        ModelEnum = "authentik_core.token"
 	MODELENUM_CRYPTO_CERTIFICATEKEYPAIR                                         ModelEnum = "authentik_crypto.certificatekeypair"
 	MODELENUM_ENDPOINTS_DEVICEUSERBINDING                                       ModelEnum = "authentik_endpoints.deviceuserbinding"
+	MODELENUM_ENDPOINTS_DEVICEACCESSGROUP                                       ModelEnum = "authentik_endpoints.deviceaccessgroup"
 	MODELENUM_ENDPOINTS_ENDPOINTSTAGE                                           ModelEnum = "authentik_endpoints.endpointstage"
 	MODELENUM_ENDPOINTS_CONNECTORS_AGENT_AGENTCONNECTOR                         ModelEnum = "authentik_endpoints_connectors_agent.agentconnector"
 	MODELENUM_ENDPOINTS_CONNECTORS_AGENT_AGENTDEVICEUSERBINDING                 ModelEnum = "authentik_endpoints_connectors_agent.agentdeviceuserbinding"
@@ -147,6 +148,7 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_core.token",
 	"authentik_crypto.certificatekeypair",
 	"authentik_endpoints.deviceuserbinding",
+	"authentik_endpoints.deviceaccessgroup",
 	"authentik_endpoints.endpointstage",
 	"authentik_endpoints_connectors_agent.agentconnector",
 	"authentik_endpoints_connectors_agent.agentdeviceuserbinding",

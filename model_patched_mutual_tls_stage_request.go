@@ -17,9 +17,8 @@ import (
 
 // PatchedMutualTLSStageRequest MutualTLSStage Serializer
 type PatchedMutualTLSStageRequest struct {
-	Name    *string          `json:"name,omitempty"`
-	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
-	Mode    *StageModeEnum   `json:"mode,omitempty"`
+	Name *string        `json:"name,omitempty"`
+	Mode *StageModeEnum `json:"mode,omitempty"`
 	// Configure certificate authorities to validate the certificate against. This option has a higher priority than the `client_certificate` option on `Brand`.
 	CertificateAuthorities []string           `json:"certificate_authorities,omitempty"`
 	CertAttribute          *CertAttributeEnum `json:"cert_attribute,omitempty"`
@@ -73,38 +72,6 @@ func (o *PatchedMutualTLSStageRequest) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *PatchedMutualTLSStageRequest) SetName(v string) {
 	o.Name = &v
-}
-
-// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *PatchedMutualTLSStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || o.FlowSet == nil {
-		var ret []FlowSetRequest
-		return ret
-	}
-	return o.FlowSet
-}
-
-// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedMutualTLSStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || o.FlowSet == nil {
-		return nil, false
-	}
-	return o.FlowSet, true
-}
-
-// HasFlowSet returns a boolean if a field has been set.
-func (o *PatchedMutualTLSStageRequest) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
-func (o *PatchedMutualTLSStageRequest) SetFlowSet(v []FlowSetRequest) {
-	o.FlowSet = v
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise.
@@ -239,9 +206,6 @@ func (o PatchedMutualTLSStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
-	}
-	if o.FlowSet != nil {
-		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.Mode != nil {
 		toSerialize["mode"] = o.Mode

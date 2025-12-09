@@ -27,7 +27,7 @@ type ConsentStage struct {
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
 	MetaModelName string                `json:"meta_model_name"`
-	FlowSet       []FlowSet             `json:"flow_set,omitempty"`
+	FlowSet       []FlowSet             `json:"flow_set"`
 	Mode          *ConsentStageModeEnum `json:"mode,omitempty"`
 	// Offset after which consent expires. (Format: hours=1;minutes=2;seconds=3).
 	ConsentExpireIn *string `json:"consent_expire_in,omitempty"`
@@ -37,7 +37,7 @@ type ConsentStage struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConsentStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string) *ConsentStage {
+func NewConsentStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet) *ConsentStage {
 	this := ConsentStage{}
 	this.Pk = pk
 	this.Name = name
@@ -45,6 +45,7 @@ func NewConsentStage(pk string, name string, component string, verboseName strin
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
+	this.FlowSet = flowSet
 	return &this
 }
 
@@ -200,34 +201,26 @@ func (o *ConsentStage) SetMetaModelName(v string) {
 	o.MetaModelName = v
 }
 
-// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
+// GetFlowSet returns the FlowSet field value
 func (o *ConsentStage) GetFlowSet() []FlowSet {
-	if o == nil || o.FlowSet == nil {
+	if o == nil {
 		var ret []FlowSet
 		return ret
 	}
+
 	return o.FlowSet
 }
 
-// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
+// GetFlowSetOk returns a tuple with the FlowSet field value
 // and a boolean to check if the value has been set.
 func (o *ConsentStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
 }
 
-// HasFlowSet returns a boolean if a field has been set.
-func (o *ConsentStage) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFlowSet gets a reference to the given []FlowSet and assigns it to the FlowSet field.
+// SetFlowSet sets field value
 func (o *ConsentStage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
@@ -316,7 +309,7 @@ func (o ConsentStage) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["meta_model_name"] = o.MetaModelName
 	}
-	if o.FlowSet != nil {
+	if true {
 		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.Mode != nil {

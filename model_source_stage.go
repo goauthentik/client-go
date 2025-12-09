@@ -27,7 +27,7 @@ type SourceStage struct {
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
 	MetaModelName string    `json:"meta_model_name"`
-	FlowSet       []FlowSet `json:"flow_set,omitempty"`
+	FlowSet       []FlowSet `json:"flow_set"`
 	Source        string    `json:"source"`
 	// Amount of time a user can take to return from the source to continue the flow (Format: hours=-1;minutes=-2;seconds=-3)
 	ResumeTimeout *string `json:"resume_timeout,omitempty"`
@@ -37,7 +37,7 @@ type SourceStage struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourceStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, source string) *SourceStage {
+func NewSourceStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, source string) *SourceStage {
 	this := SourceStage{}
 	this.Pk = pk
 	this.Name = name
@@ -45,6 +45,7 @@ func NewSourceStage(pk string, name string, component string, verboseName string
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
+	this.FlowSet = flowSet
 	this.Source = source
 	return &this
 }
@@ -201,34 +202,26 @@ func (o *SourceStage) SetMetaModelName(v string) {
 	o.MetaModelName = v
 }
 
-// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
+// GetFlowSet returns the FlowSet field value
 func (o *SourceStage) GetFlowSet() []FlowSet {
-	if o == nil || o.FlowSet == nil {
+	if o == nil {
 		var ret []FlowSet
 		return ret
 	}
+
 	return o.FlowSet
 }
 
-// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
+// GetFlowSetOk returns a tuple with the FlowSet field value
 // and a boolean to check if the value has been set.
 func (o *SourceStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
 }
 
-// HasFlowSet returns a boolean if a field has been set.
-func (o *SourceStage) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFlowSet gets a reference to the given []FlowSet and assigns it to the FlowSet field.
+// SetFlowSet sets field value
 func (o *SourceStage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
@@ -309,7 +302,7 @@ func (o SourceStage) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["meta_model_name"] = o.MetaModelName
 	}
-	if o.FlowSet != nil {
+	if true {
 		toSerialize["flow_set"] = o.FlowSet
 	}
 	if true {

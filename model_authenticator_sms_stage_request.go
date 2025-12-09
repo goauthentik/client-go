@@ -17,8 +17,7 @@ import (
 
 // AuthenticatorSMSStageRequest AuthenticatorSMSStage Serializer
 type AuthenticatorSMSStageRequest struct {
-	Name    string           `json:"name"`
-	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
+	Name string `json:"name"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
 	FriendlyName  *string        `json:"friendly_name,omitempty"`
@@ -78,38 +77,6 @@ func (o *AuthenticatorSMSStageRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *AuthenticatorSMSStageRequest) SetName(v string) {
 	o.Name = v
-}
-
-// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
-func (o *AuthenticatorSMSStageRequest) GetFlowSet() []FlowSetRequest {
-	if o == nil || o.FlowSet == nil {
-		var ret []FlowSetRequest
-		return ret
-	}
-	return o.FlowSet
-}
-
-// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthenticatorSMSStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
-	if o == nil || o.FlowSet == nil {
-		return nil, false
-	}
-	return o.FlowSet, true
-}
-
-// HasFlowSet returns a boolean if a field has been set.
-func (o *AuthenticatorSMSStageRequest) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
-func (o *AuthenticatorSMSStageRequest) SetFlowSet(v []FlowSetRequest) {
-	o.FlowSet = v
 }
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -426,9 +393,6 @@ func (o AuthenticatorSMSStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
-	}
-	if o.FlowSet != nil {
-		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()

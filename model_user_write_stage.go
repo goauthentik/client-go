@@ -27,7 +27,7 @@ type UserWriteStage struct {
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
 	MetaModelName    string                `json:"meta_model_name"`
-	FlowSet          []FlowSet             `json:"flow_set,omitempty"`
+	FlowSet          []FlowSet             `json:"flow_set"`
 	UserCreationMode *UserCreationModeEnum `json:"user_creation_mode,omitempty"`
 	// When set, newly created users are inactive and cannot login.
 	CreateUsersAsInactive *bool `json:"create_users_as_inactive,omitempty"`
@@ -41,7 +41,7 @@ type UserWriteStage struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserWriteStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string) *UserWriteStage {
+func NewUserWriteStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet) *UserWriteStage {
 	this := UserWriteStage{}
 	this.Pk = pk
 	this.Name = name
@@ -49,6 +49,7 @@ func NewUserWriteStage(pk string, name string, component string, verboseName str
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
+	this.FlowSet = flowSet
 	return &this
 }
 
@@ -204,34 +205,26 @@ func (o *UserWriteStage) SetMetaModelName(v string) {
 	o.MetaModelName = v
 }
 
-// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
+// GetFlowSet returns the FlowSet field value
 func (o *UserWriteStage) GetFlowSet() []FlowSet {
-	if o == nil || o.FlowSet == nil {
+	if o == nil {
 		var ret []FlowSet
 		return ret
 	}
+
 	return o.FlowSet
 }
 
-// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
+// GetFlowSetOk returns a tuple with the FlowSet field value
 // and a boolean to check if the value has been set.
 func (o *UserWriteStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil || o.FlowSet == nil {
+	if o == nil {
 		return nil, false
 	}
 	return o.FlowSet, true
 }
 
-// HasFlowSet returns a boolean if a field has been set.
-func (o *UserWriteStage) HasFlowSet() bool {
-	if o != nil && o.FlowSet != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFlowSet gets a reference to the given []FlowSet and assigns it to the FlowSet field.
+// SetFlowSet sets field value
 func (o *UserWriteStage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
@@ -427,7 +420,7 @@ func (o UserWriteStage) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["meta_model_name"] = o.MetaModelName
 	}
-	if o.FlowSet != nil {
+	if true {
 		toSerialize["flow_set"] = o.FlowSet
 	}
 	if o.UserCreationMode != nil {

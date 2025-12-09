@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
+**FlowSet** | [**[]FlowSet**](FlowSet.md) |  | [readonly] 
 **KeepContext** | Pointer to **bool** |  | [optional] 
 **Mode** | [**RedirectStageModeEnum**](RedirectStageModeEnum.md) |  | 
 **TargetStatic** | Pointer to **string** |  | [optional] 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewRedirectStage
 
-`func NewRedirectStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, mode RedirectStageModeEnum, ) *RedirectStage`
+`func NewRedirectStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, mode RedirectStageModeEnum, ) *RedirectStage`
 
 NewRedirectStage instantiates a new RedirectStage object
 This constructor will assign default values to properties that have it defined,
@@ -174,11 +174,6 @@ and a boolean to check if the value has been set.
 
 SetFlowSet sets FlowSet field to given value.
 
-### HasFlowSet
-
-`func (o *RedirectStage) HasFlowSet() bool`
-
-HasFlowSet returns a boolean if a field has been set.
 
 ### GetKeepContext
 

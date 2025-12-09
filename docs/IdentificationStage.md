@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
+**FlowSet** | [**[]FlowSet**](FlowSet.md) |  | [readonly] 
 **UserFields** | Pointer to [**[]UserFieldsEnum**](UserFieldsEnum.md) | Fields of the user object to match against. (Hold shift to select multiple options) | [optional] 
 **PasswordStage** | Pointer to **NullableString** | When set, shows a password field, instead of showing the password field as separate step. | [optional] 
 **CaptchaStage** | Pointer to **NullableString** | When set, adds functionality exactly like a Captcha stage, but baked into the Identification stage. | [optional] 
@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewIdentificationStage
 
-`func NewIdentificationStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, ) *IdentificationStage`
+`func NewIdentificationStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, ) *IdentificationStage`
 
 NewIdentificationStage instantiates a new IdentificationStage object
 This constructor will assign default values to properties that have it defined,
@@ -182,11 +182,6 @@ and a boolean to check if the value has been set.
 
 SetFlowSet sets FlowSet field to given value.
 
-### HasFlowSet
-
-`func (o *IdentificationStage) HasFlowSet() bool`
-
-HasFlowSet returns a boolean if a field has been set.
 
 ### GetUserFields
 
