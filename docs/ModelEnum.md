@@ -223,6 +223,8 @@
 
 * `PROVIDERS_SSF_SSFPROVIDER` (value: `"authentik_providers_ssf.ssfprovider"`)
 
+* `REPORTS_DATAEXPORT` (value: `"authentik_reports.dataexport"`)
+
 * `STAGES_AUTHENTICATOR_ENDPOINT_GDTC_AUTHENTICATORENDPOINTGDTCSTAGE` (value: `"authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage"`)
 
 * `STAGES_MTLS_MUTUALTLSSTAGE` (value: `"authentik_stages_mtls.mutualtlsstage"`)

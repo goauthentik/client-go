@@ -56,6 +56,7 @@ Method | HTTP request | Description
 [**CoreUserConsentUsedByList**](CoreApi.md#CoreUserConsentUsedByList) | **Get** /core/user_consent/{id}/used_by/ | 
 [**CoreUsersCreate**](CoreApi.md#CoreUsersCreate) | **Post** /core/users/ | 
 [**CoreUsersDestroy**](CoreApi.md#CoreUsersDestroy) | **Delete** /core/users/{id}/ | 
+[**CoreUsersExportCreate**](CoreApi.md#CoreUsersExportCreate) | **Post** /core/users/export/ | 
 [**CoreUsersImpersonateCreate**](CoreApi.md#CoreUsersImpersonateCreate) | **Post** /core/users/{id}/impersonate/ | 
 [**CoreUsersImpersonateEndRetrieve**](CoreApi.md#CoreUsersImpersonateEndRetrieve) | **Get** /core/users/impersonate_end/ | 
 [**CoreUsersList**](CoreApi.md#CoreUsersList) | **Get** /core/users/ | 
@@ -3781,6 +3782,115 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreUsersExportCreate
+
+> DataExport CoreUsersExportCreate(ctx).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "time"
+    openapiclient "./openapi"
+)
+
+func main() {
+    attributes := "attributes_example" // string | Attributes (optional)
+    dateJoined := time.Now() // time.Time |  (optional)
+    dateJoinedGt := time.Now() // time.Time |  (optional)
+    dateJoinedLt := time.Now() // time.Time |  (optional)
+    email := "email_example" // string |  (optional)
+    groupsByName := []string{"Inner_example"} // []string |  (optional)
+    groupsByPk := []string{"Inner_example"} // []string |  (optional)
+    isActive := true // bool |  (optional)
+    isSuperuser := true // bool |  (optional)
+    lastUpdated := time.Now() // time.Time |  (optional)
+    lastUpdatedGt := time.Now() // time.Time |  (optional)
+    lastUpdatedLt := time.Now() // time.Time |  (optional)
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    path := "path_example" // string |  (optional)
+    pathStartswith := "pathStartswith_example" // string |  (optional)
+    rolesByName := []string{"Inner_example"} // []string |  (optional)
+    rolesByPk := []string{"Inner_example"} // []string |  (optional)
+    search := "search_example" // string | A search term. (optional)
+    type_ := []string{"Type_example"} // []string |  (optional)
+    username := "username_example" // string |  (optional)
+    uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreUsersExportCreate(context.Background()).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersExportCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CoreUsersExportCreate`: DataExport
+    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreUsersExportCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreUsersExportCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **attributes** | **string** | Attributes | 
+ **dateJoined** | **time.Time** |  | 
+ **dateJoinedGt** | **time.Time** |  | 
+ **dateJoinedLt** | **time.Time** |  | 
+ **email** | **string** |  | 
+ **groupsByName** | **[]string** |  | 
+ **groupsByPk** | **[]string** |  | 
+ **isActive** | **bool** |  | 
+ **isSuperuser** | **bool** |  | 
+ **lastUpdated** | **time.Time** |  | 
+ **lastUpdatedGt** | **time.Time** |  | 
+ **lastUpdatedLt** | **time.Time** |  | 
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **path** | **string** |  | 
+ **pathStartswith** | **string** |  | 
+ **rolesByName** | **[]string** |  | 
+ **rolesByPk** | **[]string** |  | 
+ **search** | **string** | A search term. | 
+ **type_** | **[]string** |  | 
+ **username** | **string** |  | 
+ **uuid** | **string** |  | 
+
+### Return type
+
+[**DataExport**](DataExport.md)
 
 ### Authorization
 

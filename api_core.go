@@ -7190,6 +7190,370 @@ func (a *CoreApiService) CoreUsersDestroyExecute(r ApiCoreUsersDestroyRequest) (
 	return localVarHTTPResponse, nil
 }
 
+type ApiCoreUsersExportCreateRequest struct {
+	ctx            context.Context
+	ApiService     *CoreApiService
+	attributes     *string
+	dateJoined     *time.Time
+	dateJoinedGt   *time.Time
+	dateJoinedLt   *time.Time
+	email          *string
+	groupsByName   *[]string
+	groupsByPk     *[]string
+	isActive       *bool
+	isSuperuser    *bool
+	lastUpdated    *time.Time
+	lastUpdatedGt  *time.Time
+	lastUpdatedLt  *time.Time
+	name           *string
+	ordering       *string
+	path           *string
+	pathStartswith *string
+	rolesByName    *[]string
+	rolesByPk      *[]string
+	search         *string
+	type_          *[]string
+	username       *string
+	uuid           *string
+}
+
+// Attributes
+func (r ApiCoreUsersExportCreateRequest) Attributes(attributes string) ApiCoreUsersExportCreateRequest {
+	r.attributes = &attributes
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) DateJoined(dateJoined time.Time) ApiCoreUsersExportCreateRequest {
+	r.dateJoined = &dateJoined
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) DateJoinedGt(dateJoinedGt time.Time) ApiCoreUsersExportCreateRequest {
+	r.dateJoinedGt = &dateJoinedGt
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) DateJoinedLt(dateJoinedLt time.Time) ApiCoreUsersExportCreateRequest {
+	r.dateJoinedLt = &dateJoinedLt
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) Email(email string) ApiCoreUsersExportCreateRequest {
+	r.email = &email
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) GroupsByName(groupsByName []string) ApiCoreUsersExportCreateRequest {
+	r.groupsByName = &groupsByName
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) GroupsByPk(groupsByPk []string) ApiCoreUsersExportCreateRequest {
+	r.groupsByPk = &groupsByPk
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) IsActive(isActive bool) ApiCoreUsersExportCreateRequest {
+	r.isActive = &isActive
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) IsSuperuser(isSuperuser bool) ApiCoreUsersExportCreateRequest {
+	r.isSuperuser = &isSuperuser
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) LastUpdated(lastUpdated time.Time) ApiCoreUsersExportCreateRequest {
+	r.lastUpdated = &lastUpdated
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) LastUpdatedGt(lastUpdatedGt time.Time) ApiCoreUsersExportCreateRequest {
+	r.lastUpdatedGt = &lastUpdatedGt
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) LastUpdatedLt(lastUpdatedLt time.Time) ApiCoreUsersExportCreateRequest {
+	r.lastUpdatedLt = &lastUpdatedLt
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) Name(name string) ApiCoreUsersExportCreateRequest {
+	r.name = &name
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiCoreUsersExportCreateRequest) Ordering(ordering string) ApiCoreUsersExportCreateRequest {
+	r.ordering = &ordering
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) Path(path string) ApiCoreUsersExportCreateRequest {
+	r.path = &path
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) PathStartswith(pathStartswith string) ApiCoreUsersExportCreateRequest {
+	r.pathStartswith = &pathStartswith
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) RolesByName(rolesByName []string) ApiCoreUsersExportCreateRequest {
+	r.rolesByName = &rolesByName
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) RolesByPk(rolesByPk []string) ApiCoreUsersExportCreateRequest {
+	r.rolesByPk = &rolesByPk
+	return r
+}
+
+// A search term.
+func (r ApiCoreUsersExportCreateRequest) Search(search string) ApiCoreUsersExportCreateRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) Type_(type_ []string) ApiCoreUsersExportCreateRequest {
+	r.type_ = &type_
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) Username(username string) ApiCoreUsersExportCreateRequest {
+	r.username = &username
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) Uuid(uuid string) ApiCoreUsersExportCreateRequest {
+	r.uuid = &uuid
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) Execute() (*DataExport, *http.Response, error) {
+	return r.ApiService.CoreUsersExportCreateExecute(r)
+}
+
+/*
+CoreUsersExportCreate Method for CoreUsersExportCreate
+
+Create a data export for this data type. Note that the export is generated asynchronously:
+this method returns a `DataExport` object that will initially have `completed=false` as well
+as the permanent URL to that object in the `Location` header.
+You can poll that URL until `completed=true`, at which point the `file_url` property will
+contain a URL to download
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCoreUsersExportCreateRequest
+*/
+func (a *CoreApiService) CoreUsersExportCreate(ctx context.Context) ApiCoreUsersExportCreateRequest {
+	return ApiCoreUsersExportCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return DataExport
+func (a *CoreApiService) CoreUsersExportCreateExecute(r ApiCoreUsersExportCreateRequest) (*DataExport, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DataExport
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersExportCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/core/users/export/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.attributes != nil {
+		localVarQueryParams.Add("attributes", parameterToString(*r.attributes, ""))
+	}
+	if r.dateJoined != nil {
+		localVarQueryParams.Add("date_joined", parameterToString(*r.dateJoined, ""))
+	}
+	if r.dateJoinedGt != nil {
+		localVarQueryParams.Add("date_joined__gt", parameterToString(*r.dateJoinedGt, ""))
+	}
+	if r.dateJoinedLt != nil {
+		localVarQueryParams.Add("date_joined__lt", parameterToString(*r.dateJoinedLt, ""))
+	}
+	if r.email != nil {
+		localVarQueryParams.Add("email", parameterToString(*r.email, ""))
+	}
+	if r.groupsByName != nil {
+		t := *r.groupsByName
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("groups_by_name", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("groups_by_name", parameterToString(t, "multi"))
+		}
+	}
+	if r.groupsByPk != nil {
+		t := *r.groupsByPk
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("groups_by_pk", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("groups_by_pk", parameterToString(t, "multi"))
+		}
+	}
+	if r.isActive != nil {
+		localVarQueryParams.Add("is_active", parameterToString(*r.isActive, ""))
+	}
+	if r.isSuperuser != nil {
+		localVarQueryParams.Add("is_superuser", parameterToString(*r.isSuperuser, ""))
+	}
+	if r.lastUpdated != nil {
+		localVarQueryParams.Add("last_updated", parameterToString(*r.lastUpdated, ""))
+	}
+	if r.lastUpdatedGt != nil {
+		localVarQueryParams.Add("last_updated__gt", parameterToString(*r.lastUpdatedGt, ""))
+	}
+	if r.lastUpdatedLt != nil {
+		localVarQueryParams.Add("last_updated__lt", parameterToString(*r.lastUpdatedLt, ""))
+	}
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.ordering != nil {
+		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+	}
+	if r.path != nil {
+		localVarQueryParams.Add("path", parameterToString(*r.path, ""))
+	}
+	if r.pathStartswith != nil {
+		localVarQueryParams.Add("path_startswith", parameterToString(*r.pathStartswith, ""))
+	}
+	if r.rolesByName != nil {
+		t := *r.rolesByName
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("roles_by_name", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("roles_by_name", parameterToString(t, "multi"))
+		}
+	}
+	if r.rolesByPk != nil {
+		t := *r.rolesByPk
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("roles_by_pk", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("roles_by_pk", parameterToString(t, "multi"))
+		}
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+	}
+	if r.type_ != nil {
+		t := *r.type_
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("type", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("type", parameterToString(t, "multi"))
+		}
+	}
+	if r.username != nil {
+		localVarQueryParams.Add("username", parameterToString(*r.username, ""))
+	}
+	if r.uuid != nil {
+		localVarQueryParams.Add("uuid", parameterToString(*r.uuid, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiCoreUsersImpersonateCreateRequest struct {
 	ctx                  context.Context
 	ApiService           *CoreApiService

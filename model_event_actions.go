@@ -47,6 +47,7 @@ const (
 	EVENTACTIONS_MODEL_DELETED              EventActions = "model_deleted"
 	EVENTACTIONS_EMAIL_SENT                 EventActions = "email_sent"
 	EVENTACTIONS_UPDATE_AVAILABLE           EventActions = "update_available"
+	EVENTACTIONS_EXPORT_READY               EventActions = "export_ready"
 	EVENTACTIONS_CUSTOM                     EventActions = "custom_"
 )
 
@@ -78,6 +79,7 @@ var AllowedEventActionsEnumValues = []EventActions{
 	"model_deleted",
 	"email_sent",
 	"update_available",
+	"export_ready",
 	"custom_",
 }
 

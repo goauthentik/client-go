@@ -145,6 +145,8 @@
 
 * `ENTERPRISE_PROVIDERS_SSF` (value: `"authentik.enterprise.providers.ssf"`)
 
+* `ENTERPRISE_REPORTS` (value: `"authentik.enterprise.reports"`)
+
 * `ENTERPRISE_SEARCH` (value: `"authentik.enterprise.search"`)
 
 * `ENTERPRISE_STAGES_AUTHENTICATOR_ENDPOINT_GDTC` (value: `"authentik.enterprise.stages.authenticator_endpoint_gdtc"`)

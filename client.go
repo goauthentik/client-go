@@ -82,6 +82,8 @@ type APIClient struct {
 
 	RbacApi *RbacApiService
 
+	ReportsApi *ReportsApiService
+
 	RootApi *RootApiService
 
 	SchemaApi *SchemaApiService
@@ -129,6 +131,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProvidersApi = (*ProvidersApiService)(&c.common)
 	c.RacApi = (*RacApiService)(&c.common)
 	c.RbacApi = (*RbacApiService)(&c.common)
+	c.ReportsApi = (*ReportsApiService)(&c.common)
 	c.RootApi = (*RootApiService)(&c.common)
 	c.SchemaApi = (*SchemaApiService)(&c.common)
 	c.SourcesApi = (*SourcesApiService)(&c.common)

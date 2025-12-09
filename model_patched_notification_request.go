@@ -17,8 +17,10 @@ import (
 
 // PatchedNotificationRequest Notification Serializer
 type PatchedNotificationRequest struct {
-	Event *EventRequest `json:"event,omitempty"`
-	Seen  *bool         `json:"seen,omitempty"`
+	Hyperlink      NullableString `json:"hyperlink,omitempty"`
+	HyperlinkLabel NullableString `json:"hyperlink_label,omitempty"`
+	Event          *EventRequest  `json:"event,omitempty"`
+	Seen           *bool          `json:"seen,omitempty"`
 }
 
 // NewPatchedNotificationRequest instantiates a new PatchedNotificationRequest object
@@ -36,6 +38,92 @@ func NewPatchedNotificationRequest() *PatchedNotificationRequest {
 func NewPatchedNotificationRequestWithDefaults() *PatchedNotificationRequest {
 	this := PatchedNotificationRequest{}
 	return &this
+}
+
+// GetHyperlink returns the Hyperlink field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedNotificationRequest) GetHyperlink() string {
+	if o == nil || o.Hyperlink.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.Hyperlink.Get()
+}
+
+// GetHyperlinkOk returns a tuple with the Hyperlink field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedNotificationRequest) GetHyperlinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Hyperlink.Get(), o.Hyperlink.IsSet()
+}
+
+// HasHyperlink returns a boolean if a field has been set.
+func (o *PatchedNotificationRequest) HasHyperlink() bool {
+	if o != nil && o.Hyperlink.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetHyperlink gets a reference to the given NullableString and assigns it to the Hyperlink field.
+func (o *PatchedNotificationRequest) SetHyperlink(v string) {
+	o.Hyperlink.Set(&v)
+}
+
+// SetHyperlinkNil sets the value for Hyperlink to be an explicit nil
+func (o *PatchedNotificationRequest) SetHyperlinkNil() {
+	o.Hyperlink.Set(nil)
+}
+
+// UnsetHyperlink ensures that no value is present for Hyperlink, not even an explicit nil
+func (o *PatchedNotificationRequest) UnsetHyperlink() {
+	o.Hyperlink.Unset()
+}
+
+// GetHyperlinkLabel returns the HyperlinkLabel field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedNotificationRequest) GetHyperlinkLabel() string {
+	if o == nil || o.HyperlinkLabel.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.HyperlinkLabel.Get()
+}
+
+// GetHyperlinkLabelOk returns a tuple with the HyperlinkLabel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedNotificationRequest) GetHyperlinkLabelOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.HyperlinkLabel.Get(), o.HyperlinkLabel.IsSet()
+}
+
+// HasHyperlinkLabel returns a boolean if a field has been set.
+func (o *PatchedNotificationRequest) HasHyperlinkLabel() bool {
+	if o != nil && o.HyperlinkLabel.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetHyperlinkLabel gets a reference to the given NullableString and assigns it to the HyperlinkLabel field.
+func (o *PatchedNotificationRequest) SetHyperlinkLabel(v string) {
+	o.HyperlinkLabel.Set(&v)
+}
+
+// SetHyperlinkLabelNil sets the value for HyperlinkLabel to be an explicit nil
+func (o *PatchedNotificationRequest) SetHyperlinkLabelNil() {
+	o.HyperlinkLabel.Set(nil)
+}
+
+// UnsetHyperlinkLabel ensures that no value is present for HyperlinkLabel, not even an explicit nil
+func (o *PatchedNotificationRequest) UnsetHyperlinkLabel() {
+	o.HyperlinkLabel.Unset()
 }
 
 // GetEvent returns the Event field value if set, zero value otherwise.
@@ -104,6 +192,12 @@ func (o *PatchedNotificationRequest) SetSeen(v bool) {
 
 func (o PatchedNotificationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Hyperlink.IsSet() {
+		toSerialize["hyperlink"] = o.Hyperlink.Get()
+	}
+	if o.HyperlinkLabel.IsSet() {
+		toSerialize["hyperlink_label"] = o.HyperlinkLabel.Get()
+	}
 	if o.Event != nil {
 		toSerialize["event"] = o.Event
 	}

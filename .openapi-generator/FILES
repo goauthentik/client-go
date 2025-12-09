@@ -18,6 +18,7 @@ api_propertymappings.go
 api_providers.go
 api_rac.go
 api_rbac.go
+api_reports.go
 api_root.go
 api_schema.go
 api_sources.go
@@ -124,6 +125,7 @@ docs/ConsentPermission.md
 docs/ConsentStage.md
 docs/ConsentStageModeEnum.md
 docs/ConsentStageRequest.md
+docs/ContentType.md
 docs/ContextualFlowInfo.md
 docs/ContextualFlowInfoLayoutEnum.md
 docs/CoreApi.md
@@ -131,6 +133,7 @@ docs/CountryCodeEnum.md
 docs/CryptoApi.md
 docs/CurrentBrand.md
 docs/CurrentBrandFlags.md
+docs/DataExport.md
 docs/DeliveryMethodEnum.md
 docs/DeniedActionEnum.md
 docs/DenyStage.md
@@ -395,6 +398,7 @@ docs/PaginatedCertificateKeyPairList.md
 docs/PaginatedConnectionTokenList.md
 docs/PaginatedConnectorList.md
 docs/PaginatedConsentStageList.md
+docs/PaginatedDataExportList.md
 docs/PaginatedDenyStageList.md
 docs/PaginatedDeviceAccessGroupList.md
 docs/PaginatedDeviceUserBindingList.md
@@ -721,9 +725,11 @@ docs/RedirectStageRequest.md
 docs/RedirectURI.md
 docs/RedirectURIRequest.md
 docs/RelatedGroup.md
+docs/ReportsApi.md
 docs/Reputation.md
 docs/ReputationPolicy.md
 docs/ReputationPolicyRequest.md
+docs/RequestedBy.md
 docs/ResidentKeyRequirementEnum.md
 docs/Role.md
 docs/RoleAssignedObjectPermission.md
@@ -983,11 +989,13 @@ model_consent_permission.go
 model_consent_stage.go
 model_consent_stage_mode_enum.go
 model_consent_stage_request.go
+model_content_type.go
 model_contextual_flow_info.go
 model_contextual_flow_info_layout_enum.go
 model_country_code_enum.go
 model_current_brand.go
 model_current_brand_flags.go
+model_data_export.go
 model_delivery_method_enum.go
 model_denied_action_enum.go
 model_deny_stage.go
@@ -1244,6 +1252,7 @@ model_paginated_certificate_key_pair_list.go
 model_paginated_connection_token_list.go
 model_paginated_connector_list.go
 model_paginated_consent_stage_list.go
+model_paginated_data_export_list.go
 model_paginated_deny_stage_list.go
 model_paginated_device_access_group_list.go
 model_paginated_device_user_binding_list.go
@@ -1569,6 +1578,7 @@ model_related_group.go
 model_reputation.go
 model_reputation_policy.go
 model_reputation_policy_request.go
+model_requested_by.go
 model_resident_key_requirement_enum.go
 model_role.go
 model_role_assigned_object_permission.go
