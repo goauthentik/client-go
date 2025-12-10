@@ -11246,7 +11246,7 @@ func (r ApiProvidersSamlImportMetadataCreateRequest) File(file *os.File) ApiProv
 	return r
 }
 
-func (r ApiProvidersSamlImportMetadataCreateRequest) Execute() (*http.Response, error) {
+func (r ApiProvidersSamlImportMetadataCreateRequest) Execute() (*SAMLProvider, *http.Response, error) {
 	return r.ApiService.ProvidersSamlImportMetadataCreateExecute(r)
 }
 
@@ -11266,16 +11266,19 @@ func (a *ProvidersApiService) ProvidersSamlImportMetadataCreate(ctx context.Cont
 }
 
 // Execute executes the request
-func (a *ProvidersApiService) ProvidersSamlImportMetadataCreateExecute(r ApiProvidersSamlImportMetadataCreateRequest) (*http.Response, error) {
+//
+//	@return SAMLProvider
+func (a *ProvidersApiService) ProvidersSamlImportMetadataCreateExecute(r ApiProvidersSamlImportMetadataCreateRequest) (*SAMLProvider, *http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SAMLProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersApiService.ProvidersSamlImportMetadataCreate")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/saml/import_metadata/"
@@ -11284,19 +11287,19 @@ func (a *ProvidersApiService) ProvidersSamlImportMetadataCreateExecute(r ApiProv
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.name == nil {
-		return nil, reportError("name is required and must be specified")
+		return localVarReturnValue, nil, reportError("name is required and must be specified")
 	}
 	if strlen(*r.name) < 1 {
-		return nil, reportError("name must have at least 1 elements")
+		return localVarReturnValue, nil, reportError("name must have at least 1 elements")
 	}
 	if r.authorizationFlow == nil {
-		return nil, reportError("authorizationFlow is required and must be specified")
+		return localVarReturnValue, nil, reportError("authorizationFlow is required and must be specified")
 	}
 	if r.invalidationFlow == nil {
-		return nil, reportError("invalidationFlow is required and must be specified")
+		return localVarReturnValue, nil, reportError("invalidationFlow is required and must be specified")
 	}
 	if r.file == nil {
-		return nil, reportError("file is required and must be specified")
+		return localVarReturnValue, nil, reportError("file is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -11335,19 +11338,19 @@ func (a *ProvidersApiService) ProvidersSamlImportMetadataCreateExecute(r ApiProv
 	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -11360,14 +11363,23 @@ func (a *ProvidersApiService) ProvidersSamlImportMetadataCreateExecute(r ApiProv
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiProvidersSamlListRequest struct {

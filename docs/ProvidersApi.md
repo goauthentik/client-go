@@ -5968,7 +5968,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersSamlImportMetadataCreate
 
-> ProvidersSamlImportMetadataCreate(ctx).Name(name).AuthorizationFlow(authorizationFlow).InvalidationFlow(invalidationFlow).File(file).Execute()
+> SAMLProvider ProvidersSamlImportMetadataCreate(ctx).Name(name).AuthorizationFlow(authorizationFlow).InvalidationFlow(invalidationFlow).File(file).Execute()
 
 
 
@@ -5999,6 +5999,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProvidersApi.ProvidersSamlImportMetadataCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ProvidersSamlImportMetadataCreate`: SAMLProvider
+    fmt.Fprintf(os.Stdout, "Response from `ProvidersApi.ProvidersSamlImportMetadataCreate`: %v\n", resp)
 }
 ```
 
@@ -6020,7 +6022,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SAMLProvider**](SAMLProvider.md)
 
 ### Authorization
 
