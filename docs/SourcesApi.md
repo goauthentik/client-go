@@ -121,6 +121,7 @@ Method | HTTP request | Description
 [**SourcesScimUsersRetrieve**](SourcesApi.md#SourcesScimUsersRetrieve) | **Get** /sources/scim_users/{id}/ | 
 [**SourcesScimUsersUpdate**](SourcesApi.md#SourcesScimUsersUpdate) | **Put** /sources/scim_users/{id}/ | 
 [**SourcesScimUsersUsedByList**](SourcesApi.md#SourcesScimUsersUsedByList) | **Get** /sources/scim_users/{id}/used_by/ | 
+[**SourcesTelegramConnectUserCreate**](SourcesApi.md#SourcesTelegramConnectUserCreate) | **Post** /sources/telegram/{slug}/connect_user/ | 
 [**SourcesTelegramCreate**](SourcesApi.md#SourcesTelegramCreate) | **Post** /sources/telegram/ | 
 [**SourcesTelegramDestroy**](SourcesApi.md#SourcesTelegramDestroy) | **Delete** /sources/telegram/{slug}/ | 
 [**SourcesTelegramList**](SourcesApi.md#SourcesTelegramList) | **Get** /sources/telegram/ | 
@@ -8570,6 +8571,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesTelegramConnectUserCreate
+
+> UserTelegramSourceConnection SourcesTelegramConnectUserCreate(ctx, slug).TelegramAuthRequest(telegramAuthRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    slug := "slug_example" // string | 
+    telegramAuthRequest := *openapiclient.NewTelegramAuthRequest(int32(123), int32(123), "Hash_example") // TelegramAuthRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.SourcesTelegramConnectUserCreate(context.Background(), slug).TelegramAuthRequest(telegramAuthRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.SourcesTelegramConnectUserCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SourcesTelegramConnectUserCreate`: UserTelegramSourceConnection
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.SourcesTelegramConnectUserCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesTelegramConnectUserCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **telegramAuthRequest** | [**TelegramAuthRequest**](TelegramAuthRequest.md) |  | 
+
+### Return type
+
+[**UserTelegramSourceConnection**](UserTelegramSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

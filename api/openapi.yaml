@@ -37259,6 +37259,45 @@ paths:
       - authentik: []
       tags:
       - sources
+  /sources/telegram/{slug}/connect_user/:
+    post:
+      description: Mixin to add a used_by endpoint to return a list of all objects
+        using this object
+      operationId: sources_telegram_connect_user_create
+      parameters:
+      - explode: false
+        in: path
+        name: slug
+        required: true
+        schema:
+          description: "Internal source name, used in URLs."
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TelegramAuthRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserTelegramSourceConnection'
+          description: ""
+        "403":
+          description: Access denied
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - sources
   /sources/telegram/{slug}/used_by/:
     get:
       description: Get a list of all objects that use this object
@@ -84509,13 +84548,16 @@ components:
       - warning
       - error
       type: string
-    TelegramChallengeResponseRequest:
-      description: Base class for all challenge responses
+    TelegramAuthRequest:
+      example:
+        last_name: last_name
+        auth_date: 6
+        id: 0
+        photo_url: https://openapi-generator.tech
+        first_name: first_name
+        hash: hash
+        username: username
       properties:
-        component:
-          default: ak-source-telegram
-          minLength: 1
-          type: string
         id:
           type: integer
         first_name:
@@ -84538,6 +84580,42 @@ components:
           type: integer
         hash:
           maxLength: 64
+          minLength: 1
+          type: string
+      required:
+      - auth_date
+      - hash
+      - id
+      type: object
+    TelegramChallengeResponseRequest:
+      description: Base class for all challenge responses
+      properties:
+        id:
+          type: integer
+        first_name:
+          maxLength: 255
+          minLength: 1
+          type: string
+        last_name:
+          maxLength: 255
+          minLength: 1
+          type: string
+        username:
+          maxLength: 255
+          minLength: 1
+          type: string
+        photo_url:
+          format: uri
+          minLength: 1
+          type: string
+        auth_date:
+          type: integer
+        hash:
+          maxLength: 64
+          minLength: 1
+          type: string
+        component:
+          default: ak-source-telegram
           minLength: 1
           type: string
       required:

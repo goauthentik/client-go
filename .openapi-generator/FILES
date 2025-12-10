@@ -814,6 +814,7 @@ docs/TOTPDeviceRequest.md
 docs/Task.md
 docs/TaskAggregatedStatusEnum.md
 docs/TasksApi.md
+docs/TelegramAuthRequest.md
 docs/TelegramChallengeResponseRequest.md
 docs/TelegramLoginChallenge.md
 docs/TelegramSource.md
@@ -1655,6 +1656,7 @@ model_system_info.go
 model_system_info_runtime.go
 model_task.go
 model_task_aggregated_status_enum.go
+model_telegram_auth_request.go
 model_telegram_challenge_response_request.go
 model_telegram_login_challenge.go
 model_telegram_source.go

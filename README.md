@@ -839,6 +839,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**SourcesScimUsersRetrieve**](docs/SourcesApi.md#sourcesscimusersretrieve) | **Get** /sources/scim_users/{id}/ | 
 *SourcesApi* | [**SourcesScimUsersUpdate**](docs/SourcesApi.md#sourcesscimusersupdate) | **Put** /sources/scim_users/{id}/ | 
 *SourcesApi* | [**SourcesScimUsersUsedByList**](docs/SourcesApi.md#sourcesscimusersusedbylist) | **Get** /sources/scim_users/{id}/used_by/ | 
+*SourcesApi* | [**SourcesTelegramConnectUserCreate**](docs/SourcesApi.md#sourcestelegramconnectusercreate) | **Post** /sources/telegram/{slug}/connect_user/ | 
 *SourcesApi* | [**SourcesTelegramCreate**](docs/SourcesApi.md#sourcestelegramcreate) | **Post** /sources/telegram/ | 
 *SourcesApi* | [**SourcesTelegramDestroy**](docs/SourcesApi.md#sourcestelegramdestroy) | **Delete** /sources/telegram/{slug}/ | 
 *SourcesApi* | [**SourcesTelegramList**](docs/SourcesApi.md#sourcestelegramlist) | **Get** /sources/telegram/ | 
@@ -1889,6 +1890,7 @@ Class | Method | HTTP request | Description
  - [TOTPDeviceRequest](docs/TOTPDeviceRequest.md)
  - [Task](docs/Task.md)
  - [TaskAggregatedStatusEnum](docs/TaskAggregatedStatusEnum.md)
+ - [TelegramAuthRequest](docs/TelegramAuthRequest.md)
  - [TelegramChallengeResponseRequest](docs/TelegramChallengeResponseRequest.md)
  - [TelegramLoginChallenge](docs/TelegramLoginChallenge.md)
  - [TelegramSource](docs/TelegramSource.md)
