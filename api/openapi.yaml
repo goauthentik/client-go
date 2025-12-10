@@ -58830,6 +58830,7 @@ components:
         sync_users_password: true
         meta_model_name: meta_model_name
         name: name
+        sync_outgoing_trigger_mode: ""
         realm: realm
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -58956,6 +58957,10 @@ components:
           description: "If enabled, the authentik-stored password will be updated\
             \ upon login with the Kerberos password backend"
           type: boolean
+        sync_outgoing_trigger_mode:
+          allOf:
+          - $ref: '#/components/schemas/SyncOutgoingTriggerModeEnum'
+          description: When to trigger sync for outgoing providers
       required:
       - component
       - connectivity
@@ -59081,6 +59086,7 @@ components:
         sync_users_password: true
         spnego_keytab: spnego_keytab
         name: name
+        sync_outgoing_trigger_mode: ""
         realm: realm
       properties:
         name:
@@ -59184,6 +59190,10 @@ components:
           description: "If enabled, the authentik-stored password will be updated\
             \ upon login with the Kerberos password backend"
           type: boolean
+        sync_outgoing_trigger_mode:
+          allOf:
+          - $ref: '#/components/schemas/SyncOutgoingTriggerModeEnum'
+          description: When to trigger sync for outgoing providers
       required:
       - name
       - realm
@@ -59698,6 +59708,7 @@ components:
         sync_users_password: true
         meta_model_name: meta_model_name
         name: name
+        sync_outgoing_trigger_mode: ""
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         user_object_filter: user_object_filter
         peer_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -59861,6 +59872,10 @@ components:
           description: "Delete authentik users and groups which were previously supplied\
             \ by this source, but are now missing from it."
           type: boolean
+        sync_outgoing_trigger_mode:
+          allOf:
+          - $ref: '#/components/schemas/SyncOutgoingTriggerModeEnum'
+          description: When to trigger sync for outgoing providers
       required:
       - base_dn
       - component
@@ -59994,6 +60009,7 @@ components:
         sync_users_password: true
         bind_password: bind_password
         name: name
+        sync_outgoing_trigger_mode: ""
         user_object_filter: user_object_filter
         peer_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -60127,6 +60143,10 @@ components:
           description: "Delete authentik users and groups which were previously supplied\
             \ by this source, but are now missing from it."
           type: boolean
+        sync_outgoing_trigger_mode:
+          allOf:
+          - $ref: '#/components/schemas/SyncOutgoingTriggerModeEnum'
+          description: When to trigger sync for outgoing providers
       required:
       - base_dn
       - name
@@ -66868,6 +66888,7 @@ components:
           sync_users_password: true
           meta_model_name: meta_model_name
           name: name
+          sync_outgoing_trigger_mode: ""
           realm: realm
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - user_matching_mode: ""
@@ -66904,6 +66925,7 @@ components:
           sync_users_password: true
           meta_model_name: meta_model_name
           name: name
+          sync_outgoing_trigger_mode: ""
           realm: realm
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -67206,6 +67228,7 @@ components:
           sync_users_password: true
           meta_model_name: meta_model_name
           name: name
+          sync_outgoing_trigger_mode: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user_object_filter: user_object_filter
           peer_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -67253,6 +67276,7 @@ components:
           sync_users_password: true
           meta_model_name: meta_model_name
           name: name
+          sync_outgoing_trigger_mode: ""
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           user_object_filter: user_object_filter
           peer_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -75250,6 +75274,7 @@ components:
         sync_users_password: true
         spnego_keytab: spnego_keytab
         name: name
+        sync_outgoing_trigger_mode: ""
         realm: realm
       properties:
         name:
@@ -75353,6 +75378,10 @@ components:
           description: "If enabled, the authentik-stored password will be updated\
             \ upon login with the Kerberos password backend"
           type: boolean
+        sync_outgoing_trigger_mode:
+          allOf:
+          - $ref: '#/components/schemas/SyncOutgoingTriggerModeEnum'
+          description: When to trigger sync for outgoing providers
       type: object
     PatchedKubernetesServiceConnectionRequest:
       description: KubernetesServiceConnection Serializer
@@ -75519,6 +75548,7 @@ components:
         sync_users_password: true
         bind_password: bind_password
         name: name
+        sync_outgoing_trigger_mode: ""
         user_object_filter: user_object_filter
         peer_certificate: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -75652,6 +75682,10 @@ components:
           description: "Delete authentik users and groups which were previously supplied\
             \ by this source, but are now missing from it."
           type: boolean
+        sync_outgoing_trigger_mode:
+          allOf:
+          - $ref: '#/components/schemas/SyncOutgoingTriggerModeEnum'
+          description: When to trigger sync for outgoing providers
       type: object
     PatchedLicenseRequest:
       description: License Serializer
@@ -84229,6 +84263,12 @@ components:
       required:
       - messages
       type: object
+    SyncOutgoingTriggerModeEnum:
+      enum:
+      - none
+      - immediate
+      - deferred_end
+      type: string
     SyncStatus:
       description: Provider/source sync status
       example:

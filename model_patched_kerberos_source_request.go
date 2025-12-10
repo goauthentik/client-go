@@ -63,6 +63,8 @@ type PatchedKerberosSourceRequest struct {
 	SpnegoCcache *string `json:"spnego_ccache,omitempty"`
 	// If enabled, the authentik-stored password will be updated upon login with the Kerberos password backend
 	PasswordLoginUpdateInternalPassword *bool `json:"password_login_update_internal_password,omitempty"`
+	// When to trigger sync for outgoing providers
+	SyncOutgoingTriggerMode *SyncOutgoingTriggerModeEnum `json:"sync_outgoing_trigger_mode,omitempty"`
 }
 
 // NewPatchedKerberosSourceRequest instantiates a new PatchedKerberosSourceRequest object
@@ -936,6 +938,38 @@ func (o *PatchedKerberosSourceRequest) SetPasswordLoginUpdateInternalPassword(v 
 	o.PasswordLoginUpdateInternalPassword = &v
 }
 
+// GetSyncOutgoingTriggerMode returns the SyncOutgoingTriggerMode field value if set, zero value otherwise.
+func (o *PatchedKerberosSourceRequest) GetSyncOutgoingTriggerMode() SyncOutgoingTriggerModeEnum {
+	if o == nil || o.SyncOutgoingTriggerMode == nil {
+		var ret SyncOutgoingTriggerModeEnum
+		return ret
+	}
+	return *o.SyncOutgoingTriggerMode
+}
+
+// GetSyncOutgoingTriggerModeOk returns a tuple with the SyncOutgoingTriggerMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedKerberosSourceRequest) GetSyncOutgoingTriggerModeOk() (*SyncOutgoingTriggerModeEnum, bool) {
+	if o == nil || o.SyncOutgoingTriggerMode == nil {
+		return nil, false
+	}
+	return o.SyncOutgoingTriggerMode, true
+}
+
+// HasSyncOutgoingTriggerMode returns a boolean if a field has been set.
+func (o *PatchedKerberosSourceRequest) HasSyncOutgoingTriggerMode() bool {
+	if o != nil && o.SyncOutgoingTriggerMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSyncOutgoingTriggerMode gets a reference to the given SyncOutgoingTriggerModeEnum and assigns it to the SyncOutgoingTriggerMode field.
+func (o *PatchedKerberosSourceRequest) SetSyncOutgoingTriggerMode(v SyncOutgoingTriggerModeEnum) {
+	o.SyncOutgoingTriggerMode = &v
+}
+
 func (o PatchedKerberosSourceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -1015,6 +1049,9 @@ func (o PatchedKerberosSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.PasswordLoginUpdateInternalPassword != nil {
 		toSerialize["password_login_update_internal_password"] = o.PasswordLoginUpdateInternalPassword
+	}
+	if o.SyncOutgoingTriggerMode != nil {
+		toSerialize["sync_outgoing_trigger_mode"] = o.SyncOutgoingTriggerMode
 	}
 	return json.Marshal(toSerialize)
 }

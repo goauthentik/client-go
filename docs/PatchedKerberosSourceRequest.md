@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **SpnegoKeytab** | Pointer to **string** | SPNEGO keytab base64-encoded or path to keytab in the form FILE:path | [optional] 
 **SpnegoCcache** | Pointer to **string** | Credential cache to use for SPNEGO in form type:residual | [optional] 
 **PasswordLoginUpdateInternalPassword** | Pointer to **bool** | If enabled, the authentik-stored password will be updated upon login with the Kerberos password backend | [optional] 
+**SyncOutgoingTriggerMode** | Pointer to [**SyncOutgoingTriggerModeEnum**](SyncOutgoingTriggerModeEnum.md) | When to trigger sync for outgoing providers | [optional] 
 
 ## Methods
 
@@ -719,6 +720,31 @@ SetPasswordLoginUpdateInternalPassword sets PasswordLoginUpdateInternalPassword 
 `func (o *PatchedKerberosSourceRequest) HasPasswordLoginUpdateInternalPassword() bool`
 
 HasPasswordLoginUpdateInternalPassword returns a boolean if a field has been set.
+
+### GetSyncOutgoingTriggerMode
+
+`func (o *PatchedKerberosSourceRequest) GetSyncOutgoingTriggerMode() SyncOutgoingTriggerModeEnum`
+
+GetSyncOutgoingTriggerMode returns the SyncOutgoingTriggerMode field if non-nil, zero value otherwise.
+
+### GetSyncOutgoingTriggerModeOk
+
+`func (o *PatchedKerberosSourceRequest) GetSyncOutgoingTriggerModeOk() (*SyncOutgoingTriggerModeEnum, bool)`
+
+GetSyncOutgoingTriggerModeOk returns a tuple with the SyncOutgoingTriggerMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSyncOutgoingTriggerMode
+
+`func (o *PatchedKerberosSourceRequest) SetSyncOutgoingTriggerMode(v SyncOutgoingTriggerModeEnum)`
+
+SetSyncOutgoingTriggerMode sets SyncOutgoingTriggerMode field to given value.
+
+### HasSyncOutgoingTriggerMode
+
+`func (o *PatchedKerberosSourceRequest) HasSyncOutgoingTriggerMode() bool`
+
+HasSyncOutgoingTriggerMode returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

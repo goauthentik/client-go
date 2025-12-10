@@ -805,6 +805,7 @@ docs/SubModeEnum.md
 docs/SyncObjectModelEnum.md
 docs/SyncObjectRequest.md
 docs/SyncObjectResult.md
+docs/SyncOutgoingTriggerModeEnum.md
 docs/SyncStatus.md
 docs/SystemInfo.md
 docs/SystemInfoRuntime.md
@@ -1648,6 +1649,7 @@ model_sub_mode_enum.go
 model_sync_object_model_enum.go
 model_sync_object_request.go
 model_sync_object_result.go
+model_sync_outgoing_trigger_mode_enum.go
 model_sync_status.go
 model_system_info.go
 model_system_info_runtime.go

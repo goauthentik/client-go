@@ -1881,6 +1881,7 @@ Class | Method | HTTP request | Description
  - [SyncObjectModelEnum](docs/SyncObjectModelEnum.md)
  - [SyncObjectRequest](docs/SyncObjectRequest.md)
  - [SyncObjectResult](docs/SyncObjectResult.md)
+ - [SyncOutgoingTriggerModeEnum](docs/SyncOutgoingTriggerModeEnum.md)
  - [SyncStatus](docs/SyncStatus.md)
  - [SystemInfo](docs/SystemInfo.md)
  - [SystemInfoRuntime](docs/SystemInfoRuntime.md)

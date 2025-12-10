@@ -45,6 +45,7 @@ Name | Type | Description | Notes
 **Connectivity** | **map[string]map[string]string** | Get cached source connectivity | [readonly] 
 **LookupGroupsFromUser** | Pointer to **bool** | Lookup group membership based on a user attribute instead of a group attribute. This allows nested group resolution on systems like FreeIPA and Active Directory | [optional] 
 **DeleteNotFoundObjects** | Pointer to **bool** | Delete authentik users and groups which were previously supplied by this source, but are now missing from it. | [optional] 
+**SyncOutgoingTriggerMode** | Pointer to [**SyncOutgoingTriggerModeEnum**](SyncOutgoingTriggerModeEnum.md) | When to trigger sync for outgoing providers | [optional] 
 
 ## Methods
 
@@ -1099,6 +1100,31 @@ SetDeleteNotFoundObjects sets DeleteNotFoundObjects field to given value.
 `func (o *LDAPSource) HasDeleteNotFoundObjects() bool`
 
 HasDeleteNotFoundObjects returns a boolean if a field has been set.
+
+### GetSyncOutgoingTriggerMode
+
+`func (o *LDAPSource) GetSyncOutgoingTriggerMode() SyncOutgoingTriggerModeEnum`
+
+GetSyncOutgoingTriggerMode returns the SyncOutgoingTriggerMode field if non-nil, zero value otherwise.
+
+### GetSyncOutgoingTriggerModeOk
+
+`func (o *LDAPSource) GetSyncOutgoingTriggerModeOk() (*SyncOutgoingTriggerModeEnum, bool)`
+
+GetSyncOutgoingTriggerModeOk returns a tuple with the SyncOutgoingTriggerMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSyncOutgoingTriggerMode
+
+`func (o *LDAPSource) SetSyncOutgoingTriggerMode(v SyncOutgoingTriggerModeEnum)`
+
+SetSyncOutgoingTriggerMode sets SyncOutgoingTriggerMode field to given value.
+
+### HasSyncOutgoingTriggerMode
+
+`func (o *LDAPSource) HasSyncOutgoingTriggerMode() bool`
+
+HasSyncOutgoingTriggerMode returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

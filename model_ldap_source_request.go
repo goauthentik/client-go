@@ -70,6 +70,8 @@ type LDAPSourceRequest struct {
 	LookupGroupsFromUser *bool `json:"lookup_groups_from_user,omitempty"`
 	// Delete authentik users and groups which were previously supplied by this source, but are now missing from it.
 	DeleteNotFoundObjects *bool `json:"delete_not_found_objects,omitempty"`
+	// When to trigger sync for outgoing providers
+	SyncOutgoingTriggerMode *SyncOutgoingTriggerModeEnum `json:"sync_outgoing_trigger_mode,omitempty"`
 }
 
 // NewLDAPSourceRequest instantiates a new LDAPSourceRequest object
@@ -1204,6 +1206,38 @@ func (o *LDAPSourceRequest) SetDeleteNotFoundObjects(v bool) {
 	o.DeleteNotFoundObjects = &v
 }
 
+// GetSyncOutgoingTriggerMode returns the SyncOutgoingTriggerMode field value if set, zero value otherwise.
+func (o *LDAPSourceRequest) GetSyncOutgoingTriggerMode() SyncOutgoingTriggerModeEnum {
+	if o == nil || o.SyncOutgoingTriggerMode == nil {
+		var ret SyncOutgoingTriggerModeEnum
+		return ret
+	}
+	return *o.SyncOutgoingTriggerMode
+}
+
+// GetSyncOutgoingTriggerModeOk returns a tuple with the SyncOutgoingTriggerMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LDAPSourceRequest) GetSyncOutgoingTriggerModeOk() (*SyncOutgoingTriggerModeEnum, bool) {
+	if o == nil || o.SyncOutgoingTriggerMode == nil {
+		return nil, false
+	}
+	return o.SyncOutgoingTriggerMode, true
+}
+
+// HasSyncOutgoingTriggerMode returns a boolean if a field has been set.
+func (o *LDAPSourceRequest) HasSyncOutgoingTriggerMode() bool {
+	if o != nil && o.SyncOutgoingTriggerMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSyncOutgoingTriggerMode gets a reference to the given SyncOutgoingTriggerModeEnum and assigns it to the SyncOutgoingTriggerMode field.
+func (o *LDAPSourceRequest) SetSyncOutgoingTriggerMode(v SyncOutgoingTriggerModeEnum) {
+	o.SyncOutgoingTriggerMode = &v
+}
+
 func (o LDAPSourceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -1307,6 +1341,9 @@ func (o LDAPSourceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeleteNotFoundObjects != nil {
 		toSerialize["delete_not_found_objects"] = o.DeleteNotFoundObjects
+	}
+	if o.SyncOutgoingTriggerMode != nil {
+		toSerialize["sync_outgoing_trigger_mode"] = o.SyncOutgoingTriggerMode
 	}
 	return json.Marshal(toSerialize)
 }
