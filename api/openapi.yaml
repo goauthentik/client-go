@@ -79590,6 +79590,7 @@ components:
       - slack
       - twitch
       - twitter
+      - wechat
       type: string
     ProxyMode:
       enum:
