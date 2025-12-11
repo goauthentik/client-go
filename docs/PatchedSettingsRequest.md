@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 **ImpersonationRequireReason** | Pointer to **bool** | Require administrators to provide a reason for impersonating a user. | [optional] 
 **DefaultTokenDuration** | Pointer to **string** | Default token duration | [optional] 
 **DefaultTokenLength** | Pointer to **int32** | Default token length | [optional] 
+**PaginationDefaultPageSize** | Pointer to **int32** | Default page size for API responses, if no size was requested. | [optional] 
+**PaginationMaxPageSize** | Pointer to **int32** | Maximum page size | [optional] 
 **Flags** | Pointer to [**PatchedSettingsRequestFlags**](PatchedSettingsRequestFlags.md) |  | [optional] 
 
 ## Methods
@@ -372,6 +374,56 @@ SetDefaultTokenLength sets DefaultTokenLength field to given value.
 `func (o *PatchedSettingsRequest) HasDefaultTokenLength() bool`
 
 HasDefaultTokenLength returns a boolean if a field has been set.
+
+### GetPaginationDefaultPageSize
+
+`func (o *PatchedSettingsRequest) GetPaginationDefaultPageSize() int32`
+
+GetPaginationDefaultPageSize returns the PaginationDefaultPageSize field if non-nil, zero value otherwise.
+
+### GetPaginationDefaultPageSizeOk
+
+`func (o *PatchedSettingsRequest) GetPaginationDefaultPageSizeOk() (*int32, bool)`
+
+GetPaginationDefaultPageSizeOk returns a tuple with the PaginationDefaultPageSize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPaginationDefaultPageSize
+
+`func (o *PatchedSettingsRequest) SetPaginationDefaultPageSize(v int32)`
+
+SetPaginationDefaultPageSize sets PaginationDefaultPageSize field to given value.
+
+### HasPaginationDefaultPageSize
+
+`func (o *PatchedSettingsRequest) HasPaginationDefaultPageSize() bool`
+
+HasPaginationDefaultPageSize returns a boolean if a field has been set.
+
+### GetPaginationMaxPageSize
+
+`func (o *PatchedSettingsRequest) GetPaginationMaxPageSize() int32`
+
+GetPaginationMaxPageSize returns the PaginationMaxPageSize field if non-nil, zero value otherwise.
+
+### GetPaginationMaxPageSizeOk
+
+`func (o *PatchedSettingsRequest) GetPaginationMaxPageSizeOk() (*int32, bool)`
+
+GetPaginationMaxPageSizeOk returns a tuple with the PaginationMaxPageSize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPaginationMaxPageSize
+
+`func (o *PatchedSettingsRequest) SetPaginationMaxPageSize(v int32)`
+
+SetPaginationMaxPageSize sets PaginationMaxPageSize field to given value.
+
+### HasPaginationMaxPageSize
+
+`func (o *PatchedSettingsRequest) HasPaginationMaxPageSize() bool`
+
+HasPaginationMaxPageSize returns a boolean if a field has been set.
 
 ### GetFlags
 

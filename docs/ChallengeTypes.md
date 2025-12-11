@@ -56,6 +56,7 @@ Name | Type | Description | Notes
 **Sources** | Pointer to [**[]LoginSource**](LoginSource.md) |  | [optional] 
 **ShowSourceLabels** | **bool** |  | 
 **EnableRememberMe** | Pointer to **bool** |  | [optional] [default to true]
+**PasskeyChallenge** | Pointer to **map[string]interface{}** |  | [optional] 
 **LogoutUrls** | Pointer to **[]map[string]interface{}** |  | [optional] 
 **PostUrl** | Pointer to **string** |  | [optional] 
 **SamlRequest** | Pointer to **string** |  | [optional] 
@@ -1264,6 +1265,41 @@ SetEnableRememberMe sets EnableRememberMe field to given value.
 
 HasEnableRememberMe returns a boolean if a field has been set.
 
+### GetPasskeyChallenge
+
+`func (o *ChallengeTypes) GetPasskeyChallenge() map[string]interface{}`
+
+GetPasskeyChallenge returns the PasskeyChallenge field if non-nil, zero value otherwise.
+
+### GetPasskeyChallengeOk
+
+`func (o *ChallengeTypes) GetPasskeyChallengeOk() (*map[string]interface{}, bool)`
+
+GetPasskeyChallengeOk returns a tuple with the PasskeyChallenge field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasskeyChallenge
+
+`func (o *ChallengeTypes) SetPasskeyChallenge(v map[string]interface{})`
+
+SetPasskeyChallenge sets PasskeyChallenge field to given value.
+
+### HasPasskeyChallenge
+
+`func (o *ChallengeTypes) HasPasskeyChallenge() bool`
+
+HasPasskeyChallenge returns a boolean if a field has been set.
+
+### SetPasskeyChallengeNil
+
+`func (o *ChallengeTypes) SetPasskeyChallengeNil(b bool)`
+
+ SetPasskeyChallengeNil sets the value for PasskeyChallenge to be an explicit nil
+
+### UnsetPasskeyChallenge
+`func (o *ChallengeTypes) UnsetPasskeyChallenge()`
+
+UnsetPasskeyChallenge ensures that no value is present for PasskeyChallenge, not even an explicit nil
 ### GetLogoutUrls
 
 `func (o *ChallengeTypes) GetLogoutUrls() []map[string]interface{}`

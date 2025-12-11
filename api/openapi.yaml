@@ -44669,6 +44669,14 @@ paths:
         schema:
           type: boolean
         style: form
+      - explode: true
+        in: query
+        name: webauthn_stage
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -58247,6 +58255,10 @@ components:
         enable_remember_me:
           default: true
           type: boolean
+        passkey_challenge:
+          additionalProperties: {}
+          nullable: true
+          type: object
       required:
       - flow_designation
       - password_fields
@@ -58262,7 +58274,7 @@ components:
           minLength: 1
           type: string
         uid_field:
-          minLength: 1
+          nullable: true
           type: string
         password:
           nullable: true
@@ -58270,8 +58282,10 @@ components:
         captcha_token:
           nullable: true
           type: string
-      required:
-      - uid_field
+        passkey:
+          additionalProperties: {}
+          nullable: true
+          type: object
       type: object
     IdentificationStage:
       description: IdentificationStage Serializer
@@ -58281,6 +58295,7 @@ components:
         sources:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        webauthn_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
         - policy_engine_mode: null
           compatibility_mode: true
@@ -58413,6 +58428,12 @@ components:
           description: "Show the user the 'Remember me on this device' toggle, allowing\
             \ repeat users to skip straight to entering their password."
           type: boolean
+        webauthn_stage:
+          description: "When set, and conditional WebAuthn is available, allow the\
+            \ user to use their passkey as a first factor."
+          format: uuid
+          nullable: true
+          type: string
       required:
       - component
       - flow_set
@@ -58429,6 +58450,7 @@ components:
         sources:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        webauthn_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         pretend_user_exists: true
         passwordless_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -58507,6 +58529,12 @@ components:
           description: "Show the user the 'Remember me on this device' toggle, allowing\
             \ repeat users to skip straight to entering their password."
           type: boolean
+        webauthn_stage:
+          description: "When set, and conditional WebAuthn is available, allow the\
+            \ user to use their passkey as a first factor."
+          format: uuid
+          nullable: true
+          type: string
       required:
       - name
       type: object
@@ -66568,6 +66596,7 @@ components:
           sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          webauthn_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
           - policy_engine_mode: null
             compatibility_mode: true
@@ -66615,6 +66644,7 @@ components:
           sources:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          webauthn_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
           - policy_engine_mode: null
             compatibility_mode: true
@@ -75113,6 +75143,7 @@ components:
         sources:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        webauthn_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         pretend_user_exists: true
         passwordless_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         enrollment_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -75191,6 +75222,12 @@ components:
           description: "Show the user the 'Remember me on this device' toggle, allowing\
             \ repeat users to skip straight to entering their password."
           type: boolean
+        webauthn_stage:
+          description: "When set, and conditional WebAuthn is available, allow the\
+            \ user to use their passkey as a first factor."
+          format: uuid
+          nullable: true
+          type: string
       type: object
     PatchedInitialPermissionsRequest:
       description: InitialPermissions serializer
@@ -77725,6 +77762,7 @@ components:
         reputation_upper_limit: 1294386358
         default_user_change_name: true
         impersonation: true
+        pagination_max_page_size: 1210617418
         default_token_duration: default_token_duration
         flags:
           policies_buffered_access_view: true
@@ -77732,6 +77770,7 @@ components:
         default_token_length: 314780941
         event_retention: event_retention
         default_user_change_email: true
+        pagination_default_page_size: 1280358508
         reputation_lower_limit: -1975507103
         impersonation_require_reason: true
         default_user_change_username: true
@@ -77787,6 +77826,16 @@ components:
           description: Default token length
           maximum: 2147483647
           minimum: 1
+          type: integer
+        pagination_default_page_size:
+          description: "Default page size for API responses, if no size was requested."
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        pagination_max_page_size:
+          description: Maximum page size
+          maximum: 2147483647
+          minimum: 0
           type: integer
         flags:
           $ref: '#/components/schemas/PatchedSettingsRequest_flags'
@@ -83564,6 +83613,7 @@ components:
         reputation_upper_limit: 1294386358
         default_user_change_name: true
         impersonation: true
+        pagination_max_page_size: 1210617418
         default_token_duration: default_token_duration
         flags:
           policies_buffered_access_view: true
@@ -83571,6 +83621,7 @@ components:
         default_token_length: 314780941
         event_retention: event_retention
         default_user_change_email: true
+        pagination_default_page_size: 1280358508
         reputation_lower_limit: -1975507103
         impersonation_require_reason: true
         default_user_change_username: true
@@ -83623,6 +83674,16 @@ components:
           description: Default token length
           maximum: 2147483647
           minimum: 1
+          type: integer
+        pagination_default_page_size:
+          description: "Default page size for API responses, if no size was requested."
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        pagination_max_page_size:
+          description: Maximum page size
+          maximum: 2147483647
+          minimum: 0
           type: integer
         flags:
           $ref: '#/components/schemas/PatchedSettingsRequest_flags'
@@ -83635,6 +83696,7 @@ components:
         reputation_upper_limit: 1294386358
         default_user_change_name: true
         impersonation: true
+        pagination_max_page_size: 1210617418
         default_token_duration: default_token_duration
         flags:
           policies_buffered_access_view: true
@@ -83642,6 +83704,7 @@ components:
         default_token_length: 314780941
         event_retention: event_retention
         default_user_change_email: true
+        pagination_default_page_size: 1280358508
         reputation_lower_limit: -1975507103
         impersonation_require_reason: true
         default_user_change_username: true
@@ -83697,6 +83760,16 @@ components:
           description: Default token length
           maximum: 2147483647
           minimum: 1
+          type: integer
+        pagination_default_page_size:
+          description: "Default page size for API responses, if no size was requested."
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        pagination_max_page_size:
+          description: Maximum page size
+          maximum: 2147483647
+          minimum: 0
           type: integer
         flags:
           $ref: '#/components/schemas/PatchedSettingsRequest_flags'

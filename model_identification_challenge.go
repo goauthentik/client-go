@@ -33,6 +33,7 @@ type IdentificationChallenge struct {
 	Sources           []LoginSource                               `json:"sources,omitempty"`
 	ShowSourceLabels  bool                                        `json:"show_source_labels"`
 	EnableRememberMe  *bool                                       `json:"enable_remember_me,omitempty"`
+	PasskeyChallenge  map[string]interface{}                      `json:"passkey_challenge,omitempty"`
 }
 
 // NewIdentificationChallenge instantiates a new IdentificationChallenge object
@@ -554,6 +555,39 @@ func (o *IdentificationChallenge) SetEnableRememberMe(v bool) {
 	o.EnableRememberMe = &v
 }
 
+// GetPasskeyChallenge returns the PasskeyChallenge field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IdentificationChallenge) GetPasskeyChallenge() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.PasskeyChallenge
+}
+
+// GetPasskeyChallengeOk returns a tuple with the PasskeyChallenge field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *IdentificationChallenge) GetPasskeyChallengeOk() (map[string]interface{}, bool) {
+	if o == nil || o.PasskeyChallenge == nil {
+		return nil, false
+	}
+	return o.PasskeyChallenge, true
+}
+
+// HasPasskeyChallenge returns a boolean if a field has been set.
+func (o *IdentificationChallenge) HasPasskeyChallenge() bool {
+	if o != nil && o.PasskeyChallenge != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasskeyChallenge gets a reference to the given map[string]interface{} and assigns it to the PasskeyChallenge field.
+func (o *IdentificationChallenge) SetPasskeyChallenge(v map[string]interface{}) {
+	o.PasskeyChallenge = v
+}
+
 func (o IdentificationChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.FlowInfo != nil {
@@ -603,6 +637,9 @@ func (o IdentificationChallenge) MarshalJSON() ([]byte, error) {
 	}
 	if o.EnableRememberMe != nil {
 		toSerialize["enable_remember_me"] = o.EnableRememberMe
+	}
+	if o.PasskeyChallenge != nil {
+		toSerialize["passkey_challenge"] = o.PasskeyChallenge
 	}
 	return json.Marshal(toSerialize)
 }

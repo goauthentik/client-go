@@ -41,6 +41,8 @@ type PatchedIdentificationStageRequest struct {
 	PretendUserExists *bool `json:"pretend_user_exists,omitempty"`
 	// Show the user the 'Remember me on this device' toggle, allowing repeat users to skip straight to entering their password.
 	EnableRememberMe *bool `json:"enable_remember_me,omitempty"`
+	// When set, and conditional WebAuthn is available, allow the user to use their passkey as a first factor.
+	WebauthnStage NullableString `json:"webauthn_stage,omitempty"`
 }
 
 // NewPatchedIdentificationStageRequest instantiates a new PatchedIdentificationStageRequest object
@@ -531,6 +533,49 @@ func (o *PatchedIdentificationStageRequest) SetEnableRememberMe(v bool) {
 	o.EnableRememberMe = &v
 }
 
+// GetWebauthnStage returns the WebauthnStage field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedIdentificationStageRequest) GetWebauthnStage() string {
+	if o == nil || o.WebauthnStage.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.WebauthnStage.Get()
+}
+
+// GetWebauthnStageOk returns a tuple with the WebauthnStage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedIdentificationStageRequest) GetWebauthnStageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.WebauthnStage.Get(), o.WebauthnStage.IsSet()
+}
+
+// HasWebauthnStage returns a boolean if a field has been set.
+func (o *PatchedIdentificationStageRequest) HasWebauthnStage() bool {
+	if o != nil && o.WebauthnStage.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetWebauthnStage gets a reference to the given NullableString and assigns it to the WebauthnStage field.
+func (o *PatchedIdentificationStageRequest) SetWebauthnStage(v string) {
+	o.WebauthnStage.Set(&v)
+}
+
+// SetWebauthnStageNil sets the value for WebauthnStage to be an explicit nil
+func (o *PatchedIdentificationStageRequest) SetWebauthnStageNil() {
+	o.WebauthnStage.Set(nil)
+}
+
+// UnsetWebauthnStage ensures that no value is present for WebauthnStage, not even an explicit nil
+func (o *PatchedIdentificationStageRequest) UnsetWebauthnStage() {
+	o.WebauthnStage.Unset()
+}
+
 func (o PatchedIdentificationStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -571,6 +616,9 @@ func (o PatchedIdentificationStageRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.EnableRememberMe != nil {
 		toSerialize["enable_remember_me"] = o.EnableRememberMe
+	}
+	if o.WebauthnStage.IsSet() {
+		toSerialize["webauthn_stage"] = o.WebauthnStage.Get()
 	}
 	return json.Marshal(toSerialize)
 }

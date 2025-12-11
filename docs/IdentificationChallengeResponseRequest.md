@@ -5,15 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Component** | Pointer to **string** |  | [optional] [default to "ak-stage-identification"]
-**UidField** | **string** |  | 
+**UidField** | Pointer to **NullableString** |  | [optional] 
 **Password** | Pointer to **NullableString** |  | [optional] 
 **CaptchaToken** | Pointer to **NullableString** |  | [optional] 
+**Passkey** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
 ### NewIdentificationChallengeResponseRequest
 
-`func NewIdentificationChallengeResponseRequest(uidField string, ) *IdentificationChallengeResponseRequest`
+`func NewIdentificationChallengeResponseRequest() *IdentificationChallengeResponseRequest`
 
 NewIdentificationChallengeResponseRequest instantiates a new IdentificationChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -72,7 +73,22 @@ and a boolean to check if the value has been set.
 
 SetUidField sets UidField field to given value.
 
+### HasUidField
 
+`func (o *IdentificationChallengeResponseRequest) HasUidField() bool`
+
+HasUidField returns a boolean if a field has been set.
+
+### SetUidFieldNil
+
+`func (o *IdentificationChallengeResponseRequest) SetUidFieldNil(b bool)`
+
+ SetUidFieldNil sets the value for UidField to be an explicit nil
+
+### UnsetUidField
+`func (o *IdentificationChallengeResponseRequest) UnsetUidField()`
+
+UnsetUidField ensures that no value is present for UidField, not even an explicit nil
 ### GetPassword
 
 `func (o *IdentificationChallengeResponseRequest) GetPassword() string`
@@ -143,6 +159,41 @@ HasCaptchaToken returns a boolean if a field has been set.
 `func (o *IdentificationChallengeResponseRequest) UnsetCaptchaToken()`
 
 UnsetCaptchaToken ensures that no value is present for CaptchaToken, not even an explicit nil
+### GetPasskey
+
+`func (o *IdentificationChallengeResponseRequest) GetPasskey() map[string]interface{}`
+
+GetPasskey returns the Passkey field if non-nil, zero value otherwise.
+
+### GetPasskeyOk
+
+`func (o *IdentificationChallengeResponseRequest) GetPasskeyOk() (*map[string]interface{}, bool)`
+
+GetPasskeyOk returns a tuple with the Passkey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasskey
+
+`func (o *IdentificationChallengeResponseRequest) SetPasskey(v map[string]interface{})`
+
+SetPasskey sets Passkey field to given value.
+
+### HasPasskey
+
+`func (o *IdentificationChallengeResponseRequest) HasPasskey() bool`
+
+HasPasskey returns a boolean if a field has been set.
+
+### SetPasskeyNil
+
+`func (o *IdentificationChallengeResponseRequest) SetPasskeyNil(b bool)`
+
+ SetPasskeyNil sets the value for Passkey to be an explicit nil
+
+### UnsetPasskey
+`func (o *IdentificationChallengeResponseRequest) UnsetPasskey()`
+
+UnsetPasskey ensures that no value is present for Passkey, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

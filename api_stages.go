@@ -15338,6 +15338,7 @@ type ApiStagesIdentificationListRequest struct {
 	search                  *string
 	showMatchedUser         *bool
 	showSourceLabels        *bool
+	webauthnStage           *string
 }
 
 func (r ApiStagesIdentificationListRequest) CaptchaStage(captchaStage string) ApiStagesIdentificationListRequest {
@@ -15406,6 +15407,11 @@ func (r ApiStagesIdentificationListRequest) ShowMatchedUser(showMatchedUser bool
 
 func (r ApiStagesIdentificationListRequest) ShowSourceLabels(showSourceLabels bool) ApiStagesIdentificationListRequest {
 	r.showSourceLabels = &showSourceLabels
+	return r
+}
+
+func (r ApiStagesIdentificationListRequest) WebauthnStage(webauthnStage string) ApiStagesIdentificationListRequest {
+	r.webauthnStage = &webauthnStage
 	return r
 }
 
@@ -15488,6 +15494,9 @@ func (a *StagesApiService) StagesIdentificationListExecute(r ApiStagesIdentifica
 	}
 	if r.showSourceLabels != nil {
 		localVarQueryParams.Add("show_source_labels", parameterToString(*r.showSourceLabels, ""))
+	}
+	if r.webauthnStage != nil {
+		localVarQueryParams.Add("webauthn_stage", parameterToString(*r.webauthnStage, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
