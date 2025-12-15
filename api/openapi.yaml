@@ -7283,14 +7283,6 @@ paths:
         schema:
           type: boolean
         style: form
-      - explode: true
-        in: query
-        name: include_details
-        required: false
-        schema:
-          default: true
-          type: boolean
-        style: form
       - description: "Filter by key algorithm type (RSA, EC, DSA, etc). Can be specified\
           \ multiple times (e.g. '?key_type=rsa&key_type=ec')"
         explode: true
@@ -52821,23 +52813,23 @@ components:
         name:
           type: string
         fingerprint_sha256:
-          description: Get certificate Hash (SHA256)
+          description: SHA256 fingerprint of the certificate
           nullable: true
           readOnly: true
           type: string
         fingerprint_sha1:
-          description: Get certificate Hash (SHA1)
+          description: SHA1 fingerprint of the certificate
           nullable: true
           readOnly: true
           type: string
         cert_expiry:
-          description: Get certificate expiry
+          description: Certificate expiry date
           format: date-time
           nullable: true
           readOnly: true
           type: string
         cert_subject:
-          description: Get certificate subject as full rfc4514
+          description: Certificate subject as RFC4514 string
           nullable: true
           readOnly: true
           type: string
@@ -52848,6 +52840,7 @@ components:
         key_type:
           allOf:
           - $ref: '#/components/schemas/KeyTypeEnum'
+          description: Key algorithm type detected from the certificate's public key
           nullable: true
           readOnly: true
         certificate_download_url:
