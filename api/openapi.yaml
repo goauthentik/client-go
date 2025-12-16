@@ -50908,7 +50908,8 @@ components:
           minLength: 1
           type: string
         code:
-          type: integer
+          minLength: 1
+          type: string
         email:
           minLength: 1
           type: string
@@ -51259,7 +51260,8 @@ components:
           minLength: 1
           type: string
         code:
-          type: integer
+          minLength: 1
+          type: string
         phone_number:
           minLength: 1
           type: string
@@ -51629,7 +51631,8 @@ components:
           minLength: 1
           type: string
         code:
-          type: integer
+          minLength: 1
+          type: string
       required:
       - code
       type: object

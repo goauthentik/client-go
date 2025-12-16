@@ -18,7 +18,7 @@ import (
 // AuthenticatorEmailChallengeResponseRequest Authenticator Email Challenge response, device is set by get_response_instance
 type AuthenticatorEmailChallengeResponseRequest struct {
 	Component *string `json:"component,omitempty"`
-	Code      *int32  `json:"code,omitempty"`
+	Code      *string `json:"code,omitempty"`
 	Email     *string `json:"email,omitempty"`
 }
 
@@ -76,9 +76,9 @@ func (o *AuthenticatorEmailChallengeResponseRequest) SetComponent(v string) {
 }
 
 // GetCode returns the Code field value if set, zero value otherwise.
-func (o *AuthenticatorEmailChallengeResponseRequest) GetCode() int32 {
+func (o *AuthenticatorEmailChallengeResponseRequest) GetCode() string {
 	if o == nil || o.Code == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.Code
@@ -86,7 +86,7 @@ func (o *AuthenticatorEmailChallengeResponseRequest) GetCode() int32 {
 
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorEmailChallengeResponseRequest) GetCodeOk() (*int32, bool) {
+func (o *AuthenticatorEmailChallengeResponseRequest) GetCodeOk() (*string, bool) {
 	if o == nil || o.Code == nil {
 		return nil, false
 	}
@@ -102,8 +102,8 @@ func (o *AuthenticatorEmailChallengeResponseRequest) HasCode() bool {
 	return false
 }
 
-// SetCode gets a reference to the given int32 and assigns it to the Code field.
-func (o *AuthenticatorEmailChallengeResponseRequest) SetCode(v int32) {
+// SetCode gets a reference to the given string and assigns it to the Code field.
+func (o *AuthenticatorEmailChallengeResponseRequest) SetCode(v string) {
 	o.Code = &v
 }
 

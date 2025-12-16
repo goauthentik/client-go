@@ -18,14 +18,14 @@ import (
 // AuthenticatorTOTPChallengeResponseRequest TOTP Challenge response, device is set by get_response_instance
 type AuthenticatorTOTPChallengeResponseRequest struct {
 	Component *string `json:"component,omitempty"`
-	Code      int32   `json:"code"`
+	Code      string  `json:"code"`
 }
 
 // NewAuthenticatorTOTPChallengeResponseRequest instantiates a new AuthenticatorTOTPChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatorTOTPChallengeResponseRequest(code int32) *AuthenticatorTOTPChallengeResponseRequest {
+func NewAuthenticatorTOTPChallengeResponseRequest(code string) *AuthenticatorTOTPChallengeResponseRequest {
 	this := AuthenticatorTOTPChallengeResponseRequest{}
 	var component string = "ak-stage-authenticator-totp"
 	this.Component = &component
@@ -76,9 +76,9 @@ func (o *AuthenticatorTOTPChallengeResponseRequest) SetComponent(v string) {
 }
 
 // GetCode returns the Code field value
-func (o *AuthenticatorTOTPChallengeResponseRequest) GetCode() int32 {
+func (o *AuthenticatorTOTPChallengeResponseRequest) GetCode() string {
 	if o == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 
@@ -87,7 +87,7 @@ func (o *AuthenticatorTOTPChallengeResponseRequest) GetCode() int32 {
 
 // GetCodeOk returns a tuple with the Code field value
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorTOTPChallengeResponseRequest) GetCodeOk() (*int32, bool) {
+func (o *AuthenticatorTOTPChallengeResponseRequest) GetCodeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -95,7 +95,7 @@ func (o *AuthenticatorTOTPChallengeResponseRequest) GetCodeOk() (*int32, bool) {
 }
 
 // SetCode sets field value
-func (o *AuthenticatorTOTPChallengeResponseRequest) SetCode(v int32) {
+func (o *AuthenticatorTOTPChallengeResponseRequest) SetCode(v string) {
 	o.Code = v
 }
 

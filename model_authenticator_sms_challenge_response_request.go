@@ -18,7 +18,7 @@ import (
 // AuthenticatorSMSChallengeResponseRequest SMS Challenge response, device is set by get_response_instance
 type AuthenticatorSMSChallengeResponseRequest struct {
 	Component   *string `json:"component,omitempty"`
-	Code        *int32  `json:"code,omitempty"`
+	Code        *string `json:"code,omitempty"`
 	PhoneNumber *string `json:"phone_number,omitempty"`
 }
 
@@ -76,9 +76,9 @@ func (o *AuthenticatorSMSChallengeResponseRequest) SetComponent(v string) {
 }
 
 // GetCode returns the Code field value if set, zero value otherwise.
-func (o *AuthenticatorSMSChallengeResponseRequest) GetCode() int32 {
+func (o *AuthenticatorSMSChallengeResponseRequest) GetCode() string {
 	if o == nil || o.Code == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.Code
@@ -86,7 +86,7 @@ func (o *AuthenticatorSMSChallengeResponseRequest) GetCode() int32 {
 
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorSMSChallengeResponseRequest) GetCodeOk() (*int32, bool) {
+func (o *AuthenticatorSMSChallengeResponseRequest) GetCodeOk() (*string, bool) {
 	if o == nil || o.Code == nil {
 		return nil, false
 	}
@@ -102,8 +102,8 @@ func (o *AuthenticatorSMSChallengeResponseRequest) HasCode() bool {
 	return false
 }
 
-// SetCode gets a reference to the given int32 and assigns it to the Code field.
-func (o *AuthenticatorSMSChallengeResponseRequest) SetCode(v int32) {
+// SetCode gets a reference to the given string and assigns it to the Code field.
+func (o *AuthenticatorSMSChallengeResponseRequest) SetCode(v string) {
 	o.Code = &v
 }
 

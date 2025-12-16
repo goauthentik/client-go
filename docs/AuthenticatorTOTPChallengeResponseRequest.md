@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Component** | Pointer to **string** |  | [optional] [default to "ak-stage-authenticator-totp"]
-**Code** | **int32** |  | 
+**Code** | **string** |  | 
 
 ## Methods
 
 ### NewAuthenticatorTOTPChallengeResponseRequest
 
-`func NewAuthenticatorTOTPChallengeResponseRequest(code int32, ) *AuthenticatorTOTPChallengeResponseRequest`
+`func NewAuthenticatorTOTPChallengeResponseRequest(code string, ) *AuthenticatorTOTPChallengeResponseRequest`
 
 NewAuthenticatorTOTPChallengeResponseRequest instantiates a new AuthenticatorTOTPChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -53,20 +53,20 @@ HasComponent returns a boolean if a field has been set.
 
 ### GetCode
 
-`func (o *AuthenticatorTOTPChallengeResponseRequest) GetCode() int32`
+`func (o *AuthenticatorTOTPChallengeResponseRequest) GetCode() string`
 
 GetCode returns the Code field if non-nil, zero value otherwise.
 
 ### GetCodeOk
 
-`func (o *AuthenticatorTOTPChallengeResponseRequest) GetCodeOk() (*int32, bool)`
+`func (o *AuthenticatorTOTPChallengeResponseRequest) GetCodeOk() (*string, bool)`
 
 GetCodeOk returns a tuple with the Code field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCode
 
-`func (o *AuthenticatorTOTPChallengeResponseRequest) SetCode(v int32)`
+`func (o *AuthenticatorTOTPChallengeResponseRequest) SetCode(v string)`
 
 SetCode sets Code field to given value.
 
