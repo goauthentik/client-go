@@ -40011,7 +40011,7 @@ paths:
                 $ref: '#/components/schemas/GenericError'
           description: ""
       security:
-      - authentik: []
+      - {}
       tags:
       - stages
   /stages/authenticator/duo/{stage_uuid}/import_device_manual/:

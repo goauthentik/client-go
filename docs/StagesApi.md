@@ -805,7 +805,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+No authorization required
 
 ### HTTP request headers
 
