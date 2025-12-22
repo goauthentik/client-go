@@ -17,20 +17,22 @@ import (
 
 // ContentType struct for ContentType
 type ContentType struct {
-	Id       int32  `json:"id"`
-	AppLabel string `json:"app_label"`
-	Model    string `json:"model"`
+	Id                int32  `json:"id"`
+	AppLabel          string `json:"app_label"`
+	Model             string `json:"model"`
+	VerboseNamePlural string `json:"verbose_name_plural"`
 }
 
 // NewContentType instantiates a new ContentType object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContentType(id int32, appLabel string, model string) *ContentType {
+func NewContentType(id int32, appLabel string, model string, verboseNamePlural string) *ContentType {
 	this := ContentType{}
 	this.Id = id
 	this.AppLabel = appLabel
 	this.Model = model
+	this.VerboseNamePlural = verboseNamePlural
 	return &this
 }
 
@@ -114,6 +116,30 @@ func (o *ContentType) SetModel(v string) {
 	o.Model = v
 }
 
+// GetVerboseNamePlural returns the VerboseNamePlural field value
+func (o *ContentType) GetVerboseNamePlural() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.VerboseNamePlural
+}
+
+// GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field value
+// and a boolean to check if the value has been set.
+func (o *ContentType) GetVerboseNamePluralOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.VerboseNamePlural, true
+}
+
+// SetVerboseNamePlural sets field value
+func (o *ContentType) SetVerboseNamePlural(v string) {
+	o.VerboseNamePlural = v
+}
+
 func (o ContentType) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -124,6 +150,9 @@ func (o ContentType) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["model"] = o.Model
+	}
+	if true {
+		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	}
 	return json.Marshal(toSerialize)
 }

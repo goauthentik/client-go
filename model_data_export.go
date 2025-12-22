@@ -19,7 +19,7 @@ import (
 // DataExport Mixin to validate that a valid enterprise license exists before allowing to save the object
 type DataExport struct {
 	Id          string                 `json:"id"`
-	RequestedBy RequestedBy            `json:"requested_by"`
+	RequestedBy PartialUser            `json:"requested_by"`
 	RequestedOn time.Time              `json:"requested_on"`
 	ContentType ContentType            `json:"content_type"`
 	QueryParams map[string]interface{} `json:"query_params"`
@@ -31,7 +31,7 @@ type DataExport struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDataExport(id string, requestedBy RequestedBy, requestedOn time.Time, contentType ContentType, queryParams map[string]interface{}, fileUrl string, completed bool) *DataExport {
+func NewDataExport(id string, requestedBy PartialUser, requestedOn time.Time, contentType ContentType, queryParams map[string]interface{}, fileUrl string, completed bool) *DataExport {
 	this := DataExport{}
 	this.Id = id
 	this.RequestedBy = requestedBy
@@ -76,9 +76,9 @@ func (o *DataExport) SetId(v string) {
 }
 
 // GetRequestedBy returns the RequestedBy field value
-func (o *DataExport) GetRequestedBy() RequestedBy {
+func (o *DataExport) GetRequestedBy() PartialUser {
 	if o == nil {
-		var ret RequestedBy
+		var ret PartialUser
 		return ret
 	}
 
@@ -87,7 +87,7 @@ func (o *DataExport) GetRequestedBy() RequestedBy {
 
 // GetRequestedByOk returns a tuple with the RequestedBy field value
 // and a boolean to check if the value has been set.
-func (o *DataExport) GetRequestedByOk() (*RequestedBy, bool) {
+func (o *DataExport) GetRequestedByOk() (*PartialUser, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -95,7 +95,7 @@ func (o *DataExport) GetRequestedByOk() (*RequestedBy, bool) {
 }
 
 // SetRequestedBy sets field value
-func (o *DataExport) SetRequestedBy(v RequestedBy) {
+func (o *DataExport) SetRequestedBy(v PartialUser) {
 	o.RequestedBy = v
 }
 

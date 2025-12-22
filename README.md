@@ -1810,7 +1810,6 @@ Class | Method | HTTP request | Description
  - [Reputation](docs/Reputation.md)
  - [ReputationPolicy](docs/ReputationPolicy.md)
  - [ReputationPolicyRequest](docs/ReputationPolicyRequest.md)
- - [RequestedBy](docs/RequestedBy.md)
  - [ResidentKeyRequirementEnum](docs/ResidentKeyRequirementEnum.md)
  - [Role](docs/Role.md)
  - [RoleAssignedObjectPermission](docs/RoleAssignedObjectPermission.md)
