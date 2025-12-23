@@ -5,6 +5,8 @@
 
 * `CAN_SAVE_MEDIA` (value: `"can_save_media"`)
 
+* `CAN_SAVE_REPORTS` (value: `"can_save_reports"`)
+
 * `CAN_GEO_IP` (value: `"can_geo_ip"`)
 
 * `CAN_ASN` (value: `"can_asn"`)
