@@ -2238,6 +2238,8 @@ func (a *RbacApiService) RbacRolesDestroyExecute(r ApiRbacRolesDestroyRequest) (
 type ApiRbacRolesListRequest struct {
 	ctx           context.Context
 	ApiService    *RbacApiService
+	akGroups      *string
+	inherited     *bool
 	managed       *[]string
 	managedIsnull *bool
 	name          *string
@@ -2245,7 +2247,18 @@ type ApiRbacRolesListRequest struct {
 	page          *int32
 	pageSize      *int32
 	search        *string
-	users         *[]int32
+	users         *int32
+}
+
+func (r ApiRbacRolesListRequest) AkGroups(akGroups string) ApiRbacRolesListRequest {
+	r.akGroups = &akGroups
+	return r
+}
+
+// Include inherited roles (requires users or ak_groups filter)
+func (r ApiRbacRolesListRequest) Inherited(inherited bool) ApiRbacRolesListRequest {
+	r.inherited = &inherited
+	return r
 }
 
 func (r ApiRbacRolesListRequest) Managed(managed []string) ApiRbacRolesListRequest {
@@ -2287,7 +2300,7 @@ func (r ApiRbacRolesListRequest) Search(search string) ApiRbacRolesListRequest {
 	return r
 }
 
-func (r ApiRbacRolesListRequest) Users(users []int32) ApiRbacRolesListRequest {
+func (r ApiRbacRolesListRequest) Users(users int32) ApiRbacRolesListRequest {
 	r.users = &users
 	return r
 }
@@ -2333,6 +2346,12 @@ func (a *RbacApiService) RbacRolesListExecute(r ApiRbacRolesListRequest) (*Pagin
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.akGroups != nil {
+		localVarQueryParams.Add("ak_groups", parameterToString(*r.akGroups, ""))
+	}
+	if r.inherited != nil {
+		localVarQueryParams.Add("inherited", parameterToString(*r.inherited, ""))
+	}
 	if r.managed != nil {
 		t := *r.managed
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
@@ -2363,15 +2382,7 @@ func (a *RbacApiService) RbacRolesListExecute(r ApiRbacRolesListRequest) (*Pagin
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.users != nil {
-		t := *r.users
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("users", parameterToString(s.Index(i), "multi"))
-			}
-		} else {
-			localVarQueryParams.Add("users", parameterToString(t, "multi"))
-		}
+		localVarQueryParams.Add("users", parameterToString(*r.users, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

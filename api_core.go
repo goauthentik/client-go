@@ -4167,20 +4167,21 @@ func (a *CoreApiService) CoreGroupsDestroyExecute(r ApiCoreGroupsDestroyRequest)
 }
 
 type ApiCoreGroupsListRequest struct {
-	ctx               context.Context
-	ApiService        *CoreApiService
-	attributes        *string
-	includeChildren   *bool
-	includeParents    *bool
-	includeUsers      *bool
-	isSuperuser       *bool
-	membersByPk       *[]int32
-	membersByUsername *[]string
-	name              *string
-	ordering          *string
-	page              *int32
-	pageSize          *int32
-	search            *string
+	ctx                   context.Context
+	ApiService            *CoreApiService
+	attributes            *string
+	includeChildren       *bool
+	includeInheritedRoles *bool
+	includeParents        *bool
+	includeUsers          *bool
+	isSuperuser           *bool
+	membersByPk           *[]int32
+	membersByUsername     *[]string
+	name                  *string
+	ordering              *string
+	page                  *int32
+	pageSize              *int32
+	search                *string
 }
 
 // Attributes
@@ -4191,6 +4192,11 @@ func (r ApiCoreGroupsListRequest) Attributes(attributes string) ApiCoreGroupsLis
 
 func (r ApiCoreGroupsListRequest) IncludeChildren(includeChildren bool) ApiCoreGroupsListRequest {
 	r.includeChildren = &includeChildren
+	return r
+}
+
+func (r ApiCoreGroupsListRequest) IncludeInheritedRoles(includeInheritedRoles bool) ApiCoreGroupsListRequest {
+	r.includeInheritedRoles = &includeInheritedRoles
 	return r
 }
 
@@ -4295,6 +4301,9 @@ func (a *CoreApiService) CoreGroupsListExecute(r ApiCoreGroupsListRequest) (*Pag
 	}
 	if r.includeChildren != nil {
 		localVarQueryParams.Add("include_children", parameterToString(*r.includeChildren, ""))
+	}
+	if r.includeInheritedRoles != nil {
+		localVarQueryParams.Add("include_inherited_roles", parameterToString(*r.includeInheritedRoles, ""))
 	}
 	if r.includeParents != nil {
 		localVarQueryParams.Add("include_parents", parameterToString(*r.includeParents, ""))
@@ -4669,16 +4678,22 @@ func (a *CoreApiService) CoreGroupsRemoveUserCreateExecute(r ApiCoreGroupsRemove
 }
 
 type ApiCoreGroupsRetrieveRequest struct {
-	ctx             context.Context
-	ApiService      *CoreApiService
-	groupUuid       string
-	includeChildren *bool
-	includeParents  *bool
-	includeUsers    *bool
+	ctx                   context.Context
+	ApiService            *CoreApiService
+	groupUuid             string
+	includeChildren       *bool
+	includeInheritedRoles *bool
+	includeParents        *bool
+	includeUsers          *bool
 }
 
 func (r ApiCoreGroupsRetrieveRequest) IncludeChildren(includeChildren bool) ApiCoreGroupsRetrieveRequest {
 	r.includeChildren = &includeChildren
+	return r
+}
+
+func (r ApiCoreGroupsRetrieveRequest) IncludeInheritedRoles(includeInheritedRoles bool) ApiCoreGroupsRetrieveRequest {
+	r.includeInheritedRoles = &includeInheritedRoles
 	return r
 }
 
@@ -4738,6 +4753,9 @@ func (a *CoreApiService) CoreGroupsRetrieveExecute(r ApiCoreGroupsRetrieveReques
 
 	if r.includeChildren != nil {
 		localVarQueryParams.Add("include_children", parameterToString(*r.includeChildren, ""))
+	}
+	if r.includeInheritedRoles != nil {
+		localVarQueryParams.Add("include_inherited_roles", parameterToString(*r.includeInheritedRoles, ""))
 	}
 	if r.includeParents != nil {
 		localVarQueryParams.Add("include_parents", parameterToString(*r.includeParents, ""))

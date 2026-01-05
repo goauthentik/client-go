@@ -5283,6 +5283,14 @@ paths:
         style: form
       - explode: true
         in: query
+        name: include_inherited_roles
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - explode: true
+        in: query
         name: include_parents
         required: false
         schema:
@@ -5467,6 +5475,14 @@ paths:
       - explode: true
         in: query
         name: include_children
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: include_inherited_roles
         required: false
         schema:
           default: false
@@ -30648,6 +30664,22 @@ paths:
       parameters:
       - explode: true
         in: query
+        name: ak_groups
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: Include inherited roles (requires users or ak_groups filter)
+        explode: true
+        in: query
+        name: inherited
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
         name: managed
         required: false
         schema:
@@ -30706,9 +30738,7 @@ paths:
         name: users
         required: false
         schema:
-          items:
-            type: integer
-          type: array
+          type: integer
         style: form
       responses:
         "200":
@@ -57527,6 +57557,11 @@ components:
     Group:
       description: Group Serializer
       example:
+        inherited_roles_obj:
+        - name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         roles_obj:
         - name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -57643,6 +57678,12 @@ components:
             $ref: '#/components/schemas/Role'
           readOnly: true
           type: array
+        inherited_roles_obj:
+          items:
+            $ref: '#/components/schemas/Role'
+          nullable: true
+          readOnly: true
+          type: array
         children:
           items:
             format: uuid
@@ -57658,6 +57699,7 @@ components:
       required:
       - children
       - children_obj
+      - inherited_roles_obj
       - name
       - num_pk
       - parents_obj
@@ -66218,7 +66260,12 @@ components:
         autocomplete:
           key: ""
         results:
-        - roles_obj:
+        - inherited_roles_obj:
+          - name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          roles_obj:
           - name: name
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - name: name
@@ -66286,7 +66333,12 @@ components:
           parents:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - roles_obj:
+        - inherited_roles_obj:
+          - name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          roles_obj:
           - name: name
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - name: name
