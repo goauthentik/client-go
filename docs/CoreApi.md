@@ -3803,7 +3803,7 @@ Name | Type | Description  | Notes
 
 ## CoreUsersExportCreate
 
-> DataExport CoreUsersExportCreate(ctx).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
+> DataExport CoreUsersExportCreate(ctx).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).LastLogin(lastLogin).LastLoginGt(lastLoginGt).LastLoginIsnull(lastLoginIsnull).LastLoginLt(lastLoginLt).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
 
 
 
@@ -3832,6 +3832,10 @@ func main() {
     groupsByPk := []string{"Inner_example"} // []string |  (optional)
     isActive := true // bool |  (optional)
     isSuperuser := true // bool |  (optional)
+    lastLogin := time.Now() // time.Time |  (optional)
+    lastLoginGt := time.Now() // time.Time |  (optional)
+    lastLoginIsnull := true // bool |  (optional)
+    lastLoginLt := time.Now() // time.Time |  (optional)
     lastUpdated := time.Now() // time.Time |  (optional)
     lastUpdatedGt := time.Now() // time.Time |  (optional)
     lastUpdatedLt := time.Now() // time.Time |  (optional)
@@ -3848,7 +3852,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreUsersExportCreate(context.Background()).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
+    resp, r, err := apiClient.CoreApi.CoreUsersExportCreate(context.Background()).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).LastLogin(lastLogin).LastLoginGt(lastLoginGt).LastLoginIsnull(lastLoginIsnull).LastLoginLt(lastLoginLt).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersExportCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3878,6 +3882,10 @@ Name | Type | Description  | Notes
  **groupsByPk** | **[]string** |  | 
  **isActive** | **bool** |  | 
  **isSuperuser** | **bool** |  | 
+ **lastLogin** | **time.Time** |  | 
+ **lastLoginGt** | **time.Time** |  | 
+ **lastLoginIsnull** | **bool** |  | 
+ **lastLoginLt** | **time.Time** |  | 
  **lastUpdated** | **time.Time** |  | 
  **lastUpdatedGt** | **time.Time** |  | 
  **lastUpdatedLt** | **time.Time** |  | 
@@ -4041,7 +4049,7 @@ Other parameters are passed through a pointer to a apiCoreUsersImpersonateEndRet
 
 ## CoreUsersList
 
-> PaginatedUserList CoreUsersList(ctx).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IncludeRoles(includeRoles).IsActive(isActive).IsSuperuser(isSuperuser).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
+> PaginatedUserList CoreUsersList(ctx).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IncludeRoles(includeRoles).IsActive(isActive).IsSuperuser(isSuperuser).LastLogin(lastLogin).LastLoginGt(lastLoginGt).LastLoginIsnull(lastLoginIsnull).LastLoginLt(lastLoginLt).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
 
 
 
@@ -4072,6 +4080,10 @@ func main() {
     includeRoles := true // bool |  (optional) (default to true)
     isActive := true // bool |  (optional)
     isSuperuser := true // bool |  (optional)
+    lastLogin := time.Now() // time.Time |  (optional)
+    lastLoginGt := time.Now() // time.Time |  (optional)
+    lastLoginIsnull := true // bool |  (optional)
+    lastLoginLt := time.Now() // time.Time |  (optional)
     lastUpdated := time.Now() // time.Time |  (optional)
     lastUpdatedGt := time.Now() // time.Time |  (optional)
     lastUpdatedLt := time.Now() // time.Time |  (optional)
@@ -4090,7 +4102,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreUsersList(context.Background()).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IncludeRoles(includeRoles).IsActive(isActive).IsSuperuser(isSuperuser).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
+    resp, r, err := apiClient.CoreApi.CoreUsersList(context.Background()).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IncludeRoles(includeRoles).IsActive(isActive).IsSuperuser(isSuperuser).LastLogin(lastLogin).LastLoginGt(lastLoginGt).LastLoginIsnull(lastLoginIsnull).LastLoginLt(lastLoginLt).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreUsersList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4122,6 +4134,10 @@ Name | Type | Description  | Notes
  **includeRoles** | **bool** |  | [default to true]
  **isActive** | **bool** |  | 
  **isSuperuser** | **bool** |  | 
+ **lastLogin** | **time.Time** |  | 
+ **lastLoginGt** | **time.Time** |  | 
+ **lastLoginIsnull** | **bool** |  | 
+ **lastLoginLt** | **time.Time** |  | 
  **lastUpdated** | **time.Time** |  | 
  **lastUpdatedGt** | **time.Time** |  | 
  **lastUpdatedLt** | **time.Time** |  | 

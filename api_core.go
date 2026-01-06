@@ -7209,30 +7209,34 @@ func (a *CoreApiService) CoreUsersDestroyExecute(r ApiCoreUsersDestroyRequest) (
 }
 
 type ApiCoreUsersExportCreateRequest struct {
-	ctx            context.Context
-	ApiService     *CoreApiService
-	attributes     *string
-	dateJoined     *time.Time
-	dateJoinedGt   *time.Time
-	dateJoinedLt   *time.Time
-	email          *string
-	groupsByName   *[]string
-	groupsByPk     *[]string
-	isActive       *bool
-	isSuperuser    *bool
-	lastUpdated    *time.Time
-	lastUpdatedGt  *time.Time
-	lastUpdatedLt  *time.Time
-	name           *string
-	ordering       *string
-	path           *string
-	pathStartswith *string
-	rolesByName    *[]string
-	rolesByPk      *[]string
-	search         *string
-	type_          *[]string
-	username       *string
-	uuid           *string
+	ctx             context.Context
+	ApiService      *CoreApiService
+	attributes      *string
+	dateJoined      *time.Time
+	dateJoinedGt    *time.Time
+	dateJoinedLt    *time.Time
+	email           *string
+	groupsByName    *[]string
+	groupsByPk      *[]string
+	isActive        *bool
+	isSuperuser     *bool
+	lastLogin       *time.Time
+	lastLoginGt     *time.Time
+	lastLoginIsnull *bool
+	lastLoginLt     *time.Time
+	lastUpdated     *time.Time
+	lastUpdatedGt   *time.Time
+	lastUpdatedLt   *time.Time
+	name            *string
+	ordering        *string
+	path            *string
+	pathStartswith  *string
+	rolesByName     *[]string
+	rolesByPk       *[]string
+	search          *string
+	type_           *[]string
+	username        *string
+	uuid            *string
 }
 
 // Attributes
@@ -7278,6 +7282,26 @@ func (r ApiCoreUsersExportCreateRequest) IsActive(isActive bool) ApiCoreUsersExp
 
 func (r ApiCoreUsersExportCreateRequest) IsSuperuser(isSuperuser bool) ApiCoreUsersExportCreateRequest {
 	r.isSuperuser = &isSuperuser
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) LastLogin(lastLogin time.Time) ApiCoreUsersExportCreateRequest {
+	r.lastLogin = &lastLogin
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) LastLoginGt(lastLoginGt time.Time) ApiCoreUsersExportCreateRequest {
+	r.lastLoginGt = &lastLoginGt
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) LastLoginIsnull(lastLoginIsnull bool) ApiCoreUsersExportCreateRequest {
+	r.lastLoginIsnull = &lastLoginIsnull
+	return r
+}
+
+func (r ApiCoreUsersExportCreateRequest) LastLoginLt(lastLoginLt time.Time) ApiCoreUsersExportCreateRequest {
+	r.lastLoginLt = &lastLoginLt
 	return r
 }
 
@@ -7435,6 +7459,18 @@ func (a *CoreApiService) CoreUsersExportCreateExecute(r ApiCoreUsersExportCreate
 	}
 	if r.isSuperuser != nil {
 		localVarQueryParams.Add("is_superuser", parameterToString(*r.isSuperuser, ""))
+	}
+	if r.lastLogin != nil {
+		localVarQueryParams.Add("last_login", parameterToString(*r.lastLogin, ""))
+	}
+	if r.lastLoginGt != nil {
+		localVarQueryParams.Add("last_login__gt", parameterToString(*r.lastLoginGt, ""))
+	}
+	if r.lastLoginIsnull != nil {
+		localVarQueryParams.Add("last_login__isnull", parameterToString(*r.lastLoginIsnull, ""))
+	}
+	if r.lastLoginLt != nil {
+		localVarQueryParams.Add("last_login__lt", parameterToString(*r.lastLoginLt, ""))
 	}
 	if r.lastUpdated != nil {
 		localVarQueryParams.Add("last_updated", parameterToString(*r.lastUpdated, ""))
@@ -7802,34 +7838,38 @@ func (a *CoreApiService) CoreUsersImpersonateEndRetrieveExecute(r ApiCoreUsersIm
 }
 
 type ApiCoreUsersListRequest struct {
-	ctx            context.Context
-	ApiService     *CoreApiService
-	attributes     *string
-	dateJoined     *time.Time
-	dateJoinedGt   *time.Time
-	dateJoinedLt   *time.Time
-	email          *string
-	groupsByName   *[]string
-	groupsByPk     *[]string
-	includeGroups  *bool
-	includeRoles   *bool
-	isActive       *bool
-	isSuperuser    *bool
-	lastUpdated    *time.Time
-	lastUpdatedGt  *time.Time
-	lastUpdatedLt  *time.Time
-	name           *string
-	ordering       *string
-	page           *int32
-	pageSize       *int32
-	path           *string
-	pathStartswith *string
-	rolesByName    *[]string
-	rolesByPk      *[]string
-	search         *string
-	type_          *[]string
-	username       *string
-	uuid           *string
+	ctx             context.Context
+	ApiService      *CoreApiService
+	attributes      *string
+	dateJoined      *time.Time
+	dateJoinedGt    *time.Time
+	dateJoinedLt    *time.Time
+	email           *string
+	groupsByName    *[]string
+	groupsByPk      *[]string
+	includeGroups   *bool
+	includeRoles    *bool
+	isActive        *bool
+	isSuperuser     *bool
+	lastLogin       *time.Time
+	lastLoginGt     *time.Time
+	lastLoginIsnull *bool
+	lastLoginLt     *time.Time
+	lastUpdated     *time.Time
+	lastUpdatedGt   *time.Time
+	lastUpdatedLt   *time.Time
+	name            *string
+	ordering        *string
+	page            *int32
+	pageSize        *int32
+	path            *string
+	pathStartswith  *string
+	rolesByName     *[]string
+	rolesByPk       *[]string
+	search          *string
+	type_           *[]string
+	username        *string
+	uuid            *string
 }
 
 // Attributes
@@ -7885,6 +7925,26 @@ func (r ApiCoreUsersListRequest) IsActive(isActive bool) ApiCoreUsersListRequest
 
 func (r ApiCoreUsersListRequest) IsSuperuser(isSuperuser bool) ApiCoreUsersListRequest {
 	r.isSuperuser = &isSuperuser
+	return r
+}
+
+func (r ApiCoreUsersListRequest) LastLogin(lastLogin time.Time) ApiCoreUsersListRequest {
+	r.lastLogin = &lastLogin
+	return r
+}
+
+func (r ApiCoreUsersListRequest) LastLoginGt(lastLoginGt time.Time) ApiCoreUsersListRequest {
+	r.lastLoginGt = &lastLoginGt
+	return r
+}
+
+func (r ApiCoreUsersListRequest) LastLoginIsnull(lastLoginIsnull bool) ApiCoreUsersListRequest {
+	r.lastLoginIsnull = &lastLoginIsnull
+	return r
+}
+
+func (r ApiCoreUsersListRequest) LastLoginLt(lastLoginLt time.Time) ApiCoreUsersListRequest {
+	r.lastLoginLt = &lastLoginLt
 	return r
 }
 
@@ -8056,6 +8116,18 @@ func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 	}
 	if r.isSuperuser != nil {
 		localVarQueryParams.Add("is_superuser", parameterToString(*r.isSuperuser, ""))
+	}
+	if r.lastLogin != nil {
+		localVarQueryParams.Add("last_login", parameterToString(*r.lastLogin, ""))
+	}
+	if r.lastLoginGt != nil {
+		localVarQueryParams.Add("last_login__gt", parameterToString(*r.lastLoginGt, ""))
+	}
+	if r.lastLoginIsnull != nil {
+		localVarQueryParams.Add("last_login__isnull", parameterToString(*r.lastLoginIsnull, ""))
+	}
+	if r.lastLoginLt != nil {
+		localVarQueryParams.Add("last_login__lt", parameterToString(*r.lastLoginLt, ""))
 	}
 	if r.lastUpdated != nil {
 		localVarQueryParams.Add("last_updated", parameterToString(*r.lastUpdated, ""))
