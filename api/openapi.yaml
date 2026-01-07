@@ -51584,7 +51584,7 @@ components:
         token_count: 171976544
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
-        token_length: 1294386358
+        token_length: 60
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
@@ -51654,7 +51654,7 @@ components:
           minimum: 0
           type: integer
         token_length:
-          maximum: 2147483647
+          maximum: 100
           minimum: 0
           type: integer
       required:
@@ -51672,7 +51672,7 @@ components:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         friendly_name: friendly_name
         token_count: 171976544
-        token_length: 1294386358
+        token_length: 60
         name: name
       properties:
         name:
@@ -51691,7 +51691,7 @@ components:
           minimum: 0
           type: integer
         token_length:
-          maximum: 2147483647
+          maximum: 100
           minimum: 0
           type: integer
       required:
@@ -63640,7 +63640,7 @@ components:
           token_count: 171976544
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
-          token_length: 1294386358
+          token_length: 60
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
@@ -63675,7 +63675,7 @@ components:
           token_count: 171976544
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
-          token_length: 1294386358
+          token_length: 60
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
@@ -74020,7 +74020,7 @@ components:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         friendly_name: friendly_name
         token_count: 171976544
-        token_length: 1294386358
+        token_length: 60
         name: name
       properties:
         name:
@@ -74039,7 +74039,7 @@ components:
           minimum: 0
           type: integer
         token_length:
-          maximum: 2147483647
+          maximum: 100
           minimum: 0
           type: integer
       type: object
@@ -84428,7 +84428,7 @@ components:
         token: token
       properties:
         token:
-          maxLength: 16
+          maxLength: 100
           type: string
       required:
       - token
